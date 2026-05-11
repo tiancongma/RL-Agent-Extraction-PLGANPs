@@ -1,0 +1,4 @@
+doi_norm	paper_key	pilot_reason	gt_formulation_rows	gt_candidate_non_formulation_rows	pred_formulation_rows	pred_candidate_non_formulation_rows	pred_unclear_rows	pred_new_formulation_rows	pred_variant_formulation_rows	pred_variant_with_parent_rows	over_segmentation	under_segmentation	boundary_status	non_formulation_suppressed	inheritance_variant_separated
+10.1002/jps.24101	WIVUCMYG	table-heavy multi-formulation (high row multiplicity and under-enumeration risk)	26	3	26	0	0	26	0	0	no	no	mixed	no	no
+10.1016/j.ejpb.2004.09.002	L3H2RS2H	segmentation/alignment difficulty (top EE mismatch and contamination risk)	22	0	24	0	0	2	22	22	yes	no	broken	not_applicable	yes
+10.2147/ijn.s130908	5ZXYABSU	shared/global baseline condition risk (global inheritance seen in diagnostics)	9	0	9	0	0	3	6	6	no	no	preserved	not_applicable	yes

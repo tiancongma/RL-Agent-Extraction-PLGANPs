@@ -1,0 +1,29 @@
+{
+  "inputs": {
+    "curated_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\goren18_curated_overlap_subset.tsv",
+    "extracted_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\dev18_surfactant_schema_v1\\weak_labels__gemini.tsv",
+    "baseline_extracted_tsv_optional": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\dev18_corefields_prompt_v1\\weak_labels__gemini.tsv",
+    "sample_jsonl": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\samples\\sample_goren18.jsonl"
+  },
+  "columns_used": {
+    "curated_doi": "doi_norm",
+    "curated_drug": "small_molecule_name",
+    "extracted_doi": "doi_norm",
+    "extracted_drug": "drug_name"
+  },
+  "row_counts": {
+    "curated_rows": 127,
+    "extracted_rows": 233,
+    "per_doi_rows": 18,
+    "problem_rows": 3
+  },
+  "status_counts": {
+    "exact_match": 15,
+    "overlap_partial": 2,
+    "no_overlap": 1
+  },
+  "outputs": {
+    "per_doi_drugname_sets_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v3_drugname\\per_doi_drugname_sets.tsv",
+    "per_doi_drugname_problem_cases_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v3_drugname\\per_doi_drugname_problem_cases.tsv"
+  }
+}

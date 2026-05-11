@@ -1,0 +1,92 @@
+{
+  "version": "v1",
+  "immutable": true,
+  "scope": "goren_2025_benchmark_derivation",
+  "group_key_policy": "key + formulation_id",
+  "rules": [
+    {
+      "rule_id": "R_DIRECT_DRUG_NAME",
+      "description": "Carry drug_name as small_molecule_name from extracted anchors.",
+      "inputs": ["drug_name"],
+      "outputs": ["small_molecule_name"]
+    },
+    {
+      "rule_id": "R_DIRECT_ORGANIC_SOLVENT",
+      "description": "Carry organic_solvent as solvent from extracted anchors.",
+      "inputs": ["organic_solvent"],
+      "outputs": ["solvent"]
+    },
+    {
+      "rule_id": "R_DIRECT_SURFACTANT_CONC",
+      "description": "Carry pva_conc_percent as surfactant_concentration from extracted anchors.",
+      "inputs": ["pva_conc_percent"],
+      "outputs": ["surfactant_concentration"]
+    },
+    {
+      "rule_id": "R_DIRECT_PARTICLE_SIZE",
+      "description": "Carry size_nm as particle_size from extracted anchors.",
+      "inputs": ["size_nm"],
+      "outputs": ["particle_size"]
+    },
+    {
+      "rule_id": "R_DIRECT_EE",
+      "description": "Carry encapsulation_efficiency_percent as EE from extracted anchors.",
+      "inputs": ["encapsulation_efficiency_percent"],
+      "outputs": ["EE"]
+    },
+    {
+      "rule_id": "R_DIRECT_LC",
+      "description": "Carry loading_content_percent as LC from extracted anchors.",
+      "inputs": ["loading_content_percent"],
+      "outputs": ["LC"]
+    },
+    {
+      "rule_id": "R_LAGA_PARSE_FRACTIONS",
+      "description": "Parse LA:GA into la_fraction and ga_fraction without inference.",
+      "inputs": ["la_ga_ratio"],
+      "outputs": ["la_fraction", "ga_fraction"]
+    },
+    {
+      "rule_id": "R_LAGA_PARSE_OVER_GA",
+      "description": "Parse LA/GA scalar from la_ga_ratio.",
+      "inputs": ["la_ga_ratio"],
+      "outputs": ["LA/GA"]
+    },
+    {
+      "rule_id": "R_POLYMER_MW_RANGE_PARSE",
+      "description": "Parse polymer MW lower/upper bounds from plga_mw_kDa. No midpoint derivation.",
+      "inputs": ["plga_mw_kDa"],
+      "outputs": ["polymer_mw_lower_kDa", "polymer_mw_upper_kDa"]
+    },
+    {
+      "rule_id": "R_POLYMER_MASS_PARSE",
+      "description": "Parse polymer mass in mg from plga_mass_mg.",
+      "inputs": ["plga_mass_mg"],
+      "outputs": ["polymer_mass_mg"]
+    },
+    {
+      "rule_id": "R_DRUG_MASS_PARSE",
+      "description": "Parse drug mass in mg from drug_feed_amount_text when no numeric drug mass exists.",
+      "inputs": ["drug_feed_amount_text"],
+      "outputs": ["drug_mass_mg"]
+    },
+    {
+      "rule_id": "R_DRUG_POLYMER_RATIO_COMPLETE",
+      "description": "Complete drug/polymer ratio when drug_mass_mg and polymer_mass_mg are available.",
+      "inputs": ["drug_mass_mg", "polymer_mass_mg"],
+      "outputs": ["drug/polymer"]
+    },
+    {
+      "rule_id": "R_AQUEOUS_ORGANIC_PARSE_W1_OVER_O",
+      "description": "Parse W1/O ratio only from explicit evidence spans with extracted anchors.",
+      "inputs": ["evidence_span_text"],
+      "outputs": ["w1_over_o_ratio"]
+    },
+    {
+      "rule_id": "R_AQUEOUS_ORGANIC_PARSE_W1W2_OVER_O",
+      "description": "Parse (W1+W2)/O ratio only from explicit evidence spans with extracted anchors.",
+      "inputs": ["evidence_span_text"],
+      "outputs": ["w1w2_over_o_ratio"]
+    }
+  ]
+}

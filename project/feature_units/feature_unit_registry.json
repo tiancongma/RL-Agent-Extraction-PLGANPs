@@ -1,0 +1,735 @@
+[
+  {
+    "feature_id": "numbered_doe_row_enumeration_priority",
+    "title": "Numbered DOE row enumeration priority",
+    "problem_class": "Stage2 under-enumeration for explicit numbered DOE or design-table formulations",
+    "status": "active_mainline_with_validation_history",
+    "primary_stage": "stage2_active",
+    "description": "When Stage1 table assets preserve explicit numbered DOE rows, deterministic table-derived rows should enter the active Stage2 candidate surface and take priority over overlapping generic numeric LLM rows.",
+    "expected_intervention_points": [
+      "Stage1 table assets expose an explicit numbered DOE or design table.",
+      "Stage2 deterministically enumerates numbered rows.",
+      "Stage2 merge prefers structured numbered DOE rows over overlapping llm_extracted numeric rows."
+    ],
+    "activation_signals": [
+      "weak_labels__v7pilot_r3_fixparse.tsv contains candidate_source=doe_numbered_table_row or candidate_source=doe_numbered_table_row_recovery for a paper with a known numbered DOE table",
+      "numbered_doe_row_candidates_summary_v1.tsv reports numbered_rows_found for the same run",
+      "Overlapping numeric llm_extracted rows are absent or reduced after the Stage2 merge"
+    ],
+    "regression_checks": [
+      "numbered_doe_regression_guard",
+      "UFXX9WXE targeted Stage2 validation counts"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py",
+      "src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py"
+    ],
+    "related_docs": [
+      "project/4_DECISIONS_LOG.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "docs/methods/doe_logic_audit_ufxx9wxe_2026-03-13.md"
+    ],
+    "introduced_on": "2026-03-13",
+    "notes": "UFXX9WXE is the motivating benchmark case. The feature existed in later same-day child validation/support lineages but the benchmark-valid parent run still reused an older Stage2 artifact with only five UFXX rows. The reporting contract now treats the explicit deterministic recovery label as a governed synonym for activation credit."
+  },
+  {
+    "feature_id": "numbered_doe_regression_guard",
+    "title": "Numbered DOE regression guard",
+    "problem_class": "Silent shrinkage between deterministic numbered table rows and the active Stage2 candidate surface",
+    "status": "active_mainline_guard",
+    "primary_stage": "stage2_active",
+    "description": "Per-paper deterministic guard emitted by the active Stage2 extractor to record whether explicit numbered DOE table rows are actually preserved in the run's merged Stage2 candidate surface.",
+    "expected_intervention_points": [
+      "Active Stage2 run writes numbered_doe_regression_guard_v1.tsv",
+      "Guard compares numbered_table_row_count to the formulation-like Stage2 candidate count",
+      "Guard flags fail or warn when the active Stage2 candidate surface is smaller than the explicit numbered DOE table surface or still depends on overlapping numeric LLM rows"
+    ],
+    "activation_signals": [
+      "numbered_doe_regression_guard_v1.tsv exists in the run output",
+      "pilot_summary.json records numbered_doe_guard_tsv",
+      "Guard rows contain deterministic statuses pass, warn, or fail"
+    ],
+    "regression_checks": [
+      "numbered_doe_regression_guard_v1.tsv"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py"
+    ],
+    "related_docs": [
+      "data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/ufxx9wxe_numbered_doe_regression_fix_report.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This guard exists specifically to distinguish code presence from run activation after the UFXX9WXE lineage-reuse failure."
+  },
+  {
+    "feature_id": "table_first_evidence_binding",
+    "title": "Table-first evidence binding",
+    "problem_class": "Loss of structured table-row anchors when evidence is taken only from broad full-text windows",
+    "status": "active_supporting_capability",
+    "primary_stage": "stage2_active",
+    "description": "When structured table rows are available, table-derived formulation candidates should carry explicit table-row evidence anchors rather than relying only on broad full-text windows.",
+    "expected_intervention_points": [
+      "Stage1 table assets preserve usable row structure",
+      "Stage2 candidate rows carry table_row evidence with an explicit table identifier",
+      "Downstream final outputs retain those evidence anchors when rows survive closure"
+    ],
+    "activation_signals": [
+      "weak_labels__v7pilot_r3_fixparse.tsv contains instance_evidence_region_type=table_row",
+      "evidence_section records a numbered table identifier such as <paper_key>__numbered_doe_table_01",
+      "final_formulation_table_v1.tsv retains table-row evidence for surviving rows"
+    ],
+    "regression_checks": [
+      "Feature activation report evidence check on table_row anchors"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py",
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py",
+      "src/stage5_benchmark/build_minimal_final_output_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "docs/methods/doe_logic_audit_ufxx9wxe_2026-03-13.md",
+      "docs/methods/final_formulation_audit_ready_export_v1.md"
+    ],
+    "introduced_on": "2026-03-13",
+    "notes": "Current activation reporting can detect this feature only when run artifacts expose explicit table_row evidence anchors. Governed numbered DOE recovery rows are accepted when they carry the same table-row anchor structure."
+  },
+  {
+    "feature_id": "stage2_input_evidence_packing",
+    "title": "Stage 2 ordered input evidence packing",
+    "problem_class": "Stage2 live prompt assembly can over-weight raw-prefix text when a governed ordered evidence pack would ground the model better",
+    "status": "active_mainline_with_validation_history",
+    "primary_stage": "stage2_active",
+    "description": "Governed Stage2 live prompt assembly may switch from raw-prefix text to an ordered evidence pack that prioritizes synthesis/preparation, materials/procurement, summary-only table evidence, and bounded narrative fallback for stronger semantic grounding through the canonical S2-2 evidence artifact contract.",
+    "expected_intervention_points": [
+      "Stage2 live execution persists evidence_blocks_v1.json before prompt assembly.",
+      "Prompt assembly reads the resolved evidence artifact instead of silently recomputing pre-LLM evidence selection from clean text.",
+      "The prompt preview records the prompt layout class, the packing mode, the ordered block sequence, and the canonical evidence artifact path.",
+      "All LLM-facing table evidence remains summary-only even when multiple candidate tables are bundled."
+    ],
+    "activation_signals": [
+      "evidence_blocks_v1.json exists under semantic_stage2_objects/evidence_blocks/<paper_key>/ for the run-local Stage2 output",
+      "stage2_prompt_preview_v1.tsv records input_packing_mode=ordered_blocks, prompt_layout_class=ordered_controlled_evidence_pack, and an evidence_artifact_path",
+      "The run-local feature activation report marks the feature active only when the controlled ordering mode is actually used from the persisted evidence artifact"
+    ],
+    "regression_checks": [
+      "Canonical S2-2 evidence artifact presence",
+      "Feature activation report evidence check on ordered Stage2 input packing output"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-01",
+    "notes": "This is an execution feature unit with run-level observability. It records whether the governed ordered evidence pack was actually used through the canonical persisted S2-2 evidence artifact and the derived prompt-preview surface."
+  },
+  {
+    "feature_id": "s2_candidate_section_aware_split",
+    "title": "S2 candidate section-aware split",
+    "problem_class": "Selector prioritization becomes unstable when maintained Stage2 candidate generation leaves recoverable structural regions hidden inside coarse prose blocks",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained Stage2 pre-LLM path now persists candidate_blocks_v1.json as an explicit candidate-segmentation surface and records section-aware prose candidates before evidence-driven evidence selection begins.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py persists candidate_blocks_v1.json before evidence_blocks_v1.json is resolved.",
+      "Prose candidates record a segmentation_method plus section_kind metadata so the boundary is inspectable before selector prioritization.",
+      "Run-local candidate segmentation debug output can expose the same pre-selector candidate surface."
+    ],
+    "activation_signals": [
+      "candidate_blocks_v1.json exists under semantic_stage2_objects/candidate_blocks/<paper_key>/ for the run-local Stage2 output",
+      "The artifact records segmentation_profile=section_aware_candidate_segmentation_v1",
+      "At least one prose candidate records segmentation_method and section_kind fields"
+    ],
+    "regression_checks": [
+      "Run-local candidate_blocks_v1.json section-aware segmentation check",
+      "Feature activation report evidence check on explicit candidate segmentation"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature makes candidate segmentation explicit and inspectable without creating a parallel Stage2 route."
+  },
+  {
+    "feature_id": "s2_candidate_table_isolation",
+    "title": "S2 candidate table isolation",
+    "problem_class": "Table-derived selector candidates become unreliable when adjacent body text, page furniture, or sparse fragments leak into the maintained pre-selector table surface",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained candidate-segmentation layer isolates table candidates before evidence-driven selection and records them in candidate_blocks_v1.json so table quality can be inspected independently of selector scoring.",
+    "expected_intervention_points": [
+      "The candidate artifact records table candidates separately from prose candidates.",
+      "Table candidates preserve caption or title context where available and carry quality flags when rows were filtered or the table looks sparse or corrupted.",
+      "The maintained table-selection debug surface remains downstream observability rather than the primary candidate source."
+    ],
+    "activation_signals": [
+      "candidate_blocks_v1.json contains candidate_type=table rows",
+      "feature_activation_snapshot.table_isolation is true for artifacts with table assets",
+      "Candidate table rows record table quality metadata before selector prioritization"
+    ],
+    "regression_checks": [
+      "Run-local candidate_blocks_v1.json table-isolation check",
+      "Feature activation report evidence check on candidate table isolation"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature governs the pre-selector table surface only; it does not change downstream Stage3 semantics."
+  },
+  {
+    "feature_id": "s2_2a_table_authority_ranking",
+    "title": "S2-2a table authority ranking",
+    "problem_class": "Recovered table payloads can preserve the wrong authority mix when structurally stronger formulation-bearing tables are not ranked ahead of weak residue or downstream-result tables",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained S2-2a layer may rank recovered table payloads before finalizing the preserved authority set so primary versus secondary tables are formed from conservative artifact-level signals rather than semantic-role inference.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py ranks recovered table payloads after normalized table construction and before the preserved authority set is finalized.",
+      "Candidate and normalized-table artifacts record authority_rank, authority_score, authority_tier, and preserved_by_authority_ranking fields when table authority is present.",
+      "The ranking remains structure-only and must not emit semantic roles, semantic signals, or pre-LLM interpretation."
+    ],
+    "activation_signals": [
+      "candidate_blocks_v1.json records feature_activation_snapshot.table_authority_ranking=true for papers with table candidates",
+      "Candidate table entries record authority_rank, authority_score, and authority_tier before selector prioritization",
+      "normalized_table_payloads_v1.json records the same authority-ranking fields on preserved table payloads"
+    ],
+    "regression_checks": [
+      "Run-local candidate_blocks_v1.json table-authority ranking check",
+      "Run-local normalized_table_payloads_v1.json authority metadata check",
+      "Feature activation report evidence check on S2-2a table authority ranking"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-20",
+    "notes": "Canonical change name: S2-2a Table Authority Ranking (Selector V2.1 refinement). This feature narrows preserved table authority formation without moving semantic understanding into S2-2a or changing selector ontology."
+  },
+  {
+    "feature_id": "s2_2a_primary_table_guardrail",
+    "title": "S2-2a structure-first table preservation guardrail",
+    "problem_class": "Noisy coarse labels can wrongly exclude a structurally strong recovered table from the preserved authority set even when the table surface is still a plausible formulation-bearing candidate",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained S2-2a layer may apply a structure-first preservation guardrail after table-authority ranking and before finalizing the preserved authority set so coarse labels remain demotions only, while only structural failure can exclude a plausible table from preserved authority. This guardrail does not decide final semantic primary-table truth.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py evaluates preserved-table eligibility after normalized table construction and before the preserved authority set is frozen.",
+      "Coarse labels such as non_formulation_table or characterization/results remain visible in audit fields but do not by themselves make a table ineligible for preserved authority.",
+      "Exclusion is tied to structural failure signals such as repair insufficiency, narrative domination, or figure-spillover surfaces.",
+      "The guardrail must not semantically choose the one true formulation table among multiple preserved candidates."
+    ],
+    "activation_signals": [
+      "normalized_table_payloads_v1.json records primary_guardrail_applied, primary_guardrail_reason, and primary_eligibility_signals on preserved table payloads",
+      "A structurally strong table may remain preserved even when coarse negative labels remain present in audit fields",
+      "Narrative or figure-spillover tables remain demoted through structural guardrail reasons rather than label-only veto"
+    ],
+    "regression_checks": [
+      "Run-local normalized_table_payloads_v1.json primary-guardrail metadata check",
+      "L3H2RS2H bounded validation keeps useful formulation-bearing tables preserved without noisy spillover domination",
+      "V99GKZEI bounded validation keeps Table 1 preserved without prompt inflation"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/4_DECISIONS_LOG.md"
+    ],
+    "introduced_on": "2026-04-20",
+    "notes": "Canonical change name: S2-2a structure-first table preservation guardrail. This feature refines preserved-authority eligibility only; it does not redesign selector ontology, add semantic-role inference, or move ownership away from S2-2a."
+  },
+  {
+    "feature_id": "s2_candidate_noise_filtering",
+    "title": "S2 candidate noise filtering",
+    "problem_class": "Selector quality degrades when obvious publisher furniture, download text, or repeated non-content rows enter the maintained candidate surface as if they were real evidence",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained candidate-segmentation layer applies conservative high-confidence noise filtering before selector prioritization and records the result in candidate_blocks_v1.json and candidate_segmentation_debug_v1.tsv.",
+    "expected_intervention_points": [
+      "Paragraph candidate generation removes obvious publisher, download, or page-furniture lines.",
+      "Table candidate generation filters obvious non-content rows before summary rendering.",
+      "Candidate-level observability records noise or quality flags without collapsing them into selector role semantics."
+    ],
+    "activation_signals": [
+      "candidate_blocks_v1.json records feature_activation_snapshot.noise_filtering=true",
+      "candidate_segmentation_debug_v1.tsv exists in the run-local analysis directory",
+      "Candidate entries may expose noise_flags or quality_flags before selector prioritization"
+    ],
+    "regression_checks": [
+      "Run-local candidate_blocks_v1.json noise-filtering check",
+      "Feature activation report evidence check on candidate noise filtering"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature is conservative by design and exists to make candidate-level contamination inspectable in maintained runs."
+  },
+  {
+    "feature_id": "s2_2_evidence_artifact_contract",
+    "title": "S2-2 evidence artifact contract",
+    "problem_class": "Pre-LLM evidence selection and ordering can remain implicit, in-memory, or bypassable when the maintained Stage2 path does not persist a canonical governed evidence artifact",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained Stage2 path persists evidence_blocks_v1.json as the canonical S2-2 clean-text-to-governed-evidence-package boundary before any live prompt assembly or replay normalization proceeds.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py resolves pre-LLM evidence blocks before the LLM call or replay normalization path.",
+      "The maintained Stage2 output stores one evidence_blocks_v1.json per paper under semantic_stage2_objects/evidence_blocks/<paper_key>/.",
+      "Prompt preview and downstream audit surfaces point back to the canonical evidence artifact rather than acting as the primary source of truth."
+    ],
+    "activation_signals": [
+      "evidence_blocks_v1.json exists in the run-local Stage2 semantic output",
+      "The artifact records paper_key, source_clean_text_path, source_manifest_path, input_contract, evidence_blocks, coverage_summary, feature_activation_snapshot, technical_status, and design_status",
+      "The run-local feature activation report can validate the artifact contract from the run outputs directly"
+    ],
+    "regression_checks": [
+      "Run-local evidence_blocks_v1.json schema check",
+      "Feature activation report evidence check on the S2-2 artifact contract"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature makes the pre-LLM evidence package a maintained execution boundary rather than a transient debug view."
+  },
+  {
+    "feature_id": "s2_2_design_success_split",
+    "title": "S2-2 technical versus design success split",
+    "problem_class": "A Stage2 run can emit an evidence artifact while still silently violating the intended pre-LLM input contract unless technical completeness and design conformance are separated",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The canonical S2-2 evidence artifact records technical_status separately from design_status so artifact generation is not mistaken for input-contract success.",
+    "expected_intervention_points": [
+      "evidence_blocks_v1.json records technical_status for artifact readability and required-field completeness.",
+      "evidence_blocks_v1.json records design_status for input-contract satisfaction and required-feature activation.",
+      "Prompt preview and run-level observability surfaces can expose the split without collapsing it into one success field."
+    ],
+    "activation_signals": [
+      "The evidence artifact contains both technical_status and design_status objects",
+      "technical_status records required-field completeness and overall status",
+      "design_status records input_contract_satisfied, required_features_active, and overall"
+    ],
+    "regression_checks": [
+      "Run-local evidence_blocks_v1.json status-split check",
+      "Feature activation report evidence check on the S2-2 status split"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature prevents a generated artifact from being treated as normal design success when the intended S2-2 contract path was not actually satisfied."
+  },
+  {
+    "feature_id": "s2_2_prompt_preview_derived_from_evidence_artifact",
+    "title": "S2-2 prompt preview derived from evidence artifact",
+    "problem_class": "Prompt-preview observability can drift away from the real pre-LLM evidence body when the preview is generated independently of the maintained evidence artifact",
+    "status": "active_mainline_observability",
+    "primary_stage": "stage2_active",
+    "description": "The maintained Stage2 prompt preview is a derived observability surface only. It must point to and summarize the same evidence_blocks_v1.json artifact used for prompt assembly, including runtime packing metadata that may be intentionally omitted from the default LLM-facing prompt header.",
+    "expected_intervention_points": [
+      "Prompt preview rows include evidence_artifact_path plus summarized technical and design statuses.",
+      "Prompt assembly uses the canonical evidence artifact so the preview is generated from the same resolved evidence body.",
+      "Run-level activation reporting can validate that the preview rows resolve back to existing evidence artifacts."
+    ],
+    "activation_signals": [
+      "stage2_prompt_preview_v1.tsv contains evidence_artifact_path, technical_status_overall, and design_status_overall",
+      "The referenced evidence artifact exists for each prompt-preview row",
+      "The summarized status fields match the canonical artifact"
+    ],
+    "regression_checks": [
+      "Prompt-preview linkage check against evidence_blocks_v1.json",
+      "Feature activation report evidence check on derived preview linkage"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature does not create a second evidence surface. It ensures the prompt-preview artifact remains derived observability only."
+  },
+  {
+    "feature_id": "s2_2_evidence_priority_selection",
+    "title": "S2-2 evidence-priority selection",
+    "problem_class": "Pre-LLM evidence selection can become noisy or inflated when authoritative tables are not allowed to outrank proxy and fallback text cleanly",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained S2-2 selector deterministically prioritizes candidate evidence by signal, structure quality, locality, and noise suppression, persists the chosen compact evidence blocks in evidence_blocks_v1.json, and may apply a narrow minimal evidence sufficiency floor when ranking alone underselects clearly available context. Its authority is limited to denoising, coverage, and bounded packing rather than semantic table judgment.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py uses deterministic evidence-priority selection before prompt assembly.",
+      "Candidate tables are classified only as must_include, optional_context, or hard_drop.",
+      "A post-selection minimal evidence floor may add at most one best method block, one best materials block, or one bounded supporting paragraph when clearly justified by the candidate pool.",
+      "evidence_blocks_v1.json records selection_mode, compact per-block evidence metadata, selector-debug suppression summaries, and floor-debug metadata when the floor intervenes.",
+      "The maintained prompt preview remains derived from the same evidence artifact rather than running an independent selector.",
+      "Must-include table summaries remain in neutral stable order and are not semantically reranked into one true table by deterministic rules."
+    ],
+    "activation_signals": [
+      "The evidence artifact contains selection_mode=evidence_priority_v1",
+      "Evidence blocks record evidence_kind, char_count, and compact source metadata",
+      "The evidence artifact records selector_debug suppression summaries",
+      "When the floor is triggered, the evidence artifact records minimal_evidence_floor_applied=true plus floor_debug details"
+    ],
+    "regression_checks": [
+      "Run-local evidence_blocks_v1.json evidence-priority selector check",
+      "Feature activation report evidence check on S2-2 evidence-priority selection"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature upgrades the maintained S2-2 selector quality without introducing a second LLM, a parallel Stage2 route, semantic role contracts, or pre-LLM semantic signal extraction."
+  },
+  {
+    "feature_id": "s2_2_doe_overlay_selection",
+    "title": "S2-2 archetype metadata only",
+    "problem_class": "DOE or optimization papers still need governed observability, but pre-LLM archetype hints must not distort selector behavior or inflate evidence packs",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "When deterministic pre-LLM signals indicate a DOE or optimization paper, the maintained S2-2 path records those signals as metadata only and does not alter evidence selection rules.",
+    "expected_intervention_points": [
+      "DOE-like papers are detected from maintained structural and lexical signals only.",
+      "feature_activation_snapshot records the detected DOE or variable-sweep signals.",
+      "The evidence artifact does not change selection policy or required evidence classes because of those signals."
+    ],
+    "activation_signals": [
+      "feature_activation_snapshot.doe_pre_llm_detection is true for a paper",
+      "feature_activation_snapshot.archetype_detection_metadata_only is true",
+      "The evidence artifact does not record a selector overlay field"
+    ],
+    "regression_checks": [
+      "Run-local evidence_blocks_v1.json archetype-metadata check",
+      "Feature activation report evidence check on archetype metadata-only detection"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature is metadata-only observability on the maintained selector, not a selection overlay, a separate pipeline, or a second LLM call."
+  },
+  {
+    "feature_id": "s2_2_duplicate_table_suppression",
+    "title": "S2-2 duplicate table suppression",
+    "problem_class": "Near-duplicate extracted tables can consume the limited S2-2 evidence budget and crowd out more informative evidence when the maintained selector treats them as independent wins",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained S2-2 selector suppresses duplicate tables using deterministic shape, row-label preview, and sampled-content signatures, and records any suppression events in the canonical evidence artifact. Duplicate suppression must not collapse distinct must-include tables on fuzzy semantic overlap alone.",
+    "expected_intervention_points": [
+      "Evidence-driven table selection checks duplicate signatures before final inclusion.",
+      "Must-include tables may be deduplicated only when they are exact or near-exact extraction duplicates rather than merely semantically similar.",
+      "Suppressed duplicates are recorded in duplicate_table_suppression_events inside evidence_blocks_v1.json.",
+      "Table-selection debug remains derived observability and can show which tables were selected versus suppressed."
+    ],
+    "activation_signals": [
+      "The evidence artifact contains duplicate_table_suppression_events",
+      "At least one evidence artifact in a run records a duplicate suppression event when duplicate tables are present",
+      "The feature activation report can distinguish runs with no duplicates from runs where suppression actually fired"
+    ],
+    "regression_checks": [
+      "Run-local evidence_blocks_v1.json duplicate-table suppression check",
+      "Feature activation report evidence check on duplicate-table suppression"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-04-10",
+    "notes": "This feature records when duplicate suppression actually fired; it should not claim activation just because the code path exists."
+  },
+  {
+    "feature_id": "stage2_json_sanitation_path1",
+    "title": "Stage2 JSON sanitation Path 1",
+    "problem_class": "Malformed or truncated raw LLM JSON at the Stage2 parse boundary",
+    "status": "active_supporting_capability",
+    "primary_stage": "stage2_active",
+    "governance_class": "managed_feature_unit",
+    "scope": "Post-raw-output parse repair inside the current Stage2 boundary; frozen raw baseline diagnostics; no downstream stage mutation",
+    "forbidden_behavior": "No semantic reconstruction, no inferred fields, no tolerant fallback parser, no downstream identity reinterpretation",
+    "output_artifact_contract": "Produces per-paper parsed JSON artifacts plus path1_parse_audit.tsv, path1_failure_subset.tsv, and path1_vs_path2_comparison.tsv; preserves the original raw response artifact unchanged",
+    "description": "Conservative syntax-first sanitation before strict parse. Applies low-risk mechanical cleanup only: code-fence trimming, leading-junk trimming before the first JSON start, and narrow balanced-close repair when the document is clearly truncated at the tail.",
+    "expected_intervention_points": [
+      "A raw Stage2 response is already saved and is passed through sanitize_stage2_json_text before strict json.loads",
+      "The sanitizer can remove formatting wrappers or perform narrow balanced-close repair without inventing content",
+      "The diagnostic comparison artifacts prove whether Path 1 modified text or parsed directly"
+    ],
+    "activation_signals": [
+      "path1_parse_audit.tsv exists for the diagnostic baseline",
+      "path1_parse_audit.tsv records parse_stage values of direct, sanitized, or balanced_close",
+      "path1_vs_path2_comparison.tsv records Path 1 as the preferred path when Path 2 is unnecessary or riskier"
+    ],
+    "regression_checks": [
+      "path1_parse_audit.tsv",
+      "path1_failure_subset.tsv",
+      "path1_vs_path2_comparison.tsv"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md",
+      "docs/methods/stage2_replacement_compatibility_adapter_2026-03-25.md"
+    ],
+    "introduced_on": "2026-04-02",
+    "notes": "This is the current conservative parse-repair path. It is syntax-first and auditable, and it is suitable for managed governance because it does not reconstruct semantics."
+  },
+  {
+    "feature_id": "stage2_legacy_fixparse_fallback_path2",
+    "title": "Stage2 legacy fixparse fallback Path 2",
+    "problem_class": "Historical broad fallback parse repair for raw Stage2 responses that fail the current conservative sanitizer",
+    "status": "active_supporting_capability",
+    "primary_stage": "stage2_active",
+    "governance_class": "diagnostic_only_fallback",
+    "scope": "Historical fixparse comparison only; Path 1 failures on frozen raw baselines; diagnostic evaluation without promotion to mainline authority",
+    "forbidden_behavior": "No use as active mainline Stage2 authority, no silent semantic reconstruction, no hidden replacement of the current conservative sanitizer",
+    "output_artifact_contract": "Produces path2_parse_audit.tsv only for Path 1 failures; any rescued paper must be traceable to the original raw response and the repair stage used",
+    "description": "Historical fixparse basis derived from the legacy wide-row extractor. It strips code fences, then attempts a broad brace-window recovery before falling back to a default empty schema object. This is diagnostic-only and broader than syntax-only repair.",
+    "expected_intervention_points": [
+      "Path 1 has already failed on a frozen raw response",
+      "The historical fixparse fallback is used only for diagnostic comparison, not mainline processing",
+      "A Path 2 audit row records the exact repair stage and any risk classification"
+    ],
+    "activation_signals": [
+      "path2_parse_audit.tsv exists and has rows for a Path 1 failure subset",
+      "path1_vs_path2_comparison.tsv records a Path 2 attempt only for Path 1 failures",
+      "The diagnostic summary records whether any rescue required possible_semantic_rewrite or mixed_or_unclear classification"
+    ],
+    "regression_checks": [
+      "path2_parse_audit.tsv",
+      "path1_vs_path2_comparison.tsv",
+      "summary.md"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py",
+      "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md",
+      "docs/methods/stage2_replacement_compatibility_adapter_2026-03-25.md",
+      "docs/methods/v7pilot_r3_fixparse_input_assembly_audit_2026-03-10.md"
+    ],
+    "introduced_on": "2026-04-02",
+    "notes": "This is a diagnostic-only fallback basis. It remains historical context unless future evidence proves it can be governed without semantic-riskful repair."
+  },
+  {
+    "feature_id": "variant_aware_gt_authority_switch",
+    "title": "Variant-aware GT authority switch",
+    "problem_class": "GT authority drift when benchmark comparison continues to use an older workbook after the benchmark object changes",
+    "status": "active_reference_input",
+    "primary_stage": "benchmark_compare",
+    "description": "The DEV15 benchmark compare node should explicitly point to the versioned variant-aware GT workbook and record that authority in run outputs.",
+    "expected_intervention_points": [
+      "compare_final_table_to_gt_v1.py reads the variant-aware GT workbook",
+      "benchmark outputs preserve the authority path in counts-by-doi artifacts",
+      "GT-authority-specific subdirectories or outputs distinguish the newer authority from preserved historical comparisons"
+    ],
+    "activation_signals": [
+      "final_table_vs_gt_counts_by_doi.tsv records gt_authority_file with dev15_formulation_skeleton_review_v2_variantaware.xlsx",
+      "Run artifacts live under a gt_authority_v2_variantaware subdirectory or otherwise preserve the v2 authority path"
+    ],
+    "regression_checks": [
+      "Feature activation report evidence check on compare outputs"
+    ],
+    "related_scripts": [
+      "src/stage5_benchmark/compare_final_table_to_gt_v1.py"
+    ],
+    "related_docs": [
+      "project/PIPELINE_SCRIPT_MAP.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/4_DECISIONS_LOG.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This feature is active only when the run artifacts prove the v2 variant-aware workbook was actually used. Preserving the old GT authority file is part of the provenance contract."
+  },
+  {
+    "feature_id": "family_variant_retention_governance",
+    "title": "Family and variant retention governance",
+    "problem_class": "Stage5 final-output undercount or over-collapse when duplicate handling ignores family or variant identity",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage5_final",
+    "description": "Controlled Stage5 governance layer that retains or collapses rows conservatively based on explicit family and variant evidence rather than broad ad hoc duplicate patches.",
+    "expected_intervention_points": [
+      "Stage5 final-output build evaluates duplicate and variant governance rules",
+      "final_output_decision_trace_v1.tsv records phase1_variant_governance when the layer intervenes",
+      "final_formulation_table_v1.tsv preserves family and variant labels when rows survive"
+    ],
+    "activation_signals": [
+      "final_output_decision_trace_v1.tsv contains confidence_or_rule_scope=phase1_variant_governance",
+      "final_formulation_table_v1.tsv includes family_core or variant labels tied to retained rows"
+    ],
+    "regression_checks": [
+      "Stage5 replay reports under the current merged benchmark lineage",
+      "Feature activation report evidence check on phase1_variant_governance"
+    ],
+    "related_scripts": [
+      "src/stage5_benchmark/build_minimal_final_output_v1.py"
+    ],
+    "related_docs": [
+      "project/4_DECISIONS_LOG.md",
+      "docs/methods/stage5_duplicate_variant_governance_v1.md"
+    ],
+    "introduced_on": "2026-03-13",
+    "notes": "This feature can exist in the repo while still being inactive in a specific run. Activation must come from Stage5 run artifacts, not from the presence of the Stage5 code path alone."
+  },
+  {
+    "feature_id": "feature_unit_governance_layer",
+    "title": "Feature-unit governance layer",
+    "problem_class": "Feature logic exists in code but is not explicitly registered, scoped, or checkable at run level",
+    "status": "active_project_support",
+    "primary_stage": "run_context",
+    "description": "Machine-readable registry and intervention matrix that define benchmark-relevant feature units, their intended intervention points, and their regression checks.",
+    "expected_intervention_points": [
+      "project/feature_units/feature_unit_registry.json exists and lists the run-relevant feature units",
+      "project/feature_units/feature_intervention_matrix.tsv exists and marks where each feature is required or optional",
+      "Run-level activation reporting consumes both files rather than inventing expectations ad hoc"
+    ],
+    "activation_signals": [
+      "feature_activation_report_v1.tsv exists for the run",
+      "The report was built from the registry and matrix under project/feature_units/"
+    ],
+    "regression_checks": [
+      "feature_activation_report_v1.tsv"
+    ],
+    "related_scripts": [
+      "src/utils/build_feature_activation_report_v1.py",
+      "src/utils/update_run_context_with_feature_activation_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "UFXX9WXE showed that code-level fixes alone are not enough when a later benchmark run silently reuses older artifacts."
+  },
+  {
+    "feature_id": "run_context_feature_activation_integration",
+    "title": "RUN_CONTEXT feature activation integration",
+    "problem_class": "A run can look reproducible at the script IO level while still hiding missing feature interventions",
+    "status": "active_project_support",
+    "primary_stage": "run_context",
+    "description": "Each benchmark-relevant run records its feature activation report path, required feature units, missing required feature units, activation gate, and compact activation table directly inside RUN_CONTEXT.md.",
+    "expected_intervention_points": [
+      "RUN_CONTEXT.md includes a generated Feature Unit Activation section",
+      "The section references the run-local feature activation report",
+      "The run activation gate is derived from artifact-based feature statuses"
+    ],
+    "activation_signals": [
+      "RUN_CONTEXT.md contains the heading ## Feature Unit Activation",
+      "RUN_CONTEXT.md records run_activation_gate and feature_activation_report_path"
+    ],
+    "regression_checks": [
+      "RUN_CONTEXT.md feature activation section refresh"
+    ],
+    "related_scripts": [
+      "src/utils/update_run_context_with_feature_activation_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This makes feature integration status part of authoritative run metadata instead of a detached analysis-only artifact."
+  },
+  {
+    "feature_id": "doi_level_gt_vs_pred_count_audit",
+    "title": "DOI-level GT versus prediction count audit",
+    "problem_class": "Per-paper benchmark mismatches are hard to localize when only aggregate summaries are reported",
+    "status": "active_benchmark_support",
+    "primary_stage": "benchmark_compare",
+    "description": "Benchmark compare writes a DOI-level table with GT count, predicted final count, delta, and count status so run-level mismatches are auditable paper by paper.",
+    "expected_intervention_points": [
+      "compare_final_table_to_gt_v1.py writes final_table_vs_gt_counts_by_doi.tsv",
+      "The run preserves the counts-by-doi artifact under the compare output root",
+      "RUN_CONTEXT.md or other run metadata can point to that compare artifact"
+    ],
+    "activation_signals": [
+      "final_table_vs_gt_counts_by_doi.tsv exists in the run",
+      "The TSV contains doi, gt_count, pred_count, delta_count, and count_status"
+    ],
+    "regression_checks": [
+      "final_table_vs_gt_counts_by_doi.tsv"
+    ],
+    "related_scripts": [
+      "src/stage5_benchmark/compare_final_table_to_gt_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This is a benchmark-facing audit surface, not a substitute for the final formulation table itself."
+  }
+]

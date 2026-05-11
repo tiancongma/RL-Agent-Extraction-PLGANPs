@@ -1,0 +1,12 @@
+{
+  "original_length": 68375,
+  "cleaned_length": 57384,
+  "removed_leading_chars": 0,
+  "removed_code_fence": false,
+  "removed_trailing_code_fence": false,
+  "balanced_close_applied": true,
+  "balanced_close_cut": 57384,
+  "balanced_close_remaining_stack": "{[{",
+  "parse_stage": "balanced_close",
+  "direct_parse_error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 57385 (char 57384)"
+}

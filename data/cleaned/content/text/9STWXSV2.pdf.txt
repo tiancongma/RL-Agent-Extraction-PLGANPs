@@ -1,0 +1,1336 @@
+Biomedical Materials
+
+PAPER • OPEN ACCESS
+Incorporation and release of dual growth factors
+for nerve tissue engineering using nanofibrous
+bicomponent scaffolds
+To cite this article: Chaoyu Liu et al 2018 Biomed. Mater. 13 044107
+
+View the article online for updates and enhancements.
+You may also like
+Magnetization dynamics in quasiperiodic
+magnonic crystals
+Riya Mehta, Bivas Rana and Susmita
+Saha
+-
+Effect of sea component dissolution on
+fibrous structure of islands-in-the-sea
+spunbond nonwovens
+F Suvari, Y Ulcay and B Pourdeyhimi
+-
+Development of fiber-based piezoelectric
+sensors for the load monitoring of
+dynamically stressed fiber-reinforced
+composites
+Hung Le Xuan, Eric Haentzsche, Andreas
+Nocke et al.
+-
+This content was downloaded from IP address 129.2.89.164 on 22/10/2025 at 17:38
+
+Biomed. Mater. 13 (2018) 044107
+https://doi.org/10.1088/1748-605X/aab693
+PAPER
+Incorporation and release of dual growth factors for nerve tissue
+engineering using nanoﬁbrous bicomponent scaffolds
+Chaoyu Liu1,2,5
+, Chong Wang3, Qilong Zhao4, Xiaohua Li2, Feiyue Xu2, Xumei Yao2 and Min Wang1
+1 Department of Mechanical Engineering, The University of Hong Kong, Pokfulam Road, Hong Kong, People’s Republic of China
+2 Department of Research and Development, Shenzhen Gene Health Bio Tech Co., Ltd, Shenzhen, 518055, People’s Republic of China
+3 School of Mechanical Engineering, Dongguan University of Technology, Dongguan, Guangdong, 523808, People’s Republic of China
+4 Shenzhen Institutes of Advanced Technology, Chinese Academy of Science, Shenzhen, 518055, People’s Republic of China
+5 Author to whom any correspondence should be addressed.
+E-mail: liuchaoyu@vienomics.com and memwang@hotmail.com
+Keywords: dual-source dual-power electrospinning, bicomponent scaffold, in vitro release, in vitro degradation, growth factors
+Abstract
+Electrospun ﬁbrous scaffolds have been extensively used as cell-supporting matrices or delivery
+vehicles for various biomolecules in tissue engineering. Biodegradable scaffolds with tunable
+degradation behaviors are favorable for various resorbable tissue replacements. In nerve tissue
+engineering, delivery of growth factors (GFs) such as nerve growth factor (NGF) and glial cell line-
+derived neurotrophic factor (GDNF) from scaffolds can be used to promote peripheral nerve repair.
+In this study, using the established dual-source dual-power electrospinning technique, bicompo-
+nent scaffolds incorporated with NGF and GDNF were designed and demonstrated as a strategy to
+develop scaffolds providing dual GF delivery. NGF and GDNF were encapsulated in poly(D, L-lactic
+acid) (PDLLA) and poly(lactic-co-glycolic acid) (PLGA) nanoﬁbers, respectively, via emulsion
+electrospinning. Bicomponent scaffolds with various mass ratios of GDNF/PLGA ﬁbers to
+NGF/PDLLA ﬁbers were fabricated. Their morphology, structure, properties, and the in vitro
+degradation were examined. Both types of core–shell structured ﬁbers were evenly distributed in
+bicomponent scaffolds. Robust scaffolds with varying component ratios were fabricated with
+average ﬁber diameter ranging from 307±100 nm to 688±129 nm. The ultimate tensile stress
+and elastic modulus could be tuned ranging from 0.23±0.07 MPa to 1.41±0.23 MPa,
+11.1±3.0 MPa to 75.9±3.3 MPa, respectively. Adjustable degradation was achieved and the
+weight loss of scaffolds ranged from 9.2% to 44.0% after 42 day degradation test. GDNF and NGF
+were incorporated with satisfactory encapsulation efﬁciency and their bioactivity were well
+preserved. Sustained release of both types of GFs was also achieved.
+1. Introduction
+Biodegradable polymers including poly(D, L-lactic
+acid) (PDLLA) and poly(lactic-co-glycolic acid) (PLGA)
+have been employed for various biomedical applica-
+tions such as tissue engineering scaffolds and delivery
+systems with controlled release. Biodegradable bioma-
+terials are favorable with appropriate degradation time,
+mechanical properties and supply of biomolecular
+stimuli to match the healing or regeneration process.
+Considering the unique requirements for speciﬁc
+medical application, a combination of biodegradable
+materials may be adopted as a strategy to perform
+collaborativelyand accomplishcomplex tasks.
+Electrospinning and as-spun ﬁbrous scaffolds
+have attracted great attention owing to its ease of
+operation, feasibility with various natural and synth-
+etic polymers, structural resemblance with the extra-
+cellular matrix (ECM) and excellent cell response
+[1–3]. Biomolecules or drugs can also be incorporated
+in electrospun scaffolds to improve their biological
+functionality [4, 5]. However, there is concern about
+incorporation efﬁciency of biomolecules through tra-
+ditional electrospinning due to potential exposure of
+biomolecules to organic solvent and resultant destabi-
+lization and denaturation. Emulsion electrospinning
+has been employed as an efﬁcient method to preserve
+the bioactivity of incorporated biomolecules, which
+OPEN ACCESS
+RECEIVED
+28 November 2017
+REVISED
+1 March 2018
+ACCEPTED FOR PUBLICATION
+14 March 2018
+PUBLISHED
+4 May 2018
+Original content from this
+work may be used under
+the terms of the Creative
+Commons Attribution 3.0
+licence.
+Any further distribution of
+this work must maintain
+attribution to the
+author(s) and the title of
+the work, journal citation
+and DOI.
+© 2018 IOP Publishing Ltd
+
+could also help alleviate the burst release and provide a
+sustained release of biomolecules [6, 7].
+In neural tissue engineering, repairing of periph-
+eral nerve injuries is a major challenge in reconstruc-
+tive surgery. Peripheral nerves can regenerate to some
+extent after surgical nerve repair. However, appro-
+priate device for bridging and guiding axons is neces-
+sary when there is a severe nerve defect [8]. Due to the
+limited availability of donor nerves and function loss
+of donor site, autografting is greatly hampered [9]. In
+recent years, tissue engineering scaffold-based nerve
+guide conduits have been extensively studied as a pro-
+mising alternative. These artiﬁcial scaffolds and scaf-
+fold-based
+conduits
+are
+able
+to
+guide
+axonal
+elongation and neurite outgrowth [10–12], and can
+also serve as a reservoir of biological cues, such as lami-
+nin and growth factors [13, 14]. Local delivery of neu-
+rotrophic factors including nerve growth factor (NGF)
+and glial cell line-derived neurotrophic factor (GDNF)
+at surgical sites have been proposed to enhance per-
+ipheral nerve regeneration. These neurotrophic fac-
+tors play important roles in neuronal survival,
+neural differentiation, and axonal regeneration inde-
+pendently or synergistically at different effective
+concentrations [15–20]. Sustained stimulation of neu-
+rotrophic factors is also required to induce neural dif-
+ferentiation [21], which is the physiological reason for
+choosing these growth factors. Continuous supple-
+mentation and co-administration of GDNF and NGF
+promoted axonal elongation and branching synergis-
+tically [20]. Considering the complexity of the whole
+system with speciﬁc requirements for mechanical,
+chemical and physiological properties, the production
+of an ‘ideal’ implantable and biocompatible scaffolds
+or conduits for peripheral nerve tissue repair is chal-
+lenging. The driving hypothesis of this study is that
+whether nanoﬁbrous scaffolds with dual growth factor
+release capability and a bi-phasic degradation behavior
+could be fabricated through the dual-source dual-
+power electrospinning (DSDP-ES), which might be
+promising for designing tissue engineering scaffolds
+with dual release capability. Nanoﬁbrous scaffolds
+having NGF-loaded PDLLA ﬁbrous component and
+GDNF-loaded PLGA ﬁbrous component might be
+advantageous in simultaneously realizing neurite out-
+growth and neural differentiation.
+In this work, ﬁbrous bicomponent scaffolds were
+designed and fabricated through DSDP-ES technique
+[22], with NGF and GDNF incorporated into PDLLA
+and PLGA nanoﬁbers, respectively, via emulsion elec-
+trospinning. The mass ratios of GDNF/PLGA ﬁbers to
+NGF/PDLLA ﬁbers in bicomponent scaffolds were
+varied through a multiple-syringe strategy. The
+morphology, structure and properties of produced
+scaffolds were investigated. The encapsulation efﬁ-
+ciency (EE) of NGF and GDNF in produced scaffolds
+and their release proﬁles were determined. Rat adrenal
+pheochromocytoma (PC12) cell line was used to assess
+the bioactivity of growth factors (GFs) released from
+ﬁbrous scaffolds. The in vitro degradation of ﬁbrous
+scaffolds and degradation mechanisms were also
+investigated.
+2. Materials and methods
+2.1. Materials
+PLGA (LA:GA=50:50) and PDLLA with molecular
+weight of 100 kDa (as indicated by their inherent
+viscosity 0.6–0.8 dl g−1) were purchased from Lake-
+shore Biomaterials, USA. Chloroform was supplied by
+Uni Chem Co., Korea. Dimethyl sulfoxide (DMSO)
+was supplied by Fisher Scientiﬁc Inc., US. The human
+β-NGF with Enzyme Linked Immunosorbent Assay
+(ELISA) Kit, human GDNF with ELISA Kit were
+purchased from Peprotech Inc. and R&D Systems,
+Inc., respectively. Dulbecco’s modiﬁed Eagle medium
+(DMEM), fetal bovine serum (FBS), penicillin/strep-
+tomycin (P/S) and trypsin/EDTA were purchased
+from Invitrogen, Inc., USA. Mouse anti-neuroﬁla-
+ment (M+H) primary antibody, goat anti-mouse
+IgG secondary antibody (Alexa Fluor® 594), phalloidin
+(Alexa Fluor® 488) and DAPI (4’,6-diamidino-2-
+phenylindole) were purchased from Life Technolo-
+gies. Triton X-100, Span 80, phosphate buffered saline
+(PBS) tablets, heparin, bovine serum albumin (BSA)
+and paraformaldehyde were Sigma-Aldrich products.
+Other chemicals were used as received.
+2.2. Fabrication of scaffolds
+The ﬁbrous scaffolds incorporated with GFs were
+fabricated by emulsion electrospinning. For water-in-oil
+(water/oil) emulsion formulation, PLGA/chloroform or
+PDLLA/chloroform solution with a certain concentra-
+tion was used as the oil phase whereas NGF or GDNF
+was dissolved in 0.5 wt% BSA solution as the water
+phase. The volume ratio of the oil phase to the water
+phase was ﬁxed at 10:1. 5 wt% of Span-80 (with respect
+to the weight of polymer used) was added in the polymer
+solutionfortheformationandstabilizationofemulsions.
+The oil phase and water phase were mixed for 10 min
+through magnetic stirring at 300 rpm to form homo-
+geneous water/oil emulsions. Polymer concentration
+was optimized both for PLGA and PDLLA and served as
+control variable to manipulate ﬁber diameter. The
+electrospinning parameters including applied voltage,
+inner diameter of needle tip, needle-to-collector distance
+and feeding rate of emulsions were optimized as 16 kV,
+0.8 mm, 8 cm and 2 ml h−1, respectively. To produce
+bicomponent nanoﬁbrous scaffolds, DSDP-ES was
+employed (ﬁgure 1). GDNF/PLGA ﬁbers and NGF/
+PDLLAﬁberswerecollectedsimultaneouslybyarotating
+drum collector, forming non-woven bicomponent scaf-
+folds. By using a multiple-syringe strategy, the mass ratio
+between GDNF/PLGA ﬁbers and NGF/PDLLA ﬁbers in
+bicomponent scaffolds was adjusted. The formulation of
+emulsions for producing different mono- and bicompo-
+nent scaffolds was summarized in table 1. The produced
+2
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+electrospun scaffolds were freeze-dried for 24 h before
+anyfurtherexperiments.
+2.3. Characterization of ﬁbers and electrospun
+scaffolds
+Morphological and structural characterization of elec-
+trospun ﬁbers and fabricated scaffolds was conducted.
+Freeze-dried samples of electrospun ﬁbers and scaf-
+folds were sputtered with a thin gold coating for 30 s
+by a sputter coater (BEL-TACSCD005) and their
+morphology was examined using SEM (Hitachi
+S-4800 FEG SEM, Japan). Electrospun ﬁbers were also
+collected during electrospinning on a copper grid
+covered with carbon ﬁlm and their structures were
+observed using TEM (Philips EM208s TEM, the
+Netherlands). Wettability of electrospun ﬁbrous scaf-
+folds was investigated by measuring their water
+contact angles (WCAs) at room temperature with a
+WCA measuring machine (SL200B, Shanghai Solon
+Tech Inc. Ltd, China). Measurements were performed
+3 s after a DI water drop was placed on the sample
+surface. Tensile tests were performed using a bench
+top Instron mechanical testing machine (Model 5848,
+USA) with a load cell of 10 N and a cross-head speed of
+2 mm min−1. Each ﬁbrous scaffold with similar thick-
+ness was cut into rectangular shape (5 mm×30 mm)
+for testing. The ultimate tensile strength (UTS), elastic
+modulus (EM) and elongation at break (EB) of scaffold
+samples were determined according to the recorded
+stress–strain curves. At least three replicates were
+tested for each type of ﬁbrous scaffold and results were
+expressed as mean±SD.
+2.4. Encapsulation efﬁciency of GFs
+The EE of NGF or GDNF in electrospun ﬁbers (and
+hence scaffolds) was calculated using the equation:
+E E
+EE%
+100%,
+1
+0
+=
+´
+( )
+/
+where E is the actual amount of growth factor
+encapsulated and E0 is the amount used for encapsula-
+tion. The actual amount E was measured using an
+extraction method. Brieﬂy, a scaffold sample (around
+20 mg) was dissolved in 2 ml DMSO. 20 ml 0.05 M
+NaOH solution with 0.5% Tween-20 was added to
+form a mutually soluble mixture. Subsequently, 100 μl
+of the emulsion were pipetted and the concentration
+of NGF or GDNF was measured using corresponding
+ELISA Kit for the growth factors.
+2.5. In vitro release test of NGF and GDNF
+For in vitro release investigations, experiments fol-
+lowed the procedures as used by other research groups
+[23]. Brieﬂy, scaffold samples (about 50 mg each) were
+immersed in 12-well plates ﬁlled with 3 ml release
+Figure 1. Schematic diagram of the DSDP-ES setup for fabricating nonwoven bicomponent scaffolds.
+Table 1. Composition of emulsions for producing nonwoven mono- and bicomponent
+electrospun scaffolds.
+GDNF/PLGA emulsions
+NGF/PDLLA emulsions
+Water phase
+Oil phase
+Water phase
+Oil phase
+Scaffold sample
+1 ml H2O
+10 ml CHCl3
+1 ml H2O
+10 ml CHCl3
+G1 (0:1)
+G1 (1:2)
+G1 (1:1)
+5 μg GDNF
+1.5 g PLGA
+5 μgNGF
+2 g PDLLA
+G1 (2:1)
+5 mg BSA
+75 μl Span-80
+5 mg BSA
+100 μl Span-80
+G1 (1:0)
+G2 (0:1)
+G2 (1:2)
+G2 (1:1)
+4 μg GDNF
+1.2 g PLGA
+3.75 μg NGF
+1.5 g PDLLA
+G2 (2:1)
+5 mg BSA
+60 μl Span-80
+5 mg BSA
+75 μl Span-80
+G2 (1:0)
+3
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+medium and incubated in shaking water bath at 37 °C.
+At pre-set times, 0.4 ml of supernatant was retrieved
+from each well and replaced by 0.4 ml of fresh release
+medium. The supernatant sample was frozen at
+−20 °C for further measurement or directly used for
+analysis. The concentration of growth factor in the
+supernatant was determined using ELISA kit. The
+release medium was prepared by adding 0.5% BSA,
+0.05% Tween-20, 0.02% NaN3 and 0.1% heparin in
+PBS solution.
+2.6. Bioactivity assay of NGF and GDNF
+The bioactivity of incorporated NGF and GDNF was
+evaluated on a culture-to-culture basis. Brieﬂy, mono-
+component scaffold GDNF/PLGA and NGF/PDLLA
+scaffold samples (100 mg each) were sterilized by 60Co
+γ-irradiation at a dose of 15 kGy before usage then
+immersed in 10 ml DMEM (Invitrogen) supplemen-
+ted with 10% FBS and 1% penicillin/streptomycin
+and incubated in shaking water bath at 37 °C for 24 h.
+The concentration of released NGF or GDNF was
+determined before the medium with released growth
+factors was used and 10 ng ml−1 GDNF and 5 ng ml−1
+NGF was used for further bioactivity comparison
+study. As-received GFs were reconstituted in culture
+medium at same concentration as comparison. About
+8×103 PC12 cells (rat pheochromocytoma cell line,
+Biowit Technologies, Shenzhen, China) were seeded
+on glass slide in each well supplemented with 1 ml
+culture medium at 37 °C and 5% CO2. After 1 day, the
+culture medium was replaced by release medium or
+reconstituted medium described above and refreshed
+every 2 days. At day 1, 4, and 7, the cells were washed
+twice with PBS and ﬁxed on the glass slides with 4%
+paraformaldehyde for 10 min at room temperature.
+After washing twice with PBS, the cells were permeabi-
+lized with 0.1% Triton X-100 solution and incubated
+in (1% w/v) BSA block solution for 30 min, followed
+by the incubation in mouse anti-neuroﬁlament
+(M+H) primary antibody (1:100 dilution) contain-
+ing block solution for 1 h. After washing 2 times with
+PBS, the cells were incubated with goat anti-mouse
+IgG 594 secondary antibody (2 drops ml−1) for 30 min
+FITC phalloidin (1:40 dilution) was simultaneously
+added for the staining of F-actin and DAPI (1:1000
+dilution) was added for the staining of nuclei. Confocal
+imaging of cells was performed under a confocal
+microscope (LSM 710, Carl Zeiss).
+2.7. In vitro degradation tests
+In vitro degradation tests of scaffolds were conducted
+following established procedures. Each sample (about
+20 mg)
+was
+accurately
+weighed,
+sterilized,
+fully
+immersed in 3 ml phosphate buffer solution (pH=7.4)
+and placed in a separate container incubated in shaking
+water bath at 37 °C. The degradation medium was
+replaced with fresh PBS every 3 days. 0.02% NaN3 was
+addedinPBSto preventbacterialgrowth.Atpresettime,
+samples were taken out from degradation medium,
+rinsed with distilled water for 3 times and lyophilized for
+weight measurements. At least 3 repetitive samples were
+taken at each time point. Morphology of degraded
+scaffoldsampleswasalsoexaminedunderSEM.
+2.8. Image analysis
+SEM images were loaded into Image J (National
+Institute of Health, USA) and 100 ﬁbers in each
+scaffold were randomly selected to determine average
+ﬁber diameters. Confocal microscopic images were
+loaded into Image J and morphometric data were
+obtained. The presence of neurites was examined and
+cell differentiation was quantiﬁed by measuring the
+neurite length. Only protrusions originating from the
+cell body and longer than 28 μm (about two times of
+average cell body diameter) were counted as neur-
+ites [24].
+2.9. Statistical analysis
+The unpaired student t-test (for comparison of two
+groups) was used for statistical analyses. Statistical
+difference was condisdered at p<0.05.
+3. Results
+3.1. Surface morphology and wettability
+PLGA and PDLLA-based mono- and bicomponent
+nanoﬁbrous scaffolds with a thickness of approximate
+500 μm were obtained through emulsion electrospin-
+ning and DSDP-ES technique. The surface morph-
+ology of ﬁbrous scaffolds as well as structures of
+GDNF/PLGA and NGF/PDLLA ﬁbers are shown in
+ﬁgure 2. The average ﬁber diameter and wettability of
+each scaffold sample are shown in ﬁgures 3 and 4.
+SEM images of mono- and bicomponent nanoﬁ-
+bers showed a randomly interconnected structure and
+smooth
+surface
+morphology
+without
+any
+bead
+(ﬁgure 2(a)). A uniform distribution of GDNF/PLGA
+and NGF/PDLLA ﬁbers in bicomponent scaffold was
+obtained. Through emulsion electrospinning, dis-
+continuous core–shell structure was formed in both
+GDNF/PLGA ﬁbers and NGF/PDLLA ﬁbers, which is
+shown in ﬁgure 2(b). The water phase core was
+enclosed by the polymer shell in both types of ﬁbers
+but appeared differently. The phase boundary of core–
+shell structure in PDLLA ﬁbers was unambiguous,
+while it appeared in a dispersive pattern in PLGA
+ﬁbers.
+Fiber diameter of ﬁbrous scaffolds was varied by
+changing polymer concentration during emulsion
+electrospinning, which was 12% (w/v), 15% (w/v) for
+PLGA and 15% (w/v), 20% (w/v) for PDLLA corre-
+spondingly. Based on the ﬁber diameter, the ﬁbrous
+scaffolds were divided into thick ﬁber group (G1
+group, 15% (w/v) for PLGA and 20% (w/v) for
+PDLLA) and thin ﬁber group (G2 group, 12% (w/v)
+for PLGA and 15% (w/v) for PDLLA). The average
+4
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+ﬁber diameter decreased from 688±129 nm to
+447±107 nm, 502±102 nm to 307±100 nm in
+G1 and G2 group, respectively, the ratio of GDNF/
+PLGA ﬁbers to NGF/PDLLA ﬁbers increased from 0:1
+to 1:0 (ﬁgure 3).
+The static WCA of mono- and bicomponent
+ﬁbrous scaffolds was measured and the shape of a
+water droplet on each scaffold was captured by a
+camera to determine the surface hydrophilicity/
+hydrophobicity (ﬁgure 4). WCA of NGF/PDLLA
+monocomponent scaffold, which was 137.0±3.3°
+and 134.0±1.0° in G1 and G2 group, was much
+higher than that of GDNF/PLGA scaffold which was
+81.0±2.0° and 65.5±0.5°, respectively. The result
+showed that the NGF/PDLLA scaffold was more
+hydrophobic than GDNF/PLGA scaffold. Increasing
+the GDNF/PLGA ﬁber to NGF/PDLLA ﬁber ratio in
+bicomponent scaffolds did not signiﬁcantly decrease
+their surface hydrophobicity. The WCA value of G1
+group was decreased as compared to G2 group,
+Figure 2. Morphology and structures of electrospun ﬁbers and scaffolds: (a) SEM images of mono- and bicomponent ﬁbrous scaffolds,
+(b) TEM images of core–shell structured NGF/PDLLA and GDNF/PLGA ﬁbers and discontinuous core–shell structures were noted
+with dashed ellipse.
+5
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+suggesting that thinner ﬁber diameter could result in a
+slight decrease of hydrophobicity.
+3.2. Mechanical properties
+Tensile tests of produced scaffolds were performed
+and their UTS, EM and EB were determined using
+obtained stress–strain curves (ﬁgure 5).
+The results showed that UTS of scaffolds increased
+from 0.30±0.08 MPa to 1.41±0.23 MPa in G1
+group, 0.23±0.07 MPa to 1.34±0.21 MPa in G2
+group as GDNF/PLGA ﬁber to NGF/PDLLA ﬁber
+ratio increased from 0:1 to 1:0 (ﬁgure 5(a)). Similar
+trends were observed in EM and EB value. EM value
+increased from 21.5±3.0 MPa to 75.9±3.3 MPa in
+G1 group, 11.1±3.0 MPa to 53.5±4.0 MPa in G2
+group as GDNF/PLGA ﬁber to NGF/PDLLA ﬁber
+ratio increased from 0:1 to 1:0 (ﬁgure 5(b)). EB value
+increased from 34±8% to 112±16% in G1 group,
+37±7% to 95±14% in G2 group as GDNF/PLGA
+ﬁber to NGF/PDLLA ﬁber ratio increased from 0:1 to
+1:0 (ﬁgure 5(c)). These results indicated that GDNF/
+PLGA ﬁbrous scaffolds had much higher UTS, EM
+and EB values comparing with NGF/PDLLA ones.
+Increasing ﬁber diameter and GDNF/PLGA ﬁber to
+NGF/PDLLA ﬁber ratio in bicomponent scaffolds
+could both signiﬁcantly improve the mechanical
+properties of ﬁbrous scaffolds.
+3.3. Encapsulation efﬁciency of GFs and release
+proﬁle of GFs
+EE (in percentage) of GFs incorporated in ﬁbers was
+measured using ELISA kits through an extraction
+method and calculated using equation described
+before and shown in ﬁgure 6. The EE of NGF was
+Figure 3. Average ﬁber diameter in ﬁbrous scaffolds with different ﬁber component ratios. Fiber diameter in Group 1 statistically
+different than that in Group 2 for respective PLGA/PDLLA ratios. *= p<0.05.
+Figure 4. Water contact angle of mono- and bicomponent scaffolds. Water contact angle in Group 1 statistically different than that in
+Group 2 for respective PLGA/PDLLA ratios. *= p<0.05.
+6
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+85.3±3.0%,
+86.8±2.2%,
+86.2±2.8%,
+and
+88.2±2.9% in G1 group and 87.0±3.1%, 86.3±
+2.4%, 87.6±2.6%, and 85.5±3.2% in G2 group,
+corresponding to GDNF/PLGA ﬁber to NGF/PDLLA
+ﬁber ratio at 0:1, 1:2, 1:1, and 2:1, respectively. The EE
+of GDNF was 83.0±2.8%, 79.6±2.9%, 82.6±
+3.0%, and 81.0±3.0% in G1 group and 81.3±
+2.7%, 80.7±2.4%, 79.1±2.3%, and 78.6±3.1%
+in G2 group, corresponding to GDNF/PLGA ﬁber to
+NGF/PDLLA ﬁber ratio at 1:2, 1:1, 2:1, and 1:0,
+respectively. All the scaffolds achieved high EE of
+growth factors which was above 79%, demonstrating
+that PLGA and PDLLA nanoﬁbers fabricated by
+emulsion electrospinning could be good delivery
+vehicles for hydrophilic proteins. Regardless of the
+component ratio and ﬁber diameter, the EE of NGF in
+bicomponent ﬁbrous scaffolds was at the same level
+with that in their monocomponent counterparts. This
+observation was also made for the EE of GDNF,
+although the average EE of GDNF was 80.7±1.6%,
+slightly lower than that of NGF which was 86.6±
+1.0%.
+The release proﬁles of NGF and GDNF from
+bicomponent scaffolds (G1 (1:1), G2 (1:1)) including
+cumulative release amount and cumulative release
+percentage of GFs were shown in ﬁgure 7. All scaffolds
+exhibited similar release proﬁle including an initial
+burst release within 24 h, followed by a much slower
+Figure 5. Tensile properties of electrospun scaffolds: (a) ultimate tensile strength, (b) elastic modulus and (c) elongation at break. UTS,
+EM and EB in Group 1 statistically different than that in Group 2 for respective PLGA/PDLLA ratios. *= p<0.05.
+7
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+and sustained release. After 42 day release, the cumu-
+lative release amount of NGF increased to 16.4±2.0
+ng and 27.9±2.9 ng in G1 and G2 group,
+respectively,
+comparing
+to
+40.0±5.1
+ng
+and
+58.2±4.9 ng of that of GDNF. The cumulative
+release of NGF within 1 day reached 12.4% and 16.7%
+Figure 6. Encapsulation efﬁciency of NGF and GDNF in mono- and bicomponent ﬁbrous scaffolds.
+Figure 7. In vitro release of growth factors from bicomponent scaffolds with 1:1 component ratio of GDNF/PLGA to NGF/PDLLA
+ﬁbers in 42 day release tests: (a) cumulative release amount of NGF and GDNF, (b) cumulative release percentage of GFs.
+8
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+in G1 and G2, respectively, comparing to 20.3% and
+26.6% of that of GDNF. After 42 days, the cumulative
+release increased gradually to 26.5% and 34.8% in G1
+and G2, respectively. As for GDNF, the cumulative
+release ascended steadily, reaching 62.5% and 70.1%
+in G1 and G2, respectively, after 42 days. The results of
+in vitro release tests revealed that concurrent and sus-
+tained release of NGF and GDNF could be successfully
+achieved using bicomponent scaffolds made by
+DSDP-ES. The release rate of GDNF was much faster
+than that of NGF. Thicker ﬁber diameter could help
+alleviate the initial burst release and slow down the
+release rate of both growth factors.
+3.4. Bioactivity assay of incorporated GFs
+In order to assess the bioactivity of GFs incorporated
+in ﬁbrous scaffolds, morphology of PC12 cells cul-
+tured with different neurotrophic factor medium was
+examined by CLSM at different culture time and is
+shown in ﬁgure 8. GDNF-release group and NGF-
+release group represented that cells were cultured with
+medium containing GDNF and NGF released from
+their corresponding monocomponent scaffolds. In
+GDNF-control
+and
+NGF-control
+groups,
+virgin
+GDNF and NGF were used, respectively.
+As shown in ﬁgure 8, cells adhered and spread well,
+showing a spindle-like shape on glass slides in all
+groups at day 1. With the stimulation of GDNF, cells
+exhibited with neurite sprouting and improved neur-
+ite elongation in random directions as neurite protru-
+sions were evident by observing morphology of
+F-actin ﬁlaments (stained with phalloidin in green) in
+GDNF-release group at day 4. Weak signals of intra-
+cellular neuroﬁlaments (stained in red) were also
+noticed. At day 7, more polarized cells bearing neurite
+outgrowth and further elongated neurite protrusions
+were found. Neurite branching was not observed.
+Cells in GDNF-control group behaved similarly as
+neurite sprouting and elongation was found at day 4
+and enhanced neurite outgrowth was also observed at
+day 7. Similar results were found in NGF-release
+group and NGF-control group. The addition of
+released NGF and virgin NGF both promoted neurite
+outgrowth and cell differentiation, although the NGF
+concentration used was half of GDNF concentration.
+To quantify the bioactivity of GFs and their effects
+on cells, neurite outgrowth and neural differentiation
+percentages were determined and are shown in ﬁgure 9.
+Neurite length was deﬁned as the distance between cell
+body and distant end of neurite protrusion. Only cells
+bearing neurite protrusions longer than 28 μm were
+counted as differentiated cells. Normalized neurite
+length is deﬁned as average neurite length of both differ-
+entiated and undifferentiated cells in which the neurite
+length of undifferentiated cells is assumed as 28 μm. At
+day4,celldifferentiationpercentagesincreased to58.8%
+and 70.3% in GDNF-release group and GDNF-control
+group, respectively, as compared to 68.0% and 72.1% in
+NGF-release group and NGF-control group, respec-
+tively. At day 7, cell differentiation percentages further
+increased to 86.7% and 96.0% in GDNF-release group
+and GDNF-control group, respectively, as compared to
+84.6% and 94.1% in NGF-release group and NGF-con-
+trol group, respectively. In control group without the
+addition of growth factors, cell differentiation percen-
+tages barely changed and maintained at very low level.
+Neurite length of cells in different groups is shown in
+ﬁgure 9(b) and the dotted line insert represents neurite
+length at the level of 28 μm. In GDNF-release group, the
+averageneuritelengthwas36.3 μm and67.2 μmatday4
+and 7, respectively. In comparison, the average neurite
+length was 40.3 μm and 76.0 μm at day 4 and 7 in
+GDNF-control group. The average neurite length was
+38.2 μm and 59.4 μm in NGF-release group, corresp-
+onding to 41.2 μm and 68.2 μm in NGF-control group
+at day 4 and 7, respectively. There was no change in the
+average neurite length in control group without addi-
+tion of growth factors. These results revealed that
+released GDNF and NGF both remained bioactive to a
+large extent and promoted neural differentiation,
+although the bioactivity of released growth factors was
+marginally lower as compared to the bioactivity of virgin
+growthfactors.
+3.5. In vitro degradation behavior of growth factor-
+incorporated scaffolds
+The in vitro degradation tests of scaffolds with various
+compositions were conducted. The weight losses of
+scaffolds were monitored in the tests and results are
+shown in ﬁgure 10. The remaining weight of each
+sample decreased as immersion time increased. After
+6 weeks, the weight loss of each sample was 9.4%,
+16.4%, 18.2%, 21.2% and 44.0% in G1 group
+(GDNF/PLGA ﬁber to NGF/PDLLA ﬁber comp-
+onent ratio increased from 0:1 to 1:0) and 9.2%,
+16.3%, 22.0%, 24.0% and 39.5% in G2 group
+correspondingly. The GDNF/PLGA monocompo-
+nent scaffolds degraded much faster than the other
+ones and the NGF/PDLLA monocomponent scaf-
+folds had slowest degradation. The degradation rate
+of bicomponent scaffolds increased with the increase
+of GDNF/PLGA ﬁber to NGF/PDLLA ﬁber comp-
+onent ratio. The degradation proﬁle was also affected
+by diameter of ﬁbers in scaffolds. Generally, the
+degradation rate of scaffolds with larger ﬁber dia-
+meter (G1 group) was lower than that of scaffolds
+with smaller ﬁber diameter (G2 group). The weight
+loss of monocomponent PLGA scaffold in G1 group
+was lower than that in G2 group in the ﬁrst 3 weeks;
+however, it exceeded that in G2 group in the
+subsequent period of degradation tests.
+The morphology and structure of ﬁbers and scaf-
+folds at 2, 4 and 6 week degradation times were exam-
+ined and are shown in ﬁgure 11. In the ﬁrst 4 weeks,
+9
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+Figure 8. Morphology of PC12 cells cultured with different growth-factor containing medium or with regular medium as control on
+glass slides under confocal ﬂuorescent microscope.
+10
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+monocomponent GDNF/PLGA scaffolds in G1 group
+maintained ﬁbrous structure and mainly underwent
+the process of ﬁber swelling and slight ﬁber fusion, fol-
+lowed by ﬁber erosion. In the subsequent 2 weeks, the
+scaffolds degraded much faster with scarcely any intact
+ﬁber being observed, generating large pores and abun-
+dant fragments. In comparison, monocomponent
+GDNF/PLGA scaffolds in G2 group mainly under-
+went the process of ﬁber swelling, ﬁber recoiling, ﬁber
+fusion and erosion; and ﬁbrous structure could be
+hardly noticed after 4 weeks. Monocomponent NGF/
+PDLLA scaffolds behaved dramatically differently,
+which underwent the process of ﬁber swelling and
+slight ﬁber fusion and remained intact. In bicompo-
+nent scaffolds, GDNF/PLGA and NGF/PDLLA com-
+ponents could be easily differentiated. At long
+degradation times, GDNF/PLGA ﬁbers lost ﬁbrous
+morphology while NGF/PDLLA ﬁbers still main-
+tained ﬁbrous morphology.
+4. Discussion
+Repairing severe peripheral nerve defects necessitates the
+development of superior nerve guide conduits. Scaffold-
+based nerve guide conduits loaded with GFs have
+attracted great attention [20, 25, 26]. Sustained delivery
+of GFs from elaborately designed scaffolds would be
+beneﬁcialconsideringtheshorthalf-lifeofGFs.Fornerve
+tissue regeneration, NGF and GDNF have been widely
+employed owing to their potent effect on neural
+responses and cell fate. In the current investigation, NGF
+and GDNF were incorporated in bicomponent ﬁbrous
+scaffoldsthroughDSDP-ESandsustainedandcontrolled
+releaseofbothGFswasachieved.
+4.1. Structure and properties of mono- and
+bicomponent scaffolds
+Electrospinning and as-spun scaffolds have been widely
+employedintissueengineeringduetostructuralsimilarity
+Figure 9. Bioactivity assessment of released NGF and GDNF comparing with virgin GFs: (a) differentiation percentages of PC12 cells,
+(b) normalized neurite length of PC12 cells. (*, **, ***) Cell differentiation percentage and normalized neurite length in groups with
+GFs statistically different than that in control group for respective culture days (*= p<0.05, **= p<0.01, ***= p<0.005); (#) cell
+differentiation percentage and normalized neurite length in GDNF-release groups statistically different than that in GDNF-control
+group for respective culture days (#= p<0.05); (@) cell differentiation percentage and normalized neurite length in NGF-release
+groups statistically different than that in NGF-control group for respective culture days (@= p<0.05).
+11
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+of as-spun scaffolds with ECM of human body tissues,
+excellent cell response and capability of delivering func-
+tional biomolecules in a controlled manner. Scaffolds
+with different morphology and structures for diverse
+applications can be achieved through various electrospin-
+ning techniques. Core–shell structured ﬁbers produced
+by emulsion electrospinning can be employed as deliver-
+ing vehicles of subtle biomolecules, such as GFs. In the
+current study, robust GDNF/PLGA and NGF/PDLLA
+electrospun ﬁbers with smooth surface were made. The
+formation of beadless ﬁbers indicated process stability
+during emulsion electrospinning. Core–shell structure in
+ﬁbers was conﬁrmed in both GDNF/PLGA ﬁbers and
+NGF/PDLLA ﬁbers (ﬁgure 2(b)) with discontinuous
+growth factor-contained water phase pockets being the
+coreandpolymermatrixformingtheshell.Theevolution
+and formation of core–shell structure could be explained
+bythe‘evaporationandstretchinginducedde-emulsiﬁca-
+tion’ mechanism which was proposed by Xu et al [14].
+During emulsion electrospinning, the spherical emulsion
+droplets were ﬁrst stretched into elliptical shape in the
+ﬁber direction. The elliptical droplets could break up into
+smaller water droplets due to Rayleigh/capillary instabil-
+ity, depending on viscosity difference and interfacial
+tension, etc. Due to faster evaporation of solvent than
+water, the viscosity of polymer solution increased more
+rapidly than that of water droplets. The viscosity gradient
+from the surface to the center resulted in the inward
+movement of emulsiondroplets. Thus,thecoalescenceof
+water droplets towards the central region occurred along
+with the solidiﬁcation of shell layer, resulting in a core–
+shell structure for ﬁbers. Interestingly, the core–shell
+structureintheaforementionedtwotypesofﬁberslooked
+different. A distinctive phase boundary between the core
+and the shell was delineated in NGF/PDLLA ﬁber.
+However, ambiguous phase boundary could only be
+observed in GDNF/PLGA ﬁber. This phenomenon
+might be attributed to different hydrophilicity/hydro-
+phobicity of polymer matrix. It was well known that
+PDLLA was more hydrophobic than PLGA, leading to
+more apparent phase-separation during de-emulsiﬁca-
+tion. The features of core–shell structure including core
+to shell ratio and core continuity could be inﬂuenced by a
+variety of process parameters and would signiﬁcantly
+affectthereleaseproﬁleofincorporatedbiomolecules.
+Concentration of polymer solution was one of the
+key electrospinning parameters and utilized herein to
+control the diameter of as-spun ﬁbers. Higher con-
+centration of polymer solution would result in thicker
+ﬁber diameter due to difﬁculty in jet stretching during
+electrospinning caused by higher viscosity. Mono-
+component ﬁbers with distinctive average ﬁber
+Figure 10. Weight loss of mono- and bicomponent scaffolds during 42 day degradation tests: (a) G1 group, (b) G2 group.
+12
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+diameter were obtained by using different polymer
+concentration for both PLGA and PDLLA. Bicompo-
+nent scaffolds with varying component ratios were
+constructed using these monocomponent ﬁbers. The
+average ﬁber diameter of bicomponent scaffolds could
+be assumed as a weighted average of each component.
+The result in ﬁgure 3 showed that the average ﬁber
+diameter decreased approximately proportionally
+with the increase of GDNF/PLGA ﬁber to NGF/
+PDLLA ﬁber component ratio, which correlated well
+with the assumption. The feasibility of utilizing
+bicomponent strategy to produce multifunctional
+electrospun scaffolds has been demonstrated by quite
+a few studies. Wang et al fabricated multifunctional
+Figure 11. SEM images of scaffold samples collected after 2, 4 and 6 weeks of degradation.
+13
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+electrospun scaffolds using PLGA and PDLLA for
+bone tissue engineering [22]. Bicomponent scaffolds
+with controlled and tunable mass ratios of rhBMP-2/
+PDLLA ﬁbers to Ca–P/PLGA ﬁbers were achieved by
+employing DSDP-ES and multiple syringe strategy.
+Bonani et al also used similar strategy and constructed
+gradient micropatterns of electrospun ﬁbers through
+programming the deposition of poly (ε-caprolactone)
+(PCL) and PLGA ﬁbers and achieved spatiotemporal
+release of biomolecules incorporated [27]. Their
+results indicated that the produced scaffolds had a clo-
+sely matching composition as designed and spatio-
+temporal release of biomolecules was obtained
+accordingly. Based on these studies and also work in
+this project, it may be concluded that designed com-
+position of bicomponent scaffolds was effectively
+achieved by employing DSDP-ES. The component
+ratio and average ﬁber diameter of bicomponent scaf-
+folds herein could be controlled through DSDP-ES.
+The monocomponent GDNF/PLGA scaffolds had
+much lower WCA than monocomponent NGF/
+PDLLA scaffolds, which could be attributed to less
+hydrophobicity of PLGA polymer and involvement of
+surfactants. The glycolic acid group of PLGA and
+amphiphilic surfactants partially exposed on surface of
+ﬁbers could improve the spread and ingression of
+water and hence improved the wettability of scaffolds.
+The wettability of bicomponent scaffolds was affected
+by the NGF/PDLLA ﬁber content. The results showed
+that PDLLA ﬁbers played a dominant role in wett-
+ability of bicomponent scaffolds as all of them had
+similar wettability to the monocomponent PDLLA
+electrospun scaffolds. The similar phenomenon was
+observed by other research group [28]. They fabricated
+electrospun hybrid scaffolds composed of PCL ﬁbers
+and gelatin ﬁbers and found that the wettability of
+hybrid scaffolds was affected by PCL content due to
+the high hydrophobicity of PCL. The produced hybrid
+scaffolds had similar wettability to electrospun PCL
+mats. The wettability of electrospun scaffolds is a com-
+plicated issue and hard to deﬁne to some extent due to
+their surface roughness and void space occupied by
+air. However, it plays an important role in cell-scaffold
+interaction including cell adhesion and proliferation.
+There is no general consent about the optimum wett-
+ability as speciﬁc wettability might be favored by dif-
+ferent cell types. The wettability of scaffolds might
+even play diverse roles in cell response. Hakamada et al
+fabricated electrospun scaffolds using biodegradable
+polymer poly (γ-benzyl-L-glutamate) and modiﬁed
+their wettability through alkali-treatment [29]. They
+found that an increase in wettability of scaffolds
+decreased adhesion of endothelial cells but increased
+cell spreading.
+It was found that the UTS, EM and EB increased
+with the increase of GDNF/PLGA ﬁber to NGF/
+PDLLA ﬁber component ratio in the bicomponent
+scaffolds. The result revealed that PLGA was tougher
+and more ductile than PDLLA, which was consistent
+with existing knowledge. It was believed that ﬂexibility
+of glycolic acid chain segment in polymer backbone
+inﬂuenced the crystallinity and improved the mechan-
+ical properties of PLGA ﬁbers, while the rigidity of lac-
+tic acid chain segment and racemization in PDLLA
+polymer backbone compromised their mechanical
+properties. Fiber diameter also played an important
+role in mechanical properties of ﬁbrous scaffolds.
+Thinner ﬁber diameter resulted in lower UTS, EM and
+less EB as shown in ﬁgure 5. These results demon-
+strated that the bicomponent strategy combining with
+control of ﬁber diameter was an effective way to pro-
+duce ﬁbrous scaffolds with tunable mechanical prop-
+erties. Moreover, the UTS and EM were similar with or
+of the same order of magnitude from those of natural
+soft tissues as well as those of organs consisted of soft
+connective tissues, suggesting that produced ﬁbrous
+scaffolds were promising for soft tissue regeneration.
+4.2. Encapsulation of GFs and their in vitro release
+Combination of transient and prolonged delivery of
+GFs is normally desirable for short- and long-term
+peripheral nerve regeneration [30, 31]. Electrospin-
+ning has been employed as a versatile technique to
+fabricate delivery vehicles for various drugs and
+biomolecules [32, 33]. Concerns about potential
+denaturation of subtle biomolecules such as proteins
+and growth factors due to hydrophobic interaction
+with organic solvent in conventional electrospinning
+have advanced the development of coaxial electrospin-
+ning and emulsion electrospinning. Electrospinning
+of water-in-oil emulsions is particularly advantageous
+for the delivery of hydrophilic drugs and proteins over
+other techniques. For example, delivery of hydrophilic
+drugs and proteins by microspheres fabricated by
+double emulsion methods often renders relatively low
+EE. During emulsion electrospinning, hydrophilic
+proteins are preserved in water phase core and
+their bioactivity could be retained to a large extent.
+The EE of NGF and GDNF in electrospun ﬁbrous
+scaffolds reached to an average of 86.6±1.0% and
+80.7±1.6%, respectively.
+In this investigation, by incorporating GFs into
+polymers with different degradation rates and tuning
+component ratios in bicomponent scaffolds through
+DSDP-ES, dual and controlled release of NGF and
+GDNF was achieved. Following an initial burst release
+in the ﬁrst 24 h, sustained release of NGF and/or
+GDNF from corresponding ﬁbers was found during
+the release period. The initial burst release was attrib-
+uted to the growth factor-contained minute reservoirs
+formed on or close to the surface of ﬁbers during
+emulsion electrospinning. As discussed in the evol-
+ution of core–shell structure, the majority of stretched
+water droplets moved inward coalesced in the central
+region and formed the water-phase core. However, a
+minority of water droplets were detained while the
+outer layer solidiﬁed due to rapid evaporation of
+14
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+organic solvent. These tiny water droplets dwelling on
+or near the surface of ﬁbers served as reservoir of
+growth factors and rendered initial burst release
+through diffusion when the scaffolds were immersed
+in testing liquid. After the initial burst release, sus-
+tained release was obtained which was attributed to
+either diffusion of growth factor from interior of ﬁbers
+to immersion liquid through the polymer matrix of
+ﬁbers or a combination of diffusion and polymer
+matrix degradation.
+Comparing the release proﬁles including cumula-
+tive release amount and cumulative release percentage
+of growth factors, it could be seen that biomedical
+polymers with different wettability and degradation
+rates could be leveraged to tailor the release behavior
+of incorporated growth factor. NGF and GDNF were
+herein incorporated into PDLLA ﬁbers and PLGA
+ﬁbers, respectively, to obtain different release proﬁle as
+PLGA was less hydrophobic and had much faster
+degradation rate than PDLLA. The release rate of
+GDNF was therefore much faster than that of NGF.
+Average diameter of electrospun ﬁbers in scaffolds was
+also a useful control variable to manipulate the release
+proﬁle of growth factors including the initial burst
+release and subsequent sustained release. It was not
+difﬁcult to speculate that disparate mechanisms might
+dominate the release of respective growth factor over
+different time periods. Both diffusion and matrix ero-
+sion contributed to release kinetics of protein from
+biodegradable polymer matrix such as PLGA and
+PDLLA. With the consideration of surface erosion and
+bulk erosion of biodegradable polymer matrix in dif-
+ferent situations, polymer degradation would become
+more complicated [34, 35]. Although there is no per-
+fect model for modeling the release behavior of NGF
+or GDNF for bicomponent scaffolds, the results in this
+study did demonstrate that concurrent and sustained
+release of NGF and GDNF with tunable amounts and
+ratios could be achieved.
+4.3. Bioactivity of incorporated GFs
+There is concern about bioactivity loss of biomolecules
+inelectrospun ﬁbers due totheir potential deactivation
+and denaturation which might occur during solution
+preparation, electrospinning at high voltage, freeze-
+drying and sample sterilization [6, 36, 37]. Quite a few
+reports demonstrated that protein released from
+electrospun scaffolds could induce various cellular
+responses, indicating that protein activity was at least
+partially preserved during electrospinning [5, 38, 39].
+Emulsion electrospinning and coaxial electrospinning
+techniques could help preserve the bioactivity of
+vulnerable biomolecules and provide delivery of these
+biomolecules in a controlled manner [40–43]. In this
+study, the bioactivity of GDNF and NGF released from
+GDNF/PLGA ﬁbers and NGF/PDLLA ﬁbers, respec-
+tively, were assessed on a culture-to-culture basis.
+Both released growth factors induced much neurite
+outgrowth and neural differentiation of PC12 cells
+(ﬁgures 8 and 9), although much lower concentration
+of NGF was used. The degree of neural differentiation
+and neurite outgrowth of PC12 cells induced by
+released GDNF and NGF both decreased as compared
+to those induced by virgin GDNF and NGF, indicating
+that there was partial bioactivity loss for both GDNF
+and NGF released from GDNF/PLGA ﬁbers and
+NGF/PDLLA ﬁbers, respectively. However, the degree
+of neural differentiation induced by released GDNF
+and NGF only decreased 9.7% and 10.1% as compared
+with that induced by virgin GDNF and NGF, respec-
+tively, at day 7. These results revealed that the
+bioactivity of GDNF and NGF in GDNF/PLGA ﬁbers
+and NGF/PDLLA ﬁbers, respectively, were both pre-
+served to a very large extent, indicating that emulsion
+electrospun ﬁbers were robust delivery vehicles for
+hydrophilic proteins.
+4.4. In vitro degradation of mono- and bicomponent
+scaffolds
+Polyesters such as PLGA and PDLLA have been widely
+employed for controlled release vehicles owing to their
+excellent biocompatibility and biodegradability. The
+monomers generated during hydrolytic degradation
+of PLGA and PDLLA are easily metabolized. In vitro
+degradation of polymer-based scaffolds could be
+inﬂuenced by a variety of factors, including polymer
+properties, scaffold structure, immersed medium
+environment, etc. In this investigation, these two types
+of polymer with different degradation rates (1–2
+months for PLGA, 12–14 months for PDLLA) were
+employed to construct ﬁbrous scaffolds with the aim
+of modulating the degradation behavior of scaffolds
+and hence release behavior of incorporated GFs.
+Electrospun scaffolds with various component ratios
+were fabricated taking the advantage of DSDP-ES and
+multiple syringe strategy as described before. Asshown
+in ﬁgure 10, the weight loss of PDLLA monocompo-
+nent scaffolds was small as compared to the rest of
+tested scaffold samples. Weight loss of all scaffolds
+containing PLGA component increased as the degra-
+dation test proceeded, which also augmented with the
+increase of component ratio of GDNF/PLGA ﬁber to
+NGF/PDLLA in bicomponent scaffolds. The scaffolds
+composed of ﬁbers with different diameters exhibited
+similar degradation proﬁles except monocomponent
+GDNF/PLGA scaffolds. Weight loss rates were nearly
+constant within ﬁrst 2 weeks for GDNF/PLGA scaf-
+folds in both G1 and G2 groups, although the weight
+loss rate of G2 scaffolds was slightly higher than that of
+G1 scaffolds. Within 2 to 4 weeks, an unconspicuous
+increase of weight loss rate was noticed in G2 group. In
+comparison, a sharp increase of weight loss rate was
+observed in G1. The above results allowed one to
+afﬁrm that ﬁbrous NGF/PDLLA scaffolds produced
+by emulsion electrospinning did not degrade during
+the 42 day experiment considering the much longer
+15
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+degradation period of PDLLA. Hydrolytic degradation
+of ﬁbrous scaffolds based on PLGA was conﬁrmed and
+autocatalytic hydrolysis was believed to contribute in
+light of the evidence of degradation acceleration.
+Different mechanisms of degradation were thought to
+dominate the degradation behavior of PLGA scaffolds
+with different ﬁber diameters.
+Morphology of ﬁbrous scaffolds collected at dif-
+ferent times of immersion in PBS as shown in
+ﬁgure 11, was studied to help further investigate the
+degradation mechanism. Within ﬁrst 2 weeks, ﬁbers
+became swollen and fused for both GDNF/PLGA and
+NGF/PDLLA scaffolds. Due to its better hydro-
+philicity, the swelling and fusion phenomenon was
+more obvious in PLGA scaffolds than PDLLA scaf-
+folds. Water took over the air void when samples were
+impregnated in immersion medium. The morphology
+of scaffolds in terms of pore closure and ﬁbrous net-
+work evolved dynamically with the ﬁber swelling and
+welding due to ﬁber relaxation and polymer chain
+mobility. After 2 weeks, the ﬁbrous morphology of
+PDLLA scaffolds barely changed. Even after 6 weeks,
+the integrity of PDLLA ﬁbers remained intact,
+although very small amount of nanopores were
+observed on the surface of a few ﬁbers (G1 (0:1)). The
+observation was completely different for PLGA
+ﬁbrous scaffolds. After 2 weeks, abundant pore closure
+and network collapse were observed with a gradual
+disappearance of ﬁbrous morphology, which was
+more obvious in scaffolds with thinner ﬁbers. After 6
+weeks, the ﬁbrous morphology was completely lost,
+generating ﬁber fragments and many micro- and
+nanopores in the scaffold (G1 (1:0)). In sharp contrast,
+a rough membrane was produced without any retrie-
+vable ﬁber in scaffold G2 (1:0).
+It is well known that more surface area and hence
+more reaction sites will promote the hydrolysis of
+PLGA which can also be auto-catalyzed by its car-
+boxylic terminal degradation products. The enrich-
+ment
+of
+acidic
+degradation
+products-oligomers
+locating well within ﬁber matrix could exist, leading to
+bulk erosion, as only soluble oligomers near the sur-
+face are able to leach out. As discussed in the evolution
+of core–shell structure in emulsion electrospun ﬁbers,
+the water phase in emulsion electrospun ﬁbers tended
+to coalesce inwards, leaving a shell layer of polymers.
+The formed polymer shell could provide a barrier
+for the oligomers to leach out. Thinner ﬁbers with less
+solid polymer shell provided less resistance for the dif-
+fusion of oligomers and experienced alleviated bulk
+erosion. These might help explain the differences in
+degradation proﬁles and morphology in G1 (1:0) and
+G2 (1:0) scaffolds. More reaction sites due to more
+surface area of G2 (1:0) scaffolds produced a faster
+degradation rate as compared to G1 (1:0) scaffold in
+the ﬁrst phase of degradation. The autocatalytic
+hydrolysis during bulk erosion of G1 (1:0) scaffold
+greatly accelerated its degradation rate in the second
+phase of degradation. The degradation mechanisms
+would signiﬁcantly inﬂuence the release proﬁle of
+incorporated biomolecules.
+5. Conclusions
+Mono- and bicomponent electrospun ﬁbrous scaffolds
+were fabricated through emulsion electrospinning and
+DSDP-ES technique. The discontinuous core–shell
+structureswere formed inboth NGF/PDLLA ﬁbers and
+GDNF/PLGA ﬁbers, with growth factor-contained
+water phase being the core. Both NGF and GDNF were
+successfully incorporated with relatively high EE above
+80%. Bicomponent scaffolds with different ﬁber comp-
+onent ratios were constructed. The study demonstrated
+that in vitro release of GFs and in vitro degradation of
+scaffolds could be tuned by varying factors including
+polymer matrix, ﬁber diameter and ﬁber component
+ratio. The in vitro release and degradation mechanisms
+were also thoroughly investigated, suggesting that
+diverse degradation mechanisms might dominate the
+degradation behaviors of different systems and conse-
+quently inﬂuence the release behaviors of GFs incorpo-
+rated. We believe the bicomponent scaffolds, capable of
+providing sustained and tunable release of NGF and
+GDNF and adjustable degradation proﬁle, will beneﬁt
+the optimization of the synergetic effect between NGF
+and GDNF and hold great promise in peripheral nerve
+tissuerepair.
+Acknowledgments
+This work was supported by the Hong Kong Research
+Grants Council through a GRF grant (HKU 718109E).
+Assistance provided by M Wang’s group and techni-
+cians in Department of Mechanical Engineering,
+HKU, is acknowledged.
+ORCID iDs
+Chaoyu Liu
+https://orcid.org/0000-0001-
+8663-2129
+References
+[1] Bhardwaj N andKunduS C2010Electrospinning:afascinating
+ﬁberfabricationtechnique Biotechnol. Adv.28325–47
+[2] Cui W G, Zhou Y and Chang J 2010 Electrospun nanoﬁbrous
+materials for tissue engineering and drug delivery Sci. Technol.
+Adv. Mater. 11 014108
+[3] Sill T J and von Recum H A 2008 Electrospinning: applications
+in drug delivery and tissue engineering Biomaterials 29
+1989–2006
+[4] Li X, Su Y, Liu S, Tan L, Mo X and Ramakrishna S 2010
+Encapsulation of proteins in poly(L-lactide-co-caprolactone)
+ﬁbers by emulsion electrospinning Colloids Surf. B 75 418–24
+[5] Zhang H, Jia X L, Han F X, Zhao J, Zhao Y H, Fan Y B and
+Yuan X Y 2013 Dual-delivery of VEGF and PDGF by double-
+layered electrospun scaffolds for blood vessel regeneration
+Biomaterials 34 2202–12
+16
+Biomed. Mater. 13 (2018) 044107
+C Liu et al
+
+[6] Briggs T and Arinzeh T L 2014 Examining the formulation of
+emulsion electrospinning for improving the release of
+bioactive proteins from electrospun ﬁbers J. Biomed. Mater.
+Res. A 102 674–84
+[7] Xu X L, Zhuang X L, Chen X S, Wang X R, Yang L X and
+Jing X B 2006 Preparation of core-sheath composite
+nanoﬁbers by emulsion electrospinning Macromol. Rapid
+Commun. 27 1637–42
+[8] Prabhakaran M P, Venugopal J R and Ramakrishna S 2009
+Mesenchymal stem cell differentiation to neuronal cells on
+electrospun nanoﬁbrous substrates for nerve tissue
+engineering Biomaterials 30 4996–5003
+[9] Nichols C M, Brenner M J, Fox I K, Tung T H, Hunter D A,
+Rickman S R and Mackinnon S E 2004 Effect of motor versus
+sensory nerve grafts on peripheral nerve regeneration Exp.
+Neurol. 190 347–55
+[10] Bechara S L, Judson A and Popat K C 2010 Template
+synthesized poly(epsilon-caprolactone) nanowire surfaces for
+neural tissue engineering Biomaterials 31 3492–501
+[11] Gu X S, Ding F, Yang Y M and Liu J 2011 Construction of tissue
+engineered nerve grafts and their application in peripheral
+nerve regeneration Prog. Neurobiol. 93 204–30
+[12] Subramanian A, Krishnan U M and Sethuraman S 2012 Axially
+aligned electrically conducting biodegradable nanoﬁbers for
+neural regeneration J. Mater. Sci., Mater. Med. 23 1797–809
+[13] Beachley V and Wen X J 2010 Polymer nanoﬁbrous structures:
+fabrication, biofunctionalization, and cell interactions Prog.
+Polym. Sci. 35 868–92
+[14] Koh H S, Yong T, Chan C K and Ramakrishna S 2008
+Enhancement of neurite outgrowth using nano-structured
+scaffolds coupled with laminin Biomaterials 29 3574–82
+[15] Fine E G, Decosterd I, Papaloizos M, Zurn A D and Aebischer P
+2002 GDNF and NGF released by synthetic guidance channels
+support sciatic nerve regeneration across a long gap Eur. J.
+Neurosci. 15 589–601
+[16] Airaksinen M S and Saarma M 2002 The GDNF family:
+signalling, biological functions and therapeutic value Nat. Rev.
+Neurosci. 3 383–94
+[17] Cao X and Shoichet M 2003 Investigating the synergistic effect
+of combined neurotrophic factor concentration gradients to
+guide axonal growth Neuroscience 122 381–9
+[18] EricksonJ T,Brosenitsch TAandKatzDM2001Brain-derived
+neurotrophicfactorandglialcell line-derivedneurotrophic
+factor arerequiredsimultaneously forsurvivalofdopaminergic
+primarysensoryneurons invivo J.Neurosci. 21581–9
+[19] Price T J, Louria M D, Candelario-Soto D, Dussor G O,
+Jeske N A, Patwardhan A M, Diogenes A, Trott A A,
+Hargreaves K M and Flores C M 2005 Treatment of trigeminal
+ganglion neurons in vitro with NGF, GDNF or BDNF: effects
+on neuronal survival, neurochemical properties and TRPVI-
+mediated neuropeptide secretion BMC Neurosci. 6
+[20] Madduri S, Papaloïzos M and Gander B 2009 Synergistic effect
+of GDNF and NGF on axonal branching and elongation
+in vitro Neurosci. Res. 65 88–97
+[21] Chung J H, Kubota H, Ozaki Y, Uda S and Kuroda S 2010
+Timing-dependent actions of NGF required for cell
+differentiation PLoS One 5 e9011
+[22] Wang C and Wang M 2012 Dual-source dual-power
+electrospinning and characteristics of multifunctional
+scaffolds for bone tissue engineering J. Mater. Sci., Mater. Med.
+23 2381–97
+[23] Uebersax L, Mattotti M, Papaloizos M, Merkle H P,
+Gander B and Meinel L 2007 Silk ﬁbroin matrices for the
+controlled release of nerve growth factor (NGF) Biomaterials
+28 4449–60
+[24] Attiah D G, Kopher R A and Desai T A 2003 Characterization
+of PC12 cell proliferation and differentiation-stimulated by
+ECM adhesion protein and neurotrophic factors J. Mater. Sci.,
+Mater. Med. 14 1005
+[25] Pﬁster L A, Papaloizos M, Merkle H P and Gander B 2007
+Nerve conduits and growth factor delivery in peripheral nerve
+repair J. Peripher. Nervous Syst. 12 65–82
+[26] Ruiter G C W, Malessy M J A, Yaszemski M J,
+Windebank A J and Spinner R J 2009 Designing ideal conduits
+for peripheral nerve repair Neurosurg. Focus 26 E5
+[27] Bonani W, Motta A, Migliaresi C and Tan W 2012 Biomolecule
+gradient in micropatterned nanoﬁbrous scaffold for
+spatiotemporal release Langmuir 28 13675–87
+[28] Chen Z J, Cao L H, Wang L Q, Zhu H Y and Jiang H L 2013
+Effect of ﬁber structure on the properties of the electrospun
+hybrid scaffolds composed of poly(e-caprolactone) and gelatin
+J. Appl. Polym. Sci. 127 4225–32
+[29] Hakamada Y, Ohgushi N, Fujimura-Kondo N and Matsuda T
+2012 Electrospun poly(gamma-Benzyl-L-Glutamate) and its
+alkali-treated meshes: their water wettability and cell-adhesion
+potential J. Biomater. Sci.—Polym. Ed. 23 1055–67
+[30] de Boer R, Borntraeger A, Knight A M, Hebert-Blouin M N,
+Spinner R J, Malessy M J A, Yaszemski M J and Windebank A J
+2012 Short- and long-term peripheral nerve regeneration
+using a poly-lactic-co-glycolic-acid scaffold containing nerve
+growth factor and glial cell line-derived neurotrophic factor
+releasing microspheres J. Biomed. Mater. Res. A 100A 2139–46
+[31] Catrina S, Gander B and Madduri S 2013 Nerve conduit
+scaffolds for discrete delivery of two neurotrophic factors Eur.
+J. Pharmaceutics Biopharmaceutics 85 139–42
+[32] Ji W, Sun Y, Yang F, van den Beucken J, Fan M W, Chen Z and
+Jansen J A 2011 Bioactive electrospun scaffolds delivering GFs
+and genes for tissue engineering applications Pharm. Res. 28
+1259–72
+[33] Song B T, Wu C T and Chang J 2012 Dual drug release from
+electrospun poly(lactic-co-glycolic acid)/mesoporous silica
+nanoparticles composite mats with distinct release proﬁles
+Acta Biomater. 8 1901–7
+[34] Chen M L, Gao S, Dong M D, Song J, Yang C X, Howard K A,
+Kjems J and Besenbacher F 2012 Chitosan/siRNA
+nanoparticles encapsulated in PLGA nanoﬁbers for siRNA
+delivery ACS Nano 6 4835–44
+[35] Cui W G, Li X H, Zhou S B and Weng J 2008 Degradation
+patterns and surface wettability of electrospun ﬁbrous mats
+Polym. Degrad. Stab. 93 731–8
+[36] Volpato F Z, Almodovar J, Erickson K, Popat K C,
+Migliaresi C and Kipper M J 2012 Preservation of FGF-2
+bioactivity using heparin-based nanoparticles, and their
+delivery from electrospun chitosan ﬁbers Acta Biomater. 8
+1551–9
+[37] Sun B, Long Y Z, Zhang H D, Li M M, Duvail J L, Jiang X Y and
+Yin H L 2014 Advances in three-dimensional nanoﬁbrous
+macrostructures via electrospinning Prog. Polym. Sci. 39
+862–90
+[38] Montero R B, Vial X, Nguyen D T, Farhand S, Reardon M,
+Pham S M, Tsechpenakis G and Andreopoulos F M 2012
+bFGF-containing electrospun gelatin scaffolds with controlled
+nano-architectural features for directed angiogenesis Acta
+Biomater. 8 1778–91
+[39] Jenkins P M, Laughter M R, Lee D J, Lee Y M, Freed C R and
+Park D 2015 A nerve guidance conduit with topographical and
+biochemical cues: potential application using human neural
+stem cells Nanoscale Res. Lett. 10 1–7
+[40] Llorens E, Ibañez H, del Valle L J and Puiggalí J 2015
+Biocompatibility and drug release behavior of scaffolds
+prepared by coaxial electrospinning of poly(butylene
+succinate) and polyethylene glycol Mater. Sci. Eng. C 49 472–84
+[41] Puhl S, Ilko D, Li L H, Holzgrabe U, Meinel L and
+Germershaus O 2014 Protein release from electrospun
+nonwovens: improving the release characteristics through
+rational combination of polyester blend matrices with
+polidocanol Int. J. Pharmaceutics 477 273–81
+[42] Wang X Y, Yuan Y H, Huang X C and Yue T L 2015 Controlled
+release of protein from core–shell nanoﬁbers prepared by
+emulsion electrospinning based on green chemical J. Appl.
+Polym. Sci. 132 41811
+[43] Yau W W Y, Long H Y, Gauthier N C, Chan J K Y and Chew S Y
+2015 The effects of nanoﬁber diameter and orientation on
+siRNA uptake and gene silencing Biomaterials 37 94–106
+17
+Biomed. Mater. 13 (2018) 044107
+C Liu et al

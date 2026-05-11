@@ -1,0 +1,1158 @@
+pharmaceutics
+Article
+Chitosan-Coated PLGA Nanoparticles Encapsulating
+Triamcinolone Acetonide as a Potential Candidate for Sustained
+Ocular Drug Delivery
+Madhuri Dandamudi 1,*
+, Peter McLoughlin 1, Gautam Behl 1, Sweta Rani 1, Lee Coffey 1, Anuj Chauhan 2,
+David Kent 3 and Laurence Fitzhenry 1
+
+
+Citation: Dandamudi, M.;
+McLoughlin, P.; Behl, G.; Rani, S.;
+Coffey, L.; Chauhan, A.; Kent, D.;
+Fitzhenry, L. Chitosan-Coated PLGA
+Nanoparticles Encapsulating
+Triamcinolone Acetonide as a
+Potential Candidate for Sustained
+Ocular Drug Delivery. Pharmaceutics
+2021, 13, 1590. https://doi.org/
+10.3390/pharmaceutics13101590
+Academic Editor: Charles M. Heard
+Received: 30 July 2021
+Accepted: 24 September 2021
+Published: 30 September 2021
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright: © 2021 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+1
+Ocular Therapeutics Research Group, Pharmaceutical and Molecular Biotechnology Research Centre,
+Waterford Institute of Technology, X91 K0EK Waterford, Ireland; pmcloughlin@wit.ie (P.M.);
+gbehl@wit.ie (G.B.); srani@wit.ie (S.R.); LCOFFEY@wit.ie (L.C.); LFITZHENRY@wit.ie (L.F.)
+2
+Department of Chemical and Biological Engineering, Colorado School of Mines, Colorado, CO 80401, USA;
+chauhan@mines.edu
+3
+The Vision Clinic, R95 XC98 Kilkenny, Ireland; dkent@liverpool.ac.uk
+*
+Correspondence: madhuri.dandamudi@postgrad.wit.ie
+Abstract: The current treatment for the acquired retinal vasculopathies involves lifelong repeated
+intravitreal injections of either anti-vascular endothelial growth factor (VEGF) therapy or modulation
+of inﬂammation with steroids. Consequently, any treatment modiﬁcation that decreases this treatment
+burden for patients and doctors alike would be a welcome intervention. To that end, this research aims
+to develop a topically applied nanoparticulate system encapsulating a corticosteroid for extended
+drug release. Poly (lactic-co-glycolic acid) (PLGA) nanoparticles (NPs) supports the controlled release
+of the encapsulated drug, while surface modiﬁcation of these NPs with chitosan might prolong
+the mucoadhesion ability leading to improved bioavailability of the drug. Triamcinolone acetonide
+(TA)-loaded chitosan-coated PLGA NPs were fabricated using the oil-in-water emulsion technique.
+The optimized surface-modiﬁed NPs obtained using Box-Behnken response surface statistical design
+were reproducible with a particle diameter of 334 ± 67.95 to 386 ± 15.14 nm and PDI between 0.09
+and 0.15. These NPs encapsulated 55–57% of TA and displayed a controlled release of the drug
+reaching a plateau in 27 h. Fourier-transform infrared spectroscopic (FTIR) analysis demonstrated
+characteristic peaks for chitosan (C-H, CONH2 and C-O at 2935, 1631 and 1087 cm−1, respectively)
+in chitosan-coated PLGA NPs. This result data, coupled with positive zeta potential values (ranged
+between +26 and +33 mV), suggests the successful coating of chitosan onto PLGA NPs. Upon coating
+of the NPs, the thermal stability of the drug, polymer, surfactant and PLGA NPs have been enhanced.
+The characteristics of the surface-modiﬁed NPs supports their use as potential candidates for topical
+ocular drug delivery for acquired retinal vasculopathies.
+Keywords: nanoparticles; posterior segment eye diseases; PLGA; chitosan; chitosan-coated nanopar-
+ticles; triamcinolone acetonide; corticosteroid; ocular drug delivery
+1. Introduction
+According to the World Health Organisation (WHO), the majority of people with
+vision loss and vision impairment are aged over 50 [1]. As the percentage of aging in the
+global population continues to increase, the number of people suffering from acquired
+ocular diseases will also signiﬁcantly rise (~20% of Europe’s population are now over 65) [2].
+The acquired retinal vasculopathies, including diabetic retinopathy (DR), venous occlusive
+disease (VOD) and age-related macular degeneration (AMD) are the most common causes
+of vision loss in the elderly [3]. All of these conditions are typically treated by regular
+intravitreal injections that are expensive and can be associated with serious side effects
+such as cataracts, retinal detachment and endophthalmitis [4]. Together with an increased
+Pharmaceutics 2021, 13, 1590. https://doi.org/10.3390/pharmaceutics13101590
+https://www.mdpi.com/journal/pharmaceutics
+
+Pharmaceutics 2021, 13, 1590
+2 of 20
+ﬁnancial burden, clinical level of anxiety and depression was seen in patients receiving
+intravitreal injections, which is hindering the patients’ quality of life [5]. As such, there is a
+compelling necessity to develop a patient friendly treatment with negligible side effects
+such as topical formulation or controlled release drug delivery system which could reduce
+or negate the need for current intravitreal eye injections. The main pathological factors
+contributing to AMD, DR, VOD and macular edema appear to be inﬂammation, retinal ﬂuid
+accumulation with a higher vascular permeability [6]. Synthetic glucocorticosteroids (GCs)
+are commonly used drugs to treat a wide variety of inﬂammatory diseases in the eye [7].
+They are mainly used for their immunosuppressive and anti-inﬂammatory properties,
+which are regulated through signal transduction by glucocorticoid receptors. Triamcinolone
+acetonide (TA), a member of the GCs family, has been shown to inhibit the secretion of
+VEGF, the production of cytokines and decrease vascular permeability [8,9].
+The major issue with the use of hydrophobic drugs, including TA, is minimal aque-
+ous solubility leading to suboptimal bioavailability. Loading hydrophobic drugs into
+nanoparticulate systems can help overcome this complication [10]. Developing a topical
+formulation is a signiﬁcant challenge, as the eye is a complex organ with multiple anatomi-
+cal, biochemical, and physiological barriers restricting the entry of drug molecules to the
+site of action. Since the initial use of nanoparticulate systems in medicine to date, they
+have revolutionized drug delivery and have also shown promising research outcomes for
+treating complex ocular diseases [11–13]. Different forms of nanomaterials being tested
+for anterior and posterior segment eye diseases include NPs [14], nano-micelles [15], lipo-
+somes [16], dendrimers [17], nanoparticle-loaded contact lenses [18] and sub-conjunctival
+implants with nanostructures [19], etc. Liposomes and micelles have limitations such as
+low stability, leakage of entrapped drug and premature release of the loaded drug [20,21].
+The changes in NPs-loaded contact lenses during the storage period like burst release of
+the drug before administration, swelling and optical transparency, etc., still need to be
+addressed [22]. For elderly patients wearing contact lenses and inserting implants with
+minor surgery leads to poor patient compliance. Recently, polymeric NPs has been studied
+for topical ocular delivery and shown promising results [23–25]. Considering the size
+of NPs, they are likely to have greater diffusivity through biological membranes like the
+corneal epithelium compared to a suspension of hydrophobic drugs. Previous research
+on NPs for ocular drug delivery has demonstrated an increase in corneal permeability of
+the incorporated drugs when compared to their drug suspension [26–28]. Additionally,
+the higher surface area of nanoparticulate systems enables enhanced interaction with the
+epithelial layers of the eye leading to the increased retention time of topically administered
+drug delivery systems [29].
+The biodegradable polymer, poly lactic-co-glycolic acid (PLGA), is approved by the
+United States food and drug administration (FDA) and European Medicines Agency (EMA)
+and proved its suitability for drug delivery [30]. Additionally, there is a commercial PLGA
+based formulation called Ozurdex® to treat VOD, DR and posterior uveitis which highlights
+the ocular tolerance of PLGA [31]. PLGA NPs have shown good stability with prolonged
+release of the drug in many studies but they lack mucoadhesion [32]. This property
+enhances the ocular surface retention time, which plays a vital role when targeting the
+topical route for posterior segment diseases as the loss of NPs in tear drainage is the major
+limitation [33–35]. The surface modiﬁcation of PLGA NPs with natural and biodegradable
+polymers like chitosan has proven to be beneﬁcial for ocular drug delivery [23,36,37].
+Polymers with mucoadhesive properties bind to mucin through various mechanisms such
+as hydrogen bonds, electrostatic interactions, polymer chain inter-diffusion and van der
+Waal forces [38]. These surface modiﬁed NPs may have the potential to increase the stability
+of the encapsulated drug, reducing the initial burst release of the drug and the in vivo
+targeting ligands may conjugate with free amine groups of chitosan [39,40]. Conversion of
+charge from negative to positive may enhance cellular adhesion and retention time of the
+formulation at the target site [41]. The adsorption of chitosan onto PLGA NPs follows a
+multilayer behavior with the reason for adsorption being found to be the cationic nature
+
+Pharmaceutics 2021, 13, 1590
+3 of 20
+of chitosan and also the non-uniform porous surface of PLGA NPs [42]. Considering
+these parameters, the current research was focused on developing a topically applied
+nanoparticulate system exhibiting extended drug release for the treatment of posterior
+segment disease. This system consists of TA-loaded chitosan-coated PLGA NPs prepared
+by an emulsion technique. Emulsiﬁer or stabilizer, such as Pluronic® F-127 (PF-127), used
+in the nanoparticle preparation forms a steric barrier around the nanoparticle with both
+PEO (polyethylene oxide) and PPO (polypropylene oxide) moieties, thus keeping the NPs
+uniformly dispersed [43]. Optimization of the NPs was achieved using a response surface
+design of experiments. The prepared NPs were investigated for particle size, polydispersity
+index (PDI), zeta potential (ZP) and percent drug encapsulation efﬁciency (EE). The NPs
+were investigated for thermal stability, characterized by FT-IR, and examined for in vitro
+drug release to assess their suitability as drug carriers. As the research on nanoparticulate
+systems continues with ocular use, the scalability, safety, and robustness of these systems
+will be established leading to a new and highly efﬁcient nanoparticulate system available
+for patient use.
+2. Materials and Methods
+2.1. Materials
+Triamcinolone acetonide (TA) (MW: 434.50 g/mol with purity >99%) and water-
+soluble chitosan (MW: 10–100 KDa with a deacetylation degree >90%) were procured from
+Carbosynth Ltd., Berkshire, UK. PLGA (DL-lactide/Glycolide copolymer, ratio M/M%:
+50/50, MW: 38,000–54,000), Pluronic® F-127 (MW: ~12,600 g/mol), poly (vinyl alcohol)
+(MW: 89,000–98,000), dichloromethane (purity ≥99.8%), tween® 80, sodium azide (purity
+>99.5%) and phosphate buffer saline tablets (0.01 M phosphate buffer), were purchased
+from Sigma Aldrich, Arklow, Ireland.
+2.2. Methods
+2.2.1. Preparation and Optimization of Chitosan-Coated PLGA Nanoparticles
+The NPs were prepared by a single emulsion technique which was a modiﬁcation
+of a previously published double emulsion method [36]. PLGA (3.5 mg/mL) and TA
+(1 mg) were dissolved in 2 mL of dichloromethane (DCM) and this mixture was added
+dropwise to 10 mL of the aqueous solution containing stabilizer (0.25% (w/v) PVA or
+1% (w/v) PF-127). Upon which, the mixture was sonicated for 10 min and left stirring
+overnight to evaporate the organic solvent. Finally, the nanosuspension was centrifuged at
+3000 rpm for 15 min at 4 ◦C to remove any unentrapped drug. The supernatant obtained
+was subjected to high-speed centrifugation at 15,000 rpm for 30 min at 4 ◦C to recover
+the NPs. Chitosan-coated PLGA NPs were obtained by incubating PLGA NPs in chitosan
+solution (1:1 (v/v)) overnight by stirring at room temperature. After the incubation, the
+NPs were collected by centrifugation at 15,000 rpm for 30 min (NPs redispersed in Milli-Q®
+water with pH 7). Considering the reproducibility of the NPs in the screening experiments,
+the formulation optimization experiments were designed using the design of experiments
+(DOE). For the optimization of NPs, a Box-Behnken, surface-response DOE was chosen.
+The three independent variables used were PLGA (3.5–4.5 mg/mL), PF-127 (1–2% (w/v))
+and chitosan (1–2% (w/v)), while the four dependent response variables were particle
+size, PDI, ZP and %EE. This DOE generated 30 formulations (Table S1 in Supplementary
+Materials), and the NPs with the same composition were given one formulation code
+starting from E1 to E13 for PLGA NPs (prepared with the same composition as Table 1
+without chitosan) and CS-E1 to CS-E13 for chitosan-coated NPs as represented in Table 1.
+
+Pharmaceutics 2021, 13, 1590
+4 of 20
+Table 1. Compositions of the chitosan-coated PLGA NPs with formulation codes for the experiments
+generated by DOE.
+Emulsion Code
+PLGA (mg/mL)
+PF-127% (w/v)
+Chitosan% (w/v)
+CS-E1
+4
+2
+2
+CS-E2
+4.5
+1.5
+2
+CS-E3
+3.5
+1.5
+2
+CS-E4
+3.5
+2
+1.5
+CS-E5
+4
+1
+1
+CS-E6
+3.5
+1.5
+1
+CS-E7
+4.5
+1
+1.5
+CS-E8
+4.5
+2
+1.5
+CS-E9
+4
+1.5
+1.5
+CS-E10
+3.5
+1
+1.5
+CS-E11
+4.5
+1.5
+1
+CS-E12
+4
+2
+1
+CS-E13
+4
+1
+2
+The ideal concentrations of independent variables were selected based on the re-
+sponses obtained. Additionally, two formulations were chosen using point prediction
+and the experimental values obtained were compared to predicted values to verify the
+experimental model chosen.
+2.2.2. Particle Size, Polydispersity Index and Zeta Potential
+The particle size, PDI and ZP were determined using dynamic light scattering (DLS),
+where analysis was performed at 25 ◦C with an angle of detection of 180◦with the
+heterodyne-backscatter arrangement. A total of 1 mL of nanosuspension was placed
+in a sample cell and the FLEX software was used to analyze electrophoretic mobility (for
+ZP) and particle size distribution using Brownian motion. For each nanosuspension sample,
+the mean value was recorded as an average of three measurements.
+2.2.3. Encapsulation Efﬁciency
+The encapsulated drug was quantiﬁed by high-performance liquid chromatography
+(HPLC) using a C18 column, mobile phase of pH 3 phosphoric acid buffer: acetonitrile
+(50:50 (v/v)), a 1.2 mL/min isocratic ﬂow rate, an injection volume of 20 µL and a 240 nm
+detection wavelength. TA was quantiﬁed using a calibration curve with demonstrated
+linearity in the range of 0.1–0.9 µg/mL. Based on the standard deviation (Sy) and slope (S)
+of the calibration curve, the limit of detection (LOD) and limit of quantiﬁcation (LOQ) of
+TA was determined using the Equations (1) and (2).
+LOD = 3.3
+Sy
+S
+
+(1)
+LOQ = 10
+Sy
+S
+
+(2)
+A ﬁxed volume of drug-loaded NPs suspension was diluted with mobile phase and
+the encapsulation efﬁciency was calculated using the following Equation (3):
+Encapsulation efﬁciency (%) =
+Drug present in nanoparticles
+total drug added
+
+× 100
+(3)
+2.2.4. Freeze-Drying of Nanoparticles
+The NPs in suspension form containing 1% trehalose as cryoprotectant was pre-cooled
+at −20 ◦C overnight. Upon pre-cooling, the samples were placed in the freeze dryer
+(Freezone 2.5, LABCONCO, Kansas city, MO, USA) at 6 Pa for 72 h maintained at −50 ◦C.
+These freeze-dried NPs were used for thermal studies and FTIR analysis.
+
+Pharmaceutics 2021, 13, 1590
+5 of 20
+2.2.5. Thermal Analysis
+The thermal behavior of the formulation materials, PLGA and chitosan-coated PLGA
+NPs was investigated using thermal gravimetric analysis (TGA) and differential scanning
+calorimetry (DSC). Thermal analysis was performed using a nitrogen gas ﬂow rate of
+50 mL/min and a heating rate of 10 ◦C/min. Thermal decomposition analysis was per-
+formed from room temperature to 500 ◦C with a sample weight between 5 and 10 mg.
+The weight loss and onset of degradation were simultaneously recorded as a function
+of temperature/time. Resulting TGA thermograms were analyzed using TA universal
+analysis software. Calibration using indium was performed to ensure the accuracy and
+precision of the DSC thermograms obtained. Accurately weighed samples of 5–10 mg were
+loaded in T zero aluminum pans with a pinhole lid. The analysis was performed up to 350
+◦C under a nitrogen atmosphere at a heating rate of 10 ◦C/min.
+2.2.6. Fourier-Transform Infrared Spectroscopy Analysis
+FTIR was performed on a Varian 600 IR using potassium bromide (KBr) disc with the
+spectra obtained in the region of 4000–600 cm−1 at a resolution of 2.0 cm−1 and 64 scans
+per run. The raw materials and freeze-dried nanoparticles were mixed with KBr in 1:10
+ratios and compressed into a disc for analysis.
+2.2.7. In Vitro Drug Release
+The drug release study was carried out using phosphate buffered saline (PBS (pH 7.4))
+with 1% Tween® 80 and 0.01% sodium azide as release medium. Before performing the
+drug release study, the solubility of TA in the release medium was determined, where 2
+and 10 mg of TA was incubated in 5 mL of PBS and PBS with 1% Tween® 80 at 37 ◦C with
+agitation. After 24 h the samples were centrifuged at 10,000 rpm and the supernatant was
+syringe ﬁltered prior to HPLC analysis. Initially, release media containing nanosuspension
+with a drug concentration of 25 µg/mL was taken. The release medium was distributed
+into 2 mL microcentrifuge tubes containing nanosuspension equivalent to 50 µg of TA.
+These microcentrifuge tubes were placed in a shaker with continuous agitation at 37 ◦C. At
+every sampling point, a new microcentrifuge tube was taken and centrifuged at 15,000 rpm
+for 15 min and the drug present in the supernatant was quantiﬁed. The %drug release and
+%cumulative drug release were calculated by using the following Equations (4) and (5).
+Drug release (%) =
+Released drug
+total drug
+
+× 100
+(4)
+Cumulative drug release (%) =
+Volume of sample withdrawn
+bath Volume
+
+× P(t −1)
+(5)
+P = %release at time ‘t’.
+P (t −1) = %release previous to ‘t’.
+The best curve ﬁt of the in vitro TA release was analyzed with the mathematical
+models: zero and ﬁrst order, Hixson–Crowell, Higuchi and Korsmeyer–Peppas based on
+regression coefﬁcient (R2) values.
+2.2.8. Statistical Analysis
+All the data were presented as mean ± SD. Minitab statistical software was used to
+analyze the design of experiments responses.
+3. Results
+3.1. Screening of Chitosan-Coated PLGA Nanoparticles
+This study is focused on developing a nanoparticulate system encapsulating a corti-
+costeroid for topical ocular drug delivery to treat acquired retinal vasculopathies. PLGA
+NPs are potential candidates for drug delivery to the back of the eye diseases following top-
+ical instillation [25]. The surface modiﬁcation of these NPs with mucoadhesive polymers
+
+Pharmaceutics 2021, 13, 1590
+6 of 20
+would enhance the ocular residence time and hence increasing the drug’s bioavailabil-
+ity [44]. PLGA undergoes biodegradation by hydrolysis resulting in glycolic and lactic
+acids, which further enter the tricarboxylic acid cycle and is metabolized into carbon diox-
+ide, energy, and water; this process makes PLGA in vivo degradable [45]. Biodegradation
+of chitosan occurs through hydrolysis by proteases (primarily lysozyme). The degradation
+products are monosaccharides or oligosaccharides and glycosaminoglycan or glycol-amino
+proteins, which are natural metabolites [46]. The goal of the current study is to optimize
+the formulation variables to attain the NPs with the smallest size possible, which can en-
+capsulate the appropriate amounts of drug to suit the ocular application. Chitosan-coated
+PLGA NPs were prepared using a single emulsion technique by modifying two previously
+published methods [36,47]. Initially, screening experiments were performed to study the
+reproducibility of the chosen method and to test the effectiveness of PVA and PF-127 as
+stabilizers. The ﬁndings of the blank PLGA (A1 and A2) and chitosan-coated PLGA NPs
+(CS-A1 and CS-A2) prepared with 0.25% (w/v) PVA or 1% (w/v) PF-127 are represented in
+Table 2. PVA showed promising results as the stabilizer in these studies and was therefore
+considered for the screening experiments [36]. In our previous (unpublished) studies,
+PF-127 was used as the stabilizer, which produced stable NPs. It has also shown promising
+results in the past [48].
+Table 2. Particle size, zeta potential, PDI and % encapsulation efﬁciency of the NPs from screening
+experiments. Particle size is the representation of the diameter of the particle (nm). Data = mean ±
+std (n = 3).
+Emulsion Code
+Stabilizer (% (w/v))
+Particle Size (nm)
+Zeta Potential
+(mV)
+PDI
+A1
+PVA (0.25)
+359 ± 76.37
+−14 ± 5.44
+0.15 ± 0.07
+CS-A1
+PVA (0.25)
+346 ± 125.37
++18 ± 1.77
+0.70 ± 0.53
+A2
+PF-127 (1)
+200 ± 61.16
+−20 ± 9.26
+0.07 ± 0.01
+CS-A2
+PF-127 (1)
+187 ± 23.55
++14 ± 5.44
+0.06 ± 0.01
+The NPs fabricated with PF-127 as stabilizer yielded smaller NPs of 200 ± 61.16 nm
+and 187 ± 23.55 nm with low PDI (0.06–0.07) and high encapsulation of the TA (34–59%)
+compared to NPs prepared with PVA (27–50%). This was perhaps due to the entanglement
+of PEO moieties of PF-127 with polymeric chains of PLGA leading to more compact NPs
+with high drug protection [49–51]. Salama et al. formulated ﬂuocinolone acetonide-loaded
+NPs using PLGA and PF-127; they attained a particle size of 203 ± 5 nm with 56 ± 4%
+EE [23]. Along with the smaller size, the NPs also released the drug in a controlled manner
+up to 24 h; the authors postulated this was due to the interactions between PLGA and PEO
+groups of PF-127, which increases the stability of NPs (the entanglement of PLGA chains
+and PEO moieties could make the particle more compact and protect the drug leading to
+extended drug release). The encapsulation efﬁciency of the NPs decreased upon chitosan
+coating due to the repeated centrifugation step after chitosan coating, which may lead to
+loss of some particles and surface bound drug.
+3.2. Optimization of Nanoparticles Using Statistical Experimental Design
+DOE is widely used in the pharmaceutical industry and academia to investigate the
+factors that control the drug delivery system. An experimental design is important to study
+several factors at multiple levels using predeﬁned experiments which can be applied to
+design a product or process [52]. DOE has proved to be a powerful tool for designing
+nanoparticulate systems, which can identify the effect of individual factors and interaction
+between factors on the characteristics of the NPs [53]. Box-Behnken design is more efﬁcient
+and cost-effective than a central composite design with the same parameters due to fewer
+design points [54]. The central composite design usually consists of design points outside
+the region of interest (axial points outside the cube), in contrast the Box-Behnken design
+points lie in the selected region of interest (region of interest is selected based on screening
+
+Pharmaceutics 2021, 13, 1590
+7 of 20
+experiments). The Box-Behnken, response surface statistical design consisting of three
+factors with three levels prioritized for this study to optimize the NPs prepared by the
+emulsion method. The model evaluates the main effects, interaction effects and quadratic
+effects of the variable factors on the NPs characteristics. It also identiﬁes the combination of
+factors to obtain the predicted response based on the point prediction (response optimizer).
+Trabado et al. used a Box-Behnken response surface DOE to optimize the characteristics
+(particle size, ZP, PDI, %EE and %drug loading) of cyclosporin-loaded sorbitan ester
+NPs for topical ocular drug delivery [55]. In their study, the optimized formulation of
+170.5 nm with a ZP of +33.9 mV and a drug loading capacity of 19.66% was achieved by
+using the response optimizer feature of the Box-Behnken DOE (by using the prediction
+composition generated by DOE they got the required responses for the chosen application).
+As mentioned in Section 2.2.1, in the present study, the three independent variables used
+were PLGA (3.5–4.5 mg/mL), PF-127 (1–2% (w/v)) and chitosan (1–2% (w/v)); the responses
+taken were particle size, polydispersity index (PDI), ZP and %EE. The lack of ﬁt value of all
+the four responses generated by the DOE model used was p > 0.05 (insigniﬁcant), indicating
+the ﬁt of experimental values to the model. The concentration of PLGA, chitosan and both
+combined have a signiﬁcant effect on particle size (Figure 1). The low concentration of
+PLGA (3.5 mg/mL) and PF-127 (1% (w/v)) and medium concentration of chitosan (1.5%
+(w/v)) gave the smallest NPs of 334.95 ± 67.95 nm (Table S2 in Supplementary Material).
+Figure 1. Effect of factors (PLGA, PF-127 and chitosan) on the particle size of chitosan-coated PLGA
+nanoparticles. The blue points represent the insigniﬁcant factors, and the red points represent
+signiﬁcant factors.
+In a previous study, Madani et al. also observed an increase in nanoparticle size
+with the increase in PLGA concentration [56]. The authors postulated that in an emulsion
+technique, increased PLGA concentration in organic solvent elevates the viscosity of
+dispersed medium resulting in reduced shear stress leading to the formation of larger
+nanodroplets. There was no statistically signiﬁcant effect of all three factors on the PDI of
+the NPs (Figure 2).
+
+Pharmaceutics 2021, 13, 1590
+8 of 20
+Figure 2. Effect of PLGA, PF-127 and chitosan on PDI of the prepared chitosan-coated PLGA
+nanoparticles. The blue points represent the insigniﬁcant factors.
+The PDI values of all the formulations ranged from 0.04 and 0.47 indicating that
+NPs prepared from an emulsion method were monodispersed (Figure 3). These results
+agree with recent study by Canioni et al., who formulated dexamethasone palmitate
+NPs to treat AMD via intravitreal injections [57]. They studied the inﬂuence of PEG-40-
+sterate, Pluronic® F-168 and F-127 on NPs stability and monodispersion, the PF-127 at
+1.5–2% (w/v) had shown best PDI values (0.02–0.12) with good stability compared to the
+other two surfactants (PDI: 0.03–0.5). This could be due to the arrangement of PF-127 on
+the nanoparticle surface with the PEO group facing the aqueous solvent creating steric
+stabilization. Thus, providing a protective barrier around the particle and preventing
+aggregation. The suitability of nanoformulations for speciﬁc drug delivery applications
+largely depends on average particle size and their dispersity. PDI is an important variable
+for studying the distribution of NPs or estimating their permeation efﬁciency across ocular
+barriers [58].
+Figure 3. Dynamic light scattering (DLS) particle size distribution of (a) PLGA nanoparticles (E10) and (b) chitosan-coated
+PLGA nanoparticles (CS-E10). The graph represents the volume distribution of the nanoparticles, %Volume passing
+(Q3%pass) vs. diameter (d).
+
+Pharmaceutics 2021, 13, 1590
+9 of 20
+The particle size of all the PLGA NPs increased upon chitosan coating (Figure S1
+in Supplementary Materials), this is potentially due to adsorption of the chitosan on the
+porous surface of the PLGA NPs. Guo et al. studied the adsorption mechanism of chitosan
+onto PLGA NPs prepared by an oil-in-water emulsion technique [42]. In their study, they
+noticed the increase in particle size of PLGA NPs from 261.5 to 972.7 nm with an increase in
+chitosan concentration (0.12–2.4 g/L). Based on adsorption isotherms, the authors proposed
+that the adsorption of chitosan onto PLGA NPs depends on the chitosan cationic nature,
+high surface energy and non-uniform microporous surface of PLGA NPs. The amount
+of TA present in NPs was determined using HPLC and TA showed linearity between 0.1
+and 0.9 µg/mL with regression greater than 0.999. Based on the calibration curve, LOD
+and LOQ of TA were calculated using Equations (1) and (2) and found to be 0.026 and
+0.079 µg/mL, respectively. In the present work, PLGA NPs with the emulsion codes E7
+and E10 showed high encapsulation of drug, 66.04 ± 2.60% and 63.38 ± 2.30%, respectively.
+Upon chitosan coating, the same formulations displayed higher encapsulation of the drug
+compared to other formulations (54.89 ± 2.11 and 55.18 ± 3.70%, respectively). Using the
+surface plots shown in Figure 4, the effect of PLGA, PF-127 and chitosan on the %EE of the
+NPs was represented.
+Figure 4. Response surface plots of (a) %EE (encapsulation efﬁciency) vs. PLGA and PF-127 (b) % EE vs. % (w/v) chitosan
+and % (w/v) PF-127.
+The formulations prepared with a low concentration of PF-127 (1% (w/v)) showed
+high encapsulation efﬁciency (66.04 ± 2.60%) whereas for chitosan-coated NPs, medium
+concentrations of chitosan (1.5% w/v) displayed a high %EE of 55.18 ± 3.70% (Figure 4).
+PLGA NPs, E7 and E10, showed smaller particle size (227.55 ± 18.60 and 274.80 ± 0.99 nm)
+with low PDI values (0.12 and 0.11). The particle size of CS-E7 and CS-E10 was 439 ± 35.36
+and 334 ± 67.95 nm with PDI values of 0.23 and 0.15 and ZP of +24.15 ± 2.05 mV and
++26.65 ± 9.97 mV, respectively. Tahara et al. fabricated PLGA NPs encapsulating coumarin-
+6 dye using emulsion solvent diffusion and also surface coated them with chitosan, glycol
+chitosan and polysorbate [25]. Their particle size of PLGA NPs was 200 nm and the surface-
+modiﬁed NPs ranged between 250 and 500 nm. When these formulations were applied
+topically on the mouse eye, after 30 min the entire eyeball (anterior segment, the cornea,
+iris/ciliary and the retina) was dyed, which was observed under the ﬂuorescent microscope.
+According to their ﬂuorescent images, the topical formulation may enter the back of the
+eye via trans-corneal, trans-scleral and uveal routes. This study highlights that topically
+applied nanoparticulate systems utilize multiple routes (trans-corneal, trans-scleral and
+uveal routes) to travel to the back of the eye. According to previously published research,
+the nanoparticulate systems having similar characteristics obtained in the present study
+permeated to the back of the eye when instilled topically [59,60].
+
+Pharmaceutics 2021, 13, 1590
+10 of 20
+3.3. Response Optimization Using Response Surface Design
+Based on the responses of the DOE, the response optimizer predicts the combination
+of variables to get the desired responses of particle size, ZP and %EE for the NPs. Two pre-
+dictions were entered into the software, and they were coded as PE1, PE2 and CS-PE1 and
+CS-PE2 for PLGA NPs and chitosan-coated PLGA NPs, respectively. For prediction one
+(PE1 and CS-PE1), the goal of achieving a smaller particle size of chitosan-coated NPs with
+high encapsulation of TA was entered (Table S3 in Supplementary Materials). Whereas for
+prediction two (PE2 and CS-PE2) NPs with smaller particle size and ZP of +25 mV was
+considered as desired responses (Table S4 in Supplementary Materials). The DOE model
+generated the composite desirability (CD) graphs for each factor and response to show the
+reason for selecting the speciﬁc concentrations of the factors to achieve the desired result
+(Figure S2 in Supplementary Material). The CD value was 0.84 and 1 for predictions 1 and
+2, if the CD value is close to one there are more chances of getting the prediction result.
+The NPs were prepared with the same procedure summarized in Section 2.2.1 and the
+characteristics obtained are represented in Table 3. Similar to the previous formulations
+prepared by the Box-Behnken DOE, the particle size increased upon chitosan-coating of
+the PLGA NPs. There was no signiﬁcant difference in the particle size of the optimized
+formulations from DOE (CSE7 and CSE10) and the prediction emulsions (PE1 and PE2).
+However, the chitosan-coated prediction emulsions have lower PDI values (0.09–0.13)
+compared to CSE7 and CSE10 (0.15–0.23).
+Table 3. Characteristics of the PLGA and chitosan-coated PLGA nanoparticles prepared by point
+prediction using response surface DOE. Particle size is the representation of the diameter of the
+particle (nm). Data = mean ± std (n = 3).
+Emulsion Code
+Particle Size
+(nm)
+PDI
+Zeta Potential (mV)
+%Encapsulation
+Efﬁciency
+PE1
+318.23 ± 18.61
+0.220 ± 0.08
+−7.4 ± 2.43
+64.80 ± 3.95
+CS-PE1
+386.67 ± 15.14
+0.136 ± 0.05
++33.3 ± 4.69
+57.14 ± 3.81
+PE2
+240.47 ± 48.75
+0.084 ± 0.05
+−6.9 ± 3.08
+60.31± 2.46
+CS-PE2
+351.33 ± 27.02
+0.098 ± 0.04
++31.97 ± 0.21
+51.71 ± 1.82
+The experimental response values of the prepared prediction nano-emulsions were
+similar to the predicted response values of the software. The predicted particles size of
+the chitosan-coated PE1 and PE2 was 388.5 ± 46.7 nm, and the obtained particle size
+was 386.67 ± 15.14 and 351.33 ± 27.02, respectively (Tables S3 and S4 in Supplementary
+Materials). The obtained response values for both the predictions are within the standard
+error of the ﬁt generated by the response optimizer suggesting the validity and ﬁt of the
+model. The two prediction formulations and E10 formulation, before and after chitosan
+coating were selected for further studies based on their particle size, PDI, %EE and ZP. The
+great challenge with topical ocular drug delivery is to increase the drug’s bioavailability.
+The TA-loaded NPs fabricated in the current study might show enhanced bioavailability
+with an increase in the ocular residence compared to the free TA. Recently, Xing et al.
+prepared TA-loaded PLGA-chitosan NPs using an emulsion technique to treat ocular
+inﬂammation [61]. They investigated the pharmacokinetic proﬁle of the free TA and
+TA-loaded NPs on the albino rabbits upon administration into the conjunctival sac. The
+maximum concentration of TA observed for free TA and TA-loaded NPs was 15.8 ± 0.57
+and 43.2 ± 0.57 µg/L at 1 and 6 h, respectively in the aqueous humor. The free TA cleared
+after 6 h, whereas the TA-loaded NPs maintained the concentration until the end of the
+study (24 h). This study highlights the effectiveness of nanoformulations in increasing the
+bioavailability of TA.
+3.4. Thermal Analysis
+Thermal analysis was also performed for the NPs fabricated using an emulsion tech-
+nique. This was carried out in order to study the stability of the materials in the formula-
+
+Pharmaceutics 2021, 13, 1590
+11 of 20
+tions and to investigate the impact of nanoparticle formation on their stability (Figure 5).
+Extended thermal stability was noticed in the PLGA NPs (E10, PE1 and PE2) compared to
+drug, polymer, and surfactant (Figure S3 in Supplementary Materials).
+Figure 5. Thermogravimetric analysis (TGA) curves exhibiting the extended thermal stability of PLGA NPs (E10) compared
+to individual components (TA, PLGA and PF-127).
+In the thermal analysis of chitosan-coated NPs (CSE10, PE1 and PE2), the thermograms
+of these NPs (Figure S4 in Supplementary Materials) exhibited weight loss around 300 ◦C
+due to the loss of water at the initial degradation of the surface adsorbed chitosan [62].
+Increased thermal stability of the chitosan-coated formulations was observed compared
+to polymer and drug alone, which was also noticed in the thermograms of PLGA NPs.
+In previous studies, similar thermal behavior was noticed where the NPs demonstrated
+enhanced thermal stability compared to the individual components probably due to their
+intact structure and molecular dispersion [63,64].
+To examine the physical state of the drug and the molecular dispersion in the NPs, DSC
+analysis was performed (Figure 6). PLGA displayed two endothermic peaks at 47.58 and
+299.91 ◦C corresponding to glass transition/relaxation and degradation, respectively [65].
+PF-127 displayed an endothermic peak at 56.96 ◦C associated with the melting tempera-
+ture [66]. The endothermic glass transition/relaxation peak of PLGA and melting peak of
+PF-127 were combined and shifted to 55.54 ◦C for E10 formulations, which suggests the
+interaction of the polymer and surfactant in the NPs. TA exhibited a sharp endothermic
+peak at 291.10 ◦C due to the melting point of the crystalline state [67]. Both the endothermic
+peaks of the drug (melting peak) and PLGA (degradation peak) displayed at 312.13 ◦C in
+the physical mixture, the intensity of the drug peak decreased in the physical mixture may
+be due to the dilution effect of polymer and surfactant (a similar amount of TA and PLGA
+was present in the formulation and the physical mixture). However, the degradation peak
+of PLGA was not seen in any of the formulations due to the enhanced thermal stability
+which was observed in the TGA results (Figure S2 in Supplementary Materials).
+
+Pharmaceutics 2021, 13, 1590
+12 of 20
+Figure 6. Differential scanning calorimetry (DSC) thermograms of physical mixture, individual components (TA, PLGA and
+PF-127) and PLGA NPs (E10).
+The sharp endothermic peak of the drug was not seen in any of the PLGA NPs
+(Figure S5 in Supplementary Materials), which indicates the change of the drug to the amor-
+phous form leading to enhanced aqueous solubility of the drug and molecular dispersion in
+the nanoparticulate system [67]. These ﬁndings agree with Salama et al. where ﬂuocinolone
+acetonide-loaded nanoparticles were prepared using PLGA and PF-127 [23]. They noticed
+the conversion of corticosteroid to amorphous form by loss of characteristic endothermic
+peak of the drug in formulations (which is present in pure drug thermogram due to its
+crystalline state). The fusion of endothermic peaks of PLGA and PF-127 highlights the
+entanglement of PLGA chains and PF-127 moieties indicating the formation of intact NPs
+as mentioned in Section 3.1.
+3.5. Fourier Transform Infra-Red Spectroscopy (FT-IR) Analysis
+FT-IR spectra and functional groups of PF-127, PLGA, TA, physical mixture and PLGA
+NPs (E10) are presented in Figure 7 and Table 4. Drug and excipients functional groups
+were present in the formulation with peaks at similar wavenumbers, which suggests that
+there was no interaction between the drug and the components [59].
+Pure TA spectra displayed an infrared absorption band at 3398 cm−1 related to the
+hydrogen-bonded hydroxyl stretching vibration, at 1706 cm−1 associated with stretching
+vibration of the carbonyl group (in the aliphatic ester bonds). Another typical absorption
+band of TA at 1057 cm−1 is due to the stretching vibration of C–F. The physical mixture
+also showed the characteristic peaks of the TA in a similar wavelength range. Blueshift
+of the ketonic carbonyl and C–F groups was observed in the formulation at 1762 and
+1060 cm−1, respectively.
+
+Pharmaceutics 2021, 13, 1590
+13 of 20
+Figure 7. FTIR spectrums of individual components (TA, PLGA and PF-127), physical mixture and PLGA nanoparticles
+(E10).
+Table 4. Representation of FT-IR peaks and functional groups of the individual components, physical mixture and PLGA NPs (E10).
+Frequency
+(cm−1)
+Functional
+Group
+Individual Components (cm−1)
+Physical Mixture (cm−1)
+E10-Nanoparticles (cm−1)
+Ref.
+PLGA
+PF-127
+TA
+PLGA
+PF-127
+TA
+PLGA
+PF-127
+TA
+3510
+OH
+3520
+3495
+[68]
+3398
+OH
+3398
+3398
+[69]
+3000–2950
+C–H
+2997–2954
+2989–2953
+2970–2889
+2970–2886
+[68]
+2891
+C–H
+2888
+2889
+2886
+[70]
+2985–2937
+C–H
+2989–2951
+2970–2889
+2970–2886
+[69]
+1705
+C=O
+1706
+1762
+[69]
+1757
+C=O
+1759
+1751
+1762
+[68]
+1344
+O–H
+1343
+1344
+1344
+[70]
+1055
+C–F
+1057
+1057
+1060
+[67]
+The FT-IR spectra (Figure 8) suggested the existence of chitosan coating on PLGA
+NPs by the presence of characteristics functional group of chitosan; C–H, CONH2 and
+C–O on CS-E10 spectra at 2935, 1631 and 1087 cm−1, respectively, with a slight shift in
+wavenumber [62,71–73].
+The FTIR characteristic peaks of chitosan together with the conversion of negative ZP
+to positive ZP and the thermogram changes of coated NPs suggest the successful coating
+of chitosan onto PLGA NPs. The characteristic negative charge of the eye structures can be
+utilized to enhance drug bioavailability by introducing oppositely charged polymer for
+surface coating [74].
+
+Pharmaceutics 2021, 13, 1590
+14 of 20
+Figure 8. FTIR spectra of chitosan and chitosan-coated PLGA NPs (CS-E10) highlighting the functional groups.
+3.6. In Vitro Drug Release Study
+The %cumulative drug release was plotted against time (h) for the in vitro drug release
+study performed using PBS (pH 7.4) with 0.01% sodium azide and 1% Tween® 80 as release
+media. To increase the solubility of hydrophobic TA, Tween® 80 was used as a surfactant in
+the release medium [75]. The surfactant increased the solubility of the drug from 21 ± 2.16
+to 102.05 ± 4.78 µg/mL. To avoid bacterial contamination of the formulation and the
+release media over 70 h, 0.01% sodium azide was used as an antibacterial agent [36].
+The drug release from the PLGA nano-formulations reached a plateau after 23 h
+and the chitosan-coated nano-formulations reached a plateau at 27 h. Even though the
+release from all the three PLGA NPs was similar, the CS-E10 formulation showed more
+drug release compared to other formulations (59.47 ± 3.28%). This could be due to a
+lower concentration of PLGA in E10 (3.5 mg/mL) compared to PE1 (3.7 mg/mL) and
+PE2 (4.5 mg/mL). With the increase in polymer concentration, the drug might have better
+protection leading to a delay in the drug release [76]. The chitosan-coated NPs fabricated
+using an emulsion method controlled the initial burst release when compared to PLGA NPs.
+In the ﬁrst 2 h, PLGA NPs released 44–40% of the drug (potentially due to the release of
+the drug close to the pores of the PLGA NPs) whereas chitosan-coated PLGA NPs released
+21–37% of the drug, which indicates the role of chitosan coating in controlling the initial
+burst release (Figure 9). Similar control of initial burst release was observed in previously
+published ﬁndings of NPs prepared with the same polymers [62,77].
+The NPs demonstrated a biphasic release, burst release on Day 1 followed by con-
+trolled release; this release pattern is in agreement with previous investigations [78–80].
+Pandit et al. formulated bevacizumab-loaded, chitosan-coated PLGA NPs using emulsion
+technique and investigated the in vitro drug release proﬁle in PBS [36]. They observed
+a similar burst release of the drug in the ﬁrst day followed by controlled release over
+72 h reaching a plateau. The curve ﬁt of the in vitro TA release was analyzed with the
+mathematical models considering regression coefﬁcient (R2) as represented in Table 5.
+Korsmeyer–Peppas is most ﬁtting to the TA release from the NPs (R2 between 0.621 and
+0.894) when compared to other models, which suggests the sustained release of the TA. This
+model indicates that the release from the PLGA NPs involves multiple release mechanisms,
+such as diffusion, dissolution and swelling [81].
+
+Pharmaceutics 2021, 13, 1590
+15 of 20
+Figure 9. Comparison of in vitro drug release of non-coated and coated NPs: (a) E-10 and CS-E10, (b) PE-1 and CS-PE-1
+and (c) PE-2 and CS-PE-2. The concentration of TA-loaded NPs in release media was 25 µg/mL for all formulations.
+Data = mean ± std (n = 3).
+Table 5. In vitro drug release mathematical model ﬁtting concerning linear regression coefﬁcient
+(R2).
+Formulation
+Code
+Regression Coefﬁcient (R2)
+Zero-Order
+First-Order
+Hixson–Crowell
+Higuchi Korsmeyer–Peppas
+PE 1
+0.552
+0.582
+0.572
+0.69
+0.791
+PE 2
+0.756
+0.767
+0.763
+0.893
+0.894
+E 10
+0.338
+0.41
+0.386
+0.464
+0.621
+CS-PE1
+0.237
+0.252
+0.247
+0.387
+0.641
+CS-PE2
+0.503
+0.541
+0.528
+0.676
+0.845
+CS-E10
+0.504
+0.586
+0.56
+0.681
+0.853
+Commercially available corticosteroid implants for posterior inﬂammation like
+Ozurdex® (dexamethasone intravitreal implant) and Retisert® (ﬂuocinolone acetonide
+intravitreal implant) release about 0.2 µg of drug per day [82]. The anti-VEGF activity of
+TA was observed on human retinal epithelial cell lines from a concentration of 4.34 µg [9].
+In the present study, around 25 µg of TA was released in the ﬁrst two days leading to
+a sustained release. The released drug is more than the therapeutic dose of the similar
+corticosteroid intravitreal implants, which is advantageous considering the loss of the
+drug during the transport from the front of the eye to the posterior segment. The drug
+dose regimen depends on the pathological condition of the disease. All three optimized
+
+Pharmaceutics 2021, 13, 1590
+16 of 20
+nano-emulsions (E10, PE1 and PE2) before and after chitosan coating exhibited controlled
+release of the drug over the duration of the experiment (70 h) due to the release mechanism
+of PLGA NPs.
+4. Conclusions
+The formulation of chitosan-coated PLGA NPs was successfully optimized with a
+Box-Behnken response surface DOE and a response optimizer. The optimized surface-
+modiﬁed NPs (CS-E10, CS-PE1 and CS-PE-2) were reproducible and colloidally stable
+with a particle size of 334 ± 67.95 to 386 ± 15.14 nm and PDI between 0.09 ± 0.04 and
+0.15 ± 0.08, having a ZP between +26 ± 9.97 and +33 ± 4.69 mV. These NPs encapsulated
+55–57% of TA and displayed a controlled release of the drug reaching a plateau in 27 h.
+This study highlighted the importance of PF-127 as a surfactant in yielding smaller par-
+ticles with uniform distribution and the utilization of DOE and response optimizer in
+achieving the desired NPs. The prediction formulations (CS-PE1 and CS-PE2) obtained
+from the response optimizer showed high %EE and controlled release of the drug with
+monodispersed NPs. The polymeric matrix of PLGA supports controlled diffusion of
+encapsulated drug, while the mucoadhesive property of chitosan may enhance permeation
+across the barriers of the eye. The size of the NPs in conjunction with the biodegradable
+and biocompatible properties of the polymers suggest these particles might be promising
+for topical ocular drug delivery, which could improve patient comfort and outcomes while
+reducing healthcare expenses by negating or reducing the need for intravitreal injections.
+Supplementary Materials: The following are available online at https://www.mdpi.com/article/10
+.3390/pharmaceutics13101590/s1, Table S1: Design of experiments generated by Box-Behnken design
+statistical design in Minitab software. Table S2: Investigated values of responses for the prepared
+nanoparticles using Box-Behnken design. Figure S1: Comparison of particle size (nm) of PLGA NPs
+before and after coating with chitosan. Table S3: Predicted experimental conditions for low particle
+size and high encapsulation efﬁciency for CS-PLGA nanoparticles. Figure S2: Response optimization
+parameters and predicted experimental conditions for low particle size and high encapsulation
+efﬁciency for CS-PLGA nanoparticles. Table S4: Predicted experimental conditions for low particle
+size and +25 mV zeta potential efﬁciency for CS-PLGA nanoparticles. Figure S3: Thermal analysis of
+individual components and PLGA NPs (PE1, PE2 and E10). Figure S4: Thermal analysis of chitosan-
+coated NPs (CS-E10, CS-PE1 and CS-PE2) and the individual components using TGA. Figure S5:
+DSC thermograms of components and PLGA NPs (E10, PE1 and PE2).
+Author Contributions: Conceptualization, M.D. and L.F.; methodology, M.D., A.C., G.B., P.M. and
+L.F.; writing—original draft preparation, M.D. and L.F.; writing—review and editing, M.D., P.M.,
+A.C., G.B., D.K., S.R., L.C. and L.F.; supervision, A.C., G.B., P.M. and L.F.; project administration, L.F.;
+funding acquisition, L.F. All authors have read and agreed to the published version of the manuscript.
+Funding: This research was funded by the WIT PhD scholarship (project code: WD2017_PhD_023).
+The APC was funded by Research Connexions, WIT.
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Conﬂicts of Interest: All other authors declare no conﬂict of interest.
+References
+1.
+Morley, E. Blindness and Vision. In Iris Murdoch and Elias Canetti: Intellectual Allies; Routledge: Oxfordshire, UK, 2018. Available
+online: https://www.who.int/en/news-room/fact-sheets/detail/blindness-and-visual-impairment (accessed on 15 June 2021).
+2.
+Eurostats. Statistical Ofﬁce of the European Communities, Population Structure and Ageing—Statistics Explained: Luxembourg; Eurostats:
+Luxembourg, 2019; pp. 1–10.
+3.
+Flaxman, S.R.; Bourne, R.R.A.; Resnikoff, S.; Ackland, P.; Braithwaite, T.; Cicinelli, M.V.; Das, A.; Jonas, J.B.; Keeffe, J.; Kempen,
+J.H.; et al. Global causes of blindness and distance vision impairment 1990–2020: A systematic review and meta-analysis. Lancet
+Glob. Health 2017, 5, e1221–e1234. [CrossRef]
+4.
+Falavarjani, K.G.; Nguyen, Q.D. Adverse events and complications associated with intravitreal injection of anti-VEGF agents: A
+review of literature. Eye 2013, 27, 787–794. [CrossRef] [PubMed]
+
+Pharmaceutics 2021, 13, 1590
+17 of 20
+5.
+Senra, H.; Balaskas, K.; Mahmoodi, N.; Aslam, T. Experience of Anti-VEGF Treatment and Clinical Levels of Depression and
+Anxiety in Patients with Wet Age-Related Macular Degeneration. Am. J. Ophthalmol. 2017, 177, 213–224. [CrossRef] [PubMed]
+6.
+Das, U.N. Diabetic macular edema, retinopathy and age-related macular degeneration as inﬂammatory conditions. Arch. Med Sci.
+2016, 12, 1142–1157. [CrossRef]
+7.
+Vandewalle, J.; Luypaert, A.; de Bosscher, K.; Libert, C. Therapeutic Mechanisms of Glucocorticoids. Trends Endocrinol. Metab.
+2018, 29, 42–54. [CrossRef] [PubMed]
+8.
+Imai, S.; Otsuka, T.; Naito, A.; Shimazawa, M.; Hara, H. Triamcinolone Acetonide Suppresses Inﬂammation and Facilitates
+Vascular Barrier Function in Human Retinal Microvascular Endothelial Cells. Curr. Neurovascular Res. 2017, 14, 232–241.
+[CrossRef] [PubMed]
+9.
+Hirani, A.; Grover, A.; Lee, Y.W.; Pathak, Y.; Sutariya, V. Triamcinolone acetonide nanoparticles incorporated in thermoreversible
+gels for age-related macular degeneration. Pharm. Dev. Technol. 2014, 21, 61–67. [CrossRef]
+10.
+Sabzevari, A.; Adibkia, K.; Hashemi, H.; Hedayatfar, A.; Mohsenzadeh, N.; Atyabi, F.; Ghahremani, M.H.; Dinarvand, R.
+Polymeric triamcinolone acetonide nanoparticles as a new alternative in the treatment of uveitis: In vitro and in vivo studies. Eur.
+J. Pharm. Biopharm. 2013, 84, 63–71. [CrossRef] [PubMed]
+11.
+Birrenbach, G.; Speiser, P. Polymerized Micelles and Their Use as Adjuvants in Immunology. J. Pharm. Sci. 1976, 65, 1763–1766.
+[CrossRef]
+12.
+Yadav, M.; Schiavone, N.; Guzman-Aranguez, A.; Giansanti, F.; Papucci, L.; Perez De Lara, M.J.; Singh, M.; Kaur, I.P. Atorvastatin-
+loaded solid lipid nanoparticles as eye drops: Proposed treatment option for age-related macular degeneration (AMD). Drug
+Deliv. Transl. Res. 2020, 10, 919–944. [CrossRef]
+13.
+Chittasupho, C.; Kengtrong, K.; Chalermnithiwong, S.; Sarisuta, N. Anti-angiogenesis by dual action of R5K peptide conjugated
+itraconazole nanoparticles. AAPS PharmSciTech 2020, 21, 74. [CrossRef]
+14.
+Shi, Z.; Li, S.K.; Charoenputtakun, P.; Liu, C.-Y.; Jasinski, D.; Guo, P. RNA nanoparticle distribution and clearance in the eye after
+subconjunctival injection with and without thermosensitive hydrogels. J. Control. Release 2018, 270, 14–22. [CrossRef]
+15.
+Li, C.; Chen, R.; Xu, M.; Qiao, J.; Yan, L.; Guo, X.D. Hyaluronic acid modiﬁed MPEG-b-PAE block copolymer aqueous micelles for
+efﬁcient ophthalmic drug delivery of hydrophobic genistein. Drug Deliv. 2018, 25, 1258–1265. [CrossRef]
+16.
+Tan, G.; Yu, S.; Pan, H.; Li, J.; Liu, D.; Yuan, K.; Yang, X.; Pan, W. Bioadhesive chitosan-loaded liposomes: A more efﬁcient and
+higher permeable ocular delivery platform for timolol maleate. Int. J. Biol. Macromol. 2017, 94, 355–363. [CrossRef] [PubMed]
+17.
+Lancina, M. Fast Dissolving Dendrimer Nanoﬁber (DNF) Mats as Alternative to Eye Drops for More Efﬁcient Topical Antiglau-
+coma Drug Delivery. ACS Biomater. Sci. Eng. 2017, 3, 1861–1868. [CrossRef]
+18.
+Bin Sahadan, M.Y.; Tong, W.Y.; Tan, W.N.; Leong, C.R.; Bin Misri, M.N.; Chan, M.; Cheng, S.Y.; Shaharuddin, S. Phomopsidione
+nanoparticles coated contact lenses reduce microbial keratitis causing pathogens. Exp. Eye Res. 2019, 178, 10–14. [CrossRef]
+19.
+McAvoy, K.; Jones, D.; Thakur, R.R.S. Synthesis and Characterisation of Photocrosslinked poly(ethylene glycol) diacrylate
+Implants for Sustained Ocular Drug Delivery. Pharm. Res. 2018, 35, 1–17. [CrossRef]
+20.
+Alexander-bryant, A.A.; Berg-foels, W.S. Vanden Berg-foels. In Bioengineering Strategies for Designing Targeted Cancer Therapies, 1st
+ed.; Elsevier: Amsterdam, The Netherlands, 2013; Volume 118, ISBN 9780124071735.
+21.
+Akbarzadeh, A.; Rezaei-Sadabady, R.; Davaran, S.; Joo, S.W.; Zarghami, N.; Hanifehpour, Y.; Samiei, M.; Kouhi, M.; Nejati-Koshki,
+K. Liposome: Classiﬁcation, preparation, and applications. Nanoscale Res. Lett. 2013, 8, 102. [CrossRef] [PubMed]
+22.
+Zhang, X.; Cao, X.; Qi, P. Therapeutic contact lenses for ophthalmic drug delivery: Major challenges. J. Biomater. Sci. Polym. Ed.
+2020, 31, 549–560. [CrossRef] [PubMed]
+23.
+Salama, A.; Mahmoud, A.; Kamel, R. A Novel Method for Preparing Surface-Modiﬁed Fluocinolone Acetonide Loaded PLGA
+Nanoparticles for Ocular Use: In Vitro and In Vivo Evaluations. AAPS PharmSciTech 2015, 17, 1159–1172. [CrossRef] [PubMed]
+24.
+Khan, N.; Ameeduzzafar; Khanna, K.; Bhatnagar, A.; Ahmad, F.; Ali, A. Chitosan coated PLGA nanoparticles amplify the ocular
+hypotensive effect of forskolin: Statistical design, characterization and in vivo studies. Int. J. Biol. Macromol. 2018, 116, 648–663.
+[CrossRef] [PubMed]
+25.
+Tahara, K.; Karasawa, K.; Onodera, R.; Takeuchi, H. Feasibility of drug delivery to the eye’s posterior segment by topical
+instillation of PLGA nanoparticles. Asian J. Pharm. Sci. 2017, 12, 394–399. [CrossRef]
+26.
+Eid, H.M.; Elkomy, M.H.; el Menshawe, S.F.; Salem, H.F. Development, Optimization, and In Vitro/In Vivo Characterization
+of Enhanced Lipid Nanoparticles for Ocular Delivery of Oﬂoxacin: The Inﬂuence of Pegylation and Chitosan Coating. AAPS
+PharmSciTech 2019, 20, 183. [CrossRef]
+27.
+Alkholief, M.; Albasit, H.; Alhowyan, A.; Alshehri, S.; Raish, M.; Kalam, A.; Alshamsan, A. Employing a PLGA-TPGS based
+nanoparticle to improve the ocular delivery of Acyclovir. Saudi Pharm. J. 2019, 27, 293–302. [CrossRef]
+28.
+Sánchez-López, E.; Esteruelas, G.; Ortiz, A.; Espina, M.; Prat, J.; Muñoz, M.; Cano, A.; Calpena, A.C.; Ettcheto, M.; Camins, A.;
+et al. Dexibuprofen Biodegradable Nanoparticles: One Step Closer towards a Better Ocular Interaction Study. Nanomaterials 2020,
+10, 720. [CrossRef] [PubMed]
+29.
+Liu, S.; Dozois, M.D.; Chang, C.N.; Ahmad, A.; Ng, D.L.T.; Hileeto, D.; Liang, H.; Reyad, M.-M.; Boyd, S.; Jones, L.W.; et al.
+Prolonged Ocular Retention of Mucoadhesive Nanoparticle Eye Drop Formulation Enables Treatment of Eye Diseases Using
+Signiﬁcantly Reduced Dosage. Mol. Pharm. 2016, 13, 2897–2905. [CrossRef]
+30.
+Sharma, S.; Parmar, A.; Kori, S.; Sandhir, R. PLGA-based nanoparticles: A new paradigm in biomedical applications. TrAC Trends
+Anal. Chem. 2016, 80, 30–40. [CrossRef]
+
+Pharmaceutics 2021, 13, 1590
+18 of 20
+31.
+FDA. “OZURDEX (Dexamethasone Intravitreal Implant)”, 2014. Available online: https://www.accessdata.fda.gov/drugsatfda_
+docs/label/2014/022315s009lbl.pdf (accessed on 15 June 2021).
+32.
+Akhter, S.; Ramazani, F.; Ahmad, M.Z.; Ahmad, F.; Rahman, Z.; Bhatnagar, A.; Storm, G. Ocular pharmacoscintigraphic and
+aqueous humoral drug availability of ganciclovir-loaded mucoadhesive nanoparticles in rabbits. Eur. J. Nanomed. 2013, 5.
+[CrossRef]
+33.
+Silva, B.; Marto, J.; Braz, B.S.; Delgado, E.; Almeida, A.; Gonçalves, L. New nanoparticles for topical ocular delivery of
+erythropoietin. Int. J. Pharm. 2020, 576, 119020. [CrossRef]
+34.
+Bíró, T.; Aigner, Z. Current Approaches to Use Cyclodextrins and Mucoadhesive Polymers in Ocular Drug Delivery—A Mini-
+Review. Sci. Pharm. 2019, 87, 15. [CrossRef]
+35.
+Akhter, S.; Anwar, M.; Siddiqui, M.A.; Ahmad, I.; Ahmad, J.; Ahmad, M.Z.; Bhatnagar, A.; Ahmad, F.J. Improving the topical
+ocular pharmacokinetics of an immunosuppressant agent with mucoadhesive nanoemulsions: Formulation development, in-vitro
+and in-vivo studies. Colloids Surf. B Biointerfaces 2016, 148, 19–29. [CrossRef]
+36.
+Pandit, J.; Sultana, Y.; Aqil, M. Chitosan-coated PLGA nanoparticles of bevacizumab as novel drug delivery to target retina:
+Optimization, characterization, and in vitro toxicity evaluation. Artif. Cells Nanomed. Biotechnol. 2017, 45, 1397–1407. [CrossRef]
+[PubMed]
+37.
+Chronopoulou, L.; Massimi, M.; Giardi, M.F.; Cametti, C.; Devirgiliis, L.C.; Dentini, M.; Palocci, C. Chitosan-coated PLGA
+nanoparticles: A sustained drug release strategy for cell cultures. Colloids Surf. B Biointerfaces 2013, 103, 310–317. [CrossRef]
+[PubMed]
+38.
+Ding, D.; Kundukad, B.; Somasundar, A.; Vijayan, S.; Khan, S.A.; Doyle, P.S. Design of Mucoadhesive PLGA Microparticles for
+Ocular Drug Delivery. ACS Appl. Bio Mater. 2018, 1, 561–571. [CrossRef]
+39.
+Pontillo, A.R.N.; Detsi, A. Nanoparticles for ocular drug delivery: Modiﬁed and non-modiﬁed chitosan as a promising biocom-
+patible carrier. Nanomedicine 2019, 14, 1889–1909. [CrossRef]
+40.
+Seyfoddin, A.; Sherwin, T.; Patel, D.; McGhee, C.N.; Rupenthal, I.; Taylor, J.A.; Al-Kassas, R. Ex vivo and In vivo Evaluation of
+Chitosan Coated Nanostructured Lipid Carriers for Ocular Delivery of Acyclovir. Curr. Drug Deliv. 2016, 13, 923–934. [CrossRef]
+41.
+Kirch, J.; Schneider, M.; Abou, B.; Hopf, A.; Schaefer, U.F.; Schall, C.; Wagner, C.; Lehr, C.-M. Optical tweezers reveal relationship
+between microstructure and nanoparticle penetration of pulmonary mucus. Proc. Natl. Acad. Sci. USA 2012, 109, 18355–18360.
+[CrossRef]
+42.
+Guo, C.; Gemeinhart, R.A. Understanding the adsorption mechanism of chitosan onto poly(lactide-co-glycolide) particles. Eur. J.
+Pharm. Biopharm. 2008, 70, 597–604. [CrossRef]
+43.
+Tan, S.; Billa, N.; Roberts, C.; Burley, J. Surfactant effects on the physical characteristics of Amphotericin B-containing nanostruc-
+tured lipid carriers. Colloids Surf. A Physicochem. Eng. Asp. 2010, 372, 73–79. [CrossRef]
+44.
+Zamboulis, A.; Nanaki, S.; Michailidou, G.; Koumentakou, I.; Lazaridou, M.; Ainali, N.M.; Xanthopoulou, E.; Bikiaris, D.N.
+Chitosan and its Derivatives for Ocular Delivery Formulations: Recent Advances and Developments. Polymers 2020, 12, 1519.
+[CrossRef]
+45.
+Swider, E.; Koshkina, O.; Tel, J.; Cruz, L.J.; de Vries, I.J.M.; Srinivas, M. Customizing poly(lactic-co-glycolic acid) particles for
+biomedical applications. Acta Biomater. 2018, 73, 38–51. [CrossRef] [PubMed]
+46.
+Victor, R.D.S.; Santos, A.M.D.C.; de Sousa, B.V.; Neves, G.D.A.; Santana, L.N.D.L.; Menezes, R.R. A Review on Chitosan’s Uses as
+Biomaterial: Tissue Engineering, Drug Delivery Systems and Cancer Treatment. Materials 2020, 13, 4995. [CrossRef]
+47.
+De Lima, I.A.; Khalil, N.M.; Tominaga, T.T.; Lechanteur, A.; Sarmento, B.; Mainardes, R.M. Mucoadhesive chitosan-coated PLGA
+nanoparticles for oral delivery of ferulic acid. Artif. Cells Nanomed. Biotechnol. 2018, 46, 993–1002. [CrossRef] [PubMed]
+48.
+Feczkó, T.; Tóth, J.; Gyenis, J. Comparison of the preparation of PLGA–BSA nano- and microparticles by PVA, poloxamer and
+PVP. Colloids Surf. A Physicochem. Eng. Asp. 2008, 319, 188–195. [CrossRef]
+49.
+Mayol, L.; Serri, C.; Menale, C.; Crispi, S.; Piccolo, M.T.; Mita, L.; Giarra, S.; Forte, M.; Saija, A.; Biondi, M.; et al. Curcumin loaded
+PLGA–poloxamer blend nanoparticles induce cell cycle arrest in mesothelioma cells. Eur. J. Pharm. Biopharm. 2015, 93, 37–45.
+[CrossRef]
+50.
+Giarra, S.; Serri, C.; Russo, L.; Zeppetelli, S.; de Rosa, G.; Borzacchiello, A.; Biondi, M.; Ambrosio, L.; Mayol, L. Spontaneous
+arrangement of a tumor targeting hyaluronic acid shell on irinotecan loaded PLGA nanoparticles. Carbohydr. Polym. 2016, 140,
+400–407. [CrossRef]
+51.
+Santander-Ortega, M.J.; González, D.B.; Ortega-Vinuesa, J.L.; Alonso, M.J. Insulin-loaded PLGA nanoparticles for oral adminis-
+tration: An in vitro physico-chemical characterization. J. Biomed. Nanotechnol. 2009, 5, 45–53. [CrossRef]
+52.
+Liu, W.-Y.; Lin, C.-C.; Hsieh, Y.-S.; Wu, Y.-T. Nanoformulation Development to Improve the Biopharmaceutical Properties of
+Fisetin Using Design of Experiment Approach. Molecules 2021, 26, 3031. [CrossRef]
+53.
+Lakhani, P.; Patil, A.; Wu, K.-W.; Sweeney, C.; Tripathi, S.; Avula, B.; Taskar, P.; Khan, S.; Majumdar, S. Optimization, stabilization,
+and characterization of amphotericin B loaded nanostructured lipid carriers for ocular drug delivery. Int. J. Pharm. 2019, 572,
+118771. [CrossRef] [PubMed]
+54.
+Yu, X.-L.; He, Y. Application of Box-Behnken designs in parameters optimization of differential pulse anodic stripping voltamme-
+try for lead(II) determination in two electrolytes. Sci. Rep. 2017, 7, 2789. [CrossRef]
+
+Pharmaceutics 2021, 13, 1590
+19 of 20
+55.
+Alvarez-Trabado, J.; López-García, A.; Martin-Pastor, M.; Diebold, Y.; Sanchez, A. Sorbitan ester nanoparticles (SENS) as a novel
+topical ocular drug delivery system: Design, optimization, and in vitro/ex vivo evaluation. Int. J. Pharm. 2018, 546, 20–30.
+[CrossRef]
+56.
+Madani, F.; Esnaashari, S.S.; Mujokoro, B.; Dorkoosh, F.; Khosravani, M.; Adabi, M. Investigation of Effective Parameters on Size
+of Paclitaxel Loaded PLGA Nanoparticles. Adv. Pharm. Bull. 2018, 8, 77–84. [CrossRef]
+57.
+Canioni, R.; Reynaud, F.; Leite-Nascimento, T.; Gueutin, C.; Guiblin, N.; Ghermani, N.-E.; Jayat, C.; Daull, P.; Garrigue, J.-S.; Fattal,
+E.; et al. Tiny dexamethasone palmitate nanoparticles for intravitreal injection: Optimization and in vivo evaluation. Int. J. Pharm.
+2021, 600, 120509. [CrossRef]
+58.
+Johnston, S.T.; Faria, M.; Crampin, E.J. An analytical approach for quantifying the inﬂuence of nanoparticle polydispersity on
+cellular delivered dose. J. R. Soc. Interface 2018, 15, 20180364. [CrossRef]
+59.
+Tatke, A.; Dudhipala, N.; Janga, K.Y.; Balguri, S.P.; Avula, B.; Jablonski, M.M.; Majumdar, S. In Situ Gel of Triamcinolone
+Acetonide-Loaded Solid Lipid Nanoparticles for Improved Topical Ocular Delivery: Tear Kinetics and Ocular Disposition Studies.
+Nanomaterials 2018, 9, 33. [CrossRef]
+60.
+Schopf, L.R.; Popov, A.M.; Enlow, E.M.; Bourassa, J.L.; Ong, W.Z.; Nowak, P.; Chen, H. Topical Ocular Drug Delivery to the Back
+of the Eye by Mucus-Penetrating Particles. Transl. Vis. Sci. Technol. 2015, 4, 11. [CrossRef]
+61.
+Xing, Y.; Zhu, L.; Zhang, K.; Li, T.; Huang, S. Nanodelivery of triamcinolone acetonide with PLGA-chitosan nanoparticles for the
+treatment of ocular inﬂammation. Artif. Cells Nanomed. Biotechnol. 2021, 49, 308–316. [CrossRef] [PubMed]
+62.
+Lu, B.; Lv, X.; Le, Y. Chitosan-Modiﬁed PLGA Nanoparticles for Control-Released Drug Delivery. Polymers 2019, 11, 304.
+[CrossRef] [PubMed]
+63.
+Hu, F.; Liu, W.; Yan, L.; Kong, F.; Wei, K. Optimization and characterization of poly(lactic-co-glycolic acid) nanoparticles loaded
+with astaxanthin and evaluation of anti-photodamage effect in vitro. R. Soc. Open Sci. 2019, 6, 191184. [CrossRef]
+64.
+Gathirwa, J.W.; Omwoyo, W.N.; Ogutu, B.; Oloo, F.; Swai, H.; Kalombo, L.; Melariri, P.; Maroa, G.; Mahanga, G.M. Preparation,
+characterization, and optimization of primaquine-loaded solid lipid nanoparticles. Int. J. Nanomed. 2014, 9, 3865–3874. [CrossRef]
+[PubMed]
+65.
+Erbetta, C.D.C. Synthesis and Characterization of Poly(D,L-Lactide-co-Glycolide) Copolymer. J. Biomater. Nanobiotech. 2012, 03,
+208–225. [CrossRef]
+66.
+Kunasekaran, V.; Krishnamoorthy, K. Compatibility studies of rasagiline mesylate with selected excipients for an effective solid
+lipid nanoparticles formulation. Int. J. Pharm. Pharm. Sci. 2015, 7, 73–80.
+67.
+García-Millán, E.; Quintáns-Carballo, M.; Otero-Espinar, F.J. Solid-state characterization of triamcinolone acetonide nanosuspen-
+siones by X-ray spectroscopy, ATR Fourier transforms infrared spectroscopy and differential scanning calorimetry analysis. Data
+Brief 2017, 15, 133–137. [CrossRef]
+68.
+Zhang, Z.; Wang, X.; Zhu, R.; Wang, Y.; Li, B.; Ma, Y.; Yin, Y. Synthesis and characterization of serial random and block-copolymers
+based on lactide and glycolide. Polym. Sci. Ser. B 2016, 58, 720–729. [CrossRef]
+69.
+Abou-ElNour, M.; Ishak, R.A.; Tiboni, M.; Bonacucina, G.; Cespi, M.; Casettari, L.; Soliman, M.E.; Geneidi, A.S. Triamcinolone
+acetonide-loaded PLA/PEG-PDL microparticles for effective intra-articular delivery: Synthesis, optimization, in vitro and in vivo
+evaluation. J. Control. Release 2019, 309, 125–144. [CrossRef] [PubMed]
+70.
+Al Kayal, T.; Panetta, D.; Canciani, B.; Losi, P.; Tripodi, M.; Burchielli, S.; Ottoni, P.; Salvadori, P.A.; Soldani, G. Evaluation of the
+Effect of a Gamma Irradiated DBM-Pluronic F127 Composite on Bone Regeneration in Wistar Rat. PLoS ONE 2015, 10, e0125110.
+[CrossRef] [PubMed]
+71.
+Yasmeen, S.; Kabiraz, M.K.; Saha, B.; Qadir; Gafur; Masum, S. Chromium (VI) Ions Removal from Tannery Efﬂuent using
+Chitosan-Microcrystalline Cellulose Composite as Adsorbent. Int. Res. J. Pure Appl. Chem. 2016, 10, 1–14. [CrossRef]
+72.
+Lustriane, C.; Dwivany, F.M.; Suendo, V.; Reza, M. Effect of chitosan and chitosan-nanoparticles on post harvest quality of banana
+fruits. J. Plant Biotechnol. 2018, 45, 36–44. [CrossRef]
+73.
+Dennis, G.; Harrison, W.; Agnes, K.; Erastus, G. Effect of Biological Control Antagonists Adsorbed on Chitosan Immobilized
+Silica Nanocomposite on Ralstonia solanacearum and Growth of Tomato Seedlings. Adv. Res. 2016, 6, 1–23. [CrossRef]
+74.
+Nagarwal, R.C.; Kant, S.; Singh, P.; Maiti, P.; Pandit, J. Polymeric nanoparticulate system: A potential approach for ocular drug
+delivery. J. Control. Release 2009, 136, 2–13. [CrossRef]
+75.
+Abouelmagd, S.A.; Sun, B.; Chang, A.C.; Ku, Y.J.; Yeo, Y. Release Kinetics Study of Poorly Water-Soluble Drugs from Nanoparticles:
+Are We Doing It Right? Mol. Pharm. 2015, 12, 997–1003. [CrossRef]
+76.
+Kamaly, N.; Yameen, B.; Wu, J.; Farokhzad, O.C. Degradable Controlled-Release Polymers and Polymeric Nanoparticles:
+Mechanisms of Controlling Drug Release. Chem. Rev. 2016, 116, 2602–2663. [CrossRef] [PubMed]
+77.
+Chae, J.M.; Oh, I.J. Sustained Release of All-trans Retinoic Acid from Chitosan-coated Poly(DL-lactide-co-glycolide) Nanoparticles.
+Yakhak Hoeji 2019, 63, 367–373. [CrossRef]
+78.
+Yoncheva, K.; Vandervoort, J.; Ludwig, A. Development of mucoadhesive poly(lactide-co-glycolide) nanoparticles for ocular
+application. Pharm. Dev. Technol. 2009, 16, 29–35. [CrossRef] [PubMed]
+79.
+Reardon, P.J.; Parhizkar, M.; Harker, A.H.; Browning, R.J.; Vassileva, V.; Stride, E.; Pedley, R.B.; Edirisinghe, M.; Knowles, J.C.
+Electrohydrodynamic fabrication of core–shell PLGA nanoparticles with controlled release of cisplatin for enhanced cancer
+treatment. Int. J. Nanomed. 2017, 12, 3913–3926. [CrossRef]
+
+Pharmaceutics 2021, 13, 1590
+20 of 20
+80.
+Yang, X.; Trinh, H.M.; Agrahari, V.; Sheng, Y.; Pal, D.; Mitra, A.K. Nanoparticle-Based Topical Ophthalmic Gel Formulation for
+Sustained Release of Hydrocortisone Butyrate. AAPS PharmSciTech 2015, 17, 294–306. [CrossRef] [PubMed]
+81.
+Bruschi, M.L. (Ed.) 5-Mathematical models of drug release. In Strategies to Modify the Drug Release from Pharmaceutical Systems;
+Woodhead Publishing: Sawston, UK, 2015; pp. 63–86, ISBN 978-0-08-100092-2.
+82.
+Steeples, L.R.; Jones, N.P.; Leal, I. Evaluating the Safety, Efﬁcacy and Patient Acceptability of Intravitreal Fluocinolone Acetonide
+(0.2 mcg/Day) Implant in the Treatment of Non-Infectious Uveitis Affecting the Posterior Segment. Clin. Ophthalmol. 2021, 15,
+1433–1442. [CrossRef]

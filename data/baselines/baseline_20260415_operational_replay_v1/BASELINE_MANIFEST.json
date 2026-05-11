@@ -1,0 +1,123 @@
+{
+  "baseline_id": "baseline_20260415_operational_replay_v1",
+  "baseline_type": "operational_replay_baseline",
+  "date": "2026-04-15",
+  "purpose": "Register the frozen 2026-04-15 DEV15 operational no-new-LLM replay baseline as a first-class governed baseline object rooted at the promoted full-pipeline freeze.",
+  "authority_root": "data/frozen/dev15_full_pipeline_freeze_v1",
+  "source_artifacts": {
+    "freeze_run_context": "data/frozen/dev15_full_pipeline_freeze_v1/RUN_CONTEXT.md",
+    "freeze_summary": "data/frozen/dev15_full_pipeline_freeze_v1/metadata/freeze_summary_v1.json",
+    "identity_freeze_summary": "data/frozen/dev15_full_pipeline_freeze_v1/identity_freeze/identity_freeze_summary_v1.tsv",
+    "portable_stage2_freeze_manifest": "data/frozen/dev15_stage2_freeze_v1/FREEZE_MANIFEST.md",
+    "portable_stage2_resume_surface": "data/frozen/dev15_stage2_freeze_v1/s2_7/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "promotion_source_run": "data/results/20260412_8517d36/18_full_pipeline_benchmark_dev15_v1",
+    "baseline_membership_audit": "analysis/baseline_regressions/baseline_membership_audit_2026-04-15.md"
+  },
+  "artifact_chain": [
+    {
+      "boundary": "S2-4b",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/s2_4b/analysis/s2_4b_request_summary_v1.tsv",
+      "artifact_role": "replay-grade raw-response freeze summary"
+    },
+    {
+      "boundary": "S2-5",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/s2_5/semantic_stage2_objects/semantic_stage2_v2_summary.tsv",
+      "artifact_role": "semantic parsing summary"
+    },
+    {
+      "boundary": "S2-6",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/s2_6/analysis/stage2_semantic_authority_contract_report_v1.json",
+      "artifact_role": "Stage2 contract validation report"
+    },
+    {
+      "boundary": "S2-7",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/s2_7/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+      "artifact_role": "lawful downstream resume artifact"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/stage3/formulation_relation_records_v1.tsv",
+      "artifact_role": "relation materialization records"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/stage3/resolved_relation_fields_v1.tsv",
+      "artifact_role": "resolved relation carry-through fields"
+    },
+    {
+      "boundary": "Stage5",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/stage5/final_formulation_table_v1.tsv",
+      "artifact_role": "benchmark-facing final table in this lineage scope"
+    },
+    {
+      "boundary": "Stage5",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/stage5/final_output_decision_trace_v1.tsv",
+      "artifact_role": "Stage5 decision trace"
+    },
+    {
+      "boundary": "identity_freeze",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1/identity_freeze/identity_freeze_summary_v1.tsv",
+      "artifact_role": "benchmark-validity gate result"
+    }
+  ],
+  "lineage_chain": [
+    {
+      "label": "portable_stage2_freeze",
+      "path": "data/frozen/dev15_stage2_freeze_v1",
+      "coverage": "portable frozen S2-2 through S2-7 chain",
+      "authority_status": "upstream provenance support"
+    },
+    {
+      "label": "full_pipeline_freeze",
+      "path": "data/frozen/dev15_full_pipeline_freeze_v1",
+      "coverage": "promoted S2-4b through identity_freeze replay lineage",
+      "authority_status": "baseline authority root"
+    },
+    {
+      "label": "promotion_source_run",
+      "path": "data/results/20260412_8517d36/18_full_pipeline_benchmark_dev15_v1",
+      "coverage": "promotion provenance source run",
+      "authority_status": "provenance source only"
+    }
+  ],
+  "stage_coverage": [
+    "S2-4b",
+    "S2-5",
+    "S2-6",
+    "S2-7",
+    "Stage3",
+    "Stage5",
+    "identity_freeze"
+  ],
+  "boundary_classification": {
+    "lawful_resume_boundary": "S2-7",
+    "boundary_classes": {
+      "S2-4b": "diagnostic_boundary",
+      "S2-5": "internal_intermediate",
+      "S2-6": "internal_intermediate",
+      "S2-7": "mainline_resume_boundary",
+      "Stage3": "internal_intermediate",
+      "Stage5": "diagnostic_boundary",
+      "identity_freeze": "diagnostic_boundary"
+    }
+  },
+  "benchmark_validity": "not_benchmark_valid",
+  "limitations": [
+    "This baseline is an operational replay baseline, not a full-pipeline baseline.",
+    "It does not prove replay traversal of S2-2 evidence construction inside the checked baseline lineage.",
+    "Identity freeze failed, so the lineage is not benchmark-valid overall.",
+    "GT comparison was not executed for this frozen lineage.",
+    "Observed Stage5 exclusion behavior is stage-local evidence only and does not legalize benchmark reporting."
+  ],
+  "linked_audits": [
+    "analysis/baseline_regressions/baseline_membership_audit_2026-04-15.md",
+    "docs/audits/dev15_s2_2_replay_validation_2026-04-10.md",
+    "docs/audits/deterministic_two_step_baseline_audit_2026-04-15.md"
+  ],
+  "baseline_lookup_aliases": [
+    "baseline_20260415_operational_replay_v1",
+    "20260415 baseline",
+    "2026-04-15 baseline",
+    "20260415 operational replay baseline"
+  ]
+}

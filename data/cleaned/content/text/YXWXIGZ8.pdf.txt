@@ -1,0 +1,1097 @@
+Nanotechnology
+
+PAPER • OPEN ACCESS
+RABV antigenic peptide loaded polymeric
+nanoparticle production, characterization, and
+preliminary investigation of its biological activity
+To cite this article: Kübra Bezir et al 2025 Nanotechnology 36 025603
+
+View the article online for updates and enhancements.
+You may also like
+Laser-assisted synthesis and modification
+of 2D materials
+Yejun Lee, Sunhwa Hong, Issac Moon et
+al.
+-
+PTFE-based antistatic coatings by
+incorporating modified carbon black
+Pan Xue, Zhen Chen, Linfeng Wei et al.
+-
+CRISPR-based strategies for sample-to-
+answer monkeypox detection: current
+status and emerging opportunities
+Md Ahasan Ahamed, Anthony J Politza,
+Tianyi Liu et al.
+-
+This content was downloaded from IP address 129.2.89.164 on 21/10/2025 at 18:40
+
+Nanotechnology
+Nanotechnology 36 (2025) 025603 (12pp)
+https://doi.org/10.1088/1361-6528/ad84fe
+RABV antigenic peptide loaded
+polymeric nanoparticle production,
+characterization, and preliminary
+investigation of its biological activity
+Kübra Bezir1, Pelin Pelit Arayici2,3, Bus¸ra Akgül2, Emrah S¸efik Abamor2
+and Serap Acar2,∗
+1 Faculty of Engineering and Natural Sciences, Bioengineering Department, Bursa Technical University,
+Bursa, Turkey
+2 Faculty of Chemical and Metallurgical Engineering, Bioengineering Department, Yildiz Technical
+University, Istanbul, Turkey
+3 Health Biotechnology Joint Research and Application Center of Excellence, 34220 Esenler, Istanbul,
+Turkey
+E-mail: serapacar5@gmail.com
+Received 29 July 2024, revised 18 September 2024
+Accepted for publication 9 October 2024
+Published 18 October 2024
+Abstract
+Nanoparticle-based antigen carrier systems have become a significant area of research with the
+advancement of nanotechnology. Biodegradable polymers have emerged as particularly
+promising carrier vehicles due to their ability to address the limitations of existing vaccine
+systems. In this study, we successfully encapsulated the G5-24 linear peptide, located between
+amino acids 253 and 275 in the primary sequence of the rabies virus G protein, into
+biodegradable and biocompatible PLGA copolymer using the double emulsion solvent
+evaporation method. The resulting nanoparticles had a size of approximately
+230.9 ± 0.9074 nm, with a PDI value of 0.168 ± 0.017 and a zeta potential value of
+−9.86 ± 0.132 mV. SEM images confirmed that the synthesized nanoparticles were uniform in
+size and distribution. Additionally, FTIR spectra indicated successful peptide loading into the
+nanoparticles. The encapsulation efficiency of the peptide-loaded nanoparticles was 73.3%,
+with a peptide loading capacity of 48.2% and a reaction yield of 30.4%. Peptide release studies
+demonstrated that 65.55% of the peptide was released in a controlled manner over 28 d,
+following a ‘biphasic burst release’ profile consistent with the degradation profile of PLGA.
+This controlled release is particularly beneficial for vaccine studies. Cytotoxicity tests revealed
+that the R-NP formulation did not induce cytotoxicity in fibroblast cells and enhanced NO
+production in macrophages, indicating its potential for vaccine development.
+Keywords: rabies, peptide delivery, PLGA nanoparticles, vaccine, nitric oxide
+∗Author to whom any correspondence should be addressed.
+Original content from this work may be used under the terms
+of the Creative Commons Attribution 4.0 licence. Any fur-
+ther distribution of this work must maintain attribution to the author(s) and the
+title of the work, journal citation and DOI.
+1
+© 2024 The Author(s). Published by IOP Publishing Ltd
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+1. Introduction
+Rabies, a viral central nervous system (CNS) infection, is
+caused by the rabies virus (RABV), which belongs to the genus
+Lyssavirus and the family Rhabdoviridae. This disease leads to
+approximately 60 000 human deaths annually worldwide [1].
+The primary source of RABV transmission is through the bites
+of rabid animals, especially dogs. Contagious saliva from rabid
+dogs accounts for 98% of transmission cases [2, 3].
+RABV infection is difficult to diagnose for most of its
+lifespan, and symptoms of neuronal dysfunction usually
+emerge at the end of the illness [4]. Rabies can occur in
+two distinct forms. The majority of those who contract rabies
+develop the classic (furious) form, while a smaller proportion
+develop the paralytic form. In the classic form, symptoms such
+as hydrophobia and aerophobia are common, and the disease
+progresses to coma, whereas the paralytic form begins with
+muscle weakness and eventually advances to paralysis [5, 6].
+Once clinical symptoms manifest, the outcome is mostly fatal.
+However, human vaccinations can be used before and after
+exposure to prevent/treat the RABV [7].
+Five viral proteins are encoded by the RABV genome,
+which is a single-stranded, (−) polarity RNA of about 12 kb
+in size [8]. RABV’s ribonucleoprotein (RNP) core is made up
+of N (nucleoprotein), P (phosphoprotein), and L (polymerase)
+proteins, along with viral RNA. The lipid membrane is com-
+posed of the G (glycoprotein) and M (matrix) proteins [9, 10].
+G protein is a trimeric transmembrane protein with 524 amino
+acids and three domains: ectodomain, transmembrane, and
+cytoplasmic domain. The attachment of the virus to the cells
+[11], spread in the CNS, and activation of both cellular and
+humoral immune responses [12] are all dependent on this pro-
+tein. Furthermore, the generation of a potent virus-neutralizing
+antibody (VNA) is solely stimulated by this protein [13]. It
+has been used extensively in vaccine development [14–16].
+Studies utilizing monoclonal antibodies (mAbs) have revealed
+that virus-neutralizing mAbs do not bind to epitopes on the G
+protein when it is denatured. However, contrary to this rule,
+the G5 antigenic region is a linear, non-conformational epitope
+that is recognized by mAbs [17]. This epitope is situated in a
+conserved region, indicating that peptides designed to target it
+could promote VNA production and aid in the development of
+synthetic peptide vaccines against RABV. G5-24, a 24-amino
+acid peptide sequence (PPDQLVNLHDFRSDEIEHLVVEE)
+discovered by Dietzschold et al. (1990) based on the G5 anti-
+genic region, was used for this present study. This peptide is
+known to exhibit immunogenic properties and induces VNA
+production [18, 19].
+Vaccines made from the entire organism are known for gen-
+erating strong humoral and cellular immune responses, but
+their high cost of production and notable side effects have
+led to the emergence of subunit vaccines [20]. These vaccines
+are comprised of antigenic elements of the infectious agent.
+One such type, synthetic peptide vaccines, consists of frag-
+ments of proteins that are recognized by the immune system
+[21, 22]. Produced through chemical synthesis or biological
+means, these peptides offer numerous benefits, including high
+standardization [23], cost-effectiveness, enhanced stability
+[24], and lack of virulence [22]. Peptide vaccines offer numer-
+ous applications, including allergy treatment [25], virus infec-
+tion prevention [26], cancer therapy [27], and Alzheimer’s
+disease [28] management. Yet, due to their low immunogen-
+icity, adjuvants, or carrier systems (such as liposomal for-
+mulations, polymeric or inorganic particles [29]) must be
+utilized to enhance their properties. Nanoparticulate drug
+delivery systems serve as a protective mechanism to prevent
+molecule degradation and promote increased bioavailability
+and immune response [30].
+Poly (lactic acid-co-glycolic acid) (PLGA) is a biodegrad-
+able polymer ester made up of lactic and glycolic acid. It
+has been widely adopted as a vaccine delivery system due
+to its ability to break down into its monomers in the biolo-
+gical system [31]. Its safety as a pharmaceutical excipient has
+been approved by the Food and Drug Administration [32].
+Encapsulating peptide fragments demonstrates a self-adjuvant
+feature that prompts the immune system and releases active
+substances in a controlled manner. Additionally, the PLGA
+nano/micro particle systems extend the plasma half-life of
+peptides and provide passive targeting to cells by regulating
+parameters such as size and surface charge [33]. Modifying the
+monomer ratios in its structure allows for the control of proper-
+ties like hydrophilicity, degradation rate, and crystallinity [34].
+A study conducted by Clawson et al investigated the effect of
+PLGA as a carrier system. They observed that encapsulating
+an immunostimulatory peptide, Hp91, in PLGA nanoparticles
+increased its capacity to stimulate dendritic cells when com-
+pared to the free peptide [35].
+The present research explores the loading of G5-24 pep-
+tide onto PLGA nanoparticles, which can specifically bind to
+the G5 antigenic region of the RABV G protein. This study
+is the first investigation into the physical and chemical prop-
+erties of the resulting nanoparticles, as well as their biocom-
+patibility. The encapsulation of the G5-24 peptide into PLGA
+nanoparticles was achieved using the double emulsion solvent
+evaporation (w/o/w) method. Morphological characterization
+of the nanoparticles was performed using field emission scan-
+ning electron microscopy (FESEM), while functional group
+analysis was carried out using Fourier transform infrared
+(FTIR) spectroscopy. Peptide release was monitored over time
+using fluorescence spectroscopy. The study also assessed the
+formulation’s cytotoxicity and its ability to induce NO produc-
+tion in vitro.
+This innovative nanoparticle-based vaccine approach holds
+significant potential for improving rabies prophylaxis, espe-
+cially in regions with limited access to conventional vaccines.
+Additionally, the findings from this study could be instru-
+mental in the development of nanoparticle-based delivery sys-
+tems for other peptide vaccines, enhancing the effectiveness
+and stability of immunization strategies. Future benefits of
+this research include the development of more efficient and
+cost-effective vaccine formulations, which could be cru-
+cial for large-scale immunization programs. Moreover, the
+2
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+biocompatibility and targeted delivery capabilities of PLGA
+nanoparticles could pave the way for advancements in vari-
+ous therapeutic areas beyond rabies, such as oncology, infec-
+tious diseases, and chronic conditions requiring precise drug
+delivery systems. However, this study also has several limita-
+tions. The in vitro nature of the cytotoxicity and NO produc-
+tion assessments necessitates further in vivo studies to confirm
+the safety and efficacy of the nanoparticle formulation in a liv-
+ing organism. Additionally, scalability of the double emulsion
+solvent evaporation method for industrial production remains
+a challenge that needs to be addressed. Further research should
+focus on optimizing the production process and conducting
+comprehensive in vivo trials to validate the clinical applicab-
+ility of this innovative vaccine delivery system.
+2. Materials and methods
+2.1. Materials
+The G5-24 peptide (H2N-WPPDQLVNLHDFRSDEIEHL
+VVEE-COOH) [18] of RABV was synthesized in our laborat-
+ory using the solid phase peptide synthesis method, as previ-
+ously described in the literature, with good process yield and
+purity (%76 w/w and >90 w/w, respectively) [36, 37]. Due to
+its fluorescent property, the tryptophan (Trp-W) amino acid
+was added to the N-terminal to modification of the G5-24 syn-
+thetic peptide. PLGA (Poly(D, L-lactide-co-glycolide) lactide:
+glycolide 50:50, Mw 38 000–54 000), poly(vinyl alcohol)
+(PVA), dimethyl sulfoxide (DMSO), Griess reagent (N-(1-
+Naphthyl)ethylenediamine dihydrochloride), sulfanilamide,
+Trypsin-EDTA (0.25%) was purchased from Sigma-Aldrich
+(St. Louis, USA). Dichloromethane (DCM), ethanol, sodium
+chloride, and hydrochloric acid were purchased from Riedel-
+De-Ha¨en (Charlotte, USA). Sodium phosphate dibasic hep-
+tahydrate, sodium dihydrogen phosphate dihydrate, and
+sodium hydroxide were purchased from Fluka (Charlotte,
+USA). Fibroblast cells (L929), macrophage cells (RAW
+264.7), Dulbecco’s Modified Eagle Medium (DMEM/F12),
+FBS (Fetal Bovine Serum), penicillin-streptomycin were
+acquired from Capricorn. MTT [3-(4,5-dimethylthiazol-
+2yl)-2,5-diphenyltetrazolium bromide] was purchased from
+Biomatik. Ultra-pure water was acquired from the Millipore
+Milli Q Gradient system.
+2.2. Polymeric nanoparticles synthesis
+RABV antigenic peptide (G5-24) loaded PLGA nanoparticles
+were prepared by the double emulsion solvent evaporation
+method as described previously with minor modifications [38]
+and this process is schematically illustrated in figure 1(a).
+To form the first emulsion (w/o), 5 mg of antigenic peptide
+was dissolved in 1 ml of ultrapure water (aqueous phase)
+and dropped into 3 ml of DCM containing 20 mg of PLGA
+(organic phase) on an ice bath under sonication (80 W amp-
+litude, 1.5 min) using a probe sonicator (Bandelin Sonopuls,
+Germany). Then, the first emulsion was added dropwise to the
+aqueous phase of 4 ml PVA (3% w/v) under the same condi-
+tions to form the double emulsion (w/o/w). The solution was
+left to stir overnight at room temperature for evaporation of
+the organic phase. The nanoparticles obtained after evapora-
+tion (R-NPs) were centrifuged at 9000 rpm for 20 min, washed
+three times with ultrapure water, and the pellet was lyophil-
+ized while the supernatant was separated for further analysis.
+Empty PLGA nanoparticles (E-NPs) without peptides were
+also produced using the same methods and ratios, serving as a
+control.
+2.3. Characterization of nanoparticles
+2.3.1. Size, polydispersity index (PDI) and zeta potential.
+The particle size, PDI, and zeta potential of nanoparticles were
+measured using Zetasizer Nano ZS (Malvern Instruments,
+Worcestershire, UK) device, with dynamic light scattering
+(DLS) and electrophoretic light scattering (ELS) methods.
+Measurements were performed three times at 25 ◦C and repor-
+ted as the mean of triplicates. All samples were diluted with
+pure water (1:30 v/v) before each measurement [39].
+2.3.2. FTIR spectroscopy.
+FTIR spectra of RABV G5-24
+peptide, PLGA, E-NPs and R-NPs were collected using the
+ATR mode of the spectrophotometer (Shimadzu, Japan) to
+study the surface chemistry of nanoparticles. The spectral ana-
+lysis was conducted within the 600–4000 cm−1 range, with a
+resolution of 4 cm−1 [40].
+2.3.3. FESEM.
+The surface morphology, shape, and size
+uniformity of the prepared empty and RABV G5-24 peptide-
+loaded PLGA nanoparticles were confirmed using field-
+emission FE-SEM conducted with a Thermo Scientific Apreo
+2 S instrument located in Waltham, MA, USA. During the ima-
+ging procedure, 1 mg of lyophilized nanoparticles was posi-
+tioned on a double-sided black carbon tape. FE-SEM images
+were acquired employing an in-lens detector at different mag-
+nifications (100 and 50 kx) and an electron voltage (1.00 kV
+and 500.00 V) [41].
+2.4. Encapsulation efficiency (EE), loading capacity (LC) and
+nanoparticles yield (NPY)
+EE and peptide LC were calculated by measuring the free G5-
+24 peptide remaining in the supernatant after centrifugation.
+The amount of free peptide was calculated from a calibration
+curve prepared using the maximum fluorescence emission of
+the peptide when the solution was excited at 280 nm [42].
+Calculations were made using the following formulas [43];
+3
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+Figure 1. (a) Schematic representation of the synthesis of RABV peptide-loaded PLGA NPs by the double emulsion-solvent evaporation
+method. Size distribution graphs of (b) R-NP and (c) comparative distributions of E-NP and R-NP. Zeta potential distributions of (d) R-NP
+and (e) comparative distributions of E-NP and R-NP.
+EE(%) = Amountofinitialpeptide (mg) −amountofpeptideinsupernatant (mg)
+amountofinitialpeptide (mg)
+× 100
+(1)
+LC(%) = Amountofinitialpeptide (mg) −amountofpeptideinsupernatant (mg)
+Massofrecoverednanoparticle (mg)
+× 100.
+(2)
+The reaction yield of the produced peptide-loaded PLGA
+nanoparticles was calculated by the following formula [44];
+NPY(%) =
+Massofrecoverednanoparticle (mg)
+AmountofinitialaddedpeptideandPLGA (mg)
+× 100.
+(3)
+The
+data
+presented
+in
+table
+1
+are
+expressed
+as
+mean ± standard deviation (SD) from three independent
+experiments.
+2.5. In vitro release studies
+The release of RABV antigenic peptide G5-24 from PLGA
+nanoparticles was conducted using a dissolution method
+described in the literature [45, 46]. Following lyophil-
+ization, the nanoparticles were suspended in a pH 7.4
+phosphate-buffered saline (PBS) and incubated at 37 ◦C in
+an orbital shaking water bath (N-Biotek, South Korea) at
+150 rpm. At various time intervals (1, 2, 3, 4, 6, 12 h,
+1, 3, 7, 14, 21, 28, 35, and 42 d), samples were col-
+lected and centrifuged. After centrifugation, the peptide
+4
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+Table 1. The basic characteristics of synthesized nanoparticles.
+Formulation code
+Size (nm) ± SD
+PDI ± SD
+Zeta Potential (mV) ± SD
+EE (%) ± SD
+LC (%) ± SD
+NPY (%) ± SD
+E-NP
+196.6 ± 1,652
+0.14 ± 0.009
+−14.50 ± 0.473
+—
+—
+60.2 ± 3.93
+R-NP
+230.9 ± 0,907
+0.16 ± 0.017
+−9.86 ± 0.132
+73.3 ± 2.06
+48.2 ± 3.47
+30.4 ± 1.62
+amount in the supernatant was measured using a fluores-
+cence spectrophotometer, while the pellet was resuspended
+in fresh PBS medium. An excitation wavelength (λex) of
+280 nm was used. The results were calculated as the percent-
+age of cumulative release using a standard peptide calibration
+curve.
+2.6. Cell culture studies
+L929 fibroblast cells were used for cytotoxicity testing in R-
+NP and RABV groups, and RAW 264.7 macrophage cells
+were used for nitric oxide analysis. Fibroblast cells were cul-
+tured in DMEM/F12 medium containing 10% FBS and 1%
+penicillin-streptomycin, while macrophage cells were cultured
+in DMEM-High Glucose medium containing 10% FBS and
+1% penicillin-streptomycin [47, 48]. An incubator set to 5%
+CO2, 37 ◦C, and 95% humidity was used for both cell lines.
+After reaching 70%–80% confluency on 75 T flask surfaces,
+cells were harvested using trypsin-EDTA and centrifuged. The
+resulting pellets were suspended with growth media and coun-
+ted using a Thoma chamber. Subsequently, the required cell
+numbers were suspended in growth media for cytotoxicity and
+nitric oxide analyses. Before being used in the analysis, R-
+NP groups at concentrations of 0.025, 0.05, 0.1, 0.25, 0.5,
+and 1 mg mL−1 and P group at concentrations of 6.125, 12.5,
+25, 50, 100, and 200 µg ml−1, calculated based on EE of NP
+group, were examined using L929 cells, while the nitric oxide
+production potentials were examined using RAW cells.
+2.6.1. Cytotoxicity analysis.
+L929 cells were seeded in 96-
+well plates at a density of 10 000 cells per well. Plates were
+incubated for 24 h, followed by the application of designated
+concentrations of experimental groups to the cells. The control
+group was replaced with fresh medium. Three replicates were
+performed for each concentration. Plates were then incub-
+ated for 72 h, and cell viability in the wells was analyzed.
+MTT method was used to determine cell viability [49]. In this
+method, tetrazolium in the MTT salt is reduced to formazan
+by viable cells. The formazan intensity in the wells provides
+information about cell viability [50]. For cell viability ana-
+lysis, 10 µl of MTT solution prepared in PBS at a concen-
+tration of 10 mg ml−1 was added to each well. Plates were
+incubated in the dark for 4 h. Subsequently, 100 µl of DMSO
+was added to dissolve the formazan in the wells, and the plates
+were kept in the dark for 30 min. Formazan intensity in the
+wells was measured at 570 nm using a microplate reader. The
+standard deviation was calculated from the obtained absorb-
+ance data. Additionally, cell viability (%) was calculated using
+the following equation
+Cellviabillity (%) = AbsorbanceSample/Absorbancecontrolgroup.
+(4)
+2.6.2. Nitric oxide analysis.
+Nitric oxide (NO) plays an
+important role in the immune system. The presence and level
+of nitric oxide were used to determine the stimulatory effects
+of R-NP and RABV groups on the immune system. NO level
+was measured using Griess reagent [51]. RAW cells were used
+in this analysis. Cells were seeded in 96-well plates at a dens-
+ity of 10 000 cells per well. Plates were incubated for 24 h,
+followed by the addition of samples at designated concentra-
+tions to the wells. The control group was replaced with a fresh
+medium. Three replicates were performed for each concentra-
+tion. Plates were then incubated for 96 h. Afterwards, super-
+natants from each concentration were transferred to new 96-
+well plates in triplicates. Simultaneously, different concentra-
+tions of nitrite solutions were added to some wells for calib-
+ration curve. Subsequently, 50 µl of Griess reagent was added
+to the supernatant and standard wells. Plates were incubated in
+the dark for 10 min. After this incubation period, plates were
+read at 540 nm using a microplate reader. A calibration curve
+was first plotted using the obtained absorbance data. Then,
+nitric oxide concentrations of experimental groups were cal-
+culated using the equation from the graph equation.
+2.7. Statistical analysis
+All experiments were performed in triplicate, and the results
+were expressed as mean ± standard deviation. The statistical
+analysis of the in vitro release and cytotoxicity investigation
+involved employing one-way analysis of variance (ANOVA) to
+compare the findings between the control and treated groups.
+Statistically, significance was determined for values with a p-
+value below 0.05.
+3. Results and discussion
+3.1. Characterization of nanoparticles
+In this study, we employed the double emulsion solvent evap-
+oration method to synthesize empty NPs (E-NP) and G5-24
+peptide-loaded PLGA (R-NP) nanoparticles. This method is
+widely favored for its ease of application and optimal results
+in active substance encapsulation [52]. It is worth noting that
+the size and PDI values of nano-sized drug carriers are critical
+factors that influence cellular uptake. These values are also
+5
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+key determinants of targeting and toxicity [53, 54]. Table 1
+provides the basic characteristics of synthesized nanoparticles.
+The sizes of empty nanoparticles without peptides (E-NP)
+and loaded nanoparticles containing G5-24 peptide (R-NP)
+were measured as 196.6 ± 1.652 nm and 230.9 ± 0.907 nm,
+respectively. This increase in the size of the loaded nano-
+particle compared to the empty one indicates that encapsu-
+lation has taken place [44, 55]. For vaccine delivery, nano-
+particle size plays a critical role in modulating their immune
+response. Microparticles ranging from 0,5–2 µm primarily
+trigger humoral responses, while smaller nanoparticles than
+500 nm, such as the ∼230 nm R-NP in this study, are
+absorbed by dendritic cells, promoting the induction of cel-
+lular immune responses. Also, it is crucial to consider the size
+of PLGA particles, as it dramatically impacts their biodistri-
+bution. Usually, smaller particles are considered to be more
+effective for delivery as their size enables them to pass through
+biological barriers more easily [33, 34, 56].
+Both synthesized nanoparticles exhibited PDI values smal-
+ler than 0.2, as shown in figure 1, indicating a monodisperse
+particle distribution. This narrow particle size distribution is
+advantageous for drug delivery systems, enhancing the treat-
+ment effect [38]. Generally, a PDI value below 0.2 is con-
+sidered highly monodisperse and suitable for such applications
+[57, 58].
+The stability of a nanoparticle in a colloidal solution is
+closely tied to its surface charge, known as zeta potential.
+In general, charged particles are less prone to aggregation
+due to electrical repulsion [59]. The zeta potentials of both
+empty and loaded nanoparticles were measured, with values
+of −14.5 ± 0.473 and −9.86 ± 0.132, respectively (as seen in
+figuress 1(d) and (e)). This negative charge is likely due to the
+presence of terminal carboxyl groups in the chemical structure
+of PLGA [60]. The decrease in zeta potential observed in the
+R-NP formulation can indeed be attributed to the screening
+effect of the encapsulated peptide. The peptide sequence used
+in this study (PPDQLVNLHDFRSDEIEHLVVEE), being rel-
+atively negatively charged (net charge at pH 7: approximately
+−5.8, as calculated using the PepCalc tool), likely influences
+the overall surface charge of the nanoparticles. Similar to find-
+ings reported in the literature [61] interactions between pep-
+tides and the carboxyl groups of PLGA can modulate the zeta
+potential. Studies have shown that positively charged peptides
+exhibit strong interactions with PLGA-COOH groups, result-
+ing in higher EE and significant shifts in surface charge. In
+contrast, negatively charged peptides, such as the one used in
+this study, may have weaker interactions with the PLGA sur-
+face, leading to a more neutralized zeta potential and account-
+ing for the less negative charge observed in the R-NP com-
+pared to the E-NP formulation.
+Certain amino acids, such as tryptophan, tyrosine, and
+phenylalanine, exhibit fluorescence. Among these, tryptophan
+displays the highest degree of fluorescence [62]. Incorporating
+tryptophan at the end of a peptide sequence during peptide
+synthesis can enable the resulting peptide to be measured
+through fluorescence spectroscopy. The EE and peptide LC
+were assessed indirectly [63] using fluorescence spectroscopy
+Figure 2. FTIR spectra of peptide (RABV), PLGA polymer, E-NP,
+and R-NP.
+by analyzing the supernatant following centrifugation. Our
+analysis revealed an EE of 73.3% and a LC of 48.2%.
+These results corroborate the effectiveness of the emulsion-
+solvent evaporation techniques commonly employed in pep-
+tide encapsulation [64, 65] Additionally, the reaction yield was
+calculated at 30.4% by weighing the lyophilized nanoparticles.
+Figure 2 displays the FTIR spectra of the RABV peptide,
+PLGA, E-NP and R-NP, which were analyzed to determine
+the functional groups present and confirm the successful load-
+ing of the peptide into the nanoparticles [45]. In figure 2, the
+FT-IR spectrum of R-NPs show functional group peaks that
+are known to belong to PLGA [66], such as C–H stretching
+at 2996 cm−1 and 2947 cm−1, C–H bending at 1451 cm−1
+and 1387 cm−1, C–O–C stretching at 1086 cm−1, =C–O
+asymmetric stretching at 1167 cm−1 and C=O stretching at
+1750 cm−1 (strong and narrow). When comparing the obtained
+spectra, it is evident that the FTIR spectra of E-NP and R-
+NP exhibit identical chemical characteristics. RABV peptide
+exhibits characteristic peaks at 1620 cm−1 and 1527 cm−1,
+which are C=O stretching of amide I and -NH bending
+of amide II, respectively. The reduction in the intensity of
+6
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+Figure 3. The FE-SEM micrographs and size distribution
+histograms of E-NP and R-NP at different magnifications.
+these peaks within the R-NP spectra confirms the effective
+encapsulation of the peptide within the nanoparticles. These
+results are consistent with our expectations and align with the
+existing literature [67].
+The FESEM is a powerful tool for analyzing the phys-
+ical properties of particles, including their shape, size, and
+surface structure. Through examination of FE-SEM images
+(as shown in figure 3), it can be noted that the nanoparticles
+possess smooth surfaces and rounded shapes, indicating con-
+sistent synthesis of particles with uniform size distribution.
+Furthermore, it was observed that during the synthesis of G5-
+24 loaded nanoparticles, some particles adhered to each other
+without altering their shape. The average particle sizes determ-
+ined from the size distribution histogram based on the FE-
+SEM micrographs were 121.13 nm for E-NP and 162.11 nm
+for R-NP. These particle dimensions corroborate the size dis-
+tribution results obtained through DLS. While DLS measures
+the hydrodynamic radius of particles dispersed in an aqueous
+medium, microscopic analysis techniques, such as FE-SEM,
+assess particles in a dry state under vacuum. Consequently,
+the hydration and swelling of particles in the aqueous buffer
+lead to larger size measurements in DLS compared to those
+observed in FE-SEM [68].
+3.2. In vitro peptide release
+The release of peptides from PLGA is primarily facilitated by
+both diffusion and erosion. As water diffuses, PLGA under-
+goes both surface and bulk erosion, leading to gradual hydro-
+lysis and peptide release [69–71]. Hydrolytic degradation and
+Figure 4. In vitro cumulative release of the RABV peptide from
+RNP over 4 weeks.
+release rates of nanoparticles vary depending on many proper-
+ties, such as lactide/glycolide ratio, polymer molecular weight,
+particle size, porosity, and surfactants used. The release of the
+active substance from nanoparticles typically follows mono-
+phasic, bi-phasic, or tri-phasic release profiles [34, 72]. In
+our study, the synthesized peptide-loaded nanoparticles were
+suspended in pH 7.4 PBS to monitor peptide release over
+time. The results showed that 58.23% of the peptide was
+released within the first 24 h. This initial phase of rapid release,
+commonly referred to as burst release, is often attributed to
+peptides localized near the nanoparticle surface or adsorbed
+weakly [33, 72]. An increased surface area for smaller nan-
+oparticles can lead to a larger burst release due to a greater
+quantity of active substance being present at or near the surface
+[73]. Following this initial burst, peptide release continued
+at a steady rate, resulting in a cumulative release of 65.55%
+over 28 d (figure 4). This release pattern corresponds with
+the biphasic profile often reported in the literature [74–76].
+Such a release profile may prove advantageous in vaccine
+applications, as it can promote consistent peptide presenta-
+tion to antigen-presenting cells (APCs) and facilitate a reliable
+immunization strategy [77].
+3.3. Cytotoxicity and NO analysis
+Cellular viability rates of L929 fibroblast cells in response to
+stimulation with RABV peptide, E-NP and R-NP at different
+concentrations were illustrated in figure 5. The results obvi-
+ously reveal that E-NP and R-NP did not induce any cyto-
+toxicity on L929 cells at investigated dosages. The increased
+concentrations of R-NP lead to no meaningful reduction over
+cellular survival levels of fibroblasts in contrast to untreated
+control. On contrary, concentration-dependent decline was
+recorded in viability ratios of L929 cells upon exposure to
+free RABV peptide. It was detected that cellular viability rate
+dropped to approximately 70 percentage when the highest pep-
+tide dosage was applied onto cells. These outcomes reflect that
+encapsulation of RABV peptide into polymeric nanoparticles
+could protect fibroblast cells from probable toxic feature of
+7
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+Figure 5. Determination of cellular viability percentages of L929
+cells after they were exposed to different concentrations of RABV
+peptide, E-NP and R-NP formulations for 72 h.
+RABV peptide and considerably improve its bioavailability
+for medical applications. In a very similar research, Cresti et al
+encapsulated antimicrobial SET-M33 peptide into PLGA nan-
+oparticles conjugated with PEG and evaluated in vitro and in
+vivo cytotoxic/antibacterial activity of peptide loaded poly-
+meric nanoparticles for development of inhalable formulations
+to target pulmonary infections [78]. Authors declared that
+enhanced concentrations of SET-M33 peptide gave rise to 80%
+reduction in healthy bronchial cells although it was highly
+influential against P. aeruginosa bacteria at same dosages. On
+the other hand, it was also highlighted that encapsulated pep-
+tide did not lead to any cytotoxic effect on mammalian cells,
+despite the fact that it still exhibited significant antibacterial
+behaviour. This study emphasize that polymeric delivery sys-
+tems could substantially suppress the cytoxicity of peptides on
+healthy mammalian cells and hugely advance their biocompat-
+ibility that offers the manufacturing of safe and effective thera-
+peutical formulations. Furthermore, polymer-mediated nano-
+particular delivery platforms could also ensure controllable
+and sustainable release of entrapped bioactive agents which
+augments the exposure duration of target cells with directed
+molecules [79]. This interaction might provoke the long-term
+stimulation of necessary biological events in target tissues and
+organs. The induction of natural or acquired immune response
+is a such kind of biological phenomenon which is initiated with
+the cargo of immunogenic antigens into lymphoid organs to
+interact with lymphocytes. Since many enzymes can readily
+degrade or denaturate free protein-based antigenic molecules,
+solely antigen administration without a carrier platform may
+not allow the deposition of sufficient antigen levels in desired
+cells and tissues [71]. This occasion could prevent the cre-
+ation of effective immune response against implemented anti-
+gens. PLGA-based nanoparticulate delivery systems confer a
+huge opportunity for an efficient and reliable transmission of
+antigenic molecules into targeted immune cells with a lack of
+any degradation [34]. As mentioned above, antigenic property
+of RABV has been previously enlightened well, however the
+knowledge in regard to decoration of PLGA nanoparticles
+by encapsulation of RABV remains missing. Therefore, in
+second step of biological investigations we explored in vitro
+immunostimulatory performance of peptide loaded PLGA
+nanoparticles via evaluating the released amounts of nitric
+oxide from macrophages upon exposure to free and encapsu-
+lated peptide. Figure 6 represents the levels of NO secreted
+from RAW 264.7 cells after they encountered with different
+concentrations of free RABV or R-NP. As it is obviously seen,
+both RABV peptide and R-NP formulations accelerated the
+produced NO amounts from macrophages in comparsion to
+control. Moreover, it was discovered that free peptide usage
+elicited superior immunostimulant action than R-NP formu-
+lation particularly at lower dosages. Conversely, application
+of free peptide at raised dosages notably diminished secreted
+NO levels from macrophages. This may be attributed to oppos-
+ite effect of RABV on cell survivability. Otherwise, R-NP
+treatment did not bring about any decline in produced NO
+quantity and the most significant immunostimulatory activ-
+ity was evaluated when the highest concentration of R-NP
+was applied, on contrary. These outputs verify that R-NP eli-
+cit no cytotoxic behaviour on healthy cells and its elevated
+density could trigger macrophages to produce superior NO.
+Honestly, we established that free peptide was more influen-
+tial in stimulation of RAW 264.7 macrophages compared with
+R-NP upon 96 h incubation. However, it should not be forgot-
+ten that polymeric antigen delivery systems perform a partial
+in vitro release of immunogenic molecules within short-term
+incubation periods and the amount of released antigens from
+nanoparticles that interact with macrophages is likely lower
+than free antigens. Hence, secretion of less nitric oxide from
+macrophages in response to R-NP administration is an expec-
+ted result. We predict that R-NP formulation would exhibit
+more remarkable immunostimulatory effect if cells could have
+exposed to peptide loaded nanoparticles for a long-term incub-
+ation period thanks to sustainable release function of delivery
+system. Similarly, it would be expected that this nanoplatform
+would achieve higher immune response in biological systems.
+Nevertheless, in current study R-NP vigorously induced NO
+secretion in macrophages at higher dosages, indicating non-
+toxic property of peptide encapsulated nanosystems and its
+possible uptake by macrophages that improved the deposited
+antigen concentration inside. Besides, potent immunostimu-
+latory efficacy of R-NP could be also explained by adjuvant
+feature of PLGA polymer, described before [80]. In another
+study, it was ascertained that free PLGA nanoparticles did not
+merely induce nitric oxide production within macrophages,
+but it excessively raised the immunostimulatory efficacy of
+ESAT-6 peptide of M. Tuberculosis upon encapsulation, sug-
+gesting the perfect adjuvant ability of PLGA-based antigen
+delivery platforms [42].
+8
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+Figure 6. Evaluation of nitric oxide amounts released from in RAW
+264.7 macrophage cells after they were treated with different
+concentrations of RABV peptide and R-NP formulations.
+The production of NO in macrophages and other APCs
+is a substantial defense mechanism to combat with intra-
+cellular microorganisms. Following to phagocytosis, phago-
+somes containing internalized microbes fuse with lysosomes
+and microbial agents encounter with reactive oxygen species,
+hydrolytic enzymes and NO. It is well known that NO displays
+a powerful antimicrobial impact and contributes to the degrad-
+ation of microbial molecules such as proteins, nucleic acids
+and lipids by binding them covalently [81, 82]. Accordingly,
+external stimulation of macrophages with immunogenic anti-
+gens could improve the resistance of the innate immune sys-
+tem to invasion of target microbial agents. Furthermore, it was
+recently discovered that NO released by innate immune cells
+could advance the survivability and differentiation of T lymph-
+ocytes. NO might guide the conversion of naive CD 4 T lymph-
+ocytes into effector Th1 cells that can regulate the immune
+attack on intracellular microorganisms by secreting special
+cytokines such as IFN-gamma [83]. That’s why NO is thought
+to have a pivotal role in the progression of innate and adaptive
+immunity. Besides, enhancement in NO production of macro-
+phages triggered by an external force could be considered as a
+substantial hallmark for effective vaccine candidates that pro-
+mote innate and adaptive immune response. Consequently, R-
+NP with an elevated immunoactivity would exert strong poten-
+tial for the development of vaccine candidates for intracellu-
+lar microorganisms. But further investigations deserve to be
+performed.
+4. Conclusion
+This study successfully demonstrated the encapsulation of
+the G5-24 peptide into PLGA nanoparticles using the double
+emulsion solvent evaporation method, yielding nanoparticles
+with desirable physical and chemical properties. The morpho-
+logical and functional analyses confirmed the effective load-
+ing of the peptide within the nanoparticles. Furthermore, the
+controlled peptide release and the biocompatibility assess-
+ments, including cytotoxicity and NO production, highlighted
+the potential of these nanoparticles as a robust delivery system.
+These findings suggest that R-NPs could serve as a promising
+candidate for rabies vaccine development. In this study, the
+primary focus was on the formulation and characterization
+of R-NP. Further studies, including potency assays to evalu-
+ate VNA production, are planned to assess the full potential
+of the nanoparticles for vaccine development. These future
+investigations will also provide a comparison with unencap-
+sulated peptides, offering deeper insights into their biological
+activity. Additionally, the application of this approach to other
+peptide-based vaccines should be explored.
+Data availability statement
+The data cannot be made publicly available upon publication
+because they are not available in a format that is sufficiently
+accessible or reusable by other researchers. The data that sup-
+port the findings of this study are available upon reasonable
+request from the authors.
+ORCID iDs
+Kübra Bezir https://orcid.org/0000-0002-4276-1559
+Pelin Pelit Arayici https://orcid.org/0000-0002-7176-4484
+Serap Acar https://orcid.org/0000-0002-6662-6642
+References
+[1] Ogino T 2022 Rhabdoviridae, Rabies Virus Encyclopedia of
+Infection and Immunity ed N Rezaei (Oxford: Elsevier)
+pp 219–40
+[2] Du Pont V, Plemper R K and Schnell M J 2019 Status of
+antiviral therapeutics against rabies virus and related
+emerging lyssaviruses Curr. Opin. Virol. 35 1–13
+[3] Wallace R M and Blanton J 2019 Chapter 4–Epidemiology
+Rabies 4th edn, ed A C J Anthony and R Fooks (Academic)
+pp 103–42
+[4] Fisher C R, Streicker D G and Schnell M J 2018 The spread
+and evolution of rabies virus: conquering new frontiers Nat.
+Rev. Microbiol. 16 241–55
+[5] Scott T P and Nel L H 2021 Lyssaviruses and the fatal
+encephalitic disease rabies Front. Immunol. 12 786953
+[6] Hemachudha T, Ugolini G, Wacharapluesadee S, Sungkarat W,
+Shuangshoti S and Laothamatas J 2013 Human rabies:
+neuropathogenesis, diagnosis, and management Lancet
+Neurol. 12 498–513
+[7] Chabaud-Riou M, Moreno N, Guinchard F, Nicolai M C,
+Niogret-Siohan E, Sève N, Manin C, Guinet-Morlot F and
+Riou P 2017 G-protein based ELISA as a potency test for
+rabies vaccines Biologicals 46 124–9
+[8] Pelit Arayici P, Acar T, Karahan M and Mustafaeva Z 2016 A
+new approach for development of synthetic peptide vaccines
+for viral vaccines Sigma. J. Eng. Nat. Sci. 7 193–204
+[9] Ghassemi S, Pourbadie H G, Prehaud C, Lafon M and
+Sayyah M 2022 Role of the glycoprotein thorns in anxious
+effects of rabies virus: evidence from an animal study Brain
+Res. Bull. 185 107–16
+[10] Davis B M, Rall G F and Schnell M J 2015 Everything you
+always wanted to know about rabies virus (but were afraid
+to ask) Annu. Rev. Virol. 2 451–71
+9
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+[11] William K-K C and Wunner H 2020 Chapter 2—Rabies virus
+Rabies 4th edn, ed A C J Anthony and R Fooks (Academic)
+pp 43–81
+[12] Zhao R et al 2020 Novel strategy for expression and
+characterization of rabies virus glycoprotein Protein Expr.
+Purif. 168 105567
+[13] Houimel M and Dellagi K 2009 Peptide mimotopes of rabies
+virus glycoprotein with immunogenic activity Vaccine
+27 4648–55
+[14] Astray R M, Jorge S A C and Pereira C A 2017 Rabies vaccine
+development by expression of recombinant viral
+glycoprotein Arch. Virol. 162 323–32
+[15] Zhang G, Wang H, Mahmood F and Fu Z F 2013 Rabies virus
+glycoprotein is an important determinant for the induction
+of innate immune responses and the pathogenic
+mechanisms Vet. Microbiol. 162 601–13
+[16] LozaRubio E, Rojas E, Gomez L, Olivera M and
+Gomez-Lim M 2008 Development of an edible rabies
+vaccine in maize using the Vnukovo strain Dev. Biol.
+131 477–82
+[17] van der Heijden R W, Langedijk J P, Groen J, UytdeHaag F G,
+Meloen R H and Osterhaus A D 1993 Structural and
+functional studies on a unique linear neutralizing antigenic
+site (G5) of the rabies virus glycoprotein J. Gen. Virol.
+74 1539–45
+[18] Dietzschold B, Gore M, Marchadier D, Niu H S,
+Bunschoten H M, Otvos L, Wunner W H, Ertl H C,
+Osterhaus A D and Koprowski H 1990 Structural and
+immunological characterization of a linear
+virus-neutralizing epitope of the rabies virus glycoprotein
+and its possible use in a synthetic vaccine Virol. J.
+64 3804–9
+[19] Niederhäuser S, Bruegger D, Zahno M-L, Vogt H-R,
+Peterhans E, Zanoni R and Bertoni G 2008 A synthetic
+peptide encompassing the G5 antigenic region of the rabies
+virus induces high avidity but poorly neutralizing antibody
+in immunized animals Vaccine 26 6749–53
+[20] O’Neill C L, Shrimali P C, Clapacs Z E, Files M A and
+Rudra J S 2021 Peptide-based supramolecular vaccine
+systems Acta Biomater. 133 153–67
+[21] Malonis R J, Lai J R and Vergnolle O 2019 Peptide-based
+vaccines: current progress and future challenges Chem. Rev.
+120 3210–29
+[22] Salvador A, Igartua M, Hernández R M and Pedraz J L 2011
+An overview on the field of micro-and nanotechnologies
+for synthetic peptide-based vaccines J. Drug Deliv.
+2011 1–18
+[23] Moisa A A and Kolesanova E F 2010 Synthetic peptide
+vaccines Biochem. Suppl. B 4 321–32
+[24] Yang H and Kim D S 2015 Peptide immunotherapy in vaccine
+development: from epitope to adjuvant Adv. Protein Chem.
+Struct. Biol. 99 1–14
+[25] Wang C Y et al 2003 Synthetic IgE peptide vaccine for
+immunotherapy of allergy Vaccine 21 1580–90
+[26] Firbas C, Jilma B, Tauber E, Buerger V, Jelovcan S,
+Lingnau K, Buschle M, Frisch J and Klade C S 2006
+Immunogenicity and safety of a novel therapeutic hepatitis
+C virus (HCV) peptide vaccine: a randomized, placebo
+controlled trial for dose optimization in 128 healthy
+subjects Vaccine 24 4343–53
+[27] Mocellin S, Pilati P and Nitti D 2009 Peptide-based anticancer
+vaccines: recent advances and future perspectives Curr.
+Med. Chem. 16 4779–96
+[28] Wiessner C et al 2011 The second-generation active Aβ
+immunotherapy CAD106 reduces amyloid accumulation in
+APP transgenic mice while minimizing potential side
+effects J. Neurosci. 31 9323–31
+[29] Skwarczynski M and Toth I 2016 Peptide-based synthetic
+vaccines Chem. Sci. 7 842–54
+[30] Sabatino D 2020 Medicinal chemistry and methodological
+advances in the development of peptide-based vaccines:
+miniperspective J. Med. Chem. 63 14184–96
+[31] Heng W T, Lim H X, Tan K O and Poh C L 2023 Validation of
+multi-epitope peptides encapsulated in PLGA nanoparticles
+against influenza A virus Pharm. Res. 40 1999–2025
+[32] Su Y, Zhang B, Sun R, Liu W, Zhu Q, Zhang X, Wang R and
+Chen C 2021 PLGA-based biodegradable microspheres in
+drug delivery: recent advances in research and application
+Drug Deliv. 28 1397–418
+[33] Allahyari M and Mohit E 2016 Peptide/protein vaccine
+delivery system based on PLGA particles Hum. Vaccin.
+Immunother. 12 806–28
+[34] Silva A, Soema P, Slütter B, Ossendorp F and Jiskoot W 2016
+PLGA particulate delivery systems for subunit vaccines:
+linking particle properties to immunogenicity Hum. Vaccin.
+Immunother 12 1056–69
+[35] Clawson C et al 2010 Delivery of a peptide via poly (d,
+l-lactic-co-glycolic) acid nanoparticles enhances its
+dendritic cell–stimulatory capacity Nanomed. Nanotechnol.
+Biol. Med. 6 651–61
+[36] Acar T, Pelit Arayıcı P, Ucar B, Karahan M and Mustafaeva Z
+2019 Synthesis, characterization and lipophilicity study of
+Brucella abortus’ immunogenic peptide sequence that can
+be used in the future vaccination studies Int. J. Pept. Res.
+Ther. 25 911–8
+[37] Arayici P P, Acar T, Ucar B, Karahan M, Arslan B A and
+Mustafaeva Z 2019 Rabies virus 31D peptide-[P
+(VP-co-AA)] conjugates: synthesis, characterization and
+cytotoxicity evaluation ChemistrySelect 4 9483–7
+[38] Derman S, Mustafaeva Z A, Abamor E S, Bagirova M and
+Allahverdiyev A 2015 Preparation, characterization and
+immunological evaluation: canine parvovirus synthetic
+peptide loaded PLGA nanoparticles J. Biomed. Sci. 22 1–12
+[39] Beyo˘glu G, Araç Ö, Tas¸kın D, Arayıcı P P, Kızılbey K and
+Derman S 2020 Rutin Yüklü Kitosan Nanopartiküllerinin
+Sentezi, Karakterizasyonu ve Antioksidan Aktivitesinin
+De˘gerlendirilmesi Eurasian J. Bio. Chem. Sci. 3 93–99
+[40] Pelit Arayici P, Acar T, Ozbek T and Acar S 2024 Enhanced
+antimicrobial potency and stability of
+juglone/β-cyclodextrin inclusion complexes: a comparative
+study of formulation methods Mater. Res. Express
+11 075004
+[41] Jiang T, Singh B, Li H-S, Kim Y-K, Kang S-K, Nah J-W,
+Choi Y-J and Cho C-S 2014 Targeted oral delivery of BmpB
+vaccine using porous PLGA microparticles coated with M
+cell homing peptide-coupled chitosan Biomaterials
+35 2365–73
+[42] Büyükbayraktar H K, Pelit Arayıcı P, Ihlamur M, Gökkaya D,
+Karahan M, Abamor E S¸ and Topuzo˘gulları M 2023 Effect
+of polycation coating on the long-term pulsatile release of
+antigenic ESAT-61–20 peptide from PLGA nanoparticles
+Colloids Surf. B 228 113421
+[43] Ucar B, Acar T, Arayici P P and Derman S 2021 A
+nanotechnological approach in the current therapy of
+COVID-19: model drug oseltamivir-phosphate loaded
+PLGA nanoparticles targeted with spike protein binder
+peptide of SARS-CoV-2 Nanotechnology 32 485601
+[44] Buyuk N, Arayici P, Derman S, Mustafaeva Z and Yucel Z
+2020 Synthesis of chitosan nanoparticles for controlled
+release of amiodarone Indian J. Pharm. Sci. 82 10.36468
+[45] Ersoz M, Erdemir A, Duranoglu D, Uzunoglu D, Arasoglu T,
+Derman S and Mansuroglu B 2019 Comparative evaluation
+of hesperetin loaded nanoparticles for anticancer activity
+against C6 glioma cancer cells Artif. Cells Nanomed.
+Biotechnol. 47 319–29
+[46] Coksu I, Bozkurt Y, Akmayan I, Demirci H, Ozbek T and
+Acar S 2023 Ketoconazole-loading strategy to improve
+antifungal activity and overcome cytotoxicity on human
+10
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+renal proximal tubular epithelial cells Nanotechnology
+35 115702
+[47] Boncukcu N, Akgul B, Akmayan I, Berber H, Abamor E S,
+Ozbek T and Derman S 2023 Design of a bactericidal
+hydrogel scaffold containing genipin crosslinked HF-18
+peptide Biotechnol. Prog. 39 e3314
+[48] Wang Z, Guan Y, Yang R, Li J, Wang J and Jia A-Q 2020
+Anti-inflammatory activity of 3-cinnamoyltribuloside and
+its metabolomic analysis in LPS-activated RAW 264.7 cells
+BMC Complement. Med. Ther. 20 1–13
+[49] Patrón-Romero L et al 2020 Synthesis, characterization and
+cytotoxicity of zinc oxide nanoparticles by green synthesis
+method J. Drug Deliv. Sci. Technol. 60 101925
+[50] Ramzan M, Kaur G, Trehan S, Agrewala J N,
+Michniak-Kohn B B, Hussain A, Mahdi W A, Gulati J S
+and Kaur I P 2021 Mechanistic evaluations of ketoconazole
+lipidic nanoparticles for improved efficacy, enhanced
+topical penetration, cellular uptake (L929 and J774A. 1),
+and safety assessment: in vitro and in vivo studies J. Drug
+Deliv. Sci. Technol. 65 102743
+[51] Solaiman M A, Ali M A, Abdel-Moein N M and
+Mahmoud E A 2020 Synthesis of Ag-NPs developed by
+green-chemically method and evaluation of antioxidant
+activities and anti-inflammatory of synthesized
+nanoparticles against LPS-induced NO in RAW 264.7
+macrophages Biocatal. Agric. Biotechnol. 29 101832
+[52] Santos A P D, Oliveira R C R D, Louchard B O, Uchoa A F J,
+Ricardo N M P S, Leal L K A M, Rádis-Baptista G and
+Ara´ujo T G D 2023 Preparation of PLGA nanoparticles
+loaded with the anti-infective Ctn [15–34] peptide for
+antifungal application Braz. Arch. Biol. Technol.
+66 e20220775
+[53] Danaei M, Dehghankhold M, Ataei S, Hasanzadeh Davarani F,
+Javanmard R, Dokhani A, Khorasani S and Mozafari M R
+2018 Impact of particle size and polydispersity index on the
+clinical applications of lipidic nanocarrier systems
+Pharmaceutics 10 57
+[54] Raval N, Maheshwari R, Kalyane D, Youngren-Ortiz S R,
+Chougule M B and Tekade R K 2019 Importance of
+physicochemical characterization of nanoparticles in
+pharmaceutical product development Basic Fundamentals
+of Drug Delivery (Elsevier) pp 369–400
+[55] Coksu I, Dokuz S, Akgul B, Ozbek T, Abamor E S,
+Duranoglu D and Acar S 2024 Enhancing the treatment of
+staphylococcus aureus infections: a nanosystem with
+including dual antimicrobial peptide J. Drug Deliv. Sci.
+Technol. 97 105830
+[56] Hamdy S, Haddadi A, Hung R W and Lavasanifar A 2011
+Targeting dendritic cells with nano-particulate PLGA cancer
+vaccine formulations Adv. Drug Deliv. Rev. 63 943–55
+[57] Kaplan M, Öztürk K, Öztürk S C, Tavukçuo˘glu E, Esenda˘glı G
+and Calis S 2023 Effects of particle geometry for
+PLGA-based nanoparticles: preparation and in vitro/in vivo
+evaluation Pharmaceutics 15 175
+[58] Boltnarova B et al 2021 PLGA based nanospheres as a potent
+macrophage-specific drug delivery system Nanomaterials
+11 749
+[59] Nahar M and Jain N K 2009 Preparation, characterization and
+evaluation of targeting potential of amphotericin B-loaded
+engineered PLGA nanoparticles Pharm. Res. 26 2588–98
+[60] Esmaeili F, Ghahremani M H, Esmaeili B, Khoshayand M R,
+Atyabi F and Dinarvand R 2008 PLGA nanoparticles of
+different surface properties: preparation and evaluation of
+their body distribution Int. J. Pharm. 349 249–55
+[61] Giles M B, Hong J K Y, Liu Y, Tang J, Li T, Beig A,
+Schwendeman A and Schwendeman S P 2022 Efficient
+aqueous remote loading of peptides in poly
+(lactic-co-glycolic acid) Nat. Commun. 13 3282
+[62] Ghisaidoobe A B and Chung S J 2014 Intrinsic tryptophan
+fluorescence in the detection and analysis of proteins: a
+focus on Förster resonance energy transfer techniques Int. J.
+Mol. Sci. 15 22518–38
+[63] Alshawwa S Z, Kassem A A, Farid R M, Mostafa S K and
+Labib G S 2022 Nanocarrier drug delivery systems:
+characterization, limitations, future perspectives and
+implementation of artificial intelligence Pharmaceutics
+14 883
+[64] Chereddy K K et al 2014 PLGA nanoparticles loaded with
+host defense peptide LL37 promote wound healing J.
+Control. Release 194 138–47
+[65] Ma W et al 2012 PLGA nanoparticle-mediated delivery of
+tumor antigenic peptides elicits effective immune responses
+Int. J. Nanomed. 7 1475–87
+[66] Singh G, Kaur T, Kaur R and Kaur A 2014 Recent biomedical
+applications and patents on biodegradable polymer-PLGA
+Int. J. Pharmacol. Pharm. 1 30–42
+[67] Çalman F, Pelit Arayıcı P, Büyükbayraktar H K, Karahan M,
+Mustafaeva Z and Katsarava R 2019 Development of
+vaccine prototype against zika virus disease of
+peptide-loaded PLGA nanoparticles and evaluation of
+cytotoxicity Int. J. Pept. Res. Ther. 25 1057–63
+[68] Arayici P P, Coksu I, Ozbek T and Acar S 2024 Targeted
+delivery of rifaximin using P6. 2-decorated bifunctional
+PLGA nanoparticles for combating staphylococcus aureus
+infections Biomater. Adv. 161 213862
+[69] Elmowafy E M, Tiboni M and Soliman M E 2019
+Biocompatibility, biodegradation and biomedical
+applications of poly (lactic acid)/poly (lactic-co-glycolic
+acid) micro and nanoparticles J. Pharm. Investig. 49 347–80
+[70] Yoo J and Won Y-Y 2020 Phenomenology of the initial burst
+release of drugs from PLGA microparticles ACS Biomater.
+Sci. Eng. 6 6053–62
+[71] Nevagi R J, Skwarczynski M and Toth I 2019 Polymers for
+subunit vaccine delivery Eur. Polym. J. 114 397–410
+[72] Fredenberg S, Wahlgren M, Reslow M and Axelsson A 2011
+The mechanisms of drug release in poly (lactic-co-glycolic
+acid)-based drug delivery systems—A review Int. J. Pharm.
+415 34–52
+[73] Nayak B, Panda A K, Ray P and Ray A R 2009 Formulation,
+characterization and evaluation of rotavirus encapsulated
+PLA and PLGA particles for oral vaccination J.
+Microencapsul. 26 154–65
+[74] Ali M, van Gent M E, de Waal A M, van Doodewaerd B R,
+Bos E, Koning R I, Cordfunke R A, Drijfhout J W and
+Nibbering P H 2023 Physical and functional
+characterization of PLGA nanoparticles containing the
+antimicrobial peptide SAAP-148 Int. J. Mol. Sci. 24 2867
+[75] Marinelli L et al 2022 Preparation, characterization, and
+biological evaluation of a hydrophilic peptide loaded on
+PEG-PLGA nanoparticles Pharmaceutics 14 1821
+[76] Okumu F W, Cleland J L and Borchardt R T 1997 The effect
+of size, charge and cyclization of model peptides on their in
+vitro release from dl–PLGA microspheres J. Control.
+Release 49 133–40
+[77] Du X et al 2021 A multiepitope peptide, rOmp22,
+encapsulated in chitosan-PLGA nanoparticles as a
+candidate vaccine against Acinetobacter baumannii
+infection Int. J. Nanomed. 16 1819–36
+[78] Cresti L, Conte G, Cappello G, Brunetti J, Falciani C,
+Bracci L, Quaglia F, Ungaro F, d’Angelo I and Pini A 2023
+Inhalable polymeric nanoparticles for pulmonary delivery
+of antimicrobial peptide SET-M33: antibacterial activity
+and toxicity in vitro and in vivo Pharmaceutics 15 3
+[79] Wang F, Deng Y, Wang J, Yu L, Ding F, Lian W, Liu Q and
+Lin X 2021 The PLGA nanoparticles for sustainable release
+of CGRP to ameliorate the inflammatory and vascular
+11
+
+Nanotechnology 36 (2025) 025603
+K Bezir et al
+disorders in the lung of CGRP-deficient rats Drug Deliv.
+28 865–72
+[80] Wusiman A, Zhang Y, Ayihengbieke T, Cheng X, Kudereti T,
+Liu D, Wang D and Abula S 2022 Poly (lactic-co-glycolic
+acid) nanoparticle-based vaccines delivery systems as a
+novel adjuvant for H9N2 antigen enhance immune
+responses Poult. Sci. 101 101791
+[81] Davis A S, Vergne I, Master S S, Kyei G B, Chua J and
+Deretic V 2007 Mechanism of inducible nitric oxide
+synthase exclusion from mycobacterial phagosomes PLoS
+Pathog. 3 e186
+[82] Schairer D O, Chouake J S, Nosanchuk J D and Friedman
+A J 2012 The potential of nitric oxide releasing
+therapies as antimicrobial agents Virulence
+3 271–9
+[83] Bogdan C 2015 Nitric oxide synthase in innate and
+adaptive immunity: an update Trends Immunol.
+36 161–78
+12

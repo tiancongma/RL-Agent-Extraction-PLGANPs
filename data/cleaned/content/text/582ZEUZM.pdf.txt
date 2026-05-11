@@ -1,0 +1,1058 @@
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+Available online 8 October 2023
+1773-2247/© 2023 Elsevier B.V. All rights reserved.
+Nano-dimensional in-situ hydrogels of lifitegrast: An advancement in
+preservation time, sustained release and corneal healing in dry
+eye syndrome
+Maitri Bhatt, Pravin Shende *
+Shobhaben Pratapbhai Patel School of Pharmacy and Technology Management, SVKM’S NMIMS, V. L. Mehta Road, Vile Parle (W), Mumbai, India
+A R T I C L E  I N F O
+Keywords:
+Lifitegrast
+Dry eye disorder
+In-situ drops
+Nanoparticles
+A B S T R A C T
+Dry eye syndrome, a commonly prevalent disease is characterized by irritation, redness and tear film instability.
+The main objective of the current study included the formulation and evaluation of Eudragit-PLGA nanoparticles
+for lifitegrast delivery via gellan gum in-situ drops. Nanoparticles were prepared using a quasi-emulsion method
+followed by characterization for various parameters such as size analysis, zeta potential, entrapment efficiency,
+FTIR and DSC studies. These nanoparticles were loaded into gel and then subjected to histopathological studies of
+murine model. The evaluated formulation demonstrated particle size of 393 ± 1.42 nm, zeta potential of 2.44 ±
+0.02 mV, PdI of 2.44 ± 0.02 and entrapment efficiency of 90.45 ± 0.05 %. The nanoparticles displayed an initial
+rapid release of 55.95 ± 0.03 % followed by release sustained for 48 h ranging from initial 27.84 ± 0.01 % to
+88.22 ± 0.01 % and 24.81 ± 0.01 % to 77.71 ± 0.01 % with and without gelling system. The gelling system was
+characterized by a pH of 4.56 ± 0.04, clarity index of 99.27 ± 0.05 %, and viscosity changing from 5.283 ±
+0.012 to 15.511 ± 0.160 in STF. The histological finding displayed significant healing in damaged areas of dry
+eyes. Furthermore, when compared to marketed formulation, the formulation demonstrated an enhanced corneal
+thickness and reduced inflammation.
+1. Introduction
+Dry eye disorder (keratoconjunctivitis sicca) is the most under­
+diagnosed condition with a prevalence rate of 11.59 ± 0.04 % [1]. The
+current lifestyle and demographic changes predict that the global dry
+eye patient population will increase substantially from 17.2 % to 19 % in
+2023 [2]. The disorder is mainly caused due to imbalance in the ocular
+fluid homeostasis with instability of tear film and reduced the produc­
+tion of tear fluid. In addition to lifestyle factors like extensive use of
+contact lenses, extreme use of digital screens, and relatively less fre­
+quency of blinking, a careful history should be obtained for diseases like
+systemic lupus erythematosus, diabetes, connective tissue disorder,
+rheumatoid arthritis and thyroid abnormalities. Dry eye can be further
+associated with secondary causes like vascular allergy, cigarette smok­
+ing, hormone replacement therapy, dry climate and history of corneal
+transplantation, refractive surgery, and extracapsular cataract proced­
+ures. Furthermore, long-term medications like antidepressants, antihis­
+tamines, diuretics, cholesterol-lowering agents, psychotropics, oral
+contraceptives and beta-blockers lead to dry eyes.
+Dry-eye disorder (DED) can be treated in number of ways, the latest
+trends include use of intranasal and external tear neuro-stimulators [3],
+osmoprotectants (trehalose, levocarnitine and erythritol) that help in
+prevention of damage caused by hyperosmolarity and humectants like
+sodium hyaluronate for the promotion and retention of water on surface.
+Moreover, hydroxypropyl guar gum utilized to thicken tears and in­
+crease the retention in aqueous layer whereas oils like flaxseed oil,
+mineral and castor oil for simulation of the lipid layer in the tear film
+[4]. Further studies for DED include development of tacrolimus gellan
+gum nanoparticles [5], anti-oxidative and mucin compensating dual
+action nano-eye drops [6] and rebamipide liposomal formulations for
+the management of dry eye syndrome[7].
+Studies performed on the protein profiles obtained from ocular sur­
+face after comparison between normal and dry eyes via ELISA revealed
+reduction in levels of epidermal growth factor and lactoferrin. Further, a
+study demonstrated increased secretion of inflammatory cytokines
+interleukin-1 alpha and IL-1 beta [8]. Moreover, according to studies,
+DED caused lymphocytic infiltration in the ocular tissue resulting in
+amplified levels of pro-inflammatory chemokines and cytokines which
+caused further impairment to the ocular tissues. DED patients
+* Corresponding author.
+E-mail address: pravin.shende@nmims.edu (P. Shende).
+Contents lists available at ScienceDirect
+Journal of Drug Delivery Science and Technology
+journal homepage: www.elsevier.com/locate/jddst
+https://doi.org/10.1016/j.jddst.2023.105018
+Received 21 June 2023; Received in revised form 16 September 2023; Accepted 29 September 2023
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+2
+demonstrated amplified levels of cytokines articulated by T-cells [9]
+leading to the development of immunological synapses. Furthermore,
+lymphocyte
+function
+associated
+antigen/intercellular
+adhesion
+molecule-1 (LFA-1/ICAM-1) binds to T-cells and facilitates the pro­
+liferation/activation of cytokine release as well as employment of
+additional T-cells at the site of inflammation. Henceforth, T-cell-dir­
+ecting treatments will be effective in treatment of DED [10]. To over­
+come the limitations like irritation, transparent or yellow fluid from the
+eye, halos around light, itching, swelling, or redness in the eye, there is a
+need for development of drug formulation that not only focuses on the
+signs and symptoms but also targets the inhibition of IL-1, 3, 6, 8, and
+ICAM-1 and TNF- α [11,12].
+Lifitegrast is a tetrahydroisoquinoline derivative, was permitted by
+USFDA in 2016 for treatment of DED [13]. This molecule not only tar­
+gets cytokines and chemokines secreted during immune response but
+also reduces migration, activation, adhesion and propagation of lym­
+phocytes leading to secretion of immune response chemicals,
+self-amplification and cell destruction of immune response generated by
+the body in response to DED. Lifitegrast inhibits LFA-1 and hinders the
+activity of ICAM-1, an immunoglobin superfamily responsible for
+cellular bonds in endothelial cells during inflammation and overex­
+pressed in conjunctival and corneal tissues in DED patients [14].
+To improve the retention time of formulation on eye surface, gellan
+gum, a natural physical crosslinking and gelling agent exhibiting sol-to-
+gel transition at lowered temperature was used by Ref. [15]. Further­
+more, when compared to another ion-sensitive gelling agent on basis of
+pH, clarity and viscosity to determine of optimum gel for ocular prep­
+aration sodium alginate, gellan gum provides optimum viscosity for
+liquid formulation and transparency. Furthermore, hyaluronic acid, an
+anionic linear polysaccharide, is generally found in vitreous cavity of
+eye in aqueous humor and incorporated into ophthalmic formulations
+for its corneal protection, wound healing mucoadhesive and
+water-binding properties [16]. As aforementioned, it is suggested as an
+effective treatment and excipient for dry eye syndrome by lubricating,
+space-filling and cushioning the vitreous humor. Hyaluronic acid (HA)
+chains maintain a hydrated vitreous network by enhancing the chemical
+stability of collagen fibrils and preventing aggregation of collagen
+[17–20].
+Furthermore, to increase corneal uptake, accelerate the drug pene­
+tration as well as avoid systemic absorption, nano-particulate system
+was considered as a potent to transport the drug to the targeted site
+without losing its activity and effectiveness [21]. PLGA is considered
+one of the best classes of decomposable polymers for continuous drug
+delivery displaying hydrolytic degradation into non-toxic monomer and
+oligomer, glycolic acid and lactic acid [22,23]. Lifitegrast-loaded
+nanoparticles formulated from PLGA were also considered expansively
+in numerous characteristics for their application in ophthalmic irritation
+and evidenced to have decent stability and ophthalmic acceptance [24].
+The combination displayed sustained and targeted delivery of drug at
+pH 7.4, concerning Eudragit RL100 imparting positive stimulating
+quaternary ammonium groups to bind with anionic-charged mucin and
+PLGA for enhancing mucoadhesion to the corneal membrane. The pre­
+sent effort was focused on designing lifitegrast-loaded PLGA-Eudragit
+nanoparticles and incorporating them in hyaluronic acid-based gel
+where two gelling systems were compared including gellan gum in-situ
+drops and sodium alginate gel.
+2. Materials and methods
+2.1. Materials
+The poly (lactic-co-glycolic acid) (PLGA) polymer (50:50) was pro­
+cured from Nomisma Healthcare, India. Eudragit RL100 was purchased
+from Evonic Deggusa, Mumbai, India. Lifitegrast was obtained as a gift
+sample from Microlabs Ltd. India. Poly(vinyl alcohol) (cold pressed) was
+provided by Fischer Scientific, India. Gellan gum and hyaluronic acid
+were acquired from Research lab, India. Sodium alginate was obtained
+from SRL labs, India. Potassium sorbate was obtained from Purenso Pvt.
+Ltd, India. All other solvents and ingredients utilized were analytical
+grade.
+2.2. Methods
+2.2.1. Preparation of lifitegrast-loaded nanoparticles (LEP)
+LEP were formulated by means of varying weight proportions of
+concentrations of Eudragit RS100 and PLGA (1:1, 1:2, and 1:3 w/w)
+using the quasi-emulsion solvent diffusion technique. To identify
+appropriate concentration for the preparation of lifitegrast-loaded
+Eudragit RS100 nanoparticles (EUD), 100 ppm drug and varying con­
+centrations (25, 50 and 75 mg) of Eudragit RS100 (EUD) were dissolved
+in 6 mL DMSO and then injected into 1 % PVA solution under constant
+stirring speed of 500 rpm and subjected to high-pressure homogeniza­
+tion at 30,000 psi for 6 cycles (LM20 Microfluidizer, USA). The EUD
+nanoparticles were then subjected to 15,000 rpm centrifugation at 4 ◦C
+for 30 min (Beckman Coulter, USA) and collected after washing them
+twice with double distilled water (ddw).
+Further, for the preparation of nanoparticles with combination of
+polymers, lifitegrast (100 ppm) was incorporated in a rounded flask and
+liquefied in 6 mL DMSO under continuous stirring till indistinct solution
+was obtained. Additionally, different proportions of PLGA with constant
+concentration of Eudragit RS100 were liquefied in the above solution
+under continuous overnight stirring. The resulting formulation was
+injected in 40 mL solution (1%w/v) consisting of PVA as a stabilizing
+agent under continuous stirring. This sample was then subjected to high-
+pressure homogenization and the final nanosuspension was centrifuged
+at 15,000 rpm at 4 ◦C for 30 min (Beckman Coulter, USA). The nano­
+particles were washed with ddw for removal of surface PVA and excess
+DMSO.
+2.2.2. Preparation of hyaluronic-based in-situ drops
+Gellan gum drops were prepared by varying concentrations of
+deacetylated gellan gum where, the formulation was dissolved with HA
+(0.1 %), mannitol (4.75% w/v), Polysorbate 80 (4 % w/v), EDTA (0.03
+% w/v) and potassium sorbate (0.01 %). Briefly, mannitol, Polysorbate
+80 and EDTA were added in 20 mL of ddw under stirring at 500 rpm.
+Gellan gum was solubilized in 10 mL ddw and kept undisturbed to hy­
+drate for 10 min, followed by heating the solution at 80 ◦C under con­
+stant stirring until a transparent homogenous solution was obtained.
+Both the solutions were mixed to 80 ◦C and gellan gum solution was
+added into mannitol solution at constant stirring (500 rpm). After
+obtaining the homogenized solution, the formulation was filtered using
+Whatman® filter paper. Subsequently, the water loss caused because of
+evaporation was adjusted by adding ddw and the formulation was
+Abbreviations
+DED
+Dry eye disorder
+ELISA
+Enzyme-linked immunoassay
+ILF
+Interleukin factor
+ICAM-1
+Intercellular Adhesion Molecule-1
+NSAIDS Non-steroidal anti-inflammatory drugs
+TNF-α
+Tumour Necrosis Factor-alpha
+PLGA
+Poly D, L-lactic-co-glycolic acid
+STF
+Simulated tear fluid condition
+HPMC K4M Hydroxypropyl methylcellulose
+LLN
+Lifitegrast-loaded nanoparticles in in-situ gel
+LEP
+Lifitegrast-loaded Eudragit RS100- PLGA nanoparticles
+BEP
+Blank Eudragit RS100- PLGA nanoparticles
+ddw
+Double distilled water
+M. Bhatt and P. Shende
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+3
+autoclaved at 15psi and 121 ◦C for 15 min.
+Similarly, sodium alginate (SA) drops were prepared using varying
+concentrations of SA and the concentration of HPMC K4M was main­
+tained at a concentration of 0.5 %. The formulation consisted of EDTA
+(0.03 %), potassium sorbate (0.01 %), mannitol (4.75% w/v) and
+Polysorbate-80 (4 % w/v) whereas SA and HPMC K4M were added to
+cold water and allowed to gel for 10 min. The formulation was main­
+tained under constant stirring while adding mannitol, EDTA, Poly­
+sorbate 80 and potassium sorbate for better solubilization and to obtain
+a clear solution. The preparation was filtered using Whatman® filter
+paper and the water loss was compensated by adding ddw and the
+formulation was autoclaved at 15psi and 121 ◦C for 15 min.
+2.2.3. Preparation of lifitegrast-loaded nanoparticles in hyaluronic-based
+GA in-situ drops (LLN)
+After collection of LEP by centrifugation, 50 mg of nanoparticles
+were incorporated into GA2 under constant stirring till to observe ho­
+mogenous dispersion. The formulation was subjected to further char­
+acterization like in-vitro drug release, SEM analysis, DSC and ex-vivo (e.
+v.) drug release. Furthermore, profiles of GA and SA were tested for
+clarity, pH, gelation time and viscosity to obtain the suitable alternative
+for ocular delivery of LEP.
+3. Characterization of LEP2 in GA2 in-situ drops
+3. 1. Characterisation of LEP
+3.1.1. Particle size (PS), surface charge (ZP) and polydispersity index
+(PdI)
+PS, ZP and PdI of formulations BEP1, BEP2, BEP3, LEP1, LEP2 and
+LEP3 were studied by employing the dynamic light scattering method
+(Nano Zeta Sizer, Malvern ZS 90, UK). The prepared formulations were
+mixed with 15 mL ddw for dilution before analysis at 25 ◦C and were
+subjected to Nanozeta sizer (NanoZS90, Malvern, UK). The analysis was
+accomplished in triplicate at 25 ◦C and the mean value was calculated.
+3.1.2. % entrapment efficiency (% EE)
+The formulations LEP1, LEP2 and LEP3 were dispersed in ddw and
+subjected to centrifugation for 15 min at 15000 rpm (Beckman Coulter,
+USA). The transparent upper liquid was discarded and replaced with
+simulated tear fluid and the centrifugation process was repeated. Later,
+the supernatant was withdrawn from the LEP1, LEP2 and LEP3 and
+analysis was done using UV–Visible spectrophotometer at 260 nm and
+the % EE was measured using the below formula:
+% EE = Total amount of drug added −Total amount of Free drug
+Total amount of drug
+× 100
+3.1.3. In-vitro drug release studies
+The drug release of formulations LEP1, LEP2 and LEP3 were calcu­
+lated utilizing dialysis tube (M.W. Cut-off: 10,000) technique under
+simulated tear fluid pH 7.2. Formulations LEP1, LEP2 and LEP3 were
+disseminated in dialysis membrane and the ends were clamped. The
+aliquots were reserved at different time intervals like 15 min, 30 min, 1
+h, 2 h, 4 h, 8 h, 24 h and 36 h. The samples were subjected to UV–visible
+spectrophotometer at a wavelength of 260 nm to measure the % drug
+release.
+From the above formulation, LEP2 demonstrated the minimum
+particle dimension (393.17 ± 1.42 nm) along with zeta potential of 2.44
+± 0.016 mV (P < 0.0001). Furthermore, the PdI was detected to be 0.43
+± 0.03 indicating undeviating colloidal scattering (P < 0.0001).
+Formulation LEP2 displayed a determined %EE of 90.45 ± 0.05 with
+sustained release outline up to 48 h (P < 0.0001). Based on the PS, %EE,
+ZP and in-vitro release profile, LEP2 was chosen as a supplementary for
+superficial morphology analysis, FTIR, and DSC and further evaluated
+after incorporation in in-situ gel systems for in-vitro and ex-vivo release
+studies.
+3.1.4. Thermal analysis
+The thermal analyses of lifitegrast PLGA, EUD3, Eudragit RS100,
+BEP2 and LEP2 were analyzed by Differential Scanning Calorimeter
+(DSC Mettler Toledo DSC 1 Star ͤ, Switzerland). Sample between 2 and 4
+mg was subjected in an aluminium pan and the thermal profiles were
+further attained between 30◦and 300 ◦C.
+3.1.5. Scanning Electron Microscope
+The surface morphologic features of the BEP2 and LEP2 were
+examined under Scanning Electron Microscope (Quanta200 ESEM sys­
+tem). Prior to studies, LEP2 was positioned on aluminium stubs and
+covered with gold to form a conductive surface and scanned within the
+range of 30–300 ◦C.
+3.1.6. Fourier transform infrared spectroscopy (FTIR)
+Lifitegrast, PLGA, Eudragit RS100, BEP2 and LEP2 were scanned
+using light absorbance standards in the infrared range (PerkinElmer,
+USA) after scanning the spectra 32 times on a resolution of 4 cm−
+1.
+3.2. Characterization of in-situ drops
+Two in-situ systems including GA and SA were examined for pH,
+gelation time, viscosity and clarity for further selection of the delivery
+system to deliver LEP. GA was selected for the preparation of in-situ
+drops and a comparative evaluation for justification was performed
+based on pH, clarity and viscosity change when the formulations were
+subjected to simulated tear fluid.
+3.2.1. pH
+The formulations SA and GA were tested using PICO + pH meter (Lab
+India, India). Before analysis, the pH meter was standardized using
+standard solutions of pH values 4, 7 and 10 pH standards at 25 ◦C. After
+testing the formulations in triplicate, the average value was considered.
+3.2.2. Clarity
+A quantitative estimation was predicted by subjecting the formula­
+tions GA1, GA2, GA3, GA4, GA5, SA1, SA2, SA3, SA4 and SA5 to per­
+centage light transmittance in the perceptible region at 490 nm using an
+UV–Visible spectrometer(UV-1800), Shimadzu, Japan with reference to
+ddw as a standard (100 % mean transmittance).
+3.2.3. Rheological characterization and viscosity testing
+GA and SA formulations were tested for optimum viscosity using
+spindle 61, DV-III ultra-programmable rheometer at 25 ◦C for obtaining
+viscosities. Shear stress and shear rate were kept constant, and the
+formulation viscosity was measured after 100 s. Readings were taken
+into triplicates and the average value was considered.
+Apart from the above test, the preparations GA2 were subjected to
+viscosity profiling under simulated tear fluid conditions to understand
+their behavior in the ocular environment. The formulation was tested
+using Geometry: DIN rotor – Concentric Cylinder assembly at tempera­
+ture: 32 ◦C and subjected to shear rates: 0.1 to 3000 1/s to understand
+the effect of blinking on the behavior of gel.
+3.2.4. Gelation time
+A system was prepared in a beaker containing 2 mL of gel and STF
+prepared with sodium salt (0.67 g), NaHCO3(0.20 g), and CaCl3 de­
+hydrates (0.008 g) in ddw to 100 mL and pH value was adjusted to 7.2.
+The time taken by the liquid formulation to form gel was observed
+visually concerning change in viscosity and was reported. Based on the
+above criteria, GA2 was selected for further evaluation like osmolality,
+in-vitro, in-vivo and e.v. studies.
+M. Bhatt and P. Shende
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+4
+3.2.5. Osmolality
+The osmolalities of ophthalmic formulations GA2, GA3 and GA4
+were tested (Osmometer Fischer scientific, USA) to avoid hyper­
+osmolality leading to irritation of the eye, discomfort and ophthalmic
+surface damage. The acceptable range of ophthalmic formulation is
+200–500 mOsm/Kg. Initially, the instrument was calibrated using
+standards of 100, 290 and 1000mOsm/kg. The results were taken thrice
+and a mean average for each formulation was reported.
+3.3. Characterization of lifitegrast-loaded LEP2 in GA2 in-situ drops
+(LLN)
+3.3.1. In-vitro drug release studies
+The formulation LEP2 was incorporated into GA2 and release was
+measured using Franz diffusion method. A nylon membrane (M.W. cut-
+off = 10,000) was used with STF pH 7.4 and the formulation was sub­
+jected to the membrane under constant stirring. The aliquots were
+collected at several time intervals like 15 min, 30 min, 1 h, 2 h, 4 h, 8 h,
+24 h, 36 h and 48 h. The experiment was performed in triplicates.
+3.3.2. Ex-vivo studies
+The e.v. release studies were carried out using goat cornea where the
+corneas were prepared and positioned on Franz diffusion cell. LNN was
+subjected to the Franz diffusion system with STF as the release medium
+and the permeation release profile was compared with the release of
+LEP2 for the period of 48h.
+3.3.3. In-vivo studies
+The animal studies were accomplished on C57BL/6 mice of 20–25 g
+and were subjected to a supervised environment with a temperature of
+22 ◦C and light-dark cycle of 12:12-h throughout the study and given
+unrestricted admission to water and food. All experimentations were
+approved under IAEC guidelines protocol number CPCSEA/IAEC/P54/
+2022. The animals were separated into 4 groups each containing six
+mice including positive and negative control groups, mice tested with
+marketed formulation and LLN. Except for group I, all mice were treated
+with 5 μL PBS containing 0.2 % benzalkonium chloride twice a day for
+inducing dry eye. After inducing dry eyes, the animals were tested using
+phenol-dipped cotton thread to evaluate the induction of DED. The
+marketed formulation was introduced BID ~12h apart and LLN formu­
+lation was administered once daily with an interval of 24h using a
+positive displacement micropipette for 15 days. On the 16th day of drug
+administration, eyes were withdrawn from each group and subjected to
+histopathological studies using Haematoxylin-Eosin stain(H&E) to un­
+derstand the healing process of dry eye.
+4. Results and discussion
+4.1. Preparation and optimization of lifitegrast-loaded Eudragit-PLGA
+nanoparticles (LLN)
+The PSs of BEP and LEP nanoparticles were reported in the range of
+270.93 ± 2.55 to 512.52 ± 2.65 nm. For identifying the appropriate
+concentration of Eudragit RS100, nanoparticles were prepared with
+varying concentrations of Eudragit (EUD1, EUD2 and EUD3) as
+mentioned in Table 1. Further, based on the PS, ZP and % EE, EUD2
+batch was selected with PS of 219.2 ± 0.29 nm, ZP of 16.97 ± 0.21 mV,
+PdI of 0.56 ± 0.15 and EE of 84.66 ± 0.012 %. There was a decline in PS
+with increasing concentration of Eudragit RS100 due to decrease in in­
+ternal phase with cumulative polymer concentration creating intact
+structure. The integral structure resulted into improved %EE of the
+nanoparticles due to upsurge in organic phase and intensification in the
+organic phase viscosity resulting into better drug loading capacity [25].
+After the selection of EUD2, 50 mg of Eudragit RS100 was combined
+with varying concentrations of PLGA for the preparation of nano­
+particles. Table 1 displays PS, ZP, PDI and % EE of nanoparticles with
+increasing concentrations of PLGA.
+Different Eudragit RS100 and PLGA concentrations displayed vary­
+ing predominant effects on the particle size of nanoparticles. Table 1
+signifies that the PS was declining or expanding with PLGA concentra­
+tions, indicating the upsurge in polymer concentration in the surface
+matrix of nanoparticles. The increasing PS was further justified by the
+fact that the interior phase viscosity was altered with the changing
+concentration of polymers and the upsurge in concentration led to rise in
+the interior phase viscosity. Furthermore, during the formation process
+of nanoparticles, the viscosity of the emulsion interior phase was more
+than supplementary polymer compositions. The outcomes attained
+interrelated well with the aforementioned experimentations and
+considered the impact of Eudragit RL100 and PLGA polymers on the
+dimensions of nanoparticles [26].
+The % EE of LEP preparations was established to be in the range of
+83.06 ± 0.04 to 92.13 ± 0.01 %. As shown in Tables 1 and it was
+detected that with an increasing amount of PLGA, the %EE increased
+since lifitegrast is a water-insoluble drug but is very well soluble in
+organic solvents like DMF, ethanol and DMSO. Moreover, by increasing
+PLGA polymer concentration, there was a higher availability of poly­
+meric phase resulting into elevated dissolution area for lifitegrast.
+Furthermore, the ZP of LEP2 was observed to possess a cationic charge
+because of the presence of Eudragit RL100 and decreased to 1.66 ± 0.01
+mV from 7.66 ± 0.01 mV with an increase in PLGA concentration from
+25 to 75 mg. The surface charge remained positive by varying concen­
+trations of Eudragit RL100 since only a minimal amount of Eudragit
+RS100 was required to maintain a positive charge. Analogous results
+were obtained in an analysis [27]. The anionic surface charge can be
+considered important since it is responsible for increasing precorneal
+holding time by interacting with the negative charge of mucin in corneal
+tissue. As shown in Fig. 1, the % release amplified with the concentra­
+tion of PLGA due to increasing PS of nanoparticles and enhanced
+interface of the polymers with the drug and elevated dissolution area for
+lifitegrast. Based on PS (393.17 ± 1.42 nm), ZP (2.44 ± 0.02 mV), PdI
+(0.43 ± 0.03) and EE (90.45 ± 0.05 %), the formulation LEP2 was
+further selected for incorporation in the gelling system and subjected to
+FTIR, DSC and SEM analyses. LEP2 also displayed in-vitro release of
+Table 1
+PS and % EE of BEP and LEP nanoparticles.
+Formulation
+Eudragit: PLGA
+concentration
+ratio (w/w)
+Particle
+size (nm
+± SD)
+Zeta
+potential
+(mV ± SD)
+PDI (n
+± SD)
+%EE
+(% ±
+SD)
+EUD1
+25
+390.5 ±
+0.22
+14.47 ±
+0.39
+0.63
+± 0.23
+81.65
+±
+0.012
+EUD2
+50
+219.2 ±
+0.29
+16.97 ±
+0.21
+0.56
+± 0.15
+84.66
+±
+0.012
+EUD3
+75
+175.9 ±
+0.63
+11.33 ±
+0.09
+0.56
+± 0.24
+83.17
+±
+0.010
+BEP1
+1:1
+270.93
+± 2.55
+5.75 ±
+0.443
+0.144
+±
+0.016
+-
+BEP2
+1:2
+271.87
+± 2.89
+2.5 ±
+1.098
+0.126
+±
+0.009
+-
+BEP3
+1:3
+304.37
+± 3.05
+1.62 ±
+0.187
+0.083
+±
+0.014
+-
+LEP1
+1:1
+273.73
+± 5.90
+7.66 ±
+0.01
+0.37
+±
+0.060
+83.06
+± 0.04
+LEP2
+1:2
+393.17
+± 1.42
+2.44 ±
+0.02
+0.43
+±
+0.030
+90.45
+± 0.05
+LEP3
+1:3
+512.52
+± 2.65
+1.66 ±
+0.01
+0.55
+±
+0.040
+92.13
+± 0.01
+M. Bhatt and P. Shende
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+5
+88.22 ± 0.01 % with an initial rapid release of 66.88 ± 0.01 % for 12 h
+and further sustained release profile of 48 h.
+4.1.1. DSC
+The thermal analysis of lifitegrast displayed a peak at 48.32 ◦C and
+119.29 ◦C confirming the amorphous structure of the drug. PLGA
+exhibited a melting peak at 260 ◦C [28] whereas Eudragit RS100
+demonstrated a glass transition temperature of 190 ◦C with peak onset of
+396.97 ◦C [29]. BEP2 depicted a peak of PLGA and Eudragit RS100 with
+a melting behaviour at 260 ◦C for PLGA whereas the structure of BEP2
+thermogram displays a similar pattern as that of EUD. The characteristic
+peak of lifitegrast diminished in the LEP2, represents the loosely
+entrapped lifitegrast on the surface of nanoparticles [23].
+4.1.2. SEM
+As reported in Fig. 2 nanoparticles were found to be smooth and
+spherical demonstrating the greater probability of rapid clearance and
+uniform distribution of particles in formulation in ocular cavity under
+314.10 nm–345.23 nm range. BEP2 formulation demonstrated a particle
+size distribution of 183.3 nm–283.30 nm. Moreover, these particles were
+distributed uniformly in the formulation and displayed absence of
+ruptured exterior, such surface would consequence in measured clear­
+ance from the cavity. Moreover, non-spherical particles lead to damage
+on the corneal surface and scratching effect on the cornea and hence the
+resulting morphology displays the feasibility for delivering ocular for­
+mulations as reported earlier by Ref. [30,31].
+4.1.3. FTIR
+Peaks obtained at 1732.60 cm−1 signified the formation of C––O on
+terminal aryl group in the range of 1740-1720 cm−1. Peaks at 532.01
+cm−1 and 1027.42 cm−1 were obtained between 600 and 800 cm−1 and
+1000-1200 cm−1 demonstrated the occurrence of C–Cl bond and C–N
+bond, respectively. Two peaks were obtained between 3252.23 cm−1
+and 1617.21 cm−1 representing N–H group present in lifitegrast struc­
+ture. The presence of Eudragit RS100 was confirmed by sharp charac­
+teristic bands on 1143.60 cm−1 (S–O group), 1238.43 cm−1 (C–N and
+N–H groups), 1724.05 cm−1 (–COO– group) and 3430.44 cm−1 (NH2).
+Further, an intense band of 1238.43 cm−1 and 1143.60 cm−1 exhibited
+the incidence of C–O stretching. A peak at 1724.05 cm−1 representing
+C––O and a broad peak at 3430.44 cm−1 corresponding to stretching
+vibrations of quaternary amines were present with aliphatic stretching
+vibrations at 2916.14 cm−1. Moreover, the PLGA spectrum demon­
+strated the peaks at 3429.43 cm−1 and 2950.17 cm−1 as distinguishing
+peaks of OH stretching vibration and C–H aliphatic stretching, respec­
+tively. An intense spectrum at 1749.49 cm−1 was observed for carbonyl
+stretching and 1422.97 cm−1 for C–H stretching of methyl groups.
+Additionally, C––O and C ≡N rotational vibrations for ester groups were
+observed between ranges of 1000–1300 cm−1. It was observed that
+Eudragit-PLGA nanoparticles demonstrated slight deviation in charac­
+teristics peaks of 3360.71 cm−1, 1730.98 cm−1 and 1243.56 cm−1
+overlapping with representative peaks of PLGA at 2938.93 cm−1,
+1428.23 cm−1, 1374.73 cm−1 and 1088.31 cm−1. As reported in Fig. 3,
+after loading of drug, the characteristic vibrations demonstrated slight
+deflection with minor peaks of lifitegrast at the wavelengths of 1640.43
+cm−1, 1424.15 cm−1, 1270.13 cm−1 and 1131.33 cm−1 suggesting the
+entrapment of drug in the Eudragit-PLGA matrix.
+4.2. Characterisation of in-situ drops
+4.2.1. pH, clarity and gelation time
+Since tear fluid shows a pH value of 7.4 in its physiological state and
+hence the acceptable ocular range is 4.5–8.5. As reported in Table 2, the
+pH values displayed a range of 4.46 ± 0.04 to 4.63 ± 0.04 which is in
+the tolerable range of ocular pH. For clarity testing, the formulations
+were subjected to UV–Visible spectroscopy and measured against ddw at
+visible wavelength of 490 nm (100 % mean transmittance). The gelation
+time was calculated to understand the time required for sol-to-gel tran­
+sition time and retention in the cul-de-sac region. GA formulations
+demonstrated a gelation time of 5–10 s whereas, SA formulations dis­
+played a range of 15–25 s after the in-situ systems were incorporated in
+STF. The quick transition time of GA formulations might be due to the
+interaction of anions in STF with anionically charged helices of poly­
+saccharide with mono- and di-valent atoms of gellan gum. This result
+depicts the formulations as a better alternative for the quick action and
+signifies reduced loss of formulation from eye after administration. The
+study concluded that the in-situ formulation of GA was relatively clear
+than SA due to its structured matrix formation and characteristic white
+color resulting into transparent gel formation and qualifying the use of
+GA formulations for transparent in-situ drops.
+4.2.2. Rheological characterization
+Formulations displayed a proportional increase in viscosity with
+cumulative gellan gum concentration ranging from 0.08 g to 0.6 g. The
+viscosity of the formulation in liquid form varied from 2.733 ±
+0.008–22.512 ± 0.120 cps with a torque range of 9.2 %–74.8 % at
+Fig. 1. In-vitro release of drug from LEP nanoparticles.
+Fig. 2. (I) Thermal analyses of (a) Lifitegrast, (b) PLGA, (c) Eudragit RS100, (d)
+EUD2 and (e) LEP2 and (II) SEM analyses of (a) BEP2 and (b) LEP2.
+Fig. 3. FTIR spectra of (a) Lifitegrast, (b) PLGA, (c) Eudragit RL100, (d) BEP2
+and (e) LEP2.
+M. Bhatt and P. Shende
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+6
+normal pH value and increase viscosity ranging from 7.442 ± 0.008 to
+22.628 ± 0.080 cps in STF. As shown in Table 3, based on the evaluation
+parameters like percentage change in torque, clarity and increase in
+viscosity, formulation GA2 was selected. Formulation GA2 displayed a
+3-fold increase in viscosity, with mean transmittance of 97.23 ± 0.11 %
+and pH of 4.56.
+STF sample showed Newtonian behavior until 500 1/s shear rate and
+since the blinking shear rate ranges from 1 1/s up to 50,000 1/s, there
+was steady inclined in the viscosity beyond 1000 1/s due to high shear
+rates causing secondary flows, mimicking the simulated fluid condition
+and blinking pattern. Further, the mean viscosity was reported as 9.7 ±
+1.73 cPs similar to the range of tear fluid (4.0–10.0) [32,33].
+Moreover, when STF (7 mL) and gellan gum (30 mL) were mixed and
+subjected to viscosity profiling, GA2 displayed Newtonian behavior until
+1250 1/s shear rate. The shear stress was caused due to blinking of eye
+(500–5000) 1/s and hence there was a steady incline beyond 2000 1/s
+representing increase in viscosity after blinking. The mean viscosity
+value is 24.07 ± 2.76 cPs signifying the maintenance of preparation on
+the eye surface due to increase in viscosity. Similar comparative
+behavior of GA2 formulation and STF representing that there will be
+minimum difference between the formulation and tear fluid and hence
+reduced possibility of irritation due to increase in the viscosity since,
+GA2 exhibits non-Newtonian behavior after 2000 1/s, the formulation
+demonstrated high viscosity in open eye to resist the loss on drainage
+and develop an idea stable fluid condition without blurring the vision.
+The behaviour is significant to spread the formulation on ocular surface
+without causing any damage to the epithelial cells [34].
+4.2.3. Osmolality
+The osmolality of GA2 was measured to be 167.33 ± 1.25 mOsm/Kg
+which falls in the tolerable range of 200–500 mOsm/Kg. Formulations
+GA3 and GA4 demonstrated osmolalities of 186.67 ± 4.99 and 194.33
+± 4.78 mOsm/Kg, respectively. The acceptable range of osmolality is
+160–354 mOsm/kg. It has been suggested that hypo-osmolar lubricants
+may be more effective at lowering tear film osmolarity than iso-osmolar
+drops. Hypo-osmolar lubricants is reported to be more effective at
+reducing tear film hyperosmolarity over time, as well as symptoms.
+4.2.4. In-vitro drug release
+Based on the in-vitro profile, LLN was compared with LEP2 drug and
+it was observed that the cumulative release decreased after
+nanoparticles were incorporated into the in-situ system because of the
+hindrance of polymer with release profile, inherent viscosity of in-situ
+system and matrix structure of gellan gum. The initial burst of lifitegrast
+caused due to amorphous nature of drug where presence of amorphous
+structure led to increase in lifitegrast solubility. The increased particle
+size resulted in elevated operative external area uncovered to the lifi­
+tegrast release medium i.e., STF which subsequently resulted in
+increased initial release as well as the initial rapid release can be sub­
+jected to the diffusion of drug molecules present on the external surface
+of nanoparticles [35]. Additionally, during the preparation of LEP2,
+lifitegrast precipitated as amorphous substance in the PLGA matrix and
+hence caused a significant release of 51.46 ± 0.35 % in the first 5 h. The
+combination of Eudragit RS100 and PLGA displayed a significant
+compact structure formation leading to slow release of drug through
+diffusion mechanism and hence a sustained release pattern lasting up to
+48h. Fig. 4 displays the comparative release of 88.22 ± 0.01 % for LEP2
+in comparison to 77.71 ± 0.01% for LLN. When LEP2 nanoparticles
+were incorporated into in-situ gelling system, the release decreased by
+Table 2
+Comparison of pH measurements, clarity and gelation time of GA and SA in-situ drops.
+Formulation
+(GA)
+pH (n ±
+SD)
+Mean % transmittance (% ± SD)
+(GA)
+Gelation time
+(sec)
+Formulation
+(SA)
+pH (n ±
+SD)
+Mean % transmittance (% ± SD)
+(SA)
+Gelation time
+(sec)
+GA1
+4.46 ±
+0.04
+99.22 ± 0.05
+3
+SA1
+6.27 ±
+0.05
+80.1 ± 0.23
+16
+GA2
+4.56 ±
+0.04
+99.27 ± 0.05
+6
+SA2
+6.25 ±
+0.10
+79.9 ± 0.355
+17
+GA3
+4.56 ±
+0.04
+97.13 ± 0.05
+8
+SA3
+6.23 ±
+0.09
+76.6 ± 0.20
+20
+GA4
+4.50 ±
+0.14
+97.23 ± 0.11
+11
+SA4
+6.43 ±
+0.09
+70.2 ± 0.16
+24
+GA5
+4.63 ±
+0.04
+96.18 ± 0.05
+12
+SA5
+6.16 ±
+0.03
+56.9 ± 0.18
+25
+Table 3
+Viscosity measurement of GA-based and SA-based in-situ drops.
+Formulation
+Viscosity (cps± SD)
+Torque
+Formulation
+Viscosity (cps± SD)
+Torque
+Normal
+STF
+Normal
+STF
+Normal
+STF
+Normal
+STF
+GA1
+2.733 ± 0.008
+7.442 ± 0.008
+9.2 %
+24.6 %
+SA1
+12.6 ± 0.12
+17.1 ± 0.17
+43.4 ± 0.12
+34.2 ± 0.17
+GA2
+5.283 ± 0.012
+15.511 ± 0.160
+17.7 %
+51.1 %
+SA2
+13.2 ± 0.16
+20.1 ± 0.20
+42.4 ± 0.29
+38.4 ± 0.17
+GA3
+6.42 1 ± 0.009
+20.009 ± 0.210
+20.3 %
+66.2 %
+SA3
+17.7 ± 0.17
+23.5 ± 0.09
+48.5 ± 0.16
+57.2 ± 0.12
+GA4
+16.924 ± 0.140
+27.711 ± 0.120
+55.8 %
+92.4 %
+SA4
+20.9 ± 0.71
+25.3 ± 0.08
+51.5 ± 0.16
+60.3 ± 0.21
+GA5
+22.512 ± 0.120
+22.628 ± 0.080
+74.8 %
+75.4 %
+SA5
+24.3 ± 0.24
+36.3 ± 0.12
+58.4 ± 0.20
+62.20 ± 0.12
+Fig. 4. In-vitro and ex-vivo drug release profiles of (A) LEP in in-situ GA drops
+and (B) LEP2 nanoparticles.
+M. Bhatt and P. Shende
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+7
+10 % due to hindrance caused by the gelling system in the release of drug
+in STF. This might be due to crosslinking reaction of gellan gum with
+positively charge tear fluid and formed a complex helical structure
+which in turn reduces the amount of drug diffusion through the mem­
+brane [36]. This causes reduction in % drug release of nanoparticles
+incorporated into gelling system in comparison to the only LEP2.
+The e.v. permeation studies were performed on goat cornea where
+the corneas were prepared and positioned on Franz diffusion cell. As
+seen in Fig. 4, when LLN was studied for e.v. permeation release profile,
+the formulation displayed an increasing release of 0.4739 × 10−4 mol/
+cm2 till 8 h followed by sustained release of 0.6042 × 10−4 mol/cm2 till
+48 h. There was a decrease in % drug release when compared to in-vitro
+lifitegrast release because of corneal thickness of goat cornea as well as
+limited surface area for absorption of drug. This release was further
+affected by hindrance created because of existence of in-situ gelling
+system where gellan gum binds to the positive charged ions present in
+tear fluid and forms a helical matrix structure. This structure is
+responsible for increasing the corneal residence time and reducing the
+drug release from the matrix.
+4.2.5. In-vitro –ex-vivo correlation
+As reported in above results, LEP2 displayed a cumulative in-vitro
+release of 0.7167 × 10−4 mol/cm2 for LEP2 in comparison to 0.6313 ×
+10−4 mol/cm2 for LLN whereas the e.v. release was found to be 0.6042
+× 10−4 mol/cm2. The release of the drug from LLN was rapid in first
+hour due to presence of surface drug and elevated concentration
+gradient between the contributor and the receiving compartment [37].
+Further, when LEP2 release was compared with LLN, it was observed
+that the release significantly decreased by 10 % owing to the presence of
+helical matrix structure formed due to the interaction of gellan gum with
+tear fluid cations. Moreover, tear film consists of 3 layers including
+corneal fat layer, liquid components and mucin layers. Mucin is
+considered as the main interaction protein of ocular surface and results
+in improved drug retention and mucoadhesion [38]. When HA is com­
+bined with Eudragit-PLGA polymers, there is a significant increase in
+mucin binding due to positive zeta potential of Eudragit and hence the e.
+v. release is hindered due to enhanced retention of nanoparticles to the
+surface as well as gellan gum binding with tear fluid.
+4.2.6. Histopathological studies
+Except for group I, all mice were treated with 5 μL PBS containing
+0.2 % benzalkonium chloride twice a day for inducing dry eye. After
+inducing dry eyes, the animals were tested using phenol thread test the
+induction of dry eyes where the length of damp thread was compared
+before and after induction of dry eyes. The marketed formulation was
+introduced b.i.d. ~12h apart and LLN was administered once daily with
+an interval of 24h using a positive displacement micropipette for 15
+days. On 16th day of drug administration, corneas were withdrawn from
+all mice from each group and subjected to histopathological study to
+understand and observe the healing effect of the formulation on dry eye
+syndrome.
+Later, for histopathological studies the samples were subjected to
+H&E stain for recognition of corneal inflammation markers as well
+changes in lens and it was detected that BAC-induced DED occasioned in
+amplified corneal epithelial width and inflammatory cell infiltration as
+well as edema beneath the epithelium. The group treated with LLN
+demonstrated an enhancement in the histopathologic conclusions like
+increase in corneal epithelial width and corneal thickness outline as well
+as reduced inflammatory infiltration. The histopathological findings
+displayed in Fig. 5(A) and (B), the cornea and lens displayed improve­
+ment in the corneal infiltration and inflammation when compared to the
+negative control group indicating the reduction in inflammation
+markers causing damage to the corneal surface.
+5. Conclusions
+The study reports the formulation and characterization of LEP2
+nanoparticles for treatment of dry eye syndrome. The results indicate
+that the varying concentration of PLGA affected the PS and ZP of the
+nanoparticles as well as displayed increased %EE. The nanoparticles
+displayed an EE, PS and ZP of 90.45 ± 0.05 %, 393 ± 1.42 nm and 2.44
+± 0.02 mV, respectively which improves the corneal binding of nano­
+particles to mucin present on ocular surface. The in-vitro profiles of
+nanoparticles and final formulations were 88.22 ± 0.01 % and 77.72 ±
+0.01 %, respectively signifying the sustained release of lifitegrast and
+reduced frequency of dosing. The formulation significantly healed the
+corneal infiltration caused due to induction of dry eye and demonstrated
+increase in corneal thickness, signifying the improvement in dry eye
+condition and healing in the murine model. These outcomes specify that
+LEP when compared to the available marketed formulation, show the
+better prospects as drug delivery systems in dry eye syndrome.
+CRediT authorship contribution statement
+Maitri Bhatt: Drafting and writing of manuscript. Pravin Shende:
+Concept of design, correction of manuscript.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Fig. 5. (A) (i) Histological changes in cornea (a) Group 1: Cornea: Showing normal lining epithelial cells and stroma, (b) Group 2: cornea: Showing infiltration of
+inflammatory cells in lining epithelial cells and stroma, (c) Group 3: cornea: showing reduced severity of inflammatory changes in lining epithelial cells and stroma
+and (d) Group 4: showing reduced severity of inflammatory changes in lining epithelial cells and stroma and
+(B) Histological changes in lens (a) Group 1 lens: showing normal nucleus and lens, (b) Group 2: lens: showing inflammatory changes with vacuolation in the lens, (c)
+Group 3: lens: showing reduced severity of inflammatory changes with vacuolation in the lens and (d) Group 4 lens: showing reduced severity of inflammatory
+changes with vacuolation in the lens.
+M. Bhatt and P. Shende
+
+Journal of Drug Delivery Science and Technology 89 (2023) 105018
+8
+Data availability
+No data was used for the research described in the article.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.jddst.2023.105018.
+References
+[1] E.B. Papas, The global prevalence of dry eye disease: a Bayesian view, Ophthalmic
+Physiol. Opt. 41 (6) (2021) 1254–1266, https://doi.org/10.1111/OPO.12888.
+[2] P.A. Asbell, Increasing importance of dry eye syndrome and the ideal artificial tear:
+consensus views from a roundtable discussion, Curr. Med. Res. Opin. 22 (11)
+(2006) 2149–2157, https://doi.org/10.1185/030079906X132640.
+[3] M.D. Yu, J.K. Park, A.L. Kossler, <p>Stimulating tear production: spotlight on
+neurostimulation</p&gt, Clin. Ophthalmol. 15 (2021) 4219–4226, https://doi.
+org/10.2147/OPTH.S284622.
+[4] A. Kathuria, K. Shamloo, V. Jhanji, A. Sharma, Categorization of marketed artificial
+tear formulations based on their ingredients: a rational approach for their use,
+Journal of Clinical Medicine 2021, 10 (2021) 1289, https://doi.org/10.3390/
+JCM10061289. 1289, 10(6).
+[5] D. Modi, J. Nirmal, M.H. Warsi, M. Bhatia, N. Hasan, P. Kesharwani, G.K. Jain,
+Formulation and development of tacrolimus-gellan gum nanoformulation for
+treatment of dry eye disease, Colloids Surf. B Biointerfaces 211 (2022), 112255.
+[6] K. Jin, Y. Ge, Z. Ye, X. Pan, Y. Yan, Z. Mao, J. Ye, Anti-oxidative and mucin-
+compensating dual-functional nano eye drops for synergistic treatment of dry eye
+disease, Appl. Mater. Today 27 (2022), 101411, https://doi.org/10.1016/J.
+APMT.2022.101411.
+[7] H. Qiao, Z. Xu, M. Sun, S. Fu, F. Zhao, D. Wang, Z. He, Y. Zhai, J. Sun, Rebamipide
+liposome as an effective ocular delivery system for the management of dry eye
+disease, J. Drug Deliv. Sci. Technol. 75 (2022), 103654, https://doi.org/10.1016/
+J.JDDST.2022.103654.
+[8] A. Solomon, D. Dursun, Z. Liu, Y. Xie, A. Macri, S.C. Pflugfelder, Pro- and anti-
+inflammatory forms of interleukin-1 in the tear fluid and conjunctiva of patients
+with dry-eye disease, Invest. Ophthalmol. Vis. Sci. 42 (10) (2001) 2283–2292.
+[9] H. Lam, L. Bleiden, C.S. de Paiva, W. Farley, M.E. Stern, S.C. Pflugfelder, Tear
+cytokine profiles in dysfunctional tear syndrome, Am. J. Ophthalmol. 147 (2)
+(2009) 198–205.e1, https://doi.org/10.1016/j.ajo.2008.08.032.
+[10] A. Enríquez-De-Salamanca, E. Castellanos, M.E. Stern, I. Fern´andez, E. Carre˜no,
+C. García-V´azquez, J.M. Herreras, M. Calonge, Tear Cytokine and Chemokine
+Analysis and Clinical Correlations in Evaporative-type Dry Eye Disease, 2010.
+[11] L. Jones, L.E. Downie, D. Korb, J.M. Benitez-del-Castillo, R. Dana, S.X. Deng, P.
+N. Dong, G. Geerling, R.Y. Hida, Y. Liu, K.Y. Seo, J. Tauber, T.H. Wakamatsu, J. Xu,
+J.S. Wolffsohn, J.P. Craig, TFOS DEWS II management and therapy report, Ocul.
+Surf. 15 (3) (2017) 575–628, https://doi.org/10.1016/J.JTOS.2017.05.006.
+[12] Y.B. Lee, J.W. Koh, J.Y. Hyon, W.R. Wee, J.J. Kim, Y.J. Shin, Sleep deprivation
+reduces tear secretion and impairs the tear film, Invest. Ophthalmol. Vis. Sci. 55 (6)
+(2014) 3525–3531, https://doi.org/10.1167/IOVS.14-13881.
+[13] A. Abidi, P. Shukla, A. Ahmad, Lifitegrast: a novel drug for treatment of dry eye
+disease, J. Pharmacol. Pharmacother. 7 (4) (2016) 194, https://doi.org/10.4103/
+0976-500X.195920.
+[14] M. Kelly, J.M. Hwang, P. Kubes, Modulating leukocyte recruitment in
+inflammation, J. Allergy Clin. Immunol. 120 (1) (2007) 3–10, https://doi.org/
+10.1016/j.jaci.2007.05.017.
+[15] N. Morsi, M. Ibrahim, H. Refai, H. El Sorogy, Nanoemulsion-based electrolyte
+triggered in situ gel for ocular delivery of acetazolamide, Eur. J. Pharmaceut. Sci.
+104 (2017) 302–314, https://doi.org/10.1016/J.EJPS.2017.04.013.
+[16] R. Mont´es-Mic´o, A. Cervi˜no, T. Ferrer-Blasco, S. García-L´azaro, S. Ortí-Navarro,
+Optical quality after instillation of eyedrops in dry-eye syndrome, J. Cataract
+Refract. Surg. 36 (6) (2010) 935–940, https://doi.org/10.1016/J.
+JCRS.2009.12.044.
+[17] T.C. Laurent, U.B.G. Laurent, J.R.E. Fraser, The structure and function of
+hyaluronan: an overview, Immunol. Cell Biol. 74 (2) (1996) a1–a7, https://doi.
+org/10.1038/ICB.1996.32.
+[18] M.M. Le Goff, P.N. Bishop, Adult vitreous structure and postnatal changes, Eye 22
+(10) (2008) 1214–1222, https://doi.org/10.1038/eye.2008.21, 2008 22:10.
+[19] C.S. Nickerson, J. Park, J.A. Kornfield, H. Karageozian, Rheological properties of
+the vitreous and the role of hyaluronic acid, J. Biomech. 41 (9) (2008) 1840–1846,
+https://doi.org/10.1016/J.JBIOMECH.2008.04.015.
+[20] Rheology of Biological Fluids and Their Substitutes, 2003, pp. 341–361, https://
+doi.org/10.1201/9780203913338-18.
+[21] P. Calvo, M.J. Alonso, J.L. Vila-Jato, J.R. Robinson, Improved ocular
+bioavailability of indomethacin by novel ocular drug carriers, J. Pharm.
+Pharmacol. 48 (11) (1996) 1147–1152, https://doi.org/10.1111/J.2042-
+7158.1996.TB03911.X.
+[22] E. Vega, F. Gamisans, M.L. García, A. Chauvet, F. Lacoulonche, M.A. Egea, PLGA
+nanospheres for the ocular delivery of flurbiprofen: drug release and interactions,
+J. Pharmaceut. Sci. 97 (12) (2008) 5306–5317, https://doi.org/10.1002/
+JPS.21383.
+[23] K. Dillen, J. Vandervoort, G. Van den Mooter, A. Ludwig, Evaluation of
+ciprofloxacin-loaded Eudragit® RS100 or RL100/PLGA nanoparticles, Int. J.
+Pharm. 314 (1) (2006) 72–82, https://doi.org/10.1016/J.IJPHARM.2006.01.041.
+[24] J. Araújo, E. Vega, C. Lopes, M.A. Egea, M.L. Garcia, E.B. Souto, Effect of polymer
+viscosity on physicochemical properties and ocular tolerance of FB-loaded PLGA
+nanospheres, Colloids Surf. B Biointerfaces 72 (1) (2009) 48–56, https://doi.org/
+10.1016/J.COLSURFB.2009.03.028.
+[25] S. Soltani, P. Zakeri-Milani, M. Barzegar-Jalali, M. Jelvehgari, Design of eudragit
+RL nanoparticles by nanoemulsion method as carriers for ophthalmic drug delivery
+of ketotifen fumarate, Iranian Journal of Basic Medical Sciences 19 (5) (2016) 550.
+[26] V. Hoffart, N. Ubrich, C. Simonin, V. Babak, C. Vigneron, M. Hoffman,
+T. Lecompte, P. Maincent, Low Molecular Weight Heparin-Loaded Polymeric
+Nanoparticles: Formulation, Characterization, and Release Characteristics 28 (9)
+(2002) 1091–1099, https://doi.org/10.1081/DDC-120014576.
+[27] J. Vandervoort, K. Yoncheva, A. Ludwig, Influence of the homogenisation
+procedure on the physicochemical properties of PLGA nanoparticles, Chem. Pharm.
+Bull. 52 (11) (2004) 1273–1279, https://doi.org/10.1248/CPB.52.1273.
+[28] Z. Zhang, X. Wang, R. Zhu, Y. Wang, B. Li, Y. Ma, Y. Yin, Synthesis and
+characterization of serial random and block-copolymers based on lactide and
+glycolide, Polym. Sci. B 58 (6) (2016) 720–729, https://doi.org/10.1134/
+S1560090416060191.
+[29] S. Amin, S. Mir, K. Kohli, A. Ali, Novel polymeric matrix films for transdermal
+delivery of metoclopramide, International Journal of Pharmaceutical Frontier
+Research 2 (1) (2012) 48–60.
+[30] P. Aksungur, M. Demirbilek, E.B. Denkbas¸, J. Vandervoort, A. Ludwig, N. Ünlü,
+Development and characterization of Cyclosporine A loaded nanoparticles for
+ocular drug delivery: cellular toxicity, uptake, and kinetic studies, J. Contr. Release
+151 (3) (2011) 286–294.
+[31] V.D. Wagh, D.U. Apar, Cyclosporine A loaded PLGA nanoparticles for dry eye
+disease: in vitro characterization studies, Journal of Nanotechnology (2014),
+683153, https://doi.org/10.1155/2014/683153, 2014.
+[32] P. K Shende, R. Godbole, Current and novel techniques in the ophthalmic drug
+delivery systems, IJPSR 7 (9) (2016) 3557–3566.
+[33] J.M. Tiffany, The viscosity of human tears, Int. Ophthalmol. 15 (6) (1991)
+371–376, https://doi.org/10.1007/BF00137947.
+[34] S. Arshinoff, I. Hofmann, H. Nae, Rheological behavior of commercial artificial tear
+solutions, J. Cataract Refract. Surg. 47 (5) (2021) 649–654, https://doi.org/
+10.1097/J.JCRS.0000000000000507.
+[35] H.A. Almoustafa, M.A. Alshawsh, Z. Chik, Technical aspects of preparing PEG-
+PLGA nanoparticles as carrier for chemotherapeutic agents by nanoprecipitation
+method, Int. J. Pharm. 533 (1) (2017) 275–284, https://doi.org/10.1016/J.
+IJPHARM.2017.09.054.
+[36] P.N. Dave, A. Gor, Natural polysaccharide-based hydrogels and nanomaterials:
+recent trends and their applications, Handbook of Nanomaterials for Industrial
+Applications (2018) 36–66, https://doi.org/10.1016/B978-0-12-813351-4.00003-
+1.
+[37] H. Chandasana, Y.D. Prasad, Y.S. Chhonker, T.K. Chaitanya, N.N. Mishra, K. Mitra,
+P.K. Shukla, R.S. Bhatta, Corneal targeted nanoparticles for sustained natamycin
+delivery and their PK/PD indices: an approach to reduce dose and dosing
+frequency, Int. J. Pharm. 477 (1–2) (2014) 317–325, https://doi.org/10.1016/J.
+IJPHARM.2014.10.035.
+[38] R. Saini, S. Saini, G. Singh, Dr A. Banerjee, GELS-A NEW TRENDS IN OPHTHALMIC
+DRUG DELIVERY SYSTEMS, 2015.
+M. Bhatt and P. Shende

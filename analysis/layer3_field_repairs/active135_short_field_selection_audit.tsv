@@ -1,0 +1,9 @@
+field	risk_rows	gt_nonempty	match	system_nonempty_gt	recall	accuracy	status_counts
+drug_mass_mg	146	43	26	26	0.604651	1.000000	"{""blocked_alignment"": 14, ""missing_in_system"": 17, ""not_reported_in_gt"": 115}"
+polymer_mass_mg	115	93	57	57	0.612903	1.000000	"{""blocked_alignment"": 14, ""missing_in_system"": 22, ""not_reported_in_gt"": 79}"
+emulsifier_stabilizer_concentration_value	87	148	85	85	0.574324	1.000000	"{""blocked_alignment"": 14, ""extra_in_system"": 7, ""missing_in_system"": 49, ""not_reported_in_gt"": 17}"
+emulsifier_stabilizer_name	76	172	96	112	0.558140	0.857143	"{""blocked_alignment"": 14, ""missing_in_system"": 46, ""present_but_mismatch"": 16}"
+ee_percent	70	161	102	106	0.633540	0.962264	"{""blocked_alignment"": 14, ""missing_in_system"": 41, ""not_reported_in_gt"": 11, ""present_but_mismatch"": 4}"
+particle_size_nm	67	160	105	108	0.656250	0.972222	"{""blocked_alignment"": 14, ""missing_in_system"": 38, ""not_reported_in_gt"": 12, ""present_but_mismatch"": 3}"
+drug_name	55	172	117	118	0.680233	0.991525	"{""blocked_alignment"": 14, ""missing_in_system"": 40, ""present_but_mismatch"": 1}"
+solvent_name	40	168	132	135	0.785714	0.977778	"{""blocked_alignment"": 14, ""extra_in_system"": 4, ""missing_in_system"": 19, ""present_but_mismatch"": 3}"

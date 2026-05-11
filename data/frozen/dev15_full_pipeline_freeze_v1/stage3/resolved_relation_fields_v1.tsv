@@ -1,0 +1,37 @@
+formulation_candidate_id	paper_key	method_group_id	scope_type	field_name	field_value	field_value_norm	resolution_rule	source_relation_row_ids	deterministic_confidence
+form_opt	5GIF3D8W	5GIF3D8W__mg__cdc6a7fd89a8	formulation	drug_feed_amount_text	5	5	direct_candidate_field_membership	"[""rr__08485cf5b1dc""]"	medium
+form_opt	5GIF3D8W	5GIF3D8W__mg__cdc6a7fd89a8	formulation	plga_mass_mg	50	50	direct_candidate_field_membership	"[""rr__d4edab0c4606""]"	medium
+form_opt	5GIF3D8W	5GIF3D8W__mg__cdc6a7fd89a8	formulation	surfactant_concentration_text	1.0	1.0	direct_candidate_field_membership	"[""rr__ba0207cc5da6""]"	medium
+form_opt	5GIF3D8W	5GIF3D8W__mg__cdc6a7fd89a8	formulation	surfactant_name	F68	f68	direct_candidate_field_membership	"[""rr__3cc3596c25b2""]"	high
+form_rh_np	5ZXYABSU	5ZXYABSU__mg__5d858d607ac7	formulation	drug_feed_amount_text	2.5	2.5	direct_candidate_field_membership	"[""rr__53aab8720dd0""]"	medium
+form_rh_np	5ZXYABSU	5ZXYABSU__mg__5d858d607ac7	formulation	organic_solvent	Acetone | Distilled water	acetone_distilled_water	direct_candidate_field_membership	"[""rr__ff3d6ac286a2""]"	high
+form_rh_np	5ZXYABSU	5ZXYABSU__mg__5d858d607ac7	formulation	plga_mass_mg	50	50	direct_candidate_field_membership	"[""rr__85f3b2522d73""]"	medium
+fc1	7ZS858NS	7ZS858NS__mg__d61dc8a1093a	formulation	drug_feed_amount_text	2	2	direct_candidate_field_membership	"[""rr__e2059fb59e46""]"	medium
+fc1	7ZS858NS	7ZS858NS__mg__d61dc8a1093a	formulation	organic_solvent	acetone | water	acetone_water	direct_candidate_field_membership	"[""rr__13471aafa08d""]"	medium
+fc1	7ZS858NS	7ZS858NS__mg__d61dc8a1093a	formulation	plga_mass_mg	6	6	direct_candidate_field_membership	"[""rr__b258fd03cdab""]"	medium
+fc1	7ZS858NS	7ZS858NS__mg__d61dc8a1093a	formulation	surfactant_concentration_text	0.1	0.1	direct_candidate_field_membership	"[""rr__db36b903eb54""]"	medium
+fc1	7ZS858NS	7ZS858NS__mg__d61dc8a1093a	formulation	surfactant_name	Solutol HS 15	solutol_hs_15	direct_candidate_field_membership	"[""rr__35648376b172""]"	medium
+nanospheres_base	BB3JUVW7	BB3JUVW7__mg__3cc5bacb0bba	formulation	organic_solvent	Acetone | Aqueous phase	acetone_aqueous_phase	direct_candidate_field_membership	"[""rr__ffb5d3e0e7be""]"	high
+formulation_0	INMUTV7L	INMUTV7L__mg__fd29a5f244d0	formulation	drug_feed_amount_text	5	5	direct_candidate_field_membership	"[""rr__b4cf7f1c51d6""]"	medium
+formulation_0	INMUTV7L	INMUTV7L__mg__fd29a5f244d0	formulation	organic_solvent	acetone | aqueous surfactant solution	acetone_aqueous_surfactant_solution	direct_candidate_field_membership	"[""rr__9120b2439afa""]"	high
+formulation_0	INMUTV7L	INMUTV7L__mg__fd29a5f244d0	formulation	plga_mass_mg	90	90	direct_candidate_field_membership	"[""rr__1b2b0e6ebb70""]"	medium
+formulation_0	INMUTV7L	INMUTV7L__mg__fd29a5f244d0	formulation	surfactant_name	surfactant	surfactant	direct_candidate_field_membership	"[""rr__b9e481869a34""]"	high
+FC2	QLYKLPKT	QLYKLPKT__mg__8605b45bd997	formulation	surfactant_concentration_text	3 mg/mL	3_mg/ml	direct_candidate_field_membership	"[""rr__7325a6be920b""]"	medium
+FC3	QLYKLPKT	QLYKLPKT__mg__3dcceca2c7df	formulation	surfactant_name	poloxamer 188	poloxamer_188	direct_candidate_field_membership	"[""rr__7be2015be4b4""]"	high
+FC1	QLYKLPKT	QLYKLPKT__mg__3dcceca2c7df	formulation	drug_feed_amount_text	5	5	direct_candidate_field_membership	"[""rr__ae148d5dda16""]"	medium
+FC1	QLYKLPKT	QLYKLPKT__mg__3dcceca2c7df	formulation	plga_mass_mg	1	1	direct_candidate_field_membership	"[""rr__a291fb776784""]"	medium
+FC1	QLYKLPKT	QLYKLPKT__mg__3dcceca2c7df	formulation	surfactant_name	poloxamer 188	poloxamer_188	direct_candidate_field_membership	"[""rr__07c6b88dfd00""]"	high
+fc_ap_plga_nps	RHMJWZX8	RHMJWZX8__mg__d5d11567f070	formulation	surfactant_name	Polysorbate 80	polysorbate_80	direct_candidate_field_membership	"[""rr__cd43cefd2bd0""]"	high
+form_mb_plga_nps_tween80	V99GKZEI	V99GKZEI__mg__8605b45bd997	formulation	surfactant_concentration_text	0.5	0.5	direct_candidate_field_membership	"[""rr__769487937eb7""]"	medium
+form_mb_plga_nps_tween80	V99GKZEI	V99GKZEI__mg__8605b45bd997	formulation	surfactant_name	Tween 80®	tween_80	direct_candidate_field_membership	"[""rr__3e5a2b9d16d4""]"	medium
+form_mb_plga_nps_wow	V99GKZEI	V99GKZEI__mg__e27242ec3c45	formulation	organic_solvent	acetone/dichloromethane mixture | aqueous solution | water	acetone/dichloromethane_mixture_aqueous_solution_water	direct_candidate_field_membership	"[""rr__7884211468a9""]"	high
+form_mb_plga_nps_wow	V99GKZEI	V99GKZEI__mg__e27242ec3c45	formulation	surfactant_concentration_text	3 | 0.5	3_0.5	direct_candidate_field_membership	"[""rr__60ce6ae37311""]"	medium
+form_mb_plga_nps_wow	V99GKZEI	V99GKZEI__mg__e27242ec3c45	formulation	surfactant_name	Pluronic® F68 | Span® 80	pluronic_f68_span_80	direct_candidate_field_membership	"[""rr__e48c918ef670""]"	medium
+form_mb_plga_sc6oh_nps_general	V99GKZEI	V99GKZEI__mg__8605b45bd997	formulation	surfactant_concentration_text	10	10	direct_candidate_field_membership	"[""rr__a2e6fff1bd21""]"	medium
+form_mb_plga_sc6oh_nps_general	V99GKZEI	V99GKZEI__mg__8605b45bd997	formulation	surfactant_name	SC6OH	sc6oh	direct_candidate_field_membership	"[""rr__a4693f309c2b""]"	medium
+F1	WFDTQ4VX	WFDTQ4VX__mg__402aa1c625c8	formulation	drug_feed_amount_text	15	15	direct_candidate_field_membership	"[""rr__565e48f8f0a3""]"	medium
+F1	WFDTQ4VX	WFDTQ4VX__mg__402aa1c625c8	formulation	organic_solvent	acetone	acetone	direct_candidate_field_membership	"[""rr__9eeea5c89e68""]"	high
+F1	WFDTQ4VX	WFDTQ4VX__mg__402aa1c625c8	formulation	plga_mass_mg	25	25	direct_candidate_field_membership	"[""rr__af92c533cd1c""]"	medium
+F1	WFDTQ4VX	WFDTQ4VX__mg__402aa1c625c8	formulation	surfactant_concentration_text	0.25	0.25	direct_candidate_field_membership	"[""rr__d456647d5bbd""]"	medium
+F1	WFDTQ4VX	WFDTQ4VX__mg__402aa1c625c8	formulation	surfactant_name	Pluronic F68	pluronic_f68	direct_candidate_field_membership	"[""rr__9dfd5ddd7a94""]"	high
+form_0	YGA8VQKU	YGA8VQKU__mg__7a3148928d87	formulation	surfactant_name	P188	p188	direct_candidate_field_membership	"[""rr__4f931c357d93""]"	high

@@ -1,0 +1,425 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import re
+import sys
+from pathlib import Path
+from typing import Dict, List
+
+import pandas as pd
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+
+try:
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+    from src.utils.paths import (
+        DATA_CLEANED_DIR,
+        DATA_RESULTS_DIR,
+        DOCS_DIR,
+    )
+    from src.utils.run_id import (
+        build_governed_results_artifact_path,
+        resolve_governed_results_artifact_path,
+    )
+    from src.utils.run_context_v1 import require_run_context_for_write
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+    from src.utils.paths import (
+        DATA_CLEANED_DIR,
+        DATA_RESULTS_DIR,
+        DOCS_DIR,
+    )
+    from src.utils.run_id import (
+        build_governed_results_artifact_path,
+        resolve_governed_results_artifact_path,
+    )
+    from src.utils.run_context_v1 import require_run_context_for_write
+
+
+DEFAULT_COMBINED_EVAL_TSV = (
+    DATA_CLEANED_DIR
+    / "labels"
+    / "manual"
+    / "formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv"
+)
+DEFAULT_REMAINING12_EVAL_TSV = (
+    DATA_CLEANED_DIR
+    / "labels"
+    / "manual"
+    / "formulation_instance_remaining12_eval_2026-03-10"
+    / "per_doi_formulation_instance_summary.tsv"
+)
+DEFAULT_TUNED3_EVAL_TSV = (
+    DATA_CLEANED_DIR
+    / "labels"
+    / "manual"
+    / "formulation_instance_pilot3_eval_synthmethod_2026-03-10"
+    / "per_doi_formulation_instance_summary.tsv"
+)
+DEFAULT_OUTPUT_SUBDIR = "analysis/dev15_review_workbook_v1"
+DEFAULT_OUT_XLSX_NAME = "dev15_instance_review_v1.xlsx"
+
+
+PAPER_SUMMARY_COLUMNS = [
+    "zotero_key",
+    "doi",
+    "GT_count",
+    "predicted_count",
+    "count_diff",
+    "error_type",
+    "notes",
+]
+
+PREDICTED_INSTANCE_COLUMNS = [
+    "zotero_key",
+    "doi",
+    "instance_id",
+    "instance_kind",
+    "parent_instance_id",
+    "evidence_block_id",
+    "evidence_snippet",
+    "reviewer_decision",
+]
+
+REVIEWER_DECISION_OPTIONS = [
+    "",
+    "valid_formulation",
+    "not_a_formulation",
+    "needs_second_pass",
+]
+
+
+def norm_text(value: object) -> str:
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    return re.sub(r"\s+", " ", str(value)).strip()
+
+
+def norm_doi(value: object) -> str:
+    doi = norm_text(value).lower()
+    doi = re.sub(r"^doi\s*:\s*", "", doi)
+    doi = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", doi)
+    doi = re.sub(r"^doi\.org/", "", doi)
+    return doi.strip()
+
+
+def read_tsv(path: Path) -> pd.DataFrame:
+    return pd.read_csv(path, sep="\t", dtype=str).fillna("")
+
+
+def read_gt_counts(gt_counts_tsv: Path) -> pd.DataFrame:
+    source_summary = read_tsv(gt_counts_tsv)
+    source_summary["paper_key"] = source_summary["paper_key"].map(norm_text)
+    source_summary["doi"] = source_summary["doi"].map(norm_doi)
+    source_summary["GT_count"] = pd.to_numeric(source_summary["gt_count"], errors="coerce").fillna(0).astype(int)
+    return source_summary[["paper_key", "doi", "paper_title", "GT_count"]].copy()
+
+
+def infer_notes(row: pd.Series) -> str:
+    parts: List[str] = []
+    source_group = norm_text(row.get("source_group", ""))
+    paper_pattern = norm_text(row.get("paper_pattern", ""))
+    notes = norm_text(row.get("notes", ""))
+    if source_group:
+        parts.append(source_group)
+    if paper_pattern:
+        parts.append(paper_pattern)
+    if notes:
+        parts.append(notes)
+    return " | ".join(parts)
+
+
+def build_paper_summary(gt_counts: pd.DataFrame, combined_eval: pd.DataFrame) -> pd.DataFrame:
+    combined = combined_eval.copy()
+    combined["paper_key"] = combined["paper_key"].map(norm_text)
+    combined["doi"] = combined["doi"].map(norm_doi)
+    combined["predicted_formulation_count"] = pd.to_numeric(
+        combined["predicted_formulation_count"], errors="coerce"
+    ).fillna(0).astype(int)
+    combined["gt_formulation_count"] = pd.to_numeric(
+        combined["gt_formulation_count"], errors="coerce"
+    ).fillna(0).astype(int)
+
+    merged = gt_counts.merge(
+        combined,
+        on=["paper_key", "doi"],
+        how="left",
+        suffixes=("_gt", "_eval"),
+    )
+    merged["GT_count"] = merged["GT_count"].fillna(merged["gt_formulation_count"]).astype(int)
+    merged["predicted_count"] = merged["predicted_formulation_count"].fillna(0).astype(int)
+    merged["count_diff"] = merged["predicted_count"] - merged["GT_count"]
+    merged["error_type"] = merged["count_diff"].map(
+        lambda diff: "exact" if diff == 0 else ("under_segmentation" if diff < 0 else "over_segmentation")
+    )
+    merged["notes"] = merged.apply(infer_notes, axis=1)
+    paper_summary = merged.rename(columns={"paper_key": "zotero_key"})[PAPER_SUMMARY_COLUMNS].copy()
+    paper_summary = paper_summary.sort_values(["error_type", "zotero_key"], kind="stable").reset_index(drop=True)
+    return paper_summary
+
+
+def is_formulation_instance(instance_kind: str) -> bool:
+    return norm_text(instance_kind) in {"new_formulation", "variant_formulation"}
+
+
+def parse_supporting_evidence_refs(raw: str) -> List[dict]:
+    text = norm_text(raw)
+    if not text:
+        return []
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+    if isinstance(parsed, list):
+        return [item for item in parsed if isinstance(item, dict)]
+    return []
+
+
+def build_evidence_block_id(row: pd.Series) -> str:
+    refs = parse_supporting_evidence_refs(row.get("supporting_evidence_refs", ""))
+    if refs:
+        first = refs[0]
+        explicit = norm_text(first.get("block_id", "")) or norm_text(first.get("evidence_block_id", ""))
+        if explicit:
+            return explicit
+        parts = [
+            norm_text(first.get("region_type", "")),
+            norm_text(first.get("section", "")),
+        ]
+        span_start = norm_text(row.get("evidence_span_start", ""))
+        span_end = norm_text(row.get("evidence_span_end", ""))
+        if span_start or span_end:
+            parts.append(f"{span_start}-{span_end}".strip("-"))
+        block_id = "|".join(part for part in parts if part)
+        if block_id:
+            return block_id
+    section = norm_text(row.get("evidence_section", ""))
+    region = norm_text(row.get("instance_evidence_region_type", "")) or norm_text(row.get("evidence_region_type", ""))
+    span_start = norm_text(row.get("evidence_span_start", ""))
+    span_end = norm_text(row.get("evidence_span_end", ""))
+    fallback_parts = [region, section]
+    if span_start or span_end:
+        fallback_parts.append(f"{span_start}-{span_end}".strip("-"))
+    return "|".join(part for part in fallback_parts if part)
+
+
+def build_evidence_snippet(row: pd.Series, max_chars: int = 400) -> str:
+    snippet = norm_text(row.get("evidence_span_text", ""))
+    if not snippet:
+        refs = parse_supporting_evidence_refs(row.get("supporting_evidence_refs", ""))
+        if refs:
+            snippet = norm_text(refs[0].get("span_text", ""))
+    if len(snippet) > max_chars:
+        return snippet[: max_chars - 3].rstrip() + "..."
+    return snippet
+
+
+def build_instance_id(row: pd.Series) -> str:
+    for column in ["local_instance_id", "formulation_id", "raw_formulation_label"]:
+        value = norm_text(row.get(column, ""))
+        if value:
+            return value
+    return ""
+
+
+def build_predicted_instances(weak_label_paths: List[Path], paper_summary: pd.DataFrame) -> pd.DataFrame:
+    frames: List[pd.DataFrame] = []
+    for path in weak_label_paths:
+        df = read_tsv(path)
+        df["source_weak_label_path"] = str(path)
+        frames.append(df)
+    all_rows = pd.concat(frames, ignore_index=True)
+    all_rows["key"] = all_rows["key"].map(norm_text)
+    all_rows["doi"] = all_rows["doi"].map(norm_doi)
+
+    paper_meta = paper_summary.rename(columns={"zotero_key": "key"})[["key", "doi"]].drop_duplicates()
+    merged = all_rows.merge(paper_meta, on=["key", "doi"], how="inner")
+
+    predicted = pd.DataFrame(
+        {
+            "zotero_key": merged["key"],
+            "doi": merged["doi"],
+            "instance_id": merged.apply(build_instance_id, axis=1),
+            "instance_kind": merged["instance_kind"].map(norm_text),
+            "parent_instance_id": merged["parent_instance_id"].map(norm_text),
+            "evidence_block_id": merged.apply(build_evidence_block_id, axis=1),
+            "evidence_snippet": merged.apply(build_evidence_snippet, axis=1),
+            "reviewer_decision": "",
+        }
+    )
+    predicted = predicted.sort_values(
+        ["zotero_key", "instance_kind", "instance_id"],
+        kind="stable",
+    ).reset_index(drop=True)
+    return predicted[PREDICTED_INSTANCE_COLUMNS]
+
+
+def build_review_queue(paper_summary: pd.DataFrame) -> pd.DataFrame:
+    return paper_summary[paper_summary["error_type"] != "exact"].copy().reset_index(drop=True)
+
+
+def style_worksheet(ws) -> None:
+    ws.freeze_panes = "A2"
+    ws.auto_filter.ref = ws.dimensions
+    header_font = Font(bold=True)
+    for cell in ws[1]:
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    for column_cells in ws.columns:
+        max_len = max(len(norm_text(cell.value)) for cell in column_cells)
+        col_letter = get_column_letter(column_cells[0].column)
+        ws.column_dimensions[col_letter].width = min(max(max_len + 2, 12), 60)
+    for row in ws.iter_rows(min_row=2):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+
+def print_preview(label: str, df: pd.DataFrame, rows: int = 5) -> None:
+    print(f"\n[{label}]")
+    print("\t".join(df.columns.tolist()))
+    if df.empty:
+        print("<empty>")
+        return
+    preview = df.head(rows).fillna("")
+    for _, row in preview.iterrows():
+        values = [norm_text(v).encode("ascii", "replace").decode("ascii") for v in row.tolist()]
+        print("\t".join(values))
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Build a DEV15 reviewer workbook from evaluation outputs and the frozen Layer1 GT counts TSV."
+    )
+    parser.add_argument("--run-dir", type=Path, default=None)
+    parser.add_argument("--run-id", default="")
+    parser.add_argument("--weak-labels-tsv", type=Path, default=None)
+    parser.add_argument("--gt-counts-tsv", type=Path, default=None)
+    parser.add_argument("--combined-eval-tsv", type=Path, default=DEFAULT_COMBINED_EVAL_TSV)
+    parser.add_argument("--remaining12-eval-tsv", type=Path, default=DEFAULT_REMAINING12_EVAL_TSV)
+    parser.add_argument("--tuned3-eval-tsv", type=Path, default=DEFAULT_TUNED3_EVAL_TSV)
+    parser.add_argument("--out-xlsx", type=Path, default=None)
+    return parser
+
+
+def main() -> int:
+    args = build_arg_parser().parse_args()
+    source_run_context = resolve_run_context(
+        explicit_run_dir=args.run_dir.resolve() if args.run_dir else None,
+        explicit_run_id=args.run_id,
+    )
+
+    weak_labels_path = resolve_artifact_path(
+        explicit_path=args.weak_labels_tsv.resolve() if args.weak_labels_tsv else None,
+        run_context=source_run_context,
+        pointer_key="stage2_compatibility_tsv",
+        canonical_relative="semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    )
+    gt_counts_path = resolve_artifact_path(
+        explicit_path=args.gt_counts_tsv.resolve() if args.gt_counts_tsv else None,
+        run_context=source_run_context,
+        pointer_key="layer1_gt_path",
+    )
+
+    combined_eval_path = args.combined_eval_tsv.resolve()
+    remaining12_eval_path = args.remaining12_eval_tsv.resolve()
+    tuned3_eval_path = args.tuned3_eval_tsv.resolve()
+    for required_path in [combined_eval_path, remaining12_eval_path, tuned3_eval_path]:
+        if not required_path.exists():
+            raise FileNotFoundError(f"Required Stage4 evaluation input not found: {required_path}")
+
+    if args.out_xlsx:
+        out_xlsx = args.out_xlsx.resolve()
+    else:
+        out_xlsx = build_governed_results_artifact_path(
+            run_dir=source_run_context["run_dir"],
+            artifact_subdir=DEFAULT_OUTPUT_SUBDIR,
+            filename=DEFAULT_OUT_XLSX_NAME,
+            results_root=DATA_RESULTS_DIR,
+        )
+    write_target = resolve_governed_results_artifact_path(
+        out_xlsx,
+        results_root=DATA_RESULTS_DIR,
+        require_existing_governed_root=True,
+        require_run_context=True,
+    )
+    require_run_context_for_write(write_target["governed_run_dir"])
+
+    gt_counts = read_gt_counts(gt_counts_path)
+    combined_eval = read_tsv(combined_eval_path)
+    remaining12_eval = read_tsv(remaining12_eval_path)
+    tuned3_eval = read_tsv(tuned3_eval_path)
+
+    paper_summary = build_paper_summary(gt_counts, combined_eval)
+    predicted_instances = build_predicted_instances([weak_labels_path], paper_summary)
+    review_queue = build_review_queue(paper_summary)
+
+    out_dir = out_xlsx.parent
+    out_dir.mkdir(parents=True, exist_ok=True)
+    with pd.ExcelWriter(out_xlsx, engine="openpyxl") as writer:
+        paper_summary.to_excel(writer, sheet_name="paper_summary", index=False)
+        predicted_instances.to_excel(writer, sheet_name="predicted_instances", index=False)
+        review_queue.to_excel(writer, sheet_name="review_queue", index=False)
+
+        wb = writer.book
+        for sheet_name in ["paper_summary", "predicted_instances", "review_queue"]:
+            style_worksheet(wb[sheet_name])
+
+    metadata = build_artifact_metadata(
+        source_run_context=source_run_context,
+        source_files={
+            "weak_labels_tsv": str(weak_labels_path),
+            "gt_counts_tsv": str(gt_counts_path),
+            "combined_eval_tsv": str(combined_eval_path),
+            "remaining12_eval_tsv": str(remaining12_eval_path),
+            "tuned3_eval_tsv": str(tuned3_eval_path),
+        },
+        generated_by="src/stage4_eval/build_dev15_review_workbook_v1.py",
+        note="Reviewer-facing Stage4 workbook built from explicit governed sources without recency-based discovery.",
+        extra={
+            "output_xlsx": str(out_xlsx),
+            "output_governed_run_dir": write_target["governed_run_dir"],
+            "output_governed_run_kind": write_target["governed_run_kind"],
+            "output_run_context_path": write_target["run_context_path"],
+        },
+    )
+    metadata_path = write_artifact_metadata_json(out_xlsx, metadata)
+
+    exact = int((paper_summary["error_type"] == "exact").sum())
+    under = int((paper_summary["error_type"] == "under_segmentation").sum())
+    over = int((paper_summary["error_type"] == "over_segmentation").sum())
+
+    print(f"resolved_source_run_dir={source_run_context['run_dir']}")
+    print(f"resolved_source_run_id={source_run_context['run_id']}")
+    print(f"resolved_source_run_resolution={source_run_context['resolution_source']}")
+    print(f"number_of_papers={len(paper_summary)}")
+    print(f"exact={exact}")
+    print(f"under_segmentation={under}")
+    print(f"over_segmentation={over}")
+    print(f"generated_excel={out_xlsx}")
+    print(f"generated_excel_metadata={metadata_path}")
+    print(f"input_gt_counts_tsv={gt_counts_path}")
+    print(f"input_combined_eval={combined_eval_path}")
+    print(f"input_remaining12_eval={remaining12_eval_path}")
+    print(f"input_tuned3_eval={tuned3_eval_path}")
+    print(f"input_weak_labels={weak_labels_path}")
+
+    print_preview("paper_summary", paper_summary)
+    print_preview("predicted_instances", predicted_instances)
+    print_preview("review_queue", review_queue)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,789 @@
+{
+  "document_key": "V99GKZEI",
+  "doi": "10.1039/C5RA27386B",
+  "formulation_candidates": [
+    {
+      "candidate_id": "form_mb_plga_sc6oh_nps_general",
+      "raw_label": "MB loaded-PLGA/SC6OH NPs",
+      "normalized_label": "MB loaded PLGA SC6OH Nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_1_intro"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_mb_plga_nps_general",
+      "raw_label": "MB loaded-PLGA NPs",
+      "normalized_label": "MB loaded PLGA Nanoparticles",
+      "instance_kind": "candidate_non_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "ambiguity_note": "Used as a general reference for formulations without SC6OH or specific surfactants.",
+      "evidence_span_ids": [
+        "span_prep_method_1_tween80",
+        "span_ee_comparison_no_sc6oh"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_nps_plga_acyd_sc6oh",
+      "raw_label": "NPs based on PLGA and ACyD (SC6OH)",
+      "normalized_label": "Nanoparticles based on PLGA and ACyD (SC6OH)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_nps_plga_acyd_proposed"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_mb_plga_sc6oh_40",
+      "raw_label": "MB loaded-PLGA/SC6OH 40",
+      "normalized_label": "MB loaded PLGA SC6OH Nanoparticles (40mg SC6OH)",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "form_mb_plga_sc6oh_nps_general",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_data"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_mb_plga_nps_tween80",
+      "raw_label": "MB loaded-PLGA NPs ... with Tween 80®",
+      "normalized_label": "MB loaded PLGA Nanoparticles with Tween 80",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "form_mb_plga_nps_general",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_1_tween80"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_mb_plga_nps_wow",
+      "raw_label": "MB loaded-PLGA NPs ... by the W/O/W emulsion/solvent evaporation method",
+      "normalized_label": "MB loaded PLGA Nanoparticles by W/O/W emulsion method",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "form_mb_plga_nps_general",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_1_wow_intro"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_mb",
+      "formulation_candidate_id": "",
+      "component_name": "MB",
+      "component_role": "drug",
+      "amount_text": "0.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_mb_0.5mg_1",
+        "span_mb_0.5mg_water_1ml_1",
+        "span_table1_note_a"
+      ]
+    },
+    {
+      "component_id": "comp_plga",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "20 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_plga_20mg_1",
+        "span_plga_20mg_2",
+        "span_table1_note_a"
+      ]
+    },
+    {
+      "component_id": "comp_sc6oh",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_nps_general",
+      "component_name": "SC6OH",
+      "component_role": "surfactant",
+      "amount_text": "10, 20, 30 and 40 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Also referred to as ACyD",
+      "evidence_span_ids": [
+        "span_sc6oh_amounts_1",
+        "span_exp_design_vary_acyd",
+        "span_table1_note_sc6oh_range"
+      ]
+    },
+    {
+      "component_id": "comp_acetone",
+      "formulation_candidate_id": "",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "6 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_acetone_6ml_1",
+        "span_table1_note_b_nanoprecip"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_solution_nanoprecip",
+      "formulation_candidate_id": "",
+      "component_name": "aqueous solution",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "external aqueous environment",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_aqueous_20ml_1"
+      ]
+    },
+    {
+      "component_id": "comp_trehalose",
+      "formulation_candidate_id": "",
+      "component_name": "trehalose",
+      "component_role": "additive",
+      "amount_text": "5% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "lyoprotectant agent",
+      "evidence_span_ids": [
+        "span_trehalose_5wv_1"
+      ]
+    },
+    {
+      "component_id": "comp_tween80",
+      "formulation_candidate_id": "form_mb_plga_nps_tween80",
+      "component_name": "Tween 80®",
+      "component_role": "surfactant",
+      "amount_text": "0.5% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_tween80_0.5wv_1",
+        "span_table1_note_c_wow"
+      ]
+    },
+    {
+      "component_id": "comp_water_mb_dissolution",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "1 ml",
+      "amount_kind": "volume",
+      "phase_hint": "",
+      "ambiguity_note": "for dissolution of MB",
+      "evidence_span_ids": [
+        "span_mb_0.5mg_water_1ml_1"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_dcm_mixture",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "component_name": "acetone/dichloromethane mixture",
+      "component_role": "solvent",
+      "amount_text": "5 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "1:1, v/v ratio",
+      "evidence_span_ids": [
+        "span_acetone_dcm_5ml_1",
+        "span_table1_note_c_wow"
+      ]
+    },
+    {
+      "component_id": "comp_span80",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "component_name": "Span® 80",
+      "component_role": "surfactant",
+      "amount_text": "0.5%, w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_span80_0.5wv_1"
+      ]
+    },
+    {
+      "component_id": "comp_pluronicf68",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "component_name": "Pluronic® F68",
+      "component_role": "surfactant",
+      "amount_text": "3%, w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pluronicf68_3wv_1",
+        "span_table1_note_c_wow"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_solution_wow",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "component_name": "aqueous solution",
+      "component_role": "solvent",
+      "amount_text": "50 ml",
+      "amount_kind": "volume",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pluronicf68_3wv_1"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_sc6oh_amount",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_nps_general",
+      "variable_name": "SC6OH amount",
+      "value_text": "10, 20, 30 and 40 mg",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_sc6oh_amounts_1",
+        "span_exp_design_vary_acyd",
+        "span_table1_note_sc6oh_range"
+      ]
+    },
+    {
+      "variable_id": "var_prep_method",
+      "formulation_candidate_id": "",
+      "variable_name": "Preparation method",
+      "value_text": "nanoprecipitation/solvent displacement method; W/O/W emulsion/solvent evaporation method",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_1_intro",
+        "span_prep_method_1_wow_intro",
+        "span_table1_note_b_nanoprecip",
+        "span_table1_note_c_wow"
+      ]
+    },
+    {
+      "variable_id": "var_mb_amount_constant",
+      "formulation_candidate_id": "",
+      "variable_name": "MB amount",
+      "value_text": "0.5 mg",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Always maintained at this amount",
+      "evidence_span_ids": [
+        "span_mb_0.5mg_1",
+        "span_mb_0.5mg_water_1ml_1",
+        "span_table1_note_a"
+      ]
+    },
+    {
+      "variable_id": "var_plga_amount_constant",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA amount",
+      "value_text": "20 mg",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Always maintained at this amount",
+      "evidence_span_ids": [
+        "span_plga_20mg_1",
+        "span_plga_20mg_2",
+        "span_table1_note_a"
+      ]
+    },
+    {
+      "variable_id": "var_acetone_vol_nanoprecip",
+      "formulation_candidate_id": "",
+      "variable_name": "Acetone volume (nanoprecipitation)",
+      "value_text": "6 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_acetone_6ml_1"
+      ]
+    },
+    {
+      "variable_id": "var_aqueous_sol_vol_nanoprecip_constant",
+      "formulation_candidate_id": "",
+      "variable_name": "Aqueous solution volume (nanoprecipitation)",
+      "value_text": "20 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_aqueous_20ml_1"
+      ]
+    },
+    {
+      "variable_id": "var_trehalose_conc_constant",
+      "formulation_candidate_id": "",
+      "variable_name": "Trehalose concentration",
+      "value_text": "5% w/v",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_trehalose_5wv_1"
+      ]
+    },
+    {
+      "variable_id": "var_tween80_conc_constant",
+      "formulation_candidate_id": "form_mb_plga_nps_tween80",
+      "variable_name": "Tween 80® concentration",
+      "value_text": "0.5% w/v",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_tween80_0.5wv_1"
+      ]
+    },
+    {
+      "variable_id": "var_water_vol_mb_dissolve_wow",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "variable_name": "Water volume for MB dissolution (W/O/W)",
+      "value_text": "1 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_mb_0.5mg_water_1ml_1"
+      ]
+    },
+    {
+      "variable_id": "var_acetone_dcm_mix_vol_wow",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "variable_name": "Acetone/dichloromethane mixture volume (W/O/W)",
+      "value_text": "5 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_acetone_dcm_5ml_1"
+      ]
+    },
+    {
+      "variable_id": "var_acetone_dcm_ratio_wow",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "variable_name": "Acetone/dichloromethane ratio (W/O/W)",
+      "value_text": "1 : 1, v/v",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_acetone_dcm_5ml_1"
+      ]
+    },
+    {
+      "variable_id": "var_span80_conc_wow",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "variable_name": "Span® 80 concentration (W/O/W)",
+      "value_text": "0.5%, w/v",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_span80_0.5wv_1"
+      ]
+    },
+    {
+      "variable_id": "var_pluronicf68_conc_wow",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "variable_name": "Pluronic® F68 concentration (W/O/W)",
+      "value_text": "3%, w/v",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pluronicf68_3wv_1"
+      ]
+    },
+    {
+      "variable_id": "var_aqueous_sol_vol_wow_constant",
+      "formulation_candidate_id": "form_mb_plga_nps_wow",
+      "variable_name": "Aqueous solution volume (W/O/W)",
+      "value_text": "50 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pluronicf68_3wv_1"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_ee_percent_general",
+      "formulation_candidate_id": "",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "",
+      "unit_text": "%",
+      "ambiguity_note": "General reference to E.E.%",
+      "evidence_span_ids": [
+        "span_ee_comparison_no_sc6oh",
+        "span_acyd_key_role_ee",
+        "span_ee_nanoprecip_vs_wow",
+        "span_table1_caption"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_percent_nanoprecip_no_sc6oh",
+      "formulation_candidate_id": "form_mb_plga_nps_general",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "about 3%",
+      "unit_text": "w/w",
+      "ambiguity_note": "For NPs prepared by nanoprecipitation without SC6OH",
+      "evidence_span_ids": [
+        "span_ee_comparison_no_sc6oh"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_percent_wow_no_sc6oh",
+      "formulation_candidate_id": "form_mb_plga_nps_general",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "about 7%",
+      "unit_text": "w/w",
+      "ambiguity_note": "For NPs prepared by W/O/W double emulsion without SC6OH",
+      "evidence_span_ids": [
+        "span_ee_comparison_no_sc6oh"
+      ]
+    },
+    {
+      "measurement_id": "meas_size_form_mb_plga_sc6oh_40",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_40",
+      "measurement_name": "size",
+      "value_text": "201 ± 2",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_data"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_form_mb_plga_sc6oh_40",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_40",
+      "measurement_name": "pdi",
+      "value_text": "0.16 ± 0.08",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_data"
+      ]
+    },
+    {
+      "measurement_id": "meas_yield_percent_form_mb_plga_sc6oh_40",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_40",
+      "measurement_name": "other",
+      "value_text": "40.85 ± 4.01",
+      "unit_text": "%",
+      "ambiguity_note": "Yield percentage",
+      "evidence_span_ids": [
+        "span_table1_row_data"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_percent_form_mb_plga_sc6oh_40",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_40",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "9.65 ± 0.31",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_data"
+      ]
+    },
+    {
+      "measurement_id": "meas_other_form_mb_plga_sc6oh_40",
+      "formulation_candidate_id": "form_mb_plga_sc6oh_40",
+      "measurement_name": "other",
+      "value_text": "57.89 ± 1.86",
+      "unit_text": "",
+      "ambiguity_note": "Unspecified measurement from Table 1 row",
+      "evidence_span_ids": [
+        "span_table1_row_data"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_sc6oh_varies_form",
+      "source_candidate_id": "form_mb_plga_sc6oh_nps_general",
+      "target_candidate_id": "var_sc6oh_amount",
+      "relation_type": "varies_by",
+      "note": "MB loaded-PLGA/SC6OH NPs are prepared with different amounts of SC6OH.",
+      "evidence_span_ids": [
+        "span_sc6oh_amounts_1",
+        "span_exp_design_vary_acyd"
+      ]
+    },
+    {
+      "relation_id": "rel_acyd_improves_ee",
+      "source_candidate_id": "form_nps_plga_acyd_sc6oh",
+      "target_candidate_id": "meas_ee_percent_general",
+      "relation_type": "other",
+      "note": "ACyD (SC6OH) plays a key role in entrapment and leads to a large increase of E.E.%.",
+      "evidence_span_ids": [
+        "span_exp_design_vary_acyd",
+        "span_acyd_key_role_ee"
+      ]
+    },
+    {
+      "relation_id": "rel_nanoprecip_vs_wow_ee",
+      "source_candidate_id": "var_prep_method",
+      "target_candidate_id": "meas_ee_percent_general",
+      "relation_type": "other",
+      "note": "Nanoprecipitation method yields higher E.E.% values than W/O/W emulsion/solvent evaporation.",
+      "evidence_span_ids": [
+        "span_ee_nanoprecip_vs_wow"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_V99GKZEI_key",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "key: V99GKZEI",
+      "supporting_text": "V99GKZEI"
+    },
+    {
+      "span_id": "span_10.1039/C5RA27386B_doi",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "doi: 10.1039/C5RA27386B",
+      "supporting_text": "10.1039/C5RA27386B"
+    },
+    {
+      "span_id": "span_title",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "title: Nanospheres based on PLGA/amphiphilic cyclodextrin assemblies as potential enhancers of Methylene Blue neuroprotective effect",
+      "supporting_text": "Nanospheres based on PLGA/amphiphilic cyclodextrin assemblies as potential enhancers of Methylene Blue neuroprotective effect"
+    },
+    {
+      "span_id": "span_prep_method_1_intro",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Preparation method: 2.3 Preparation of NPs MB loaded-PLGA/SC6OH NPs were prepared by the nanoprecipitation/solvent displacement method.",
+      "supporting_text": "MB loaded-PLGA/SC6OH NPs were prepared by the nanoprecipitation/solvent displacement method."
+    },
+    {
+      "span_id": "span_mb_0.5mg_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Briefly, MB (0.5 mg), PLGA (20 mg) and different amounts of SC6OH (10, 20, 30 and 40 mg) were dissolved in acetone (6 ml).",
+      "supporting_text": "MB (0.5 mg)"
+    },
+    {
+      "span_id": "span_plga_20mg_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Briefly, MB (0.5 mg), PLGA (20 mg) and different amounts of SC6OH (10, 20, 30 and 40 mg) were dissolved in acetone (6 ml).",
+      "supporting_text": "PLGA (20 mg)"
+    },
+    {
+      "span_id": "span_sc6oh_amounts_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Briefly, MB (0.5 mg), PLGA (20 mg) and different amounts of SC6OH (10, 20, 30 and 40 mg) were dissolved in acetone (6 ml).",
+      "supporting_text": "different amounts of SC6OH (10, 20, 30 and 40 mg)"
+    },
+    {
+      "span_id": "span_acetone_6ml_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Briefly, MB (0.5 mg), PLGA (20 mg) and different amounts of SC6OH (10, 20, 30 and 40 mg) were dissolved in acetone (6 ml).",
+      "supporting_text": "acetone (6 ml)"
+    },
+    {
+      "span_id": "span_aqueous_20ml_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "The organic phase was poured into 20 ml of aqueous solution under magnetic stirring, thus forming a milky colloidal suspension.",
+      "supporting_text": "20 ml of aqueous solution"
+    },
+    {
+      "span_id": "span_trehalose_5wv_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "The pellets were re-suspended in 1 ml of water, and then freeze-dried (VirtTis Benchtop K Instrument, SP 127 Scientific, USA) after addition of trehalose (5% w/v) as a lyoprotectant agent.",
+      "supporting_text": "trehalose (5% w/v)"
+    },
+    {
+      "span_id": "span_prep_method_1_tween80",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "MB loaded-PLGA NPs were prepared dissolving MB (0.5 mg), PLGA (20 mg) and Tween 80® (0.5% w/v) in acetone (6 ml) and adopting the previous procedure.",
+      "supporting_text": "MB loaded-PLGA NPs were prepared dissolving MB (0.5 mg), PLGA (20 mg) and Tween 80® (0.5% w/v) in acetone (6 ml) and adopting the previous procedure."
+    },
+    {
+      "span_id": "span_tween80_0.5wv_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "MB loaded-PLGA NPs were prepared dissolving MB (0.5 mg), PLGA (20 mg) and Tween 80® (0.5% w/v) in acetone (6 ml) and adopting the previous procedure.",
+      "supporting_text": "Tween 80® (0.5% w/v)"
+    },
+    {
+      "span_id": "span_prep_method_1_wow_intro",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Additional MB loaded-PLGA NPs were obtained by the W/O/W emulsion/solvent evaporation method by dissolution of MB (0.5 mg) in 1 ml of water.",
+      "supporting_text": "Additional MB loaded-PLGA NPs were obtained by the W/O/W emulsion/solvent evaporation method"
+    },
+    {
+      "span_id": "span_mb_0.5mg_water_1ml_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Additional MB loaded-PLGA NPs were obtained by the W/O/W emulsion/solvent evaporation method by dissolution of MB (0.5 mg) in 1 ml of water.",
+      "supporting_text": "MB (0.5 mg) in 1 ml of water"
+    },
+    {
+      "span_id": "span_acetone_dcm_5ml_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "This solution was added dropwise to 5 ml of an acetone/dichloromethane mixture (1 : 1, v/v) containing PLGA (20 mg) and Span® 80 (0.5%, w/v), under sonication over an ice bath for 2 min.",
+      "supporting_text": "5 ml of an acetone/dichloromethane mixture (1 : 1, v/v)"
+    },
+    {
+      "span_id": "span_plga_20mg_2",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "This solution was added dropwise to 5 ml of an acetone/dichloromethane mixture (1 : 1, v/v) containing PLGA (20 mg) and Span® 80 (0.5%, w/v), under sonication over an ice bath for 2 min.",
+      "supporting_text": "PLGA (20 mg)"
+    },
+    {
+      "span_id": "span_span80_0.5wv_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "This solution was added dropwise to 5 ml of an acetone/dichloromethane mixture (1 : 1, v/v) containing PLGA (20 mg) and Span® 80 (0.5%, w/v), under sonication over an ice bath for 2 min.",
+      "supporting_text": "Span® 80 (0.5%, w/v)"
+    },
+    {
+      "span_id": "span_pluronicf68_3wv_1",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "This first emulsion was added dropwise to 50 ml of an aqueous solution containing Pluronic® F68 (3%, w/v) under sonication for 1 min.",
+      "supporting_text": "50 ml of an aqueous solution containing Pluronic® F68 (3%, w/v)"
+    },
+    {
+      "span_id": "span_exp_design_vary_acyd",
+      "source_region_type": "text_span",
+      "source_locator_text": "Experimental design: varying concentrations or batches. In the presence of different amounts of ACyD",
+      "supporting_text": "varying concentrations or batches. In the presence of different amounts of ACyD"
+    },
+    {
+      "span_id": "span_ee_comparison_no_sc6oh",
+      "source_region_type": "text_span",
+      "source_locator_text": "In the presence of different amounts of ACyD, a large increase of E.E.% was observed with respect to the NPs prepared both with the nanoprecipitation/solvent displacement method (E.E.% of about 3%, w/w) and with the W/O/W double emulsion method (E.E.% of about 7%, w/w) but without SC6OH.",
+      "supporting_text": "a large increase of E.E.% was observed with respect to the NPs prepared both with the nanoprecipitation/solvent displacement method (E.E.% of about 3%, w/w) and with the W/O/W double emulsion method (E.E.% of about 7%, w/w) but without SC6OH."
+    },
+    {
+      "span_id": "span_acyd_key_role_ee",
+      "source_region_type": "text_span",
+      "source_locator_text": "ACyD plays a key-role in the entrapment of MB, as it is evidenced by MB E.E.% in PLGA/SC6OH NPs which have been obtained by nanoprecipitation.",
+      "supporting_text": "ACyD plays a key-role in the entrapment of MB, as it is evidenced by MB E.E.% in PLGA/SC6OH NPs which have been obtained by nanoprecipitation."
+    },
+    {
+      "span_id": "span_ee_nanoprecip_vs_wow",
+      "source_region_type": "text_span",
+      "source_locator_text": "By using this technique, MB E.E.% values are higher than those obtained using W/O/W emulsion/solvent evaporation, although this latter method is generally utilized to entrap hydrophilic drugs within PLGA.",
+      "supporting_text": "By using this technique, MB E.E.% values are higher than those obtained using W/O/W emulsion/solvent evaporation"
+    },
+    {
+      "span_id": "span_nps_plga_acyd_proposed",
+      "source_region_type": "text_span",
+      "source_locator_text": "NPs based on PLGA and ACyD (SC6OH) were here proposed as an intriguing novel drug delivery system.",
+      "supporting_text": "NPs based on PLGA and ACyD (SC6OH) were here proposed as an intriguing novel drug delivery system."
+    },
+    {
+      "span_id": "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1 Overall properties of NPs (sizes), polydispersity index (P.I.), yield percentage and encapsulation efficiency percentage (E.E.%) of MB loaded-PLGA NPs prepared in the presence and in the absence of SC6OH.",
+      "supporting_text": "Table 1 Overall properties of NPs (sizes), polydispersity index (P.I.), yield percentage and encapsulation efficiency percentage (E.E.%) of MB loaded-PLGA NPs prepared in the presence and in the absence of SC6OH."
+    },
+    {
+      "span_id": "span_table1_row_data",
+      "source_region_type": "table_row",
+      "source_locator_text": "MB loaded-PLGA/SC6OH 40 b 201 ± 2 0.16 ± 0.08 40.85 ± 4.01 9.65 ± 0.31 57.89 ± 1.86",
+      "supporting_text": "MB loaded-PLGA/SC6OH 40 b 201 ± 2 0.16 ± 0.08 40.85 ± 4.01 9.65 ± 0.31 57.89 ± 1.86"
+    },
+    {
+      "span_id": "span_table1_note_a",
+      "source_region_type": "table_notes",
+      "source_locator_text": "a The amounts of MB and PLGA were always maintained at 0.5 mg and 20 mg, respectively.",
+      "supporting_text": "a The amounts of MB and PLGA were always maintained at 0.5 mg and 20 mg, respectively."
+    },
+    {
+      "span_id": "span_table1_note_sc6oh_range",
+      "source_region_type": "table_notes",
+      "source_locator_text": "The amount of SC6OH was changed from 10 to 40 mg.",
+      "supporting_text": "The amount of SC6OH was changed from 10 to 40 mg."
+    },
+    {
+      "span_id": "span_table1_note_b_nanoprecip",
+      "source_region_type": "table_notes",
+      "source_locator_text": "b NPs were prepared with the nanoprecipitation/solvent displacement method using acetone as the organic phase.",
+      "supporting_text": "b NPs were prepared with the nanoprecipitation/solvent displacement method using acetone as the organic phase."
+    },
+    {
+      "span_id": "span_table1_note_c_wow",
+      "source_region_type": "table_notes",
+      "source_locator_text": "c NPs were prepared with the W/O/W emulsion/solvent evaporation method using a mixture of acetone/dichloromethane (1 : 1, v/v) as the organic phase; Tween 80 and Pluronic F68® were used as surfactants.",
+      "supporting_text": "c NPs were prepared with the W/O/W emulsion/solvent evaporation method using a mixture of acetone/dichloromethane (1 : 1, v/v) as the organic phase; Tween 80 and Pluronic F68® were used as surfactants."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "span_table1_caption"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "SC6OH amount",
+        "Preparation method"
+      ],
+      "constant_variables": [
+        "MB amount",
+        "PLGA amount"
+      ],
+      "new_variables_introduced": []
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "SYNTHESIS_METHOD_BLOCK",
+      "to_table": "Table 1",
+      "inherit_type": "selected_condition",
+      "variable": "Preparation method",
+      "value": "nanoprecipitation/solvent displacement method",
+      "evidence_span": "span_table1_note_b_nanoprecip"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "SYNTHESIS_METHOD_BLOCK",
+      "to_table": "Table 1",
+      "inherit_type": "selected_condition",
+      "variable": "Preparation method",
+      "value": "W/O/W emulsion/solvent evaporation method",
+      "evidence_span": "span_table1_note_c_wow"
+    }
+  ],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_prep_method_1_intro"
+    },
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_prep_method_1_tween80"
+    },
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_prep_method_1_wow_intro"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    }
+  ]
+}

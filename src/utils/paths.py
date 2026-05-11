@@ -6,7 +6,7 @@ All scripts should import paths from here instead of hard-coding filesystem path
 
 Design goals:
 - Stable directory API (structure is frozen)
-- Minimal logic: small helpers allowed (read latest run_id)
+- Minimal logic: small helpers allowed (legacy latest pointer compatibility)
 - No side effects at import time (no filesystem I/O on import)
 
 Allowed:
@@ -53,6 +53,10 @@ DATA_PDF_RAW_DIR = DATA_DIR / "pdf_raw"
 DATA_CLEANED_DIR = DATA_DIR / "cleaned"
 DATA_CLEANED_INDEX_DIR = DATA_CLEANED_DIR / "index"
 DATA_CLEANED_SAMPLES_DIR = DATA_CLEANED_DIR / "samples"
+DATA_CLEANED_GT_AUTHORITY_DIR = DATA_CLEANED_DIR / "gt_authority" / "v1"
+DEV15_LAYER1_GT_COUNTS_TSV = DATA_CLEANED_GT_AUTHORITY_DIR / "dev15_layer1_gt_counts.tsv"
+DEV15_LAYER2_IDENTITY_TSV = DATA_CLEANED_GT_AUTHORITY_DIR / "dev15_layer2_identity.tsv"
+DEV15_LAYER3_VALUES_TSV = DATA_CLEANED_GT_AUTHORITY_DIR / "dev15_layer3_values.tsv"
 
 # Large, regeneratable outputs (often ignored by git)
 DATA_CLEANED_CONTENT_DIR = DATA_CLEANED_DIR / "content"
@@ -62,14 +66,50 @@ DATA_LABELS_DIR = DATA_DIR / "labels"
 
 # Optional exports (non-authoritative)
 DATA_RESULTS_DIR = DATA_DIR / "results"
+DATA_MEM_DIR = DATA_DIR / "mem"
+DATA_MEM_V1_DIR = DATA_MEM_DIR / "v1"
+DEV15_LAYER2_SOURCE_WORKBOOK_XLSX = (
+    DATA_RESULTS_DIR
+    / "run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1"
+    / "boundary_gt_review_v1"
+    / "boundary_gt_review_workbook_v1.xlsx"
+)
+DEV15_LAYER3_SOURCE_WORKBOOK_XLSX = (
+    DATA_RESULTS_DIR
+    / "run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1"
+    / "value_gt_annotation_workbook_representation_repaired_v4_with_pH.xlsx"
+)
+
+def dataset_cleaned_root(dataset_id: str) -> Path:
+    """Return data/cleaned/<dataset_id>."""
+    ds = dataset_id.strip()
+    if not ds:
+        raise ValueError("dataset_id is empty")
+    return DATA_CLEANED_DIR / ds
+
+
+def dataset_tables_root(dataset_id: str) -> Path:
+    """Return data/cleaned/<dataset_id>/tables."""
+    return dataset_cleaned_root(dataset_id) / "tables"
+
+
+def dataset_text_root(dataset_id: str) -> Path:
+    """Return data/cleaned/<dataset_id>/text."""
+    return dataset_cleaned_root(dataset_id) / "text"
 
 
 # ---------------------------------------------------------------------
 # Runs: templates vs concrete run artifacts
 # ---------------------------------------------------------------------
 
-# Pointer to the latest run_id (single line)
+# Legacy pointer to the latest run_id (single line). This remains for
+# compatibility helpers only and is not the primary authority for current
+# data/results-based benchmark, alignment, comparison, or workbook workflows.
 RUNS_LATEST_FILE = RUNS_DIR / "latest.txt"
+
+# Repository-level active data-source authority pointer for current
+# data/results-based workflows.
+ACTIVE_RUN_POINTER_FILE = DATA_RESULTS_DIR / "ACTIVE_RUN.json"
 
 # Repository-level templates (blank templates, tracked in git)
 RUN_TEMPLATE_MD = RUNS_DIR / "RUN_TEMPLATE.md"

@@ -1,0 +1,1648 @@
+Original article
+A Chitosan-PLGA based catechin hydrate nanoparticles used in targeting
+of lungs and cancer treatment
+Niyaz Ahmad a,b,⇑, Rizwan Ahmad c, Ridha Abdullah Alrasheed a, Hassan Mohammed Ali Almatar a,
+Abdullah Sami Al-Ramadan a, Taysser Mohammed Buheazah a, Hussain Salman AlHomoud a,
+Hassan Ali Al-Nasif a, Md Aftab Alam d
+a Department of Pharmaceutics, College of Clinical Pharmacy, Imam Abdulrahman Bin Faisal University, Dammam, Saudi Arabia
+b Department of Pharmaceutical Chemistry, College of Clinical Pharmacy, Imam Abdulrahman Bin Faisal University, Dammam, Saudi Arabia
+c Department of Natural Products and Alternative Medicine, College of Clinical Pharmacy, Imam Abdulrahman Bin Faisal University, Dammam, Saudi Arabia
+d Department of Pharmaceutics, School of Medical and Allied Sciences, Galgotias University, Gautam Budh Nagar, Greater Noida 201310, India
+a r t i c l e
+i n f o
+Article history:
+Received 21 March 2020
+Revised 2 May 2020
+Accepted 11 May 2020
+Available online 20 May 2020
+Keywords:
+Catechin hydrate
+CS-CTH-PLGA-NPs
+Lung cancer
+Apoptosis
+UHPLC-MS/MS
+Lungs comparative pulmokinetics
+a b s t r a c t
+Objective: To prepare a novel Chitosan (CS)-coated-PLGA-NPs of catechin hydrate (CTH) and to improve
+lungs bioavailability via direct nose to lungs-delivery for the comparative assessment of a pulmokinetics
+study by the ﬁrst-time UHPLC-MS/MS developed method in the treatment of lungs cancer via anticancer
+activities on H1299 lung cancer cells.
+Material and methods: PLGA-NPs was prepared by solvent evaporation (double emulsion) method fol-
+lowed by coated with chitosan (CS) and evaluated based on release and permeation of drug, a compara-
+tive pulmokinetics study with their anticancer activities on H1299 lung cancer cells.
+Results: The particle size, PDI and ZP of the optimized CAT-PLGA-NPs and CS-CAT-PLGA-NPs were deter-
+mined 124.64 ± 12.09 nm and 150.81 ± 15.91 nm, 0.163 ± 0.03 and 0.306 ± 0.03, –3.94 ± 0.19 mV and
+26.01 ± 1.19 mV respectively. Furthermore, higher entrapment efﬁciency was observed for CS-CAT
+PLGA NPs. The release pattern of the CS-CAT-PLGA NPs was found to favor the release of entrapped CAT
+within the cancer microenvironment. CS-CAT-PLGA-NPs exposed on H1299 cancer cells upto 24.0 h was
+found to be higher cytotoxic as compared to CAT-solution (CAT-S). CS-CAT-PLGA-NPs showed higher apop-
+tosis of cancer cells after their exposure as compared to CAT-S. CS-CTH-PLGA-NPs showed tremendous
+mucoadhesive-nature as compared to CTH-S and CS-CTH-PLGA NPs by retention time (RT) of 0.589 min,
+and m/z of 289.21/109.21 for CTH alongwith RT of 0.613 min and m/z of 301.21/151.21 was found out for
+IS (internal standard), i.e. Quercetin). Likewise, for 1–1000 ng mL1 (linear range) of % accuracy (92.01–
+99.31%) and %CV (inter & intra-day, i.e. 2.14–3.33%) was determined. The improved Cmax with AUC0–24
+was observed extremely signiﬁcant (p < 0.001) via i.n. as compared oral and i.v. in the wistar rat’s lungs.
+The CS-approach was successfully designed and safely delivered CAT to the lungs without causing any risk.
+Conclusion: CS-CTH-PLGA-NPs were showed a signiﬁcant role (p < 0.001) for the enhancement of lungs-
+bioavailability and potentially promising approach to treat lung cancers. CS-CTH-PLGA-NPs did not cause
+https://doi.org/10.1016/j.sjbs.2020.05.023
+1319-562X/ 2020 The Author(s). Published by Elsevier B.V. on behalf of King Saud University.
+This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Abbreviations: CTH, Catechin hydrate; CS, chitosan; NPs, nanoparticles; CS-CTH-PLGA-NPs, chitosan-coated catechin hydrate-loaded-PLGA-nanoparticles; PVA, polyvinyl
+alcohol; DCM, dichloromethane; UHPLC-MS/MS, ultra high performance liquid chromatography mass spectroscopy and mass spectroscopy; ESI, Electrospray ionization; PDI,
+polydispersity index; SEM, scanning electron microscope; TEM, transmission electron microscope; LC, loading capacity; EE, entrapment efﬁciency; DSC, differential scanning
+calorimetry; PBS, phosphate buffered solution; CC, calibration curve; IS, internal standard; CH-S, catechin-hydrate-suspension; LLOQ, liquid–liquid extraction: LLE: lower
+limit of quantiﬁcation; LLOQQC, lower limit of quantiﬁcation for quality control; MQC, low quality control: LQC: middle quality control; HQC, high quality control; Cmax,
+maximum plasma concentration; Kel, elimination rate constant; Tmax, time to Cmax; t½, half-life; AUC, area under curve; LOD, lower limit of detection; LOQ, lower limit of
+quantitation; ANOVA, analysis of variance.
+⇑Corresponding author at: Department of Pharmaceutics, College of Clinical Pharmacy, Imam Abdulrahman Bin Faisal University, P.O. Box 1982, Dammam 31441, Saudi
+Arabia.
+E-mail addresses: nanhussain@iau.edu.sa, niyazpharma@gmail.com (N. Ahmad).
+Peer review under responsibility of King Saud University.
+Production and hosting by Elsevier
+Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+Contents lists available at ScienceDirect
+Saudi Journal of Biological Sciences
+journal homepage: www.sciencedirect.com
+
+any toxicity, it showed safety and have no obvious toxic-effects on the rat’s lungs and does not produce any
+mortality followed by no abnormal ﬁndings in the treated-rats.
+ 2020 The Author(s). Published by Elsevier B.V. on behalf of King Saud University. This is an open access
+article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+1. Introduction
+Lung cancer is biggest incidences of cancers throughout the
+world amongst all the type of cancers. In spite of early identiﬁca-
+tion, a proper treatment, non-small-cell lung cancer is commonly
+diagnosed at an advanced stage through 75.0–80.0% containing
+already speciﬁed metastases (Brown et al., 1996; Raparia et al.,
+2013). The prediction of diagnosis is very poor and the survival rate
+for 5-year is smaller than 15% (Green et al., 2013). A new chemical
+entity (NCE) and their formulation is urgently required for treat-
+ment of lung cancer. It has been reported that dietary optimization
+is among the most effective approaches for cancer prevention
+(Pandey and Rizvi, 2009). Importantly, about 20% of all cases of
+cancer are preventable by modiﬁed diet containing high amount
+and variety of vegetables and fruits (Glade, 1997). Most of the nat-
+ural compounds have highly contained polyphenolic phytochemi-
+cals
+in
+the
+fruits,
+vegetables,
+and
+cereal
+and
+involved
+in
+protecting plants from microbial infections, deterrence of herbi-
+vores, preventing reactive oxygen species (ROS) stress, regulation
+of growth processes, and ripening (Pandey and Rizvi, 2009).
+Polyphenol structure is characterized by the presence of multiphe-
+nol units, which might contribute to oxidative stability of plant tis-
+sue and other organoleptic characteristics, such as color, ﬂavor, and
+odor (Pandey and Rizvi, 2009). Due to favorable safety proﬁle and
+profound antioxidant activity, polyphenolic phytochemicals have
+been intensively studied as anticancer adjuvants (Lai et al., 2017;
+Akowuah et al., 2009; Taparia and Khanna, 2016). Particularly, in
+mice harboring mammary carcinoma 4T1, green tea polyphenols
+dramatically suppressed cancer development and inhibited tumor
+metastasis (Baliga et al., 2005). Green tea contained ﬂavonoid in
+the
+form
+of
+ﬂavanols
+in
+which
+mostly
+present
+catechins
+(Natarajan et al., 1962; Spiro and Jago, 1982). Catechins showed
+antioxidants property that are highly useful to the human body
+(Merken and Beecher, 2000; Ahmad et al., 2020a). All 6-catechins
+found in green tea (e.g. Catechin Hydrate) with great nutraceutical
+potential are water-soluble with colourless active entities which
+showed astringent and bitter taste to green tea infusion (Ahmad
+et al., 2020a; Wang and Helliwell, 2000). All catechins including
+Catechin Hydrate was already proved in treatment of various types
+of cancer like breast, colon, pancreatic, duodenum, skin, esopha-
+geal, lung, and prostate cancer (Ian and Dreosti, 1998; Kang
+et al., 1999; Masami et al., 1999; Mukhtar and Ahmad, 2000;
+Shahid et al., 2016; Jeong et al., 2017; Gujar et al., 2010;
+Alshatwi et al., 2015; Alshatwi, 2010; Siddiqi and Husen, 2016;
+Dube et al., 2010; Krishnaswamy et al., 2014).
+Now a drays, various research scientists are targeting the drugs
+via nose–to–lungs that showed different types of useful applica-
+tions like avoid hepatic ﬁrst pass metabolism and non-invasive
+route with easy to application of drugs (Monteillier et al., 2018;
+Dao et al., 2018; Worth et al., 2000; Jin et al., 2019). Therefore,
+these PLGA-NPs. nanoparticles can be a better approach in the
+comparison of others. PLGANPs are known to be biodegradable,
+biocompatible and non-toxic and have been used for biomedical
+application for more than two decades. PLGA has been widely
+investigated for formulation of NP because of its biocompatibility,
+safety, ability to promote mucoadhesion and enhanced drug stabil-
+ity via intranasal drug delivery as compared to other routes of drug
+administration (Ahmad et al., 2020c; Ahmad et al., 2020d). PVA-
+NPs (polyvinyl alcohol-NPs) are also used similarly because of
+the maximum permeability, better solubility, and increase compat-
+ibility of mixtures with excellent rheological properties on the var-
+ious shapes and ﬂexibility through many types of drug delivery
+(Ahmad et al., 2020c, 2020d). Before designing the intranasal
+preparations, everyone must think the problem of little staying
+time of drug in the nasal cavity. This is very important for any type
+of optimized-formulation that should contain a highly mucoadhe-
+sive with the maximum nasal residence time. If we are going to
+administer any drug-formulation intranasally that it should con-
+tain a mucoadhesive property followed by enhancement of absorp-
+tion of CTH-drug. Though, that dosage form should be useful to
+enhance the nasal retention time. Now a days, an attractive tool
+comes into the market i.e. nasal gel (in situ) formulations showed
+biocompatible and biodegradable-nanoparticles as a controlled
+release of drug like CTH (Ahmad et al., 2016a; Fernandez-
+Urrusuno et al., 1999; Md et al., 2013; Ahmad, 2017; Ahmad
+et al., 2020d). A great attention have been developed now a days
+about the polymeric-NPs that showed longer therapeutic action,
+control rate of drug release with maximum drug-loading (DL),
+increasing their surface area. Thus, the release of drug will fast ini-
+tially followed by maintaining the drug therapeutic level as com-
+pare with other carriers and drug-delivery for the targeted to
+particular sites of the body. These polymeric nanoparticles provide
+the some other additional useful applications as compared to other
+drugs-formulations
+delivered
+through
+nose–to–lungs
+because
+these- nanoparticles protect the drugs via encapsulation stay away
+from the direct participation of biological degradation to increase
+the bioavailability of drugs into the lungs.
+Likewise, literature survey (Jaitz et al., 2010; Sapozhnikova
+et al., 2014; Svoboda et al., 2015; Taamalli et al., 2015; Dias
+et al., 2013; Poon et al., 1998; Chang et al., 2011; Nelson et al.,
+2003) reports different methods for green tea or tea or coffee
+extracts, fruits juices, and other plants extracts for analysis of sam-
+ples. However, they published concurrent development with vari-
+ous catechins at the similar time, i.e. plasma analysis is any reports
+not available for Catechin Hydrate alone. There are two methods
+developed for catechins for the analysis of brain and urine samples
+(Lendoiro et al., 2014; Ahmad et al., 2020a). Besides this, it is very
+important for current study is lack of availability of any method for
+lungs as well as plasma bioanalysis of single-CTH-only with very
+lesser time upto picogram level. In the current study, a novel bio-
+analytical UPHPL-MS method was successfully developed, vali-
+dated, and applied for all pulmokinetics parameters evaluations
+of CS–coated–PLGA–NPs by UHPLC-ESI-triple-quadrupole-MS/MS.
+The current study showed a bioanalytical method contained vari-
+ous applications in terms of higher sensitivity, highest efﬁciency,
+and very low retention with very less total run time for the estima-
+tion of pulmokinetics parameters in lungs as well as plasma.
+This is a ﬁrst time development of novel chitosan (CS)–coated–
+PLGA–NPs to increased lungs targeting of CTH. The major objective
+is to improve the bioavailability of CTH in the lungs after the i.n.
+delivery of optimized-CS-CTH-PLGA-NPs to achieve an improved
+CTH-therapeutic level in the lungs. It was also avoided the unre-
+quested systemic exposure of CTH alongwith required optimum
+dose
+for
+therapeutic-level
+of
+lungs.
+CS-CTH-PLGA–NPs
+were
+showed
+excellent
+effective-solubility
+and
+their
+permeability.
+Optimized-CS-CTH-PLGA-NPs were characterized by many physic-
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2345
+
+ochemical parameters to estimate their suitable CTH-delivery of
+nose-to-lungs. A comparative pulmokinetics study was performed
+via delivery of CS-CTH-PLGA-NPs from different routes (i.v., oral,
+and i.n.) in wistar rats. The quantiﬁcation of CAT in lungs was car-
+ried out via a newly developed bioanalytical UHPLC-MS/MS
+method in the lungs for the treatment of lungs cancer by cancer
+cell lines. Further evaluation of the formulated NPs was performed
+on human non-small cell lung carcinoma (NSCLC) H1299-cell-lines
+to evaluate cytotoxicity, apoptotic potential and to evaluate the
+cell cycle arrest potential. Finally, the toxicity study was success-
+fully established which is an important parameter for the safety
+of newly developed-NPs.
+2. Materials and methodology
+We have bought 99.98% purity CTH from AK Scientiﬁc, Inc.
+30,023 Ahern Avenue Union City, CA 94587, USA. CS, PVA (MW
+25000), and PLGA from Tokyo Chemical Industry Co., Ltd. 6-15-9
+Toshima, Kita-ku, Tokyo 114-0003 and Polysciences Inc, 400 Valley
+Road were bought. DCM was bought from Sigma Aldrich Corpora-
+tion (St. Louis, MO, USA). All the analytical solvents were bought
+from Sigma-Aldrich. The whole analysis was performed with the
+help of Milli Q Water. The apoptosis detection kit was bought from
+BD Bioscience.
+2.1. Development of NPs
+For the preparation of PLGA NPs, we slightly modiﬁed Ahmad
+et al method based on double emulsiﬁcation (w/o/w) solvent evap-
+oration method (Ahmad, 2017; Ahmad et al., 2020a). CTH was sol-
+ubilized in PVA solution (1.10%w/v) to prepare an aqueous as a
+internal phase (IAP). PLGA was solubilized in DCM to form organic
+phase. Probe sonicator (Ultrasonic processor, Sonopuls, Bandelin,
+Germany) was used to emulsiﬁed IAP in the organic phase for
+4.0 min
+at
+voltage
+efﬁciency
+(60.0%)
+wit
+temperature
+(25.0 ± 1.0 C) to prepare w/o as a primary emulsion (PE). PE has
+been additionally emulsiﬁed through sonication by various PVA
+concentration solution or EAP (external aqueous phase) to obtain
+a 2-emulsion (w/o/w). For the evaporation of organic solvent,
+2-emulsion was kept on magnetic stirrer upto 4 to 5 h. NPs were
+found in the form of suspension, it was centrifuged at 15000.0 rpm
+(30.0 min) followed by rising for three-times for the removal of
+extra amount of PVA as well as CTH sticked on the NPs-surface.
+Opt-NPs were washed pellets and dispersed in the 5.0%w/v manni-
+tol solution followed by dried with help of freeze dryer (Lab Conco.,
+LPYH, Lock 6, USA freeze dryer) at 60.0 C (upto 24.0 h) to get
+freeze-dried-NPs.
+A speciﬁc amount of CTH-PLGA-NPs suspensions is incubated
+CS-volume (2.0 mg/ml) in 0.50% acetic solution for 2.0 h at room
+temperature (Ahmad, 2017; Ahmad et al., 2020a). Obtained-CS-
+CTH-PLGA-NPs were centrifuged followed by two times washing
+and after that redispersed in the Milli-Q-water (predetermined
+volume). Resulted-NPs were dispersed and stabilized with the help
+of Lyophilizer (Lab Conco., LPYH, Lock 6, USA freeze dryer) for
+3.0 days (at 60.0 C). Resulted CS-CTH-PLGA-NPs were formu-
+lated in triplicate.
+2.2. Characterizations of CS/CTH-PLGA-NPs
+2.2.1. PDI, ZP, and particle size
+Particle size determination is the very essential parameter. If
+particle size decreases parallely increases the surface area for the
+absorption of drug (Ahmad, 2017; Ahmad et al., 2020a). PDI, parti-
+cle size, and ZP for the opt-nanoformulation were examined
+through Dynamic light scattering technique (Malvern–Zetasizer,
+Nano–Zetasizer, UK). Dilution is very important to before analyze
+the particle size. At the time of particle size analysis, we have
+maintained the temperature 25.0 C and 90 ﬁxed the scattering
+angle (Ahmad, 2017; Ahmad et al., 2020a). The samples were
+diluted to used and analyse size and surface charge of nanoformu-
+lations, where each measurements were prepared in triplicate. At
+the time of particle size analysis and their surface charge for NPs,
+we determined the samples in triplicate.
+2.2.2. SEM (Scanning electron microscopy)
+We adopted to use Ahmad et al method to examine the shape of
+particles via SEM (FEI, INSPECT S50, Czech Republic) (Ahmad,
+2017; Ahmad et al., 2020a).
+2.2.3. TEM (transmission electron microscopy)
+We adopted to use Ahmad et al method to examine the size of
+particles via TEM (FEI, MORGAGNE.68, Czech Republic) (Ahmad,
+2017; Ahmad et al., 2020a).
+2.2.4. EE (%Entrapment Efﬁciency), LC (%Loading Capacity), and
+Process Yield (%)
+LC and EE of NPs were estimated through the ultracentrifuga-
+tion for 30.0 min at 15,000 rpm at 4.0 C. Our in house-developed
+UHPLC–MS/MS method helped to determine the CTH-free amount
+from supernatant (Ahmad, 2017; Ahmad et al., 2020a). EE and LC
+calculated on the basis of mentioned below equation for opt-NPs
+(Ahmad, 2017; Ahmad et al., 2020a):
+EE %
+ð
+Þ ¼ Whole CTH Quantity  Free CTH Amount
+Whole CTH Quantity
+ 100
+LC %
+ð
+Þ ¼ Whole CTH Quantity  CTH Free Amount
+NPs Weight
+ 100
+Process Yield (%) was calculated through mentioned below
+formula:
+Process Yield %
+ð
+Þ ¼
+W1 Dried NPs Weight
+ð
+Þ
+W2 overall weight of dried initial material
+ð
+Þ
+ 100
+2.3. Differential Scanning calorimetry (DSC) study
+CTH (Pure Catechin), PLGA, PVA (Poly Vinyl Alcohol), CTH, PLGA,
+PVA-physical mixture, lyophilized CTH-PLGA-NPs, Pure CS, and CS-
+CTH-PLGA-NPs
+samples were analysed by
+DSC
+214 Polyma
+(NETZSCH Wittelsbacherstraße
+42,
+95,100
+Selb,
+Germany).
+10.0 mg of every sample was taken inside pan which was made
+up of aluminium and then crimped after that 20.0–400.0 C heated
+with 10.0 K/min rate with N2 gas continuously-supplied (Ahmad,
+2017; Ahmad et al., 2020a).
+2.4. In vitro drug release
+The in vitro release of CTH from the CTH-PLGA-NPs & CS-PLGA-
+NPs were carried out in two separate release-medium with pH 7.40
+and pH 5.50 in order to initiate the physiologic and acidic condition
+of cancer cells with slight modiﬁcation (Ahmad et al., 2018a;
+Ahmad et al., 2019; Ahmad et al., 2020b). Equal quantities of
+CTH-PLGA NP samples were packed in a dialysis sac and suspended
+in a 25.0 ml of the respective release medium having different pH
+5.50 and pH 7.40. A similar set of release study of the CS coated
+CTH-PLGA NP samples were continued. In both the cases, temper-
+ature was maintained at 37 C in a paddle type dissolution appara-
+tus where the speed of paddle was set to 100 rpm. At a particular
+interval of time, 1.0 ml sample aliquots were collected and
+2346
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+
+replaced with equal volume of fresh buffer. 1.0 ml every test sam-
+ple was withdrawn from each sampling-time point. After the with-
+drawal of every test sample, it was ﬁltered through 0.20 lm
+syringe-ﬁlter
+and
+then
+analysed
+by
+UHPLC–MS/MS-method
+(Ahmad et al., 2018a; Ahmad et al., 2019; Ahmad et al., 2020b).
+2.5. Ex-vivo study based on nasal mucosa based permeation
+Local slaughterhouse has provided the fresh nasal tissues from
+the goat’s nasal cavities. A ﬁx area i.e. 0.785 cm2 for tissue cells
+was taken for the permeation of CTH (Logan Instrument Corpora-
+tion, Piscataway, NJ). A saline 20.0 ml phosphate buffer (pH: 7.40,
+at 37.0 C) was taken into the receptor chamber as in a each and
+every separate pure-CTH-suspension, lyophilized-CTH-PLGA-NPs
+and lyophilized-CS-CTH-PLGA-NPs (CTH: 10.0 mg) were taken
+in the donor chamber (21.50–2.0 ml) after pre-incubation-time
+for 20.0 min in each analysis. 500.0 ml samples were withdrawn
+from receptor chamber based on predetermined time intervals.
+All the samples ﬁltered through 0.20 lm syringe-ﬁlter and then
+analysed by UHPLC-MS/MS-method (Ahmad et al., 2016b).
+2.6. Cytotoxicity of free CAT and CS-CAT-PLGA NPs
+Prediction of cytotoxicity of investigational agents in different
+cells is among the ﬁrst in vitro bioassay techniques, which usually
+provides the basis of crucial means of screening and safety assess-
+ment of the investigational agent (Tolosa et al., 2015). Therefore,
+the MTT colorimetric assay was conducted in NSCLC cell line
+(H1299) with free CAT, CS-CAT-PLGA NPs and placebo CS-PLGA
+NPs. The speciﬁc number of H1299 cells (6  103 cells) were
+seeded in each well of the 96-well plate for a period of 24 h. The
+incubated cells were then treated with various concentrations
+(5–100.0 lg ml1) of free CAT, CS-CAT-PLGA-NPs and placebo CS-
+PLGA-NPs. Following an incubation period of 24.0 h the treated
+samples were removed from the wells and the cells were incubated
+with 25.0 ll of MTT solution (0.50%, w/v) for 4.0 h at 37.0 C. Later
+after incubation, the unreacted MTT solution was removed and the
+cells were exposed to 150 ll DMSO in each well for a period of
+20.0 min to solubilise the formed formazan crystals. At last, the
+absorbance of the formazan solution in each well was examined
+at 570.0 nm via microplate reader (Thermo Fisher Scientiﬁc, Wal-
+tham, MA), which was proportionate with the number of viable
+cells in the wells. Viability of the treated cells was calculated com-
+paring with control cells and reported.
+2.7. Induction of apoptosis in H1299 cells by free CAT and CS-CAT-
+PLGA-NPs
+The technique (Double staining) was used to analyse apoptotic
+potential of the free CAT and formulated NPs. In due course, the
+H1299 cells were seeded in 6-well plates where the cells are incu-
+bated with free CAT and CS-CAT-PLGA-NPs. Following an incuba-
+tion of 24.0 h, cells washing were performed two times with cold
+phosphate buffer saline. The cells are then re-suspended in binding
+buffer and treated with 5.0 ll of Annexin V–ﬂuorescein isothio-
+cyanate (FITC) conjugate and 5.0 ll propidium-iodide. The cells
+were stained following an incubation of 15.0-min in dark at room
+temperature. The cells were then analysed through ﬂow cytometry
+(BD FACS AriaTm III) and obtained data were evaluated via FACS
+DIVA 8.0.2.
+2.8. Western blotting
+CAT and CS-CAT-PLGA-NPs effect was evaluated by the Bax and
+Bcl-2 apoptotic expression markers with the help of analysis of
+western blot in the lung cancer (H1299) cells. CAT and CS-CAT-
+PLGA-NPs incubated with H1299 cells were seeded in six-well
+plates. PBS was used to wash all the cells and radio-immuno-
+precipitation assay lysis buffer (RIPA buffer) was used for incuba-
+tion for thirty minutes on the ice. The supernatant liquid samples
+were collected after 12,000.0 rpm centrifugation at 4.0 C that con-
+tained the proteins. SDS-PAGE was used to separate out the all
+extracted proteins and then it transferred to PVDF membranes.
+5.0% BSA and TBST were used to keep the membrane for 2.0 hrs
+at room temperature to obstruct every binding site on the mem-
+brane. Primary antibodies to b-actin, BAX and Bcl-2 were use to
+incubate the membrane. The membrane was incubated after
+10.0 h with horseradish peroxidase-conjugated secondary antibod-
+ies for 1.0 h. Chemiluminescence reagent kit was used to identify
+the signal and imagined protein bands quantiﬁcation was carried
+out through densitometric analysis with the help of image J
+software.
+2.9. CAT and CS-CAT-PLGA-NPs induced cell cycle analysis
+H1299 cells were used to verify the effect of free CAT and for-
+mulated NPs on the cell cycle distribution (Min et al., 2018). The
+cells were incubated in 96-well plate with a ﬁxed concentration
+of CAT in different formulation. Then the cells were harvested
+and were ﬁxed with 75% ethanol at 4.0 C for 30 min. The cells
+were washed again with phosphate buffer saline twice and re-
+suspended in 50 mg/mL propidium iodide solution containing
+50 ng/mL of RNase for 30 min in the dark at room temperature.
+The number of cells was tested subsequently with the help of ﬂow
+cytometer (BD FACS AriaTm III). Ten thousands cells data were col-
+lected from every data ﬁle in which were acquired data were anal-
+ysed with the help of FACS DIVA 8.0.2 software.
+2.10. Animal study
+For the pulmokinetics study, we have taken the ethical approval
+from Imam Abdulrahman Bin Faisal University Ethical Committee
+(ethical approval number IRB-UGS-2019–05). Each cage has 4–5-
+rats (weight; 200–250 g). We have maintained natural light with
+dark cycle followed by the easy way to reachable food & water
+and also maintained the temperature 20–30 C with 50–55%
+humidity.
+2.11. UHPLC-MS/MS bioanalytical method development and their
+validation (MDMV)
+US–FDA, 2001 guidelines were followed for MDMV for CTH.
+Eight different standard points were selected to plot CC (calibra-
+tion curve) for linearity with the calculation of peak area ratio; 1/
+x2 regression was employed. Signal to noise was used 10:1 to mea-
+sure lower limit of quantiﬁcation (LLOQ) and LOD (Lower limit of
+Detection). We have withdrawn 6-pre-spiked of extracted samples
+to analyse by mean area response vs. post-extraction spiked CTH-
+free in the matrix (lungs and plasma). Same way, we determined
+recovery of IS samples. We analysed inter and intra-day accuracy
+and precision through the selection of LLOQQC, LQC, MQC, and
+HQC (for each QCs: 6-replicates) with one CC of lungs homogenate
+and plasma samples.
+2.12. Required conditions for UHPLC-MS/MS
+UHPLC–MS/MS
+exhibited
+a
+binary
+solvent
+manager
+with
+autosampler was used that contain high resolution and very sensi-
+tive tunable mass detector (LCMS-8050, ESI, Triple Quadrupole,
+Japan). Pinnacle DB C18 (1.9 mm; 50.0  30.0 mm) column was
+used with a mobile phase (Acetonitrile: Water::91:09), 2.0 ml injec-
+tion volume, with a ﬂow rate (0.400 ml min1) and total run time
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2347
+
+was 1.5 min. LCMS-8050 was used to determine the mass of the
+samples with the application of collision gas (Argon gas), scan time
+(1.0 min), inter-scan delay (0.020 sec with 0.10 m scan step:
+30,000.0 micro sec1). Collision energy (25.0 eV CE for CTH and
+21.5 eV for Quercetin) were selected for the quantiﬁcation of CTH
+& IS in the negative ion mode. The m/z 289.21/109.21 and
+301.21/151.21 transitions were used to bioanalysis of samples for
+CTH and Quercetin (IS), respectively. Lab Solution Software
+(V5.93) was used to calculate the exact mass determination with
+the amount of analyte as well as assessment of parent and daugh-
+ter ions.
+2.13. CC and QC samples preparation
+CTH stock solution was prepared ﬁrst in the methanol (10.0 mg
+10.0 ml1). The various 8-CC concentrations were prepared like
+analyte (2.0% aqueous) in the blank matrix (plasma or lungs homo-
+genate) of the rats that means matrix (980.0 ml blank) + analyte
+(20.0 ml of aqueous). CC-range (1.0–1000.0 ng ml1) for CTH was
+prepared in different sampling matrixes points like 1, 2, 22, 208,
+420, 638, 850, and 1000 ng ml1. In a same way, all the QCs HQC
+(805.00), MQC (420.00), LQC (2.91), LLOQC (1.010), and IS (50 ng
+ml1) were prepared water: methanol (1:1) mixture. The temper-
+ature (2–8 C) stored all spiked freshly diluted.
+2.14. Different types of matrix samples extraction
+Lungs homogenate or plasma unknown samples with fresh
+known samples (CC and QC) were prepared and collected for bio-
+analysis. Each aliquot (550.0 ll) has taken in a fresh cleaned glass
+tube after that added IS (50.0 ng mL1; 100.0 ll). After that, formic
+acid (200.0 ll; 5%) was added with vortexed (300 rpm) for 5–6 min
+to break the matrix protein. The samples was centrifuged at
+4000 rpm (for 10 min at 4 C) followed by transferred supernatant
+sample (4 ml) in a clean glass tube. All these samples were evapo-
+rated on water-bath (37 ± 1 C) with the help of samples dried
+under nitrogen stream. We have reconstituted residues by mobile
+phase (700.0 ll) in order to vortexed (300 rpm) for 5 min. UHPLC
+vials
+were
+used
+to
+transfer
+the
+reconstituted
+residues
+for
+bioanalysis.
+2.15. Pulmonokinetics
+In this study, optimized-CS-CAT-PLGA-NPs have used for their
+comparative pharmacokinetics study via delivery of CS-CAT-
+PLGA-NPs from different routes (i.v., oral, and intranasal) in wistar
+rats. On the basis of results, we are able to know the best route for
+lungs targeting drug delivery. For pulmonokinetics and actual
+reached CAT of CS-CAT-PLGA-NPs, rats were divided into three
+groups (6x3 = 18). The study was carried out at seven pre-
+selected time points of 0.25, 0.50, 1, 2, 4, 8, 12 and 24 hrs. Eighty
+one wistar rats in three groups (27  3 = 81) were randomly dis-
+tributed as; Group-I: i.v., Group-II: oral, Group-III: intranasal. For
+bioanalytical determination of CAT in lungs and plasma, three ani-
+mals at each time point were sacriﬁced to obtain plasma and lung
+homogenate.
+2.16. In vivo Histopathological examination of CS-CAT-PLGA-NPs
+toxicity
+Wistar rats were selected for CS-CAT-PLGA-NPs toxicity evalua-
+tion as this animal model offered a large surface area for intranasal
+to lungs of CS-CAT-PLGA-NPs and to accurately determine the CS-
+CAT-PLGA-NPs toxicity on the lungs as per the method reported by
+Bao et al. (2015) and Menon et al. (2017). All rats were sacriﬁced
+and then removed the lungs intact extraction after 7-days treat-
+ment. It was inﬂated through 4.0% paraformaldehyde tracheal
+instillation at 25.0 cm water airway pressure. The parafﬁn was
+used to embed the tissues and then sectioned. All the tissues
+stained with hematoxylin and eosin stain.
+2.17. Evaluation based statistics
+All the data was analysed like mean ± SD (standard deviation).
+For data comparison ANOVA with p < 0.05 was applied as a statis-
+tical tool. The software used for analysis was GraphPad v 3.0 (San
+Diego, CA).
+3. Result and discussion
+3.1. Nanoformulation development and their characterizations
+PLGA NPs were prepared using PLGA and PVA through double
+emulsiﬁcation-solvent evaporation method, where PVA acts as sta-
+bilizer of the formulation. Here, the particles size was reduced by
+ultrasonication techniques at nano-range followed by lower PDI.
+PLGA-NPs showed the particle size range 119.34 ± 11.61 nm in
+which DL didn’t exhibited any signiﬁcant enhance the NPs sizes.
+A
+signiﬁcant
+enhance
+in
+particles
+size
+were
+determined
+150.81 ± 15.91 nm while the PLGA-NPs were coated with CS
+(Table 1). Incorporation of CAT within the nanostructure has
+shown to increase the PDI of the formulation signiﬁcantly, how-
+ever, in all the cases of the formulated particles were identiﬁed
+with <0.310 PDI, representing monodisperse nature of the parti-
+cles. As depicted in Fig. 1 and Table 1, the surface charge of the
+opt-PLGA NPs were determined almost constant, slightly negative
+or near to the neutral (e.g., 4.10 ± 0.20 mV for CAT-PLGA-NPs).
+Comparatively after the nanoparticles coating, it was observed a
+signiﬁcant
+change
+on
+the
+surface
+of
+NPs
+i.e.
+positive
+26.01 ± 1.19 mV (for CS-CTH-PLGA NPs). It was also enhanced the
+stability of the NPs (Fig. 1B). CS have amino groups that is helpful
+to the enhanced the +ve ZP, it recommended that the CTH-PLGA
+NPs were satisfactorily coated through CS. CS-CTH-PLGA NPs con-
+tained +ve charge on their surface that enhances the adhesion and
+retention via cancer cells that are –vely charged membranes
+(Fig. 2) (Wang et al., 2013). CS coated NPs decreases chances of
+NPs interactions with phagocytes and their absorption via these
+cells for the reason that +vely charged NPs are a very smaller
+absorption (Parveen and Sahoo, 2011). TEM and SEM micro-
+images showed the smooth surface and spherical CS-CTH-PLGA
+NPs (Fig. 3). EE of CAT within the PLGA nanocarrier was calculated
+as percentage ratio using the equation provided in the methodol-
+Table 1
+Average particle size, polydispersity index (PDI) zeta potential, %entrapment efﬁciency, %drug loading, %Yield of optimized formulations.
+Formulations Type
+Average PS (nm) ± SD
+Average PDI ± SD
+Average ZP (mV) ± SD
+Average Yield (%) ± SD
+Average EE (%) ± SD
+Average DL (%) ± SD
+PLGA NPs
+119.34 ± 11.61
+0.116 ± 0.05
+–3.94 ± 0.19
+–
+–
+–
+CTH-PLGA NPs
+124.64 ± 12.09
+0.163 ± 0.03
+–4.10 ± 0.20
+91.65 ± 4.01
+72.34 ± 2.68
+5.53 ± 0.16
+CS-PLGA NPs
+146.69 ± 15.68
+0.291 ± 0.02
+27.51 ± 1.31
+–
+–
+–
+CS-CTH-PLGA NPs
+150.81 ± 15.91
+0.306 ± 0.03
+26.01 ± 1.19
+95.48 ± 4.57
+76.48 ± 4.51
+8.76 ± 1.31
+Results expressed as mean ± SD (n = 3). SD: standard deviation; NA: not applicable; NPs: nanoparticles. CTH: Catechin Hydrate, CS: chitosan.
+2348
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+
+ogy section. With the change in concentration of PLGA, the %EE of
+CAT was varied proportionately within the PLGA-NPs, however,
+optimized formulation of CS coated CAT-PLGA-NPs were found to
+encapsulate 76.48 ± 4.51% with 8.76 ± 1.31 %DL. CS was coated on
+opt-CAT-PLGA-NPs that enhances the mucoadhesive and retention
+time in the nasal region. After that; we have our main objective i.e.
+opt-CS-CAT-PLGA-NPs were examined by in-vitro CTH-release,
+ex vivo permeation, H1299 cells cell lines, and their pulmokinetics
+study. Based on our ﬁndings, opt-CS-CAT-PLGA-NPs have been
+fruitfully coated on CTH-PLGA-NPs for the delivery of CAT via
+intranasal route. At last our conclusion is CTH adsorbed on the sur-
+face of opt-NPs due to CS (+vely charged) and CTH (vely charged
+–OH hydroxyl ion) electrostatic interaction (Ahmad, 2017; Ahmad
+et al., 2018a). 26.01 ± 1.19 mV ZP showed the stability of opt-CS-
+CTH-PLGA NPs (Fig. 1B). Positive-charge on the surface of opt-CS-
+CTH-PLGA NPs facilitates to enhanced mucoadhesion with incre-
+ment of residence time and decreases the mucociliary clearance
+of opt-CS-CTH-PLGA NPs from the nasal mucosa (Md et al., 2013;
+Ahmad, 2017).
+PLGA polymer was used to prepare our CAT based nanoformu-
+lation in which for the stabilization, PVA was integrated. Generally
+for the formulation of PLGA-NPs, stabilizer was used i.e. PVA that is
+easily binds to PLGA with the help of PLGA interpenetration and
+PVA molecules at the time of preparation of nanoparticles
+(Ahmad, 2017; Ahmad et al., 2020a). PVA was used as a copolymer
+that exhibited polyvinyl alcohol & polyvinyl acetate by distinctive
+block copolymer in which vinyl part represents lipophilic property.
+PVA (lipophilic segment) is recognized and used as a penetrating
+agent for organic phase at the time preparation of NPs whereas
+from polymeric matrix used as elimination of organic solvent and
+it was ﬁnally resulted that PVA was entrapped inside the PLGA-
+matrix (Sahoo et al., 2002). The decrement of particle size was
+due to the use of ultrasonication technique in the dispersed phase
+where these NPs as a nanocarrier showed a uniform characteristics
+nature in the size-range of 119.34 ± 11.61 nm. Ahmad et al
+reported before content selection of polymer, copolymer, and
+Fig. 1. Zeta potential of PLGA NPs suspended in PBS (pH = 7.4), [A]: CTH-PLGA-NPs; [B]: CS-coated-CTH-PLGA-NPs.
+Fig. 2. Schematic presentation of chitosan-coated PLGA NPs and their interaction
+with cancer cells. The positive surface of nanoparticles promotes adhesion and
+retention by cancer cells, which have negatively charged membranes.
+Fig. 3. Scanning electron microscopy (SEM) [A] and transmission electron microscopy (TEM) [B] images of CS-coated-CH-loaded-PLGA-NPs.
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2349
+
+selected-drug at the time of preparation of NPs and the loading of
+drug inside the PLGA NPs followed by a required nanoparticles size
+range (Ahmad, 2017; Ahmad et al., 2020a). A smallest PDI was
+observed for our opt-CS-CTH-PLGA NPs which showed very small
+differences in all the batches at the time of nanoformulation devel-
+opment. Although loading of drug within the NP formulation
+showed to increase the PDI signiﬁcantly, the value did not exceed
+0.306, indicating formation of unimodal particles (Budhian et al.,
+2008). CS-coating on the PLGA-NPs represented a signiﬁcant
+(p < 0.05) enhance in particles size. On the other hand this change
+in particle-size did not affect the mean PDI as compared with
+uncoated particles. Finally, it was designated no agglomeration of
+the particles after coating with the CS.
+3.2. Differential scanning calorimetry (DSC)
+CTH, PLGA, PVA, CTH + PVA + PLGA physical mixture, opt-CTH-
+PLGA NPs dried from lyophilizer, CS pure and opt-CS-CTH-PLGA
+NPs of DSC thermograms were displayed in Fig. 4. There are two
+major peaks i.e. one in-between 90 and 110 C related to loss of
+water and other peak at 170.3 C which is related to anhydrous
+CTH and also it showed mp i.e. very closed to reported mp
+175 C. Finally, it was decomposed >200 C. In the same way,
+CTH + PVA + PLGA physical mixture showed all the characteristic
+peaks. There was no peak in CTH-PLGA-NPs. It represents CTH
+entirely entrapped inside CTH-PLGA-NPs. A very distinctive peak
+was observed in-between 45.0 and 55.0 C in PLGA pure polymer
+and also opt-PLGA NPs (Fig. 4) (Ahmad, 2017; Ahmad et al.,
+2018a). One exothermic broad peak was shown at 310.7 C for CS
+but other peaks were endothermic i.e. 160.2 C & 193.8 C. It was
+shown again in opt-CS-CTH-PLGA NPs at 310.8 C. In Fig. 4, CS-
+CTH-PLGA NPs showed again CS peak due to CS coated on CAT-
+PLGA-NPs. One more a very small peak of PLGA has been distin-
+guished at 52.6 C that could be lesser % of chitosan quantity com-
+pare to % of PLGA other side CTH-peak was not observed in the opt-
+CS-CTH-PLGA (Fig. 4) (Ahmad, 2017; Ahmad et al., 2018a).
+3.3. In vitro CTH release evaluation
+Any drug release from NPs delivery is very important to create
+intended physiological response that should be successfully chan-
+ged via modiﬁcation of physicochemical medium characteristics.
+CS coated CAT-PLGA is applied to transport the entrapped CAT
+within the cancer microenvironment, nanoformulations release
+study was evaluated at 2-different pH: 5.50 and 7.40, which
+roughly corresponds to the pH of the tumor microenvironment,
+different cellular compartments, and also for nasal mucosa respec-
+tively. CAT-release proﬁles from the NPs at various pH values were
+displayed in Fig. 5A, where it is clearly be demonstrated that the
+release of CAT from the PLGA NPs and CS-PLGA NPs were 67.01%
+and 80.93 ± 5.64% respectively at pH 7.4. The PLGA NPs showed
+burst release of 26.01% at 2.0 h whereas CS coated PLGA NPs
+showed 41.06 ± 2.98% drug releases. This result demonstrate that
+initial release of CAT in CS coated PLGA NPs was signiﬁcantly
+greater than that in PLGA NPs and showed more sustain release
+at pH 7.4. At pH 5.5 the release rate of CAT in CS-coated PLGA
+NPs was very fast and CAT was released at 2.0 h whereas only
+23.14 ± 1.51% drug release for PLGA NPs. This result indicating that
+CS coated PLGA NPs had pH-responsive properties. The release CAT
+from the PLGA-NPs was found to be sustained over a period of
+24.0 h, with a cumulative release of 78.02 ± 4.41% at pH 5.5 in
+Fig. 5B.
+It is important to bring into discussion that the surface charge
+and size of the nanocarriers are believed as most important deter-
+minants for improved permeability and retention (EPR) effect,
+where the size of the particle facilitate prolong retention within
+the systemic circulation escaping the reticuloendothelial cells,
+whereas charge of the particle facilitate to target to particular site
+and release the drug (Choudhury et al., 2019). Therefore, the nano-
+metric size of the current nanoformulations will facilitate prolong
+systemic circulation; thereby assist in passive targeting of the
+entrapped drug to the porous tumor area (Gorain et al., 2018). Fur-
+ther, it has also been revealed that the surface of the tumor cells
+are translocated with a negatively charged residue, phosphatidyl
+choline (Pandey et al., 2018), which facilitate binding of positively
+charged particles. The charge of the CAT-PLGA NPs was slightly
+negative in nature due to the presence of ionized carboxylic
+groups. Amphiphilic PVA presence forms a stable fence on the
+polymer surface, however, this fence of PVA shield the surface
+charge of the NPs and transfers the shear plane outer to the particle
+surface. Consequence of which, the surface charge of the NPs were
+recorded in slight negative zeta potential (Sahoo et al., 2002). On
+the other hand, CS, the weak base polysaccharide, consists of b
+(1,4)
+linked
+monomers
+of
+N-acetyl-D-glucosamine
+and
+D-
+glucosamine, in which the surface amino groups are ionized in
+acidic environment to provide positive charge (Nafee et al.,
+2007). Therefore, the presence of positively charged amino groups
+on CS alters the ultimate surface charge of the CS coated NPs to
+positive. This shifting in surface charge upon CS coating on the
+PLGA NPs is clearly reﬂected in Fig. 1. Thus, positive charges of
+the CS-coated CAT-PLGA NPs is thought to potentiate binding of
+the nanocarriers to the surface of the negatively charged tumor
+cells during prolong circulation of the NPs within the circulation
+due to EPR effect.
+Fig. 4. The DSC thermograms of Pure–Catechin (CTH), Polymer (PLGA), Poly Vinyl
+Alcohol (PVA), Physical Mixture of CTH, PVA, with PLGA, freeze–dried–CTH–loaded–
+optimized Polymeric (PLGA)–NPs, Pure Chitosan, and CS-Coated- CTH–loaded–
+optimized Polymeric PLGA–NPs.
+2350
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+
+Further, modulation of release of the entrapped drug in any car-
+rier is utmost important to avoid unfavorable side effects due to
+exposure of the normal cells to the released drug. Therefore, cur-
+rent formulation approach is planned to modulate the release of
+entrapped drug (CAT) within the cancer microenvironment. To
+accomplish this goal, we have coated the CAT-PLGA NPs with CS,
+which will primarily release the drug at a particular pH of the
+cancerous environment. It is relevant to mention that the pH of
+the cancer microenvironment is acidic and ranges from 5.5 to
+7.0, due to hypoxic condition during uncontrolled proliferation,
+deﬁcient blood perfusion and glycolytic cancer cell metabolism
+(Justus et al., 2013). Therefore, to ensure the release of the
+entrapped drug within the acidic environment and decreased sys-
+temic exposure of the drug, we have evaluated the release study in
+two different pH, 5.5 and 7.4, which roughly corresponds to the
+cancer environment and systemic circulation. The demonstrated
+result reﬂects release of the formulation from the CS coated CAT-
+PLGA NPs rapidly within the acidic environment, whereas the
+release pattern in physiological pH was slow. Thus, we can assume
+that the developed NPs formulation would stay in the circulation
+without releasing the entrapped drug, whereas, if the formulation
+reaches to the site of action, will release the entrapped drug rapidly
+to exert its physiological role.
+3.4. Ex vivo nasal mucosa permeation study
+The permeation showed signiﬁcantly maximum for CS-CTH-
+PLGA NPs (p < 0.001) > CTH PLGA NPs (p < 0.01) > CTH-S (Pure)
+(Fig. 6A). Maximum permeation was shown by CS-CTH-PLGA NPs
+i.e. >82.93 ± 5.91% while 67.98 ± 4.71% for CTH-PLGA-NPs and
+20.65 ± 3.01% for CTH-S only (Fig. 6A). CS has positive charge due
+to amino group on C2 position that is responsible for interaction
+to negatively charged membranes of cells therefore, CTH showed
+enhanced the permeation. Same way, epithelial mucosal cells were
+also participated to support the mechanism of their tight junctions
+(Md et al., 2013). The permeation of pure CTH was very little that
+represents hydrophilic nature of CTH for excellent justiﬁcation.
+Maximum permeability showed with hydrophobic drugs by nasal
+mucosa or skin reported by Richter and Keipert, 2004. CS-CTH-
+PLGA-NPs has their surface i.e. lipophilic with <165.0 nm size
+NPs easily permeated to biological membrane. At last it is con-
+cluded based on above observations: NPs contain lowest size,
+higher yield (%), maximum % EE with maximum % DL is mainly
+accountable for maximum permeation of CS-CTH-PLGA-NPs that
+will offer superior outcome for in vivo activity.
+3.5. Cytotoxicity of CAT and CS-CTH-PLGA NPs
+Keeping in view the importance of cytotoxic agents and corre-
+sponding cell death assays in cancer drug discovery (Bahuguna
+et al., 2017), we evaluated the cytotoxic potential of CAT and its
+nanoformulations (CS-CTH-PLGA-NPs) on NSCLC cell line H1299.
+The
+cytotoxicity
+was
+examined
+by
+MTT
+[3-(4,
+5-
+dimethylthiazolyl-2)-2,5-diphenyltetrazolium
+bromide]
+assay.
+The prepared formulations were tested on the human non-small
+cell lung cancer cell line H1299 was applied to identify the effects
+Fig. 5. [A] In vitro release proﬁle of CTH-S, CTH–loaded–PLGA–NPs and Chitosan-coated-CTH–loaded–PLGA–NPs performed by using dialysis bag method, revealing sustained
+release pattern of CTH–loaded–PLGA–NPs and Chitosan-coated- CTH–loaded–PLGA–NPs (Temp was set at 37 C, mean ± SD, n = 3) at pH 7.4 [A] and at pH 5.5 [B].
+Fig. 6. [A] Ex vivo permeation proﬁles of developed Chitosan-coated-CH–loaded–PLGA–NPs as compared to CTH–loaded–PLGA–NPs and pure CTH-S through goat nasal
+mucosa. [B] Cell viability of H1299 cancer cells after 24 h exposure of (A) CTH solution, CS-CTH-PLGA-NPs, and CS-coated PLGA NPs (blank/placebo) nanoformulations. The
+cell viability was determined by MTT assay. Control consisted of cells treated with 0.1% DMSO (vehicle control, 100% cell viable). Data are expressed as mean ± SD (n = 3).
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2351
+
+of CAT-solution, CS-CTH-PLGA-NPs on cell death and proliferation.
+CAT-S and CS-CTH-PLGA-NPs has been given a concentration-
+dependent response at 24 h post-treatment which is and evidence
+through cell viability or toxicity against H1299 cells (Fig. 6B). CAT-
+S and CS-CTH-PLGA-NPs in difference at lesser concentrations have
+effects on cell death was insigniﬁcant but 50.0–100.0 mgml1
+higher concentrations have clear difference (Fig. 6B) followed by
+cytotoxic effects or cell death CS-CTH-PLGA-NPs being additionally
+marked and signiﬁcant (p  0.050) as compared to CAT-S (Fig. 6B).
+These results recommended an excellent cytotoxic potential of CAT
+in the form of CS-CTH-PLGA-NPs. Additionally, CS-CTH-PLGA-NPs
+showed smaller IC50 value i.e. 65.01 mg/mL as compared to CAT-S
+i.e. 97.14 mg/mL. Here, the results also suggested a higher cytotoxic
+effect of the CS-CTH-PLGA-NPs as compared to CAT-S. There was
+no toxicity with CS-PLGA-NPs (Placebo) at any time point or con-
+centration (Fig. 6B). The cancerous cells (H1299) contained maxi-
+mum anabolic demands respire mainly through glycolytic i.e. a
+maximum glucose or nutrient intake, production of lactate, and
+maximum
+rate
+of
+proliferation
+as
+compared
+to
+without-
+cancerous cells. It creates them higher exposure towards CAT-S
+or CS-CTH-PLGA-NPs. CAT-S or CS-CTH-PLGA-NPs exhibited maxi-
+mum toxicity to cancer cells (H1299). It can be due to create the
+obstruction in the uptake of nutrition or membrane transporters
+inhibition for these cells i.e. usually absent in the non-cancerous
+cells. CS-CTH-PLGA-NPs have given results a maximum cytotoxic
+effect as compared to pure-CAT against H1299 cancerous cells. It
+can be accredited due to lower particle-size and fast uptake of
+CS-CTH-PLGA-NPs that make easy way to transport via different
+mechanisms for example passive transport/endocytosis into the
+cell by lipid bilayer as compared to the healthy cells. On the other
+hand, a different feature requires an inclusive evaluation at the
+molecular level to determine the accurate targets of these anti-
+cancerous preparations. IC50 is the main evaluation end point to
+determine the concentrations of drug. It means CAT loaded with
+nanoformulation i.e. CS-CTH-PLGA-NPs showed a greater cytotoxic
+potential than pure-CAT on the non-small cell lung cancer cells
+H1299.
+3.6. CAT and CS-CTH-PLGA-NPs effects on cellular apoptosis
+We determined the effects of CAT and their CS-CTH-PLGA-NPs
+nanoformulation mechanism by the estimation of treatment of cell
+apoptosis post-CAT through ﬂow cytometry via an annexin V/FITC
+kit. A signiﬁcantly induced was observed by cellular apoptosis of
+CAT (96.68 mg ml1 per 24.0 h) as compared to the without treated
+with CTH i.e. control group. CS-CTH-PLGA-NPs (65.01 mg ml1 per
+24.0 h) was treated to H1299 cells, it was showed a high degree
+of apoptosis i.e. highly signiﬁcant (p < 0.050) as compared to con-
+trol as well as CAT-S. On the other side, we can see it CAT-S &
+CS-CTH-PLGA-NPs enhanced necrotic cells number when it com-
+pared to control group. Even if later on; the necrotic cells (%) was
+shown a little reduce than earlier (Fig. 7). Additionally, we have
+also observed CS-CTH-PLGA-NPs (76.7%)-treated group signiﬁ-
+cantly higher (p < 0.05) than CAT-S (51.9%) based on results of
+early and late apoptotic cells. It has been suggested a strong apop-
+tosis was induced with CS-CTH-PLGA-NPs (Fig. 7).
+We evaluated prepared nano-formulation of catechin hydrate
+to assess whether this nano-formulation enhances its anti-
+tumor potential using NSCLC cell line H1299. To this end we
+found that CS-CTH-PLGA-NPs treated cells not only proved more
+cytotoxic (compared to CAT-alone) to the cancerous cells but also
+induced apoptosis in NSCLC cell line H1299. The effect was evi-
+dent by increased percentage % of apoptotic cells in CS-CTH-
+PLGA-NPs group compared to both CAT-only and control treated
+cells.
+3.7. Bioanalysis by UHPLC/MS/MS
+CTH and IS MS and MS/MS scans were shown Fig. 8 and Fig. 9.
+All various matrixes chromatograms showed in Fig. 10 in which [A
+& B], Extracted plasma and lungs homogenate (LH) without the
+CTH & with CTH [C & D], extracted plasma & LH of CTH followed
+by [E & F] extracted plasma & LH of Quercetin. Mean recovery of
+CTH from LH and plasma (n = 6) was showed >79.68%. All observed
+matrixes
+of
+CTH
+exhibited
+a
+very
+good
+linearity
+(1.0
+to
+1000.0 ng ml1) i.e. r2 > 0.997. 0.871 & 1.0 ng ml1 was found the
+LOD and LOQ. The selectivity of all optimized-chromatograms for
+various matrixes of CTH has been proved. %CV (2.14–3.33% and
+2.23–3.17%) was found whereas % accuracy (92.01–99.31% and
+93.25–99.31%) exhibited for LH and PL of all QCs in Table 2. Various
+stability of storage parameters (long-term, bench-top, freeze thaw,
+and post-processing) for all types of quality control samples were
+presented in Table 3 (US–FDA, 2001; Ahmad et al., 2018b;
+Faiyazuddin et al., 2012).
+3.8. Pulmonokinetics evaluation
+The study reports for the ﬁrst time, in-depth and detailed PKs
+for CS-CTH-PLGA-NPs where the NPs were administered via the
+major routes of oral, i.v. and intranasal in order to follow the
+Fig. 7. Quantitative data for induction of apoptotic cell death by the (A) control group (untreated H1299 cells), (B) H1299 cells treated by CTH-solution and (C) CS-CTH-PLGA-
+NPs. Bar graph analysis showing higher total apoptotic cell death (early + late apoptosis) induced by CS-CTH-PLGA-NPs treatment compared to CTH-solution. Data are
+expressed as mean ± SD (n = 3). The data were analysed using one-way ANOVA followed by Turkey’s post hoc test. The percentage of apoptotic cells in each group was
+compared with the control group; p < 0.05 indicates a signiﬁcant difference.
+2352
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+
+in vivo fate for developed NPs. The deposition of NPs in lungs and
+its engulfment is presented in Fig. 11 and Table 4. A Cmax (maxi-
+mum concentration of drug) for NPs in lungs was observed at
+2.00 h
+[668.24 ± 29.66 ng/g]
+(i.n.;
+p < 0.001)
+>at
+2.00 h
+[469.31 ± 32.96 ng/g] (i.v.; p < 0.01) >at 2.00 h [208.76 ± 17.01 ng/
+g] (oral). Lungs concentration of CAT was highest by intranasal
+route for CS-CTH-PLGA-NPs (Fig. 11, Table 4). Similarly, CS-CTH-
+PLGA-NPs have been showed enhanced the bioavailability as
+compared to CTH–S with the help of statistical evaluation for i.n.
+delivery of CAT. This is a very apparent observation via nose to
+lungs targeted potential (Monteillier et al., 2018; Dao et al.,
+2018; Worth et al., 2000; Jin et al., 2019).
+Fig. 8. Mass spectrum of (A) Catechin Hydrate (CTH) parent ion (protonated precursor [MH]– ions at m/z 289.21) and (B) Catechin Hydrate (CTH) product ion (major
+fragmented product ion at m/z 109.21) showing fragmentation transitions.
+Fig. 9. Mass spectrum of, (A) Quercetin (IS) precursor ion (protonated precursor [MH]– ions at m/z 301.21 and (B) IS product ion (major fragmented product ions at m/z
+151.21) showing fragmentation transitions.
+Fig. 10. Typical chromatograms of Extracted blank plasma [A], Extracted blank lungs homogenate [B], Plasma extracted Catechin Hydrate (CH) [C], Extracted lungs
+homogenate Catechin Hydrate (CH) [D], Plasma Extracted Quercetin (IS) [E], and Extracted lungs homogenate Quercetin (IS) [F].
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2353
+
+3.9. In vivo Histopathological examination of CS-CTH-PLGA-NPs
+toxicity
+The histological micrographs of lung specimens collected from
+rat’s post seven-days of exposure to 0.90% saline and treated with
+CS-CTH-PLGA-NPs by intranasal are depicted in Fig. 12. There was
+no
+apparent
+histopathologic
+alteration
+in
+the
+lungs
+tissues
+(Fig. 12B) as compared to Normal Saline treated (control group,
+Fig. 12A). CS-CTH-PLGA-NPs did not cause any toxicity. These
+results indicate that CS-CTH-PLGA-NPs are safe and exhibited no
+obvious toxic effects on the rat’s lungs. Exposure of above men-
+tioned particles at mentioned dose does not produce any mortality
+and also and no abnormal ﬁndings in the treated rats with CS-CTH-
+PLGA-NPs were observed (Menon et al., 2017; Gelli et al., 2015;
+Ahmad et al., 2020d).
+4. Conclusion
+A solvent evaporation (double emulsion) was used to formulate
+CS-CTH-PLGA-NPs and their optimization was evaluated by low
+PDI, smaller size of particles, greater EE with high DL and spherical
+Table 2
+Validation: Precision and Accuracy Data for Catechin Hydrate in Lungs Homogenate and Plasma.
+Biomatrix
+Quality
+Controls
+Samples
+Theoretical
+Concentration
+(ng mL1) or
+(ng g1)
+Intra-batch precision
+Inter-batch precision
+Recoveryc
+(%)
+Observed
+Concentration
+(ng mL1) or
+(ng g1) ± S.D.
+Accuracya
+(%)
+Precisionb
+(%C.V.)
+Observed
+Concentration
+(ng mL1) or
+(ng g1) ± S.D.
+Accuracya
+(%)
+Precisionb
+(%C.V.)
+Lungs Homogenate
+LOQQC
+1.01
+0.98 ± 0.021
+97.03
+2.14
+0.96 ± 0.025
+95.05
+2.60
+80.01
+LQC
+2.91
+2.89 ± 0.096
+99.31
+3.32
+2.88 ± 0.096
+98.97
+3.33
+79.68
+MQC
+420.0
+392.11 ± 9.60
+93.36
+2.45
+386.45 ± 8.86
+92.01
+2.29
+82.61
+HQC
+805.0
+795.64 ± 18.74
+98.84
+2.36
+783.64 ± 17.64
+97.35
+2.25
+79.94
+Plasma
+LOQQC
+1.01
+0.97 ± 0.028
+96.04
+2.89
+0.96 ± 0.028
+95.05
+2.92
+80.36
+LQC
+2.91
+2.89 ± 0.086
+99.31
+2.98
+2.87 ± 0.091
+98.63
+3.17
+79.94
+MQC
+420.0
+394.54 ± 10.01
+93.94
+2.54
+391.64 ± 9.94
+93.25
+2.54
+83.02
+HQC
+805.0
+792.16 ± 17.64
+98.40
+2.23
+785.38 ± 18.66
+97.56
+2.38
+80.39
+Values (Mean ± SD) are derived from 6 replicates: aAccuracy (%) = Mean value of [(mean observed concentration)/(theoretical concentration)]  100; bPrecision (%): Coef-
+ﬁcient of variance (percentage) = standard deviation divided by mean concentration found  100; cRecovery (%) = Mean value of (peak height (mV) obtained from extracted
+biological sample)/(peak height (mV) obtained from aqueous sample)  100.
+Table 3
+Validation: Stability Data for Catechin Hydrate in Lungs Homogenate and Plasma.
+Exposure
+condition
+LQC (2.91 ng/mL or ng g1)
+MQC(420.00 ng/mL or ng g1)
+HQC (805.00 ng/mL or ng g1)
+Lungs Homogenate
+Plasma
+Lungs Homogenate
+Plasma
+Lungs Homogenate
+Plasma
+Long term stability; recovery (ng) after storage (80.0 C)
+Previous day
+2.88 ± 0.07
+2.86 ± 0.03
+405.24 ± 11.02
+406.57 ± 10.32
+799.36 ± 19.21
+800.34 ± 18.61
+30th Day
+2.81 ± 0.06
+(97.57%)
+2.79 ± 0.04
+(97.55%)
+379.91 ± 910.31
+(93.75%)
+381.61 ± 9.61
+(93.86%)
+788.21 ± 18.22
+(98.61%)
+787.54 ± 17.36
+(98.40%)
+Freeze–thaw stress; recovery (ng) after freeze–thaw cycles (80.0 C to 25.0 C)
+Pre-Cycle
+2.89 ± 0.05
+2.90 ± 0.03
+406.01 ± 9.33
+406.34 ± 8.55
+801.15 ± 21.61
+800.31 ± 20.36
+First Cycle
+2.78 ± 0.06
+(96.19%)
+2.80 ± 0.04
+(96.55%)
+391.31 ± 9.22 (96.38%)
+389.06 ± 9.06
+(95.75%)
+791.31 ± 20.14
+(98.77%)
+789.21 ± 19.47
+(98.61%)
+Second Cycle
+2.70 ± 0.05
+(93.43%)
+2.71 ± 0.03
+(93.45%)
+379.64 ± 8.17 (93.51)
+371.69 ± 8.11
+(91.47%)
+779.64 ± 19.61
+(97.32%)
+778.95 ± 20.14
+(97.33%)
+Third Cycle
+2.61 ± 0.06
+(90.31%)
+2.59 ± 0.05
+(89.31%)
+361.24 ± 8.07 (88.97%)
+366.17 ± 9.03
+(90.11%)
+770.06 ± 20.14
+(96.12%)
+771.28 ± 21.34
+(96.37%)
+Bench top stability; recovery (ng) at room temperature (25.0 C)
+0 hr
+2.88 ± 0.04
+2.85 ± 0.03
+407.13 ± 8.61
+404.34 ± 9.06
+799.97 ± 21.14
+801.21 ± 21.67
+24 hr
+2.72 ± 0.04
+(94.44%)
+2.73 ± 0.04
+(95.79%)
+384.61 ± 9.18 (94.47%)
+389.43 ± 9.63
+(96.31%)
+788.24 ± 19.61
+(98.53%)
+783.64 ± 20.34
+(97.81%)
+Post processing stability; recovery (ng) after storage in auto sampler (4.0 C)
+0 hr
+2.89 ± 0.05
+2.87 ± 0.03
+405.18 ± 8.34
+406.11 ± 10.24
+800.11 ± 20.36
+798.24 ± 22.06
+4 hr
+2.79 ± 0.04
+(96.54%)
+2.75 ± 0.06
+(95.82%)
+381.64 ± 8.21 (94.19%)
+391.34 ± 9.61
+(96.36%)
+790.32 ± 19.64
+(98.78%)
+788.36 ± 21.34
+(98.76%)
+Values (Mean ± SD) are derived from six replicates. Figures in parenthesis represent analyte concentration (%) relative to time zero. Theoretical contents; LQC: 2.91 ng mL1;
+MQC: 420.0 ng mL1; and HQC: 805.0 ng mL1.
+Fig. 11. Pulmonary Pharmacokinetic Parameters Study of Catechin Hydrate in
+wistar rats after 10 mg/kg single dose of CS–CTH–PLGA–NPs (intravenous), CS–
+CTH–PLGA–NPs (Oral), and CS–CTH–PLGA–NPs (Intranasal). Signiﬁcantly high AUC
+was achieved with CS–BUD–PLGA–NPs (Intranasal) (p < 0.001, mean ± SD, n = 6).
+2354
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+
+shape. CAT-release was optimized successfully based on a sus-
+tained and control release form followed by successfully delivered
+to lungs with extended retention from nose-to-lungs with passed
+up hepatic ﬁrst pass metabolism and also greater nasal permeation
+upto 24-h for lungs cancer targeting. A +ve zeta potential of the CS
+coated NPs support binding of the nanocarrier to the cancer cells to
+exert enhanced cytotoxic potential of the formulation with supe-
+rior apoptotic potential and cell cycle arrest when compared with
+CAT alone, CS-CTH-PLGA-NPs exhibited greater apoptotic cell
+death and cytotoxic in the H1299 cell line. A UPLC-MS/MS method
+was optimized and validated successfully for the application on
+pulmokinetics studies of optimized-CS-CTH-PLGA-NPs. At the
+end, safety of the optimized nanoparticles has been established
+on the basis of the above results at the time of lungs toxicity stud-
+ies. At last in this study, CS-CTH-PLGA-NPs have been successfully
+developed and it can be effectively use as a novel, non-invasive,
+safe, and effective treatment for lungs targeting in the treatment
+of lung cancer.
+Funding
+The authors were not received any funds.
+Declaration of Competing Interest
+There is no competing interest’s in-between the authors.
+Acknowledgments
+The authors are very grateful thanks to Animal House, IRMC,
+Imam Abdulrahman Bin Faisal University, Saudi Arabia.
+References
+Ahmad, N., Ahmad, R., Ahmad, F.J., Ahmad, W., Alam, M.A., Amir, M., Ali, A., 2020a.
+Poloxamer-chitosan-based Naringenin nanoformulation used in brain targeting
+for the treatment of cerebral ischemia. Saudi J. Biol. Sci. 27 (1), 500–517. https://
+doi.org/10.1016/j.sjbs.2019.11.008.
+Ahmad, N., Ahmad, R., Alam, M.A., Ahmad, F.J., 2018a. Enhancement of oral
+bioavailability
+of
+doxorubicin
+through
+surface
+modiﬁed
+biodegradable
+polymeric nanoparticles. Chem. Cent. J. 12 (1), 65. https://doi.org/10.1186/
+s13065-018-0434-1.
+Ahmad, N., Ahmad, R., Alam, M.A., Samim, M., Iqbal, Z., Ahmad, F.J., 2016a.
+Quantiﬁcation
+and
+evaluation
+of
+thymoquinone
+loaded
+mucoadhesive
+nanoemulsion for treatment of cerebral ischemia. Int. J. Biol. Macromol. 88,
+320–332. https://doi.org/10.1016/j.ijbiomac.2016.03.019.
+Ahmad, N., Ahmad, R., Naqvi, A.A., Alam, M.A., Samim, M., Iqbal, Z., Ahmad, F.J.,
+2016b. Quantiﬁcation of rutin in rat’s brain by UHPLC/ESI-Q-TOF-MS/MS after
+intranasal administration of rutin loaded chitosan nanoparticles. EXCLI J. 15,
+518–531. https://doi.org/10.17179/excli2016-361.
+Ahmad, N., Alam, M.A., Ahmad, R., Umar, S., Ahmad, F.J., 2018b. Improvement of oral
+efﬁcacy of Irinotecan through biodegradable polymeric nanoparticles through
+in vitro and in vivo investigations. J. Microencapsul. 35 (4), 327–343. https://
+doi.org/10.1080/02652048.2018.1485755.
+Ahmad, N., Al-Subaiec, A.M., Ahmad, R., Sharma, S., Alam, M.A., Ashafaq, M., Rub, R.
+A., Ahmad, F.J., 2019. Brain-targeted glycyrrhizic-acid-loaded surface decorated
+nanoparticles for treatment of cerebral ischaemia and its toxicity assessment.
+Artif. Cells Nanomed. Biotechnol. 47 (1), 475–490. https://doi.org/10.1080/
+21691401.2018.1561458.
+Ahmad, N., Ahmad, R., Alrasheed, R.A., Almatar, H.M.A., Al-Ramadan, A.S., Amir, M.,
+Sarafroz, M., 2020b. Quantiﬁcation and evaluations of catechin hydrate
+polymeric nanoparticles used in brain targeting for the treatment of epilepsy.
+Pharmaceutics 12 (3), E203. https://doi.org/10.3390/pharmaceutics12030203.
+Ahmad, N., 2017. Rasagiline-encapsulated chitosan-coated PLGA nanoparticles
+targeted to the brain in the treatment of parkinson’s disease. J. Liq. Chromatogr.
+Relat.
+Technol.
+40
+(13),
+677–690.
+https://doi.org/10.1080/
+10826076.2017.1343735.
+Ahmad, N., Ahmad, R., Al Qatiﬁ, S., Alessa, M., Al Hajji, H., Sarafroz, M., 2020c. A
+bioanalytical
+UHPLC
+based
+method
+used
+for
+the
+quantiﬁcation
+of
+Thymoquinone-loaded-PLGA-nanoparticles in the treatment of epilepsy. BMC
+Chem. 14 (1), 10. https://doi.org/10.1186/s13065-020-0664-x.
+Ahmad, N., Ahmad, R., Almakhamel, M.Z., Ansari, K., Amir, M., Ahmad, W., Ali, A.,
+Ahmad, F.J., 2020d. A comparative pulmonary pharmacokinetic study of
+Table 4
+Pulmonary Pharmacokinetic parameters of catechin hydrate after single dose (10 mg/kg body weight) of CS-coated-CTH-loaded-PLGA-NPs given by different routes (mean ± SD
+n = 6).
+Parameters
+CS- CTH-PLGA-NPs (IV)
+CS- CTH-PLGA-NPs (Oral)
+CS- CTH-PLGA-NPs (Intranasal)
+Cmax (ng/ml or ng/g)
+469.31 ± 32.96**
+208.76 ± 17.01
+668.24 ± 29.66***
+Tmax (h)
+2.00
+2.00
+2.00
+AUC0-t (min ng/ml) or min ng/g)
+6208.00 ± 89.67**
+2223.77 ± 42.08
+11370.02 ± 191.05***
+t1/2 (h)
+26.47
+10.82
+91.16
+Ke (h1)
+0.02619
+0.06408
+0.00760
+AUC0-1 (min ng/ml) or min ng/g)
+10628.91 ± 153.0.78**
+2720.50 ± 83.91
+57567.74 ± 212.15***
+AUC0–t, Area under the lungs concentration to time curve; AUC0-1, Area under the plasma concentration to inﬁnite time curve; Cmax, maximum lungs concentration at time t;
+t1/2, mean elimination half-life; and Ke, Elimination Rate Constant. Data are represented as mean ± SD (n = 3). Signiﬁcantly high AUC and Cmax were achieved with CS–CTH–
+PLGA–NPs (Intranasal) ***(p < 0.001), followed by CS-CTH-PLGA-NPs (IV) **(p < 0.01) mean ± SD, n = 6).
+Fig. 12. In Vivo Safety of CS–coated–CTH–loaded–PLGA–NPs: Histopathological evaluation of rat tissues: Normal Saline (A), and treated with CS–CTH–PLGA–NPs (B) seven
+days after exposure. The photomicrographs do not shown any evidence of toxicity from the CS-CTH-PLGA-NPs and were no apparent histopathologic changes in the lungs
+tissues (Fig. 12B) as compared to Normal Saline treated (control group, Fig. 12A) (n = 3, Scale = 100 lm).
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2355
+
+budesonide using polymeric nanoparticles targeted to the lungs in treatment of
+asthma. Artif. Cells Nanomed. Biotechnol. 48 (1), 749–762. https://doi.org/
+10.1080/21691401.2020.1748640.
+Akowuah, G., Mariam, A., Chin, J., 2009. The effect of extraction temperature on total
+phenols and antioxidant activity of Gynura procumbens leaf. Pharmacogn. Mag.
+5 (17), 81–85.
+Alshatwi, A.A., Athinarayanan, J., Subbarayan, P.V., 2015. Green synthesis of
+platinum nanoparticles that induce cell death and G2/M-phase cell cycle
+arrest in human cervical cancer cells. J. Mater. Sci. Mater. Med. 26 (1), 5330.
+https://doi.org/10.1007/s10856-014-5330-1.
+Alshatwi, A.A., 2010. Catechin hydrate suppresses MCF-7 proliferation through
+TP53/Caspase-mediated apoptosis. J. Exp. Clin. Cancer Res. 29 (1), 167. https://
+doi.org/10.1186/1756-9966-29-167.
+Bahuguna, A., Khan, I., Bajpai, V.K., Kang, S.C., 2017. MTT assay to evaluate the
+cytotoxic potential of a drug. Bangladesh J. Pharmacol. 12 (2), 115–118. https://
+doi.org/10.3329/bjp.v12i2.30892.
+Baliga, M.S., Meleth, S., Katiyar, S.K., 2005. Growth inhibitory and antimetastatic
+effect of green tea polyphenols on metastasis-speciﬁc mouse mammary
+carcinoma 4T1 cells in vitro and in vivo systems. Clin. Cancer Res. 11, 1918–
+1927. https://doi.org/10.1158/1078-0432.CCR-04-1976.
+Bao, W., Liu, R., Wang, Y., Wang, F., Xia, G., Zhang, H., Li, X., Yin, H., Chen, B., 2015.
+PLGA-PLL-PEG-Tf-based targeted nanoparticles drug delivery system enhance
+antitumor efﬁcacy via intrinsic apoptosis pathway. Int. J. Nanomedicine. 10,
+557–566. https://doi.org/10.2147/IJN.S75090.
+Brown, J.S., Eraut, D., Trask, C., Davison, A.G., 1996. Age and the treatment of lung
+cancer. Thorax 51 (6), 564–568. https://doi.org/10.1136/thx.51.6.564.
+Budhian, A., Siegel, S.J., Winey, K.I., 2008. Controlling the in vitro release proﬁles for
+a system of haloperidol-loaded PLGA nanoparticles. Int. J. Pharm. 346 (1–2),
+151–159. https://doi.org/10.1016/j.ijpharm.2007.06.011.
+Chang, C.L., Wub, R.T., 2011. Quantiﬁcation of (+)-catechin and ()-epicatechin in
+coconut water by LC–MS. Food Chem. 126, 710–717.
+Choudhury, H., Gorain, B., Pandey, M., Khurana, R.K., Kesharwani, P., 2019.
+Strategizing biodegradable polymeric nanoparticles to cross the biological
+barriers for cancer targeting. Int. J. Pharm. 565, 509–522. https://doi.org/
+10.1016/j.ijpharm.2019.05.042.
+Dao, D.T., Vuong, J.T., Anez-Bustillos, L., Pan, A., Mitchell, P.D., Fell, G.L., Baker, M.A.,
+Bielenberg, D.R., Puder, M., 2018. Intranasal delivery of VEGF enhances
+compensatory lung growth in mice. PLoS One. 13, (6). https://doi.org/
+10.1371/journal.pone.0198700 e0198700.
+Dias, A.L., Rozet, E., Larondelle, Y., Hubert, P., Rogez, H., Quetin-Leclercq, J., 2013.
+Development and validation of an UHPLC–LTQ-Orbitrap MS method for non-
+anthocyanin ﬂavonoids quantiﬁcation in Euterpe oleracea juice. Anal. Bioanal.
+Chem. 405, 9235–9249. https://doi.org/10.1007/s00216-013-7325-z.
+Dube, A., Nicolazzo, J.A., Larson, I., 2010. Chitosan nanoparticles enhance the
+intestinal
+absorption
+of
+the
+green
+tea
+catechins
+(+)-catechin
+and
+(-)-
+epigallocatechin gallate. Eur. J. Pharm. Sci. 41 (2), 219–225. https://doi.org/
+10.1016/j.ejps.2010.06.010.
+Faiyazuddin, M., Ahmad, N., Khar, R.K., Bhatnagar, A., Ahmad, F.J., 2012. Stabilized
+terbutaline submicron drug aerosol for deep lungs deposition: drug assay,
+pulmonokinetics and biodistribution by UHPLC/ESI-q-TOF-MS method. Int. J.
+Pharm. 434 (1–2), 59–69. https://doi.org/10.1016/j.ijpharm.2012.05.007.
+Fernandez-Urrusuno, R., Romani, D., Calvo, D., 1999. Development of a freeze dried
+formulation of insulin-loaded
+chitosan
+nanoparticles intended
+for
+nasal
+administration. STP Pharm. Sci. 9, 429–436.
+Gelli, K., Porika, M., Anreddy, R.N., 2015. Assessment of pulmonary toxicity of MgO
+nanoparticles in rats. Environ. Toxicol. 30 (3), 308–314. https://doi.org/
+10.1002/tox.21908.
+Glade, M.J., 1997. Food, nutrition, and the prevention of cancer: 1999. A global
+perspective. American Institute for Cancer Research/World Cancer Research
+Fund. American Institute for Cancer Research. Nutrition 15 (6), 523–526.
+https://doi.org/10.1016/S0899-9007(99)00021-0.
+Gorain, B., Choudhury, H., Pandey, M., Kesharwani, P., 2018. Paclitaxel loaded
+vitamin E-TPGS nanoparticles for cancer therapy. Mater. Sci. Eng. C Mater. Biol.
+Appl. 91, 868–880. https://doi.org/10.1016/j.msec.2018.05.054.
+Green, P.M., Guerrier-Adams, S., Okunji, P.O., Schiavone, D., Smith, J.E., 2013. African
+American health disparities in lung cancer. Clin. J. Oncol. Nurs. 17 (2), 180–186.
+https://doi.org/10.1188/13.CJON.180-186.
+Gujar, J.G., Chattopadhyay, S., Wagh, S.J., Gaikar, V.G., 2010. Experimental and
+modeling studies on extraction of catechin hydrate and epicatechin from Indian
+green tea leaves. Can. J. Chem. Eng. 88 (2), 232–240. https://doi.org/10.1002/
+cjce.20271.
+Ian, R.R., Dreosti, I.E., 1998. Protection by black tea and green tea against UVB and
+UVA+B induced skin cancer in hairless mice. Mutat. Res. 422 (1), 191–199.
+https://doi.org/10.1016/S0027-5107(98)00192-4.
+Jaitz, L., Siegl, K., Eder, R., Rak, G., Abranko, L., Koellensperger, G., Hann, S., 2010. LC–
+MS/MS analysis of phenols for classiﬁcation of red wine according to geographic
+origin, grape variety and vintage. Food Chem. 122, 366–372. https://doi.org/
+10.1016/j.foodchem.2010.02.053.
+Jeong, H., Phan, A.N.H., Choi, J.W., 2017. Anti-cancer effects of polyphenolic
+compounds in epidermal growth factor receptor tyrosine kinase inhibitor-
+resistant non-small cell lung cancer. Pharmacogn. Mag. 13 (52), 595–599.
+https://doi.org/10.4103/pm.pm_535_16.
+Jin, R., Hu, S., Liu, X., Guan, R., Lu, L., Lin, R., 2019. Intranasal instillation of miR-410
+targeting IL-4/IL-13 attenuates airway inﬂammation in OVA-induced asthmatic
+mice. Mol. Med. Rep. 19 (2), 895–900. https://doi.org/10.3892/mmr.2018.9703.
+Justus, C.R., Dong, L., Yang, L.V., 2013. Acidic tumor microenvironment and pH-
+sensing G protein-coupled receptors. Front. Physiol. 4, 354. https://doi.org/
+10.3389/fphys.2013.00354.
+Kang, W.S., Lim, I.H., Yuk, D.Y., Chung, K.H., Park, J.B., Yoo, H.S., Yun, Y.P., 1999.
+Antithrombotic activities of green tea catechins and (–)-epigallocatechin gallate
+thromb. Res. 96 (3), 229–237. https://doi.org/10.1016/s0049-3848(99)00104-8.
+Krishnaswamy, K., Vali, H., Orsat, V., 2014. Value-adding to grape waste: green
+synthesis of gold nanoparticles. J. Food Sci. 142, 210–220. https://doi.org/
+10.1016/j.jfoodeng.2014.06.014.
+Lai,
+H.Y.,
+Lim,
+Y.Y.,
+Kim,
+K.H.,
+2017.
+Isolation
+and
+characterisation
+of
+a
+proanthocyanidin with antioxidative, antibacterial and anti-cancer properties
+from fern Blechnum orientale. Pharmacogn. Mag. 13 (49), 31–37. https://doi.org/
+10.4103/0973-1296.197659.
+Lendoiro, E., de Castro, A., Fernández-Vega, H., Cela-Pérez, M.C., López-Vilariño, J.M.,
+González-Rodríguez, M.V., Cruz, A., López-Rivadulla, M., 2014. Molecularly
+imprinted polymer for selective determination of D9-tetrahydrocannabinol and
+11-nor-D9-tetrahydrocannabinol carboxylic acid using LC–MS/MS in urine and
+oral ﬂuid. Anal. Bioanal. Chem. 406 (15), 3589–3597. https://doi.org/10.1007/
+s00216-013-7599-1.
+Masami, S., Sachiko, O., Naoko, S., Eisaburo, S., Satoru, M., Kazue, I., Kei, N., Hirota, F.,
+1999. Green tea and cancer chemoprevention. Mutat. Res. 428 (1–2), 339–344.
+https://doi.org/10.1016/S1383-5742(99)00059-9.
+Md, S., Khan, R.A., Mustafa, G., Chuttani, K., Baboota, S., Sahni, J.K., Ali, J., 2013.
+Bromocriptine loaded chitosan nanoparticles intended for direct nose to brain
+delivery: pharmacodynamic, pharmacokinetic and scintigraphy study in mice
+model.
+Eur.
+J.
+Pharm.
+Sci.
+48
+(3),
+393–405.
+https://doi.org/10.1016/j.
+ejps.2012.12.007.
+Menon, J.U., Kuriakose, A., Iyer, R., Hernandez, E., Gandee, L., Zhang, S., Takahashi,
+M., Zhang, Z., Saha, D., Nguyen, K.T., 2017. Dual-drug containing core-shell
+nanoparticles for lung cancer therapy. Sci. Rep. 7 (1), 13249. https://doi.org/
+10.1038/s41598-017-13320-4.
+Merken, H.M., Beecher, G.R., 2000. Measurement of food ﬂavonoids by high-
+performance liquid chromatography: a review. J. Agricult. Food Chem. 48 (3),
+577–599. https://doi.org/10.1021/jf990872o.
+Min, J., Shen, H., Xi, W., Wang, Q., Yin, L., Zhang, Y., Yu, Y., Yang, Q., Wang, Z.N., 2018.
+Synergistic anticancer activity of combined use of caffeic acid with paclitaxel
+enhances apoptosis of non-small-cell lung cancer H1299 Cells in vivo and
+in vitro. Cell Physiol. Biochem. 48 (4), 1433–1442. https://doi.org/10.1159/
+000492253.
+Monteillier, A., Voisin, A., Furrer, P., Allémann, E., Cuendet, M., 2018. Intranasal
+administration of resveratrol successfully prevents lung cancer in A/J mice. Sci.
+Rep. 8 (1), 14257. https://doi.org/10.1038/s41598-018-32423-0.
+Mukhtar, H., Ahmad, N., 2000. Tea polyphenols: prevention of cancer and
+optimizing health. Am. J. Clin. Nutr. 71 (6 Suppl). https://doi.org/10.1093/
+ajcn/71.6.1698S. 1698S-702S; discussion 1703S-4S.
+Nafee, N., Taetz, S., Schneider, M., Schaefer, U.F., Lehr, C.M., 2007. Chitosan-coated
+PLGA nanoparticles for DNA/RNA delivery: effect of the formulation parameters
+on complexation and transfection of antisense oligonucleotides. Nanomedicine.
+3 (3), 173–183. https://doi.org/10.1016/j.nano.2007.03.006.
+Natarajan, C.P., Ramamani, S., Leelavathi, D.E., Shakunthala, R., Bhatia, D.S.,
+Subrahmanyan, Y., 1962. Studies on the brewing of tea. Food Sci. 11, 321–332.
+Nelson, B.C., Sharpless, K.E., 2003. Quantiﬁcation of the predominant monomeric
+catechins in baking chocolate standard reference material by LC/APCI-MS. J.
+Agric. Food Chem. 51 (3), 531–537. https://doi.org/10.1021/jf0207474.
+Pandey, K.B., Rizvi, S.I., 2009. Plant polyphenols as dietary antioxidants in human
+health and disease. Oxid. Med. Cell Longev. 2 (5), 270–278. https://doi.org/
+10.4161/oxim.2.5.9498.
+Pandey, M., Choudhury, H., Yeun, O.C., Yin, H.M., Lynn, T.W., Tine, C.L.Y., Wi, N.S.,
+Yen, K.C.C., Phing, C.S., Kesharwani, P., Bhattamisra, S.K., Gorain, B., 2018.
+Perspectives of nanoemulsion strategies in the improvement of oral, parenteral
+and transdermal chemotherapy. Curr. Pharm. Biotechnol. 19 (4), 276–292.
+https://doi.org/10.2174/1389201019666180605125234.
+Parveen, S., Sahoo, S.K., 2011. Long circulating chitosan/PEG blended PLGA
+nanoparticle for tumor drug delivery. Eur. J. Pharmacol. 670 (2–3), 372–383.
+https://doi.org/10.1016/j.ejphar.2011.09.023.
+Poon, G.K., 1998. Analysis of catechins in tea extracts by liquid chromatography–
+electrospray ionization mass spectrometry. J. Chromatogr. A. 794, 63–74.
+Raparia, K., Villa, C., Decamp, M.M., Patel, J.D., Mehta, M.P., 2013. Molecular proﬁling
+in non-small cell lung cancer: a step toward personalized medicine. Arch.
+Pathol. Lab. Med. 137 (4), 481–491. https://doi.org/10.5858/arpa.2012-0287-
+RA.
+Richter, T., Keipert, S., 2004. In vitro permeation studies comparing bovine nasal
+mucosa,
+porcine
+cornea
+and
+artiﬁcial
+membrane:
+androstenedione
+in
+microemulsions and their components. Eur. J. Pharm. Biopharm. 58 (1), 137–
+143. https://doi.org/10.1016/j.ejpb.2004.03.010.
+Sahoo, S.K., Panyam, J., Prabha, S., Labhasetwar, V., 2002. Residual polyvinyl alcohol
+associated with poly (D, L-lactide-co-glycolide) nanoparticles affects their
+physical properties and cellular uptake. J. Control Release. 82 (1), 105–114.
+https://doi.org/10.1016/S0168-3659(02)00127-X.
+Sapozhnikova, Y., 2014. Development of liquid chromatography-tandem mass
+spectrometry method for analysis of polyphenolic compounds in liquid samples
+of grape juice, green tea and coffee. Food Chem. 150, 87–93. https://doi.org/
+10.1016/j.foodchem.2013.10.131.
+Shahid, A., Ali, R., Ali, N., Hasan, S.K., Bernwal, P., Afzal, S.M., Vafa, A., Sultana, S.,
+2016. Modulatory effects of catechin hydrate against genotoxicity, oxidative
+2356
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+
+stress, inﬂammation and apoptosis induced by benzo(a)pyrene in mice. Food
+Chem. Toxicol. 92, 64–74. https://doi.org/10.1016/j.fct.2016.03.021.
+Siddiqi, K.S., Husen, A., 2016. Green synthesis, characterization and uses of
+palladium/platinum nanoparticles. Nanoscale Res. Lett. 11 (1), 482. https://
+doi.org/10.1186/s11671-016-1695-z.
+Spiro, M., Jago, D.S., 1982. Kinetics and equilibria of tea infusion part III: rotating
+disc experiments interpreted by a steady-state model. J. Chem. Soc. Faraday
+Trans. 1 (78), 295–305. https://doi.org/10.1039/F19827800295.
+Svoboda, P., Vlcˇková, H., Nováková, L., 2015. Development and validation of UHPLC–
+MS/MS method for determination of eight naturally occurring catechin
+derivatives in various tea samples and the role of matrix effects. J. Pharm.
+Biomed. Anal. 114, 62–70. https://doi.org/10.1016/j.jpba.2015.04.026.
+Taamalli, A., Arráez-Román, D., Abaza, L., Iswaldi, I., Fernández-Gutiérrez, A.,
+Zarrouk, M., Segura-Carretero, A., 2015. LC–MS-based metabolite proﬁling of
+methanolic extracts from the medicinal and aromatic species Mentha pulegium
+and Origanum majorana. Phytochem. Anal. 26 (5), 320–330. https://doi.org/
+10.1002/pca.2566.
+Taparia, S., Khanna, A., 2016. Effect of procyanidin-rich extract from natural cocoa
+powder on cellular viability, cell cycle progression, and chemoresistance in
+human epithelial ovarian carcinoma cell lines. Pharmacogn. Mag. 12 (Suppl 2),
+S109–15. https://doi.org/10.4103/0973-1296.182164.
+Tolosa, L., Donato, M.T., Gómez-Lechón, M.J., 2015. General cytotoxicity assessment
+by means of the MTT assay. Methods Mol. Biol. 1250, 333–348. https://doi.org/
+10.1007/978-1-4939-2074-7_26.
+US FDA, 2001. Guidance for Industry Bioanalytical Method Validation; 2001.
+Available
+from:
+http://www.fda.gov/downloads/Drugs/
+GuidanceComplianceRegulatoryInformation/Guidances/UCM070107.pdf.
+[Last
+accessed on 2018 May 24].
+Wang, H., Helliwell, K., 2000. Epimerisation of catechins in green tea infusions. Food
+Chem. 70 (3), 337–344. https://doi.org/10.1016/S0308-8146(00)00099-6.
+Wang, Y., Li, P., Kong, L., 2013. Chitosan-modiﬁed PLGA nanoparticles with versatile
+surface for improved drug delivery. Aaps Pharmscitech. 14 (2), 585–592.
+https://doi.org/10.1208/s12249-013-9943-3.
+Worth, L.L., Jia, S.F., Zhou, Z., Chen, L., Kleinerman, E.S., 2000. Intranasal therapy with
+an adenoviral vector containing the murine interleukin-12 gene eradicates
+osteosarcoma lung metastases. Clin. Cancer Res. 6 (9), 3713–3718.
+N. Ahmad et al. / Saudi Journal of Biological Sciences 27 (2020) 2344–2357
+2357

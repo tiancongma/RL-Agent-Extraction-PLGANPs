@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-05-02T16:14:32",
+  "baseline_compare": "data/results/20260423_9c4a03f/135_layer3_compare_polymer_mass_scoped_preparation_v2_diagnostic/layer3_value_compare_cells_v1.tsv",
+  "new_compare": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
+  "stage5_final": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
+  "gt_authority": "data/cleaned/gt_authority/v1/dev15_layer3_values.tsv",
+  "scope_manifest": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv",
+  "overall_old": {
+    "recall": 0.5671070931849791,
+    "accuracy": 0.9504662004662005,
+    "match": 1631,
+    "risk": 1773,
+    "missing_in_system": 886,
+    "not_reported_in_gt": 4164,
+    "present_and_match": 1631,
+    "extra_in_system": 186,
+    "present_but_mismatch": 85,
+    "blocked_alignment": 616
+  },
+  "overall_new": {
+    "recall": 0.5726703755215578,
+    "accuracy": 0.9509237875288684,
+    "match": 1647,
+    "risk": 1757,
+    "missing_in_system": 870,
+    "not_reported_in_gt": 4164,
+    "present_and_match": 1647,
+    "extra_in_system": 186,
+    "present_but_mismatch": 85,
+    "blocked_alignment": 616
+  },
+  "changed_cells": 16
+}

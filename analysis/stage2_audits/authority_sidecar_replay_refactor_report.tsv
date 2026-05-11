@@ -1,0 +1,8 @@
+component	change_summary	sidecar_or_reattachment_role	validation_result	risk_note
+run_stage2_s2_5_semantic_parsing_v1.py	Write deterministic authority sidecar from frozen request metadata and S2-4a prompt provenance.	sidecar_writer	resolved 15/15 authority entries in replay S2-5	Depends on frozen request metadata containing source_prompts_jsonl_path.
+build_stage2_compatibility_projection_v1.py	Merge authority sidecar entries into documents before projection and table/DOE emitters.	sidecar_consumer	replay S2-7 emitted 128 completed Stage2 rows without missing_table_authority_payload blocker	Semantic JSONL authority fields are now advisory, so sidecar must remain present for replay.
+run_stage2_s2_7_compatibility_projection_v1.py	Require and pass authority sidecar into maintained S2-7 projection runner.	reattachment_boundary	replay S2-7 consumed deterministic sidecar successfully	Missing sidecar now fails loudly instead of silently degrading replay.
+20260421_c8f4b61 replay lineage	Replay baseline from frozen 20260421_43ed145 S2-4b raw responses through compare.	governed_replay_validation	Stage5 rows 35 -> 117; benchmark_valid remains no	Identity freeze still fails, so compare remains diagnostic-only.
+5GIF3D8W	Recovered explicit table-anchor and single-variable rows survive into final table.	paper_level_validation	Stage5 rows 1 -> 11	Still under GT; not all expected explicit anchors are present.
+UFXX9WXE	Recovered formulation-table rows survive through Stage5.	paper_level_validation	Stage5 rows 2 -> 28	Now slightly over GT, so downstream identity/count calibration still needs work.
+WIVUCMYG	Recovered DOE rows survive through Stage5.	paper_level_validation	Stage5 rows 3 -> 29	Now over GT; survival is proven but count normalization remains unresolved.

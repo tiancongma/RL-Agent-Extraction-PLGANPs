@@ -1,0 +1,13 @@
+{
+  "artifact_type": "reviewed_gt_tsv_from_user_modified_xlsx",
+  "source_xlsx": "analysis/layer3_field_repairs/dev15_gt_audit_review_workbook_v1.xlsx",
+  "input_candidate_tsv": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_audit_candidate_v1.tsv",
+  "output_reviewed_gt_tsv": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_from_xlsx_v1.tsv",
+  "application_log": "analysis/layer3_field_repairs/dev15_gt_xlsx_reviewed_application_log_v1.tsv",
+  "issue_localization_tsv": "analysis/layer3_field_repairs/dev15_gt_xlsx_reviewed_issue_localization_v1.tsv",
+  "reviewed_rows_in_xlsx": 46,
+  "application_rows": 52,
+  "row_count": 204,
+  "schema_columns": 57,
+  "notes": "USER_VALUE from reviewed Review_Queue rows was applied. Reporting fields emulsifier_stabilizer_* were mapped to candidate GT surfactant/stabilizer fields. USER_VALUE N/A was treated as not-applicable and kept/cleared as blank so GT does not expect a value."
+}

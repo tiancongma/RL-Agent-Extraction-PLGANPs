@@ -1,0 +1,162 @@
+{
+  "baseline_id": "baseline_20260415_deterministic_two_step_v1",
+  "baseline_type": "deterministic_two_step_baseline",
+  "date": "2026-04-15",
+  "purpose": "Register the strongest currently materialized deterministic no-LLM two-step extraction control baseline as a reproducible frozen snapshot: deterministic Step1 formulation identity reconstruction plus explicit-only Step2 value backfill with additive table-row and formulation-parameter binding surfaces.",
+  "authority_root": "data/results/frozen_baselines/20260415_deterministic_two_step_v1",
+  "source_run_dir": "data/results/frozen_baselines/20260415_deterministic_two_step_v1",
+  "source_type": "frozen_snapshot",
+  "reproducibility_status": "fully_materialized",
+  "llm_usage": "none",
+  "pipeline_variant": "deterministic_emitter + compatibility_projection + relation + Stage5 + Step2_backfill + binding_units",
+  "intended_use": "control_baseline_for_extraction_and_modeling_feasibility",
+  "source_artifacts": {
+    "snapshot_provenance": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/SNAPSHOT_PROVENANCE.md",
+    "snapshot_run_context": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/RUN_CONTEXT.md",
+    "final_formulation_table": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/final_formulation_table_v1.tsv",
+    "step2_value_table": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/step2_value_backfill_table_v1.tsv",
+    "step2_value_summary": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/step2_value_backfill_summary_v1.md",
+    "final_output_decision_trace": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/final_output_decision_trace_v1.tsv",
+    "relation_records": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/formulation_relation_records_v1.tsv",
+    "resolved_relation_fields": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/resolved_relation_fields_v1.tsv",
+    "table_row_binding_resolved": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/table_row_binding_resolved_v1.tsv",
+    "table_row_binding_summary": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/table_row_binding_summary_v1.md",
+    "formulation_parameter_binding_resolved": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/formulation_parameter_binding_resolved_v1.tsv",
+    "formulation_parameter_binding_summary": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/formulation_parameter_binding_summary_v1.md",
+    "layer2_compare_summary": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/layer2_compare_summary_v1.md",
+    "layer3_compare_summary": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/layer3_compare_summary_v1.md",
+    "snapshot_fix_audit": "docs/audits/baseline_snapshot_fix_2026-04-15.md"
+  },
+  "artifact_chain": [
+    {
+      "boundary": "Stage1",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/RUN_CONTEXT.md",
+      "artifact_role": "frozen snapshot run contract for the reproducible deterministic two-step baseline"
+    },
+    {
+      "boundary": "Stage5",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/final_formulation_table_v1.tsv",
+      "artifact_role": "frozen Step1 formulation identity surface"
+    },
+    {
+      "boundary": "Stage5",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/final_output_decision_trace_v1.tsv",
+      "artifact_role": "frozen Step1 decision trace"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/formulation_relation_records_v1.tsv",
+      "artifact_role": "relation materialization records"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/resolved_relation_fields_v1.tsv",
+      "artifact_role": "resolved relation carry-through fields"
+    },
+    {
+      "boundary": "table_row_binding",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/table_row_binding_resolved_v1.tsv",
+      "artifact_role": "row-local numeric ownership recovery surface"
+    },
+    {
+      "boundary": "formulation_parameter_binding",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/formulation_parameter_binding_resolved_v1.tsv",
+      "artifact_role": "composition-side ownership recovery surface"
+    },
+    {
+      "boundary": "Step2_backfill",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/step2_value_backfill_table_v1.tsv",
+      "artifact_role": "explicit-only frozen-final value table keyed by final_formulation_id"
+    },
+    {
+      "boundary": "diagnostic_compare",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/layer2_compare_summary_v1.md",
+      "artifact_role": "frozen companion summary for the nearest available Layer2 diagnostic status"
+    },
+    {
+      "boundary": "diagnostic_compare",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1/layer3_compare_summary_v1.md",
+      "artifact_role": "frozen companion summary for the nearest available Layer3 diagnostic status"
+    }
+  ],
+  "lineage_chain": [
+    {
+      "label": "documented_missing_authority_root",
+      "path": "data/results/20260415_23c14f0/18_dev15_deterministic_two_step_diag_with_combined_binding_v3",
+      "coverage": "documented intended combined-binding DEV15 diagnostic root referenced by prior registration",
+      "authority_status": "metadata_only_not_materialized_in_workspace"
+    },
+    {
+      "label": "materialized_step1_binding_source",
+      "path": "data/results/20260415_targeted_core_a_repair_codepath_v2",
+      "coverage": "closest available local binding-enhanced Step1 source lineage with final table, relation artifacts, and binding outputs",
+      "authority_status": "primary_materialized_source"
+    },
+    {
+      "label": "materialized_step2_child_source",
+      "path": "data/results/20260415_8a2502a/02_deterministic_step2_baseline",
+      "coverage": "real explicit-only Step2 child execution for the materialized Step1 binding source",
+      "authority_status": "secondary_materialized_source"
+    },
+    {
+      "label": "frozen_snapshot",
+      "path": "data/results/frozen_baselines/20260415_deterministic_two_step_v1",
+      "coverage": "fully materialized reproducibility snapshot for governed baseline reuse",
+      "authority_status": "baseline_authority_root"
+    }
+  ],
+  "stage_coverage": [
+    "Stage1",
+    "Stage2_deterministic_emitter",
+    "Stage2_compatibility_projection",
+    "Stage3",
+    "Stage5",
+    "table_row_binding",
+    "formulation_parameter_binding",
+    "Step2_backfill",
+    "diagnostic_compare"
+  ],
+  "boundary_classification": {
+    "lawful_resume_boundary": "Stage5_final_formulation_table",
+    "boundary_classes": {
+      "Stage1": "internal_intermediate",
+      "Stage2_deterministic_emitter": "internal_intermediate",
+      "Stage2_compatibility_projection": "mainline_bridge_boundary",
+      "Stage3": "internal_intermediate",
+      "Stage5": "mainline_resume_boundary",
+      "table_row_binding": "diagnostic_additive_surface",
+      "formulation_parameter_binding": "diagnostic_additive_surface",
+      "Step2_backfill": "diagnostic_terminal_surface",
+      "diagnostic_compare": "diagnostic_terminal_surface"
+    }
+  },
+  "benchmark_validity": "diagnostic_only",
+  "limitations": [
+    "No LLM semantic discovery is used anywhere in this baseline.",
+    "Formulation coverage remains incomplete relative to full DEV15 GT.",
+    "Modeling-core overlap remains incomplete after combined binding.",
+    "This baseline is not benchmark-valid against Layer2 or Layer3 GT and must not be reported as a benchmark-valid result.",
+    "The baseline is suitable for pilot modeling only.",
+    "This baseline is a deterministic no-LLM control lineage and must not be misclassified as a replay baseline.",
+    "The frozen snapshot is bound to the closest fully materialized local binding-enhanced source lineage because the originally documented 20260415_23c14f0 combined-binding run root is not present in this workspace.",
+    "The snapshot companion Layer2 and Layer3 summaries are frozen governance summaries attached for reproducibility because no materialized run-level compare outputs existed in the chosen local source lineage."
+  ],
+  "linked_audits": [
+    "docs/audits/deterministic_two_step_baseline_audit_2026-04-15.md",
+    "docs/audits/deterministic_step1_baseline_implementation_2026-04-15.md",
+    "docs/audits/deterministic_step2_baseline_implementation_2026-04-15.md",
+    "docs/audits/table_row_binding_unit_implementation_2026-04-15.md",
+    "docs/audits/formulation_parameter_binding_unit_implementation_2026-04-15.md",
+    "docs/audits/modeling_core_overlap_failure_audit_2026-04-15.md",
+    "docs/audits/final_generalizability_audit_2026-04-15.md",
+    "docs/audits/baseline_deterministic_two_step_registration_2026-04-15.md",
+    "docs/audits/baseline_snapshot_fix_2026-04-15.md"
+  ],
+  "baseline_lookup_aliases": [
+    "baseline_20260415_deterministic_two_step_v1",
+    "20260415 deterministic two step baseline",
+    "2026-04-15 deterministic two step baseline",
+    "deterministic two step no llm baseline",
+    "binding enhanced deterministic two step baseline"
+  ]
+}

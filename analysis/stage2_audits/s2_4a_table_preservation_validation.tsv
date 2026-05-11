@@ -1,0 +1,7 @@
+paper_key	expected_key_table	s2_2a_present_yes_no	s2_2b_present_yes_no	normalized_payload_present_yes_no	s2_4a_prompt_present_yes_no	hard_drop_table_noise_yes_no	notes
+5ZXYABSU	Table 1 and Table 2 formulation-bearing pair	yes	no	no	no	yes	Both expected tables still survive candidate segmentation but are lost at S2-2B; only Table 14 is preserved into evidence, normalized payloads, and prompt.
+WFDTQ4VX	Recovered Table 1 / Table 2 DOE design surface	yes	no	no	no	yes	DOE-like candidate surfaces including candidate_table__08 survive S2-2A but are still hard-dropped at S2-2B; only downstream Table 8 is preserved.
+INMUTV7L	Simple formulation-bearing Table 1	yes	yes	yes	yes	no	Key table survives end-to-end in bounded S2-4A validation; current implementation is consistent for this paper.
+WIVUCMYG	DOE-bearing Table 1	yes	yes	yes	yes	no	Key DOE table survives into evidence, normalized payloads, and frozen prompt.
+UFXX9WXE	Key preserved formulation/DOE-bearing tables (Table 1 and Table 2)	yes	yes	yes	yes	no	Expected key preserved tables survive into evidence, normalized payloads, and frozen prompt in this bounded validation.
+5GIF3D8W	Explicit formulation-bearing Table 4	yes	yes	yes	yes	no	Anchor formulation table survives cleanly through S2-4A in the current implementation.

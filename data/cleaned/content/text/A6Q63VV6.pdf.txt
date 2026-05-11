@@ -1,0 +1,1050 @@
+ARTICLE
+Continuous Supercritical Emulsions Extraction:
+A New Technology for Biopolymer
+Microparticles Production
+G. Della Porta,1,2 N. Falco,1 E. Reverchon1
+1Dipartimento di Ingegneria Chimica e Alimentare, Universita` di Salerno,
+Via Ponte don Melillo, 84084, Fisciano (SA), Italy; telephone: þ39 089 964104;
+fax: þ39 089 964057; e-mail: gdellaporta@unisa.it
+2Laboratorio di Ingegneria Cellulare e Molecolare, DEIS (sede di Cesena),
+Universita` di Bologna, Via Venezia 52, 47521, Cesena (FC), Italy
+Received 15 June 2010; revision received 28 September 2010; accepted 1 October 2010
+Published online 21 October 2010 in Wiley Online Library (wileyonlinelibrary.com). DOI 10.1002/bit.22972
+ABSTRACT: Supercritical emulsion extraction (SEE) was
+recently proposed for the production of biopolymer micro-
+particles starting from oil-in-water emulsions. This technol-
+ogy can improve the product quality because of the fast and
+selective extraction of the dispersed oily phase by using
+supercritical carbon dioxide (SC-CO2). However, until
+now, SEE was proposed in batch conﬁguration, sharing
+with the traditional processes an intrinsically discontinuous
+operation and problems of batches reproducibility and
+process yield. In this study, by using a countercurrent packed
+column, the SEE process was proposed in a continuous
+operating mode (SEE-CM) for the production of poly-
+lactic-co-glycolic acid (PLGA) microparticles. The new pro-
+cess design takes advantage of the large contact area between
+the SC-CO2 and emulsion allowing the production of PLGA
+microparticles with controlled and narrow size distributions
+in only few minutes. SEE-CM operating parameters such as
+pressure, temperature, and ﬂow rate ratios were analyzed
+and the process efﬁciency in terms of recovered material and
+its size distribution compared with SEE (batch mode opera-
+tion) and conventional evaporation technology. PLGA
+microparticles showed a mean particle size between 1–
+3 mm (depending on the droplet sizes) with a SD that
+was always smaller than that associated with particles pro-
+duced by discontinuous processes. Single and double emul-
+sions were successfully treated and the microparticles
+physico-chemical properties showed no morphological
+and structural differences between the SEE-CM-produced
+microparticles and the ones obtained by conventional eva-
+poration technology.
+Biotechnol. Bioeng. 2011;108: 676–686.
+ 2010 Wiley Periodicals, Inc.
+KEYWORDS: supercritical ﬂuids; emulsion extraction;
+PLGA; microparticles
+Introduction
+Poly-lactic-co-glycolic
+acid
+(PLGA)
+is
+a
+well-known
+biodegradable polymer that has received great interest for
+the development of injectable micro-particulate devices
+(Mundargi et al., 2008). PLGA microparticles can be
+administered by in-situ injection to achieve a precise and
+localized
+drug
+delivery,
+which
+is
+more
+effective
+in
+chemotherapy, hormone therapy, DNA/protein or vaccine
+delivery (Luten et al., 2008; Meinel et al., 2001; Verrijk et al.,
+1992; Walter et al., 2001). Moreover, PLGA microparticles
+with a speciﬁc size and distribution have also been proposed
+for the use in tissue engineering as building blocks of
+implantable 3D scaffolds offering beneﬁts such as good
+morphology control (Mercier et al., 2005; Singh et al., 2010)
+and better versatility in the release kinetics of speciﬁc growth
+factors
+for
+cellular
+function
+orienting
+and
+directing
+(Jaklenec et al., 2008). PLGA microparticles can also be
+used as biodegradable support for cell culture and/or cell
+administration in the so-called ‘‘injectable scaffolds’’ which
+may affect stem cells lineage restriction and, after polymer
+degradation, allow a complete integration of the grafted cells
+in the host tissue (Declercq et al., 2005; Hong et al., 2005;
+Kang et al., 2005).
+PLGA microparticles can be prepared mainly by two
+conventional techniques: solvent extraction/evaporation of
+emulsions and spray-drying. The solvent evaporation (SE)/
+extraction is widely used because it is easy to implement
+using a simple reactor/stirrer device. Several variables have
+been identiﬁed which can inﬂuence the properties of the
+produced microparticles (including their internal morphol-
+ogy) such as solvent type, diffusion rate, temperature, and
+co-polymer composition (Li et al., 2008; Mao et al., 2008).
+SE has several drawbacks because it requires relatively high
+temperatures or reduced pressures and shows batch-to-
+batch reproducibility disturbances. Solvent extraction uses
+Correspondence to: G. Della Porta
+676
+Biotechnology and Bioengineering, Vol. 108, No. 3, March, 2011
+ 2010 Wiley Periodicals, Inc.
+
+relatively large amounts of a second solvent with the
+subsequent problem of solvent mixtures recovery. Both
+processes, also, require quite long processing times (several
+hours) and, as a consequence, aggregation phenomena may
+occur between the droplets, producing microspheres with a
+larger poly-dispersity with respect to the starting emulsion
+(Yang et al., 2000). Spray-drying is relatively simple and of
+high throughput, but, cannot be used for almost all the
+PLGA co-polymers because they are highly temperature-
+sensitive (Johansen et al., 2000).
+In the last 10 years, different supercritical ﬂuid techno-
+logies were tested to produce PLGA nano and microparticles
+such as, the rapid expansion of supercritical solutions
+(RESS) and the supercritical antisolvent (SAS). In RESS
+technology, supercritical carbon dioxide (SC-CO2) solubi-
+lizes the compound to be treated and produces micro-
+particles by a rapid decompression of the supercritical
+solution
+and
+the
+subsequent
+sovrasaturation
+of
+the
+solubilized biopolymer. SAS technique uses SC-CO2 as
+anti-solvent agent to induce the biopolymer precipitation
+from its liquid solution. The main problem reported for
+RESS technology is the very low solubility of almost all
+PLGA co-polymers in SC-CO2 that will prevent affordable
+process yields or will require the use of co-solvent
+(Kongsombut et al., 2009). On the other hand, the solubility
+of SC-CO2 in the PLGA is again the main problem when
+using the SAS technology because it causes strong micro-
+particles agglomeration resulting in products with irregular
+shapes (Ginty et al., 2005; Ghaderi et al., 2000; Lee et al.,
+2008) or foams (Kang et al., 2008). Other authors (Pini et al.,
+2008; Young and Johnston, 1999) also reported a large CO2
+uptake by sorption into PLGA co-polymers, during the SAS
+processing, resulting in the signiﬁcant decrease in its glass
+transition temperature that will advantage the formation of
+strong intra-particle adhesion or continuous ﬁlm structures.
+The use of SC-CO2, for PLGA microparticles manufac-
+turing, has also been proposed starting from emulsions.
+Particularly, SC-CO2 has been proposed as extracting agent
+of the ‘‘oily’’ phase of oil-in water (o-w) emulsions to lead to
+solvent-free microparticles (Chattopadhyay et al., 2007;
+Della Porta and Reverchon, 2008; Shekunov et al., 2006).
+The process, named supercritical emulsion extraction (or
+SEE), produces an aqueous suspension of PLGA micro-
+particles after the supercritical extraction of the organic
+solvent contained in the emulsion micelles. In the SEE
+process, PLGA microparticles aggregation phenomena were
+not observed, due to the presence of the external water
+phase, immiscible with SC-CO2, which prevents their
+aggregation (Kluge et al., 2009). The SEE process was also
+described as very fast, due to the enhanced mass transfer of
+SC-CO2 and capable of affecting also the size distribution of
+the produced microparticles since the fast extraction rate
+results in a narrower particle size distribution (PSD) because
+the droplets aggregation is minimized (Della Porta et al.,
+2010). One of the major limitations of the SEE technology,
+also shared with traditional evaporation/extraction pro-
+cesses,
+is
+the
+fact
+that
+this
+process
+is
+intrinsically
+discontinuous. Indeed, emulsion must be treated batch-
+to-batch; therefore, from a biotechnological and regulatory
+point
+of
+view,
+there
+will
+be
+problems
+of
+batches
+reproducibility and a reduction of the process yield, due
+to material lost on the walls of the precipitation vessel.
+TheaimofthisstudyistousethenewSEEprocessoperating
+in continuous mode (SEE-CM) to investigate the production
+of PLGA microparticles with an engineered size and
+distribution. This innovative process arrangement is obtained
+by using a high pressure packed column operating in
+countercurrent in which mass transfer between the liquid
+and the gaseous phases is improved by the internal packing
+elements. The analysis of the SEE-CM operating parameters
+such as, pressure, temperature, phase composition, and ﬂow
+rate ratio is also proposed together with the comparison of
+SEE-CM
+process
+performance
+with
+the ones
+of the
+corresponding batch operating mode processes (supercritical
+and conventional evaporation) in terms of process yield and
+PLGA PSD. A detailed characterization of microparticles also
+intermsofmorphologyandsolidstateisproposedandastudy
+on the PLGA microdevices degradation is performed to
+monitor any morphological difference between the biode-
+gradable devices produced by SEE-CM with those corre-
+sponding to conventional evaporation technology.
+Experimental Methods
+Materials, Emulsion Preparation, and Methods
+CO2 (99.9%, SON, Naples, Italy), polyvinyl alcohol (PVA,
+Mol wt: 30,000–55,000, Aldrich Chemical Co.,Milan, Italy),
+ethyl acetate (EA, purity 99.9%, Aldrich Chemical Co.) poly-
+(lactic/glycolic) acid (PLGA, 75:25 Mol wt; 60,000–120,000
+Aldrich Chemical Co.) were used as received. The o-w
+emulsions (o-w ratio: 20:80 w/w) were prepared dissolving a
+ﬁxed amount of polymer into EA (5–10% w/w of PLGA) and
+then, emulsifying it with water/PVA solutions (0.8% w/w of
+PVA) using a high-speed stirrer (mod. L4RT, Silverson
+Machines Ltd., Waterside, Chesham Bucks, UK) operating at
+2,800 rpm for 3 min. w-o-w emulsions (w-o-w ratio: 1:19:80 w/
+w/w)werepreparedusing1 mLofwater/PVAsolution(0.04%
+w/w of PVA), as internal water phase, that was added into
+polymer/EA ﬁxed solutions (2.5–10% w/w of PLGA) and
+sonicated using the VCX130-Vibra Cell. (Sonics and
+Materials, Newtown, CT) at 50% of amplitude for 3 min.
+The primary w-o emulsion was, then, added into water/PVA
+solutions to form the secondary emulsion following the same
+procedure described for the single emulsion formation.
+SEE and SEE-CM Apparatuses
+The SEE apparatus consisted of a 0.25 dm3 cylindrical
+stainless steel vessel in which 40 g of emulsion were placed,
+for each experiment. SC-CO2 was delivered using a high
+pressure diaphragm pump (Milton Roy, model Milroyal B,
+Point Saint Pierre, France) and was bubbled into the
+Porta et al.: SEE: Biopolymer Microparticles Production
+677
+Biotechnology and Bioengineering
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+extraction vessel at a constant ﬂow rate (0.3 kg/h) through a
+cylindrical stainless steel porous dispenser located at the
+bottom of the extractor. The temperature in the SEE batch
+extractor was regulated by a thermostated oven. A separator,
+located downstream the extractor, was used to recover
+the extracted ‘‘oily’’ organic solvent; the pressure in the
+separator was regulated by a backpressure valve. A rotameter
+and a dry test meter were used to measure the CO2 ﬂow rate
+and the total amount of CO2 used, respectively. When the
+extraction process was complete, the suspension was
+removed from the bottom of the extraction vessel for
+further processing. Particles were washed several times by
+centrifugation with distilled water, recovered by membrane
+ﬁltration and dried at air for morphological studies. Other
+details of the apparatus are described elsewhere (Della Porta
+and Reverchon, 2008). The SEE-CM apparatus consisted
+of a 1,680 mm long column with an internal diameter
+of 13.11 mm. The column was packed with stainless
+steel packing, 4 mm nominal size of 1,889 m1 speciﬁc
+surface and 0.94 voidage (0.16-inch Pro-Pak, Scientiﬁc
+Development Company, State College, PA) and was formed
+by ﬁve AISI 316 cylindrical sections connected by four cross
+elements. The column was thermally insulated by ceramic
+cloths and its temperature proﬁle was controlled by six
+temperature controllers. SC-CO2 was fed to the column by a
+high-pressure diaphragm pump (mod. Milroyal B, Milton
+Roy, Pont Saint-Pierre, France) at a constant ﬂow rate. The
+emulsion was taken from a reservoir and fed to the column
+by a high pressure piston pump (mod. 305, Gilson, France)
+at the column top. A separator located downstream the top
+of the column was used to recover the extracted ‘‘oily’’
+solvent and its pressure was regulated by a backpressure
+valve. At the exit of the separator, a rotameter and a dry test
+meter were used to measure the CO2 ﬂow rate and the total
+quantity of CO2 delivered, respectively. Before starting the
+emulsion delivery, the column was wetted with a ﬁxed
+amount of the external water phase. The microparticles
+suspension was collected in continuous at the bottom of the
+column, washed several times with distilled water and, then,
+recovered by membrane ﬁltration. A schematic representa-
+tion of the two different SEE process layouts (batch and
+continuous) is reported in Figure 1(a and b), respectively.
+Morphology and Size Distributions
+The droplets contained in the emulsion were observed using
+an optical microscope (mod. BX 50 Olympus, Tokyo, Japan)
+equipped with a phase contrast condenser. A Field
+Emission-Scanning Electron Microscope (FE-SEM mod.
+LEO 1525, Carl Zeiss SMT AG, Oberkochen, Germany) was
+used to study the morphology of the PLGA microparticles. A
+sample was mounted on a carbon tab previously stuck to an
+aluminium stub. Samples were coated with gold (layer
+thickness 250A˚ ) using a sputter coater (mod.108 A, Agar
+Scientiﬁc, Stansted, UK). Droplet size distribution (DSD)
+and PSD were measured by dynamic light scattering (DLS,
+Mastersizer S, Malvern Instruments Ltd., Worcherstershire,
+UK). The Mastersizer S software uses Mie theory to produce
+an optimal analysis of the light energy distribution and to
+obtain the size distribution of the particles. Analyses were
+performed
+immediately
+after
+the
+preparation
+of
+the
+emulsion and of the microparticles suspension, using
+several milligrams of each sample. The volumetric PSDs
+curves were proposed in a cumulative form.
+Solid State Characterization
+Diffraction patterns of precipitated powders were obtained
+using an X-ray diffractometer (mod. D8 Discover, Bruker
+AXS, Inc., Madison, WI) with a Cu sealed tube source.
+Samples were placed in the holder and ﬂattened with a glass
+slide to assure a good surface texture. The measuring
+conditions were as follows: Ni-ﬁltered CuK radiation,
+l ¼ 1.54 A˚ , 2u angle ranging between 58 and 708 with a scan
+rate of 3 s/step and a step size of 0.28. Thermograms of
+Figure 1.
+a,b: Schematic representation of SEE and SEE-CM processes layouts.
+SEE is an intrinsically batch process (a); SEE-CM allows a continuous emulsion
+processing by using a countercurrent packed tower (b). [Color ﬁgure can be seen in
+the online version of this article, available at wileyonlinelibrary.com.]
+678
+Biotechnology and Bioengineering, Vol. 108, No. 3, March, 2011
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+powder samples were obtained using a differential scanning
+calorimeter (DSC mod. TC11, Mettler Toledo, Inc.,
+Columbus, OH). Fusion temperature and enthalpy were
+calibrated with an indium standard (melting point 156.68C).
+The samples (5 mg) were accurately weighed, crimped in an
+aluminium pan and heated from to 25 to 3008C at 108C/
+min, under a nitrogen purge of 50 mL/min. X-ray and DSC
+analyses were performed in three replicates for each batch of
+material.
+Solvent Residue Analysis
+The EA content in the recovered suspension of PLGA
+microparticles was analyzed to determine the efﬁciency of
+solvent removal from the emulsion. The EA residue was
+measured using a head space sampler (mod. 50 Scan,
+Hewlett & Packard, Palo Alto, CA) coupled to a gas
+chromatograph interfaced with a ﬂame ionization detector
+(GC-FID, mod. 6890 Agilent Series, Agilent Technologies
+Inc., Wilmington, DE). EA was separated using a fused-silica
+capillary column 30 m length, 0.25 mm internal diameter,
+0.25 mm ﬁlm thickness (mod. DB-1, J&W, Folsom, CA). GC
+conditions were: oven temperature at 408C for 8 min. The
+injector was maintained at 1808C (split mode, ratio 1:1) and
+Helium was used as the carrier gas (7 mL/min). Head space
+conditions were: equilibration time 60 min at 1008C,
+pressurization time 2 min, loop ﬁll time 1 min. Head space
+samples were prepared in 10 mL vials ﬁlled with 3 mL of
+suspension. Analyses were performed on each sample in
+three replicates.
+Microparticles Degradation Study
+100 mg of PLGA microparticles were suspended in 20 mL of
+water, agitated at 50 rpm at 378C. 10 mL of suspension were
+sampled every 7 days, dried and mounted on an aluminium
+stub for the morphological analysis by FE-SEM. The
+suspension pH was measured by a pHmeter (mod. pH
+210, HANNA instruments, Italia).
+Results and Discussion
+SEE-CM Operating Parameters
+The extraction pressure and temperature conditions of
+80 bar and 388C were used for processing emulsions with
+an oily phase content of about 20% w/w. They were selected
+to assure the complete miscibility of EA in SC-CO2 (Della
+Porta et al., 2006; Smith et al., 1998); whereas, the solubility
+of water (the continuous phase) in CO2 at the same
+conditions is of 0.53  103 (as molar fraction), so it is very
+low and can be neglected (King et al., 1992; Sabirzyanov
+et al., 2002; Wiebe and Gaddy, 1940). A temperature of 388C
+is also compatible with the glass transition temperature of
+PLGA (co-polymer ratio 50:50) that is located at about 408C
+(De and Robinson, 2004). The counter-current operation in
+the packed column is also favored by large density
+differences between the two phases involved in the process.
+Using supercritical ﬂuid, the lower is the pressure the larger
+is the density difference between a liquid and SC-CO2 at
+ﬁxed temperature. Therefore, ﬁxing the temperature at 388C
+and operating at 80 bar, the maximum difference in density
+between the emulsion and SC-CO2 is obtained because they
+are of 1 g/cm3 against 0.3 g/cm3, respectively. Finally, the
+ratio between the emulsion and SC-CO2 (liquid/gas ratio,
+L/G) was ﬁxed at 0.1 according to the data of the SEE
+experiments performed in batch operating mode; indeed,
+when an overall amount of 400 g of CO2 was contacted
+(in 40 min) with 40 g of emulsion, very low values of EA
+solvent residue (40–50 ppm) were obtained (Della Porta and
+Reverchon, 2008). Particularly, in our case, a CO2 ﬂow rate
+of 1.4 kg/h and an emulsion ﬂow rate of 2.3 mL/min were
+selected (Brunner, 2009). During the continuous operation,
+a mass transfer between the two phases is activated, but,
+variations in the top and bottom product composition can
+be observed until steady state conditions have been
+obtained. As a consequence, another relevant process
+parameter in the continuous operation is also the time
+required to obtain steady state composition in the column.
+In preliminary experiments, performed at the conditions
+described above, using an empty o-w emulsion (ratio 20:80),
+it was observed that after 30 min, the solvent residue in the
+water recovered at the bottom of the column became almost
+constant. Following these indications, the SEE-CM experi-
+ments were always performed after reaching the steady
+state conditions using an empty emulsion and solvent
+residue values between 100 and 300 ppm were measured
+in all PLGA suspensions recovered in the following part of
+the work.
+The use of packed towers is commonly not suggested for
+processes involving the presence of a solid phase; indeed, it
+should be expected that the solid precipitate from the liquid
+phase and cover the packing surface, producing a reduction
+of the mass transfer and, then, the blockage of the column.
+However, in the SEE-CM, this event was not observed. There
+are two good conditions to explain why this phenomenon
+does not signiﬁcantly interfere with the continuous solvent
+elimination process. As the dimensions of the microparticles
+produced (related to droplet diameters) are always in the
+micronic range, they will show the tendency to remain
+suspended in the falling liquid ﬁlm inside the column (i.e.,
+particles residence time in the column is expected to be
+shorter than their sedimentation time); moreover, the
+presence of the surfactant on the particle surfaces will allow
+their easy slipping on the packing surfaces. The presence of
+surfactant around the microparticles suspension is also
+useful for their recovery at the bottom of the column since
+it avoids any other particle collapsing or aggregation.
+Moreover, the Joule-Thomson effect that follows the CO2
+lamination,
+induces
+a
+strong
+cooling
+effect
+on
+the
+microparticles suspension (2–48C are normally reached),
+improving PLGA particles stability during their recovery.
+Porta et al.: SEE: Biopolymer Microparticles Production
+679
+Biotechnology and Bioengineering
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Droplets and Microparticles Size and Morphology
+It is known that the size of the particles is directly related to
+the emulsion droplet size and, therefore, depends on the
+emulsion formulation. Particularly, the increase of the oily
+phase viscosity, due to a higher polymer concentration in the
+solvent, can produce larger droplets when using the same
+dispersion shear force and surfactant concentration (Li et al.,
+2008). Following this indication, SEE-CM experiments (in
+steady state conditions) were performed by processing 100 g
+of single (o-w) and/or double (w-o-w) emulsions in each
+run, produced varying the PLGA content in the oily phase
+from 5 to 10% w/w in order to obtain PLGA microparticles
+of increased mean size (MS). All the distribution data of the
+droplets and of the microparticles produced are summarized
+in Table I.
+Optical microscope images of two different emulsions
+(o-w single emulsion produced at PLGA concentration of
+5% w/w and w-o-w double emulsion with a PLGA
+concentration of 10% w/w in the oily phase) are reported
+in Figure 2a and b, respectively. From the images it is clear
+that the emulsions were stable with non-coalescing droplets.
+The produced PLGA microparticles were spherical and non-
+coalescing as illustrated in the SEM images reported in
+Figure 3a and b. These images pertain to particles obtained
+from single (left side) and double (right side) emulsions
+prepared with PLGA concentrations in the oily phase of 5%
+w/w (see Fig. 3a) and of 10% w/w (see Fig. 3b). All the SEM
+images reported have been taken at the same ampliﬁcation
+and it is clear the increase of the mean particle size from 1 to
+3 mm when PLGA concentrations in the oily phase were
+increased from 5 to 10% w/w. The PSD of the particles
+obtained from o-w emulsions containing 5% and 7.5% w/w
+of PLGA in the oily phase are also reported in a cumulative
+representation in Figure 4. The DSDs of the two emulsions
+processed by SEE-CM are reported in the same ﬁgure
+(Fig. 4), for comparison purposes. Droplets curves practi-
+cally overlap, showing that the variation of PLGA concen-
+tration from 5 to 7.5% w/w in oily phase did not really
+inﬂuence the droplets size that was similar. However, the
+PSD of the microparticles originated from the droplets
+containing 5% w/w of PLGA is sharper than the PSD of the
+microparticles from droplets containing 7.5% w/w of PLGA.
+This fact is due to the droplet-shrinking factor (deﬁned as
+the ratio between the particles and droplets MSs, SF ¼ MSS/
+MSE) that also plays a relevant role in determining the ﬁnal
+size of the microparticles. The droplets with a higher
+percentage of polymer have a lower possibility to shrink
+when the solvent is eliminated; therefore larger particles are
+produced (Rosca et al., 2004). Particularly, the obtained
+particles are about 60% and 33% smaller, respectively, than
+the original droplets.
+DSDs of the emulsion containing 10% w/w of PLGA in
+the oily phase and PSDs of the related microparticles were
+also studied using single (o-w) and double (w-o-w)
+emulsions and the related size distribution curves are
+reported in the Figure 5. Double emulsions are more
+difﬁcult to be processed by conventional SE, since the
+emulsion is less stable and the produced microparticles are
+expected to be porous due to the entrapped internal water
+phase. Coalescence phenomena are frequent, as well as, the
+formation of concave particles due to the loss of the water
+internal phase and the formation of collapsed empty
+particles (Rosca et al., 2004). PLGA concentration of 10% w/
+w in the oily phase produced droplets with almost the same
+Table I.
+Dynamic laser scattering size distribution data of droplets (DSD)
+and of microparticles (PSD) produced at different PLGA concentrations in
+the oily phase using SEE-CM of single (o-w) and double (w-o-w) emulsions.
+Droplet size
+distributions (DSDs)
+Particles size
+distributions (PSDs)
+o-w
+w-o-w
+o-w
+w-o-w
+PLGA % w/w
+5
+7.5
+10
+10
+5
+7.5
+10
+10
+MS (mm)
+2.4
+2.6
+4.1
+4.1
+1.0
+1.8
+3.3
+3.5
+SD (mm)
+1.0
+1.2
+2.1
+2.1
+0.4
+0.8
+1.6
+1.8
+CV(SD/MS) (%)
+41
+46
+51
+51
+40
+44
+48
+51
+SF (MDS/MDE)
+—
+—
+—
+—
+0.41
+0.67
+0.80
+0.85
+D10 (mm)
+1.1
+1.2
+1.5
+1.5
+0.4
+0.7
+1.1
+1.2
+D50 (mm)
+1.8
+1.8
+3.0
+3.1
+0.7
+1.3
+2.3
+2.6
+D90 (mm)
+2.7
+2.7
+4.9
+5.1
+1.2
+2.1
+3.8
+4.6
+MS, mean size; SD, standard deviation; CV, coefﬁcient of variation; SF,
+shrinking factor.
+Figure 2.
+a,b: Optical microscope images of two emulsions: (a) single o-w (20:80;
+composition: oil with EA plus PLGA 10% w/w; external water with PVA 0.8% w/w) and
+(b) double w-o-w (1:19:80; composition: internal water plus PVA solution 0.04% w/w; oil
+with EA plus PLGA 10% w/w; external water with PVA 0.8% w/w). [Color ﬁgure can be
+seen in the online version of this article, available at wileyonlinelibrary.com.]
+680
+Biotechnology and Bioengineering, Vol. 108, No. 3, March, 2011
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+distribution in the case of single and double emulsions. The
+PSD cumulative curve of the microparticles generated from
+single emulsion showed a larger shift from the DSD related
+curve, indicating a larger droplet shrinking (the gap between
+PSD/DSD at D50 values is 0.74 mm); whereas, when a double
+emulsion was processed, the size distribution curve of the
+generated particles showed a smaller shift (gap between
+PSD/DSD at D50 values is 0.49 mm).
+The coefﬁcient of variation (CV), deﬁned as the ratio
+between SD and MS, were evaluated for both droplet and
+particle distributions and its values are reported in Table I.
+The CV of the PSDs obtained by SEE-CM were in the range
+of 40–50 and always lower or, at least, the same of the ones of
+the original emulsions, conﬁrming the ﬁne reproduction of
+the size distribution from droplets to particles of the
+supercritical continuous process.
+Comparison Between SEE, SEE-CM, and Conventional
+Evaporation
+A comparison between the product obtained by SEE, SEE-
+CM and conventional SE process was performed using w-o-
+Figure 3.
+a,b: SEM images of PLGA microparticles obtained by SEE-CM by processing both single and double emulsions containing PLGA in concentration of (a) 5% w/w and
+(b) 10% w/w; operating conditions: 80 bar and 388C, L/G ratio 0.1.
+Figure 4.
+PSDs of PLGA particles produced from single (o-w) emulsions con-
+taining 5% and 7.5% w/w of PLGA in the oily phase. The DSDs of the two emulsions
+processed by SEE-CM are also reported (dashed curves), for comparison.
+Porta et al.: SEE: Biopolymer Microparticles Production
+681
+Biotechnology and Bioengineering
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+w emulsions that were processed using the three different
+technologies/process layouts. Mean sizes and distributions
+of PLGA microparticles obtained by SEE-CM, SEE, and by
+conventional SE are reported in Table II. In the same table
+the DSDs of the treated emulsions are also reported, for
+comparison purposes. Table II data conﬁrmed that the SEE-
+CM allows the recovery of particles with a MSs and SDs
+slightly smaller than the ones produced by the SEE and
+smaller than the ones produced by the SE. The reason should
+be in the very short processing time of all the emulsions
+treated by SEE-CM. Indeed, considering as a reference time,
+the residence time of the liquid phase in the packed column,
+the continuous processing requires a residence time of the
+emulsion/suspension in the column of about 5 min;
+whereas, 30 min are the residence time of the emulsion/
+suspension treated by SEE and the 4–6 h are necessary to
+perform
+the
+conventional
+SE
+(often
+also
+at
+higher
+temperatures). With respect to the SEE standard layout,
+the SEE-CM offers other advantages such as, complete
+absence of aggregated particles and minimized lost of
+particle in the CO2 gas stream during the depressurization
+steps. Indeed, SEE usually shows a recovery percentage
+(deﬁned as: PLGA charged in emulsion/PLGA recovered after
+the processing  100) variable from 40 to 60%; whereas, a
+recovering percentage of about 90% was measured in SEE-
+CM.
+SEE Process Mechanism
+Precipitation of PLGA inside the droplets is induced by
+SC-CO2 extraction of the organic solvent of the oily
+dispersed phase. Although the detailed behavior of this
+process has not yet been deﬁned, a possible mechanism can
+be described as follows; when emulsion and SC-CO2 come
+in contact, the mass transfer of the organic solvent
+proceeds by two parallel pathways: (A) the diffusion of the
+organic solvent into water followed by extraction of the
+solvent from the aqueous phase to SC-CO2; (B) the direct
+extraction upon contact between SC-CO2 and the organic
+phase inside the droplet (see Fig. 6). The path (A) is the
+only one used to describe the conventional SE because, in
+that case, the quantity of solvent evaporated at the liquid
+air interface is compensated by the solvent diffusing into
+the continuous phase from the droplet (Li et al., 1995).
+This path can be justiﬁed also in the SEE process by the
+fact that a thermodynamic equilibrium occurs into the
+solvent-rich and aqueous-rich phases. Moreover, at the
+operating conditions selected, very large solubility of the
+oily phase is assured in SC-CO2; therefore, it may extract
+the solvent of the dispersed oily phase from the external
+water phase of the emulsion causing the subsequent
+diffusion
+of
+the
+solvent
+from
+the
+droplets
+to
+the
+continuous phase, to restore the thermodynamic equili-
+brium. This phenomenon may prevail, for example, in the
+case of EA because its solubility in water is particularly
+great (8.7% w/w at ambient conditions; Meng et al., 2004).
+However, the co-existence of the path (B) in the SEE
+process should be conﬁrmed by the process of water in oil
+emulsion reactions assisted by SC-CO2 for the production
+of
+metal
+oxides
+(Chattopadhyay
+and
+Gupta,
+2003;
+Reverchon et al., 2010). In that case, the CO2 was used
+not only as extracting agent of the organic external phase,
+but also, as a reagent that, reacting with the solute in the
+internal water phase, forms metal oxides nanoparticles. In
+this particular application, the SC-CO2 diffusion into the
+droplet is necessary for the reaction evolution and the
+results reported in the literature, indicated a very a fast
+reaction rate after SC-CO2 diffusion into the droplets,
+through the surfactant shell. Mattea et al., (2010) also
+observed the behavior of a dichloromethane drop (covered
+by surfactant) in water after its contact with SC-CO2 at a
+given pressure, temperature, and CO2 molar fraction and
+reported possible swelling of the drops, after SC-CO2
+diffusion in it (that may suggest the direct extraction of the
+solvent), suddenly overcame by a rapidly drop shrinking,
+probably due to the dichloromethane diffusion out of the
+Figure 5.
+PSDs of PLGA particles produced from single and double emulsions
+containing 10% w/w of PLGA in the oily phase. The DSDs of the two emulsions
+processed by SEE-CM are also reported (dashed curves), for comparison. The gap
+between PSD/DSD at D50 values for single emulsion is 0.74 mm); the gap between PSD/
+DSD at D50 values for double emulsion is 0.49 mm).
+Table II.
+Dynamic laser scattering size distribution data of droplets
+contained in double w-o-w emulsions and related PLGA microparticles size
+distribution produced using standard SEE layout, SEE-CM, and SE process.
+Microspheres mm
+Droplets mm
+SEE
+SEE-CM
+SE
+MS (mm)
+1.0
+2.0
+4.8
+1.1
+2.3
+4.6
+1.0
+1.9
+4.2
+1.5
+2.0
+4.6
+SD (mm)
+0.5
+0.8
+2.4
+0.4
+1.0
+2.1
+0.5
+0.8
+2.1
+0.8
+1.0
+2.4
+CV (%)
+50
+40
+50
+36
+43
+46
+50
+42
+50
+53
+50
+52
+MS, mean size; SD, standard deviation; CV, coefﬁcient of variation.
+682
+Biotechnology and Bioengineering, Vol. 108, No. 3, March, 2011
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+drop into the external water phase (that may also suggest
+the indirect solvent extraction).
+Both
+mass
+transfer
+paths,
+namely
+‘‘direct
+solvent
+extraction’’ and ‘‘indirect solvent extraction’’ from the
+external phase, may concur in generating the polymer
+supersaturation inside the droplet and its fast precipitation.
+However, an hypothesis about the possible prevailing
+mechanism in the SEE process cannot be attempted at
+the moment due to lack of experimental data in the
+literature.
+Microparticles Solid State Size and Degradation
+Thermal analyses (DSC) were performed on microparticles
+obtained by SEE-CM and on raw PLGA, for comparison
+purpose. The obtained thermograms are reported in
+Figure 7. PLGA shows a glass transition between 39 and
+458C (onset 39.988C; endset 45.328C) and the decomposi-
+tion that occurs at above 3008C. The produced micro-
+particles show the same glass transition and degradation
+event of the unprocessed polymer. X-ray analyses were also
+performed on the untreated polymer and on PLGA
+microparticles to have information about the solid state
+of the produced materials. The X-ray patterns indicated that
+both unprocessed polymer and microparticles are amor-
+phous, conﬁrming the fast polymer precipitation inside the
+droplets during the microparticle formation by SEE-CM.
+PLGA is well known for its bulk erosion properties (Von
+Burkersroda et al., 2002). In order to study the degradation
+of the microparticles produced by the supercritical process,
+two different batches of particles produced using single and
+double emulsions (with a ﬁxed MD of 3 mm; SD 1.5 mm)
+were suspended in distilled water at 378C with an agitation
+of 50 rpm. The PLGA particles degradation starts in the ﬁrst
+48 h, as indicated by the pH lowering of the suspension that
+decreased from 6.8 to 4.5. From each suspension, 10 mL were
+sampled
+every
+7 days, dried
+and prepared
+for the
+morphological analysis by FE-SEM. The microparticles
+Figure 6.
+Schematic representation of the possible mass transfer pathways of the oily phase during the SEE process. Two parallel pathways: (a) diffusion of the organic
+solvent into water followed by subsequent supercritical extraction of the solvent from the aqueous phase; (b) direct supercritical extraction upon contact between SC-CO2 and the
+organic phase into the droplet. [Color ﬁgure can be seen in the online version of this article, available at wileyonlinelibrary.com.]
+Figure 7.
+DSC traces of unprocessed and PLGA microparticles produced by
+SEE-CM. The polymer glass transition did not change after SEE-CM processing.
+Porta et al.: SEE: Biopolymer Microparticles Production
+683
+Biotechnology and Bioengineering
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+surface modiﬁcation after 14 and 35 days are reported in
+Figure 8a and b (left side). A smooth surface is still present
+on the particles sampled after 14 days of degradation
+(Fig. 8a left side). The progressive erosion starts to be
+evident after 35 days, when the microdevices became
+nanoporous (Fig. 8b left side). The microparticles produced
+by double emulsion showed complete erosion in 60 days.
+Their surface morphologies after 14 and 35 days are also
+reported in Figure 8a and b (right side). A smooth surface
+can be still observed after 14 days of residence in distilled
+water (Fig. 8a right side); whereas, the circular structures
+observed on the microparticles surface should due to the
+polymer precipitation on the internal water phase of the
+double emulsion. Nanoporous and near-collapsed particles
+can be observed after 35 days, indicating the polymer bulk
+depolymerization (Fig. 8b right side). The overall period
+between 50 and 60 days, required for PLGA microparticles
+complete degradation in water coupled with a maximum pH
+lowering of the suspension to a values between 4.5 and 3.8 is
+in agreement with the literature data (Okada and Toguchi,
+1995), which suggested a degradation time of 60 days for
+similar PLGA particles obtained by conventional SE.
+Conclusions
+In this study, the successful upgrade of the batch SEE process
+to a continuous operating mode (SEE-CM) was illustrated.
+Taking the advantage of the large contact area between SC-
+CO2 and emulsion in the packed tower, SEE-CM allows the
+production of PLGA microparticles of different size in a
+robust and reproducible mode in only few minutes. Greater
+product uniformity, higher throughput with smaller plant
+volumes and elimination of batch-to batch repeatability
+problems were the important advantages observed.
+The measurement of droplet-to-particle shrinking factors
+and the monitoring of microdevice degradation in a
+Figure 8.
+a,b: SEM images (Magniﬁcation ¼ 30 000) related to a morphological study of PLGA microparticles degradation in water after 14 (a) and 34 days (b), respectively.
+The particles have a diameter of almost 3 mm and were produced by SEE-CM using a single (left side) and double w-o-w emulsions (right side).
+684
+Biotechnology and Bioengineering, Vol. 108, No. 3, March, 2011
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+aqueous media demonstrated that the internal structure of
+the PLGA microdevices is almost the same of the ones
+produced by conventional evaporating process; however,
+the faster solvent extraction will have a signiﬁcant effect on
+the size distribution of the precipitated particles which are
+always smaller than (or at least reproduce exactly) the size of
+the originally droplets, avoiding the aggregation phenomena
+that occur during conventional slower processes.
+References
+Brunner G. 2009. Counter-current separations. J Supercrit Fluids 47:574–
+582.
+Chattopadhyay P, Gupta RB. 2003. Supercritical CO2 based formation of
+silica nanoparticles using water-in-oil microemulsions. Ind Eng Chem
+Res 42:465–472.
+Chattopadhyay P, Shekunov BY, Yim D, Cipolla D, Boyd B, Farr S. 2007.
+Production of solid lipid nanoparticle suspensions using supercritical
+ﬂuid extraction of emulsions (SFEE) for pulmonary delivery using the
+AERx system. Adv Drug Del Rev 59:444–453.
+De S, Robinson DH. 2004. Particle size and temperature effect on the
+physical stability of PLGA nano-spheres and micro-spheres containing
+Bodipy. AAPS Pharm Sci Tech 5(4): article 53.
+Declercq HA, Gorski TL, Tielens SP, Schacht EH, Cornelissen MJ. 2005.
+Encapsulation of osteoblast seeded microcarriers into injectable,
+photopolymerizable three-dimensional scaffolds based on D,L-lactide
+and e-caprolactone. Biomacromolecules 6:1608–1614.
+Della Porta G, Reverchon E. 2008. Nanostructured microspheres produced
+by supercritical ﬂuid extraction of emulsion. Biotech Bioeng 100(5):
+1020–1033.
+Della Porta G, Volpe MC, Reverchon E. 2006. Supercritical cleaning of
+rollers for printing and packaging industry. J Supercrit Fluids 37:409–
+416.
+Della Porta G, Falco N, Reverchon E. 2010. Antiﬂammatory drugs release
+from injectable microspheres produced by supercritical ﬂuid emulsion
+extraction. J Pharm Sci 99(3):1484–1499.
+Ghaderi R, Artursson P, Carlfors J. 2000. A new method for preparing
+biodegradable microparticles and entrapment of hydrocortisone in
+DL-PLG microparticles using supercritical ﬂuids. Eur J Pharm Sci
+10(1):1–9.
+Ginty PJ, Whitaker MJ, Shakesheff KM, Howdle SM. 2005. Drug delivery
+goes supercritical? Nanotoday 42–48.
+Hong Y, Gao CY, Xie Y, Gong YH, Shen JC. 2005. Collagen-coated
+polylactide microspheres as chondrocyte microcarriers. Biomaterials
+26:6305–6313.
+Jaklenec A, Wan E, Murray ME, Mathiowitz E. 2008. Novel scaffolds
+fabricated from protein-loaded microspheres for tissue engineering.
+Biomaterials 29:185–192.
+Johansen P, Merkle HP, Gander B. 2000. Technological considerations
+related to the up-scaling of protein microencapsulation by spray-
+drying. Eur J Pharm Biopharm 50:413–417.
+Kang SW, Jeon O, Kim BS. 2005. Poly (lactic-co-glycolic acid) microspheres
+as an injectable scaffold for cartilage tissue engineering. Tissue Eng
+11:438–447.
+Kang YQ, Yin GF, Ping OY, Huang XB, Yao YD, Liao XM, Chen AZ, Pu
+XM. 2008. Preparation of PLLA/PLGA microparticles using solution
+enhanced dispersion by supercritical ﬂuids (SEDS). J Colloid Interface
+Sci 322(1):87–94.
+King MB, Mubarak A, Kim JD, Bott TR. 1992. The mutual solubilities of
+water with supercritical and liquid carbon dioxide. J Supercrit Fluids
+5:296–302.
+Kluge J, Fusaro F, Casas N, Mazzotti M, Muhrer G. 2009. Production of
+PLGA micro- and nanocomposites by supercritical ﬂuid extraction of
+emulsions: I. encapsulation of lysozyme, J Supercrit Fluids 50:327–335.
+Kongsombut B, Tsutsumi A, Suankaew N, Charinpanitkul T. 2009. Encap-
+sulation of SiO2 and TiO2 ﬁne powders with poly-lactic-co-glycolic acid
+by rapid expansion of supercritical CO2 incorporated with ethanol co-
+solvent. Ind Eng Chem Res 48:11230–11235.
+Lee LY, Wang CH, Smith KA. 2008. Supercritical antisolvent production of
+biodegradable micro and nanoparticles for controlled delivery of
+paclitaxel. J Control Release 25:96–106.
+Li WI, Anderson KW, Deluca PP. 1995. Kinetic and thermodynamic
+modelling of the formation of polymeric microspheres using solvent
+extraction/evaporation method. J Control Release 37:187–198.
+Li M, Rouand O, Poncelet D. 2008. Microencapsulation by solvent eva-
+poration: State of the art for process engineering approaches. Int J
+Pharm 363:26–39.
+Luten J, van Nostrum CF, De Smedt SC, Hennink WE. 2008. Biodegradable
+polymers as non-viral carriers for plasmid DNA delivery. J Control
+Release 126:97–110.
+Mao S, Shi Y, Li L, Xu J, Schaper A, Kissel T. 2008. Effects of process and
+formulation parameters on characteristics and internal morphology of
+poly(D,L-lactide-co-glycolide) microspheres formed by the solvent
+evaporation method. Eur J Pharm Biopharm 68:214–223.
+Mattea F, Martin A, Schulz C, Jaeger P, Eggers R, Cocero MJ. 2010. Behavior
+of an organic solvent drop during the supercritical extraction of
+emulsions. AIChE J 56(5):1184–1195.
+Meinel L, Illi OE, Zapf J, Malfanti M, Merkle HP, Gander B. 2001.
+Stabilizing insulin-like grow factor in poly (lactide-co glycolide) micro-
+spheres. J Control Release 70:193–202.
+Meng FT, Ma GH, Liu TD, Qui W, Su ZS. 2004. Microencapsulation of
+bovine hemoglobin with high bioactivity and high entrapment efﬁ-
+ciency using W/O/W double emulsion technique. Coll Surf B: Biointerf
+33:177–183.
+Mercier NR, Costantino HR, Tracy MA, Bonassar LJ. 2005. Poly(lactide-co-
+glycolide) microspheres as a moldable scaffold for cartilage tissue
+engineering. Biomaterials 26:1945–1952.
+Mundargi RC, Babu VR, Rangaswamy V, Patel P, Aminabhavi TM. 2008.
+Nano/micro technologies for delivering macromolecular therapeutics
+using poly (D,L lactide-co-glycolide) and its derivatives. J Control
+Release 125:193–209.
+Okada H, Toguchi H. 1995. Biodegradable microspheres in drug delivery.
+Crit Rev Ther Drug Carrier Syst 12(1):1–99.
+Pini R, Storti G, Mazzotti M, Tai HY, Shakesheff KM, Howdle SM. 2008.
+Sorption and swelling of poly(D,L-lactic acid) and poly(lactic-co-gly-
+colic acid) in supercritical CO2: An experimental and modeling study.
+J Polymer Sci B-Polymer Phys 46(5):483–496.
+Reverchon E, Della Porta G, Torino E. 2010. Production of metal oxide
+nanoparticles by supercritical emulsion reaction. J Supercrit Fluids
+53:95–101.
+Rosca ID, Watari F, Uo M. 2004. Microparticles formation and its mechan-
+ism in single and double emulsion by solvent evaporation. J Control
+Release 99:271–280.
+Sabirzyanov AN, Il’in AP, Akhunov AR, Gumerov FM. 2002. Solu-
+bility of water in supercritical carbon dioxide. High Temp 40(2):
+203–206.
+Shekunov BY, Chattopadhyay P, Seitzinger J, Huff R. 2006. Nanoparticles of
+poorly water-soluble drugs prepared by supercritical ﬂuid extraction of
+emulsions. Pharm Res 23(1):196–204.
+Singh M, Sandhu B, Scurto A, Berkland C, Detamore MS. 2010. Micro-
+spheres-based
+scaffolds
+for
+cartilage
+tissue
+engineering:
+Using
+subcritical CO2 as a sintering agent. Acta Biomater 6:137–143.
+Smith RL, Yamaguchi T, Sato T, Suzuki H, Arai K. 1998. Volumetric
+behavior of ethyl acetate, ethyl octanoate, ethyl laurate, ethyl linoleate
+and ﬁsh oil ethyl esters in the presence of supercritical CO2. J Supercrit
+Fluids 13:29–36.
+Verrijk R, Smolde IJ, Bosnie N, Begg AC. 1992. Reduction of systemic
+exposure and toxicity of cisplatin by encapsulation in poly (lactide-co-
+glycolide). Cancer Res 52:6653–6656.
+Von Burkersroda F, Schedl L, Go¨pferich A. 2002. Why degradable polymers
+undergo surface erosion or bulk erosion? Biomaterials 23:4221–
+4231.
+Porta et al.: SEE: Biopolymer Microparticles Production
+685
+Biotechnology and Bioengineering
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Walter E, Dreher D, Kok M, Thiele L, Kiama SG, Gehr P, Merkle HP. 2001.
+Hydrophylic poly(lactideco- glycolide) microspheres for the delivery of
+DNA to human derived macrophages and dentritic cells. J Control
+Release 76:149–168.
+Wiebe R, Gaddy V. 1940. The solubility of carbon dioxide in water at
+various temperatures from 12 to 408C and at pressures to 500
+atmospheres. Critical phenomena. J Am Chem Soc 62:815–817.
+Yang YY, Chia HH, Chung TS. 2000. Effect of preparation temperature on
+the characteristics and release proﬁles of PLGA microspheres contain-
+ing protein fabricated by double-emulsion solvent extraction/evapora-
+tion method. J Control Release 69:81–96.
+Young TJ, Johnston KP. 1999. Encapsulation of lysozyme by pre-
+cipitation with a vapor-over-liquid antisolvent. J Pharma Sci 88:
+640–650.
+686
+Biotechnology and Bioengineering, Vol. 108, No. 3, March, 2011
+ 10970290, 2011, 3, Downloaded from https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bit.22972 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

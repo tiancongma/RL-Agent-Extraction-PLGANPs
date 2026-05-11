@@ -1,0 +1,60 @@
+object_type	field_name	required	description	source_stage	normalization_later	evidence_role	notes
+formulation_identity_candidate	document_key	yes	Paper key for object grouping.	Stage2 LLM	no	grouping_anchor	Maps to document.zotero_key.
+formulation_identity_candidate	doi	no	Paper DOI when available in the extraction context.	Stage2 LLM	yes	grouping_anchor	Useful but not identity-defining inside one paper.
+formulation_identity_candidate	formulation_candidate_id	yes	Stage2 candidate-local formulation identifier.	Stage2 LLM	yes	object_id	Maps to formulation_identity.source_stage2_row_id before later canonicalization.
+formulation_identity_candidate	raw_formulation_label	no	Raw article-native formulation label.	Stage2 LLM	no	semantic_label	Preserve author wording exactly when possible.
+formulation_identity_candidate	parent_candidate_id	no	Raw parent or inherited formulation reference.	Stage2 LLM	yes	relation_hint	Used later for parent-link resolution.
+formulation_identity_candidate	instance_kind	yes	Primary identity routing label such as new_formulation or variant_formulation.	Stage2 LLM	yes	semantic_identity	Keep compact enum; reconcile deterministically later if needed.
+formulation_identity_candidate	formulation_role	no	Role label such as baseline, variant, control, or characterization_only.	Stage2 LLM	yes	semantic_identity	Useful for later Stage5 identity closure.
+formulation_identity_candidate	identity_confidence	no	Coarse confidence that the candidate is a distinct formulation identity.	Stage2 LLM	no	uncertainty_hint	Formulation-level only; avoid per-field confidence sprawl.
+formulation_identity_candidate	candidate_source	no	Source mode such as llm_extracted or deterministic_table_addition.	Stage2 LLM or deterministic	yes	provenance_hint	Deterministic additive rows may override this.
+formulation_identity_candidate	change_descriptions	no	Short raw change descriptions that explain what differs from related formulations.	Stage2 LLM	no	semantic_relation_hint	Keep concise; avoid arbitration narrative.
+formulation_identity_candidate	instance_context_tags	no	Compact semantic tags for context such as doe, sweep, or control.	Stage2 LLM	yes	semantic_relation_hint	Tags stay compact and non-exhaustive.
+formulation_identity_candidate	change_context_tags	no	Compact semantic tags for change interpretation.	Stage2 LLM	yes	semantic_relation_hint	Used later for conservative relation and closure logic.
+component_candidate	formulation_candidate_id	yes	Owning formulation candidate.	Stage2 LLM	yes	grouping_anchor	Links the component to one formulation candidate.
+component_candidate	component_id	yes	Stable within-payload component identifier.	Stage2 LLM	yes	object_id	Can be deterministically regenerated later.
+component_candidate	component_name_raw	yes	Raw component wording.	Stage2 LLM	yes	semantic_value	Preserve exact wording for audit.
+component_candidate	component_role_raw	yes	Raw role such as polymer, drug, surfactant, solvent, lipid, or additive.	Stage2 LLM	yes	semantic_value	Avoid fixed polymer or surfactant slots.
+component_candidate	phase_hint_raw	no	Raw phase assignment hint such as W1, O, W2, organic phase, or aqueous phase.	Stage2 LLM	yes	relation_hint	Phase-aware but low commitment.
+component_candidate	amount_expression_raw	no	Raw author-side amount expression.	Stage2 LLM	yes	semantic_value	Preserve direct mass, concentration, percentage, ratio, or volume forms.
+component_candidate	amount_kind_hint	no	Coarse hint such as mass, concentration, percent, volume, ratio, or unknown.	Stage2 LLM	yes	parse_hint	Deterministic parsing remains authoritative.
+component_candidate	parsed_value_raw	no	Raw numeric token surface if trivially available.	Stage2 LLM	yes	parse_hint	Do not force canonicalization here.
+component_candidate	parsed_unit_raw	no	Raw unit token surface if trivially available.	Stage2 LLM	yes	parse_hint	Useful for later deterministic conversion.
+component_candidate	component_properties_raw	no	Optional raw property list such as polymer MW text or LA:GA ratio text.	Stage2 LLM	yes	semantic_value	Use for family-specific properties without universalizing them.
+phase_candidate	formulation_candidate_id	yes	Owning formulation candidate.	Stage2 LLM	yes	grouping_anchor	Links the phase to one formulation candidate.
+phase_candidate	phase_id	yes	Stable within-payload phase identifier.	Stage2 LLM	yes	object_id	Can be regenerated deterministically.
+phase_candidate	phase_code_raw	yes	Raw phase wording or code.	Stage2 LLM	yes	semantic_value	Examples: W1, O, W2, organic phase.
+phase_candidate	phase_role_hint	no	Coarse normalized hint for the phase role.	Stage2 LLM	yes	parse_hint	Deterministic canonicalization remains later.
+phase_candidate	phase_order_hint	no	Order hint when the sequence matters.	Stage2 LLM	yes	relation_hint	Needed for W1/O/W2 style forms.
+process_step_candidate	formulation_candidate_id	yes	Owning formulation candidate.	Stage2 LLM	yes	grouping_anchor	Links process facts to one formulation candidate.
+process_step_candidate	process_step_id	yes	Stable within-payload process-step identifier.	Stage2 LLM	yes	object_id	Can be regenerated later.
+process_step_candidate	process_name_raw	yes	Raw preparation route or step wording.	Stage2 LLM	yes	semantic_value	Supports emulsion and non-emulsion routes.
+process_step_candidate	process_step_order_hint	no	Order hint when the paper clearly sequences steps.	Stage2 LLM	yes	relation_hint	Deterministic ordering can refine this later.
+process_step_candidate	parameter_name_raw	no	Raw process parameter name.	Stage2 LLM	yes	semantic_value	Examples: sonication time, stirring speed, evaporation time.
+process_step_candidate	parameter_expression_raw	no	Raw parameter value expression.	Stage2 LLM	yes	semantic_value	Keep raw expression instead of early conversion.
+variable_or_factor_candidate	formulation_candidate_id	yes	Owning formulation candidate.	Stage2 LLM	yes	grouping_anchor	Links the factor to the formulation identity it helps define.
+variable_or_factor_candidate	factor_id	yes	Stable within-payload factor identifier.	Stage2 LLM	yes	object_id	May later map to process or component records.
+variable_or_factor_candidate	factor_name_raw	yes	Raw manipulated variable or factor wording.	Stage2 LLM	yes	semantic_value	Not restricted to current CORE_FIELDS.
+variable_or_factor_candidate	factor_expression_raw	no	Raw reported expression for the factor value.	Stage2 LLM	yes	semantic_value	Supports arbitrary DOE expressions.
+variable_or_factor_candidate	factor_entity_hint	no	Hint about what the factor modifies such as component, phase, process, or measurement condition.	Stage2 LLM	yes	relation_hint	Deterministic consolidation resolves ownership later.
+variable_or_factor_candidate	identity_defining_signal	no	Whether the paper treats this factor as formulation-identity defining.	Stage2 LLM	yes	semantic_relation_hint	Low-commitment cue only.
+measurement_candidate	formulation_candidate_id	yes	Owning formulation candidate.	Stage2 LLM	yes	grouping_anchor	Links the measurement to one candidate formulation.
+measurement_candidate	measurement_id	yes	Stable within-payload measurement identifier.	Stage2 LLM	yes	object_id	Can be regenerated later.
+measurement_candidate	measurement_name_raw	yes	Raw measurement name.	Stage2 LLM	yes	semantic_value	Examples: size, PDI, zeta potential, EE, loading content.
+measurement_candidate	measurement_value_raw	no	Raw measurement value text.	Stage2 LLM	yes	semantic_value	Keep raw before canonical numeric parsing.
+measurement_candidate	measurement_unit_raw	no	Raw measurement unit text.	Stage2 LLM	yes	parse_hint	Needed for later deterministic conversion.
+measurement_candidate	statistic_qualifier_raw	no	Raw statistic qualifier such as mean, mean+sd, or single value.	Stage2 LLM	yes	parse_hint	Useful for later measurement normalization.
+measurement_candidate	measurement_context_raw	no	Raw contextual qualifier such as release timepoint or medium.	Stage2 LLM	yes	semantic_value	Keeps measurement context separate from identity.
+relation_cue	cue_id	yes	Stable within-payload relation cue identifier.	Stage2 LLM	yes	object_id	Can be regenerated later.
+relation_cue	cue_type	yes	Semantic link type such as inherits_from, varies_on, shared_with, or measured_for.	Stage2 LLM	yes	semantic_relation_hint	Keep cue ontology compact.
+relation_cue	source_object_ref	yes	Local source object identifier or formulation candidate id.	Stage2 LLM	yes	relation_hint	Can point to an object in the same payload.
+relation_cue	target_object_ref	yes	Local target object identifier or formulation candidate id.	Stage2 LLM	yes	relation_hint	Used later by deterministic materialization.
+relation_cue	cue_text	no	Short raw explanation for the semantic link.	Stage2 LLM	no	semantic_relation_hint	Avoid long arbitration notes.
+relation_cue	cue_confidence	no	Coarse confidence in the link.	Stage2 LLM	no	uncertainty_hint	Optional and compact.
+evidence_handoff	handoff_id	yes	Stable within-payload evidence handoff identifier.	Stage2 LLM	yes	object_id	Can be regenerated later.
+evidence_handoff	target_object_ref	yes	Local object identifier receiving the evidence hint.	Stage2 LLM	yes	binding_hint	Not final ownership binding.
+evidence_handoff	target_field_name	yes	Field on the local object that the source hint refers to.	Stage2 LLM	yes	binding_hint	Useful for later deterministic evidence assembly.
+evidence_handoff	source_region_type	yes	Coarse region type such as table_row, caption, methods_sentence, or results_sentence.	Stage2 LLM	yes	coarse_handoff	Coarse only; not audit-grade binding.
+evidence_handoff	source_locator_text	no	Short human-readable locator text.	Stage2 LLM	no	coarse_handoff	Examples: Table 2 row F3, methods paragraph on nanoprecipitation.
+evidence_handoff	supporting_snippet	no	Short excerpt for deterministic routing only.	Stage2 LLM	no	coarse_handoff	Do not treat this as final evidence ownership.
+evidence_handoff	support_role	no	Hint such as direct_support or contextual_support.	Stage2 LLM	yes	coarse_handoff	Downstream evidence binding remains authoritative.

@@ -1,0 +1,958 @@
+Biomedical Materials
+
+A modified double-emulsion method for the
+preparation of daunorubicin-loaded polymeric
+nanoparticle with enhanced in vitro anti-tumor
+activity
+To cite this article: Jie Liu et al 2010 Biomed. Mater. 5 065002
+
+View the article online for updates and enhancements.
+You may also like
+Experimental demonstration in X-band of
+dual-negative refraction in photonic
+crystals
+Guoyan Dong, Ke Bi, Ji Zhou et al.
+-
+A nonparametric measure of contrast in x-
+ray images
+M Anton, M Reginatto, S Schopphoven et
+al.
+-
+Indium Tin Oxide Electrode Modified by a
+NH2
++ Ion Implantation Technique for
+Determination of Daunorubicin
+Mingxing Zhang, Chunmei Guo and
+Jingbo Hu
+-
+This content was downloaded from IP address 129.2.89.164 on 22/10/2025 at 17:38
+
+IOP PUBLISHING
+BIOMEDICAL MATERIALS
+Biomed. Mater. 5 (2010) 065002 (10pp)
+doi:10.1088/1748-6041/5/6/065002
+A modiﬁed double-emulsion method for
+the preparation of daunorubicin-loaded
+polymeric nanoparticle with enhanced
+in vitro anti-tumor activity
+Jie Liu, Zhiye Qiu, Shenqi Wang, Lei Zhou and Shengmin Zhang1
+Advanced Biomaterials and Tissue Engineering Center, Huazhong University of Science and
+Technology, Wuhan 430074, People’s Republic of China
+E-mail: smzhang@mail.hust.edu.cn
+Received 5 July 2010
+Accepted for publication 23 August 2010
+Published 6 October 2010
+Online at stacks.iop.org/BMM/5/065002
+Abstract
+The encapsulation of hydrophilic drug in polymeric nanoparticles with high loading remains a
+challenge due to the rapid penetration of the drug to the external aqueous phase. In order to
+improve the encapsulation efﬁciency of daunorubicin (DNR) in poly(D,L-lactic-co-glycolic
+acid (PLGA) and poly(D,L-lactic acid) (PDLLA) nanoparticles, we fabricated a series of
+DNR-loaded nanoparticles using a modiﬁed double-emulsion solvent evaporation/diffusion
+method, which introduced a partially water-soluble organic solvent into the particle formation.
+The inﬂuence of various preparation parameters was investigated systematically, such as the
+ratio of organic solvent, the type of surfactant, the type of polymers and the molecular weight.
+Results showed that regular spherical PLGA nanoparticles with diameters of 200–300 nm
+could be produced with a remarkably high DNR encapsulation efﬁciency (>80%) and loading
+(6.5% (w/w)). Upon encapsulation, the sustained release of DNR could be controlled over
+2 weeks. The results of FT-IR and DSC analysis indicated that the encapsulated DNR in
+polymeric nanoparticles was inclusion, not absorption. Furthermore, optimized DNR/PLGA
+nanoparticles showed a signiﬁcant enhancement of cellular uptake, higher cytotoxicity against
+HL-60 cells compared with free DNR. These results were potentially useful for the
+nanoparticle formulation of hydrophilic chemotherapeutic drugs that require efﬁcient delivery
+to cancer cells as well as sustained release at the speciﬁc site.
+(Some ﬁgures in this article are in colour only in the electronic version)
+1. Introduction
+Acute myeloid leukemia (AML) is the most common form
+of acute leukemia in adults, particularly in individuals over
+60 years of age; it also accounts for 15–20% of cases
+in childhood [1].
+At present, chemotherapy remains the
+standard treatment of AML [2, 3].
+Daunorubicin (DNR)
+(scheme 1), an anthracycline antibiotic, has been extensively
+used in the treatment of AML [4, 5]. DNR is active against
+1 Author to whom any correspondence should be addressed.
+various hematological malignancies and solid tumors due to
+its intercalation of the planar aromatic ring system between
+the DNA base pairs.
+However, its efﬁcacy is restricted
+by dose-limiting toxicity, multi-drug resistance (MDR) and
+several drug-associated side effects, especially cardiotoxicity
+and myelosuppression [6–8].
+Hence, we propose the use
+of biodegradable polymeric nanoparticles, in which DNR
+is encapsulated, in a controlled release manner, reducing
+the toxic effects against normal cells whilst increasing its
+therapeutic activity.
+1748-6041/10/065002+10$30.00
+1
+© 2010 IOP Publishing Ltd
+Printed in the UK
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+(a)
+(b)
+(c)
+Scheme 1. Chemical and molecular structure of (a) DNR,
+(b) PLGA and (c) PDLLA.
+Among the drug delivery systems, the nanoparticles
+of
+biodegradable
+polymers
+such
+as
+poly(D,L-lactic-co-
+glycolic acid) (PLGA) and poly(D,L-lactic acid) (PDLLA)
+(scheme 1) have been considered as promising carriers for
+anticancer agents [9, 10]. PLGA and PLA are biocompatible,
+biodegradable materials that have been widely used for the
+drug delivery system and approved by the FDA for certain
+clinical uses. Their degradation can be varied from days to
+years by altering the type of polymer, the polymer molecular
+weight or the structure of the nanoparticles [11]. Due to the
+existence of the EPR (enhanced permeation and retention)
+effect in tumor tissues, nanoparticles containing an anti-
+cancer agent can be targeted passively to the tumor cell, and
+thus, improve the speciﬁcity of the pharmacodynamic action
+[12–16]. It was reported that nanoparticles could reverse the
+MDR of the cancer cell, which was one of the key factors
+leading to the failure of chemotherapy [17].
+This ﬁnding
+is of great importance for the particular case of DNR, since
+acquired resistance to the drug has already been reported [18].
+Therefore, PLGA or PLA nanoparticles appear to be a useful
+approach for overcoming certain kinds of drug resistance.
+The performance of the polymeric nanoparticles depends
+on
+several
+factors
+such
+as
+polymer
+nature
+(polymer
+composition and molecular weight), organic solvents, type and
+concentration of surfactant, etc [19]. The choice of a suitable
+nanoparticle preparation technique is largely dependent on
+the physicochemical properties of the drug and polymers.
+Commonly utilized techniques for nanoparticle fabrication
+are the nanoprecipitation technique [20, 21], the single
+or double emulsion solvent evaporation [22, 23] and the
+solvent diffusion technique [24]. For hydrophilic compound
+encapsulation, double emulsion solvent evaporation is the
+most popular technique among these preparation methods.
+However, the difﬁculty of the encapsulation of hydrophilic
+molecules into PLGA or PDLLA nanoparticles remains
+a problem [25–27].
+To address this problem, a regular
+double emulsion technique was modiﬁed by introducing water
+immiscible organic solvent dichloromethane (DCM) and water
+partial miscible solvent acetone (ACE) with a certain ratio
+during the polymeric nanoparticle fabrication process.
+We
+hypothesized that combining the double emulsion evaporation
+and diffusion technique at the same time could result in a
+better encapsulation efﬁciency of hydrophilic molecules in
+nanoparticles.
+The aim of this study is to fabricate and optimize the
+DNR-loaded PLGA or PDLLA nanoparticles in order to
+obtain a controlled DNR delivery system with high drug
+loading and encapsulation efﬁciency, and enhanced anti-
+tumor activity.
+The polymeric nanoparticles containing
+DNR were prepared using a modiﬁed simultaneous double-
+emulsion (W/O/W) solvent diffusion/evaporation method.
+The inﬂuence of various preparation parameters, such as the
+ratio of organic solvent, the type of surfactant, the type of
+polymer and its molecular weight, the level of drug loading
+on the characteristics of the nanoparticles and drug release,
+was investigated to optimize the nanoparticle formulation. In
+addition, we also investigated the drug release kinetics, in vitro
+the cellular uptake and cytotoxicity of DNR-loaded polymeric
+nanoparticles.
+2. Materials and methods
+2.1. Materials
+PDLLA (Mw = 190 000) was synthesized in our laboratory;
+PLGA (LA/GA ratio 50:50, Mw 50 000 and 100 000) was
+obtained from the Chengdu Institute of Organic Chemistry,
+Chinese Academy of Sciences. DNR (Pharmacia and Upjohn
+S.p.A) was provided by Tongji Medical College, Huazhong
+University of Science and Technology (HUST). DCM, ACE,
+gelatin, Pluronic F68, polyvinyl alcohol (PVA), Tween-80 and
+the other reagents were of analytical grade and purchased from
+Aldrich Chemical Co.
+The human leukemic HL-60 cell line was obtained from
+Tongji Medical College, HUST and cultured in an RPMI 1640
+medium supplemented with 10% of fetal calf serum (FCS) at
+37 ◦C in a humidiﬁed atmosphere containing 5% CO2.
+2.2. Preparation of DNR-loaded nanoparticles
+DNR-loaded nanoparticles were prepared using a modiﬁed
+simultaneous double-emulsion (water-in-oil-in-water) solvent
+evaporation/diffusion technique. Brieﬂy, 100 mg of PDLLA
+or PLGA was dissolved in 10 ml organic mixture of DCM
+and ACE with various ratios (from 5:
+0 to 2:
+1, v/v)
+containing Tween-80 (5%, v/v) as an emulsiﬁer. DNR was
+dissolved in 2 ml of distilled water, and then emulsiﬁed in
+the polymer solution through homogenization for 1 min ×
+2. The primary W/O emulsion was further added to 40 ml
+of external water with homogenization (3 min) to achieve the
+stable double emulsion (W/O/W). The resulting emulsion
+was dropped gradually into 200 ml of the aqueous solution
+with different surfactants (Pluronic F68, PVA, and gelatin)
+under steady stirring to make the nanoparticles solidify. The
+residual organic solvents were evaporated under negative
+pressure and the nanoparticles suspending in emulsion were
+collected by ultracentrifugation at 12 000 rpm and washed with
+distilled water three times. Finally, the products were dried by
+lyophilization and stored at 4 ◦C.
+2.3. Particle size and size distribution
+The mean particle diameter and size distribution of the
+nanoparticles were measured by a dynamic light scattering
+(DLS)
+method
+using
+a
+Zetasizer
+Nano
+ZS
+(Malvern
+Instruments, UK).
+2
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+2.4. Surface morphology of PLGA and PDLLA nanoparticles
+The shape and surface morphology of the nanoparticles were
+observed through a SEM (JEOL, JSM-5610LV, Japan and
+FEI, Sirion 200, USA). Particle samples were mounted on
+an aluminum stub using carbon adhesive tape and sputter-
+coated with a mixture of gold and palladium (60:40) in an
+argon atmosphere under low pressure using a Dynavac Mini
+Coater.
+2.5. Determination of drug loading and encapsulation
+efﬁciency
+The DNR content of nanoparticles was analyzed by a
+spectroﬂuorometer (Perkin-Elmer, LS-55).
+DNR-loaded
+nanoparticles (5 mg) were dissolved in dimethyl sulfoxide
+(DMSO, 1 ml).
+The ﬂuorescence intensity of DNR in
+the solution was measured at 590 nm emission wavelength
+(with 470 nm excitation wavelength).
+The concentration
+of DNR was calculated from a standard curve, prepared by
+measuring the ﬂuorescence intensity of known concentrations
+of free DNR. Drug loading and encapsulation efﬁciency were
+calculated as follows:
+drug loading %
+= weight of remained drug in the nanoparticles
+weight of polymeric nanoparticles
+× 100,
+(1)
+encapsulation efﬁciency % =
+actual drug loading
+theoretical drug loading × 100.
+(2)
+2.6. DSC analysis of DNR-loaded nanoparticles
+A differential scanning calorimetry (DSC) thermal analysis
+(Perkin Elmer, DSC-7, USA) was employed to investigate
+the physical status of the DNR inside the nanoparticles.
+In the DSC measurement, pure DNR, PDLLA, PLGA,
+DNR/PDLLA nanoparticles and DNR/PLGA nanoparticles
+were respectively heated from room temperature to 300 ◦C
+under a nitrogen atmosphere with the heating rate of 10 ◦C
+min−1, and then, the DSC thermal curves of those samples
+were obtained.
+2.7. Fourier transform infrared measurements
+A Fourier transform infrared spectrophotometer (FT-IR,
+Bruker, VERTEX 70, Germany) was employed to investigate
+the interactions between DNR and polymeric materials.
+DNR, PDLLA, PLGA, DNR/PDLLA nanoparticles and
+DNR/PLGA nanoparticles were scanned in the IR range from
+500 to 4000 cm−1.
+2.8. In vitro release proﬁles
+The rate of the DNR release from the nanoparticles was
+evaluated in the phosphate-buffered saline (PBS) solution.
+Brieﬂy, 10 mg of dried DNR-loaded nanoparticles were
+suspended in 10 ml of 0.01 M PBS (pH 7.4). The samples were
+placed in a thermostatic water bath at 37 ◦C with continuous
+agitation at about 100 rpm. At various preset intervals, the
+supernatant was withdrawn after centrifugation at 10 000 × g
+for 5 min, and replaced with an equal volume of the release
+medium. The amount of DNR released was measured by the
+spectroﬂuorometer.
+2.9. Cellular uptake assay
+An HL-60 cell line was used as a model cancer cell for the
+examination of endocytosis. HL-60 cells, at a density of 1 ×
+106 cells ml−1, were cultured in a 96-well plate and after 6 h,
+DNR-loaded PLGA nanoparticles and free DNR were added
+to the culture medium, both of which had the same DNR
+concentration of 0.5 μg ml−1. After various lengths of time,
+ranging from 30 to 180 min, cells were washed twice in ice-
+cold PBS and resuspended in 0.5 ml ice-cold PBS. The cells
+were then viewed and imaged by a ﬂuorescence microscope
+(Olympus, IX71).
+To obtain the accurate quantiﬁcation of
+DNR, the intracellular drug was determined for each scheduled
+time using a spectroﬂuorimeteric analysis [28]. Brieﬂy, the
+cells were incubated with DNR for various lengths of time and
+then washed twice with RPMI 1640 supplemented with 10%
+of FCS. Afterward the cells were centrifuged immediately at
+4 ◦C (1000 rpm for 5 min) and the pellets were suspended and
+lysed with 1.5 ml PBS containing 50 μg ml−1 proteinase K
+and 1% sodium dodecyl sulfate, followed by a 12 h shaking at
+37 ◦C. At the end of this period, the cell extracts were
+centrifuged at 3000 rpm for 10 min.
+The ﬂuorescence of
+the extracts was measured according to the method described
+in section 2.5.
+The results obtained were expressed as
+a percentage of the total amount of nanoparticles or free
+DNR found in the solubilized cells to the total amount of
+nanoparticles or free DNR applied to the cells.
+2.10. Cytotoxicity assays
+Cytotoxicity of free DNR and DNR-loaded nanoparticles was
+determined by measuring the inhibition of the cell growth
+using a tetrazolium dye (MTT) assay [29, 30]. HL-60 cells
+harvested in a logarithmic growth phase were seeded on a
+96-well plate at a cellular density of 7 × 105 cells ml−1.
+Following that, the cells were incubated for 24 h or 48 h
+with various concentrations (0.02–5 μg ml−1) of free DNR
+and DNR-loaded nanoparticles. Cell viability could then be
+determined using the MTT assay. MTT absorbance, which
+is related to the number of metabolically active cells, was
+measured using a microplate reader (Molecular Devices). The
+IC50 value (drug concentration resulting in the 50% inhibition
+of growth compared to controls) was directly determined from
+the dose-response.
+2.11. Statistical analysis
+Statistical tests were performed with a two-sided Student’s
+t-test.
+A P-value of 0.05 or less was considered to be
+statistically signiﬁcant.
+3
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+Scheme 2. Schematic illustration of the modiﬁed simultaneous double-emulsion solvent evaporation/diffusion process.
+Table 1. The effects of the volume ratio of organic solvent for DNR-loaded nanoparticlesa.
+Ratio of
+Particle
+Polydispersity
+Drug loading
+Encapsulation
+DCM:ACE (v:v)
+size (nm)
+index
+(%)
+efﬁciency (%)
+5 : 0
+416 ± 64
+0.251 ± 0.082
+2.1 ± 0.2
+26.3 ± 2.4
+4 : 1
+247 ± 35
+0.119 ± 0.022
+6.5 ± 0.3
+81.3 ± 3.8
+3 : 1
+208 ± 32
+0.107 ± 0.011
+3.2 ± 0.2
+40.1 ± 2.5
+2 : 1
+206 ± 33
+0.113 ± 0.014
+1.3 ± 0.1
+16.3 ± 1.9
+a The preparation parameters: PLGA (Mw = 50 000, 100 mg), organic solvent
+mixture (10 ml), surfactant (0.5% w/v, gelatin), volume ratio: W/O = 1:5. Data
+are given as mean ± SD (n = 3).
+Table 2. The effects of several aqueous surfactants for DNR-loaded nanoparticlesa.
+Concentration
+Particle
+Polydispersity
+Drug loading
+Encapsulation
+Surfactant
+(%, w/v)
+size (nm)
+index
+(%)
+efﬁciency (%)
+Pluronic F68
+0.5
+437 ± 89
+0.425 ± 0.091
+3.5 ± 0.4
+43.8 ± 4.9
+PVA
+0.5
+297 ± 45
+0.201 ± 0.032
+4.6 ± 0.5
+57.5 ± 6.3
+Gelatin
+0.5
+247 ± 35
+0.119 ± 0.022
+6.5 ± 0.3
+81.3 ± 3.8
+a The preparation parameters: PLGA (Mw = 50 000, 100 mg), organic solvent mixture (10 ml,
+DCM: ACE = 4 : 1), volume ratio: W/O = 1:5. Data are given as mean ± SD (n = 3).
+3. Results and discussion
+3.1. Effect of preparation conditions on the characteristics of
+the DNR-loaded nanoparticles
+The common double emulsion techniques for encapsulating
+hydrophilic drugs into polymeric nanoparticles suffer from
+low encapsulation efﬁciency, which is due to the drug rapidly
+penetrating from the inner aqueous phase to the external
+aqueous phase.
+In order to improve the encapsulation
+of hydrophilic drugs, we used a modiﬁed double-emulsion
+solvent diffusion/evaporation technique in which acetone
+was introduced into the emulsion process as a co-solvent
+(scheme
+2).
+The
+properties
+of
+DNR-loaded
+PLGA
+nanoparticles prepared by the modiﬁed technique utilizing
+different
+solvent
+ratios
+are
+summarized
+in
+table
+1.
+Nanoparticles prepared with only DCM showed the largest
+particle size (over 400 nm) and widest size distribution, lowest
+drug loading (2.1%) and encapsulation efﬁciency (26.3%).
+In contrast, the nanoparticles prepared with DCM: ACE
+mixture solvent at the ratio 4:1 exhibited the highest drug
+loading (6.5%) and encapsulation efﬁciency (81.3%).
+The
+explanation of this result is that the partial water-miscibility
+of acetone diffuses freely to the external aqueous phase and
+creates regions of local supersaturation near the interface,
+which induce polymer precipitation and solidiﬁcation once
+the critical concentration is reached, which could eventually
+prevent the rapid partitioning of hydrophilic drug content to
+the external aqueous phase [19, 31, 32]. It is also found that the
+size of PLGA nanoparticles decreased (from 416 to 206 nm)
+with increasing ACE ratio; this ﬁnding can be explained by
+the different nanoparticle formation mechanisms. ACE used
+in the modiﬁed particle preparation is partially water miscible,
+so the organic solvent can diffuse freely to the aqueous phase
+to further decrease the size of the emulsion droplet, whereas
+DCM does not diffuse extensively through the aqueous phase
+and maintains each droplet to form a single particle. It was
+also understandable that the drug loading and encapsulation
+efﬁciency were decreased with the increase of the ACE ratio
+of 4:1, since DNR rapidly penetrated the external aqueous
+phase while a large amount of ACE diffused out.
+The inﬂuence of the type of surfactant was also
+investigated.
+The particle size, polydispersity index (PDI),
+drug loading and encapsulation efﬁciency of the DNR-loaded
+PLGA nanoparticles are illustrated in table 2. The particle
+size and PDI were signiﬁcantly affected by the surfactant.
+For example, a small particle size (247 nm) with a small
+PDI (0.119) was obtained when the gelatin solution was used
+as an aqueous surfactant compared with the Pluronic F68
+batch where the particle size and PDI were 437 nm, 0.425,
+respectively. The drug loading and encapsulation efﬁciency of
+4
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+Table 3. The effects of polymer type and its molecular weight for DNR-loaded nanoparticlesa.
+Molecular weight
+Particle
+Polydispersity
+Drug loading
+Encapsulation
+Polymer
+of polymer (Da)
+size (nm)
+index
+(%)
+efﬁciency (%)
+PLGA
+50 000
+247 ± 35
+0.119 ± 0.022
+6.5 ± 0.3
+81.3 ± 3.8
+PLGA
+100 000
+282 ± 46
+0.174 ± 0.017
+5.9 ± 0.2
+73.9 ± 2.5
+PDLLA
+190 000
+287 ± 33
+0.211 ± 0.055
+3.1 ± 0.2
+38.8 ± 2.5
+a The preparation parameters: polymer (100 mg), organic solvent mixture (10 ml, DCM:
+ACE = 4 : 1), volume ratio: W/O = 1:5, surfactant (0.5% w/v, gelatin). Data are given as
+mean ± SD (n = 3).
+nanoparticles prepared by gelatin were also higher than those
+fabricated with Pluronic F68 and PVA. This ﬁnding could state
+that gelatin is more efﬁcient in stabilizing the emulsion formed
+during particle formation than Pluronic F68 and PVA, which
+may be attributed to their different structure and hydrophilic–
+lipophilic balance (HLB) [31].
+Besides the surfactant effect on particle size and
+drug loading, polymer type and its molecular weight also
+induced different particle characterization (table 3). PLGA
+nanoparticles with Mw = 50 000 had the smallest particle size
+of 247 nm compared with PLGA nanoparticles with Mw =
+100 000 with a size of 282 nm.
+This is due to the fact
+that increasing polymer molecular weight leads to increasing
+viscosity of the polymer solution, which is more difﬁcult to
+break up into smaller droplets at the same input power of
+homogenization.
+There was a clear trend of drug loading
+and encapsulation efﬁciency reduction when the GA/LA ratio
+was decreased.
+For example, the nanoparticles prepared
+with PLGA exhibited a higher encapsulation efﬁciency of
+81.3% compared with PDLLA, which had the encapsulation
+efﬁciency of only 38.8%. This may be due to the fact that the
+decrease of the GA unit in the polymer backbone decreased
+the hydrophilicity of the polymer, which reduced interaction
+between the DNR and polymer matrix [33]. Moreover, the
+low molecular weight of PLGA showed high drug loading and
+encapsulation efﬁciency.
+Figures 1(a)–(c) show the surface morphology of
+nanoparticles prepared with different surfactants. There were
+no signiﬁcant differences in morphology among the three
+formulations. Most nanoparticles were of regular spherical
+shape with smooth surfaces and without any aggregation or
+adhesion. It was noticeable that the nanoparticles fabricated
+with PVA and gelatin as surfactant were more homogeneous
+in size and distribution, which was consistent with DLS data.
+Some of the nanoparticles prepared with Pluronic F68 had
+a hollow structure, which can be observed from ﬁgure 1(a).
+This may be due to the fact that Pluronic F68 produced a large
+amount of foam after the homogenization of double emulsion;
+then the vaporization of the solvent and air bubbles inside
+the nanoparticles causes the disruption of the polymer ﬁlm
+[34, 35]. These results further indicated that gelatin was better
+than Pluronic F68 in particle formation.
+3.2. DSC analysis of DNR-loaded nanoparticles
+Figure 2 shows the DSC thermogram analysis, which provides
+qualitative information about the physical status of the drug in
+the nanoparticles. The pure DNR showed an endothermic peak
+(a)
+(b)
+(c)
+Figure 1. SEM images of the DNR-loaded polymeric nanoparticles
+with different surfactants: (a) Pluronic F68, (b) PVA, (c) gelatin.
+See table 2 for the details of the formulations.
+of melting at 164 ◦C (sample a). However, this process cannot
+be detected in the thermogram of drug-loaded nanoparticles
+5
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+(a)
+(b)
+(c)
+(d)
+(e)
+Figure 2. DSC thermograms of (a) DNR, (b) PDLLA, (c) PLGA,
+(d) DNR/PDLLA nanoparticles and (e) DNR/PLGA nanoparticles.
+(a)
+(b)
+(c)
+(d)
+(e)
+Figure 3. FT-IR spectra of (a) DNR, (b) PDLLA, (c) DNR/PDLLA
+nanoparticles, (d) PLGA and (e) DNR/PLGA nanoparticles.
+(samples d, e). It can be concluded that the DNR formulated
+in all batches of nanoparticles was in an amorphous or
+disordered-crystalline phase of a molecular dispersion or a
+solid solution state in the polymer matrix after the fabrication
+[36, 37]. Moreover, the pure polymer materials all exhibited
+a phase transition that corresponded to the amorphous solid
+material as the endothermal peaks appeared around 55 ◦C.
+DNR-loaded polymeric nanoparticles exhibited a lower glass
+transition temperature compared with pure materials, which
+may be due to the incorporation of drug micromolecule [38].
+3.3. FT-IR analysis
+Figure 3 exhibits the FT-IR spectra of DNR, PDLLA, PLGA,
+DNR/PDLLA nanoparticles and DNR/PLGA nanoparticles.
+(a)
+(b)
+Figure 4. (a) The effect of the polymer type used for DNR release
+proﬁle from the nanoparticles. (b) The effect of loading on the rate
+of release of DNR from the nanoparticles. Data are given as
+mean ± SD (n = 3).
+As shown in the ﬁgure, broad strong characteristic peaks at
+3200–3400 cm−1 correspond to N–H and O–H stretching for
+the pure DNR (ﬁgure 3(a)), and the strong characteristic peak
+at 1746 cm−1 corresponds to –C=O stretching for the PDLLA
+and PLGA (ﬁgures 3(b) and (d)). The FT-IR spectra of the
+DNR-loaded polymeric nanoparticles (ﬁgures 3(c) and (e))
+show peaks at 3450 cm−1 due to N–H stretching vibration and
+at 2924 cm−1 due to C–H stretching vibration for the DNR, and
+there are no signiﬁcant shifts in other bands for DNR, PDLLA
+and PLGA, which suggests the encapsulation of DNR into
+nanoparticles without strong chemical interactions.
+3.4. In vitro drug release
+Figure 4(a) shows the release proﬁles of DNR from the
+different nanoparticles. Although there are different release
+rates of DNR from the different nanoparticles, the overall trend
+of the release is the same, which follows a biphasic release
+kinetic—an initial burst release in the ﬁrst day, followed by a
+constant release over 14 days. The results indicated that the
+initial burst release decreased when the polymer molecules
+6
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+Figure 5. In vitro HL-60 cells uptake efﬁciency of DNR-loaded
+PLGA nanoparticles (NP) compared with free DNR. Data are given
+as mean ± SD (n = 3). ∗∗p < 0.01 compared with free DNR.
+increased.
+For example, 45% of the encapsulated DNR
+released from the PLGA (Mw 50 000) nanoparticles compared
+with the 23% burst release from the PLGA (Mw 100 000)
+nanoparticles. Furthermore, the initial release of DNR from
+Figure 6. Fluorescence microscopic images showed the time dependence of HL-60 cells uptake of DNR-loaded nanoparticles and free DNR
+within 3 h (magniﬁcation, 200×).
+PDLLA nanoparticles was restricted compared with that from
+PLGA nanoparticles.
+After the initial release, there was a
+constant slow release of DNR. The slow release rate of DNR
+from the nanoparticles depended on the degradation of the
+polymer matrix; since the degradation of PDLLA is slow, only
+25% of payload released from the PDLLA nanoparticles after
+2 weeks incubation.
+Besides the polymer type,
+the drug loading also
+inﬂuenced the drug release rate.
+Drug release from the
+nanoparticles made from PDLLA with different drug loadings
+(lower loading: 3.1%, higher loading: 5.2%) is shown in
+ﬁgure 4(b).
+It can be found that two release proﬁles have
+similar shape, but the higher drug loading leads to a higher
+initial burst release, which might be attributed to the high
+accumulation of the DNR on the surface or near the surface of
+the nanoparticles at a high drug loading level [39, 40].
+3.5. Cellular uptake of DNR-loaded nanoparticles
+The uptake of DNR-loaded PLGA nanoparticles (highest
+loading formulation) into HL-60 cells in comparison to free
+drug was quantitatively analyzed by a spectroﬂuorimetery
+method. Figure 5 shows the uptake efﬁciency of nanoparticles
+containing DNR by HL-60 cells over an interval of 3 h
+incubation time. Nanoparticle uptake was ﬁrst observed after
+30 min of incubation and it gradually increased to 30% uptake
+efﬁciency following 3 h of incubation. Compared with the
+7
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+(a)
+(b)
+Figure 7. Survival curves of HL-60 cells after exposure to free
+DNR and DNR-loaded PLGA nanoparticles for 24 h (a) and 48 h
+(b). Data are given as mean ± SD (n = 3).
+free drug treatment group, the nanoparticle treatment group
+resulted in a signiﬁcantly higher drug accumulation within
+HL-60 cells; this can be attributed to the fact that nanoparticles
+were more readily internalized by an endocytosis mechanism,
+while free DNR was transported into cells by a passive
+diffusion mechanism [41–43].
+Other evidence to support that nanoparticles as a drug
+carrier can enhance DNR cellular uptake is the ﬂuorescence
+microscope image; ﬁgure 6 shows the internalization of the
+DNR-loaded nanoparticle in HL-60 cells with various lengths
+of time. The cells incubated with DNR-loaded nanoparticles
+showed an increase in ﬂuorescence intensity with an increase
+in incubation time, which is consistent with the quantitative
+measurement of the ﬂuorescence intensity of cellular uptake.
+Furthermore, the nanoparticles featured in the pictures were
+actually particles internalized by the cells and not those bound
+to the cell surface.
+3.6. Cytotoxicity assay
+To examine whether PLGA-encapsulated DNR maintains its
+anticancer activity, the drug-loaded nanoparticles were applied
+on the cells to investigate their anti-tumor effect on cancer
+cells. Figure 7 shows the survival curves of HL-60 cells after
+exposure to DNR, either in solution or in nanoparticles for
+24 h and 48 h, respectively. The cytotoxicity was observed
+after 24 h exposure and increased in all cases with longer
+(48 h) exposure. The amount of DNR required to achieve 50%
+of growth inhibition (IC50) was much higher in nanoparticles
+than in the solution after 24 h (DNR-loaded nanoparticle:
+IC50 = 2.05 μg ml−1; free DNR: IC50 = 0.37 μg ml−1).
+A possible explanation of this phenomenon is that DNR, as a
+widely utilized clinical medicine to inhibit leukemia, has a high
+sensitivity on the HL-60 cell [44–46], while the cytotoxicity
+of DNR-loaded nanoparticles is determined by a sustained
+release of DNR from nanoparticles after internalization within
+cells [42, 47].
+By comparing the survival curve in ﬁgure 7(a) with that in
+ﬁgure 7(b), it could be observed that at the DNR concentration
+of 0.5 μg ml−1, the cell viability dropped from 45% in 24 h
+to 40% in 48 h when exposed to free DNR, while the viability
+when exposed to DNR nanoparticles witnessed a sharp decline
+from 71% in 24 h to 35% in 48 h.
+Moreover, with the
+increase of incubation time, the IC50 of DNR nanoparticles
+decreased from 2.05 to 0.18 μg ml−1 after 48 h exposure,
+whereas the IC50 of free DNR decreased from 0.37 to
+0.11 μg ml−1. This is clear evidence that the DNR nanoparticle
+controlled release system is able to provide sustained drug
+concentration and results in long-term enhanced cytotoxicity.
+Furthermore, we noted that less than 50% of DNR was released
+from PLGA nanoparticles during the ﬁrst 48 h according to
+the in vitro drug release data (ﬁgure 4), suggesting that the
+drug-loaded nanoparticles are even more potent on a per drug
+released basis.
+4. Conclusions
+In
+this
+study,
+the
+modiﬁed
+double
+emulsion
+solvent
+evaporation/extraction with the co-solvent technique was
+used for the encapsulation of hydrophilic drug DNR into
+PLGA and PDLLA nanoparticles, which resulted in improved
+formulation characteristics including smaller size and PDI,
+higher drug loading and encapsulation efﬁciency. Compared
+to free DNR, optimized DNR-loaded PLGA nanoparticle
+formulation showed a controllable drug release proﬁle, a
+signiﬁcant enhancement of cellular uptake, higher cytotoxicity
+along with prolonged incubation against HL-60 cells.
+The
+results of the present study indicate that optimized polymeric
+nanoparticle formulation could be potentially used for
+hydrophilic drug or nucleic acid delivery systems in cancer
+therapy.
+Acknowledgments
+The ﬁnancial support from the NSFC under the contract
+numbers 30570493, 30870624 and National High-Tech R&D
+Project of China (‘863’ Program) under the grant numbers
+2006AA03Z439, 2007AA021901 is gratefully acknowledged.
+References
+[1] Redaelli A, Botteman M F, Stephens J M, Brandt S and
+Pashos C L 2004 Economic burden of acute myeloid
+leukemia: a literature review Cancer Treat. Rev. 30 237–47
+[2] Lowenberg B, Downing J R and Burnett A 1999 Acute
+myeloid leukemia New Engl. J. Med. 341 1051
+8
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+[3] Leith C P, Kopecky K J, Godwin J, McConnell T, Slovak M L,
+Chen I, Head D R, Appelbaum F R and Willman C L 1997
+Acute myeloid leukemia in the elderly: assessment of
+multidrug resistance (MDR1) and cytogenetics
+distinguishes biologic subgroups with remarkably distinct
+responses to standard chemotherapy. A Southwest
+Oncology Group study Blood 89 3323–9
+[4] Gewirtz D A 1999 A critical evaluation of the mechanisms of
+action proposed for the antitumor effects of the
+anthracycline antibiotics adriamycin and daunorubicin
+Biochem. Pharmacol. 57 727–41
+[5] Smith R E, Bryant J, DeCillis A and Anderson S 2003 Acute
+myeloid leukemia and myelodysplastic syndrome after
+doxorubicin-cyclophosphamide adjuvant therapy for
+operable breast cancer: the National Surgical Adjuvant
+Breast and Bowel Project Experience J. Clin. Oncol.
+21 1195
+[6] Ghosh A K, Khan S, Marini F, Nelson J A and Farquhar D
+2000 A daunorubicin [beta]-galactoside prodrug for use in
+conjunction with gene directed enzyme prodrug therapy
+Tetrahedron Lett. 41 4871–4
+[7] Ax W, Soldan M, Koch L and Maser E 2000 Development of
+daunorubicin resistance in tumour cells by induction of
+carbonyl reduction Biochem. Pharmacol. 59 293–300
+[8] Fan L, Li F, Zhang H, Wang Y, Cheng C, Li X, Gu C, Yang Q,
+Wu H and Zhang S 2010 Co-delivery of PDTC and
+doxorubicin by multifunctional micellar nanoparticles to
+achieve active targeted drug delivery and overcome
+multidrug resistance Biomaterials 31 5634–42
+[9] Hans M L and Lowman A M 2002 Biodegradable
+nanoparticles for drug delivery and targeting Curr. Opin.
+Solid State Mater. Sci. 6 319–27
+[10] Cleland J L, Johnson O F L, Putney S and Jones A J S 1997
+Recombinant human growth hormone
+poly(lactic-co-glycolic acid) microsphere formulation
+development Adv. Drug Deliv. Rev. 28 71–84
+[11] Anderson J M and Shive M S 1997 Biodegradation and
+biocompatibility of PLA and PLGA microspheres Adv.
+Drug Deliv. Rev. 28 5–24
+[12] Maeda H, Bharate G Y and Daruwalla J 2009 Polymeric drugs
+for efﬁcient tumor-targeted drug delivery based on
+EPR-effect Eur. J. Pharm. Biopharm. 71 409–19
+[13] Hino T, Kawashima Y and Shimabayashi S 2000 Basic study
+for stabilization of w/o/w emulsion and its application to
+transcatheter arterial embolization therapy Adv. Drug Deliv.
+Rev. 45 27–45
+[14] Fahmy T M, Fong P M, Goyal A and Saltzman W M 2005
+Targeted for drug delivery Mater. Today 8 18–26
+[15] Lin R and Ng S 2005 In vitro study of anticancer drug
+doxorubicin in PLGA-based microparticles Biomaterials
+26 4476–85
+[16] Dong Y and Feng S S 2004 Methoxy poly(ethylene
+glycol)-poly(lactide) (MPEG-PLA) nanoparticles for
+controlled delivery of anticancer drugs Biomaterials
+25 2843–9
+[17] Brigger I, Dubernet C and Couvreur P 2002 Nanoparticles in
+cancer therapy and diagnosis Adv. Drug Deliv. Rev.
+54 631–51
+[18] Roovers D J, van Vliet M, Bloem A C and Lokhorst H M 1999
+Idarubicin overcomes P-glycoprotein-related multidrug
+resistance: comparison with doxorubicin and daunorubicin
+in human multiple myeloma cell lines Leuk. Res. 23 539–48
+[19] Sahana D K, Mittal G, Bhardwaj V and Kumar M 2007 PLGA
+nanoparticles for oral delivery of hydrophobic drugs:
+inﬂuence of organic solvent on nanoparticle formation and
+release behavior in vitro and in vivo using estradiol as a
+model drug J. Pharm. Sci. 97 1530–42
+[20] Barichello J M, Morishita M, Takayama K and Nagai T 1999
+Encapsulation of hydrophilic and lipophilic drugs in PLGA
+nanoparticles by the nanoprecipitation method Drug Dev.
+Ind. Pharm. 25 471–6
+[21] Anand P, Nair H B, Sung B, Kunnumakkara A B, Yadav V R,
+Tekmal R R and Aggarwal B B 2010 Design of
+curcumin-loaded PLGA nanoparticles formulation with
+enhanced cellular uptake, and increased bioactivity in vitro
+and superior bioavailability in vivo Biochem. Pharmacol.
+79 330–8
+[22] Rosca I D, Watari F and Uo M 2004 Microparticle formation
+and its mechanism in single and double emulsion solvent
+evaporation J. Control. Release 99 271–80
+[23] Zambaux M F, Bonneaux F, Gref R, Maincent P,
+Dellacherie E, Alonso M J, Labrude P and Vigneron C 1998
+Inﬂuence of experimental parameters on the characteristics
+of poly(lactic acid) nanoparticles prepared by a double
+emulsion method J. Control. Release 50 31–40
+[24] Murakami H, Kobayashi M, Takeuchi H and Kawashima Y
+1999 Preparation of poly(lactide-co-glycolide)
+nanoparticles by modiﬁed spontaneous emulsiﬁcation
+solvent diffusion method Int. J. Pharm. 187 143–52
+[25] Govender T, Stolnik S, Garnett M C, Illum L and Davis S S
+1999 PLGA nanoparticles prepared by nanoprecipitation:
+drug loading and release studies of a water soluble drug
+J. Control. Release 57 171–85
+[26] Tewes F, Munnier E, Antoon B, Ngaboni Okassa L,
+Cohen-Jonathan S, Marchais H, Douziech-Eyrolles L,
+Souce M, Dubois P and Chourpa I 2007 Comparative study
+of doxorubicin-loaded poly(lactide-co-glycolide)
+nanoparticles prepared by single and double emulsion
+methods Eur. J. Pharm. Biopharm. 66 488–92
+[27] Cohen-Sela E, Teitlboim S, Chorny M, Koroukhov N,
+Danenberg H D, Gao J and Golomb G 2009 Single and
+double emulsion manufacturing techniques of an
+amphiphilic drug in PLGA nanoparticles: formulations of
+mithramycin and bioactivity J. Pharm. Sci. 98 1452–62
+[28] Andrivon W, Monneret C, Nafziger J, Florent J C
+and Guillosson J J 1998 A new anthracycline with potent
+anti-leukemic activity overcomes P-glycoprotein multidrug
+resistance Leuk. Res. 22 719–25
+[29] He Q and Jiang D 1999 A novel aminosteroid is active for
+proliferation inhibition and differentiation induction of
+human acute myeloid leukemia HL-60 cells Leuk. Res.
+23 369–72
+[30] Pae H O, Seo W G, Kim N Y, Oh G S, Kim G E, Kim Y H,
+Kwak H J, Yun Y G, Jun C D and Chung H T 2001
+Induction of granulocytic differentiation in acute
+promyelocytic leukemia cells (HL-60) by water-soluble
+chitosan oligomer Leuk. Res. 25 339–46
+[31] Cohen-Sela E, Chorny M, Koroukhov N, Danenberg H D
+and Golomb G 2009 A new double emulsion solvent
+diffusion technique for encapsulating hydrophilic molecules
+in PLGA nanoparticles J. Control. Release 133 90–5
+[32] Mora-Huertas C E, Fessi H and Elaissari A 2010
+Polymer-based nanocapsules for drug delivery Int. J.
+Pharm. 385 113–42
+[33] Takenaga M, Yamaguchi Y, Kitagawa A, Ogawa Y, Kawai S,
+Mizushima Y and Igarashi R 2004 Optimum formulation
+for sustained-release insulin Int. J. Pharm. 271 85–94
+[34] Yang Y Y, Chung T S, Bai X L and Chan W K 2000 Effect of
+preparation conditions on morphology and release proﬁles
+of biodegradable polymeric microspheres containing
+protein fabricated by double-emulsion method Chem. Eng.
+Sci. 55 2223–36
+[35] Kuntsche J, Koch M H J, Steiniger F and Bunjes H 2010
+Inﬂuence of stabilizer systems on the properties and phase
+behavior of supercooled smectic nanoparticles J. Colloid
+Interface Sci. 350 229–39
+[36] Dubernet C 1995 Thermoanalysis of microspheres
+Thermochim. Acta 248 259–69
+9
+
+Biomed. Mater. 5 (2010) 065002
+J Liu et al
+[37] Mu L and Feng S S 2002 Vitamin E TPGS used as emulsiﬁer
+in the solvent evaporation/extraction technique for
+fabrication of polymeric nanospheres for controlled release
+of paclitaxel (Taxol) J. Control. Release 80 129–44
+[38] Bouissou C, Rouse J J, Price R and Van Der Walle C F 2006
+The inﬂuence of surfactant on PLGA microsphere glass
+transition and water sorption: remodeling the surface
+morphology to attenuate the burst release Pharm. Res.
+23 1295–305
+[39] O’Hagan D T, Jeffery H and Davis S S 1994 The preparation
+and characterization of poly(lactide-co-glycolide)
+microparticles: III. Microparticle/polymer degradation
+rates and the in vitro release of a model protein Int. J.
+Pharm. 103 37–45
+[40] Cui F, Cun D, Tao A, Yang M, Shi K, Zhao M and Guan Y
+2005 Preparation and characterization of melittin-loaded
+poly(DL-lactic acid) or poly(DL-lactic-co-glycolic acid)
+microspheres made by the double emulsion method J.
+Control. Release 107 310–9
+[41] Cartiera M S, Johnson K M, Rajendran V, Caplan M J
+and Saltzman W M 2009 The uptake and intracellular fate
+of PLGA nanoparticles in epithelial cells Biomaterials
+30 2790–8
+[42] Yoo H S, Lee K H, Oh J E and Park T G 2000 In vitro and
+in vivo anti-tumor activities of nanoparticles based on
+doxorubicin-PLGA conjugates J. Control. Release
+68 419–31
+[43] Liu J, Jiang Z, Zhang S and Saltzman W M 2009
+Poly([omega]-pentadecalactone-co-butylene-co-succinate)
+nanoparticles as biodegradable carriers for camptothecin
+delivery Biomaterials 30 5707–19
+[44] LotﬁK, Zackrisson A L and Peterson C 2002 Comparison of
+idarubicin and daunorubicin regarding intracellular uptake,
+induction of apoptosis, and resistance Cancer Lett.
+178 141–9
+[45] Miglietta A, Cavalli R, Bocca C, Gabriel L and Rosa Gasco M
+2000 Cellular uptake and cytotoxicity of solid lipid
+nanospheres (SLN) incorporating doxorubicin or paclitaxel
+Int. J. Pharm. 210 61–7
+[46] Talelli M, Iman M, Varkouhi A K, Rijcken C J F,
+Schiffelers R M, Etrych T, Ulbrich K, van Nostrum C F,
+Lammers T and Storm G 2010 Core-crosslinked
+polymeric micelles with controlled release of
+covalently entrapped doxorubicin Biomaterials
+31 7797–804
+[47] Ma P, Dong X, Swadley C L, Gupte A, Leggas M,
+Ledebur H C and Mumper R J 2009 Development of
+idarubicin and doxorubicin solid lipid nanoparticles to
+overcome Pgp-mediated multiple drug resistance in
+leukemia J. Biomed. Nanotechnol. 5 151–61
+10

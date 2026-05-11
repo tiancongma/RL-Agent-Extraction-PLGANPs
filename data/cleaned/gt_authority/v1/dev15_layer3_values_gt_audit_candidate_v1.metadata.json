@@ -1,0 +1,27 @@
+{
+  "artifact": "dev15_layer3_values_gt_audit_candidate_v1.tsv",
+  "source_gt": "data/cleaned/gt_authority/v1/dev15_layer3_values.tsv",
+  "generation_policy": "candidate GT audit table based on existing human GT plus user-confirmed source/governance corrections; not generated from system final-table values; does not overwrite authoritative GT.",
+  "changes_applied": [
+    "BXCV5XWB: removed six benchmark_default_include=no FITC/blank helper rows from main Layer3 candidate GT; kept three KGN-loaded formulations.",
+    "INMUTV7L: source-backed candidate GT audit filled PDI, zeta_mV, pH_raw, surfactant concentration units/values, corrected row 12 EE from 0.94 to 94.0 %, and removed non-source reviewer suffixes from polymer_grade.",
+    "UFXX9WXE: source-backed candidate updates for polymer_mw_raw direct raw range, 3 h stirring/evaporation, and PDI rows 1-27; zeta figure-derived F10 left for confirmation.",
+    "BB3JUVW7: source-backed candidate updates for nanosphere method/PDI/zeta/%DL field placement/aqueous-phase volume/centrifugation time and nanorod drug_mass/helper/PVA/no-LC corrections; controlled-vocabulary/axis questions queued.",
+    "WIVUCMYG: source-backed candidate updates for method_type solvent displacement as nanoprecipitation and Table 2 PDI/zeta; coded-to-actual pH left for confirmation.",
+    "WFDTQ4VX: source-backed GT candidate corrections for centrifugation_g, no sonication, LA:GA normalized, non-direct polymer masses cleared, CP3 EE fixed, and ambiguous derived mass/concentration questions queued.",
+    "YGA8VQKU: source-backed GT candidate corrections for PLGA grades, LA:GA, solvent displacement method, zeta_mV, and high-viscosity direct preparation constants; coded-to-actual DOE values queued for confirmation.",
+    "L3H2RS2H: source-backed GT candidate corrections for μg/mL units, Pluronic F-68 names/concentrations, empty-row drug removal, and selected PDI/zeta table values; schema/label/helper questions queued.",
+    "5GIF3D8W: source-backed corrections for PCL MW/method, empty drug, LA:GA raw, PDI/zeta, evaporation time; default-condition inheritance questions queued.",
+    "5ZXYABSU: source-backed corrections for polymer grade, NPB2/NPB3 labels, Labrafil name, EE, size/zeta, Rh drug identity, no sonication, stirring/evaporation/centrifugation; polysorbate conflict queued.",
+    "V99GKZEI: source-backed corrections for method, sonication, W/O/W volumes, centrifugation time, PDI, MW raw, trehalose; overnight/rpm/MW normalization questions queued.",
+    "7ZS858NS: source-backed corrections for method, Solutol concentration split, polymer grade, centrifugation rpm, PDI, zeta; viscosity/speed/cryoprotectant scope questions queued.",
+    "PA3SPZ28: source-backed corrections for Purasorb grade, unsupported MW/stirring/centrifuge-time removals, prep centrifuge rpm, overnight evaporation, FITC/GAR mass units, blank result clearing, GAR EE/PDI/zeta; derived/scope questions queued.",
+    "QLYKLPKT: source-backed corrections for MW raw, polymer concentration, no formulation sonication, evaporation time, PDI/zeta, and ratio-label cleanup; unit-conversion/derived/prep-vs-characterization questions queued.",
+    "RHMJWZX8: source-backed corrections for solvent diffusion method, no sonication, 12 h stirring, polysorbate concentration split, DL/PDI/zeta; empty-row and derived concentration questions queued."
+  ],
+  "row_count_before": 210,
+  "row_count_after": 204,
+  "change_log": "analysis/layer3_field_repairs/dev15_layer3_gt_audit_candidate_v1_change_log.tsv",
+  "benchmark_valid": "candidate_gt_audit_only",
+  "last_updated_for_gt_audit": "7ZS858NS PA3SPZ28 QLYKLPKT RHMJWZX8 source-backed cell updates"
+}

@@ -1,0 +1,24 @@
+{
+  "paper_key": "L3H2RS2H",
+  "selector_calibration_version": "v2",
+  "archetype": "multiple_formulation_tables_with_shared_context",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph",
+      "primary preparation-method paragraph",
+      "multiple distinct authoritative tables if each contributes non-overlapping formulation information"
+    ],
+    "should_drop": [
+      "table-adjacent proxy paragraphs duplicated by selected tables",
+      "fallback text that does not add distinct formulation context"
+    ],
+    "minimal_evidence_set": [
+      "1 materials block",
+      "1 preparation block",
+      "1-2 authoritative table blocks"
+    ]
+  },
+  "selection_notes": [
+    "Multiple tables are acceptable when they are genuinely distinct evidence surfaces rather than proxy echoes."
+  ]
+}

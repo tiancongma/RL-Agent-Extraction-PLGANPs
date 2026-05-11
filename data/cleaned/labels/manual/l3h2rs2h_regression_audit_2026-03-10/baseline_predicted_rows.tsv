@@ -1,0 +1,9 @@
+local_instance_id	raw_formulation_label	instance_kind	parent_instance_id	change_descriptions	match_key
+F1	Empty nanospheres	new_formulation		[]	('NS', 'empty', '', '')
+F2	XAN nanospheres (theoretical 60 mg/mL)	variant_formulation	F1	"[""Loading with Xanthone (XAN)""]"	('NS', 'xan', '60', '')
+F3	3-MeOXAN nanospheres (theoretical 60 mg/mL)	variant_formulation	F1	"[""Loading with 3-Methoxyxanthone (3-MeOXAN)""]"	('NS', '3meoxan', '60', '')
+F4	Empty nanocapsules (0.6 mL Myritol 318)	new_formulation		"[""Prepared as nanocapsules (reservoir-type systems) with Myritol 318 as oily core (0.6 mL volume)""]"	('NC', 'empty', '', '0.6')
+F5	XAN nanocapsules (optimized, 0.6 mL Myritol 318)	variant_formulation	F4	"[""Loading with Xanthone (XAN)"", ""Theoretical concentration of Myritol 318: 1.2% (w/v)"", ""Volume of Myritol 318: 0.6 mL""]"	('NC', 'xan', '', '0.6')
+F6	3-MeOXAN nanocapsules (optimized, 0.6 mL Myritol 318)	variant_formulation	F4	"[""Loading with 3-Methoxyxanthone (3-MeOXAN)"", ""Theoretical concentration of Myritol 318: 2.8% (w/v)"", ""Volume of Myritol 318: 0.6 mL""]"	('NC', '3meoxan', '', '0.6')
+F7	XAN nanoemulsions	candidate_non_formulation		"[""Omitted PLGA polymer in organic phase compared to nanocapsules preparation""]"	('UNK', 'xan', '', '')
+F8	3-MeOXAN nanoemulsions	candidate_non_formulation		"[""Omitted PLGA polymer in organic phase compared to nanocapsules preparation""]"	('UNK', '3meoxan', '', '')

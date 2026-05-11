@@ -1,0 +1,1852 @@
+## Materials Methods
+Docetaxel was obtained from Glenmark Pharmaceuticals (Mumbai, India). PLGA (lactide:glycolide
+ratio of 75:25--Resomer 752H) was a generous gift from Evonik Industries (Mumbai, India). Poloxamer
+188 (PLX-188) was purchased from BASF (Mumbai, India) and mannitol was purchased from Sigma
+Aldrich (Mumbai, India). Organic solvents (ethyl-acetate, acetone, acetonitrile) were purchased from
+Fisher Scientific (Mumbai, India) and were of analytical grade.
+
+2.1. Preparation of Docetaxel Nanoparticles (NPs)
+
+DTX-NPs were prepared by simple oil in water (o/w) single emulsification-solvent evaporation
+process as per available literature with minor modifications to suit laboratory conditions . In brief,
+PLGA and docetaxel were solubilized in 2 mL of organic phase. Internal phase thus formed was
+added slowly to 2 mL aqueous surfactant solution (external phase) under continuous vortexing and
+after complete addition of oil phase to this aqueous phase, vortexing was continued for 15 s and then
+probe sonicated/homogenized without delay. Then, formed nanoparticle suspension was poured
+into external phase under stirring for hardening of nanoparticles. Consequently, organic solvent
+was allowed to evaporate overnight. The nanoparticles were collected as pellet by centrifugation at
+17,000 rcf for 15 min (Kubota 6500, Tokyo, Japan) at 4 *C. The supernatant was discarded with care so
+
+3 of 28
+
+as not to disturb the nanoparticle pellet and washed thrice to remove un-entrapped docetaxel and
+residual surfactant. The pellet was then dispersed in 5% mannitol solution using bath sonicator and
+frozen at -80 *C before it was lyophilized for 48 h using the optimized lyophilization cycle (Christ,
+Osterode, Germany) .
+
+2.2. Risk Identification: Fishbone (Ishikawa) Diagram
+
+A risk assessment of the material attributes and critical process parameters was performed
+to assess the impact that each attribute/parameter could have on the drug product CQAs (Critical
+quality attributes). Based on available scientific knowledge in literature, average particle size, type
+of dispersion (polydispersity index), zeta potential, and entrapment efficiency were identified as the
+CQAs of DTX-NPs due to their potential to impact the therapeutic properties and physical stability of
+the drug delivery system based on nanoparticles. The fishbone diagram helped in identification of
+eight variables of process and formulation with a potential to impact the properties of NPs and these
+variables were studied during development and optimization studies.
+
+2.3. Screening of Formulation and Process Variables Using Plackett-Burman Design
+
+For screening formulation and process parameters which may have an impact on the CQAs of
+DTX-NPs, trials based on Plackett-Burman statistical design were undertaken. Twelve runs were
+executed to study eight identified factors. In each trial, the level of parameter was selected based on
+pilot trials as well as literature findings. Organic/aqueous phase ratio of 1:2 during the emulsification
+step was fixed based on literature . The selected factors with levels are provided in Table 1.
+Randomized design of experiments was generated and analyzed statistically utilizing Design expert(r)7
+software (State-Ease, Minneapolis, MN, USA) as shown in Table 2.
+
+Factors
+Levels
+
+Low
+High
+
+X1: Amount of docetaxel in organic phase (mg)
+9
+20
+X2: Amount of poly (lactic-co-glycolic acid) (PLGA)
+in organic phase (mg)
+200
+300
+
+X3: Concentration of surfactant in aqueous phase (%)
+0.05
+0.4
+X4: Surfactant type
+PLX
+PVA
+X5: Size reduction process
+Homogenization (H)
+Sonication (S)
+X6: Solvent type
+Ethyl acetate (EA)
+Acetone (AC)
+X7: Vortexing speed in emulsification step (rpm)
+2000
+3000
+X8: Stirring speed in hardening step (rpm)
+190
+380
+
+Formulation
+X1 (mg)
+X2 (mg)
+X3 (%)
+X4
+X5
+X6
+X7 (rpm)
+X8 (rpm)
+
+PBD1
+20
+300
+0.05
+PLX
+H
+AC
+2000
+380
+PBD2
+20
+200
+0.4
+PVA
+S
+EA
+2000
+190
+PBD3
+20
+300
+0.05
+PVA
+S
+AC
+2000
+190
+PBD4
+9
+200
+0.4
+PLX
+S
+AC
+2000
+380
+PBD5
+20
+200
+0.05
+PLX
+S
+EA
+3000
+380
+PBD6
+20
+200
+0.4
+PVA
+H
+AC
+3000
+380
+PBD7
+9
+300
+0.4
+PLX
+S
+AC
+3000
+190
+PBD8
+20
+300
+0.4
+PLX
+H
+EA
+3000
+190
+PBD9
+9
+300
+0.4
+PVA
+H
+EA
+2000
+380
+PBD10
+9
+300
+0.05
+PVA
+S
+EA
+3000
+380
+PBD11
+9
+200
+0.05
+PVA
+H
+AC
+3000
+190
+PBD12
+9
+200
+0.05
+PLX
+H
+EA
+2000
+190
+
+4 of 28
+
+The statistical methods like multi-linear regression analysis and analysis of variance were used to
+test significance of model. Experimental trials were taken in triplicate. Average or mean particle size
+(Y1), zeta potential (Y2), entrapment efficiency (Y3), and polydispersity index (Y4) were the CQAs or
+dependent variables.
+
+2.4. Optimization Studies--Box-Behnken Design
+
+Post screening and identification of critical process and formulation variables, and preparation of
+DTX-NPs, was optimized by taking trials generated by the Box-Behnken design of experiment. Three
+factors were studied at 3 levels. Results obtained in screening trials were used to set the levels in the
+Box-Behnken design of experiment as shown in Table 3.
+
+Factors
+Levels
+
+Low
+Medium
+High
+
+X1: Concentration of surfactant (%)
+0.3
+0.4
+0.5
+X2: Amount of PLGA in organic phase (mg)
+100
+200
+300
+X3: Number of sonication cycles
+2
+3
+4
+
+Levels of five factors evaluated in screening trials were fixed in optimization studies as shown in
+Table 4, as the effect of some of these factors on dependent variables was observed to be statistically
+insignificant or results achieved utilizing one of the two levels of these factors were much favorable as
+compared to the other level.
+
+Factor
+Fixed Level
+
+Docetaxel amount in organic phase (mg)
+10
+Surfactant type
+PLX
+Size reduction process
+Sonication
+Solvent type
+Ethyl acetate
+Vortexing speed in emulsification step (rpm)
+2000
+Stirring speed in hardening step (rpm)
+380
+
+Randomized design of experiments was generated as shown in Table 5 and analyzed statistically
+utilizing Design expert(r)7 software. The trials were taken in triplicate.
+For each of the measured response, regression analysis was performed and the established
+polynomial equation is provided below:
+
+Y = a0 + a1X1 + a2X2 + a3X3 + a12X1X2 + a13X1X3 + a23X2X3 + a11X2
+1 + a22X2
+2 + a33X2
+3
+
+where Y denotes response, X1 to X3 denotes main effects of factors, X1X2, X1X3, X2X3 denote interaction
+effects of factors, X2
+1, X2
+2, X2
+3 denote quadratic effects of factors, a0 denotes constant, and a1-a3 denotes
+coefficients of the factors. The p values of the regression coefficients (and a1-a3) were obtained to
+evaluate the significance of independent variables on dependent variables. Significance of the model
+was assessed by ANOVA.
+The process and formulation parameters were optimized in order to obtain desired average
+particle size (Y1), zeta potential (Y2), entrapment efficiency (Y3), and polydispersity index (Y4) of
+DTX-NPs by determining the levels of concentration of surfactant (X1), amount of PLGA in organic
+phase (X2), and number of sonication cycles (X3). To achieve this, a design space was built and the
+optimized DTX-NPs were fabricated in order to evaluate the relation between actual and predicted
+values. Physicochemical properties of the optimized formulation were then characterized.
+
+5 of 28
+
+Formulation
+X1 (%)
+X2 (mg)
+X3
+
+1
+0.4
+300
+4
+2
+0.5
+200
+2
+3
+0.3
+300
+3
+4
+0.4
+200
+3
+5
+0.4
+300
+2
+6
+0.4
+200
+3
+7
+0.5
+100
+3
+8
+0.3
+200
+2
+9
+0.3
+200
+4
+10
+0.4
+200
+3
+11
+0.5
+200
+4
+12
+0.4
+200
+3
+13
+0.4
+100
+4
+14
+0.4
+100
+2
+15
+0.4
+200
+3
+16
+0.5
+300
+3
+17
+0.3
+100
+3
+
+2.5. Characterization
+
+2.5.1. Particles Size, Polydispersity Index (PDI) and Zeta-Potential
+
+Mean particle size, zeta potential and polydispersity index (PDI) of DTX-NPs were analyzed using
+Malvern Zeta Sizer Instrument (Malvern, Worcestershire, UK). The pellet obtained after centrifugation
+was re-suspended in deionized water before the analysis.
+
+2.5.2. Entrapment Efficiency
+
+For estimation of the percentage of drug entrapped in DTX-NPs, reported HPLC method was
+used with minor modifications. In brief, supernatant obtained after centrifugation of formulation
+suspension was discarded. The pellet obtained as sediment was taken and solubilized in acetonitrile.
+Analysis was carried out by HPLC (Shimadzu, Kyoto, Japan) consisting of SPD-M20A diode array
+detector and Luna C18 column (Phenomenex Inc., Torrance, CA, USA).
+Acetonitrile and orthophosphoric acid (OPA) (58:42) were the mobile phase pumped at a flow
+rate of 1.0 mL/min with constant column temperature of 37 *C. Ten uL was the injection volume with
+docetaxel eluting at 7.4 min with l-max 230 nm.
+
+2.5.3. Morphology of Nanoparticles
+
+To scrutinize surface texture of DTX-NPs, scanning electron microscopy (SEM) Field Electron and
+Ion Company (FEI), Quanta 200 (FEI, Hillsboro, OR, USA), Accelerating Voltage 1.0 kV, high vacuum
+was used. Pellet of DTX-NPs was re-dispersed in deionized water and were charged for analysis.
+Transmission electron microscopy (TEM) Philips, CM200 (Philips, Hillsboro, OR, USA), 20-200 kV,
+resolution 2.4 Angstrom was used for studying the texture. Re-dispersed nanoparticles were dropped
+into carbon-coated copper grids and were allowed to dry completely. Sample staining was carried out
+by 2% w/v uranyl-acetate and images were captured.
+
+2.5.4. Fourier-Transform Infrared Spectroscopy (FTIR)
+
+The FTIR transmission spectrum of samples (PLGA, docetaxel, and lyophilized DTX-NPs) was
+obtained using a Shimadzu spectrophotometer (Shimadzu, Kyoto, Japan). KBr pellet method was used
+and each KBr disk was then scanned. The characteristic peaks for different samples were recorded.
+
+6 of 28
+
+2.5.5. Differential Scanning Calorimetry (DSC) Analysis
+
+Lyophilized DTX-NPs, pure docetaxel, PLGA and PLX-188 were analyzed on Differential scanning
+calorimeter, Shimadzu (Shimadzu, Kyoto, Japan). Heating rate was 10 *C/min and scanning temperature
+ranging from 0 to 200 *C.
+
+2.5.6. X-ray Diffraction (XRD) Analysis
+
+X-ray diffractometer, PANalytical and X'Pert Pro MPD (Malvern, Worcestershire, UK) was used to
+generate the XRD pattern for pure docetaxel and lyophilized formulation. Analysis was performed at
+a voltage of 45 kV and 40 mA. The scanned angle (2th) was set from 3-40*, and scanning rate was 0.02*
+
+per 25 s.
+
+2.5.7. In-Vitro Release of Docetaxel
+
+Optimized DTX-NPs batch 473 mg (equivalent to 4 mg of entrapped drug) was studied for release
+pattern in vitro. Phosphate buffer saline (PBS) with 0.5% polysorbate-80 as surfactant and pH 7.4
+was used as release media maintaining sink. Ten mL release media was taken in tubes made up of
+polypropylene and DTX-NPS were suspended in it. Tube assembly was immersed in water bath
+maintained at a temperature of 37 *C under stirring with magnetic stirrer at 350 rpm. Aliquots were
+taken at defined intervals, filtered and analyzed by HPLC.
+
+2.5.8. In Vitro Anticancer Assay
+
+A549 lung cancer cell lines were introduced to Dulbecco's modified Eagle's medium (DMEM,
+HiMedia, Nashik, India) contained in micro titer plate with 96 well at 1 x 104 cells/well density. The
+assembly was incubated for 24 h at 37 *C and 95% humidity with CO2 environment in order to allow
+attachment. Cell count determination was done by haemocytometer. DMEM was then removed and
+fresh medium (0.2 mL) was added containing different concentrations of free docetaxel and DTX-NPs
+dose equivalent to 40, 20, 10, 5, 2.5 and 1.25 nM followed with incubation at 37 *C for 48 h. Subsequently,
+medium from each well was withdrawn and 20 uL of methyl-thiazolyl-tetrazolium (MTT) solution
+was replenished to wells. Assembly was allowed to incubate at 37 *C for 4 h. This was followed
+by addition of 100 uL DMSO to each plate well and vortex for 15 min in order to dissolve formazan
+crystals. The absorbance was noted using ELISA reader at 570 nm filter and the percentage of viable
+cells was calculated. Human lung cancer cell line (A549) experiment results were plotted using graph
+pad prism version 7.0 for estimation of IC50 value of DTX-NPs. The IC50 value of DTX-NPs was
+expressed as mean +- SD.
+
+2.5.9. Stability Studies
+
+DTX-NPs were charged on accelerated conditions to assess stability.
+For this, lyophilized
+formulation was filled in vials and sealed with rubber plugs and flip offseal and was kept stable for
+3 months at temperature of 25 +- 2 *C and RH 60 +- 5%. The stability tests performed were physical
+description, particle size, PDI and drug content.
+
+2.5.10. In Vivo Studies
+
+In vivo studies were carried out on rats (weighing ~ 200 g) after necessary approval from
+Institutional Animals Ethical Committee for the protocol (CPCSEA/IAEC/P'ceutics-31/2016-17/128,
+date of approval: August 2017). At each time point, 3 animals were studied. Rats were grouped into
+Group 1, in which free drug powder (DTX) was administered, and Group 2, in which lyophilized
+DTX-NPs were administered after passing through sieve no. 200 (ASTM) by the tracheal pulmonary
+method (tracheotomy). After anesthesia, the animals were placed in supine position and the neck
+was extended to facilitate tracheal incision. The incision was made in the midline below the neck.
+
+7 of 28
+
+After viewing the trachea, an incision was made to insert the cannula between the fourth and the fifth
+tracheal ring.
+Tissue homogenate study was performed to determine organ distribution and lung
+pharmacokinetics. Rats were sacrificed at 30 min, 2 h, 8 h, 12 h, 18 h and 24 h. Homogenates
+of different tissues like lungs, liver, kidney, and spleen (20% w/v) were analyzed for level of drug.
+Acetonitrile (ACN) was used to deproteinize the homogenated tissues and centrifuged so as to obtain
+supernatant which was analyzed for DTX content. Lung concentration v/s time profile was obtained and
+Cmax, Tmax were estimated. Mean residence time (MRT), elimination half-life t1/2 and concentrations of
+drug in lungs over the duration (AUC0-) were estimated using Phoenix WinNonlin software (Certara,
+Princeton, NJ, USA).
+
+2.5.11. Lyophilization Optimization Studies
+
+The initial step for optimizing the freeze-drying cycle was the identification of the critical process
+parameter required for freeze-drying, i.e., freezing temperature and the collapse temperature. This was
+done with the help of BTL Lyostat-2 freeze-drying microscope (FDM) (Biopharma Technology Ltd.,
+Winchester, UK). The determination of lyophilization characteristics for the solution was carried out
+using the Biopharma Lyostat-2 FDM, equipped with Linksys image and data capture software. A 2 uL
+sample of the product was placed between cover slips and frozen to -40 *C. The freezing temperature
+and the collapse temperature were thus determined.
+
+Critical Quality Attributes (CQAs) of nanoparticles.
+
+Risk Assessment: Plackett-Burman Design of Experiment
+
+With an objective of screening the most significant process and formulation variables, the
+Plackett-Burman statistical experiment tool was utilized. Twelve experiments were conducted to study
+each of the eight factors at two levels. The details are provided in Table 6.
+
+8 of 28
+
+NPs. A comparative study of various pharmacokinetic parameters was done for DTX-NPs versus
+concentration of free drug in lungs at the same dose, using rats (n = 3). The lung concentration after
+pulmonary administration of plain drug powder and DTX-NPs utilizing tracheotomy technique was
+estimated by the HPLC method. DTX-NPs (885 +- 56.35 ng/g) were detectable even after 72 h in the
+lungs, as compared to free drug which was not detectable after approximately 8 h (Figure 11). Similar
+outcome was reported in literature .
+
+23 of 28
+
+Thus, it provided a clear difference between the lung concentrations of DTX-NP and free drug.
+This study indicated that nanoparticles were well retained in lungs and that the drug level could be
+maintained for a longer duration if given in the form of DTX-NP by the pulmonary route.
+Non-compartmental analysis was performed for concentration of drug in lung vs. time to obtain
+pharmacokinetic parameters with the help of WinNonlin software and presented in Table 13.
+
+Parameter
+Free Drug
+Nanoparticle Formulation
+
+Half life (h)
+1.14 +- 0.179
+24.49 +- 1.19
+Tmax (h)
+0.5 +- 0
+0.5 +- 0
+Cmax (ng)
+5011.3 +- 379.85
+7050.4 +- 334.932
+AUClast
+7484.2 +- 1759.05
+247,807.4 +- 4085.17
+AUCINF_obs
+10,069.6 +- 744.47
+279,118.6 +- 6919.80
+AUMClast
+11,391.1 +- 8383.607
+6,214,578 +- 206,264.9
+AUMCINF_obs
+21,612.4 +- 3919.255
+9,578,507 +- 557,878
+MRTlast
+1.41 +- 0.693
+25.07 +- 0.77
+MRTINF_obs
+2.14 +- 0.310
+34.30 +- 1.37
+
+Mean +- SD.
+
+Free DTX and DTX-NP reached Cmax at approximately 0.5 h.
+In contrast to pure DTX
+administration, DTX nanoparticles gave sustained release in lungs for more than 72 h, whereas pure DTX
+was cleared within 8 h. AUC increased significantly when DTX was given in the form of nanoparticles.
+The values of AUC0-for free DTX was 10,069.58 +- 744.5 ng/g*min and 279,118.6 +- 6919.80 ng/g*min
+for DTX-NP. Cmax was 5011.33 +- 379.85 ng/g for free DTX, whereas 7050.367 +- 334.93 ng/g for DTX-NP.
+Mean retention time for free DTX was 2.14 +- 0.31 whereas 34.30 +- 1.37 for DTX-NP which signified
+prolong drug residency in lungs (organ of interest). Hence, prepared formulation may be used to
+maintain the lung concentration for 72 h. The percent drug content in lungs, liver, spleen, and kidney
+of plain drug, and its nanoparticle form are shown in Figure 12 and Table 14.
+
+24 of 28
+
+Organ Distribution Chart
+
+100
+
+80
+
+60
+
+% Drug
+
+D-Lungs
+D-Liver
+D-Spleen
+D-Kidney
+N-Lungs
+N-Liver
+N-Spleen
+N-Kidney
+
+40
+
+20
+
+0
+
+24
+
+48
+
+72
+
+0.5
+
+2
+
+8
+
+Time (Hrs)
+
+Time (h)
+0.5
+2
+8
+24
+48
+72
+
+lung
+53.31 +- 4.04
+21.29 +- 3.20
+0.589 +- 1.01
+0
+0
+0
+liver
+6.6767 +- 1.53
+12 +- 4
+9.97 +- 2.05
+6 +- 1
+1.767 +- 0.25
+0.597 +- 0.04
+spleen
+2.03 +- 0.45
+3 +- 0.5
+1.03 +- 0.25
+0
+0
+0
+kidney
+0
+1.03 +- 0.30
+3.23 +- 0.47
+1.97 +- 0.15
+1.433 +- 0.15
+1 +- 0.3
+
+Drug
+
+lung
+75.00 +- 3.56
+69.15 +- 2.71
+61.97 +- 2.91
+53.24 +- 3.64
+21.81 +- 3.22
+9.41 +- 0.6
+liver
+4 +- 1
+16 +- 3
+10 +- 3
+4 +- 2
+1.43 +- 0.56
+0.52 +- 0.02
+spleen
+1 +- 0.2
+2.1 +- 0.3
+3 +- 0.93
+0
+0
+0
+kidney
+0
+1.15
+2.1 +- 0.5
+1.1 +- 0.3
+0.63 +- 0.57
+0.47 +- 0.02
+
+NP
+
+Mean +- SD.
+
+## Results
+3.1. Risk Assessment: Ishikawa Diagram
+
+The fishbone diagram was used to determine potential risks of the process and formulation
+variables on the CQAs of DTX-NPS, viz. mean particle size, PDI, zeta potential and encapsulation
+efficiency as shown in Figure 1. Based on prior knowledge and screening experiments, eight potential
+
+Formulation
+Y1 (nm)
+Y2
+Y3
+Y4
+
+PBD1
+680
+-13
+75.36
+0.995
+PBD2
+261
+-10
+52
+0.1815
+PBD3
+620
+-5
+58
+0.485
+PBD4
+310
+-25.1
+53.22
+0.32
+PBD5
+266.9
+-18.5
+58.21
+1.121
+PBD6
+590
+-6
+54
+0.18
+PBD7
+380
+-26.02
+74.42
+0.1423
+PBD8
+383
+-22.1
+58.93
+0.1498
+PBD9
+490
+-6
+59
+0.1282
+PBD10
+620
+-5.5
+76
+0.475
+PBD11
+900
+-3.1
+71
+0.155
+PBD12
+300
+-14
+77
+1.273
+
+Y1--average particle size; Y2--Zeta-potential; Y3--encapsulation efficiency; Y4--polydispersity index.
+
+Amount of PLGA in organic phase (X2), surfactant concentration (X3), surfactant type (X4), size
+reduction process (X5), and solvent type (X6) are the significant factors effecting average particle size
+(Y1) (Table 7). R2 value was 0.9940 and p value was 0.0269 indicating a significant fit.
+
+Factors
+Y1 (nm)
+Y2 (mV)
+Y3 (%)
+Y4
+
+Coefficient
+p-Value
+Coefficient
+p-Value
+Coefficient
+p-Value
+Coefficient
+p-Value
+
+a0
+483.41
+0.0269
+-12.86
+0.0279
+63.93
+0.0200
+0.47
+0.0469
+X1
+-16.59
+0.2563
+0.43
+0.1323
+-4.51
+0.0098
+0.052
+0.4253
+X2
+45.53
+0.0499
+-0.077
+0.5508
+3.02
+0.0214
+-0.071
+0.2875
+X3
+-81.08
+0.0165
+-3.01
+0.0190
+-5.33
+0.0070
+-0.28
+0.0082
+X4
+96.76
+0.0117
+6.93
+0.0083
+-2.26
+0.0373
+-0.20
+0.0264
+X5
+-73.76
+0.0198
+-2.16
+0.0265
+-1.95
+0.0491
+e
+e
+X6
+96.59
+0.0117
+-0.18
+0.3000
+e
+e
+-0.088
+0.2064
+X7
+39.91
+0.0633
+-0.68
+0.0842
+1.50
+0.0794
+-0.097
+0.1719
+X8
+e
+e
+0.51
+0.1112
+-1.30
+0.1021
+0.069
+0.2987
+
+Y1--average particle size; Y2--Zeta-potential; Y3--encapsulation efficiency; Y4--polydispersity index; a0--constant;
+X1--docetaxel amount in organic phase (mg); X2--PLGA amount in organic phase (mg); X3--surfactant concentration
+in aqueous phase (%); X4--surfactant type; X5--size reduction process; X6--solvent type; X7--vortexing speed in
+emulsification step (rpm); X8--stirrer speed in hardening step (rpm); e--Factors were not modeled by software.
+
+For zeta-potential (Y2), surfactant concentration (X3), surfactant type (X4) and the size reduction
+process (X5) were the most significant factors (Table 7). R2 value was 0.9999 and p-value was 0.0279,
+and hence, a significant fit statistically.
+For the entrapment efficiency (Y3), the most significant factors were the docetaxel amount in
+the organic phase (X1), amount of PLGA in the organic phase (X2), concentration of surfactant (X3)
+and surfactant type (X4). The size reduction process (X5) was considered almost insignificant with
+p-value 0.0491 (Table 7). R2 value was 0.9955 and p-value was 0.0200 indicating a significant fit. Critical
+parameters were further studied in the Box-Behnken design.
+
+3.2. Optimization Studies: Box-Behnken Design of Experiment
+
+Subsequent to the determination of the critical parameters for formulation and process in screening
+trials, three factors were studied at three levels utilizing Box-Behnken design to understand the effects
+of surfactant concentration in aqueous phase (X1), the amount of PLGA in the organic phase (X2) and
+sonication time (X3) on average particle size, zeta potential, entrapment efficiency and polydispersity
+
+9 of 28
+
+Formulation
+Y1 (nm)
+Y2 (mV)
+Y3 (%)
+Y4
+
+BBD1
+202.2
+-10.8
+74.28
+0.22
+BBD2
+296.5
+-27.4
+52.85
+0.243
+BBD3
+229.8
+-6.08
+73.74
+0.245
+BBD4
+233.5
+-26.4
+52.57
+0.154
+BBD5
+223.1
+-6.15
+60.99
+0.294
+BBD6
+259.1
+-21.8
+55
+0.229
+BBD7
+420.8
+34.5
+37.42
+0.362
+BBD8
+219.6
+-36.7
+57.5
+0.135
+BBD9
+257.2
+-27.5
+82.93
+0.17
+BBD10
+235.5
+-26.8
+58
+0.159
+BBD11
+238.6
+-24
+61.04
+0.193
+BBD12
+221.2
+-12
+49.04
+0.149
+BBD13
+338.7
+-8.34
+41.43
+0.222
+BBD14
+320.4
+-18.1
+42.1
+0.317
+BBD15
+256.2
+-20.8
+56.1
+0.226
+BBD16
+188.3
+-14.4
+56.13
+0.15
+BBD17
+232.9
+-24.1
+57.92
+0.103
+
+Y1--average particle size; Y2--Zeta-potential; Y3--encapsulation efficiency; Y4--polydispersity index.
+
+The correlation coefficients of factors and corresponding p-values are provided in Table 9. Factors
+for which p-values were less than 0.05 were termed significant.
+
+Factors
+Y1 (nm)
+Y2 (mV)
+Y3 (%)
+Y4
+
+Coefficient
+p-Value
+Coefficient
+p-Value
+Coefficient
+p-Value
+Coefficient
+p-Value
+
+B0
+241.10
+0.0004
+-21.56
+0.0223
+54.14
+0.0028
+0.18
+0.0198
+X1
+25.59
+0.0039
+7.88
+0.0373
+-8.08
+0.0019
+0.037
+0.0275
+X2
+58.67
+<0.0001
+-2.67
+0.4133
+10.78
+0.0004
+-0.012
+0.4012
+X3
+-2.86
+0.6503
+2.21
+0.4948
+5.78
+0.0106
+-0.023
+0.1271
+X1X2
+-57.35
+0.0003
+-16.73
+0.0063
+0.72
+0.7690
+-0.089
+0.0022
+X1X3
+-23.88
+0.0268
+-1.45
+0.7485
+-4.31
+0.1114
+-0.021
+0.2955
+X2X3
+-9.80
+0.2894
+-3.60
+0.4347
+3.49
+0.1838
+5.250 x 10-3
+0.7881
+X2
+1
+4.36
+0.6168
+0.49
+0.9105
+5.52
+0.0480
+-0.023
+0.2459
+X2
+2
+22.49
+0.0307
+18.55
+0.0032
+-3.36
+0.1886
+0.055
+0.0202
+X2
+3
+7.51
+0.3973
+-7.83
+0.1070
+3.92
+0.1332
+0.025
+0.2138
+
+B0--constant; Y1--average particle size; Y2--Zeta-potential; Y3--encapsulation efficiency; Y4--polydispersity index;
+X1--Surfactant concentration in aqueous phase (%); X2--PLGA amount in organic phase (mg); X3--sonication
+cycles (number).
+
+The determination coefficient (R2) for the observed and the predicted values were assessed for
+testing significance of the model. R2 for mean particle size, zeta potential, encapsulation efficiency and
+polydispersity index were 0.9616, 0.8662, 0.9300, and 0.8712, respectively.
+The p-values obtained after ANOVA were 0.0004, 0.0223, 0.0028, and 0.0198 for average particle
+size, zeta potential, encapsulation efficiency, and polydispersity index, respectively indicating that the
+relating responses can be predicted with precision using the mathematical model thus established.
+The factors with significant impact on mean particle size of DTX-NPs were the concentration of
+surfactant and amount of PLGA added to organic solvent.
+As the amount of PLGA increases there was an increase in average particle size value while
+increasing concentration of surfactant increased the average size of nanoparticle. Interaction of
+surfactant concentration-PLGA amount and surfactant concentration-sonication cycle were significant.
+Quadratic effect for the PLGA amount was significant.
+Similar outcomes were reported in
+literature .
+
+10 of 28
+
+Mean particle size can be estimated by following the established polynomial equation with order
+of second degree:
+
+Y = 241 + 25.59X1 + 58.67X2 -2.86X3 -57.35X1X2 -23.88X1X3 -9.80X2X3 + 4.36X2
+1 + 22.49X2
+2 + 7.51X2
+3
+
+For zeta potential, the most significantly impacting factor was concentration of surfactant.
+Increasing surfactant concentration shifts the zeta potential towards the neutral side. Interaction
+of surfactant concentration-PLGA amount and quadratic effect for PLGA amount were significant.
+Similar outcomes were reported in literature .
+Zeta potential can be estimated by following the established polynomial equation with order of
+second degree:
+
+Y = -21.56 + 7.88X1 -2.67X2 + 2.21X3 -16.73X1X2 -1.45X1X3 -3.6X2X3 + 0.49X2
+1 + 18.55X2
+2 -7.83X2
+3
+
+The concentration of surfactant (X1), amount of PLGA (X2), and number of sonication cycles (X3)
+were the most significantly impacting factors for entrapment efficiency. Quadratic effect of surfactant
+concentration (X1) was also significant.
+Increasing the PLGA amount and number of sonication cycles had a beneficial impact on efficiency
+of the encapsulating drug, while increasing the concentration of surfactant diminished entrapment
+efficiency. Quadratic effect of surfactant concentration was also significant. Similar outcomes were
+reported in earlier studies .
+Entrapment efficiency can be estimated by following the established polynomial equation with
+order of second degree:
+
+Y = 54.14 -8.08X1 + 10.78X2 + 5.78X3 + 0.72X1X2 -4.31X1X3 + 3.49X2X3 + 5.52X2
+1 -3.36X2
+2 + 3.92X2
+3
+
+For polydispersity index (Y4), surfactant concentration (X1) was most significant factor.
+Increasing surfactant concentration gave better polydispersity index. In addition, interaction of
+surfactant concentration and PLGA amount along with quadratic effect of the PLGA amount were
+significant .
+Polydispersity index can be estimated by following the established polynomial equation with
+order of second degree:
+
+Y = 0.18 + 0.037X1 -0.012X2 -0.023X3 -0.089X1X2 -0.021X1X3 + 5.25 x 10-3X2X3 -0.023X2
+1 + 0.055X2
+2 + 0.025X2
+3
+
+Factor effects were thoroughly evaluated by visual presentation of results obtained for mean
+particle size and encapsulating efficiency in contour plots (Figure 2).
+The design space for DTX-NPS was established with target of a mean nanoparticle size lower than
+350 nm, upper limit of zeta potential as -10, entrapment efficiency higher than 50% and polydispersity
+index in the observed range. For this, overlaid contour plots including responses were created
+(Figure 3).
+In order to find out the optimum formula of DTX-NPs, desirability function (d value) was built
+based upon target response. D value near to "1" signifies desirable set of results and "0" is detrimental.
+Average particle size (200-350 nm), zeta potential (-10 to -37), maximum entrapment efficiency (>50%),
+and polydispersity index in entire observed range were set as constraints.
+
+11 of 28
+
+(a)
+
+(b)
+
+12 of 28
+
+(c)
+
+(d)
+
+13 of 28
+
+(e)
+
+(f)
+
+(lactic-co-glycolic acid) (PLGA) on mean nanoparticle size, (b) surfactant concentration and PLGA
+amount on zeta potential, (c) surfactant concentration and PLGA amount on the encapsulation efficiency,
+(d) surfactant concentration and sonication time on the encapsulation efficiency, (e) PLGA amount and
+sonication time on the encapsulation efficiency, and sonication time, and (f) surfactant concentration
+and PLGA amount on polydispersity index of docetaxel nanoparticles.
+
+14 of 28
+
+1.00
+Overlay Plot
+
+Design-Expert(r) Software
+
+Zeta Potential: -10
+
+Overlay Plot
+
+Average Particle size
+Zeta Potential
+Entrapment Efficiency
+pdi
+
+Average Parti207.985
+Zeta Potential-36.6952
+Entrapment Ef62.228
+pdi:
+0.140273
+X1
+-1.00
+X2
+0.00
+
+0.50
+
+X1 = A: Surfactant concentration
+X2 = B: PLGA amount
+
+B: PLGA amount
+
+Actual Factor
+C: Sonication cycle = -0.79
+
+0.00
+
+Entrapment Efficiency: 50
+
+-0.50
+
+Zeta Potential: -10
+
+Average Particle size: 350
+
+pdi: 0.362
+
+-1.00
+
+-1.00
+-0.50
+0.00
+0.50
+1.00
+
+A: Surf actant concentration
+
+(a)
+
+1.00
+Overlay Plot
+
+Design-Expert(r) Software
+
+Overlay Plot
+
+Average Particle size
+Zeta Potential
+Entrapment Efficiency
+pdi
+
+0.50
+
+Design Points
+
+C: Sonication cycle
+
+X1 = A: Surfactant concentration
+X2 = C: Sonication cycle
+
+5
+
+0.00
+
+Actual Factor
+B: PLGA amount = 0.00
+
+Average Parti207.984
+Zeta Potential-36.699
+Entrapment Ef62.2262
+pdi:
+0.14025
+X1
+-1.00
+X2
+-0.79
+
+-0.50
+
+-1.00
+
+-1.00
+-0.50
+0.00
+0.50
+1.00
+
+A: Surf actant concentration
+
+(b)
+
+1.00
+Overlay Plot
+
+Design-Expert(r) Software
+
+Overlay Plot
+
+Average Particle size
+Zeta Potential
+Entrapment Efficiency
+pdi
+
+0.50
+
+Design Points
+
+C: Sonication cycle
+
+Zeta Potential: -10
+pdi: 0.103
+
+X1 = B: PLGA amount
+X2 = C: Sonication cycle
+
+0.00
+
+Actual Factor
+A: Surfactant concentration = -1.00
+
+Average Parti207.984
+Zeta Potential-36.6991
+Entrapment Ef62.2261
+pdi:
+0.14025
+X1
+0.00
+X2
+-0.79
+
+-0.50
+
+-1.00
+
+-1.00
+-0.50
+0.00
+0.50
+1.00
+
+B: PLGA amount
+
+(c)
+
+results for average nanoparticle size (200-350 nm), zeta potential (<-10), encapsulation efficiency
+(>50%) and polydispersity index (0.103-0.362). (a) Overlay plot of surfactant concentration and PLGA
+amount, (b) overlay plot of surfactant concentration and sonication cycle and (c) overlay plot of
+sonication cycle and PLGA amount.
+
+Based on the design space, surfactant concentration and sonication time was fixed at the lowest
+point and amount of PLGA was maintained at medium point. Thus, with this set of pattern, a
+desirability value of 0.967 was achieved. For optimum formulation, Table 10 shows the observed and
+predicted value.
+
+15 of 28
+
+The observed and predicted values of the optimum DTX-NP formulation based on
+desirability function.
+
+Response
+Observed
+Predicted
+
+Average particle size (nm)
+219.6
+207.8
+Zeta-potential (mV)
+-36.7
+-36.9
+Entrapment efficiency (%)
+57.5
+62.15
+Polydispersity index
+0.135
+0.141
+
+3.2.1. Lyophilization Cycle Optimization
+
+Based on the images (Figure 4) taken with the help of freeze-drying microscope, the freezing and
+collapse temperatures were found to be -28 to -32 and -15 to -10 respectively.
+
+(a)
+(b)
+
+(c)
+(d)
+
+16 of 28
+
+(e)
+(f)
+
+(g)
+
+-27.8 *C, (c) at temperature -33.4 *C, (d) at temperature -40.5 *C, (e) at temperature -15.0 *C, (f) at
+temperature -10.3 *C, (g) at temperature -0.6 *C.
+
+Therefore, it was decided to keep the temperature well below the collapse temperature during
+primary drying to evade collapse of the cake structure. The optimized lyophilization cycle is shown in
+Table 11 below.
+
+Thermal Treatment
+Primary Drying
+
+Step
+Temperature
+(*C)
+Time
+(min)
+Ramp(R)/Hold
+(H)
+Step
+Temperature
+(*C)
+Time
+(min)
+Ramp(R)/Hold
+(H)
+
+Shelf Load Temp 5 *C
+
+1
+5
+30
+R
+1
+-20
+120
+R
+2
+-15
+30
+R
+2
+-20
+1200
+H
+3
+-15
+120
+H
+3
+0
+180
+R
+4
+-40
+60
+R
+4
+0
+300
+H
+5
+-40
+300
+H
+5
+10
+60
+R
+6
+10
+240
+H
+7
+30
+60
+R
+8
+30
+180
+H
+Secondary drying
+30
+120
+H
+
+17 of 28
+
+3.2.2. FTIR Spectroscopy
+
+FTIR spectroscopy study was performed to investigate any interaction in between docetaxel drug,
+PLGA polymer, and DTX-NPs formulation (Figure 5).
+
+(a)
+
+90
+
+80
+
+60
+
+40
+
+%T
+
+20
+
+0
+
+-10
+
+4000
+400
+1000
+2000
+3000
+
+Wavenumber [cm-1]
+
+(b)
+
+Spectrum of docetaxel showed characteristic peaks attributable to O-H and N-H stretching
+vibrations at 3467 cm-1 (Strong and broad band), C-H stretching vibrations (medium and broad band
+stretch in CH3 and CH2 groups) at around 2900 cm-1, ester and keto C=O vibrations at 1722-1704 cm-1
+
+(multiple strong bands), C-C stretch in aromatic groups at 1494 (medium band), C-O asymmetric
+stretch in ester groups at 1248 cm-1 (strong bands), C-O symmetric stretch in ester groups at 1098 cm-1
+
+(medium band) and C-OH stretch in alcohol group at 1072-1098 cm-1 (multiple medium bands).
+FTIR spectrum of PLGA showed peaks at 3524.98 cm-1 (O-H stretch), 1759.46 cm-1 (ester group),
+
+18 of 28
+
+1396.21 cm-1 (bending C-H vibrations), and 1092.22 cm-1 (C-O stretch). N-H stretching vibrations at
+3467 cm-1, ester and keto C=O stretching vibrations at 1722-1704 cm-1 were absent in the spectrum of
+DTX-NPs, which might be due to complete encapsulation of docetaxel into the PLGA-NPs. The peak
+which is observed in the 3300-3400 region appears to be of mannitol used as lyoprotectant.
+
+3.2.3. X-ray Diffractometry (XRD)
+
+To find out the nature (amorphous or crystalline) of docetaxel entrapped into/onto the nanoparticles,
+XRD patterns of docetaxel and DTX-NPs were studied. The diffractogram of docetaxel showed a
+prominent peak at the 2th value of 7.9*, however such distinct peak was absent in the diffractogram of
+DTX-NPs (Figure 6).
+
+(a)
+
+Counts
+
+ Docetaxel_Drug_9
+ Docetaxel_Formulation_6
+
+1600
+
+900
+
+400
+
+100
+
+0
+
+10
+20
+30
+
+Position [deg2Theta] (Copper (Cu))
+
+(b)
+
+3.2.4. Differential Scanning Calorimetry (DSC)
+
+The physical status of docetaxel in the PLGA-NPs was studied by DSC analysis. Figure 7 reflects
+DSC thermogram of pure docetaxel, PLGA, PLX, and lyophilized DTX-NPs (without mannitol). In the
+DSC thermogram of docetaxel, a sharp endothermic peak of melting at 166 *C was observed which
+indicates crystalline state. The PLGA thermogram exhibited glass transition temperature around 52 *C.
+The glass transition temperature for PLGA was not affected by the nanoparticles preparation procedure.
+PLX-188 thermogram exhibited endothermic peak at melting temperature of 57 *C. DTX-NPs did not
+show peaks related to the melting point of docetaxel which may be because of decreased docetaxel
+
+19 of 28
+
+crystallinity in the formulations and/or drug solubilization in the polymeric matrix. Similar results were
+reported in literature by other authors when a hydrophobic drug was encapsulated in PLGA-NPs .
+
+mW
+DSC
+
+mW
+DSC
+
+0.00
+
+0.00
+
+-2.00
+
+-1.00
+
+-4.00
+
+-6.00
+
+-2.00
+
+50.00
+100.00
+150.00
+200.00
+Temp [C]
+
+50.00
+100.00
+150.00
+200.00
+Temp[C]
+
+(a)
+(b)
+
+mW
+DSC
+
+mW
+DSC
+
+0.00
+
+0.00
+
+-10.00
+
+-10.00
+
+-20.00
+
+-20.00
+
+50.00
+100.00
+150.00
+200.00
+Temp [C]
+
+50.00
+100.00
+150.00
+200.00
+Temp [C]
+
+(c)
+(d)
+
+(d) DTX-NPs.
+
+3.2.5. Scanning Electron Microscopy and Transmission Electron Microscopy
+
+The SEM and TEM images showed prepared DTX-NPs are homogenous, possess smooth and
+spherical surfaces without aggregation (Figure 8).
+
+3.2.6. In Vitro Drug Release
+
+Optimized DTX-NPs formulation was studied for in vitro drug release profile (Figure 9).
+As reported in literature, drug release from PLGA-NPs illustrates biphasic patterns with primary
+burst release attributable to dissolution of docetaxel adsorbed on the surface of NPs. Subsequently,
+slow but continuous release was seen until 96 hours. The release kinetics of drug from NP formulation
+was studied as per zero and first order, Higuchi, Peppas and Hixson-Crowell models. The Higuchi
+model showed best fit with determination coefficient as R2 = 0.90. The release from PLGA polymer
+may be controlled by diffusion and matrix erosion .
+
+20 of 28
+
+(a)
+
+(b)
+
+21 of 28
+
+(c)
+
+100
+
+80
+
+% Drug Release
+
+60
+
+40
+
+20
+
+0
+50
+100
+150
+200
+0
+
+Time (Hrs)
+
+3.2.7. In Vitro Anticancer Assay
+
+In vitro cell cytotoxicity study was performed on A549 cells, cell viability after the treatment with
+plain docetaxel and DTX-NPs at different concentration, after 48 h. IC50 was determined statistically .
+One way ANOVA followed by "Dunnett's Multiple Comparison Test" has been used to access the
+statistical comparison (Figure 10).
+
+22 of 28
+
+Cytotoxicity studies against A549 cell line at 48 h
+
+120
+Control
+Docetaxel
+Docetaxel-PLGA-PLX-NP
+
+100
+
+Percent cell viability
+
+80
+
+60
+
+40
+
+20
+
+0
+
+1.25 nM
+
+2.50 nM
+
+5.0 nM
+
+10.0 nM
+
+20.0 nM
+
+40.0 nM
+
+Control
+
+3.2.8. Stability Studies
+
+Lyophilized nanoparticles containing 5% mannitol as a cryoprotectant were charged on accelerated
+stability conditions. At the end of the storage period, lyophilized DTX-NPs were analyzed and it was
+observed that there was no melt back of cake and the product was stable. There was no significant
+change in description, content of entrapped drug, particle size, and PDI as compared to initial time
+point (Table 12).
+
+Parameters
+Initial
+Final
+
+Particle size (nm)
+210 +- 2.6
+214 +- 1
+PDI
+0.159 +- 0.001
+0.170 +- 0.001
+Drug content (%)
+97.1 +- 0.85
+96.8 +- 0.77
+Description
+White powder
+White powder
+
+3.2.9. In Vivo Studies
+
+In vivo studies were carried out on Wistar rats with administration of NP formulations via
+pulmonary route, and concentration of drug was examined in different organs like lung, spleen,
+liver and kidney).
+
+## Discussion
+The aim of this study was to obtain an optimized nano-particulate composition that could be
+administered via pulmonary route. It was also expected that the formulation should be retained in the
+organ of interest (lungs) for a longer duration so as to have a higher concentration of drug. Considering
+the amount of powder that can be inhaled or a liquid suspension that can be administered exploring
+the pulmonary route, the encapsulation efficiency was anticipated to be high making it a CQA. In order
+for the nano-formulation to be effectively delivered to lungs via inhalation route, average particle size
+and polydispersity index were aimed to be optimized enabling the retention in lungs for an enhanced
+duration. Physical stability before the nanoparticle suspension gets lyophilized was also of importance.
+Hence, zeta potential was considered critical.
+In general, while PLGA nanoparticles are formulated using emulsification solvent evaporation
+technique, and once the emulsification step is completed, the organic phase with PLGA and/or drug and
+aqueous-phase containing helper molecule/surfactant are in the state of thermodynamic equilibrium.
+Transferring the formed emulsion into water with surfactant destabilizes the equilibrium of this system.
+Due to this, the organic solvent diffuses to the water-phase and during this transport phenomenon,
+PLGA nanoparticles are formed, and the size of formed nanoparticles may rely upon the type of
+organic phase solvent used; the same was found to be a significant factor during screening performed
+
+25 of 28
+
+in this study. Organic solvents which are partially soluble in water like EA and solvents which are
+fully soluble in water like AC were studied. It was observed that, in case of partially miscible solvent
+(EA), small particles around 200-400 nm in mean particle size were attained, while large particles
+around 400-900 nm in mean particle size were obtained using solvents which are fully soluble in water
+(AC). In addition, the suspension of PLGA nanoparticles formulated using EA was more transparent
+in appearance than that with AC. This shows that the organic solvent used plays a significant role in
+deciding the size of nanoparticles obtained. The interfacial tension in between the organic and aqueous
+phase which results from partial water solubility of EA and the capability of stabilizer to protect NPs
+against aggregation might be responsible for the small size of NP obtained with EA. On the other hand,
+complete miscibility of AC with water hinders the formation of stable emulsion and upon mixing the
+aqueous and organic phases, the polymer precipitates out as large particles of sub-micron size. Hence,
+EA was used for optimization studies .
+In screening trials (PBD), NPs formulated with PLX-188 showed smaller size compared to
+formulations fabricated with PVA. PLX has higher HLB value  compared to PVA  and hence,
+PLX is able to stabilize even smaller particles in contrast to PVA .
+Since both the surfactants were non-ionic, the nanoparticle formulations made exhibited negative
+zeta potential; magnitude was higher with PLX-188 which may be due to the length of the hydrophilic
+chain of PLX-188 .
+In general, it is expected that upon increasing the concentration of surfactant the particle size will
+decrease. However, the opposite results were observed and explained by the particle aggregation due
+to the bridging effect of surfactant . Surfactant concentration has an impact on entrapment
+efficiency as well. Increasing surfactant concentration decreased entrapment efficiency. The electrostatic
+interaction or repulsion in between surfactant and drug might cause this phenomenon. The other
+reason which can be assigned to this phenomenon is an increase in solubility of docetaxel in the
+aqueous phase in the presence of high concentration of surfactant causing it to diffuse into the aqueous
+environment and thus decrease the entrapment efficiency . Entrapment efficiency was on a
+higher side for batches formulated using PLX-188 comparing to PVA . PLX-188 was selected for
+further studies as it is known to impart stealth effect to nanoparticles .
+In order to examine the effect of the process by which particle size reduction is achieved, batches
+were prepared with target of ~200 nm reducing particle size either by using the ultra-sonicator or
+homogenizer. Other parameters of formulation and process were kept constant i.e., amount of docetaxel
+(10 mg), PLGA (200 mg), surfactant concentration (0.05%), and type (PLX-188). NPs were prepared by
+homogenization speed of 13,500 rpm for 2 min and sonication at 60% of amplitude and time 45 s were
+employed to primary emulsion. Following the hardening step, particle size and PDI of NPs dispersion
+was measured by Malvern zeta sizer. The desired particle size (~200 nm) was obtained after sonication
+at 60% amplitude for 45 s (3 cycles of 15 s) as compared to homogenization. The particle size reduction
+method also impacted zeta potential with more favorable values obtained after sonication . Hence,
+it was decided to adopt the sonication method to reduce particle size in the optimization studies.
+Increasing the amount of PLGA in organic solvent caused an increase in average NP size and
+entrapment efficiency. The effect can be understood based on viscosity of organic solvent which
+increases when the amount of polymer increases and results in faster solidification and thus prevents
+the diffusion free drug into the aqueous phase .
+Upon increasing the drug concentration in the organic phase, the entrapment efficiency increased
+to a point and then declined rapidly. Increase in encapsulation efficiency can be explained as more
+availability of drug molecules to get entrapped in PLGA nanoparticles. After a complete consumption
+of PLGA available to encapsulate the drug, the drug remains un-entrapped and there is a decrease in
+entrapment efficiency based on the initial amount of drug taken for formulation preparation .
+Vortex speed in the emulsification step and stirring speed in the hardening step did not impact
+the CQAs and were found insignificant in the Placket-Burmann design.
+
+26 of 28
+
+Enhanced cytoxicity was observed when docetaxel was encapsulated in the form of polymeric
+nanoparticles as reported in literature. This can be attributed to an increased uptake of NPs by cells .
+In this study we have evaluated the pulmonary residence time of optimized DTX-NPs which can
+be useful as a non-invasive option in treatment therapy for Non-Small Cell Lung Cancer (NSCLC).
+Powder characterization in order to formulate a Dry Powder Inhaler which is able to deliver and
+deposit the formulation to deep regions of lung via inhalation device is part of our subsequent study.
+
+## Conclusion
+In the presented work, we have studied the effects of formulation and process parameters on
+CQAs of NPs with the help of experimental design tools, such as Placket-Burmann and Box-Behnken,
+as part of QbD studies. Design space was created after optimization of formulation. DTX-NPs have
+shown increased mean residence time in lungs which is helpful for pulmonary administration of drugs.
+The performed work helped to understand the fundamentals of formulation and process design and
+the knowledge gathered can be applied in formulating a pulmonary drug delivery system based on
+polymeric nanoparticles to be administered by a dry powder inhaler.
+
+Author Contributions: N.C. conceptualized, designed the experiment, investigated, data curation, original draft
+preparation; S.J. (Satveer Jagwani) and D.D. assisted in formal analysis and validation; S.J. (Sunil Jalalpure)
+facilitated in resources availability; M.H.D. visualized, supervised the research work, reviewed and edited
+the manuscript.
+
+Funding: This research received no external funding.
+
+Acknowledgments: The authors are thankful to Glenmark Pharmaceuticals (Mumbai, India) for providing
+Docetaxel, Evonik Industries for generous supply of PLGA and Wockhardt Limited for analytical help.
+
+Conflicts of Interest: The authors declare no conflict of interest.

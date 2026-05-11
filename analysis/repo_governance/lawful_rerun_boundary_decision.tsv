@@ -1,0 +1,6 @@
+stage_or_boundary	changed_since_old_baseline_yes_no	change_description	reuse_allowed_yes_no	fresh_rerun_required_yes_no	notes
+Stage0	no	No targeted post-anchor Stage0 script delta detected in the maintained execution surface.	yes	no	No evidence that Stage0 changes force an earlier rerun boundary.
+Stage1	yes	`src/stage1_cleaning/pdf2clean.py` changed for cross-machine manifest path remapping.	yes	no	Treat as reusable upstream because this is not a retained paper-proven semantic extraction repair.
+Stage2 S2-2 pre-LLM evidence boundary	yes	Stage2 composite binding refresh and extractor changes alter candidate segmentation, evidence selection, and prompt-facing table content.	no	yes	This is the earliest lawful rerun boundary because prompt inputs changed and replay equivalence is unproven.
+Stage3	no	No targeted post-anchor Stage3 code delta detected.	no	yes	Even without Stage3 code changes, downstream artifacts must be rebuilt from the fresh Stage2 output.
+Stage5	yes	Identity-freeze and compare scripts changed to a diagnostic non-blocking contract.	no	yes	New baseline reporting must be rebuilt from the rerun Stage2/Stage3 outputs and current maintained compare behavior.

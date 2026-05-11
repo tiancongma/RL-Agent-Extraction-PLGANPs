@@ -1,0 +1,1288 @@
+Saudi Pharmaceutical Journal 32 (2024) 102064
+Available online 7 April 2024
+1319-0164/© 2024 The Author(s). Published by Elsevier B.V. on behalf of King Saud University. This is an open access article under the CC BY-NC-ND license
+(http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Original article
+Sorafenib and Piperine co-loaded PLGA nanoparticles: Development,
+characterization, and anti-cancer activity against hepatocellular carcinoma
+cell line
+Sulaiman S. Alhudaithi a,*, Mohd Abul Kalam a, Lama Binobaid b, Raisuddin Ali a,
+Mohammed M. Almutairi b, Wajhul Qamar b, Hessa Bin Hithlayn a, Atheer Almutairi a,
+Abdullah K. Alshememry a
+a Department of Pharmaceutics, College of Pharmacy, King Saud University, P.O. Box 2457, Riyadh 11451, Saudi Arabia
+b Department of Pharmacology and Toxicology, College of Pharmacy, King Saud University, P.O. Box 2457, Riyadh 11451, Saudi Arabia
+A R T I C L E  I N F O
+Keywords:
+Hepatocellular carcinoma
+Sorafenib
+Piperine
+Poly (lactic-co-glycolic acid)
+Emulsification-solvent-evaporation
+A B S T R A C T
+Hepatocellular carcinoma (HCC) exhibits high mortality rates in the advanced stage (>90 %). Sorafenib (SORA)
+is a targeted therapy approved for the treatment of advanced HCC; however, the reported response rate to such a
+therapeutic is suboptimal (<3%). Piperine (PIP) is an alkaloid demonstrated to exert a direct tumoricidal activity
+in HCC and improve the pharmacokinetic profiles of anticancer drugs including SORA. In this study, we
+developed a strategy to improve efficacy outcomes in HCC using PIP as an add-on treatment to support the first-
+line therapy SORA using biodegradable Poly (D, L-Lactide-co-glycolide, PLGA) nanoparticles (NPs). SORA and
+PIP (both exhibit low aqueous solubility) were co-loaded into PLGA NPs (PNPs) and stabilized with various
+concentrations of polyvinyl alcohol (PVA). The SORA and PIP-loaded PNPs (SP-PNPs) were characterized using
+Fourier Transform Infrared (FTIR) Spectroscopy, X-ray Powder Diffraction (XRD), Dynamic Light Scattering
+(DLS), and Scanning Electron Microscopy (SEM), Release of these drugs from SP-PNPs was investigated in vitro at
+both physiological and acidic pH, and kinetic models were employed to assess the mechanism of drug release.
+The in vitro efficacy of SP-PNPs against HCC cells (HepG2) was also evaluated. FTIR and XRD analyses revealed
+that the drugs encapsulated in PNPs were in an amorphous state, with no observed chemical interactions among
+the drugs or excipients. Assessment of drug release in vitro at pH 5 and 7.4 showed that SORA and PIP loaded in
+PNPs with 0.5 % PVA were released in a sustained manner, unlike pure drugs, which exhibited relatively fast
+release. SP-PNPs with 0.5 % PVA were spherical, had an average size of 224 nm, and had a high encapsulation
+efficiency (SORA ~ 82 %, PIP ~ 79 %), as well as superior cytotoxicity compared to SORA monotherapy in vitro.
+These results suggest that combining PIP with SORA using PNPs may be an effective strategy for the treatment of
+HCC and may set the stage for a comprehensive in vivo study to evaluate the efficacy and safety of this novel
+formulation using a murine HCC model.
+1. Introduction
+Hepatocellular carcinoma (HCC) is the most common type of liver
+cancer and the third main cause of cancer related deaths worldwide
+(Yang et al., 2023; Zhuo et al., 2019). Up to 75 % of patients who
+develop HCC have a history of risk factors including chronic liver dis­
+eases such as hepatitis and cirrhosis (Gomaa et al., 2008; Yang et al.,
+2019). Despite advancements in HCC treatment in recent decades, sur­
+vival rates remain poor. The 5-year relative survival rate in the localized
+stage is < 40 %, whereas in the distant stage, it is lower than 4 %
+(Neureiter et al., 2019; Siegel et al., 2019).
+Sorafenib (SORA) is a multi-target tyrosine kinase inhibitor currently
+used as a first-line treatment in unresectable and metastatic HCC (Fur­
+use, 2008; Laface et al., 2022; Nguyen et al., 2023). SORA is highly
+hydrophobic with a reported 38 to 49 % bioavailability of its salt form
+(SORA Tosylate) (Liu et al., 2016). Due to its low pharmacokinetic
+profile, it is administered twice daily to HCC patients at a high dose (400
+mg) (Ben Mousa, 2008). Despite being a drug of choice, the phase III
+* Corresponding author.
+E-mail address: salhudaithi@ksu.edu.sa (S.S. Alhudaithi).
+HOSTED BY
+Contents lists available at ScienceDirect
+Saudi Pharmaceutical Journal
+journal homepage: www.sciencedirect.com
+https://doi.org/10.1016/j.jsps.2024.102064
+Received 18 January 2024; Accepted 6 April 2024
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+2
+clinical trial (SHARP) that led to SORA FDA approval revealed that the
+overall response rate to SORA in HCC patients is suboptimal (2 %), with
+only slight improvement in overall survival compared to placebo (2.8
+months median improvement) (Storandt et al., 2022). However, no
+other targeted therapies tested in phase III clinical studies showed su­
+periority to SORA in terms of HCC survival rates (Colagrande et al.,
+2016; Zhang et al., 2023).
+Plant-derived natural products, such as flavonoids and alkaloids
+have been extensively investigated in preclinical studies for the treat­
+ment of several cancers, including breast, lung, and liver cancer
+(Kopustinskiene et al., 2020; Li et al., 2022). Piperine (PIP), an alkaloid
+constituent of black pepper, has been shown to exhibit antitumor,
+hepatoprotective, antihypertensive, antioxidant, and antimicrobial ac­
+tivities when used as monotherapy or in combination with other
+bioactive plant extracts and with standard anticancer therapies (Tripathi
+et al., 2022). PIP is also a bioenhancer; it inhibits P-glycoprotein (Pgp), a
+major drug transporter largely involved in the efflux of several anti­
+cancer drugs including tyrosine kinase inhibitors, which may potentially
+lead to drug resistance (Finch and Pillans, 2014; Syed et al., 2017; Tri­
+pathi et al., 2022). Moreover, PIP has been shown to inhibit CYP3A4, a
+major drug-metabolizing enzyme (Wang et al., 2013). Inhibition of Pgp
+and CYP3A4 is strongly associated with the enhancement of absorption
+and bioavailability of many drugs including anticancer drugs (Gao and
+Hu, 2010). The bioavailability of curcumin was enhanced by 1.5 times in
+rats and 20 times in human volunteers when administered with PIP
+(Shoba et al., 1998). PIP has also been shown to improve the pharma­
+cokinetic properties of SORA, which was likely attributed to its Pgp and/
+or CYP3A4 inhibitory effect (Patel et al., 2022; Tiwari et al., 2020;
+Tiwari et al., 2021).
+Given the prominent role of PIP in cancer and the suboptimal effect
+of SORA in the treatment of HCC, we set out to investigate whether the
+incorporation of PIP as an add-on to the standard-of-care therapy SORA
+would lead to superior anticancer effects against HCC compared to
+SORA treatment alone. Our novel strategy aimed to encapsulate SORA
+and PIP (both highly lipophilic molecules) in Poly Lactic-co-Glycolic
+Acid (PLGA) based nanoparticles (NPs) and examine the impact of the
+therapeutic on HCC. PLGA, a biodegradable and biocompatible polymer
+(Lu et al., 2023; Rocha et al., 2022), is FDA-approved and widely been
+employed in drug delivery applications (Alsaab et al., 2022; Makadia
+and Siegel, 2011). Many reports have revealed that PLGA-based NPs
+(PNPs), when used as drug carriers, can prolong the release of drugs,
+potentially reducing the dosing frequency, minimizing off-target side
+effects of therapeutics, and increasing drug stability (Alvi et al., 2022;
+Bai et al., 2022; Shao et al., 2022). PLGA has also been shown to be an
+optimal vehicle for a variety of hydrophobic compounds as it enhances
+their aqueous solubility, and thereby, their efficacy (Caputo et al., 2023;
+Makadia and Siegel, 2011).
+This work involves development of dual drug-loaded PNPs and their
+associated characterization, drug release studies, as well as the assess­
+ment of the therapeutic efficacy on HCC cells (HepG2) using in vitro
+techniques.
+2. Materials and methods
+2.1. Materials
+HepG2 cells were purchased from the American Type Culture
+Collection (ATCC®). Dulbecco’s modified Eagle’s medium (DMEM),
+high glucose with sodium pyruvate (GibcoTM), fetal bovine serum (FBS,
+GibcoTM), and penicillin–streptomycin antibiotics 100x (CapricornTM)
+were obtained from ThermoFisher (Massachusetts, USA). SORA
+(C21H16ClF3N4O3; Mw 464.825 g/mol) was purchased from LC Labo­
+ratories®, MA, USA. PIP (C17H19NO3; Mw 285.35 g/mol) and the
+Annexin V-FITC/PI Apoptosis Detection-Kit (catalog # HY-K1073) were
+obtained from MedChemExpress LLC, NJ, USA. Poly (D, L-lactic-co-
+glycolic acid; 50: 50) with 40,000–75,000 Mw, polyvinyl alcohol (PVA)
+with 30,000 Mw, acetone, dimethyl sulfoxide (DMSO), ethanol, Kolli­
+phor® EL, and Thiazolyl Blue Tetrazolium Bromide (MTT) (catalog #
+M2128) were provided by Sigma Aldrich Co. (St. Louis, MO, USA).
+Tween-80 was supplied by Eurostar Scientific Ltd. Liverpool, UK.
+Acetonitrile, methanol (HPLC grades), and formic acid were obtained
+from “BDH Ltd. (Poole, England)”. Phosphate buffered saline (PBS) was
+purchased from Life TechnologiesTM (Frederick, MD, USA). Dialysis
+membrane with a molecular weight cutoff of 12–14 kDa was supplied by
+Spectra/Por®, Spectrum Lab Inc., (Rancho Dominguez, CA, USA). Milli-
+Q water was obtained from Millipore filter unit (Millipore, Molsheim,
+France). All chemicals used were of analytical grade.
+2.2. High-performance liquid chromatography (HPLC) analysis of SORA
+and PIP
+A previously reported HPLC with UV-detection was utilized for the
+simultaneous quantification of SORA and PIP (Escudero-Ortiz et al.,
+2015; Tiwari et al., 2020). A reversed-phase C18 column (SunFireTM
+columns by Waters®, 5 μm, 4.6 × 250 mm) was connected to a Waters®
+HPLC system (1500-series controller, Milford, MA, USA). Other essential
+HPLC parts were used, including binary pump (Model-1525), autosam­
+pler (Model-2707), and dual absorbance UV-detector (Model-2489). The
+system was controlled and monitored by Breeze 2 software for data
+collection and calculations, and the column was maintained at 25 ◦C.
+The mobile phase consisted of acetonitrile (70 % v/v) and water with
+formic acid (29.5 %: 0.5 %, v/v). The mobile phase components were
+filtered through a 250-μm membrane filter and sonicated for 20 min for
+degassing. Subsequently, the mobile phase compositions were pumped
+isocratically to the HPLC system at 1 mL/min of flow rate. Simultaneous
+detection of both drugs was performed at 280 nm UV-detection (iso­
+sbestic point for SORA and PIP) (Tiwari et al., 2020). The injection
+volume was 30 µL and the total run-time was 10 min.
+The stock solution of the drug mixture was prepared by dissolving 10
+mg of each drug in 100 mL of acetonitrile (100 μg/mL). Standard cali­
+bration of samples was prepared by diluting the stock solution. The
+mobile phase mixture was used for further dilutions to obtain a con­
+centration range of 0.25–50 μg/mL for each drug.
+2.3. Preparation of PLGA NPs
+PNPs, co-loaded with SORA and PIP (SP-PNPs) were prepared by
+using the commonly employed “emulsification solvent evaporation
+method” as described in previous reports (Caputo et al., 2023; Kalam
+and Alshamsan, 2017; Rezvantalab et al., 2018; Song et al., 2008).
+Briefly, 60 mg of PLGA, 4.5 mg of SORA and 2.5 mg of PIP were dis­
+solved in 2.5 mL of acetone (organic phase). PVA was dissolved in Milli-
+Q water at 0.25, 0.5, or 1 %, w/v concentration (aqueous phase). The
+organic phase was gradually added drop by drop to 7.5 mL of the
+aqueous phase under magnetic stirring (750 rpm) and emulsified by
+probe sonication (Sonics & Materials, Inc., Newtown, CT, USA) at 40 W
+power in an ice-bath for 1 min followed by homogenization at 21,500
+rpm for 5 min (IKA®-WERKE, GMBH & Co., Staufen, Germany) to form
+the primary emulsion. After the primary emulsion was prepared, addi­
+tional aqueous phase (three times the volume of the primary emulsion)
+was added with magnetic stirring to facilitate the formation of droplets.
+The organic solvent was allowed to evaporate by magnetic stirring for 4
+h at room temperature, resulting in PNPs suspended in the aqueous
+phase. the suspended PNPs were then purified by multiple washes with
+Milli-Q water for purification by ultracentrifugation at 4 ◦C for 30 min at
+30,000 rpm (Preparative Ultracentrifuge, WX-series, Hitachi Koki,
+Ibaraki, Japan). The supernatant was discarded and the pellet of PNPs
+was freeze-dried at 0.02 mbar and −50 ◦C for 24 h (FreeZone-4.5 Freeze
+Dry System, Labconco Corporation, Kansas, MO, USA) for subsequent
+studies. PNPs loaded with SORA (S-PNPs), PIP (P-PNPs) and blank PNPs
+(B-PNPs) were prepared in a similar fashion. Pure drug solutions of
+SORA and PIP (SP-SOL) were prepared by dissolving appropriate
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+3
+amounts of the drugs in a 3:1 (v/v) mixture of ethanol and Kolliphor® EL
+for comparative in vitro release profiling (Yang et al., 2016). All batches
+of formulations were prepared in triplicate.
+2.4. Particle size, polydispersity index (PDI) and zeta potential (ζ)
+measurements
+The average size and PDI of the developed PNPs were determined by
+dynamic light scattering (DLS) measurement using Zetasizer Nano ZS90
+(Malvern Instruments Ltd., Malvern, UK) at 25 ◦C and a 90◦scattering
+angle for optimal detection. The PNP suspensions were diluted with
+Milli-Q water (1:10) before each measurement. The PDI ranged from
+0 to 1. The ζ of the PNPs was determined by DLS at 25 ◦C using the same
+aqueous dilution. Water was selected as diluent due to its dielectric
+constant value of ~ 78. The Zetasizer was equipped with DTS version 4.1
+(Malvern, England) software capable of measuring the electrophoretic
+mobility of the suspended NPs, which was then converted to a numerical
+value of ζ (mV) by the software. Measurements were performed in
+triplicate for each formulation.
+2.5. Scanning electron microscope (SEM) imaging
+SEM (Zeiss EVO LS10, Cambridge, UK) imaging was performed using
+the standard gold-sputter technique to assess the morphology of the
+developed PNPs. The PNP samples were coated with gold using an “Ion-
+Sputter” for 60 sec at 20 mA current. Scanning was performed at an
+accelerating voltage of 20 kV, with a working distance of 7.5–9.0 mm,
+and magnification of 25,000 to 40,000 times.
+2.6. Drug encapsulation and loading efficiencies
+Drug encapsulation and loading efficiencies were calculated by in­
+direct method, where the unencapsulated drugs were measured.
+Following purification by ultracentrifugation, the pellet of SORA and
+PIP-loaded PNPs was resuspended with 5 mL of Milli-Q water. Subse­
+quently, 1 mL of PNPs suspension was centrifuged again for 30 min, and
+the supernatant was collected. A 30 µL aliquot of the supernatant was
+then injected into the HPLC system for the quantification of the unen­
+trapped SORA and PIP in the PNPs. The chromatographic separation of
+the two drugs was achieved using the adopted HPLC-UV method at the
+isosbestic point of both drugs (280 nm), as mentioned above. The
+experiment was performed in triplicate. Encapsulation efficiency (%EE)
+and loading capacity (%DL) were calculated by the following equations
+(Eq. 1 and Eq. (2):
+%EE =
+(
+Initialamountofdrug(μg)−Finalamountofdrug(μg)
+Initialamountofdrug(μg)
+)
+× 100…. (1)
+%DL =
+(Initialamountofdrug(μg) −Finalamountofdrug(μg)
+TotalamountofPNPs(μg)
+)
+× 100⋯
+(2)
+2.7. Fourier Transform infrared (FTIR) spectroscopy
+FTIR was performed for the pure drugs (SORA and PIP), PLGA, the
+physical mixture of drugs and PLGA, freeze-dried B-PNPs, and SP-PNPs
+using BRUKER Optik GmBH (Model ALPHA, Germany). Approximately
+5 mg of each sample was placed on a holder plate and exposed to a range
+of infrared spectra. The instrument was equipped with OPUS software
+version 7.8. The spectra of all samples were recorded from 4000 to 400
+cm−1 wavenumber at 2 cm−1 resolution.
+2.8. X-ray Powder diffraction (XRD)
+Samples were ground using a mortar and pestle. XRD analysis of the
+pure drugs (SORA and PIP), PLGA, the physical mixture of drugs and
+PLGA, freeze-dried B-PNPs, and SP-PNPs was performed using “Ultima-
+IV Diffractometer (Rigaku, Inc. Japan)” at 2-theta (2θ◦) over a range of 3
+to 100◦and a scan speed of 1 deg/min. The X-ray tube was composed of
+copper (Cu) as the anode material with Kα2 elimination (λ) of 0.154 nm
+and was monochromatized with a graphite crystal. The diffraction
+pattern was recorded at 40 kV voltage and 40 mA current for the
+generator in step scan mode. The step size was 0.02◦and counting time
+was 1 sec per step.
+2.9. In vitro release of SORA and PIP from SP-PNPs
+In vitro release profiles of SORA and PIP were assessed in PBS release
+medium at two pH conditions, neutral (pH 7.4) and acidic (pH 5), which
+are representative of the physiological and the tumor microenvironment
+pH, respectively (Ebadi et al., 2020). Tween-80 (0.5 %) was added to the
+release media to enhance the solubilization of the highly lipophilic
+drugs. For comparative release profiling, SORA and PIP solutions (SP-
+SOLs) were prepared by dissolving the same drug quantities as in PNPs
+in a 3:1 (v/v) mixture of ethanol and Kolliphor® EL (Yang et al., 2016).
+One milliliter of each SP-PNP suspension and SP-SOLs was placed into
+activated 12 kDa MWCO dialysis bags (Spectra/Por® Standard RC
+Tubing). Both ends of the bags were securely sealed by appropriate
+closures and they were immersed in 50 mL of release media using bea­
+kers. Three sets of beakers for each formulation were placed into a
+shaking water bath and maintained at a speed of 100 S/min and a
+temperature of 37 ± 2 ◦C. Samples (1 mL) were collected from each
+beaker at various time points to assess the release of drugs. To maintain
+sink conditions, 1 mL of fresh release medium (kept at 37 ± 2 ◦C) was
+added to the beakers after each sampling. The collected samples were
+transferred to HPLC vials and 30 µL of each sample was injected into an
+HPLC-UV system for the simultaneous quantification of SORA and PIP at
+280 nm (Tiwari et al., 2020). The percentage of drug released (%DR)
+was estimated using Eq. 3. Thereafter, the %DR was plotted against time
+(h) to obtain the release profiles of both drugs.
+%DR = Conc.(μg/mL)×DF×Volumeofreleasemedium(mL)
+Initialamountofdrugused(μg)
+× 100……(3).
+2.10. Release kinetics of SORA and PIP from SP-PNPs
+The release kinetics of SORA and PIP in SP-PNP formulations were
+determined by fitting the in vitro release data to different kinetic equa­
+tions (release models). The models utilized in this investigation were
+zero-order, first-order, Korsmeyer-Peppas, Higuchi-matrix (square root
+model), and Hixson-Crowell models. Among the applied models, the one
+that showed the highest value of correlation-coefficient (R2) was
+considered the best-fit model for drug release. By using the slopes of the
+regression equations, obtained from the plots, the release-exponent (n-
+values) was calculated to examine the mechanism of drug release from
+SP-PNPs. In addition, the K-values (the release constant) for all models
+were estimated.
+2.11. Cell culture
+Human hepatocellular carcinoma cells (HepG2) were grown in a
+complete medium composed of DMEM supplemented with 10 % FBS and
+1 % penicillin–streptomycin antibiotics and maintained in culture at
+37 ◦C and 5 % CO2.
+2.12. In vitro anticancer activity
+2.12.1. Cell proliferation (MTT assay)
+The anti-proliferative effect of SP-PNPs, pure SORA, and pure PIP on
+HepG2 cells was assessed using MTT assay. The pure drugs were solu­
+bilized in a solution composed of DMSO and Tween-80 in deionized
+water, and then diluted in cell culture media (0.003 % DMSO and 0.03 %
+Tween 80). Seven thousands cells were plated in 96-well plates and
+cultured in complete media at 37 ◦C and 5 % CO2 for 24 h. Cells were
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+4
+then treated for 72 h with various concentrations of SORA (0.94–15 µg/
+mL), PIP (0.94– 15 µg/mL), a mixture of the pure drugs (0.94/0.47 – 15/
+7.5 µg/mL), and SP-PNPs (equivalent to 0.94/0.47 – 15/7.5 µg/mL,
+SORA/PIP), as well as equivalent amounts of drug-free NPs or B-PNPs
+using 3 % FBS containing-DMEM cell culture media. Thereafter, the
+MTT assay was performed as follows; 15 µL of 5 mg/mL MTT stock so­
+lution (dissolved in 1x PBS) was added to each well. The cells were then
+undergone shaking for 5 min before incubating at 37 ◦C and 5 % CO2 for
+2 h in the dark. After that, the medium was completely removed from
+the wells and replaced with 200 µL of isopropyl alcohol to solubilize
+formazan. Cells were then mixed by shaking for 10 min before the
+absorbance was measured at 570 nm using microplate reader (Synergy
+HT, BioTek®). The “cells only” group was used as the control, with their
+average absorbance representing 100 % cell viability. The average
+absorbance of the “positive control” group (cells treated with 5 %
+DMSO) was considered 0 % viability, and the percentage viabilities in all
+groups were estimated with respect to controls readings (0 and 100 %).
+To calculate IC50 values and the confidence interval (CI) for the various
+treatment groups, nonlinear fit of normalized data (log inhibitor vs.
+normalized response) was used.
+2.12.2. Apoptosis/Necrosis assay
+To further evaluate the cytotoxic effect of SP-PNPs on HepG2 cells
+and determine the mechanism of cell kill, an apoptosis/necrosis assay
+was performed. Briefly, 1 x 105 cells were plated in 6-well plates and
+cultured in complete media at 37 ◦C and 5 % CO2 for 24 h. Cells were
+then treated for 72 h with 2 µg/mL of SORA, 1 µg/mL of PIP, SP-PNPs
+containing 2 µg/mL of SORA with 1 µg/mL of PIP, and B-PNPs (with
+equivalent polymer concentrations as in SP-PNPs). Following treatment,
+the cells were trypsinized, washed with 1x PBS and re-suspended in
+binding buffer prior to being stained with 5 µL of Annexin and 10 µL of
+PI. The cells were then incubated in the dark at room temperature for 20
+min. After that, Flow-cytometric analysis was performed using a Beck­
+man Coulter Flow-cytometer (Indianapolis, IN, USA). Cells undergone
+only necrosis were identified as PI+, the Annexin+ cell population is
+representative of early apoptosis, and the PI+ Annexin+ population
+represented late apoptotic cells.
+2.13. Statistical analysis
+Data are presented as means with standard deviations (Mean ± SD)
+or standard error of the mean (±SEM). Statistical analyses were per­
+formed using GraphPad Prism: Versions 5.1 and 8.0.1 (GraphPad Soft­
+ware, Inc., San Diego, CA, USA). One-way ANOVA and Kruskal-Wallis
+tests were used to compare between treatment groups and the control in
+the efficacy experiments, and statistical significance was considered
+when p-values were less than 0.05 (p < 0.05). ROUT analysis was used to
+eliminate outliers in the efficacy experiments.
+3. Results
+3.1. HPLC analysis of SORA and PIP at isosbestic point
+The HPLC method used (Tiwari et al., 2020) was deemed appropriate
+for chromatographic separation and simultaneous quantification of
+SORA and PIP. Calibration curves for both drugs were linear within the
+specified concentration range (0.25–50 μg/mL). The regression equa­
+tions for SORA and PIP had correlation coefficients (R2) of 0.9979 and
+0.9994, respectively. Moreover, the retention times for SORA and PIP
+were 6.29 min and 4.98 min, respectively.
+3.2. Development of SP-PNPs and initial characterization
+Particle size, PDI, and ζ of the various prepared PNPs are listed in
+Table 1. The developed PNPs were ranged in size from 221 to 420 nm.
+The ζ measurements for all the prepared formulations, including B-
+PNPs, had negative values of low magnitude (−3.7 and −7.4). Among
+the developed formulations (Table 1), PNPs with 0.5 % PVA exhibited
+the least PDI, indicating superior homogeneity.
+3.3. Encapsulation and drug loading
+The %EE and %DL of both drugs are listed in Table 2. Similar to the
+effect on the size of polymeric NPs, the drug-to-polymer ratio signifi­
+cantly influences the encapsulation of drugs into NP cores. A drug-to-
+polymer ratio of approximately 1:9 (w/w) drugs (SORA and PIP) to
+PLGA was used to prepare SP-PNPs. The results (Table 2) showed that
+PNPs were more efficient in loading SORA compared to PIP (SORA: >
+6.5 %DL, PIP: < 3.5 %DL). The entrapment of SORA and PIP in 0.5 %
+PVA PNPs resulted in higher %EE (82.13 % and 78,93 %, respectively)
+compared to PNPs with 0.25 % and 1 % PVA. However, PVA concen­
+tration did not have a significant impact on drug entrapment for either
+drug, which is different than its effect on PNP size and ζ (as described in
+Section 3.2). Therefore, based on these findings, 0.5 % (w/v) was chosen
+as the optimal concentration of PVA for preparing SP-PNPs for in vitro
+drug release and efficacy studies.
+3.4. SEM analysis
+The shape and surface structures of PNPs, prepared with various PVA
+concentrations were evaluated by SEM using magnifications ranging
+from 25,000 to 40,000 times, as depicted in Fig. 1. SEM imaging
+revealed that the developed PNPs had fairly regular and spherical solid
+dense structures with smooth surfaces and without overt aggregation.
+No noticeable differences were observed in the surface morphology
+between B-PNPs and SP-PNPs.
+3.5. FTIR spectroscopy
+FTIR is a commonly used technique for obtaining material- specific
+Table 1
+Physical characterization of the developed PNPs. Data are presented as the av­
+erages of at least three measurements with standard deviations (Mean ± SD, n ≥
+3).
+PLGA-NPs
+Parameters
+Particle size
+(nm)
+Polydispersity index
+(PDI)
+Zeta potential (ζ)
+(mV)
+SP-PNPs (0.25 %,
+PVA)
+221.21 ±
+15.74
+0.246 ± 0.060
+−3.73 ± 1.85
+SP-PNPs (0.5 %,
+PVA)
+224.82 ±
+14.04
+0.131 ± 0.068
+−5.01 ± 1.78
+SP-PNPs (1 %,
+PVA)
+420.56 ±
+26.22
+0.592 ± 0.244
+−7.38 ± 1.67
+B-PNPs (0.5 %,
+PVA)
+202.16 ±
+18.98
+0.192 ± 0.092
+−5.85 ± 2.35
+SP-PNPs: Sorafenib-Piperine co-encapsulated PLGA-NPs; B-PNPs: Blank PLGA-
+NP.
+Table 2
+%EE and %DL of the developed SP-PNPs. Data are represented as the averages of
+three measurements with standard deviations (Mean ± SD, n = 3).
+PLGA-NPs
+%EE
+%DL
+SORA
+PIP
+SORA
+PIP
+SP-PNPs (0.25 %,
+PVA)
+78.92 ±
+3.98
+73.10 ±
+4.44
+6.86 ±
+0.34
+3.18 ±
+0.19
+SP-PNPs (0.5 %,
+PVA)
+82.13 ±
+5.97
+78.93 ±
+7.18
+7.14 ±
+0.52
+3.43 ±
+0.31
+SP-PNPs (1 %, PVA)
+77.72 ±
+3.19
+76.58 ±
+4.13
+6.76 ±
+0.28
+3.32 ±
+0.18
+SP-PNPs: Sorafenib-Piperine co-encapsulated PLGA-NPs; SORA: Sorafenib and
+PIP: Piperine.
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+5
+IR spectra, and it is useful for identifying potential interactions among
+molecules. FTIR analysis is fast, sensitive, and precise compared to other
+IR methods, making it an ideal method for analysing small samples (Eid,
+2022). In this study, IR spectra of the pure drugs (SORA and PIP), PLGA,
+the physical mixture of SORA, PIP, and PLGA, freeze-dried B-PNPs, and
+SP-PNPs were generated as shown in Fig. 2.
+The IR spectra of pure SORA (Fig. 2a) demonstrated the character­
+istic bands of C–O stretching (at 1123.10 cm−1), C–NH stretching
+(1641.13 cm−1), C = O stretching (at 1704.48 cm−1), CH stretching
+band for aliphatic CH (at 3073.21 cm−1), CH stretching band for aro­
+matic CH (at 3293.67 cm−1), and OH bending (at 3332.29 cm−1)
+(Caputo et al., 2023; St˘ancioiu et al., 2022). The spectra of pure PIP
+Fig. 1. Scanning electron micrographs of PNPs, prepared with different concentrations of polyvinyl alcohol (PVA): 0.25% PVA SP-PNPs (a); 0.5% PVA B-PNPs (b);
+0.5% PVA SP-PNPs (c); 1% PVA SP-PNPs (d).
+Fig. 2. Overlay infrared spectra of pure-SORA (a); pure-PIP (b); pure-PLGA (c); the physical mixture of drugs and PLGA (d); B-PNPs (e); SP-PNPs (f).
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+6
+(Fig. 2b), showed an out of plane C–H bending (at 837.60 cm−1), C–O
+stretching (at 925.73 cm−1), C–H stretching, C–H bending of trans –CH
+= CH– (at 998.77 cm−1), =C–O–C asymmetric stretching (at 1243.48
+cm−1), C = C stretching (at 1436.17 cm−1), symmetric and asymmetric
+stretching of C = O diene (at 1522.45 cm−1), C = O stretching (at
+1578.14 cm−1), –CO–N stretching (at 1623.60 cm−1), –NCH2 stretching
+(at 2856.57 cm−1), stretching band of aliphatic C–H (at 2931.84 cm−1),
+and stretching band of aromatic C–H (at 3006.51 cm−1) (Zarai et al.,
+2013).
+The spectra of pure PLGA (Fig. 2c) had C–H bending vibrations at
+1084.09 cm−1, 1170.09 cm−1, and 1268.39 cm−1. The characteristic
+band at 1385.87 cm−1 was due to the bending vibration of C = O, at
+1747.39 cm−1 was due to–COO stretching, and at 2951.87 cm−1 was due
+to C–H stretching vibration (Singh et al., 2014). The IR spectra of the
+physical mixture of drugs and PLGA (Fig. 2d) showed mixed bands of
+different functional groups of SORA, PIP, and PLGA. These bands were
+observed at 837.73 cm−1 for C–H bending (out of plane), 925.84 cm−1
+(C–O stretching for PIP), 999.12 cm−1 (C–H stretching and C–H bending
+of trans –CH = CH– for PIP), 1120.88 cm−1 (C–O stretching), 1191.58
+cm−1 (C–H bending vibration), 1243.58 cm−1 (=C–O–C asymmetric
+stretching), 1360.19 cm−1 (bending vibration of C = O), 1436.16 cm−1
+(C = C stretching for PIP), 1491.97 cm−1 (symmetric and asymmetric
+stretching of C = O), 1578.21 cm−1 (C = O stretching), 1623.57 cm−1
+(possibly –C–NH stretching for SORA or –CO–N stretching for PIP),
+2857.31 cm−1 (–NCH2 stretching), 2931.85 cm−1 (stretching band of
+aliphatic CH) and 3007.15 cm−1 (stretching band of aromatic CH).
+The IR spectra of B-PNPs demonstrated characteristic bands of some
+functional groups, associated with the polymer (Fig. 2e). They showed
+some noticeable and prominent bands at 1088.15 cm−1 and 1171.45
+cm−1 (for C–H bending vibrations), 1388.02 cm−1 (C = O bending vi­
+bration, not a prominent band), 1557.33 cm−1 (C = O stretching, small
+band), 1643.72 cm−1 (C–NH stretching, very small), 1753.17 cm−1 (C =
+O bending vibration, 2951.63 cm−1 (stretching band of aliphatic CH,
+depressed band), and 3335.08 cm−1 (stretching band of aromatic CH,
+slightly depressed band).
+The IR spectra of SP-PNPs demonstrated characteristic bands of
+functional groups associated with the drugs and PLGA (Fig. 2f). They
+showed C–H bending vibrations at 683.34 cm−1 and 839.32 cm−1 (out of
+plane) and at 925.70 cm−1 (C–O stretching, likely of PIP), 1094.05 cm−1
+(for C–H bending vibrations), 1128.44 cm−1 (C–O stretching), 1172.60
+cm−1 (for C–H bending vibrations), 1558.47 cm−1 (C = O stretching
+band), 1641.22 cm−1 (C–NH stretching band), 1757.28 cm−1 (strong C
+= O bending vibration), 2946.83 cm−1, 3298.18 cm−1 (stretching band
+of aliphatic CH), and 3335.15 cm−1 (stretching band of aromatic CH,
+slightly depressed band).
+3.6. XRD analysis
+XRD is a rapid and non-destructive analytical technique, mainly used
+for phase identification of crystalline substances and analysis of material
+microstructure. It works by irradiating samples with incident X-rays and
+measuring the scattering angles and intensities of the X-rays scattered by
+the samples (Ermrich and Opper, 2013). Graphs showing the relation­
+ship between the intensity of the scattered X-rays and scattering angle
+are plotted in Fig. 3. Chemical structures can be determined by
+analyzing the location in 2θ◦angle and the intensities of the scattered
+intensity peaks. The X-ray diffractograms of the pure drugs (SORA and
+PIP), pure PLGA, the physical mixture of SORA, PIP, and PLGA, freeze-
+dried B-PNPs, and SP-PNPs are presented in Fig. 3.
+The diffractogram of pure-SORA (Fig. 3a) showed intense peaks at 2θ
+of 11.58◦, 18.78◦, 22.64◦, 23.08◦, 24.94◦, 25.38◦, and 38.06◦with d-
+values (Bragg’s spacing) of 7.6354, 4.7212, 3.9242, 3.8504, 3.5673,
+3.5064, and 2.3624, respectively. The intensities of 894 cps (I/I0 34),
+1031 cps (I/I0 39), 857 cps (I/I0 32), 663 cps (I/I0 25), 2687 cps (I/I0
+100), 665 cps (I/I0 25), and 682 cps (I/I0 26) indicate a crystalline state
+to SORA (Ebadi et al., 2020).
+The diffractogram of pure-PIP (Fig. 3b) showed intense peaks at 2θ
+angles of 14.2◦, 14.86◦, 19.68◦, 21.46◦, 22.42◦, 22.66◦, 25.78◦, 25.92◦,
+and 38.04◦, corresponding to Bragg’s spacings of 6.232, 5.9566, 4.5073,
+4.1373, 3.9622, 3.9208, 3.4529, 3.4346, and 2.3636, respectively. The
+intensities of 3607 cps (I/I0 47), 7815 cps (I/I0 100), 2676 cps (I/I0 35),
+2871 cps (I/I0 37), 6142 cps (I/I0 79), 4963 cps (I/I0 64), 5132 cps (I/I0
+66), 7519 cps (I/I0 97), and 2948 cps (I/I0 38), also indicate a crystalline
+nature to pure PIP (Ramos et al., 2023). The diffractogram of pure-PLGA
+(Fig. 3c) revealed intense peaks at 2θ angles of 38.02◦and 44.24◦with
+Bragg’s spacings of 2.3648 and 2.0456, respectively, along with in­
+tensities of 1536 cps (I/I0 100) and 535 cps (I/I0 35), indicating the
+characteristic of the PLGA polymer (Sun et al., 2015).
+The diffractogram of the physical mixture of PLGA and drugs
+(Fig. 3d) showed intense peaks at 2θ angles of 15.08◦, 25.98◦, 38.04◦,
+Fig. 3. Overlay diffractogram of pure-SORA (a); pure-PIP (b); pure-PLGA (c); the physical mixture of drugs and PLGA (d); B-PNPs (e); SP-PNPs (f).
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+7
+and 44.24◦with Bragg’s spacings of 5.8702, 3.4268, 2.3636, and
+2.0456, respectively, and intensities of 757 cps (I/I0 33), 937 cps (I/I0
+40), 2353 cps (I/I0 100), and 824 cps (I/I0 36), indicating some of the
+intense and characteristic peaks of the pure drugs (SORA and PIP) and
+PLGA, which was expected because no changes in the molecular struc­
+ture were observed in the physical mixture, and no interaction between
+PLGA and the drugs occurred.
+The XRD-pattern of freeze-dried B-PNPs in Fig. 3e showed less
+intense diffraction peaks at 2θ angles of 30.58◦, 36.0◦, 38.0◦, 44.42◦,
+57.9◦, and 63.6◦with d-values of 2.921, 2.4927, 2.366, 2.0465, 1.5913,
+and 1.4618, respectively, and intensities of 243 cps (I/I0 40), 621 cps (I/
+I0 100), 386 cps (I/I0 63), 177 cps (I/I0 29), 175 cps (I/I0 29), and 191
+cps (I/I0 31). The diffraction peaks for B-PNPs appeared more or less
+(±0.5) around the 2θ angles of the polymer but with somewhat low
+intensities, suggesting low crystallinity of the polymer after passing
+through the different steps of formulation development. The diffraction
+patterns of freeze-dried SP-PNPs (Fig. 3f) showed intense peaks at 2θ
+angles of 28.84◦, 32.36◦, 36.12◦, 38.02◦, and 44.24◦with Bragg’s
+spacings of 3.0932, 2.7643, 2.4847, 2.3648, and 2.0456, respectively,
+and intensities of 100 cps (I/I0 23), 123 cps (I/I0 28), 200 cps (I/I0 46),
+443 cps (I/I0 100), and 141 cps (I/I0 32).
+3.7. Drug release assessment
+In vitro release profiling of drugs from nanoformulations can mimic
+their release behavior in vivo. Therefore, the in vitro release of SORA and
+PIP was assessed in this study using the conventional dialysis method.
+Drug release was investigated under two pH conditions, pH 7.4 (physi­
+ological pH) and pH 5 (mimicking solid tumor microenvironments). The
+concentrations of released drugs were estimated using HPLC-UV as
+described in Section 2.2. As shown in Fig. 4, the release of SORA and PIP
+from SP-PNPs at pH 5 and pH 7.4 was slower and sustained compared to
+the release of the pure drugs. At pH 5 (Fig. 4a and 4b), drug release from
+NPs was gradual and peaked at the 192-h time point (SORA: 77.7 ± 7.2
+% and PIP: 61.3 ± 7.1 %), In contrast, the release of pure drugs was fast
+at the same pH, reaching nearly 92 % for SORA and 90 % for PIP at 12 h
+and 24 h, respectively.
+As shown in Fig. 4c and 4d, at physiological pH, the cumulative
+release of SORA and PIP from SP-PNPs at the 192-h time point was 62.8
+± 6.4 % and 51.3 ± 2.4 %, respectively. Similarly, at pH 7.4, the release
+of SORA and PIP was also fast, reaching around 89 % and 87 % at 24 h,
+respectively. In both formulations (pure drugs and PLGA encapsulated),
+a higher release rate was observed in the slightly acidic environment (pH
+5) compared to pH 7.4 which was expected (D’Souza, 2014) because
+SORA is more soluble at acidic pH (Park et al., 2020). In a previous
+study, a higher release rate of SORA was observed under acidic condi­
+tions (pH 4.7) from PEG and PVA-coated magnetic NPs compared to
+neutral pH (Ebadi et al., 2020).
+The release kinetics of SORA and PIP from the SP-PNPs at pH 5 and
+pH 7.4 were investigated using various kinetic models including Zero-
+order, First-order, Korsmeyer-Peppas, Hixson-Crowell, and Higuchi-
+Matrix models. Results suggested sustained drug release characteristics
+of the developed PNPs (Fig. S2 and S3). At pH 5, the results showed that
+the release of SORA from SP-PNPs was best fitted with Korsmeyer-
+Peppas model followed by the Higuchi-Matrix model (second-best
+model) with the highest coefficients of correlation (R2 = 0.9982 and
+0.9956, respectively). The release of PIP at pH 5 was best fitted with
+Hixson-Crowell model followed by the zero-order model with the
+highest R2 values (0.9965 and 0.9933, respectively). At pH 7.4, the
+release of SORA was best fitted with the zero-order model followed by
+Hixson-Crowell model with the highest coefficients of correlation (R2 =
+0.9993 and 0.9958, respectively), whereas the release of PIP was best
+fitted with the Hixson-Crowell model followed by the zero-order model
+with the highest R2 values (0.9926 and 0.9921, respectively).
+Fig. 4. Release profile of the pure drugs and PLGA-entrapped drugs in PBS, supplemented with 0.5 % Tween-80 at pH 5 and 7.4. SORA (pH 5) (a); PIP (pH 5) (b);
+SORA (pH 7.4) (c); PIP (pH 7.4) (d). All experiments were performed at 37 ± 0.5 ◦C and the data are presented as the means of three measurements with standard
+deviations (Mean ± SD, n = 3). PBS (phosphate buffered saline); SORA (Sorafenib); PIP (Piperine); SP-PNPs (SORA and PIP-loaded PLGA nanoparticles; SP-SOL
+(SORA and PIP dissolved in ethanol: Kolliphor® EL at 3: 1 v/v).
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+8
+The linearity observed in the best-fitted models further suggested a
+sustained release property of SP-PNPs for both drugs. Given the slopes of
+the best fitted models, the diffusion-exponents (n-values) were calcu­
+lated, and the numerical values of release constants were estimated. The
+R2 values, slopes, K-values (release constant) and n-values (release/
+diffusion-exponents) of the different applied models are summarized in
+Table 3.
+3.8. Cell proliferation study
+To assess the impact of the developed dual anti-cancer therapy on
+HCC, MTT assay was performed on treated HepG2 cells (Fig. 5 and
+Fig. S4). After 72 h of treatment, both single therapeutics (SORA and PIP
+as pure drugs) reduced cell viability and showed similar effects, with
+IC50 values of 7 and 8.2, respectively (Fig. 5a). Dual therapy (SP-PNPs)
+significantly reduced cancer cell viability and showed superiority over
+single treatments (Fig. 5a and 5b) at a concentration range equivalent to
+SORA and half of PIP. The IC50 value for the SP-PNPs group was very low
+(0.74). Treatment of cells with the mixture of pure drugs resulted in a
+similar effect as SP-PNPs (IC50: 0.87, Fig. S4). However, B-PNPs had
+only a minor impact on HepG2 cells, suggesting that the developed PNPs
+are likely tolerable at low concentrations and do not induce pronounced
+cellular cytotoxicity, consistent with many previous studies investi­
+gating the cytotoxicity of PNPs on various cancer cell lines using the
+MTT assay (Elhabak et al., 2020; Mukerjee and Vishwanatha, 2009;
+Taebpour et al., 2021). Differences in the cytotoxic effect among the
+treatment groups compared to the control (Fig. 5b) were more clearly
+observed at low concentrations. SP-PNPs significantly decreased cellular
+viability across the entire concentration range, whereas SORA and PIP
+monotherapies did not markedly affect viability when used at concen­
+trations below 3.75 µg/mL. This suggests that PIP exhibited a synergistic
+effect on HepG2 cells when combined with SORA. These results indicate
+that our therapeutic approach is likely effective in treating HCC.
+3.9. Assessment of apoptosis/necrosis
+The efficacy of the novel formulation, SP-PNPs, against HepG2 cells
+was further investigated using an apoptosis/necrosis assay. Cells were
+treated with low doses of SORA (2 µg/mL) and PIP (1 µg/mL) as single
+therapies, B-PNPs, and dual SP-PNPs therapy at the same concentrations
+for 72 h before being stained with PI and Annexin and analyzed via flow-
+cytometry. The results showed that, although statistically insignificant,
+the percentage of necrotic cells (PI+ cells) increased upon treatment
+with SP-PNPs (Fig. S5), whereas other therapeutics did not have a
+noticeable effect. Treatment with PIP (at 1 µg/mL) did not lead to
+apparent cell death, whereas SORA monotherapy reduced cellular pro­
+liferation compared to the control as evidenced by the percentage of
+apoptotic cells and cell viability (Fig. 6b and 6c). SP-PNPs therapy had
+greater impact on cells; it significantly induced apoptosis (Annexin+ +
+Annexin+ PI+ cells), resulting in a marked decrease in cell viability
+(Fig. 6b and 6c). These findings demonstrate that HepG2 cells pre­
+dominantly undergo apoptosis upon dual treatment with SP-PNPs, and
+also confirm MTT results in which SP-PNPs therapy resulted in a marked
+increase in HepG2 cytotoxicity compared to monotherapies and B-PNPs.
+4. Discussion
+The HPLC method adopted in this study gave highly reproducible
+profiles for the determination of SORA and PIP at 280 nm UV-detection.
+In addition, the specificity and selectivity of the method were confirmed
+by the representative chromatograms showing SORA at 6.29 min and
+PIP at 4.98 min (Fig. S1). Our calibration results revealed good linearity
+between peak areas and drug concentrations. One of the advantages of
+this HPLC method is that no dual UV absorbance is needed because both
+SORA and PIP were well detected at 280 nm, which is considered the
+isosbestic point for both drugs. “An isosbestic point in spectroscopy is a
+particular wavelength (nm) at which two (or more) chemical substances
+or species have the same absorptivity” (Kaspar, 2023; Tiwari et al.,
+2020).
+In this study, SP-PNPs were prepared using the double emulsion
+solvent evaporation method (Kalam and Alshamsan, 2017; Kwon et al.,
+2001). The evaporation of the organic solvent during the preparation of
+PNPs is a critical step in preventing aggregation and amalgamation of
+the droplets (Pulingam et al., 2022). When the oil–water interface forms,
+the stabilizer (PVA) helps in reducing the energy of the system and
+decrease the interfacial tension, and thereby preventing amalgamation
+or coalescence of the developed PNPs (Alkholief et al., 2022; Kalam and
+Alshamsan, 2017; Murakami et al., 1997; Shin et al., 2010; Tian et al.,
+2022).
+The amount of PLGA in the organic phase plays a significant role in
+Table 3
+Release kinetic models applied to the drug release data obtained from SP-PNPs at two pH conditions. The correlation coefficient (R2), rate constant, and half-life were
+acquired by fitting various kinetic equations to the SORA and PIP release data.
+Release kinetics of SORA and PIP from SP-PNPs at pH 5.0
+SORA at pH 5
+PIP at pH 5
+Release models
+R2 value
+Slope
+K
+n-value
+R2
+value
+Slope
+K
+n-value
+Zero-order
+0.9670
+0.0038
+0.0110
+0.0017
+0.9933
+0.0029
+0.0112
+0.0014
+First-order
+0.9919
+0.0031
+0.7482
+0.0013
+0.9932
+0.0020
+0.7486
+0.0008
+Korsmeyer-Peppas
+0.9982
+0.6304
+0.2543
+0.2737
+(FD)*
+0.9751
+0.5093
+0.1886
+0.2211
+Hixson-Crowell
+0.9930
+0.0019
+1.4029
+0.0008
+0.9965
+0.0013
+1.0802
+0.0006
+(FD)*
+Higuchi- Matrix
+0.9956
+0.0575
+0.0435
+0.0250
+0.9690
+0.0430
+0.0354
+0.0187
+Release kinetics of SORA and PIP from SP-PNPs at pH 7.4
+SORA at pH 7.4
+PIP at pH 7.4
+Release models
+R2 value
+Slope
+K
+n-value
+R2
+value
+Slope
+K
+n-value
+Zero-order
+0.9993
+0.0032
+0.0063
+0.0014 (FD)*
+0.9921
+0.0207
+0.0106
+0.0089
+First-order
+0.9887
+0.0021
+0.7539
+0.0009
+0.9887
+0.0379
+0.7492
+0.0165
+Korsmeyer-Peppas
+0.9687
+0.6918
+0.1566
+0.3004
+0.9779
+0.3639
+0.1683
+0.1580
+Hixson-Crowell
+0.9958
+0.0014
+1.4012
+0.0006
+0.9926
+0.0349
+1.0800
+0.015154
+(FD)*
+Higuchi-Matrix
+0.9494
+0.0466
+0.0251
+0.0202
+0.9678
+0.1758
+0.0326
+0.076335
+SORA = Sorafenib; PIP = Piperine; R2 = Correlation coefficients; K = Release constant; n-value = Diffusion-exponent; and FD* = Fickian Diffusion
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+9
+the size of PLGA- based NPs (Chatterjee and Chanda, 2022). Our pre­
+vious studies have shown higher amounts of PLGA in the organic phase
+result in larger PNPs (Alshamsan et al., 2020; Kalam and Alshamsan,
+2017). Therefore, in the present work, the drug:polymer ratio used was
+~ 1:9. The direct proportional relationship between PNPs size and the
+amount of PVA may be attributed to the strong bonding and close
+Fig. 5. Evaluation of the cytotoxicity of therapeutics toward HepG2 in vitro via MTT assay. The cytotoxicity curve was obtained after incubation of HepG2 cells for
+72 h with B-PNPs, pure SORA (SORA), pure PIP (PIP), and SP-PNPs. IC50 values were calculated utilizing non-linear regression, log (inhibitor) vs. normalized
+response (a); % cellular viability in response to the various treatments (b). Statistical significance was calculated by comparing treatment groups with the control
+using ordinary One-way ANOVA test (**p < 0.01, ***p < 0.001, ****p < 0.0001). Data are represented as mean ± SD, n = 4.
+Fig. 6. Assessment of HepG2 apoptosis/necrosis after 72 h of treatment with B-PNPs, pure SORA (SORA), pure PIP (PIP), and SP-PNPs. Gating strategy on flow-
+cytometry (a); Change in apoptosis (Annexin+ + Annexin+ PI+) (b); Change in viability (Annexin- PI-) (c). All samples were normalized to the average control in
+each independent experiment. Statistical significance was estimated by comparing treatment groups with the control using the Kruskal-Wallis test (*p < 0.05). Data
+are represented as mean ± SEM, n = 6.
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+10
+association of the lipophilic part of PVA with the polymeric matrix
+(Prabha and Labhasetwar, 2004). Moreover, the mechanistic influence
+of PVA as a stabilizer on particle size can also be attributed to the
+interpenetration of PVA and PLGA fragments during PNPs formation.
+Based on our previous experience in PLGA-NPs development, the sta­
+bilizer PVA was found to be superior to polyvinyl-pyrrolidone (PVP) in
+terms of physical characteristics, even at a lower concentration
+(Alkholief et al., 2022). The low values of PDI in all the PNPs indicate
+uniformly distributed NPs, consistent with previous studies (Mainardes
+and Evangelista, 2005; Turk et al., 2014).
+The observed negative ζ in SP-PNPs was likely due to incomplete
+shielding of the negative surface of PLGA (presence of –COOH functional
+groups) and the presence of PVA, which imparts a weak negative surface
+charge to the PNPs (Inam et al., 2022). Despite the low negative ζ, PNPs
+were well stabilized by PVA through a steric hindrance mechanism
+(Alkholief et al., 2022; Cegnar et al., 2004).
+The SEM analysis revealed preferred properties for the polymeric
+NPs developed in this study, which confirms the suitability and appli­
+cability of the chosen formulation factors. The smooth surface and
+discrete nature of PNPs across all concentrations of PVA were attributed
+to the strong emulsification (high hydrophilic-lipophilic balance [HLB]
+> 18) and surface stabilization properties of PVA (Sakhi et al., 2023).
+The presence of PVA at the interface of nano-droplets during the
+emulsification stage of formulation development may prevent droplet
+merging and potential NP aggregation by decreasing the overall free
+energy of the two phases (Garcia-Melero et al., 2022).
+IR spectral analyses of the pure drugs, excipients, their physical
+mixture, B-PNPs, and SP-PNPs suggested that both drugs were
+compatible with the polymer and other excipients used to develop PNPs.
+The appearance of a band at 1750 cm−1 is attributed to stretching vi­
+brations of the C = O ester bond which is prominent and abundant in the
+structure of PLGA. Its presence in the spectra of B-PNPs and SP-PNPs in
+association with drugs-related bands indicates their compatibility, as
+suggested in a previous report (Caputo et al., 2023). The appearance of
+bands of functional groups associated with the drugs in the formulations
+confirmed that the preparation steps of SP-PNPs did not alter the basic
+chemical structures of the drugs in the presence of the organic solvent
+and the stabilizer (PVA of high HLB value [> 18]), as seen in a previous
+study (Cortes et al., 2021).
+The absence of high-intensity diffraction peaks for SORA and PIP in
+the XRD diffractogram of SP-PNPs suggests that the drugs were encap­
+sulated in the PNP core, because the crystallinity of the drugs was
+reduced and converted to amorphous forms, similar to what was seen in
+the encapsulation of SORA into PVA/LDH-and PEG/LDH-coated iron
+oxide NPs (Ebadi et al., 2020) and PIP encapsulation into solid lipid NPs
+(Bhalekar et al., 2017).The appearance of very small and low intensity
+peaks of PIP observed in the SP-PNP diffractogram (Fig. 3f) can be
+attributed to the presence of surface adsorbed PIP on the polymeric NPs.
+This finding can be correlated with the lower %EE of PIP compared to
+SORA.
+The majority of FDA-approved anticancer therapeutics are devel­
+oped as rapidly bioavailable dosage forms and, thus, they typically
+induce their activity in a short period of time. They are also cleared
+relatively quickly, so they usually require more frequent dosing. On the
+other hand, slowly released therapeutics maintain their levels in the
+body for a relatively longer time, allowing for continuous exposure.
+Many nanoformulations are tailored to allow for slow drug release
+(Adepu and Ramakrishna, 2021). Such characteristic is particularly
+important for anticancer drugs because patients usually use several
+medicines, some of which may require hospital visits (Pacheco et al.,
+2023). It has been shown that SORA exhibits slow-release profiles when
+incorporated into lipid-based nanoformulations (Yang et al., 2016;
+Zhang et al., 2012).
+In our work, the sustained release of SORA and PIP from the PLGA
+matrix (in SP-PNPs) more likely occurred due to the following mecha­
+nisms: liberation/release of the drug(s) due to the degradation/erosion
+of the polymeric matrix, diffusion of the drug(s) from the matrix into the
+release medium, as well as a combination of these two mechanisms
+(Alkholief et al., 2022; Kalam and Alshamsan, 2017; Ritger and Peppas,
+1987). These phenomena might have controlled the release of SORA and
+PIP up to 192 h.
+The calculated values of the diffusion-exponents (<0.5) for the best-
+fitted models indicate that the released drugs followed a Fickian-
+Diffusion type of release mechanism, as suggested in previous reports
+(Chime et al., 2013; Guo et al., 2023; Ritger and Peppas, 1987; Unagolla
+and Jayasuriya, 2018).
+The anti-cancer efficacy of dual SORA and PIP therapy on liver and
+breast cancers was previously evaluated (Mohany et al., 2021). El-
+Shehawy et al. conducted a study employing a therapeutic combina­
+tion strategy, in which Thymoquinone and PIP were combined with
+SORA for the treatment of liver and breast malignancies. In vitro studies,
+including MTT assay, revealed that the combination therapeutic
+approach was more cytotoxic compared to each single treatment (El-
+Shehawy et al., 2023). However, the lipophilic drugs were dissolved in
+human incompatible solvents, unlike in this present study, where a
+translatable, biocompatible FDA-approved vehicle (PLGA) was used.
+Another study has investigated the effect of SORA and PIP combination
+therapy on triple negative breast cancer in vitro, showing its enhanced
+effectiveness against breast cancer cells compared to each drug alone;
+however, the vehicles used were also not intended for human use
+(Mohany et al., 2021). Nevertheless, those studies provided a proof of
+concept for utilizing SORA and PIP as a dual therapeutic, which in this
+work was highly effective.
+PIP is a pleiotropic natural compound. In the context of cancer, be­
+sides its direct antitumor activity, PIP has been shown to enhance the
+efficacy of anti-malignant drugs by inhibiting the drug-metabolizing
+enzyme CYP3A4 and by reducing drug resistance through its effect of
+blunting Pgp efflux transporter (Benayad et al., 2023; Gao and Hu,
+2010). In this study, the marked effect of SP-PNPs compared to pure
+SORA on HepG2 cells was likely because PIP synergistically enhanced
+the cytotoxic effect on HepG2 cells, which was also seen in previous
+studies where PIP was used in combination with chemotherapeutics
+(Fattah et al., 2021; Pal et al., 2016). Taken together, efficacy studies
+highlight the benefits of using PIP as an add-on therapy to the standard
+of care SORA for the treatment of HCC.
+This work demonstrates the potential of PIP to support SORA syn­
+ergistically when formulated in PNPs to treat liver cancer. Future studies
+will focus on in vivo investigation of this novel strategy, including drug
+escalation studies, and extensive safety and efficacy studies conducted
+using a murine cancer model.
+5. Conclusions
+In this study, SORA and PIP were successfully loaded into PLGA NPs
+using the emulsification-solvent-evaporation method. Results showed
+that the candidate formulation (SP-PNPs with 0.5 % PVA) was spherical
+in shape with no obvious aggregation of particles, approximately 225
+nm in size with low PDI (0.131) and small negative ζ (−5.01 mV), and
+exhibited a high %EE (SORA: ~82 %, PIP: ~79 %). Moreover, drugs
+entrapped in such nano-carriers were in an amorphous state and their
+release pattern in vitro was sustained in both physiological and acidic pH
+environments. At pH 7.4, 62.8 % of SORA and 51.3 % of PIP were
+released over 192 h, whereas at pH 5, 77.7 % of SORA and 61.3 % of PIP
+were released. The release behavior of the drugs was also assessed using
+kinetic models, which showed that Fickian-diffusion was the mechanism
+of drug release. Cell proliferation study and apoptosis analysis revealed
+that PLGA-encapsulated SORA and PIP, as a dual therapy, was more
+effective than SORA monotherapy in killing HepG2 cells. These results
+indicate that SP-PNPs may potentially be an efficient treatment strategy
+for the management of HCC and may offer an opportunity for further
+investigation through pre-clinical and clinical studies. Our future
+research will be directed toward in vivo safety and efficacy assessment of
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+11
+SP-PNPs using an appropriate mouse HCC model.
+CRediT authorship contribution statement
+Sulaiman S. Alhudaithi: Conceptualization, Data curation, Formal
+analysis, Funding acquisition, Investigation, Methodology, Project
+administration, Supervision, Validation, Writing – original draft,
+Writing – review & editing. Mohd Abul Kalam: Data curation, Formal
+analysis, Methodology, Writing – original draft. Lama Binobaid: Data
+curation, Investigation, Methodology. Raisuddin Ali: Data curation,
+Formal analysis, Methodology. Mohammed M. Almutairi: Data cura­
+tion, Investigation, Methodology. Wajhul Qamar: Data curation,
+Investigation, Methodology. Hessa Bin Hithlayn: Data curation,
+Investigation, Methodology. Atheer Almutairi: Data curation, Investi­
+gation, Methodology. Abdullah K. Alshememry: Investigation, Vali­
+dation, Writing – review & editing.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Acknowledgments
+This work was supported by Researchers Supporting Project number
+(RSPD2024R598), King Saud University, Riyadh, Saudi Arabia.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.jsps.2024.102064.
+References
+Adepu, S., Ramakrishna, S., 2021. Controlled drug delivery systems: current status and
+future directions. Molecules 26, 5905.
+Alkholief, M., Kalam, M.A., Anwer, M.K., Alshamsan, A., 2022. Effect of solvents,
+stabilizers and the concentration of stabilizers on the physical properties of poly (D,
+L-lactide-co-glycolide) nanoparticles: encapsulation, in vitro release of indomethacin
+and cytotoxicity against HepG2-cell. Pharmaceutics 14, 870.
+Alsaab, H.O., Alharbi, F.D., Alhibs, A.S., Alanazi, N.B., Alshehri, B.Y., Saleh, M.A.,
+Alshehri, F.S., Algarni, M.A., Almugaiteeb, T., Uddin, M.N., Alzhrani, R.M., 2022.
+PLGA-based nanomedicine: history of advancement and development in clinical
+applications of multiple diseases. Pharmaceutics 14.
+Alshamsan, A., Binkhathlan, Z., Kalam, M.A., Qamar, W., Kfouri, H., Alghonaim, M.,
+Lavasanifar, A., 2020. Mitigation of tacrolimus-associated nephrotoxicity by PLGA
+Nanoparticulate delivery following multiple dosing to mice while maintaining its
+immunosuppressive activity. Sci Rep 10, 6675.
+Alvi, M., Yaqoob, A., Rehman, K., Shoaib, S.M., Akash, M.S.H., 2022. PLGA-based
+nanoparticles for the treatment of cancer: current strategies and perspectives. AAPS
+Open 8, 12.
+Bai, X., Smith, Z.L., Wang, Y., Butterworth, S., Tirella, A., 2022. Sustained Drug Release
+from Smart Nanoparticles in Cancer Therapy: A Comprehensive Review.
+Micromachines (Basel) 13.
+Ben Mousa, A., 2008. Sorafenib in the treatment of advanced hepatocellular carcinoma.
+Saudi J Gastroenterol 14, 40–42.
+Benayad, S., Wahnou, H., El Kebbaj, R., Liagre, B., Sol, V., Oudghiri, M., Saad, E.M.,
+Duval, R.E., Limami, Y., 2023. The Promise of Piperine in Cancer Chemoprevention.
+Cancers (Basel) 15.
+Bhalekar, M.R., Madgulkar, A.R., Desale, P.S., Marium, G., 2017. Formulation of piperine
+solid lipid nanoparticles (SLN) for treatment of rheumatoid arthritis. Drug Dev Ind
+Pharm 43, 1003–1010.
+Caputo, T.M., Cusano, A.M., Principe, S., Cicatiello, P., Celetti, G., Aliberti, A., Micco, A.,
+Ruvo, M., Tagliamonte, M., Ragone, C., Minopoli, M., Carriero, M.V., Buonaguro, L.,
+Cusano, A., 2023. Sorafenib-loaded PLGA Carriers for enhanced drug delivery and
+Cellular uptake in liver cancer cells. Int J Nanomedicine 18, 4121–4142.
+Cegnar, M., Kos, J., Kristl, J., 2004. Cystatin incorporated in poly(lactide-co-glycolide)
+nanoparticles: development and fundamental studies on preservation of its activity.
+Eur. J. Pharm. Sci. 22, 357–364.
+Chatterjee, M., Chanda, N.J.M.A., 2022. Formulation of PLGA Nano-Carriers: Specialized
+Modification for Cancer Therapeutic Applications. 3, 837–858.
+Chime, S., Onunkwo, G., Onyishi, I., 2013. Kinetics and mechanisms of drug release from
+swellable and non swellable matrices: a review. Res J Pharm Biol Chem Sci 4,
+97–103.
+Colagrande, S., Inghilesi, A.L., Aburas, S., Taliani, G.G., Nardi, C., Marra, F., 2016.
+Challenges of advanced hepatocellular carcinoma. World J Gastroenterol 22,
+7645–7659.
+Cortes, H., Hernandez-Parra, H., Bernal-Chavez, S.A., Prado-Audelo, M.L.D., Caballero-
+Floran, I.H., Borbolla-Jimenez, F.V., Gonzalez-Torres, M., Magana, J.J., Leyva-
+Gomez, G., 2021. Non-Ionic Surfactants for stabilization of Polymeric Nanoparticles
+for biomedical uses. Materials (basel) 14.
+D’Souza, S., 2014. A review ofIn VitroDrug release test methods for Nano-sized dosage
+forms. Advances in Pharmaceutics 2014, 1–12.
+Ebadi, M., Bullo, S., Buskara, K., Hussein, M.Z., Fakurazi, S., Pastorin, G., 2020. Release
+of a liver anticancer drug, sorafenib from its PVA/LDH-and PEG/LDH-coated iron
+oxide nanoparticles for drug delivery applications. Sci. Rep. 10, 21521.
+Eid, M.M., 2022. Characterization of Nanoparticles by FTIR and FTIR-microscopy.
+Handbook of Consumer Nanoproducts. Springer 1–30.
+Elhabak, M., Osman, R., Mohamed, M., El-Borady, O.M., Awad, G.A.S., Mortada, N.,
+2020. Near IR responsive targeted integrated lipid polymer nanoconstruct for
+enhanced magnolol cytotoxicity in breast cancer. Sci. Rep. 10, 8771.
+El-Shehawy, A.A., Elmetwalli, A., El-Far, A.H., Mosallam, S.-A.-E.-R., Salama, A.F.,
+Babalghith, A.O., Mahmoud, M.A., Mohany, H., Gaber, M., El-Sewedy, T., 2023.
+Thymoquinone, piperine, and sorafenib combinations attenuate liver and breast
+cancers progression: epigenetic and molecular docking approaches. BMC
+Complementary Medicine and Therapies 23, 1–21.
+Ermrich, M., Opper, D., 2013. XRD for the analyst. Getting acquainted with the
+principles. Second, Panalytical.
+Escudero-Ortiz, V., P´erez-Ruixo, J.J., Valenzuela, B., 2015. Development and validation
+of an HPLC-UV method for pazopanib quantification in human plasma and
+application to patients with cancer in routine clinical practice. Therapeutic Drug
+Monitoring 37, 172–179.
+Fattah, A., Morovati, A., Niknam, Z., Mashouri, L., Asadi, A., Rizi, S.T., Abbasi, M.,
+Shakeri, F., Abazari, O., 2021. The synergistic combination of cisplatin and piperine
+induces apoptosis in MCF-7 cell line. Iran. J. Public Health 50, 1037.
+Finch, A., Pillans, P., 2014. P-glycoprotein and its role in drug-drug interactions. Aust.
+Prescr. 37.
+Furuse, J., 2008. Sorafenib for the treatment of unresectable hepatocellular carcinoma.
+Biologics 2, 779–788.
+Gao, S., Hu, M., 2010. Bioavailability challenges associated with development of anti-
+cancer phenolics. Mini Rev Med Chem 10, 550–567.
+Garcia-Melero, J., Lopez-Mitjavila, J.J., Garcia-Celma, M.J., Rodriguez-Abreu, C.,
+Grijalvo, S., 2022. Rosmarinic Acid-Loaded Polymeric Nanoparticles Prepared by
+Low-Energy Nano-Emulsion Templating: Formulation, Biophysical Characterization,
+and In Vitro Studies. Materials (Basel) 15.
+Gomaa, A.I., Khan, S.A., Toledano, M.B., Waked, I., Taylor-Robinson, S.D., 2008.
+Hepatocellular carcinoma: epidemiology, risk factors and pathogenesis. World J
+Gastroenterol 14, 4300–4308.
+Guo, Y., Li, X., Macgregor, R.B., Yan, H., Zhang, R.X., 2023. Microfluidics-based PLGA
+nanoparticles of ratiometric multidrug: from encapsulation and release rates to
+cytotoxicity in human lens epithelial cells. Heliyon 9, e18318.
+Inam, W., Bhadane, R., Akpolat, R.N., Taiseer, R.A., Filippov, S.K., Salo-Ahen, O.M.,
+Rosenholm, J.M., Zhang, H.J.V., 2022. Interactions between Polymeric
+Nanoparticles and Different Buffers as Investigated by Zeta Potential Measurements
+and Molecular Dynamics Simulations. 3, 20210009.
+Kalam, M.A., Alshamsan, A., 2017. Poly (d, l-lactide-co-glycolide) nanoparticles for
+sustained release of tacrolimus in rabbit eyes. Biomed. Pharmacother. 94, 402–411.
+Kaspar, F., 2023. Quality data from messy spectra: how isometric points increase
+information content in highly overlapping spectra. Chembiochem 24, e202200744.
+Kopustinskiene, D.M., Jakstas, V., Savickas, A., Bernatoniene, J., 2020. Flavonoids as
+anticancer agents. Nutrients 12.
+Kwon, H.-Y., Lee, J.-Y., Choi, S.-W., Jang, Y., Kim, J.-H., 2001. Preparation of PLGA
+nanoparticles containing estrogen by emulsification–diffusion method. Colloids Surf
+A Physicochem Eng Asp 182, 123–130.
+Laface, C., Fedele, P., Maselli, F.M., Ambrogio, F., Foti, C., Molinari, P., Ammendola, M.,
+Lioce, M., Ranieri, G., 2022. Targeted Therapy for Hepatocellular Carcinoma: Old
+and New Opportunities. Cancers (Basel) 14.
+Li, B., Shao, H., Gao, L., Li, H., Sheng, H., Zhu, L., 2022. Nano-drug co-delivery system of
+natural active ingredients and chemotherapy drugs for cancer treatment: a review.
+Drug Deliv 29, 2130–2161.
+Liu, C., Chen, Z., Chen, Y., Lu, J., Li, Y., Wang, S., Wu, G., Qian, F., 2016. Improving oral
+bioavailability of sorafenib by optimizing the “spring” and “parachute” based on
+molecular interaction mechanisms. Mol. Pharm. 13, 599–608.
+Lu, Y., Cheng, D., Niu, B., Wang, X., Wu, X., Wang, A., 2023. Properties of Poly (Lactic-
+co-Glycolic Acid) and Progress of Poly (Lactic-co-Glycolic Acid)-Based
+Biodegradable Materials in Biomedical Research. Pharmaceuticals (Basel) 16.
+Mainardes, R.M., Evangelista, R.C., 2005. PLGA nanoparticles containing praziquantel:
+effect of formulation variables on size distribution. Int J Pharm 290, 137–144.
+Makadia, H.K., Siegel, S.J., 2011. Poly lactic-co-glycolic acid (PLGA) as biodegradable
+controlled drug delivery Carrier. Polymers (basel) 3, 1377–1397.
+Mohany, H., Mahmoud, M.A., El-Shehawy, A.A., Gaber, M., Elmetwalli, A., Salama, A.F.,
+El Sewedy, T., 2021. Antioxidant and cytotoxicity potential of Piperine and sorafenib
+combination in human MDA-MB-231 breast cancer cells. Biochemistry Letters 17,
+108–116.
+Mukerjee, A., Vishwanatha, J.K., 2009. Formulation, characterization and evaluation of
+curcumin-loaded PLGA nanospheres for cancer therapy. Anticancer Res 29,
+3867–3875.
+Murakami, H., Kawashima, Y., Niwa, T., Hino, T., Takeuchi, H., Kobayashi, M., 1997.
+Influence of the degrees of hydrolyzation and polymerization of poly (vinylalcohol)
+S.S. Alhudaithi et al.
+
+Saudi Pharmaceutical Journal 32 (2024) 102064
+12
+on the preparation and properties of poly (DL-lactide-co-glycolide) nanoparticle. Int.
+J. Pharm. 149, 43–49.
+Neureiter, D., Stintzing, S., Kiesslich, T., Ocker, M., 2019. Hepatocellular carcinoma:
+therapeutic advances in signaling, epigenetic and immune targets. World J
+Gastroenterol 25, 3136–3150.
+Nguyen, D.T., Nguyen, D.H., Nguyen, V.T.H., 2023. Sorafenib as first-line treatment for
+patients with primary hepatocellular carcinoma: an outcome evaluation. J Int Med
+Res 51, 3000605231179928.
+Pacheco, C., Baiao, A., Ding, T., Cui, W., Sarmento, B., 2023. Recent advances in long-
+acting drug delivery systems for anticancer drug. Adv. Drug Deliv. Rev. 114724.
+Pal, M.K., Jaiswar, S.P., Srivastav, A.K., Goyal, S., Dwivedi, A., Verma, A., Singh, J.,
+Pathak, A.K., Sankhwar, P.L., Ray, R.S., 2016. Synergistic effect of piperine and
+paclitaxel on cell fate via cyt-c, Bax/Bcl-2-caspase-3 pathway in ovarian
+adenocarcinomas SKOV-3 cells. Eur J Pharmacol 791, 751–762.
+Park, J.-H., Baek, M.-J., Lee, J.-Y., Kim, K.-T., Cho, H.-J., Kim, D.-D., 2020. Preparation
+and characterization of sorafenib-loaded microprecipitated bulk powder for
+enhancing oral bioavailability. Int. J. Pharm. 589, 119836.
+Patel, K.A., Bhatt, M.H., Hirani, R.V., Patel, V.A., Patel, V.N., Shah, G.B., Chorawala, M.
+R., 2022. Assessment of potential drug-drug interactions among outpatients in a
+tertiary care hospital: focusing on the role of P-glycoprotein and CYP3A4
+(retrospective observational study). Heliyon 8, e11278.
+Prabha, S., Labhasetwar, V., 2004. Critical determinants in PLGA/PLA nanoparticle-
+mediated gene expression. Pharm Res 21, 354–364.
+Pulingam, T., Foroozandeh, P., Chuah, J.A., Sudesh, K., 2022. Exploring Various
+Techniques for the Chemical and Biological Synthesis of Polymeric Nanoparticles.
+Nanomaterials (Basel) 12.
+Ramos, I.N.F., da Silva, M.F., Lopes, J.M.S., Cruz, J.N., Alves, F.S., do Rego, J.A.R.,
+Costa, M.L.D., Assumpcao, P.P., Barros Brasil, D.D.S., Khayat, A.S., 2023. Extraction,
+Characterization, and evaluation of the cytotoxic activity of Piperine in its isolated
+form and in combination with chemotherapeutics against gastric cancer. Molecules
+28.
+Rezvantalab, S., Drude, N.I., Moraveji, M.K., Güvener, N., Koons, E.K., Shi, Y.,
+Lammers, T., Kiessling, F., 2018. PLGA-based nanoparticles in cancer treatment.
+Front. Pharmacol. 9, 1260.
+Ritger, P.L., Peppas, N.A., 1987. A simple equation for description of solute release I.
+fickian and non-fickian release from non-swellable devices in the form of slabs,
+spheres, cylinders or discs. J. Control. Release 5, 23–36.
+Rocha, C.V., Goncalves, V., da Silva, M.C., Banobre-Lopez, M., Gallo, J., 2022. PLGA-
+based composites for Various biomedical applications. Int J Mol Sci 23.
+Sakhi, M., Khan, A., Khan, I., Ahmad Khan, S., Irum Khan, S., Ali Khattak, M., Uddin, M.
+N., Kazi, M., Nasir, F., 2023. Effect of polymeric stabilizers on the size and stability of
+PLGA paclitaxel nanoparticles. Saudi Pharm J 31, 101697.
+Shao, L., Shen, S., Liu, H., 2022. Recent advances in PLGA micro/nanoparticle delivery
+systems as novel therapeutic approach for drug-resistant tuberculosis. Front Bioeng
+Biotechnol 10, 941077.
+Shin, S.-B., Cho, H.-Y., Kim, D.-D., Choi, H.-G., Lee, Y.-B., 2010. Preparation and
+evaluation of tacrolimus-loaded nanoparticles for lymphatic delivery. Eur. J. Pharm.
+Biopharm. 74, 164–171.
+Shoba, G., Joy, D., Joseph, T., Majeed, M., Rajendran, R., Srinivas, P.S., 1998. Influence
+of piperine on the pharmacokinetics of curcumin in animals and human volunteers.
+Planta Med 64, 353–356.
+Siegel, R.L., Miller, K.D., Jemal, A., 2019. Cancer statistics, 2019. CA Cancer J Clin 69,
+7–34.
+Singh, G., Kaur, T., Kaur, R., Kaur, A., 2014. Recent biomedical applications and patents
+on biodegradable polymer-PLGA. Int. J. Pharmacol. Pharm. Sci 1, 30–42.
+Song, X., Zhao, Y., Wu, W., Bi, Y., Cai, Z., Chen, Q., Li, Y., Hou, S., 2008. PLGA
+nanoparticles simultaneously loaded with vincristine sulfate and verapamil
+hydrochloride: systematic study of particle size and drug entrapment efficiency. Int.
+J. Pharm. 350, 320–329.
+St˘ancioiu, L., Gherman, A.M.R., Brezeștean, I., Dina, N.E., 2022. Vibrational spectral
+analysis of sorafenib and its molecular docking study compared to other TKIs. J. Mol.
+Struct. 1248, 131507.
+Storandt, M.H., Mahipal, A., Tella, S.H., Kommalapati, A., Jin, Z., 2022. Systemic therapy
+in advanced Hepatocellular Carcinoma: patient selection and key considerations.
+J Hepatocell Carcinoma 9, 1187–1200.
+Sun, S.B., Liu, P., Shao, F.M., Miao, Q.L., 2015. Formulation and evaluation of PLGA
+nanoparticles loaded capecitabine for prostate cancer. Int J Clin Exp Med 8,
+19670–19681.
+Syed, S.B., Arya, H., Fu, I.H., Yeh, T.K., Periyasamy, L., Hsieh, H.P., Coumar, M.S., 2017.
+Targeting P-glycoprotein: investigation of piperine analogs for overcoming drug
+resistance in cancer. Sci Rep 7, 7972.
+Taebpour, M., Arasteh, F., Akhlaghi, M., Haghirosadat, B.F., Oroojalian, F., Tofighi, D.,
+2021. Fabrication and characterization of PLGA polymeric nanoparticles containing
+berberine and its cytotoxicity on breast cancer cell (MCF-7). Nanomedicine Research
+Journal 6, 396–408.
+Tian, Y., Zhou, J., He, C., He, L., Li, X., Sui, H., 2022. The formation, stabilization and
+separation of oil–water emulsions: a review. Processes 10, 738.
+Tiwari, A., Mahadik, K.R., Gabhe, S.Y., 2020. Effect of piperine and its analogs on
+pharmacokinetic properties of sorafenib tosylate: bioanalytical method development
+and validation. Journal of Applied Pharmaceutical Science 10, 001–012.
+Tiwari, A., Modi, S.J., Gabhe, S.Y., Kulkarni, V.M., 2021. Evaluation of piperine against
+cancer stem cells (CSCs) of hepatocellular carcinoma: insights into epithelial-
+mesenchymal transition (EMT). Bioorg. Chem. 110, 104776.
+Tripathi, A.K., Ray, A.K., Mishra, S.K., 2022. Molecular and pharmacological aspects of
+piperine as a potential molecule for disease prevention and management: evidence
+from clinical trials. Beni Suef Univ J Basic Appl Sci 11, 16.
+Turk, C.T., Oz, U.C., Serim, T.M., Hascicek, C., 2014. Formulation and optimization of
+nonionic surfactants emulsified nimesulide-loaded PLGA-based nanoparticles by
+design of experiments. AAPS PharmSciTech 15, 161–176.
+Unagolla, J.M., Jayasuriya, A.C., 2018. Drug transport mechanisms and in vitro release
+kinetics of vancomycin encapsulated chitosan-alginate polyelectrolyte
+microparticles as a controlled drug delivery system. Eur J Pharm Sci 114, 199–209.
+Wang, Y.M., Lin, W., Chai, S.C., Wu, J., Ong, S.S., Schuetz, E.G., Chen, T., 2013. Piperine
+activates human pregnane X receptor to induce the expression of cytochrome P450
+3A4 and multidrug resistance protein 1. Toxicol Appl Pharmacol 272, 96–107.
+Yang, J.D., Hainaut, P., Gores, G.J., Amadou, A., Plymoth, A., Roberts, L.R., 2019.
+A global view of hepatocellular carcinoma: trends, risk, prevention and
+management. Nat Rev Gastroenterol Hepatol 16, 589–604.
+Yang, Y., Xiong, L., Li, M., Jiang, P., Wang, J., Li, C., 2023. Advances in radiotherapy and
+immunity in hepatocellular carcinoma. J. Transl. Med. 21, 526.
+Yang, S., Zhang, B., Gong, X., Wang, T., Liu, Y., Zhang, N., 2016. In vivo biodistribution,
+biocompatibility, and efficacy of sorafenib-loaded lipid-based nanosuspensions
+evaluated experimentally in cancer. Int J Nanomedicine 11, 2329–2343.
+Zarai, Z., Boujelbene, E., Salem, N.B., Gargouri, Y., Sayari, A., 2013. Antioxidant and
+antimicrobial activities of various solvent extracts, piperine and piperic acid from
+Piper nigrum. Lwt-Food Science and Technology 50, 634–641.
+Zhang, Y.L., Cui, X.J., Xing, H., Ning, H.F., Dong, P., Wang, G.Z., 2023. Molecular
+targeted therapy and immunotherapy in advanced hepatocellular carcinoma: a
+systematic review and bayesian network meta-analysis based on randomized
+controlled trials. Ann Med 55, 2242384.
+Zhang, H., Zhang, F.M., Yan, S.J., 2012. Preparation, in vitro release, and
+pharmacokinetics in rabbits of lyophilized injection of sorafenib solid lipid
+nanoparticles. Int J Nanomedicine 7, 2901–2910.
+Zhuo, Y., Chen, Q., Chhatwal, J., 2019. Changing Epidemiology of Hepatocellular
+Carcinoma and Role of Surveillance, in: Hoshida, Y. (Ed.), Hepatocellular
+Carcinoma: Translational Precision Medicine Approaches, Cham (CH), pp. 53-67.
+S.S. Alhudaithi et al.

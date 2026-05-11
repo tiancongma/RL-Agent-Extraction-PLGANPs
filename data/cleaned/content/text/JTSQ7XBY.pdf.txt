@@ -1,0 +1,1057 @@
+Regular Article
+PLGA-PEG-PLGA triblock copolymeric micelles as oral drug delivery
+system: In vitro drug release and in vivo pharmacokinetics assessment
+Xiufen Chen a,1, Jianzhong Chen b,1, Bowen Li c, Xiang Yang a, Rongjie Zeng a, Yajun Liu a, Tao Li a,
+Rodney J.Y. Ho c, Jingwei Shao a,⇑
+a Cancer Metastasis Alert and Prevention Center, and Pharmaceutical Photocatalysis of State Key Laboratory of Photocatalysis on Energy and Environment, College of
+Chemistry, Fuzhou University, Fuzhou 350002, China
+b School of Renewable Natural Resources, LSU Agricultural Center, Louisiana State University, Baton Rouge 70803, USA
+c Department of Bioengineering and Pharmaceutics, University of Washington, Seattle, WA 98195, USA
+g r a p h i c a l a b s t r a c t
+a r t i c l e
+i n f o
+Article history:
+Received 21 September 2016
+Revised 23 November 2016
+Accepted 25 November 2016
+Available online 26 November 2016
+Keywords:
+PLGA–PEG–PLGA copolymers
+US597@micelles
+Anti-cancer
+Pharmacokinetic analysis
+Oral drug delivery
+a b s t r a c t
+Poly (D,L-lactide-co-glycolide)-poly (ethylene glycol)-poly (D,L-lactide-co-glycolide) triblock copolymers
+(PLGA-PEG-PLGA) has been proven to be desirable for anti-cancer drug delivery by intravenous adminis-
+tration. But till now there is no report of developing this micelle as a sustained oral formulation for cancer
+therapy. 3b-acetoxy-urs-12-en-28-oic acid hexamethylenediamine (US597), a derivative of natural pro-
+duct ursolic acid has been developed as a novel cancer metastasis chemopreventive agent by us.
+Herein, we developed a new oral dosage formulation of PLGA-PEG-PLGA tri-block micelles loaded with
+US597 (US597@micelles). US597@micelles was prepared by a double emulsion solvent evaporation
+method, and characterized in regards to mean diameter ( < 100 nm), drug loading (25.9–28.5%), zeta
+potential
+(5.76–10.65 mV)
+and
+encapsulation
+efﬁciency
+(55.7–74.3%),
+respectively.
+In
+vitro,
+US597@micelles could ameliorate sustained drug release, inhibit cell proliferation by inducing apoptosis
+(46.6% of late apoptosis), and inﬂuence the integrity of nuclei and mitochondrial on HepG2. Moreover,
+http://dx.doi.org/10.1016/j.jcis.2016.11.089
+0021-9797/ 2016 Elsevier Inc. All rights reserved.
+Abbreviations: UA, Ursolic acid; US597, a derivatives of UA; US597@micelles, the formulation of PLGA-PEG-PLGA tri-block micelles loaded with US597; PAMAM,
+polyamidoamine; SD rats, Sprague–Dawley rats; UPLC/MS/MS, Ultra-performance liquid chromatography tandem mass-spectrometry; PEG, polyethylene glycol; PLGA, poly
+(lactic-co-glycolic acid); MTBE, methyl tertbutyl ether; HepG2, Hepatocellular carcinoma cells; B16F10, Melanoma cells; SW620, Colon cancer cells; DCC, N,N0-dicyclohex
+ylcarbodiimide; NHS, N-Hydroxysuccinimide; DCM, dichloromethane; DCU, dicyclohexylurea; EE, encapsulation efﬁciency; DL, drug loading; HPLC, High Performance Liquid
+Chromatography; MTT, 3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide; DMSO, Dimethyl sulfoxide; DAPI, 40,6-diamidino-2-phenylindole; EP tubes,
+eppendorf tubes; LLOQ, Lower Limit of Quantitation.
+⇑Corresponding author at: 2 Xueyuan Road, Sunshine Technology Building, 6FL, Fuzhou University, Fuzhou, Fujian 350108, China.
+E-mail addresses: shaojingwei@fzu.edu.cn, shaojw12@163.com (J. Shao).
+1 These authors contributed equally to this work.
+Journal of Colloid and Interface Science 490 (2017) 542–552
+Contents lists available at ScienceDirect
+Journal of Colloid and Interface Science
+journal homepage: www.elsevier.com/locate/jcis
+
+in vivo pharmacokinetic study by UPLC/MS/MS method demonstrated better absorption, metabolism and
+elimination
+characters
+of
+US597@micelles
+as
+an
+oral
+dosage
+form
+(Cmax = 53 ± 49 ng/mL,
+t1/2 = 8.716 ± 7.033 h) over free US597 (Cmax = 14 ± 11 ng/mL, t1/2 = 16.433 ± 8.821 h). In conclusion,
+PLGA-PEG-PLGA micelles as a promising oral drug delivery system are able to improve the bioavailability
+and efﬁcacy of US597 in cancer therapy.
+ 2016 Elsevier Inc. All rights reserved.
+1. Introduction
+In recent decades, nanocarrier-based drug delivery systems
+continue to gain considerable attention due to their potential to
+improve a drug’s bioavailability, efﬁcacy, water solubility, drug
+encapsulation efﬁciency, sustained drug release, and to minimize
+undesirable toxicity [1]. Current nanocarriers such as biologically
+erodable microspheres [2], liposomes and lipid nanoparticle [3],
+micelles [4], gold nanoparticles [5] and quantum dots [6] have
+been investigated as potential oral drug delivery systems. Co-
+polymers containing polyethylene glycol (PEG) and PLGA blocks
+(now approved by the FDA for human use) are attracting great
+interest both in academia and industry for biomedical applications
+due to their biodegradable nature and biocompatible properties
+[7,8]. Moreover, PEG and PLGA have been employed as a drug
+delivery system to improve the pharmacokinetic proﬁles of small
+molecules. Gref et al. [9] concluded PEG-coated particles as a con-
+trolled intravenous delivery for hydrophobic drugs, which could
+increase blood circulation times and reduced liver accumulation.
+Song et al. [10] assessed the potential of PLGA-PEG-PLGA triblock
+copolymeric micelles to ameliorate the pharmacokinetics and tis-
+sue distribution of Curcumin after intravenous injection. Li et al.
+[11] demonstrated improved efﬁcacy of curcumin in SD rats after
+intravenous
+administration
+of
+PLGA-lecithin-curcumin-PEG
+nanoparticles. However, except from intravenous administration,
+no other administration methods such as chronic oral gavage
+administration have been reported as an extended delivery system
+for PLGA-PEG-PLGA micelles.
+Ursolic acid (UA, 3b-hydroxy-urs-12-en-28-oic acid), a well
+known triterpenoid photochemical isolated from the skin of vari-
+ous fruits including apples, pears, olives, prunes and cranberries
+[12,13] has been shown to exhibit considerable biological effects
+including immunomodulatory [14], anti-inﬂammatory [15], antiul-
+cer [16], antibacterial [17], hepatoprotective [18] and attractive
+multifunctional anticancer activities [19–24]. Due to its abundant
+supply in nature, UA has been studied as an attractive starting
+point for further structural modiﬁcations. Over the past ﬁve years,
+many derivatives of UA have been reported by us to improve its
+efﬁcacy against cancer cells [25–29]. Recently, our study demon-
+strated that the 3b-acetoxy-urs-12-en-28-oic acid hexamethylene-
+diamine (US597) has great potentials in the prevention and
+treatment of cancer [26,30]. The anti-cancer mechanisms of
+US597 include cell cycle arrest, mitochondrial inhibition and apop-
+tosis/necrosis induction [26]. Furthermore, we also demonstrated
+that US597 could inhibit the adhesion and migration of cancer cells
+by suppressing cell surface adhesive molecules [30]. More impor-
+tantly, the side effect of US597 to hosts appeared to be minimal.
+While UA and US597 are promising anti-metastasis drugs, their
+translation to clinical application are limited by poor water solubil-
+ity and low bioavailability. Since US597 was proven to be more
+effective to cancer treatment than UA, but its low bioavailability
+by oral administration limits further application [30]. Up to now,
+nano-formulation including PEG and PLGA co-polymers has never
+been used to help UA derivatives overcome these translation barri-
+ers. In a recent study of our group, polyamidoamine (PAMAM) and
+mesoporous silica nanoparticles (MSN) were taken advantage to
+improve the water solubility of UA [31,32]. Thus, we herein
+hypothesized that the triblock polymeric PLGA-PEG-PLGA micelles
+formulated with US597 as a chemopreventive and chronic oral
+dosage form can provide higher bioavailability and increased
+anti-cancer efﬁcacy than free drug.
+In this study, for the purpose of developing a novel drug deliv-
+ery system as a sustained oral dosage form for cancer treatment,
+the formulation of triblock co-polymer PLGA-PEG-PLGA micelles
+loading US597 was synthesized and determined. The morphology,
+diameter, zeta potential, drug loading and encapsulation efﬁciency
+of US597@micelles were fully characterized. Moreover, the drug
+release of US597@micelles in vitro was determined. The cytotoxic-
+ity of US597@micelles over the US597 alone was demonstrated in
+various cell lines. Particularly, to conﬁrm that US597@micelles has
+better bioavailability than free US597, the in vivo pharmacokinetic
+studies in Sprague–Dawley rats (SD rats) by ultra-performance liq-
+uid chromatography tandem mass-spectrometry (UPLC/MS/MS)
+analysis method were performed. To the best of our knowledge,
+this is the ﬁrst time PLGA-PEG-PLGA micelles has been applied as
+an oral dosage, and the formulation of PLGA-PEG-PLGA micelles
+loaded US597 has been ﬁrstly applied for sustained delivery sys-
+tem as a chronic oral dosage form. PLGA-PEG-PLGA micelles might
+also be applied to other similar terpenoid analogue as a soluble
+oral dosage form for clinical application.
+2. Experimental methods
+2.1. Materials and reagents
+US597 was synthesized by our lab. Polyether diamine with a
+predominant polyethylene glycol (PEG) backbone (NH2-PEG-NH2,
+Mw: 4000) was purchased from Jenkem technology Co., Ltd
+(China), poly (lactic-co-glycolic acid) (PLGA) (lactide: glycol-
+ide = 75: 25, Mw: 35,000) was purchased from Jinan Daigang Bio-
+material Co., Ltd (China). The solvent of methyl tertbutyl ether
+(MTBE) and internal standard Finasteride was a generous gift from
+the University of Traditional Chinese Medicine in Fujian. Cell lines
+HepG2 (Hepatocellular carcinoma cells), B16F10 (Melanoma cells),
+and SW620 (Colon cancer cells) were preserved by our lab. Other
+reagents, at either analytical or chemical purity standards, were
+obtained from Sinopharm Chemical Reagent Co., Ltd (China).
+2.2. Synthesis of PLGA-PEG-PLGA and US597@micelles
+PLGA (0.1 mmol) was dissolved in 5 mL anhydrous dichloro-
+methane (DCM), after that, N,N0-dicyclohexylcarbodiimide (DCC)
+(0.8 mmol) and N-Hydroxysuccinimide (NHS) (0.8 mmol) were
+added in the solution. The mixture was then stirred at room tem-
+perature for 16 h under N2, and ﬁltered through a 0.45 lm PTFE
+syringe ﬁlter to remove the dicyclohexylurea (DCU) from product.
+The precipitate was then added to cold anhydrous ether and stirred
+at 0 C for 30 min. The solution was ﬁltered through a PTFE syringe
+ﬁlter and freeze-dried under vacuum overnight to obtain the solid-
+iﬁed activated PLGA.
+The triblock polymer PLGA-PEG-PLGA micelles were prepared
+from activated PLGA, DCM, and PEG-bis-amine. Brieﬂy, Activated
+PLGA (0.2 mmol) was dissolved in 8 mL anhydrous DCM in a round
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+543
+
+bottom ﬂask, PEG-bis-amine (0.1 mmol) was dissolved in 2 mL
+anhydrous DCM and then was added to the PLGA solution in order
+to
+promote
+the
+formation
+of
+PLGA–PEG–PLGA
+triblock
+co-
+polymers. The mixture was gently stirred at room temperature,
+600 rpm for 12 h under N2. After that, the reaction mixture was
+added to cold anhydrous ether and stirred at 0 C for 30 min. The
+solution was then ﬁltered through a PTFE syringe ﬁlter and
+freeze-dried under vacuum overnight to obtain the product.
+US597 (3, 6, 10, 15, or 30 mg) were mixed with 30 mg triblock
+co-polymer PLGA-PEG-PLGA and dissolved in 2 mL DCM. The solu-
+tion was then slowly added drop by drop to 30 mL of MiliQ water
+at a constant rate of 0.2 mL/min, and stirred with a magnetic stirrer
+at 1400 rpm for 5 h to remove DCM. The solution was then ﬁltered
+by 0.45 lm microporous membranes to remove the non-entrapped
+drugs, and lyophilized to obtain the US597@micelles (Fig. 1).
+2.3. Surface morphology, FTIR analysis and particle size
+To determine the morphology of the PLGA–PEG–PLGA micelles
+structure, the samples were diluted to an appropriate concentra-
+tion with the physiological saline. The copper mesh was clamped
+with forceps to pick up a small sample; 2% of phosphotungstic acid
+solution was dropped on the copper mesh and stained for 20 s.
+Filter paper was used to absorb the extra dye liquor. The copper
+mesh was then dried naturally at room temperature. Particle
+morphology was observed by a Nova NanoSEM230 transmission
+electron microscope at an accelerating voltage of 100KV [10].
+The characterization of the PLGA-PEG-PLGA micelles was car-
+ried out by FTIR analysis using a FTIR spectroscopy (Nicolet 410,
+USA). The PLGA-PEG-PLGA sample was dried thoroughly and
+spread on the potassium bromide tablet, and scanned at the range
+of 4000–400 cm1.
+To determine the particle diameter and zeta potential of
+US597@micelles, we employed a photon correlation spectroscopy.
+US597@micelles samples were diluted by the physiological saline
+solution. The particle diameter was measured by a dynamic light
+scattering instrument, Zetasizer Nano ZS90 (Malver, USA) with
+the He-Ne laser beam, at a 633 nm, 25 C, 90 scattering angle. Zeta
+potential was measured by Nanotrac Wave (Microtrac Inc.) at
+25 C. Particle size and zeta potential data was repeated three
+times by capacity distribution and averaged [33].
+2.4. Determination of drug encapsulation efﬁciency and loading
+capacity
+US597@micelles was dissolved in ethanol to measure US597
+concentration through UV spectrophotometry. This method was
+used to determine the content of US597 in the micelles solution.
+The encapsulation efﬁciency (EE) and drug loading (DL) were cal-
+culated according to the following equations.
+Fig. 1. Schematic representation of synthesis of PLGA-PEG-PLGA loading US597.
+544
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+
+EE ¼ weight of drug in the micelles
+weight of the initial drug
+ 100%
+ð1Þ
+DL ¼ weight of drug in the micelles
+weight of micelles
+ 100%
+ð2Þ
+2.5. In vitro US597 release study
+US597@micelles and free US597 were dispersed in 24 mL PBS
+solution in the dialysis membrane, and placed at 37 C incubator
+to incubate. The 2 mL of solution were then removed in ultra ﬁltra-
+tion tubes after 4, 8, 12, 16, 20, 24, 36, 48, 60, 72, 84 and 100 h
+intervals respectively, and replaced with equal volumes of corre-
+sponding solvent. Before determination of drug concentration by
+High Performance Liquid Chromatography (HPLC) (C18 column,
+methanol:
+water = 9:1),
+the
+solution
+was
+centrifuged
+at
+15,000 rpm, 20 C for 15 min and the supernatant were test. For
+easier observation, the released drug concentrations against time
+were graphed into a curve.
+2.6. Cellular viability assay
+The cell viability of the blank micelles, free US597 and
+US597@micelles were determined by MTT assay, in which the
+mitochondrial converse to MTT (3-(4,5-dimethylthiazol-2-yl)-2,5-
+diphenyltetrazolium bromide) was detected by the change of opti-
+cal density at 570 nm [34]. For cells to be in the best growth phase,
+104 HepG2, B16F10, and SW620 suspended cells were placed in 96-
+well tissue culture dishes (100 lL per well) at 37 C, 5% CO2 for
+24 h. HepG2 cells were exposed to blank micelles, free US597, or
+US597@micelles for 24 h at different US597 concentrations (1, 3,
+6, 15 or 25 mg/L). For comparison, B16F10 and SW620 were
+exposed to blank micelles, free US597, or US597@micelles for
+24 h at a 15 mg/L concentration of US597. The medium was then
+removed and replaced with a 100 lL MTT reagent (10 lL 5 mg/
+mL MTT and 90 lL serum-free and phenol red-free medium); the
+96-well plate was incubated for another 4 h at 37 C. The medium
+was removed and replaced with 100 lL of dimethyl sulfoxide
+(DMSO) to dissolve the blue formazan crystals produced by living
+cells. The plates were read on an ELISA reader (Thermo Labsystems,
+Shanghai Co. Ltd., Vantaa, Finland) to detect the absorbency of each
+well (OD), cell proliferation inhibition rate was calculated: inhibi-
+tion rate (%) = (1  mean OD value of the drug group/Mean OD val-
+ues of the control group)  100%, the data was processed on the
+software application GraphPad Prism.
+2.7. Cell apoptosis measurement
+Cell apoptosis measurement was measured by using Annexin
+V-FITC/PI staining and analyzed by a ﬂow cytometry (BD Bio-
+sciences). HepG2 cells were seeded in a 6-well plate (5  105 cells
+per well) and incubated for 24 h at 37 C with 5% CO2. Blank
+PLGA-PEG-PLGA micelles, free US597 or US597@micelles at the
+US597 concentration of 15 mg/L was added to the well. Untreated
+cells were also used as controls. After incubated for 24 h at 37 C
+with 5% CO2, cells in the well were washed twice with PBS fol-
+lowed by carefully trypsinized to avoid mechanical damage of
+the membrane. Dead cells and alive cells were merged, washed
+twice with PBS and suspended in binding buffer. 5 lL Annexin
+V-FITC and 5 lL PI were added in the suspension respectively,
+and the cells were incubated for 15 min. Then ﬂow cytometry
+analysis was performed. FITC and PI ﬂuorescent intensity and
+the percentage of cell population within each plot quadrant rep-
+resented the distribution of cells in four different stages. The data
+were analyzed with FlowJo software.
+2.8. Fluorescence confocal microscopy measurement
+HepG2 cells were seeded in a 12-well plate (200,000 per well)
+at 37 C, 5% CO2 for 24 h to form a monolayer. The medium was
+then removed and the cells were treated with blank PLGA-PEG-
+PLGA micelles, free US597 and US597@micelles with US597 con-
+centration of 15 mg/L. After another 12 h of incubation at 37 C
+and 5% CO2, the medium with dead cells was discarded and cells
+were washed three times with PBS. Then cells were stained with
+agent MitoTracker Red CMXRos (0.25 lM) for 30 min to stain
+the mitochondria. Followed by washing cells twice with PBS, and
+ﬁxing with 4% paraformaldehyde for 10 min. After another twice
+wash with PBS, the nuclei of HepG2 cells were stained with agent
+40,6-diamidino-2-phenylindole
+(DAPI)
+(10 lg/mL)
+for
+10 min.
+Finally, the cells were imaged under a Leica confocal microscope
+SP8 with excitation at 405 nm and 504 nm.
+2.9. Pharmacokinetic studies
+SD rats with body weights ranging from 175 g to 225 g were
+used for study. Animals were carried out in accordance with the
+NSFC regulation concerning the care and use of experimental ani-
+mals and approved by our Animal Care and Use Committee to
+reduce the suffering and use of animals. The SD rats were randomly
+divided into two groups (n = 5 each group), US597 (at 80 mg/kg
+dosage) or US597@micelles (at 80 mg micelles/kg dosage) was
+dosed by oral administration. The plasma samples were collected
+into heparinized glass tubes via eye sockets at various time points
+(0.17, 0.25, 0.33, 0.5, 0.67, 1, 1.5, 2, 4, 6, 8, 12, and 24 h) after
+administration,
+and
+immediately
+centrifuged
+for
+10 min
+at
+5000 rpm/min to obtain plasma. The harvested plasma samples
+were stored at 80 C for subsequent use.
+The plasma samples of US597 or US597@micelles in the rats
+were treated by liquid–liquid extraction with MTBE. An aliquot
+of 50 lL plasma sample, 50 lL IS (Finasteride) and 50 lL mobile
+phase were mixed in the EP (eppendorf) tubes, and then 1 mL
+MTBE
+was
+added.
+Subsequently, the
+tubes
+were vigorously
+vortex-mixed for 3 min, and centrifuged at 5000 rpm for 5 min.
+900 lL of the upper organic layer was transferred to another EP
+tubes, evaporated and dried under nitrogen at 25 C. The residue
+was reconstituted in 100 lL mobile phase, vortex-mixed for
+1 min and centrifuged at 17,000 rpm for 10 min. The 70 lL of
+supernatant was transferred to an injection vial, an aliquot of
+Table 1
+Characterization of triblock polymers including the amount of US597 added, mean diameter of polymers, encapsulation efﬁciency and drug loading of US597.
+Micelles (mg)
+US597 (mg)
+Mean diameter (d nm)
+Encapsulation efﬁciency (%)
+Drug loading (%)
+Zeta (mV)
+30
+–
+76.7 ± 2.2
+–
+–
+0.35 ± 1.2
+30
+3
+82.1 ± 0.9
+74.3 ± 1.3
+25.9 ± 2.1
+5.76 ± 1.1
+30
+6
+78.4 ± 1.3
+70.9 ± 1.2
+26. 7 ± 1.2
+5.95 ± 0.8
+30
+10
+82.3 ± 2.1
+68.5 ± 1.7
+27.1 ± 1.3
+7.09 ± 1.7
+30
+15
+85.1 ± 2.4
+56.2 ± 2.3
+27.8 ± 2.1
+8.18 ± 2.0
+30
+30
+83.7 ± 1.4
+55.7 ± 1.4
+28.5 ± 1.3
+10.65 ± 1.5
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+545
+
+5 lL was injected for UPLC/MS/MS (Waters, Milford, USA) to
+analyze. The linear was ranged from 0.00475 to 3.8 lg mL1
+(R2 > 0.99), and the lower limit of quantitation (LLOQ) was
+0.00475 lg mL1. In regards to the complete pharmacokinetical
+methodology of US597 and US597@micelles, we will publish other
+letters to give more speciﬁc explanations.
+2.10. Statistical analysis
+All data are shown as the mean ± standard deviation. The statis-
+tical signiﬁcance between groups were carried out via One-way
+analysis of variance test using Sigma Stat 2.03 software (SPSS
+Inc., IL, USA). Statistical signiﬁcance was considered as p < 0.05.
+Table 2
+Particles Size distribution of US597@micelles by intensity.
+Micelle (mg)
+US597 (mg)
+Size distribution by intensity
+30
+–
+30
+3
+30
+6
+30
+10
+30
+15
+30
+30
+546
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+
+3. Results and discussions
+3.1. Preparation and characterization of PLGA-PEG-PLGA micelles
+loaded US597
+Drug vehicles prepared by a one-step nano-precipitation or self-
+assembly are particularly promising since they would be favorable
+for large-scale manufacturing. The synthetic scheme of triblock
+co-polymer PLGA-PEG-PLGA that was ﬁrst synthesized by Zentner
+et al. [7]. In this study, we determined the effect of the drug to
+polymer ratio in drug loaded PLGA-PEG-PLGA micelles. As shown
+in Tables 1 and 2, increasing the amount of US597 has minimal
+inﬂuence on the diameter and zeta potential of micelles, which
+exhibited from 76.7 nm to 85.1 nm and 5.76 mV to 10.65 mV. Fur-
+thermore, we found that increasing the concentration of US597
+from 3 mg/mL to 30 mg/mL has minimal impact on the encapsula-
+tion and drug loading efﬁciencies of US597 which stayed constant
+at approximately 80% and 27%, respectively. These results indi-
+cated that the capacity of triblock polymer needed to encase drugs
+inﬂuenced drug loading and encapsulation efﬁciency with only
+slight increases when drug concentrations increased. Such phe-
+nomenon could be explained by the efﬁcient packing of high and
+low molecular weight polymers, which could result in better
+US597 entrapment than individual polymers [35]. Moreover,
+Fig. 2(A) showed that US597@micelles observed under SEM has a
+relatively homogeneous size, spherical shape and smooth surface.
+As shown in Fig. 2(C), the Fourier transform infrared spectrum of
+PLGA-PEG-PLGA copolymer was obtained to conﬁrm the functional
+groups, which was consistent with the results from previous
+reports about PLGA-PEG-PLGA copolymers [10,36]. The peaks at
+2875, 1350 and 980 cm1 showed the methylene group near an
+oxygen atom and methyl groups in PLGAPEG-PLGA. The strong
+peak at 3560 and 1620 cm1 were indicative of the terminal
+hydroxyl groups
+in
+the copolymeric micelles. These results
+demonstrated that PLGA-PEG-PLGA copolymers was successfully
+synthesized by us.
+Fig. 2. (A) Scanning electron micelles photographs of US597@micelles (100,000, the scale bar is 1 lm); (B) In vitro release of US597 from tri-block polymer PLGA-PEG-PLGA;
+(C) Fourier transform infrared spectra of PLGA-PEG-PLGA tri-block copolymer.
+A
+HepG2
+1 3 6 1525
+1 3 6 1525
+1 3 6 1525
+0
+20
+40
+60
+80
+100
+Blank micelles
+Free US597
+US597@micelles
+**
+*
+**
+*
+**
+*
+**
+*
+**
+Concentration (mg/L)
+Cell viability (%)
+B
+0
+20
+40
+60
+80
+100
+Control
+Blank micelles
+Free US597
+US597@micelles
+HepG2
+B16F10
+SW620
+*
+**
+**
+**
+*
+*
+**
+Cell viability (%)
+Fig. 3. In vitro cytotoxicity effects of free US597, free micelles, and US597@micelles
+against (A) HepG-2 cancer cell lines at different concentrations (1, 3, 6, 15 or 25 mg/
+L) (B) HepG-2, B16F10, and SW620 cell lines respectively at the concentration of
+15 mg/L by MTT assay. The asterisks indicates a signiﬁcant difference compared to
+the control group (⁄p < 0.05, ⁄⁄p < 0.01).
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+547
+
+To synthesize a drug-encapsulated nanoparticle with high efﬁ-
+ciency, we need to select the correct polymer composition, a reli-
+able solvent to dissolve drugs, and a solid technique [37].
+Therefore, we chose a classical method based on PLGA-PEG-
+PLGA [7,10,35] as a reference. By following the synthetic scheme
+of triblock co-polymer PLGA-PEG-PLGA, we obtained the micelle
+with a mean diameter lower than 100 nm (approx. 77–85 nm),
+which is favorable to its speciﬁc extravasation of tumor microvas-
+culature and tumor accumulation according to previous reports
+[11,38]. We also found that increasing the concentration of
+US597 from 3 mg/mL to 30 mg/mL has minimal impact on encap-
+sulation and drug loading efﬁciencies of US597. The high drug
+loading
+and
+encapsulation
+efﬁciency
+of
+PLGA-PEG-PLGA
+we
+obtained indicated that this micelle could provide US597 a large
+space for drug loading. The higher ratio of hydrophobic groups
+(PLGA) in the core of PLGA-PEG-PLGA micelles made US597 more
+easily loaded into the core of PLGA-PEG-PLGA micelles by interac-
+tion between the lipophilic part of US597 (rigid triterpenoids ring
+structure) and hydrophobic group of PLGA-PEG-PLGA micelles. On
+the other hand, the hydrophilic group (PEG) in the surface of
+PLGA-PEG-PLGA micelles well interact with the polar head group
+of US597 (ANH2). So, this high EE and DL were considered as a
+result of the synergistic effect of the unique micellar and drug
+interaction and encapsulation effect. This data is far higher than
+previous reports of PLGA-PEG-PLGA like Zhang’s study in which
+drug loading efﬁciency is 8.7% [36].
+Fig. 4. Flow cytometry measurement of HepG2 cell apoptosis treated with blank PLGA-PEG-PLGA micelles, free US597 or US597@micelles at concentration of 15 mg/L,
+respectively. Apoptosis was determined by Annxin-V-FITC/PI labeling.
+548
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+
+3.2. Study of in vitro US597 release from US597@micelles
+The drug releasing from PLGA nanoparticles is a complicated
+procedure which
+can
+be
+affected by
+nanoparticle
+diffusion,
+degradation speed, and physicochemical drug properties [39]. We
+determined the time course of US597 release from the triblock
+polymer PLGA-PEG-PLGA and PBS. The in vitro release proﬁle of
+both free US597 and US597@micelles were shown in Fig. 2(B),
+which presented the regular pattern of drug release from PLGA-
+PEG-PLGA micelles. Obviously, free US597 released fast from PBS
+and continued for around 20 h before fully release. As for
+US597@micelles, during the ﬁrst 40 h, US597 exhibited a relatively
+quick release from PLGA-PEG-PLGA micelles, which could be
+ascribed to the dissociation of surface-bound US597. Subsequently,
+the drug release began to slow down by a steady continuing
+release pattern at post 40 h. This release pattern continued until
+100 h when the in vitro drug release reached nearly 100%. Within
+20 h, a rapid drug release was observed at an initial stage of about
+50% US597 released from micelles. By contrast, the remaining 50%
+of US597 in micelles demonstrated a sustained release, possibly
+due to drugs associated within the micelles matrix [11,39]. The
+sustained release of US597 from US597@micelles was consistent
+with
+previous
+studies
+in
+terms
+of
+the
+release
+process
+of
+encapsulated anti-cancer drugs from PLGA-NPs [11,40,41]. There-
+fore, the US597@micelles system is proven to supply a continuous
+and extended drug release for US597.
+3.3. Effect of US597@micelles on viability of HepG2, B16F10 and
+SW620 cells
+To evaluate the cytotoxicity of US597 in PLGA-PEG-PLGA
+micelles in vitro, the HepG-2 cells were exposed to various concen-
+trations of US597 and US597@micelle; the B16F10 and SW620 cells
+were exposed to US597 and US597@micelles at a concentration of
+15 mg/L. Cell viability was assessed by the MTT assay. For compar-
+ison, free US597, blank micelles and US597@micelles were all
+tested. As shown in Fig. 3, micelles in control group has no notice-
+able cytotoxicity on HepG-2, B16F10 and SW620 cell lines, indicat-
+ing that PLGA-PEG-PLGA possesses good cytocompatibilities and
+potential as drug delivery vehicles. For HepG2, both US597 and
+US597@micelles
+displayed
+cell
+cytotoxicity
+at
+a
+drug
+concentration-dependent manner. The cytotoxicity of free US597
+on HepG-2 cells was shown to be slightly higher than US597@mi-
+celles at low concentration. When concentration raised up to
+15 mg/L, the cytotoxicity of free US597 on HepG-2 cells was obvi-
+ously lower than US597@micelles (Fig. 3(A)). Exposed to the same
+Control
+Blank micelles
+Free US597
+US597@micelles
+Nuclei
+Mitochondria
+Merged
+Enlaged view
+50 μm
+50 μm
+50 μm
+50 μm
+50 μm
+50 μm
+10 μm
+10 μm
+10 μm
+10 μm
+50 μm
+50 μm
+50 μm
+50 μm
+50 μm
+50 μm
+Fig. 5. Fluorescence confocal image of untreated group, blank PLGA-PEG-PLGA micelles, free US597 and US597@micelles in HepG2 cells. HepG2 cells were stained with
+MitoTracker Red CMXRos and DAPI to locate the mitochondrial and nuclei, respectively. And cells were visualized inverted under ﬂuorescent microscope (60, exposure
+factor was under 10; 5  enlarged). (For interpretation of the references to color in this ﬁgure legend, the reader is referred to the web version of this article.)
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+549
+
+drug concentration of 15 mg/L, Fig. 3(B) showed that the cytotoxi-
+city
+of
+free
+US597
+was
+approximately
+lower
+than
+that
+of
+US597@micelles for HepG-2, B16F10 and SW620 cell lines. This
+data indicated that the encasement of micelles over US597 does
+not negatively inﬂuence the cytotoxicity of US597 on cancer cells
+at low concentration. Furthermore, with the concentration raised,
+the cytotoxicity of US597@micelles increased to be higher than
+that of free US597. Such result was consistent to those reports with
+PLGA and PEG micelles [11,42,43], in which the cytotoxicity of free
+drug was close to that of drug loading PLGA and PEG nano-
+formulations at low concentration.
+3.4. Effect of US597@micelles on cell apoptosis of HepG2
+To further characterize whether US597 and US597@micelles
+could promote cell apoptosis, the cell apoptosis of HepG2 cell lines
+were tested. According to the theory that during the early apopto-
+sis, phosphatidylserine would be reversed and exposed on the
+outer monolayer of the cell membrane, the treated cells exploited
+the high-afﬁnity of annexin V for phosphatidylserine could be
+quantitatively analyzed using ﬂuorescently labeled annexin V in
+combination with PI dye. Thus, early apoptotic and late apoptotic
+subpopulations in each group of cells could be distinguished
+[36,44]. As shown in Fig. 4, nearly 1% of cells were damage by
+mechanical
+treatment,
+which
+presents
+a
+well
+experimental
+method. The high percentage of early/late cell apoptosis showed
+that both US597 and US597@micelles at the concentration of
+15 mg/L produced early apoptosis and late apoptosis on HepG2
+cells. Blank PLGA-PEGPLGA micelles induce neither early apoptosis
+nor late apoptosis, demonstrating the safety of PLGA-PEG-PLGA
+possesses as a drug delivery system. Compared with the blank
+micelles, free US597 produce 42.6% of early apoptosis and 46.6%
+of late apoptosis, while the percentage of late apoptosis induced
+by US597@micelles drug delivery system was signiﬁcantly higher
+than free US597 (up to 60.9%) under the same drug concentration.
+The higher percentage of late apoptosis on HepG2 cells induced by
+US597@micelles
+conﬁrmed
+the
+improved
+cytotoxicity
+of
+US597@micelles compared with US597 and blank micelles at the
+same concentration.
+3.5. Cellular uptake and in vitro anti-cancer efﬁcacy of
+US597@micelles
+To
+further
+evaluate
+the
+in
+vitro
+anti-cancer
+efﬁcacy
+of
+US597@micelles against cancer cells compared with free US597,
+the cellular uptake of US597@micelles by HepG2 cells as well as
+its impact on cell morphology change were analyzed by ﬂuores-
+cence confocal microscopy SP8. MitoTracker Red CMXRos and
+DAPI staining dyes were used as mitochondria and nucleus marker,
+respectively. As shown in Fig. 5, the HepG2 cells were incubated
+with blank PLGA-PEG-PLGA micelles, free US597 or US597@mi-
+celles (15 mg/L of US597 equivalent) for 12 h, respectively. Clearly,
+the untreated HepG2 cells showed uniform blue-red ﬂuorescence
+in the nucleus and mitochondria, indicating that the morphology
+of HepG2 cells was intact as evidenced by the evenly-distributed
+chromatin in the nucleus and mitochondria of healthy cells. The
+intact integrity of mitochondria and nucleus in blank micelles
+group presents the non-cytotoxicity property of blank PLGA-PEG-
+PLGA micelles. After free US597 treatment, many HepG2 cells were
+apoptosized, and the ﬂuorescence intensity of mitochondria and
+nucleus in HepG2 cells were decreased, displayed congregated
+chromatin and nucleus/mitochondria pyknosis, but cells were still
+in a relatively intact cell shape. Moreover, uniformed stained blue
+and red cells could hardly be seen in HepG2 cells after US597@mi-
+celles treatment. The structure of mitochondria and cell nucleus in
+HepG2 cells were condensed and fragmented, emitted bright ﬂuo-
+rescence, which represent the phenomena of apoptosis. This result
+further conﬁrm the fact that US597@micelles could facilitate more
+cellular uptake, induce HepG2 cells apoptosis efﬁciently, and thus
+increase the anti-cancer effect of free US597.
+3.6. Pharmacokinetic studies
+To easily and accurately analyze concentrations of US597 and
+US597@micelles in rat plasma, and overcome any potential analyt-
+ical problems, an efﬁcient and simple analytical method is
+required. We hypothesized that US597@micelles possesses better
+pharmacokinetic performance than US597 alone. As expected, the
+UPLC/MS/MS
+method
+provided
+sufﬁcient
+resolution
+between
+US597, the internal standard (Finasteride) and other plasma com-
+ponents. The mean plasma concentration versus time curve of free
+US597 and US597@micelles are listed in Fig. 6. Fig. 6 showed that
+when US597 were administrated orally to rats, the plasmatic level
+of most time points were lower than the lower limit of quantiﬁca-
+tion of the UPLC/MS/MS technique (4.75 ng/mL) which thus were
+not shown in the Fig. 6. We found that US597 would transform
+back into the prodrug UA after absorption, resulting in the poor
+plasmatic level of US597 in SD rats [30]. US597@micelles in SD rats
+possess a good concentration versus time curve.
+It was concluded that DAS2.0 practical pharmacokinetics pro-
+gram by non-compartment model is a suitable technique for
+describing the in vivo pharmacokinetics after oral administration
+[10]. As shown in Table 3, after oral administration (80 mg/kg) of
+free US597 or US597@micelles (80 mg micelles/kg) suspensions,
+a
+maximum
+plasma
+drug
+concentration
+of
+approximately
+14 ± 11 ng/mL and 53 ± 49 ng/mL was observed at 5.6 h and
+1.33 h, respectively. We noted that peak plasma concentration of
+0
+5
+10
+15
+20
+25
+0
+10
+20
+30
+40
+50
+US597@micelles
+Free US597
+ Plasma drug concentration ( ng / mL )
+Time (h)
+Fig.
+6. Mean
+plasma
+concentration
+versus
+time
+curve
+of
+free
+US597
+and
+US597@micelles in SD rats following oral administration (80 mg/kg per rat, n = 5).
+Table 3
+Main pharmacokinetic parameters of US597 and US597@micelles in SD rats following
+oral administration at dose of 80 mg/kg (n = 5).
+Parameters
+Mean ± SD
+US597
+US597@micelles
+Cmax (lg⁄mL1)
+0.014 ± 0.011*
+0.053 ± 0.049
+Tmax (h)
+5.6 ± 1.578
+1.333 ± 0.577*
+t1/2 (h)
+16.433 ± 8.821*
+8.716 ± 7.033
+AUC0-t (lg⁄h⁄mL1)
+0.165 ± 0.13*
+0.424 ± 0.22*
+CL (mL⁄h1⁄mg1)
+473.506 ± 283.091
+212.134 ± 141.069
+MRT0-t (h)
+11.418 ± 1.939**
+9.904 ± 2.733**
+* p < 0.05.
+** p < 0.01.
+550
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+
+US597@micelles was about 4-fold higher than that of free US597.
+US597@micelles could provide US597 to reach peak plasma con-
+centration 4.2-fold faster than free US597. This suggested that
+the absorption of US597@micelles was much faster than that of
+free US597 in SD rats, and the extent of absorption evinced by peak
+plasma drug concentration was much higher. Another signiﬁcant
+differences in pharmacokinetic parameters were also observed
+and showed signiﬁcant changes for US597@micelles. The elimina-
+tion half-time (t1/2) of US597@micelles was around 2-fold shorter
+than that of free US597 (8.716 ± 7.033 h for US597@micelles and
+16.433 ± 8.821 h for US597) which indicated that US597 was
+cleared more rapidly from rats plasma for US597@micelles than
+free
+US597.
+Moreover,
+the
+variation
+of
+AUC(0-t)
+from
+0.274 ± 0.265 lg⁄h⁄mL1 for US597 to 0.424 ± 0.22 lg⁄h⁄mL1
+for US597@micelles (1.54-fold) indicated that US597@micelles
+could provide higher bioavailability than free drug. The decreased
+total
+clearance
+CL
+(212.134 ± 141.069 mL⁄h1⁄mg1
+for
+US597@micelles and 473.506 ± 283.091 mL⁄h1⁄mg1 for US597,
+2.23-fold) showed that US597@micelles could act a prolongation
+time of US597 in vivo [10]. The enhanced residence time MRT0-t
+value of US597@micelles (9.904 ± 2.733 h) showed slight improve-
+ments with respect to free US597 (11.418 ± 1.939 h). All of this
+data showed that US597@micelles possess better absorption,
+metabolism and elimination than free US597 while providing an
+extended drug acting time. We are convinced that this formulation
+of US597@micelles formulation holds better pharmacokinetical
+signiﬁcances and clinical references than US597. The system of
+US597@micelles may possess better solubility and potential anti-
+tumor efﬁciency.
+Pharmacokinetic studies play an important role in developing
+new medicines. By probing into the drug disposition process
+(absorption, distribution, metabolism and elimination), the most
+appropriate route of administration and the best dose regimen
+can be determined [45]. Many attempts to determine the pharma-
+cokinetics of UA have been made by LC-MS [46], HPLC-MS [47], and
+UPLC/MS/MS [48]. But the pharmacokinetic studies of US597 and
+US597-loaded PLGA-PEG-PLGA micelles haven’t been reported
+until now. Traditional HPLC–UV and HPLC/MS/MS lacks sensitivity
+and accuracy, requires large volumes of plasma for analysis
+(approx. 500 lL) as well as complicated and costly sample-
+preparation processes [49]. By contrast, the ultra-high perfor-
+mance LC with MS/MS spectrometry method has developed in
+recent years and is attracting intense interest for pharmacokinetic
+study due to its high sensitivity, accuracy, and precision [50,51].
+There are few studies for PLGA or PEG nanoparticles loading drugs
+as a sustained oral delivery system. Khalil et al. [52] provided an
+oral delivery of PLGA–PEG blend nanoparticles for curcumin. Jain
+et al. [53] developed an FA-PEG-PLGA NPs oral nanoformulation
+of insulin to control diabetic patients’ diabetes. We ﬁrstly provided
+an chronic oral dosage for the formulation of PLGA-PEG-PLGA
+micelles encapsulate drugs, in this paper, US597. As we can see
+in this study, US597 encapsulated in the tri-block polymeric
+PLGA-PEG-PLGA micelles may contribute to a higher bioavailability
+than that of free US597.
+4. Conclusions
+In the present study, a US597-loaded triblock polymeric PLGA-
+PEG-PLGA system (US597@micelles) was ﬁrstly successfully devel-
+oped for anti-cancer therapy by oral administration. The system of
+US597@micelles was proven to be spherical with a well uniformed
+diameter around 80–90 nm, indicating a better extravasation of
+tumor microvasculature and tumor accumulation. The drug load-
+ing efﬁciency was much higher than conventional PLGA-PEG-
+PLGA micelles carriers. US597@micelles demonstrated enhanced
+rapid cell uptake and growth inhibition and induction of apoptosis
+on HepG2 cancer cells. Moreover, a fast and suitable UPLC/MS/MS
+method was ﬁrstly built to study the in vivo pharmacokinetics of
+US597 and US597@micelles in rat plasma after oral administration.
+The improvements in absorption, metabolism and clearance of
+US597@micelles indicate that US597@micelles possesses better
+bioavailability,
+pharmacokinetic
+proﬁles
+and
+enhanced
+anti-
+cancer properties in SD rats. Therefore, US597@micelles could
+serve as a chronic oral administration form which is suitable for
+future clinical application. The system of triblock polymeric
+PLGA-PEG-PLGA micelles also helps further hurdle the critical bar-
+riers encountered by UA and its analogues (including low solubility
+and undesirable bioavailability) by oral administration.
+Author’s contributions
+JS and XC designed research, wrote and revised the manuscript.
+JS, XC and JC developed methodology, collected, analyzed and
+interpreted data; XC, XY, RZ, YL and TL performed the experiments.
+XC acquired ﬁgures. BL and RJH reviewed and revised the paper.
+Conﬂicts of interest
+No potential conﬂicts of interests were disclosed.
+Acknowledgements
+This project was supported by the National Natural Science
+Foundation of China (81472767, 81673698 and 81201709).
+References
+[1] J.M. Chan, L. Zhang, K.P. Yuet, G. Liao, J.W. Rhee, R. Langer, O.C. Farokhzad,
+Biomaterials 30 (2009) 1627.
+[2] E. Mathiowitz, J.S. Jacob, Y.S. Jong, G.P. Carino, D.E. Chickering, P. Chaturvedi, C.
+A. Santos, K. Vijayaraghavan, S. Montgomery, M. Bassett, C. Morrell, Nature 386
+(1997) 410.
+[3] J.C. Kraft, J.P. Freeling, Z. Wang, R.J. Ho, J. Pharm. Sci. 103 (2014) 29.
+[4] H. Chen, B. Li, J. Qiu, J. Li, J. Jin, S. Dai, Y. Ma, Y. Gu, Nanoscale 5 (2013) 12409.
+[5] H. Chen, X. Chi, B. Li, M. Zhang, Y. Ma, S. Achilefu, Y. Gu, Biomater. Sci. 2 (2014)
+996.
+[6] H. Chen, B. Li, M. Zhang, K. Sun, Y. Wang, K. Peng, M. Ao, Y. Guo, Y. Gu,
+Nanoscale 6 (2014) 12580.
+[7] G.M. Zentner, R. Rathi, C. Shih, J.C. McRea, M.H. Seo, H. Oh, B.G. Rhee, J.
+Mestecky, Z. Moldoveanu, M. Morgan, S. Weitman, J. Control. Release: Off. J.
+Control. Release Soc. 72 (2001) 203.
+[8] S. Chen, R. Pieper, D.C. Webster, J. Singh, Int. J. Pharm. 288 (2005) 207.
+[9] R. Gref, A. Domb, P. Quellec, T. Blunk, R.H. Müller, J.M. Verbavatz, R. Langer,
+Adv. Drug Deliv. Rev. 64 (2012) 316.
+[10] Z. Song, R. Feng, M. Sun, C. Guo, Y. Gao, L. Li, G. Zhai, J. Colloid Interface Sci. 354
+(2011) 116.
+[11] L. Li, D. Xiang, S. Shigdar, W. Yang, Q. Li, J. Lin, K. Liu, W. Duan, Int. J. Nanomed.
+9 (2014) 1083.
+[12] X. He, R.H. Liu, J. Agric. Food Chem. 55 (2007) 4366.
+[13] S. Fontanay, M. Grare, J. Mayer, C. Finance, R.E. Duval, J. Ethnopharmacol. 120
+(2008) 272.
+[14] L. Saaby, A.K. Jager, L. Moesby, E.W. Hansen, S.B. Christensen, Phytotherapy
+Res.: PTR 25 (2011) 195.
+[15] P. Zhang, Y. Cheng, R.D. Duan, Phytotherapy Res.: PTR 27 (2013) 173.
+[16] T. Ishikawa, S. Donatini Rdos, I.E. Diaz, M. Yoshida, E.M. Bacchi, E.T. Kato, J.
+Ethnopharmacol. 118 (2008) 527.
+[17] A. Kurek, P. Nadkowska, S. Pliszka, K.I. Wolska, Phytomed.: Int. J. Phytotherapy
+Phytopharmacol. 19 (2012) 515.
+[18] R. Saravanan, P. Viswanathan, K.V. Pugalendi, Life Sci. 78 (2006) 713.
+[19] C. Tang, Y.H. Lu, J.H. Xie, F. Wang, J.N. Zou, J.S. Yang, Y.Y. Xing, T. Xi, Anticancer
+Drugs 20 (2009) 249.
+[20] D. Andersson, Y. Cheng, R.D. Duan, J. Cancer Res. Clin. Oncol. 134 (2008) 101.
+[21] C.Y. Huang, C.Y. Lin, C.W. Tsai, M.C. Yin, Toxicol. in vitro: Int. J. Published Assoc.
+BIBRA 25 (2011) 1274.
+[22] Y.L. Hsu, P.L. Kuo, C.C. Lin, Life Sci. 75 (2004) 2303.
+[23] M.B. Sporn, N. Suh, Carcinogenesis 21 (2000) 525.
+[24] G. Kuttan, P. Pratheeshkumar, K.A. Manu, R. Kuttan, Pharm. Biol. 49 (2011)
+995.
+[25] H. Dong, X. Yang, J. Xie, L. Xiang, Y. Li, M. Ou, T. Chi, Z. Liu, S. Yu, Y. Gao, J. Chen,
+J. Shao, L. Jia, Biochem. Pharmacol. 93 (2015) 151.
+[26] J. Wang, Z. Jiang, L. Xiang, Y. Li, M. Ou, X. Yang, J. Shao, Y. Lu, L. Lin, J. Chen, Y.
+Dai, L. Jia, Sci. Rep. 4 (2014) 5006.
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552
+551
+
+[27] X. Yang, Y. Li, W. Jiang, M. Ou, Y. Chen, Y. Xu, Q. Wu, Q. Zheng, F. Wu, L. Wang,
+W. Zou, Y.J. Zhang, J. Shao, Chem. Biol. Drug Des. 86 (2015) 1397.
+[28] X. Yang, W. Zhao, X. Hu, X. Hao, F. Hong, J. Wang, L. Xiang, Y. Zhu, Y. Yuan, R.J.
+Ho, W. Wang, J. Shao, Chem. Biol. Drug Des. 86 (2015) 1451.
+[29] Q. Tang, Y. Liu, T. Li, X. Yang, G. Zheng, H. Chen, L. Jia, J. Shao, Oncotarget 7
+(2016) 73114.
+[30] L. Xiang, T. Chi, Q. Tang, X. Yang, M. Ou, X. Chen, X. Yu, J. Chen, R.J. Ho, J. Shao, L.
+Jia, Oncotarget 6 (2015) 9295.
+[31] Y. Gao, Z. Li, X. Xie, C. Wang, J. You, F. Mo, B. Jin, J. Chen, J. Shao, H. Chen, L. Jia,
+Eur. J. Pharma. Sci.: Off. J. Eur. Fed. Pharm. Sci. 70 (2015) 55.
+[32] T. Li, X. Chen, Y. Liu, L. Fan, L. Lin, Y. Xu, S. Chen, J. Shao, Eur. J. Pharm. Sci. 96
+(2017) 456.
+[33] S.Q. Liu, Y.W. Tong, Y.Y. Yang, Biomaterials 26 (2005) 5064.
+[34] S.H. Jung, S.H. Jung, H. Seong, S.H. Cho, K.S. Jeong, B.C. Shin, Int. J. Pharm. 382
+(2009) 254.
+[35] S. Duvvuri, K.G. Janoria, A.K. Mitra, J. Control. Release: Off. J. Control. Release
+Soc. 108 (2005) 282.
+[36] J.M. Zhang, Y.B. Li, W. Gao, M.A. Repka, Y.T. Wang, M.W. Chen, Expert Opin.
+Drug Deliv. 11 (2014) 1367.
+[37] M.M. Yallapu, B.K. Gupta, M. Jaggi, S.C. Chauhan, J. Colloid Interface Sci. 351
+(2010) 19.
+[38] O.C. Farokhzad, J.M. Karp, R. Langer, Expert Opin. Drug Deliv. 3 (2006) 311.
+[39] I. Bala, S. Hariharan, M.N. Kumar, Crit. Rev. Ther. Drug Carrier Syst. 21 (2004)
+387.
+[40] Y.B. Patil, U.S. Toti, A. Khdair, L. Ma, J. Panyam, Biomaterials 30 (2009) 859.
+[41] A. Sahu, U. Bora, N. Kasoju, P. Goswami, Acta Biomater. 4 (2008) 1752.
+[42] N. Graf, D.R. Bielenberg, N. Kolishetti, C. Muus, J. Banyard, O.C. Farokhzad, S.J.
+Lippard, ACS Nano 6 (2012) 4530.
+[43] D. Li, H. Sun, J. Ding, Z. Tang, Y. Zhang, W. Xu, X. Zhuang, X. Chen, Acta
+Biomater. 9 (2013) 8875.
+[44] X. Xie, F. Li, H. Zhang, Y. Lu, S. Lian, H. Lin, Y. Gao, L. Jia, Eur. J. Pharm. Sci.: Off. J.
+Eur. Fed. Pharm. Sci. 83 (2016) 28.
+[45] F. Dal Piaz, S. Imparato, L. Lepore, A. Bader, N. De Tommasi, J. Pharm. Biomed.
+Anal. 51 (2010) 70.
+[46] Q. Liao, W. Yang, Y. Jia, X. Chen, Q. Gao, K. Bi, Yakugaku zasshi: J. Pharm. Soc.
+Jpn. 125 (2005) 509.
+[47] Q. Chen, S. Luo, Y. Zhang, Z. Chen, Anal. Bioanal. Chem. 399 (2011) 2877.
+[48] Y. Xia, G. Wei, D. Si, C. Liu, J. Chromatogr. B, Anal. Technol. Biomed. Life Sci. 879
+(2011) 219.
+[49] J.Z. Chen, J.C. Wang, Y. Gao, R.J. Zeng, Z. Jiang, Y.W. Zhu, J.W. Shao, L. Jia, J.
+Pharm. Biomed. Anal. 95 (2014) 158.
+[50] R.J. Zeng, Y. Li, J.Z. Chen, G.X. Chou, Y. Gao, J.W. Shao, L. Jia, S.D. Wu, S.S. Wu,
+Biomed. Chromatog.: BMC 29 (2015) 459.
+[51] Y. Li, R.J. Zeng, Q. Lu, S.S. Wu, J.Z. Chen, J. Sep. Sci. 37 (2014) 308.
+[52] N.M. Khalil, T.C. do Nascimento, D.M. Casa, L.F. Dalmolin, A.C. de Mattos, I.
+Hoss, M.A. Romano, R.M. Mainardes, Colloids Surf., B, Biointerfaces 101 (2013)
+353.
+[53] S. Jain, V.V. Rathi, A.K. Jain, M. Das, C. Godugu, Nanomedicine 7 (2012) 1311.
+552
+X. Chen et al. / Journal of Colloid and Interface Science 490 (2017) 542–552

@@ -1,0 +1,103 @@
+{
+  "schema_version": "schema_v2",
+  "description": "Formulation core signature rules for Goren 2025 benchmark. Identity includes synthesis/DOE variables and excludes post-processing conditions.",
+  "signature_version": "formulation_core_signature_ruleset.v2",
+  "missing_token_policy": {
+    "format": "MISSING_<field>",
+    "description": "Every included signature field must emit a deterministic token if missing."
+  },
+  "included_fields": [
+    "reference_normalized_doi",
+    "drug_name_normalized",
+    "la_fraction",
+    "ga_fraction",
+    "la_ga_ratio",
+    "polymer_mw_lower_kDa",
+    "polymer_mw_upper_kDa",
+    "polymer_mw_kDa",
+    "organic_solvent_normalized",
+    "surfactant_type_normalized",
+    "pva_conc_percent",
+    "surfactant_conc_percent",
+    "plga_conc",
+    "plga_mass_mg",
+    "aqueous_phase_pH",
+    "drug_to_polymer_mass_ratio",
+    "phase_ratio_w1_o",
+    "phase_ratio_total_water_o"
+  ],
+  "field_priority": {
+    "la_ga_ratio": [
+      "la_fraction+ga_fraction",
+      "la_ga_ratio"
+    ],
+    "polymer_mw": [
+      "polymer_mw_lower_kDa+polymer_mw_upper_kDa",
+      "polymer_mw_kDa"
+    ],
+    "surfactant_conc_percent": [
+      "pva_conc_percent",
+      "surfactant_concentration"
+    ],
+    "plga_loading": [
+      "plga_conc",
+      "plga_mass_mg"
+    ]
+  },
+  "excluded_keywords_postprocess": [
+    "lyophil",
+    "freeze-dry",
+    "freeze dry",
+    "cryoprotect",
+    "trehalose",
+    "sucrose",
+    "mannitol",
+    "storage",
+    "reconstitution",
+    "stability",
+    "after\\s+\\d+\\s*(day|days|week|weeks)"
+  ],
+  "condition_tag_keywords": {
+    "postprocess": [
+      "lyophil",
+      "freeze-dry",
+      "freeze dry",
+      "cryoprotect",
+      "trehalose",
+      "sucrose",
+      "mannitol",
+      "storage",
+      "reconstitution",
+      "stability",
+      "after\\s+\\d+\\s*(day|days|week|weeks)"
+    ],
+    "fresh": []
+  },
+  "signature_composition": {
+    "ordered_fields": [
+      "reference_normalized_doi",
+      "drug_name_normalized",
+      "la_fraction",
+      "ga_fraction",
+      "la_ga_ratio",
+      "polymer_mw_lower_kDa",
+      "polymer_mw_upper_kDa",
+      "polymer_mw_kDa",
+      "organic_solvent_normalized",
+      "surfactant_type_normalized",
+      "pva_conc_percent",
+      "surfactant_conc_percent",
+      "plga_conc",
+      "plga_mass_mg",
+      "aqueous_phase_pH",
+      "drug_to_polymer_mass_ratio",
+      "phase_ratio_w1_o",
+      "phase_ratio_total_water_o"
+    ],
+    "separator": "||",
+    "digest": {
+      "algorithm": "sha1",
+      "length": 12
+    }
+  }
+}

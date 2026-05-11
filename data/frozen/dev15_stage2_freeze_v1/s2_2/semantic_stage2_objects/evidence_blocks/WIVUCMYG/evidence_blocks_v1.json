@@ -1,0 +1,281 @@
+{
+  "paper_key": "WIVUCMYG",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/WIVUCMYG.html.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_scope_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_candidate_artifact_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/semantic_stage2_objects/candidate_blocks/WIVUCMYG/candidate_blocks_v1.json",
+  "input_contract": {
+    "input_packing_mode": "ordered_blocks",
+    "table_mode": "summary",
+    "summary_first_column_enhancement": true,
+    "ordered_block_order": [
+      "metadata",
+      "materials_procurement",
+      "experimental_design",
+      "table",
+      "table",
+      "paragraph",
+      "paragraph",
+      "table"
+    ],
+    "selector_strategy": "role_aware_selector_v1"
+  },
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_2_evidence_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_profile": "role_aware_general_v1",
+  "archetype_overlay": "doe_optimization_v1",
+  "evidence_blocks": [
+    {
+      "block_id": "WIVUCMYG__metadata__01",
+      "block_type": "metadata",
+      "source_type": "document_metadata",
+      "origin_locator": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+      "selection_reason": "document_identity_context",
+      "selection_feature": "build_metadata_block",
+      "rank_score": null,
+      "order_index": 0,
+      "text_content": "[METADATA]\nkey: WIVUCMYG\ndoi: 10.1002/jps.24101\ntitle: Design of Nanosuspensions and Freeze-Dried PLGA Nanoparticles as a Novel Approach for Ophthalmic Delivery of Pranoprofen",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": null,
+      "role_assignment": null,
+      "role_priority": "primary",
+      "role_score_breakdown": null
+    },
+    {
+      "block_id": "WIVUCMYG__materials__01",
+      "block_type": "materials_procurement",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/WIVUCMYG.html.txt#paragraph:0#segment:0",
+      "selection_reason": "role_constrained_materials_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 7,
+      "order_index": 1,
+      "text_content": "[MATERIALS_PROCUREMENT_BLOCK]\nMaterials: Inline table/result split candidate. Table 3 . p Value Obtained from ANOVA Statistical Analysis of Effect of Independent Variables on the Physicochemical Properties of the NPs Download: Download full-size image Figure 1 .",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "MATERIALS",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.0
+      }
+    },
+    {
+      "block_id": "WIVUCMYG__experimental_design__01",
+      "block_type": "experimental_design",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/WIVUCMYG.html.txt#paragraph:0#segment:1",
+      "selection_reason": "role_constrained_experimental_design_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 2,
+      "text_content": "[EXPERIMENTAL_DESIGN_BLOCK]\nExperimental design: varying concentrations or batches. Response surface plot of the effect of the aqueous phase pH on the Z Ave and PI. (cPLGA = 9.0 mg/mL; cPVA = 15.0 mg/mL), (a) Z Ave (nm) = 1962.42–340.55 cPF – 525.31 pH + 70.68 cPF 2 + 39.24 pH 2 + 51.74 cPF pH. (b) PI = 1.19–0.12 cPF – 0.37 pH + 0.10 cPF 2 + 0.04 pH 2 –0.01 cPF pH.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "EXPERIMENTAL_DESIGN",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 2.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    },
+    {
+      "block_id": "WIVUCMYG__variable_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv",
+      "selection_reason": "role_constrained_variable_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 17,
+      "order_index": 3,
+      "text_content": "Experimental design: varying concentrations or batches. Variable table: formulation factors and concentrations. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv]\n- table_id: Table 1\n- title_or_caption: Experimental design variable table.\n- column_headers: Coded Levels of Factors || Factorial || Coded Levels of Factors || cPF (mg/mL) || Coded Levels of Factors || cPVA (mg/mL) || Coded Levels of Factors || cPLGA (mg/mL) || Coded Levels of Factors || pH || Measured Responses || Mean Size (nm) ± SD || Measured Responses || Polidispersity Index ± SD || Measured Responses || Zeta Potential (mV) ± SD || Measured Responses || Entrapment Efficiency (%) ± SD\n- header_units: mg/mL, nm, mV, %\n- row_identifier_pattern: F-numbered rows\n- table_role_hint: design matrix\n- table_shape_hint: rows=26, cols=9\n- first_column_row_labels_preview: F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 ...\n- sample_rows:\n- sample_row_1: F1 | −1 | −1 | −1 | −1 | 566.50 ± 8.05 | 0.286 ± 0.02 | −8.28 ± 0.71 | 87.69 ± 0.13\n- sample_row_2: F14 | −1 | 1 | −1 | 1 | 318.40 ± 3.11 | 0.207 ± 0.02 | −7.44 ± 0.19 | 39.79 ± 1.77\n- sample_row_3: F26 | 0 | 0 | 0 | 0 | 357.80 ± 3.40 | 0.147 ± 0.02 | −6.58 ± 0.22 | 62.09 ± 1.30\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "VARIABLE_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 5.0,
+        "structure_score": 0.0,
+        "penalty_score": 0.0,
+        "final_score": 16.52
+      }
+    },
+    {
+      "block_id": "WIVUCMYG__formulation_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_06__html_table.csv",
+      "selection_reason": "role_constrained_formulation_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 18,
+      "order_index": 4,
+      "text_content": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_06__html_table.csv]\n- table_id: Table 6\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: Empty Cell || Formulation || Before Freeze-Drying || Mean Size (nm) ± SD || Before Freeze-Drying || Polidispersity Index ± SD || Before Freeze-Drying || Zeta Potential (mV) ± SD || After Freeze-Drying || Mean Size (nm) ± SD || After Freeze-Drying || Polidispersity Index ± SD || After Freeze-Drying || Zeta Potential (mV) ± SD\n- header_units: nm, mV\n- row_identifier_pattern: F-numbered rows\n- table_role_hint: formulation\n- table_shape_hint: rows=3, cols=7\n- first_column_row_labels_preview: F11, F19, F20\n- sample_rows:\n- sample_row_1: F11 | 324.30 ± 4.03 | 0.091 ± 0.01 | –7.41 ± 0.56 | 317.1 ± 0.98 | 0.096 ± 0.02 | −6.86 ± 0.62\n- sample_row_2: F19 | 368.20 ± 2.65 | 0.097 ± 0.01 | −6.25 ± 0.34 | 360.7 ± 1,32 | 0.098 ± 0.03 | −5.07 ± 0.23\n- sample_row_3: F20 | 343.80 ± 2.74 | 0.085 ± 0.03 | −8.50 ± 0.61 | 338.5 ± 1.90 | 0.132 ± 0.01 | −3.43 ± 0.28\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 2.0,
+        "structure_score": 5.0,
+        "penalty_score": 0.0,
+        "final_score": 18.0
+      }
+    },
+    {
+      "block_id": "WIVUCMYG__optimization_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/WIVUCMYG.html.txt#paragraph:0#segment:13",
+      "selection_reason": "role_constrained_optimization_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 7,
+      "order_index": 5,
+      "text_content": "[OPTIMIZATION_RESULT_BLOCK]\nPreparation method: Preparation and Optimization of PLGA NP s",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "OPTIMIZATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.0
+      }
+    },
+    {
+      "block_id": "WIVUCMYG__context_fallback__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/WIVUCMYG.html.txt#paragraph:1#segment:0",
+      "selection_reason": "role_constrained_context_fallback_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 3,
+      "order_index": 6,
+      "text_content": "[PARAGRAPH_BLOCK]\n=== TABLE 1 (TSV) === Factor −2 −1 0 +1 +2 cPF (mg/mL) 0.00 0.50 1.00 1.50 2.00 cPVA (mg/mL) 5.00 10.00 15.00 20.00 25.00 cPLGA (mg/mL) 8.00 8.50 9.00 9.50",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "CONTEXT_FALLBACK",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 3.0
+      }
+    },
+    {
+      "block_id": "WIVUCMYG__formulation_table__02",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_02__html_table.csv",
+      "selection_reason": "role_constrained_formulation_table_secondary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 12,
+      "order_index": 7,
+      "text_content": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_02__html_table.csv]\n- table_id: Table 2\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: Empty Cell || Parameters || Before Lyophilization || F11 || Before Lyophilization || F19 || Before Lyophilization || F20 || After Lyophilization || F11 || After Lyophilization || F19 || After Lyophilization || F20 || Empty Cell || Free Drug || Empty Cell || Eye Drops\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: formulation\n- table_shape_hint: rows=22, cols=9\n- first_column_row_labels_preview: Best-fit values, Ymax (%), K (h−1), t1/2 (h), Standard error, Ymax (%), K (h−1), 95% CI, Ymax (%), Lower, Upper, K (h−1) ...\n- sample_rows:\n- sample_row_1: Best-fit values\n- sample_row_2: K (h−1)\n- sample_row_3: Sy.x | 1.48 | 1.41 | 0.92 | 1.44 | 1.22 | 1.78 | 1.97 | 1.16\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": false,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "secondary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 1.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 11.84
+      }
+    }
+  ],
+  "coverage_summary": {
+    "total_blocks": 8,
+    "synthesis_blocks": 0,
+    "table_blocks": 3,
+    "caption_blocks": 0,
+    "paragraph_blocks": 4,
+    "has_optimization_signal": true,
+    "has_doe_signal": true,
+    "has_sequential_signal": false
+  },
+  "required_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "selected_roles": [
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+    "FORMULATION_TABLE"
+  ],
+  "missing_or_weak_roles": [
+    "PREPARATION_METHOD"
+  ],
+  "duplicate_table_suppression_events": [],
+  "feature_activation_snapshot": {
+    "ordered_evidence_packing": true,
+    "summary_table_mode": true,
+    "table_selection_scoring": true,
+    "selector_debug_available": true,
+    "candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+    "section_aware_candidate_split": true,
+    "candidate_table_isolation": true,
+    "candidate_noise_filtering": true,
+    "doe_pre_llm_detection": true,
+    "sequential_optimization_detection": false,
+    "role_aware_evidence_selection": true,
+    "doe_overlay_selection": true,
+    "duplicate_table_suppression": false
+  },
+  "technical_status": {
+    "artifact_readable": true,
+    "required_top_level_fields_present": true,
+    "required_block_fields_present": true,
+    "non_empty_evidence_blocks": true,
+    "overall": "pass"
+  },
+  "design_status": {
+    "input_contract_satisfied": true,
+    "required_features_active": false,
+    "required_roles_present": [
+      "CONTEXT_FALLBACK",
+      "EXPERIMENTAL_DESIGN",
+      "FORMULATION_TABLE",
+      "MATERIALS",
+      "OPTIMIZATION_RESULT",
+      "VARIABLE_TABLE"
+    ],
+    "missing_or_weak_roles": [
+      "PREPARATION_METHOD"
+    ],
+    "overall": "fail",
+    "nonconformance_reasons": [
+      "missing_or_weak_role:PREPARATION_METHOD"
+    ]
+  }
+}

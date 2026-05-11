@@ -1,0 +1,849 @@
+nanomaterials
+Article
+Chitosan-Coated PLGA Nanoparticles Loaded with
+Peganum harmala Alkaloids with Promising Antibacterial
+and Wound Healing Activities
+Hassan Mohamed El-Said Azzazy 1,*, Sherif Ashraf Fahmy 1
+, Noha Khalil Mahdy 1, Meselhy Ragab Meselhy 2
+and Udo Bakowsky 3,*
+
+
+Citation: Azzazy, H.M.E.-S.; Fahmy,
+S.A.; Mahdy, N.K.; Meselhy, M.R.;
+Bakowsky, U. Chitosan-Coated PLGA
+Nanoparticles Loaded with Peganum
+harmala Alkaloids with Promising
+Antibacterial and Wound Healing
+Activities. Nanomaterials 2021, 11,
+2438. https://doi.org/10.3390/
+nano11092438
+Academic Editor: Krzysztof
+Szczepanowicz
+Received: 13 August 2021
+Accepted: 15 September 2021
+Published: 18 September 2021
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright: © 2021 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+1
+Department of Chemistry, School of Sciences & Engineering, The American University in Cairo, AUC Avenue,
+New Cairo 11835, Egypt; sheriffahmy@aucegypt.edu (S.A.F.); noha.khalil@aucegypt.edu (N.K.M.)
+2
+Department of Pharmacognosy, Faculty of Pharmacy, Cairo University, Kasr El-Aini Street,
+Cairo 11562, Egypt; meselhy.meselhy@pharma.cu.edu.eg
+3
+Department of Pharmaceutics and Biopharmaceutics, University of Marburg, Robert-Koch-Str. 4,
+35037 Marburg, Germany
+*
+Correspondence: hazzazy@aucegypt.edu (H.M.E.-S.A.); ubakowsky@aol.com (U.B.);
+Tel.: +20-2-2615-2559 (H.M.E.-S.A.); +49-(0)-6421-28-2-58-84 (U.B.); Fax: +20-2-2795-7565 (H.M.E.-S.A.)
+Abstract: Wound healing is a major healthcare concern, and complicated wounds may lead to severe
+outcomes such as septicemia and amputations. To date, management choices are limited, which
+warrants the search for new potent wound healing agents. Natural products loaded in poly (lactic-co-
+glycolic acid) (PLGA) coated with chitosan (CS) constitute a promising antibacterial wound healing
+formulation. In this work, harmala alkaloid-rich fraction (HARF) loaded into PLGA nanoparticles
+coated with chitosan (H/CS/PLGA NPs) were designed using the emulsion-solvent evaporation
+method. Optimization of the formulation variables (HARF: PLGA and CS: PLGA weight ratios,
+sonication time) was performed using the 33 Box–Behnken design (BBD). The optimal NPs were
+characterized using transmission electron microscopy (TEM) and Attenuated Total Reﬂection Fourier-
+Transformed Infrared Spectroscopy (ATR-FTIR). The prepared NPs had an average particle size
+of 202.27 ± 2.44 nm, a PDI of 0.23 ± 0.01, a zeta potential of 9.22 ± 0.94 mV, and an entrapment
+efﬁciency of 86.77 ± 4.18%. In vitro drug release experiments showed a biphasic pattern where
+an initial burst of 82.50 ± 0.20% took place in the ﬁrst 2 h, which increased to 87.50 ± 0.50%
+over 72 h. The designed optimal H/CS/PLGA NPs exerted high antibacterial activity against
+Staphylococcus aureus and Escherichia coli (MIC of 0.125 and 0.06 mg/mL, respectively) compared to
+unloaded HARF (MIC of 0.50 mg/mL). The prepared nanoparticles were found to be biocompatible
+when tested on human skin ﬁbroblasts. Moreover, the wound closure percentage after 24 h of
+applying H/CS/PLGA NPs was found to be 94.4 ± 8.0%, compared to free HARF and blank NPs
+(68.20 ± 5.10 and 50.50 ± 9.40%, respectively). In conclusion, the three components of the developed
+nanoformulation (PLGA, chitosan, and HARF) have synergistic antibacterial and wound healing
+properties for the management of infected wounds.
+Keywords: chitosan-coated PLGA nanoparticles; Peganum harmala alkaloids; Box–Behnken design;
+antibacterial; wound healing
+1. Introduction
+Wound healing represents a major healthcare challenge. Considerable efforts have
+been exerted to develop effective wound healing products which minimize scar formation.
+The wound healing process consists of four phases: hemostasis, inﬂammation, proliferation
+(via the release of cytokines), and maturation with full wound closure [1,2]. One of the
+signiﬁcant issues that can delay wound healing/closure is infection with Gram-positive
+and/or Gram-negative bacteria such as Staphylococcus aureus and Escherichia coli, respec-
+tively. These pathogens can infect deep skin tissues in chronic wounds, leading to the
+Nanomaterials 2021, 11, 2438. https://doi.org/10.3390/nano11092438
+https://www.mdpi.com/journal/nanomaterials
+
+Nanomaterials 2021, 11, 2438
+2 of 16
+perturbation of the physiological wound healing process [3,4]. Natural products such as
+plant extracts have drawn much attention in the remedy of many diseases [5–7]. Peganum
+harmala L. (Zygophyllaceae family) is a plant that grows wildly in the Middle East and North
+Africa. Its seeds have been used as an antibacterial, antifungal, antipruritic, and antioxidant,
+and also in wound healing [8,9]. The seeds of P. harmala are rich in therapeutically active
+β-carboline and quinazoline alkaloids (harmala alkaloids). These alkaloids, including
+harmine, harmol, harmaline, harmane, harmalol, and peganine, are responsible for the
+therapeutic activities of the harmala seeds [8,9]. The promising wound-healing ability of
+P. haramala extract was reported. It showed the capacity to decrease the wound epithelial
+gap and increase the collagen and ﬁbroblasts in the wound microenvironment, resulting in
+a rapid and effective healing process [10]. Despite the current clinical use of many wound
+healing agents, they still suffer from being sensitive to the wound microenvironment,
+leading to unsatisfactory structural and functional clinical outcomes [11].
+Consequently, several delivery systems, including liposomes, macrocycles, and poly-
+meric nanoparticles, were reported to signiﬁcantly enhance the therapeutic effects of
+various natural and synthetic drugs [12–18]. Some natural and synthetic polymers were
+found to have healing properties by improving proliferation and increasing the cell count.
+Moreover, they are biodegradable and biocompatible while maintaining exceptional physic-
+ochemical and mechanical properties [19,20]. For instance, chitosan (CS) possesses antibac-
+terial, bio-adhesive, and hemostatic properties, making it a perfect candidate in wound
+healing systems. CS was reported to promote wound healing by enhancing the migration of
+ﬁbroblasts and collagen deposition in the wound area [21–23]. Furthermore, CS is a perfect
+carrier for different wound healing agents that protect these agents from side reactions
+in the wound microenvironment that may cause their deactivation while simultaneously
+increasing their absorption and targeting [24,25]. Poly (lactic-co-glycolic acid) (PLGA), a
+copolymer of polylactic and polyglycolic acids, is an example of synthetic wound healing
+polymers. PLGA, an FDA-approved polymer, is considered biodegradable and was found
+to act as a wound-healing agent. PLGA is a source of lactate that accelerates reparative
+angiogenesis and, hence, promotes rapid wound healing [26,27]. Furthermore, PLGA is an
+outstanding carrier for different wound healing agents because of its ability to adhere to
+the wound surface while releasing the loaded drug in a controlled manner [28].
+In the present work, H/CS/PLGA NPs were prepared using the emulsion-solvent
+evaporation method. Optimization of the formulation variables was performed using a
+33 Box–Behnken surface response design (BBD). The factors nominated for the experimental
+design included the HARF:PLGA weight ratio, the CS:PLGA weight ratio, and the sonica-
+tion time. The selected responses to judge the effects of the factors and their interactions
+were the particle size, the PDI, the zeta potential, and the entrapment efﬁciency. Then, the
+optimized formulation was prepared and validated in terms of the four responses. The
+optimal NPs were characterized by transmission electron microscopy (TEM) and Attenu-
+ated Total Reﬂection Fourier-Transformed Infrared Spectroscopy (ATR-FTIR). Additionally,
+the release of HARF from H/CS/PLGA NPs was assessed, and the release proﬁle was
+obtained. Finally, the antimicrobial and wound healing properties of H/CS/PLGA NPs
+were studied, and their cytotoxicity was evaluated.
+2. Results and Discussion
+2.1. Formulation Optimization by Three-Factor, Three-Level Box–Behnken Response Surface
+Design (33 BBD)
+To ﬁnd the best model to use with the highest adjusted and prediction R2, the re-
+sponses of particle size (PS, Y1), zeta potential (ZP, Y2), polydispersity index (PDI, Y3), and
+entrapment efﬁciency (EE%, Y4) were ﬁtted individually to linear, two-factor interaction
+(2FI), and quadratic models. Analysis of Variance (ANOVA) testing was carried out at a
+p-value < 0.05. Non-signiﬁcant model terms were eliminated to reach a higher prediction
+R2. As presented in Table 1, the quadratic model was chosen for the ﬁrst and second
+responses (PS and PDI). The linear model was selected for the third response (ZP), and
+
+Nanomaterials 2021, 11, 2438
+3 of 16
+the 2FI model was chosen for the fourth response (EE%). The ﬁnal equations related to
+different factors and interactions for the responses were generated after model reduction,
+via Design-Expert Version 12.0.1.0 (Stat-Ease Inc., Suite 480, Minneapolis, MN, USA) in
+terms of coded variables. The four equations were as follows:
+PS = 199.08 −0.8063A + 3.89B −0.1721C + 2.19AB + 1.38AC + 9.32BC + 7.48A2 −1.57B2 −6.03C2
+PDI = 0.1239 −0.0144A + 0.0006B −0.0013C + 0.0212AB + 0.0718AC + 0.0057BC + 0.0416A2 −0.0144B2 + 0.0048C2
+ZP = 8.14 + 0.48A + 3.72B −0.71C
+EE% = 50.87 −12.02A + 7.52B + 1.49C −17.32AB −11.51AC + 2.72BC
+Table 1. Model summary statistics of the different models for tested responses, constraints for optimization of H/CS/PLGA
+NPs formulation, and the predicted and observed values of the responses.
+Response
+Model
+R2
+Adjusted
+R2
+Predicted
+R2
+Constraints
+Predicted
+Observed
+95% Prediction
+Interval
+Y1
+Particle
+Size (nm)
+Quadratic
+model
+0.96
+0.90
+0.61
+In range
+204.84
+202.27 ± 2.44
+198.56–211.13
+Y2
+PDI
+Quadratic
+model
+0.97
+0.92
+0.53
+Minimize
+0.10
+0.23 ± 0.01
+0.07–0.13
+Y3
+Zeta
+Potential
+(mV)
+Linear
+model
+0.91
+0.89
+0.87
+Maximize
+8.79
+9.22 ± 0.94
+7.12–10.45
+Y4
+Entrapment
+Efﬁciency
+(%)
+2FI model
+0.95
+0.92
+0.84
+Maximize
+(lower
+limit: 80%)
+89.50
+86.77 ± 4.18
+79.99–99.01
+2.1.1. Inﬂuence of the Independent Factors on Particle Size (PS)
+The small particle size of the prepared chitosan-coated PLGA nanoparticles loaded
+with harmala alkaloid-rich fraction (H/CS/PLGA/NPs) was shown to improve cell mem-
+brane adhesion and penetration, leading to an enhanced therapeutic efﬁciency [29]. The
+PS of the prepared H/CS/PLGA NPs ranged from 180.12 up to 214.10 nm (as shown
+in Table S1), suggesting the capability to produce small particle sizes. ANOVA analysis
+showed that factors B (CS: PLGA ratio) and C (sonication time) signiﬁcantly affected PS
+(both having p < 0.0001). Increasing factors B and C to a speciﬁc limit led to a signiﬁcant
+increase in particle size, as presented in Figure 1A. This increase in particle size may be
+attributed to the increase in the thickness of chitosan coating around the PLGA nanopar-
+ticles [30]. The three independent variables were the HARF:PLGA weight ratio (A), the
+CS:PLGA weight ratio (B), and the sonication time (C).
+2.1.2. Inﬂuence of the Independent Factors on PDI
+The PDI value determines the NP homogeneity, with a PDI < 0.3 considered optimal.
+The PDI of the prepared H/CS/PLGA NPs ranged from 0.08 to 0.25 (Table S1) [31]. The
+ANOVA analysis showed that the PDI of the prepared nanoparticles was signiﬁcantly
+affected by factor A (HARF:PLGA ratio), which showed interactions with the other two fac-
+tors. Each of these interactions is presented in the 3D surface plots (Figure 1B,C). The PDI
+decreased signiﬁcantly (p < 0.05) with the increasing of factor A (HARF:PLGA weight
+ratio). This may have been due to the increment of the inclusion of hydrophobic HARF,
+which enhanced the compactness of PLGA, leading to rearrangement and an improvement
+in particle size control. Therefore, factor B may be involved in the AB interaction (p < 0.05),
+leading to a reduction in PDI due to its signiﬁcant positive effect on entrapment efﬁciency
+(discussed in Section 2.1.4). The increasing of the sonication time decreased the nanoparti-
+cles’ particle sizes, which facilitated the improvement of PDI values, resulting in the AC
+interaction (p < 0.0001) [32].
+
+Nanomaterials 2021, 11, 2438
+4 of 16
+Figure 1. Three-dimensional surface plots for the main effects and interactions of the HARF: PLGA
+ratio, the CS: PLGA ratio, and the sonication time on PS (A), PDI (B,C), ZP(D), and EE % (E,F).
+2.1.3. Inﬂuence of the Independent Factors on ZP
+The stability of NPs is directly proportional to the zeta potential value. Nanoparti-
+cles showing higher zeta potential possess higher charges, leading to stronger repulsive
+forces between the particles, which hinder aggregation and sedimentation of the prepared
+
+Nanomaterials 2021, 11, 2438
+5 of 16
+nanoparticles [33]. The positive ZP values of the prepared H/CS/PLGA NPs, ranging
+from 2.63 up to 12.33 mV (Table S1), are attributed to the positively charged amino groups
+found in CS, which coats the NPs. The obtained positively charged nanoparticles would be
+able to cross cell membranes efﬁciently [34]. The ANOVA analysis of this response showed
+that factor B signiﬁcantly affected the ZP of the nanoparticles (p < 0.0001). The planar 3D
+surface graph presents this effect in Figure 1D. Increasing factor B signiﬁcantly increased
+the zeta potential value. This can be attributed to the charged protonated amine groups on
+the surface of the chitosan-coated PLGA nanoparticles [35].
+2.1.4. Inﬂuence of the Independent Factors on Entrapment Efﬁciency (EE %)
+The EE % of the prepared H/CS/PLGA NPs ranged from 24.89% to 87.84% (Table S1).
+The ANOVA for this response showed that it was signiﬁcantly inﬂuenced by factors A and
+B, both separately (p < 0.0001 and p < 0.001; respectively) as well as together (p < 0.0001).
+The 3D surface plot in Figure 1E presents these effects. The decrease in entrapment
+efﬁciency (%) with the increasing of the drug:PLGA ratio is attributed to the saturation of
+the nanoparticles with the loaded drug. On the other hand, the increase in the entrapment
+efﬁciency (%) with the increasing of the CS:PLGA ratio could be due to the reduced leakage
+of the entrapped materials [36]. Additionally, a second interaction appeared between factors
+A and C (p < 0.001), suggesting that the increase in sonication time renders the negative
+effect of factor A more prominent, as presented in Figure 1F. This is due to the enhanced
+partitioning of the drug in the aqueous phase with sonication since ultrasonication leads to
+the diffusion of the active constituents across different phases [37].
+2.2. Characterization of the Optimized H/CS/PLGA NPs
+The optimized formulation was selected using the Design-Expert 12® software (Stat-
+Ease Inc., Minneapolis, MN, USA), with an overall desirability of 0.817, after applying
+PS, PDI, ZP, and EE % constraints. The particle size criteria were in range, as all the
+prepared formulations were acceptable regarding these responses. The constraints applied
+on the PDI, zeta potential, and entrapment efﬁciency %, were minimized, maximized,
+and maximized with a lower limit of 80%, respectively (Table 2). The suggested optimum
+formulation was prepared and characterized for evaluation of the optimization process.
+The observed PS, PDI, ZP, and EE % between the low and high conﬁdence intervals of the
+predicted values (Table 1) conﬁrmed the validity of the optimization process.
+Table 2. Independent variables and their relevant levels of 33 BBD for H/CS/PLGA NPs, and their levels relative to the
+optimized H/CS/PLGA NPs formulation.
+Factors
+Levels of Factors
+Levels for the Optimized
+Formulation
+Low (−1)
+Medium (0)
+High (+1)
+A
+HARF:PLGA weight ratio
+0.1:1
+0.3:1
+0.5:1
+0.10
+B
+CS:PLGA weight ratio
+0
+0.4:1
+0.8:1
+0.60
+C
+Sonication time (min)
+4
+8
+12
+12
+Transmission electron microscopy (TEM) analysis was employed to determine the
+particles’ shape and average size. As illustrated in Figure 2A, the NPs displayed a spherical
+shape, with some being agglomerated, which agreed with previous reports on CS and
+PLGA polymeric NPs [5,38]. The mean average size of the optimal H/CS/PLGA NPs
+formulation was determined by employing the image processing program Image J (NIH,
+Bethesda, MD, USA) and was found to be 194 ± 47 (Figure 2B), which is close to the one
+obtained from the Zetasizer (202.27 ± 2.44 nm).
+
+Nanomaterials 2021, 11, 2438
+6 of 16
+Figure 2. (A) Transmission electron microscopy (TEM) images of the optimal H/CS/PLGA NPs formulation. (B) Particle
+size (nm) histogram of the optimal H/CS/PLGA NPs formulation, produced using the image processing program Image J
+(NIH, Bethesda, MD, USA).
+2.3. ATR-FTIR Analysis of the Optimal H/CS/PLGA NPs Formulation
+ATR-FTIR analysis of the H/CS/PLGA NPs was conducted to verify the chemical
+composition of the NPs. ATR-FTIR data revealed bands that can be found either in the
+spectrum of HARF or that of a blank formulation (CS/PLGA NPs), as presented in Figure 3.
+The ATR-FTIR spectrum of HARF showed characteristic peaks at 1562 and 1653 cm−1,
+which may correspond to the stretching vibrations of the alkene (C=C bond) and carboxylic
+(C=O bond) groups, respectively [39]. On the other hand, the spectrum of the blank
+formulation showed characteristic peaks of PLGA at 1076 and 1721 cm−1, which can be
+attributed to the stretching vibrations of the C–O–C and C=O bonds, respectively. In
+addition, there are characteristic peaks for chitosan at 3277 and 3384 cm−1, which may be
+attributed to the stretching vibrations of the –OH and –NH2 groups, respectively [40]. The
+major bands of HARF and blank formulation were found in the spectrum of H/CS/PLGA
+NPs, with no noticeable shift, suggesting that the entrapment of HARF was a physical
+entrapment [41].
+
+Nanomaterials 2021, 11, 2438
+7 of 16
+Figure 3. ATR-FTIR spectra of HARF (A), blank formulation (CS/PLGA NPs; (B)), and optimized
+H/CS/PLGA NPs formulation (C).
+2.4. In Vitro Release Study for the Optimal H/CS/PLGA NPs Formulation
+Figure 4 depicts the release proﬁle of HARF from the H/CS/PLGA NPs into a phos-
+phate buffer medium. The release proﬁle showed an initial release of 82.50 ± 0.20% in
+the ﬁrst 2 h, which increased to 87.50 ± 0.50% over 72 h. These ﬁndings agree very well
+with previous reports [42,43]. The sustained release behavior is attributed to the diffusion
+of the encapsulated HARF from the polymeric matrix after the erosion and hydrolytic
+cleavage of PLGA. Furthermore, the CS decorating the PLGA NPs surface plays a vital role
+in achieving a prolonged release behavior, which can increase the healing effect of HARF
+on the wound area by prolonging the contact time with skin cells [40,42,43].
+Figure 4. Time-dependent release proﬁles of HARF from the optimal H/CS/PLGA NPs, at 37 ◦C, into phosphate buffer
+media (the ﬁrst 2 h are marked in the insert).
+
+Nanomaterials 2021, 11, 2438
+8 of 16
+2.5. Antimicrobial Assay for the Optimal H/CS/PLGA NPs Formulation
+One critical issue that can delay the physiological wound healing process and might
+cause complications is infection with Gram-positive and/or Gram-negative bacteria such
+as Staphylococcus aureus and Escherichia coli, respectively [3,4]. Thus, it is warranted to use
+healing agents with bactericidal ability that do not interfere the ﬁbroblast migration. The
+antimicrobial activities of the free HARF, CS/PLGA blank NPs, and designed H/CS/PLGA
+NPs were evaluated against S. aureus and E. coli utilizing the broth macrodilution method.
+H/CS/PLGA NPs revealed the highest antibacterial activity against S. aureus and E. coli,
+with MIC values of 0.125 and 0.06 mg/mL, respectively, compared to free HARF (MIC
+of 0.5 mg/mL) and CS/PLGA blank NPs (MIC of 0.18 mg/mL), as presented in Table 3.
+The nanoparticles were shown to have decomposed in the wound environment, releasing
+the loaded HARF, which was rich with β-carboline and quinazoline alkaloids (harmine,
+harmol, harmaline, harmane, harmalol, and peganine) [8,9]. These alkaloids exerted their
+antibacterial action via the intercalation with bacterial DNA. The pronounced antibacterial
+activities of the prepared NPs would disinfect the wound microenvironment and support
+rapid wound healing.
+Table 3. Antibacterial activity of optimal H/CS/PLGA NPs and free HARF against Staphylococcus aureus and Escherichia coli.
+Bacterial Strain
+Minimum Inhibitory Concentration (MIC in mg/mL)
+Harmala Alkaloid Rich Fraction (HARF)
+CS/PLGA NPs
+H/CS/PLGA NPs
+Staphylococcus aureus
+0.5
+0.18
+0.13
+Escherichia coli
+0.5
+0.18
+0.06
+2.6. Cytotoxicity Assay
+Biocompatibility with wound tissues is an important parameter that should be con-
+sidered while developing wound healing products. In this regard, human skin ﬁbroblasts
+were treated with different concentrations of H/CS/PLGA NPs. The cell viability of non-
+cancerous cells was tested using the Sulforhodamine B Colorimetric (SRB) assay. The % cell
+viabilities of all concentrations were above 85% (Figure 5), with no signiﬁcant difference
+compared to the control. These ﬁndings demonstrate the biocompatibility of the designed
+H/CS/PLGA NPs with skin ﬁbroblast cells [43].
+Figure 5. Evaluation of the cytotoxicity of the optimal H/CS/PLGA NPs at various concentrations
+ranging from 0.01 to 3 µg/mL using the SRB assay against human skin ﬁbroblast cells. Untreated
+cells were used as negative control and considered to have 100% viability. No statistically signiﬁcant
+difference in cell viability was observed for H/CS/PLGA NPs compared to the control (p < 0.05).
+All experiments were conducted in triplicates, and the mean values were calculated. Error bars
+represent ± standard deviation.
+
+Nanomaterials 2021, 11, 2438
+9 of 16
+2.7. In Vitro Scratch Wound Healing Assay
+The scratch wound healing assay was used to study the in vitro wound healing
+capabilities using human skin ﬁbroblast cells. This assay was performed to observe
+the effect of the optimized H/CS/PLGA NPs on the healing process, compared to free
+HARF, and a blank CS/PLGA NPs formulation was used as a control. Wound closure
+percentages (averaged from triplicate) after 24, 48, and 72 h are presented in Figures 6
+and S1. The wound closure percentage result after 24 h treatment with H/CS/PLGA NPs
+was 94.40%, signiﬁcantly higher than after the application of HARF alone (68.20%) or the
+blank formulation (50.50%), p < 0.01. In addition, the results showed a non-signiﬁcant
+difference in wound closure percentage after 48 h, with a wound closure percentage of
+about 100%. Interestingly, it was also shown that there was a non-signiﬁcant difference
+between the wound closure percentage after 24 h of H/CS/PLGA and 48 h of application
+of either HARF alone or the control. This may be attributed to the enhanced entrapment
+of HARF after loading into CS/PLGA NPs. The promising wound-healing ability of
+P. harmala alkaloids was reported, and their capacity to decrease the wound epithelial gap
+and increase the collagen and ﬁbroblasts in the wound microenvironment, resulting in
+a rapid and effective healing process was shown [10]. Furthermore, CS was reported to
+promote wound healing by enhancing the migration of ﬁbroblasts and collagen deposition
+in the wound area [21–23]. At the same time, PLGA is a wound-healing agent because it is
+a source of lactate that accelerates new vascularization, activates procollagen factors, and
+improves the recruitment of endothelial progenitor cells to the wound, and hence, promotes
+wound healing. On the other hand, acids such as boric acid, acetic acid, and ascorbic acid
+have been reported for the treatment of wound infections. The acidic environment imparted
+by lactate enhances antimicrobial activity, inﬂuences protease activity, reduces the toxicity
+of bacterial products, and enhances epithelization [26,27].
+Figure 6. Wound closure percentage obtained after using HARF, blank formulation, and optimized
+H/CS/PLGA NPs, averaged from triplicate. One star indicates a non-signiﬁcant difference, while a
+double star indicates a signiﬁcant difference at p < 0.01.
+
+Nanomaterials 2021, 11, 2438
+10 of 16
+These ﬁndings shed more light on the importance of using HARF-loaded CS/PLGA
+NPs as a nanoformulation for effective wound healing.
+3. Conclusions
+The optimized H/CS/PLGA NPs were prepared and showed an average particle size
+of 202.27 ± 2.44 nm, a PDI of 0.23 ± 0.01, a zeta potential of 9.22 ± 0.94 mV, and an en-
+trapment efﬁciency of 86.77 ± 4.18%. The optimal H/CS/PLGA NPs exhibited acceptable
+cytotoxicity and enhanced antimicrobial and wound healing properties compared to free
+HARF or CS/PLGA NPs. The designed H/CS/PLGA NPs revealed the highest antibacte-
+rial activity against Staphylococcus aureus and Escherichia coli, with MIC values of 0.125 and
+0.06 mg/mL, respectively, compared to free HARF (MIC of 0.50 mg/mL). The prepared
+nanoparticles were found to be biocompatible when tested on human skin ﬁbroblasts.
+Moreover, the wound closure percentage after 24 h of applying H/CS/PLGA NPs was
+94.4 ± 80%, compared to free HARF and CS/PLGA NPs (68.20 ± 5.10 and 50.5 ± 9.40%;
+respectively). Thus, the developed H/CS/PLGA NPs exhibited enhanced antibacterial
+and wound healing activities and represent an effective biocompatible wound healing
+formulation.
+4. Materials and Methods
+4.1. Materials
+Low molecular weight chitosan (CS) and poly(D,L-lactide-co-glycolide) (PLGA) were
+purchased from Sigma Aldrich (St. Louis, MO, USA). Polyvinyl alcohol (PVA; 98% hy-
+drolyzed, MW~13,000) was purchased from Acros Organics (Geel, Belgium). Dimethylsul-
+foxide and acetic acid glacial were purchased from Fisher Chemicals (Fair Lawn, NJ, USA).
+Phosphate buffered saline was purchased from Lonza (Basel, Switzerland) and Tween
+80 was purchased from El-Nasr Pharmaceutical Chemicals Co. (Cairo, Egypt). Tryptic Soy
+Agar (cat no. 10548) was purchased from Millipore (Bedford, MA, USA). Streptomycin,
+penicillin, fetal bovine serum, trichloroacetic acid (TCA), Dulbecco’s Modiﬁed Eagle’s
+Medium (DMEM) SRB, and tris(hydroxymethyl)aminomethane (TRIS) were purchased
+from Lonza (Basel, Switzerland).
+4.2. Plant Material
+Dried mature seeds of P. harmala L. were purchased from the local Egyptian market. A
+voucher specimen was deposited (18.1.17) at the Department of Pharmacognosy Herbarium,
+Faculty of Pharmacy, Cairo University (Cairo, Egypt).
+4.3. Methods
+4.3.1. Extraction and Isolation of Major P. harmala Alkaloids
+The extraction, isolation, and identiﬁcation of the major alkaloids of P. harmala seeds
+were conducted as previously reported [8,9].
+4.3.2. Experimental Design
+Statistical optimization of the variables of CS/PLGA NPs, loaded with HARF, was
+carried out using a 33 (i.e., three-factor, three-level) Box–Behnken response surface design
+(BBD). The experimental design was constructed and assessed employing Design-Expert®
+software (Version 12, Stat-Ease Inc., Minneapolis, MN, USA). The three independent
+variables were the HARF:PLGA weight ratio (A), the CS: PLGA weight ratio (B), and the
+sonication time (C). As presented in Table 2, the levels of these factors were chosen as
+(−1, 0, and +1). On the other hand, the responses (dependent variables) were selected as
+average particle size (Y1), polydispersity index (Y2), zeta potential (Y3), and entrapment
+efﬁciency (Y4).
+The ranges of the low and high levels for each independent parameter were chosen
+based on preliminary experiments conducted to obtain an optimized H/CS/PLGA NPs.
+The selection of low and high levels of the three factors was made based on their effect on
+
+Nanomaterials 2021, 11, 2438
+11 of 16
+the nominated dependent variables. Then, based on these two levels, the medium levels
+of the three factors were created automatically by the software. Based on the followed
+BBD, with ﬁve center point per block repetitions, 17 experimental runs were performed to
+prepare the formulations. The 17 runs of the experimental design with their compositions
+and sonication time are presented in Table S2. Analysis of variance (ANOVA) was used to
+assess the model and term signiﬁcance at p < 0.05.
+4.3.3. Preparation of H/CS/PLGA NPs
+H/CS/PLGA NPs were prepared using the oil/water emulsion-solvent evaporation
+technique as described elsewhere [5,44] with some modiﬁcations.
+The NPs were prepared by employing a SONOREX DIGITAL 10 P bath sonicator
+(BANDELIN electronic GmbH & Co. KG, Berlin, Germany) at different time intervals (4, 8,
+and 12 min). The emulsiﬁcation step was performed using a bath sonicator to avoid any
+probable source of contamination when using either probe sonicators or homogenizers [44].
+Brieﬂy, the aqueous phase was prepared by the addition of polyvinyl alcohol (acting as
+a surfactant) to 1% (v/v) acetic acid in distilled water to obtain a 1% (w/v) PVA aqueous
+solution. To the prepared solution, chitosan was added to reach different ﬁnal w:w ratios
+of chitosan: PLGA (0:1, 0.4:1, and 0.8:1). The emulsiﬁcation step involved the subsequent
+dropwise addition of 0.5 mL DMSO containing 4 mg of PLGA and different w:w ratios of
+HARF:PLGA (0.1:1, 0.3:1, and 0.5:1) to 10 mL of the previously prepared aqueous solution.
+The resulting oil/water nano-emulsion was stirred continuously on a magnetic stirrer at
+its minimum speed and allowed to evaporate overnight. Part of this colloid was kept for
+particle size and zeta potential determination, while the rest of the solution was lyophilized
+for 72 h using a freeze dryer (TOPTION TOPT-10C Freeze dryer, Toption Group Co.,
+Limited, Xi’an, China) after the addition of 2% (w/v) mannitol as a cryoprotectant. The
+dried NPs extract was stored at room temperature in a desiccator for further experiments.
+4.3.4. Average Particle Size, Polydispersity Index (PDI), and Zeta Potential Measurements
+The average particle size and PDI of all the H/CS/PLGA NPs samples were deter-
+mined using dynamic light scattering, employing a Zetasizer Nano ZS (Malvern Instru-
+ments, Herrenberg, Germany) [45]. All measurements took place at 25 ◦C, where the
+refractive index and viscosity of the water were 1.33 and 0.887 mPa.s, respectively. The
+instrument was equipped with a 10 mW HeNe laser, allowing for the measurements to be
+performed at a wavelength of 633 nm and a detection angle of 173◦backscatter. The zeta
+potential of all samples was measured by employing laser Doppler velocimetry (Malvern
+Instruments, Herrenberg, Germany) in a clear disposable folded capillary cell (DTS1070,
+Malvern Instruments). All measurements took place in triplicates, and standard deviation
+(SD) was calculated.
+4.3.5. Determination of Entrapment Efﬁciency (EE%)
+Direct determination of the EE % of all H/CS/PLGA/NPs samples was carried out as
+previously described by Nair et al., 2012 [46], with some modiﬁcations. Brieﬂy, 2 mL of
+H/CS/PLGA/NPs were centrifuged for 1 h at 5000 rpm (Hermle Z 326 K, Labortechnik
+GmbH, Wehingen, Germany). Then, the supernatant was discarded, and the NPs were
+dispersed in 1:1 DMSO:1% acetic acid in distilled water; this solvent mixture was selected
+to dissolve both the chitosan coat and the PLGA NPs. After complete dissolution via
+vigorous vortexing, the UV absorbance of the clear solution was determined using a CARY
+500 UV–vis–NIR Scan dual-beam spectrophotometer (Varian, Palo Alto, CA, USA). Then,
+the total amount of HARF loaded in the NPs was estimated from the equation generated
+from the calibration curve. The EE % of the H/CS/PLGA/NPs was determined using
+Equation (1).
+EE % = Total amopunt of loaded HARF
+Theoretical HARF loading
+× 100
+(1)
+
+Nanomaterials 2021, 11, 2438
+12 of 16
+4.3.6. Formulation Optimization
+Design-Expert 12® software was used to determine the optimum H/CS/PLGA NPs
+formulation. The speciﬁc constraints applied on the average particle size, PDI, zeta poten-
+tial, and EE% are presented in Table S2. To conﬁrm the validity of the generated predicted
+factors and responses, the developed optimum formulation was prepared and character-
+ized. In this regard, three prediction points were performed, and the software averaged
+the response data. For further investigations, the optimum formulation was prepared,
+as described in Section 4.3.3., and lyophilized (at −40 ◦C) for 72 h using a freeze dryer
+(TOPTION TOPT Freeze dryer, Toption Group Co., Limited, Xi’an, China).
+4.3.7. Characterization of the Optimal H/CS/PLGA NPs Formulation
+The NPs’ morphology and size were studied using transmission electron microscopy
+(TEM) using a JEOL-JEM 2100 electron microscope (Musashino, Akishima, Tokyo, Japan)
+operating at 160 kV. Deionized water was used to dilute a 50 µL aliquot of the NPs at a
+ratio of 2:1 (v/v). Then, the diluted NPs were stained with 2% aqueous phosphotungstic
+acid. This mixture was added dropwise and dried over a carbon-coated copper 200 mesh
+grid, imaged, and photographed. The average particle size (nm) histogram of the NPs was
+produced using the image processing program ImageJ (NIH, Bethesda, MD, USA) [8,9].
+The FT-IR spectra of HARF, blank CS/PLGA NPs, and the optimal H/CS/PLGA NPs
+formulation were obtained using Attenuated Total Reﬂection Fourier-Transformed Infrared
+Spectroscopy (ATR-FTIR) involving a Nicolet 380 spectrometer (ThermoScientiﬁc Nicolet,
+Waltham, MA, USA), and the spectra were recorded in the range of 4000–500 cm−1. [8]
+4.3.8. In Vitro Release Study of HARF from the Optimal H/CS/PLGA NPs Formulation
+The in-vitro drug release test was carried out as previously described by Ham-
+mam et al., 2017 [47], with some modiﬁcations. Brieﬂy, an amount of the lyophilized
+H/CS/PLGA NPs was resuspended in phosphate buffer saline (with added 2% tween 80;
+pH 7.4). The prepared colloids were incubated at 37 ◦C while shaking at 100 rpm. After
+gentle mixing of the colloids, samples were withdrawn at speciﬁc time intervals. Then,
+the samples were centrifuged (model Z 326 K, Hermle, Labortechnik GmbH, Wehingen,
+Germany) at 15,000 rpm for 30 min, and the supernatant was saved for drug concentration
+analysis. UV absorbance analysis at 259 nm was performed using a FLUOstar Omega
+microplate reader (BMG Labtech, Offenburg, Germany). All experiments were performed
+in triplicates, and the standard deviation (SD) was calculated.
+4.3.9. Antimicrobial Assay for the Optimal H/CS/PLGA NPs Formulation
+Inoculum Preparation (Colony Suspension Method)
+Staphylococcus aureus ATCC® 6538 (Lot no. 4600502) and Escherichia coli ATCC® 8739
+(Lot no. 380063) were obtained from American Type Culture Collection (University Boule-
+vard, Manassas, VA, USA). The bacterial strains were inoculated separately into 100 mL
+of Tryptic Soy Broth medium and then incubated at 37.0 ± 1.0 ◦C for 24 ± 2 h. A loopful
+from the broth was streaked onto Tryptic Soy Agar medium, and incubated at 37.0 ◦C
+for 21 ± 3 h to prepare a fresh culture agar plate. A direct sterile saline solution was
+prepared by inoculating 3–4 colonies (from each organism plate), then the suspension
+was adjusted to achieve turbidity that was equivalent to a 0.5 McFarland standard. The
+inoculum density was standardized using a 0.5 McFarland standard and DensiCHEK©
+optical device (DensiCHEK plus© SKU Number: 21250; BioMérieux, France). Suspensions
+containing approximately 1.0 × 108 CFU/mL of Escherichia coli and Staphylococcus aureus
+were obtained.
+Broth Macrodilution Method
+To test the antimicrobial activities, 5.0 mL from free HARF, CS/PLGA blank NPs,
+and H/CS/PLGA NPs were added to 5.0 mL tube broth (1:2 dilution) and mixed well.
+Then, 5.0 mL was aspirated using a new tip and added to the next 5.0 mL broth (1:4).
+
+Nanomaterials 2021, 11, 2438
+13 of 16
+That step was repeated for the preparation of ten dilutions for each antimicrobial sample.
+Then, 1.0 mL from the sample was inoculated in the ﬁrst well in the 24-well plate, and 1.0
+mL from each dilution was consequently inoculated in the remaining wells. Afterward,
+100 µL of inoculum prepared was added to each well. This resulted in a ﬁnal concentration
+of 5.0 × 105 CFU/mL. Another 100 µL from each organism suspension was diluted and
+cultured (externally) to conﬁrm the inoculum density. A growth control well containing
+inoculated broth, without sample, was added to each organism/sample. All plates were
+incubated at 37.0 ◦C for 24 h. After incubation, plates were removed from the incubator
+and placed in the dark to check growth. All growth control wells yielded a turbid solution,
+indicating the validity of the test. Inoculum density culture results were conﬁrmed to have
+a concentration of 4–6 × 105 CFU/mL for all tested organisms, according to Clinical and
+Laboratory Standards Institute (CLSI) procedures (document M07) [48].
+4.3.10. Cytotoxicity Assay
+Cell Culture
+Human skin ﬁbroblasts were obtained from the American Type Culture Collection,
+and maintained in DMEM supplemented with streptomycin (100 mg/mL), penicillin
+(100 units/mL), and 10% heat-inactivated fetal bovine serum. Cells were incubated in
+humidiﬁed 5% (v/v) CO2 at 37 ◦C.
+Sulforhodamine B Colorimetric Assay
+Human skin ﬁbroblasts were treated with different concentrations of H/CS/PLGA
+NPs. The cell viability was tested using the SRB assay as described previously [8,9,15,16].
+The percentage of cell viability was reported as the cytotoxicity results. All trials were
+conducted in triplicates, and data were displayed as mean ± standard deviation.
+4.3.11. In Vitro Scratch Wound Healing Assay
+The scratch wound assay is based on generating a gap in a conﬂuent monolayer of
+ﬁbroblasts to simulate a wound. In this regard, human skin ﬁbroblast cells were plated at a
+density of 3 × 105/well onto a 6-well plate and cultured overnight in 5% FBS-DMEM at
+37 ◦C and 5% CO2. The following day, mechanical scratches were introduced horizontally
+into the conﬂuent monolayer, employing a sterile pipette tip. Then, the medium of each
+ﬂask was discarded, and the cells were washed thoroughly with PBS at pH 7.4. Fresh
+media were then added, which contained either free HARF or H/CS/PLGA NPs. The
+untreated cells were used as a control and the incubation time was 48 h for all experiments.
+Images were taken using an inverted microscope at 0, 24, and 48 h. The plates were
+incubated at 37 ◦C and 5% CO2 in-between time points. The acquired images (Figure S1)
+were investigated using MII ImageView software version 3.7 (Informer technologies Inc.,
+Los Angeles, CA, USA) [49–54], and the wound closure percentage was computed using
+Equation (2) as follows:
+Wound Closure% =
+At = 0h −At = ∆h
+At = 0h
+
+× 100
+(2)
+where (At = 0 h) is the average area of the wound measured immediately after scratching
+(time zero), and (At = ∆h) is the average area of the wound measured in h hours after
+the scratch was performed. The results are displayed as mean ± SD. One-way analysis
+of variance (ANOVA) was carried out, followed by a posthoc test, Duncan test, using the
+Statistical Package for Social Sciences (SPSS) version 25 (IBM SPSS, Inc., Chicago, IL, USA)
+at p < 0.01.
+
+Nanomaterials 2021, 11, 2438
+14 of 16
+Supplementary Materials: The following are available online at https://www.mdpi.com/article/10
+.3390/nano11092438/s1, Table S1: Average particle size, polydispersity index, zeta potential, and
+entrapment efﬁciency % of the prepared H/CS/PLGA NPs formulations, Table S2: Composition
+and sonication time of the 33 BBD for H/CS/PLGA NPs, Figure S1: Representing images for the
+in vitro scratch wound healing assay using human skin ﬁbroblasts cultured on polystyrene plates for
+(A) H/CS/PLGA NPs, (B) free HARF, and (C) CS/PLGA blank NPs. Images were taken using an
+inverted microscope at 0, 24, and 48 h. The experiment has been conducted in triplicates. Vertical
+black lines in all panels indicate scratch size.
+Author Contributions: Conceptualization, H.M.E.-S.A., S.A.F. and U.B.; methodology, S.A.F., M.R.M.
+and N.K.M.; data curation, S.A.F. and N.K.M.; writing—original draft preparation, S.A.F. and H.M.E.-
+S.A.; writing—review and editing, S.A.F., U.B., M.R.M. and H.M.E.-S.A.; supervision, H.M.E.-S.A.,
+M.R.M. and U.B.; project administration, H.M.E.-S.A. and U.B. All authors have read and agreed to
+the published version of the manuscript.
+Funding: This project was funded by a grant from the American University in Cairo to H.M.E.-S.A.
+Institutional Review Board Statement: Not Applicable.
+Informed Consent Statement: Data is contained within the article or supplementary material.
+Acknowledgments: The authors would like to thank the Chemistry Department at the American
+University in Cairo for the provision of resources for the project.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Ter Horst, B.; Chouhan, G.; Moiemen, N.; Grover, L.M. Advances in keratinocyte delivery in burn wound care. Adv. Drug Deliv.
+Rev. 2017, 123, 18–32. [CrossRef]
+2.
+Morey, M.; Pandit, A. Responsive triggering systems for delivery in chronic wound healing. Adv. Drug Deliv. Rev. 2018, 129,
+169–193. [CrossRef] [PubMed]
+3.
+Negut, I.; Grumezescu, V.; Grumezescu, A.M. Treatment Strategies for Infected Wounds. Molecules 2018, 23, 2392. [CrossRef]
+[PubMed]
+4.
+Mihai, M.; Holban, A.M.; Giurcăneanu, C.; Popa, L.G.; Buzea, M.; Filipov, M.; Lazăr, V.; Chiﬁriuc, M.C.; Popa, M.I. Identiﬁcation
+and phenotypic characterization of the most frequent bacterial etiologies in chronic skin ulcers. Rom. J. Morphol. Embryol. 2014,
+55, 1401–1408.
+5.
+Fahmy, S.A.; Mamdouh, W. Garlic oil-loaded PLGA nanoparticles with controllable size and shape and enhanced antibacterial
+activities. J. Appl. Polym. Sci. 2018, 135, 46133. [CrossRef]
+6.
+Fahmy, S.; Preis, E.; Bakowsky, U.; Azzazy, H. Platinum Nanoparticles: Green Synthesis and Biomedical Applications. Molecules
+2020, 25, 4981. [CrossRef] [PubMed]
+7.
+Fahmy, S.A.; Preis, E.; Bakowsky, U.; Azzazy, H.M.E.-S. Palladium Nanoparticles Fabricated by Green Chemistry: Promising
+Chemotherapeutic, Antioxidant and Antimicrobial Agents. Materials 2020, 13, 3661. [CrossRef]
+8.
+Fahmy, S.; Fawzy, I.; Saleh, B.; Issa, M.; Bakowsky, U.; Azzazy, H. Green Synthesis of Platinum and Palladium Nanoparticles
+Using Peganum harmala L. Seed Alkaloids: Biological and Computational Studies. Nanomaterials 2021, 11, 965. [CrossRef]
+9.
+Fahmy, S.A.; Issa, M.Y.; Saleh, B.M.; Meselhy, M.R.; Azzazy, H.M.E.-S. Peganum harmala Alkaloids Self-Assembled Supramolecu-
+lar Nanocapsules with Enhanced Antioxidant and Cytotoxic Activities. ACS Omega 2021, 6, 11954–11963. [CrossRef]
+10.
+Derakhshanfar, A.; Oloumi, M.M.; Mirzaie, M. Study on the effect of Peganum harmala extract on experimental skin wound
+healing in rat: Pathological and biomechanical ﬁndings. Comp. Haematol. Int. 2009, 19, 169–172. [CrossRef]
+11.
+Pormohammad, A.; Monych, N.; Ghosh, S.; Turner, D.; Turner, R. Nanomaterials in Wound Healing and Infection Control.
+Antibiotics 2021, 10, 473. [CrossRef] [PubMed]
+12.
+El-Shaﬁe, S.; Fahmy, S.A.; Ziko, L.; Elzahed, N.; Shoeib, T.; Kakarougkas, A. Encapsulation of Nedaplatin in Novel PEGylated
+Liposomes Increases Its Cytotoxicity and Genotoxicity against A549 and U2OS Human Cancer Cells. Pharmaceutics 2020, 12, 863.
+[CrossRef] [PubMed]
+13.
+Fahmy, S.A.; Alawak, M.; Brüßler, J.; Bakowsky, U.; El Sayed, M.M.H. Nanoenabled Bioseparations: Current Developments and
+Future Prospects. BioMed Res. Int. 2019, 2019, 4983291. [CrossRef] [PubMed]
+14.
+Fahmy, S.A.; Ponte, F.; El-Rahman, M.K.A.; Russo, N.; Sicilia, E.; Shoeib, T. Investigation of the host-guest complexation between
+4-sulfocalix[4]arene and nedaplatin for potential use in drug delivery. Spectrochim. Acta Part A Mol. Biomol. Spectrosc. 2017, 193,
+528–536. [CrossRef]
+15.
+Fahmy, S.A.; Ponte, F.; Sicilia, E.; Azzazy, H.M.E.-S. Experimental and Computational Investigations of Carboplatin Supramolecu-
+lar Complexes. ACS Omega 2020, 5, 31456–31466. [CrossRef]
+16.
+Fahmy, S.A.; Ponte, F.; Fawzy, I.M.; Sicilia, E.; Bakowsky, U.; Azzazy, H.M.E.-S. Host-Guest Complexation of Oxaliplatin and
+Para-Sulfonatocalix[n]Arenes for Potential Use in Cancer Therapy. Molecules 2020, 25, 5926. [CrossRef]
+
+Nanomaterials 2021, 11, 2438
+15 of 16
+17.
+Fahmy, S.A.; Brüßler, J.; Alawak, M.; El-Sayed, M.M.H.; Bakowsky, U.; Shoeib, T. Chemotherapy Based on Supramolecular
+Chemistry: A Promising Strategy in Cancer Therapy. Pharmaceutics 2019, 11, 292. [CrossRef] [PubMed]
+18.
+Fahmy, S.A.; Brüßler, J.; Ponte, F.; El-Rahman, M.K.A.; Russo, N.; Sicilia, E.; Bakowsky, U.; Shoeib, T. A study on the physic-
+ochemical properties and cytotoxic activity of p-sulfocalix[4]arene-nedaplatin complex. J. Phys. Conf. Ser. 2019, 1310, 012011.
+[CrossRef]
+19.
+Shende, P.; Gupta, H. Formulation and comparative characterization of nanoparticles of curcumin using natural, synthetic and
+semi-synthetic polymers for wound healing. Life Sci. 2020, 253, 117588. [CrossRef]
+20.
+Karri, V.V.S.R.; Kuppusamy, G.; Talluri, S.V.; Mannemala, S.S.; Kollipara, R.; Wadhwani, A.D.; Mulukutla, S.; Raju, K.R.S.;
+Malayandi, R. Curcumin loaded chitosan nanoparticles impregnated into collagen-alginate scaffolds for diabetic wound healing.
+Int. J. Biol. Macromol. 2016, 93, 1519–1529. [CrossRef]
+21.
+Suh, J.-K.F.; Matthew, H. Application of chitosan-based polysaccharide biomaterials in cartilage tissue engineering: A review.
+Biomaterials 2000, 21, 2589–2598. [CrossRef] [PubMed]
+22.
+Soorbaghi, F.P.; Isanejad, M.; Salatin, S.; Ghorbani, M.; Jafari, S.; Derakhshankhah, H. Bioaerogels: Synthesis approaches, cellular
+uptake, and the biomedical applications. Biomed. Pharmacother. 2019, 111, 964–975. [CrossRef]
+23.
+Shariatinia, Z.; Jalali, A.M. Chitosan-based hydrogels: Preparation, properties and applications. Int. J. Biol. Macromol. 2018, 115,
+194–220. [CrossRef]
+24.
+Ong, S.-Y.; Wu, J.; Moochhala, S.M.; Tan, M.-H.; Lu, J. Development of a chitosan-based wound dressing with improved hemostatic
+and antimicrobial properties. Biomaterials 2008, 29, 4323–4332. [CrossRef] [PubMed]
+25.
+Miguel, S.A.P.; Moreira, A.F.; Correia, I.J. Chitosan based-asymmetric membranes for wound healing: A review. Int. J. Biol.
+Macromol. 2019, 127, 460–475. [CrossRef]
+26.
+Anand, P.; Nair, H.B.B.; Sung, B.; Kunnumakkara, A.B.; Yadav, V.R.; Tekmal, R.R.; Aggarwal, B.B. RETRACTED: Design of
+curcumin-loaded PLGA nanoparticles formulation with enhanced cellular uptake, and increased bioactivity in vitro and superior
+bioavailability in vivo. Biochem. Pharmacol. 2010, 79, 330–338. [CrossRef]
+27.
+Nagoba, B.S.; Suryawanshi, N.M.; Wadher, B.; Selkar, S. Acidic Environment and Wound Healing: A Review. Wounds 2015, 27,
+5–11.
+28.
+Fredenberg, S.; Wahlgren, M.; Reslow, M.; Axelsson, A. The mechanisms of drug release in poly(lactic-co-glycolic acid)-based
+drug delivery systems—A review. Int. J. Pharm. 2011, 415, 34–52. [CrossRef]
+29.
+Ghitman, J.; Biru, E.I.; Stan, R.; Iovu, H. Review of hybrid PLGA nanoparticles: Future of smart drug delivery and theranostics
+medicine. Mater. Des. 2020, 193, 108805. [CrossRef]
+30.
+Takeuchi, I.; Suzuki, T.; Makino, K. Iontophoretic transdermal delivery using chitosan-coated PLGA nanoparticles for transcuta-
+neous immunization. Colloids Surf. A Physicochem. Eng. Asp. 2020, 608, 125607. [CrossRef]
+31.
+Schiller, S.; Hanefeld, A.; Schneider, M.; Lehr, C.-M. Towards a Continuous Manufacturing Process of Protein-Loaded Polymeric
+Nanoparticle Powders. AAPS PharmSciTech 2020, 21, 269. [CrossRef]
+32.
+Rampino, A.; Borgogna, M.; Blasi, P.; Bellich, B.; Cesàro, A. Chitosan nanoparticles: Preparation, size evolution and stability. Int. J.
+Pharm. 2013, 455, 219–228. [CrossRef] [PubMed]
+33.
+Taymouri, S.; Ahmadi, Z.; Mirian, M.; Tavakoli, N. Simvastatin Nanosuspensions Prepared Using a Combination of PH-Sensitive
+and Timed-Release Approaches for Potential Treatment of Colorectal Cancer. Pharm. Dev. Technol. 2021, 26, 335–348. [CrossRef]
+[PubMed]
+34.
+Topal, G.R.; Mészáros, M.; Porkoláb, G.; Szecskó, A.; Polgár, T.F.; Siklós, L.; Deli, M.A.; Veszelka, S.; Bozkir, A. ApoE-Targeting
+Increases the Transfer of Solid Lipid Nanoparticles with Donepezil Cargo across a Culture Model of the Blood–Brain Barrier.
+Pharmaceutics 2020, 13, 38. [CrossRef] [PubMed]
+35.
+Gan, Q.; Wang, T. Chitosan nanoparticle as protein delivery carrier—Systematic examination of fabrication conditions for efﬁcient
+loading and release. Colloids Surf. B Biointerfaces 2007, 59, 24–34. [CrossRef] [PubMed]
+36.
+Chronopoulou, L.; Massimi, M.; Giardi, M.F.; Cametti, C.; Devirgiliis, L.C.; Dentini, M.; Palocci, C. Chitosan-coated PLGA
+nanoparticles: A sustained drug release strategy for cell cultures. Colloids Surf. B Biointerfaces 2013, 103, 310–317. [CrossRef]
+[PubMed]
+37.
+Sendi, N.; Mkadmini-Hammi, K.; Ben Mansour, R.; Selmi, S.; Trabelsi, N.; Isoda, H.; Ksouri, R.; Megdiche-Ksouri, W. Simultaneous
+optimization of ultrasound-assisted extraction of ﬂavonoid compounds and antiradical activity from Artemisia herba-Alba using
+response surface methodology. Prep. Biochem. Biotechnol. 2020, 50, 943–953. [CrossRef]
+38.
+Delan, W.K.; Zakaria, M.; Elsaadany, B.; ElMeshad, A.N.; Mamdouh, W.; Fares, A.R. Formulation of simvastatin chitosan
+nanoparticles for controlled delivery in bone regeneration: Optimization using Box-Behnken design, stability and in vivo study.
+Int. J. Pharm. 2020, 577, 119038. [CrossRef]
+39.
+Azizi, M.; Sedaghat, S.; Tahvildari, K.; Derakhshi, P.; Ghaemi, A. Synthesis of silver nanoparticles using Peganum harmala extract
+as a green route. Green Chem. Lett. Rev. 2017, 10, 420–427. [CrossRef]
+40.
+Lu, B.; Lv, X.; Le, Y. Chitosan-Modiﬁed PLGA Nanoparticles for Control-Released Drug Delivery. Polymers 2019, 11, 304.
+[CrossRef]
+41.
+Boonsongrit, Y.; Mueller, B.W.; Mitrevej, A. Characterization of drug–chitosan interaction by 1H NMR, FTIR and isothermal
+titration calorimetry. Eur. J. Pharm. Biopharm. 2008, 69, 388–395. [CrossRef]
+
+Nanomaterials 2021, 11, 2438
+16 of 16
+42.
+Ravi Kumar, M.N.; Bakowsky, U.; Lehr, C.M. Preparation and characterization of cationic PLGA nanospheres as DNA carriers.
+Biomaterials 2004, 25, 1771–1777. [CrossRef]
+43.
+Zhang, P.; Liu, C. Enhancement of Skin Wound Healing by rhEGF-Loaded Carboxymethyl Chitosan Nanoparticles. Polymers
+2020, 12, 1612. [CrossRef]
+44.
+Ospina-Villa, J.D.; Gómez-Hoyos, C.; Zuluaga-Gallego, R.; Triana-Chávez, O. Encapsulation of proteins from Leishmania
+panamensis into PLGA particles by a single emulsion-solvent evaporation method. J. Microbiol. Methods 2019, 162, 1–7. [CrossRef]
+45.
+Pinnapireddy, S.R.; Duse, L.; Strehlow, B.; Schäfer, J.; Bakowsky, U. Composite liposome-PEI/nucleic acid lipopolyplexes for safe
+and efﬁcient gene delivery and gene knockdown. Colloids Surf. B Biointerfaces 2017, 158, 93–101. [CrossRef]
+46.
+Nair, K.L.; Thulasidasan, A.K.T.; Deepa, G.; Anto, R.J.; Kumar, G.V. Purely aqueous PLGA nanoparticulate formulations of
+curcumin exhibit enhanced anticancer activity with dependence on the combination of the carrier. Int. J. Pharm. 2012, 425, 44–52.
+[CrossRef] [PubMed]
+47.
+Motawi, T.K.; El-Maraghy, S.A.; ElMeshad, A.N.; Nady, O.M.; Hammam, O. Cromolyn chitosan nanoparticles as a novel protective
+approach for colorectal cancer. Chem. Interact. 2017, 275, 1–12. [CrossRef]
+48.
+Clinical and Laboratory Standards Institute. Methods for Dilution Antimicrobial Susceptibility Tests for Bacteria That Grow
+Aerobically: Approved Standard. CLSI (NCCLS) 2018, 26, M7-A7.
+49.
+Main, K.A.; Mikelis, C.M.; Doçi, C.L. In Vitro Wound Healing Assays to Investigate Epidermal Migration. In Epidermal Cells;
+Humana: New York, NY, USA, 2019; pp. 147–154.
+50.
+Dudley, B.A. Role of Ceramide-1 Phosphate in Regulation of Sphingolipid and Eicosanoid Metabolism in Lung Epithelial Cells.
+Master’s Thesis, University of South Florida, Tampa Bay, FL, USA, 2020. Available online: https://scholarcommons.usf.edu/etd/
+8534 (accessed on 12 August 2021).
+51.
+Rueden, C.; Schindelin, J.E.; Hiner, M.C.; Dezonia, B.E.; Walter, A.E.; Arena, E.T.; Eliceiri, K.W. ImageJ2: ImageJ for the next
+generation of scientiﬁc image data. BMC Bioinform. 2017, 18, 1–26. [CrossRef] [PubMed]
+52.
+Schindelin, J.; Arganda-Carreras, I.; Frise, E.; Kaynig, V.; Longair, M.; Pietzsch, T.; Preibisch, S.; Rueden, C.; Saalfeld, S.; Schmid,
+B.; et al. Fiji: An open-source platform for biological-image analysis. Nat. Chem. Biol. 2012, 9, 676–682. [CrossRef]
+53.
+Jonkman, J.; Cathcart, J.A.; Xu, F.; Bartolini, M.E.; Amon, J.E.; Stevens, K.M.; Colarusso, P. An introduction to the wound healing
+assay using live-cell microscopy. Cell Adhes. Migr. 2014, 8, 440–451. [CrossRef] [PubMed]
+54.
+Rodriguez, L.G.; Wu, X.; Guan, J.-L. Wound-Healing Assay. In Cell Migration; Springer: Berlin/Heidelberg, Germany, 2005;
+pp. 23–29.

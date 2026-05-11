@@ -1,0 +1,259 @@
+{
+  "title": "DOE Scope Construction Audit",
+  "audit_type": "maintained_stage2_scope_construction_audit",
+  "source_resolution": {
+    "active_run_json_used_as_primary": false,
+    "active_run_json_rejection_reason": "ACTIVE_RUN.json points to run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1, whose Stage2 semantic surface is paper_driven_deterministic_semantic_emitter_v1 rather than the maintained llm_first_composite path under audit.",
+    "resolved_run_dirs": [
+      "data/results/20260406_ced19d6/06_doe_fu_wiv_5gif_final",
+      "data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix"
+    ],
+    "resolved_source_files": [
+      "data/results/20260406_ced19d6/06_doe_fu_wiv_5gif_final/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+      "data/results/20260406_ced19d6/06_doe_fu_wiv_5gif_final/semantic_stage2_objects/semantic_stage2_v2_summary.tsv",
+      "data/results/20260406_ced19d6/06_doe_fu_wiv_5gif_final/semantic_stage2_objects/raw_responses/WIVUCMYG__stage2_v2_raw_response.json",
+      "data/results/20260406_ced19d6/06_doe_fu_wiv_5gif_final/semantic_stage2_objects/raw_responses/5GIF3D8W__stage2_v2_raw_response.json",
+      "data/results/20260406_ced19d6/06_doe_fu_wiv_5gif_final/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+      "data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+      "data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix/semantic_stage2_objects/semantic_stage2_v2_summary.tsv",
+      "data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix/semantic_stage2_objects/raw_responses/UFXX9WXE__stage2_v2_raw_response.json",
+      "data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+      "data/results/20260406_ced19d6/08_doe_trigger_path_audit/doe_trigger_diagnostics_v1.json"
+    ]
+  },
+  "code_path": {
+    "entrypoint": "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+    "scope_constructor": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py:1418-1535",
+    "doe_factor_role_assignment": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py:1169-1187",
+    "adapter_callsite": "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py:891-935",
+    "scope_resolver": "src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py:89-105",
+    "function_unit_preconditions": "src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py:222-267",
+    "contract_validator": "src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py:59-68,143-161"
+  },
+  "implemented_scope_conditions": [
+    {
+      "condition_id": "c1_doe_factor_objects",
+      "description": "At least one variable candidate must have variable_role=doe_factor.",
+      "implemented_in": "extract_semantic_stage2_objects_v2.py:1438-1442",
+      "required_for_scope_append": true
+    },
+    {
+      "condition_id": "c2_table_scope_refs",
+      "description": "At least one table_scope_ref must be built, either from DOE-factor evidence spans or from the strong-DOE-language fallback table-anchor scan.",
+      "implemented_in": "extract_semantic_stage2_objects_v2.py:1473-1515",
+      "required_for_scope_append": true
+    },
+    {
+      "condition_id": "c3_strong_or_numbered",
+      "description": "Either strong_doe_language must be true or numbered_formulation_count must be at least 8.",
+      "implemented_in": "extract_semantic_stage2_objects_v2.py:1452-1472,1516-1533",
+      "required_for_scope_append": true
+    },
+    {
+      "condition_id": "c4_scope_append",
+      "description": "DOE scope is appended only when c1 and c2 and c3 are all true.",
+      "implemented_in": "extract_semantic_stage2_objects_v2.py:1516-1535",
+      "required_for_scope_append": true
+    },
+    {
+      "condition_id": "c5_function_unit_scope_resolution",
+      "description": "Adapter-side DOE expansion requires a resolved llm_declared_doe_scope with scope_kind=doe_table_row_enumeration_scope, declared_by=llm_semantic_discovery, authorized deterministic expansion mode, and row_enumeration_required=yes.",
+      "implemented_in": "doe_row_expansion_function_unit_v1.py:89-105",
+      "required_for_row_expansion": true
+    },
+    {
+      "condition_id": "c6_function_unit_mode",
+      "description": "Stage2 semantic source mode must be llm_first_composite.",
+      "implemented_in": "doe_row_expansion_function_unit_v1.py:222-233",
+      "required_for_row_expansion": true
+    },
+    {
+      "condition_id": "c7_function_unit_enabled",
+      "description": "DOE recovery must be enabled by the function-unit mode gate.",
+      "implemented_in": "doe_row_expansion_function_unit_v1.py:234-244",
+      "required_for_row_expansion": true
+    },
+    {
+      "condition_id": "c8_source_text_present",
+      "description": "Resolved source text path must exist.",
+      "implemented_in": "doe_row_expansion_function_unit_v1.py:257-268",
+      "required_for_row_expansion": true
+    }
+  ],
+  "papers": {
+    "UFXX9WXE": {
+      "raw_llm_evidence": {
+        "doe_design_language": [
+          "Box-Behnken design",
+          "four independent factors",
+          "26 confirmatory runs",
+          "Table 2: Effect of independent process variables on dependent variable"
+        ],
+        "optimization_language": [
+          "optimize lorazepam loaded PLGA nanoparticles",
+          "optimized Lzp-PLGA-NPs"
+        ],
+        "table_or_caption_refs": [
+          "UFXX9WXE_table_13_caption_0",
+          "UFXX9WXE_table_14_caption_0",
+          "UFXX9WXE__table_13__pdf_table.csv | sample_row_1"
+        ]
+      },
+      "semantic_objects": {
+        "doe_factor_role_count": 4,
+        "doe_factor_examples": [
+          "factor X1",
+          "factor X2",
+          "factor X3",
+          "factor X4"
+        ],
+        "table_scope_refs_count": 3,
+        "numbered_formulation_sweep_present": false,
+        "strong_doe_language_branch": true
+      },
+      "scope_outcome": {
+        "semantic_scope_declared": true,
+        "scope_kind": "doe_table_row_enumeration_scope",
+        "declared_by": "llm_semantic_discovery",
+        "row_enumeration_required": true,
+        "semantic_scope_ref": "UFXX9WXE__llm_declared_doe_scope__01",
+        "declared_doe_factors": [
+          "factor_x1",
+          "factor_x2",
+          "factor_x3",
+          "factor_x4"
+        ],
+        "declaration_basis": "llm_detected_strong_doe_language_plus_doe_factor_candidates_plus_table_scopes",
+        "function_unit_status": "executed_successfully",
+        "rows_emitted_count": 26
+      },
+      "condition_status": {
+        "c1_doe_factor_objects": true,
+        "c2_table_scope_refs": true,
+        "c3_strong_or_numbered": true,
+        "c4_scope_append": true,
+        "c5_function_unit_scope_resolution": true,
+        "c6_function_unit_mode": true,
+        "c7_function_unit_enabled": true,
+        "c8_source_text_present": true
+      }
+    },
+    "WIVUCMYG": {
+      "raw_llm_evidence": {
+        "doe_design_language": [
+          "coded factor header row",
+          "numbered formulations F1-F26"
+        ],
+        "optimization_language": [],
+        "table_or_caption_refs": [
+          "TABLE data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv, header row, col 2-5",
+          "TABLE data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv, row F1"
+        ]
+      },
+      "semantic_objects": {
+        "doe_factor_role_count": 104,
+        "doe_factor_examples": [
+          "cpf_coded_level",
+          "cpva_coded_level",
+          "cplga_coded_level",
+          "ph_coded_level"
+        ],
+        "table_scope_refs_count": 19,
+        "numbered_formulation_sweep_present": true,
+        "strong_doe_language_branch": false
+      },
+      "scope_outcome": {
+        "semantic_scope_declared": true,
+        "scope_kind": "doe_table_row_enumeration_scope",
+        "declared_by": "llm_semantic_discovery",
+        "row_enumeration_required": true,
+        "semantic_scope_ref": "WIVUCMYG__llm_declared_doe_scope__01",
+        "declared_doe_factors": [
+          "cpf_coded_level",
+          "cplga_coded_level",
+          "cpva_coded_level",
+          "ph_coded_level"
+        ],
+        "declaration_basis": "llm_detected_numbered_formulation_sweep_plus_doe_factor_candidates_plus_table_scopes",
+        "function_unit_status": "executed_successfully",
+        "rows_emitted_count": 0,
+        "rows_emitted_reason": "No missing numbered DOE rows were emitted."
+      },
+      "condition_status": {
+        "c1_doe_factor_objects": true,
+        "c2_table_scope_refs": true,
+        "c3_strong_or_numbered": true,
+        "c4_scope_append": true,
+        "c5_function_unit_scope_resolution": true,
+        "c6_function_unit_mode": true,
+        "c7_function_unit_enabled": true,
+        "c8_source_text_present": true
+      }
+    },
+    "5GIF3D8W": {
+      "raw_llm_evidence": {
+        "doe_design_language": [
+          "Effect of formulation variables like stabilizer concentration, amount of polymer, and drug was studied."
+        ],
+        "optimization_language": [
+          "amount of drug, amount of polymer, and concentration of stabilizer were optimized to 5 mg, 50 mg, and 1.0% w/v."
+        ],
+        "table_or_caption_refs": [
+          "Formulation characters for the optimized nanoparticle formulations"
+        ]
+      },
+      "semantic_objects": {
+        "doe_factor_role_count": 0,
+        "doe_factor_examples": [],
+        "shared_context_doe_like_observations": [
+          "U_DOE_StabilizerConc",
+          "U_DOE_PolymerAmount",
+          "U_DOE_DrugAmount",
+          "U_DOE_LactideContent"
+        ],
+        "table_scope_refs_count": 0,
+        "numbered_formulation_sweep_present": false,
+        "strong_doe_language_branch": true
+      },
+      "scope_outcome": {
+        "semantic_scope_declared": false,
+        "remaining_scope_kind": "document_semantic_scope",
+        "declared_by": "llm_semantic_discovery",
+        "row_enumeration_required": false,
+        "semantic_scope_ref": "",
+        "declared_doe_factors": [],
+        "function_unit_status": "missing_llm_declared_doe_scope",
+        "rows_emitted_count": 0
+      },
+      "condition_status": {
+        "c1_doe_factor_objects": false,
+        "c2_table_scope_refs": false,
+        "c3_strong_or_numbered": true,
+        "c4_scope_append": false,
+        "c5_function_unit_scope_resolution": false,
+        "c6_function_unit_mode": true,
+        "c7_function_unit_enabled": true,
+        "c8_source_text_present": true
+      },
+      "first_failing_condition": {
+        "condition_id": "c1_doe_factor_objects",
+        "why_it_fails": "DOE-like study language is preserved only as shared_context/unassigned observations and identity signals. No variable candidate is promoted to variable_role=doe_factor, so doe_factor_names is empty before scope construction.",
+        "upstream_evidence_not_promoted": [
+          "stabilizer concentration was studied",
+          "amount of polymer was studied",
+          "drug amount was studied",
+          "optimized values 5 mg / 50 mg / 1.0% w/v"
+        ],
+        "coupled_downstream_failure": "With no DOE-factor objects, the first table_scope_refs pass cannot populate any refs, the fallback table-anchor pass also yields none, and no llm_declared_doe_scope is appended."
+      }
+    }
+  },
+  "strict_answer": {
+    "question": "Is 5GIF3D8W excluded because the current governed contract intends to exclude it, or because current scope-construction logic is too narrow?",
+    "answer": "Best classified as conservative contract choice. The maintained path intentionally requires promoted DOE-factor semantic objects plus DOE-capable table anchors before a governed DOE scope may exist. 5GIF3D8W contains weak DOE-like study and optimization language, but its maintained semantic objects never promote that signal into doe_factor objects or table-scoped DOE anchors, so governed DOE scope never becomes legal."
+  },
+  "classification": "conservative_contract_choice",
+  "uncertainties": [
+    "semantic_stage2_v2_summary.tsv doe_factor_count is not authoritative for this audit because it is recomputed from normalized variable names rather than variable_role, which undercounts UFXX9WXE and WIVUCMYG."
+  ]
+}

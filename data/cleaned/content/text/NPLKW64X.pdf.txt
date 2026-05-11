@@ -1,0 +1,678 @@
+Pharmaceutics, Drug Delivery and Pharmaceutical Technology
+Development and In Vivo Evaluation of Sustained Release
+Microparticles Loaded with Levothyroxine for Hypothyroidism
+Treatment
+Hussam H. Alhawaria, Raghad M. Abuhamdanb, Majd Alrashdanb, Yazan Al Thaherc,
+Ziad A. Shraidehd, Samer R. Abulateefehb,e,*
+a School of Medicine, The University of Jordan, Amman 11942, Jordan
+b School of Pharmacy, The University of Jordan, Amman 11942, Jordan
+c Faculty of Pharmacy, Philadelphia University, Amman 19392, Jordan
+d School of Science, The University of Jordan, Amman 11942, Jordan
+e Faculty of Pharmacy, Al-Zaytoonah University of Jordan, Amman 11733, Jordan
+A R T I C L E
+I N F O
+Article history:
+Received 31 October 2023
+Revised 10 January 2024
+Accepted 10 January 2024
+Available online 15 January 2024
+A B S T R A C T
+Hypothyroidism is a chronic condition combated by a daily oral supplementation of levothyroxine. In
+addition to the need for frequent dosing, oral administration may result in variable absorption of the
+drug leading to a failure in achieving normal thyroid function. Therefore, the development of a long-
+acting injectable system capable of delivering the drug is necessary. This work was aimed at develop-
+ing sustained release microparticles loaded with levothyroxine. The microparticles were produced
+through the emulsiﬁcation-solvent evaporation method using 2 grades of biocompatible and biode-
+gradable polyesters: poly(ᴅ,ʟ-lactide-co-glycolide) (PLGA) and poly(ᴅ,ʟ-lactide) (PLA). Both polymers
+produced microparticles with very similar sizes (1.9 mm) and zeta potential values (around -22.0 mV).
+However, PLA microparticles had a signiﬁcantly higher drug loading (6.1% vs. 4.4%, respectively) and
+encapsulation efﬁciency (36.8%, vs. 26.1%, respectively) when compared to PLGA counterparts. While
+both types of microparticles displayed a biphasic release pattern in vitro, a slower rate of release was
+observed with PLA microparticles. Moreover, a similar biphasic release pattern was found in vivo, with
+an initial phase of rapid release followed by a slower phase in the subsequent 10 days. These results
+indicate the possibility of developing levothyroxine loaded polyester microparticles as a potential
+long-acting thyroid hormone replacement therapy.
+© 2024 American Pharmacists Association. Published by Elsevier Inc. All rights reserved.
+Keywords:
+Polyester
+PLGA
+PLA
+Levothyroxine
+Hypothyroidism
+Introduction
+Conventional dosage forms, although widely available, are limited
+by their inability to achieve targeted or extended drug release.1,2 This
+has led to the development of drug delivery systems capable of
+encapsulating drug molecules within miniscule carriers that can tar-
+get speciﬁc tissues and control the release of the encapsulated
+drug.3,4 Targeted delivery achieved by these systems has resulted in
+the selective accumulation of actives within speciﬁc tissues, sparing
+the rest of the body.2,4 Furthermore, because the delivery of the drug
+is directed, a much smaller dose is needed to achieve therapeutic
+effects.5,6 The smaller needed doses, targeted delivery, and extended
+release that these systems offer have resulted in diminished experi-
+enced side effects and greater patient compliance when compared to
+conventional dosage forms.7 This superiority of targeted drug carriers
+has made them very attractive systems for drug delivery.8
+Microparticles (also known as microspheres), one of the most
+commonly used drug delivery systems,2 are spherical particles
+that have a diameter which falls within the micron range, i.e.
+1−1000 mm.9-11 These microparticles form when actives are homo-
+geneously dissolved or dispersed within a continuous internal matrix
+composed of polymeric material.9 The characteristics of the poly-
+meric materials used to encapsulate actives aid in the ability of these
+systems to ﬁne-tune drug release.12,13 Therefore, careful selection of
+polymeric materials is vital.
+Polymers used to formulate microspheres can fall within one of
+two categories: biodegradable or non-biodegradable materials.2 Both
+are capable of encapsulating a wide range of actives14,15; however,
+non-biodegradable materials can accumulate in the body resulting in
+toxicity.16 This observed toxicity has resulted in a more extensive use
+of biodegradable polymers.2
+* Corresponding author.
+E-mail address: s.abulateefeh@ju.edu.jo (S.R. Abulateefeh).
+https://doi.org/10.1016/j.xphs.2024.01.004
+0022-3549/© 2024 American Pharmacists Association. Published by Elsevier Inc. All rights reserved.
+Journal of Pharmaceutical Sciences 113 (2024) 1566−1571
+Contents lists available at ScienceDirect
+Journal of Pharmaceutical Sciences
+journal homepage: www.jpharmsci.org
+
+In recent years, the use of the polyester polymers poly(ᴅ,ʟ-lactide-
+co-glycolide) (PLGA) and poly(ᴅ,ʟ-lactide) (PLA) to synthesize poly-
+meric microparticles has ballooned as a result of their favorable
+characteristics.15,17,18 The hydrophobic polymers are capable of
+encapsulating a plethora of actives with vastly different chemical
+properties.3,19−22 They can sustain the release of encapsulated actives
+for periods of time that range from a few weeks to several
+months.12,13,18,21 Additionally, they are not only biocompatible but
+also biodegradable within biological media.23,24 As a result of these
+favorable qualities, the U.S. Food and Drug Administration (FDA) has
+approved twelve polyester-based microsphere products for drug
+delivery.3,20,25
+The American Thyroid Association deﬁnes hypothyroidism as a
+condition in which the thyroid gland is underactive.26 This results in
+a serum deﬁciency of thyroid hormones like thyroxine (T4) which in
+turn brings about a pronounced deceleration of the entire body’s
+metabolic processes. Constipation, depression, exhaustion, forgetful-
+ness, weight gain, muscle cramps and weakness, menstrual irregular-
+ities, and sensitivity to cold temperatures are only some of the varied
+symptoms associated with hypothyroidism.
+Hypothyroidism is a chronic condition requiring lifelong replace-
+ment of levothyroxine, a synthetic form of the T4 hormone. Daily oral
+supplementation of the drug in the form of tablets is conventionally
+used to combat the deﬁciency.27 In some cases, however, symptoms
+persist even with supplementation. This could be attributed to the
+patient’s (1) improper intake of the medication with foods and che-
+lating agents that limit its absorption,28−32 (2) non-adherence,33 or
+(3) coexisting malabsorptive disorders or other concomitant dis-
+eases.28 The resulting subtherapeutic serum levels of levothyroxine
+eventually lead to a failure in achieving normal biochemical thyroid
+function.32
+Several different formulations with varying routes of administra-
+tion have been developed to combat these issues. Orally administered
+liquid solutions of levothyroxine and drug loaded soft gel capsules
+were found to be particularly promising.34−36 They were able to cir-
+cumvent malabsorption as a result of gastrointestinal diseases and
+interactions with other medications.37 Furthermore, liquid solutions
+could be given to patients who experience swallowing difﬁculties.
+However, these formulations do not offer the convenience of a sus-
+tained release system. Therefore, the need to explore the potential of
+parenteral long-acting formulations has become necessary.38−40
+More recently, the work of several groups has been aimed at sus-
+taining levothyroxine release through its loading into 3-(amino-
+propyl) triethoxysilane modiﬁed porous silicon nanoparticles,41 or
+chitosan nanoparticles.42 However, the use of biodegradable, biocom-
+patible, and FDA approved polymers such as PLGA and PLA is more
+realistic and closer to clinical translation.
+For these reasons, formulating levothyroxine within a polyester-
+based delivery system capable of circumventing the absorptive disad-
+vantages of the oral route and capable of extending release, thereby
+diminishing the need for patient adherence to daily dosing, would be
+greatly advantageous. In this work, the ability of polyester polymers
+to encapsulate levothyroxine within microspheres and then control
+its release after parenteral administration in animal models will be
+investigated.
+Materials
+All the materials obtained for this work were used as received
+without any modiﬁcations. Two polyester polymers that were
+obtained from Sigma-Aldrich, Germany were utilized to form the
+microparticles. These polymers are Resomer RG 502 H (PLGA;
+molecular weight: 7−17 kDa; and lactide to glycolide ratio: 50:50)
+and Resomer R 202 H (PLA; molecular weight: 10−18 kDa; and lac-
+tide to glycolide ratio: 100:0). The microparticles were loaded with
+levothyroxine sodium salt pentahydrate (Sigma-Aldrich, China).
+Methanol (Romil Pure Chemicals; Cambridge, Great Britain); acetone
+(BBC Chemicals for Lab; China); lecithin of soya (BBC Chemicals for
+Lab; China); mineral oil (Az Chem for Chemicals; Germany); and n-
+hexane (BBC Chemicals for Lab; China) were all used in the micropar-
+ticle production process. Potassium chloride (BBC Chemicals for Lab;
+China); potassium dihydrogen phosphate (Scharlab S.L.; Spain);
+sodium chloride (Biochem Chemopharma; France); and disodium
+hydrogen phosphate dihydrate (Iso Lab Chemicals; Wertheim, Ger-
+many) were dissolved in distilled water to produce the phosphate
+buffered saline (PBS) needed for zeta potential measurements. To
+produce the medium in which drug release from the microparticles
+was studied, sodium hydroxide pellets (VWR BDH Prolabo; Belgium)
+were dissolved in distilled water. Finally, HPLC grade acetonitrile
+(Macron Fine Chemicals; USA) and phosphoric acid (Romil Pure
+Chemistry; Cambridge, Great Britain) were used for the analysis of
+the drug.
+Methods
+Microparticle Synthesis and Puriﬁcation
+The microparticles were produced using the emulsiﬁcation-sol-
+vent evaporation method. To produce the internal phase of the emul-
+sion, 50 mg of PLGA or PLA were dissolved in 3 mL of acetone. A one
+mL solution of methanol containing 10 mg of sodium levothyroxine
+was added dropwise to the acetonic polymer solution as it was stir-
+ring on a magnetic stirrer. The mixture was formed in a vial that was
+closed tightly before and after the addition of the drug solution to
+prevent solvent(s) evaporation. The external phase was produced by
+dissolving an appropriate amount of lecithin in mineral oil to form a
+0.5% w/v solution. Emulsiﬁcation took place when the drug loaded
+polymeric solution was added to 10 mL of the external phase in a
+centrifuge tube and then emulsiﬁed by simple shaking for 1 min.
+Once emulsiﬁcation had taken place, the emulsion was left stirring
+on a magnetic stirrer operating at 400 rpm overnight to allow for
+complete solvent(s) evaporation. Sodium levothyroxine is light sensi-
+tive; therefore, all solutions were produced/ kept in amber glass vials
+or beakers covered with aluminum foil.
+The next day, 10 mL of n-hexane were added to each formula in
+order to dilute the mineral oil and aid in the puriﬁcation of the
+microparticles. The mixture was then centrifuged at 4500 rpm for
+15 min (Centurion Scientiﬁc Ltd. UK). The supernatant was dis-
+carded, and the precipitated particles were further washed with
+another 10 mL of fresh n-hexane. The mixture was centrifuged again
+at 4500 rpm for another 15 min. After the 15 min had elapsed, the
+supernatant was discarded once more, and the microparticles were
+left to dry. Once dry, the microparticles were collected, weighed,
+and stored appropriately.
+Determination of Microparticle Size, Polydispersity and Zeta Potential
+Microparticle size and polydispersity were determined using
+dynamic light scattering (Zetasizer Nano-ZS, Malvern Instruments,
+UK). Minute samples of the dried microparticles were suspended in
+1 mL of distilled water by sonication using an ultra-probe sonicator
+(UP200Ht, Hielscher Ultrasonics, Germany). Ten second pulses of
+50 % continuity at 20 % amplitude and 100 W were used to break up
+any agglomerates. All readings were conducted in triplicates.
+The zeta potential of the produced microparticles was determined
+using electrophoretic light scattering analysis (Zetasizer Nano-ZS,
+Malvern Instruments, UK) in the same method detailed previously.
+The only difference is that the dried microparticles were suspended
+in 1 mL of PBS (pH = 7.4) instead of in water.
+H.H. Alhawari et al. / Journal of Pharmaceutical Sciences 113 (2024) 1566−1571
+1567
+
+Microparticle Morphology by Scanning Electron Microscope (SEM)
+The surface morphology of the produced microparticles was
+assessed using SEM (Tescan, Czech Republic). This was done by
+mounting the dried microparticles on an aluminum stub with con-
+ductive double-sided carbon tape. The surface morphology of the
+microparticles was then visualized using SEM.
+Determination of Microparticle Encapsulation Efﬁciency and Drug
+Loading
+The encapsulation efﬁciency and drug loading were determined
+directly by dissolving the produced microparticle formulations and
+analyzing the amount of drug released. To do so, each produced for-
+mulation was initially dissolved in 1 mL of acetone in a tightly closed
+amber glass vial. After 1 ho, the vials were opened to allow for solvent
+evaporation. Once the acetone had evaporated, 10 mL of 0.01 N NaOH
+were added to dissolve the drug. The polymer has limited solubility
+in the NaOH. The mixtures were then left overnight in a shaker incu-
+bator operating at 75 rpm and 37 °C (Daihan Labtech, Korea, model
+number LSI-3016A) so that complete drug solubilization can take
+place. The next day, all mixtures were centrifuged at 4000 rpm for
+10 min (Centurion Scientiﬁc Ltd.,UK), and the supernatant was col-
+lected for analysis using high performance liquid chromatography
+(HPLC).
+The drug concentration of each solution was determined by corre-
+lating the area under the curve (AUC) of drug peaks from chromato-
+grams to those obtained from a calibration curve constructed using
+standard levothyroxine sodium solutions in 0.01 N NaOH. Next, drug
+loading and encapsulation efﬁciency were determined using Eqs. (1)
+and 2, respectively. All measurements were conducted in triplicates
+to calculate mean values and standard deviations.
+Drug Loading % ¼
+Mass of the incorporated drug ðmgÞ
+Mass of the produced microparticles ðmgÞ  100
+ð1Þ
+Encapsulation Efficiency % ¼ Mass of the incorporated drug ðmgÞ
+Initial mass of the added drug ðmgÞ  100%
+ð2Þ
+HPLC analysis (Shimadzu HPLC, model LC-2030C PLUS 3D) of levo-
+thyroxine sodium was conducted in accordance to the method
+detailed in the British Pharmacopeia with some modiﬁcations. Data
+acquisition was conducted using the LabSolutions LCGC program. For
+chromatographic separation to occur, an L10 CN column was used.
+The mobile phase was composed of a 40:60 v/v mixture of acetoni-
+trile and 0.05% v/v phosphoric acid in water. The injection volume,
+ﬂow rate, and temperature were set at 20 mL, 1.5 mL/min, and 25 °C,
+respectively. Finally, the ultraviolet (UV) detector was set to detect
+the drug at 225 nm.
+Statistical analysis of drug loading and encapsulation efﬁciency
+was performed by conducting an unpaired t-test (GraphPad Prism
+version 9.0). Results were considered statistically different when the
+p-value was less than 0.05.
+Determination of Microparticle in Vitro Release
+The in vitro drug release from microparticles was determined
+through the dialysis method. The entire weight of microparticles pro-
+duced from each formulation (54 § 3 mg) was suspended in 3 mL of
+0.01 N NaOH and ﬁlled into dialysis bags with a molecular weight
+cut-off point of 10−12 kDa. The dialysis bags were submerged in
+27 mL of 0.01 N NaOH, and the vials were stored in a shaker incubator
+operating at 37 °C and 75 rpm (Daihan Labtech, Korea, model number
+LSI-3016A). At predetermined time points, 1 mL samples of the dialy-
+sate were obtained and immediately replaced with fresh, pre-
+warmed media. Release samples were analyzed by HPLC with
+appropriate dilutions as detailed in the previous section. At the end
+of the experiment, the amount of the drug left within the micropar-
+ticles was determined by the method described for drug loading and
+encapsulation but using only 5 mL 0.01 N NaOH instead of 10 mL. All
+measurements were conducted in triplicates to calculate mean values
+and standard deviations.
+It is important to note that in vitro release was conducted under
+alkaline conditions as opposed to physiological conditions. This is
+because levothyroxine demonstrates the most optimal stability43,44
+and solubility under alkaline conditions. Physiological conditions
+would have resulted in faster drug degradation and the inability to
+obtain sink conditions.
+Determination of Microparticle in Vivo Release
+The in vivo drug release from PLGA microparticles was deter-
+mined by measuring serum total thyroxine (T4) levels prior to and
+after the injection of loaded microparticles into rats. PLGA micropar-
+ticles were chosen as a representative formulation. Adult female Rat-
+tus albus were obtained from the animal house unit at the University
+of Jordan. All animals were kept in a well-ventilated room at
+22 § 2 °C with a 12 h light-dark cycle. They were also provided with
+a standard rate diet and ad libitum water. The rats, weighing 130
+−140 g, were randomly divided into 2 groups (n = 4), and treated
+with either (i) drug-free PLGA microparticles (negative control), or
+(ii) drug-loaded PLGA microparticles. The drug-loaded microparticles
+had a drug dose of around 0.4 mg levothyroxine. A speciﬁc amount of
+each microparticle formulation (around 8 mg) was dispersed in
+0.5 mL PBS (pH 7.4) and injected subcutaneously into each rat. At pre-
+determined time points, blood samples were collected using a plastic
+micro-hematocrit capillary tube (length 75 mm; volume 45 mL)
+introduced in the retro-orbital venous sinus of the rat’s eye directed
+towards the opposite ear.45 The collected blood samples were then
+placed in Eppendorf tubes and kept refrigerated for serum collection.
+Serum total T4 levels were determined by means of the electrochemi-
+luminescence
+immunoassay
+(ECLIA)
+(Roche
+Diagnostics
+GmbH,
+Sandhofer Strasse 116, D-68,305 Mannheim). The animal study pro-
+tocol was reviewed and approved by the Institutional Review Board
+(IRB) committee at the University of Jordan (Number: 36−2021).
+Results and Discussion
+Microparticle Physiochemical Characterization
+The size of levothyroxine sodium loaded microparticles produced
+through the emulsiﬁcation-solvent evaporation method using PLGA
+and PLA was determined by dynamic light scattering. As can be seen
+in Table 1, the produced microparticles have a size of 1.9 mm regard-
+less of the type of polymer used. Particles of this size can be easily
+administered parenterally for prolonged drug release.46
+Furthermore, these microparticles exhibit a wide particle size dis-
+tribution as illustrated by the high polydispersity index (PDI) values.
+This is regularly associated with polyester microparticles synthesized
+from an emulsion.47,48
+A high polydispersity in particle size can be linked to an unfavor-
+able release proﬁle.49 The smaller microparticles within the polydis-
+perse population have a greater surface area to volume ratio when
+compared to their larger counterparts. This greater ratio would lead to
+Table 1
+Particle size, PDI and zeta potential values of the produced microparticles.
+Polymer
+Size (mm) § SD
+PDI § SD
+Zeta Potential (mV) § SD
+PLGA
+1.9 § 0.2
+0.9 § 0.2
+20.8 § 2.2
+PLA
+1.9 § 0.6
+0.9 § 0.1
+22.7 § 1.2
+1568
+H.H. Alhawari et al. / Journal of Pharmaceutical Sciences 113 (2024) 1566−1571
+
+an initial phase of rapid drug release.49,50 Furthermore, polydispersity
+in size could lead to undesirable variations in particle degradation. To
+combat these issues by obtaining more uniform microparticles, micro-
+ﬂuidic devices can be used.47,50
+As for the zeta potential of the microparticles, both polymers pro-
+duce particles that have a negative surface charge. This charge can be
+attributed to the free carboxylic acid groups at the ends of the poly-
+meric chains, in addition to any new ones that formed upon partial
+polymeric hydrolysis.13,48 Such zeta potential values would offer
+good stability of the produced microparticles.
+The surface morphology of representative microparticles was
+assessed using SEM. As shown in Fig. 1, the produced microparticles
+are spherical with smooth surfaces. Moreover, the microparticles
+exhibit a wide particle size distribution, which is consistent with the
+DLS results.
+Microparticle Drug Loading and Encapsulation Efﬁciency
+The ability of PLGA and PLA of relatively similar molecular weights
+to encapsulate levothyroxine sodium within microspheres was inves-
+tigated. Drug loading and encapsulation efﬁciency results can be seen
+in Fig. 2.
+Both PLGA and PLA microspheres were prepared using the same
+method and produced microparticles of a very similar size and poly-
+dispersity. Their drug loading and encapsulation efﬁciencies were,
+however, signiﬁcantly different. Microspheres prepared using PLGA
+had a drug loading of 4.4 § 0.2 % and an encapsulation efﬁciency of
+26.1 § 1.5 %. Meanwhile, those prepared using PLA had a drug load-
+ing and encapsulation efﬁciency of 6.1 § 0.2 % and 36.8 § 1.2 %,
+respectively.
+Accordingly, results demonstrate that with an increase in poly-
+meric hydrophobicity, a signiﬁcant (p value = 0.0023) increase in
+drug loading and encapsulation can be obtained. The more hydro-
+phobic nature of the PLA is due to the presence of additional methyl
+groups.12,51 Such an increase in hydrophobicity would provide a bar-
+rier against drug outﬂux upon implant formation. This barrier
+reduces drug loss and thereby increases drug loading and encapsula-
+tion efﬁciency.
+Microparticle in Vitro Release
+The release of levothyroxine sodium from loaded PLGA and PLA
+microspheres was conducted. The results can be seen in Fig. 3. Both
+polymers exhibited an initial phase of rapid drug release. Four hours
+into the experiment, PLGA and PLA microspheres had released almost
+identical amounts of the loaded drug (i.e., 27.6 % and 27.7 %, respec-
+tively). Thereafter, the release patterns diverge, and a deceleration of
+the release rate is seen with PLA microspheres. On day two, 87.7% of
+the drug had been released from PLGA microspheres as compared to
+66.0% from PLA microspheres. Release was terminated on day four
+when the cumulative drug released from PLGA microspheres was
+96.2 %, while that from PLA microspheres was 82.0 %. This demon-
+strates the ability of PLA to control the rate of drug release over a lon-
+ger period of time. Additionally, such a pattern of biphasic release is
+commonly seen with polyester-based microparticles.52
+Two main mechanisms govern drug release from polyester-based
+drug delivery systems: diffusion and degradation/erosion.53 While
+initially the rate of drug release is said to be mainly controlled by dif-
+fusion of the drug through water ﬁlled pores; during the later stages,
+the rate is determined by polymeric degradation/erosion.53
+The overlapping initial phase of rapid release exhibited by micro-
+spheres of both polymers suggests that a similar large proportion of
+the drug was present at or near the surface of the microspheres. The
+dissolution of the drug at the surface, and the diffusion of drug mole-
+cules near the surface of the microspheres would take place promptly
+upon microparticle hydration or in vivo administration.18
+After that initial phase however, PLA was capable of controlling
+the rate of release more efﬁciently than PLGA. This took place even
+though both polymers produced microspheres of similar sizes, and
+Figure 2. The effect of varying polymer type on A) drug loading and B) encapsulation
+efﬁciency. Data are represented as mean § standard deviation of three measurements.
+Figure 1. SEM image of the produced microparticles.
+Figure 3. The in vitro drug release proﬁles from PLGA and PLA microparticles. Data are
+represented as mean § standard deviation of three measurements.
+H.H. Alhawari et al. / Journal of Pharmaceutical Sciences 113 (2024) 1566−1571
+1569
+
+PLA microspheres were loaded with more levothyroxine sodium. The
+greater control of drug release could be attributed to the greater
+hydrophobicity of PLA. An increase in hydrophobicity would result in
+a slower rate of polymeric hydration and water-ﬁlled pore formation.
+The slower the rate at which these pores form and coalesce into large
+enough channels that allow for drug release, the more sustained the
+release of the hydrophilic levothyroxine sodium is. Furthermore, PLA
+has a greater number of methyl groups when compared to PLGA.
+These methyl groups provide additional steric hindrance, further
+impeding water penetration, polymer degradation/erosion, and drug
+release.12,51
+Microparticle in Vivo Release
+The in vivo release behavior of PLGA microparticles was investi-
+gated using a rat model by measuring serum total T4 levels at differ-
+ent time points. Total T4 represents both the free and bound forms of
+T4. The latter form, which is bound to thyroid binding globulin, is not
+readily available for uptake by cells like the free form and thus repre-
+sents a storage pool with a longer half-life.54
+As can be seen in Fig. 4, drug-free (blank) PLGA microparticles,
+which were used as a negative control, exhibited no change in the
+serum total T4 concentration throughout the entire study. On the
+other hand, drug-loaded PLGA microparticles resulted in an initial
+phase of rapid release during the ﬁrst day. This rapid release is dem-
+onstrated by the signiﬁcant increase in the total T4 concentration
+from a basal concentration of 3.8 mg/dL at the time of injection to
+82.3 mg/dL. The rapid increase was followed by a phase of slower
+release over the next 10 days as evident by the decrease in total T4
+concentrations. After that, T4 concentrations returned to their basal
+level. Overall, the in vitro release behavior was found to be in good
+harmony with that seen in vivo.
+Similar results have been previously reported. In a comparable
+study,55 in vivo release from subcutaneous implants loaded with lev-
+othyroxine was investigated. It was found that the implants provided
+detectable plasma T4 levels for a duration of 4 weeks with concentra-
+tions ranging between 5 and 20 ng/mL. A similar biphasic release pat-
+tern has also been noted when the release of levothyroxine from oral
+solutions and soft capsules was studied.36 An initial phase of rapid
+release that lasted 2−4 h was followed by another phase of slower
+release over the next 24 h. The extent of these phases is shorter than
+those obtained from subcutaneous implants55 and the microparticles
+within this work due to the nature of oral formulations.
+When extrapolating the obtained results from animal models to
+expected behavior in humans, it is important to note a few things.
+There is a signiﬁcant difference in the body surface area between rats
+and humans.56 Additionally, the plasma T4 half-life is about 12 h in
+rats and 5−9 days in humans.57 Due to the signiﬁcantly greater body
+surface area and half-life in humans, it is expected that a less rapid
+initial release phase and a longer second phase of slower release will
+be demonstrated in humans. However, further human studies are still
+needed.
+Conclusion
+Both PLGA and PLA microspheres were prepared using the same
+emulsiﬁcation-solvent evaporation method and produced micropar-
+ticles of a very similar size, polydispersity, and zeta potentials. How-
+ever, the more hydrophobic PLA microparticles had a signiﬁcantly
+higher drug loading and encapsulation efﬁciency and had the ability
+to control drug release for a longer period of time. Both in vitro and in
+vivo release behaviors displayed a biphasic pattern with an initial
+phase of rapid release followed by a later phase of slower release.
+These results indicate that the development of injectable, long-acting,
+levothyroxine loaded microparticles is not only possible, but could
+also potentially be used as a hormone replacement therapy for hypo-
+thyroidism.
+Funding
+This research was funded by the Deanship of Scientiﬁc Research at
+the University of Jordan.
+Declaration of Competing Interest
+The authors declare that they have no known competing ﬁnancial
+interests or personal relationships that could have appeared to inﬂu-
+ence the work reported in this paper.
+Acknowledgments
+The authors acknowledge Miss Dana Al-Bakri and Miss Noura
+Abdullah for the technical assistance in some parts of this research.
+The authors also thank The LAB laboratory- Jordan for the assistance
+in serum analysis of thyroxine.
+References
+1. Allen TM, Cullis PR. Drug Delivery Systems: entering the Mainstream. Science
+(1979). 2004;303(5665):1818–1822. https://doi.org/10.1126/science.1095833.
+2. Su Y, Zhang B, Sun R, et al. PLGA-based biodegradable microspheres in drug deliv-
+ery: recent advances in research and application. Drug Deliv. 2021;28(1):1397–
+1418. https://doi.org/10.1080/10717544.2021.1938756.
+3. Schwendeman SP, Shah RB, Bailey BA, Schwendeman AS. Injectable controlled
+release depots for large molecules. J Controlled Rel. 2014;190:240–253. https://doi.
+org/10.1016/j.jconrel.2014.05.057.
+4. Danhier F, Feron O, Preat V. To exploit the tumor microenvironment: passive and
+active tumor targeting of nanocarriers for anti-cancer drug delivery. J Controlled
+Rel. 2010;148(2):135–146. https://doi.org/10.1016/j.jconrel.2010.08.027.
+5. Okada H, Inoue Y, Heya T, Ueno H, Ogawa Y, Toguchi H. Pharmacokinetics of once-
+a-month injectable microspheres of leuprolide acetate. Pharm Res. 1991;08
+(6):787–791. https://doi.org/10.1023/A:1015818504906.
+6. Abulateefeh SR. Long-acting injectable PLGA/PLA depots for leuprolide acetate:
+successful translation from bench to clinic. Drug Deliv Transl Res. 2023;13(2):520–
+530. https://doi.org/10.1007/s13346-022-01228-0.
+7. Lee WY, Asadujjaman Md, Jee JP. Long acting injectable formulations: the state of
+the arts and challenges of poly(lactic-co-glycolic acid) microsphere, hydrogel,
+organogel and liquid crystal. J Pharm Investig. 2019;49(4):459–476. https://doi.org/
+10.1007/s40005-019-00449-9.
+8. Nkanga CI, Fisch A, Rad-Malekshahi M, et al. Clinically established biodegradable
+long acting injectables: an industry perspective. Adv Drug Deliv Rev. 2020;167:19–
+46. https://doi.org/10.1016/j.addr.2020.11.008.
+9. Andersson Trojer M, Nordstierna L, Nordin M, Nyden M, Holmberg K. Encapsula-
+tion of actives for sustained release. Phys Chem Chem Phys. 2013;15(41):17727.
+https://doi.org/10.1039/c3cp52686k.
+10. Lensen D, Vriezema DM, van Hest JCM. Polymeric microcapsules for synthetic
+applications.
+Macromol
+Biosci.
+2008;8(11):991–1005.
+https://doi.org/10.1002/
+mabi.200800112.
+Figure 4. The in vivo release behavior of drug-free (negative control) and drug-loaded
+PLGA microparticles by measuring serum total T4 concentrations using a rat model
+(n = 4 for each group).
+1570
+H.H. Alhawari et al. / Journal of Pharmaceutical Sciences 113 (2024) 1566−1571
+
+11. Karan S, Debnath S, Kuotsu K, Chatterjee TK. In-vitro and in-vivo evaluation of
+polymeric microsphere formulation for colon targeted delivery of 5-ﬂuorouracil
+using biocompatible natural gum katira. Int J Biol Macromol. 2020;158:922–936.
+https://doi.org/10.1016/j.ijbiomac.2020.04.129.
+12. Abulateefeh SR, Alkawareek MY, Alkilany AM. Tunable sustained release drug
+delivery system based on mononuclear aqueous core-polymer shell microcapsules.
+Int J Pharm. 2019;558:291–298. https://doi.org/10.1016/j.ijpharm.2019.01.006.
+13. Abuhamdan RM, Al-Anati BH, Al Thaher Y, Shraideh ZA, Alkawareek MY, Abulateefeh
+SR. Aqueous core microcapsules as potential long-acting release systems for hydro-
+philic drugs. Int J Pharm. 2021:606. https://doi.org/10.1016/j.ijpharm.2021.120926.
+14. Imazato S, Kitagawa H, Tsuboi R, Kitagawa R, Thongthai P, Ichi SJ. Non-biodegradable
+polymer particles for drug delivery: a new technology for “bio-active” restorative
+materials. Dent Mater J. 2017;36(5):524–532. https://doi.org/10.4012/dmj.2017-156.
+15. Lee BK, Yun Y, Park K. PLA micro- and nano-particles. Adv Drug Deliv Rev.
+2016;107:176–191. https://doi.org/10.1016/j.addr.2016.05.020.
+16. Prajapati SK, Jain A, Jain A, Jain S. Biodegradable polymers and constructs: a novel
+approach in drug delivery. Eur Polym J. 2019;120: 109191. https://doi.org/10.1016/
+j.eurpolymj.2019.08.018.
+17. Anderson JM, Shive MS. Biodegradation and biocompatibility of PLA and PLGA
+microspheres. Adv Drug Deliv Rev. 1997;28(1):5–24. https://doi.org/10.1016/
+S0169-409X(97)00048-3.
+18. Makadia HK, Siegel SJ. Poly lactic-co-glycolic acid (PLGA) as biodegradable con-
+trolled drug delivery carrier. Polymers (Basel). 2011;3(3):1377–1397. https://doi.
+org/10.3390/polym3031377.
+19. Johansen P, Moon L, Tamber H, Merkle HP, Gander B, Sesardic D. Immunogenicity of
+single-dose diphtheria vaccines based on PLA/PLGA microspheres in guinea pigs.
+Vaccine. 1999;18(3−4):209–215. https://doi.org/10.1016/S0264-410X(99)00191-7.
+20. Jain A, Kunduru KR, Basu A, Mizrahi B, Domb AJ, Khan W. Injectable formulations of
+poly(lactic acid) and its copolymers in clinical use. Adv Drug Deliv Rev.
+2016;107:213–227. https://doi.org/10.1016/j.addr.2016.07.002.
+21. Kohno M, Andhariya JV, Wan B, et al. The effect of PLGA molecular weight differen-
+ces on risperidone release from microspheres. Int J Pharm. 2020;582: 119339.
+https://doi.org/10.1016/j.ijpharm.2020.119339.
+22. Al-Shalabi E, Abusulieh S, Hammad AM, Sunoqrot S. Rhoifolin loaded in PLGA
+nanoparticles alleviates oxidative stress and inﬂammation in vitro and in vivo. Bio-
+mater Sci. 2022;10(19):5504–5519. https://doi.org/10.1039/D2BM00309K.
+23. Kumari A, Yadav SK, Yadav SC. Biodegradable polymeric nanoparticles based drug
+delivery systems. Colloids Surf B Biointerfaces. 2010;75(1):1–18. https://doi.org/
+10.1016/j.colsurfb.2009.09.001.
+24. Alrashdan M, Shraideh ZA, Abulateefeh SR. Optimizing formulation parameters for
+the development of carvedilol injectable in situ forming depots. Pharm Dev Technol.
+2023;28(9):865–876. https://doi.org/10.1080/10837450.2023.2267673.
+25. Wan B, Bao Q, Burgess D. Long-acting PLGA microspheres: advances in excipient
+and product analysis toward improved product understanding. Adv Drug Deliv Rev.
+2023;198: 114857. https://doi.org/10.1016/j.addr.2023.114857.
+26. American Thyroid Association. Hypothyroidism. Accessed September 15, 2023.
+https://www.thyroid.org/hypothyroidism/.
+27. Liu H, Li W, Zhang W, Sun S, Chen C. Levothyroxine: conventional and novel drug
+delivery formulations. Endocr Rev. 2023;44(3):393–416. https://doi.org/10.1210/
+endrev/bnac030.
+28. Zamﬁrescu I, Carlson HE. Absorption of levothyroxine when coadministered with
+various calcium formulations. Thyroid. 2011;21(5):483–486. https://doi.org/10.
+1089/thy.2010.0296.
+29. Campbell NRC, Hasinoff BB, Stalts H, Rao B, Wong NCW. Ferrous sulfate reduces
+thyroxine efﬁcacy in patients with hypothyroidism. Ann Intern Med. 1992;117
+(12):1010–1013. https://doi.org/10.7326/0003-4819-117-12-1010.
+30. Sherman SI, Tielens ET, Ladenson PW. Sucralfate causes malabsorption of L-thyrox-
+ine. Am J Med. 1994;96(6):531–535. https://doi.org/10.1016/0002-9343(94)90093-0.
+31. Liel Y, Sperber AD, Shany S. Nonspeciﬁc intestinal adsorption of levothyroxine by
+aluminum hydroxide. Am J Med. 1994;97(4):363–365. https://doi.org/10.1016/
+0002-9343(94)90303-4.
+32. Skelin M, Lucijanic T, Amidzic Klaric D, et al. Factors affecting gastrointestinal
+absorption of levothyroxine: a review. Clin Ther. 2017;39(2):378–403. https://doi.
+org/10.1016/j.clinthera.2017.01.005.
+33. Lips DJ, van Reisen MT, Voigt V, Venekamp W. Diagnosis and treatment of levo-
+thyroxine pseudomalabsorption. Neth J Med. 2004;62(4):114–118.
+34. Vita R, Fallahi P, Antonelli A, Benvenga S. The administration of L-thyroxine as soft
+gel capsule or liquid solution. Expert Opin Drug Deliv. 2014;11(7):1103–1111.
+https://doi.org/10.1517/17425247.2014.918101.
+35. Vita R, Di Bari F, Benvenga S. Oral liquid levothyroxine solves the problem of tablet
+levothyroxine malabsorption due to concomitant intake of multiple drugs. Expert
+Opin Drug Deliv. 2017;14(4):467–472. https://doi.org/10.1080/17425247.2017.
+1290604.
+36. Tanguay M, Girard J, Scarsi C, Mautone G, Larouche R. Pharmacokinetics and com-
+parative bioavailability of a levothyroxine sodium oral solution and soft capsule.
+Clin Pharmacol Drug Dev. 2019;8(4):521–528. https://doi.org/10.1002/cpdd.608.
+37. Pabla D, Akhlaghi F, Zia H. A comparative pH-dissolution proﬁle study of selected
+commercial levothyroxine products using inductively coupled plasma mass spec-
+trometry. Eur J Pharmaceutics Biopharmaceutics. 2009;72(1):105–110. https://doi.
+org/10.1016/j.ejpb.2008.10.008.
+38. Alba P, Mitre N, Feldt M. More than one way to skin a thyroid. Managing pediatric
+hypothyroidism with weekly intramuscular levothyroxine. J Pediatric Endocrinol
+Metabol. 2016;29(6). https://doi.org/10.1515/jpem-2015-0382.
+39. Groener JB, Lehnhoff D, Piel D, Nawroth PP, Schanz J, Rudofsky G. Subcutaneous
+application of levothyroxine as successful treatment option in a patient with mal-
+absorption. Am J Case Reports. 2013;14:48–51. https://doi.org/10.12659/AJCR.
+883788.
+40. Geninatti T, Hood R, Bruno G, et al. Sustained administration of hormones exploit-
+ing nanoconﬁned diffusion through nanochannel membranes. Materials (Basel).
+2015;8(8):5276–5288. https://doi.org/10.3390/ma8085241.
+41. Kashanian S, Rostami E, Harding FJ, McInnes SJP, Al-Bataineh S, Voelcker NH. Con-
+trolled delivery of levothyroxine using porous silicon as a drug nanocontainer.
+Aust J Chem. 2016;69(2):204. https://doi.org/10.1071/CH15315.
+42. Rostami E, Kashanian S, Askari M. The effect of ultrasound wave on levothyroxine
+release from chitosan nanoparticles. Adv Mat Res. 2013;829:284–288. https://doi.
+org/10.4028/www.scientiﬁc.net/AMR.829.284.
+43. Patel H, Stalcup A, Dansereau R, Sakr A. The effect of excipients on the stability of
+levothyroxine sodium pentahydrate tablets. Int J Pharm. 2003;264(1−2):35–43.
+https://doi.org/10.1016/S0378-5173(03)00387-9.
+44. Stewart SA, Waite D, Domínguez-Robles J, et al. HPLC method for levothyroxine
+quantiﬁcation in long-acting drug delivery systems. Validation and evaluation of
+bovine serum albumin as levothyroxine stabilizer. J Pharm Biomed Anal. 2021;203:
+114182. https://doi.org/10.1016/j.jpba.2021.114182.
+45. S P, R R, R K. Blood sample collection in small laboratory animals. J Pharmacol Phar-
+macother. 2010;1(2):87–93. https://doi.org/10.4103/0976-500X.72350.
+46. Uchida T, Goto S, Foster TP. Particle size studies for subcutaneous delivery of poly
+(lactide-co-glycolide) microspheres containing ovalbumin as vaccine formulation.
+J Pharmacy Pharmacol. 2011;47(7):556–560. https://doi.org/10.1111/j.2042-7158.
+1995.tb06713.x.
+47. Xu Q, Hashimoto M, Dang TT, et al. Preparation of monodisperse biodegrad-
+able polymer microparticles using a microﬂuidic ﬂow-focusing device for con-
+trolled drug delivery. Small. 2009;5(13):1575–1581. https://doi.org/10.1002/
+smll.200801855.
+48. Abulateefeh SR, Al-Adhami GK, Alkawareek MY, Alkilany AM. Controlling the inter-
+nal morphology of aqueous core-PLGA shell microcapsules: promoting the internal
+phase separation via alcohol addition. Pharm Dev Technol. 2019;24(6):671–679.
+https://doi.org/10.1080/10837450.2018.1558238.
+49. Busatto C, Pesoa J, Helbling I, Luna J, Estenoz D. Effect of particle size, polydispersity
+and polymer degradation on progesterone release from PLGA microparticles:
+experimental and mathematical modeling. Int J Pharm. 2018;536(1):360–369.
+https://doi.org/10.1016/j.ijpharm.2017.12.006.
+50. Wu J, Kong T, Yeung KWK, et al. Fabrication and characterization of monodisperse
+PLGA−alginate core−shell microspheres with monodisperse size and homoge-
+neous shells for controlled drug release. Acta Biomater. 2013;9(7):7410–7419.
+https://doi.org/10.1016/j.actbio.2013.03.022.
+51. Luan X, Bodmeier R. In situ forming microparticle system for controlled delivery of
+leuprolide acetate: inﬂuence of the formulation and processing parameters. Eur J
+Pharmaceutical Sci. 2006;27(2−3):143–149. https://doi.org/10.1016/j.ejps.2005.09.
+002.
+52. Yoo J, Won YY. Phenomenology of the initial burst release of drugs from PLGA
+microparticles. ACS Biomater Sci Eng. 2020;6(11):6053–6062. https://doi.org/
+10.1021/acsbiomaterials.0c01228.
+53. Fredenberg S, Wahlgren M, Reslow M, Axelsson A. The mechanisms of drug release
+in poly(lactic-co-glycolic acid)-based drug delivery systems—a review. Int J Pharm.
+2011;415(1−2):34–52. https://doi.org/10.1016/j.ijpharm.2011.05.049.
+54. Sapin R, Schlienger JL. [Thyroxine (T4) and tri-iodothyronine (T3) determinations:
+techniques and value in the assessment of thyroid function]. Ann Biol Clin (Paris).
+2003;61(4):411–420.
+55. Stewart SA, Domínguez-Robles J, Utomo E, et al. Poly(caprolactone)-based subcu-
+taneous implant for sustained delivery of levothyroxine. Int J Pharm. 2021;607:
+121011. https://doi.org/10.1016/j.ijpharm.2021.121011.
+56. Reagan-Shaw S, Nihal M, Ahmad N. Dose translation from animal to human studies
+revisited. FASEB J. 2008;22(3):659–661. https://doi.org/10.1096/fj.07-9574LSF.
+57. MCCLAIN R. Mechanistic considerations for the relevance of animal data on thyroid
+neoplasia to human risk assessment. Mutation Res/Fundam Mol Mech Mutagenesis.
+1995;333(1−2):131–142. https://doi.org/10.1016/0027-5107(95)00139-5.
+H.H. Alhawari et al. / Journal of Pharmaceutical Sciences 113 (2024) 1566−1571
+1571

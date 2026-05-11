@@ -1,0 +1,14 @@
+{
+  "schema": "stage2_replacement_compatibility_projection_v1",
+  "status": "transitional_support",
+  "documents": 15,
+  "projected_rows": 199,
+  "trace_rows": 4179,
+  "legacy_surface_columns": 125,
+  "output_files": [
+    "data\\results\\run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1\\semantic_to_widerow_adapter\\weak_labels__v7pilot_r3_fixparse.tsv",
+    "data\\results\\run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1\\semantic_to_widerow_adapter\\weak_labels__v7pilot_r3_fixparse.jsonl",
+    "data\\results\\run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1\\semantic_to_widerow_adapter\\compatibility_projection_trace_v1.tsv",
+    "data\\db\\db_v2\\stage2_replacement_compatibility_projection_contract.tsv"
+  ]
+}

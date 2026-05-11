@@ -1,0 +1,1038 @@
+Contents lists available at ScienceDirect
+Journal of Drug Delivery Science and Technology
+journal homepage: www.elsevier.com/locate/jddst
+Development of bi-polymer lipid hybrid nanocarrier (BLN) to improve the
+entrapment and stability of insulin for eﬃcient oral delivery
+Mariam Boushraa,b, Sozan Tousb, Gihan Fetihb, Hui-Yi Xuea, Ho-Lun Wonga,∗
+a Department of Pharmaceutical Sciences, Temple University School of Pharmacy, 3307 North Broad Street, Philadelphia, PA, 19140, USA
+b Pharmaceutics Department, Faculty of Pharmacy, Assiut University, Assiut, Egypt
+A R T I C L E I N F O
+Keywords:
+Oral protein delivery
+Insulin
+Solid lipid nanoparticles
+Hybrid nanoparticles
+A B S T R A C T
+Solid lipid nanoparticles (SLN) have demonstrated favorable properties for oral protein delivery. However, their
+protein entrapment eﬃciency (EE%) values remain limited due to their hydrophobic nature. In this study, we
+reported a new strategy in which two polymeric excipients were incorporated into the double-emulsion based
+SLN to address this entrapment ineﬃciency issue. Using insulin as the model protein drug, the resulting hybrid
+nanocarriers known as bi-polymer lipid nanocarriers (BLN) were evaluated for physicochemical properties, drug
+and particle stability, in vitro biological behaviors and in vivo hypoglycemic eﬀect. It was found that BLN con-
+taining PEG 6000 in internal aqueous phase and PLGA in lipid phase showed favorable size (around 240 nm) and
+reasonably narrow particle size distribution. The bi-polymer strategy improved insulin EE% over standard w/o/
+w SLN by 2.5-fold (∼50% versus 20%) while preserving the insulin chemical stability and biological activity.
+BLN demonstrated good dispersion stability under gastrointestinal conditions, protected the entrapped insulin
+against enzymatic degradation well, and were well internalized into Caco-2 cells with minimal cytotoxicity.
+Pharmacological availability of oral insulin delivered by BLN (6.1%) was comparable to lectin-modiﬁed SLN. To
+conclude, BLN is a promising hybrid nanocarrier design to achieve eﬃcient oral insulin delivery.
+1. Introduction
+Oral peptide/protein delivery is a highly appealing option due to
+commercial, therapeutic and patient compliance reasons [1]. Up to
+date, insulin remains the most commonly used protein drug. However,
+for over 80 years, its delivery to diabetic patients still primarily relies
+on subcutaneous (SC) injection [2]. Although this parenteral route is
+satisfactory in terms of eﬃcacy, it is associated with several side eﬀects,
+such as hyperinsulinemia, local hypertrophy, psychological discomfort,
+pain and high probability of infections which all lead to poor patient
+compliance especially considering that a typical diabetic patient re-
+quires more than 60,000 injections in lifetime [3,4]. Hence, extensive
+studies have been conducted in the past few decades to exploit mucosal
+surfaces for the delivery of insulin, especially the nasal, pulmonary and
+oral mucosae [5]. In particular, oral delivery is considered to be the
+most convenient [2]. From the physiological perspective, oral insulin is
+also superior because most of the insulin dose can be directly channeled
+from the intestines to the liver (the primary site of action) (versus only
+20% following sc injection) to avoid peripheral hyperinsulinemic side
+eﬀects [6].
+To achieve eﬃcient oral insulin delivery, several obstacles need to
+be overcome. The foremost challenge is the harsh environment of the
+gastrointestinal (GI) environment, including low regional pH, a pro-
+tective mucous layer and digestive enzymes to break down ingested
+proteins and peptides [7]. For insulin, it may be vulnerable to the GI
+proteolytic enzymes such as pepsin, trypsin, chymotrypsin and car-
+boxypeptidases [8]. Even if some insulin molecules can somehow re-
+main stable, the majority of them still cannot successfully cross the GI
+tract epithelium considering the large molecular weight and hydro-
+philic nature of insulin itself. The overall result is a very low bioa-
+vailability if free insulin is orally administered [9].
+The use of sub micrometric colloidal carriers (diameter < 1 μm) has
+been proposed as a promising approach for overcoming the aforemen-
+tioned barriers. Among diﬀerent carriers, solid lipid nanoparticles
+(SLN), ﬁrst described by Müller et al. [10], constitute a major class of
+nanoparticles widely used in oral protein delivery. SLN are mainly
+https://doi.org/10.1016/j.jddst.2019.01.007
+Received 16 July 2018; Received in revised form 6 January 2019; Accepted 7 January 2019
+Abbreviations: BLN, bi-polymer lipid nanocarrier; DCM, dichloromethane; EE%, entrapment eﬃciency; GI, gastrointestinal; HCl, hydrochloride acid; MTT, 3-(4,5
+dimethyl-thiazol-2-yl)-2,5-diphenyl tetrazolium bromide; PCS, photon correlation spectroscopy; PDI, polydispersity index; PEG, polyethylene glycol; PLGA, Poly
+(lactic-co-glycolic acid); RP-HPLC, reverse phase-HPLC; RT, retention time; SC, subcutaneous; SLN, solid lipid nanoparticles; w/o/w, water -in-oil-in-water
+∗Corresponding author.
+E-mail address: ho-lun.wong@temple.edu (H.-L. Wong).
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+Available online 08 January 2019
+1773-2247/ © 2019 Elsevier B.V. All rights reserved.
+T
+
+composed of a solid matrix based on very chemically diﬀerent lipid
+molecules (e.g., waxes, mixtures of mono-, di-, and triacylglycerols,
+fatty acids) [11]. They can overcome the membrane stability and drug-
+leaching problems associated with emulsions and the toxicity problems
+of many other nanoparticles [12]. They are commonly studied because
+of several advantages such as high biocompatibility, avoidance of toxic
+organic solvents and feasibility of production on large industrial scale
+[13,14]. For oral insulin delivery, SLN may address two major pro-
+blems. First, the solid, hydrophobic nature of SLN can protect the en-
+trapped protein by making it diﬃcult for gastric acid and protease
+enzymes to access [14]. Second, lipids also tend to interact well with
+cell surface, and the lipid core of SLN has been reported to stimulate
+chylomicron formation and facilitate lymphatic uptake through the gut
+associated lymphoid tissue [15]. This could further enhance the oral
+bioavailability of a protein drug.
+Despite the good potential of using SLN for oral delivery of protein
+drugs like insulin [16], two critical issues remain unresolved. First, the
+hydrophobic nature of SLN makes them inherently more suitable for
+lipophilic drug entrapment [14]. A protein drug is expected to ionize
+and partition in the external aqueous phase during the emulsiﬁcation
+process. This issue can be partly addressed using double emulsion
+technique (i.e. w/o/w) but the protein entrapment eﬃciency (EE%)
+remains too low to be practically useful (EE% typically near or below
+20%) [17]. Second, the delicate molecular architecture of proteins can
+be a signiﬁcant concern when preparing their delivery systems [18].
+The aqueous/organic interface in an emulsion was shown to be a crucial
+destabilizing factor leading to protein aggregation and adsorption at the
+interface where they undergo unfolding by presenting their hydro-
+phobic area to the organic solvent [18,19]. It was found that the for-
+mation of the primary w/o emulsion, and to a lesser extent of the
+secondary w/o/w emulsion, is mainly responsible for protein dena-
+turation [19].
+In order to achieve eﬃcient delivery of insulin, the strategy of in-
+corporating additional materials, typically a biocompatible polymer
+that interacts well with insulin, into lipids to form a “hybrid” nano-
+carrier has become increasingly studied [20]. For instances, Wu et al.'s
+combined polyethylene glycol with short chain fatty acids butyrate and
+the resulting nanoparticles could achieve 2.87-fold higher oral bioa-
+vailability [21]. Other examples include chitosan-incorporated lipo-
+somes and fatty acid/quaternary ammonium/chitosan nanoparticles
+[22,23] which both signiﬁcantly improved the pharmacological avail-
+abilities over free insulin. In this study, a new bi-polymer lipid hybrid
+nanocarrier (BLN) which incorporates two polymers within the w/o/w
+based SLN is proposed. Fig. 1A illustrates its diﬀerence from the con-
+ventional SLN. In BLN, the 1st polymer is a hydrophilic one intended to
+modify the internal aqueous phase of the double emulsion (w/o/w)
+during nanoparticle preparation. We hypothesize that the addition of
+such a hydrophilic polymer increase the entrapment of the protein in
+the internal aqueous phase and reduce its tendency to leak to the ex-
+ternal aqueous phase, leading to improved EE%. Polyethylene glycols
+(PEG) were selected because they are the most commonly used hy-
+drophilic polymers in clinical practice [24], and their various char-
+acteristics i.e. low polydispersity in molecular weight, high thermal
+stability, good stability in both acidic and basic media, and low toxicity
+(LD50 in animals > 2000 mg/kg body weight) are all well suited for
+the proposed functions [25,26].
+The 2nd polymer is intended to provide modest surface active
+properties to help stabilize the aqueous/organic interface which stands
+as the main cause of protein degradation. Poly (lactic-co-glycolic acid)
+(PLGA) was chosen to perform this function. PLGA is biodegradable and
+biocompatible polymer composed of lactic acid and glycolic acid. They
+have a dual nature in structure with lactic acid being hydrophobic,
+while the glycolic acid is hydrophilic [27]. With these amphiphilic
+properties, we hypothesize that a more stabilized w/o/w system can be
+formed which would indirectly contribute to higher EE% of insulin.
+Speciﬁcally, the aims of the present work are to (i) investigate the
+feasibility of BLN preparation, and (ii) characterize these BLN and
+evaluate their potential advantage for oral insulin delivery with em-
+phasis on both insulin EE% and stability. It is expected that this new
+nanocarrier design can preserve the general advantages of SLN (e.g.
+excellent biocompatibility, eﬀective drug protection) while achieving
+signiﬁcantly more eﬃcient entrapment and delivery of insulin.
+2. Materials and methods
+2.1. Chemicals and reagents
+Insulin (Recombinant Human, activity > 27.5 IU/mg), tetra me-
+thyl ammonium hydroxide, PEG 2000, PEG 4000 and PEG 6000 were
+purchased from Sigma Aldrich (St Louis, USA), soy lecithin from Chem
+Service (Westchester, USA), trimyristin from TCI- EP (Tokyo, Japan),
+PLGA 50:50 from Purac (Gorinchem, The Netherlands) 1,2-dipalmitoyl-
+sn-glycero-3-phosphoethanolamineN-(lissamine rhodamine B sulfonyl)
+(ammonium salt) from Avanti polar lipids (Alabama, USA), thiazolyl
+blue tetrazolium bromide from Amresco (USA). Other chemicals such as
+dichloromethane, Tween 80, acetonitrile, methanol and hydrochloride
+acid (HCl) were all purchased from Fisher Scientiﬁc (Pittsburgh, USA).
+2.2. Cell culture
+Caco-2 cells, an established human colon epithelial cell line [28],
+were purchased from American Type Culture Collection (ATCC, Man-
+assas, USA) for in vitro studies. The cells were cultured in RPMI-1640
+medium supplemented with 1% penicillin-streptomycin (100U/ml) and
+10% heat-inactivated fetal bovine serum (Hyclone, Logan, USA) and
+maintained at 37 °C in humidiﬁed air containing 5% CO2. Cells were
+passaged 1:5 approximately every 3 days at 85–90% conﬂuence using
+0.25% trypsin and 0.02% EDTA. Cells used for experiments were from
+5th to 30th passages.
+2.3. Preparation of nanoparticles
+Conventional w/o/w SLN: SLN were prepared by emulsiﬁcation sol-
+vent-evaporation technique based on double emulsion (w/o/w) [29].
+An aqueous phase of 0.1 ml insulin in 0.01 M HCl (containing 500 μg
+insulin) was added to 0.5 ml dichloromethane solution of 50 mg tri-
+myristin and 25 mg soy lecithin. The mixture was treated with a probe
+sonicator for 1 min in an ice bath (50 W, 20 kHz frequency, amplitude
+50%) to form the primary w/o emulsion. This was followed by addition
+of 1.5 ml of aqueous solution of 2% w/w Tween 80 to the primary
+emulsion and 1 min sonication to form a w/o/w emulsion (F1). The
+organic phase of the emulsion was evaporated by stirring at room
+temperature until insulin loaded SLN were formed.
+BLN: The ﬁrst polymer PEG (MW grade: 2000, 4000 and 6000) was
+dissolved in 0.01 M HCl in ratios listed in Table 1A to modify the in-
+ternal aqueous phase of nanoparticles for insulin entrapment. To study
+the impact of the second polymer (i.e. PLGA50:50), we further added
+PLGA50:50 of diﬀerent concentrations to the formulations with or
+without 60% w/w of PEG 6000 within the internal aqueous core to
+prepare formulations F11-13 and F14-F16, respectively (see Table 1B).
+Insulin was then added to these aqueous phases and nanoparticles were
+prepared similar to the conventional SLN F1. The process of BLN pre-
+paration is schematically described in Fig. 1B.
+2.4. Particle size analysis and zeta potential determination
+The size distribution, polydispersity index (PDI) and zeta potential
+values of nanoparticles suspensions were determined by photon corre-
+lation spectroscopy (PCS) (Zetasizer® 3000HS, Malvern, UK). All sam-
+ples were diluted with distilled water to get optimal kilo counts per
+second of 50–200 for measurements. A minimum of three samples were
+tested.
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+633
+
+2.5. Determination of insulin EE%
+Nanoparticle suspensions were centrifuged at 50,000 rpm for 1 h at
+4 °C. The supernatant was then removed and the nanoparticles washed
+with 0.01 M HCl to remove any free insulin adsorbed onto nanoparticles
+surface. The pellet was then dissolved in methanol and 0.01 M HCl was
+added to dissolve insulin [30]. The suspension was centrifuged again at
+15,000 rpm for 10 min and the supernatant was analyzed for insulin
+content by HPLC. The results are expressed as EE%, i.e. the ratio be-
+tween the actual and theoretical insulin loading percentage [14].
+For
+HPLC,
+the
+mobile
+phase
+consisted
+of
+3.9%
+tetra-
+methylammonium hydroxide solution in water and acetonitrile (70:30,
+v/v), pH 2.5 adjusted by phosphoric acid, ﬁltered through a 0.22 μm
+membrane ﬁlter and degassed prior to use. The C18 column eﬄuent
+was monitored at 214 nm with ﬂow rate of 1 ml/min and injection
+volume of 20 μl [31].
+2.6. Chemical stability of insulin after BLN encapsulation
+Simultaneous HPLC analysis of both human insulin and its main
+decomposition product, A21-desamido insulin, was performed as pre-
+viously reported for evaluation of the chemical stability of insulin
+[31,32]. HPLC peaks were used to conﬁrm the stability of BLN -en-
+trapped insulin by comparing them to peaks of standard insulin and
+A21-desamido insulin. A21-desamido insulin was obtained by in-
+cubating insulin in 0.01 M HCl at 40 °C for 48 h [27].
+2.7. Biological stability of insulin after BLN encapsulation
+The biological activity of the insulin after BLN entrapment was
+evaluated using iLite ™Insulin Assay Ready Cells expressing insulin
+receptors and the related reporter gene (Svar Life Science, Malmo,
+Sweden) following the manufacturer's protocol. Brieﬂy, 100 mg insulin-
+loaded BLN was incubated in 0.01 M HCl at 25 °C for 24 h to release a
+portion of the entrapped insulin. The concentration of the released in-
+sulin was quantiﬁed using HPLC as before and the BLN-released insulin
+was diluted to 62.5, 125, 250, 500 ng/ml. Tested samples (BLN-released
+insulin), positive control (fresh insulin) and negative control (insulin
+free) were prepared by mixing with the diluent provided by the man-
+ufacturer. The reporter cells were then treated with the diluted samples
+or controls for 5 h at 37 °C and the cellular luminescence as a result of
+insulin activity on reporter genes was determined using Moonlight
+3010 luminometer (Pharmingen, San Jose, USA).
+2.8. Dispersion stability in GI environment
+Selected BLN suspensions were incubated at pH 2.5 and pH 6.8 at
+37 °C and stirred at 100 rpm for 4 h to mimic the physiological condi-
+tions following oral administration of the particles. Dispersion stability
+of BLN was monitored by PCS to investigate any particle growth or
+aggregation [33].
+Fig. 1. Representative schemes showing (A) the
+hypothesis underlying BLN development and (B)
+the methodology of BLN preparation. In Fig. 1A,
+conventional SLN (i) shows low insulin loading ca-
+pacity as insulin escapes to the external aqueous
+phase during double emulsion formation. The in-
+corporation of hydrophilic polymeric matrix (PEG)
+within internal aqueous core of BLN (ii) is expected
+to decrease insulin escape tendency and keeps it
+tightly entrapped inside the aqueous core of BLN
+leading to higher EE %. The inclusion of polymeric
+emulsiﬁer (PLGA) may stabilize the aqueous/organic
+interface of the double emulsion, preserving the
+stability and integrity of the entrapped protein and
+indirectly improving insulin EE%. In Fig. 1B, aqu-
+eous phase is shown as blue and lipophilic/organic
+phase as orange. The scheme shown is for BLN pre-
+paration. w/o/w based SLN in this study was pre-
+pared similarly except that the polymeric ingredients
+were omitted. (For interpretation of the references to
+colour in this ﬁgure legend, the reader is referred to
+the Web version of this article.)
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+634
+
+2.9. Enzymatic stability of insulin loaded BLN
+In this study, enzymatic stability of insulin entrapped inside BLN
+was evaluated against both pepsin and α-chymotrypsin. 1.5 ml of each
+proteolytic enzyme (in pH 2.5 in case of pepsin and pH 7.4 in case of
+chymotrypsin) was added into 1.5 ml of both insulin-loaded BLN and
+free insulin solution. Diﬀerent insulin: enzyme ratios were ﬁrst screened
+to optimize the experiment conditions. The mixture was immediately
+incubated at 37 °C. Sample aliquots were withdrawn at selected time
+intervals. Pepsin and α-chymotrypsin digestion reaction was stopped by
+adding 0.1 N. NaOH and 0.1 N HCl, respectively [34]. The remaining
+insulin concentrations in the samples were determined by HPLC as
+described above.
+2.10. Cell uptake study
+Selected BLN were modiﬁed for ﬂuorescence detection by in-
+corporation of 30 μl of 1 mg/ml ﬂuorescent lipid, 1, 2-dipalmitoyl-sn-
+glycero-3-phosphoethanolamineN-(lissamine rhodamine B sulfonyl), to
+the organic phase during double emulsion preparation. Caco-2 cells
+were grown on sterile coverslips coated with poly-L-lysine for 24 h. The
+coverslips were transferred to 35 mm × 10 mm cell culture dishes and
+treated with ﬂuorescent nanoparticles for 4 h. At the end of incubation,
+the cells were stained with DRAQ5 nuclear dye and rinsed with DPBS
+three times. The coverslips were mounted on a clean glass slide and
+examined using ﬂuorescence microscope Axiostar Plus epiﬂuorescence
+microscope (Carl Zeiss, Oberkochen, Germany). Images were captured
+with Insight camera model 8.0 and image analysis conducted using
+Spots
+Advanced
+imaging
+software (v.4.6, Diagnostic
+Instrument,
+Sterling Heights, MI). Untreated Caco-2 cells under the same conditions
+served as the control for comparison.
+2.11. MTT assay
+Nanoparticle in vitro cytotoxicity was evaluated using MTT assay
+with Caco-2 cells. Caco-2 cells were seeded on 96-well plates at a den-
+sity of 10,000 cells per well [35]. When the cells were conﬂuent at 48 h,
+they were treated with free insulin, blank BLN or insulin-loaded BLN
+(1.25–40 mg/ml). After 3 h of treatment, the treatments were replaced
+with fresh medium and incubated for 24 h at 37 °C. 20 μl 3-(4,5 di-
+methyl-thiazol-2-yl)-2,5-diphenyl tetrazolium bromide (MTT) (5 mg/
+ml) was then added to each well and the cells were incubated for 2 h.
+The unreacted dye was removed and the formazan crystals were dis-
+solved in DMSO (150 μl/well). Absorption at 560 nm was measured
+using a microplate reader with 690 nm as reference. Untreated cells
+containing only cell culture medium without nanoparticles served as
+baseline control and the cell viability relative to blank control was
+calculated.
+2.12. Evaluation of hypoglycemic eﬀect in rats
+Sprague–Dawley rats (250 ± 25 g, male) were housed under
+normal conditions with free access to food and water. All animal ex-
+periments comply with the ARRIVE guidelines and were carried out in
+accordance with the National Institutes of Health guide for the care and
+use of Laboratory animals (NIH Publications No. 8023, revised 1978).
+The animal protocol was approved by The Institutional Animal Care
+and Use Committee (ACUP: #4387). Rats were randomized into fol-
+lowing groups: Negative control (no insulin at all), positive control (free
+insulin administered subcutaneously, 2 IU/kg), oral insulin (free insulin
+administered intragastrically with a gavage needle, 50 IU/kg), BLN
+(BLN administered intragastrically with a gavage needle at an insulin
+dose of 50 IU/kg). After the rats were anaesthetized by isoﬂurane in-
+halation, blood samples were collected at diﬀerent time intervals from
+the tip of the tail vein after needle puncture. Blood glucose levels were
+determined with a veterinarian glucometer (AlphaTRAK 2™model,
+Abbott, Illinois, USA).
+Plasma glucose levels versus time were monitored as previously
+reported. The initial blood glucose levels were regarded as 100% and all
+other levels referred to them as % of initial level [36]. This eﬀect was
+quantiﬁed by determining the area-above-the-curve (AAC) using the
+trapezoidal method. Relative pharmacological availability (PA) of in-
+sulin orally delivered by BLN was calculated using the following
+equation:
+=
+PA
+AAC oral
+Dose oral
+AAC Sc
+Dose Sc
+/
+2.13. Statistical analysis
+Statistical software GraphPad Prism Version 5.0 (San Diego, CA,
+USA) was used for analysis. The results were expressed as mean ± SD.
+Student's t-test and one-way analysis of variance (ANOVA) were per-
+formed for statistical analysis. Unless otherwise speciﬁed, diﬀerences
+were considered statistically signiﬁcant at p < 0.05.
+3. Results
+3.1. Particle size, PDI and zeta potential
+All nanocarriers were characterized for their particle size, PDI and
+zeta potential and compared with conventional SLN (F1) as listed in
+Table 2. It was found that incorporation of increasing concentrations of
+PEG (all three grades studied) had generally decreased the nanocarrier
+particle size compared with the polymer-free SLN (F1). The eﬀect was
+dependent not only on the concentration, but also on the grade of PEG
+tested, i.e. the higher the grade, the smaller the size of the nano-
+particles.
+The
+most
+pronounced
+eﬀect
+was
+achieved
+with
+F10
+Table 1
+Composition of nanoparticles prepared in this study.
+A. Composition of the internal aqueous core of PEG incorporated SLN (F2-F10). F1 is
+the conventional w/o/w SLN without polymer.
+Formulation
+Composition of the internal aqueous core (%w/w)
+0.01 M HCl
+PEG 2000
+PEG 4000
+PEG 6000
+F1
+100%
+_
+_
+_
+F2
+80%
+20%
+_
+_
+F3
+60%
+40%
+_
+_
+F4
+40%
+60%
+_
+_
+F5
+80%
+_
+20%
+_
+F6
+60%
+_
+40%
+_
+F7
+40%
+_
+60%
+_
+F8
+80%
+_
+_
+20%
+F9
+60%
+_
+_
+40%
+F10
+40%
+_
+_
+60%
+B. Composition of bi-polymer lipid hybrid nanoparticles (BLN). The percent shown are
+based on 50 mg trimyristin content in the lipid phase of SLN.
+Formulation
+Internal aqueous phase (%
+w/w)
+Lipid phase (%w/w)
+0.01 M HCl
+PEG 6000
+Trimyristin
+PLGA
+F1
+100%
+–
+100%
+–
+F10
+40%
+60%
+100%
+–
+F11
+100%
+–
+95%
+5%
+F12
+100%
+–
+90%
+10%
+F13
+100%
+–
+85%
+15%
+F14
+40%
+60%
+95%
+5%
+F15
+40%
+60%
+90%
+10%
+F16
+40%
+60%
+85%
+15%
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+635
+
+containing 60% w/w of PEG 6000 within the internal aqueous core. The
+particle size was 189.1 nm, much smaller than the polymer-free SLN
+(F1: 274.1 nm).
+Incorporation of PEG helped to produce more monodispersed na-
+noparticles. All three grades of PEG signiﬁcantly reduced the PDI values
+in a concentration-dependent manner, i.e. the higher PEG concentra-
+tion, the lower the PDI value. Highest signiﬁcant results were achieved
+by F10 where PDI was 0.168 versus 0.294 in F1.
+F1 and F10 were further modiﬁed by incorporating diﬀerent con-
+centration of PLGA to prepare two sets of formulations (F11-13) and
+(F14-16), respectively. Table 2B shows that addition of PLGA did not
+signiﬁcantly change the zeta potential values in general, but did in-
+crease the average size (from around 200 nm to around 250 nm) and
+PDI values of F10.
+All nanoparticles demonstrated negative zeta potential with average
+value around −46.2 ± 0.7 mV. Inclusion of PEG did not signiﬁcantly
+aﬀect this parameter when compared with the polymer-free SLN (F1).
+The ﬁnding indicates that incorporation of polymers did not sub-
+stantially alter the nanoparticle surface charge properties.
+3.2. Eﬀect of polymer incorporation on insulin EE%
+As shown in Fig. 2A, the insulin EE% in unmodiﬁed SLN was low
+(around 20%). It was found that PEG incorporation could aﬀect insulin
+EE% in a concentration-dependent and grade-dependent manner. The
+highest signiﬁcant result (P < 0.001) was achieved by 60% w/w PEG
+Table 2
+Particle size, PDI and zeta potential of nanoparticles prepared in this study.
+A. Particle size, PDI and zeta potential of PEG incorporated SLN (F2-F10) compared to
+conventional SLN (F1).
+Formulation
+Particle size (nm)
+PDI
+Zeta potential (mV)
+F1
+274.100
+± 8.386
+0.294
+± 0.012
+−45.433
+0.709
+F2
+250.33
+± 6.61
+0.250
+± 0.010
+−44.70
+0.51
+F3
+228.33
+± 7.64
+0.230
+± 0.010
+−46.50
+0.85
+F4
+206.67
+± 3.51
+0.172
+± 0.011
+−46.90
+0.88
+F5
+232.20
+± 4.70
+0.241
+± 0.018
+−46.30
+0.87
+F6
+218.13
+± 7.97
+0.225
+± 0.009
+−46.60
+0.78
+F7
+206.50
+± 4.77
+0.174
+± 0.005
+−46.30
+0.91
+F8
+225.00
+± 5.00
+0.240
+± 0.010
+−46.70
+0.52
+F9
+210.67
+± 5.51
+0.211
+± 0.009
+−45.80
+0.73
+F10
+189.10
+± 6.46
+0.168
+± 0.015
+−46.90
+0.85
+B. Eﬀect of PLGA incorporation on PEG free (F11-F13) and PEG incorporated SLN (F14-
+F16).
+Formulation
+Particle size (nm)
+PDI
+Zeta potential (mV)
+F11
+245.30
+± 5.16
+0.250
+± 0.018
+−41.30
+± 0.66
+F12
+255.67
+± 4.21
+0.266
+± 0.010
+−41.70
+± 0.49
+F13
+267.00
+± 7.55
+0.280
+± 0.005
+−40.30
+± 0.88
+F14
+258.33
+± 7.37
+0.267
+± 0.021
+−41.10
+± 0.89
+F15
+243.30
+± 7.63
+0.232
+± 0.020
+−40.40
+± 0.77
+F16
+283.10
+± 8.22
+0.283
+± 0.007
+−39.20
+± 0.54
+(caption on next page)
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+636
+
+6000 (F10) where insulin EE% was 31%, which translates into 1.5 –fold
+increase. Also considering that F10 has excellent PDI value (< 0.2), this
+formulation thus selected for further modiﬁcation by incorporation of
+the second polymer.
+The EE% of PLGA modiﬁed nanocarriers were shown in Fig. 2B.
+Increases were shown in both PEG-free and PEG-containing formula-
+tions, but the eﬀects were considerably more prominent in the latter
+group. The insulin EE% reached 50.94% and 50.19% in F15 and F16
+which contained 10 and 15% w/w PLGA, respectively, which translate
+into approximately 2.5-fold improvement over the conventional w/o/w
+SLN (i.e. F F15 was therefore selected for the majority of the remaining
+experiments involving BLN in this study.
+Fig. 2C summarizes the eﬀects of incorporation of one or two
+polymers on the insulin EE%. In general, the performance of BLN was
+signiﬁcantly superior (P < 0.001) to the nanoparticles containing only
+either PEG or PLGA, which were both superior (P < 0.001) to the
+conventional SLN F1.
+3.3. Chemical stability and biological activity of insulin after entrapment in
+BLN
+Chemical stability of insulin in BLN (F15) was evaluated by HPLC.
+The BLN trace (Fig. 3C) only showed the HPLC peak corresponding to
+the insulin standard, with the same retention time RT (8.3 min) as
+shown in Fig. 3A. The peak corresponding to A21-desamido insulin
+(RT = 10.3 min in Fig. 3B, the main degradation product of insulin)
+was not observed in the BLN trace [31]. The ﬁndings indicate that in-
+sulin had retained its chemical stability and integrity after entrapment
+within BLN.
+Fig. 3D compares the biological activity of fresh insulin with the
+insulin released from BLN as determined using cells transfected with
+insulin-responsive reporter genes. While there were slight decreases in
+the insulin in three of the four insulin concentrations tested, the dif-
+ferences were not signiﬁcant (p > 0.05, n = 3) considering both in-
+dividual data points and overall result. The biological activity of insulin
+was preserved after entrapment in BLN.
+3.4. Dispersion stability of BLN in simulated GI environment
+Table 3 compares the mean particle diameter and PDI values of
+freshly prepared F15 to that after 4 h incubation at gastric pH (2.5) or
+intestinal pH (6.8) with stirring. No signiﬁcant changes were observed
+at both pHs.
+3.5. Enzymatic stability of insulin
+The ﬁndings of the enzymatic stability of insulin in BLN against
+pepsin and chymotrypsin degradation were shown in Fig. 4A and B,
+respectively. In general, it was found that the insulin carried by BLN
+was less vulnerable to enzymatic degradation. For instance, after
+30 min of pepsin treatment at pH 2.5, only 10% of free insulin remained
+intact, while around 60% of BLN-entrapped insulin remained intact.
+Similar protection was obtained against chymotrypsin degradation
+where BLN could protect around 25% of entrapped insulin compared to
+only 2% in case of free insulin after 30 min of incubation at pH 7.4.
+3.6. Cellular uptake of BLN and cytotoxicity
+Fig. 5A presents the MTT assay result of Caco-2 intestinal en-
+dothelial cells treated with BLN and controls. Both BLN groups showed
+low cytotoxicity on Caco-2 cells and could preserve up to 75% of its
+viability at tested nanoparticles concentration of 10 mg/ml. The cyto-
+toxicity of BLN was not signiﬁcantly higher than the conventional SLN,
+suggesting that the inclusion of polymers does not make the nano-
+particles more toxic. Moderate toxicity of BLN was observed only at
+high concentration range (20 and 40 mg/ml) where cell viability de-
+clined to around 60 and 55%, respectively. In clinical situation the
+nanoparticles will be constantly diluted by the GI ﬂuid instead of ac-
+cumulating directly on the GI epithelium surface in static manner for
+3 h so the in vivo toxicity is expected to be substantially lower.
+Cellular uptake of BLN by Caco-2 cells was investigated using
+ﬂuorescence microscope. It was found that cells treated with ﬂuores-
+cently labeled BLN (Fig. 5B, right, BLN labeled in red, nuclei in blue)
+showed noticeably stronger ﬂuorescence than the untreated control
+(Fig. 5B, left) under the same conditions. The images indicate sub-
+stantial cellular interaction with and uptake of the newly developed
+BLN.
+3.7. In vivo glucose levels and relative pharmacological bioavailability
+Fig. 6 presents the blood glucose proﬁles of animals treated with
+free insulin (oral), free insulin (SC) and insulin loaded BLN (oral). As
+expected, oral free insulin did not lower the blood glucose level.
+Comparing oral BLN insulin with SC free insulin, the duration of hy-
+poglycemic eﬀect of the former was longer (5 h vs 3 h), the peak hy-
+poglycemic eﬀect was stronger (44.1% of baseline versus 61.5%). It
+should be noted that rats dosed by oral gavage received 25 fold more
+insulin than rats dosed by SC injection. With AAC calculated, this
+translates into relative PA of 6.1%. All animals were visibly healthy
+with no signiﬁcant body weight loss after BLN treatment in the in vivo
+study.
+4. Discussion
+Oral route is generally favored over other routes of drug delivery
+due to ease of administration, less costly production methods, and high
+patient compliance [1]. However, limited success has so far been
+achieved in the ﬁeld of oral delivery of protein/peptide drugs owing to
+several reasons. Among them enzymatic degradation, high tendency to
+aggregate in GI tract, and poor permeation across the GI endothelium
+are particularly critical [37]. The goal of the present study is to develop
+a new polymer-lipid hybrid nanodelivery approach to solve these is-
+sues. Our ﬁndings suggest that BTN, a novel modiﬁed form of the hy-
+brid nanocarrier, can successfully achieve this goal.
+Although there is no consensus about what physicochemical prop-
+erties are optimal for eﬃcient oral drug delivery by nanocarriers, it is
+expected that the nanocarriers should at least maintain the size without
+substantial signs of aggregation at the GI pHs. BLNs in general de-
+monstrated size good for particle-cell interactions (around 200–300 nm
+diameter) and fairly uniform size distribution as reﬂected by its PDI
+value. The studies with F15 (Table 3) showed that these values re-
+mained nearly unchanged at gastric and intestinal pHs (Table 3). At a
+minimum, BLNs should be able to stay well-dispersed to allow favorable
+interactions with the GI tract endothelium in the harsh GI environment.
+A lipid-based nanocarrier inherently does not entrap protein drugs
+eﬃciently even using the w/o/w double emulsion approach. This
+prompted us to include polymeric materials to overcome this key lim-
+itation. We hypothesized that the addition of PEG can increase the
+viscosity of the internal aqueous phase of the w/o/w system, thus
+making it diﬃcult for the protein payload to leak to the external
+Fig. 2. Eﬀect of PEG and PLGA on insulin entrapment eﬃciency (EE%). (A)
+Eﬀect of PEG grades and concentration: Results represent mean ± SD (n = 3).
+*P < 0.05 **, P < 0.01, and ***P < 0.001 represent signiﬁcant improve-
+ment in insulin EE% achieved by PEG 6000 incorporation compared to con-
+ventional SLN F1. (B) Eﬀect of PLGA on insulin EE% of both PEG free (circle)
+and PEG incorporated SLN (triangle). Results represent mean ± SD (n = 3).
+***P < 0.001 represents signiﬁcant improvement in insulin EE% achieved by
+BLN compared to SLN with PLGA only. (C) Summary of EE% comparing BLN
+(showing the highest improvement in insulin EE%) to conventional SLN or SLN
+containing only a single polymer. ***P < 0.001 represent signiﬁcant im-
+provement in insulin EE% compared to that of conventional SLN F1.
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+637
+
+Fig. 3. Evaluation of chemical stability and biological activity of entrapped insulin of BLN: (A) Fresh insulin sample. Insulin peaks at retention time (RT) at
+8.3 min; (B) Insulin and its main degradation product A21-desamido insulin. RT of insulin and degradant at 8.3 and 10.3 min, respectively; (C) Insulin entrapped
+within BLN showing only one peak with RT at 8.3 min as authentic insulin with absence of degradation peak indicating its stability and integrity. (D) Comparison of
+the luminescence activities of insulin reporter cells treated with fresh insulin or insulin released from BLN. Results represent mean + SD (n = 3).
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+638
+
+aqueous phase during nanoparticle preparation. The results in Fig. 2A
+support this strategy. When the EE% of nanoparticles with diﬀerent
+grades of PEG are compared, the highest concentrations of PEG 6000
+(i.e. with the highest viscosity) led to the largest EE% enhancement over
+the non-modiﬁed SLN (F1). This is also in agreement with our previous
+study where viscosity enhanced nanocarriers were developed and
+played a signiﬁcant role to improve insulin EE% within SLN [38].
+It has been recognized that a stable primary emulsion plays a sig-
+niﬁcant role in improving the protein EE% of SLN [27], and addition of
+ingredients such as Methocel to stabilize the interfacial surfaces of the
+primary emulsion, so higher protein EE % can be achieved [39,40]. In
+this study, we found that PLGA can also increase insulin EE%, and as
+shown in Fig. 2C, the combination of PEG and PLGA apparently led to
+additive EE% enhancing eﬀect. Our ﬁnding justiﬁes the design of BLN
+which uses two polymeric excipients instead of one.
+One of the most challenging problems in the development of protein
+loaded pharmaceuticals is chemical and/or biological degradation [41].
+Table 3
+Particle size and PDI of BLN before and after incubation at gastric pH (2.5) and
+intestinal pH (6.8).
+BLN (F15)
+Particle size (nm)
+PDI
+Fresh nanoparticles
+243.30
+± 7.63
+0.232
+± 0.02
+pH 2.5
+242.33
+± 7.76
+0.221
+± 0.01
+pH 6.8
+242
+± 9.64
+0.241
+± 0.02
+Fig. 4. Eﬀect of BLN to protect insulin from degradation by digestive en-
+zymes. Stability of insulin in BLN was compared with free insulin after in-
+cubation with (A) pepsin at pH 2.5 and (B) chymotrypsin at pH 7.4. In this
+experiment,
+pepsin:
+insulin
+ratio
+=
+1:500
+and
+chymotrypsin:insulin
+ratio = 1:10. Results represent mean of 3 determinations ± SD. **P < 0.01
+***P < 0.001.
+Fig. 5. In vitro eﬀects of BLN on gastrointestinal epithelial cells (Caco-2).
+(A) % Cell viability of Caco-2 cells treated with diﬀerent concentrations of free
+insulin, blank SLN, blank BLN and insulin-loaded BLN. Results represent mean
+of 3 determinations ± SD. (B) Uptake of ﬂuorescent-labeled BLN by Caco-
+2 cells. Left: cells only without BLN as control; Right: cells treated with BLN.
+Nanocarriers are in red and nuclei are in blue. Bar = 50 μm, 10× objective.
+(For interpretation of the references to colour in this ﬁgure legend, the reader is
+referred to the Web version of this article.)
+Fig. 6. Blood glucose levels of rats in response to diﬀerent insulin for-
+mulations. Oral insulin: insulin solution administered orally; SC insulin: in-
+sulin solution administered by subcutaneous injection; BLN: insulin-loaded BLN
+administered orally. Results represent mean ± SD, n = 4.
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+639
+
+HPLC has been demonstrated as a well-validated technique that allows
+simultaneous analysis of both human insulin and its main decomposi-
+tion product, A21-desamido insulin, therefore providing indication
+about insulin stability during the entrapment process [31,32]. Our re-
+sult (Fig. 3) shows that the insulin of BLN remained chemically and
+biologically stable. This is in agreement with a previous study in which
+addition of PEG400 helps to preserve the stability of nerve growth
+factor in PLGA particles [42], as the polymeric ingredient could dis-
+place the protein drug from the aqueous/organic interface during pre-
+paration to minimize its degradation as a result of exposure to the or-
+ganic phase. Fig. 4 further shows that BLN can signiﬁcantly protect the
+entrapped insulin from enzymatic degradation by pepsin and chymo-
+trypsin. Overall, our data demonstrate the ability of BLN to protect the
+loaded protein from both chemical and biological degradation.
+SLN are well known for their low cytotoxicity, even less than PLGA
+nanoparticles, and have been extensively evaluated in vivo without any
+signs of causing intolerable toxicity [43,44]. Fig. 5A shows that the
+cytotoxicities of BLN and SLN were comparable, indicating the low
+cytotoxicity of SLN can be preserved despite the inclusion of polymeric
+materials. It may be argued that modest cytotoxicity was observed at
+high nanoparticle concentrations. Considering that nanoparticles made
+of FDA approved polyesters (e.g. PLGA) caused 100% cell death at 0.5%
+concentration [15], the observed toxicity of BLN is actually remarkably
+low. The low cytotoxicity of BLN may be attributed to rational selection
+of the polymers used where PEG are practically non-toxic with animal
+LD50 values generally greater than 2000 mg/kg body weight [26]. In
+addition, the concentration of PLGA used was kept at minimal to pre-
+serve the biocompatibility of the newly developed carrier. It should be
+noted that the low cytotoxicity was achieved even when there was good
+nanoparticle uptake by Caco-2 cells (Fig. 5B). In short, BLN preserves
+the two key beneﬁts of SLN, i.e. good cell-nanoparticle interaction and
+low cytotoxicity. This is important for the achievement of eﬃcient oral
+uptake without excessive irritation to the GI tract.
+The hypoglycemic eﬀect of oral BLN was studied in rats and the PA
+value was calculated (Fig. 6). We used PA in this study instead of ab-
+solute bioavailability because the hypoglycemic eﬀect as compared to
+the standard SC route of insulin administration is often the most critical
+concern when developing an oral insulin formulation. With AAC cal-
+culated, the relative PA of BLN was estimated to be 6.1%. This is ac-
+tually comparable to many recent formulations well-customized for oral
+insulin delivery. For examples, the highest PA values achieved by
+lectin-modiﬁed SLN, selenium nanoparticles and self-assembled le-
+cithin/chitosan nanoparticles were 6%, 9.15% and 6.01%, respectively
+[34,45,46]. In comparison, the BLN tested in this study is only the
+prototype without any surface modiﬁcations. At a minimum, this study
+showed that the hypoglycemic activity of the insulin entrapped in BLN
+is preserved, indicating good biological stability, and BLN has excellent
+potential to deliver oral insulin in an eﬃcient manner.
+5. Conclusion
+In this study of the BLN prototype, we demonstrated that a typical
+w/o/w SLN can incorporate two commonly used biocompatible poly-
+mers, PEG and PLGA, to achieve substantially more eﬃcient entrap-
+ment of insulin, while preserving the key advantages of SLN such as low
+cytotoxicity, good interaction with cells, and ability to protect the
+payload from chemical and biological degradation in the harsh GI en-
+vironment. Early in vivo study showed that BLN has signiﬁcant hy-
+poglycemic eﬀect when administered by oral route. In future, we will
+explore the option of mucoadhesive modiﬁcation of BLN to achieve
+even higher oral bioavailability. More in depth in vivo quantiﬁcation of
+insulin will also be performed to learn more about the pharmacoki-
+netics/biodistribution of the insulin-BLN.
+Acknowledgment
+The research group is grateful to Egyptian Ministry of Higher
+Education (Cultural aﬀairs and Mission sector, Egypt) for funding the
+research through Joint supervision scholarship (known as Channel
+system). Declarations of other interest: none.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://
+doi.org/10.1016/j.jddst.2019.01.007.
+References
+[1] S. Maher, et al., Formulation strategies to improve oral peptide delivery, Pharm.
+Pat. Anal. 3 (3) (2014) 313–336.
+[2] C.P. Reis, C. Damge, Nanotechnology as a promising strategy for alternative routes
+of insulin delivery, Methods Enzymol. 508 (2012) 271–294.
+[3] S. Khafagy el, et al., Current challenges in non-invasive insulin delivery systems: a
+comparative review, Adv. Drug Deliv. Rev. 59 (15) (2007) 1521–1546.
+[4] H.P. Lim, B.T. Tey, E.S. Chan, Particle designs for the stabilization and controlled-
+delivery of protein drugs by biopolymers: a case study on insulin, J. Contr. Release
+186 (2014) 11–21.
+[5] S. Mao, et al., Uptake and transport of PEG-graft-trimethyl-chitosan copolymer-
+insulin nanocomplexes by epithelial cells, Pharm. Res. 22 (12) (2005) 2058–2068.
+[6] A. Bayat, et al., Nanoparticles of quaternized chitosan derivatives as a carrier for
+colon delivery of insulin: ex vivo and in vivo studies, Int. J. Pharm. 356 (1–2)
+(2008) 259–266.
+[7] S.H. Bakhru, et al., Oral delivery of proteins by biodegradable nanoparticles, Adv.
+Drug Deliv. Rev. 65 (6) (2013) 811–821.
+[8] R.M. Ramesan, C.P. Sharma, Challenges and advances in nanoparticle-based oral
+insulin delivery, Expert Rev. Med. Devices 6 (6) (2009) 665–676.
+[9] C. Thompson, et al., Uptake and transport of novel amphiphilic polyelectrolyte-
+insulin nanocomplexes by Caco-2 cells–towards oral insulin, Pharm. Res. 28 (4)
+(2011) 886–896.
+[10] R.H. Müller, et al., Solid lipid nanoparticles (SLN) — an alternative colloidal carrier
+system for controlled drug deliver, Eur. J. Pharm. Biopharm. 41 (1995) 62–69.
+[11] E.B. Souto, S. Doktorovova, Chapter 6 - solid lipid nanoparticle formulations
+pharmacokinetic and biopharmaceutical aspects in drug delivery, Methods
+Enzymol. 464 (2009) 105–129.
+[12] H.J. Cho, et al., Surface-modiﬁed solid lipid nanoparticles for oral delivery of
+docetaxel: enhanced intestinal absorption and lymphatic uptake, Int. J. Nanomed. 9
+(2014) 495–504.
+[13] W. Mehnert, K. Mader, Solid lipid nanoparticles: production, characterization and
+applications, Adv. Drug Deliv. Rev. 47 (2–3) (2001) 165–196.
+[14] M. Gallarate, et al., Preparation of solid lipid nanoparticles from W/O/W emulsions:
+preliminary studies on insulin encapsulation, J. Microencapsul. 26 (5) (2009)
+394–402.
+[15] S. Martins, et al., Lipid-based colloidal carriers for peptide and protein delivery–
+liposomes versus lipid nanoparticles, Int. J. Nanomed. 2 (4) (2007) 595–607.
+[16] J. Renukuntla, et al., Approaches for enhancing oral bioavailability of peptides and
+proteins, Int. J. Pharm. 447 (1–2) (2013) 75–93.
+[17] A.J. Almeida, E. Souto, Solid lipid nanoparticles as a drug delivery system for
+peptides and proteins, Adv. Drug Deliv. Rev. 59 (6) (2007) 478–490.
+[18] M. Wolf, et al., Stabilisation and determination of the biological activity of L-as-
+paraginase in poly(D,L-lactide-co-glycolide) nanospheres, Int. J. Pharm. 256 (1–2)
+(2003) 141–152.
+[19] U. Bilati, E. Allemann, E. Doelker, Strategic approaches for overcoming peptide and
+protein instability within biodegradable nano- and microparticles, Eur. J. Pharm.
+Biopharm. 59 (3) (2005) 375–388.
+[20] A.G. Grigoras, Polymer-lipid hybrid systems used as carriers for insulin delivery,
+Nanomedicine 13 (8) (2017) 2425–2437.
+[21] L. Wu, et al., Bioinspired butyrate-functionalized nanovehicles for targeted oral
+delivery of biomacromolecular drugs, J. Contr. Release 262 (2017) 273–283.
+[22] M. Al-Remawi, et al., Chitosan/lecithin liposomal nanovesicles as an oral insulin
+delivery system, Pharmaceut. Dev. Technol. 22 (3) (2017) 390–398.
+[23] H. Li, et al., Fatty acid and quaternary ammonium modiﬁed chitosan nanoparticles
+for insulin delivery, Colloids Surfaces B Biointerfaces 170 (2018) 136–143.
+[24] G. Pasut, F.M. Veronese, PEGylation for improving the eﬀectiveness of therapeutic
+biomolecules, Drugs Today 45 (9) (2009) 687–695.
+[25] A. Kolate, et al., PEG - a versatile conjugating ligand for drugs and drug delivery
+systems, J. Contr. Release 192 (2014) 67–81.
+[26] C. Fruijtier-Polloth, Safety assessment on polyethylene glycols (PEGs) and their
+derivatives as used in cosmetic products, Toxicology 214 (1–2) (2005) 1–38.
+[27] S. Xie, et al., Eﬀect of PLGA as a polymeric emulsiﬁer on preparation of hydrophilic
+protein-loaded solid lipid nanoparticles, Colloids Surfaces B Biointerfaces 67 (2)
+(2008) 199–204.
+[28] K.Y. Win, S.S. Feng, Eﬀects of particle size and surface coating on cellular uptake of
+polymeric nanoparticles for oral delivery of anticancer drugs, Biomaterials 26 (15)
+(2005) 2713–2722.
+[29] M. Uner, Preparation, characterization and physico-chemical properties of solid
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+640
+
+lipid nanoparticles (SLN) and nanostructured lipid carriers (NLC): their beneﬁts as
+colloidal drug carrier systems, Pharmazie 61 (5) (2006) 375–386.
+[30] F. Andrade, et al., Chitosan formulations as carriers for therapeutic proteins, Curr.
+Drug Discov. Technol. 8 (3) (2011) 157–172.
+[31] P. Moslemi, A.R. Najafabadi, H. Tajerzadeh, A rapid and sensitive method for si-
+multaneous determination of insulin and A21-desamido insulin by high-perfor-
+mance liquid chromatography, J. Pharmaceut. Biomed. Anal. 33 (1) (2003) 45–51.
+[32] G.L. Hoyer, et al., Selective stability-indicating high-performance liquid chroma-
+tographic assay for recombinant human regular insulin, J. Chromatogr. A 699 (1–2)
+(1995) 383–388.
+[33] M. Narvekar, et al., A new nanostructured carrier design including oil to enhance
+the pharmaceutical properties of retinoid therapy and its therapeutic eﬀects on
+chemo-resistant ovarian cancer, Eur. J. Pharm. Biopharm. 88 (1) (2014) 226–237.
+[34] N. Zhang, et al., Lectin-modiﬁed solid lipid nanoparticles as carriers for oral ad-
+ministration of insulin, Int. J. Pharm. 327 (1–2) (2006) 153–159.
+[35] X. Zhang, et al., Preparation and characterization of insulin-loaded bioadhesive
+PLGA nanoparticles for oral administration, Eur. J. Pharm. Sci. 45 (5) (2012)
+632–638.
+[36] Jasbir Singh, et al., Oral insulin delivery with various grades of HPMC on non-
+diabetic rats, Trends Med. Res. 6 (2011) 1–13.
+[37] A.T. Florence, Oral insulin delivery: a chimera? Int. J. Pharm. 495 (1) (2015)
+218–219.
+[38] M. Boushra, et al., Development and evaluation of viscosity-enhanced nanocarrier
+(VEN) for oral insulin delivery, Int. J. Pharm. 511 (1) (2016) 462–472.
+[39] L. Battaglia, et al., Solid lipid nanoparticles formed by solvent-in-water emulsion-
+diﬀusion technique: development and inﬂuence on insulin stability, J.
+Microencapsul. 24 (7) (2007) 660–672.
+[40] M. Boushra, et al., Methocel-lipid hybrid nanocarrier for eﬃcient oral insulin de-
+livery, J. Pharmacol. Sci. 105 (5) (2016) 1733–1740.
+[41] M.A. Ibrahim, Assessment of insulin stability inside diblock copolymer PEG-PLA
+microspheres, Sci. Pharm. 78 (3) (2010) 493–505.
+[42] J.M. Pean, et al., Why does PEG 400 co-encapsulation improve NGF stability and
+release from PLGA biodegradable microspheres? Pharm. Res. 16 (8) (1999)
+1294–1299.
+[43] L.P. Mendes, et al., Biodegradable nanoparticles designed for drug delivery: the
+number of nanoparticles impacts on cytotoxicity, Toxicol. in Vitro 29 (6) (2015)
+1268–1274.
+[44] R.H. Müller, K. Mäder, S. Gohla, Solid lipid nanoparticles (SLN) for controlled drug
+delivery – a review of the state of the art, Eur. J. Pharm. Biopharm. 50 (1) (2000)
+161–177.
+[45] X. Qi, et al., Oral administration of salecan-based hydrogels for controlled insulin
+delivery, J. Agric. Food Chem. 66 (40) (2018) 10479–10489.
+[46] D. Kaklotar, et al., Transition from passive to active targeting of oral insulin na-
+nomedicines: enhancement in bioavailability and glycemic control in diabetes,
+Nanomedicine 11 (11) (2016) 1465–1468.
+M. Boushra et al.
+Journal of Drug Delivery Science and Technology 49 (2019) 632–641
+641

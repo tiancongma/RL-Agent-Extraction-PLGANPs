@@ -1,0 +1,12 @@
+{
+  "original_length": 40014,
+  "cleaned_length": 31640,
+  "removed_leading_chars": 0,
+  "removed_code_fence": false,
+  "removed_trailing_code_fence": false,
+  "balanced_close_applied": true,
+  "balanced_close_cut": 31417,
+  "balanced_close_remaining_stack": "{[",
+  "parse_stage": "balanced_close",
+  "direct_parse_error": "JSONDecodeError: Unterminated string starting at: line 1 column 31630 (char 31629)"
+}

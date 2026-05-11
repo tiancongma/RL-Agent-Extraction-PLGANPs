@@ -1,0 +1,1103 @@
+document_key	formulation_id	legacy_field	source_replacement_objects	mapping_status	direct_or_derived	notes	authority_target_id	authority_payload_path	table_cell_grid_ref	reattachment_status
+5ZXYABSU	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/5ZXYABSU/5ZXYABSU__table_16__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/5ZXYABSU/5ZXYABSU__table_16__pdf_table.csv			resolved
+5ZXYABSU	F1	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+5ZXYABSU	F1	polymer_name_raw	5ZXYABSU__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+5ZXYABSU	F1	polymer_identity	5ZXYABSU__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+5ZXYABSU	F1	la_ga_ratio	5ZXYABSU__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+5ZXYABSU	F1	polymer_mw_kDa	5ZXYABSU__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+5ZXYABSU	F1	plga_mass_mg	5ZXYABSU__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+5ZXYABSU	F1	surfactant_name	5ZXYABSU__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+5ZXYABSU	F1	surfactant_concentration_text	5ZXYABSU__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+5ZXYABSU	F1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+5ZXYABSU	F1	la_ga_ratio_raw	5ZXYABSU__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+5ZXYABSU	F1	la_ga_ratio_normalized	5ZXYABSU__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+5ZXYABSU	F1	la_ga_ratio	5ZXYABSU__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+5ZXYABSU	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+5ZXYABSU	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+5ZXYABSU	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+5ZXYABSU	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+5ZXYABSU	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+5ZXYABSU	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+5ZXYABSU	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+5ZXYABSU	F1	organic_solvent	5ZXYABSU__F1__organic_solvent	direct	direct	Projected from solvent components.				
+5ZXYABSU	F1	drug_name	5ZXYABSU__F1__drug_name	direct	direct	Projected from drug components.				
+5ZXYABSU	F1	drug_feed_amount_text	5ZXYABSU__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+5ZXYABSU	F1	emul_method	5ZXYABSU__F1__process_01	direct	direct	Projected from process-step names.				
+5ZXYABSU	F1	preparation_method	5ZXYABSU__F1__process_01	direct	direct	Projected from process-step names.				
+5ZXYABSU	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+5ZXYABSU	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+5ZXYABSU	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+5ZXYABSU	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+5ZXYABSU	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+5ZXYABSU	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+5ZXYABSU	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+										
+										
+										
+L3H2RS2H	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_08__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_08__pdf_table.csv			resolved
+L3H2RS2H	__authority_reattachment__	authority_reattachment_diagnostic	data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/s2_1b_denoised_text/L3H2RS2H.txt#paragraph:16#segment:2	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/s2_1b_denoised_text/L3H2RS2H.txt#paragraph:16#segment:2			resolved
+L3H2RS2H	F1	identity_variables_json	L3H2RS2H__signal_factor_01 | L3H2RS2H__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+L3H2RS2H	F1	polymer_name_raw	L3H2RS2H__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+L3H2RS2H	F1	polymer_identity	L3H2RS2H__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+L3H2RS2H	F1	la_ga_ratio	L3H2RS2H__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+L3H2RS2H	F1	polymer_mw_kDa	L3H2RS2H__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+L3H2RS2H	F1	plga_mass_mg	L3H2RS2H__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+L3H2RS2H	F1	surfactant_name	L3H2RS2H__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+L3H2RS2H	F1	surfactant_concentration_text	L3H2RS2H__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+L3H2RS2H	F1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+L3H2RS2H	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+L3H2RS2H	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+L3H2RS2H	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+L3H2RS2H	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+L3H2RS2H	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+L3H2RS2H	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+L3H2RS2H	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+L3H2RS2H	F1	organic_solvent	L3H2RS2H__F1__organic_solvent	direct	direct	Projected from solvent components.				
+L3H2RS2H	F1	drug_name	L3H2RS2H__F1__drug_name	direct	direct	Projected from drug components.				
+L3H2RS2H	F1	drug_feed_amount_text	L3H2RS2H__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+L3H2RS2H	F1	emul_method	L3H2RS2H__F1__process_01	direct	direct	Projected from process-step names.				
+L3H2RS2H	F1	preparation_method	L3H2RS2H__F1__process_01	direct	direct	Projected from process-step names.				
+L3H2RS2H	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+L3H2RS2H	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+L3H2RS2H	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F2	identity_variables_json	L3H2RS2H__signal_factor_01 | L3H2RS2H__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+L3H2RS2H	F2	polymer_name_raw	L3H2RS2H__F2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+L3H2RS2H	F2	polymer_identity	L3H2RS2H__F2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+L3H2RS2H	F2	la_ga_ratio	L3H2RS2H__F2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+L3H2RS2H	F2	polymer_mw_kDa	L3H2RS2H__F2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+L3H2RS2H	F2	plga_mass_mg	L3H2RS2H__F2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+L3H2RS2H	F2	surfactant_name	L3H2RS2H__F2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+L3H2RS2H	F2	surfactant_concentration_text	L3H2RS2H__F2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+L3H2RS2H	F2	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+L3H2RS2H	F2	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+L3H2RS2H	F2	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+L3H2RS2H	F2	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+L3H2RS2H	F2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+L3H2RS2H	F2	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+L3H2RS2H	F2	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+L3H2RS2H	F2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+L3H2RS2H	F2	organic_solvent	L3H2RS2H__F2__organic_solvent	direct	direct	Projected from solvent components.				
+L3H2RS2H	F2	drug_name	L3H2RS2H__F2__drug_name	direct	direct	Projected from drug components.				
+L3H2RS2H	F2	drug_feed_amount_text	L3H2RS2H__F2__drug_name	direct	direct	Projected from drug amount expressions.				
+L3H2RS2H	F2	emul_method	L3H2RS2H__F2__process_01	direct	direct	Projected from process-step names.				
+L3H2RS2H	F2	preparation_method	L3H2RS2H__F2__process_01	direct	direct	Projected from process-step names.				
+L3H2RS2H	F2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+L3H2RS2H	F2	emul_type		unavailable	unavailable	No phase or factor cues available.				
+L3H2RS2H	F2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+L3H2RS2H	F2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+WIVUCMYG	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv			resolved
+WIVUCMYG	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/WIVUCMYG/WIVUCMYG__table_05__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/WIVUCMYG/WIVUCMYG__table_05__html_table.csv			resolved
+WIVUCMYG	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/WIVUCMYG/WIVUCMYG__table_06__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/WIVUCMYG/WIVUCMYG__table_06__html_table.csv			resolved
+WIVUCMYG	C1	identity_variables_json	WIVUCMYG__signal_factor_01 | WIVUCMYG__signal_factor_02 | WIVUCMYG__signal_factor_03 | WIVUCMYG__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+WIVUCMYG	C1	polymer_name_raw	WIVUCMYG__C1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+WIVUCMYG	C1	polymer_identity	WIVUCMYG__C1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+WIVUCMYG	C1	la_ga_ratio	WIVUCMYG__C1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+WIVUCMYG	C1	polymer_mw_kDa	WIVUCMYG__C1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+WIVUCMYG	C1	plga_mass_mg	WIVUCMYG__C1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+WIVUCMYG	C1	surfactant_name	WIVUCMYG__C1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+WIVUCMYG	C1	surfactant_concentration_text	WIVUCMYG__C1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+WIVUCMYG	C1	pva_conc_percent	WIVUCMYG__C1__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+WIVUCMYG	C1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+WIVUCMYG	C1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+WIVUCMYG	C1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+WIVUCMYG	C1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+WIVUCMYG	C1	pH_raw	WIVUCMYG__signal_factor_04	direct	direct	Projected from factor-level pH expressions.				
+WIVUCMYG	C1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+WIVUCMYG	C1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+WIVUCMYG	C1	organic_solvent	WIVUCMYG__C1__organic_solvent	direct	direct	Projected from solvent components.				
+WIVUCMYG	C1	drug_name	WIVUCMYG__C1__drug_name	direct	direct	Projected from drug components.				
+WIVUCMYG	C1	drug_feed_amount_text	WIVUCMYG__C1__drug_name	direct	direct	Projected from drug amount expressions.				
+WIVUCMYG	C1	emul_method	WIVUCMYG__C1__process_01	direct	direct	Projected from process-step names.				
+WIVUCMYG	C1	preparation_method	WIVUCMYG__C1__process_01	direct	direct	Projected from process-step names.				
+WIVUCMYG	C1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+WIVUCMYG	C1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+WIVUCMYG	C1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C2	identity_variables_json	WIVUCMYG__signal_factor_01 | WIVUCMYG__signal_factor_02 | WIVUCMYG__signal_factor_03 | WIVUCMYG__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+WIVUCMYG	C2	polymer_name_raw	WIVUCMYG__C2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+WIVUCMYG	C2	polymer_identity	WIVUCMYG__C2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+WIVUCMYG	C2	la_ga_ratio	WIVUCMYG__C2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+WIVUCMYG	C2	polymer_mw_kDa	WIVUCMYG__C2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+WIVUCMYG	C2	plga_mass_mg	WIVUCMYG__C2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+WIVUCMYG	C2	surfactant_name	WIVUCMYG__C2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+WIVUCMYG	C2	surfactant_concentration_text	WIVUCMYG__C2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+WIVUCMYG	C2	pva_conc_percent	WIVUCMYG__C2__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+WIVUCMYG	C2	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+WIVUCMYG	C2	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+WIVUCMYG	C2	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+WIVUCMYG	C2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+WIVUCMYG	C2	pH_raw	WIVUCMYG__signal_factor_04	direct	direct	Projected from factor-level pH expressions.				
+WIVUCMYG	C2	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+WIVUCMYG	C2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+WIVUCMYG	C2	organic_solvent	WIVUCMYG__C2__organic_solvent	direct	direct	Projected from solvent components.				
+WIVUCMYG	C2	drug_name	WIVUCMYG__C2__drug_name	direct	direct	Projected from drug components.				
+WIVUCMYG	C2	drug_feed_amount_text	WIVUCMYG__C2__drug_name	direct	direct	Projected from drug amount expressions.				
+WIVUCMYG	C2	emul_method	WIVUCMYG__C2__process_01	direct	direct	Projected from process-step names.				
+WIVUCMYG	C2	preparation_method	WIVUCMYG__C2__process_01	direct	direct	Projected from process-step names.				
+WIVUCMYG	C2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+WIVUCMYG	C2	emul_type		unavailable	unavailable	No phase or factor cues available.				
+WIVUCMYG	C2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C3	identity_variables_json	WIVUCMYG__signal_factor_01 | WIVUCMYG__signal_factor_02 | WIVUCMYG__signal_factor_03 | WIVUCMYG__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+WIVUCMYG	C3	polymer_name_raw	WIVUCMYG__C3__polymer_name_raw	direct	direct	Projected from polymer component names.				
+WIVUCMYG	C3	polymer_identity	WIVUCMYG__C3__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+WIVUCMYG	C3	la_ga_ratio	WIVUCMYG__C3__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+WIVUCMYG	C3	polymer_mw_kDa	WIVUCMYG__C3__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+WIVUCMYG	C3	plga_mass_mg	WIVUCMYG__C3__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+WIVUCMYG	C3	surfactant_name	WIVUCMYG__C3__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+WIVUCMYG	C3	surfactant_concentration_text	WIVUCMYG__C3__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+WIVUCMYG	C3	pva_conc_percent	WIVUCMYG__C3__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+WIVUCMYG	C3	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+WIVUCMYG	C3	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+WIVUCMYG	C3	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+WIVUCMYG	C3	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+WIVUCMYG	C3	pH_raw	WIVUCMYG__signal_factor_04	direct	direct	Projected from factor-level pH expressions.				
+WIVUCMYG	C3	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+WIVUCMYG	C3	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+WIVUCMYG	C3	organic_solvent	WIVUCMYG__C3__organic_solvent	direct	direct	Projected from solvent components.				
+WIVUCMYG	C3	drug_name	WIVUCMYG__C3__drug_name	direct	direct	Projected from drug components.				
+WIVUCMYG	C3	drug_feed_amount_text	WIVUCMYG__C3__drug_name	direct	direct	Projected from drug amount expressions.				
+WIVUCMYG	C3	emul_method	WIVUCMYG__C3__process_01	direct	direct	Projected from process-step names.				
+WIVUCMYG	C3	preparation_method	WIVUCMYG__C3__process_01	direct	direct	Projected from process-step names.				
+WIVUCMYG	C3	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+WIVUCMYG	C3	emul_type		unavailable	unavailable	No phase or factor cues available.				
+WIVUCMYG	C3	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C3	pdi		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C3	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C3	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	C3	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F1	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""1."", ""evidence_snippet"": ""F1 | −1 | −1 | −1 | −1 | 566.50 ± 8.05 | 0.286 ± 0.02 | −8.28 ± 0.71 | 87.69 ± 0.13""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F2	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""2."", ""evidence_snippet"": ""F2 | 1 | −1 | −1 | −1 | 597.60 ± 3.12 | 0.335 ± 0.01 | −8.17 ± 0.32 | 90.26 ± 1.18""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F3	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""3."", ""evidence_snippet"": ""F3 | −1 | 1 | −1 | −1 | 605.00 ± 6.28 | 0.256 ± 0.01 | −6.00 ± 0.48 | 82.57 ± 2.01""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F4	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""4."", ""evidence_snippet"": ""F4 | 1 | 1 | −1 | −1 | 611.20 ± 7.21 | 0.368 ± 0.02 | −6.80 ± 0.18 | 90.85 ± 1.25""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F5	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""5."", ""evidence_snippet"": ""F5 | −1 | −1 | 1 | −1 | 539.00 ± 8.11 | 0.227 ± 0.03 | −9.27 ± 0.31 | 85.14 ± 1.82""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F6	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""6."", ""evidence_snippet"": ""F6 | 1 | −1 | 1 | −1 | 532.10 ± 6.70 | 0.231 ± 0.03 | −7.31 ± 0.07 | 89.29 ± 0.51""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F7	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""7."", ""evidence_snippet"": ""F7 | −1 | 1 | 1 | −1 | 784.30 ± 5.63 | 0.391 ± 0.02 | −5.91 ± 0.06 | 89.93 ± 1.98""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F8	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""8."", ""evidence_snippet"": ""F8 | 1 | 1 | 1 | −1 | 641.50 ± 6.26 | 0.363 ± 0.01 | −5.99 ± 0.36 | 89.01 ± 0.56""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F9	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""9."", ""evidence_snippet"": ""F9 | 1 | 1 | 1 | 1 | 348.30 ± 2.12 | 0.106 ± 0.03 | −7.50 ± 0.16 | 66.50 ± 0.07""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F10	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""10."", ""evidence_snippet"": ""F10 | −1 | 1 | 1 | 1 | 280.10 ± 1.50 | 0.098 ± 0.03 | −7.92 ± 0.15 | 49.79 ± 0.62""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F11	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""11."", ""evidence_snippet"": ""F11 | 1 | −1 | 1 | 1 | 324.30 ± 4.03 | 0.091 ± 0.01 | −7.41 ± 0.56 | 80.02 ± 1.33""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F12	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""12."", ""evidence_snippet"": ""F12 | −1 | −1 | 1 | 1 | 265.40 ± 5.75 | 0.073 ± 0.02 | −9.61 ± 0.31 | 62.05 ± 2.18""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F13	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""13."", ""evidence_snippet"": ""F13 | 1 | 1 | −1 | 1 | 408.90 ± 4.67 | 0.216 ± 0.01 | −6.68 ± 0.15 | 45.54 ± 0.23""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F14	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""14."", ""evidence_snippet"": ""F14 | −1 | 1 | −1 | 1 | 318.40 ± 3.11 | 0.207 ± 0.02 | −7.44 ± 0.19 | 39.79 ± 1.77""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F15	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""15."", ""evidence_snippet"": ""F15 | 1 | −1 | −1 | 1 | 327.60 ± 1.91 | 0.095 ± 0.01 | −7.22 ± 0.54 | 69.51 ± 0.32""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F16	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""16."", ""evidence_snippet"": ""F16 | −1 | −1 | −1 | 1 | 269.90 ± 1.25 | 0.096 ± 0.01 | −11.20 ± 0.53 | 72.74 ± 1.15""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F17	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""17."", ""evidence_snippet"": ""F17 | 2.0 | 0 | 0 | 0 | 433.90 ± 5.15 | 0.224 ± 0.01 | −6.97 ± 0.14 | 77.23 ± 0.52""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F18	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""18."", ""evidence_snippet"": ""F18 | −2.0 | 0 | 0 | 0 | 326.70 ± 2.78 | 0.013 ± 0.03 | −8.54 ± 0.12 | 00.00 ± 0.00""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F19	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""19."", ""evidence_snippet"": ""F19 | 0 | 2.0 | 0 | 0 | 368.20 ± 2.65 | 0.097 ± 0.01 | −6.25 ± 0.34 | 80.29 ± 1.25""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F20	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""20."", ""evidence_snippet"": ""F20 | 0 | −2.0 | 0 | 0 | 343.80 ± 2.74 | 0.085 ± 0.03 | −8.50 ± 0.61 | 80.34 ± 0.32""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F21	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""21."", ""evidence_snippet"": ""F21 | 0 | 0 | 2.0 | 0 | 421.00 ± 3.99 | 0.153 ± 0.02 | −7.63 ± 0.15 | 77.15 ± 1.29""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F22	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""22."", ""evidence_snippet"": ""F22 | 0 | 0 | −2.0 | 0 | 340.40 ± 4.66 | 0.118 ± 0.01 | −8.06 ± 0.30 | 68.48 ± 2.45""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F23	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""23."", ""evidence_snippet"": ""F23 | 0 | 0 | 0 | 2.0 | 321.40 ± 1.47 | 0.224 ± 0.01 | −12.92 ± 0.29 | 58.70 ± 0.25""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F24	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""24."", ""evidence_snippet"": ""F24 | 0 | 0 | 0 | −2.0 | 611.80 ± 3.29 | 0.301 ± 0.04 | −2.15 ± 0.13 | 86.39 ± 1.36""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F25	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""25."", ""evidence_snippet"": ""F25 | 0 | 0 | 0 | 0 | 354.60 ± 2.62 | 0.146 ± 0.02 | −6.90 ± 0.15 | 62.01 ± 0.85""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	WIVUCMYG_DOE_Row_F26	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WIVUCMYG/payloads/WIVUCMYG__table_01__html_table__normalized.csv"", ""formulation_label"": ""26."", ""evidence_snippet"": ""F26 | 0 | 0 | 0 | 0 | 357.80 ± 3.40 | 0.147 ± 0.02 | −6.58 ± 0.22 | 62.09 ± 1.30""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WIVUCMYG	__recovery__	numbered_doe_row_recovery	WIVUCMYG_DOE_Row_F1 | WIVUCMYG_DOE_Row_F2 | WIVUCMYG_DOE_Row_F3 | WIVUCMYG_DOE_Row_F4 | WIVUCMYG_DOE_Row_F5 | WIVUCMYG_DOE_Row_F6 | WIVUCMYG_DOE_Row_F7 | WIVUCMYG_DOE_Row_F8 | WIVUCMYG_DOE_Row_F9 | WIVUCMYG_DOE_Row_F10 | WIVUCMYG_DOE_Row_F11 | WIVUCMYG_DOE_Row_F12 | WIVUCMYG_DOE_Row_F13 | WIVUCMYG_DOE_Row_F14 | WIVUCMYG_DOE_Row_F15 | WIVUCMYG_DOE_Row_F16 | WIVUCMYG_DOE_Row_F17 | WIVUCMYG_DOE_Row_F18 | WIVUCMYG_DOE_Row_F19 | WIVUCMYG_DOE_Row_F20 | WIVUCMYG_DOE_Row_F21 | WIVUCMYG_DOE_Row_F22 | WIVUCMYG_DOE_Row_F23 | WIVUCMYG_DOE_Row_F24 | WIVUCMYG_DOE_Row_F25 | WIVUCMYG_DOE_Row_F26	direct	direct	Recovered 26 explicit DOE rows from numbered table anchors.				
+5GIF3D8W	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_02__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_02__pdf_table.csv			resolved
+5GIF3D8W	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv			resolved
+5GIF3D8W	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_05__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_05__pdf_table.csv			resolved
+5GIF3D8W	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_07__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_07__pdf_table.csv			resolved
+5GIF3D8W	opt_plga50_50	identity_variables_json	5GIF3D8W__signal_factor_01 | 5GIF3D8W__signal_factor_02 | 5GIF3D8W__signal_factor_03	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+5GIF3D8W	opt_plga50_50	polymer_name_raw	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Projected from polymer component names.				
+5GIF3D8W	opt_plga50_50	polymer_identity	5GIF3D8W__opt_plga50_50__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+5GIF3D8W	opt_plga50_50	la_ga_ratio	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+5GIF3D8W	opt_plga50_50	polymer_mw_kDa	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+5GIF3D8W	opt_plga50_50	plga_mass_mg	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+5GIF3D8W	opt_plga50_50	surfactant_name	5GIF3D8W__opt_plga50_50__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+5GIF3D8W	opt_plga50_50	surfactant_concentration_text	5GIF3D8W__opt_plga50_50__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+5GIF3D8W	opt_plga50_50	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+5GIF3D8W	opt_plga50_50	la_ga_ratio_raw	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Row-specific fallback projection from polymer component name LA:GA ratio text.				
+5GIF3D8W	opt_plga50_50	la_ga_ratio_normalized	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Row-specific fallback projection from polymer component name LA:GA ratio text.				
+5GIF3D8W	opt_plga50_50	la_ga_ratio	5GIF3D8W__opt_plga50_50__polymer_name_raw	direct	direct	Row-specific fallback projection from polymer component name LA:GA ratio text.				
+5GIF3D8W	opt_plga50_50	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+5GIF3D8W	opt_plga50_50	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+5GIF3D8W	opt_plga50_50	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+5GIF3D8W	opt_plga50_50	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+5GIF3D8W	opt_plga50_50	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+5GIF3D8W	opt_plga50_50	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+5GIF3D8W	opt_plga50_50	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+5GIF3D8W	opt_plga50_50	organic_solvent	5GIF3D8W__opt_plga50_50__organic_solvent	direct	direct	Projected from solvent components.				
+5GIF3D8W	opt_plga50_50	drug_name	5GIF3D8W__opt_plga50_50__drug_name	direct	direct	Projected from drug components.				
+5GIF3D8W	opt_plga50_50	drug_feed_amount_text	5GIF3D8W__opt_plga50_50__drug_name	direct	direct	Projected from drug amount expressions.				
+5GIF3D8W	opt_plga50_50	emul_method	5GIF3D8W__opt_plga50_50__process_01	direct	direct	Projected from process-step names.				
+5GIF3D8W	opt_plga50_50	preparation_method	5GIF3D8W__opt_plga50_50__process_01	direct	direct	Projected from process-step names.				
+5GIF3D8W	opt_plga50_50	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+5GIF3D8W	opt_plga50_50	emul_type		unavailable	unavailable	No phase or factor cues available.				
+5GIF3D8W	opt_plga50_50	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga50_50	pdi		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga50_50	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga50_50	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga50_50	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga75_25	identity_variables_json	5GIF3D8W__signal_factor_01 | 5GIF3D8W__signal_factor_02 | 5GIF3D8W__signal_factor_03	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+5GIF3D8W	opt_plga75_25	polymer_name_raw	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Projected from polymer component names.				
+5GIF3D8W	opt_plga75_25	polymer_identity	5GIF3D8W__opt_plga75_25__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+5GIF3D8W	opt_plga75_25	la_ga_ratio	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+5GIF3D8W	opt_plga75_25	polymer_mw_kDa	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+5GIF3D8W	opt_plga75_25	plga_mass_mg	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+5GIF3D8W	opt_plga75_25	surfactant_name	5GIF3D8W__opt_plga75_25__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+5GIF3D8W	opt_plga75_25	surfactant_concentration_text	5GIF3D8W__opt_plga75_25__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+5GIF3D8W	opt_plga75_25	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+5GIF3D8W	opt_plga75_25	la_ga_ratio_raw	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+5GIF3D8W	opt_plga75_25	la_ga_ratio_normalized	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+5GIF3D8W	opt_plga75_25	la_ga_ratio	5GIF3D8W__opt_plga75_25__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+5GIF3D8W	opt_plga75_25	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+5GIF3D8W	opt_plga75_25	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+5GIF3D8W	opt_plga75_25	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+5GIF3D8W	opt_plga75_25	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+5GIF3D8W	opt_plga75_25	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+5GIF3D8W	opt_plga75_25	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+5GIF3D8W	opt_plga75_25	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+5GIF3D8W	opt_plga75_25	organic_solvent	5GIF3D8W__opt_plga75_25__organic_solvent	direct	direct	Projected from solvent components.				
+5GIF3D8W	opt_plga75_25	drug_name	5GIF3D8W__opt_plga75_25__drug_name	direct	direct	Projected from drug components.				
+5GIF3D8W	opt_plga75_25	drug_feed_amount_text	5GIF3D8W__opt_plga75_25__drug_name	direct	direct	Projected from drug amount expressions.				
+5GIF3D8W	opt_plga75_25	emul_method	5GIF3D8W__opt_plga75_25__process_01	direct	direct	Projected from process-step names.				
+5GIF3D8W	opt_plga75_25	preparation_method	5GIF3D8W__opt_plga75_25__process_01	direct	direct	Projected from process-step names.				
+5GIF3D8W	opt_plga75_25	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+5GIF3D8W	opt_plga75_25	emul_type		unavailable	unavailable	No phase or factor cues available.				
+5GIF3D8W	opt_plga75_25	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga75_25	pdi		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga75_25	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga75_25	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+5GIF3D8W	opt_plga75_25	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+7ZS858NS	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_03__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_03__pdf_table.csv			resolved
+7ZS858NS	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_04__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_04__pdf_table.csv			resolved
+7ZS858NS	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_07__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_07__pdf_table.csv			resolved
+7ZS858NS	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_08__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_08__pdf_table.csv			resolved
+7ZS858NS	F1	identity_variables_json	7ZS858NS__signal_factor_01	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+7ZS858NS	F1	polymer_name_raw	7ZS858NS__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+7ZS858NS	F1	polymer_identity	7ZS858NS__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+7ZS858NS	F1	la_ga_ratio	7ZS858NS__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+7ZS858NS	F1	polymer_mw_kDa	7ZS858NS__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+7ZS858NS	F1	plga_mass_mg	7ZS858NS__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+7ZS858NS	F1	surfactant_name	7ZS858NS__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+7ZS858NS	F1	surfactant_concentration_text	7ZS858NS__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+7ZS858NS	F1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+7ZS858NS	F1	la_ga_ratio_raw	7ZS858NS__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+7ZS858NS	F1	la_ga_ratio_normalized	7ZS858NS__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+7ZS858NS	F1	la_ga_ratio	7ZS858NS__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+7ZS858NS	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+7ZS858NS	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+7ZS858NS	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+7ZS858NS	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+7ZS858NS	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+7ZS858NS	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+7ZS858NS	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+7ZS858NS	F1	organic_solvent	7ZS858NS__F1__organic_solvent	direct	direct	Projected from solvent components.				
+7ZS858NS	F1	drug_name	7ZS858NS__F1__drug_name	direct	direct	Projected from drug components.				
+7ZS858NS	F1	drug_feed_amount_text	7ZS858NS__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+7ZS858NS	F1	emul_method	7ZS858NS__F1__process_01	direct	direct	Projected from process-step names.				
+7ZS858NS	F1	preparation_method	7ZS858NS__F1__process_01	direct	direct	Projected from process-step names.				
+7ZS858NS	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+7ZS858NS	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+7ZS858NS	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+7ZS858NS	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+7ZS858NS	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+7ZS858NS	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+7ZS858NS	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/BB3JUVW7/BB3JUVW7__table_01__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/BB3JUVW7/BB3JUVW7__table_01__html_table.csv			resolved
+BB3JUVW7	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/BB3JUVW7/BB3JUVW7__table_02__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/BB3JUVW7/BB3JUVW7__table_02__html_table.csv			resolved
+BB3JUVW7	F1	identity_variables_json	BB3JUVW7__signal_factor_01 | BB3JUVW7__signal_factor_02 | BB3JUVW7__signal_factor_03 | BB3JUVW7__signal_factor_04 | BB3JUVW7__signal_factor_05	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+BB3JUVW7	F1	polymer_name_raw	BB3JUVW7__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+BB3JUVW7	F1	polymer_identity	BB3JUVW7__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+BB3JUVW7	F1	la_ga_ratio	BB3JUVW7__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+BB3JUVW7	F1	polymer_mw_kDa	BB3JUVW7__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+BB3JUVW7	F1	plga_mass_mg	BB3JUVW7__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+BB3JUVW7	F1	surfactant_name	BB3JUVW7__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+BB3JUVW7	F1	surfactant_concentration_text	BB3JUVW7__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+BB3JUVW7	F1	pva_conc_percent	BB3JUVW7__F1__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+BB3JUVW7	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+BB3JUVW7	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+BB3JUVW7	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+BB3JUVW7	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+BB3JUVW7	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+BB3JUVW7	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+BB3JUVW7	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+BB3JUVW7	F1	organic_solvent	BB3JUVW7__F1__organic_solvent	direct	direct	Projected from solvent components.				
+BB3JUVW7	F1	drug_name	BB3JUVW7__F1__drug_name	direct	direct	Projected from drug components.				
+BB3JUVW7	F1	drug_feed_amount_text	BB3JUVW7__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+BB3JUVW7	F1	emul_method	BB3JUVW7__F1__process_01	direct	direct	Projected from process-step names.				
+BB3JUVW7	F1	preparation_method	BB3JUVW7__F1__process_01	direct	direct	Projected from process-step names.				
+BB3JUVW7	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+BB3JUVW7	F1	emul_type		derived	derived	Derived from phase candidates and factor hints.				
+BB3JUVW7	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F2	identity_variables_json	BB3JUVW7__signal_factor_01 | BB3JUVW7__signal_factor_02 | BB3JUVW7__signal_factor_03 | BB3JUVW7__signal_factor_04 | BB3JUVW7__signal_factor_05	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+BB3JUVW7	F2	polymer_name_raw	BB3JUVW7__F2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+BB3JUVW7	F2	polymer_identity	BB3JUVW7__F2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+BB3JUVW7	F2	la_ga_ratio	BB3JUVW7__F2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+BB3JUVW7	F2	polymer_mw_kDa	BB3JUVW7__F2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+BB3JUVW7	F2	plga_mass_mg	BB3JUVW7__F2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+BB3JUVW7	F2	surfactant_name	BB3JUVW7__F2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+BB3JUVW7	F2	surfactant_concentration_text	BB3JUVW7__F2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+BB3JUVW7	F2	pva_conc_percent	BB3JUVW7__F2__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+BB3JUVW7	F2	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+BB3JUVW7	F2	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+BB3JUVW7	F2	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+BB3JUVW7	F2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+BB3JUVW7	F2	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+BB3JUVW7	F2	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+BB3JUVW7	F2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+BB3JUVW7	F2	organic_solvent	BB3JUVW7__F2__organic_solvent	direct	direct	Projected from solvent components.				
+BB3JUVW7	F2	drug_name	BB3JUVW7__F2__drug_name	direct	direct	Projected from drug components.				
+BB3JUVW7	F2	drug_feed_amount_text	BB3JUVW7__F2__drug_name	direct	direct	Projected from drug amount expressions.				
+BB3JUVW7	F2	emul_method	BB3JUVW7__F2__process_01	direct	direct	Projected from process-step names.				
+BB3JUVW7	F2	preparation_method	BB3JUVW7__F2__process_01	direct	direct	Projected from process-step names.				
+BB3JUVW7	F2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+BB3JUVW7	F2	emul_type		derived	derived	Derived from phase candidates and factor hints.				
+BB3JUVW7	F2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+BB3JUVW7	F2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+BXCV5XWB	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/BXCV5XWB/BXCV5XWB__table_01__html_table_asset.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/BXCV5XWB/BXCV5XWB__table_01__html_table_asset.csv			resolved
+BXCV5XWB	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/BXCV5XWB/BXCV5XWB__table_02__html_table_asset.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/BXCV5XWB/BXCV5XWB__table_02__html_table_asset.csv			resolved
+BXCV5XWB	F1	identity_variables_json	BXCV5XWB__signal_factor_01 | BXCV5XWB__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+BXCV5XWB	F1	polymer_name_raw	BXCV5XWB__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+BXCV5XWB	F1	polymer_identity	BXCV5XWB__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+BXCV5XWB	F1	la_ga_ratio	BXCV5XWB__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+BXCV5XWB	F1	polymer_mw_kDa	BXCV5XWB__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+BXCV5XWB	F1	plga_mass_mg	BXCV5XWB__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+BXCV5XWB	F1	surfactant_name	BXCV5XWB__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+BXCV5XWB	F1	surfactant_concentration_text	BXCV5XWB__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+BXCV5XWB	F1	pva_conc_percent	BXCV5XWB__F1__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+BXCV5XWB	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+BXCV5XWB	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+BXCV5XWB	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+BXCV5XWB	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+BXCV5XWB	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+BXCV5XWB	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+BXCV5XWB	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+BXCV5XWB	F1	organic_solvent	BXCV5XWB__F1__organic_solvent	direct	direct	Projected from solvent components.				
+BXCV5XWB	F1	drug_name	BXCV5XWB__F1__drug_name	direct	direct	Projected from drug components.				
+BXCV5XWB	F1	drug_feed_amount_text	BXCV5XWB__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+BXCV5XWB	F1	emul_method	BXCV5XWB__F1__process_01	direct	direct	Projected from process-step names.				
+BXCV5XWB	F1	preparation_method	BXCV5XWB__F1__process_01	direct	direct	Projected from process-step names.				
+BXCV5XWB	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+BXCV5XWB	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+BXCV5XWB	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F2	identity_variables_json	BXCV5XWB__signal_factor_01 | BXCV5XWB__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+BXCV5XWB	F2	polymer_name_raw	BXCV5XWB__F2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+BXCV5XWB	F2	polymer_identity	BXCV5XWB__F2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+BXCV5XWB	F2	la_ga_ratio	BXCV5XWB__F2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+BXCV5XWB	F2	polymer_mw_kDa	BXCV5XWB__F2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+BXCV5XWB	F2	plga_mass_mg	BXCV5XWB__F2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+BXCV5XWB	F2	surfactant_name	BXCV5XWB__F2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+BXCV5XWB	F2	surfactant_concentration_text	BXCV5XWB__F2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+BXCV5XWB	F2	pva_conc_percent	BXCV5XWB__F2__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+BXCV5XWB	F2	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+BXCV5XWB	F2	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+BXCV5XWB	F2	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+BXCV5XWB	F2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+BXCV5XWB	F2	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+BXCV5XWB	F2	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+BXCV5XWB	F2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+BXCV5XWB	F2	organic_solvent	BXCV5XWB__F2__organic_solvent	direct	direct	Projected from solvent components.				
+BXCV5XWB	F2	drug_name	BXCV5XWB__F2__drug_name	direct	direct	Projected from drug components.				
+BXCV5XWB	F2	drug_feed_amount_text	BXCV5XWB__F2__drug_name	direct	direct	Projected from drug amount expressions.				
+BXCV5XWB	F2	emul_method	BXCV5XWB__F2__process_01	direct	direct	Projected from process-step names.				
+BXCV5XWB	F2	preparation_method	BXCV5XWB__F2__process_01	direct	direct	Projected from process-step names.				
+BXCV5XWB	F2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+BXCV5XWB	F2	emul_type		unavailable	unavailable	No phase or factor cues available.				
+BXCV5XWB	F2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+BXCV5XWB	F2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+INMUTV7L	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_06__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_06__pdf_table.csv			resolved
+INMUTV7L	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_08__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_08__pdf_table.csv			resolved
+INMUTV7L	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_13__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_13__pdf_table.csv			resolved
+INMUTV7L	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_15__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_15__pdf_table.csv			resolved
+INMUTV7L	F1	identity_variables_json	INMUTV7L__signal_factor_01 | INMUTV7L__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+INMUTV7L	F1	polymer_name_raw	INMUTV7L__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+INMUTV7L	F1	polymer_identity	INMUTV7L__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+INMUTV7L	F1	la_ga_ratio	INMUTV7L__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+INMUTV7L	F1	polymer_mw_kDa	INMUTV7L__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+INMUTV7L	F1	plga_mass_mg	INMUTV7L__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+INMUTV7L	F1	surfactant_name	INMUTV7L__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+INMUTV7L	F1	surfactant_concentration_text	INMUTV7L__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+INMUTV7L	F1	pva_conc_percent	INMUTV7L__F1__surfactant_name	direct	direct	Projected only for PVA-labeled surfactant components.				
+INMUTV7L	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+INMUTV7L	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+INMUTV7L	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+INMUTV7L	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+INMUTV7L	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+INMUTV7L	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+INMUTV7L	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+INMUTV7L	F1	organic_solvent	INMUTV7L__F1__organic_solvent	direct	direct	Projected from solvent components.				
+INMUTV7L	F1	drug_name	INMUTV7L__F1__drug_name	direct	direct	Projected from drug components.				
+INMUTV7L	F1	drug_feed_amount_text	INMUTV7L__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+INMUTV7L	F1	emul_method	INMUTV7L__F1__process_01	direct	direct	Projected from process-step names.				
+INMUTV7L	F1	preparation_method	INMUTV7L__F1__process_01	direct	direct	Projected from process-step names.				
+INMUTV7L	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+INMUTV7L	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+INMUTV7L	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+INMUTV7L	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+INMUTV7L	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+INMUTV7L	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+INMUTV7L	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+PA3SPZ28	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_01__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_01__pdf_table.csv			resolved
+PA3SPZ28	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_07__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_07__pdf_table.csv			resolved
+PA3SPZ28	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv			resolved
+PA3SPZ28	F1	identity_variables_json	PA3SPZ28__signal_factor_01	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+PA3SPZ28	F1	polymer_name_raw	PA3SPZ28__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+PA3SPZ28	F1	polymer_identity	PA3SPZ28__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+PA3SPZ28	F1	la_ga_ratio	PA3SPZ28__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+PA3SPZ28	F1	polymer_mw_kDa	PA3SPZ28__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+PA3SPZ28	F1	plga_mass_mg	PA3SPZ28__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+PA3SPZ28	F1	surfactant_name	PA3SPZ28__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+PA3SPZ28	F1	surfactant_concentration_text	PA3SPZ28__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+PA3SPZ28	F1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+PA3SPZ28	F1	la_ga_ratio_raw	PA3SPZ28__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F1	la_ga_ratio_normalized	PA3SPZ28__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F1	la_ga_ratio	PA3SPZ28__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+PA3SPZ28	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+PA3SPZ28	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+PA3SPZ28	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+PA3SPZ28	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+PA3SPZ28	F1	drug_to_polymer_ratio_raw	PA3SPZ28__signal_factor_01	direct	direct	Projected from factor-level drug-to-polymer ratio expressions.				
+PA3SPZ28	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+PA3SPZ28	F1	organic_solvent	PA3SPZ28__F1__organic_solvent	direct	direct	Projected from solvent components.				
+PA3SPZ28	F1	drug_name	PA3SPZ28__F1__drug_name	direct	direct	Projected from drug components.				
+PA3SPZ28	F1	drug_feed_amount_text	PA3SPZ28__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+PA3SPZ28	F1	emul_method	PA3SPZ28__F1__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F1	preparation_method	PA3SPZ28__F1__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+PA3SPZ28	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+PA3SPZ28	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F2	identity_variables_json	PA3SPZ28__signal_factor_01	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+PA3SPZ28	F2	polymer_name_raw	PA3SPZ28__F2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+PA3SPZ28	F2	polymer_identity	PA3SPZ28__F2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+PA3SPZ28	F2	la_ga_ratio	PA3SPZ28__F2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+PA3SPZ28	F2	polymer_mw_kDa	PA3SPZ28__F2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+PA3SPZ28	F2	plga_mass_mg	PA3SPZ28__F2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+PA3SPZ28	F2	surfactant_name	PA3SPZ28__F2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+PA3SPZ28	F2	surfactant_concentration_text	PA3SPZ28__F2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+PA3SPZ28	F2	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+PA3SPZ28	F2	la_ga_ratio_raw	PA3SPZ28__F2__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F2	la_ga_ratio_normalized	PA3SPZ28__F2__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F2	la_ga_ratio	PA3SPZ28__F2__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F2	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+PA3SPZ28	F2	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+PA3SPZ28	F2	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+PA3SPZ28	F2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+PA3SPZ28	F2	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+PA3SPZ28	F2	drug_to_polymer_ratio_raw	PA3SPZ28__signal_factor_01	direct	direct	Projected from factor-level drug-to-polymer ratio expressions.				
+PA3SPZ28	F2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+PA3SPZ28	F2	organic_solvent	PA3SPZ28__F2__organic_solvent	direct	direct	Projected from solvent components.				
+PA3SPZ28	F2	drug_name	PA3SPZ28__F2__drug_name	direct	direct	Projected from drug components.				
+PA3SPZ28	F2	drug_feed_amount_text	PA3SPZ28__F2__drug_name	direct	direct	Projected from drug amount expressions.				
+PA3SPZ28	F2	emul_method	PA3SPZ28__F2__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F2	preparation_method	PA3SPZ28__F2__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+PA3SPZ28	F2	emul_type		unavailable	unavailable	No phase or factor cues available.				
+PA3SPZ28	F2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F3	identity_variables_json	PA3SPZ28__signal_factor_01	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+PA3SPZ28	F3	polymer_name_raw	PA3SPZ28__F3__polymer_name_raw	direct	direct	Projected from polymer component names.				
+PA3SPZ28	F3	polymer_identity	PA3SPZ28__F3__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+PA3SPZ28	F3	la_ga_ratio	PA3SPZ28__F3__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+PA3SPZ28	F3	polymer_mw_kDa	PA3SPZ28__F3__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+PA3SPZ28	F3	plga_mass_mg	PA3SPZ28__F3__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+PA3SPZ28	F3	surfactant_name	PA3SPZ28__F3__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+PA3SPZ28	F3	surfactant_concentration_text	PA3SPZ28__F3__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+PA3SPZ28	F3	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+PA3SPZ28	F3	la_ga_ratio_raw	PA3SPZ28__F3__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F3	la_ga_ratio_normalized	PA3SPZ28__F3__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F3	la_ga_ratio	PA3SPZ28__F3__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F3	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+PA3SPZ28	F3	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+PA3SPZ28	F3	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+PA3SPZ28	F3	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+PA3SPZ28	F3	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+PA3SPZ28	F3	drug_to_polymer_ratio_raw	PA3SPZ28__signal_factor_01	direct	direct	Projected from factor-level drug-to-polymer ratio expressions.				
+PA3SPZ28	F3	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+PA3SPZ28	F3	organic_solvent	PA3SPZ28__F3__organic_solvent	direct	direct	Projected from solvent components.				
+PA3SPZ28	F3	drug_name	PA3SPZ28__F3__drug_name	direct	direct	Projected from drug components.				
+PA3SPZ28	F3	drug_feed_amount_text	PA3SPZ28__F3__drug_name	direct	direct	Projected from drug amount expressions.				
+PA3SPZ28	F3	emul_method	PA3SPZ28__F3__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F3	preparation_method	PA3SPZ28__F3__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F3	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+PA3SPZ28	F3	emul_type		unavailable	unavailable	No phase or factor cues available.				
+PA3SPZ28	F3	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F3	pdi		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F3	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F3	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F3	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F4	identity_variables_json	PA3SPZ28__signal_factor_01	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+PA3SPZ28	F4	polymer_name_raw	PA3SPZ28__F4__polymer_name_raw	direct	direct	Projected from polymer component names.				
+PA3SPZ28	F4	polymer_identity	PA3SPZ28__F4__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+PA3SPZ28	F4	la_ga_ratio	PA3SPZ28__F4__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+PA3SPZ28	F4	polymer_mw_kDa	PA3SPZ28__F4__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+PA3SPZ28	F4	plga_mass_mg	PA3SPZ28__F4__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+PA3SPZ28	F4	surfactant_name	PA3SPZ28__F4__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+PA3SPZ28	F4	surfactant_concentration_text	PA3SPZ28__F4__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+PA3SPZ28	F4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+PA3SPZ28	F4	la_ga_ratio_raw	PA3SPZ28__F4__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F4	la_ga_ratio_normalized	PA3SPZ28__F4__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F4	la_ga_ratio	PA3SPZ28__F4__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+PA3SPZ28	F4	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+PA3SPZ28	F4	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+PA3SPZ28	F4	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+PA3SPZ28	F4	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+PA3SPZ28	F4	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+PA3SPZ28	F4	drug_to_polymer_ratio_raw	PA3SPZ28__signal_factor_01	direct	direct	Projected from factor-level drug-to-polymer ratio expressions.				
+PA3SPZ28	F4	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+PA3SPZ28	F4	organic_solvent	PA3SPZ28__F4__organic_solvent	direct	direct	Projected from solvent components.				
+PA3SPZ28	F4	drug_name	PA3SPZ28__F4__drug_name	direct	direct	Projected from drug components.				
+PA3SPZ28	F4	drug_feed_amount_text	PA3SPZ28__F4__drug_name	direct	direct	Projected from drug amount expressions.				
+PA3SPZ28	F4	emul_method	PA3SPZ28__F4__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F4	preparation_method	PA3SPZ28__F4__process_01	direct	direct	Projected from process-step names.				
+PA3SPZ28	F4	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+PA3SPZ28	F4	emul_type		unavailable	unavailable	No phase or factor cues available.				
+PA3SPZ28	F4	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F4	pdi		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F4	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+PA3SPZ28	F4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+QLYKLPKT	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_02__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_02__pdf_table.csv			resolved
+QLYKLPKT	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_07__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_07__pdf_table.csv			resolved
+QLYKLPKT	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_11__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_11__pdf_table.csv			resolved
+QLYKLPKT	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_16__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_16__pdf_table.csv			resolved
+QLYKLPKT	f1	identity_variables_json	QLYKLPKT__signal_factor_01 | QLYKLPKT__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+QLYKLPKT	f1	polymer_name_raw	QLYKLPKT__f1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+QLYKLPKT	f1	polymer_identity	QLYKLPKT__f1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+QLYKLPKT	f1	la_ga_ratio	QLYKLPKT__f1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+QLYKLPKT	f1	polymer_mw_kDa	QLYKLPKT__f1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+QLYKLPKT	f1	plga_mass_mg	QLYKLPKT__f1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+QLYKLPKT	f1	surfactant_name	QLYKLPKT__f1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+QLYKLPKT	f1	surfactant_concentration_text	QLYKLPKT__f1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+QLYKLPKT	f1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+QLYKLPKT	f1	la_ga_ratio_raw	QLYKLPKT__f1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+QLYKLPKT	f1	la_ga_ratio_normalized	QLYKLPKT__f1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+QLYKLPKT	f1	la_ga_ratio	QLYKLPKT__f1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+QLYKLPKT	f1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+QLYKLPKT	f1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+QLYKLPKT	f1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+QLYKLPKT	f1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+QLYKLPKT	f1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+QLYKLPKT	f1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+QLYKLPKT	f1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+QLYKLPKT	f1	organic_solvent	QLYKLPKT__f1__organic_solvent	direct	direct	Projected from solvent components.				
+QLYKLPKT	f1	drug_name	QLYKLPKT__f1__drug_name	direct	direct	Projected from drug components.				
+QLYKLPKT	f1	drug_feed_amount_text	QLYKLPKT__f1__drug_name	direct	direct	Projected from drug amount expressions.				
+QLYKLPKT	f1	emul_method	QLYKLPKT__f1__process_01	direct	direct	Projected from process-step names.				
+QLYKLPKT	f1	preparation_method	QLYKLPKT__f1__process_01	direct	direct	Projected from process-step names.				
+QLYKLPKT	f1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+QLYKLPKT	f1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+QLYKLPKT	f1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+QLYKLPKT	f1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+QLYKLPKT	f1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+QLYKLPKT	f1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+QLYKLPKT	f1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+										
+RHMJWZX8	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_09__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_09__pdf_table.csv			resolved
+RHMJWZX8	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_10__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_10__pdf_table.csv			resolved
+RHMJWZX8	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_13__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_13__pdf_table.csv			resolved
+RHMJWZX8	form_1	identity_variables_json	RHMJWZX8__signal_factor_01 | RHMJWZX8__signal_factor_02 | RHMJWZX8__signal_factor_03 | RHMJWZX8__signal_factor_04 | RHMJWZX8__signal_factor_05 | RHMJWZX8__signal_factor_06	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+RHMJWZX8	form_1	polymer_name_raw	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+RHMJWZX8	form_1	polymer_identity	RHMJWZX8__form_1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+RHMJWZX8	form_1	la_ga_ratio	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+RHMJWZX8	form_1	polymer_mw_kDa	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+RHMJWZX8	form_1	plga_mass_mg	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+RHMJWZX8	form_1	surfactant_name	RHMJWZX8__form_1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+RHMJWZX8	form_1	surfactant_concentration_text	RHMJWZX8__form_1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+RHMJWZX8	form_1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+RHMJWZX8	form_1	la_ga_ratio_raw	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+RHMJWZX8	form_1	la_ga_ratio_normalized	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+RHMJWZX8	form_1	la_ga_ratio	RHMJWZX8__form_1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+RHMJWZX8	form_1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+RHMJWZX8	form_1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+RHMJWZX8	form_1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+RHMJWZX8	form_1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+RHMJWZX8	form_1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+RHMJWZX8	form_1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+RHMJWZX8	form_1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+RHMJWZX8	form_1	organic_solvent	RHMJWZX8__form_1__organic_solvent	direct	direct	Projected from solvent components.				
+RHMJWZX8	form_1	drug_name	RHMJWZX8__form_1__drug_name	direct	direct	Projected from drug components.				
+RHMJWZX8	form_1	drug_feed_amount_text	RHMJWZX8__form_1__drug_name	direct	direct	Projected from drug amount expressions.				
+RHMJWZX8	form_1	emul_method	RHMJWZX8__form_1__process_01	direct	direct	Projected from process-step names.				
+RHMJWZX8	form_1	preparation_method	RHMJWZX8__form_1__process_01	direct	direct	Projected from process-step names.				
+RHMJWZX8	form_1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+RHMJWZX8	form_1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+RHMJWZX8	form_1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+RHMJWZX8	form_1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+RHMJWZX8	form_1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+RHMJWZX8	form_1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+RHMJWZX8	form_1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_07__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_07__pdf_table.csv			resolved
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_09__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_09__pdf_table.csv			resolved
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_10__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_10__pdf_table.csv			resolved
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_11__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_11__pdf_table.csv			resolved
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_12__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_12__pdf_table.csv			resolved
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_13__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_13__pdf_table.csv			resolved
+UFXX9WXE	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_17__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_17__pdf_table.csv			resolved
+UFXX9WXE	F1	identity_variables_json	UFXX9WXE__signal_factor_01 | UFXX9WXE__signal_factor_02 | UFXX9WXE__signal_factor_03 | UFXX9WXE__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+UFXX9WXE	F1	polymer_name_raw	UFXX9WXE__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+UFXX9WXE	F1	polymer_identity	UFXX9WXE__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+UFXX9WXE	F1	la_ga_ratio	UFXX9WXE__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+UFXX9WXE	F1	polymer_mw_kDa	UFXX9WXE__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+UFXX9WXE	F1	plga_mass_mg	UFXX9WXE__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+UFXX9WXE	F1	surfactant_name	UFXX9WXE__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+UFXX9WXE	F1	surfactant_concentration_text	UFXX9WXE__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+UFXX9WXE	F1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+UFXX9WXE	F1	la_ga_ratio_raw	UFXX9WXE__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+UFXX9WXE	F1	la_ga_ratio_normalized	UFXX9WXE__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+UFXX9WXE	F1	la_ga_ratio	UFXX9WXE__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+UFXX9WXE	F1	polymer_concentration_value	UFXX9WXE__signal_factor_01	invalid_type_rejected	direct	Projected from factor-level polymer concentration expressions. Rejected by Stage2 direct type validator: invalid_concentration_missing_concentration_unit.				
+UFXX9WXE	F1	polymer_concentration_unit	UFXX9WXE__signal_factor_01	direct	direct	Projected from factor-level polymer concentration units.				
+UFXX9WXE	F1	polymer_concentration_phase	UFXX9WXE__signal_factor_01	direct	direct	Projected from polymer concentration factor names.				
+UFXX9WXE	F1	phase_ratio_raw	UFXX9WXE__signal_factor_03	direct	direct	Projected from factor-level phase ratio expressions.				
+UFXX9WXE	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+UFXX9WXE	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+UFXX9WXE	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+UFXX9WXE	F1	organic_solvent	UFXX9WXE__F1__organic_solvent	direct	direct	Projected from solvent components.				
+UFXX9WXE	F1	drug_name	UFXX9WXE__F1__drug_name	direct	direct	Projected from drug components.				
+UFXX9WXE	F1	drug_feed_amount_text	UFXX9WXE__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+UFXX9WXE	F1	emul_method	UFXX9WXE__F1__process_01	direct	direct	Projected from process-step names.				
+UFXX9WXE	F1	preparation_method	UFXX9WXE__F1__process_01	direct	direct	Projected from process-step names.				
+UFXX9WXE	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+UFXX9WXE	F1	emul_type		derived	derived	Derived from phase candidates and factor hints.				
+UFXX9WXE	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+UFXX9WXE	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+UFXX9WXE	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+UFXX9WXE	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+UFXX9WXE	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+UFXX9WXE	UFXX9WXE_DOE_Row_1	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""1."", ""evidence_snippet"": ""1. | 35 | 2 | 6 | 1 | 211 ± 0.11 | 70 ± 1.3 | 0.183 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_2	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""2."", ""evidence_snippet"": ""2. | 35 | 2 | 6 | 5 | 220 ± 0.8 | 88.48 ± 0.8 | 0.150 ± 0.003""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_3	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""3."", ""evidence_snippet"": ""3. | 10 | 8.50 | 10 | 3 | 176 ± 0.5 | 83 ± 0.5 | 0.048 ± 0.001""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_4	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""4."", ""evidence_snippet"": ""4. | 35 | 8.50 | 2 | 1 | 177 ± 1.2 | 71 ± 1.5 | 0.17 ± 0.004""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_5	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""5."", ""evidence_snippet"": ""5. | 10 | 2 | 6 | 3 | 205 ± 0.9 | 81 ± 0.7 | 0.315 ± 0.003""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_6	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""6."", ""evidence_snippet"": ""6. | 10 | 8.50 | 6 | 5 | 177 ± 1.6 | 83.5 ± 0.5 | 0.110 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_7	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""7."", ""evidence_snippet"": ""7 . | 10 | 8.50 | 2 | 3 | 184 ± 1.5 | 75 ± 0.35 | 0.078 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_8	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""8."", ""evidence_snippet"": ""8. | 35 | 8.50 | 6 | 3 | 197 ± 0.5 | 86.6 ± 0.65 | 0.112 ± 0.004""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_9	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""9."", ""evidence_snippet"": ""9. | 60 | 8.50 | 6 | 1 | 271 ± 0.8 | 76 ± 0.22 | 0.24 ± 0.001""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_10	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""10."", ""evidence_snippet"": ""10. | 35 | 15 | 6 | 5 | 192 ± 1.4 | 84.3 ± 0.35 | 0.19 ± 0.001""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_11	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""11."", ""evidence_snippet"": ""11. | 10 | 15 | 6 | 3 | 177 ± 0.6 | 80 ± 2.1 | 0.04 ± 0.003""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_12	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""12."", ""evidence_snippet"": ""12. | 60 | 2 | 6 | 3 | 318 ± 1.2 | 90.1 ± 0.8 | 0.441 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_13	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""13."", ""evidence_snippet"": ""13. | 35 | 15 | 10 | 3 | 191 ± 1.5 | 83.5 ± 1 | 0.17 ± 0.003""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_14	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""14."", ""evidence_snippet"": ""14. | 60 | 15 | 6 | 3 | 228 ± 0.5 | 82 ± 0.4 | 0.15 ± 0.001""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_15	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""15."", ""evidence_snippet"": ""15. | 60 | 8.50 | 2 | 3 | 241 ± 0.4 | 88 ± 0.85 | 0.309 ± 0.005""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_16	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""16."", ""evidence_snippet"": ""16. | 35 | 15 | 6 | 1 | 182.5 ± 0.5 | 66.4 ± 0.2 | 0.09 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_17	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""17."", ""evidence_snippet"": ""17. | 35 | 2 | 2 | 3 | 215 ± 0.7 | 87.83 ± 0.1 | 0.15 ± 0.005""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_18	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""18."", ""evidence_snippet"": ""18. | 60 | 8.50 | 6 | 5 | 261 ± 0.5 | 89 ± 1.7 | 0.20 ± 0.001""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_19	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""19."", ""evidence_snippet"": ""19. | 35 | 8.50 | 2 | 5 | 193 ± 1.1 | 88 ± 1.5 | 0.10 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_20	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""20."", ""evidence_snippet"": ""20. | 10 | 8.50 | 6 | 1 | 167 ± 0.8 | 65.5 ± 1.1 | 0.21 ± 0.005""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_21	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""21."", ""evidence_snippet"": ""21. | 35 | 8.50 | 10 | 1 | 192 ± 1.7 | 69 ± 0.6 | 0.28 ± 0.001""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_22	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""22."", ""evidence_snippet"": ""22. | 35 | 2 | 10 | 3 | 241 ± 1.5 | 88 ± 1.5 | 0.21 ± 0.003""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_23	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""23."", ""evidence_snippet"": ""23. | 35 | 8.50 | 10 | 5 | 202 ± 1.2 | 87 ± 1 | 0.19 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_24	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""24."", ""evidence_snippet"": ""24. | 35 | 15 | 2 | 3 | 186 ± 1.5 | 84 ± 0.8 | 0.15 ± 0.002""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_25	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""25."", ""evidence_snippet"": ""25. | 60 | 8.50 | 10 | 3 | 283 ± 0.7 | 88 ± 1.4 | 0.15 ± 0.006""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	UFXX9WXE_DOE_Row_26	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/UFXX9WXE/payloads/UFXX9WXE__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""26."", ""evidence_snippet"": ""26. | 35 | 8.50 | 6 | 3 | 193 ± 0.5 | 85.12 ± 0.7 | 0.102 ± 0.004""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+UFXX9WXE	__recovery__	numbered_doe_row_recovery	UFXX9WXE_DOE_Row_1 | UFXX9WXE_DOE_Row_2 | UFXX9WXE_DOE_Row_3 | UFXX9WXE_DOE_Row_4 | UFXX9WXE_DOE_Row_5 | UFXX9WXE_DOE_Row_6 | UFXX9WXE_DOE_Row_7 | UFXX9WXE_DOE_Row_8 | UFXX9WXE_DOE_Row_9 | UFXX9WXE_DOE_Row_10 | UFXX9WXE_DOE_Row_11 | UFXX9WXE_DOE_Row_12 | UFXX9WXE_DOE_Row_13 | UFXX9WXE_DOE_Row_14 | UFXX9WXE_DOE_Row_15 | UFXX9WXE_DOE_Row_16 | UFXX9WXE_DOE_Row_17 | UFXX9WXE_DOE_Row_18 | UFXX9WXE_DOE_Row_19 | UFXX9WXE_DOE_Row_20 | UFXX9WXE_DOE_Row_21 | UFXX9WXE_DOE_Row_22 | UFXX9WXE_DOE_Row_23 | UFXX9WXE_DOE_Row_24 | UFXX9WXE_DOE_Row_25 | UFXX9WXE_DOE_Row_26	direct	direct	Recovered 26 explicit DOE rows from numbered table anchors.				
+V99GKZEI	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/V99GKZEI/V99GKZEI__table_01__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/V99GKZEI/V99GKZEI__table_01__html_table.csv			resolved
+V99GKZEI	F1	identity_variables_json	V99GKZEI__signal_factor_01 | V99GKZEI__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+V99GKZEI	F1	polymer_name_raw	V99GKZEI__F1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+V99GKZEI	F1	polymer_identity	V99GKZEI__F1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+V99GKZEI	F1	la_ga_ratio	V99GKZEI__F1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+V99GKZEI	F1	polymer_mw_kDa	V99GKZEI__F1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+V99GKZEI	F1	plga_mass_mg	V99GKZEI__F1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+V99GKZEI	F1	surfactant_name	V99GKZEI__F1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+V99GKZEI	F1	surfactant_concentration_text	V99GKZEI__F1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+V99GKZEI	F1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+V99GKZEI	F1	la_ga_ratio_raw	V99GKZEI__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F1	la_ga_ratio_normalized	V99GKZEI__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F1	la_ga_ratio	V99GKZEI__F1__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F1	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+V99GKZEI	F1	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+V99GKZEI	F1	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+V99GKZEI	F1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+V99GKZEI	F1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+V99GKZEI	F1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+V99GKZEI	F1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+V99GKZEI	F1	organic_solvent	V99GKZEI__F1__organic_solvent	direct	direct	Projected from solvent components.				
+V99GKZEI	F1	drug_name	V99GKZEI__F1__drug_name	direct	direct	Projected from drug components.				
+V99GKZEI	F1	drug_feed_amount_text	V99GKZEI__F1__drug_name	direct	direct	Projected from drug amount expressions.				
+V99GKZEI	F1	emul_method	V99GKZEI__F1__process_01	direct	direct	Projected from process-step names.				
+V99GKZEI	F1	preparation_method	V99GKZEI__F1__process_01	direct	direct	Projected from process-step names.				
+V99GKZEI	F1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+V99GKZEI	F1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+V99GKZEI	F1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F2	identity_variables_json	V99GKZEI__signal_factor_01 | V99GKZEI__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+V99GKZEI	F2	polymer_name_raw	V99GKZEI__F2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+V99GKZEI	F2	polymer_identity	V99GKZEI__F2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+V99GKZEI	F2	la_ga_ratio	V99GKZEI__F2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+V99GKZEI	F2	polymer_mw_kDa	V99GKZEI__F2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+V99GKZEI	F2	plga_mass_mg	V99GKZEI__F2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+V99GKZEI	F2	surfactant_name	V99GKZEI__F2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+V99GKZEI	F2	surfactant_concentration_text	V99GKZEI__F2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+V99GKZEI	F2	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+V99GKZEI	F2	la_ga_ratio_raw	V99GKZEI__F2__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F2	la_ga_ratio_normalized	V99GKZEI__F2__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F2	la_ga_ratio	V99GKZEI__F2__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F2	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+V99GKZEI	F2	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+V99GKZEI	F2	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+V99GKZEI	F2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+V99GKZEI	F2	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+V99GKZEI	F2	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+V99GKZEI	F2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+V99GKZEI	F2	organic_solvent	V99GKZEI__F2__organic_solvent	direct	direct	Projected from solvent components.				
+V99GKZEI	F2	drug_name	V99GKZEI__F2__drug_name	direct	direct	Projected from drug components.				
+V99GKZEI	F2	drug_feed_amount_text	V99GKZEI__F2__drug_name	direct	direct	Projected from drug amount expressions.				
+V99GKZEI	F2	emul_method	V99GKZEI__F2__process_01	direct	direct	Projected from process-step names.				
+V99GKZEI	F2	preparation_method	V99GKZEI__F2__process_01	direct	direct	Projected from process-step names.				
+V99GKZEI	F2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+V99GKZEI	F2	emul_type		unavailable	unavailable	No phase or factor cues available.				
+V99GKZEI	F2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F3	identity_variables_json	V99GKZEI__signal_factor_01 | V99GKZEI__signal_factor_02	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+V99GKZEI	F3	polymer_name_raw	V99GKZEI__F3__polymer_name_raw	direct	direct	Projected from polymer component names.				
+V99GKZEI	F3	polymer_identity	V99GKZEI__F3__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+V99GKZEI	F3	la_ga_ratio	V99GKZEI__F3__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+V99GKZEI	F3	polymer_mw_kDa	V99GKZEI__F3__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+V99GKZEI	F3	plga_mass_mg	V99GKZEI__F3__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+V99GKZEI	F3	surfactant_name	V99GKZEI__F3__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+V99GKZEI	F3	surfactant_concentration_text	V99GKZEI__F3__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+V99GKZEI	F3	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+V99GKZEI	F3	la_ga_ratio_raw	V99GKZEI__F3__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F3	la_ga_ratio_normalized	V99GKZEI__F3__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F3	la_ga_ratio	V99GKZEI__F3__polymer_name_raw	direct	direct	Fallback projection from polymer component name LA:GA ratio text.				
+V99GKZEI	F3	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+V99GKZEI	F3	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+V99GKZEI	F3	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+V99GKZEI	F3	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+V99GKZEI	F3	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+V99GKZEI	F3	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+V99GKZEI	F3	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+V99GKZEI	F3	organic_solvent	V99GKZEI__F3__organic_solvent	direct	direct	Projected from solvent components.				
+V99GKZEI	F3	drug_name	V99GKZEI__F3__drug_name	direct	direct	Projected from drug components.				
+V99GKZEI	F3	drug_feed_amount_text	V99GKZEI__F3__drug_name	direct	direct	Projected from drug amount expressions.				
+V99GKZEI	F3	emul_method	V99GKZEI__F3__process_01	direct	direct	Projected from process-step names.				
+V99GKZEI	F3	preparation_method	V99GKZEI__F3__process_01	direct	direct	Projected from process-step names.				
+V99GKZEI	F3	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+V99GKZEI	F3	emul_type		unavailable	unavailable	No phase or factor cues available.				
+V99GKZEI	F3	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F3	pdi		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F3	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F3	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+V99GKZEI	F3	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+										
+										
+										
+										
+										
+										
+WFDTQ4VX	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/WFDTQ4VX/WFDTQ4VX__table_13__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/WFDTQ4VX/WFDTQ4VX__table_13__pdf_table.csv			resolved
+WFDTQ4VX	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/WFDTQ4VX/WFDTQ4VX__table_15__pdf_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/WFDTQ4VX/WFDTQ4VX__table_15__pdf_table.csv			resolved
+WFDTQ4VX	C1	identity_variables_json	WFDTQ4VX__signal_factor_01 | WFDTQ4VX__signal_factor_02 | WFDTQ4VX__signal_factor_03	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+WFDTQ4VX	C1	polymer_name_raw	WFDTQ4VX__C1__polymer_name_raw	direct	direct	Projected from polymer component names.				
+WFDTQ4VX	C1	polymer_identity	WFDTQ4VX__C1__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+WFDTQ4VX	C1	la_ga_ratio	WFDTQ4VX__C1__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+WFDTQ4VX	C1	polymer_mw_kDa	WFDTQ4VX__C1__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+WFDTQ4VX	C1	plga_mass_mg	WFDTQ4VX__C1__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+WFDTQ4VX	C1	surfactant_name	WFDTQ4VX__C1__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+WFDTQ4VX	C1	surfactant_concentration_text	WFDTQ4VX__C1__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+WFDTQ4VX	C1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+WFDTQ4VX	C1	polymer_concentration_value	WFDTQ4VX__signal_factor_02	direct	direct	Projected from factor-level polymer concentration expressions.				
+WFDTQ4VX	C1	polymer_concentration_unit	WFDTQ4VX__signal_factor_02	direct	direct	Projected from factor-level polymer concentration units.				
+WFDTQ4VX	C1	polymer_concentration_phase	WFDTQ4VX__signal_factor_02	direct	direct	Projected from polymer concentration factor names.				
+WFDTQ4VX	C1	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+WFDTQ4VX	C1	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+WFDTQ4VX	C1	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+WFDTQ4VX	C1	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+WFDTQ4VX	C1	organic_solvent	WFDTQ4VX__C1__organic_solvent	direct	direct	Projected from solvent components.				
+WFDTQ4VX	C1	drug_name	WFDTQ4VX__C1__drug_name	direct	direct	Projected from drug components.				
+WFDTQ4VX	C1	drug_feed_amount_text	WFDTQ4VX__C1__drug_name	direct	direct	Projected from drug amount expressions.				
+WFDTQ4VX	C1	emul_method	WFDTQ4VX__C1__process_01	direct	direct	Projected from process-step names.				
+WFDTQ4VX	C1	preparation_method	WFDTQ4VX__C1__process_01	direct	direct	Projected from process-step names.				
+WFDTQ4VX	C1	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+WFDTQ4VX	C1	emul_type		unavailable	unavailable	No phase or factor cues available.				
+WFDTQ4VX	C1	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C1	pdi		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C1	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C1	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C2	identity_variables_json	WFDTQ4VX__signal_factor_01 | WFDTQ4VX__signal_factor_02 | WFDTQ4VX__signal_factor_03	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+WFDTQ4VX	C2	polymer_name_raw	WFDTQ4VX__C2__polymer_name_raw	direct	direct	Projected from polymer component names.				
+WFDTQ4VX	C2	polymer_identity	WFDTQ4VX__C2__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+WFDTQ4VX	C2	la_ga_ratio	WFDTQ4VX__C2__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+WFDTQ4VX	C2	polymer_mw_kDa	WFDTQ4VX__C2__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+WFDTQ4VX	C2	plga_mass_mg	WFDTQ4VX__C2__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+WFDTQ4VX	C2	surfactant_name	WFDTQ4VX__C2__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+WFDTQ4VX	C2	surfactant_concentration_text	WFDTQ4VX__C2__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+WFDTQ4VX	C2	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+WFDTQ4VX	C2	polymer_concentration_value	WFDTQ4VX__signal_factor_02	direct	direct	Projected from factor-level polymer concentration expressions.				
+WFDTQ4VX	C2	polymer_concentration_unit	WFDTQ4VX__signal_factor_02	direct	direct	Projected from factor-level polymer concentration units.				
+WFDTQ4VX	C2	polymer_concentration_phase	WFDTQ4VX__signal_factor_02	direct	direct	Projected from polymer concentration factor names.				
+WFDTQ4VX	C2	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+WFDTQ4VX	C2	pH_raw		unavailable	unavailable	Projected from factor-level pH expressions.				
+WFDTQ4VX	C2	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+WFDTQ4VX	C2	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+WFDTQ4VX	C2	organic_solvent	WFDTQ4VX__C2__organic_solvent	direct	direct	Projected from solvent components.				
+WFDTQ4VX	C2	drug_name	WFDTQ4VX__C2__drug_name	direct	direct	Projected from drug components.				
+WFDTQ4VX	C2	drug_feed_amount_text	WFDTQ4VX__C2__drug_name	direct	direct	Projected from drug amount expressions.				
+WFDTQ4VX	C2	emul_method	WFDTQ4VX__C2__process_01	direct	direct	Projected from process-step names.				
+WFDTQ4VX	C2	preparation_method	WFDTQ4VX__C2__process_01	direct	direct	Projected from process-step names.				
+WFDTQ4VX	C2	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+WFDTQ4VX	C2	emul_type		unavailable	unavailable	No phase or factor cues available.				
+WFDTQ4VX	C2	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C2	pdi		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C2	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C2	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	C2	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_1	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""1."", ""evidence_snippet"": ""1 | (cid:4)1 | (cid:4)1 | (cid:4)1 | 36.5 ± 2.21 | 126.6 ± 4.16""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_2	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""2."", ""evidence_snippet"": ""2 | (cid:4)1 | (cid:4)1 | 0 | 29.4 ± 1.05 | 131.3 ± 6.13""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_3	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""3."", ""evidence_snippet"": ""3 | (cid:4)1 | (cid:4)1 | 1 | 21.3 ± 2.28 | 140.8 ± 1.41""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_4	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""4."", ""evidence_snippet"": ""4 | (cid:4)1 | 0 | (cid:4)1 | 50.9 ± 1.86 | 127.3 ± 2.68""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_5	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""5."", ""evidence_snippet"": ""5 | (cid:4)1 | 0 | 0 | 48.7 ± 2.34 | 136.3 ± 4.53""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_6	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""6."", ""evidence_snippet"": ""6 | (cid:4)1 | 0 | 1 | 38.2 ± 2.43 | 139.7 ± 2.68""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_7	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""7."", ""evidence_snippet"": ""7 | (cid:4)1 | 1 | (cid:4)1 | 51.1 ± 1.49 | 159.7 ± 3.72""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_8	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""8."", ""evidence_snippet"": ""8 | (cid:4)1 | 1 | 0 | 57.3 ± 1.19 | 163.5 ± 3.91""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_9	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""9."", ""evidence_snippet"": ""9 | (cid:4)1 | 1 | 1 | 40.3 ± 0.71 | 176.9 ± 1.69""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_10	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""10."", ""evidence_snippet"": ""10 | 0 | (cid:4)1 | (cid:4)1 | 61.6 ± 2.56 | 144.1 ± 2.13""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_11	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""11."", ""evidence_snippet"": ""11 | 0 | (cid:4)1 | 0 | 55.4 ± 1.34 | 148.2 ± 1.98""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_12	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""12."", ""evidence_snippet"": ""12 | 0 | (cid:4)1 | 1 | 47.4 ± 1.04 | 152.6 ± 6.23""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_13	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""13."", ""evidence_snippet"": ""13 | 0 | 0 | (cid:4)1 | 83.3 ± 1.42 | 155.6 ± 4.61""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_14	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""14."", ""evidence_snippet"": ""14 | 0 | 0 | 0 | 73.2 ± 1.35 | 159.6 ± 3.73""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_15	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""15."", ""evidence_snippet"": ""15 | 0 | 0 | 1 | 63.1 ± 2.17 | 165.2 ± 7.26""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_16	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""16."", ""evidence_snippet"": ""16 | 0 | 1 | (cid:4)1 | 91.4 ± 2.43 | 162.6 ± 2.34""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_17	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""17."", ""evidence_snippet"": ""17 | 0 | 1 | 0 | 84.6 ± 2.57 | 169.7 ± 3.87""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_18	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""18."", ""evidence_snippet"": ""18 | 0 | 1 | 1 | 77.5 ± 1.93 | 173.8 ± 4.23""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_19	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""19."", ""evidence_snippet"": ""19 | 1 | (cid:4)1 | (cid:4)1 | 93.3 ± 1.27 | 142.1 ± 2.13""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_20	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""20."", ""evidence_snippet"": ""20 | 1 | (cid:4)1 | 0 | 91.4 ± 1.86 | 163.3 ± 2.43""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_21	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""21."", ""evidence_snippet"": ""21 | 1 | (cid:4)1 | 1 | 87.6 ± 1.76 | 175.5 ± 3.57""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_22	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""22."", ""evidence_snippet"": ""22 | 1 | 0 | (cid:4)1 | 95.7 ± 2.43 | 214.8 ± 3.89""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_23	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""23."", ""evidence_snippet"": ""23 | 1 | 0 | 0 | 91.4 ± 1.67 | 231.3 ± 2.59""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_24	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""24."", ""evidence_snippet"": ""24 | 1 | 0 | 1 | 75.3 ± 2.38 | 233.6 ± 1.73""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_25	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""25."", ""evidence_snippet"": ""25 | 1 | 1 | (cid:4)1 | 93.8 ± 1.26 | 207.4 ± 2.75""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_26	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""26."", ""evidence_snippet"": ""26 | 1 | 1 | 0 | 85.1 ± 2.76 | 237.1 ± 1.37""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_DOE_Row_27	numbered_doe_row_recovery	"[{""table_id"": ""Table 13"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/WFDTQ4VX/payloads/WFDTQ4VX__table_13__pdf_table__normalized.csv"", ""formulation_label"": ""27."", ""evidence_snippet"": ""27 | 1 | 1 | 1 | 71.1 ± 1.43 | 236.1 ± 3.26""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_Checkpoint_Batch_1	numbered_doe_row_recovery	"[{""table_id"": ""Checkpoint analysis"", ""table_csv_path"": """", ""formulation_label"": ""Checkpoint Batch 1"", ""evidence_snippet"": ""1 -1 (0.2%) 0.0 (2%) 0.5 (62.5mg) 152.63 148.94 44.86 45.72""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_Checkpoint_Batch_2	numbered_doe_row_recovery	"[{""table_id"": ""Checkpoint analysis"", ""table_csv_path"": """", ""formulation_label"": ""Checkpoint Batch 2"", ""evidence_snippet"": ""2 0 (0.4%) 0.0 (2%) 0.5 (62.5 mg) 167.96 163.23 66.86 67.10""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	WFDTQ4VX_Checkpoint_Batch_3	numbered_doe_row_recovery	"[{""table_id"": ""Checkpoint analysis"", ""table_csv_path"": """", ""formulation_label"": ""Checkpoint Batch 3"", ""evidence_snippet"": ""3 1 (0.6%) -1 (1%) 0.0 (50 mg) 189.24 184.4 88.43 87.03""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+WFDTQ4VX	__recovery__	numbered_doe_row_recovery	WFDTQ4VX_DOE_Row_1 | WFDTQ4VX_DOE_Row_2 | WFDTQ4VX_DOE_Row_3 | WFDTQ4VX_DOE_Row_4 | WFDTQ4VX_DOE_Row_5 | WFDTQ4VX_DOE_Row_6 | WFDTQ4VX_DOE_Row_7 | WFDTQ4VX_DOE_Row_8 | WFDTQ4VX_DOE_Row_9 | WFDTQ4VX_DOE_Row_10 | WFDTQ4VX_DOE_Row_11 | WFDTQ4VX_DOE_Row_12 | WFDTQ4VX_DOE_Row_13 | WFDTQ4VX_DOE_Row_14 | WFDTQ4VX_DOE_Row_15 | WFDTQ4VX_DOE_Row_16 | WFDTQ4VX_DOE_Row_17 | WFDTQ4VX_DOE_Row_18 | WFDTQ4VX_DOE_Row_19 | WFDTQ4VX_DOE_Row_20 | WFDTQ4VX_DOE_Row_21 | WFDTQ4VX_DOE_Row_22 | WFDTQ4VX_DOE_Row_23 | WFDTQ4VX_DOE_Row_24 | WFDTQ4VX_DOE_Row_25 | WFDTQ4VX_DOE_Row_26 | WFDTQ4VX_DOE_Row_27 | WFDTQ4VX_Checkpoint_Batch_1 | WFDTQ4VX_Checkpoint_Batch_2 | WFDTQ4VX_Checkpoint_Batch_3	direct	direct	Recovered 30 explicit DOE rows from numbered table anchors.				
+YGA8VQKU	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__html_table.csv			resolved
+YGA8VQKU	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__html_table.csv			resolved
+YGA8VQKU	__authority_reattachment__	authority_reattachment_diagnostic	data/cleaned/goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__html_table.csv	resolved	diagnostic	Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.	data/cleaned/goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__html_table.csv			resolved
+YGA8VQKU	F1-F16	identity_variables_json	YGA8VQKU__signal_factor_01 | YGA8VQKU__signal_factor_02 | YGA8VQKU__signal_factor_03 | YGA8VQKU__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+YGA8VQKU	F1-F16	polymer_name_raw	YGA8VQKU__F1-F16__polymer_name_raw	direct	direct	Projected from polymer component names.				
+YGA8VQKU	F1-F16	polymer_identity	YGA8VQKU__F1-F16__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+YGA8VQKU	F1-F16	la_ga_ratio	YGA8VQKU__F1-F16__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+YGA8VQKU	F1-F16	polymer_mw_kDa	YGA8VQKU__F1-F16__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+YGA8VQKU	F1-F16	plga_mass_mg	YGA8VQKU__F1-F16__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+YGA8VQKU	F1-F16	surfactant_name	YGA8VQKU__F1-F16__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+YGA8VQKU	F1-F16	surfactant_concentration_text	YGA8VQKU__F1-F16__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+YGA8VQKU	F1-F16	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+YGA8VQKU	F1-F16	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+YGA8VQKU	F1-F16	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+YGA8VQKU	F1-F16	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+YGA8VQKU	F1-F16	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+YGA8VQKU	F1-F16	pH_raw	YGA8VQKU__signal_factor_03	direct	direct	Projected from factor-level pH expressions.				
+YGA8VQKU	F1-F16	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+YGA8VQKU	F1-F16	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+YGA8VQKU	F1-F16	organic_solvent	YGA8VQKU__F1-F16__organic_solvent	direct	direct	Projected from solvent components.				
+YGA8VQKU	F1-F16	drug_name	YGA8VQKU__F1-F16__drug_name	direct	direct	Projected from drug components.				
+YGA8VQKU	F1-F16	drug_feed_amount_text	YGA8VQKU__F1-F16__drug_name	direct	direct	Projected from drug amount expressions.				
+YGA8VQKU	F1-F16	emul_method	YGA8VQKU__F1-F16__process_01	direct	direct	Projected from process-step names.				
+YGA8VQKU	F1-F16	preparation_method	YGA8VQKU__F1-F16__process_01	direct	direct	Projected from process-step names.				
+YGA8VQKU	F1-F16	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+YGA8VQKU	F1-F16	emul_type		unavailable	unavailable	No phase or factor cues available.				
+YGA8VQKU	F1-F16	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	F1-F16	pdi		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	F1-F16	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	F1-F16	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	F1-F16	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	High-viscosity PLGA	identity_variables_json	YGA8VQKU__signal_factor_01 | YGA8VQKU__signal_factor_02 | YGA8VQKU__signal_factor_03 | YGA8VQKU__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+YGA8VQKU	High-viscosity PLGA	polymer_name_raw	YGA8VQKU__High-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component names.				
+YGA8VQKU	High-viscosity PLGA	polymer_identity	YGA8VQKU__High-viscosity PLGA__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+YGA8VQKU	High-viscosity PLGA	la_ga_ratio	YGA8VQKU__High-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+YGA8VQKU	High-viscosity PLGA	polymer_mw_kDa	YGA8VQKU__High-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+YGA8VQKU	High-viscosity PLGA	plga_mass_mg	YGA8VQKU__High-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+YGA8VQKU	High-viscosity PLGA	surfactant_name	YGA8VQKU__High-viscosity PLGA__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+YGA8VQKU	High-viscosity PLGA	surfactant_concentration_text	YGA8VQKU__High-viscosity PLGA__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+YGA8VQKU	High-viscosity PLGA	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+YGA8VQKU	High-viscosity PLGA	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+YGA8VQKU	High-viscosity PLGA	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+YGA8VQKU	High-viscosity PLGA	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+YGA8VQKU	High-viscosity PLGA	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+YGA8VQKU	High-viscosity PLGA	pH_raw	YGA8VQKU__signal_factor_03	direct	direct	Projected from factor-level pH expressions.				
+YGA8VQKU	High-viscosity PLGA	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+YGA8VQKU	High-viscosity PLGA	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+YGA8VQKU	High-viscosity PLGA	organic_solvent	YGA8VQKU__High-viscosity PLGA__organic_solvent	direct	direct	Projected from solvent components.				
+YGA8VQKU	High-viscosity PLGA	drug_name	YGA8VQKU__High-viscosity PLGA__drug_name	direct	direct	Projected from drug components.				
+YGA8VQKU	High-viscosity PLGA	drug_feed_amount_text	YGA8VQKU__High-viscosity PLGA__drug_name	direct	direct	Projected from drug amount expressions.				
+YGA8VQKU	High-viscosity PLGA	emul_method	YGA8VQKU__High-viscosity PLGA__process_01	direct	direct	Projected from process-step names.				
+YGA8VQKU	High-viscosity PLGA	preparation_method	YGA8VQKU__High-viscosity PLGA__process_01	direct	direct	Projected from process-step names.				
+YGA8VQKU	High-viscosity PLGA	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+YGA8VQKU	High-viscosity PLGA	emul_type		unavailable	unavailable	No phase or factor cues available.				
+YGA8VQKU	High-viscosity PLGA	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	High-viscosity PLGA	pdi		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	High-viscosity PLGA	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	High-viscosity PLGA	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	High-viscosity PLGA	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	Low-viscosity PLGA	identity_variables_json	YGA8VQKU__signal_factor_01 | YGA8VQKU__signal_factor_02 | YGA8VQKU__signal_factor_03 | YGA8VQKU__signal_factor_04	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.				
+YGA8VQKU	Low-viscosity PLGA	polymer_name_raw	YGA8VQKU__Low-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component names.				
+YGA8VQKU	Low-viscosity PLGA	polymer_identity	YGA8VQKU__Low-viscosity PLGA__polymer_name_raw	derived	derived	Derived from polymer component names using deterministic family rules.				
+YGA8VQKU	Low-viscosity PLGA	la_ga_ratio	YGA8VQKU__Low-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component properties.				
+YGA8VQKU	Low-viscosity PLGA	polymer_mw_kDa	YGA8VQKU__Low-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component molecular-weight properties.				
+YGA8VQKU	Low-viscosity PLGA	plga_mass_mg	YGA8VQKU__Low-viscosity PLGA__polymer_name_raw	direct	direct	Projected from polymer component amount expressions.				
+YGA8VQKU	Low-viscosity PLGA	surfactant_name	YGA8VQKU__Low-viscosity PLGA__surfactant_name	direct	direct	Projected from surfactant or stabilizer components.				
+YGA8VQKU	Low-viscosity PLGA	surfactant_concentration_text	YGA8VQKU__Low-viscosity PLGA__surfactant_name	direct	direct	Projected from surfactant amount expressions.				
+YGA8VQKU	Low-viscosity PLGA	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.				
+YGA8VQKU	Low-viscosity PLGA	polymer_concentration_value		unavailable	unavailable	Projected from factor-level polymer concentration expressions.				
+YGA8VQKU	Low-viscosity PLGA	polymer_concentration_unit		unavailable	unavailable	Projected from factor-level polymer concentration units.				
+YGA8VQKU	Low-viscosity PLGA	polymer_concentration_phase		unavailable	unavailable	Projected from polymer concentration factor names.				
+YGA8VQKU	Low-viscosity PLGA	phase_ratio_raw		unavailable	unavailable	Projected from factor-level phase ratio expressions.				
+YGA8VQKU	Low-viscosity PLGA	pH_raw	YGA8VQKU__signal_factor_03	direct	direct	Projected from factor-level pH expressions.				
+YGA8VQKU	Low-viscosity PLGA	drug_to_polymer_ratio_raw		unavailable	unavailable	Projected from factor-level drug-to-polymer ratio expressions.				
+YGA8VQKU	Low-viscosity PLGA	polymer_to_drug_ratio_raw		unavailable	unavailable	Projected from factor-level polymer-to-drug ratio expressions.				
+YGA8VQKU	Low-viscosity PLGA	organic_solvent	YGA8VQKU__Low-viscosity PLGA__organic_solvent	direct	direct	Projected from solvent components.				
+YGA8VQKU	Low-viscosity PLGA	drug_name	YGA8VQKU__Low-viscosity PLGA__drug_name	direct	direct	Projected from drug components.				
+YGA8VQKU	Low-viscosity PLGA	drug_feed_amount_text	YGA8VQKU__Low-viscosity PLGA__drug_name	direct	direct	Projected from drug amount expressions.				
+YGA8VQKU	Low-viscosity PLGA	emul_method	YGA8VQKU__Low-viscosity PLGA__process_01	direct	direct	Projected from process-step names.				
+YGA8VQKU	Low-viscosity PLGA	preparation_method	YGA8VQKU__Low-viscosity PLGA__process_01	direct	direct	Projected from process-step names.				
+YGA8VQKU	Low-viscosity PLGA	emulsion_structure		unavailable	unavailable	No phase candidates available.				
+YGA8VQKU	Low-viscosity PLGA	emul_type		unavailable	unavailable	No phase or factor cues available.				
+YGA8VQKU	Low-viscosity PLGA	size_nm		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	Low-viscosity PLGA	pdi		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	Low-viscosity PLGA	zeta_mV		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	Low-viscosity PLGA	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	Low-viscosity PLGA	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F1	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""1."", ""evidence_snippet"": ""F1 | −1 | −1 | −1 | 240.00 ± 15.90 | 76.37 ± 0.46 | −22.43 ± 0.40""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F2	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""2."", ""evidence_snippet"": ""F2 | 1 | −1 | −1 | 205.30 ± 2.52 | 97.75 ± 0.01 | −24.60 ± 0.95""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F3	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""3."", ""evidence_snippet"": ""F3 | −1 | 1 | −1 | 236.00 ± 3.46 | 77.36 ± 0.05 | −23.90 ± 0.30""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F4	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""4."", ""evidence_snippet"": ""F4 | 1 | 1 | −1 | 186.00 ± 3.61 | 87.11 ± 0.31 | −23.63 ± 0.81""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F5	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""5."", ""evidence_snippet"": ""F5 | −1 | −1 | 1 | 182.00 ± 1.00 | 52.68 ± 0.66 | −27.40 ± 0.75""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F6	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""6."", ""evidence_snippet"": ""F6 | 1 | −1 | 1 | 203.30 ± 4.51 | 77.75 ± 0.07 | −30.60 ± 0.75""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F7	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""7."", ""evidence_snippet"": ""F7 | −1 | 1 | 1 | 183.00 ± 1.00 | 59.54 ± 0.42 | −27.46 ± 0.61""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F8	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""8."", ""evidence_snippet"": ""F8 | 1 | 1 | 1 | 175.70 ± 1.53 | 74.38 ± 0.25 | −27.00 ± 0.60""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F9	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""9."", ""evidence_snippet"": ""F9 | 1.68 | 0 | 0 | 179.30 ± 2.31 | 85.18 ± 0.05 | −25.80 ± 0.44""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F10	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""10."", ""evidence_snippet"": ""F10 | −1.68 | 0 | 0 | 203.30 ± 4.51 | 38.46 ± 0.01 | −28.73 ± 0.80""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F11	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""11."", ""evidence_snippet"": ""F11 | 0 | 1.68 | 0 | 166.00 ± 1.73 | 66.69 ± 0.47 | −24.77 ± 0.42""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F12	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""12."", ""evidence_snippet"": ""F12 | 0 | −1.68 | 0 | 183.00 ± 1.00 | 63.76 ± 0.39 | −20.33 ± 3.79""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F13	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""13."", ""evidence_snippet"": ""F13 | 0 | 0 | 1.68 | 185.00 ± 1.73 | 65.34 ± 0.28 | −23.90 ± 0.79""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F14	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""14."", ""evidence_snippet"": ""F14 | 0 | 0 | −1.68 | 201.70 ± 2.52 | 82.52 ± 0.02 | −16.33 ± 0.55""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F15	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""15."", ""evidence_snippet"": ""F15 | 0 | 0 | 0 | 182.30 ± 1.15 | 68.22 ± 0.27 | −24.93 ± 0.06""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	YGA8VQKU_DOE_Row_F16	numbered_doe_row_recovery	"[{""table_id"": ""Table 1"", ""table_csv_path"": ""/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads/YGA8VQKU/payloads/YGA8VQKU__table_01__html_table__normalized.csv"", ""formulation_label"": ""16."", ""evidence_snippet"": ""F16 | 0 | 0 | 0 | 179.00 ± 0.00 | 64.94 ± 0.23 | −25.03 ± 0.57""}]"	direct	direct	Recovered only from explicit numbered DOE table rows present in Stage1 table assets within LLM-declared DOE scope.				
+YGA8VQKU	__recovery__	numbered_doe_row_recovery	YGA8VQKU_DOE_Row_F1 | YGA8VQKU_DOE_Row_F2 | YGA8VQKU_DOE_Row_F3 | YGA8VQKU_DOE_Row_F4 | YGA8VQKU_DOE_Row_F5 | YGA8VQKU_DOE_Row_F6 | YGA8VQKU_DOE_Row_F7 | YGA8VQKU_DOE_Row_F8 | YGA8VQKU_DOE_Row_F9 | YGA8VQKU_DOE_Row_F10 | YGA8VQKU_DOE_Row_F11 | YGA8VQKU_DOE_Row_F12 | YGA8VQKU_DOE_Row_F13 | YGA8VQKU_DOE_Row_F14 | YGA8VQKU_DOE_Row_F15 | YGA8VQKU_DOE_Row_F16	direct	direct	Recovered 16 explicit DOE rows from numbered table anchors.				
+										
+										

@@ -1,0 +1,1300 @@
+Citation: De Negri Atanasio, G.;
+Ferrari, P.F.; Campardelli, R.; Firpo,
+G.; Perego, P.; Palombo, D.
+Bevacizumab-Controlled Delivery
+from Polymeric Microparticle
+Systems as Interesting Tools for
+Pathologic Angiogenesis Diseases.
+Polymers 2022, 14, 2593. https://
+doi.org/10.3390/polym14132593
+Academic Editor: Dimitrios Bikiaris
+Received: 24 May 2022
+Accepted: 19 June 2022
+Published: 26 June 2022
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright:
+© 2022 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+polymers
+Article
+Bevacizumab-Controlled Delivery from Polymeric
+Microparticle Systems as Interesting Tools for Pathologic
+Angiogenesis Diseases
+Giulia De Negri Atanasio 1, Pier Francesco Ferrari 1,*
+, Roberta Campardelli 1,*
+, Giuseppe Firpo 2,
+Patrizia Perego 1,3
+and Domenico Palombo 3,4,5
+1
+Department of Civil, Chemical and Environmental Engineering, University of Genoa, via Opera Pia, 15,
+16145 Genoa, Italy; giulia.denegriatanasio@edu.unige.it (G.D.N.A.); p.perego@unige.it (P.P.)
+2
+Department of Physics, University of Genoa, via Dodecaneso, 33, 16146 Genoa, Italy; giuseppe.ﬁrpo@unige.it
+3
+Research Center for Biologically Inspired Engineering in Vascular Medicine and Longevity, University of
+Genoa, via Montallegro, 1, 16145 Genoa, Italy; domenico.palombo@unige.it
+4
+Department of Surgical and Integrated Diagnostic Sciences, University of Genoa, viale Benedetto XV, 6, 16132
+Genoa, Italy
+5
+Vascular and Endovascular Surgery Unit, IRCCS Ospedale Policlinico San Martino, largo Rosanna Benzi, 10,
+16132 Genoa, Italy
+*
+Correspondence: pier.francesco.ferrari@unige.it (P.F.F.); roberta.campardelli@unige.it (R.C.)
+Abstract: This work is a comparative study among three different biocompatible and biodegradable
+polymers, poly(lactic-co-glycolic acid), poly(ε-caprolactone), and poly(lactic acid), used to produce
+microparticles for the encapsulation of bevacizumab for drug delivery purposes. All the formulations
+were produced using the double emulsion water-oil-water evaporation method and characterized in
+terms of particle mean diameter, particle size distribution, and bevacizumab entrapment efﬁciency.
+Bevacizumab cumulative release was taken into consideration to study the dissolution kinetics
+from the three different polymeric delivery platforms for a period of 50 days at 37 ◦C in phosphate
+buffered saline and mathematical models of the drug release kinetic were attempted in order to
+describe the release phenomena from the different types of the studied microparticles. Finally, cell
+viability on human endothelial cell line EA.hy926 was studied to deﬁne the maximum cytocompatible
+concentration for each microsystem, registering the mitochondrial functionality through MTS assay.
+Keywords: oncology; cardiovascular diseases; biodegradable polymers; monoclonal antibodies; drug
+release kinetics
+1. Introduction
+Pathological angiogenesis is observed in several diseases, including ophthalmic dis-
+orders, cancer, and cardiovascular pathologies. Recent studies have proposed the use of
+bevacizumab (BEV) for a potential therapeutic effect in the treatment of atheroma progres-
+sion by inhibiting neovascularization [1,2]. BEV is a recombinant humanized monoclonal
+antibody which acts against human vascular endothelial growth factor A (VEGF-A) in all
+its isoforms and in its bioactive proteolytic fragments. It is characterized by a short half-life
+and, for this reason, frequent injections are generally required to have a pharmacological
+effect. As a protein, BEV exhibits a complex 3D structure, physicochemical instability, and
+susceptibility to environmental factors. For all these reasons, its encapsulation can provide
+both the advantage of reduced administration and molecule protection from denaturing
+agents [3]. Moreover, its hydrophilicity, its high molecular weight, and its stability in
+biological ﬂuids have limited the success of anti-VEGF therapy through BEV application.
+These limitations can be overcome by the use of drug delivery systems.
+BEV encapsulation in micro- and nanoparticles have been attempted using biodegrad-
+able polymers, both synthetic and natural, and hydrogels.
+Polymers 2022, 14, 2593. https://doi.org/10.3390/polym14132593
+https://www.mdpi.com/journal/polymers
+
+Polymers 2022, 14, 2593
+2 of 19
+Among biodegradable synthetic polymers, polyesters, such as poly(lactic-co-glycolic
+acid) (PLGA), poly(ε-caprolactone) (PCL), and poly(lactic acid) (PLA), have been widely
+explored for biomedical applications [4–7].
+PLGA is a largely studied polymer in the biomedical ﬁeld for its high biocompatibility,
+its high biodegradability, its high safety and it is approved for human parenteral use by the
+Food and Drug Administration (FDA) [8]. PLGA is hydrolyzed into two monomers, lactic
+acid and glycolic acid, which are also products of various endogenous metabolic pathways
+and are not associated with signiﬁcant toxicity. For these reasons, it represents the most
+widely used biopolymer for controlled drug delivery applications [9,10].
+PCL is a polymer with low biotoxicity, which means that this material has not the
+ability to affect the normal physiology of the system into which it is introduced, and good
+biocompatibility, to be intended as the ability to perform its activities without exhibiting
+undesirable local or systemic effects and, once in contact with cells and tissues, undesirable
+properties [11]. The acceptable solubility, the low melting point (59–64 ◦C), and the huge
+compatibility with different drugs have made this polymer a new tool in the drug delivery
+ﬁeld [12].
+PLA is a FDA-approved polymer for human use as implants and in formulations
+for sustained drug delivery [13]. It is a lipophilic and biodegradable polymer made by
+monomers of lactic acid, which is not related to any signiﬁcant toxicity event. PLA-based
+particles are largely used in drug delivery and biomedical applications. An advantage in
+the use of this polymer is its elasticity, which provides easy control of some of its properties,
+such as shape and size [14].
+Among natural molecules, different attempts were based on BEV encapsulation in
+liposomes [15]. Different pros and cons are reported in the literature, taking into account
+the polymer-based and the lipid-based systems. In detail, the former system presents
+higher encapsulation efﬁciency and a more sustained release over time in comparison to
+the latter ones [16].
+The multiple emulsion solvent evaporation technique and Bangham method are often
+used for the preparation of micro- and nanoparticles based on synthetic polymers and
+lipids, respectively. These methods have several advantages, such as an appropriate control
+of the generated droplets and particle size distribution, an easy deﬁnition of operative
+parameters, and an intrinsic potentiality regarding the scale-up of the process [17,18]. For
+hydrogels, in addition, a cross-linking process is adopted to produce the gelation of the
+microstructure. This process presents the pros to be a very easy procedure performed by
+using green solvents, showing as cons difﬁculties in controlling particle dimension and
+drug entrapment efﬁciency [19].
+Polyester-based nanoparticles for the encapsulation of monoclonal antibodies have
+also been studied in the literature [20]. It is reported that polyester-based nanoparticles
+for monoclonal antibody delivery provide decreased antibody dosage, increased antibody
+stability and protection, and present a longer therapeutic action, ultimately translating to
+an increased therapeutic index. PLGA microparticles (MPs) loaded with BEV have already
+been produced for ocular applications by Ye et al. [21]. In this study, loaded microspheres
+were produced by a modiﬁed double emulsion technique, named solid-in-oil-in-hydrophilic
+oil method. Once produced, the particles were characterized by a mean diameter of about
+2–7 µm and BEV entrapment efﬁciency was equal to 49%. Jiang et al. [22] developed
+innovative chitosan-PCL MPs loaded with BEV using the water-oil emulsion method.
+These MPs were studied in terms of cytotoxicity and injection feasibility and they could be
+considered as a potential carrier suitable for ocular delivery. Yandrapu et al. [23] prepared
+PLA nanoparticles into PLGA MPs loaded with BEV by using the supercritical infusion
+technique. The study reported a sustained release of the payload from the innovatively
+produced carrier. In addition, hydrogel particles have been proposed, such as alginate-
+based drug delivery systems [3] or alginate/chitosan polyelectrolyte complex [20]. Alginate
+is an interesting natural carrier because it can provide low interfacial tension with the
+surrounding biological environment and has a high capacity to absorb biological ﬂuids; it is
+
+Polymers 2022, 14, 2593
+3 of 19
+also characterized by a composition and mechanical properties that are similar to those of
+extracellular matrix. It has been reported that the encapsulation and release of monoclonal
+antibodies using an alginate hydrogel platform can signiﬁcantly enhance their efﬁciency
+and targeting. However, the control of particle size distribution and hydrogel morphology
+is not simple.
+From a bibliographic overview, it emerged that few studies reported a complete
+panel of physicochemical characterizations, including data of morphology, particle size
+distribution, polydispersity, and drug release kinetics, which are the most commonly
+considered basic parameters in the analysis of micro- and nanoparticulates. Moreover,
+there is a lack of well-consolidated in vitro toxicity studies with endothelial cells. Although
+these carriers have the potential to become new platforms for the therapy of vascular
+diseases, there is still a lack of knowledge regarding their applicability.
+For this reason, the aim of this work was the production of BEV-loaded polymeric MPs,
+using PLGA, PCL, and PLA as carriers in order to compare the results obtained with these
+three different polymers in terms of particle size distribution, BEV encapsulation efﬁciency,
+and BEV release kinetics. In general, this work was aimed at deﬁning a polymeric platform
+for the encapsulation of BEV to be useful in the treatment of angiogenesis-related diseases.
+The water/oil/water (w/o/w) double emulsion technique was employed for the
+fabrication of PLGA, PCL, and PLA MPs that were characterized in terms of morphology,
+particle mean diameter, particle size distribution, entrapment efﬁciency, BEV release kinetic,
+granulometry at different storage temperatures (4, 25, and 37 ◦C), and in vitro validation
+with EA.hy926 human endothelial cells.
+2. Materials and Methods
+2.1. Chemicals
+Poly(D,L-lactide-co-glycolide) (Resomer® RG 505, Mw = 54,000–69,000 g/mol) 50:50
+and poly(L-lactide) (Resomer® L 207 S, Mw = 200,000–250,000 g/mol) were obtained from
+Evonik Industries (Essen, Germany), whereas poly(ε-caprolactone) (Mn = 80,000 g/mol),
+poly(vinyl alcohol) (Mw = 30,000–70,000 g/mol), and a solution of penicillin/streptomycin
+for cell culture were purchased from Sigma-Aldrich (Saint Louis, MO, USA). Ethyl acetate
+and chloroform, that were used as solvents to dissolve the polymers, Dulbecco’s modiﬁed
+Eagle medium (high glucose with L-glutamine and sodium pyruvate) (DMEM), fetal bovine
+serum (FBS), trypsin, and Dulbecco’s phosphate buffered saline (DPBS) were purchased
+from Carlo Erba (Milan, Italy). Bevacizumab (Avastin®, Genentech, Inc., South San Fran-
+cisco, CA, USA) was kindly offered by the pharmacy of Ospedale Policlinico San Martino,
+Genoa, Italy. The QuantumMicroProtein bicinchoninic acid protein assay kit (Micro BCA)
+(Euroclone, Pero, Italy) was used in order to quantify BEV for the encapsulation efﬁciency
+and for the in vitro release studies. CellTiter 96® AQueous One Solution Cell Proliferation
+Assay (MTS) for cell viability studies was purchased from Promega (Madison, WI, USA).
+2.2. Polymeric Microparticle Production
+To produce PLGA-based MPs, the w/o/w technique was used. Brieﬂy, 1.0 g of PLGA
+was dissolved in 19.0 g of ethyl acetate at room temperature (25 ± 2 ◦C) until its complete
+dissolution, then 800 µL of the aqueous inner phase was added. It consisted of a BEV
+solution (25 mg/mL) or DPBS for loaded or empty MPs, respectively. The ﬁrst w/o solution
+was obtained by homogenization for 2 min (30 s on and 30 s off) using a Vibra-CellTM
+ultrasonic probe with 60% amplitude (Sonics & Materials, Inc., Newtown, CT, USA). After
+that, the ﬁrst emulsion was added to 80 mL of previously prepared ethyl acetate saturated
+water. PVA was used as surfactant at 2% (w/v) in the aqueous solution [24]. The secondary
+emulsion was obtained using a rotor-stator emulsiﬁer (Silverson L5T, Silverson Machines
+Ltd., Chesham, UK) at 7000 rpm for 6 min. Finally, the obtained emulsion remained under
+magnetic stirring at 300 rpm into a fume hood to obtain the complete evaporation of the
+solvent (about 3 h). Once produced, the particle suspension was washed with Milli-Q water
+three times by centrifugation at 12,984× g for 15 min at 4 ◦C (centrifuge from Alliance Bio
+
+Polymers 2022, 14, 2593
+4 of 19
+Expertise MF-20R, Guipry, France) and the pellet was washed with deionized water to
+remove the excess of BEV.
+The PCL- and PLA-based MPs were produced using the same w/o/w technique but,
+in these two cases, chloroform was used as solvent. The same theoretical loading was ﬁxed.
+The ﬁnal w/o/w emulsion was prepared by adding the ﬁrst w/o emulsion to 80 mL of
+the same PVA solution reported above in the dispersant phase. The emulsiﬁcation step
+was performed using the rotor-stator emulsiﬁer, as described before, at the same working
+conditions. The ﬁnal emulsion remained under magnetic stirring at 300 rpm until the
+complete evaporation of the organic solvent was reached (Figure 1). The obtained particle
+suspensions were washed with Milli-Q water and centrifuged as described for the PLGA
+MPs. The obtained particles were stored at 4 ◦C until their use for the different experiments.
+Empty MPs with all the types of polymers were also produced and used as controls during
+the entire experimentation.
+Figure 1. Schematic representation of MP production process. PLGA: poly(lactic-co-glycolic acid),
+PCL: poly(ε-caprolactone), PLA: poly(lactic acid), BEV: bevacizumab, DPBS: Dulbecco’s phosphate
+buffered saline, PVA: poly(vinyl alcohol), rpm: revolutions per minute, MPs: microparticles.
+2.3. Microparticle Characterization
+2.3.1. Morphology Studies
+The droplets formed in the emulsion were observed using an optical microscope
+(model BX50, Olympus, Tokyo, Japan), characterized by droplet size distributions, droplet
+mean diameter (DMD), polydispersity index (PDI), and span, and studied by laser diffrac-
+tion method using a Mastersizer 3000 (Malvern Instruments Ltd., Malvern, UK). For all
+the samples, at least three replicates were analyzed. Additionally, particle suspensions
+were characterized in terms of particle size distribution (PSD), particle mean diameter
+(PMD), PDI, and span, using the same instrument. Suspensions were analyzed as obtained,
+without any dilutions.
+The morphology of the produced MPs was observed using a high-resolution ﬁeld
+emission scanning electron microscope (HR FE-SEM) (Carl Zeiss, Oberkochen, Germany).
+Samples were prepared for microscope observation by ﬁltration on a 0.45 µm pore size
+ﬁlter paper (PRAT DUMAS, Couze-St-Front, France) and air-dried in order to recover dried
+MPs. The obtained powders were put on a stub and observed using gold metallization.
+HR FE-SEM parameters included an aperture size of 30 µm, an accelerating voltage equal
+to 7 kV, and a working distance of 7.7 mm. The electron microscope was mounted on a
+vacuum chamber equipped with a focused ion beam (FIB) (CrossBeam 1540 XB Carl Zeiss,
+Oberkochen, Germany), allowing for a more detailed investigation [25]. FIB is a column
+that generates and directs a stream of gallium ions focusing them onto the sample, both
+for the purpose of etching or milling the surface and as a method of imaging. Due to the
+ability of the FIB to mill material at micro- and nanoscale, the MPs were cross-sectioned
+in order to reveal the internal morphology. Using SEM coupled with FIB provides high
+spatial resolution with unique sample preparation in situ with no artifacts.
+
+Polymers 2022, 14, 2593
+5 of 19
+2.3.2. Entrapment Efﬁciency
+BEV entrapment efﬁciency (EE) was calculated by using an indirect method [26]. The
+quantity of free BEV was collected after centrifugation, quantiﬁed using Micro BCA, and
+the EE was determined using the following Equation (1):
+EE (%) =amount of initial BEV −amount of free BEV
+amount of initial BEV
+×100
+(1)
+2.4. In Vitro Release Studies
+The in vitro release tests were performed using all the polymer-based MPs. The
+formulations were suspended in 15 mL of DPBS (pH = 7.4) and stored at 37 ± 2 ◦C under
+constant stirring. At a pre-ﬁxed time over a period of 7 weeks, samples were collected and
+replaced with the same volume of fresh DPBS. In order to calculate the BEV concentration,
+supernatants were analyzed by using Micro BCA. The obtained values were expressed
+as a percentage of released BEV over time and were determined as a cumulative release
+in terms of released mass of BEV at each time point. Release studies were performed in
+triplicate.
+Kinetic models were employed to describe the drug release from the three polymeric
+formulations. Drug release from simple systems may be described by the well-known
+power law expression (Equation (2)) [27]:
+Mt
+Min f
+= Ktn
+(2)
+where Mt and Minf are the amounts of the drug released at time t and the overall amount
+released, respectively; K is a release constant; and n is a release exponent indicative of the
+release mechanism.
+Classically, n = 0.5, 0.5 < n < 1, or n = 1, are indicative of Fickian release, anomalous
+transport, or case II transport kinetics, respectively. However, the n values may change
+with the matrix geometry.
+The mathematical model proposed by Corrigan and Li [28], instead, is a more complex
+model that takes into account different possible release mechanisms, such as diffusion-
+controlled mass transfer and bulk degradation (Equation (3)):
+Ftot= FD+Fdeg
+(3)
+where Ftot is the total fraction of the drug released at a given time, FD is the initial diffusion
+contribution of the drug that is accessible at the solid–dissolution medium interface (mass
+percentage) (Equation (4)), and Fdeg is the contribution of drug (mass percentage) entrapped
+in the polymer, whose release depends on the polymer bulk degradation.
+FD= FDinf (1−eKdt
+(4)
+The second component of Equation (3), Fdeg, is related to polymer bulk erosion and
+can be described by Equation (5):
+Fdeg= (1 −F Dinf
+
+eKt−Ktmax
+1 + eKt−Ktmax
+
+(5)
+where FDinf is the diffusion contribution at inﬁnite time and Kd is the ﬁrst order constant
+associated with the diffusion-controlled release. tmax and K are the time of the maximum
+drug release rate and the ﬁrst order rate constant of drug release, respectively, mediated by
+polymer degradation.
+
+Polymers 2022, 14, 2593
+6 of 19
+2.5. Microparticle Biological Validation
+EA.hy926 human endothelial cells (CRL-2922™, ATCC®, Manassas, VA, USA) were
+grown in DMEM supplemented with 10% (v/v) FBS and 1 % (v/v) penicillin/streptomycin
+and incubated at 37 ◦C and 5% CO2 until 70% conﬂuency was reached. Then, cells were
+plated in 4 × 103 per well. After 24 h, different concentrations (0.125, 0.250, 0.500, and
+1.0 mgBEV/mL) of BEV-loaded PLGA, PCL, and PLA MPs were put in contact with the
+cells. An equivalent concentration of empty MPs for each type of polymer was used as
+control. In addition, even the same volume of the solvent (water) in which the MPs were
+suspended was used as reference for the experimentation (solvent). After 24, 48, and 72 h,
+MTS assay was assessed as reported by De Negri Atanasio et al. [29]. Brieﬂy, 20 µL of
+reagent was added to each well and plates were incubated at 37 ◦C and 5% CO2. After
+3 h, absorbance at 492 nm was read using a microplate reader (Tecan Spark® 20M, Tecan,
+Männendorf, Switzerland). Control cells were considered to be 100% in respect to all the
+other samples. Experiments were done in triplicate.
+2.6. Statistical Analysis
+All the experiments were done in triplicate and the results are expressed as mean value
+± standard deviation. Data were statistically analyzed by one-way analysis of variance
+(ANOVA), following Tukey’s HSD post hoc multiple comparison test by using Statistica v
+8.0 software (StatSoft, Tulsa, OK, USA).
+3. Results
+3.1. Microparticle Production and Characterization
+Empty and loaded MPs were produced by a double emulsion technique. Figure 2
+shows optical microscope images of the emulsions obtained for the three types of the
+investigated polymers. Droplets were characterized by their dispersion and they resulted
+to be well-formed, not coalescent, and no instability phenomena occurred.
+After solvent evaporation, the MPs were characterized in terms of DMD, EE, and
+PMD. Results are summarized in Table 1.
+Table 1. DMD, EE of BEV-loaded MPs, and PMD of microcarriers prepared working with different
+polymers. Different letters (a, b, and c) reported in the DMD, EE, and PMD columns refer to
+statistically signiﬁcant differences among the three different samples (empty or loaded) for each type
+of carrier (p < 0.05), using ANOVA with Tukey’s HSD post hoc multiple comparison test. Results
+are expressed as mean value ± standard deviation (n = 3). MPs: microparticles, DMD: droplet
+mean diameter, SD: standard deviation, EE: entrapment efﬁciency, PMD: particle mean diameter,
+E: empty, BEV: bevacizumab, PLGA: poly(lactic-co-glycolic acid), PCL: poly(ε-caprolactone), PLA:
+poly(lactic acid).
+MPs
+DMD ± SD (µm)
+EE ± SD (%)
+PMD ± SD (µm)
+PLGA E
+2.127 ± 0.006 a
+-
+2.077 ± 0.006 a
+PCL E
+4.090 ± 0.001 b
+-
+4.700 ± 0.010 b
+PLA E
+6.120 ± 0.066 c
+-
+5.117 ± 0.006 c
+PLGA BEV
+3.423 ± 0.025 a
+77.15 ± 0.36 a
+2.720 ± 0.017 a
+PCL BEV
+4.437 ± 0.081 b
+76.54 ± 5.44 a
+4.600 ± 0.020 b
+PLA BEV
+6.447 ± 0.064 c
+51.00 ± 0.28 b
+6.767 ± 0.006 c
+The DMD of the studied MPs signiﬁcantly varied by using the three different polymers.
+In detail, it strongly depended on the molecular weight of the single polymer used for
+their production. It is well-known, in fact, that polymer molecular weight can affect oil
+phase viscosity and oil-water interfacial tension, resulting in larger droplets. The DMD
+was increased by using the three polymers in the same order of the molecular weight they
+possess, from PLGA, with the lowest, to PLA, with the highest. This trend was registered
+for both empty and loaded MPs (Figure 3). BEV encapsulation slightly affected the ﬁnal
+
+Polymers 2022, 14, 2593
+7 of 19
+DMD of loaded MPs. For both PLGA and PLA, an increase in the ﬁnal PMD was a direct
+consequence of the antibody encapsulation (p = 0.0003). In contrast, in the case of PCL-
+based MPs, a decrease in PMD was observed. This difference caused by BEV encapsulation
+is probably due to the different chemical behavior of the two polymer classes used in this
+study. PLGA and PLA, in fact, are hydrophilic whereas PCL is hydrophobic.
+
+100 µm
+PLGA
+PCL
+PLA
+100 µm
+100 µm
+Figure 2. Representative optical microscope images of emulsions produced with the different poly-
+mers. PLGA: poly(lactic-co-glycolic acid), PCL: poly(ε-caprolactone), PLA: poly(lactic acid).
+
+Polymers 2022, 14, 2593
+8 of 19
+BEV EE was high especially when using PLGA and PCL for which no differences
+were noticed. Considering the obtained results, it can be observed that larger particles
+entrapped less of the drug. This can be due to partial migration of the inner water phase
+towards the external water phase that was more pronounced for larger droplets that are
+also characterized by lower stability in emulsion.
+Particle morphology was investigated using HR FE-SEM. Figure 4 reports HR FE-
+SEM representative images of the produced polymeric MPs. It can be observed that MPs
+were well-formed and spherical with a regular and smooth surface in all cases. Particle
+dimensions were in agreement with the results obtained with the PSD analyses.
+
+0.1
+1
+10
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14 Model LogNormal
+Equation
+y = y0 + A/(sqrt(2*PI)*w*x)*exp(-(ln(x/xc))^2/(2*w^2))
+Reduced Chi-Sqr
+0.03328
+Adj. R-Square
+0.99403
+Value
+Standard Error
+B
+y0
+0
+0
+B
+xc
+2.9441 0.02445
+B
+w
+0.56336 0.00559
+B
+A
+32.33075
+0
+
+Volume density (%)
+Empty PLGA (m)
+ Experimental Data
+ LogNormalFit
+0.1
+1
+10
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+Model
+LogNormal
+Equation
+y = y0 + A/(sqrt(2*PI)*w*x)*exp(-(ln(x/xc))^2/(2*w^2))
+Reduced Chi-Sqr0.17327
+Adj. R-Square
+0.97611
+Value
+Standard Error
+B
+y0
+0
+0
+B
+xc
+3.21532
+0.04549
+B
+w
+0.46899
+0.00994
+B
+A
+35
+0
+
+Volume density (%)
+Loaded PLGA (m)
+ Experimental Data
+ LogNormalFit
+Volume density (%)
+PMD = 2.077 ± 0.006 µm
+PMD = 2.720 ± 0.017 µm
+0.1
+1
+10
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+Model LogNormal
+Equation
+y = y0 + A/(sqrt(2*PI)*w*x)*exp(-(ln(x/xc))^2/(2*w^2))
+Reduced Chi-Sqr
+0.07107
+Adj. R-Square
+0.98367
+Value
+Standard Error
+B
+y0
+0
+0
+B
+xc
+10.72204
+0.20979
+B
+w
+0.69427 0.01143
+B
+A
+108.1368
+1.76474
+
+Volume density (%)
+Empty PLA (m)
+ Experimental Data
+ LogNormalFit
+Volume density (%)
+0.1
+1
+10
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12 ModelLogNormal
+Equation
+y = y0 + A/(sqrt(2*PI)*w*x)*exp(-(ln(x/xc))^2/(2*w^2))
+Reduced Chi-Sqr
+0.15944
+Adj. R-Square
+0.97037
+Value Standard Error
+B
+y0
+0
+0
+B
+xc
+12.70891
+0.13261
+B
+w
+0.6
+0
+
+Volume density (%)
+Loaded PLA (m)
+ Experimental Data
+ LogNormalFit
+PMD = 5.117 ± 0.006 µm
+PMD = 6.767 ± 0.006 µm
+empty PLA (μm)
+loaded PLA (μm)
+empty PLGA (μm)
+loaded PLGA (μm)
+0.1
+1
+10
+100
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+Model
+LogNormal
+Equation
+y = y0 + A/(sqrt(2*PI)*w*x)*exp(-(ln(x/xc))^2/(2*w^2))
+Reduced Chi-Sqr
+0.08746
+Adj. R-Square
+0.97349
+Value
+Standard Error
+B
+y0
+0
+0
+B
+xc
+15.8385
+0.60094
+B
+w
+0.90068
+0.01841
+B
+A
+137.84807
+3.34476
+
+Volume density (%)
+Empty PCL (m)
+ Experimental Data
+ LogNormalFit
+0.1
+1
+10
+100
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+Model LogNormal
+Equation
+y = y0 + A/(sqrt(2*PI)*w*x)*exp(-(ln(x/xc))^2/(2*w^2))
+Reduced Chi-Sqr
+0.15871
+Adj. R-Square
+0.95504
+Value
+Standard Error
+B
+y0
+0
+0
+B
+xc
+13.74741
+0.17883
+B
+w
+0.8
+0
+B
+A
+137.84807
+0
+
+Volume density (%)
+Loaded PCL (m)
+ Experimental Data
+ LogNormalFit
+Volume density (%)
+Volume density (%)
+empty PCL (μm)
+loaded PCL (μm)
+PMD = 4.700 ± 0.010 µm
+PMD = 4.600 ± 0.020 µm
+Volume density (%)
+ Experimental Data
+ LogNormalFit
+Figure 3. PMD and diameter distribution of MPs produced with the different polymers. PMD: particle
+mean diameter, PLGA: poly(lactic-co-glycolic acid), PCL: poly(ε-caprolactone), PLA: poly(lactic acid)
+both loaded and empty.
+
+Polymers 2022, 14, 2593
+9 of 19
+
+PLGA
+PCL
+PLA
+Figure 4. Representative HR FE-SEM images of the three different MPs. PLGA: poly(lactic-co-glycolic
+acid), PCL: poly(ε-caprolactone), PLA: poly(lactic acid).
+Particle internal morphology was also investigated using FIB. Figure 5 shows the
+cross-sections of the three samples obtained with a gallium ion energy of 30 kV and a ion
+current spanning from 10 pA to 50 pA, depending on the MP sizes.
+
+Polymers 2022, 14, 2593
+10 of 19
+
+PLGA
+PCL
+PLA
+Figure 5. HR FE-SEM images of the cross-section of the three different MPs. PLGA: poly(lactic-co-
+glycolic acid), PCL: poly(ε-caprolactone), PLA: poly(lactic acid).
+From these images, it can be observed that PLGA and PLA MPs present a core-shell
+like structure, whereas for PLC MPs, a more compact structure ﬁlled with the polymer
+matrix was observed. No internal structure is visible in the FIB-sectioned MPs in the center
+of the HR FE-SEM image of PCL; the theatre curtain effect [30] on polymeric material that
+
+Polymers 2022, 14, 2593
+11 of 19
+undergoes milling are due to a different sputtering yield at different incident angles. The
+measured shell thickness of the PLGA sample was around 250 nm, whereas for PLA it
+was almost double. It is clear from the images of PLGA and PLA that, in these cases, the
+cross-section did not introduce artifacts or modiﬁcations of the external structure.
+3.2. Drug Release
+The release of BEV was studied for all the loaded polymeric MPs over a period of
+50 days at 37 ◦C (Figure 6).
+0
+10
+20
+30
+40
+50
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+
+ PCL
+ PLGA
+ PLA
+Cumulative drug release (%)
+Time (Days)
+Time (days)
+Figure 6. In vitro release proﬁle for PLGA, PCL, and PLA MPs. PLGA: poly(lactic-co-glycolic acid),
+PCL: poly(ε-caprolactone), PLA: poly(lactic acid).
+BEV was released in a sustained manner during the time of observation. In particular,
+each type of polymer affected the drug release rate. PLGA-based MPs showed the slowest
+release kinetic energy and no initial burst release was registered, indicating that almost all
+of the drug had been entrapped inside the particles without the presence of drug molecules
+on the polymer surface. BEV release from PLGA MPs was characterized by a constant
+release rate equal to 1.80 mgBEV/days. This behavior is typical of PLGA-based drug
+delivery systems, in which at ﬁrst the drug is released by diffusion and then the erosion
+of the polymer accelerates the drug release. PCL MPs showed the fastest release in the
+ﬁrst hours of observation, with an initial release of 20%. A sustained release was observed
+up to 50 days with an approximatively constant release rate of 14 mgBEV/days. PLA MPs
+showed a slower release, if compared to PCL MPs, but faster if compared to PLGA ones.
+Even working with these MPs, there was an initial release that corresponded to about 10%
+of the total cumulative released drug. The drug release rate amounted to 11 mgBEV/days.
+At the end of the observation time, the cumulative release percentages were
+11.92 ± 0.93, 28.38 ± 3.09, and 16.09 ± 2.68%for PLGA, PCL, and PLA MPs, respec-
+tively. The difference in BEV release can be attributed to the difference in morphological
+structure of the obtained MPs. Indeed, PLGA- and PLA-based MPs have the same behavior,
+characterized by limited initial burst release. For these two carriers, a core-shell structure
+was observed, in which all the protein was entrapped in the internal core and the release
+was observed after the diffusion of the protein through the polymer layer [31,32]. In the
+case of PCL, a compact dense structure was observed in which the protein is probably
+homogenously dispersed in the whole structure of the carrier, even at the surface [33]. For
+this reason, the protein present at the surface is rapidly released in the external medium by
+simple dissolution, inducing the ﬁrst initial burst release, and then it is released by diffusion
+through the polymer matrix internal structure. Furthermore, the difference in release curves
+
+Polymers 2022, 14, 2593
+12 of 19
+can be attributed by different crystallinities of the polymer used for particle preparation.
+Indeed, PCL is semi-crystalline, while PLGA and PLA are amorphous polymers [34,35].
+Semi-crystalline polymers form porous structures, which release drugs more rapidly. The
+release from amorphous polymers is less rapid and more controlled by diffusion [36].
+To better describe and understand the difference among the three MP systems, drug
+release data were described using two mathematical models, as reported in Section 2. In
+particular, one model takes into account the diffusion-controlled release (Equation (2))
+and the other combines both the diffusion and the polymer degradation phenomena
+(Equation (3)).
+A nonlinear least square ﬁtting allows the estimation of the parameters K and n in
+Equation (2), and Kd, FD, K, and tmax in Equation (3). Drug release from PLGA and PLA
+MPs was better described by Equation (3), whereas drug release from PCL MPs followed
+Equation (2). In Figure 7, both the experimental points (dots) and model curve (line) are
+represented for the three drug release proﬁles that were studied. The values of the different
+parameters are reported in the same ﬁgure. The models give a fair representation of the
+drug release proﬁles, as can be seen from the continuous curves reported. Equation (2)
+provides an appropriate description of drug release from PCL MPs (R2 = 0.92); indeed, PCL
+belongs to the class of slowly degrading polymers, which takes more than 2 years to be
+completely degraded under physiological conditions. For this reason, drug release from
+PCL MPs was practically due only to burst and drug diffusion phenomena; indeed, after
+the initial burst and sufﬁcient water penetration to the matrix, drug release proceeded to
+diffusion, which was the main mechanism that governed the release proﬁle. Equation (3)
+was a better model for the description of drug release from PLGA and PLA (R2 = 0.99
+and R2 = 0.90, respectively) MPs. In these cases, the drug release was governed both by
+diffusion and by polymer degradation.
+3.3. Suspension Stability
+The stability of PLGA, PCL, and PLA MPs was studied in terms of PMD and PDI at
+three different temperatures, 4, 25, and 37 ◦C, for four weeks. Stability data are reported in
+Table 2.
+Table 2. PMD of PLGA, PCL, and PLA MPs stored at different temperatures. Different letters (a,
+b, and c) reported in the PMD column refer to statistically signiﬁcant differences among the three
+different samples considered at the same temperature (p < 0.05), using ANOVA with Tukey’s HSD post
+hoc multiple comparison test. Results are expressed as mean value ± standard deviation (n = 3). MPs:
+microparticles, PMD: particle mean diameter, SD: standard deviation, PLGA: poly(lactic-co-glycolic
+acid), PCL: poly(ε-caprolactone), PLA: poly(lactic acid).
+MPs
+Temperature (◦C)
+PMD ± SD (µm)
+PLGA
+4
+5.08 ± 2.43 a
+PCL
+3.28 ± 2.23 b
+PLA
+5.06 ± 1.20 a
+PLGA
+25
+4.32 ± 2.30 a
+PCL
+3.69 ± 2.74 c
+PLA
+5.08 ± 1.21 b
+PLGA
+37
+2.72 ± 1.61 a
+PCL
+4.49 ± 3.29 b
+PLA
+5.10 ± 1.19 c
+
+Polymers 2022, 14, 2593
+13 of 19
+model
+parameters
+n: 0.13, K: 0.12 d-0.13, R2 = 0.92
+0
+500
+1000
+1500
+0.0
+0.1
+0.2
+0.3
+
+Mt/Minf
+Time (h)
+ Equation 2
+ Experimental data
+0
+500
+1000
+1500
+0.0
+0.1
+0.2
+0.3
+
+Mt/Minf
+Time (h)
+ Equation 1
+ Experimetal data
+ Equation 2
+ Experimental data
+0
+500
+1000
+1500
+0.00
+0.05
+0.10
+0.15
+
+Mt/Mint
+Time (h)
+ Equation 2
+ Experimental Data
+ Equation 2
+ Experimental data
+model
+parameters
+Kd: 0.9 d-1, FDinf: 0.25,
+K: 0.2 d-1, tmax: 61 d, R2: 0.90
+model
++
+(1
+)
+parameters
+Kd: 0.2 d-1, FDinf: 0.08,
+K: 0.2 d-1, tmax: 65 d, R2: 0.99
+B
+A
+C
+Figure 7. In vitro release proﬁle ﬁtting with the mathematical models from (A) PLGA, (B) PCL, and
+(C) PLA MPs. PLGA: poly(lactic-co-glycolic acid), PCL: poly(ε-caprolactone), PLA: poly(lactic acid).
+Considering the PLGA MPs, the diameter varied at lower temperatures, from
+5.08 ± 2.43 µm at 4 ◦C to 2.72 ± 1.61 µm at 37 ◦C, whereas the PCL MPs did not present an
+important increase in terms of PMD. PLA MPs presented positive behavior with the PMD,
+which did not present any differences at all the tested temperatures.
+3.4. Biological Validation
+Before testing particle-dependent interactions with speciﬁc cell lineage, one important
+issue is always represented by understanding their compatibility with cells. Cytocom-
+patibility is guaranteed by the employment of biocompatible polymers and by the use of
+
+Polymers 2022, 14, 2593
+14 of 19
+non-toxic drugs, with a special attention paid to their concentration. In this work, PLGA,
+PCL, and PLA were used as polymers to encapsulate a monoclonal antibody, BEV. For this
+reason, these particles were tested on endothelial cells in order to biologically validate three
+platforms useful for all the applications where the blood stream is involved. Endothelial
+cells were chosen since they are intimately related to VEGF-A and, consequently, are a
+possible target of the encapsulated BEV. In detail, the metabolic activity of EA.hy926 was
+determined by measuring their mitochondrial functionality using MTS assay. Different
+concentrations of empty and loaded MPs were tested (0.125, 0.250, 0.500, and 1 mgBEV/mL)
+for 24, 48, and 72 h. As a control, solvent (water) was used since all the tested particles
+were produced by using it as a dispersant. Considering the cells grown in the presence of
+PLGA MPs (Figure 8), evidence of cytotoxicity was observed, even after 24 h. The reported
+cytotoxicity has to be ascribed partially to the low concentration of PLGA particles obtained
+in water solution and partially to the chemical nature of the employed polymer. In fact,
+even in the case of the control solvent, a partial cytotoxicity was put in evidence. A different
+trend was observed by working with PCL particles; taking into account the different days
+and the different concentrations, no statistical differences were noticed (Figure 9). It was
+observed that PLA MPs showed a partial cytotoxicity, especially in the presence of BEV,
+after 72 h of experimentation (Figure 10).
+0
+20
+40
+60
+80
+100
+120
+140
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PLGA microparticle concentration (mg/mL)
+CONTROL
+SOLVENT
+EMPTY
+LOADED
+0
+20
+40
+60
+80
+100
+120
+140
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PLGA microparticle concentration (mg/mL)
+* *
+*
+*
+*
+*
+*
+*
+*
+*
+A
+B
+*
+*
+*
+*
+*
+*
+*
+*
+*
+Figure 8. Cont.
+
+Polymers 2022, 14, 2593
+15 of 19
+0
+20
+40
+60
+80
+100
+120
+140
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PLGA microparticle concentration (mg/mL)
+C
+*
+*
+*
+*
+*
+*
+*
+Figure 8. Cell viability of endothelial cells grown for (A) 24, (B) 48, and (C) 72 h in the presence of
+PLGA MPs, * p < 0.05 (with respect to the control using ANOVA with Tukey’s HSD post hoc multiple
+comparison test). PLGA: poly(lactic-co-glycolic acid).
+0
+20
+40
+60
+80
+100
+120
+140
+160
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PCL microparticle concentration (mg/mL)
+CONTROL
+SOLVENT
+EMPTY
+LOADED
+0
+20
+40
+60
+80
+100
+120
+140
+160
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PCL microparticle concentration (mg/mL)
+A
+B
+Figure 9. Cont.
+
+Polymers 2022, 14, 2593
+16 of 19
+0
+20
+40
+60
+80
+100
+120
+140
+160
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PCL microparticle concentration (mg/mL)
+C
+Figure 9. Cell viability of endothelial cells grown for (A) 24, (B) 48, and (C) 72 h in the presence of
+PCL MPs. PCL: poly(ε-caprolactone).
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+0.125
+0.25
+0.5
+1
+Cell viability (%)
+PLA microparticle concentration (mg/mL)
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PLA microparticle concentration (mg/mL)
+CONTROL
+SOLVENT
+EMPTY
+LOADED
+A
+B
+Figure 10. Cont.
+
+Polymers 2022, 14, 2593
+17 of 19
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+0.125
+0.250
+0.500
+1
+Cell viability (%)
+PLA microparticle concentration (mg/mL)
+C
+*
+*
+*
+*
+Figure 10. Cell viability of endothelial cells grown for (A) 24, (B) 48, and (C) 72 h in the presence of
+PLA MPs, * p< 0.05 (with respect to the control using ANOVA with Tukey’s HSD post hoc multiple
+comparison test). PLA: poly(lactic acid).
+4. Conclusions
+In this work, a comparative study among MPs made of three different polymers was
+completed PLGA, PCL, and PLA were used as polymers to encapsulate BEV in order to
+select the best tool for MP-based treatments intended for cardiovascular applications. In
+terms of size distribution, PLA particles showed a larger dimension while the use of PLGA
+guaranteed the production of particles of few microns in diameter and better control of PSD.
+PLA MPs showed the lowest EE value, being in any case acceptable for biomedical purposes.
+Different tests were performed in order to analyze the best polymer for BEV release. PLGA
+presented, compared to the other two polymers, higher EE and favorable stability at each
+studied temperature. Considering the release studies, PLGA MPs presented a controlled
+drug release for the designed time, which did not present an initial burst release.
+The in vitro validation conﬁrmed the biocompatibility of all the studied polymers,
+putting the attention on the maximum usable concentration for each one of them. PLGA-
+based MPs were characterized by partial cytotoxicity effects. Results obtained working
+with PCL-based MPs showed that, after 72 h, these MPs presented a good biocompatibility
+at all the studied concentrations. After 24 and 48 h, PLA-based MPs were biocompatible.
+Considering the results obtained in the present work, it is possible to conclude that
+PLGA-based MPs offer the best properties desired for a drug delivery system, in terms of
+morphology, PMD, PDI, EE, and BEV release. Their cytocompatibility could be improved
+increasing the concentration of particles in the aqueous solution immediately after their
+production.
+Future perspectives will regard the systematic study of the PLGA-BEV system in order
+to scale-down particle dimension to nanometric level, obtaining an injectable solution made
+of nanoparticles to be engineered in order to be able to target the atheroma.
+Author Contributions: Conceptualization, P.F.F., R.C., P.P., and D.P.; methodology, G.D.N.A., P.F.F.,
+R.C., and G.F.; investigation, G.D.N.A., P.F.F., R.C., and G.F.; resources, R.C., P.P., and D.P.; data
+curation, G.D.N.A., P.F.F., R.C., and G.F.; writing—original draft preparation, G.D.N.A., P.F.F., R.C.,
+and G.F.; writing—review and editing, G.D.N.A., P.F.F., and R.C.; supervision, P.P. and D.P.; project
+administration, P.P. and D.P.; funding acquisition, R.C., P.P., and D.P. All authors have read and
+agreed to the published version of the manuscript.
+Funding: This work was ﬁnanced by “Curiosity-driven project 2020” (100024-2020-RC-CURIOSITY_
+001—Campardelli—CUP: D39C20000510005).
+
+Polymers 2022, 14, 2593
+18 of 19
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Data Availability Statement: Not applicable.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Stefanadis, C.; Toutouzas, K.; Stefanadi, E.; Kolodgie, F.; Virmani, R.; Kipshidze, N. First experimental application of bevacizumab-
+eluting PC coated stent for inhibition of vasa vasorum of atherosclerotic plaque: Angiographic results in a rabbit atheromatic
+model. Hellenic. J. Cardiol. 2006, 47, 7–10. [PubMed]
+2.
+Li, Y.; Zhu, Y.; Deng, Y.; Liu, Y.; Mao, Y.; Wang, J.; Sun, J. The therapeutic effect of bevacizumab on plaque neovascularization in a
+rabbit model of atherosclerosis during contrast-enhanced ultrasonography. Sci. Rep. 2016, 6, 30417. [CrossRef] [PubMed]
+3.
+Ferreira, N.N.; Caetano, B.L.; Boni, F.I.; Sousa, F.; Magnani, M.; Sarmento, B.; Ferreira Cury, B.S.; Daﬂon Gremião, M.P. Alginate-
+based delivery systems for bevacizumab local therapy: In vitro structural features and release properties. J. Pharm. Sci. 2019, 108,
+1559–1568. [CrossRef]
+4.
+Rocha, C.V.; Gonçalves, V.; da Silva, M.C.; Bañobre-López, M.; Gallo, J. PLGA-based composites for various biomedical
+applications. Int. J. Mol. Sci. 2022, 23, 2034. [CrossRef]
+5.
+Swider, E.; Koshkina, O.; Tel, J.; Cruz, L.J.; de Vries, I.J.M.; Srinivas, M. Customizing poly(lactic-co-glycolic acid) particles for
+biomedical applications. Acta Biomater. 2018, 73, 38–51. [CrossRef]
+6.
+Elmowafy, E.M.; Tiboni, M.; Soliman, M.E. Biocompatibility, biodegradation and biomedical applications of poly(lactic
+acid)/poly(lactic-co-glycolic acid) micro and nanoparticles. J. Pharm. Investig. 2019, 49, 347–380. [CrossRef]
+7.
+De Negri Atanasio, G.; Ferrari, P.F.; Campardelli, R.; Perego, P.; Palombo, D. Innovative nanotools for vascular drug delivery: The
+atherosclerosis case study. J. Mater. Chem. B 2021, 9, 8558–8568. [CrossRef]
+8.
+Zhi, K.; Raji, B.; Nookala, A.R.; Khan, M.M.; Nguyen, X.H.; Sakshi, S.; Pourmotabbed, T.; Yallapu, M.M.; Kochat, H.; Tadrous, E.;
+et al. PLGA nanoparticle-based formulations to cross the blood–brain barrier for drug delivery: From R&D to cGMP. Pharmaceutics
+2021, 13, 500. [CrossRef] [PubMed]
+9.
+Ding, D.; Zhu, Q. Recent advances of PLGA micro/nanoparticles for the delivery of biomacromolecular therapeutics. Mater. Sci.
+Eng. C 2018, 92, 1041–1060. [CrossRef]
+10.
+Lim, M.P.A.; Lee, W.L.; Widjaja, E.; Loo, S.C.J. One-step fabrication of core–shell structured alginate–PLGA/PLLA microparticles
+as a novel drug delivery system for water soluble drugs. Biomater. Sci. 2013, 1, 486–493. [CrossRef] [PubMed]
+11.
+Li, X.; Wang, L.; Fan, Y.; Feng, Q.; Cui, F.-Z. Biocompatibility and toxicity of nanoparticles and nanotubes. J. Nanomater. 2012,
+2012, 1–19. [CrossRef]
+12.
+Dash, T.K.; Konkimalla, V.B. Poly-ε-caprolactone based formulations for drug delivery and tissue engineering: A review. J. Control.
+Release 2012, 158, 15–33. [CrossRef] [PubMed]
+13.
+Tyler, B.; Gullotti, D.; Mangraviti, A.; Utsuki, T.; Brem, H. Polylactic acid (PLA) controlled delivery carriers for biomedical
+applications. Adv. Drug Deliv. Rev. 2016, 107, 163–175. [CrossRef] [PubMed]
+14.
+Lee, B.K.; Yun, Y.; Park, K. PLA micro- and nano-particles. Adv. Drug Deliv. Rev. 2016, 107, 176–191. [CrossRef] [PubMed]
+15.
+Abrishami, M.; Zarei-Ghanavati, S.; Soroush, D.; Rouhbakhsh, M.; Jaafari, M.R.; Malaekeh-Nikouei, B. Preparation, characteriza-
+tion, and in vivo evaluation of nanoliposomes-encapsulated bevacizumab (Avastin) for intravitreal administration. Retina 2009,
+29, 699–703. [CrossRef]
+16.
+Alves, A.d.C.S.; Bruinsmann, F.A.; Guterres, S.S.; Pohlmann, A.R. Organic nanocarriers for bevacizumab delivery: An overview
+of development, characterization and applications. Molecules 2021, 26, 4127. [CrossRef] [PubMed]
+17.
+Jenjob, R.; Phakkeeree, T.; Seidi, F.; Theerasilp, M.; Crespy, D. Emulsion techniques for the production of pharmacological
+nanoparticles. Macromol. Biosci. 2019, 19. [CrossRef]
+18.
+Gharieh, A.; Khoee, S.; Mahdavian, A.R. Emulsion and miniemulsion techniques in preparation of polymer nanoparticles with
+versatile characteristics. Adv. Colloid Interface Sci. 2019, 269, 152–186. [CrossRef]
+19.
+Ullah, F.; Othman, M.B.H.; Javed, F.; Ahmad, Z.; Akil, H.M. Classiﬁcation, processing and application of hydrogels: A review.
+Mater. Sci. Eng. C 2015, 57, 414–433. [CrossRef] [PubMed]
+20.
+Sousa, F.; Fonte, P.; Cruz, A.; Kennedy, P.J.; Pinto, I.M.; Sarmento, B. Polyester-based nanoparticles for the encapsulation of
+monoclonal antibodies. In Recombinant Glycoprotein Production; Picanço-Castro, V., Swiech, K., Eds.; Methods in Molecular Biology;
+Springer: New York, NY, USA, 2018; Volume 1674, pp. 239–253.
+21.
+Ye, Z.; Ji, Y.-L.; Ma, X.; Wen, J.-G.; Wei, W.; Huang, S.-M. Pharmacokinetics and distributions of bevacizumab by intravitreal
+injection of bevacizumab-PLGA microspheres in rabbits. Int. J. Ophthalmol. 2015, 8, 653–658. [CrossRef] [PubMed]
+22.
+Jiang, P.; Jacobs, K.M.; Ohr, M.P.; Swindle-Reilly, K.E. Chitosan–polycaprolactone core–shell microparticles for sustained delivery
+of bevacizumab. Mol. Pharmaceutics 2020, 17, 2570–2584. [CrossRef] [PubMed]
+23.
+Yandrapu, S.K.; Upadhyay, A.K.; Petrash, J.M.; Kompella, U.B. Nanoparticles in porous microparticles prepared by supercritical
+infusion and pressure quench technology for sustained delivery of bevacizumab. Mol. Pharmaceutics 2013, 10, 4676–4686.
+[CrossRef]
+
+Polymers 2022, 14, 2593
+19 of 19
+24.
+Sousa, F.; Cruz, A.; Fonte, P.; Pinto, I.M.; Neves-Petersen, M.T.; Sarmento, B. A new paradigm for antiangiogenic therapy through
+controlled release of bevacizumab from PLGA nanoparticles. Sci. Rep. 2017, 7, 3736. [CrossRef]
+25.
+Bassim, N.; Scott, K.; Giannuzzi, L.A. Recent advances in focused ion beam technology and applications. MRS Bull. 2014, 39,
+317–325. [CrossRef]
+26.
+Abdelkader, D.H.; El-Gizawy, S.A.; Faheem, A.M.; McCarron, P.A.; Osman, M.A. Effect of process variables on formulation,
+in-vitro characterisation and subcutaneous delivery of insulin PLGA nanoparticles: An optimisation study. J. Drug Deliv. Sci.
+Technol. 2018, 43, 160–171. [CrossRef]
+27.
+Pillay, V.; Fassihi, R. In vitro release modulation from crosslinked pellets for site-speciﬁc drug delivery to the gastrointestinal
+tract. J. Control. Release 1999, 59, 229–242. [CrossRef]
+28.
+Gallagher, K.M.; Corrigan, O.I. Mechanistic aspects of the release of levamisole hydrochloride from biodegradable polymers. J.
+Control. Release 2000, 69, 261–272. [CrossRef]
+29.
+De Negri Atanasio, G.; Ferrari, P.F.; Campardelli, R.; Perego, P.; Palombo, D. Poly (lactic-co-glycolic acid) nanoparticles and
+nanoliposomes for protein delivery in targeted therapy: A comparative in vitro study. Polymers 2020, 12, 2566. [CrossRef]
+[PubMed]
+30.
+Giannuzzi, L.A. Introduction to Focused ion Beams: Instrumentation, Theory, Techniques and Practice; Springer: New York, NY, USA,
+2005.
+31.
+Yoo, J.; Won, Y.-Y. Phenomenology of the initial burst release of drugs from PLGA microparticles. ACS Biomater. Sci. Eng. 2020, 6,
+6053–6062. [CrossRef]
+32.
+Pagels, R.F.; Prud’homme, R.K. Polymeric nanoparticles and microparticles for the delivery of peptides, biologics, and soluble
+therapeutics. J. Control. Release 2015, 219, 519–535. [CrossRef] [PubMed]
+33.
+Vaishya, R.D.; Mandal, A.; Patel, S.; Mitra, A.K. Extended release microparticle-in-gel formulation of octreotide: Effect of polymer
+type on acylation of peptide during in vitro release. Int. J. Pharm. 2015, 496, 676–688. [CrossRef] [PubMed]
+34.
+Sumpter, B.G.; Noid, D.W.; Barnes, M.D. Recent developments in the formation, characterization, and simulation of micron and
+nano-scale droplets of amorphous polymer blends and semi-crystalline polymers. Polymer 2003, 44, 4389–4403. [CrossRef]
+35.
+Gentile, P.; Chiono, V.; Carmagnola, I.; Hatton, P. An overview of poly(lactic-co-glycolic) acid (PLGA)-based biomaterials for bone
+tissue engineering. Int. J. Mol. Sci. 2014, 15, 3640–3659. [CrossRef] [PubMed]
+36.
+Sun, D.D.; Lee, P.I. Probing the mechanisms of drug release from amorphous solid dispersions in medium-soluble and medium-
+insoluble carriers. J. Control. Release 2015, 211, 85–93. [CrossRef] [PubMed]

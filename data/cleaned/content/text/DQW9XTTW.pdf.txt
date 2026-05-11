@@ -1,0 +1,1193 @@
+Skip to main content
+Advertisement
+[image]
+SpringerOpen is moving to Springer Nature Link. Visit this
+
+journal in its new home.
+[image]
+Search
+•  Get published
+•  Explore Journals
+•  Books
+
+•  About
+•  My account
+Search all SpringerOpen articles
+Search
+Future Journal of Pharmaceutical Sciences
+•  About
+•  Articles
+•  Submission Guidelines
+•  Submit manuscript
+Multichannel 3D-printed bionanoparticles-loaded tablet (M3DPBT):
+designing, development, and in vitro functionality assessment
+Download PDF
+Download PDF
+•  Research
+•  Open access
+•  Published: 16 September 2024
+Multichannel 3D-printed
+bionanoparticles-loaded tablet
+(M3DPBT): designing,
+development, and in vitro
+functionality assessment
+•  Hardik Rana
+  ORCID: orcid.org/0000-0002-2159-76651,
+•  Priyanka Pathak1,
+•  Vimal Patel1,
+•  Vaishali Thakkar1,
+•  Mansi Dholakia2,
+•  Saloni Dalwadi1 &
+
+•  …
+•  Tejal Gandhi1 
+Show authors
+Future Journal of Pharmaceutical Sciences volume 10,
+Article number: 124 (2024) Cite this article
+•  932 Accesses
+•  2 Citations
+•  Metrics details
+Abstract
+Background
+The intersubject variability which was related to the genetic
+makeup was the major cause of change in pharmacological and
+pharmacokinetic behavior of same dosage form in varied human
+being. 3D printing technology will help therapy evolve and
+eliminate the limitations of conventional technologies. Nebivolol's
+(NBL)-limited oral bioavailability is mainly due to its poor aqueous
+solubility. The research aims to combine advanced 3D printing
+technology and nanotechnology to design customized therapy and
+enhance the functionality of NBL using a statistical approach.
+Results and discussion
+The results of the phase solubility indicated that NBL was a poorly
+aqueous soluble drug. Its solubility was increased by employing
+nanoparticle drug delivery, which is a promising solubility
+enhancement technique. The 32 full factorial design was employed
+to develop and optimize bionanoparticles (BNPs) by solvent
+evaporation technique using poly (lactic-co-glycolic acid 50:50)
+(PLGA 50:50) and poloxamer-407 as a surfactant. The BNPs were
+characterized by % encapsulation efficiency (% EE), Fourier
+transform infrared spectroscopy (FTIR) and differential scanning
+calorimeter (DSC), transmission electron microscope (TEM), zeta
+
+potential, polydispersity index (PDI), particle size, in vitro drug
+release, etc. The BNPs loaded of NBL were further incorporated into
+the multichannel 3D-controlled release tablets made by PVA
+filaments employing fused deposition modeling (FDM) technology
+optimized by central composite design (CCD). Multichannel 3D-
+printed bionanoparticles-loaded tablet (M3DPBT) was optimized
+using CCD. All designed M3DPBTs were evaluated for post-
+fabrication parameters. The optimized M3DPBT could release more
+than 85% NBL within 10 h.
+Conclusions
+The newly fabricated M3DPBT was found stable. The amount of
+PLGA 50:50 and Polaxomer was significant for developing BNPs. %
+infill and layer height were observed as critical for the designing
+M3DPBT. The combined novel 3D printing and nanotechnology
+technology will open a new direction for patient compliance and
+better therapeutic effects.
+Graphical abstract
+Designing and developing of M3DPBT is substantially improve the
+patient compliance and therapeutic effectiveness of Nebivolol.
+[image]
+Background
+Hypertension is a global health concern. It is common and, if left
+unchecked, can lead to severe problems. High blood pressure affects
+nearly a million people worldwide, two-thirds in developing
+countries. Hypertension affects approximately 8 million people
+worldwide each year. According to projections, 1.56 billion people
+will have hypertension by 2025, indicating a growing epidemic. The
+primary symptoms of the condition are chronic, resembling
+cardiovascular disease and stroke in developed countries. One of
+the global noncommunicable disease goals is to reduce the
+prevalence of hypertension by 33% between 2010 and 2030 [1, 2].
+
+A β1-selective beta-blocker or high cardioselective NBL has been
+recommended for the curative action against heart failure and
+hypertension [3]. By increasing the release of nitric oxide, NBL
+induces endothelium-dependent lessening and quickly lowers blood
+pressure. Clinical trials have shown that reducing oxidative stress
+and vascular inflammation increases vasodilation [4]. It was also
+shown to have antihypertensive efficacy and to lower blood
+pressure dose-dependently, similar to older beta-blockers, calcium
+channel blockers, and ACE inhibitors [4,5,6]. As a BCS class II
+antihypertensive drug, NBL is selected as the study's model drug. It
+has three major drawbacks: First, it has poor aqueous solubility;
+second, it exhibits high dose variability, which causes intersubject
+variability; and third, it has low bioavailability [7,8,9].
+BNPs have attracted particular attention among the reported
+diverse nanoformulations due to their controlled release action and
+better biocompatibility. The drug solution was covered by a
+polymeric membrane, which was stabilized using a surfactant in
+BNPs. Although some work has been done to develop solid forms
+that integrate BNP stability and storage, it is a significant concern.
+However, it can be overcome by loading into another dosage form
+[10, 11]. Intersubject variability relates to how each person's
+genetic makeup and pharmacological and pharmacokinetic
+behavior changes and is the leading cause for concern. Take a
+typical oral solid dosage form tablet with minimal restrictions when
+produced using the conventional method. It is impossible to tailor a
+tablet to each person's demand with current technologies. Other
+people need additional tablet dosages that cannot be produced on
+demand using the conventional procedure. The evolution of therapy
+will be aided by 3D printing technology, which will eliminate the
+limitations of conventional technologies [12].
+No efforts have been made in the casing to create specialized NBL
+delivery using simulated 3D printing and nanotechnology. The
+existing investigation aims to explore the revolutionary 3D
+technology to address this issue by creating a tailored dose form for
+NBL with less toxicity. We explore methods for creating M3DPBT
+that can be used as drug-delivery devices. FDM designs unique
+tailor-made devices incorporating variable polymeric filaments.
+BNPs were effectively loaded. The drug loading and release patterns
+
+from the printlets were significantly impacted by the layer height of
+the polymer and infill percentages. This work put forth a unique
+platform for creating customized oral dosage forms in terms of dose
+and dissolution characteristics.
+Methods
+Materials
+NBL HCl was acquired as a gratis sample from Intas Pharma Pvt.
+Ltd., India. Biodegradable PLA and PLGA 50:50 were acquired from
+Merck Chemical Pvt. Ltd., India. Non-ionic surfactant
+Poloxamer-407 was purchased from Chemdys Corporation, India.
+PVA filaments for printing 3D tablets were purchased from
+Makeerboat 3D Pvt. Ltd., India. All the analytical-scale organic
+solvents were procured from SD Fine Chemicals Pvt. Ltd., India.
+Phase solubility study
+Excess NBL was added to 3 ml of varied solvents like methanol,
+0.1N HCl, and water, then shifted to a 10 ml volumetric flask. The
+test suspensions were kept for 72 h in an orbital shaker at 37 °C and
+100 rpm. The suspension was centrifuged at 4000 rpm after 72 h of
+vigorous and continuous mixing, and the supernatant was collected.
+UV absorbance at 281 nm wavelength was used to assess the
+solubility of NBL in mg/ml using UV spectrophotometers (UV 1900,
+Shimadzu, Japan) [13].
+Modified solvent evaporation method
+The solvent evaporation process (168A, Jain Scientific Glassware,
+India), high-speed homogenizer (HSH) (T 25 digital ULTRA-
+TURRAX®, IKA India Private Limited), ultracentrifuge (ROTA 4R
+V/FM Plasto Crafts Industries Pvt. Ltd, India), and lyophilization
+(SP VirTis AdVantage Pro, Spinco Biotech Pvt. Ltd., India) were all
+used in this preparation method. This procedure entails dissolving
+the 10 mg of NBL HCl and PLGA 50:50 in 10 Dichloromethane
+(DCM) and adding the required amount of surfactant
+(Poloxamer-407) to the resultant solution. Allowing the mixture to
+
+evaporate using a rotary evaporator at a temperature above their
+boiling point (50 °C) and 80 rpm until a thin coating at the bottom
+of the flask was obtained. To form a suspension of BNPs, the thin
+film was reconstituted with deionized water. The BNPs are
+homogenized in HSH for 5 min at a speed of 10,000 rpm. The BNPs
+were separated employing the high-speed centrifuge. The surplus
+solvent was removed, and the concentrated formed BNPs were
+frozen for 24 h at − 22 °C in a deep freezer. The samples were
+freeze-dried for 72 h at 80 °C and 1.0 mbar under absolute vacuum
+pressure in a lyophilizer [14,15,16].
+Experimental design (32 full factorial design)
+As part of quality by design (QbD), the design of experiment (DoE)
+was used to find the empirical relationship between the critical
+materials attributes (CMAs) and critical quality attributes (CQAs)
+systematically and scientifically. An orthogonal polynomial is
+conceivable if the points of the factors are consistently set apart. A
+full factorial design with two variables and three levels (32) was
+created and used to examine all potential combinations of all
+factors at all levels. A total of nine experiments comprise the
+experimental design using Design Expert v11 software (Stat-Ease,
+Inc., Minneapolis). The amount of PLGA 50:50 (X1–0.2 to 0.7%)
+and Polaxomer 407 (X2–1 to 3%) was chosen as independent
+factors. Throughout the investigation, all other material attributes
+and process parameters remained invariant. The nine experimental
+runs that were investigated are summarized in Table 1, along with
+the design matrix in actual values. The response variables tested
+were the % CDR (Y1 – NLT 85%) and % EE (Y2 – NLT 85%). The
+mathematical models were created using Design Expert (DoE)
+software v11 [17, 18].
+Table 1 Design matrix and responses and characterization of
+BNPs
+Full size table
+Evaluation of drug-loaded BNPs
+Encapsulation efficiency
+
+A solvent extraction approach was used to evaluate encapsulation
+efficiency. NBL was extracted from dried BNPs (equal to 2 mg of
+medication) using dichloromethane: methanol (1:9) and
+centrifugation at 5000 rpm for 15 min (R-4C, Remi Instruments Pvt.
+Ltd., India). The supernatant was collected and diluted suitably. The
+amount of NBL was calculated using a standard curve of NBL
+inculcating the UV–visible spectrophotometer (UV 1900, Shimadzu,
+Japan) at 281 nm [19, 20]. By using the formula below, EE (%) was
+obtained:
+$$\boldsymbol{\%}{\varvec{E}}{\varvec{E}}= \frac{Practical
+NBL content}{Theoretical NBL content } X 100$$
+(1)
+Particle size analysis
+Malvern zetasizer (Nano ZS90, Malvern Instruments Limited) was
+used to calculate the mean particle size. Prepare a 15-ml solution
+with 5 mg of BNPs. Prepare a solution containing 5 mg BNPs in 15-
+ml solvent. The aqueous BNP dispersion was kept in a sample
+holder with a probe. Coated-window optical probes were linked
+with the opposite electrodes in an insulating sample cell. An electric
+field is applied between the optical probes and the associated
+electrodes. Under the field's influence, particle motion is
+investigated. The particle size distribution was derived based on the
+velocity of the BNPs using the perceptions of dynamic light
+scattering. Software called Flex was used to obtain a graph showing
+particle size distribution. The below equation was used to
+determine the PDI for studying particle size distribution [21,22,23].
+$${\varvec{P}}{\varvec{D}}{\varvec{I}}=\frac{\left(D
+0.9\right)-(D 0.1)}{(D 0.5)}$$
+(2)
+Zeta potential
+The zeta potential is the direct measurement of the stability of the
+suspended particles. The surface charge was measured using this
+technique. The zeta potential was measured by Malvern zeta sizer
+(Nano ZS90, Malvern). The ideal zeta potential value should not be  
+
+− 10 and +10 mV for a stable formulation. The zeta potential of
+the formulation was identified and reported [10, 22].
+Structural analysis by FTIR
+The structural analysis of NBL and BNPs was observed using FTIR
+analysis (JASCO FT/IT6100, Japan). The BNPs were characterized
+by identifying new functional groups that confirmed the structural
+changes that led to improvements in solubility and stability. The
+NBL or BNPs were mixed with potassium bromide for a few
+minutes. The pellets were pressed and placed in a sample holder in
+the path of light for the structural analysis. The NBL or BNP pellet
+was scanned in the 400 to 4000 cm−1 range [24, 25].
+Characterization of BNPs by DSC
+Solid physical state alteration coupling with thermal events during
+heating can be observed with the help of DSC (DSC 7020 HITACHI,
+Japan). The DSC spectra confirmed the conversion of crystalline to
+amorphous. Approximately 2mg of NBL or BNPs were kept in an
+aluminum pan under the N2 environment. The temperature was
+gradually increased at a rate of 10 °C/min in the range of 25 and
+300 °C. Thermograms of NBL and BNPs were recorded and
+compared for any solid-state alteration [26].
+Morphology determination by TEM
+Morphology, especially BNP shape, size, and uniformity, was
+observed employing a transmission electron microscope (Tecnai 20
+S-twin, Philips, Netherlands). A dilute aqueous dispersion of BNPs
+(1%) was formed to identify shape and structure morphology
+properly. A small, thin dispersion layer was applied on a carbon-
+coated copper-stained grid surface of 300 mesh. Negative TEM
+staining was utilized for better resolution and identification.
+Phosphotungstic acid was used as a dye. The layer was air dried at
+27 °C, observed under the TEM, and the images were taken at an
+accelerated voltage of 80 kV and recorded.
+XPRD of NBL BNPs
+
+PXRD was performed to characterize the solid state of NBL and
+BNPs. The XRD spectra was recorded using PW 17291 powder X-
+Ray diffractometer using Ni-filtered, Cu kV radiation with a voltage
+of 40 kV and a 25 mA current. The scanning rate employed was
+1° min−1 over 10–40° 2θ range [27, 28].
+In-vitro diffusion study
+BNPs containing NBL were observed for diffusion patterns and
+performed through Franz diffusion cells. About 1.5 ml BNP
+dispersion was reserved in the donor section. During the diffusion
+study, the receptor section was occupied with phosphate buffer pH
+7.4 solution (25 ml). The sink condition and 37 ± 0.5 °C were
+maintained to simulate in vivo conditions. The test solution was
+sampled at a pre-fixed time duration and exchanged with a pH 7.4
+phosphate buffer solution to maintain constant volume. The test
+solution was diluted, and the amount of NBL was estimated using a
+UV–visible spectrophotometer at 281 nm. One formulation was
+analyzed six times, and an average was taken and reported with
+standard deviation [29].
+Preparation of multichannel 3D-printed tablet
+(M3DPT) by FDM technology
+An excellent performance and efficient cost ratio are characteristics
+of FDM. It is mainly utilized for recreation and in industry. Once
+put into the nozzle, a heating tool was used to melt the PVA
+filament. A heated nozzle was used to extrude the melted polymer.
+Starting at the bottom of the intended tablet, the printing was done
+layer by layer (Zorthrax Ultra 200 plus, India). PVA was selected as
+a polymer because it is hydrophilic, has a low melting point, and is
+an FDA-approved material [30,31,32,33].
+Preliminary design of 3D-printed tablet
+Round shape tablet
+Tinker CAD (https://www.tinkercad.com/) was used to design the
+round-shaped tablet with a 10 mm diameter and 2 mm height. The
+
+design file was downloaded into (.stl) format and transferred to
+Zorthrax Ultra 200 plus. The design file was printed into a 3-D
+round tablet using a 3D printer with an MK8 single-head extruder,
+as shown in Fig. 1. Different process parameters like printing
+temperature (270 °C), %infill (100%), layer of height (0.2 mm), and
+build plate temperature (60 °C) were adjusted to form a round
+tablet [32].
+Fig. 1
+[image]
+Design of 3D tablet: a round shape tablet and b M3DPT
+Full size image
+Multichannel 3-D-printed tablet (M3DPT)
+Tinker CAD (https://www.tinkercad.com/) was used to design the
+M3DPT with an 8 mm width and 16 mm length. The design file was
+downloaded into (.stl) format and transferred to Zorthrax Ultra 200
+plus. The design file was printed into M3DPT using a 3D printer
+with an MK8 single-head extruder, as shown in Fig. 1. Different
+process parameters like printing temperature (270 °C), %Infill (10–
+15%), layer of height (0.7 mm), and build plate temperature (60 °C)
+were adjusted to form M3DPT.
+Development of M3DPBT
+The BNPs were loaded into the 3D-printed tablet to form M3DPBT
+by soaking method. The multichannel tablet was soaked in 2 ml
+BNPs containing dispersion for 24 h under closed conditions at 37 
+± 0.5 °C. Two ml suspension contains BNPs equivalent to 10 mg of
+NBL. The 3D-printed tablets were removed, dried at room
+temperature, and stored in a closed container till further evaluation.
+The researcher was also allowed to vary the dose of NBL as per the
+need of patient.
+Statistical design—CCD
+A CCD was employed to optimize formulation using DoE v11.0.0.
+
+According to the design space of the CCD model, as described in
+Table 2, 13 experimental runs were designed and assessed for
+desired responses (Table 2). The design consisted of one dependent
+variable, % cumulative drug release at 10 h (Y1 - NLT 85%), and
+critical process parameters X1-% infill (5–15%) and X2- layer height
+(0.2–0.7 mm). Analysis of variances (ANOVA) and multiple linear
+regression analysis (MLRA) were performed to signify the
+correlation between the chosen process parameter and critical
+quality attribute. Two-dimensional contour plot and Three-
+dimensional response surface plot were generated to understand the
+correlation. Numerical and graphical optimization was performed to
+optimize the M3DPBT by setting R1 that should not be less than
+85%. The validation and prediction capability of the developed
+model was ascertained by grid search analysis [30, 34, 35].
+Table 2 Design matrix, measured responses, and
+characterization of M3DPBT
+Full size table
+Characterization of M3DPBT
+The basic post-manufacturing parameters of the tablet characterized
+M3DPBT. M3DPBT was characterized by the weight of the
+formulation, time to manufacture M3DPBT, hardness, and friability.
+In-vitro drug release of M3DPBT
+Employing the dissolution type-II equipment, the dissolution study
+of the M3DPBT was carried out (TDT 08L, Electrolab, India). In vitro
+drug release was assessed in 0.1 N HCL (900ml) at 37±0.5 °C. The
+tablets were placed, and the paddle was rotated at 50 rpm as per
+USP. In accordance with USP, the M3DPBT was deposited, and the
+paddle was rotated at 50 rpm. The sample (5 ml) was collected at a
+pre-fixed duration and exchanged with the same amount of 0.1N
+HCl to maintain the constant volume. The samples were filtered and
+diluted with 0.1N HCL solutions to the proper concentration. Under
+a UV-visible double beam spectrophotometer, the absorbance of the
+solutions was measured at 281 nm wavelength. An equation derived
+from the standard curve was then used to estimate the cumulative
+percentage of drug release [36, 37].
+
+Stability study
+M3DPBT was tested for short-term stability over 1 month in closed
+amber vials under controlled environmental conditions at
+40 °C/75% RH for 6 months (Stability Chamber, Nihaar Equipment
+Pvt. Ltd., India). During a month, the % EE and % CDR
+measurements were conducted every 1-month interval [38].
+Results
+Phase solubility study
+The analytical composition of the solute determines a saturated
+solution's solubility about a specific amount of solvent. With various
+solvents, solubility levels vary greatly. To conduct the phase
+solubility analysis, 10 mg of the drug was taken into a 2 ml solvent
+containing Eppendorf. Here, the solubility of NBL in several
+solvents, including water, 0.1N HCL, and methanol, was evaluated.
+NBL has poor water solubility, 0.0403 mg/ml, and is therefore
+considered as poorly aqueous soluble drug. Hence, it was necessary
+to enhance the NBL solubility before inculcating into the M3DPT,
+which results in improved NBL release and therapeutic effectiveness
+[7, 39].
+BNPs optimization using 32 full factorial designs
+Using DoE v11.0.0, a total of nine experimental trials containing
+two independent variables and the two response variables % EE and
+% CDR were constructed. The amount of the surfactant (X2) and
+polymer (X1) was chosen as the formulation’s independent
+variables. Throughout the investigation, all other formulation and
+process variables remained constant [40]. Table 1 shows the % EE
+and % CDR results of the design batches performed to optimize and
+validate the model.
+The DoE software was used to analyze variance (ANOVA) to
+scrutinize the significance of co-relationships among chosen
+variables. Table 3 summarizes the ANOVA statistics for % EE and %
+CDR regarding Fischer's ratio (F-value) and p-value.
+
+Table 3 ANOVA analysis and validation of model for BNPs
+Full size table
+Influence on % EE of BNPs
+A very low p-value (0.013) and high F-value (111.5) indicated that
+model terms were crucial. In this case, X1 is the amount of PLGA
+50:50, and X2 is the amount of Polaxomer 407. “X1X2” is
+interaction effects. The positive effect of X1 clearly shows that
+increasing polymer concentration will directly increase the % EE,
+and negative values will show a decrease in effect on % EE. The
+developed model was highly predictive for the chosen response and
+could find the variability as high R2 (0.99). Contour plots and 3D-
+RSM of % EE illustrated in Fig. 2a and b, respectively, show that
+when polymer concentration increased, the entrapment of the drug
+inside the BNPs was observed to be higher and in the desired range.
+However, keeping the polymer concentration constant and
+surfactant concentration at a high level, the entrapment increased
+to a definite level and then reduced. While increasing both amounts
+of PLGA 50:50 and Polaxomer, the entrapment of the drug was
+found to be irrespectively decreased. Hence, it concluded that
+polymer concentration only influences the entrapment of the drug
+inside the BNPs.[41, 42] The polynomial equation of % EE is
+expressed:
+$${\text{Y}}_{{1}} = {95}.{8}0 + 0.{\text{7167X}}_{{1}} {-}
+{5}.{\text{35X}}_{{2}} {-}{3}.0{\text{8X}}_{{1}} {\text{X}}
+_{{2}} {-}{4}.{\text{95X}}_{{1}}^{{2}} {-}{4}.{\text{35X}}_{{2}}
+^{{2}}$$
+(3)
+Fig. 2
+[image]
+a Contour plot of Y1, b 3D-RSM of % EE of Y1, c Contour plot of Y2,
+d 3D-RSM of % EE of Y2, and e overlay plot
+Full size image
+Influence on % CDR
+
+A very low p-value (0.0048) and a high F-value (46.69) specify that
+the model terms were significant. The developed model was highly
+predictive for the chosen response and could find the variability as
+high R2 (0.98). Figure 2c and d shows the contour plot and 3D-RSM
+of % CDR when the polymer and surfactant concentrations were too
+optimum. Similar to the drug entrapment, the influence on % CDR
+was observed in that drug release gradually increased with the
+polymer concentration. In contrast, surfactant concentration did not
+produce significant effects on drug release in individuals. However,
+the combined influence of both variables significantly increases the
+drug release to a certain extent, then decreases gradually. Only the
+desired surfactant concentration reduces the surface tension and
+facilitates the particle partition during homogenization. [43, 44]
+The polynomial equation of % CDR is expressed:
+$${\text{Y}}_{{2}} = {95}.{6667} + 0.{\text{666667 X}}_{{1}} -
+{5}.{\text{5 X}}_{{2}} - {\text{3 X}}_{{1}} {\text{X}}_{{2}} -
+{\text{5 X}}_{{1}}^{{2}} - {4}.{\text{5 X}}_{{2}}^{{2}}$$
+(4)
+Validation of design model
+The overlay plot has been constructed by overlaying the contour
+plot of each response. Numerical and graphical optimization was
+performed by adding the desired range of each response and
+independent variables. The yellow-colored region was identified in
+the overlay plot and considered optimal. One optimal implant and
+two checkpoint BNPs were chosen, formulated, and evaluated for
+selected CQAs related to the anticipated values, and the %
+prediction error was calculated. The % prediction error for all
+responses was less than 10% (Fig. 2e and Table 3), which ascertains
+the high predictive ability of the developed quadratic model [42,
+45].
+Particle size and PDI measurement of optimal BNPs
+by DLS
+The particle size is critical since it significantly influences drug
+release, cellular uptake, stability, and biodistribution [46]. NBL-
+loaded BNPs had a narrower size distribution histogram and a mean
+
+particle diameter of roughly 277 nm, as shown in Fig. 3a. The PDI
+value was discovered to be 0.014, within the acceptance range. The
+particle size was observed in the nano range as shown in Table 1.
+The low PDI value indicates that the uniform dispersion of particle
+was observed.
+Fig. 3
+[image]
+a Particle size and b zeta potential of optimized batch
+Full size image
+Zeta potential
+The zeta potential is another imperative variable for BNPs as it
+shows the intensity of repulsion between the neighboring equal-
+charged particles and provides the probability of physical stability
+and particle aggregation in the colloids [47]. Figure 3b shows that
+the zeta potential of the optimal NBL BNPs was observed at − 
+49 mV, indicating that the BNPs have incipient stability. The zeta
+potential was measured, reported in Table 1. The formulated BNPs
+was observed stable from the reported data.
+Structural analysis by FTIR
+The functional groups between the drug and the BNP matrix
+forming the polymer blends were identified using FTIR. To analyze
+the chemical interactions between the NBL and other excipients,
+FTIR spectra of NBL were performed with PLGA 50:50 polymer and
+Poloxamer- 407. Figure 4 shows that NBL's FTIR spectra showed the
+considerable changes. The major peak was observed in the range of
+3650–3350 cm−1 which was indicated that there is the formation
+of newer bonds of hydroxyl. The conversion was mainly due to
+change in crystalline to amorphous form, which enhances the
+solubility and leads to better drug release [13].
+Fig. 4
+[image]
+
+Structure elucidation by FTIR
+Full size image
+Thermal analysis
+The NBL melting point was at 229.31 °C, as shown in Fig. 5,
+showing that the drug is pure and crystalline. The glass transition
+temperature of the PLGA 50:50 polymer caused a sharp
+endothermic peak to be detected in BNPs at 53.2 °C. However, with
+BNPs containing NBL, there was no clear endothermic peak of the
+drug. This indicates that amorphous NBL is embedded inside the
+polymeric matrix [48].
+Fig. 5
+[image]
+Thermal behavior analysis
+Full size image
+Morphology by TEM
+The TEM images of optimized NBL-loaded BNPs are shown in
+Fig. 6a. Results ascertained that the spherical shape and nano-sized
+(174 nm) BNPs were formed, which was desired. The difference in
+diameter measured by TEM and DLS was due to the hydrodynamic
+effect of the BNPs in the fluid medium. Because DLS measures the
+size of particles based on intensity distribution while TEM measures
+the number of distributions [49].
+Fig. 6
+[image]
+a TEM images of optimized BNPs, b % CDR of BNPs, and c PXRD
+diffractogram
+Full size image
+XPRD of NBL BNPs
+
+The X-ray diffractogram of NBL and BNPs are depicted in Fig. 6c.
+The sharp and intense peaks were observed with the NBL. The
+number of the peaks, intensity, and sharpness were reduced after
+the formulation of BNPs of NBL. The results were indicated that the
+conversion of crystalline to amorphous form up to some level or
+NBL may be entrapped within the BNPs.[50]
+In vitro NBL release of BNPs
+The profile of in vitro NBL release is illustrated in Fig. 6b, and after
+10 h about NLT, 85% was drug released in batches P-15, 16, and
+19. The drug release kinetics in vitro are influenced by the PLGA
+and Polaxomer combination. Nevertheless, it is feasible for a
+multifaceted phenomenon between the NBL and PLGA, such as drug
+entrapment in the polymer and drug adsorption on the surface of
+the polymer matrix due to electrostatic adhesion. The surface-
+adsorbed drug is expected to be the one that causes the initial burst
+release from the BNPs. After 10 h, a burst drug release was seen.
+This drug release loaded near the BNPs' surface may have been
+driven by polymer diffusion in the BNPs' surface. The implication is
+that a mechanism for drug release from BNPs might combine
+diffusion and dissolution [16, 51].
+Optimization of M3DPBT by DoE
+For the RSM involving CCD, M3DPBT was designed as shown in the
+design matrix, which incorporated star and axial batches. The
+design matrix of CCD with measured CQAs and other post-
+fabrication parameters is shown in Table 2. MLRA and ANOVA
+were carried out by employing the DoE to establish the relationship
+among the two chosen critical process variables (% infill - A and
+Layer height in mm - B) and the one quality attribute (% CDR at
+10h - R1) in CCD. The results of MLRA (coefficient value) and
+ANOVA (Fisher’s ratio and p-values) are depicted in Table 4 for the
+chosen CQA [33, 52].
+Table 4 ANOVA analysis and model validation of M3DPBT
+Full size table
+
+Influence on % CDR
+A very low p-value (0.0005) and high F (19.59) indicate that model
+terms were significant. Results showed that the squared correlation
+coefficient R2 and the adjusted R2 were 0.93 and 0.88, respectively,
+which indicated that the model could explain above 85% variability
+in the response and showed the adequacy of the model to predict
+the response. The lack of fit was found to be 98.06%, implying that
+this value is significant due to noise and was non-significant. Figure
+7a and b shows the contour plot and 3D-RSM of % CDR when the %
+infill and height of the layer were too optimum. The figures show
+that by keeping the infill percentage at a high level and the layer’s
+height increasing from low to high grade, the % CDR was increased.
+Whereas the infill percentage at a low level and height of the layer
+increased from low to a high level, the % CDR was decreased. When
+both independent variables were increased, the % CDR gradually
+increased to a certain level [53]. Table 4 briefs the ANOVA statistics
+for the % CDR of the multichannel tablet. The polynomial equation
+of % CDR is expressed:
+$${\text{R}}_{{1}} = {82}.{33}{-}{5}.{\text{48A}}{-}0.
+{\text{51B}}{-}{4}.{2}0{\text{AB}}{-}0.{\text{23A}}^{{2}} + 0.
+{\text{56B}}^{{2}}$$
+(5)
+Fig. 7
+[image]
+a Contour plot, b 3D response surface plot, c overlay plot of
+M3DPBT, and d % CDR of M3DPBT
+Full size image
+Overlay plot of design
+An overlay plot was drawn in the DoE v.11.0.0. The design space is
+shown in Fig. 7c. The formulator is free to choose any point within
+the design space. It is worth noting that the FDA requires that the
+design space be clearly defined in ANDA. Optimization was
+achieved by computing overall desirability.
+
+Validation of model
+A checkpoint analysis confirmed the role of a polynomial equation
+and a contour plot in predicting responses. In the design space, as
+shown in Fig. 7c, any point selected among the region falls well
+within the constraints set for the response variables. From an
+extensive grid search, three checkpoint batches were selected after
+taking trials of obtained formulations as they had a significantly
+lower amount of error than as shown in Table 4. The % CDR of
+checkpoint batches was experimentally determined. They were
+compared with the predicted values found in the equation. The %
+relative error obtained from the checkpoint batch was in range.
+Hence, a close resemblance was obtained between an observed
+value and a predicted response assessed for the robustness of
+prediction. This value indicates the validity of the generated model
+[54].
+Evaluation parameters of M3DPBT
+The therapeutic effectiveness and bioavailability of tablets depend
+upon parameters like weight uniformity, friability, hardness, and
+content uniformity. These parameters were performed after the
+tablets were fabricated [55, 56]. Designed batches and optimized
+batches showed acceptable weight results, as shown in Table 2. The
+time taken for all the batches is within the range measured using
+the Cura software. The friability ranged from 0.01 to 0.06, less than
+1%. So, all batches have shown acceptable pharmacopoeial limits.
+In vitro dissolution of M3DPBT
+From Fig. 7d, in the % CDR of M3DPBT, all optimized batches
+showed more than 80% CDR except TB10, TB12, and TB13 due to
+their higher infill density. Thus, the higher surface area to volume
+ratio of the low-density tablets likely accounts for the faster
+dissolution rate compared to high-density tablets [57, 58].
+Stability study of M3DPBT
+The stability of an optimized M3DPBT was performed at 40 ± 
+
+2 °C/75 ± 5% RH for 6 months. % EE and % CDR were measured at
+frequent time intervals, indicating no significant variance observed
+after 6 -6 months of storage. The % EE was observed at 90.78 ± 
+1.34, and the % CDR at 10 h was 85.67 ± 1.35.
+Discussion
+More emphasis was placed in this study on the techniques used to
+prepare poorly soluble NBL-loaded BNPs that were then
+incorporated into a 3D-printed tablet to form M3DPBT. It was
+discovered that NBL pharmacokinetic variability may occur during
+absorption, distribution, or excretion processes. As a result,
+customized doses of NBL are required because different individuals
+have different genetic variations and pharmacological and
+pharmacokinetic behavior. Furthermore, conventional/traditional
+manufacturing techniques produce tablets with some drawbacks.
+Tablets cannot be tailored to individual patient needs (dose,
+medication types, etc.) and, when prepared using traditional
+manufacturing techniques, do not allow for on-demand
+manufacturing. To address this issue, 3D-printed tablets provide
+personalized treatment. To address the shortcomings of the
+conventional formulation, we created a 3D-printed formulation
+loaded with drug-loaded BNPs.
+This study chose PLGA 50:50 as a polymer and Poloxamer-407 as a
+surfactant. BNPs were prepared using a modified solvent
+evaporation technique and optimized using 32 factorial designs.
+Different evaluation parameters, such as zeta potential, PDI, particle
+size, % EE, and % CDR, were used to evaluate the optimized
+batches. Furthermore, the multichannel tablet was prepared using
+PVA filaments via FDM technology, with different % infill and layer
+heights were chosen to analyze the best surface-to-volume ratio for
+better dissolution, and it was discovered that the shape with the
+lowest infill% gives the promising drug release NLT 85% in 10 h.
+The experiment design was used, and CCD was chosen to study the
+FDM technique. Two factors were used to optimize the 3D printing
+batch: (1) % Infill in 3D CURA software and (2) layer thickness. The
+evaluation of all batches was based on in vitro dissolution. It was
+discovered that the % infill and layer thickness in 3D tablets played
+an essential role in modified drug release. The FDM 3D technique is
+
+feasible for producing tablets with good compatibility.
+Conclusion
+In the present investigation, more prominence was specified to
+design M3DPBT. The novel technology explored the conjugations of
+two progressive nanotechnology and 3D printing to produce
+innovative personalized nanomedicine-based drug delivery. NBL-
+loaded BNPs were successfully loaded in FDM-printed devices,
+which are successfully prepared to design novel M3DPBT. The
+height of the layer and the infill percentage significantly influenced
+the drug loading and drug release profiles from the tablets. This
+newer strategy yields dual advantages of both the technologies. As a
+proof of concept, this study proposed a new platform for developing
+oral dosage forms, with tailored dose and drug release profiles as
+personalized medicines.
+Availability of data and materials
+Not applicable.
+Abbreviations
+NBL:
+Nebivolol
+BCS:
+Biopharmaceutical classification system
+BNPs:
+Bionanoparticles
+PLGA:
+Poly (lactic-co-glycolic acid)
+HSH:
+
+High-speed homogenizer
+DCM:
+Dichloromethane
+FTIR:
+Fourier transform infrared spectroscopy
+DSC:
+Differential scanning calorimeter
+%EE:
+% Encapsulation efficiency
+TEM:
+Transmission electron microscope
+PDI:
+Polydispersity index
+PVA:
+Poly vinyl alcohol
+CCD:
+Central composite design
+FDM:
+Fused deposition modeling
+M3DPT:
+Multichannel 3D-printed tablet
+M3DPBT:
+
+Multichannel 3D-printed bionanoparticles-loaded tablet
+References
+1. Brant LCC, Passaglia LG, Pinto-Filho MM et al (2022) The
+Burden of resistant hypertension across the world. Curr
+Hypertens Rep 24:55–66. https://doi.org/10.1007/
+s11906-022-01173-w
+Article  PubMed  Google Scholar 
+2. Bloch MJ (2016) Worldwide prevalence of hypertension
+exceeds 1.3 billion. J Am Soc Hypertens 10:753–754. https://
+doi.org/10.1016/j.jash.2016.08.006
+Article  PubMed  Google Scholar 
+3. Moradifar N, Kiani AA, Veiskaramian A, Karami K (2022)
+Role of organic and inorganic nanoparticles in the drug
+delivery system for hypertension treatment: a systematic
+review. Curr Cardiol Rev 18:e110621194025. https://
+doi.org/10.2174/1573403x17666210611115823
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+4. Mercanoglu G, Gumrukcu G, Macit C (2022) Nitric oxide
+mediated effects of nebivolol on erectile function in rats with
+heart failure. J Men’s Heal 18:1–10. https://
+doi.org/10.31083/jomh.2021.071
+Article  Google Scholar 
+5. Fongemie J, Felix-Getzik E (2015) A review of nebivolol
+pharmacology and clinical evidence. Drugs 75:1349–1371.
+https://doi.org/10.1007/s40265-015-0435-5
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+6. Olawi N, Krüger M, Grimm D et al (2019) Nebivolol in the
+treatment of arterial hypertension. Basic Clin Pharmacol
+
+Toxicol 125:189–201. https://doi.org/10.1111/BCPT.13248
+Article  PubMed  CAS  Google Scholar 
+7. Nikam VJ, Patil SB (2020) Pharmaceutical cocrystals of
+nebivolol hydrochloride with enhanced solubility. J Cryst
+Growth 534:125488. https://doi.org/10.1016/
+j.jcrysgro.2020.125488
+Article  CAS  Google Scholar 
+8. Pandit AP, Chavan TT, Khandelwal KR (2018) Enhancement
+of solubility, dissolution rate and bioavailability of
+atorvastatin using solid lipid: in vitro and in vivo
+characterization. J Pharm Investig 45:503–513. https://
+doi.org/10.1007/s40005-015-0199-7
+Article  CAS  Google Scholar 
+9. Pandit AP, Patel SA, Bhanushali VP et al (2017) Nebivolol-
+loaded microsponge gel for healing of diabetic wound. AAPS
+PharmSciTech 18:846–854. https://doi.org/10.1208/
+s12249-016-0574-3
+Article  PubMed  CAS  Google Scholar 
+10. Iqbal O, Shah S, Abbas G et al (2021) Moxifloxacin loaded
+nanoparticles of disulfide bridged thiolated chitosan-eudragit
+RS100 for controlled drug delivery. Int J Biol Macromol
+182:2087–2096. https://doi.org/10.1016/
+j.ijbiomac.2021.05.199
+Article  PubMed  CAS  Google Scholar 
+11. Hanif M, Khan HU, Maheen S et al (2021) Formulation,
+characterization, and pharmacokinetic evaluation of
+Ivabradine-Nebivolol co-encapsulated lipospheres. J Mol Liq
+344:117704. https://doi.org/10.1016/j.molliq.2021.117704
+Article  CAS  Google Scholar 
+12. Jacob S, Nair AB, Patel V, Shah J (2020) 3D printing
+
+technologies: recent development and emerging applications
+in various drug delivery systems. AAPS PharmSciTech 21:1–
+16. https://doi.org/10.1208/s12249-020-01771-4
+Article  Google Scholar 
+13. Kaur G, Saifi A, Kumar K, Teotia D (2021) Development and
+evaluation of micro emulsion formulations of nebivolol for
+solubility enhancement. J Drug Deliv Ther 11:84–89. https://
+doi.org/10.22270/jddt.v11i5.5005
+Article  CAS  Google Scholar 
+14. Hu X, Han R, Quan LH et al (2013) Stabilization and
+sustained release of zeylenone, a soft cytotoxic drug, within
+polymeric micelles for local antitumor drug delivery. Int J
+Pharm 450:331–337. https://doi.org/10.1016/
+j.ijpharm.2013.04.007
+Article  PubMed  CAS  Google Scholar 
+15. Babos G, Biró E, Meiczinger M, Feczkó T (2018) Dual drug
+delivery of sorafenib and doxorubicin from PLGA and PEG-
+PLGA polymeric nanoparticles. Polymers (Basel) 10:895.
+https://doi.org/10.3390/polym10080895
+Article  PubMed  CAS  Google Scholar 
+16. Elsherif NI, Al-Mahallawi AM, Abdelkhalek AA, Shamma RN
+(2021) Investigation of the potential of nebivolol
+hydrochloride-loaded chitosomal systems for tissue
+regeneration: in vitro characterization and in vivo assessment.
+Pharmaceutics 13:700. https://doi.org/10.3390/
+pharmaceutics13050700
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+17. Ramalho MJ, Loureiro JA, Coelho MAN, Pereira MC (2019)
+Factorial design as a tool for the optimization of plga
+nanoparticles for the co-delivery of temozolomide and o6-
+benzylguanine. Pharmaceutics 11:401. https://
+doi.org/10.3390/pharmaceutics11080401
+
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+18. Zhang C, Yang L, Wan F (2020) Quality by Design thinking in
+the development of long-acting injectable PLGA/PLA-based
+microspheres for peptide and protein drug delivery. Int J
+Pharm 585:119441. https://doi.org/10.1016/
+j.ijpharm.2020.119441
+Article  PubMed  CAS  Google Scholar 
+19. Sun C, Gui Y, Hu R et al (2018) Preparation and
+pharmacokinetics evaluation of solid self-microemulsifying
+drug delivery system (S-SMEDDS) of Osthole. AAPS
+PharmSciTech 19:2301–2310. https://doi.org/10.1208/
+s12249-018-1067-3
+Article  PubMed  CAS  Google Scholar 
+20. Sornsuvit C, Hongwiset D, Yotsawimonwat S et al (2018) The
+bioavailability and pharmacokinetics of silymarin SMEDDS
+formulation study in healthy Thai volunteers. Evid-Based
+Complement Alternat Med. https://
+doi.org/10.1155/2018/1507834
+Article  PubMed  PubMed Central  Google Scholar 
+21. Nair AB, Shah J, Jacob S et al (2021) Development of
+mucoadhesive buccal film for rizatriptan: In vitro and in vivo
+evaluation. Pharmaceutics. https://doi.org/10.3390/
+pharmaceutics13050728
+Article  PubMed  PubMed Central  Google Scholar 
+22. Nair AB, Shah J, Al-Dhubiab BE et al (2019) Development of
+asialoglycoprotein receptor-targeted nanoparticles for
+selective delivery of gemcitabine to hepatocellular carcinoma.
+Molecules 24:4566. https://doi.org/10.3390/
+molecules24244566
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+23. Asal HA, Shoueir KR, El-Hagrasy MA, Toson EA (2022)
+
+Controlled synthesis of in-situ gold nanoparticles onto
+chitosan functionalized PLGA nanoparticles for oral insulin
+delivery. Int J Biol Macromol 209:2188–2196. https://
+doi.org/10.1016/j.ijbiomac.2022.04.200
+Article  PubMed  CAS  Google Scholar 
+24. Pathan LS, Modi CD, Gohel MC et al (2022) Introducing novel
+hybridization technique for solubility enhancement of
+Bosentan formulation. Food Hydrocoll Heal 2:100055.
+https://doi.org/10.1016/J.FHFH.2022.100055
+Article  Google Scholar 
+25. Modi D, Nirmal J, Warsi MH et al (2022) Formulation and
+development of tacrolimus-gellan gum nanoformulation for
+treatment of dry eye disease. Coll Surf B Biointerf
+211:112255. https://doi.org/10.1016/j.colsurfb.2021.112255
+Article  CAS  Google Scholar 
+26. Bhatt K, Patil P, Jani P et al (2022) Design and evaluation of
+hyaluronic acid-coated PLGA nanoparticles of raloxifene
+hydrochloride for treatment of breast cancer. Drug Dev Ind
+Pharm 47:2013–2024. https://
+doi.org/10.1080/03639045.2022.2088784
+Article  CAS  Google Scholar 
+27. Alghananim A, Özalp Y, Mesut B et al (2020) A solid ultra
+fine self-nanoemulsifying drug delivery system (S-snedds) of
+deferasirox for improved solubility: optimization,
+characterization, and in vitro cytotoxicity studies.
+Pharmaceuticals 13:1–25. https://doi.org/10.3390/
+ph13080162
+Article  CAS  Google Scholar 
+28. Park H, Ha ES, Kim MS (2020) Current status of
+supersaturable self-emulsifying drug delivery systems.
+Pharmaceutics 12:1–57. https://doi.org/10.3390/
+pharmaceutics12040365
+
+Article  CAS  Google Scholar 
+29. Vǎlean C, Marşavina L, Mǎrghitaşl M et al (2020) Effect of
+manufacturing parameters on tensile properties of FDM
+printed specimens. Procedia Struct Integr 26:313–320
+Article  Google Scholar 
+30. Wei C, Solanki NG, Vasoya JM et al (2020) Development of
+3D printed tablets by fused deposition modeling using
+polyvinyl alcohol as polymeric matrix for rapid drug release.
+J Pharm Sci 109:1558–1572. https://doi.org/10.1016/
+j.xphs.2020.01.015
+Article  PubMed  CAS  Google Scholar 
+31. Rajora A, Nagpal K (2022) Optimization of floating time of
+floating tablets to be used for peptic ulcers. ECS Trans
+107:15125–15139. https://doi.org/10.1149/10701.15125ecst
+Article  CAS  Google Scholar 
+32. Singh S, Vinchurkar K, Dixit P et al (2021) Formulation
+design and evaluation of 3D printed tablet of cinnarizine by
+fused deposition modeling technique. Int J Creat Res
+Thoughts 9:2320–2882
+Google Scholar 
+33. Hussain A, Mahmood F (2020) Personalised 3D printed fast-
+dissolving tablets for managing hypertensive crisis: in-vitro/
+in-vivo studies. Polymers (Basel) 12:1–15. https://
+doi.org/10.3390/polym12123057
+Article  CAS  Google Scholar 
+34. Solanki NG, Tahsin M, Shah AV, Serajuddin ATM (2018)
+Formulation of 3D printed tablet for rapid drug release by
+fused deposition modeling: screening polymers for drug
+release, drug-polymer miscibility and printability. J Pharm
+Sci 107:390–401. https://doi.org/10.1016/
+j.xphs.2017.10.021
+
+Article  PubMed  CAS  Google Scholar 
+35. Öztürk AA, Namlı İ, Güleç K, Kıyan HT (2020) Diclofenac
+sodium loaded PLGA nanoparticles for inflammatory diseases
+with high anti-inflammatory properties at low dose:
+formulation, characterization and in vivo HET-CAM analysis.
+Microvasc Res 130:103991. https://doi.org/10.1016/
+j.mvr.2020.103991
+Article  PubMed  CAS  Google Scholar 
+36. Escalona-Rayo O, Fuentes-Vázquez P, Jardon-Xicotencatl S et
+al (2019) Rapamycin-loaded polysorbate 80-coated PLGA
+nanoparticles: optimization of formulation variables and in
+vitro anti-glioma assessment. J Drug Deliv Sci Technol
+52:488–499. https://doi.org/10.1016/j.jddst.2019.05.026
+Article  CAS  Google Scholar 
+37. Khanna K, Sharma N, Rawat S et al (2021) Intranasal solid
+lipid nanoparticles for management of pain: a full factorial
+design approach, characterization & gamma scintigraphy.
+Chem Phys Lipids 236:105060. https://doi.org/10.1016/
+j.chemphyslip.2021.105060
+Article  PubMed  CAS  Google Scholar 
+38. Mohsen AM (2022) Cationic polymeric nanoparticles for
+improved ocular delivery and antimycotic activity of
+terconazole. J Pharm Sci 111:458–468. https://
+doi.org/10.1016/j.xphs.2021.09.019
+Article  PubMed  CAS  Google Scholar 
+39. Nikam VK, Shete SK, Khapare JP (2020) Most promising solid
+dispersion technique of oral dispersible tablet. Beni-Suef Univ
+J Basic Appl Sci. https://doi.org/10.1186/
+s43088-020-00086-4
+Article  Google Scholar 
+40. Üstündaʇ-Okur N, Yurdasiper A, Gündoʇdu E, Homan Gökçe E
+
+(2016) Modification of solid lipid nanoparticles loaded with
+nebivolol hydrochloride for improvement of oral
+bioavailability in treatment of hypertension: polyethylene
+glycol versus chitosan oligosaccharide lactate. J
+Microencapsul 33:30–42. https://
+doi.org/10.3109/02652048.2015.1094532
+Article  CAS  Google Scholar 
+41. Vakilinezhad MA, Amini A, Dara T, Alipour S (2019)
+Methotrexate and curcumin co-encapsulated PLGA
+nanoparticles as a potential breast cancer therapeutic system:
+in vitro and in vivo evaluation. Coll Surf B Biointerf
+184:110515. https://doi.org/10.1016/j.colsurfb.2019.110515
+Article  CAS  Google Scholar 
+42. Jana U, Mohanty AK, Manna PK, Mohanta GP (2014)
+Preparation and characterization of nebivolol nanoparticles
+using Eudragit® RS100. Coll Surf B Biointerf 113:269–275.
+https://doi.org/10.1016/j.colsurfb.2013.09.001
+Article  CAS  Google Scholar 
+43. Mandpe SR, Parate VR, Naik JB (2022) Experimental design
+approach, screening and optimization of system variables,
+analytical method development of flurbiprofen in
+nanoparticles and stability-indicating methods for high-
+pressure liquid chromatography. Futur J Pharm Sci 8:1–21.
+https://doi.org/10.1186/S43094-022-00426-4
+Article  Google Scholar 
+44. Mu L, Feng SS (2001) Fabrication, characterization and in
+vitro release of paclitaxel (Taxol) loaded poly(lactic-co-
+glycolic acid) microspheres prepared by spray drying
+technique with lipid/cholesterol emulsifiers. J Control
+Release 76:239–254. https://doi.org/10.1016/
+S0168-3659(01)00440-0
+Article  PubMed  CAS  Google Scholar 
+
+45. Er E, Çelikkan H, Erk N (2016) Highly sensitive and selective
+electrochemical sensor based on high-quality graphene/
+nafion nanocomposite for voltammetric determination of
+nebivolol. Sens Actuat, B Chem 224:170–177. https://
+doi.org/10.1016/j.snb.2015.10.028
+Article  CAS  Google Scholar 
+46. Saviano AM, Lourenço FR (2018) Design of experiments
+(DoE) applied to pharmaceutical and analytical quality by
+design (QbD). Brazilian J Pharm Sci 54:1–16
+Google Scholar 
+47. Shi K, Slavage JP, Maniruzzaman M, Nokhodchi A (2021)
+Role of release modifiers to modulate drug release from fused
+deposition modelling (FDM) 3D printed tablets. Int J Pharm
+597:120315. https://doi.org/10.1016/j.ijpharm.2021.120315
+Article  PubMed  CAS  Google Scholar 
+48. Zhang N, Zane CP, Chen Y et al (2020) Physical
+characterization of inclusion complexes of triphenyl
+phosphate and cyclodextrins in solution. J Phys Chem B
+124:404–412. https://doi.org/10.1021/acs.jpcb.9b09029
+Article  PubMed  CAS  Google Scholar 
+49. Nukala PK, Palekar S, Patki M, Patel K (2019) Abuse
+deterrent immediate release egg-shaped tablet (Egglets) using
+3D printing technology: quality by design to optimize drug
+release and extraction. AAPS PharmSciTech 20:1–12. https://
+doi.org/10.1208/s12249-019-1298-y
+Article  CAS  Google Scholar 
+50. Gaikwad SN (2020) Enhancing solubility and bioavailability
+of artemether and lumefantrine through a self-nano
+emulsifying drug delivery system. Indian J Pharm Sci 82:282–
+290
+Article  CAS  Google Scholar 
+
+51. Feng C, Yuan X, Chu K et al (2019) Preparation and
+optimization of poly (lactic acid) nanoparticles loaded with
+fisetin to improve anti-cancer therapy. Int J Biol Macromol
+125:700–710. https://doi.org/10.1016/
+j.ijbiomac.2018.12.003
+Article  PubMed  CAS  Google Scholar 
+52. Rana H, Hasan H, Gohel M et al (2020) Systematic
+development of bicalutamide immediate release pellets using
+aeroperl and non-MCC extruder aid. Curr Drug ther 15:482–
+492. https://doi.org/10.2174/1574885515999200424082315
+Article  CAS  Google Scholar 
+53. Macedo J, Marques R, Vervaet C, Pinto JF (2023) Production
+of Bi-compartmental tablets by FDM 3D printing for the
+withdrawal of diazepam. Pharmaceutics 15:538. https://
+doi.org/10.3390/pharmaceutics15020538
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+54. Rana H, Panchal M, Thakkar V et al (2024) Investigating in-
+vitro functionality and in-vivo taste assessment of eco-friendly
+Tadalafil Pastilles. Heliyon 10:e29543. https://
+doi.org/10.1016/j.heliyon.2024.e29543
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+55. Bácskay I, Ujhelyi Z, Fehér P, Arany P (2022) The evolution
+of the 3D-printed drug delivery systems: a review.
+Pharmaceutics 14:1312. https://doi.org/10.3390/
+pharmaceutics14071312
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+56. Rana H, Chavada D, Thakkar V (2024) Amalgamation of nano
+and 3-D printing technology design, optimization, and
+assessment. Ann 3D Print Med 13:100144. https://
+doi.org/10.1016/j.stlm.2024.100144
+Article  Google Scholar 
+
+57. González K, Larraza I, Berra G et al (2022) 3D printing of
+customized all-starch tablets with combined release kinetics.
+Int J Pharm 622:121872. https://doi.org/10.1016/
+j.ijpharm.2022.121872
+Article  PubMed  CAS  Google Scholar 
+58. Thanawuth K, Sutthapitaksakul L (2021) Impact of drug
+loading method on drug release from 3d-printed tablets made
+from filaments fabricated by hot-melt extrusion and
+impregnation processes. Pharmaceutics 13:1607. https://
+doi.org/10.3390/pharmaceutics13101607
+Article  PubMed  PubMed Central  CAS  Google Scholar 
+Download references
+Acknowledgements
+The authors would like to thank Anand Pharmacy College for
+providing infrastructure support to do experimental work.
+Funding
+Authors have no funding support for the publication of the
+manuscript. So, we request to the editorial board for kind
+consideration for a full waiver from APC charges.
+Author information
+Authors and Affiliations
+1. Department of Pharmaceutics, Anand Pharmacy College,
+Anand, Gujarat, 388001, India
+Hardik Rana, Priyanka Pathak, Vimal Patel, Vaishali
+Thakkar, Saloni Dalwadi & Tejal Gandhi
+2. Faculty of Pharmacy, Dharmasinh Desai University, Nadiad,
+
+Gujarat, India
+Mansi Dholakia
+Authors
+1. Hardik Rana
+View author publications
+Search author on:PubMed Google Scholar
+2. Priyanka Pathak
+View author publications
+Search author on:PubMed Google Scholar
+3. Vimal Patel
+View author publications
+Search author on:PubMed Google Scholar
+4. Vaishali Thakkar
+View author publications
+Search author on:PubMed Google Scholar
+5. Mansi Dholakia
+View author publications
+Search author on:PubMed Google Scholar
+6. Saloni Dalwadi
+View author publications
+Search author on:PubMed Google Scholar
+7. Tejal Gandhi
+View author publications
+Search author on:PubMed Google Scholar
+Contributions
+
+Hardik Rana (hardikrana1439@gmail.com) was contributed
+ideation, data analysis, interpretation, and manuscript write up.
+Priyanka Pathak (pathakpriyanka681@gmail.com) was involved in
+experimental work. Vimal Patel (email2vimal.patel@gmail.com)
+was performed manuscript write up. Vaishali Thakkar
+(vtthakkar@rediffmail.com) and Tejal Gandhi
+(gandhi.tejal@hotmail.com) were done ideation. Mansi Dholakia
+(mansidholakia.ph@ddu.ac.in) and Saloni Dalwadi
+(dalwadisaloni@gmail.com) did data analysis.
+Corresponding author
+Correspondence to Hardik Rana.
+Ethics declarations
+Ethics approval and consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare that they have no competing interests.
+Additional information
+Publisher's Note
+Springer Nature remains neutral with regard to jurisdictional claims
+in published maps and institutional affiliations.
+Rights and permissions
+Open Access This article is licensed under a Creative Commons
+
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format,
+as long as you give appropriate credit to the original author(s) and
+the source, provide a link to the Creative Commons licence, and
+indicate if changes were made. The images or other third party
+material in this article are included in the article's Creative
+Commons licence, unless indicated otherwise in a credit line to the
+material. If material is not included in the article's Creative
+Commons licence and your intended use is not permitted by
+statutory regulation or exceeds the permitted use, you will need to
+obtain permission directly from the copyright holder. To view a
+copy of this licence, visit http://creativecommons.org/licenses/
+by/4.0/.
+Reprints and permissions
+About this article
+[image]
+Cite this article
+Rana, H., Pathak, P., Patel, V. et al. Multichannel 3D-printed
+bionanoparticles-loaded tablet (M3DPBT): designing, development,
+and in vitro functionality assessment. Futur J Pharm Sci 10, 124
+(2024). https://doi.org/10.1186/s43094-024-00702-5
+Download citation
+•  Received: 08 May 2024
+•  Accepted: 06 September 2024
+•  Published: 16 September 2024
+•  DOI: https://doi.org/10.1186/s43094-024-00702-5
+Share this article
+Anyone you share the following link with will be able to read this
+
+content:
+Get shareable link
+Sorry, a shareable link is not currently available for this article.
+Copy shareable link to clipboard
+Provided by the Springer Nature SharedIt content-sharing initiative
+Keywords
+•  Nebivolol
+•  PLGA 50:50
+•  3D tablets
+•  FDM
+•  Controlled drug release
+Download PDF
+Advertisement
+[image]
+[image]
+•  Support and Contact
+•  Jobs
+•  Language editing for authors
+•  Scientific editing for authors
+•  Leave feedback
+•  Terms and conditions
+•  Privacy statement
+•  Accessibility
+•  Cookies
+Follow SpringerOpen
+•  SpringerOpen Twitter page
+
+•  SpringerOpen Facebook page
+By using this website, you agree to our Terms and Conditions, Your
+US state privacy rights, Privacy statement and Cookies policy. Your
+privacy choices/Manage cookies we use in the preference centre.
+[image]
+© 2025 BioMed Central Ltd unless otherwise stated. Part of
+Springer Nature.

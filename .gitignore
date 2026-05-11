@@ -77,7 +77,9 @@ ipython_config.py
 # Virtual environments and secrets
 ################################################################################
 .env
+.local_stage1_paths.json
 .venv/
+.venv_marker/
 env/
 venv/
 ENV/
@@ -93,6 +95,15 @@ __pypackages__/
 ################################################################################
 .vscode/
 # .idea/
+.codex_observer/
+
+################################################################################
+# Local scratch / operator-only outputs
+# Local scratch / operator-only outputs
+.local/
+.hermes/
+HANDOFF.md
+execution_output.txt
 
 ################################################################################
 # Static analysis / type checking
@@ -114,16 +125,21 @@ Thumbs.db
 ################################################################################
 # Research project specific
 ################################################################################
-# Gate: ignore all cleaned outputs by default
-data/cleaned/
-
-# Allowlist: keep small, important assets
+# Stage1 authorities and governed memory must stay reproducible across machines.
+# Keep only the declared cleaned authorities, GT assets, and memory surface.
+data/cleaned/**
+!data/cleaned/
 !data/cleaned/index/
 !data/cleaned/index/**
-!data/cleaned/samples/
-!data/cleaned/samples/**
-!data/labels/
-!data/labels/**
+!data/cleaned/labels/
+!data/cleaned/labels/manual/
+!data/cleaned/labels/manual/**
+!data/cleaned/gt_authority/
+!data/cleaned/gt_authority/**
+data/zotero/
+!data/mem/
+!data/mem/v1/
+!data/mem/v1/**
 !data/README.md
 !data/.gitkeep
 
@@ -134,27 +150,38 @@ data/pdf_raw/
 *.pdf
 *.html
 
-# Cleaned large, regeneratable intermediates
-data/cleaned/content/
+# Cleaned large, regeneratable intermediates outside the authoritative Stage1 set
+data/cleaned/analysis/
 data/cleaned/debug/
-data/cleaned/tables/
-data/cleaned/trace/
+data/cleaned/figures/
+data/cleaned/content_goren_2025/
 data/cleaned_cache/
 data/cleaned_backup_*/
 
-# Results and large exports
-data/results/
+# Results: ignore everything by default, then allowlist only the contract-pinned
+# minimal freeze used for cross-machine debugging and baseline comparison.
+data/results/**
+!data/results/
+!data/results/ACTIVE_RUN.json
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/
+data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/**
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/RUN_CONTEXT.md
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_formulation_table_v1.tsv
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_output_decision_trace_v1.tsv
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_output_summary_v1.md
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_stage2_objects/
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_stage2_objects/semantic_stage2_objects_summary_v1.json
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_to_widerow_adapter/
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_to_widerow_adapter/**
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/formulation_relation_v1/
+!data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/formulation_relation_v1/**
 data/exports/
 
 # Keep small but important data assets
 !data/README.md
 !data/.gitkeep
-!data/cleaned/index/
-!data/cleaned/index/**
-
-# If you keep small curated samples and labels in repo, do not ignore them
-!data/cleaned/samples/
-!data/cleaned/samples/**
 !data/labels/
 !data/labels/**
 

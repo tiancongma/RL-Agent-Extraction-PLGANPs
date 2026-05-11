@@ -1,0 +1,1950 @@
+{
+  "paper_key": "RHMJWZX8",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 82,
+    "prose_candidates": 63,
+    "table_candidates": 19,
+    "candidates_with_noise_flags": 63,
+    "candidates_with_quality_flags": 75,
+    "has_doe_signal": true,
+    "has_sequential_signal": false,
+    "has_optimization_signal": true
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "downstream_assay_terms"
+      ],
+      "text_content": "The NPs were characterized. The pharmacokinetics, tissue distributions and brain-protective effects of AP-PLGA- NPs were evaluated in animals. Key ﬁndings AP-PLGA-NPs were successfully prepared with a mean particle size of 145.0 nm and a zeta potential of −14.81 mV. The in-vitro release of AP from the PLGA-NPs showed a biphasic release proﬁle.",
+      "text_preview": "The NPs were characterized. The pharmacokinetics, tissue distributions and brain-protective effects of AP-PLGA- NPs were evaluated in animals. Key ﬁndings AP-PLGA-NPs were successfully prepared with a mean particle size"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:0#segment:3",
+      "paragraph_index": 0,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "AP was metabolized into PUE in rats. The AUC0−∞values of AP and PUE for AP-PLGA-NPs were 2.90- and 2.29- fold as great as those for AP solution, respectively.",
+      "text_preview": "AP was metabolized into PUE in rats. The AUC0−∞values of AP and PUE for AP-PLGA-NPs were 2.90- and 2.29- fold as great as those for AP solution, respectively."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:0#segment:4",
+      "paragraph_index": 0,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The values of the relative target- ing efﬁciency in the brain were 2.40 and 2.58 for AP and PUE, and the ratios of peak concentration were 1.91 and 1.89 for AP and PUE, respectively. Compared with the crude drug, AP-PLGA-NPs showed better brain-protective effects in rats.",
+      "text_preview": "The values of the relative target- ing efﬁciency in the brain were 2.40 and 2.58 for AP and PUE, and the ratios of peak concentration were 1.91 and 1.89 for AP and PUE, respectively. Compared with the crude drug, AP-PLGA"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "Conclusion Polysorbate 80-coated PLGA-NPs can improve the permeability of AP cross the BBB and enhance its brain-protective effects in rats",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "Conclusion Polysorbate 80-coated PLGA-NPs can improve the permeability of AP cross the BBB and enhance its brain-protective effects in rats.",
+      "text_preview": "Conclusion Polysorbate 80-coated PLGA-NPs can improve the permeability of AP cross the BBB and enhance its brain-protective effects in rats."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "Materials and Methods",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "Materials and Methods",
+      "text_preview": "Materials and Methods"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "Materials Substances and reagents The PUE standard (Batch No",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "Materials Substances and reagents The PUE standard (Batch No. 110752-200912) was acquired from the National Institutes for Food and Drug Control (Beijing, China). The AP sample (purity ≥98%) was a gift from Shandong Academy of Medical Sciences (Jinan, China). PLGA (lactide/glycolide = 50 : 50, molecular weight = 10 000) was obtained from Jinan Daigang Bioma- terial Co., Ltd. (Jinan, China). Polysorbate 80 (Tween 80) was purchased from Sinopharm Chemical Reagent Co., Ltd. (Shanghai, China). Methanol and acetonitrile of chromato- graphic grade were supplied by the Fisher Company (Fair Lawn, NJ, USA). The dialysis membrane was obtained from the Viskase Company, Inc. (Darien, IL, USA).",
+      "text_preview": "Materials Substances and reagents The PUE standard (Batch No. 110752-200912) was acquired from the National Institutes for Food and Drug Control (Beijing, China). The AP sample (purity ≥98%) was a gift from Shandong Acad"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "All other chemicals and reagents used were of analytical grade. Animals Wistar rats and Kunming mice (SCXK (Shandong) 20130009) were supplied from the Laboratory Animal Center of Shandong University (Jinan, China). All animal experiments complied with the requirements of the National Act on the Use of Experimental Animals (People’s Republic of China) and were conducted using protocols approved by the Shandong University Institutional Animal Care and Use Committee (Approval No. ECAESDUSM 201).",
+      "text_preview": "All other chemicals and reagents used were of analytical grade. Animals Wistar rats and Kunming mice (SCXK (Shandong) 20130009) were supplied from the Laboratory Animal Center of Shandong University (Jinan, China). All a"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "Preparation and characterization of AP-PLGA-NPs AP-PLGA-NPs were prepared by a solvent diffusion meth- odology",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "Preparation and characterization of AP-PLGA-NPs AP-PLGA-NPs were prepared by a solvent diffusion meth- odology. Brieﬂy, 18 mg of PLGA and 7 mg of AP were dis- solved in 1 ml of acetone to form an organic phase; then the organic phase was poured into 4 ml of stirred aqueous phase (containing 1% polysorbate 80). The formed O/W emulsion was stirred continuously at 800 rpm at 40°C for 12 h with a magnetic stir bar, and the ﬁnal NP suspension was subsequently ﬁltered through a membrane (0.8-μm pore size) to remove the non-incorporated AP.[27,28] The preparation method was optimized with a homo- geneous design combined with response surface methodol- ogy. The PLGA concentration, the volume ratio of the aqueous phase to the oil phase and the AP feeding amount were selected as the factors and were evaluated according to U*12 (1210) homogeneous design. The encapsulation efﬁ- ciency (EE) and drug loading (DL) of AP-PLGA-NPs, which Puerarin: R=H Acetylpuerarin: R=CH3CO- OR OR O RO RO OR OR O O Figure 1 Chemical structure of puerarin and acetylpuerarin.",
+      "text_preview": "Preparation and characterization of AP-PLGA-NPs AP-PLGA-NPs were prepared by a solvent diffusion meth- odology. Brieﬂy, 18 mg of PLGA and 7 mg of AP were dis- solved in 1 ml of acetone to form an organic phase; then the"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "1650–1662 Deqing Sun et al. PLGA-NPs improve AP permeability © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp.",
+      "text_preview": "1650–1662 Deqing Sun et al. PLGA-NPs improve AP permeability © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "were taken as the response variables, were determined with a centrifugation ultraﬁltration method.[29] The particle size and zeta potential were measured using a Zetasizer 3000 HSA instrument (Malvern Instruments Ltd., Malvern, UK).",
+      "text_preview": "were taken as the response variables, were determined with a centrifugation ultraﬁltration method.[29] The particle size and zeta potential were measured using a Zetasizer 3000 HSA instrument (Malvern Instruments Ltd., M"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:heading"
+      ],
+      "text_content": "Analytical methods AP was metabolized to PUE in vivo. The concentration of AP in the brain tissue was measured by HPLC described in the section ‘Preparation and characterization of AP-PLGA- NPs’.",
+      "text_preview": "Analytical methods AP was metabolized to PUE in vivo. The concentration of AP in the brain tissue was measured by HPLC described in the section ‘Preparation and characterization of AP-PLGA- NPs’."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "the concentration–time curve in one tissue; and ∑( ) = AUC area i under the concentration–time curve in total tissues. Effects of AP-PLGA-NPs against cerebral ischaemia-reperfusion injury in rats Focal cerebral ischaemia-reperfusion injury model and treatment The rats (280–320 g) were randomly divided into four groups (12 rats in each group): sham-operated (sham) group, ischaemia-reperfusion (IR) group, and groups treated with AP solution and AP-PLGA-NPs at a dose of 15 mg/kg.",
+      "text_preview": "the concentration–time curve in one tissue; and ∑( ) = AUC area i under the concentration–time curve in total tissues. Effects of AP-PLGA-NPs against cerebral ischaemia-reperfusion injury in rats Focal cerebral ischaemia"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "Results Characterization of AP-PLGA-NPs A schematic diagram showing the preparation of the NPs is illustrated in Figure 2a",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "Results Characterization of AP-PLGA-NPs A schematic diagram showing the preparation of the NPs is illustrated in Figure 2a. The prepared NPs were spherical and uniform in shape under TEM (Figure 2b), with a parti- cle size of 145.0 ± 1.3 nm, a polydispersity index of 0.153 and a zeta potential of −14.81 ± 1.39 mV.",
+      "text_preview": "Results Characterization of AP-PLGA-NPs A schematic diagram showing the preparation of the NPs is illustrated in Figure 2a. The prepared NPs were spherical and uniform in shape under TEM (Figure 2b), with a parti- cle si"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:3#segment:1",
+      "paragraph_index": 3,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The optimized EE and DL values were 90.51 ± 0.28% and 17.07 ± 0.33%, respectively. The in-vitro drug release proﬁle (Figure 3) of AP from the PLGA-NPs showed an initial burst release fol- lowed by a sustained release, which was consistent with the Higuchi’s diffusion mechanism, while the crude drug release followed ﬁrst-order kinetic model.",
+      "text_preview": "The optimized EE and DL values were 90.51 ± 0.28% and 17.07 ± 0.33%, respectively. The in-vitro drug release proﬁle (Figure 3) of AP from the PLGA-NPs showed an initial burst release fol- lowed by a sustained release, wh"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:3#segment:2",
+      "paragraph_index": 3,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "Deqing Sun et al. PLGA-NPs improve AP permeability 1650–1662 © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp.",
+      "text_preview": "Deqing Sun et al. PLGA-NPs improve AP permeability 1650–1662 © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:4#segment:0",
+      "paragraph_index": 4,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary",
+        "downstream_assay_terms",
+        "optimization_candidate"
+      ],
+      "text_content": "Pharmacokinetics in rats After injection of AP solution, AP was fast metabolized to PUE in blood, leading to a decreased AP concentration (Figure 4a) but an initial increased PUE concentration in the concentration–time proﬁle (Figure 4b). In comparison, after injection of AP-PLGA-NPs, AP released slowly from the NPs, leading to a sustained drug exposure.",
+      "text_preview": "Pharmacokinetics in rats After injection of AP solution, AP was fast metabolized to PUE in blood, leading to a decreased AP concentration (Figure 4a) but an initial increased PUE concentration in the concentration–time p"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:4#segment:10",
+      "paragraph_index": 4,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "The pharmacokinetic parameters of AP and PUE are pre- sented in Table 1.",
+      "text_preview": "The pharmacokinetic parameters of AP and PUE are pre- sented in Table 1."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:4#segment:11",
+      "paragraph_index": 4,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate",
+        "residual_noise"
+      ],
+      "text_content": "Compared with AP solution, PLGA-NPs provided higher AUC, MRT, t1/2, but lower plasma clearance (CL) for both AP and PUE, indicating an increased drug exposure in blood circulation. Following intravenous administration of AP-PLGA-NPs, the AUC0−∞values of AP and PUE were 5398.60 ± 724.77 and 15106.98 ± 3652.73 h ng/ml, which were 2.90- and 2.29-fold as great as those of AP solution, respectively. The Cmax values of AP and PUE were similar in the two groups, suggesting a sustained release of the NP preparation. Figure 2 The schematic diagram (a) showing the preparation of AP-PLGA-NPs and the photograph (b) of the prepared nanoparticles under trans- mission electron microscopy. Figure 3 In-vitro release proﬁles of acetylpuerarin from PLGA-NPs and solution in phosphate-buffered saline containing 1% polysorbate 80 (pH 7.4) at 37°C (mean ± SD, n = 3). PLGA-NPs improve AP permeability Deqing Sun et al. © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp. 1650–1662 Ac=CH3CO- CH3 CH O C n O n CH2 O C O OAc HO O O O OH OH O O O O z x w y OAc O AcO AcO OAc OAc O O solvent diffusion/evaporation Encapsulated drug Polysorbate 80 Acetylpuerarin PLGA 50:50 200nm Dissolved in organic phase Dissolved in aqueous phase PLGA nanoparticle Polysorbate 80 w+x+y+z=20 (a) (b) Cumulative release rate (%) Time (h) AP solution AP-PLGA-NPs",
+      "text_preview": "Compared with AP solution, PLGA-NPs provided higher AUC, MRT, t1/2, but lower plasma clearance (CL) for both AP and PUE, indicating an increased drug exposure in blood circulation. Following intravenous administration of"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Tissue distributions in mice The standard calibrations of PUE in different tissues were plotted. The calibration curves showed good linearity over a concentration range of 10–5000 ng/g in heart, liver, spleen, lung and kidney, and 10–1000 ng/g in brain tissue. There were no endogenous interferences with the detection of PUE.",
+      "text_preview": "Tissue distributions in mice The standard calibrations of PUE in different tissues were plotted. The calibration curves showed good linearity over a concentration range of 10–5000 ng/g in heart, liver, spleen, lung and k"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:10",
+      "paragraph_index": 5,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "The distributions of PUE in different tissues are shown in Figure 5, and the pharmacokinetic and targeting parameters of PUE are presented in Table 2.",
+      "text_preview": "The distributions of PUE in different tissues are shown in Figure 5, and the pharmacokinetic and targeting parameters of PUE are presented in Table 2."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:11",
+      "paragraph_index": 5,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "After injection of AP solu- tion, the AUC value of PUE was greatest in the liver, fol- lowed by the kidney, heart, lung, spleen and brain tissues in turn. Compared with AP solution, the distributions of PUE were greatly changed due to the encapsulation of NPs, with increased AUC and prolonged MRT in all tissues and higher Cmax in brain and spleen. Compared with AP solution, the concentrations of AP and PUE in the brain tissue following intravenous administration of AP-PLGA-NPs were signiﬁcantly higher (P < 0.05) at all the time points except for AP concentra- tion at 0.167 h after administration (Figure 6), and the dis- tributions of AP and PUE in the brain showed to be signiﬁcantly different from those of AP solution, with increased AUC, Cmax and prolonged MRT and t1/2. As pre- sented in Tables 2 and 3, after injection of AP-PLGA-NPs, the Te value of PUE in the brain was up to 2.29, which was much higher than that (1.28) of AP solution; further- more, the Re values in the brain were 2.40 and 2.58 for AP and PUE, and the Ce values were 1.91 and 1.89 for AP and PUE, respectively. The results suggested that PLGA-NPs distinctly enhanced the distributions of AP and PUE in brain. Figure 4 Mean (a) acetylpuerarin and (b) puerarin plasma concentration–time proﬁles following intravenous administration of acetylpuerarin solu- tion and AP-PLGA-NPs (n = 6).",
+      "text_preview": "After injection of AP solu- tion, the AUC value of PUE was greatest in the liver, fol- lowed by the kidney, heart, lung, spleen and brain tissues in turn. Compared with AP solution, the distributions of PUE were greatly"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:2",
+      "paragraph_index": 5,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Table 1 Pharmacokinetic parameters of AP and PUE after intravenous administration of AP formulations (mean ± SD, n = 6) Parameter AP PUE Administration of AP solution Administration of AP-PLGA-NPs Administration of AP solution Administration of AP-PLGA-NPs AUC0−∞(h ng/ml) 1863.69 ± 204.52 5398.60 ± 724.77** 6587.04 ± 1520.60 15106.98 ± 3652.73** MRT0−∞(h) 1.92 ± 0.12 4.48 ± 0.38** 2.29 ± 0.27 4.72 ± 0.67** t1/2(h) 1.47 ± 0.23 3.22 ± 0.52** 1.81 ± 0.17 3.58 ± 0.41** Tmax(h) 0.083 ± 0 0.083 ± 0 0.25 ± 0.09 0.92 ± 0.49** CL(l/h/kg) 8.13 ± 0.92 2.82 ± 0.40** 2.39 ± 0.57 1.05 ± 0.30** Cmax(ng/ml) 1318.17 ± 95.88 1242.98 ± 105.38 3038.48 ± 159.81 3094.07 ±",
+      "text_preview": "Table 1 Pharmacokinetic parameters of AP and PUE after intravenous administration of AP formulations (mean ± SD, n = 6) Parameter AP PUE Administration of AP solution Administration of AP-PLGA-NPs Administration of AP so"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:1",
+      "paragraph_index": 5,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:2",
+      "paragraph_index": 5,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5",
+      "text_preview": "5"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "8.37 ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "8.37 ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. **P < 0.01 vs AP solution. Statistical signiﬁcances were performed as follows: MRT, t1/2 and CL: one-way ANOVA; AUC and Cmax: one-way ANOVA following logarithmic transformation; Tmax: Mann–Whitney U-test. Deqing Sun et al. PLGA-NPs improve AP permeability 1650–1662 © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp. AP concentration (ng/ml) Time (h) AP solution AP-PLGA-NPs PUE concentration (ng/ml) Time (h) AP solution AP-PLGA-NPs (b) (a)",
+      "text_preview": "8.37 ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. **P < 0.01 vs AP solution. Statistical signiﬁcances were performed as follows: MRT, t1/2 and CL: one-way ANOVA; AUC and Cmax: one-way ANOVA following l"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:0",
+      "paragraph_index": 6,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Figure 5 Distribution of puerarin in different tissues at different times in mice following intravenous administration of (a) acetylpuerarin solution and (b) AP-PLGA-NPs (n = 5).",
+      "text_preview": "Figure 5 Distribution of puerarin in different tissues at different times in mice following intravenous administration of (a) acetylpuerarin solution and (b) AP-PLGA-NPs (n = 5)."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Table 2 Pharmacokinetic and targeting parameters of PUE in different tissues in mice after intravenous administration of AP formulations (mean ± SD, n = 5) Tissue Formulation AUC0−∞ (h ng/g) Cmax (ng/g) Tmax (h) MRT0−∞ (h) t1/2 (h) Te (%) Re Ce Heart AP solution 4274.28 ± 471.45 1794.24 ± 134.04 0.40 ± 0.09 2.79 ± 0.19 2.13 ± 0.12 14.15 1.80",
+      "text_preview": "Table 2 Pharmacokinetic and targeting parameters of PUE in different tissues in mice after intravenous administration of AP formulations (mean ± SD, n = 5) Tissue Formulation AUC0−∞ (h ng/g) Cmax (ng/g) Tmax (h) MRT0−∞ ("
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "0.98 AP-PLGA-NPs 7687",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.98 AP-PLGA-NPs 7687.84 ± 1380.48** 1762.73 ± 284.93 0.80 ± 0.27* 4.08 ± 0.23** 2.67 ± 0.21**",
+      "text_preview": "0.98 AP-PLGA-NPs 7687.84 ± 1380.48** 1762.73 ± 284.93 0.80 ± 0.27* 4.08 ± 0.23** 2.67 ± 0.21**"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:2",
+      "paragraph_index": 6,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:3",
+      "paragraph_index": 6,
+      "segment_index": 3,
+      "section_label": "7.66 Liver AP solution 9850",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.66 Liver AP solution 9850.42 ± 642.04 3799.21 ± 332.67 0.27 ± 0.09 2.96 ± 0.36 2.28 ± 0.27 32.62 1.45",
+      "text_preview": "7.66 Liver AP solution 9850.42 ± 642.04 3799.21 ± 332.67 0.27 ± 0.09 2.96 ± 0.36 2.28 ± 0.27 32.62 1.45"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:4",
+      "paragraph_index": 6,
+      "segment_index": 4,
+      "section_label": "0.86 AP-PLGA-NPs 14250",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.86 AP-PLGA-NPs 14250.24 ± 3577.12** 3278.08 ± 412.14 0.80 ± 0.27** 4.47 ± 0.39** 3.11 ± 0.28**",
+      "text_preview": "0.86 AP-PLGA-NPs 14250.24 ± 3577.12** 3278.08 ± 412.14 0.80 ± 0.27** 4.47 ± 0.39** 3.11 ± 0.28**"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:5",
+      "paragraph_index": 6,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:6",
+      "paragraph_index": 6,
+      "segment_index": 6,
+      "section_label": "2.74 Spleen AP solution 3030",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.74 Spleen AP solution 3030.47 ± 672.73 1194.13 ± 96.71 0.60 ± 0.22 2.50 ± 0.52 1.69 ± 0.53 10.03 1.67",
+      "text_preview": "2.74 Spleen AP solution 3030.47 ± 672.73 1194.13 ± 96.71 0.60 ± 0.22 2.50 ± 0.52 1.69 ± 0.53 10.03 1.67"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:7",
+      "paragraph_index": 6,
+      "segment_index": 7,
+      "section_label": "1.05 AP-PLGA-NPs 5051",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.05 AP-PLGA-NPs 5051.82 ± 1023.52** 1258.28 ± 88.89 1.40 ± 0.55* 3.87 ± 0.71** 2.55 ± 0.76",
+      "text_preview": "1.05 AP-PLGA-NPs 5051.82 ± 1023.52** 1258.28 ± 88.89 1.40 ± 0.55* 3.87 ± 0.71** 2.55 ± 0.76"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:8",
+      "paragraph_index": 6,
+      "segment_index": 8,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:9",
+      "paragraph_index": 6,
+      "segment_index": 9,
+      "section_label": "1.61 Lung AP solution 3781",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.61 Lung AP solution 3781.57 ± 361.75 1528.50 ± 196.21 0.37 ± 0.08 2.48 ± 0.17 1.73 ± 0.24 12.52 1.50",
+      "text_preview": "1.61 Lung AP solution 3781.57 ± 361.75 1528.50 ± 196.21 0.37 ± 0.08 2.48 ± 0.17 1.73 ± 0.24 12.52 1.50"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:10",
+      "paragraph_index": 6,
+      "segment_index": 10,
+      "section_label": "0.93 AP-PLGA-NPs 5689",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.93 AP-PLGA-NPs 5689.51 ± 537.36** 1418.37 ± 71.65 0.70 ± 0.27* 3.61 ± 0.14** 2.53 ± 0.11**",
+      "text_preview": "0.93 AP-PLGA-NPs 5689.51 ± 537.36** 1418.37 ± 71.65 0.70 ± 0.27* 3.61 ± 0.14** 2.53 ± 0.11**"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:11",
+      "paragraph_index": 6,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__39",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:12",
+      "paragraph_index": 6,
+      "segment_index": 12,
+      "section_label": "3.07 Kidney AP solution 8877",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.07 Kidney AP solution 8877.3 ± 1203.93 3192.72 ± 309.65 0.67 ± 0.31 2.95 ± 0.18 2.03 ± 0.11 29.40 1.11",
+      "text_preview": "3.07 Kidney AP solution 8877.3 ± 1203.93 3192.72 ± 309.65 0.67 ± 0.31 2.95 ± 0.18 2.03 ± 0.11 29.40 1.11"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__40",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:13",
+      "paragraph_index": 6,
+      "segment_index": 13,
+      "section_label": "0.88 AP-PLGA-NPs 9851",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.88 AP-PLGA-NPs 9851.16 ± 1067.01 2823.93 ± 503.65 0.90 ± 0.22 3.81 ± 0.33** 2.54 ± 0.18**",
+      "text_preview": "0.88 AP-PLGA-NPs 9851.16 ± 1067.01 2823.93 ± 503.65 0.90 ± 0.22 3.81 ± 0.33** 2.54 ± 0.18**"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__41",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:14",
+      "paragraph_index": 6,
+      "segment_index": 14,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__42",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:15",
+      "paragraph_index": 6,
+      "segment_index": 15,
+      "section_label": "2.63 Brain AP solution 385",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.63 Brain AP solution 385.37 ± 33.87 89.43 ± 6.84 1.10 ± 0.55 4.23 ± 0.14 2.72 ± 0.16 1.28 2.58",
+      "text_preview": "2.63 Brain AP solution 385.37 ± 33.87 89.43 ± 6.84 1.10 ± 0.55 4.23 ± 0.14 2.72 ± 0.16 1.28 2.58"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__43",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:16",
+      "paragraph_index": 6,
+      "segment_index": 16,
+      "section_label": "1.89 AP-PLGA-NPs 995",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.89 AP-PLGA-NPs 995.81 ± 128.99** 169.41 ± 13.86** 1.60 ± 0.55 5.02 ± 0.41** 3.11 ± 0.20*",
+      "text_preview": "1.89 AP-PLGA-NPs 995.81 ± 128.99** 169.41 ± 13.86** 1.60 ± 0.55 5.02 ± 0.41** 3.11 ± 0.20*"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__44",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:0",
+      "paragraph_index": 6,
+      "segment_index": 0,
+      "section_label": "2.29 ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "2.29 ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. *P < 0.05, **P < 0.01 vs AP suspension. Statistical signiﬁcances were performed as follows: MRT and t1/2: one-way ANOVA; AUC and Cmax: one-way ANOVA following logarithmic transformation; Tmax: Mann–Whitney U-test. PLGA-NPs improve AP permeability Deqing Sun et al © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp.",
+      "text_preview": "2.29 ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. *P < 0.05, **P < 0.01 vs AP suspension. Statistical signiﬁcances were performed as follows: MRT and t1/2: one-way ANOVA; AUC and Cmax: one-way ANOVA fo"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__45",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "1650–1662 PUE concentration (ng/g) Time (h) Heart Liver Spleen Lung Kidney PUE concentration (ng/g) Time (h) Heart Liver Spleen Lung Kidney (a) (b)",
+      "text_preview": "1650–1662 PUE concentration (ng/g) Time (h) Heart Liver Spleen Lung Kidney PUE concentration (ng/g) Time (h) Heart Liver Spleen Lung Kidney (a) (b)"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__46",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Effects of AP-PLGA-NPs against cerebral ischaemia-reperfusion injury in rats Effects of AP-PLGA-NPs on neurological deﬁcit score and infarct volume The neurological deﬁcit scores and infarct volume of MCAO rats were signiﬁcantly greater than those of the sham-operated rats 24 h after reperfusion (Figure 7), indi- cating that the MCAO model was successfully established.",
+      "text_preview": "Effects of AP-PLGA-NPs against cerebral ischaemia-reperfusion injury in rats Effects of AP-PLGA-NPs on neurological deﬁcit score and infarct volume The neurological deﬁcit scores and infarct volume of MCAO rats were sign"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__47",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:1",
+      "paragraph_index": 7,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "In the IR group, the neurological deﬁcit score was 2.92 ±",
+      "text_preview": "In the IR group, the neurological deﬁcit score was 2.92 ±"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__48",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "0.29. When treated with AP solution and AP-PLGA- NPs, the neurological deﬁcit scores of MCAO rats signiﬁ- cantly decreased, whi",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "0.29. When treated with AP solution and AP-PLGA- NPs, the neurological deﬁcit scores of MCAO rats signiﬁ- cantly decreased, which were 2.17 ± 0.39 and 1.42 ± 0.51, respectively. In parallel with neurological deﬁcit score, the infarct volume (%) in the IR group was 40.14 ± 2.61%; treatment with AP solution and AP-PLGA-NPs signiﬁcantly reduced the infarct volume by 29.39 ± 3.67% and 20.47 ± 2.26%, respectively. Effects of AP-PLGA-NPs on cerebral histopathology As shown in Figure 8a, no histopathological abnormalities were observed in the ischaemic hippocampus in the sham rats, the neurons kept in eumorphism and were well arranged, the cytoplasm was abundant, and the nuclei were centered in the cell bodies and clearly stained. In contrast, in the IR rats, the hippocampus tissues were damaged seriously in the infarct area, and the neurons were disordered in arrangement and appeared shrunken with eosinophilic cytoplasm and triangulated pycnotic nucleus. However, the number of necrotic neurons in the ischaemic area of the rats treated with AP formulations was markedly decreased, indicating that the ischaemic injury was attenuated after AP treatment. Furthermore, the number of necrotic and condensed neurons was attenu- ated markedly in AP-PLGA-NPs group, compared with that in the AP solution group. Similarly, the number of necrotic and condensed neurons in the ischaemic cortex of the rats treated with AP formula- tions was markedly decreased, and AP-PLGA-NPs produced better neuroprotective effects compared with AP solution (Figure 8b). Effects of AP-PLGA-NPs on apoptosis As can be seen in Figure 9, few TUNEL-positive neurons were found in the sham group; however, there were numer- ous TUNEL-positive cells in the penumbra cortex in MCAO rats 24 h after reperfusion. AP-PLGA-NPs treatment signiﬁcantly decreased the number of TUNEL-positive cells Figure 6 The concentrations of (a) acetylpuerarin and (b) puerarin in the brain in mice at different times following intravenous administra- tion of acetylpuerarin solution and AP-PLGA-NPs (n = 5). Compared with acetylpuerarin solution, the concentrations of acetylpuerarin and puerarin in brain tissue following intravenous administration of AP-PLGA-NPs were signiﬁcantly higher (P < 0.05) at all the time points except for acetylpuerarin concentration at 0.167 h after administration.",
+      "text_preview": "0.29. When treated with AP solution and AP-PLGA- NPs, the neurological deﬁcit scores of MCAO rats signiﬁ- cantly decreased, which were 2.17 ± 0.39 and 1.42 ± 0.51, respectively. In parallel with neurological deﬁcit score"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__49",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:1",
+      "paragraph_index": 7,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Table 3 Pharmacokinetic and targeting parameters of AP in the brain in mice after intravenous administration of AP formulations (mean ± SD, n = 5) Parameter AP solution AP-PLGA-NPs AUC0−∞(h ng/g) 432.53 ± 94.79 1001.35 ± 146.77** Cmax (ng/g) 121.75 ± 21.58 232.45 ± 29.01** Tmax (h) 0.27 ± 0.09 0.53 ±",
+      "text_preview": "Table 3 Pharmacokinetic and targeting parameters of AP in the brain in mice after intravenous administration of AP formulations (mean ± SD, n = 5) Parameter AP solution AP-PLGA-NPs AUC0−∞(h ng/g) 432.53 ± 94.79 1001.35 ±"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__50",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:2",
+      "paragraph_index": 7,
+      "segment_index": 2,
+      "section_label": "0.27 MRT0−∞(h) 3",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.27 MRT0−∞(h) 3.60 ± 0.32 4.85 ± 0.61** t1/2 (h) 2.62 ± 0.26 3.46 ± 0.43** Re",
+      "text_preview": "0.27 MRT0−∞(h) 3.60 ± 0.32 4.85 ± 0.61** t1/2 (h) 2.62 ± 0.26 3.46 ± 0.43** Re"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__51",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:3",
+      "paragraph_index": 7,
+      "segment_index": 3,
+      "section_label": "2.40 Ce",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.40 Ce",
+      "text_preview": "2.40 Ce"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__52",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "1.91 ANOVA, analysis of variance; AP, acetylpuerarin",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "1.91 ANOVA, analysis of variance; AP, acetylpuerarin. **P < 0.01 vs AP sus- pension. Statistical signiﬁcances were performed as follows: MRT and t1/2: one-way ANOVA; AUC and Cmax: one-way ANOVA following loga- rithmic transformation; Tmax: Mann–Whitney U-test. Deqing Sun et al. PLGA-NPs improve AP permeability 1650–1662 © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp. AP concentration (ng/g) Time (h) AP solution AP-PLGA-NPs PUE concentration (ng/g) Time (h) AP solution AP-PLGA-NPs (a) (b)",
+      "text_preview": "1.91 ANOVA, analysis of variance; AP, acetylpuerarin. **P < 0.01 vs AP sus- pension. Statistical signiﬁcances were performed as follows: MRT and t1/2: one-way ANOVA; AUC and Cmax: one-way ANOVA following loga- rithmic tr"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__53",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:8#segment:0",
+      "paragraph_index": 8,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "and prevented neurons from apoptosis after cerebral ischaemic injury.",
+      "text_preview": "and prevented neurons from apoptosis after cerebral ischaemic injury."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__54",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:8#segment:1",
+      "paragraph_index": 8,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_downstream_assay",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_downstream_assay",
+        "downstream_assay_terms"
+      ],
+      "text_content": "It is reported that NPs less than 200 nm are more easily transported across the BBB and are less likely to be ﬁltered by the RES,[25,29,36] and smaller particles with hydrophilic surfaces have prolonged circulation in the blood,[37] while NPs with sizes above 300 nm are easily cap- tured by Kupffer cells or other phagocytic cells which greatly limit their biodistribution.",
+      "text_preview": "It is reported that NPs less than 200 nm are more easily transported across the BBB and are less likely to be ﬁltered by the RES,[25,29,36] and smaller particles with hydrophilic surfaces have prolonged circulation in th"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__55",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:10#segment:0",
+      "paragraph_index": 10,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary",
+        "optimization_candidate",
+        "residual_noise"
+      ],
+      "text_content": "surface, the NPs mimicked the LDL particles to interact with the LDL receptors on the BCECs, then uptaken by the cells via the receptor-mediated endocytosis. This mecha- nism was supported by lots of studies in vitro and in vivo.[25,45,51] Previous studies have indicated the protective effects of AP against cerebral ischaemia-reperfusion injury in animals. It can reduce the damage by oxygen-free radicals, increase the activity of antioxidase, decrease the calcium concentration in neurons, inhibit apoptosis of nerve cells and prevent the inﬂammatory response in the ischaemic area in vivo.[8–10] In this study, the neurological deﬁcit scores and infarct volume signiﬁcantly decreased, and the brain inﬁltration of inﬂammatory cells and neuronal pyknosis and karyolysis were signiﬁcantly alleviated 24 h after reperfusion in the rats treated with AP-PLGA-NPs. In addi- tion, AP-PLGA-NPs signiﬁcantly mitigated the apoptosis in nerve cells after cerebral ischaemic injury. AP can be metabolized to penta-acetylpuerarin, tetra-acetylpuerarin and PUE via stepwise deacetylation in vivo, and PUE is found to be the major metabolite.[27,52] When AP-PLGA-NPs were transported across the BBB, the released AP in the Figure 9 Effects of AP-PLGA-NPs on the apoptosis in the cortical neurons in rats subjected to ischaemia-reperfusion injury. (a) Representative micrographs of ischaemic penumbra cortex by TUNEL staining. The TUNEL-positive cells were stained in brown. The scale bar is 20 μm. (b) Bar graph illustrating the percentage of apoptotic cells in the ischaemic penumbra cortex. Acetylpuerarin formulations signiﬁcantly reduced the number of TUNEL-positive cells 24 h after reperfusion, and more signiﬁcant reduction in the number of TUNEL-positive cells was observed in AP-PLGA-NPs group. ++P < 0.01 vs sham group; **P < 0.01 vs IR group; ##P < 0.01 vs AP group. Acetylpuerarin solution (15 mg/kg); AP-PLGA-NPs (15 mg/kg). PLGA-NPs improve AP permeability Deqing Sun et al. © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp. 1650–1662 Sham IR AP AP-PLGA-NPs % of apoptotic cells Sham IR AP AP-PLGA-NPs (a) (b) ** ## ++ ** 20 μm 20 μm 20 μm 20 μm",
+      "text_preview": "surface, the NPs mimicked the LDL particles to interact with the LDL receptors on the BCECs, then uptaken by the cells via the receptor-mediated endocytosis. This mecha- nism was supported by lots of studies in vitro and"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__56",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:11#segment:0",
+      "paragraph_index": 11,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "brain might also be metabolized to the three metabolites by the some esterase in the brain tissue. In this study, we only determined the concentrations of AP and PUE in blood and brain tissue because the standard substances of penta- acetylpuerarin and tetra-acetylpuerarin were difﬁcult to be obtained. It should be the unchanged AP and the three metabolites that contribute to the brain-protective effects in rats, following intravenous administration of polysorbate 80-coated AP-PLGA-NPs. In a word, compared with the crude drug, AP-PLGA-NPs showed better brain-protective effects due to the sustained release and enhanced perme- ability across the BBB. Conclusions In this study, we successfully prepared and characterized polysorbate 80-coated AP-PLGA-NPs. PLGA-NPs signiﬁ- cantly enhanced the distributions of AP and PUE in the brain in mice, and AP-PLGA-NPs showed better protective effects against cerebral ischaemia-reperfusion injury in rats compared with the crude drug. It can be concluded that polysorbate 80-coated PLGA-NPs can improve the perme- ability of AP cross the BBB and enhance its brain-protective effects in rats.",
+      "text_preview": "brain might also be metabolized to the three metabolites by the some esterase in the brain tissue. In this study, we only determined the concentrations of AP and PUE in blood and brain tissue because the standard substan"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__57",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:11#segment:1",
+      "paragraph_index": 11,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "downstream_assay_terms",
+        "residual_noise"
+      ],
+      "text_content": "Declarations Conﬂict of interest The Author(s) declare(s) that they have no conﬂicts of interest to disclose. Funding This work was supported by Shandong Provincial Pharma- ceutical Association Aosaikang Foundation (No. Sdpa-ask- 2013-06). References 1. Liu L et al. Stroke and stroke care in China: huge burden, signiﬁcant work- load, and a national priority. Stroke 2011; 42: 3651–3654. 2. Jia Q et al. Risk factors and prevention of stroke in the Chinese population. J Stroke Cerebrovasc Dis 2011; 20: 395– 400. 3. Grossman AW, Broderick JP. Advances and challenges in treatment and prevention of ischemic stroke. Ann Neurol 2013; 74: 363–372. 4. Chang Y et al. Neuroprotective mechanisms of puerarin in middle cerebral arteryocclusion-induced brain infarction in rats. J Biomed Sci 2009; 16: 9. 5. Cao L et al. Pharmacokinetics of puerarin in pregnant rats at different stages of gestation after oral adminis- tration. Fitoterapia 2013; 86: 202– 207. 6. Liang XL et al. Transport properties of puerarin and effect of Radix Angelicae Dahuricae extract on the transport of puerarin in Caco-2 cell model. J Ethnopharmacol 2012; 144: 677–682. 7. Xiang Y et al. In vivo pharmacokinetic study of hexaacetylpurerarin in rats. Chin Tradit Herbal Drugs 2012; 43: 2247–2249. 8. Liu DM et al. Acetylpuerarin increases cell viability and reduces apoptosis in rat hippocampal neurons following oxygen-glucose deprivation/reperfu- sion. Mol Med Rep 2013; 8: 1453– 1459. 9. Liu R et al. Effects of acetylpuerarin on hippocampal neurons and intracel- lular free calcium subjected to oxygen- glucose deprivation/reperfusion in primary culture. Brain Res 2007; 1147: 95–104. 10. Xiang Y et al. Anti-inﬂammatory effect of acetylpuerarin on eicosanoid signaling pathway in primary rat astrocytes. J Mol Neurosci 2014; 52: 577–585. 11. Pehlivan SB. Nanotechnology-based drug delivery systems for targeting, imaging and diagnosis of neurodegenerative diseases. Pharm Res 2013; 30: 2499–2511. 12. Hwang SR, Kim K. Nano-enabled delivery systems across the blood- brain barrier. Arch Pharm Res 2014; 37: 24–30. 13. Modi G et al. Nanotechnological applications for the treatment of neurodegenerative disorders. Prog Neurobiol 2009; 88: 272–285. 14. Gupta Y et al. Transferrin-conjugated solid lipid nanoparticles for enhanced delivery of quinine dihydrochloride to the brain. J Pharm Pharmacol 2007; 59: 935–940. 15. Dhawan S et al. Formulation develop- ment and systematic optimization of solid lipid nanoparticles of quercetin for improved brain delivery. J Pharm Pharmacol 2011; 63: 342–351. 16. Kanwar JR et al. Neurological disor- ders and therapeutics targeted to sur- mount the blood-brain barrier. Int J Nanomedicine 2012; 7: 3259–3278. 17. Kumari A et al. Biodegradable poly- meric nanoparticles based drug deliv- ery systems. Colloids Surf B Biointerfaces 2010; 75: 1–18. 18. Rao DA et al. Biodegradable PLGA based nanoparticles for sustained regional lymphatic drug delivery. J Pharm Sci 2010; 99: 2018–2031. 19. Danhier F et al. PLGA-based nanoparticles: an overview of bio- medical applications. J Control Release 2012; 161: 505–522. 20. O’Donnell A et al. Intranasal and intravenous administration of octa- arginine modiﬁed poly(lactic-co- glycolic acid) nanoparticles facilitates central nervous system delivery of loperamide. J Pharm Pharmacol 2015; 67: 525–536. 21. Kirby BP et al. Comparative evalu- ation of the degree of pegylation of poly(lactic-co-glycolicacid) nanoparticles in enhancing central nervous system delivery of loperamide. J Pharm Pharmacol 2013; 65: 1473–1481. 22. Borm PJ et al. The potential risks of nanomaterials: a review carried out Deqing Sun et al. PLGA-NPs improve AP permeability 1650–1662 © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp.",
+      "text_preview": "Declarations Conﬂict of interest The Author(s) declare(s) that they have no conﬂicts of interest to disclose. Funding This work was supported by Shandong Provincial Pharma- ceutical Association Aosaikang Foundation (No."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__58",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:12#segment:0",
+      "paragraph_index": 12,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "for ECETOC. Part Fibre Toxicol 2006; 3: 11. 23. Blasi P et al. Solid lipid nanoparticles for targeted brain drug delivery. Adv Drug Deliv Rev 2007; 59: 454–477. 24. Schroder U, Sabel BA. Nanoparticles, a drug carrier system to pass the blood- brain barrier, permit central analgesic effects of i.v. dalargin injections. Brain Res 1996; 710: 121–124. 25. Sun W et al. Speciﬁc role of polysorbate 80 coating on the target- ing of nanoparticles to the brain.",
+      "text_preview": "for ECETOC. Part Fibre Toxicol 2006; 3: 11. 23. Blasi P et al. Solid lipid nanoparticles for targeted brain drug delivery. Adv Drug Deliv Rev 2007; 59: 454–477. 24. Schroder U, Sabel BA. Nanoparticles, a drug carrier sys"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__59",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:12#segment:1",
+      "paragraph_index": 12,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Biomaterials 2004; 25: 3065–3071. 26. Wilson B et al. Poly(n- butylcyanoacrylate) nanoparticles coated with polysorbate 80 for the tar- geted delivery of rivastigmine into the brain to treat Alzheimer’s disease.",
+      "text_preview": "Biomaterials 2004; 25: 3065–3071. 26. Wilson B et al. Poly(n- butylcyanoacrylate) nanoparticles coated with polysorbate 80 for the tar- geted delivery of rivastigmine into the brain to treat Alzheimer’s disease."
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__60",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:12#segment:2",
+      "paragraph_index": 12,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Brain Res 2008; 1200: 159–168. 27. Zhao LX et al. The permeability of puerarin loaded poly(butylcyanoa- crylate) nanoparticles coated with polysorbate 80 on the blood-brain barrier and its protective effect against cerebral ischemia/reperfusion injury.",
+      "text_preview": "Brain Res 2008; 1200: 159–168. 27. Zhao LX et al. The permeability of puerarin loaded poly(butylcyanoa- crylate) nanoparticles coated with polysorbate 80 on the blood-brain barrier and its protective effect against cereb"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__61",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:12#segment:3",
+      "paragraph_index": 12,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Biol Pharm Bull 2013; 36: 1263–1270. 28. Zhao L et al. Curcumin loaded mixed micelles composed of Pluronic P123 and F68: preparation, optimization and in vitro characterization. Colloids Surf B Biointerfaces 2012; 97: 101–108. 29. Azadi A et al. Methotrexate-loaded chitosan nanogels as ‘Trojan Horses’ for drug delivery to brain: preparation and in vitro/in vivo characterization. Int J Biol Macromol 2013; 62: 523–530. 30. Bayat A et al. Preparation and charac- terization of insulin nanoparticles using chitosan and its quaternized derivatives. Nanomedicine 2008; 4: 115–120. 31. Sun D et al. Enhanced oral absorption and therapeutic effect of acetylpuerarin based on D-alpha- tocopheryl polyethylene glycol 1000 succinate nanoemulsions. Int J Nanomedicine 2014; 9: 3413–3423. 32. Longa EZ et al. Reversible middle cer- ebral artery occlusion without craniectomy in rats. Stroke 1989; 20: 84–91. 33. Zheng G et al. Enhanced solubilization and desorption of organochlorine pesticides (OCPs) from soil by oil- swollen micelles formed with a nonionic surfactant. Environ Sci Technol 2012; 46: 12062–12068. 34. Vaculikova E et al. Primary investiga- tion of the",
+      "text_preview": "Biol Pharm Bull 2013; 36: 1263–1270. 28. Zhao L et al. Curcumin loaded mixed micelles composed of Pluronic P123 and F68: preparation, optimization and in vitro characterization. Colloids Surf B Biointerfaces 2012; 97: 10"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__62",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:12#segment:0",
+      "paragraph_index": 12,
+      "segment_index": 0,
+      "section_label": "preparation of nanoparticles by precipitation",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "preparation of nanoparticles by precipitation. Mol- ecules 2012; 17: 11067–11078. 35. Vaculikova E et al. Preparation of risedronate nanoparticles by solvent evaporation technique. Molecules 2014; 19: 17848–17861. 36. Jia LJ et al. Preparation and charac- terization of silybin-loaded nanostructured lipid carriers. Drug Deliv 2010; 17: 11–18. 37. Wilson B et al. Chitosan nanoparticles as a new delivery system for the anti- Alzheimer drugtacrine. Nanomedicine 2010; 6: 144–152. 38. Win KY, Feng SS. Effects of particle size and surface coating on cellular uptake of polymeric nanoparticles for oral delivery of anticancer drugs. Biomaterials 2005; 26: 2713–2722. 39. Chaudhari KR et al.",
+      "text_preview": "preparation of nanoparticles by precipitation. Mol- ecules 2012; 17: 11067–11078. 35. Vaculikova E et al. Preparation of risedronate nanoparticles by solvent evaporation technique. Molecules 2014; 19: 17848–17861. 36. Ji"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_paragraph__63",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/RHMJWZX8.pdf.txt#paragraph:12#segment:1",
+      "paragraph_index": 12,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_result_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_result_to_downstream",
+        "downstream_assay_terms",
+        "residual_noise"
+      ],
+      "text_content": "Opsonization, biodistribution, cellular uptake and apoptosis study of PEGylated PBCA nanoparticle as potential drug delivery carrier. Pharm Res 2012; 29: 53–68. 40. Gulyaev AE et al. Signiﬁcant transport of doxorubicin into the brain with polysorbate 80-coated nanoparticles. Pharm Res 1999; 16: 1564–1569. 41. Wilson B et al. Targeted delivery of tacrine into the brain with polysorbate 80-coated poly(n-butylcyanoacrylate) nanoparticles. Eur J Pharm Biopharm 2008; 70: 75–84. 42. Edwards RH. Drug delivery via the blood-brain barrier. Nat Neurosci 2001; 4: 221–222. 43. Ramge P et al. Polysorbate-80 coating enhances uptake of polybutylcya- noacrylate(PBCA)-nanoparticles by human and bovine primary brain capillary endothelial cells. Eur J Neurosci 2000; 12: 1931–1940. 44. Kreuter J. Mechanism of polymeric nanoparticle-based drug transport across the blood-brain barrier (BBB). J Microencapsul 2013; 30: 49–54. 45. Alyaudtin RN et al. Interaction of poly(butylcyanoacrylate) nanoparticles with the blood-brain barrier in vivo and in vitro. J Drug Target 2001; 9: 209–221. 46. Fenart L et al. Evaluation of effect of charge and lipid coating on ability of 60-nmnanoparticles to cross an in vitro model of the blood-brain barrier. J Pharmacol Exp Ther 1999; 291: 1017–1022. 47. Podio V et al. Biodistribution of stealth and non-stealth solid lipid nanospheres after intravenous admin- istration to rats. J Pharm Pharmacol 2000; 52: 1057–1063. 48. Gessner A et al. The role of plasma proteins in brain targeting: species dependent protein adsorption pat- terns on brain-speciﬁc lipid drug con- jugate (LDC) nanoparticles. Int J Pharm 2001; 214: 87–91. 49. Zhang H et al. Commonly used surfactant, Tween 80, improves absorption of P-glycoprotein sub- strate, digoxin, in rats. Arch Pharm Res 2003; 26: 768–772. 50. Michaelis K et al. Covalent linkage of apolipoprotein e to albumin nanoparticles strongly enhances drug transport into the brain. J Pharmacol Exp Ther 2006; 317: 1246–1253. 51. Weiss CK et al. The ﬁrst step into the brain: uptake of NIO-PBCA nanoparticles by endothelial cells in vitro and in vivo, and direct evidence for their blood-brain barrier permea- tion. Chem Med Chem 2008; 3: 1395– 1403. 52. Guo DY et al. Pharmacokinetic inves- tigation of pur and derivatives in rats. J Shaanxi Coll Tradit Chin Med 2008; 31: 52–54. PLGA-NPs improve AP permeability Deqing Sun et al. © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp. 1650–1662",
+      "text_preview": "Opsonization, biodistribution, cellular uptake and apoptosis study of PEGylated PBCA nanoparticle as potential drug delivery carrier. Pharm Res 2012; 29: 53–68. 40. Gulyaev AE et al. Signiﬁcant transport of doxorubicin i"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_10__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:6"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 70,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=24, cols=9\n- first_column_row_labels_preview: 100, After injection of AP solution, AP was fast metabolized to, PUE in blood, leading to a decreased AP concentration, Cumulative release rate (%), the NPs, leading to a sustained drug exposure., The pharmacokinetic parameters of AP and PUE are pre-, sented in Table 1. Compared with AP solution, PLGA-NPs, AP solution, AP-PLGA-NPs, 0, 0, Time (h) ...\n- sample_rows:\n- sample_row_1: PUE in blood, leading to a decreased AP concentration\n- sample_row_2: 0 | 8 | 16 | 24 | 32 | 40 | 48 | administration of AP-PLGA-NPs, the AUC0−∞ values of AP\n- sample_row_3: 100 | Pharmacokinetics in rats\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_10__pdf_table.csv] - table_id: Table 10 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 || 3"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_13__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 69,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_13__pdf_table.csv]\n- table_id: Table 13\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=9, cols=5\n- first_column_row_labels_preview: Administration of, Parameter, AUC0−∞ (h ng/ml), MRT0−∞(h), t1/2(h), Tmax(h), CL(l/h/kg), Cmax(ng/ml), ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. **P < 0.01 vs AP solution. Statistical signiﬁcances were performed as follows: MRT,\n- sample_rows:\n- sample_row_1: Administration of | Administration of | Administration of | Administration of\n- sample_row_2: t1/2(h) | 1.47 ± 0.23 | 3.22 ± 0.52** | 1.81 ± 0.17 | 3.58 ± 0.41**\n- sample_row_3: ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. **P < 0.01 vs AP solution. Statistical signiﬁcances were performed as follows: MRT,\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_13__pdf_table.csv] - table_id: Table 13 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 || 3"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__03",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_14__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 58,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_14__pdf_table.csv]\n- table_id: Table 14\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=17, cols=10\n- first_column_row_labels_preview: Table 2, (mean ± SD, n = 5), AUC0−∞, Tissue, Heart, AP-PLGA-NPs, Liver, AP-PLGA-NPs, Spleen, AP-PLGA-NPs, Lung, AP-PLGA-NPs ...\n- sample_rows:\n- sample_row_1: Table 2 | Pharmacokinetic | and targeting parameters of | PUE in different | tissues in mice | after intravenous | administration of AP | formulations\n- sample_row_2: Spleen | AP solution | 3030.47 ± 672.73 | 1194.13 ± 96.71 | 0.60 ± 0.22 | 2.50 ± 0.52 | 1.69 ± 0.53 | 10.03 | 1.67 | 1.05\n- sample_row_3: ANOVA, analysis of variance; AP, acetylpuerarin; PUE, puerarin. *P < 0.05, **P < 0.01 vs AP suspension. Statistical signiﬁcances were performed as\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_14__pdf_table.csv] - table_id: Table 14 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 || 3"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__04",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_16__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 52,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_16__pdf_table.csv]\n- table_id: Table 16\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=10, cols=7\n- first_column_row_labels_preview: 0, Time (h), 4000, 3500, Spleen, Lung, Kidney\n- sample_rows:\n- sample_row_1: 0 | 2 | 4 | 6 | 8 | 10\n- sample_row_2: 3500 | Liver\n- sample_row_3: Kidney\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_16__pdf_table.csv] - table_id: Table 16 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 || 3"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__05",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_18__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 52,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_18__pdf_table.csv]\n- table_id: Table 18\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=13, cols=2\n- first_column_row_labels_preview: in the ischaemic cortex of the rats treated with AP formula-, Parameter AP solution AP-PLGA-NPs, tions was markedly decreased, and AP-PLGA-NPs produced, 432.53 ± 94.79 1001.35 ± 146.77** AUC0−∞ (h ng/g), (h) 0.27 ± 0.09 0.53 ± 0.27 Tmax, 3.60 ± 0.32 4.85 ± 0.61** MRT0−∞ (h), 2.62 ± 0.26 3.46 ± 0.43** t1/2 (h), Effects of AP-PLGA-NPs on apoptosis, Re 2.40, Ce 1.91, ANOVA, analysis of variance; AP, acetylpuerarin. **P < 0.01 vs AP sus-\n- sample_rows:\n- sample_row_1: in the ischaemic cortex of the rats treated with AP formula-\n- sample_row_2: 3.60 ± 0.32 4.85 ± 0.61** MRT0−∞ (h)\n- sample_row_3: ANOVA, analysis of variance; AP, acetylpuerarin. **P < 0.01 vs AP sus- | were found in the sham group; however, there were numer-\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_18__pdf_table.csv] - table_id: Table 18 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__06",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_15__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "filtered_noise_rows:8"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 47,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_15__pdf_table.csv]\n- table_id: Table 15\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=13, cols=2\n- first_column_row_labels_preview: Heart, Liver, 3000, Lung, Kidney\n- sample_rows:\n- sample_row_1: Heart\n- sample_row_2: 3000 | Spleen\n- sample_row_3: Kidney\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_15__pdf_table.csv] - table_id: Table 15 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__07",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_03__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:5"
+      ],
+      "table_role_hint": "results",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 40,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_03__pdf_table.csv]\n- table_id: Table 3\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=27, cols=2\n- first_column_row_labels_preview: was observed in AP-PLGA-NPs group. The pycnosis (arrowheads) and liquefaction necrosis (arrows) in the ischaemia-reperfusion group were marked,, respectively. Acetylpuerarin solution (15 mg/kg); AP-PLGA-NPs (15 mg/kg)., from the PLGA-NPs showed biphasic release proﬁle, which, NPs protected the entrapped drugs from being hydrolysed, by non-speciﬁc esterase, thus prolonging their residence, macrophages of the RES could remove the unprotected NPs, from the bloodstream quickly via identifying the speciﬁc, However, polysorbate 80 helped to form a hydrophilic pro-, tective layer at the surface of the NPs, which could block, the electrostatic and hydrophobic interactions and repel the, absorption of opsonin proteins, thus attenuating the, phagocytosis and prolonging the residence time of NPs in ...\n- sample_rows:\n- sample_row_1: the selectivity of a delivery system towards the target tissue; | lary walls creates a higher concentration gradient, thus\n- sample_row_2: study, following intravenous administration of AP-PLGA- | polysorbate 80-coated NPs can adsorb apolipoprotein B/E\n- sample_row_3: was observed in AP-PLGA-NPs group. The pycnosis (arrowheads) and liquefaction necrosis (arrows) in the ischaemia-reperfusion group were marked,\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_03__pdf_table.csv] - table_id: Table 3 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__08",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_08__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 39,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=65, cols=2\n- first_column_row_labels_preview: Deqing Sun et al., OR, OR, O, Materials and Methods, OR RO, Puerarin: R=H, O RO, Acetylpuerarin: R=CH3CO-, Substances and reagents, The PUE standard (Batch No. 110752-200912) was acquired, from the National Institutes for Food and Drug Control ...\n- sample_rows:\n- sample_row_1: characterize AP-loaded PLGA nanoparticles (AP-PLGA- | were selected as the factors and were evaluated according to\n- sample_row_2: ising preparation for the delivery of drugs across the BBB. | ogy. The PLGA concentration, the volume ratio of the\n- sample_row_3: Deqing Sun et al. | PLGA-NPs improve AP permeability\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_08__pdf_table.csv] - table_id: Table 8 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__09",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_11__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 15,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_11__pdf_table.csv]\n- table_id: Table 11\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=15, cols=2\n- first_column_row_labels_preview: The standard calibrations of PUE in different tissues were, plotted. The calibration curves showed good linearity over a, concentration range of 10–5000 ng/g in heart, liver, spleen,, were no endogenous interferences with the detection of, PUE., The distributions of PUE in different tissues are shown in, of PUE are presented in Table 2. After injection of AP solu-, tion, the AUC value of PUE was greatest in the liver, fol-, lowed by the kidney, heart, lung, spleen and brain tissues in, turn. Compared with AP solution, the distributions of PUE, were greatly changed due to the encapsulation of NPs, with, increased AUC and prolonged MRT in all tissues and higher ...\n- sample_rows:\n- sample_row_1: concentration range of 10–5000 ng/g in heart, liver, spleen, | (P < 0.05) at all the time points except for AP concentra-\n- sample_row_2: The standard calibrations of PUE in different tissues were | and PUE in the brain tissue following intravenous\n- sample_row_3: of PUE are presented in Table 2. After injection of AP solu- | the Te value of PUE in the brain was up to 2.29, which\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_11__pdf_table.csv] - table_id: Table 11 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__10",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_17__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:11"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 14,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_17__pdf_table.csv]\n- table_id: Table 17\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=80, cols=2\n- first_column_row_labels_preview: Deqing Sun et al., (a), ischaemia-reperfusion injury in rats, AP solution, AP-PLGA-NPs, 200, The neurological deﬁcit scores and infarct volume of, AP concentration (ng/g) 150, MCAO rats were signiﬁcantly greater than those of the, cating that the MCAO model was successfully established., In the IR group, the neurological deﬁcit score was, 0 ...\n- sample_rows:\n- sample_row_1: AP concentration (ng/g) 150\n- sample_row_2: PUE concentration (ng/g) 100\n- sample_row_3: Deqing Sun et al. | PLGA-NPs improve AP permeability\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_17__pdf_table.csv] - table_id: Table 17 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__11",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_12__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 12,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_12__pdf_table.csv]\n- table_id: Table 12\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=11, cols=5\n- first_column_row_labels_preview: Deqing Sun et al., (b), 1600, AP solution, 1400, 1200, 1000, 800, 600, 400, 200\n- sample_rows:\n- sample_row_1: 800 | PUE concentration (ng/ml) | 2000\n- sample_row_2: Deqing Sun et al. | PLGA-NPs improve AP permeability\n- sample_row_3: 1200 | 3000\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_12__pdf_table.csv] - table_id: Table 12 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 - header_units: (none inferred) -"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__12",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_04__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "filtered_noise_rows:4"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 6,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_04__pdf_table.csv]\n- table_id: Table 4\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=9, cols=6\n- first_column_row_labels_preview: 20 μm, ++, 30, % of apoptotic cells, **\n- sample_rows:\n- sample_row_1: 20 μm\n- sample_row_2: 30 | **\n- sample_row_3: **\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_04__pdf_table.csv] - table_id: Table 4 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 || 5 - header_units: (none inferre"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__13",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_06__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 1,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_06__pdf_table.csv]\n- table_id: Table 6\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=38, cols=3\n- first_column_row_labels_preview: polysorbate 80-coated AP-PLGA-NPs. PLGA-NPs, cantly enhanced the distributions of AP and PUE in the, References, oxygen-glucose deprivation/reperfu-, 1. Liu L et al. Stroke and stroke care in, China: huge burden, signiﬁcant work-, load, and a national priority. Stroke, 2011; 42: 3651–3654., 2. Jia Q et al. Risk factors and prevention, of stroke in the Chinese population. J, Stroke Cerebrovasc Dis 2011; 20: 395–, 400. ...\n- sample_rows:\n- sample_row_1: puerarin in pregnant rats at different | 12. Hwang SR, Kim K. Nano-enabled | intravenous administration of octa-\n- sample_row_2: tration. Fitoterapia 2013; 86: 202– | brain barrier. Arch Pharm Res 2014; | glycolic acid) nanoparticles facilitates\n- sample_row_3: polysorbate 80-coated AP-PLGA-NPs. PLGA-NPs | signiﬁ- | ceutical Association Aosaikang Foundation (No. Sdpa-ask-\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_06__pdf_table.csv] - table_id: Table 6 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 - header_units: (none inferred) - row_identi"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__14",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_07__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -6,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=51, cols=4\n- first_column_row_labels_preview: PLGA-NPs improve AP permeability, for ECETOC. Part Fibre Toxicol 2006;, 3: 11., 23. Blasi P et al. Solid lipid nanoparticles, for targeted brain drug delivery. Adv, Drug Deliv Rev 2007; 59: 454–477., 24., drug carrier system to pass the blood-, brain barrier, permit central analgesic, effects of i.v. dalargin injections. Brain, Res 1996; 710: 121–124., 25. ...\n- sample_rows:\n- sample_row_1: Res 1996; 710: 121–124. | tion of the preparation of | barrier in vivo and in vitro. J Drug\n- sample_row_2: ing of nanoparticles to the brain. | 35. Vaculikova E et al. Preparation of | charge and lipid coating on ability of\n- sample_row_3: PLGA-NPs improve AP permeability | Deqing Sun et al.\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_07__pdf_table.csv] - table_id: Table 7 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 - header_units: (none inferred) - row_i"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__15",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_19__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:8"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -11,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_19__pdf_table.csv]\n- table_id: Table 19\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=76, cols=2\n- first_column_row_labels_preview: PLGA-NPs improve AP permeability, (a), ischaemic injury., Discussion, In this study, AP-PLGA-NPs were successfully prepared, using a solvent diffusion methodology. In the polymeriza-, tion, the non-ionic surfactant of polysorbate 80 was used as, solubilizer, emulsiﬁer and stabilizer.[33,34] The prepared, AP-PLGA-NPs were ﬁnally coated with polysorbate 80, as it, could lead to a smaller size of NPs[35] and inﬂuence the dis-, tributions of the entrapped drugs.[25], Particle size plays a key role for brain-targeting because it ...\n- sample_rows:\n- sample_row_1: volume (%). Infarcts were identiﬁed as an area of unstained tissue | medium, leading to a sustained concentration.[27] The\n- sample_row_2: PLGA-NPs improve AP permeability | Deqing Sun et al.\n- sample_row_3: (c) | was found to be −14.81 ± 1.39 mV, whereas that of empty\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_19__pdf_table.csv] - table_id: Table 19 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__16",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_02__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -21,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_02__pdf_table.csv]\n- table_id: Table 2\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=17, cols=2\n- first_column_row_labels_preview: Introduction, Cerebrovascular disease (CVD) is one of the leading causes, of death and adult disability throughout the world. Of the, subtypes, ischaemic cerebrovascular disease (ICD) makes, up 80% of the disability and death.[1,2] In clinic,, thrombolytic therapy and brain-protective treatment of, drugs are considered the major measurements for ICD.[3], However, a lack of speciﬁc and effective drugs is still a, major problem for the treatment of ICD at present due to, the existence of blood–brain barrier (BBB)., from the Chinese medical herb Radix Puerariae, is applied, in China for the treatment of cerebrovascular and cardio- ...\n- sample_rows:\n- sample_row_1: Introduction\n- sample_row_2: However, a lack of speciﬁc and effective drugs is still a | many drugs cannot penetrate BBB.[11] Until now, many\n- sample_row_3: PUE and shows higher oral bioavailability than PUE.[7] Pre- | accumulation in the target organs or tissues.\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_02__pdf_table.csv] - table_id: Table 2 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__17",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_05__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -31,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_05__pdf_table.csv]\n- table_id: Table 5\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=54, cols=2\n- first_column_row_labels_preview: Deqing Sun et al., brain might also be metabolized to the three metabolites by, effects against cerebral the some esterase in the brain tissue. In this study, we only, compared with the determined the concentrations of AP and PUE in blood and, brain tissue because the standard substances of penta-, acetylpuerarin and tetra-acetylpuerarin were difﬁcult to be, effects in rats. obtained. It should be the unchanged AP and the three, metabolites that contribute to the brain-protective effects in, rats, following intravenous administration of polysorbate Declarations, 80-coated AP-PLGA-NPs. In a word, compared with the, Conﬂict of interest, crude drug, AP-PLGA-NPs showed better brain-protective ...\n- sample_rows:\n- sample_row_1: compared with the determined the concentrations of AP and PUE in blood and | crude drug. It can be concluded that\n- sample_row_2: rats, following intravenous administration of polysorbate Declarations\n- sample_row_3: Deqing Sun et al. | PLGA-NPs improve AP permeability\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_05__pdf_table.csv] - table_id: Table 5 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__18",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_01__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -63,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_01__pdf_table.csv]\n- table_id: Table 1\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=37, cols=2\n- first_column_row_labels_preview: Research Paper, Journal of Pharmacy, And Pharmacology, Polysorbate 80-coated PLGA nanoparticles improve the, permeability of acetylpuerarin and enhance its, brain-protective effects in rats, Deqing Suna*, Aiying Xueb*, Bin Zhanga, Haiyan Louc, Huanying Shic and Xiumei Zhangc, Departments of aPharmacy and bCardiology, Second Hospital of Shandong University and cDepartment of Pharmacology, School of Medicine and, Shandong University, Jinan, China, Keywords, acetylpuerarin; brain-targeting; nanoparticles;, poly(lactic-co-glycolic acid); polysorbate 80 ...\n- sample_rows:\n- sample_row_1: peak concentration were 1.91 and 1.89 for AP and PUE, respectively. Compared\n- sample_row_2: ing efﬁciency in the brain were 2.40 and 2.58 for AP and PUE, and the ratios of\n- sample_row_3: Research Paper\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_01__pdf_table.csv] - table_id: Table 1 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "RHMJWZX8__candidate_table__19",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_09__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -86,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=79, cols=2\n- first_column_row_labels_preview: Deqing Sun et al., the concentration–time curve in one tissue; and, ∑( ) =, AUC area under the concentration–time curve in i, The separated brain tissues were ﬁxed in 4% paraformalde-, total tissues., hyde for 24 h at 4°C, subsequently placed in 70% ethanol, for 24 h at room temperature, dehydrated and ﬁnally, embedded in parafﬁn. Haematoxylin and eosin staining was, Effects of AP-PLGA-NPs against cerebral, performed to observe the morphological changes of the, ischaemia-reperfusion injury in rats ...\n- sample_rows:\n- sample_row_1: the concentration–time curve in one tissue; and | Haematoxylin and eosin staining\n- sample_row_2: AUC area under the concentration–time curve in i\n- sample_row_3: Deqing Sun et al. | PLGA-NPs improve AP permeability\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_09__pdf_table.csv] - table_id: Table 9 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    }
+  ]
+}

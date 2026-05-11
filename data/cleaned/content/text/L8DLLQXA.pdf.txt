@@ -1,0 +1,1509 @@
+PLGA Microparticles Entrapping Chitosan-Based Nanoparticles for
+the Ocular Delivery of Ranibizumab
+Naba Elsaid,*,† Timothy L. Jackson,‡ Zeeneh Elsaid,§ Aljawharah Alqathama,§
+and Satyanarayana Somavarapu*,§
+†University of Hertfordshire, Hatﬁeld, United Kingdom
+‡King’s College London, London, United Kingdom
+§University College London School of Pharmacy, London, United Kingdom
+ABSTRACT: Age-related macular degeneration (AMD) is the leading
+cause of certiﬁed vision loss worldwide. The standard treatment for
+neovascular AMD involves repeated intravitreal injections of therapeutic
+proteins directed against vascular endothelial growth factor, such as
+ranibizumab. Biodegradable polymers, such as poly(lactic-co-glycolic
+acid) (PLGA), form delivery vehicles which can be used to treat
+posterior segment eye diseases, but suﬀer from poor protein loading and
+release. This work describes a “system-within-system”, PLGA micro-
+particles incorporating chitosan-based nanoparticles, for improved
+loading and sustained intravitreal delivery of ranibizumab. Chitosan-
+N-acetyl-L-cysteine (CNAC) was synthesized and its synthesis
+conﬁrmed using FT-IR and 1H NMR. Chitosan-based nanoparticles
+composed of CNAC, CNAC/tripolyphosphate (CNAC/TPP), chito-
+san, chitosan/TPP (chit/TPP), or chit/TPP-hyaluronic acid (chit/TPP-HA) were incorporated in PLGA microparticles using a
+modiﬁed w/o/w double emulsion method. Nanoparticles and ﬁnal nanoparticles-within-microparticles were characterized for
+their protein−nanoparticle interaction, size, zeta potential, morphology, protein loading, stability, in vitro release, in vivo
+antiangiogenic activity, and eﬀects on cell viability. The prepared nanoparticles were 17−350 nm in size and had zeta potentials
+of −1.4 to +12 mV. Microscopic imaging revealed spherical nanoparticles on the surface of PLGA microparticles for preparations
+containing chit/TPP, CNAC, and CNAC/TPP. Ranibizumab entrapment eﬃciency in the preparations varied between 13 and
+69% and was highest for the PLGA microparticles containing CNAC nanoparticles. This preparation also showed the slowest
+release with no initial burst release compared to all other preparations. Incorporation of TPP to this formulation increased the
+rate of protein release and reduced entrapment eﬃciency. PLGA microparticles containing chit/TPP-HA showed the fastest and
+near-complete release of ranibizumab. All of the prepared empty particles showed no eﬀect on cell viability up to a concentration
+of 12.5 mg/mL. Ranibizumab released from all preparations maintained its structural integrity and in vitro activity. The chit/TPP-
+HA preparation enhanced antiangiogenic activity and may provide a potential biocompatible platform for enhanced
+antiangiogenic activity in combination with ranibizumab. In conclusion, the PLGA microparticles containing CNAC
+nanoparticles showed signiﬁcantly improved ranibizumab loading and release proﬁle. This novel drug delivery system may have
+potential for improved intravitreal delivery of therapeutic proteins, thereby reducing the frequency, risk, and cost of burdensome
+intravitreal injections.
+KEYWORDS: chitosan, ranibizumab, age-related macular degeneration, sustained delivery, antiangiogenic, hyaluronic acid
+1. INTRODUCTION
+Age-related macular degeneration (AMD) accounts for more
+UK blindness than all other eye diseases combined.1 There are
+approximately 26,000 new cases of wet AMD in the UK every
+year.2 Wet AMD is the most aggressive form and is usually
+treated with protein or aptamer-based therapy directed against
+vascular endothelial growth factor (VEGF): ranibizumab
+(Lucentis), bevacizumab (Avastin), or aﬂibercept (Eylea).
+The eﬃcacy of these agents is limited by their short half-
+lives, necessitating repeated administration of expensive
+intravitreal injections (IVTs)3 that are associated with rare
+but sight-threatening complications such as retinal detachment
+and endophthalmitis.4 Further, they undergo hydrolytic break-
+down by enzymes present in the vitreous and have been
+reported to have stability issues secondary to protein
+aggregation upon storage, which can potentially aﬀect the
+preparation’s shelf life.5,6 Therefore, there is a high demand for
+developing a biodegradable sustained-release delivery vehicle
+Special Issue: Ocular Therapeutics: Drug Delivery and Pharmacology
+Received:
+April 14, 2016
+Revised:
+June 1, 2016
+Accepted:
+June 10, 2016
+Published: June 10, 2016
+Article
+pubs.acs.org/molecularpharmaceutics
+© 2016 American Chemical Society
+2923
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+Downloaded via UNIV OF MARYLAND COLG PARK on October 22, 2025 at 16:48:02 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+with high protein loading and maintained protein stability.
+Further, the physicochemical properties, such as the size and
+size distribution, of the delivery vehicle inﬂuence formulation
+reproducibility, dose uniformity, and suitability for IVT.7 One
+candidate vehicle is PLGA microparticles. These are FDA
+approved, biodegradable drug delivery systems which have been
+used extensively for the controlled delivery of proteins8,9 and
+intravitreal corticosteroids like Ozurdex (Allergan Inc., Irvine,
+CA, USA). However, these delivery vehicles suﬀer from
+limitations like poor protein stability, loading, an initial burst
+release, and nonuniform particle sizes.10−12 Studies have
+addressed these limitations by altering process parameters like
+polymer concentration, solvent composition, stabilizer concen-
+tration, and the incorporation of additives.13,14 However, this
+usually overcomes only one or two limitations.
+This study describes a “system-within-system”, composed of
+chitosan-based nanoparticles within PLGA microparticles for
+intravitreal delivery of ranibizumab. Chitosan was chosen as it is
+a biodegradable, biocompatible polymer with potential to
+improve the physicochemical properties of PLGA micro-
+particles and oﬀers additional antiangiogenic activity,15,16
+potentially enhancing the therapeutic eﬀect of ranibizumab.
+There are many reported mechanisms for the antiangiogenic
+activity of chitosan which vary with the type, molecular weight
+(MW), and concentration of chitosan used as well as the target
+cell type. It has been reported to inhibit endothelial cell
+migration17 and tumor invasion.18 Recently, chitosan has also
+been shown to inhibit lipopolysaccharide (LPS)-induced
+interleukin-8 (IL-8) production in endothelial cells involved
+in the pathogenesis of vascular diseases,19 although some
+studies have reported the opposite eﬀect, namely, angio-
+genesis.20−22
+Hyaluronic acid (HA) is a viscous polyanion which
+constitutes a major portion of the human vitreous humor23
+and has been used previously for sustained protein delivery.24
+What is more, as with chitosan, high molecular weight (MW)
+HA has also been shown to exhibit antiangiogenic activity25 and
+has shown favorable physicochemical properties when used to
+coat chit/TPP nanoparticles, such as reducing size polydisper-
+sity, increasing zeta potential, and improving particle size
+stability.26 Given these properties, HA was assessed in this
+study for its eﬀects on PLGA-based ranibizumab delivery.
+A chemically modiﬁed derivative of chitosan, chitosan-N-
+acetyl-L-cysteine (CNAC), was also used to prepare nano-
+particles and compare their eﬀects with those of unmodiﬁed
+chitosan-based nanoparticles on PLGA-based ranibizumab
+delivery. CNAC diﬀers from unmodiﬁed chitosan by containing
+N-acetyl-L-cysteine (NAC), which introduces a thiol group that
+has been shown to form strong disulﬁde bonds with cysteine-
+rich domains of the mucus glycoproteins accounting for
+stronger mucoadhesive properties compared to chitosan.27
+Therefore, it may be postulated that the NAC component of
+CNAC forms strong disulﬁde bonds with the 10 cysteine
+residues present in ranibizumab28 enhancing nanoparticle−
+protein interactions and improving loading and release of
+ranibizumab in PLGA microparticles. Further, VEGF has 8
+cysteine residues,29 therefore, CNAC may introduce additive
+antiangiogenic activity via VEGF binding and consequent
+neutralization. Indeed, NAC has been reported to have
+antiangiogenic activity and targets multiple pathways involved
+in angiogenesis including oxidation and inﬂammation.30,31
+Given NAC and chitosan’s antiangiogenic activity, we
+hypothesized that CNAC would enhance the antiangiogenic
+activity of ranibizumab.
+Sodium tripolyphosphate (TPP) was used as a cross-linking
+agent with chitosan, CNAC, and chitosan/HA to form
+uniformly distributed stable nanoparticles.32 Chitosan/TPP
+(chit/TPP) nanoparticles have shown good ocular biocompat-
+ibility.
+We aimed to develop chitosan-based nanoparticles within
+PLGA microparticles for improved intravitreal delivery of
+ranibizumab.
+2. EXPERIMENTAL SECTION
+2.1. Materials. The following materials were commercially
+obtained and used as received: hyaluronic acid sodium salt
+(MW 1.5−1.8 × 106 Da, from Streptococcus equi, Fluka
+BioChemika, St. Louis, Mo, USA), chitosan hydrochloride
+(chitosan, MW; ≤400 kDa, DDA 80−95%, Heppe Medical,
+Halle, Germany), PLGA (85:15 DL, MW 149 kDa, Alkermes
+Medisorb, Wilmington, OH, USA), ranibizumab (Novartis,
+Frimley, UK), recombinant human vascular endothelial growth
+factor 165 (VEGF, PeproTech, NJ, USA), goat anti-human IgG
+F(ab′)2 antibody:horseradish peroxidase (HRP, SeroTech,
+Oxford, UK), tetramethylbenzidine (TMB) substrate and
+TMB stop reagent (SurModics/BioFX Laboratories, Eden
+Prairie, MN, USA), Laemmli sample buﬀer (BioRad, Herts,
+UK), 2-mercaptoethanol (98%, Lancaster Synthesis, Lancs.,
+UK), Coomassie Brilliant Blue stain (BioRad Laboratories, Inc.,
+California, USA), low-growth factor synthetic matrix (Matrigel,
+BD Bioscience, San Jose, CA), 3-(4,5-dimethylthiazol-2-yl)-5-
+(3-carboxymethoxyphenyl)-2-(4-sulfophenyl)-2H-tetrazolium
+(MTS) and phenazine methosulfate (PMS) (CellTiter 96
+AQueous One solution, Promega, Madison, WI), and mouse
+tumor (BD Biosciences, Bedford, UK). The following were
+purchased from Life Technologies (Paisley, Scotland, UK):
+TrypLE Express (1×, trypsin, EDTA, phenol red), SYTO 9,
+and propidium iodide. The following materials were obtained
+from Fisher (Leicestershire, UK): sodium hydroxide (NaOH),
+glacial acetic acid, methanol, sodium chloride, sodium hydrogen
+carbonate, potassium chloride, and potassium dihydrogen
+orthophosphate. The following materials were obtained from
+Sigma-Aldrich (St. Louis, MO, USA): sodium acetate
+(anhydrous), poly(vinyl alcohol) (PVA, 87−89% hydrolyzed,
+MW: 13−23 kDa),
+D-(+)-trehalose dehydrate, 1-ethyl-3-(3-
+(dimethylamino)propyl)carbodiimide, hydrochloride (EDAC·
+HCl), NAC, crystal violet (dye content ≥90%), bovine serum
+albumin (BSA), Tween 20, cetylpyridinium chloride, sodium
+azide, calcium chloride, sodium tripolyphosphate, Ham’s F-10
+medium (pH 7.4), anhydrous dimethyl sulfoxide (DMSO,
+>99.9%), Dulbecco’s phosphate-buﬀered saline (DPBS),
+L-
+glutamine 200 mM, fetal bovine serum (FBS), antibiotic-
+antimycotic solution (100 units/mL penicillin, 100 μg/mL
+streptomycin, and 25 ng/mL amphotericin B), M199 medium,
+porcine gelatin, porcine heparin, endothelial cell growth
+supplement, Triton-X, and sodium dodecyl sulfate (SDS).
+The following materials were obtained from VWR International
+(Lutterworth, UK): magnesium sulfate, disodium hydrogen
+phosphate dehydrate, and dichloromethane (DCM, stabilized
+with 0.2% of ethanol). The water used throughout all of the
+experimental procedures was ultrapure water.
+2.2. Synthesis of CNAC. CNAC was synthesized as
+described previously,33 with slight modiﬁcations. Brieﬂy, 6 g
+of chitosan was dissolved in 100 mL of acetate buﬀer (pH 4.5)
+at room temperature. Twenty-four grams of NAC plus 8.64 g of
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2924
+
+EDAC·HCl was dissolved in 100 mL of acetate buﬀer under
+continuous stirring for 30 min and nitrogen atmosphere. NAC
+solution was then added to the chitosan solution and left to stir
+overnight at 4 °C under nitrogen atmosphere. This was then
+dialyzed (MWCO; 12−14 kDa, Medicell International,
+London, UK), in the dark, for 5 days and lyophilized to obtain
+the CNAC powder.
+2.3. 1H NMR and Fourier Transform Infrared (FT-IR)
+Spectroscopy. 1H NMR spectra for CNAC and its native
+constituents (chitosan and NAC) was recorded on a Bruker
+400 MHz Ultrashield NMR spectrometer (Bruker Avance,
+Rheinstetten, Germany). IR spectra for these components and
+the prepared nanoparticles were recorded on a PerkinElmer
+Spectrum 100 FT-IR spectrometer (spectral range of 4000 to
+400 cm−1 PerkinElmer, Waltham, MA).
+2.4. Preparation of Chitosan-Based Nanoparticles
+Containing Ranibizumab. Chitosan-based nanoparticles
+containing ranibizumab were prepared to be added to PLGA
+microparticles (section 2.6). The nanoparticles were composed
+of chitosan, chitosan/TPP (chit/TPP), chit/TPP-HA, CNAC,
+or CNAC/TPP. 0.5% w/v chitosan or CNAC solution was
+prepared in 5% w/v PVA/acetate buﬀer (pH 5). Five
+milligrams of ranibizumab (drug-containing nanoparticles) or
+an equivalent volume of water (empty particles) was added
+dropwise to this solution and left to stir for 15 min. Water (for
+chitosan or CNAC particles) or 0.05% w/v TPP solution (for
+chit/TPP, chit/TPP-HA, or CNAC/TPP) was added dropwise
+and left to stir for a further 45 min. Chit/TPP-HA
+nanoparticles were prepared by adding 0.25% w/v of HA
+solution at the end. The composition of the resultant
+nanoparticles was chitosan (or CNAC):ranibizumab:TPP:HA
+in a ratio of 10:10:1:5.
+2.5. Characterization of Chitosan-Based Nanopar-
+ticles. 2.5.1. Particle Size and Zeta Potential. A Malvern
+Zetasizer Nano ZS (Malvern Instruments Ltd., Worcestershire,
+UK) instrument which utilizes dynamic light scattering (DLS)
+and laser Doppler velocimetry (LDV) was used to measure the
+size and zeta potential of the particles, respectively.
+2.5.2. Morphological Examination of Chitosan-Based
+Particles Using Transmission Electron Microscopy (TEM).
+Approximately 40 μL of each preparation was placed on a
+copper grid, covered with nitrocellulose, and negatively stained
+with 1% uranyl acetate. Images were obtained using a FEI CM
+120 Bio Twin transmission electron microscope (Philips
+Electron Optics BV, The Netherlands).
+2.6. Preparation of a System-within-System, Com-
+posed of Chitosan-Based Nanoparticles-within-PLGA
+Microparticles. Chitosan-based nanoparticles were added to
+PLGA microparticles using the w/o/w double emulsion
+method,33 with modiﬁcations. Brieﬂy, 100 mg of PLGA was
+dissolved in 2.5 mL of DCM. One milliliter of primary aqueous
+phase containing the chitosan-based nanoparticles (section 2.4)
+was added to this and the suspension homogenized (Ultra
+Turrax T25 basic, Ika-Werke, Staufen, Germany) at 21 krpm
+for 2 min. The resultant primary emulsion was added to 3 mL
+of secondary continuous phase composed of 1% w/v PVA plus
+0.5% w/v of empty chitosan-based nanoparticles, prepared as
+outlined in section 2.4. To avoid creating a concentration
+gradient which would act as driving force for diﬀusion, aﬀecting
+the drug entrapment eﬃciency and release,34 a similar
+concentration of nanoparticles was used in the primary phase
+and continuous phase for all of the preparations. The mixture
+was homogenized for a further 2 min. Solvent extraction was
+carried out by mixing at room temperature for 3 h. The
+resultant particles were washed by centrifugation (Optima L-
+90K Ultracentrifuge, Beckman Coulter, Fullerton, CA) at 4 °C,
+21 krpm, for 25 min. The supernatants from these washes were
+used to quantify the free ranibizumab content.
+2.7. Characterization of Nanoparticle-within-Micro-
+particle Drug Delivery System. 2.7.1. Particle Size and
+Zeta Potential. Particles were measured for their size using
+laser diﬀraction (Malvern Mastersizer S long bench, Malvern,
+UK) and zeta potential using LDV as outlined in section 2.5.1.
+2.7.2. Scanning Electron Microscopy (SEM). Approximately
+2 mg of lyophilized sample was placed onto a metal stub and
+sputter coated with 20 nm gold using a Quorum Q150
+(Quorum Ltd., UK). This was viewed using a scanning electron
+microscope (FEI Quanta 200F, Eindhoven, The Netherlands).
+2.8. Determination of Ranibizumab Entrapment
+Eﬃciency. The ranibizumab entrapment eﬃciency was
+calculated by measuring the diﬀerence between the amount
+of protein added and the free protein in the supernatant of the
+preparation, as outlined previously.35,36 Indirect ELISA was
+used for the quantiﬁcation of ranibizumab. Brieﬂy, high-binding
+96-well plates (Greiner Microlon High Binding, Greiner Bio-
+One, Frickenhausen, Germany) were coated with 1 μg/mL
+VEGF and incubated overnight at 4 °C. The plates were then
+washed twice with PBS, blocked with 1% w/v BSA, and then
+washed a further two times with 5% Tween 20/PBS, after
+which the ranibizumab standards and samples were added. The
+plates were then incubated for 2 h at 37 °C and washed again
+with 5% w/v Tween 20/PBS. This was followed by the addition
+of 1:4000 HRP detection antibody and incubation for 1 h at 37
+°C. The wash step was repeated followed by the addition of
+TMB substrate plus a 30 min incubation. The reaction was
+stopped using the stop reagent and the absorbance read at 450
+nm using a microplate ultraviolet spectrophotometer (Synergy
+HT, Bio-Tek Instruments, VT, USA).
+2.9. In Vitro Ranibizumab Release Studies. Ranibizumab
+released from the prepared particles was determined using the
+separation technique,37 by suspending the PLGA pellet in 10
+mL of release medium containing Hanks balanced salt solution
+(HBSS), pH 7.4, and 0.05% w/v sodium azide. This buﬀer was
+prepared as described previously.38 The suspension was placed
+in airtight containers and incubated at 37 °C with mild
+continuous agitation (80 rpm, orbital incubator, Gallenkamp;
+Loughborough, UK). At predetermined time intervals (ranging
+from 30 min up to 7 months), the pH was measured to ensure
+minimal changes and the suspension centrifuged at 13 krpm for
+15 min. The supernatant containing the released ranibizumab
+was collected and quantiﬁed using ELISA (section 2.8). The
+pellet was resuspended in fresh release medium and
+reincubated. The average cumulative ranibizumab released
+was plotted against time.
+2.10. Analysis of the Structural Integrity of Ranibizu-
+mab Released from PLGA Microparticles. The structural
+integrity of ranibizumab released from PLGA microparticles
+was analyzed using SDS−PAGE, as previously described,39 with
+modiﬁcations. Equivalent amounts of native and released
+ranibizumab (quantiﬁed using a BCA kit, Micro BCA Protein
+Assay, Pierce, Rockford, IL) were treated with sample buﬀer
+containing 2-mercaptoethanol and Laemmli buﬀer for 5 min at
+95 °C. The samples were then loaded onto polyacrylamide gels
+(Any kD) along with Precision Plus protein standard (both
+from BioRad, Herts, UK). Electrophoresis was performed at a
+constant voltage of 150 V for 45 min (Bio-Rad power PAC
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2925
+
+1000, Melville, NY). Protein bands were stained using
+Coomassie Brilliant Blue stain for analysis.
+2.11. Cell Studies. The safety of the nanoparticles-within-
+microparticles was assessed by analyzing their eﬀect on
+mitochondrial activity via MTS assay and for any changes in
+cell morphology using the Live/Dead assay. The cell lines
+human retinal pigment epithelial (ARPE-19, American Type
+Culture Collection, VA, USA) and human vascular endothelial
+(HUVECs, Caltag Medsystems, Buckingham, UK) were used in
+this study. ARPE-19 cells were cultured in Ham’s F-10 medium
+(pH 7.4), supplemented with 2 mM glutamine, antibiotic-
+antimycotic solution, and 10% heat-inactivated fetal bovine
+serum (FBS). HUVECs were grown on cell culture ﬂasks
+precoated with 0.1% porcine gelatin and maintained in M199
+medium (pH 7.4) supplemented with 20% FBS, 2 mM L-
+glutamine, 100 μg/mL porcine heparin, 50 μg/mL endothelial
+cell growth supplement, and antibiotic-antimycotic solution.
+The culturing medium for both HUVEC and ARPE-19 cells is
+referred to as complete growth medium (CGM). Both cell lines
+were cultured in a humidiﬁed chamber set at 37 °C and 5%
+CO2 atmosphere.
+2.11.1. In Vitro Cytotoxicity Studies. The eﬀect of native
+ranibizumab and empty PLGA microparticles on the viability of
+ARPE-19 and HUVECs was determined using CellTiter 96
+AQueous One solution (MTS) assay. A qualitative analysis of
+this eﬀect was also carried out using ﬂuorescence microscopy
+(Live/Dead assay) to investigate the eﬀects, if any, of the
+samples on the morphology of the cells. 96-Well plates were
+seeded with 2 × 104 cells/mL using CGM and incubated for 48
+h before being replaced with low-serum (2% FBS) medium and
+incubated for a further 12 h. Native ranibizumab (7.63 × 105,
+2.5 mg/mL) and empty PLGA microparticles (3.81 × 104, 12.5
+mg/mL), together with the controls (negative, 1% Triton X,
+and positive, untreated medium) were added to the plate and
+incubated for a further 24 h. Following the incubation period
+the MTS assay was conducted according to the manufacturer’s
+instructions, absorbance read (UV spectrophotometer, Synergy
+HT, Bio-Tek Instruments, VT, USA), and data normalized to
+untreated cells. Live/Dead assay was performed by exposing the
+cells to native ranibizumab and empty PLGA microparticles
+containing chitosan-based nanoparticles for 24 h. A mixture of
+3.34 μM SYTO 9 and 5 μg/mL propidium iodide was then
+added, and ﬂuorescent images were obtained (EVOS
+ﬂuorescence microscope, Lifetech, UK).
+2.11.2. Assessment of Antiangiogenic Activity. 2.11.2.1. Ef-
+fect of Ranibizumab Released from PLGA Microparticles on
+Endothelial Cell Migration. Endothelial cell migration is a key
+process involved in angiogenesis.40 Therefore, the antiangio-
+genic activity of ranibizumab released from PLGA micro-
+particles was assessed by analyzing inhibition of VEGF-
+stimulated HUVEC migration as described in ref 41, with
+modiﬁcations. HUVECs were trypsinized at 70% conﬂuence
+and resuspended in low serum medium. Cells were then seeded
+(4 × 105 cells/mL) onto Matrigel-coated Transwell inserts (8.0
+μm polycarbonate membrane, 6.5 mm, Corning Costar,
+Cambridge, UK) and placed into lower chambers containing
+M199 medium supplemented with 10% FBS, 10 ng/mL VEGF
+(negative control), and 125 μg/mL native ranibizumab
+(positive control) or ranibizumab released from PLGA
+microparticles. The released ranibizumab was collected as
+previously described42 and concentrated to 125 μg/mL using
+centrifugal concentrators (10 kDa MWCO, Vivaspins,
+Vivascience, Hannover, Germany) which were spun at 4
+krpm, 4 °C, for 15 min (Centrifuge 5804R, Eppendorf,
+Germany). 125 μg/mL ranibizumab was selected to represent
+the therapeutic concentration following injection into the
+human vitreous. The plate was then incubated for 20 h at 37 °C
+and 5% CO2 atmosphere. Following the incubation period,
+nonmigrated cells were removed using a cotton swab, inserts
+washed twice with PBS, and migrated cells ﬁxed using absolute
+methanol. The migrated cells were stained using 0.5% crystal
+violet, viewed using a light microscope (Nikon Microphot-FXA,
+Nikon, Tokyo, Japan), and quantiﬁed by counting the number
+of cells in six random ﬁelds per insert. Images were captured
+using a Nikon digital camera (Nikon, Kingston upon Thames,
+UK) and processed using Inﬁnity Capture application (version
+6.2). Data was expressed as the percentage of cells/ﬁeld (mean
+± SD, n = 6) migrated in the presence of ranibizumab relative
+to the VEGF control.
+2.11.2.2. Eﬀect of Released Chitosan and Chit/TPP
+Particles with or without Ranibizumab on Capillary-like
+Tubule Formation. Chit/TPP-HA nanoparticles showed the
+highest antiangiogenic eﬀect and as a result were taken further
+to be assessed using the capillary-like tubule formation assay
+(V2a kit, TCS Cellworks, Buckingham, UK). Cells were
+exposed to VEGF (2 ng/mL) plus 125 μg/mL native
+ranibizumab or ranibizumab plus chit/TPP or chit/TPP-HA
+nanoparticles or equivalent concentrations of empty nano-
+particles. VEGF (promotes angiogenesis) and 20 μM suramin
+(inhibits angiogenesis) were used as the negative and positive
+controls, respectively. Wells were viewed using a Leitz Diavert
+phase contrast microscope and images captured using a Nikon
+digital camera (Nikon, Kingston upon Thames, UK). The
+images were then processed using Inﬁnity Capture application
+(v. 6.2, Lumenera Corp., Canada) and tubules quantiﬁed using
+AngioSys 2.0 software (v. 1.0.0.2, TCS Cellworks, Buckingham,
+UK) for their length as previously described.43,44 Data was
+presented as the total tubule length relative to the VEGF
+control, for each sample (mean ± SD, n = 3).
+2.12. Statistical Analysis. Statistical analysis was carried
+out on all data using two-way analysis of variance (ANOVA)
+and unpaired two-tailed Student t-test. A p value of <0.05 was
+taken to be signiﬁcant. Data are presented as the mean ±
+standard deviation (SD) from 3 independent studies, unless
+otherwise stated.
+3. RESULTS AND DISCUSSION
+3.1. Conﬁrmation of CNAC Synthesis. 3.1.1. The
+Conﬁrmation of CNAC Synthesis Using FTIR. Figure 1
+shows the FT-IR spectra for the synthesized CNAC polymer
+and its native constituents NAC and chitosan. CNAC showed
+an increase in the intensity of the absorption peak at 1638
+(amide I band), 1520 (amide II band), and 1311 (amide III)
+cm−1 compared to native chitosan. This is ascribed to the
+Figure 1. FT-IR spectra for the synthesized CNAC polymer and its
+native constituents, chitosan and NAC. Abbreviations: NAC, N-acetyl-
+L-cysteine; CNAC, chitosan-N-acetyl-L-cysteine.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2926
+
+presence of an additional amide bond from the NAC group,45
+conﬁrming the successful synthesis of CNAC.
+3.1.2. Proton Nuclear Magnetic Resonance (1H NMR). The
+1H NMR spectrum of CNAC (Figure 2C) shows peaks at 2.91
+and 1.97 ppm which conﬁrm the synthesis of this polymer. The
+peak at 2.91 ppm corresponds to the conjugated NAC group
+“CH2SH” replacing the N-acetyl methyl proton seen in chitosan
+at 2.14 ppm (Figure 2B). This correlates with recent ﬁndings.45
+The successful conjugation of the NAC group to chitosan was
+further conﬁrmed by a peak at 1.97 ppm which was present in
+both NAC (Figure 2A) and CNAC (Figure 2C) and
+corresponds to the methyl proton present in both entities.46
+These ﬁndings, together with the FT-IR results, conﬁrm the
+successful synthesis of the CNAC polymer.
+3.2. Characterization of Chitosan-Based Nanopar-
+ticles. Particle size, distribution, zeta potential, and morphol-
+ogy of the nanoparticles constituting the primary aqueous
+phase of the preparation were analyzed as these parameters
+inﬂuence the stability of the primary emulsion and
+subsequently the protein loading and release.47
+3.2.1. Particle Size and Zeta Potential. Figure 3 shows the
+particle size (Figure 3A) and zeta potential (Figure 3B) of the
+prepared nanoparticles. The size was relatively similar to
+another study utilizing nanoparticles in PLGA microparticles
+which reported a nanoparticle size of 513 nm.47 Empty chit/
+TPP particles were signiﬁcantly larger than chitosan particles
+(345.5 ± 2.5 and 40.1 ± 3 nm, respectively, p = 1.79 × 10−8)
+and previously reported chit/TPP particles of sizes up to 226
+nm.48 This is due to the use of a higher chitosan MW and chit/
+TPP ratio of 10:1 compared 4:148 as these parameters have
+been reported to inﬂuence the particle size.49 Conversely,
+CNAC/TPP nanoparticles had a signiﬁcantly smaller size of
+71.8 ± 5.6 nm (p = 4.77 × 10−6) compared to chit/TPP
+particles and previously reported CNAC/TPP nanoparticles of
+166.3 nm.45 Although a higher chitosan MW was used in this
+study compared to Wang’s study (MW ≤400 kDa and 20 kDa,
+Figure 2. 1H NMR spectra of NAC (A), chitosan (B), and CNAC (C). Samples were dissolved at a concentration of 8 mg/mL in D2O. Gray line
+indicates solvent peaks. Abbreviations: NAC, N-acetyl-L-cysteine; CNAC, chitosan-N-acetyl-L-cysteine.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2927
+
+respectively),45 the smaller particles obtained in this study may
+be due to the type of chitosan salt used as this has also been
+shown to inﬂuence the size.49 This is further conﬁrmed by
+comparing CNAC nanoparticles prepared from a diﬀerent
+chitosan salt with a similar MW to that which is used in this
+study; they obtained a larger size of 214 ± 10 nm compared to
+25.7 ± 2.6 nm.50 The reason behind the signiﬁcantly (p =
+0.003) smaller size of CNAC nanoparticles compared to the
+chitosan particles was the stronger intermolecular interactions
+resulting from CNAC’s thiol group.50,51 The incorporation of
+HA with chit/TPP did not inﬂuence the particle size
+signiﬁcantly (chit/TPP-HA; 350.7 ± 2.5 nm) compared to
+chit/TPP (345.5 ± 2.5 nm; p = 0.11) but was larger than
+previously reported HA chitosan nanoparticles (163−182
+nm).52,53 Native ranibizumab had a size of 8.37 ± 0.2 nm,
+which is in line with a previous study.54 Entrapping
+ranibizumab in the chitosan-based nanoparticles had varying
+eﬀects with a decrease in size obtained for chitosan and
+CNAC/TPP particles and an increase in size obtained for the
+chit/TPP-HA nanoparticles. This may be due to a diﬀerence in
+the interaction between the protein and the nanoparticles.
+Particle zeta potential is shown in Figure 3B. The charge of
+native ranibizumab was near neutral charge, at +0.44 ± 1.5 mV,
+and is in line with a previous study.19 Particle zeta potential was
+predominantly positive as a result of the polycation,
+chitosan.55−57 This decreased with the CNAC nanoparticles
+due to the NAC component and is in agreement with a
+previous study.45 A further decrease in the positive zeta
+potential was observed for the chit/TPP-HA nanoparticles as a
+result of the polyanion HA. However, the polyanion TPP had
+diﬀerent eﬀects on the zeta potential of chitosan and CNAC
+nanoparticles, where there was a further decrease in the positive
+zeta potential of CNAC/TPP particles and no eﬀect on the zeta
+potential of chit/TPP nanoparticles. This may have been due to
+stronger electrostatic interactions from the NAC component in
+CNAC with the TPP compared to the unmodiﬁed chitosan
+with TPP. Entrapment of ranibizumab in all of the nano-
+particles caused a reduction in the zeta potential. This
+demonstrates ranibizumab binding to the chitosan component
+and is further conﬁrmed by FT-IR (Figure 5)
+3.2.2. Nanoparticle Morphology. Figure 4 shows TEM
+micrographs for the chitosan-based nanoparticles containing
+ranibizumab. The particle sizes appeared smaller than those
+reported in DLS (section 3.2.1) as TEM generates images for
+particles in their dry state, whereas DLS measures the particle
+size in their swollen state.58,59 However, the general trend
+stands, where CNAC and CNAC/TPP nanoparticles are
+smaller than all of the other nanoparticles. Both chitosan
+(Figure 4) and CNAC (Figure 4) nanoparticles had
+anisometric morphologies. TPP complexation with chitosan
+(Figure 4Cx) or CNAC (Figure 4Ex) caused the formation of
+nanoparticle islands of approximately 150 nm sizes containing
+smaller nanoparticles. This has been noted previously for chit/
+TPP nanoparticles32,60 but not for the CNAC/TPP nano-
+particles45 which appeared smaller compared to the chit/TPP
+nanoparticles (approximately 6 nm and 12−30 nm, respec-
+Figure 3. Particle size (A) and zeta potential (B) of native ranibizumab and chitosan, chit/TPP, CNAC, CNAC/TPP, and chit/TPP-HA with and
+without ranibizumab. Data are presented as the mean ± SD, n = 3. Error bars show the standard deviation. Abbreviations: r, ranibizumab; C,
+chitosan; C/T, chit/TPP; chit/T-HA, chit/TPP-HA; CNAC/T, CNAC/TPP; CNAC, chitosan-N-acetyl-L-cysteine; HA, hyaluronic acid; TPP,
+tripolyphosphate.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2928
+
+tively). Further inspection of the chit/TPP sample revealed
+novel “globule-like” nanoparticles (Figure 4Cxx) with approx-
+imate sizes of 300 nm containing smaller nanoparticles. Chit/
+TPP-HA (Figure 4D) nanoparticles appeared spherical as
+reported previously.53 No signs of aggregates were observed
+under TEM for any of the samples.
+3.2.3. Particle−Protein Interaction. Ranibizumab (Figure
+5A) showed absorption peaks at 995, 1037, and 1085 cm−1
+corresponding to C−H bending and C−F and C−O
+stretching, respectively.61 These peaks were visible in the
+spectra for chitosan, chit/TPP, and chit/TPP-HA (Figure 5B),
+as well as CNAC and CNAC-TPP (Figure 5C) containing
+ranibizumab, thus conﬁrming the presence of an interaction
+between these particles and ranibizumab. An interaction
+between the PO group of TPP and NH3+ present in the
+chitosan-based particles was apparent by the increased peak
+intensity at 1180 cm−1.62 The absorption peaks at 1625 cm−1
+(amide I, CO stretching) and 1516 cm−1 (amide II, CN
+stretching, NH bending) of the chit/TPP-HA preparation
+conﬁrm an interaction between the amino groups in chitosan
+and the carboxyl groups in HA.63
+3.3. Characterization of nanoparticle-within-micro-
+particle drug delivery system. 3.3.1. Particle Size and Zeta
+Potential. The size (Figure 6) of the nanoparticle-within-
+microparticle drug delivery system was measured to assess the
+suitability for IVT. The particle sizes were in the range of 3.04−
+6.04 μm, which is considerably smaller than previously reported
+particles of sizes 14−21 μm8,64 which showed no eﬀects on the
+retinal in vivo studies. Thus, based on the size, the particles
+appear to be suitable for IVT. The particle size distribution is
+also in good agreement with the SEM studies (section 3.3.2).
+There was no diﬀerence in the size of the PLGA particles
+containing chitosan (p = 0.06), chit/TPP (p = 0.08), or chit/
+TPP-HA (p = 0.82) nanoparticles. However, the PLGA
+particles containing CNAC were signiﬁcantly smaller than the
+control (p = 0.005) and chitosan (p = 0.0045). This is likely
+attributed to the NAC component, which may have increased
+the osmotic pressure inside the PLGA matrix, preventing
+inward diﬀusion of water molecules.65 This may also account
+for the higher protein entrapment (section 3.4) and slower
+release (section 3.5). The addition of ranibizumab did not
+inﬂuence the size of the PLGA microparticles, with exception to
+those containing CNAC/TPP nanoparticles where an increase
+in the size was obtained relative to CNAC-containing
+microparticles (p = 0.0009) and the control (p = 0.004).
+This results from a diﬀerence in the protein−nanoparticle
+interaction and may account for the lower protein entrapment
+eﬃciency (section 3.4) and higher release (section 3.5)
+obtained with the CNAC/TPP preparation relative to the
+CNAC preparation.
+Figure 6 shows the zeta potential of the preparations. The
+use of chitosan increased the positive zeta potential of the
+overall system (−12.2 ± 2 mV control compared to +4.3 ± 1.6
+mV, p = 3 × 10−4). The presence of TPP in the preparations
+did not inﬂuence the zeta potential of chitosan-containing
+preparations but reduced the positive zeta potential in CNAC/
+TPP compared to PLGA microparticles containing chit/TPP (p
+= 0.049) or CNAC (p = 0.03). This may be due to additive
+eﬀect of two negatively charged groups (TPP combined with
+the thiol group in CNAC).
+3.3.2. Particle Morphology Assessed Using SEM. Figure 7A
+shows the morphology of the synthesized polymer and drug
+delivery systems. At low magniﬁcation, the CNAC polymer has
+a shard-like appearance (Figure 7A). However, upon closer
+inspection (Figure 7 Ax), a well-deﬁned interior of nano-
+particles closely stacked together is apparent. These represent
+Figure 4. TEM images of ranibizumab (A) and the following ranibizumab-containing particles: chitosan (B), chit/TPP (C, Cx, Cxx), chit/TPP-HA
+(D), CNAC (E, Ex), and CNAC/TPP (F). Abbreviations: chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA, chitosan/tripolyphosphate-
+hyaluronic acid; CNAC, chitosan-N-acetyl-L-cysteine; CNAC/TPP, chitosan-N-acetyl-L-cysteine/tripolyphosphate.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2929
+
+CNAC nanoparticles as it has the ability to self-assemble.50 A
+diﬀerence in the particle morphology has been reported to
+result in diﬀerent drug release proﬁles.66 The PLGA control
+(Figure 7B) was mostly spherical and nonuniformly sized
+microparticles with an average size of 5 μm. These were smaller
+but had a similar surface morphology to previous ﬁndings.67
+The addition of chitosan (Figure 7C) formed a layered coat67,68
+with the presence of rod-shaped entities (Figure 7Cx) on the
+surface of the microparticles and was similar to previous
+ﬁndings.67
+Microparticles containing chit/TPP (Figure 7D) had a
+similar morphology to these. However, the surface was coated
+with nanoparticles (Figure 7Dx) of similar morphology (Figure
+7Dxx) and size distribution (DLS, section 3.2.1) as chit/TPP
+Figure 5. FT-IR spectra for r, TPP, and HA (A); chitosan, chit/TPP, and chit/TPP-HA particles with and without r (B); and CNAC and CNAC/
+TPP particles with and without r (C). Abbreviations: r, ranibizumab; chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA, chitosan/
+tripolyphosphate-hyaluronic acid; CNAC, chitosan-N-acetyl-L-cysteine; CNAC/TPP, chitosan-N-acetyl-L-cysteine/tripolyphosphate.
+Figure 6. Particle size (μm) and zeta potential (mV). Data are represented as the mean ± SD, n = 3. Error bars show the standard deviation.
+Abbreviations: r, ranibizumab; chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA, chitosan/tripolyphosphate-hyaluronic acid; NAC, N-acetyl-L-
+cysteine; CNAC, chitosan-N-acetyl-L-cysteine.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2930
+
+nanoparticles, suggesting that these PLGA microparticles may
+be coated with the chit/TPP nanoparticles. A similar outcome
+was observed with the microparticles containing chit/TPP-HA
+(Figure 7E), CNAC (Figure 7F), and CNAC/TPP (Figure
+7G). However, the coating of the CNAC particles (Figure 7Fx)
+appeared to diﬀer in morphology from these particles, and this
+diﬀerence may have contributed to the improved ranibizumab
+loading and prevention of the initial burst release. All other
+particles had an initial burst release with those of similar
+morphologies (chit/TPP, chit/TPP-HA, and CNAC/TPP)
+having similar and higher rates of ranibizumab release relative
+to the control and chitosan-containing PLGA microparticles.
+3.4. Ranibizumab Entrapment Eﬃciency. Figure 8
+shows the ranibizumab entrapment eﬃciency in the drug
+delivery systems. The unmodiﬁed PLGA microparticles
+contained 29 ± 3.8% ranibizumab, which was similar to
+previous studies reporting an entrapment eﬃciency in the range
+of 31−44%.12,69 The addition of chitosan nanoparticles caused
+a decrease in ranibizumab entrapment eﬃciency (13 ± 2.0%, p
+= 0.04). Previous studies have shown both an increase67 and
+decrease45 in protein entrapment eﬃciency as a result of
+chitosan incorporation. This may be due to a diﬀerence in the
+type and MW of chitosan used. For example, a study which
+used a chitosan with a much larger MW (1000 kDa compared
+to ≤400 kDa used in this study) reported an increase in protein
+entrapment.67 The use of TPP in chit/TPP, chit/TPP-HA, and
+CNAC/TPP did not aﬀect the entrapment eﬃciency of
+ranibizumab relative to the control (p = 0.25, 0.89, and 0.14,
+Figure 7. Scanning electron microscopy images for CNAC polymer (A and Ax) and PLGA microparticles containing no additions (control) (B),
+chitosan (C and Cx), chit/TPP (D and Dx and chitosan particles alone, Dxx), chit/TPP-HA (E), CNAC (F and Fx), and CNAC/TPP (G).
+Abbreviations: chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA, chitosan/tripolyphosphate-hyaluronic acid; CNAC, chitosan-N-acetyl-L-
+cysteine; CNAC/TPP, chitosan-N-acetyl-L-cysteine/tripolyphosphate.
+Figure 8. Ranibizumab entrapment eﬃciency in PLGA (control) and PLGA microparticles containing chitosan-based particles. Data are presented as
+the mean ± SD, n = 3. Error bars show the standard deviation. Abbreviations: chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA;, chitosan/
+tripolyphosphate-hyaluronic acid; NAC, N-acetyl-L-cysteine; CNAC, chitosan-N-acetyl-L-cysteine.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2931
+
+respectively). Similar results were also obtained for the
+morphology and protein release of these particles, indicating
+that TPP has similar interactions with the unmodiﬁed and
+NAC-modiﬁed form of chitosan. However, the CNAC particles
+had the highest ranibizumab entrapment eﬃciency of 69 ±
+14%. This is in agreement with another study which reported
+improved drug loading of 62−76% as a result of CNAC.70 The
+enhanced ranibizumab entrapment eﬃciency is as a result of the
+NAC component as this is the single entity which diﬀerentiates
+the particles. The reason behind this eﬀect is yet to be
+elucidated, however three postulations may be put forward.
+First, CNAC nanoparticles increase the hydrophilicity71 and
+improve ranibizumab solubilization and entrapment within the
+particles compared to the chitosan or chit/TPP nano-
+particles.27,50 Second, the thiol group present in the NAC
+component of the CNAC nanoparticles has been reported to
+form strong disulﬁde bonds with the cysteine residues of mucus
+glycoproteins.27 As ranibizumab contains 10 cysteine resi-
+dues,28 it is anticipated that CNAC will form stronger
+interactions with ranibizumab retaining it inside the PLGA
+microparticles and minimizing loss during preparation. This
+eﬀect may also contribute to the absence of an initial burst
+release and slower release compared to all of the other
+preparations (section 3.5). Finally, CNAC is more viscous than
+chitosan,33 and studies have shown that increasing the viscosity
+of the PLGA matrix improves protein loading.72
+3.5. Protein Release from PLGA Microparticles. The in
+vitro release of ranibizumab was investigated to determine the
+eﬀect of incorporating the chitosan-based nanoparticles in the
+PLGA microparticles (Figure 9). The PLGA control showed a
+biphasic response as previously reported,73,74 with an initial
+burst release followed by a sustained-release period. The
+addition of chitosan did not alter the release proﬁle but
+increased the rate of protein release as reported previously.75−77
+Microparticles containing chit/TPP showed a triphasic release
+proﬁle with a higher initial rate of release relative to the control.
+Further, chit/TPP-HA and CNAC/TPP both showed mono-
+phasic release with highest initial rate and content of release.
+Figure 9. Ranibizumab release from PLGA microparticles. Data are presented as the mean ± SD, n = 3. Error bars show the standard deviation.
+Abbreviations: chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA, chitosan/tripolyphosphate-hyaluronic acid; NAC, N-acetyl-L-cysteine; CNAC,
+chitosan-N-acetyl-L-cysteine.
+Figure 10. SDS−PAGE band patterns for native ranibizumab (R) and ranibizumab released from PLGA microparticles containing chitosan-based
+nanoparticles.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2932
+
+The higher protein release obtained for chit/TPP, chit/TPP-
+HA, and CNAC/TPP is likely attributed to the nanoparticle
+presentation on the microparticles and protein−nanoparticle
+interaction. On the other hand, PLGA microparticles
+containing CNAC showed a similar biphasic release proﬁle
+compared to control and chitosan but considerably lower, and
+this formulation was the only one which had no initial burst
+release. Previous studies have also obtained release proﬁles for
+CNAC particles with no initial burst release.50,51 This is
+because CNAC has higher viscosity compared to chitosan,33
+creating a viscous microenvironment which favors sustained
+delivery.78 Another possible reason may be due to the particle
+coating which was apparent in the SEM images (section 3.3.2,
+Figure 7Fx) as this has been reported to reduce the burst-
+release eﬀect.79 In summary, CNAC has improved the release
+proﬁle of PLGA microparticles, providing a potential platform
+for sustained intravitreal delivery of ranibizumab. PLGA
+microparticles containing chit/TPP-HA or CNAC/TPP may
+be used for the delivery of ocular drugs required for an
+immediate response.
+The concentration of ranibizumab which has been shown to
+neutralize VEGF in vitro is 120 ng/mL.80 No toxic eﬀects were
+obtained following exposure of ranibizumab to HUVECs and
+ARPE-19 cells and up to a concentration of 2.5 mg/mL in the
+MTS assay (section 3.7.1.1). In the ﬁrst hour, all preparations
+released 2.21−35.7 μg/mL ranibizumab, and the maximum
+concentration released was 44.2−207 μg/mL. Given that these
+values are all above 120 ng/mL (and below 2.5 mg/mL) and
+that ranibizumab released from all of the preparations was
+shown to have maintained its activity (shown by SDS−PAGE
+and the migration assay, sections 3.6 and 3.7.2.1), it can be
+concluded that the released ranibizumab will elicit its
+therapeutic eﬀect with no toxic eﬀects.
+3.6. Analysis of the Structural Integrity of Ranibizu-
+mab Released from PLGA Microparticles. Figure 10 shows
+the structural integrity of native ranibizumab and ranibizumab
+which has been released from the preparations. Native
+ranibizumab showed a distinctive band at 23 kDa correspond-
+ing to the reduction and cleavage of the disulﬁde bond between
+the two chains of the Fab fragment.5 This band was also present
+for ranibizumab released from all of the preparations, indicating
+that the method of preparation and nanoparticles used did not
+alter the structural integrity and aﬀect the stability of this
+protein. The band smearing may be a result of the high salt
+content from the release medium.
+The band at 250 kDa present in the chitosan, chit/TPP, chit/
+TPP-HA, and, to a lesser extent, CNAC and CNAC/TPP
+preparations is likely attributed to the chitosan components of
+the samples. This is because the release medium containing
+ranibizumab also contained chitosan-based nanoparticles (MW
+< 400 kDa). This is further conﬁrmed in another study which
+used chitosan of MW (190−300 kDa) and tetanus toxoid (av
+MW 176 kDa) to prepare protein-loaded chitosan/TPP
+nanoparticles and also obtained a band at 250 kDa.81 The
+released ranibizumab had maintained its stability, and this was
+further conﬁrmed through maintained activity shown in the cell
+migration assay (section 3.7.2.1).
+3.7. Cell Studies. 3.7.1. Cell Viability. 3.7.1.1. MTS Assay.
+Safety of ranibizumab (Figure 11A) and the nanoparticle-
+within-microparticle preparations was assessed by evaluating
+their eﬀects on mitochondrial activity of ARPE-19 cells (Figure
+11B) and HUVECs (Figure 11C). A higher viability was
+obtained in HUVECs compared to ARPE-19 across all of the
+formulations and may be due to diﬀerences in cell sensitivities.
+Ranibizumab was well tolerated in both cell lines up to
+concentrations of 2.5 mg/mL (Figure 11A), higher than the
+total concentration loaded in the microparticles. The
+biocompatibility of PLGA is well established in in vitro82 and
+in vivo83,84 studies with reported safe concentrations of up to 25
+mg/mL.85 12.5 mg/mL of PLGA control was used in this study
+and showed 80−109% cell viability across both cell lines.
+Chitosan or CNAC preparations did not signiﬁcantly reduce
+Figure 11. Eﬀect of ranibizumab (A) and system-within-system on the
+viability of ARPE-19 cells (B) and HUVECs (C). The cell viability was
+assessed using the MTS assay following a 24 h exposure to
+ranibizumab. Data are presented as the mean ± SD, n = 9. Error
+bars show the standard deviation. Abbreviations: chit/TPP, chitosan/
+tripolyphosphate; chit/TPP-HA, chitosan/tripolyphosphate-hyalur-
+onic acid; CNAC, chitosan-N-acetyl-L-cysteine; CNAC/TPP, chito-
+san-N-acetyl-L-cysteine/tripolyphosphate.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2933
+
+the cell viability in both cell lines compared to control (p = 0.15
+and 0.07, respectively). Chitosan has been shown to have
+diﬀerent safety proﬁles, varying with the type, MW, zeta
+potential of the chitosan, or the cell type used.86−89 There was
+also no signiﬁcant diﬀerence on cell viability between CNAC
+and chitosan (p = 0.56) or CNAC/TPP (p = 0.95). The
+addition of HA did not inﬂuence the cell viability signiﬁcantly
+(p = 0.79), as reported in recent studies.90
+3.7.1.2. Live/Dead Assay. The Live/Dead cell viability assay
+was conducted to provide a qualitative conﬁrmation for the
+MTS viability assay as well as to show the eﬀects, if any, of the
+drug delivery systems on the morphology of HUVECs (Figure
+12A) and ARPE-19 cells (Figure 12B).91 Untreated ARPE-19
+cells (positive controls, ﬂuorescently labeled green) have a
+cobblestone-like morphology with tight intercellular junc-
+tions.91−93 HUVECs have a more spaced distribution with
+cobblestone-like appearance.94,95 Dead cells appear ﬂuores-
+cently labeled red. The proportion of viable cells reﬂects the
+ﬁndings from the MTS assay with no morphological changes
+observed across the HUVECs for any of the preparations.
+Figure 12. Live/Dead micrographs for HUVECs (A) and ARPE-19 cells (B) exposed to 25 mg/mL native ranibizumab and 12.5 mg/mL empty
+PLGA microparticles. Green ﬂuorescence indicates living cells, while red ﬂuorescence indicates dead cells. Controls used were media-treated cells
+(positive control) and cells treated with 1% Triton-X (negative control). Abbreviations: chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA,
+chitosan/tripolyphosphate-hyaluronic acid; CNAC, chitosan-N-acetyl-L-cysteine; CNAC/TPP, chitosan-N-acetyl-L-cysteine/tripolyphosphate.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2934
+
+However, ARPE-19 cells exposed to PLGA microparticles
+containing chitosan, CNAC, and CNAC/TPP nanoparticles
+showed a more scattered appearance. This could be secondary
+to a loss of tight cell junctions which has been reported with
+chitosan as a result of induction and redistribution of
+cytoskeletal F-actin and tight junction protein Zona occludens
+(ZO-1).96 NAC has recently been reported to cause
+disassembly of the actin cytoskeleton,97 and therefore, this
+may also contribute to the loss of tight junctions.
+3.7.2. Assessment of Antiangiogenic Activity. VEGF
+stimulates angiogenesis via multiple cellular pathways including
+endothelial cell migration,40 proliferation40and capillary tube
+formation.40,98 Ranibizumab acts by binding to VEGF and
+inhibiting these eﬀects.80,99 Therefore, ranibizumab released
+from the preparations was analyzed for antiangiogenic activity
+using VEGF-induced cell migration and capillary-like tubule
+formation assays. Further, chitosan-based nanoparticles which
+were found to elicit an antiangiogenic eﬀect were further
+assessed using the capillary-like tubule formation assay.
+3.7.2.1. Eﬀect of Ranibizumab Released from PLGA
+Microparticles on Endothelial Cell Migration. The aim of
+the migration assay was to investigate if the method of
+preparation, the use of chitosan-based particles, and release
+process from the delivery systems aﬀect the activity of
+ranibizumab. The eﬀect of ranibizumab, released from the
+prepared PLGA microparticles, on the VEGF-induced cell
+migration is shown in Figure 13. A qualitative depiction of
+these results is shown in Figure 14. Native ranibizumab showed
+an approximately 5-fold decrease in VEGF-induced migration,
+consistent with previous reports.100 Ranibizumab released from
+Figure 13. HUVEC migration for cells exposed to VEGF/FBS 10% (V/F), VEGF/FBS 10% plus native ranibizumab (r), and ranibizumab released
+from PLGA (A), PLGA + CNAC (B), PLGA + CNAC/TPP (C), PLGA + chitosan (D), PLGA + chit/TPP (E), and PLGA + chit/TPP-HA (F).
+Results are expressed as the number of cells exposed to ranibizumab per visual ﬁeld (mean ± SD, n = 6) as a percentage of VEGF-stimulated
+migration. Error bars show the standard deviation. Abbreviations: FBS, fetal bovine serum; chit/TPP, chitosan/tripolyphosphate; chit/TPP-HA,
+chitosan/tripolyphosphate-hyaluronic acid; CNAC, chitosan-N-acetyl-L-cysteine; CNAC/TPP, chitosan-N-acetyl-L-cysteine/tripolyphosphate.
+Figure 14. Light micrographs showing migrated HUVECs for untreated cells (2% FBS) and cells exposed to VEGF/FBS 10% (V/F), native
+ranibizumab (r), and ranibizumab released from PLGA microparticles (A), PLGA + chitosan (B), PLGA + chit/TPP (C), PLGA + chit/TPP-HA
+(D), PLGA + CNAC (E), and PLGA + CNAC/TPP (F). Abbreviations: FBS, fetal bovine serum; chit/TPP, chitosan/tripolyphosphate; chit/TPP-
+HA, chitosan/tripolyphosphate-hyaluronic acid; CNAC, chitosan-N-acetyl-L-cysteine; CNAC/TPP, chitosan-N-acetyl-L-cysteine/tripolyphosphate.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2935
+
+the PLGA control particles showed a similar outcome (p = 0.9)
+indicating that entrapment and release did not alter the activity
+of this protein signiﬁcantly. This is in agreement with the SDS−
+PAGE ﬁndings (section 3.6) showing preserved structural
+integrity of the released protein. Studies utilizing PLGA for
+hydrophilic drug delivery have reported both maintained
+activity8,101,102 and reduced protein stability10,103,104 which
+result from diﬀerences in process parameters and the
+hydrophilic agent used. Ranibizumab released from PLGA
+microparticles containing CNAC and CNAC/TPP showed a
+slightly higher antimigratory activity compared to ranibizumab
+released from control (p = 0.16 and 0.4, respectively). The
+NAC component may have contributed to this as it has
+previously been shown to inhibit VEGF-induced HUVEC
+tubule formation.105 It may be postulated that this eﬀect is
+secondary to disulﬁde interactions between the cysteine groups
+of NAC and VEGF,29 however, future studies should be
+conducted to conﬁrm this. Further, NAC has been associated
+with antiangiogenic activity in various other studies.30 There
+was no signiﬁcant diﬀerence between the antimigratory eﬀects
+of CNAC and CNAC/TPP (p = 0.91), suggesting that
+complexation of CNAC with TPP does not inﬂuence the
+eﬀect caused.
+Chitosan and chit/TPP nanoparticles (Figures 13D and 13E,
+respectively) did not enhance the antimigratory activity of
+ranibizumab opposing the enhanced antiangiogenic eﬀect
+obtained in the capillary-like tubule formation assay (section
+3.7.2.2). The activity of chitosan with respect to cell migration
+is not yet fully understood, with studies reporting either
+promigratory or antimigratory eﬀects.20,106,107 However, the
+diﬀerence in the antiangiogenic activity between the two assays
+may be due to two reasons. The ﬁrst is a cell-speciﬁc eﬀect, as
+the capillary-like tubule formation assay has additional human
+dermal ﬁbroblasts and chitosan has been shown to inhibit
+tubule formation secondary to matrix metalloproteinase-2
+inhibition in this cell line.18 Another possible explanation is
+that this assay considers the later stages of the angiogenic
+process which the migration assay does not take into
+account.108 However, ranibizumab in the chit/TPP-HA-
+containing (Figure 13A) preparation showed signiﬁcantly
+higher antimigratory activity compared to the control (p =
+6.51 × 10−7) (Figure 13F), which was in line with the results of
+the capillary-like tubule formation assay (section 3.7.2.2). The
+antimigratory eﬀect could be associated with the HA
+component of the nanoparticles and is in line with a previous
+study.109 Another recent study110 showed a dose dependent
+inhibition, with 50% inhibition of migration with HA
+concentrations as low as 25 μg/mL. Although the concen-
+tration of chit/TPP-HA (or chit/TPP) nanoparticles released
+with ranibizumab was not quantiﬁed, the initial concentration
+used, assuming nothing was lost, was 625 μg/mL of this
+biocompatible polymer, therefore only 4% of this preparation
+was required to have an eﬀect. Figure 14 shows light
+micrographs of migrated HUVECs, stained with crystal violet
+representing a qualitative depiction of the results discussed. As
+chit/TPP-HA showed the highest antimigratory activity, it was
+taken forward, together with its controls (chitosan and chit/
+TPP), to conﬁrm antiangiogenic activity using a diﬀerent assay,
+i.e., capillary-like tubule formation assay.
+3.7.2.2. Eﬀect of Released Chitosan and Chit/TPP Particles
+with or without Ranibizumab on Capillary-like Tubule
+Formation. Chit/TPP-HA nanoparticles showed the most
+signiﬁcant eﬀect in the migration study. Therefore, empty and
+ranibizumab-containing chit/TPP-HA and chit/TPP nano-
+particles were assessed for their inhibitory eﬀect, if any, on
+VEGF-induced tubule growth (Figure 15). Suramin standard,
+an inhibitor of tubule growth, caused 93 ± 0.3% tubule length
+inhibition, which was similar to a recent study, reporting 90%
+inhibition.111 Native ranibizumab has been shown to cause a
+50−70% inhibition of tubule formation at a therapeutic
+concentration of 125−200 μg/mL.100,112,113 This is similar to
+the ranibizumab used in this study showing an inhibition of 61
+± 4.5%. Empty chit/TPP nanoparticles caused a 30 ± 1.2%
+inhibition, which more than doubled with the addition of
+ranibizumab showing a statistically signiﬁcant (p = 3.73 × 10−3)
+improvement in VEGF-mediated antiangiogenic activity for the
+ranibizumab-loaded nanoparticles. The antiangiogenic activity
+of chit/TPP nanoparticles may be due to their inﬂuence on
+VEGFR-2 levels in human dermal ﬁbroblasts, as recently
+reported.16 The empty chit/TPP-HA nanoparticles caused a
+higher inhibition of tubule growth relative to chit/TPP
+nanoparticles (p = 6.09 × 10−4). This is in agreement with
+previous studies which have demonstrated antiangiogenic
+activity following exposure to high MW HA.25,114 The addition
+of ranibizumab to these nanoparticles demonstrated a higher
+inhibition relative to the chit/TPP-containing ranibizumab and
+Figure 15. Eﬀects of empty and ranibizumab-containing chit/TPP and chit/TPP-HA nanoparticles on cell tubule length inhibition relative to VEGF-
+treated cells. Data are presented as the mean ± SD, n = 3. Error bars show the standard deviation. Abbreviations: r, ranibizumab; chit/TPP, chitosan/
+tripolyphosphate; chit/TPP-HA, chitosan/tripolyphosphate-hyaluronic acid.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2936
+
+native ranibizumab alone (76 ± 4.6% compared to 66 ± 3.5%
+and 61 ± 4.5%, respectively) and is in line with the migration
+assay ﬁndings.
+4. CONCLUSION
+The standard of care for the most prevalent macular diseases,
+including wet AMD, diabetic macular edema, and retinal vein
+occlusion, necessitates relatively frequent IVT injections, owing
+to the short intravitreal half-lives of the therapeutic proteins:
+ranibizumab, bevacizumab, and aﬂibercept. There is an unmet
+need for the development of a drug delivery system with a high
+entrapment eﬃciency and slow release of these agents. PLGA
+microparticles present a suitable platform for intravitreal
+delivery of ranibizumab as they are biodegradable, have a safe
+ocular proﬁle, and have been FDA-approved for the sustained
+intravitreal delivery of dexamethasone (Ozurdex). However,
+these microparticles are commonly associated with poor
+protein loading, loss of protein stability, and an initial burst
+release, which other studies have attempted to overcome by
+altering the process parameters but have not succeeded in
+addressing all factors collectively.
+Our study analyzed the eﬀects of incorporating chitosan-
+based nanoparticles containing ranibizumab within the PLGA
+microparticles on the loading, stability, activity, and release of
+the ranibizumab, as well as their eﬀects on the physicochemical
+properties of the PLGA microparticles. PLGA microparticles
+containing CNAC nanoparticles signiﬁcantly improved ranibi-
+zumab loading, avoiding the initial burst release and having a
+favorable prolonged release proﬁle. These eﬀects were perhaps
+related to the NAC group present in the chitosan derivative and
+may be a result of the thiol interaction between the cysteine
+residues of NAC and ranibizumab. However, more studies are
+required to further investigate this. PLGA microparticles
+containing the CNAC nanoparticles provide a possible platform
+for sustained intravitreal delivery of ranibizumab, potentially
+reducing the frequency of IVT and the burden of care.
+Complexation of chitosan or CNAC with TPP increased the
+rate of release signiﬁcantly. Therefore, these can be used to
+provide an immediate therapeutic eﬀect of an intravitreal
+protein. Chit/TPP-HA nanoparticles showed enhanced anti-
+angiogenic activity (enhanced antimigratory activity and
+inhibition of capillary tube formation) due to the HA
+component. However, PLGA microparticles containing these
+nanoparticles showed the fastest rate of degradation, providing
+a platform for immediate drug release.
+■AUTHOR INFORMATION
+Corresponding Authors
+*E-mail: naba_elsaid@hotmail.com. Tel: +44(0)1707 285114.
+*E-mail: s.somavarapu@ucl.ac.uk. Tel: +44(0)207 753 5987.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+We wish to thank Dr. Paul Stapleton and David McCarthy for
+their assistance in the Live/Dead, TEM, and SEM procedures.
+We wish to also thank Robert Petrarca and Tasneem Kapadia
+for their contribution in the preliminary studies. This study was
+supported by King’s College Hospital NHS Foundation Trust
+Clinical Research and Development Investment Scheme, Grant
+No. 513843. T.L.J. received research grant support from
+NeoVista, Novartis, and Oraya for unrelated projects. He has
+served as an advisor to Alcon, Bausch & Lomb, Thrombogenics
+and Allimera, but received no commercial support in relation to
+the work presented herein.
+■REFERENCES
+(1) Bunce, C.; Zekite, A.; Walton, S.; Rees, A.; Patel, P. J.
+Certifications for sight impairment due to age related macular
+degeneration in England. Public Health 2015, 129, 138−42.
+(2) NICE. Ranibizumab and pegaptanib for the treatment of age-related
+macular degeneration: NICE technology appraisal guidance [TA155].
+2008 [16/05/2016]. Available from: https://www.nice.org.uk/
+guidance/ta155/chapter/2-Clinical-need-and-practice.
+(3) Bakri, S. J.; Snyder, M. R.; Reid, J. M.; Pulido, J. S.; Ezzat, M. K.;
+Singh, R. J. Pharmacokinetics of intravitreal ranibizumab (Lucentis).
+Ophthalmology 2007, 114, 2179−82.
+(4) Sampat, K. M.; Garg, S. J. Complications of intravitreal injections.
+Curr. Opin Ophthalmol. 2010, 21, 178−83.
+(5) Grisanti, S.; Tura, A. [Qualitative differences between
+ranibizumab from original and ready to use syringes]. Ophthalmologe
+2010, 107, 1123−32.
+(6) Kahook, M. Y.; Liu, L.; Ruzycki, P.; Mandava, N.; Carpenter, J.
+F.; Petrash, J. M.; Ammar, D. A. High-molecular-weight aggregates in
+repackaged bevacizumab. Retina 2010, 30, 887−92.
+(7) Ye, M.; Kim, S.; Park, K. Issues in long-term protein delivery
+using biodegradable microparticles. J. Controlled Release 2010, 146,
+241−60.
+(8) Shelke, N. B.; Kadam, R.; Tyagi, P.; Rao, V. R.; Kompella, U. B.
+Intravitreal Poly(L-lactide) Microparticles Sustain Retinal and
+Choroidal Delivery of TG-0054, a Hydrophilic Drug Intended for
+Neovascular Diseases. Drug Delivery Transl. Res. 2011, 1, 76−90.
+(9) Yandrapu, S. K.; Upadhyay, A. K.; Petrash, J. M.; Kompella, U. B.
+Nanoparticles in porous microparticles prepared by supercritical
+infusion and pressure quench technology for sustained delivery of
+bevacizumab. Mol. Pharmaceutics 2013, 10, 4676−86.
+(10) van de Weert, M.; Hennink, W. E.; Jiskoot, W. Protein
+instability in poly(lactic-co-glycolic acid) microparticles. Pharm. Res.
+2000, 17, 1159−67.
+(11) Allison, S. D. Analysis of initial burst in PLGA microparticles.
+Expert Opin. Drug Delivery 2008, 5, 615−28.
+(12) Hong, X.; Wei, L.; Ma, L.; Chen, Y.; Liu, Z.; Yuan, W. Novel
+preparation method for sustained-release PLGA microspheres using
+water-in-oil-in-hydrophilic-oil-in-water emulsion. Int. J. Nanomed.
+2013, 8, 2433−41.
+(13) Mao, S.; Xu, J.; Cai, C.; Germershaus, O.; Schaper, A.; Kissel, T.
+Effect of WOW process parameters on morphology and burst release
+of FITC-dextran loaded PLGA microspheres. Int. J. Pharm. 2007, 334,
+137−48.
+(14) Hua, F. J.; Kim, G. E.; Lee, J. D.; Son, Y. K.; Lee, D. S.
+Macroporous poly(L-lactide) scaffold 1. Preparation of a macroporous
+scaffold by liquid–liquid phase separation of a PLLA–dioxane–water
+system. J. Biomed. Mater. Res. 2002, 63, 161−7.
+(15) Harish Prashanth, K. V.; Tharanathan, R. N. Depolymerized
+products of chitosan as potent inhibitors of tumor-induced angio-
+genesis. Biochim. Biophys. Acta, Gen. Subj. 2005, 1722, 22−9.
+(16) Xu, Y.; Wen, Z.; Xu, Z. Chitosan nanoparticles inhibit the
+growth of human hepatocellular carcinoma xenografts through an
+antiangiogenic mechanism. Anticancer Res. 2009, 29, 5103−9.
+(17) Okamoto, H.; Umeda, S.; Obazawa, M.; Minami, M.; Noda, T.;
+Mizota, A.; Honda, M.; Tanaka, M.; Koyama, R.; Takagi, I.; Sakamoto,
+Y.; Saito, Y.; Miyake, Y.; Iwata, T. Complement factor H poly-
+morphisms in Japanese population with age-related macular
+degeneration. Mol. Vis. 2006, 12, 156−8.
+(18) Kim, M. M.; Kim, S. K. Chitooligosaccharides inhibit activation
+and expression of matrix metalloproteinase-2 in human dermal
+fibroblasts. FEBS Lett. 2006, 580, 2661−6.
+(19) Liu, H.-t.; Huang, P.; Ma, P.; Liu, Q.-s.; Yu, C.; Du, Y.-g.
+Chitosan oligosaccharides suppress LPS-induced IL-8 expression in
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2937
+
+human umbilical vein endothelial cells through blockade of p38 and
+Akt protein kinases. Acta Pharmacol. Sin. 2011, 32, 478−86.
+(20) Kievit, F. M.; Cooper, A.; Jana, S.; Leung, M. C.; Wang, K.;
+Edmondson, D.; Wood, D.; Lee, J. S.; Ellenbogen, R. G.; Zhang, M.
+Aligned chitosan-polycaprolactone polyblend nanofibers promote the
+migration of glioblastoma cells. Adv. Healthcare Mater. 2013, 2, 1651−
+9.
+(21) McBane, J. E.; Vulesevic, B.; Padavan, D. T.; McEwan, K. A.;
+Korbutt, G. S.; Suuronen, E. J. Evaluation of a collagen-chitosan
+hydrogel for potential use as a pro-angiogenic site for islet
+transplantation. PLoS One 2013, 8, e77538.
+(22) Miklas, J. W.; Dallabrida, S. M.; Reis, L. A.; Ismail, N.; Rupnick,
+M.; Radisic, M. QHREDGS enhances tube formation, metabolism and
+survival of endothelial cells in collagen-chitosan hydrogels. PLoS One
+2013, 8, e72956.
+(23) Kogan, G.; Soltes, L.; Stern, R.; Gemeiner, P. Hyaluronic acid: a
+natural biopolymer with a broad range of biomedical and industrial
+applications. Biotechnol. Lett. 2007, 29, 17−25.
+(24) Oh, E. J.; Park, K.; Kim, K. S.; Kim, J.; Yang, J. A.; Kong, J. H.;
+Lee, M. Y.; Hoffman, A. S.; Hahn, S. K. Target specific and long-acting
+delivery of protein, peptide, and nucleotide therapeutics using
+hyaluronic acid derivatives. J. Controlled Release 2010, 141, 2−12.
+(25) Rooney, P.; Kumar, S. Inverse relationship between hyaluronan
+and collagens in development and angiogenesis. Differentiation 1993,
+54, 1−9.
+(26) Nasti, A.; Zaki, N. M.; de Leonardis, P.; Ungphaiboon, S.;
+Sansongsak, P.; Rimoli, M. G.; Tirelli, N. Chitosan/TPP and chitosan/
+TPP-hyaluronic acid nanoparticles: systematic optimization of the
+preparative process and preliminary biological evaluation. Pharm. Res.
+2009, 26, 1918−30.
+(27) Bernkop-Schnurch, A.; Hornof, M.; Guggi, D. Thiolated
+chitosans. Eur. J. Pharm. Biopharm. 2004, 57, 9−17.
+(28) EMEA; European Medicines Evaluation Agency (2007).
+Scientiﬁc discussion. Available URL http://www.ema.europa.eu/
+docs/en_GB/document_library/EPAR_-_Scientiﬁc_Discussion/
+human/000715/WC500043550.pdf [Cited: 13.11.14].
+(29) Hoeben, A.; Landuyt, B.; Highley, M. S.; Wildiers, H.; Van
+Oosterom, A. T.; De Bruijn, E. A. Vascular endothelial growth factor
+and angiogenesis. Pharmacol Rev. 2004, 56, 549−80.
+(30) Aluigi, M. G.; De Flora, S.; D’Agostini, F.; Albini, A.; Fassina, G.
+Antiapoptotic and antigenotoxic effects of N-acetylcysteine in human
+cells of endothelial origin. Anticancer Res. 2000, 20, 3183−7.
+(31) de Oliveira Dias, J. R.; Rodrigues, E. B.; Maia, M.; Magalhaes,
+O., Jr.; Penha, F. M.; Farah, M. E. Cytokines in neovascular age-related
+macular degeneration: fundamentals of targeted combination therapy.
+Br. J. Ophthalmol. 2011, 95, 1631−7.
+(32) Calvo, P.; Vila-Jato, J. L.; Alonso, M.a.J. Evaluation of cationic
+polymer-coated nanocapsules as ocular drug carriers. Int. J. Pharm.
+1997, 153, 41−50.
+(33) Schmitz, T.; Grabovac, V.; Palmberger, T. F.; Hoffer, M. H.;
+Bernkop-Schnurch, A. Synthesis and characterization of a chitosan-N-
+acetyl cysteine conjugate. Int. J. Pharm. 2008, 347, 79−85.
+(34) Ghasemian, E.; Vatanara, A.; Rouholamini Najafabadi, A.;
+Rouini, M. R.; Gilani, K.; Darabi, M. Preparation, characterization and
+optimization of sildenafil citrate loaded PLGA nanoparticles by
+statistical factorial design. Daru, J. Pharm. Sci. 2013, 21, 68.
+(35) Li, F.; Hurley, B.; Liu, Y.; Leonard, B.; Griffith, M. Controlled
+release of bevacizumab through nanospheres for extended treatment of
+age-related macular degeneration. Open Ophthalmol. J. 2012, 6, 54−8.
+(36) Chereddy, K. K.; Her, C. H.; Comune, M.; Moia, C.; Lopes, A.;
+Porporato, P. E.; Vanacker, J.; Lam, M. C.; Steinstraesser, L.;
+Sonveaux, P.; Zhu, H.; Ferreira, L. S.; Vandermeulen, G.; Preat, V.
+PLGA nanoparticles loaded with host defense peptide LL37 promote
+wound healing. J. Controlled Release 2014, 194, 138−47.
+(37) D’Souza, S. S.; DeLuca, P. P. Methods to assess in vitro drug
+release from injectable polymeric particulate systems. Pharm. Res.
+2006, 23, 460−74.
+(38) Liu, F.; Merchant, H. A.; Kulkarni, R. P.; Alkademi, M.; Basit, A.
+W. Evolution of a physiological pH 6.8 bicarbonate buffer system:
+application to the dissolution testing of enteric coated products. Eur. J.
+Pharm. Biopharm. 2011, 78, 151−7.
+(39) Kaja, S.; Hilgenberg, J. D.; Everett, E.; Olitsky, S. E.; Gossage, J.;
+Koulen, P. Effects of dilution and prolonged storage with preservative
+in a polyethylene container on Bevacizumab (Avastin) for topical
+delivery as a nasal spray in anti-hereditary hemorrhagic telangiectasia
+and related therapies. Hum. Antibodies 2011, 20, 95−101.
+(40) Folkman, J.; Klagsbrun, M. Angiogenic factors. Science 1987,
+235, 442−7.
+(41) Hotchkiss, K. A.; Ashton, A. W.; Mahmood, R.; Russell, R. G.;
+Sparano, J. A.; Schwartz, E. L. Inhibition of endothelial cell function in
+vitro and angiogenesis in vivo by docetaxel (Taxotere): association
+with impaired repositioning of the microtubule organizing center. Mol.
+Cancer Ther. 2002, 1, 1191−200.
+(42) Hrynyk, M.; Martins-Green, M.; Barron, A. E.; Neufeld, R. J.
+Sustained prolonged topical delivery of bioactive human insulin for
+potential treatment of cutaneous wounds. Int. J. Pharm. 2010, 398,
+146−54.
+(43) Iriyama, A.; Fujiki, R.; Inoue, Y.; Takahashi, H.; Tamaki, Y.;
+Takezawa, S.; Takeyama, K.; Jang, W. D.; Kato, S.; Yanagi, Y. A2E, a
+pigment of the lipofuscin of retinal pigment epithelial cells, is an
+endogenous ligand for retinoic acid receptor. J. Biol. Chem. 2008, 283,
+11947−53.
+(44) Yu, W.; Bai, Y.; Han, N.; Wang, F.; Zhao, M.; Huang, L.; Li, X.
+Inhibition of pathological retinal neovascularization by semaphorin 3A.
+Mol. Vis. 2013, 19, 1397−405.
+(45) Wang, X.; Zheng, C.; Wu, Z.; Teng, D.; Zhang, X.; Wang, Z.; Li,
+C. Chitosan-NAC nanoparticles as a vehicle for nasal absorption
+enhancement of insulin. J. Biomed. Mater. Res., Part B 2009, 88B, 150−
+61.
+(46) Ponedel’kina, I. Y.; Odinokov, V. N.; Saitgalina, E. A.; Lukina, E.
+S.; Dzhemilev, U. M. Conjugation of 3′-azido-3′-deoxythymidine with
+heparin. Dokl. Chem. 2008, 419, 95−7.
+(47) Lee, Y. S.; Johnson, P. J.; Robbins, P. T.; Bridson, R. H.
+Production of nanoparticles-in-microparticles by a double emulsion
+method: A comprehensive study. Eur. J. Pharm. Biopharm. 2013, 83,
+168−73.
+(48) Wadhwa, S.; Paliwal, R.; Paliwal, S. R.; Vyas, S. P. Hyaluronic
+acid modified chitosan nanoparticles for effective management of
+glaucoma: development, characterization, and evaluation. Journal of
+Drug Targeting. 2010, 18, 292−302.
+(49) Luangtana-anan, M.; Opanasopit, P.; Ngawhirunpat, T.;
+Nunthanid, J.; Sriamornsak, P.; Limmatvapirat, S.; Lim, L. Y. Effect
+of chitosan salts and molecular weight on a nanoparticulate carrier for
+therapeutic protein. Pharm. Dev. Technol. 2005, 10, 189−96.
+(50) Talaei, F.; Azizi, E.; Dinarvand, R.; Atyabi, F. Thiolated chitosan
+nanoparticles as a delivery system for antisense therapy: evaluation
+against EGFR in T47D breast cancer cells. Int. J. Nanomed. 2011, 6,
+1963−75.
+(51) Hombach, J.; Hoyer, H.; Bernkop-Schnurch, A. Thiolated
+chitosans: development and in vitro evaluation of an oral tobramycin
+sulphate delivery system. Eur. J. Pharm. Sci. 2008, 33, 1−8.
+(52) Parajo, Y.; D’Angelo, I.; Welle, A.; Garcia-Fuentes, M.; Alonso,
+M. J. Hyaluronic acid/Chitosan nanoparticles as delivery vehicles for
+VEGF and PDGF-BB. Drug Delivery 2010, 17, 596−604.
+(53) de la Fuente, M.; Seijo, B.; Alonso, M. J. Novel hyaluronic acid-
+chitosan nanoparticles for ocular gene therapy. Invest. Ophthalmol.
+Visual Sci. 2008, 49, 2016−24.
+(54) Wen, H.; Hao, J.; Li, S. K. Characterization of human sclera
+barrier properties for transscleral delivery of bevacizumab and
+ranibizumab. J. Pharm. Sci. 2013, 102, 892−903.
+(55) Janes, K. A.; Calvo, P.; Alonso, M. J. Polysaccharide colloidal
+particles as delivery systems for macromolecules. Adv. Drug Delivery
+Rev. 2001, 47, 83−97.
+(56) Pan, Y.; Li, Y. J.; Zhao, H. Y.; Zheng, J. M.; Xu, H.; Wei, G.;
+Hao, J. S.; Cui, F. D. Bioadhesive polysaccharide in protein delivery
+system: chitosan nanoparticles improve the intestinal absorption of
+insulin in vivo. Int. J. Pharm. 2002, 249, 139−47.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2938
+
+(57) Qi, L.; Xu, Z.; Jiang, X.; Hu, C.; Zou, X. Preparation and
+antibacterial activity of chitosan nanoparticles. Carbohydr. Res. 2004,
+339, 2693−700.
+(58) Aktaş, Y.; Andrieux, K.; Alonso, M. J.; Calvo, P.; Gürsoy, R. N.;
+Couvreur, P.; Çapan, Y. Preparation and in vitro evaluation of chitosan
+nanoparticles containing a caspase inhibitor. Int. J. Pharm. 2005, 298,
+378−83.
+(59) Ferlay, J.; Parkin, D. M.; Steliarova-Foucher, E. Estimates of
+cancer incidence and mortality in Europe in 2008. Eur. J. Cancer 2010,
+46, 765−81.
+(60) Mohammadpour Dounighi, N.; Eskandari, R.; Avadi, M.;
+Zolfagharian, H.; Mir Mohammad Sadeghi, A.; Rezayat, M.
+Preparation and in vitro characterization of chitosan nanoparticles
+containing Mesobuthus eupeus scorpion venom as an antigen delivery
+system. J. Venomous Anim. Toxins Incl. Trop. Dis. 2012, 18, 44−52.
+(61) Silverstein, R. M.; Bassler, G. C.; Morrill, T. C. Spectrometric
+Identiﬁcation of Organic Compounds; John Wiley and Sons: New York,
+1981.
+(62) Mi, F.-L.; Shyu, S.-S.; Wong, T.-B.; Jang, S.-F.; Lee, S.-T.; Lu, K.-
+T. Chitosan−polyelectrolyte complexation for the preparation of gel
+beads and controlled release of anticancer drug. II. Effect of pH-
+dependent ionic crosslinking or interpolymer complex using
+tripolyphosphate or polyphosphate as reagent. J. Appl. Polym. Sci.
+1999, 74, 1093−107.
+(63) Yang, M.-H.; Jong, S.-B.; Lu, C.-Y.; Lin, Y.-F.; Chiang, P.-W.;
+Tyan, Y.-C.; Chung, T.-W. Assessing the responses of cellular proteins
+induced by hyaluronic acid-modified surfaces utilizing a mass
+spectrometry-based profiling system: Over-expression of CD36,
+CD44, CDK9, and PP2A. Analyst 2012, 137, 4921−33.
+(64) Oliveira, R. C.; Messias, A.; Siqueira, R. C.; Bonini-Filho, M. A.;
+Haddad, A.; Damico, F. M.; Maia-Filho, A.; Crispim, P. T.; Saliba, J. B.;
+Ribeiro, J. A.; Scott, I. U.; Cunha-Jr, A. S.; Jorge, R. Vitreous
+pharmacokinetics and retinal safety of intravitreal preserved versus
+non-preserved triamcinolone acetonide in rabbit eyes. Curr. Eye Res.
+2012, 37, 55−61.
+(65) Murthy, R.; Khattar, H.; Singh, S. Formulation and character-
+ization of nano lipid carrier dry powder inhaler containing
+ciprofloxacin hydrochloride and N-acetyl cysteine. Int. J. Drug Delivery
+2012, 4, 316−25.
+(66) Hsieh, D. S.; Rhine, W. D.; Langer, R. Zero-order controlled-
+release polymer matrices for micro- and macromolecules. J. Pharm. Sci.
+1983, 72, 17−22.
+(67) Chandy, T.; Das, G. S.; Rao, G. H. 5-Fluorouracil-loaded
+chitosan coated polylactic acid microspheres as biodegradable drug
+carriers for cerebral tumours. J. Microencapsulation 2000, 17, 625−38.
+(68) Dhawan, S.; Singla, A. K. Nifedipine loaded chitosan
+microspheres prepared by emulsification phase-separation. Biotech.
+Histochem. 2003, 78, 243−54.
+(69) Liu, G.; Miao, X.; Fan, W.; Crawford, R. W.; Xiao, Y. Porous
+PLGA microspheres effectively loaded with BSA protein by electro-
+spraying combined with phase separation in liquid nitrogen. J.
+Biomimetics, Biomater., Tissue Eng. 2010, 6, 1−18.
+(70) Lian, H.; Zhang, T.; Sun, J.; Pu, X.; Tang, Y.; Zhang, Y.; He, Z.
+Enhanced paracellular and transcellular paclitaxel permeation by
+chitosan−vitamin E succinate−N-acetyl-l-cysteine copolymer on
+Caco-2 cell monolayer. J. Nanopart. Res. 2014, 16, 1−16.
+(71) Pieper, G. M.; Siebeneich, W. Oral administration of the
+antioxidant, N-acetylcysteine, abrogates diabetes-induced endothelial
+dysfunction. J. Cardiovasc. Pharmacol. 1998, 32, 101−5.
+(72) Sturesson, C.; Carlfors, J. Incorporation of protein in PLG-
+microspheres with retention of bioactivity. J. Controlled Release 2000,
+67, 171−8.
+(73) Ramchandani, M.; Robinson, D. In vitro and in vivo release of
+ciprofloxacin from PLGA 50:50 implants. J. Controlled Release 1998,
+54, 167−75.
+(74) Amann, L. C.; Gandal, M. J.; Lin, R.; Liang, Y.; Siegel, S. J. In
+vitro-in vivo correlations of scalable PLGA-risperidone implants for the
+treatment of schizophrenia. Pharm. Res. 2010, 27, 1730−7.
+(75) Murugeshu, A.; Astete, C.; Leonardi, C.; Morgan, T.; Sabliov, C.
+M. Chitosan/PLGA particles for controlled release of alpha-tocopherol
+in the GI tract via oral administration. Nanomedicine (London, U. K.)
+2011, 6, 1513−28.
+(76) Jain, G. K.; Pathan, S. A.; Akhter, S.; Ahmad, N.; Jain, N.;
+Talegaonkar, S.; Khar, R. K.; Ahmad, F. J. Mechanistic study of
+hydrolytic erosion and drug release behaviour of PLGA nanoparticles:
+Influence of chitosan. Polym. Degrad. Stab. 2010, 95, 2360−6.
+(77) Wang, Y.; Li, P.; Kong, L. Chitosan-modified PLGA
+nanoparticles with versatile surface for improved drug delivery.
+AAPS PharmSciTech 2013, 14, 585−92.
+(78) Lee, E. S.; Kwon, M. J.; Lee, H.; Na, K.; Kim, J. J. In vitro study
+of lysozyme in poly(lactide-co-glycolide) microspheres with sucrose
+acetate isobutyrate. Eur. J. Pharm. Sci. 2006, 29, 435−41.
+(79) Bouissou, C.; Rouse, J. J.; Price, R.; van der Walle, C. F. The
+influence of surfactant on PLGA microsphere glass transition and
+water sorption: remodeling the surface morphology to attenuate the
+burst release. Pharm. Res. 2006, 23, 1295−305.
+(80) Klettner, A.; Roider, J. Comparison of bevacizumab,
+ranibizumab, and pegaptanib in vitro: efficiency and possible additional
+pathways. Invest. Ophthalmol. Visual Sci. 2008, 49, 4523−7.
+(81) Harde, H.; Agrawal, A. K.; Jain, S. Tetanus toxoids loaded
+glucomannosylated chitosan based nanohoming vaccine adjuvant with
+improved oral stability and immunostimulatory response. Pharm. Res.
+2015, 32, 122−34.
+(82) Anderson, J. M.; Shive, M. S. Biodegradation and biocompat-
+ibility of PLA and PLGA microspheres. Adv. Drug Delivery Rev. 1997,
+28, 5−24.
+(83) Semete, B.; Booysen, L.; Lemmer, Y.; Kalombo, L.; Katata, L.;
+Verschoor, J.; Swai, H. S. In vivo evaluation of the biodistribution and
+safety of PLGA nanoparticles as drug delivery systems. Nanomedicine
+2010, 6, 662−71.
+(84) Souza, M. C.; Fialho, S. L.; Souza, P. A.; Fulgencio, G. O.; Da
+Silva, G. R.; Silva-Cunha, A. Tacrolimus-loaded PLGA implants: in
+vivo release and ocular toxicity. Curr. Eye Res. 2014, 39, 99−102.
+(85) Yang, H.; Yang, L.; Wang, L.; Diao, Y. Preparation of Aptamer-
+Nanomicrocapsule Using Nanoprecipitation Method. Int. J. Adv.
+Comput. Technol. 2013, 5, 585.
+(86) Grenha, A.; Grainger, C. I.; Dailey, L. A.; Seijo, B.; Martin, G. P.;
+Remuñán-López, C.; Forbes, B. Chitosan nanoparticles are compatible
+with respiratory epithelial cells in vitro. Eur. J. Pharm. Sci. 2007, 31,
+73−84.
+(87) Manca, M.-L.; Mourtas, S.; Dracopoulos, V.; Fadda, A. M.;
+Antimisiaris, S. G. PLGA, chitosan or chitosan-coated PLGA
+microparticles for alveolar delivery?: A comparative study of particle
+stability during nebulization. Colloids Surf., B 2008, 62, 220−31.
+(88) Zhu, X.; Su, M.; Tang, S.; Wang, L.; Liang, X.; Meng, F.; Hong,
+Y.; Xu, Z. Synthesis of thiolated chitosan and preparation nanoparticles
+with sodium alginate for ocular drug delivery. Mol. Vis. 2012, 18,
+1973−82.
+(89) Wang, Q.; Liu, P.; Liu, P.; Gong, T.; Li, S.; Duan, Y.; Zhang, Z.
+Preparation, blood coagulation and cell compatibility evaluation of
+chitosan-graft-polylactide copolymers. Biomed. Mater. 2014, 9, 015007.
+(90) Kageyama, T.; Kakegawa, T.; Osaki, T.; Enomoto, J.; Ito, T.;
+Nittami, T.; Fukuda, J. Rapid engineering of endothelial cell-lined
+vascular-like structures in in situ crosslinkable hydrogels. Biofabrication
+2014, 6, 025006.
+(91) Giebel, S. J.; Menicucci, G.; McGuire, P. G.; Das, A. Matrix
+metalloproteinases in early diabetic retinopathy and their role in
+alteration of the blood-retinal barrier. Lab. Invest. 2005, 85, 597−607.
+(92) Dunn, K. C.; Aotaki-Keen, A. E.; Putkey, F. R.; Hjelmeland, L.
+M. ARPE-19, a human retinal pigment epithelial cell line with
+differentiated properties. Exp. Eye Res. 1996, 62, 155−69.
+(93) Hornof, M.; Toropainen, E.; Urtti, A. Cell culture models of the
+ocular barriers. Eur. J. Pharm. Biopharm. 2005, 60, 207−25.
+(94) Feng, L.; Kienitz, B. A.; Matsumoto, C.; Bruce, J.; Sisti, M.;
+Duong, H.; Pile-Spellman, J. Feasibility of using hyperosmolar
+mannitol as a liquid tumor embolization agent. AJNR Am. J.
+Neuroradiol. 2005, 26, 1405−12.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2939
+
+(95) van der Meer, A. D.; Vermeul, K.; Poot, A. A.; Feijen, J.; Vermes,
+I. A microfluidic wound-healing assay for quantifying endothelial cell
+migration. AJP: Heart Circ. Physiol. 2010, 298, H719−H725.
+(96) Schipper, N. G.; Olsson, S.; Hoogstraate, J. A.; deBoer, A. G.;
+Varum, K. M.; Artursson, P. Chitosans as absorption enhancers for
+poorly absorbable drugs 2: mechanism of absorption enhancement.
+Pharm. Res. 1997, 14, 923−9.
+(97) Bozhokina, E.; Vakhromova, E.; Gamaley, I.; Khaitlina, S. N-
+acetylcysteine increases susceptibility of HeLa cells to bacterial
+invasion. J. Cell. Biochem. 2013, 114, 1568−74.
+(98) Folkman, J. Tumor angiogenesis. Adv. Cancer Res. 1985, 43,
+175−203.
+(99) Ferrara, N.; Damico, L.; Shams, N.; Lowman, H.; Kim, R.
+Development of ranibizumab, an anti-vascular endothelial growth
+factor antigen binding fragment, as therapy for neovascular age-related
+macular degeneration. Retina 2006, 26, 859−70.
+(100) Costa, R.; Carneiro, A.; Rocha, A.; Pirraco, A.; Falcao, M.;
+Vasques, L.; Soares, R. Bevacizumab and ranibizumab on micro-
+vascular endothelial cells: A comparative study. J. Cell. Biochem. 2009,
+108, 1410−7.
+(101) Carrasquillo, K. G.; Ricker, J. A.; Rigas, I. K.; Miller, J. W.;
+Gragoudas, E. S.; Adamis, A. P. Controlled delivery of the anti-VEGF
+aptamer EYE001 with poly(lactic-co-glycolic)acid microspheres. Invest.
+Ophthalmol. Visual Sci. 2003, 44, 290−9.
+(102) Pan, C. K.; Durairaj, C.; Kompella, U. B.; Agwu, O.; Oliver, S.
+C.; Quiroz-Mercado, H.; Mandava, N.; Olson, J. L. Comparison of
+long-acting bevacizumab formulations in the treatment of choroidal
+neovascularization in a rat model. J. Ocul. Pharmacol. Ther. 2011, 27,
+219−24.
+(103) Lu, W.; Park, T. G. Protein release from poly(lactic-co-glycolic
+acid) microspheres: protein stability problems. PDA J. Pharm. Sci.
+Technol. 1995, 49, 13−9.
+(104) Crotts, G.; Park, T. G. Protein delivery from poly(lactic-co-
+glycolic acid) biodegradable microspheres: release kinetics and stability
+issues. J. Microencapsulation 1998, 15, 699−713.
+(105) Lin, M. T.; Yen, M. L.; Lin, C. Y.; Kuo, M. L. Inhibition of
+vascular endothelial growth factor-induced angiogenesis by resveratrol
+through interruption of Src-dependent vascular endothelial cadherin
+tyrosine phosphorylation. Mol. Pharmacol. 2003, 64, 1029−36.
+(106) Okamoto, Y.; Watanabe, M.; Miyatake, K.; Morimoto, M.;
+Shigemasa, Y.; Minami, S. Effects of chitin/chitosan and their
+oligomers/monomers on migrations of fibroblasts and vascular
+endothelium. Biomaterials 2002, 23, 1975−9.
+(107) Chen, Y. L.; Wang, C. Y.; Yang, F. Y.; Wang, B. S.; Chen, J. Y.;
+Lin, L. T.; Leu, J. D.; Chiu, S. J.; Chen, F. D.; Lee, Y. J.; Chen, W. R.
+Synergistic effects of glycated chitosan with high-intensity focused
+ultrasound on suppression of metastases in a syngeneic breast tumor
+model. Cell Death Dis. 2014, 5, e1178.
+(108) Arnaoutova, I.; Kleinman, H. K. In vitro angiogenesis:
+endothelial cell tube formation on gelled basement membrane extract.
+Nat. Protoc. 2010, 5, 628−35.
+(109) Jin, S. G.; Jeong, Y. I.; Jung, S.; Ryu, H. H.; Jin, Y. H.; Kim, I. Y.
+The effect of hyaluronic Acid on the invasiveness of malignant glioma
+cells: comparison of invasion potential at hyaluronic Acid hydrogel and
+Matrigel. J. Korean Neurosurg. Soc. 2009, 46, 472−8.
+(110) Ito, T.; Williams, J. D.; Al-Assaf, S.; Phillips, G. O.; Phillips, A.
+O. Hyaluronan and proximal tubular cell migration. Kidney Int. 2004,
+65, 823−33.
+(111) Wang, Z.; Perez, M.; Caja, S.; Melino, G.; Johnson, T. S.;
+Lindfors, K.; Griffin, M. A novel extracellular role for tissue
+transglutaminase in matrix-bound VEGF-mediated angiogenesis. Cell
+Death Dis. 2013, 4, e808.
+(112) Carneiro, A.; Falcao, M.; Pirraco, A.; Milheiro-Oliveira, P.;
+Falcao-Reis, F.; Soares, R. Comparative effects of bevacizumab,
+ranibizumab and pegaptanib at intravitreal dose range on endothelial
+cells. Exp. Eye Res. 2009, 88, 522−7.
+(113) Medina, R. J.; O’Neill, C. L.; Devine, A. B.; Gardiner, T. A.;
+Stitt, A. W. The Pleiotropic Effects of Simvastatin on Retinal
+Microvascular Endothelium Has Important Implications for Ischaemic
+Retinopathies. PLoS One 2008, 3, e2584.
+(114) Feinberg, R. N.; Beebe, D. C. Hyaluronate in vasculogenesis.
+Science 1983, 220, 1177−9.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00335
+Mol. Pharmaceutics 2016, 13, 2923−2940
+2940

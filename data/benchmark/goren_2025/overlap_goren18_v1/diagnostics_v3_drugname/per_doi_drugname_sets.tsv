@@ -1,0 +1,19 @@
+doi_norm	curated_drugs_raw	extracted_drugs_raw	curated_drugs_norm	extracted_drugs_norm	curated_only_norm	extracted_only_norm	overlap_norm	curated_n	extracted_n	overlap_n	drug_name_status
+10.1002/jps.24101	pranoprofen	Pranoprofen	pranoprofen	pranoprofen			pranoprofen	1	1	1	exact_match
+10.1007/s10439-019-02430-x	kartogenin	Kartogenin	kartogenin	kartogenin			kartogenin	1	1	1	exact_match
+10.1016/j.colsurfb.2009.03.028	flurbiprofen	Flurbiprofen	flurbiprofen	flurbiprofen			flurbiprofen	1	1	1	exact_match
+10.1016/j.ejpb.2004.09.002	3-methoxyxanthone | xanthone	3-Methoxyxanthone (3-MeOXAN) | Xanthone (XAN)	3 methoxyxanthone | xanthone	3 methoxyxanthone 3 meoxan | xanthone xan	3 methoxyxanthone | xanthone	3 methoxyxanthone 3 meoxan | xanthone xan		2	2	0	no_overlap
+10.1016/j.ijpharm.2021.120820	artemether	Artemether	artemether	artemether			artemether	1	1	1	exact_match
+10.1021/acsomega.0c00111	mometasone-furoate	Mometasone furoate	mometasone furoate	mometasone furoate			mometasone furoate	1	1	1	exact_match
+10.1038/s41598-017-00696-6	garcinol	Garcinol	garcinol	garcinol			garcinol	1	1	1	exact_match
+10.1039/c5ra27386b	methylene-blue	Methylene Blue	methylene blue	methylene blue			methylene blue	1	1	1	exact_match
+10.1080/10717540802174662	etoposide	Etoposide	etoposide	etoposide			etoposide	1	1	1	exact_match
+10.1080/10717544.2016.1199605	lopinavir	lopinavir	lopinavir	lopinavir			lopinavir	1	1	1	exact_match
+10.1089/jamp.2009.0759	salbutamol	salbutamol	salbutamol	salbutamol			salbutamol	1	1	1	exact_match
+10.1111/jphp.12481	acetylpuerarin	Acetylpuerarin	acetylpuerarin	acetylpuerarin			acetylpuerarin	1	1	1	exact_match
+10.1155/2014/156010	lorazepam	Lorazepam	lorazepam	lorazepam			lorazepam	1	1	1	exact_match
+10.2147/ijn.s130908	gatifloxacin | rhodamine-123	gatifloxacin | rhodamine	gatifloxacin | rhodamine 123	gatifloxacin | rhodamine	rhodamine 123	rhodamine	gatifloxacin	2	2	1	overlap_partial
+10.2147/ijn.s54040	itraconazole	Itraconazole	itraconazole	itraconazole			itraconazole	1	1	1	exact_match
+10.2147/ijn.s77498	oxcarbazepine	Coumarin-6 | Oxcarbazepine	oxcarbazepine	coumarin 6 | oxcarbazepine		coumarin 6	oxcarbazepine	1	2	1	overlap_partial
+10.3390/nano10040720	dexibuprofen	dexibuprofen	dexibuprofen	dexibuprofen			dexibuprofen	1	1	1	exact_match
+10.3390/nano11030749	rhodamine-B	Rhodamine B	rhodamine b	rhodamine b			rhodamine b	1	1	1	exact_match

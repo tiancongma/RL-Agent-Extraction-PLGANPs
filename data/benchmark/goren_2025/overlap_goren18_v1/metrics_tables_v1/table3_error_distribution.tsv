@@ -1,0 +1,8 @@
+metric	value	notes
+top1_mean_abs_diff	31.16666666666667	
+top3_mean_abs_diff_sum	73.73833333333334	
+top5_mean_abs_diff_sum	82.705	
+total_mean_abs_diff_sum	88.34083333333332	
+top3_error_share	0.8347027139205164	top3_sum / total_sum
+n_doi_mean_abs_diff_gt_10	3.0	
+n_doi_row_gap_abs_gt_5	9.0	abs(extracted_rows-curated_rows) > 5

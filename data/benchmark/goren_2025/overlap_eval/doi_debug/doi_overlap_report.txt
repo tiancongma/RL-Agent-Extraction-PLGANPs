@@ -1,0 +1,152 @@
+DOI Overlap Debug Report
+
+[Alternative DOI Candidates in Our TSV]
+- field_evidence_json: doi_like_count=80
+
+Our DOI source used: jsonl:key->doi
+
+[Goren Summary]
+- total_rows: 433
+- non_empty_doi_strings: 433
+- doi_like_strings_starting_10: 432
+- top_20_normalized_dois:
+  10.1016/j.ejpb.2010.07.007	27
+  10.1080/10717544.2016.1199605	27
+  10.1208/s12249-014-0235-3	27
+  10.3109/03639045.2012.684390	27
+  10.3109/02652048.2013.808280	27
+  10.1208/s12249-015-0294-0	26
+  10.1155/2014/156010	26
+  10.1111/iej.14072	26
+  10.1002/jps.24101	26
+  10.1007/s11095-014-1313-7	17
+  10.1016/j.colsurfb.2009.03.028	17
+  10.1002/jps.20685	16
+  10.1016/s0168-3659(98)00116-3	15
+  10.1007/s00396-016-4007-3	14
+  10.1080/09205063.2013.798880	9
+  10.1177/0883911520913906	9
+  10.1016/j.ijpharm.2016.11.012	7
+  10.1016/j.jddst.2019.101380	6
+  10.1016/j.jddst.2019.01.010	6
+  10.1016/j.nano.2009.10.004	5
+
+[Our Summary]
+- total_rows: 237
+- non_empty_doi_strings: 146
+- doi_like_strings_starting_10: 146
+- top_20_normalized_dois:
+  10.3390/nano12020229	62
+  10.1002/btm2.10485	29
+  10.1371/journal.pone.0292861.t002	21
+  10.1016/j.dsx.2009.04.003	20
+  10.1016/j.actbio.2010.11.031	8
+  10.3390/vaccines11121794	5
+  10.1021/acs.molpharmaceut.8b00634	1
+
+[Overlap]
+- normalized_overlap_count: 0
+
+[Random Samples: Goren raw -> normalized]
+- 10.1016/j.ijpharm.2021.120617	=>	10.1016/j.ijpharm.2021.120617
+- 10.1016/j.ejpb.2010.07.007	=>	10.1016/j.ejpb.2010.07.007
+- 10.1208/s12249-015-0294-0	=>	10.1208/s12249-015-0294-0
+- 10.1002/jps.24101	=>	10.1002/jps.24101
+- 10.1007/s00396-016-4007-3	=>	10.1007/s00396-016-4007-3
+- 10.1016/j.jddst.2019.101380	=>	10.1016/j.jddst.2019.101380
+- 10.1080/10717544.2016.1199605	=>	10.1080/10717544.2016.1199605
+- 10.1155/2014/156010	=>	10.1155/2014/156010
+- 10.1002/jps.24101	=>	10.1002/jps.24101
+- 10.1016/j.ejpb.2010.07.007	=>	10.1016/j.ejpb.2010.07.007
+- 10.1016/j.colsurfb.2009.03.028	=>	10.1016/j.colsurfb.2009.03.028
+- 10.1208/s12249-014-0235-3	=>	10.1208/s12249-014-0235-3
+- 10.1016/j.ejpb.2010.07.007	=>	10.1016/j.ejpb.2010.07.007
+- 10.3109/03639045.2012.684390	=>	10.3109/03639045.2012.684390
+- 10.1080/10717540802174662	=>	10.1080/10717540802174662
+- 10.1208/s12249-015-0294-0	=>	10.1208/s12249-015-0294-0
+- 10.1208/s12249-015-0294-0	=>	10.1208/s12249-015-0294-0
+- 10.1016/j.ejpb.2010.07.007	=>	10.1016/j.ejpb.2010.07.007
+- 10.1080/10717544.2016.1199605	=>	10.1080/10717544.2016.1199605
+- 10.1080/09205063.2013.798880	=>	10.1080/09205063.2013.798880
+
+[Random Samples: Our raw -> normalized]
+- 10.3390/nano12020229	=>	10.3390/nano12020229
+- None	=>	None
+- None	=>	None
+- 10.3390/nano12020229	=>	10.3390/nano12020229
+- 10.1002/btm2.10485	=>	10.1002/btm2.10485
+- 10.1002/btm2.10485	=>	10.1002/btm2.10485
+- 10.1002/btm2.10485	=>	10.1002/btm2.10485
+- None	=>	None
+- 10.3390/nano12020229	=>	10.3390/nano12020229
+- None	=>	None
+- 10.3390/nano12020229	=>	10.3390/nano12020229
+- 10.1371/journal|10.1371/journal.pone|10.1371/journal.pone.0292861|10.1371/journal.pone.0292861.t002|10.1371/journal.pone.0292861.t003	=>	10.1371/journal.pone.0292861.t002
+- 10.3390/nano12020229	=>	10.3390/nano12020229
+- None	=>	None
+- 10.3390/nano12020229	=>	10.3390/nano12020229
+- None	=>	None
+- None	=>	None
+- None	=>	None
+- None	=>	None
+- 10.1002/btm2.10485	=>	10.1002/btm2.10485
+
+[Zero-Overlap Diagnostics]
+- first_50_normalized_side_by_side:
+  our=10.1002/btm2.10485	goren=10.1002/jps.20685
+  our=10.1016/j.actbio.2010.11.031	goren=10.1002/jps.21383
+  our=10.1016/j.dsx.2009.04.003	goren=10.1002/jps.24101
+  our=10.1021/acs.molpharmaceut.8b00634	goren=10.1007/s00396-016-4007-3
+  our=10.1371/journal.pone.0292861.t002	goren=10.1007/s10439-019-02430-x
+  our=10.3390/nano12020229	goren=10.1007/s10965-020-02092-7
+  our=10.3390/vaccines11121794	goren=10.1007/s11095-010-0142-6
+  our=	goren=10.1007/s11095-014-1313-7
+  our=	goren=10.1007/s13346-019-00622-5
+  our=	goren=10.1016/j.colsurfb.2009.03.028
+  our=	goren=10.1016/j.colsurfb.2010.05.027
+  our=	goren=10.1016/j.colsurfb.2014.07.030
+  our=	goren=10.1016/j.colsurfb.2019.01.012
+  our=	goren=10.1016/j.ejpb.2004.09.002
+  our=	goren=10.1016/j.ejpb.2006.09.004
+  our=	goren=10.1016/j.ejpb.2010.07.007
+  our=	goren=10.1016/j.ijpharm.2016.11.012
+  our=	goren=10.1016/j.ijpharm.2020.119776
+  our=	goren=10.1016/j.ijpharm.2021.120617
+  our=	goren=10.1016/j.ijpharm.2021.120820
+  our=	goren=10.1016/j.jddst.2019.01.010
+  our=	goren=10.1016/j.jddst.2019.101380
+  our=	goren=10.1016/j.jddst.2020.102145
+  our=	goren=10.1016/j.jddst.2022.103743
+  our=	goren=10.1016/j.jsps.2021.07.001
+  our=	goren=10.1016/j.nano.2009.10.004
+  our=	goren=10.1016/s0168-3659(02)00212-2
+  our=	goren=10.1016/s0168-3659(98)00116-3
+  our=	goren=10.1021/acsami.8b12214
+  our=	goren=10.1021/acsomega.0c00111
+  our=	goren=10.1038/s41598-017-00696-6
+  our=	goren=10.1039/c5ra27386b
+  our=	goren=10.1039/c7bm01206c
+  our=	goren=10.1080/01932691.2011.616128
+  our=	goren=10.1080/09205063.2013.798880
+  our=	goren=10.1080/10717540802174662
+  our=	goren=10.1080/10717544.2016.1199605
+  our=	goren=10.1088/1361-6528/abd0b5
+  our=	goren=10.1088/2053-1591/ab63f5
+  our=	goren=10.1089/jamp.2009.0759
+  our=	goren=10.1111/1440-1681.13433
+  our=	goren=10.1111/iej.14072
+  our=	goren=10.1111/jphp.12481
+  our=	goren=10.1139/cjpp-2017-0795
+  our=	goren=10.1155/2014/156010
+  our=	goren=10.1166/jnn.2006.401
+  our=	goren=10.1177/0883911520913906
+  our=	goren=10.1208/s12249-014-0235-3
+  our=	goren=10.1208/s12249-015-0294-0
+  our=	goren=10.2147/ijn.s130908
+- our_contains_non_doi_identifier_pattern: False
+- our_contains_pmid_pmcid_or_url_patterns: False
+
+[Diagnosis]
+- likely_reason: no_shared_doi_between_datasets_after_normalization
+- next_action: validate paper coverage overlap and DOI provenance between both datasets
+

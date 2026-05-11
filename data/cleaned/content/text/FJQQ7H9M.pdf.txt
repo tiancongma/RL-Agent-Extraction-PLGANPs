@@ -1,0 +1,864 @@
+Contents lists available at ScienceDirect
+Journal of Drug Delivery Science and Technology
+journal homepage: www.elsevier.com/locate/jddst
+Alginate modiﬁed-PLGA nanoparticles entrapping amikacin and
+moxiﬂoxacin as a novel host-directed therapy for multidrug-resistant
+tuberculosis
+Sharif Abdelghanya, Thaigarajan Parumasivamb,e, Angel Pangc, Ben Roedigerc, Patricia Tangb,
+Kristina Jahnc, Warwick John Brittonc,d, Hak-Kim Chanb,∗
+a Department of Pharmaceutics and Pharmaceutical Technology, Faculty of Pharmacy, University of Jordan, Amman, 11942, Jordan
+b Advanced Drug Delivery Group, Faculty of Pharmacy, The University of Sydney, NSW, 2006, Australia
+c Tuberculosis Research Program, Centenary Institute, The University of Sydney, NSW, 2006, Australia
+d Infectious Diseases and Immunology, Sydney Medical School, The University of Sydney, NSW, 2006, Australia
+e School of Pharmaceutical Sciences, University Sains Malaysia, Pulau P1inang, 11800, Malaysia
+A R T I C L E I N F O
+Keywords:
+Alginate
+PLGA
+Moxiﬂoxacin
+Amikacin
+MDR-TB
+Nanoparticles
+A B S T R A C T
+Polymeric nanoparticles have been widely investigated as a controlled release drug delivery platform for the
+treatment of tuberculosis (TB). These nanoparticles are readily internalised into macrophages and leads to high
+intracellular drug concentration. In this study two anti-TB drugs, amikacin and moxiﬂoxacin were encapsulated
+into PLGA nanoparticles. The novelty of this work includes: (1) the eﬃcient encapsulation of two hydrophilic
+second-line anti-TB drugs, and (2) intra-macrophage delivery of this combination potentially for rapid treatment
+of multi-drug resistant TB (MDR-TB). Two water-oil-water (w/o/w) emulsion strategies were employed in this
+study to produce: (1) alginate coated PLGA nanoparticles, and (2) alginate entrapped PLGA nanoparticles. The
+average particle size and polydispersity index (PDI) of the alginate coated PLGA nanoparticles were found to be
+unfavourably high with values of 640 ± 32 nm and 0.63 ± 0.09, respectively. In contrast, the alginate en-
+trapped PLGA nanoparticles were within the desired particle size range of 312–365 nm and the PDI was 0.14–
+0.31, and therefore were chosen for subsequent studies. Alginate entrapped nanoparticles exhibited an en-
+trapment of moxiﬂoxacin in the range of 10.1–18.7 μg/mg and an entrapment of amikacin in the range of
+15–17.4 μg/mg. On the contrary, non-modiﬁed PLGA nanoparticles exhibited a signiﬁcantly less amikacin
+loading of 6.2 μg/mg polymer and 4.2 μg/mg of moxiﬂoxacin. The release of alginate modiﬁed PLGA nano-
+particles showed slower release in comparison with the non-modiﬁed PLGA nanoparticles. The alginate en-
+trapped PLGA nanoparticles did not show signiﬁcant diﬀerence from the alginate coated PLGA nanoparticles in
+the release pattern. To study the macrophage uptake eﬃciency, both formulations of the alginate entrapped
+nanoparticle; non-calcium formulation and calcium, and alginate coated PLGA nanoparticles (that includes no
+calcium) formulation was loaded with coumarin-6 as a marker, seeded to THP-1 derived macrophages infected
+with Mycobacterium tuberculosis (H37Ra), and examined by confocal microscopy. Both formulations of alginate
+entrapped particles (calcium and non-calcium) were readily internalised into the macrophages and highly
+concentrated in the perinuclear region, and the non-calcium alginate entrapped formulation showed a maximum
+internalisation. Furthermore, the anti-mycobacterial activity of the dually entrapped drug-loaded particles
+(moxiﬂoxacin and amikacin) was evaluated using M. tuberculosis-infected macrophages, which revealed an en-
+hanced inhibition of viable bacterial count compared to single drug loaded nanoparticle formulations, and
+untreated cells. The dually entrapped nanoparticles showed bacterial viability of 0.6% relative to the untreated
+group, compared to 6.49% for amikacin alone nanoparticles and 3.27% for moxiﬂoxacin alone nanoparticles. In
+conclusion, the amikacin-moxiﬂoxacin alginate entrapped PLGA nanoparticles are promising for further in vivo
+studies.
+https://doi.org/10.1016/j.jddst.2019.05.025
+Received 19 December 2018; Received in revised form 19 March 2019; Accepted 11 May 2019
+∗Corresponding author.
+E-mail address: kim.chan@sydney.edu.au (H.-K. Chan).
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+Available online 13 May 2019
+1773-2247/ © 2019 Elsevier B.V. All rights reserved.
+T
+
+1. Introduction
+Tuberculosis (TB) is a serious communicable infectious disease that
+predominately manifests in the lungs and caused by various strains of
+mycobacteria, primarily Mycobacterium tuberculosis [1]. The World
+Health Organization (WHO) estimated that about 33% of the world
+population is a carrier of the pathogen and more than 8 million of active
+TB cases happen yearly [2]. TB pathogenesis is initiated by the contact
+and engulfment of airborne bacilli by alveolar macrophages. This is
+followed by the multiplication and invasion of neighboring alveolar
+macrophages. Although epithelial type II pneumocytes and dendritic
+cells are also involved in the prognosis of TB, alveolar macrophages are
+the most elucidated target to treat TB [3–5]. For standard nonresistant
+TB, WHO recommended a two-phase treatment, comprising an in-
+tensive phase for two months and a continuation phase for another four
+months. During the intensive treatment phase, patients are adminis-
+tered four anti-TB drugs including isoniazid, rifampicin, pyrazinamide,
+and ethambutol daily, while the continuation treatment phase involves
+daily dosing of isoniazid and rifampicin [6]. This frequently results in
+poor patient adherence that often led into multidrug-resistant TB
+(MDR-TB) or extensive drug-resistant TB (XDR-TB) [7].
+MDR-TB is an infection caused by M. tuberculosis strains resistance
+to two of the ﬁrst-line anti-TB drugs, isoniazid and rifampin. Agents to
+treat MDR-TB including aminoglycosides (i.e. amikacin, capreomycin,
+and kanamycin) and ﬂuoroquinolones (i.e. moxiﬂoxacin and levo-
+ﬂoxacin) [8]. Amikacin is one of the main injectable aminoglycosides
+used in the management of MDR-TB. However, on prolonged use the
+drug often leads to nephrotoxicity, neurotoxicity and irreversible oto-
+toxicity [9]. Moxiﬂoxacin is another widely used drug to treat MDR-TB
+[10]. The drug is a fourth-generation synthetic ﬂuoroquinolone which
+has favorable pharmacokinetics, that include a large volume of dis-
+tribution and the ability to permeate the epithelial-lining ﬂuid and
+macrophages [11]. However, the extensive use of moxiﬂoxacin was
+reported to lead to the emergence of extensively drug-resistant (XDR)
+M. tuberculosis strains [12]. The combinative administration of these
+two antibiotics have shown synergy against MDR-TB [13].
+The utilization of polymeric drug nanoparticles has been widely
+investigated for their potential to improve the eﬃcacy and targeting of
+drugs for various diseases including TB [9,14–17]. Polymeric nano-
+particles oﬀer the advantage of readily internalised into alveolar mac-
+rophages by the same defence machinery employed in the engulfment
+of M. tuberculosis [18–21]. Polymeric nanoparticles also provide a sus-
+tained release system and improve the stability of labile drugs from in
+vivo enzymatic degradation [22,23]. Anti-TB drug loaded polymeric
+nanoparticles have been investigated for many routes of administra-
+tions including oral, intravenous, and inhalation [24]. For instance, in a
+preclinical evaluation of PLGA nanoparticles containing rifampicin,
+isoniazid and pyrazinamide administered via either oral or aerosol
+routes revealed the presence of the drugs above their minimum in-
+hibitory concentration (MIC) in the lung, liver and spleen tissues up to
+15 days [25,26]. In contrast, no drugs were detected following the
+administration of free drugs after 12–24 h [26]. Therefore, nanoparticle
+delivery system has the potential to reduce the dosing frequency,
+minimize the incidence of resistance and better patient adherence to the
+anti-TB regimen.
+In the present study, moxiﬂoxacin and amikacin were encapsulated
+into nanoparticles targeting for the treatment of MDR. The combinative
+encapsulation of these two drugs into polymeric nanoparticles has the
+potential to decrease the dosing of these drugs, thereby improves pa-
+tient compliance to treatment, and potentially mitigates the undesirable
+dose-associated side eﬀects. In this study, the drugs were incorporated
+into PLGA nanoparticles using two water-oil-water (w/o/w) emulsion
+strategies to produce: (1) alginate coated PLGA nanoparticles, and (2)
+alginate entrapped PLGA nanoparticles (treated with calcium and not
+treated with calcium). The particles were characterised in term size,
+drug loading, morphology, in vitro release, Fourier transform infrared
+(FTIR), and diﬀerential scanning calorimetry (DSC). These alginate
+modiﬁed PLGA nanoparticles were then compared to nonmodiﬁed
+PLGA nanoparticles. The macrophage phagocytosis eﬃciency of the
+particles was also investigated using confocal microscopy and in vitro
+intracellular killing using macrophages infected with M. tuberculosis
+H37Ra model.
+2. Materials and methods
+2.1. Materials
+Moxiﬂoxacin hydrochloride was obtained from Hangzhou ICH Imp
+& Exp Company Ltd., Hangzhou, China. Amikacin sulfate, PLGA (50:50)
+(7–17 kDa
+capped),
+12-O-tetradecanoylphorbol
+13-acetate
+(PMA),
+Alginate, coumarin-6, DAPI dihydrochloride, phosphate buﬀered saline
+(PBS), 2-mercaptoethanol, calcium chloride, sodium hydroxide, and
+2,4-dinitro-1-ﬂuorobenzene
+(FDNB)
+were
+purchased
+from
+Sigma
+Aldrich, Castel Hill, NSW. Acetone, methanol, and dichloromethane
+(DCM) from Ajax Finechem Pty Ltd.
+M. tuberculosis H37Ra was purchased from American Type Cell
+Culture (ATCC). RPMI 1640 and fetal calf serum (FCS), bacterial culture
+media Middlebrook 7H9 and 7H11, albumin dextran catalase (ADC)
+enrichment, and oleic albumin dextran catalase (OADC) were pur-
+chased from Bacto Laboratories, Mt. Pritchard, NSW, Australia.
+2.2. Formulation of drug loaded PLGA/alginate nanoparticles
+Two strategies were employed for the formulation of the dual-drug
+amikacin-moxiﬂoxacin alginate PLGA nanoparticles as illustrated in
+Fig. 1. In the ﬁrst formulation, alginate was utilised as a coating
+polymer of the PLGA nanoparticles. In the second formulation, alginate
+was entrapped in the internal phase to increase the drug encapsulation.
+In the ﬁrst formulation, alginate coated PLGA nanoparticles were
+formulated by double emulsion evaporation. Brieﬂy, 5 mg of amikacin
+and 5 mg of moxiﬂoxacin were dissolved in 0.3 ml of DI water (wa-
+terinternal phase). The solution was subsequently emulsiﬁed with 1 ml of
+DCM containing 50 mg of PLGA (oil phase) at a duty cycle of 40 and
+intensity of 4 for 2 min using a probe sonicator. The resulted wa-
+terinternal/oil (W/O) emulsion was further emulsiﬁed with 5 ml aqueous
+solution of PVA 2.5% containing 50 mg alginate (waterexternal phase) to
+produce a waterinternal/oil/waterexternal (W/O/W) system. The w/o/w
+emulsion was stirred for 5 h to evaporate the organic solvent under
+reduced pressure. Nanoparticles were subsequently centrifuged and
+washed at 14,500 rpm for 20 min. Nanoparticles were then lyophilised
+at −30 °C for 24 h followed by at 25 °C for 48 h in a freeze drier (Christ
+Alpha 1–4 LOC-1 M, Martin Christ, Osterode am Harz, Germany).
+In the second formulation, alginate entrapped PLGA nanoparticles
+were fabricated using a modiﬁed emulsion evaporation technique. 5 mg
+amikacin and 5 mg moxiﬂoxacin were dissolved in 2 ml of 10 mg/ml
+alginate solution (waterinternal phase) and heated at 50 °C for 15 min.
+The ﬁnal volume was then adjusted to be 1 ml. Subsequently, 0.3 ml of
+the above solution was emulsiﬁed with 1 ml DCM containing 50 mg
+PLGA (oil phase) using a probe sonicator at the same conditions de-
+scribed above. The resulted w/o emulsion was further emulsiﬁed with
+5 ml of PVA 2.5% with (calcium formulation), or without 10 mg CaCl2
+(non-calcium formulation). The emulsion was then evaporated, wa-
+shed, and lyophilised as mentioned earlier. Single drug-loaded nano-
+particles (amikacin or moxiﬂoxacin) were also formulated in a similar
+manner. The formulation of PLGA nanoparticles was prepared in a si-
+milar manner except the alginate was omitted from the formulation.
+2.3. Physical characterisation of the polymeric nanoparticles
+2.3.1. Particle size and zeta potential
+The particle size and zeta potential of the nanoparticles were mea-
+sured using dynamic light scattering (3000 HS, Malvern instruments).
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+643
+
+Measurements were carried out using monochromatic coherent He–Ne
+laser light of ﬁxed wavelength (633 nm) at 90° and at room temperature
+(25 °C), with each sizing determination performed in triplicate and an
+average particle size expressed as the mean diameter.
+2.3.2. Scanning electron microscopy
+Scanning electron microscopy (SEM) was used to examine the
+morphology of the particles. The powder was sprinkled onto a carbon
+sticky tape, sputter-coated with 15 nm gold (Quorum Emitech, Kent,
+UK) and viewed under SEM (Zeiss Ultra Plus scanning electron micro-
+scope, Carl Zeiss, Oberkochen, Germany) at an acceleration voltage of
+3 kV.
+2.3.3. Drug loading
+The loading and the entrapment eﬃciency of amikacin and moxi-
+ﬂoxacin were determined via indirect loading measurement of the free
+drug in the supernatant using modiﬁed HPLC methods. For amikacin,
+prior to the analysis, pre-column derivatization was performed on the
+samples as described by Li et al. with some modiﬁcations [27]. Moxi-
+ﬂoxacin in the supernatant was directly quantiﬁed as described in Ref.
+[28]. Drug loading was calculated as follows.
+Fig. 1. Schematic presentation of (A) alginate entrapped PLGA nanoparticles and (B) alginate coated PLGA nanoparticles.
+Table 1
+Physical Characterization of Alginate entrapped PLGA Nanoparticles: moxiﬂoxacin (MOXI) loaded, amikacin (AMK) loaded, and moxiﬂoxacin/amikacin loaded
+alginate entrapped PLGA nanoparticles, n = 3, *P < 0.05, **P < 0.01, ****P < 0.0001.
+Formulation
+Average size (nm)
+PDI
+Moxiﬂoxacin drug loading (μg/
+mg powder)
+Amikacin drug loading (μg/
+mg powder)
+Zeta potential (mV)
+Alginate coated PLGA nanoparticles
+Alginate coated PLGA (Moxiﬂoxacin and
+Amikacin)
+640 ± 32 (****)
+0.63 ± 0.09 (**)
+24.3 ± 2.7
+25 ± 4
+−25 ± 4.3
+Alginate entrapped PLGA nanoparticles
+Alginate entrapped (Moxiﬂoxacin and
+Amikacin) PLGA
+(with calcium)
+420 ± 38 (*)
+0.31 ± 0.04 (*)
+18.7 ± 7.1
+15 ± 3.0
+5.4 ± 1.4
+Alginate entrapped (Moxiﬂoxacin and
+Amikacin) PLGA
+(without calcium)
+325 ± 12
+0.14 ± 0.06
+10.3 ± 1.2
+17.4 ± 1.6
+−5.3 ± 0.9
+Alginate entrapped (Moxiﬂoxacin) PLGA
+(without calcium)
+347 ± 21
+0.16 ± 0.03
+10.1 ± 2.8
+n/a
+−2.8 ± 0.4
+Alginate entrapped (Amikacin) PLGA
+(without calcium)
+312 ± 47
+0.18 ± 0.05
+n/a
+15.5 ± 3.3
+−7.5 ± 1.3
+Non-modiﬁed PLGA nanoparticles (containing MOXI and AMK)
+294 ± 2.3
+0.15 ± 0.04
+4.2 ± 2.1
+6.2 ± 1.7
+−11.1 + 3.2
+n/a = not applicable.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+644
+
+=
+Drug loading (μg/mg)
+Total drug added (μg)– drug quantified in the supernatant (μg)
+Total weight of polymers and drug in the formulation (mg)
+2.3.4. In vitro release
+The in vitro release of PLGA nanoparticles (modiﬁed with alginate
+and nonmodiﬁed with alginate) was investigated via in vitro dialysis
+cell. 1 ml of nanoparticle suspension was incubated at 37 °C in a donor
+compartment of phosphate buﬀered saline (PBS) solution pH 7.4, se-
+parated from the receptor compartment by a semipermeable cellulose
+membrane (molecular weight cut-oﬀ= 14,000). The receiver com-
+partment volume was set at 20 ml phosphate buﬀered saline (PBS) so-
+lution pH 7.4. At speciﬁc time points, 200 μl aliquots were withdrawn
+from the receptor compartment and subsequently replaced with 200 μl
+of fresh phosphate buﬀered saline. The receptor compartment to donor
+compartment volume ratio was ﬁxed at 20. Samples were analyzed
+using high performance liquid chromatography (HPLC) used the same
+Fig. 2. SEM of (A) alginate-coated PLGA nanoparticles, and (B) alginate entrapped PLGA nanoparticles (with calcium formulation) and (C) alginate entrapped
+nanoparticles (without calcium formulation). All of the formulations entrapping moxiﬂoxacin and amikacin.
+Fig. 3. in vitro release of A: amikacin and B: moxiﬂoxacin, from the (amikacin and moxiﬂoxacin loaded) alginate coated PLGA nanoparticles, (amikacin and
+moxiﬂoxacin loaded) Calcium alginate entrapped PLGA nanoparticles, (amikacin and moxiﬂoxacin loaded) non-calcium alginate entrapped PLGA nanoparticles, and
+(amikacin and moxiﬂoxacin loaded) PLGA nanoparticles.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+645
+
+parameters above, and compared to a calibration curve prepared at the
+same wavelength using the same parameters utilized in the analysis of
+drug loading. Experiments were conducted in triplicates and results
+were presented as mean ± standard deviation.
+2.4. Fourier Transform infrared spectroscopy (FTIR)
+Freeze dried samples of drugs, blank nanoparticles, and diﬀerent
+formulations of (moxiﬂoxacin + amikacin) loaded nanoparticles were
+prepared and the FTIR spectra were collected on a FTIR spectrometer
+(Bruker, ALPHA II, USA).
+2.5. Diﬀerential scanning calorimetric analysis (DSC)
+Diﬀerential scanning calorimetry (DSC) was used to characterize the
+thermal behavior of the formulations of (moxiﬂoxacin + amikacin)
+loaded nanoparticles. DSC thermograms were obtained using an
+automatic thermal analyzer system (Mettler Toledo DSC 823, USA) as
+described before [29]. Approximately 4 mg freeze-dried samples of free
+drugs or diﬀerent formulations of nanoparticles were weighed in
+standard aluminum pans and heated from 25 to 300 °C at a heating rate
+of 10 °C/min under constant ﬂow of dry nitrogen at 10 mL/min.
+2.6. Nanoparticle internalisation by macrophages
+THP-1 cells were loaded onto LAB- TEK™chamber slide (Thermo
+Scientiﬁc Nunc™, UK) at 1 × 105 cells/well in RPMI medium supple-
+mented with 10% FCS and 100 nM PMA and incubated for 48 h. After
+incubation, cells were infected with M. tuberculosis H37Ra for 4 h and
+then washed thoroughly with PBS. The medium was then changed to
+pre-warmed (37 °C), serum-free media supplemented with diﬀerent
+formulations of coumarin-6 loaded nanoparticles, alginate entrapped
+without calcium, alginate entrapped with calcium, alginate coated na-
+noparticles (10 μg/mL), or PBS solution (control), and incubated for
+Fig. 4. FITR sepcturm of alginate coated PLGA nanoparticles (Amikacin and Moxiﬂoxacin loaded), alginate calcium PLGA entrapped nanoparticles (Amikacin and
+Moxiﬂoxacin loaded), alginate entrapped non calcium PLGA nanoparticles formulation (Amikacin and Moxiﬂoxacin loaded), PLGA nanoparticles (Amikacin and
+Moxiﬂoxacin loaded), blank calcium alginate entrapped PLGA formulation, amikacin sulfate, moxiﬂoxacin HCl.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+646
+
+48 h at 37 C and 5% CO2. After incubation, the medium was changed
+and cells were washed using ice-cold PBS pH 7.4 (6 × 1min). Cells were
+ﬁxed using 250 μL ice cold 4% PFA for 20 min at room temperature (in
+darkness). After washing with ice-cold PBS (6 × 1 min), the cells were
+stained using DAPI at a concentration of 0.5 μg/ml. Slides were then
+mounted in a mounting medium and ﬁrmly ﬁxed to a glass slide using
+nail polish. The ﬂuorescence intensity of confocal images was measured
+using ImageJ 1.46 software.
+2.7. In vitro viability of M. tuberculosis H37Ra growth within the host
+THP-1 cells were plated at 1x105 cells/well in a 96 well plate and
+incubated for 48 h at 37 °C, 5% CO2 as mentioned above. The cells were
+then infected with log phase M. tuberculosis H37Ra at a multiplicity of
+infection (MOI) of 5. Cells were then incubated at 37 °C and 5% CO2 for
+4 h. The plate was then washed with PBS three times to remove free M.
+tuberculosis cells. Fresh complete medium containing various volumes of
+drug loaded nanoparticles, free drugs (50 μl, 10 μl, or 1 μl), or PBS
+(control) was then added and incubated overnight at 37 °C and 5% CO2.
+The free drug concentration for both drugs was designed based on the
+ﬁnal drug entrapment of the nanoparticles seeded to the cells. After
+48 h incubation, the cells were lysed and the viable bacterial number
+(colony forming units (CFU)/mL) was quantiﬁed by plating onto
+Middlebrook 7H11 agar plates supplemented with 10% (v/v) OADC,
+and 0.5% (v/v) glycerol [30].
+2.8. Statistical analysis
+Statistical analysis was performed using analysis of variance
+(ANOVA) to compare the eﬀect of dose and formulation/drug used
+(Graph-Pad Prism, San Diego, CA, USA). Particle size, Polydispersity,
+and entrapment eﬃciency, were compared using student t-test to
+compare the alginate coated PLGA nanoparticles or the alginate en-
+trapped calcium formulation with the non-calcium formulation. Results
+were presented as the mean ± SD unless stated otherwise. Rejection of
+the null hypothesis was considered when p < 0.05.
+3. Results and discussion
+3.1. Physical properties of the nanoparticles
+Table 1 shows the average particle size, polydispersity index (PDI),
+drug loading and zeta potential of the alginate coated and alginate
+entrapped PLGA particles. Although the alginate-coated nanoparticles
+exhibited a relatively high drug loading for moxiﬂoxacin (∼24.3 μg/
+mg) and amikacin (∼25 μg/mg), the particle size and the polydispersity
+index (PDI) were profoundly large (> 500 nm). The SEM observation
+further showed the particles were generally spherical with a wide
+particle size distribution (Fig. 2A). This is probably due to the high
+viscosity of the alginate external phase which produces larger emulsion
+droplets, eventually leading to larger particles. However, this is not
+surprising as previous studies on alginate based nanoparticles showed
+the particles possessed wide particle size distribution with a relatively
+high polydispersity [31,32]. Therefore, it was decided to change to new
+Fig. 5. DSC thermogram of various formulations of alginate modiﬁed PLGA nanoparticles, PLGA nanoparticles, physical mixture, free amikacin sulfate, and free
+moxiﬂoxacin HCl.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+647
+
+Fig. 6. (I): Confocal images and ImageJ curves (number pixels vs ﬂuorescence intensity) of coumarin-6 loaded PLGA nanoparticles by THP-1 derived macrophages.
+The cells were treated with coumarin-6 loaded nanoparticles at two diﬀerent concentrations of: (A) alginate entrapped (noncalcium formulation) loaded with
+coumarin-6 and (B) alginate entrapped nanoparticles (calcium formulation) loaded with coumarin-6, and (C) alginate coated PLGA nanoparticles. The green colour
+corresponds to the distribution of nanoparticles in the cytosol of THP-1 cells. The red colour corresponds to the DAPI stained nucleus. The ImageJ curves shows that
+the frequency of pixels with high ﬂuorescence intensity is the maximum in the alginate entrapped calcium free formulation. (II): The cytoplasmic distribution of
+nanoparticle of the alginate entrapped nanoparticles into THP-1 cells. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the
+Web version of this article.)
+Fig. 7. H37Ra viability of A: amikacin and/or moxiﬂoxacin
+loaded alginate entrapped (no calcium) PLGA nanoparticles
+treated, and B: free amikacin and moxiﬂoxacin treated.
+THP-1 cells were plated with 100 nM PMA at 1x105 cells/
+well in a 96 well plate and incubated for 48 h at 37 °C, 5%
+CO2. The cells were then infected with log phase M. tu-
+berculosis H37Ra at a multiplicity of infection (MOI) of 5.
+Cells were then incubated at 37 °C and 5% CO2 for 4 h. The
+plate was then washed with PBS three times to remove
+uninfected M. tuberculosis cells. Fresh complete medium
+containing various concentrations of drug loaded nano-
+particles; Amikacin loaded alginate entrapped (no calcium)
+PLGA nanoparticles (AMK NP), Moxiﬂoxacin loaded algi-
+nate entrapped (no calcium) PLGA nanoparticles (MOXI
+NP), (Amikacin and Moxiﬂoxacin) loaded alginate en-
+trapped (no calcium) PLGA nanoparticles (AMK + MOXI)
+NP (50 μl, 10 μl, or 1 μl), free drugs (15 μl, 2.5 μl, or 1 μl), or
+PBS (control) was then added and incubated overnight at
+37 °C and 5% CO2. The free drug concentration for both
+drugs was based on the ﬁnal drug entrapment of the nano-
+particles seeded to the cells. After 48 h incubation, the cells
+were lysed and the viable bacterial number (colony forming
+units
+(CFU)/mL)
+was
+quantiﬁed
+by
+plating
+onto
+Middlebrook 7H11 agar plates supplemented with 10% (v/
+v) OADC, and 0.5% (v/v) glycerol.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+648
+
+formulation strategy that can produce smaller particle size.
+For the above reason, alginate entrapped PLGA nanoparticles were
+developed on the basis of entrapping the drugs with alginate in the
+internal phase. Two formulation strategies were employed; calcium
+containing formulation, and calcium free formulation. In the calcium
+containing formulation, CaCl2 was added to the external phase to
+complex with alginate/PLGA matrix. In the second formulation, no
+calcium was added. Results showed comparable drug loading between
+these formulations; 18.7 ± 7.1 moxiﬂoxacin μg/mg, and 15 ± 3
+amikacin for the calcium containing formulation, and 10.3 ± 1.2 μg/
+mg moxiﬂoxacin and 17.4 ± 1.6 amikacin for the formulation free
+formulation. However; the particle size and the polydispersity were
+signiﬁcantly larger for the calcium containing formulation. This can be
+ascribed to the complexation of calcium ions with alginate tend to re-
+sult in large particle size [33–36]. During the evaporation of the di-
+chloromethane and the precipitation of PLGA, it is expected that cal-
+cium chloride in the external phase can complex with alginate that is
+entrapped in the nanoparticles. As a result, the matrix shell of the na-
+noparticles is likely composed of PLGA and calcium alginate. Com-
+paring the nonmodiﬁed PLGA nanoparticles with the alginate modiﬁed
+PLGA nanoparticles showed that the latter have signiﬁcantly higher
+drug loading. This is due to the presence of alginate in the formulation
+that possibly bind to entrapped moxiﬂoxacin and amikacin, or provide
+an additional barrier in case of alginate coated PLGA nanoparticles.
+The calcium complexed alginate nanoparticles showed a particle
+size of (∼400 nm) (Fig. 2B) and the size of the calcium-free particles
+was visually concurred with the SEM observation (∼300 nm). The
+nanoparticles were also spherical (Fig. 2C), which is appropriate for
+internalisation into alveolar macrophages. Moreover, the drug loading
+ﬁgures of moxiﬂoxacin and amikacin in the calcium free alginate
+trapped PLGA particles were in agreement with other hydrophilic drugs
+[37,38]. The zeta potential of the nanoparticles was found to be slightly
+positive only with the formulation that contain calcium, this could be to
+the adsorption of the calcium on the surface of the nanoparticles. This is
+probably due to the presence of alginate-complexed calcium on the
+surface of the nanoparticles.
+The drug encapsulation eﬃciency of emulsiﬁed PLGA particles is
+highly reliant on the shear forces and formulation conditions, such as
+drug-polymer ratio, surfactant concentration, and the volume of the
+external aqueous phase [39,40]. Using a similar double emulsion sol-
+vent evaporation technique, Boysenx et al. encapsulated hydrophilic
+isoniazid and hydrophobic rifampicin in PLGA nanoparticles with a
+drug encapsulation eﬃciency of about 68% and 55%, respectively and
+the size was between 229 and 382 nm [41]. In another study, Tripathi
+et al. showed an encapsulation eﬃciency of 39–70% for rifampicin in
+PLGA particles of 430–920 nm in size [42].
+In vitro release of the antibiotics from the non-modiﬁed PLGA na-
+noparticle formulation showed a typical biphasic pattern consisting of
+an initial burst release followed by controlled release (Fig. 3). However,
+alginate entrapped (non-calcium or calcium complexed) and alginate
+coated nanoparticles showed a signiﬁcantly slower release than the
+nonmodiﬁed PLGA nanoparticles. This initial burst release has been
+seen previously with antibiotics loaded PLGA nanoparticles [9,43].
+However; it has been shown previously that alginate entrapped PLGA
+particles can release calcein at signiﬁcantly slower rate with a less burst
+release compared to PLGA microparticles [44]. Moreover, alginate
+chitosan polyelectrolyte complex coated PLGA nanoparticles have
+shown signiﬁcantly slower release pattern of doxorubicin compared to
+uncoated nanoparticles [45].
+3.2. Fourier Transform infrared spectroscopy (FTIR)
+In contrast to PLGA nanoparticles or non-calcium alginate en-
+trapped PLGA nanoparticles FTIR absorption spectrum, the complexa-
+tion of calcium with alginate appeared as a distinct peak at band of
+935 cm−1 in the calcium alginate entrapped drug loaded PLGA
+nanoparticles (Fig. 4). This FTIR absorption band corresponds to the
+C–O stretching vibration of pyranosyl ring and the C–O stretching and
+contributions from C–C–H and C–O–H deformation [46]. Calcium al-
+ginate entrapped PLGA nanoparticles show signiﬁcant diﬀerences in
+band positions when compared to the FTIR spectrum of non-calcium
+alginate entrapped PLGA nanoparticles or the alginate coated nano-
+particle formulation. The PLGA band of 1762 cm−1 which corresponds
+to C=O stretching is evident in the structure of all nanoparticle for-
+mulations since all of them contain PLGA. When comparing the drug
+loaded nanoparticles with the bank nanoparticles formulation, most of
+the amikacin sulfate or moxiﬂoxacin HCl bands was masked by the
+nanoparticles formulation constituents. For example, the peak at
+1100 cm−1 which is mostly due to SO4−2 asymmetric stretching vi-
+brations is hidden under the alginate and PLGA C–O stretching bands
+[46,47]. The peak at 1250 cm−1, which was found in drug loaded na-
+noparticles formulations, is likely due to SO4−2 asymmetric stretching
+[48],. The moxiﬂoxacin absorption pattern at 3050 to 3156 cm−1 was
+due to vibrational C–H aromatic, and the pattern at 1323-1256 cm−1
+was due to -CH2 bending (Fig. 4) [49].
+3.3. Diﬀerential scanning calorimetric analysis (DSC)
+The DSC thermograms of the nanoparticle formulations showed a
+glass transition for PLGA nanoparticles at around 50 °C. The peaks re-
+lated
+to
+the
+melting
+of
+amikacin
+(> 210 °C)
+and
+moxiﬂoxacin
+(∼250 °C) were seen in the solid physical mixture of blank nano-
+particles, moxiﬂoxacin HCl, and amikacin sulfate, and they disappeared
+from the thermograms of the nanoparticle formulations (Fig. 5). This
+disappearance of melting peaks from the nanoparticles formulation
+thermograms indicated that these drugs were likely incapsulated in the
+amorphous state.
+3.4. Nanoparticle internalisation by macrophages
+To visualise the ability of diﬀerent formulations of nanoparticles
+(the calcium-free alginate entrapped PLGA nanoparticles, calcium al-
+ginate entrapped PLGA nanoparticles, and alginate coated PLGA na-
+noparticles to be internalised by the macrophages, the nanoparticles
+were loaded with coumarin-6, and nanoparticle suspensions (10 μg/ml)
+were seeded to the THP-1 derived alveolar macrophages and viewed
+under confocal microscopy.
+In all formulations, nanoparticles were dispersed throughout the
+cytosol of the macrophages, and more concentrated in the perinuclear
+region. Furthermore, the ImageJ curves shows that the frequency of
+pixels with high ﬂuorescence is the highest in the alginate entrapped
+calcium free formulations (Fig. 6 I (A-C)). This suggested an extensive
+distribution of the nanoparticles throughout the cytosol with more
+particles concentrated in regions around nucleus. However, the cou-
+marin-6, alginate entrapped non-calcium formulation showed the
+maximum internalisation compared to calcium alginate PLGA nano-
+particles showed signiﬁcantly less nanoparticles internalisation, and
+alginate coated PLGA nanoparticles showed the minimum internalisa-
+tion. This is because non-calcium formulation is negatively charged,
+and has small particle size and polydispersity compared to the calcium
+containing formulation. Also, the ability of calcium to complex into
+strong matrix renders the nanoparticles less likely to internalize into
+THP-1 cells. The cytosol of the macrophages was observed to be pre-
+dominately-ﬂuorescing light corresponding to the coumarin-6 loaded
+nanoparticles while the red color corresponds to the nucleus area (Fig. 6
+II)
+In general, the phagocytosis of particles is inﬂuenced by the size,
+hydrophobicity, surface charge and morphology of the particle [50,51].
+The calcium free particles were less than 1 μm, negatively charged, and
+spherical therefore eﬃciently internalised into macrophages. It has
+been shown that anionic nanoparticles have a higher cellular uptake
+into phagocytic cells compared to cationic nanoparticles, presumably
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+649
+
+due to the ingestion of negatively charged bacteria [50]. In one study,
+anionic polystyrene nanoparticles demonstrated preferential accumu-
+lation in the liver, where macrophages of the reticuloendothelial system
+reside [52]. In another study, 75% of immortal primary human alveolar
+type 1 (AT1) cells internalized negatively charged particles, while less
+than 55% of the cells internalized positively charged particles [53]. The
+positively charged nanoparticles have also demonstrated higher cyto-
+toxicity compared to negatively charged nanoparticles [50]. Besides,
+the Tg of PLGA 50:50 is between 50 and 55 °C, suggesting the particles
+will have an intact morphology at body temperature of 37 °C which
+could further enhance the cellular uptake [54]. In a similar study, ri-
+fampicin, isoniazid, and streptomycin encapsulated in poly-n-bu-
+tylcyanoacrylate and polyisobutylcyanoacrylate particles showed en-
+hanced accumulation of all the three encapsulated drugs in vitro in
+human monocytes [55]. This property of the nanocarriers is promising
+for targeting treatment of latent TB where the M. tuberculosis dormant
+inside the macrophages [56].
+3.5. In vitro viability of M. tuberculosis H37Ra growth within the host
+The eﬃcacy of the drug-loaded nanoparticles was tested against M.
+tuberculosis H37Ra infected macrophages. Fig. 7 shows the viable M.
+tuberculosis (H37Ra) count after treatment with nanoparticles at various
+concentrations. The dual entrapment of amikacin and moxiﬂoxacin into
+alginate entrapped nanoparticles showed enhanced inhibition of bac-
+terial growth compared to single drug loaded amikacin nanoparticles or
+moxiﬂoxacin nanoparticles, but less inhibition compared to the free
+drugs. These phenomena of the drug loaded nanoparticles being less
+eﬃcacious than the free drug were also reported in a previous study
+where gentamicin loaded PLGA nanoparticles showed less anti-
+microbial activity compared to the free gentamicin against Pseudomonas
+aeroginosa in vitro planktonic and bioﬁlm susceptibility assays. How-
+ever, when the particles were administered intraperitoneally to the
+mice that were infected with same P. aeruginosa strain, a signiﬁcant
+reduction of bacterial count was observed in the blood and bronch-
+oalveolar lavage ﬂuid after 96 h post-treatment compared to the free
+drug treatment [16]. Similarly, the nalmefene PLGA microspheres de-
+monstrated a controlled release proﬁle over 4 weeks in PBS (pH 7.4) at
+37 °C, while the mean residence time was about 16 days when delivered
+intravenously to mice [31]. Therefore, the alginate PLGA particles are
+expected to exhibit a faster degradation and improved anti-TB activity
+in vivo.
+The enhanced activity of the (amikacin + moxiﬂoxacin) loaded
+nanoparticles was demonstrated by comparing the colony forming units
+(cfu) and hence the viability of the intracellular M. tuberculosis H37Ra
+treated with (amikacin + moxiﬂoxacin) loaded nanoparticles with
+single drug loaded nanoparticle formulations (amikacin or moxi-
+ﬂoxacin). For example, amikacin (8.7 μg/mL) and moxiﬂoxacin
+(5.2 μg/ml) alone loaded nanoparticles showed mycobacterial growth
+of 34.9% and 3.27%, respectively. However, amikacin-moxiﬂoxacin-
+loaded nanoparticles at similar concentrations showed a growth of
+1.75%, which is signiﬁcantly lower than the single drug-loaded for-
+mulations (Fig. 7A) (p < 0.0001). Therefore, the dual-drug nano-
+particle formulation provides a useful platform for macrophage uptake
+and controlled release of these 2 s line anti-TB drugs.
+On the other hand, the free drug treated groups showed a sig-
+niﬁcantly stronger bactericidal eﬀect than the nanoparticle formula-
+tions. For example, free amikacin (6.25 μg/mL) and moxiﬂoxacin
+(6.25 μg/mL) exhibited 13% and 0.5% bacterial viability, respectively.
+While the free combination of amikacin and moxiﬂoxacin showed 0.3%
+viability (Fig. 7B). The stronger activity of these free drugs compared to
+their nanoparticle counterparts probably due to a higher eﬀective
+concentration of the free drug formulations in the 96-well plate com-
+pared with drugs in the nanoparticles which would take a longer time to
+release. Nanoparticles have been widely investigated for their potential
+to reduce the duration of anti-TB chemotherapy. Moxiﬂoxacin and
+amikacin are second-line drugs that have shown synergistically inhibit
+MDR-TB [13]. Moxiﬂoxacin acts on bacteria by inhibiting the bacterial
+DNA through binding to DNA gyrase enzyme, while amikacin binds to
+bacterial 30s ribosomal subunits resulting in misreading of t-RNA
+[57,58]. As a result, co-administration of these two drugs with diﬀerent
+mechanism of action coupled with a polymeric nanoparticulate matrix
+could enhance clinical outcome. Furthermore, coupling polymeric na-
+noparticles with inhalation delivery has gained signiﬁcant interest for
+treatment of TB [41,59,60]. In our previous studies, we have success-
+fully formulated anti-TB pure drugs including rifapentine, moxiﬂoxacin
+and pyrazinamide into inhalable dry powders [61,62]. Further studies
+are ongoing to formulate the free alginate entrapped PLGA nano-
+particles into inhalable form and testing its eﬃcacy in TB in vivo
+models.
+4. Conclusion
+Polymeric nanoparticles provide a useful platform for entrapping
+and release controlling a wide variety of antibiotics. This is due to their
+biodegradability and safety and satisfactory physical characteristics. In
+this context, 2 s line anti-TB drugs were incorporated into alginate
+modiﬁed PLGA nanoparticles. The improved entrapment and controlled
+release of the drugs by the modiﬁcation of PLGA with alginate reﬂected
+in the synergistic eﬀect of the dual entrapment of moxiﬂoxacin and
+amikacin
+when
+compared
+to
+single
+drug
+loaded
+nanoparticles.
+Moreover; it is expected that these nanoparticles have superior anti-
+mycobacterial activity compared to free drug administration in vivo.
+Disclosure of interest
+The authors show no conﬂict of interest.
+Acknowledgment
+Special thanks to the Australian Government (Endeavor Fellowship)
+and University of Jordan for sponsoring Dr Sharif Abdelghany for
+conducting his research.
+HK Chan is grateful to Mr. Richard Stenlake for his generous ﬁ-
+nancial support. Also, special thanks to Amman Pharmaceutical in-
+dustries for providing Moxiﬂoxacin hydrochloride required for this re-
+search.
+References
+[1] B. Kalsdorf, I.D. Olaru, C. Lange, J. Heyckendorf, [Tuberculosis], Dtsch. Med.
+Wochenschr. 140 (1946) 1508–1512 2015.
+[2] R.O. Onyango, State of the globe: tracking tuberculosis is the test of time, J. Glob.
+Infect. Dis. 3 (2011) 1–3.
+[3] R.E. Tascon, C.S. Soares, S. Ragno, E. Stavropoulos, E.M. Hirst, M.J. Colston,
+Mycobacterium tuberculosis-activated dendritic cells induce protective immunity in
+mice, Immunology 99 (2000) 473–480.
+[4] L.E. Bermudez, J. Goodman, Mycobacterium tuberculosis invades and replicates
+within type II alveolar cells, Infect. Immun. 64 (1996) 1400–1406.
+[5] I. Smith, Mycobacterium tuberculosis pathogenesis and molecular determinants of
+virulence, Clin. Microbiol. Rev. 16 (2003) 463–496.
+[6] C. Riou, B. Perez Peixoto, L. Roberts, K. Ronacher, G. Walzl, C. Manca, et al., Eﬀect
+of standard tuberculosis treatment on plasma cytokine levels in patients with active
+pulmonary tuberculosis, PLoS One 7 (2012) e36886.
+[7] I.G. Sia, M.L. Wieland, Current concepts in the management of tuberculosis, Mayo
+Clin. Proc. 86 (2011) 348–361.
+[8] J.B. Nachega, R.E. Chaisson, Tuberculosis Drug Resistance: a Global Threat vol. 36,
+Clinical infectious diseases : an oﬃcial publication of the Infectious Diseases Society
+of America, 2003, pp. S24–S30.
+[9] J. Deacon, S.M. Abdelghany, D.J. Quinn, D. Schmid, J. Megaw, R.F. Donnelly, et al.,
+Antimicrobial eﬃcacy of tobramycin polymeric nanoparticles for Pseudomonas
+aeruginosa infections in cystic ﬁbrosis: formulation, characterisation and functio-
+nalisation with dornase alfa (DNase), J. Control. Release : oﬃcial journal of the
+Controlled Release Society 198 (2015) 55–61.
+[10] J. Poissy, A. Aubry, C. Fernandez, M.C. Lott, A. Chauﬀour, V. Jarlier, et al., Should
+moxiﬂoxacin be used for the treatment of extensively drug-resistant tuberculosis?
+An answer from a murine model, Antimicrob. Agents Chemother. 54 (2010)
+4765–4771.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+650
+
+[11] M.C. Kjellsson, L.E. Via, A. Goh, D. Weiner, K.M. Low, S. Kern, et al.,
+Pharmacokinetic evaluation of the penetration of antituberculosis agents in rabbit
+pulmonary lesions, Antimicrob. Agents Chemother. 56 (2012) 446–457.
+[12] A. Matteelli, A. Roggi, A.C. Carvalho, Extensively drug-resistant tuberculosis: epi-
+demiology and management, Clin. Epidemiol. 6 (2014) 111–118.
+[13] S.G. Mpagama, N. Ndusilo, S. Stroup, H. Kumburu, C.A. Peloquin, J. Gratz, et al.,
+Plasma drug activity in patients on treatment for multidrug-resistant tuberculosis,
+Antimicrob. Agents Chemother. 58 (2014) 782–788.
+[14] A. Bolhassani, S. Javanzad, T. Saleh, M. Hashemi, M.R. Aghasadeghi, S.M. Sadat,
+Polymeric nanoparticles: potent vectors for vaccine delivery targeting cancer and
+infectious diseases, Hum. Vaccines Immunother. 10 (2014) 321–332.
+[15] S.M. Abdelghany, D. Schmid, J. Deacon, J. Jaworski, F. Fay, K.M. McLaughlin,
+et al., Enhanced antitumor activity of the photosensitizer meso-Tetra(N-methyl-4-
+pyridyl) porphine tetra tosylate through encapsulation in antibody-targeted chit-
+osan/alginate nanoparticles, Biomacromolecules 14 (2013) 302–310.
+[16] S.M. Abdelghany, D.J. Quinn, R.J. Ingram, B.F. Gilmore, R.F. Donnelly,
+C.C. Taggart, et al., Gentamicin-loaded nanoparticles show improved antimicrobial
+eﬀects towards Pseudomonas aeruginosa infection, Int. J. Nanomed. 7 (2012)
+4053–4063.
+[17] S. Abdelghany, M. Alkhawaldeh, H.S. AlKhatib, Carrageenan-stabilized chitosan
+alginate nanoparticles loaded with ethionamide for the treatment of tuberculosis, J.
+Drug Deliv. Sci. Technol. 39 (2017) 442–449.
+[18] A. Dube, Y. Lemmer, R. Hayeshi, M. Balogun, P. Labuschagne, H. Swai, et al., State
+of the art and future directions in nanomedicine for tuberculosis, Expert Opin. Drug
+Deliv. 10 (2013) 1725–1734.
+[19] W.H. Lee, C.Y. Loo, D. Traini, P.M. Young, Nano- and micro-based inhaled drug
+delivery systems for targeting alveolar macrophages, Expert Opin. Drug Deliv. 12
+(2015) 1009–1026.
+[20] D.D. Pham, E. Fattal, N. Tsapis, Pulmonary drug delivery systems for tuberculosis
+treatment, Int. J. Pharm. 478 (2015) 517–529.
+[21] R. Duncan, S.C. Richardson, Endocytosis and intracellular traﬃcking as gateways
+for nanomedicine delivery: opportunities and challenges, Mol. Pharm. 9 (2012)
+2380–2402.
+[22] W.H. De Jong, P.J. Borm, Drug delivery and nanoparticles:applications and hazards,
+Int. J. Nanomed. 3 (2008) 133–149.
+[23] R. Singh, J.W. Lillard Jr., Nanoparticle-based targeted drug delivery, Exp. Mol.
+Pathol. 86 (2009) 215–223.
+[24] S. Gelperina, K. Kisich, M.D. Iseman, L. Heifets, The potential advantages of na-
+noparticle drug delivery systems in chemotherapy of tuberculosis, Am. J. Respir.
+Crit. Care Med. 172 (2005) 1487–1490.
+[25] R. Pandey, A. Zahoor, S. Sharma, G.K. Khuller, Nanoparticle encapsulated anti-
+tubercular drugs as a potential oral drug delivery system against murine tubercu-
+losis, Tuberculosis 83 (2003) 373–378.
+[26] A. Sharma, S. Sharma, G.K. Khuller, Lectin-functionalized poly (lactide-co-glyco-
+lide) nanoparticles as oral/aerosolized antitubercular drug carriers for treatment of
+tuberculosis, J. Antimicrob. Chemother. 54 (2004) 761–766.
+[27] D. Li, S. He, Y. Deng, G. Ding, H. Ni, Y. Cao, Development and validation of an HPLC
+method for determination of Amikacin in water samples by solid phase extraction
+and pre-column derivatization, Bull. Environ. Contam. Toxicol. 93 (2014) 47–52.
+[28] S.N. Razzaq, I.U. Khan, I. Mariam, S.S. Razzaq, Stability indicating HPLC method
+for the simultaneous determination of moxiﬂoxacin and prednisolone in pharma-
+ceutical formulations, Chem. Cent. J. 6 (2012) 94.
+[29] P. Gill, T.T. Moghadam, B. Ranjbar, Diﬀerential scanning calorimetry techniques:
+applications in biology and nanoscience, J. Biomol. Tech. : J. Biochem. (Tokyo) 21
+(2010) 167–193.
+[30] A. Wangoo, I.N. Brown, B.G. Marshall, H.T. Cook, D.B. Young, R.J. Shaw, Bacille
+Calmette–Guérin (BCG)-associated inﬂammation and ﬁbrosis: modulation by re-
+combinant BCG expressing interferon-gamma (IFN-γ), Clin. Exp. Immunol. 119
+(2000) 92–98.
+[31] X. Li, X. Kong, S. Shi, X. Zheng, G. Guo, Y. Wei, et al., Preparation of alginate coated
+chitosan microparticles for vaccine delivery, BMC Biotechnol. 8 (2008) 89.
+[32] X. Xie, W. Lin, C. Xing, Y. Yang, Q. Chi, H. Zhang, et al., In vitro and in vivo
+evaluations of PLGA microspheres containing nalmefene, PLoS One 10 (2015)
+e0125953.
+[33] L. Aguero, D. Zaldivar-Silva, L. Pena, M.L. Dias, Alginate microparticles as oral
+colon drug delivery device: a review, Carbohydr. Polym. 168 (2017) 32–43.
+[34] J. Tu, S. Bolla, J. Barr, J. Miedema, X. Li, B. Jasti, Alginate microparticles prepared
+by spray-coagulation method: preparation, drug loading and release characteriza-
+tion, Int. J. Pharm. 303 (2005) 171–181.
+[35] G. Fundueanu, C. Nastruzzi, A. Carpov, J. Desbrieres, M. Rinaudo, Physico-chemical
+characterization of Ca-alginate microparticles produced with diﬀerent methods,
+Biomaterials 20 (1999) 1427–1435.
+[36] J. Zarate, L. Virdis, G. Orive, M. Igartua, R.M. Hernandez, J.L. Pedraz, Design and
+characterization of calcium alginate microparticles coated with polycations as
+protein delivery system, J. Microencapsul. 28 (2011) 614–620.
+[37] T. Govender, S. Stolnik, M.C. Garnett, L. Illum, S.S. Davis, PLGA nanoparticles
+prepared by nanoprecipitation: drug loading and release studies of a water soluble
+drug, J. Control. Release : oﬃcial journal of the Controlled Release Society 57
+(1999) 171–185.
+[38] G.J. Dawes, L.E. Fratila-Apachitei, K. Mulia, I. Apachitei, G.J. Witkamp,
+J. Duszczyk, Size eﬀect of PLGA spheres on drug loading eﬃciency and release
+proﬁles, J. Mater. Sci. Mater. Med. 20 (2009) 1089–1094.
+[39] H.K. Makadia, S.J. Siegel, Poly lactic-co-glycolic acid (PLGA) as biodegradable
+controlled drug delivery carrier, Polymers 3 (2011) 1377–1397.
+[40] N.V.N. Jyothi, P.M. Prasanna, S.N. Sakarkar, K.S. Prabha, P.S. Ramaiah,
+G.Y. Srawan, Microencapsulation techniques, factors inﬂuencing encapsulation ef-
+ﬁciency, J. Microencapsul. 27 (2010) 187–197.
+[41] L.L. Booysen, L. Kalombo, E. Brooks, R. Hansen, J. Gilliland, V. Gruppo, et al., In
+vivo/in vitro pharmacokinetic and pharmacodynamic study of spray-dried poly-(dl-
+lactic-co-glycolic) acid nanoparticles encapsulating rifampicin and isoniazid, Int. J.
+Pharm. 444 (2013) 10–17.
+[42] R.G. Akansha Tripathi, A. Shubhini, Saraf. PLGA nanoparticles of anti tubercular
+drug: drug loading and release studies of a water in-soluble drug, International
+Journal of PharmTech Research 2 (2010) 2116–2123.
+[43] S.M. Abdelghany, D.J. Quinn, R.J. Ingram, B.F. Gilmore, R.F. Donnelly,
+C.C. Taggart, et al., Gentamicin-loaded nanoparticles show improved antimicrobial
+eﬀects towards Pseudomonas aeruginosa infection, Int. J. Nanomed. 7 (2012)
+4053–4063.
+[44] D. Lio, D. Yeo, C. Xu, Control of alginate core size in alginate-poly (lactic-Co-gly-
+colic) acid microparticles, Nanoscale research letters 11 (2016) 9.
+[45] F. Chai, L. Sun, X. He, J. Li, Y. Liu, F. Xiong, et al., Doxorubicin-loaded poly (lactic-
+co-glycolic acid) nanoparticles coated with chitosan/alginate by layer by layer
+technology for antitumor applications, Int. J. Nanomed. 12 (2017) 1791–1802.
+[46] A. Sadiq, A. Choubey, A.K. Bajpai, BIOSORPTION OF CHROMIUM IONS BY
+CALCIUM ALGINATE NANOPARTICLES vol. 63, (2018) 2018.
+[47] G. Singh, K. Tanurajvir, K. Ravinder, A. Kaur, Recent Biomedical Applications and
+Patents on Biodegradable Polymer-PLGA, (2014).
+[48] J. Ovalles, M. Gallignani, R. Brunetto M, Proposal for Determining Sulfate Counter
+Ion in Amikacin Sulfate Formulations by Fourier-Transform Infrared Derivative
+Spectroscopy, (2013).
+[49] M. Al Omari, S. Jaafari D, K. Al-Sou'od, A. Badwan, Moxiﬂoxacin Hydrochloride,
+(2014), pp. 299–431.
+[50] E. Fröhlich, The role of surface charge in cellular uptake and cytotoxicity of medical
+nanoparticles, Int. J. Nanomed. 7 (2012) 5577–5591.
+[51] G. Yan, K.S. Warner, J. Zhang, S. Sharma, B.K. Gale, Evaluation needle length and
+density of microneedle arrays in the pretreatment of skin for transdermal drug
+delivery, Int. J. Pharm. 391 (2010) 7–12.
+[52] O. Lunov, T. Syrovets, C. Loos, J. Beil, M. Delacher, K. Tron, et al., Diﬀerential
+uptake of functionalized polystyrene nanoparticles by human macrophages and a
+monocytic cell line, ACS Nano 5 (2011) 1657–1669.
+[53] S.J. Kemp, A.J. Thorley, J. Gorelik, M.J. Seckl, M.J. O'Hare, A. Arcaro, et al.,
+Immortalization of human alveolar epithelial cells to investigate nanoparticle up-
+take, Am. J. Respir. Cell Mol. Biol. 39 (2008) 591–597.
+[54] T. Parumasivam, S.S.Y. Leung, D.H. Quan, J.A. Triccas, W.J. Britton, H.-K. Chan,
+Rifapentine-loaded PLGA microparticles for tuberculosis inhaled therapy: pre-
+paration and in vitro aerosol characterization, Eur. J. Pharm. Sci. 88 (2016) 1–11.
+[55] Y.V. Anisimova, S.I. Gelperina, C.A. Peloquin, L.B. Heifets, Nanoparticles as anti-
+tuberculosis drugs carriers: eﬀect on activity against Mycobacterium tuberculosis in
+human monocyte-derived macrophages, J. Nanoparticle Res. 2 (2000) 165–171.
+[56] S. Mustafa, R.S. Pai, G. Singh, V. Kusum Devi, Nanocarrier-based interventions for
+the management of MDR/XDR-TB, J. Drug Target. 23 (2015) 287–304.
+[57] D.R.P. Guay, Moxiﬂoxacin in the treatment of skin and skin structure infections,
+Therapeut. Clin. Risk Manag. 2 (2006) 417–434.
+[58] L.P. Kotra, J. Haddad, S. Mobashery, Aminoglycosides: perspectives on mechanisms
+of action and resistance and strategies to counter resistance, Antimicrob. Agents
+Chemother. 44 (2000) 3249–3256.
+[59] K. Shi, F. Cui, H. Yamamoto, Y. Kawashima, Optimized preparation of insulin-lauryl
+sulfate complex loaded poly (lactide-co-glycolide) nanoparticles using response
+surface methodology, Pharmazie 63 (2008) 721–725.
+[60] K.O. Kisich, S. Gelperina, M.P. Higgins, S. Wilson, E. Shipulo, E. Oganesyan, et al.,
+Encapsulation of moxiﬂoxacin within poly(butyl cyanoacrylate) nanoparticles en-
+hances eﬃcacy against intracellular Mycobacterium tuberculosis, Int. J. Pharm. 345
+(2007) 154–162.
+[61] J.G. Chan, C.C. Duke, H.X. Ong, J.C. Chan, A.S. Tyne, H.K. Chan, et al., A novel
+inhalable form of rifapentine, J. Pharm. Sci. 103 (2014) 1411–1421.
+[62] Q.T. Zhou, S.P. Sun, J.G. Chan, P. Wang, N. Barraud, S.A. Rice, et al., Novel inhaled
+combination powder containing amorphous colistin and crystalline rifapentine with
+enhanced antimicrobial activities against planktonic cells and bioﬁlm of
+Pseudomonas aeruginosa for respiratory infections, Mol. Pharm. 12 (2015)
+2594–2603.
+S. Abdelghany, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 642–651
+651

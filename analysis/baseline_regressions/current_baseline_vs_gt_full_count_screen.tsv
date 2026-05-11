@@ -1,0 +1,16 @@
+paper_key	final_rows	gt_rows	delta_vs_gt	status_vs_gt	prior_localization_if_any	screening_label	notes
+WFDTQ4VX	3	30	-27	under		likely pre-LLM candidate	Large unchanged undercount after downstream replay improvements; good screening candidate for S2-2b/S2-3/S2-4a review.
+L3H2RS2H	5	21	-16	under		likely pre-LLM candidate	Large unchanged undercount after downstream replay improvements; good screening candidate for S2-2b/S2-3/S2-4a review.
+5GIF3D8W	11	26	-15	under	proven downstream: non-DOE single-variable recovery family / post-reopen row-emission family	likely downstream candidate	Large replay improvement but still under GT; proven post-reopen/non-DOE recovery family rather than pre-LLM.
+BB3JUVW7	3	12	-9	under		likely pre-LLM candidate	Large unchanged undercount after downstream replay improvements; good screening candidate for S2-2b/S2-3/S2-4a review.
+INMUTV7L	3	12	-9	under		likely pre-LLM candidate	Large unchanged undercount after downstream replay improvements; good screening candidate for S2-2b/S2-3/S2-4a review.
+5ZXYABSU	1	9	-8	under	proven pre-LLM: S2-2b table-loss/preservation failure (Table 1/2 dropped)	likely pre-LLM candidate	Proven S2-2b preservation loss; unchanged vs prior baseline.
+BXCV5XWB	1	9	-8	under		likely pre-LLM candidate	Large unchanged undercount after downstream replay improvements; good screening candidate for S2-2b/S2-3/S2-4a review.
+QLYKLPKT	2	7	-5	under		unclear	Remaining undercount is moderate/small; count pattern alone does not isolate pre-LLM vs downstream.
+V99GKZEI	4	6	-2	under		unclear	Improved undercount suggests some downstream gains, but remaining gap is not localized from counts alone.
+PA3SPZ28	4	5	-1	under		unclear	Improved undercount suggests some downstream gains, but remaining gap is not localized from counts alone.
+7ZS858NS	1	1	0	match		unclear	Match or weak signal; no pre-LLM screening priority from counts alone.
+RHMJWZX8	3	2	1	over		likely downstream candidate	Over GT on final counts; count pattern points away from pre-LLM loss and toward downstream retention/identity/compare review.
+UFXX9WXE	28	27	1	over	proven downstream: post-reopen row-emission family; recovered rows survive replay	likely downstream candidate	Proven post-reopen downstream family; current issue is not a pre-LLM screening target.
+YGA8VQKU	19	17	2	over		likely downstream candidate	Over GT on final counts; count pattern points away from pre-LLM loss and toward downstream retention/identity/compare review.
+WIVUCMYG	29	26	3	over	proven downstream: DOE/post-reopen row-emission family; recovered rows survive replay	likely downstream candidate	Proven post-reopen downstream family; current issue is not a pre-LLM screening target.

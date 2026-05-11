@@ -1,0 +1,16 @@
+metric	value	notes
+doi_with_comparable_ee	18.0	
+ee_mean_abs_diff_mean	4.907824074074075	comparable EE DOI only
+ee_mean_abs_diff_median	0.2466666666666697	comparable EE DOI only
+ee_mean_abs_diff_q25	0.0	comparable EE DOI only
+ee_mean_abs_diff_q75	4.010624999999987	comparable EE DOI only
+ee_mean_abs_diff_max	31.16666666666667	comparable EE DOI only
+ee_median_abs_diff_mean	6.630833333333333	comparable EE DOI only
+ee_median_abs_diff_median	0.0	comparable EE DOI only
+ee_median_abs_diff_q25	0.0	comparable EE DOI only
+ee_median_abs_diff_q75	6.305	comparable EE DOI only
+ee_median_abs_diff_max	45.25	comparable EE DOI only
+frac_mean_abs_diff_le_5	0.8333333333333334	denominator=total DOI
+frac_mean_abs_diff_le_10	0.8333333333333334	denominator=total DOI
+n_mean_abs_diff_le_5	15.0	
+n_mean_abs_diff_le_10	15.0	

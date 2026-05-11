@@ -1,0 +1,17 @@
+task_id	status	commit	test_status	notes	updated_at
+T01	completed		verified	plan and progress ledger created and verified	2026-05-05T22:10:57
+T02	completed		verified_after_review_fix	corrected 5GIF3D8W boundary; wrote exact-schema inventory plus raw snippet manifest	2026-05-05T22:16:00
+T03	completed		unit_pass	added parser tests incl fail-closed expected_keys and diagnostic-note exclusion; 8 tests pass	2026-05-05T22:25:42
+T04	completed		unit_pycompile_cli_pass	implemented parser/inventory CLI; fail-closed unexpected 8-char anchors; CLI hash/lineage smoke pass	2026-05-05T22:25:42
+T05	completed		unit_pass	added clean-text visibility, key2txt, manifest lineage, numeric fallback governance tests; 14 tests pass	2026-05-05T22:42:57
+T06	completed		unit_cli_diagnostic_pass_after_review_fix	implemented clean-text visibility audit with lineage and exact-vs-numeric fallback counts; 062 diagnostic full=6 partial=9 absent=0	2026-05-05T22:42:57
+T07	completed		unit_pass	added table authority visibility tests incl numeric-only fallback not visible; 17 tests pass	2026-05-05T22:57:47
+T08	completed		unit_cli_diagnostic_pass_after_review_fix_approved	table authority exact-only visibility approved; 063 exact partial=8 absent=7, numeric fallback signal-only=244	2026-05-05T22:59:14
+T09	completed		unit_pass	added selector recall registry tests incl retained-unselected, hard-drop, and violation-detectability cases; selector/prompt/boundary test subset 18 pass	2026-05-05T23:20:14
+T10	completed		diagnostic_cli_pass_after_review_fix	implemented selector recall/ranker-not-filter diagnostic; no runtime selector behavior patch required; 064 candidate_rows=812 selected=59 preserved=806 violations=0	2026-05-05T23:20:14
+T11	completed		unit_pass	added prompt summary semantic adequacy tests; semantic adequacy does not require full numeric rows and avoids short-abbreviation false positives	2026-05-05T23:20:14
+T12	completed		diagnostic_cli_pass_after_review_fix	implemented prompt semantic adequacy audit; 065 evidence_blocks=63 adequate=43 inadequate=20 first_failure.missing_identity_or_process_signal=20	2026-05-05T23:20:14
+T13	completed		unit_pass	added Stage1/Stage2 boundary classifier tests incl selector violation masking and allowed hard-drop cases	2026-05-05T23:20:14
+T14	completed		diagnostic_cli_pass_after_review_fix	implemented unified boundary classifier report; 066 paper_count=15 first_failure none=3 table_authority=7 prompt_semantic=5	2026-05-05T23:20:14
+T15	completed		diagnostic_only_existing_artifacts_pass	bounded DEV15 diagnostic audit used existing 059/062/063 artifacts only; no live LLM; outputs 064-066 all diagnostic_only=yes benchmark_valid=no	2026-05-05T23:20:14
+T16	completed		final_verification_pass	final targeted tests 35 pass; py_compile passed for new/modified diagnostic Python files; governance docs unchanged and no memory update required	2026-05-05T23:20:14

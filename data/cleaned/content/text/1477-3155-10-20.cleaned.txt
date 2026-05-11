@@ -1,0 +1,802 @@
+## Abstract
+Background: Alpha 1- antitrypsin (a1AT) belongs to the superfamily of serpins and inhibits different proteases.
+a1AT protects the lung from cellular inflammatory enzymes. In the absence of a1AT, the degradation of lung tissue
+results to pulmonary complications. The pulmonary route is a potent noninvasive route for systemic and local
+delivery. The aerosolized a1AT not only affects locally its main site of action but also avoids remaining in circulation
+for a long period of time in peripheral blood. Poly (D, L lactide-co glycolide) (PLGA) is a biodegradable and
+biocompatible polymer approved for sustained controlled release of peptides and proteins. The aim of this work
+was to prepare a wide range of particle size as a carrier of protein-loaded nanoparticles to deposit in different parts
+of the respiratory system especially in the deep lung. Various lactide to glycolide ratio of the copolymer was used
+to obtain different release profile of the drug which covers extended and rapid drug release in one formulation.
+
+Results: Nonaqueous and double emulsion techniques were applied for the synthesis of nanoparticles.
+Nanoparticles were characterized in terms of surface morphology, size distribution, powder X-ray diffraction (XRD),
+encapsulation efficiency, in vitro drug release, FTIR spectroscopy and differential scanning calorimetry (DSC). To
+evaluate the nanoparticles cytotoxicity, cell cytotoxicity test was carried out on the Cor L105 human epithelial lung
+cancer cell line.
+Nanoparticles were spherical with an average size in the range of 100 nm to 1m. The encapsulation efficiency was
+found to be higher when the double emulsion technique was applied. XRD and DSC results indicated that a1AT
+encapsulated in the nanoparticles existed in an amorphous or disordered-crystalline status in the polymer matrix.
+The lactic acid to glycolic acid ratio affects the release profile of a1AT. Hence, PLGA with a 50:50 ratios exhibited
+the ability to release %60 of the drug within 8, but the polymer with a ratio of 75:25 had a continuous and longer
+release profile. Cytotoxicity studies showed that nanoparticles do not affect cell growth and were not toxic to cells.
+
+Conclusion: In summary, a1AT-loaded nanoparticles may be considered as a novel formulation for efficient
+treatment of many pulmonary diseases.
+
+Keywords: Cytotoxicity, DSC (differential scanning calorimetry), FTIR, Nanoparticle, Sustained drug release, XRD
+(x-ray diffraction)
+
+* Correspondence: hasannia@modares.ac.ir
+2Faculty of Biological Sciences, Tarbiat Modares University, Jalal Ale Ahmad
+Highway, P.O.Box: 14115-111, Tehran, IR, Iran
+3National Institute of Genetic Engineering and Biotechnology, Tehran, IR, Iran
+Full list of author information is available at the end of the article
+
+(c) 2012 Pirooznia et al.; licensee BioMed Central Ltd. This is an Open Access article distributed under the terms of the Creative
+Commons Attribution License (http://creativecommons.org/licenses/by/2.0), which permits unrestricted use, distribution, and
+reproduction in any medium, provided the original work is properly cited.
+
+Page 2 of 15
+
+Background
+Alpha 1- antitrypsin (a1AT) is a 54 kDa glycoprotein
+which belongs to the superfamily of serpin. The protein
+inhibits serine protease and a broad group of other proteases. It protects the lungs from cellular inflammatory
+enzymes, especially elastase, therefore it is known as the
+human neutrophil elastase inhibitor . In the absence of
+a1AT, the neutrophil elastase released by lung macrophages, is not inhibited, thus leading to elastin breakdown
+and the loss of lung elasticity. This causes degradation of
+the lung tissue resulting in pulmonary complications, such
+as emphysema or chronic obstructive pulmonary disease
+COPD in adults . Impaired a1AT secretion in liver and
+accumulation in liver cells also causes cirrhosis in infants
+. Relation between a1AT deficiency and various diseases including asthma, rheumatoid arthritis, anterior uveitis and systemic lupus erythematosus has also been
+reported . a1AT is not only an anti-inflammation protein but also an immune system regulator which regulates
+lymphocyte proliferation and cytotoxicity, mediates monocyte and neutrophil functions. Besides antiapoptotic function in the lung epithelial cells in vitro , has broad antiinflammatory effects in humans . It has been shown
+that protease-antiprotease imbalance is an important factor
+in the pathogenesis of COPD and other pulmonary diseases, such as bronchitis. In this process, an exogenous
+proteolytic enzyme leads to lung tissue breakdown (because human neutrophil elastase cannot be inhibited by
+a1AT) . Furthermore, a1AT can act as a tumor suppressor by inhibiting the growth of breast cancer cells .
+The treatment of cystic fibrosis (CF) patients with
+aerosolized a1AT has been shown to reduce sputum
+neutrophil numbers, IL-8 concentration and elastase
+function . The effect of a1AT on IL-8 as a neutrophil
+chemoattractant and a neutrophil recruiter to the lung is
+also important because neutrophils are considered as the
+main cause of COPD pathogenesis and clinical effects of
+a1AT in COPD are obvious .
+A recent study has shown that a1AT can slow down
+the loss of insulin producing cells in diabetic patients
+who are at the early stages of disease. This study, which
+is in phase II of clinical trials, demonstrates the effect of
+a1AT in preservation of b-cells, function to produce insulin .
+The commercially available plasma derived product of
+a1AT is administered intravenously. Such an intravenous
+augmentation therapy has disadvantages, such as high
+costs, viral contaminations and immune reactions because of prolonged retention of the drug in circulation.
+The pulmonary route is an alternative, potent and noninvasive route for systemic and local delivery of macromolecules. The aerosolized a1AT not only affects locally
+the lung, its main site of action, but also avoid remaining
+and circulation for a long time in peripheral blood .
+
+This route of administration provides large surface
+area, thin epithelial barrier, avoids first-pass metabolism
+and high blood flow. Many proteins and peptides have
+been delivered to the lung successfully in this way
+. In fact spherical materials less than 10 m in diameter can be inhaled. Particles less than 2.5 m can reach
+the alveoli. Nanoparticles less than 100 nm are mainly
+deposited in the alveolar region. Nano-sized particles
+avoid macrophage pulmonary clearance and cross without active uptake .
+The aerosolized a1AT is currently under study .
+In the aerosol form, 25%-45% of aerosolized particle
+reaches the respiratory system, however in the intravenous infusion only 10%-15% of a1AT reaches to this site.
+The aerosolized a1AT not only affects its main site of
+action locally, but also avoids remaining in circulation
+for a long period of time in peripheral blood, thus avoiding immune response reactions because of long-term
+use of a1AT .
+Nevertheless, for the purpose of drug delivery, PLGA
+(poly- D, L lactide-co glycolide) is the best candidate.
+PLGA-based nanotechnology has gained tremendous
+interest in medical applications such as sustained drug
+release, drug delivery, diagnostics and treatment .
+Polylactide (PLA) and its copolymers that contain glycolide (PLGA) have been approved by the US food and
+drug administration (FDA) for the purpose of drug delivery. PLGA is an ideal choice for drug delivery because of
+its unique properties including biocompatibility, bioavailability and variable degradation kinetics, high drugloading capability, stability and extended drug release
+over other carriers such as liposomes . PLGA
+protects the encapsulated drug from enzymatic degradation and changes the pharmacokinetics of the drug. It
+provides a wide range of degradation rates, from months
+to years, depending upon its composition and molecular
+weight . FDA has approved products using PLGA as
+carriers which include Nutropin Depot for growth deficiencies, Sandostatin LAR for acromegaly and Trelstar
+Depot for prostate cancer . At present many other
+PLGA-based formulations are also at the pre-clinical stage.
+The biodegradation rate of PLGA polymers is dependent
+on the lactide/glycolide, molecular weight, degree of crystallinity and the transition glass temperature (Tg) of the
+polymer . The release profile of PLGA nanoparticles
+can be divided into 4 different phases: initial burst, induction period, slow release period and final release period
+. Polymers containing a 50:50 ratios of lactic and glycolic acid have faster hydrolytic activities than those with
+other ratios of the monomers. PLGA nanoparticles can be
+used safely for oral, nasal, pulmonary, parenteral, transdermal and intra-ocular routes of administration . The
+PLGA nanoparticles can be prepared by different techniques. The most common technique is the emulsification
+
+Page 3 of 15
+
+solvent evaporation technique because of its simplicity
+and high encapsulation efficiency. The single emulsion
+
+## Materials Methods
+have almost the same chemical characteristics of the
+pure polymer. The study suggests that molecular interactions that could alter the chemical structure of the
+drug did not occur. Therefore, no chemical interaction
+between functional group of protein and polymer exist
+(Figure 5).
+
+nanoparticles show the PLGA polymer remained unaffected during encapsulation. The DSC thermograms of
+
+shown in Figure 6.
+
+Evaluation of Cytotoxicity
+In this study, cell cytotoxicity of a1AT- loaded nanoparticles was evaluated using Cor L105 lung epithelial-like
+
+Poly (D, L-lactide-co-glycolide) (PLGA), with a copolymer ratio of lactide: glycolide 50:50 (Mw 40,000-75,000)
+and 75:25 (Mw 66,000-107,000) were purchased from
+Sigma Aldrich (USA). Poly (vinyl alcohol) (PVA) with a
+molecular weight of 89,000-98,000 and Hydroxypropylb-cyclodextrin (HP-b-CD) were obtained from Sigma
+Aldrich (USA).
+Alpha one-antitrypsin from human plasma and 3-(4,
+5-dimethylthiazol-2-yl)-2, 5-diphenyltetrazolium bromide (MTT) were bought from Sigma-Aldrich (St. Louis,
+MO, USA). RPMI 1640, fetal bovine serum (FBS), glutamine and penicillin/streptomycin were obtained from
+Gibco BRL (now part of Invitrogen Corporation, Carlsbad, CA, USA).
+Methylene chloride, acetone, Span80, n-hexane, viscous
+Paraffin, Acetonitrile and DMSO were purchased from
+Merck (Germany). All reagents were of analytical grade.
+
+to very poor encapsulation efficiency with regard to protein or peptide drugs. The oil-in-oil (o/o) emulsification
+technique which is known as the nonaqueous emulsion
+
+suitable for encapsulating hydrophilic drugs with high efficiency .
+In this work, we prepared a1AT-loaded nanoparticles
+with two different methods and studied the release properties of nanoparticles at different ratios of lactide/glycolide. The polydispersity of nanoparticles is an important
+factor in this work due to the lung's anatomy.
+Finally the nanoparticles which were prepared by the
+double emulsion technique were mixed to obtain a 50:50
+and 75:25 ratios of nanoparticles fabricated with PLGA.
+In this way the capabilities of the mixture was explored
+for the simultaneous prolonged and high initial burst release of the drug.
+
+The X-Ray diffraction (XRD)
+
+Particles produced by nonaqueous emulsion technique
+have smaller size and wider size distribution. Nanoparticles obtained by double w/o/w technique have slightly
+bigger size and narrower distribution. Although the
+polymer ration has no effect on particle size and its distribution. a1AT-loaded PLGA (50:50 and 75:25) nanoparticles produced by double emulsion technique have
+similar size and particle distribution (Figure 2).
+
+Page 4 of 15
+
+Figure 1 Typical SEM image of AAT-loaded (a, b, c, d, f, g and h) and unloaded nanoparticles (e).
+
+showed peaks resulting from simple superposition of
+their separated components in the infrared spectra.
+Spectral analysis indicated that the specific functional
+
+known as a suitable procedure for encapsulating hydrophilic drugs with high efficiency . Particle size
+plays an important role in lung deposition, along with
+particle
+velocity and settling time. As particle size
+increases above 3 mm, there is a shift in aerosol deposition from the periphery to the conducting airways.
+Oropharyngeal deposition also increases as particle sizes
+increase above 6 mm. Exhaled loss is high with very
+small particles of 1 mm or less. These data support the
+view that particle sizes of 1-5 mm are best for reaching
+the lung periphery, while 5-10 mm particles deposit preferentially in the conducting airways.
+
+Like oral drug delivery, for pulmonary delivery the carrier must be biocompatible, small to pass through the
+intestinal barrier (M cell), have size dispersity, physical
+stability and higher encapsulation efficiency .
+
+a1AT involves being internalized by endothelial cells
+mostly by the process of clathrin-mediated endocytosis.
+
+Table 2 Fluorescence intensity of protein release at
+different time intervals from PLGA nanoparticles which
+reflect the protein concentration
+
+Technique
+Time
+
+Nonaqueous
+emulsion
+PLGA 50:50
+
+Double
+emulsion
+PLGA 50:50
+
+Double
+emulsion
+PLGA 75:25
+
+0
+0
+0
+0
+
+8
+7.69
+9.33
+6.65
+
+24
+8.38
+9.54
+7.81
+
+30
+8.64
+9.94
+8.69
+
+48
+9.61
+11.58
+10.54
+
+Aerosol devices in clinical use produce heterodisperse
+(also termed polydisperse) particle sizes, meaning that
+there is a mix of sizes in the aerosol. This is contrasted
+with monodisperse aerosols aerosols, which consist of a
+single particle size .
+
+72
+10.9
+11.99
+12.38
+
+96
+11.58
+12.74
+14.74
+
+120
+11.89
+12.95
+15.02
+
+240
+12.12
+13
+15.31
+
+Page 8 of 15
+
+Figure 5 FTIR spectra of pure AAT (a), PLGA 50:50 (b), PLGA 75:25 (c), nonaqueous emulsion made a1AT-loaded PLGA (d), double
+emulsion made a1AT-loaded PLGA (50:50) and (75:25)(e and f, respectively).
+
+lung anti-protease, a1AT. The necessity of the anti-protease presence in the lung for controlling the increase in
+activity of elastase during inflammation is important.
+
+In this study Alpha one-antitrypsin (a1AT) loaded particles were prepared by two different techniques (Figure 9):
+
+Nonaqueous emulsion technique
+Briefly, this technique is carried out by dissolving 25mg of
+PLGA (50:50 and 75:25) in 3ml of acetonitrile. The solution was stirred for 30 min. 5mg of a1AT was dissolved
+in double distilled water and was added drop-wise to
+the abovementioned solution. The mixture was poured
+drop- wise into 50ml of high viscosity paraffin containing 400 ml of %1 v/v Span80 and the resulting mixture
+was stirred 500rpm for 4 hours to at room temperature
+using a magnetic stirrer to ensure solvent evaporation
+and nanoparticle hardening. Nanoparticles were collected by centrifuge at 20000 rpm for 45 min, washed
+
+Page 11 of 15
+
+Figure 8 a schematic representation of nanoparticle passage and decomposition in lung.
+
+twice with n-hexane to remove mineral oil, lyophilized
+(LaboGene ScanVac CoolSafe freeze dryer) using 2.5%
+trehalose dihydrate as cryoprotectant and stored at
+-20deg C .
+
+water. Finally particles were freeze-dried using 2.5% trehalose dihydrate as cryoprotectant.
+
+a1AT -loaded nanoparticle characterization
+Scanning electron microscopy observation
+Scanning electron microscopy (SEM) was performed
+using TESCAN Vega LMU (USA) for morphology
+examination. One drop of concentrated 2 mg/ml aqueous suspension samples were deposited on aluminum
+stubs and dried in a desiccator at room temperature to
+obtain a uniform layer of nanoparticles. Samples were
+coated with a 15 nm of gold layer using EMITECH
+K450X sputter-coater (England). Coating was done at 20
+mA for 2 min.
+
+Double emulsion technique
+
+of citrate buffer (pH=8) containing 0.5 mg/ml BSA solution and 5% (2-hydroxypropyl)-b-cyclodextrin, which
+was previously reported to decrease loss of protein activity in interior water phase . The protein solution was
+emulsified with 3ml of 3:1 methylene chloride: aceton
+containing 25 mg of PLGA (50:50). Emulsification was
+carried out by ultrasonicator (Elmasonic S 60 (H), Elma,
+Elma Hans Schmidbauer GmbH & Co. KG, Germany) at
+amplitude of 5 for 20 seconds in an ice-cooled bath. The
+w/o primary emulsion was added to 10 ml of 2% (w/v)
+aqueous PVA in a drop-wise manner and then emulsified with high speed hemogenizer for 2 min at 10000
+rpm. The w/o/w double emulsion was added to 80ml
+double distilled water and was stirred in 500 rpm for 2
+hours to allow the solvent evaporation. The hardened
+nanoparticles were collected by centrifuge at 20000 rpm
+for 45 min and washed thrice with sterile deionized
+
+Determination of particle size distribution
+The laser dynamic light scattering (DLS) technique was
+used for the determination of particle mean diameter
+and distribution. Samples were prepared by suspending
+5mg of each sample in 5 ml of sterile deionized water
+and sonicated at amplitude of 40 and 0.5-sec pulse cycle
+for 5 min (Hielscher ultrasonics GmbH, Germany). Measurements were carried out using SEMATECH light
+
+Page 12 of 15
+
+Figure 9 Two different methods of nanoparticle preparation by a) double emulsion and b) nonaqueous emulsion technique.
+
+scattering (France) with a He-Ne laser (l = 633) at room
+temperature.
+
+and 25 mA. Film samples were scanned continuously
+over an angular range between 4deg and 90deg (2th) with a
+step size of 0.02deg. The scan step time was 1.2deg/min.
+
+X-Ray diffraction (XRD) measurement
+X-ray powder diffraction patterns were measured using
+a Siemens FK 60-04 diffractometer (France). Measurements were carried out with Fe-Ka radiation at 35 Kv
+
+Encapsulation efficiency
+Encapsulation efficiency was determined by hydrolyzing. 5
+mg of prepared nanoparticle was dissolved in 0.5 ml of
+
+Page 13 of 15
+
+sodium hydroxide 1 M and incubated at 37degC for 14h. The
+solution was neutralized by adding 0.5ml of hydrochloric
+acid 1M. The solution was centrifuged for 5 min at
+13000 rpm and the supernatant was analyzed for
+a1AT content. Protein concentration is determined by
+measuring
+intrinsic
+fluorescence
+using
+fluorescence
+spectrophotometer
+(Varian
+Cary
+Eclipse,
+Australia).
+The fluorescence intensity of the samples is measured
+from a standard curve (Additional file 1: Table S1). A
+series of dilutions ranging from 2.5 to 200 mg/ml of
+a1AT were made using phosphate buffer saline (PBS),
+pH 7.4 as diluent.
+Encapsulation efficiency was determined by subtracting
+the total amount of protein added during synthesis from
+the concentration of protein obtained through standard
+curve.
+
+were weighted and loaded onto a standard aluminum
+pans (2mm high & 4mm diameter). Samples were cooled
+to -80degC and heated from 25degC to 250degC with a heat flow
+rate of 10degC/min. Calibration was carried out by an
+aluminum pan as a reference.
+
+Cell culture
+Human lung epithelial-like cells, Cor L105 (cell collection of Pasteur Institute, Iran) were cultivated in RPMI
+1640 media supplemented with 10% heat-inactivated FBS
+and 2 mM L-glutamine , NaHCO3 and 100 units/mL
+penicillin, 100 mg/mL streptomycin at 37deg in O2 5%/CO2
+5% and 95% humidity. The medium was replenished and
+the cells were subcultured by trypsinization.
+
+Evaluation of Cytotoxicity
+To determine the cytotoxic effect of loaded nanoparticles
+on cell growth, 3-(4,5- dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide (MTT) cell viability assay, which
+assesses the mitochondrial activity in living cells, was carried out. Cor-L105 human lung epithelial-like cells were
+plated at a density of 4 x 104 cells/well on a 96-well plate
+for 24 hours in a humidified incubator at 37degC and %5
+CO2. Then, cells were treated with different nanoparticle
+concentration of 0 to 1.5 mg/ml for 24 hours. Selected
+concentrations correspond to protective threshold of a1AT
+which is 11mM or 0.8 mg/ml. Cells which were incubated
+only in culture medium were used as control. After 24
+hours, cells were washed with fresh PBS and inhibition
+in cell growth was assessed by adding 25ml of the MTT
+solution (5 mg/mL in PBS) to each well. Absorbance
+was measured at 540 nm with microplate reader.
+
+In vitro release profile
+For drug release studies 10mg of lyophilized A1AT
+loaded PLGA obtained from different techniques were
+suspended in 1ml of PBS pH 7.4 in a 2 ml eppendrof
+tube by sonication at amplitude of 40 and 0.5-sec pulse
+cycle for 2 min. Tubes were placed in shaker water bath
+(Memmert, Germany) with constant shaking of 100
+strokes per minute in 37degC. At different time intervals,
+samples were centrifuged (Sigma microfuge, Germany)
+at 13000 rpm for 20 min; aliquots of 500 ml were withdrawn and replaced with the same volume of fresh PBS.
+Particles were re-dispersing each time. The amount of
+released a1AT was determined by measuring intrinsic
+fluorescence mentioned above.
+
+Protein polymer interaction study
+The Fourier transformed infrared (FTIR) spectroscopy of
+a1AT, PLGA and a1AT-loaded PLGA particles were carried out with Bruker Tensor 27 (Bruker Optik, Germany)
+in order to evaluate the kind of possible chemical interaction occurring between protein and polymer. The absorption peaks in infrared spectrum show the frequencies of
+vibrations between bonds of atoms constituting the material. For sample preparation few drops of pure PLGA (50:50
+and 75:25) in acetonitrile and pure a1AT were placed onto
+KBr pellets and the absorbance was scanned over the range
+of 3600-600 cm1 at a resolution of 4 cm1 at room
+temperature. Lyophilized a1AT-loaded PLGA particles
+were ground into powder and mixed with IR grade KBr to
+produce pellet. The background was obtained against pure
+KBr pellet.
+
+Additional files
+
+Additional file 1: Table S1. Standard curve for determination of protein
+concentration
+
+Competing interests
+The authors declare that they have no competing interests.
+
+Authors' contributions
+Dr. SH was main supervisor of this research in Tarbiat Modares University
+and National Institute of Genetic Engineering and Biotechnology. Dr. NP
+wrote this manuscript and carried out most of the experiments. Professor
+ASL from Tarbiat Modares University and National Institute of Genetic
+Engineering and Biotechnology analyzed the data and advised on
+
+Sciences contributed gave us valuable guidance to improve this work
+especially in lung pathology. All authors read and approved the final
+manuscript. All authors read and approved the final manuscript.
+
+delivery of protein drugs. Biotechnology and Bioprocess Engineering
+Volume 6, Number 4, 213-230.
+37.
+McIvor RA, Tunks M, Todd DC. COPD. Clin Evid (Online). 2011 Jun 6;
+2011. pii: 1502.
+38.
+Anne des Rieux, Virginie Fievez, Marie Garinot, Yves-Jacques Schneider,
+Veronique Preat. Nanoparticles as potential oral delivery systems of
+proteins and vaccines: A mechanistic approach. Journal of Controlled
+Release 116  1-27.
+39.
+Kumar A, Glam M, El-Badri N, Mohapatra S, Haller E, Park S, Patrick L,
+Nattkemper L, Vo D, Cameron DF: Initial Observations of CellMediated Drug Delivery to the Deep Lung. Cell Transplantation 2011,
+20:609-618.
+40.
+Klapper M, Nenov S, Haschick R, Muller K, Mullen K: Oil-in-Oil Emulsions: A
+Unique Tool for the Formation of Polymer Nanoparticles. Acc. Chem. Res
+2008, 41:1190-1201.
+41.
+Roger E, Lagarce F, Garcion E, Benoit J-P: Biopharmaceutical parameters to
+consider in order to alter the fate of Nanocarriers after oral delivery.
+Nanomedicine. 2010, 5:287-306.
+
+Received: 22 November 2011 Accepted: 4 April 2012
+Published: 20 May 2012
+
+## Results
+which correspond to the semi crystalline state for the
+a1AT protein. Results indicate that a1AT in nanoparticles has an amorphous or disordered-crystalline state
+which can possibly be due to the protein distribution in
+polymer matrix. No peak was observed for PLGA with
+different ratio which indicates that PLGA is an amorphous copolymer (Figure 3).
+
+Loading efficiency
+The encapsulation yield was calculated by the following
+equation:
+
+Encapsulationefficiency %
+d
+Th 1/4
+
+Theprotein  loaded nanoparticleweight  proteinconcentrationafter hydrolysing
+Theinitailamount of proteinadded during synthesis
+ 100
+
+Protein concentration after hydrolyzing by fluorometric method and encapsulation yield was as shown in
+
+preparation of nanoparticles leads to a higher entrapment efficiency of a1AT. Results showed that difference
+in encapsulation efficiency was not significant for PLGA
+50:50 and 75:25, therefore the copolymer ratio does not
+affect the drug encapsulation efficiency.
+
+Image analysis
+The SME graphs revealed the particle size and surface
+morphology of protein-loaded PLGA nanoparticles with
+copolymer ratio of lactide: glycolide 50:50 and 75:25.
+The morphology of nanoparticles prepared by double
+and nonaqueous emulsion technique was spherical. Protein loaded-particles have smooth surface with few
+indents that can be because of a1AT incorporation.
+
+nm. Micrographs of freeze-dried nanoparticles without
+any stabilizer such as sorbitol showed that PLGA nanoparticles have the tendency to form aggregates; therefore
+in preparation process sorbitol 1% (w/v) was added in
+the final step before lyophilization. The initial and final
+particles mean size and distribution were identical before
+and after freeze-drying process (Figure 1).
+
+In vitro release
+The standard curve was generated using a series of dilutions ranging from 2.5 to 200 mg/ml of a1AT. The concentration of the released protein was determined using
+intrinsic fluorescence of aromatic amino acids. This
+technique is suitable for quantitating protein concentrations of less than 10mg/ml Fluorescence was measured
+using excitation/emission wavelengths of 280/332nm.
+The intensity of fluorescence correlates to the protein
+concentration (Figure 4 and Table 2).
+
+Protein polymer interaction study
+The FTIR spectra of a1AT, PLGA 50:50 and 75:25,
+a1AT- loaded PLGA (50:50 and 75:25) show that there
+were no changes in the position of absorption peaks.
+The pure AAT sample (Figure 5a) showed the main
+peaks contributed by the functional groups of molecule
+such as carbonyl -C = O stretching (1650 cm-1), -OH
+stretching (3300-3500 cm-1), -CH twisting (900-1000
+cm-1). The pure PLGA 50:50 (Figure 5b) and 75:25 samples (Figure 5c) showed peaks such as OH stretching
+(3200-3500 cm-1), -CH (2850-3000 cm-1), carbonyl
+-C = O stretching (1700-1850 cm-1) and C-O stretching
+(1050-1250 cm-1). AAT-loaded nanoparticles using nonaqueous emulsion (Figure 5d) and double emulsion
+technique with PLGA 50:50 and 75:25 (Figure 5e and f)
+
+Particle size and distribution
+The particle size distribution of prepared nanoparticle
+by nonaqueous and double emulsion techniques and different lactide: glycolide ratio is summarized in Figure 2.
+
+with different concentrations of free and loaded nanoparticles remains unchanged and cells retained more
+than 80% of their viability. Furthermore, the morphology
+of cells before and after treatment with nanoparticles
+was similar (Figure 7).
+
+Differential Scanning Calorimetry measurement
+The DSC curves for PLGA 50:50, PLGA 75:25 and a1ATloaded PLGA nanoparticles prepared using the nonaqueous and double emulsion method were detected and
+shown in Figure 6. a1AT exothermal peak were not
+present in a1AT-loaded nanoparticles which indicate that
+no crystalline a1AT was found in nanoparticles. The similar melting transition properties of loaded and unloaded
+
+strategy must be based on the type of particle (lipid or
+polymer), particle size, dispersity, stability, efficiency and
+efficient drug release at appropriate times. For the best
+
+Polydispersity may have an advantage by increasing
+the probability that at least one fraction of the aerosol
+will reach the desired region of the lung.
+
+As the imbalance of proteases and anti-proteases in
+the lungs is an important factor in the pathogenesis of
+COPD and other pulmonary diseases , hence,
+the main candidate for pulmonary delivery is the main
+
+Page 9 of 15
+
+Figure 6 DSC thermograms PLGA, and a1AT -loaded PLGA nanoparticles: (a) PLGA 50:50; (b) PLGA 75:25; (c) a1AT -loaded
+nanoparticles prepared by nonaqueous emulsion method; (d) a1AT -loaded nanoparticles prepared by double emulsion method.
+
+be released in sufficient amounts in different parts of the
+lungs in COPD patients. The released drug must perform its anti-protease activity locally and be absorbed efficiently by the lung epithelial membrane to raise
+appropriate concentrations of the anti-protease in the
+interstitial space (the main target place of protease) and
+blood for further support.
+
+citric acid and glycolic acid is excreted with urine or oxidized to glyoxylic acid .
+
+The results of this study showed that the release profiles for PLGA at the 50:50 and 75:25 ratios were different. By using PLGA at the 50:50 ratios, fast degradability
+kinetics was obtained. The initial burst was higher with
+PLGA 50:50 but the slow release period was more
+extended when using PLGA at the 75:25 ratios. The induction period and final release period are quite similar
+in both polymers. In the other words, using these two
+ratios of polymeric monomers together sufficient release
+of anti-protease for efficient function will be obtained
+.
+
+In this project, the evaluation of a1AT release and particle properties for the purpose of a1AT aerosolization
+was carried out. We used PLGA because drug release
+can be controlled by its molecular weight and the ratio
+of lactide to glycolide used for the polymerization. PLGA
+has been approved as a safe polymer because it undergoes hydrolysis to form lactic and glycolic acids. Lactic
+acid is degraded to carbon dioxide and water through
+
+Meanwhile, the amount of drug to PLGA of 5/25 mg
+was selected to obtain the desirable loading efficiency,
+mean particle size and distribution and drug release
+
+Figure 7 Cor L105 lung epithelial-like cells before and after treatment with nanoparticles.
+
+Page 10 of 15
+
+## Discussion
+a1AT inhibits a broad range of proteases and protects the
+lung from neutrophil elastase during inflammation or infection . This inhibitor is an acute phase protein the
+
+Page 5 of 15
+
+Figure 2 mean particle size of nanoparticle prepared with nonaqueous (a), double emulsion technique using PLGA 50:50 (b) and 75:25 (c).
+
+plasma concentration of which increases manyfold upon
+inflammation . The absence or inefficient function of
+a1AT in the lungs leads to uncontrolled function of elastase and elastin breakdown, resulting in respiratory problems such as COPD and emphysema . Association
+between a1AT and a number of diseases including asthma,
+rheumatoid arthritis, anterior uveitis and systemic lupus
+erythematosus suggests that a1AT is not only an anti-inflammatory protein but also an immune system regulator
+. a1AT regulates lymphocyte proliferation and cytotoxicity, mediates monocyte and neutrophil functions. Besides,
+researchers
+have
+shown
+that
+the
+proteaseantiprotease imbalance is an important factor in the
+
+pathogenesis of COPD and other pulmonary diseases,
+such as bronchitis. COPD is one of the most important
+causes of irreversible lung damage and thus the fourth
+most common cause of death in the U.S. In this process,
+exogenous proteolytic enzymes lead to lung damage. Besides different physiological roles of a1AT including the
+control of insulin secretion, antiprotease activity, protecting b-cells against cytokine-induced apoptosis, acting as an anti-inflammation compound , it is
+also regarded as an antiapoptotic factor in lung epithelial cells . A recent study has shown that a1AT can
+slow down the loss of insulin producing cells in diabetic
+patients who are at the early stages of disease. This
+
+Page 6 of 15
+
+Figure 3 XRD spectra of PLGA 50:50 (a), PLGA 75:25 (b), AAT- loaded PLGA nanoparticle prepared using nonaqueous emulsion
+technique (c), AAT- loaded nanoparticle prepared using double emulsion technique containing PLGA 50:50 (d) and AAT- loaded
+nanoparticle prepared using double emulsion technique containing PLGA 75:25 (e).
+
+Besides the different forms of a1AT which are all
+plasma-derived products and have disadvantages, such as
+viral contaminations and high costs, the recombinant
+forms of a1AT derived from eukaryotic hosts such as
+yeast, are currently under study as a therapy for a1AT deficiency , however, these are not yet commercially
+available. Furthermore, in addition to the development
+and optimization of recombinant forms of a1AT, efforts
+on packaging a1AT in micro- and nanoparticles for pulmonary delivery are also under investigations. The lung
+tissue has been mainly used as a delivery route for many
+drugs because of its unique anatomical and physiological
+properties. With the development of new inhaler devices,
+the role of the lung tissue in drug delivery becomes more
+important and dominant. In addition to chemical drugs,
+especially for the treatment of pulmonary diseases, delivery of macromolecules such as different antibodies and
+hormones are also part of the research of many pharmaceutical companies .
+
+study which is in phase II of clinical trials demonstrates
+the effect of a1AT in preservation of b-cells' function
+. Therefore, only with appropriate and adequate
+concentrations of a1AT the lungs' correct function can
+be maintained. One of the treatment strategies for
+optimum activity of a1AT during inflammation is replacement therapy using intravenous infusion (Prolastin, Zemaira, Aralast and Glassia) . In the infusion
+form, only 10%-15% of a1AT reaches the target organ.
+Another possible treatment strategy is through airway
+delivery. In this form of treatment not only the
+aerosolized a1AT directly reaches the target organ, but
+also prevents the accumulation of excess drug in the
+blood, therefore, a much lower level of drug is required
+. Also immune reactions arising from the retention of drug in the peripheral circulation are avoided.
+
+Table 1 Encapsulation efficiencies applying different
+PLGAs and preparation techniques
+
+Various antibodies, and insulin, which are now objectives at different phases of clinical trials, are examples of
+such medicines.
+
+Applied
+technique
+
+Copolymer
+ration of
+PLGA
+
+Protein
+concentration
+(mg/ml)
+
+Encapsulation
+yield
+
+The pulmonary drug delivery strategies for protein
+and peptide-based medicines are based on using particles with a lipid origin (liposomes) and that are polymeric (PLGA, Chitosan) .
+
+Double emulsion
+technique
+
+75:25
+0.39
+% 92.2 +- 5.5
+
+Double emulsion
+technique
+
+50:50
+0.27
+% 94.6 +- 5.5
+
+Besides the type of particle, physicochemical properties
+such as surface charge, size and stability are important
+factors in the selection of particles for lung drug delivery
+
+Nonaqueous emulsion
+technique
+
+50:50
+0.6
+% 88 +- 5.5
+
+Page 7 of 15
+
+Figure 4 In vitro release profile of a1AT from PLGA nanoparticles with different ratio synthesized by nonaqueous and double
+emulsion technique.
+
+. Among particles, PLGA is approved by the FDA
+for controlled and sustained drug delivery because it is a
+biocompatible, bioavailable and stable polymer that is
+not toxic to cells . Various peptides and chemical drugs are delivered with PLGA, such as rifampicin,
+isoniazid, pyrazinamide, nuclear factor kB decoy oligodeoxynucleotide .
+
+In the case of particle uptake, clathrin-coated pits expand and enclose particles of around 200 nm . In
+addition, particles with an aerodynamic diameter of less
+than 0.1mm are able to reach the deepest regions of the
+lung, the alveoli .
+
+The emulsification solvent evaporation technique is
+another common process for the synthesis of PLGA
+nanoparticles because of its simplicity and high encapsulation efficiency. The single emulsion method is only
+suitable for hydrophobic drugs and is not efficient for
+protein or peptide drugs. The oil-in-oil (o/o) emulsification technique which is known as a nonaqueous emulsion
+
+## Conclusion
+In summary, a protein loaded-PLGA nanoparticles was
+synthesized. In synthesis procedure (2-hydroxypropyl)-bcyclodextrin and threhalose were employed which decrease loss of protein activity and act as cryoprotactant,
+respectively. Nanoparticles have a wide range of particle
+size which can be deposit in different parts of the respiratory system especially in the deep lung. Various lactide to glycolide ratio of the copolymer shows different
+release profile of the drug which can significantly covers
+extended and rapid drug release in one formulation.
+Nanosized particles enable the drug to reach deep into
+the lungs for maximum benefit. This mix formulation
+shows a great potential for protein drug delivery in pulmonary diseases especially in obstructive lung disease
+for rapid, direct and extended delivery of drug allowing
+high local drug concentrations.
+
+profile. The suitable particle size varies based on the target organ. For example for oral recombinant drug delivery which needs particle and loaded protein-based drug
+absorption through the intestine, particles' diameter
+must not exceed 10 m because larger particles cannot be
+absorbed by the M-cell containing Peyer's patch in the
+intestine via endocytosis. In the lungs, different endocytosis and phagocytosis mechanisms also exist based on
+the cells' distribution. Particle sizes ranging from 0.5 to
+2 m are phagocytized by lung macrophages. Furthermore,
+ultrafine particles may be endocytized by lung endothelial cells, which then enter blood circulation. The local
+neutrophil elastase inhibitory effect of a1AT is mainly in
+the interstitial and alveolar spaces, with the entrance to
+blood circulation being less important. Therefore, particle sizing for aerosol purposes is very important in the
+distribution, delivery and release of the carried drug.
+a1AT delivery requires accessibility of drug to the lower
+and middle respiratory tracts which need the endocytosis process. Therefore the particles' dispersity with a size
+range of 100 to 1000 nm is very suitable for drug delivery. As a result, the preparation method of nanoparticles
+must account for the size polydispersity (Figure 8).
+The results obtained in this study showed a mean particle size of 300 nm, and as mentioned previously, in this
+heterogenic mixture of particles, most particles had a
+diameter less than 500 nm which is an appropriate size
+for endocytosis by the lung endothelial cells. The endocytosis process causes the entrance and release of a1AT
+into the interstitial spaces where neutrophil elastase secretion affects elastin, therefore, leading to a targeted
+treatment. On the other hand, particles with more than
+500 nm in diameter reside in the alveolar region and the
+released drug inhibits the elastase secreted by neutrophils in this region.
+In addition to the location of release, the amount of
+drug to be released must be in proportion to the severity
+of inflammations at a specific period of time. The
+threshold concentration of AAT in circulation is 11 mM,
+therefore, we can assume this level as a protective concentration for the lungs against protease invasions during inflammation. For this purpose, the amount of drug
+release for obtaining the threshold concentration at a
+specific period of time must be in a range that does not
+impair the function of functional lung cells, such as the
+alveolar epithelial and endothelial cells. One of the possible problems is the amount of particles carrying this
+concentration of drug. For the investigation of this matter, we assume that if the drug release efficiency was
+only %10, therefore to investigate the toxic effect, the
+tenfold higher amount of loaded PLGA was applied to
+ensure the concentration of 11 mM. Cor L105 cells were
+treated with different concentrations of loaded nanoparticles and results show no toxicity toward the cells.

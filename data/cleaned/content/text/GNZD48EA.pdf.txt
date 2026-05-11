@@ -1,0 +1,822 @@
+Continuous Supercritical Emulsions Extraction: Packed Tower
+Characterization and Application to Poly(lactic-co-glycolic Acid) +
+Insulin Microspheres Production
+Nunzia Falco, Ernesto Reverchon,* and Giovanna Della Porta
+Department of Industrial Engineering, University of Salerno, Via Ponte don Melillo, 1-84084, Fisciano (SA), Italy
+ABSTRACT: The continuous supercritical emulsions extraction (SEE-C) process uses a countercurrent packed tower for the
+continuous extraction of the organic solvents from emulsions. The continuous operation allows the formation of microspheres
+that are recovered at the bottom of the tower in the form of a water suspension, avoiding coalescence problems and batch-to-
+batch repeatability, typical of traditional processes. In this work, the packed tower used for SEE-C was characterized from a
+ﬂuidodynamic point of view: ﬂooding conditions and the allowable density diﬀerence were calculated from the experimental data.
+Then, an active principle (insulin) was tested for its encapsulation in poly(lactic-co-glycolic acid) (PLGA) microspheres, starting
+from a double emulsion: particle size, morphology, and encapsulation eﬃciency of the produced microdevices were evaluated.
+Spherical, not collapsed microspheres with a mean diameter between 1.8 μm (SD ± 0.9) and 4.8 μm (SD ± 2.8) and
+encapsulation eﬃciencies up to 70% were obtained. The very fast solvent extraction rate did not inﬂuence the particle
+morphology but had a signiﬁcant eﬀect on the size distribution of the precipitates which were always smaller than the starting
+droplets. A solvent residue (ethyl acetate) lower than about 600 ppm was obtained in all the experiments performed.
+1. INTRODUCTION
+Eﬃcient delivery of pharmaceutical compounds to target cells
+or organs is receiving considerable attention in medicine. In the
+last years, biodegradable microspheres have been extensively
+investigated as controlled release dosage forms. Most traditional
+devices are realized suspending the bioactive agents in a
+polymeric monolith and surgically implanting them into the
+body or encapsulating the bioactive agents in polymeric
+microspheres and injecting them subcutaneously.1 In the case
+of proteins, their intrinsic physicochemical properties severely
+hinders the development of new protein-based therapeutics.2
+One major reason is the inherent instability of proteins, when
+they are exposed to the usual conditions during microparticle
+fabrication, using conventional emulsion/solvent removal
+techniques.
+The most common method for the encapsulation of proteins
+into biodegradable microspheres is the formation of a water-in-
+oil-in-water (w-o-w) double emulsion followed by the
+evaporation of the solvent contained in the oil phase. This is
+a simple technique which shows several drawbacks; indeed (1)
+it is diﬃcult to control size and distribution of the
+microspheres, due to the long processing times required;3,4
+(2) proteins, due to their hydrophilic nature, tend to diﬀuse
+into the continuous external aqueous phase during the
+evaporation step, leading to protein loss and, therefore, to
+lower drug encapsulation eﬃciency;5 (3) the process is
+intrinsically discontinuous and problems of batch-to-batch
+reproducibility are common as well as scale-up diﬃculties to
+industrial dimensions. A high batch reproducibility is
+particularly relevant for biomedical and pharmaceutical
+applications because the approval of a manufacturing process
+by the Food and Drug Administration (FDA) requires the
+demonstration that all batches give a product with identical
+characteristics; (4) the three-dimensional structure of proteins,
+which is crucial for their biological activity, can be damaged by
+heat and mechanical stresses, also determining aggregation and
+formation of insoluble precipitates.6,7
+To overcome the solvent evaporation/extraction limitations,
+supercritical extraction of emulsions technology (SEE) was
+recently proposed in the literature. Some authors reported the
+use of supercritical carbon dioxide (SC-CO2) to eliminate the
+organic solvent from oil-in-water emulsions for the preparation
+of drug microparticles of megesterol acetate or cholesterol and
+for the formation of lipid microspheres charged with
+ketoprofen and indometacin.8,9 Other authors produced poly
+lactic-co-glycolic acid (PLGA) microspheres with mean sizes
+ranging between 1 and 3 μm, loaded with diﬀerent anti-
+inﬂammatory drugs.10,11 These studies conﬁrmed that, due to
+the enhanced mass transfer of supercritical ﬂuids, the extraction
+of the oily phase of an emulsion can be very fast (minutes
+instead of hours) and, therefore, only slight modiﬁcations of the
+droplets distribution are produced during solvent elimination.
+The major limitation of the SEE is that the process remains
+intrinsically discontinuous, sharing this inconvenience with
+traditional solvent evaporation/extraction techniques. Indeed, a
+batch of emulsion can be treated for each run by SEE, with
+problems of repeatability of the batches and reduction of the
+process yield due to the material lost.10 For these reasons, a
+new SEE conﬁguration has been proposed (SEE-C) using a
+countercurrent packed tower,12,13 which takes advantage of the
+similarities of this process with the classical absorption/
+stripping procedure, in which mass transfer between the liquid
+and the gaseous phase is obtained. The major diﬀerence with
+Received:
+February 23, 2012
+Revised:
+May 23, 2012
+Accepted:
+June 1, 2012
+Published: June 1, 2012
+Article
+pubs.acs.org/IECR
+© 2012 American Chemical Society
+8616
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+Downloaded via UNIV OF MARYLAND COLG PARK on October 22, 2025 at 16:54:59 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+the traditional “stripping” process is the progressive formation
+of a solid phase into the tower; but, previous studies
+demonstrated that until particles smaller than about 50 μm
+are produced, the solid does not accumulate in the tower and
+can be freely discharged at the bottom.12
+The objective of this work is ﬁrst to characterize the packed
+tower used for SEE-C from a ﬂuid dynamic point of view.
+Indeed, the hydrodynamic behavior strongly depends on
+parameters, such as, the density diﬀerence of the two phases,
+the kind of internal packing, and the relative amount of the
+phases ﬂowing in the tower. Then, using the optimized
+conditions, the process is applied to the production of
+controlled-size protein-loaded biopolymer microspheres. Poly-
+(D,L-lactic-co-glycolic acid) 50:50 copolymer (PLGA 50:50)
+has been chosen as the biopolymer, due to its safety in
+biomedical preparations and its approval for human use.14
+Insulin has been chosen as the model protein to be
+encapsulated within PLGA microspheres for its wide use in
+the treatment of diabetes mellitus.15−19 Characterization of the
+produced microspheres in terms of morphology, size
+distribution, and encapsulation eﬃciencies is also proposed.
+2. EXPERIMENTAL METHODS
+2.1. Materials and Emulsion Preparation. CO2 (99.9%
+SON; Naples, Italy), polyvinyl alcohol (PVA; mol wt, 30 000−
+55 000; Sigma-Aldrich Co.; Milan, Italy), ethyl acetate (EA;
+purity 99.9%; Carlo Erba Reagents; Milan, Italy), glycerol
+(GLY; purity 99%; Sigma-Aldrich Co.; Milan, Italy), poly-
+(lactic/glycolic) acid (PLGA 50:50; RESOMER RG 504H; mol
+wt, 38 000−54 000; Boehringer Ingelheim; Germany), insulin
+from bovine pancreas (INS; purity 99.9%; Sigma-Aldrich Co.;
+Milan, Italy), triﬂuoroacetic acid (TFA; Carlo Erba Reagents;
+Milan, Italy), and HPLC grade acetonitrile (Carlo Erba
+Reagents; Milan, Italy) were used as received.
+2.2. Double Emulsion Preparation. Water-in-oil-in-water
+(w1-o-w2) emulsion (1:19:80 w/w) was prepared to encapsu-
+late insulin in PLGA because this protein is sparingly soluble in
+water and insoluble in organic solvents. Therefore, to entrap
+insulin by the w1-o-w2 emulsion method, it is mandatory to set
+the aqueous pH below the insulin isoelectric point (pI = 5.5),
+where the basic amino groups become protonated.20
+A known amount of insulin was dissolved into 1 mL of an
+aqueous/TFA GLY solution (250 μL of GLY and 750 μL of
+water with 0.1% TFA) containing a PVA concentration of
+0.04% w/w and used as the inner water phase (w1); a known
+amount of PLGA was dissolved into EA to form an organic
+solution (o), which was used as the oil phase. The water phase
+was mixed with the oily phase to form a primary w1-o emulsion
+upon 90 s of sonication using a digital ultrasonic probe at 50%
+of the amplitude (model S-450D, Branson Ultrasonics
+Corporation, Danbury, CT). Then, the ﬁrst emulsion was
+Figure 1. Continuous tower diagram: C, CO2 supply; E, emulsion supply; PG1 and PG2, pressure gauges; SC_P, diaphragm pump used for high
+pressure SC-CO2; L_P, piston pump used for the emulsion; TC1−TC8, thermocouples/controllers; S, separator; R, rotameter; E1 and E2, heat
+exchangers; V1−V8, valves.
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8617
+
+added to a known amount of EA-saturated aqueous PVA
+solution (0.6% w/w in water), which was used as the outer
+water phase (w2) and homogenized to form the secondary
+emulsion using a high-speed homogenizer (model L4RT,
+Silverson Machines Ltd., Waterside, Chesham Bucks, United
+Kingdom) for 3 min at 10 °C operating temperature, controlled
+using an ice bath. The experiments were performed varying the
+stirring rate of the homogenizer from 1000 to 2800 rpm and
+keeping all the other emulsion formulation parameters
+unchanged.
+2.3. Continuous Supercritical Emulsion Extraction
+(SEE-C) Apparatus Description. A schematic representation
+of the SEE-C process layout is reported in Figure 1. The
+apparatus consists of a packed column with an internal
+diameter of 13 mm, in which carbon dioxide (C) is fed from
+the bottom of the column using a high-pressure diaphragm
+pump (SC_P, mod. Milroyal B, Milton Roy, Pont Saint-Pierre,
+France), and the emulsion (E) is delivered from the top of the
+column using a high-pressure piston pump (L_P, mod. 305,
+Gilson, Villiers-le-Bel, France). The column is formed by three
+AISI 316 stainless steel cylindrical sections of 30 cm height
+connected by four cross-unions and is packed with stainless
+steel packings 4 mm nominal size with 1889 m−1 speciﬁc
+surface and 0.94 of voidage (0.16 in. Pro-Pak, Scientiﬁc
+Development Company, State College, PA). The apparatus is
+thermally insulated by ceramic cloths and its temperature is
+controlled by six controllers (TC1-TC6, Gordon J/Series 93,
+Watlow, Milan, Italy) at diﬀerent heights of the column. The
+extracted solvent is recovered in a separator (S) put
+downstream the top of the column in which the pressure is
+regulated by a backpressure valve (V5, 26-1700 series, Tescom,
+Selmsdorf, Germany). A rotameter (R, model N5-2500, ASA,
+Sesto San Giovanni, Italy) put at the exit of the separator
+measures the CO2 ﬂow rate delivered. The microspheres
+suspension is continuously collected from the bottom of the
+column. The start-up of the extraction process begins delivering
+SC-CO2 from the bottom of the column until the operating
+pressure is reached. Then, the emulsion delivery is started at
+the top of the column and the two ﬂow rates are set at ﬁxed
+values.
+2.4. Droplets and Microspheres Morphology and Size.
+The droplets formed in the emulsions were observed using an
+optical microscope (model BX 50 Olympus, Tokyo, Japan)
+equipped with a phase contrast condenser. A ﬁeld emission-
+scanning electron microscope (FE-SEM model LEO 1525, Carl
+Zeiss SMT AG, Oberkochen, Germany) was used to study the
+morphology of the produced microspheres. A sample of
+powder was dispersed on a carbon tab previously stuck to an
+aluminum stub. Samples were coated with gold (layer thickness
+250 Å) using a sputter coater (model 108 A, Agar Scientiﬁc,
+Stansted, U.K.).
+Droplet size distributions (DSDs) and particle size
+distributions (PSDs) were measured by dynamic light
+scattering (DLS, model Mastersizer S, Malvern Instruments
+Ltd., Worcherstershire, U.K.). The Mastersizer S software uses
+Mie theory to produce an optimal analysis of the light energy
+distribution and to obtain the size distribution of the particles.
+Analyses were performed immediately after the preparation of
+the emulsion and of the microsphere suspension, using several
+milligrams of sample. The distributions proposed in this paper
+are the mean of several DLS analysis.
+2.5. Solvent Residue Analysis. Ethyl acetate content in
+the ﬁnal suspensions was analyzed to determine the eﬃciency
+of solvent removal from the emulsion during SC-CO2
+extraction. The solvent residue was measured using a head
+space sampler (model 50 Scan, Hewlett & Packard, Palo Alto,
+CA) coupled to a gas chromatograph interfaced with a ﬂame
+ionization detector (GC-FID, model 6890 Agilent series,
+Agilent Technologies Inc., Wilmington, DE). Ethyl acetate
+was separated using a fused-silica capillary column 30 m length,
+0.25 mm internal diameter, 0.25 μm ﬁlm thickness (model DB-
+1, J&W, Folsom, CA). GC conditions were oven temperature at
+40 °C for 8 min. The injector was maintained at 180 °C (split
+mode, ratio 1:1), and helium was used as the carrier gas (7 mL/
+min). Head space conditions were equilibration time 60 min at
+100 °C, pressurization time 2 min, loop ﬁll time 1 min. Head
+space samples were prepared in 10 mL vials ﬁlled with 3 mL of
+suspension. Analyses were performed on each sample in three
+replicates. Calculation of the concentration of ethyl acetate in
+microsphere samples was based on the standard calibration
+curve obtained using diﬀerent EA/water solutions at known
+concentrations (8, 80, 800 ppm).
+2.6. Protein Loading Determination. The amount of
+protein loaded into the microspheres was measured by
+accurately weighing 10 mg of dried microspheres, dissolved
+in 600 μL of acetonitrile in centrifuge tubes and sonicated until
+complete transparency. Then, 1400 μL of water containing
+0.1% TFA (0.1% aqueous TFA solution) were added to the
+sonicated mixture to dissolve insulin completely. The remaining
+undissolved PLGA was separated by centrifugation at 2000 rpm
+for 2 min. The clear supernatant was then withdrawn, and the
+protein concentration in the resulting clear solution was directly
+analyzed at room temperature by HPLC (model 1200 series;
+Agilent Technologies Inc.) equipped with a LiCrosphere C18
+column (250 mm × 4.6 mm), packed with 5 μm particles of
+100 Å pore size. The mobile phase was composed of an
+acetonitrile/water mixture (32:68 v/v) containing 0.1% v/v
+TFA. The ﬂow rate was 0.9 mL/min, the injected volume was
+20 μL, and the detecting wavelength was 214 nm. The amount
+of measured insulin, calculated from a calibration curve, was
+then converted in the eﬀective insulin loaded into micro-
+spheres.
+The encapsulation eﬃciency (EE) is the ratio of the total
+amount of insulin eﬀectively loaded to the nominal (starting)
+one.
+=
+×
+EE%
+effective insulin loading
+theoretical insulin loading
+100
+Pure Insulin was also tested to verify its stability in water with
+0.1% TFA and no drug degradation was observed. Each sample
+was assayed in quadruplicate.
+2.7. Correlations for Flooding Point Calculation.
+Flooding point can be calculated using standard procedures
+based on the use of graphs reported in the literature. The ﬁrst is
+the “Generalized Pressure Drop Correlation” (GPDC),21 that
+describes the balance between the up-ﬂowing gas momentum
+force and the gravitational forces acting on the liquid droplets;
+it is a function of the physical properties of the gas and of the
+liquid stream; therefore, mass ﬂow rates, gas and liquid
+densities, viscosity of the liquid, as well as a packing factor
+must be known. The other two correlations tested are the
+“Brunner correlation”, that is the GPDC correlation modiﬁed
+by Brunner for towers operating with supercritical CO2,22 and
+the “Random packing correlation”(RPC).23 The correlation
+proposed by Brunner allows one to calculate ﬂooding points for
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8618
+
+packed columns with structured packings. Particularly, the gas
+capacity factor on the ordinate is a measure of the gas velocity
+necessary to suspend a liquid droplet, and the ﬂow parameter
+on the abscissa rates the kinetic energy of the liquid phase to
+the kinetic energy of the gaseous phase. The “Random packing
+correlation” depends on liquid and gas ﬂow rates, surface area
+of packing per unit lower volume, fractional void volume of dry
+packing, liquid viscosity, local acceleration due to gravity, liquid
+and gas densities. This last correlation shows three separate
+curves: the intermediate curve can be used for random
+packings, the upper curve is used for stacked packings, and
+the lower curve is useful for indicating an approximate lower
+limit when random packings are loaded.
+3. RESULTS AND DISCUSSION
+3.1. Selection of the Operative Conditions and
+Flooding Calculations. In the classical interpretation of a
+liquid extraction process, mass transfer is concentrated at the
+interface between the two ﬁlms formed by the liquid and gas
+phase.24 This schematization can be also applied to the SEE-C
+process; therefore, mass transfer between the liquid and the
+dense gas can take place at the interface between the ﬁlm of
+liquid moving downward on the surface of the packing and the
+ﬁlm of SC-CO2 moving upward in the column. Because of the
+interactions between the two countercurrent ﬂow rates, mass
+transfer between the two phases is activated; but, variations in
+the top and bottom product compositions are observed until
+steady state conditions have been obtained.
+The use of packed towers is commonly not recommended in
+processes involving the presence of a solid phase; indeed, it is
+expected that the solid precipitates from the liquid phase and
+deposits on the packing surface, producing a progressive
+reduction of the mass transfer and, subsequently, the blockage
+of the process. SEE-C preliminary experiments demonstrated,
+instead, that at least for particles up to about 50 μm diameter,
+the solid does not deposit on the packings, since the
+microspheres remain suspended in the falling ﬁlm of liquid
+(i.e., the emulsion external phase) inside the column; the
+presence of the surfactant on the particles and on the packing
+also allows the particles to slip on the solid surfaces.12
+In a countercurrent packed column, eﬃcient mass transfer
+conditions are reached when the liquid ﬂowing down over the
+packing begins to be held in the void spaces between the
+packing; this is called the loading condition and the pressure
+drop in the column begins to increase. Further increases in gas
+or liquid velocity will produce further increases of the pressure
+drop, until the liquid completely ﬁlls the void spaces in the
+packing, hindering the gas ﬂow; therefore, the liquid cannot
+ﬂow down through the column and it is forced to ﬂow up,
+together with the gas stream. This condition is referred to as
+ﬂooding and the column is no more operative. Given a packed
+column, for a ﬁxed gas rate, there is a deﬁnite liquid rate above
+which the column will ﬂood; similarly, at any given liquid rate,
+there is a deﬁnite gas rate above which the column gives
+ﬂooding. Moreover, the ﬂooding point depends on the density
+diﬀerence between the two phases involved. When emulsions
+are used in the column, it may be also possible to have ﬂooding
+Figure 2. Eﬀect of the gas density upon ﬂooding for diﬀerent L/G
+ratios (dashed line: boundary line between proper process conditions
+and ﬂooding).
+Figure 3. Flooding velocities as a function of the liquid/gas ratio (L/
+G) for diﬀerent CO2 densities: (■) P = 100 bar, T = 57 °C, ρ = 0.31
+g/cm3 and (●) P = 100 bar, T = 44 °C, ρ = 0.52 g/cm3).
+Table 1. Evaluation of the Gf Conditions Varying the L/G
+Ratio between 0.1 and 0.4 at Fixed T = 38 °C and P = 80 bar
+(ρ = 0.31 g/cm3) Using the Correlations Previously
+Discussed
+Gf [kg/h]
+L/G
+GPDC
+Brunner
+RPC
+this work
+0.1
+10.25
+11.26
+7.50
+2.82
+0.2
+8.68
+9.38
+6.64
+1.40
+0.4
+7.09
+7.51
+5.21
+1.00
+Table 2. Evaluation of the Flooding Conditions Varying the
+Density at Fixed L/G = 0.1, Using the Correlations
+Previously Discussed
+Gf [kg/h]
+ρ (g/cm3)
+GPDC
+Brunner
+RPC
+this work
+0.31
+10.25
+11.26
+7.50
+2.82
+0.52
+10.24
+11.23
+9.26
+2.61
+Table 3. Liquid and SC−CO2 Flow Rates Used at Diﬀerent
+Values of L/G
+L/G
+SC−CO2 ﬂow rate [kg/h]
+liquid ﬂow rate [kg/h]
+0.4
+1.4
+0.56
+0.2
+1.4
+0.28
+0.1
+1.4
+0.14
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8619
+
+caused by the presence of the surfactant that can produce a
+foam that reduces the free area for gas ﬂow. The ﬂooding
+experiments at diﬀerent CO2 densities were performed on the
+apparatus previously described, using water as the liquid phase
+and supercritical carbon dioxide as the dense gas phase. For
+each experiment, the gas ﬂow rate and CO2 density (i.e.,
+pressure and temperature conditions) were ﬁxed; whereas, the
+liquid velocity was increased by small steps to measure the
+increase of the pressure drop, until the ﬂooding point was
+reached. We ﬁrst measured the limit in density diﬀerence
+between the liquid and gas phase that allows countercurrent
+operation; the results are reported in Figure 2 at ﬁxed L/G
+ratios. For CO2 densities lower than ∼0.6 g/cm3 (below the
+dashed line), the gas to liquid (water) density diﬀerence allows
+the proper interaction of the two phases; for CO2 densities
+larger than ∼0.6 g/cm3 (above the dashed line), entrainment of
+the liquid phase increases rapidly until ﬂooding occurs; small
+changes in the ﬂow rates near the limit conditions lead to an
+unstable process. A similar value of the density diﬀerence was
+also found by Brunner and co-workers that, operating a
+continuous supercritical fractionation process of ﬁsh oil ethyl
+esters, found that the operating point at 0.603 g/cm3 was close
+to the ﬂooding point.25 Flooding velocities as a function of the
+liquid/gas ratio for diﬀerent densities are reported in Figure 3:
+at a constant L/G ratio, the ﬂooding velocity decreases with the
+increase of CO2 density.
+For comparison purposes, CO2 ﬂow rates at ﬂooding
+conditions were also calculated using the various correlations
+discussed in the previous section; the obtained values are listed
+in Tables 1 and 2 at diﬀerent L/G ratios and at diﬀerent
+densities, respectively. In Table 1, ﬂooding values experimen-
+tally measured are also reported. Looking at the results
+reported in this table, the SC-CO2 ﬂooding ﬂow rate (Gf)
+decreases with the increase of L/G for all literature correlations
+and the same trend has been found for the experimental values
+produced in this work. However, the Gf values calculated from
+the literature are from about 2.5 to 4 times larger than our
+experimental data; moreover, their variation with L/G is also
+less pronounced. Possible explanations for these diﬀerences are
+that literature correlations have been produced for processes
+using gases at ordinary pressure conditions, i.e., near
+atmospheric pressure, where gas densities are very small
+compared to those of supercritical CO2. The only exception
+is Brunner’s correlation that has been developed for SC-CO2;
+however, in that case, structured packings have been used that
+allow a larger void section through the column, which
+correspond to larger spaces for gas to ﬂow up, with reduced
+interactions with the liquid. We have used, instead, very small
+random packings. Table 2 shows also that, looking at the
+Figure 4. Optical images of the droplets and FE-SEM images of the microspheres produced from w1-o-w2 emulsions prepared at diﬀerent stirring
+rates and treated by SEE-C.
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8620
+
+literature correlations and at our experimental data, for CO2
+densities largely smaller than 0.6 g/cm3 there is no inﬂuence of
+the gas density on ﬂooding conditions. An exception is given by
+RPC correlation that indicates a larger Gf at larger pressures,
+that is the contrary of what one can expect for a dense gas.
+Using the results discussed until now, eﬃcient separations in
+the column used in this work can be obtained with a ﬂow rate
+Figure 5. Size distribution curves of the droplets and of the relative microspheres obtained from w1-o-w2 emulsions prepared at diﬀerent stirring
+rates and treated by SEE-C.
+Figure 6. PSDs of insulin-loaded PLGA microspheres produced from
+SC-CO2 extraction of w1-o-w2 emulsions, varying the stirring rate from
+1000 to 2800 rpm.
+Table 4. Dynamic Laser Scattering Size Distribution Data of
+Droplets (DSD) and of Microspheres (PSD) Produced
+Using SEE-C of w1-o-w2 Emulsions Prepared at Diﬀerent
+Stirring Rates
+experiment number, n
+1R
+2R
+3R
+PLGA % w/w
+10
+10
+10
+INS % w/w
+0.5
+0.5
+0.5
+emulsion stirring rate
+2800 rpm
+1400 rpm
+1000 rpm
+distribution data
+DSD
+PSD
+DSD
+PSD
+DSD
+PSD
+MD (μm)
+3.2
+1.8
+5.6
+3.2
+16.9
+4.8
+SD (μm)
+±1.2
+±0.9
+±2.3
+±2.2
+±7.7
+±2.8
+D10 (μm)
+1.6
+0.9
+1.5
+1.1
+4.4
+0.9
+D50 (μm)
+3.2
+1.8
+4.8
+2.9
+15.7
+3.4
+D90 (μm)
+5.4
+3.1
+11.1
+6.5
+29.7
+9.9
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8621
+
+of 1.4 kg/h of CO2 that corresponds to 50% of the ﬂooding
+experimental value, when operating at 80 bar, 38 °C, with a L/
+G ratio of 0.1. When L/G is varied between 0.1 and 0.4, the
+corresponding limits for the liquid ﬂow rates are indicated in
+Table 3.
+3.2. Insulin-Loaded PLGA Microspheres: Size Tailoring
+and Morphology. In the second part of the work, we applied
+the SEE-C process to the production of insulin-loaded PLGA
+microspheres. For all the SEE-C experiments, extraction
+pressure and temperature conditions were ﬁxed at 80 bar and
+38 °C and a L/G ratio of 0.1 was also selected, according to the
+previous discussions and to the following considerations: (1)
+the temperature is compatible with several drugs or peptides to
+be encapsulated and lower than the PLGA glass transition that
+occurs at about 40 °C;26 (2) EA is completely miscible in SC-
+CO2;27 (3) the solubility of the EA-water external phase in SC-
+CO2 is very small and can be neglected.28−30
+The microsphere size is mainly related to the emulsion
+formulation parameters: indeed, the decrease of the stirring rate
+or the increase of the polymer concentration in the oily phase
+during the emulsion preparation can produce larger drop-
+lets.11,31 In this work, the inﬂuence of the emulsion stirring rate
+was measured on droplets/microspheres size and size
+distribution, decreasing the stirring rate from 2800 to 1000
+rpm, to explore the possibility of microspheres size tailoring. A
+constant PLGA concentration of 10% w/w in the organic phase
+was used for all these experiments.
+Examples of the emulsions produced at diﬀerent stirring rates
+are shown by the optical microscope images reported in Figure
+4 (left side). All the emulsions were formed by stable,
+noncoalescing droplets. After SC-CO2 solvent extraction in
+the continuous tower, microspheres were produced that
+maintained the spherical shape of the starting droplets and
+formed no aggregates, as shown in the corresponding FE-SEM
+images also reported in Figure 4 (right side). DSDs of the
+emulsions and PSDs of the related microspheres, obtained by
+laser scattering analysis, are reported in Figure 5. The
+experimental evidence is that the microspheres are smaller
+and the distributions are narrower than the droplet mean sizes
+and distributions from which they were generated, due to a
+shrinkage of the droplets during solvent elimination.
+The PSDs curves are comparatively reported in Figure 6 and
+conﬁrm the general evidence obtained in Figures 4 and 5.
+However, further information can be qualitatively deduced
+from this ﬁgure and quantitatively measured by the data
+summarized in Table 4: the mode of the three distributions is
+very similar; whereas, the PSD strongly enlarges when the
+stirring rate is reduced. This result is in good agreement with
+those observed by other authors31 and may be explained as
+follows: there is a minimum droplet size distribution that can
+be stabilized by the surfactant molecules and it is reasonable
+that, at higher energy inputs, this lower bound is gradually
+approached.
+3.3. Insulin Encapsulation Eﬃciency. Encapsulation
+eﬃciency of proteins within polymeric microspheres is a
+complex phenomenon controlled by several factors. There are
+usually three main factors which are considered to aﬀect the
+drug encapsulation eﬃciency during emulsiﬁcation and solid-
+iﬁcation of double emulsions: (1) coalescence between the
+inner water phase and the outer water phase, leading to the
+leakage of the drug into the outer water phase. Therefore, the
+more stable the inner water phase, the higher is the drug
+encapsulation eﬃciency. For example, insulin molecules are
+highly loaded in PLGA microspheres when a hydrophilic
+component is added to the primary solution. In the speciﬁc
+emulsions prepared in this work, glycerol was added to the
+inner water phase because it is more eﬃcient due to its higher
+viscosity.32 (2) Coalescence and break-up of double emulsions
+also leads to the leakage of the drug; (3) diﬀusion of the drug
+from the inner to the outer water phase through the oil phase,
+during the processes of droplets formation and solvent
+removal.5,33
+In this work, the eﬀect of the microsphere size on the
+encapsulation eﬃciency was investigated: when insulin was
+entrapped in larger microspheres, higher encapsulation
+eﬃciencies were obtained (Table 5). This result is also
+conﬁrmed by traditional process literature data, where it is
+reported that when insulin was entrapped in large micro-
+particles, larger entrapment eﬃciencies were obtained.34,35
+However, SEE-C is more eﬃcient than solvent evaporation,
+since the encapsulation eﬃciencies obtained in this work (up to
+70%, see Table 5) are larger than those observed in previous
+traditional studies.36
+Ethyl acetate residues varying between 300 and 600 ppm
+were measured in all the PLGA/INS suspensions recovered
+after the continuous process. These values are considerably
+lower than the residual EA limits acceptable in pharmaceuticals,
+ﬁxed at 5000 ppm by the European Pharmacopoeia, conﬁrming
+the eﬃciency of the SEE-C process in solvent removal.
+4. CONCLUSIONS
+SEE-C processing oﬀers a new strategy in the biopolymer
+microspheres production with a better particle size control and
+good encapsulation eﬃciency and is especially useful when
+thermolabile compounds, such as proteins, are processed.
+Insulin-loaded PLGA microspheres have been produced in a
+robust and reproducible mode in only few minutes. Greater
+product uniformity, higher throughput with small plant
+volumes, and the elimination of the batch-to-batch repeatability
+problems have been obtained, together with lower solvent
+residue and good drug encapsulation eﬃciency. Drug release
+studies from these microspheres are in progress, together with
+insulin stability tests. No insulin degradation products have
+until now been found during its release from the PLGA
+microspheres.
+■AUTHOR INFORMATION
+Corresponding Author
+*Phone: +39 089 964116. Fax: +39 089 964057. E-mail:
+ereverchon@unisa.it.
+Notes
+The authors declare no competing ﬁnancial interest.
+■NOMENCLATURE
+L = liquid ﬂow rate, kg/h
+Table 5. Encapsulation Eﬃciency Obtained in the
+Microspheres Produced Using SEE-C Technology
+experiment
+number, n
+microspheres
+mean size, μm
+theoretical insulin
+loading, % w/w
+encapsulation
+eﬃciency, %
+1R
+1.8
+0.5
+63 (±2.9)
+2R
+3.2
+0.5
+60 (±1.5)
+3R
+4.8
+0.5
+71 (±2.5)
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8622
+
+G = SC-CO2 ﬂow rate, kg/h
+D = diameter, μm
+MD = mean diameter, μm
+SD = standard deviation, μm
+P = pressure, bar
+T = temperature, °C
+Greek Letters
+ρ = density, g/cm3
+Subscripts
+f = ﬂooding
+■REFERENCES
+(1) Gombotz, W. R.; Pettit, D. K. Biodegradable polymers for protein
+and peptide drug delivery. Bioconjugate Chem. 1995, 6 (4), 332−351.
+(2) Talmadse, J. E. The pharmaceutics and delivery of therapeutic
+polypeptides and proteins. Adv. Drug Delivery Rev. 1993, 10 (2−3),
+247−299.
+(3) Yang, Y. Y.; Chia, H. H.; Chung, T. S. Eﬀect of preparation
+temperature on the characteristics and release proﬁles of PLGA
+microspheres containing protein fabricated by double-emulsion
+solvent extraction/evaporation method. J. Controlled Release 2000, 69
+(1), 81−96.
+(4) Freitas, S.; Merkle, H. P.; Gander, B. Microencapsulation by
+solvent extraction/evaporation: Reviewing the state of the art of
+microsphere preparation process technology. J. Controlled Release
+2005, 102 (2), 313−332.
+(5) Bittner, B.; Morlock, M.; Koll, H.; Winter, G.; Kissel, T.
+Recombinant human erythropoietin (rhEPO) loaded poly(lactide-co-
+glycolide) microspheres: Inﬂuence of the encapsulation technique and
+polymer purity on microsphere characteristics. Eur. J. Pharm.
+Biopharm. 1998, 45 (3), 295−305.
+(6) Oliva, A.; Fariña, J. B; Labrés, M. Inﬂuence of temperature and
+shaking on stability of insulin preparation: degradation kinetics. Int. J.
+Pharm. 1996, 143 (2), 163−170.
+(7) Shnek, D. R.; Hostettler, D. L.; Bell, M. A.; Olinger, J. M.; Frank,
+B. H. Physical stress testing of insulin suspensions and solutions. J.
+Pharm. Sci. 1998, 87 (11), 1459−1465.
+(8) Chattopadhyay, P.; Huﬀ, R.; Shekunov, B. Y. Drug encapsulation
+using supercritical ﬂuid extraction of emulsions. J. Pharm. Sci. 2006, 95
+(3), 667−679.
+(9) Chattopadhyay, P.; Shekunov, B. Y.; Yim, D.; Cipolla, D.; Boyd,
+B.; Farr, S. Production of solid lipid nanoparticle suspensions using
+supercritical ﬂuid extraction of emulsions (SFEE) for pulmonary
+delivery using the AERx system. Adv. Drug Delivery Rev. 2007, 59 (6),
+444−453.
+(10) Della Porta, G.; Reverchon, E. Nanostructured microspheres
+produced by supercritical ﬂuid extraction of emulsion. Biotechnol.
+Bioeng. 2008, 100 (5), 1020−1033.
+(11) Della Porta, G.; Falco, N.; Reverchon, E. NSAID Drugs release
+from injectable microspheres produced by Supercritical Fluid
+Emulsion Extraction. J. Pharm. Sci. 2010, 99 (3), 1484−1489.
+(12) Della Porta, G.; Falco, N.; Reverchon, E. Continuous
+Supercritical Emulsions Extraction: a new technology for biopolymer
+microparticles production. Biotechnol. Bioeng. 2011, 108 (3), 676−677.
+(13) Della Porta, G.; Campardelli, R.; Falco, N.; Reverchon, E. PLGA
+microdevices for retinoids sustained release produced by Supercritical
+Emulsion Extraction: continuous versus batch operation layouts. J.
+Pharm. Sci. 2011, 100 (10), 4357−4367.
+(14) Langer, R. Biomaterials in drug delivery and tissue engineering:
+one laboratory’s experience. Acc. Chem. Res. 2000, 33 (2), 94−101.
+(15) Kang, F.; Singh, J. Preparation, in vitro release, in vivo
+absorption and biocompatibility studies of insulin-loaded microspheres
+in rabbits. AAPS PharmSciTech 2005, 6 (3), E487−494.
+(16) Yeh, M. K.; Chen, J. L.; Chiang, C. H. In vivo and in vitro
+characteristics for insulin-loaded PLA microparticles prepared by w/o/
+w solvent evaporation method with electrolytes in the continuous
+phase. J. Microencapsulation 2004, 21 (7), 719−728.
+(17) Bao, W.; Zhou, J.; Luo, J.; Wu, D. PLGA microspheres with high
+drug loading and high encapsulation eﬃciency prepared by a novel
+solvent evaporation technique. J. Microencapsulation 2006, 23 (5),
+471−479.
+(18) Choi, S. H.; Kwon, J. H.; Kim, C. W. Microencapsulation of
+insulin microcrystals. Biosci. Biotechnol. Biochem. 2004, 68 (3), 749−
+752.
+(19) Takenaga, M.; Yamaguchi, Y.; Kitagawa, A.; Ogawa, Y.; Kawai,
+S.; Mizushima, Y.; Igarashi, R. Optimum formulation for sustained-
+release insulin. Int. J. Pharm. 2004, 271 (1−2), 85−94.
+(20) Bilati, U.; Allémann, E.; Doelker, E. Nanoprecipitation versus
+emulsion-based techniques for the encapsulation of proteins into
+biodegradable nanoparticles and process-related stability issues. AAPS
+PharmSciTech 2005, 6 (4), E594−604.
+(21) Sherwood, T. K.; Shipley, G. H.; Holloway, F. A. L. Flooding
+velocities in packed columns. Ind. Eng. Chem. 1938, 30 (7), 765−769.
+(22) Brunner, G. Counter-current separations. J. Supercrit. Fluids
+2009, 47 (3), 574−582.
+(23) Peters, M. S.; Timmerhaus, K. D. Plant Design and Economics for
+Chemical Engineers, 5th ed.; McGraw-Hill: New York, 1968.
+(24) Richardson, J. F.; Harker, J. H.; Backhurst, J. R. Liquid-liquid
+extraction. In: Coulson & Richardson’s Chemical Engineering: Particle
+Technology & Separation Processes, 5th ed.; Butterworth-Heinemann:
+Oxford, U.K., 2002; pp 721−770.
+(25) Riha, V.; Brunner, G. Separation of ﬁsh oil ethyl esters with
+supercritical carbon dioxide. J. Supercrit. Fluids 2000, 17 (1), 55−64.
+(26) De, S.; Robinson, D. H. Particle size and temperature eﬀect on
+the physical stability of PLGA nano-spheres and micro-spheres
+containing Bodipy. AAPS PharmSciTech 2004, 5 (4), 18−24.
+(27) Smith, R. L.; Yamaguchi, T.; Sato, T.; Suzuki, H.; Arai, K.
+Volumetric behavior of ethyl acetate, ethyl octanoate, ethyl laurate,
+ethyl linoleate, and ﬁsh oil ethyl esters in the presence of supercritical
+CO2. J. Supercrit. Fluids 1998, 13 (1−3), 29−36.
+(28) Sabirzyanov, A. N.; Il’in, A. P.; Akhunov, A. R.; Gumerov, F. M.
+Solubility of water in supercritical carbon dioxide. High Temp. 2002,
+40 (2), 203−206.
+(29) King, T. W.; Patrick, C. W. Development and in vitro
+characterization of vascular endothelial growth factor (VEGF)-loaded
+poly(lactic-co-glycolic acid)/poly(ethylene glycol) microspheres using
+a solid encapsulation/single emulsion/solvent extraction technique. J.
+Biomed. Mater. Res. 2000, 51 (3), 383−390.
+(30) Wiebe, R.; Gaddy, V. The solubility of carbon dioxide in water
+at various temperatures from 12 to 40°C and at pressures to 500 atm.
+Critical phenomena. J. Am. Chem. Soc. 1940, 62 (4), 815−817.
+(31) Kluge, J.; Fusaro, F.; Casas, N.; Mazzotti, M.; Muhrer, G.
+Production of PLGA micro- and nanocomposites by supercritical ﬂuid
+extraction of emulsions: I. Encapsulation of lysozyme. J. Supercrit.
+Fluids 2009, 50 (3), 327−335.
+(32) Yamaguchi, Y.; Takenaga, M.; Kitagawa, A.; Ogawa, Y.;
+Mizushima, Y.; Igarashi, R. Insulin-loaded biodegradable PLGA
+microcapsules: initial burst release controlled by hydrophilic additives.
+J. Controlled Release 2002, 81 (3), 235−249.
+(33) Liu, R.; Huang, S. S.; Wan, Y. H.; Ma, G. H.; Su, Z. G.
+Preparation of insulin-loaded PLA/PLGA microcapsules by a novel
+membrane emulsiﬁcation method and its release in vitro. Coll. Surf., B:
+Biointerfaces 2006, 51 (1), 30−38.
+(34) Uchida, T.; Nagareya, N.; Sakakibara, S.; Konishi, Y.; Nakai, A.;
+Nishikata, M.; Matsuyama, K.; Yoshida, K. Preparation and character-
+ization of polylactic acid microspheres containing bovine insulin by a
+w/o/w emulsion solvent evaporation method. Chem. Pharm. Bull.
+(Tokyo) 1997, 45 (9), 1539−1543.
+(35) Shao, P. G.; Bailey, L. C. Porcine insulin biodegradable polyester
+microspheres: stability and in vitro release characteristics. Pharm. Dev.
+Technol. 2000, 5 (1), 1−9.
+(36) Kawashima, Y.; Yamamoto, H.; Takeuchi, H.; Fujioka, S.; Hino,
+T. Pulmonary delivery of insulin with nebulized DL-lactide/glycolide
+copolymer (PLGA) nanospheres to prolong hypoglycemic eﬀect. J.
+Controlled Release 1999, 62 (1−2), 279−287.
+Industrial & Engineering Chemistry Research
+Article
+dx.doi.org/10.1021/ie300482n | Ind. Eng. Chem. Res. 2012, 51, 8616−8623
+8623

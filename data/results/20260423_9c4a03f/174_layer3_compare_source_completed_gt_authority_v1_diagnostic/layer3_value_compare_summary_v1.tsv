@@ -1,0 +1,45 @@
+group_name	field_name	gt_nonempty_cells	system_nonempty_on_gt_cells	value_recall	conditional_accuracy_strict	conditional_accuracy_relaxed	conditional_accuracy_canonicalized	extra_in_system_cells
+core_fixed_fields	O_volume_mL	139	90	0.647482	0.000000	1.000000	1.000000	0
+core_fixed_fields	W1_volume_mL	1	0	0.000000				0
+core_fixed_fields	W2_volume_mL	43	26	0.604651	0.000000	1.000000	1.000000	0
+core_fixed_fields	co_solvent_name	1	0	0.000000				0
+core_fixed_fields	dl_percent	10	0	0.000000				0
+core_fixed_fields	drug_concentration_unit	117	96	0.820513	0.708333	0.708333	0.708333	0
+core_fixed_fields	drug_concentration_value	117	96	0.820513	0.854167	1.000000	1.000000	0
+core_fixed_fields	drug_mass_mg	50	27	0.540000	0.000000	1.000000	1.000000	0
+core_fixed_fields	drug_name	172	135	0.784884	0.970370	0.970370	0.970370	0
+core_fixed_fields	drug_to_polymer_ratio_raw	3	3	1.000000	0.000000	1.000000	1.000000	0
+core_fixed_fields	ee_percent	161	106	0.658385	0.000000	0.971698	0.971698	0
+core_fixed_fields	emulsifier_stabilizer_concentration_unit	151	96	0.635762	0.760417	0.947917	0.947917	0
+core_fixed_fields	emulsifier_stabilizer_concentration_value	151	106	0.701987	0.245283	0.971698	0.971698	5
+core_fixed_fields	emulsifier_stabilizer_name	172	95	0.552326	0.778947	0.978947	0.978947	0
+core_fixed_fields	evaporation_time_h	46	0	0.000000				0
+core_fixed_fields	external_aqueous_phase_volume_mL	123	76	0.617886	0.000000	1.000000	1.000000	0
+core_fixed_fields	helper_material_name	13	0	0.000000				0
+core_fixed_fields	homogenization_time_min	0	0					0
+core_fixed_fields	internal_aqueous_phase_volume_mL	1	0	0.000000				0
+core_fixed_fields	la_ga_ratio_normalized	126	95	0.753968	1.000000	1.000000	1.000000	3
+core_fixed_fields	la_ga_ratio_raw	126	95	0.753968	0.968421	1.000000	1.000000	3
+core_fixed_fields	lc_percent	20	14	0.700000	0.000000	1.000000	1.000000	0
+core_fixed_fields	method_type	172	155	0.901163	0.477419	0.477419	0.477419	0
+core_fixed_fields	particle_size_nm	160	108	0.675000	0.444444	0.972222	0.972222	0
+core_fixed_fields	pdi	93	26	0.279570	0.000000	0.000000	0.000000	0
+core_fixed_fields	phase_ratio_raw	27	27	1.000000	1.000000	1.000000	1.000000	10
+core_fixed_fields	polymer_concentration_phase	3	0	0.000000				0
+core_fixed_fields	polymer_concentration_unit	85	70	0.823529	1.000000	1.000000	1.000000	0
+core_fixed_fields	polymer_concentration_value	85	70	0.823529	0.971429	0.971429	0.971429	0
+core_fixed_fields	polymer_grade	71	39	0.549296	0.974359	0.974359	0.974359	0
+core_fixed_fields	polymer_mass_mg	64	57	0.890625	0.000000	1.000000	1.000000	0
+core_fixed_fields	polymer_mw_kDa	59	3	0.050847	1.000000	1.000000	1.000000	6
+core_fixed_fields	polymer_mw_raw	72	35	0.486111	0.000000	1.000000	1.000000	0
+core_fixed_fields	polymer_name	172	130	0.755814	1.000000	1.000000	1.000000	0
+core_fixed_fields	polymer_to_drug_ratio_raw	6	3	0.500000	1.000000	1.000000	1.000000	0
+core_fixed_fields	polymer_to_solvent_ratio_raw	0	0					0
+core_fixed_fields	solvent_name	169	136	0.804734	0.977941	0.977941	0.977941	3
+core_fixed_fields	sonication_time_s	1	0	0.000000				0
+core_fixed_fields	stirring_time_h	38	0	0.000000				0
+core_fixed_fields	surfactant_mass_mg	14	0	0.000000				0
+core_fixed_fields	zeta_mV	85	59	0.694118	0.000000	1.000000	1.000000	0
+named_extensible_variables	pH_raw	55	42	0.763636	0.000000	0.000000	0.000000	0
+core_fixed_fields	__group_total__	3119	2074	0.664957	0.595468	0.922372	0.922372	30
+named_extensible_variables	__group_total__	55	42	0.763636	0.000000	0.000000	0.000000	0

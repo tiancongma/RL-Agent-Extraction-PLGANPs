@@ -1,0 +1,1355 @@
+Research paper
+Factorial design formulation optimization and in vitro characterization
+of curcumin-loaded PLGA nanoparticles for colon delivery
+Mohamed A. Akl a, b, Alma Kartal-Hodzic a, Timo Oksanen a, Hatem R. Ismael b,
+Mohsen M. Afouna b, Marjo Yliperttula a, Ahmed M. Samy b, Tapani Viitala a, *
+a Centre for Drug Research, Division of Pharmaceutical Biosciences, Faculty of Pharmacy, University of Helsinki, Finland
+b Department of Pharmaceutics and Ind. Pharmacy, Faculty of Pharmacy (Boys), Al-Azhar University, Nasr City, Cairo, Egypt
+a r t i c l e
+i n f o
+Article history:
+Received 30 October 2015
+Received in revised form
+5 December 2015
+Accepted 12 January 2016
+Available online 14 January 2016
+Keywords:
+Curcumin
+PLGA nanoparticles
+Poly vinyl alcohol
+Factorial design
+Colon targeting
+a b s t r a c t
+We have employed a 23 factorial design approach for optimizing curcumin-loaded PLGA nanoparticles
+with a speciﬁc interest in colon treatment. Curcumin-loaded PLGA nanoparticles were prepared by using
+the single emulsion solvent evaporation technique. In vitro characterizations of the curcumin-loaded
+nanoparticles revealed that the mean particle sizes of the nanoparticles ranged from 181.5 nm to
+206.9 nm, the zeta potential values were in the range of 30.6 to 41.7 mV, the encapsulation efﬁ-
+ciencies were between 58.1 and 83.2% and the drug release from the formulations was in the range of
+34.4e62.8%. The properties of the optimized curcumin-loaded PLGA nanoparticles predicted by the 23
+factorial design approach correlated very well with the experimentally determined particle size of
+219.6 nm, zeta potential of 36.8 mV, encapsulation efﬁciency of 74.4% and a 56.2% cumulative drug
+release after 24 h. In vitro cellular uptake studies with HT-29 cells showed that the optimized curcumin-
+loaded PLGA nanoparticle exhibited a much higher cellular uptake of curcumin (i.e. 7.01 ± 0.33 mg/
+106 cells) than a native curcumin solution (3.74 ± 0.56 mg/106 cells). Stability studies also showed that all
+investigated formulations were stable at least for 2 months.
+© 2016 Elsevier B.V. All rights reserved.
+1. Introduction
+Colon cancer is the third leading cause of cancer deaths in the
+United States [1]. The American Cancer Society has estimated that
+there will be about 93 090 new cases of colon cancer and 39 610
+new cases of rectal cancer in the United States in 2015, and these
+are expected to cause about 49 700 deaths during 2015. The life-
+time risk of developing a colorectal cancer is about 1 in 20 [1]. The
+most common treatment for cancer is chemotherapy. However,
+chemotherapy is often associated with a number of drawbacks such
+as
+nonselective
+distribution
+of
+drugs,
+multidrug
+resistance,
+enhanced drug toxicity, undesirable side effects on normal tissue
+and inherent lack of beneﬁcial response of cytotoxic anticancer
+drugs [2,3]. Therefore, there is an urgent need to develop thera-
+peutic modalities with no or minimal side effects on healthy tissues
+or organs.
+Natural herbal extracts, such as curcumin, hold high potential as
+chemotherapeutic agents because they are often safe and do not
+show side effects on healthy tissues or organs. They also show
+chemo preventive activities against malignancy. In recent years
+curcumin has drawn the attention of research because it sensitizes
+cancer cells for chemotherapy by inducing programmed cell death
+[4,5]. Curcumin is a polyphenol of turmeric derived from the roots
+(rhizomes) of Curcuma longa. Several studies have shown that
+curcumin has anti-inﬂammatory [6], antioxidant [7] and antimi-
+crobial effects [8]. The most important effect is, however, its po-
+tential use against cancer due to its ability to suppress the
+proliferation of a wide variety of tumor cells [4,9]. Curcumin has
+been reported to be a potent inhibitor of the nuclear factor-kappa B
+(NF-kappa B) activation in various human cancer cell lines [10e12].
+It has also been reported to decrease multidrug resistance by down
+regulating the P-glycoprotein (PGP) expression in resistant cells.
+Unfortunately, the high potential of curcumin for treatment of
+cancer and chronic inﬂammation is hampered by its low aqueous
+solubility at physiological pH conditions, rapid decomposition in
+alkaline media and instability towards light. For example, curcumin
+is practically insoluble in neutral aqueous solutions (i.e. ~ 1 mM), but
+* Corresponding author. Centre for Drug Research, Division of Pharmaceutical
+Biosciences, Faculty of Pharmacy, University of Helsinki, P.O. Box 56, 00014 Helsinki,
+Finland.
+E-mail address: tapani.viitala@helsinki.ﬁ(T. Viitala).
+Contents lists available at ScienceDirect
+Journal of Drug Delivery Science and Technology
+journal homepage: www.elsevier.com/locate/jddst
+http://dx.doi.org/10.1016/j.jddst.2016.01.007
+1773-2247/© 2016 Elsevier B.V. All rights reserved.
+Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+
+dissolves readily in organic solvents such as alcohols, ketones, es-
+ters, and organic acids (i.e. in the range between 1 and 30 mM) [13].
+The solubility of curcumin in dichloromethane has also been re-
+ported to be at least 3 mM [14]. The hydrophobic character of
+curcumin results in pharmacokinetic restrictions such as low ab-
+sorption, poor bioavailability by oral route, extensive metabolism
+and rapid elimination [15]. Numerous approaches have been made
+to ameliorate the bioavailability of curcumin. These include the use
+of adjuvants, which can block metabolic pathways of curcumin (for
+example Piperine, a known inhibitor of hepatic and intestinal glu-
+curonidation) [15]. The main strategies used to overcome the
+physicochemical limitations of curcumin and to increase its
+bioavailability are based on loading the compound in nanocarriers,
+such as liposomes [16,17], polymeric micelles [18], phospholipid
+complexes [19] and polymeric nanoparticles [15,20]. Nanocarriers
+have been shown to increase the solubility, provide longer circu-
+lation times, enhance permeability, and increase resistance towards
+metabolic processes of curcumin. Some formulations have been
+designed to prolong the release of curcumin, while others have
+additional mechanisms to improve the cellular delivery or intra-
+cellular release.
+Biodegradable polymeric nanoparticles (PNPs) have widely
+been developed as nanoscale drug delivery vehicles for cancer
+treatment due to their excellent endocytosis efﬁciency, passive
+tumor-targeting, high encapsulation efﬁciency, and ability to
+deliver a wide range of therapeutic agents [21e23]. Nano-
+encapsulation protects the molecules from premature degradation,
+improves their solubility, and promotes controlled drug release and
+drug targeting. Nanoparticles (NPs) can at best represent a low risk
+of toxicity and they can often enhance the drug efﬁcacy, i.e. speci-
+ﬁcity, tolerability and therapeutic index [24]. Poly (lactic-co-gly-
+colic acid) (PLGA) is an approved biodegradable polymer with good
+biocompatibility. Therefore, PLGA and its various derivatives have
+widely been explored as carriers for controlled delivery of a large
+number of both small molecular drugs and macromolecular ther-
+apeutics [25,26]. The majority of PLGA-based drug delivery carriers
+are in the form of injectables, but PLGA-based nanoparticles are
+also continuously investigated for oral delivery [27e29].
+The main objective of this study was to preliminary investigate
+the use of PLGA for encapsulating curcumin into PNPs for oral colon
+delivery purposes. A prerequisite for this is to conﬁrm that
+curcumin-loaded PLGA nanoparticles withstand the harsh condi-
+tions in the stomach and small intestine before they reach the co-
+lon. Therefore, we have focused on the systematic optimization of
+the basic composition of curcumin-loaded PLGA nanoparticles with
+the aim to improve the aqueous dispersability of curcumin, to
+protect it from degradation in simulated gastrointestinal ﬂuids and
+to increase curcumin uptake in colon cancer cells. Curcumin-loaded
+PNPs (C-PNPs) were prepared with an emulsion solvent evapora-
+tion technique by using a 23 factorial design approach to optimize
+the composition of the C-PNP. The physicochemical properties and
+in vitro characterization of C-PNPs were determined and performed
+through particle size, zeta potential, drug encapsulation, drug
+release kinetics, Fourier-Transform infrared spectroscopy and dif-
+ferential scanning calorimetry studies. Furthermore, the stability of
+the C-PNPs at room temperature and 4 C, the stability of the
+optimized C-PNP against enzyme and bile salt, and the in vitro
+cellular uptake of the optimized C-PNP formulation in colon cancer
+cells were also investigated.
+2. Materials and methods
+2.1. Materials
+Curcumin was purchased from Cayman chemical company
+(China). Acid terminated Poly (D,
+L-lactide-co-glycolide) (PLGA,
+50:50, Mw ¼ 7.000e17.000, Resomer® RG 502H), Polyvinyl alcohol
+(PVA,
+mw
+31,000e50,000
+e
+87e89%
+hydrolyzed),
+Dichloro-
+methane (DCM) and Phosphate Buffer Saline (PBS) tablet were
+purchased from SigmaeAldrich (Germany). Potassium dihydrogen
+phosphate
+was
+purchased
+from
+Riedel-de-Haen
+(Germany).
+Acetonitrile, Phosphoric acid and Methanol were purchased from
+Fluka (United Kingdom). OPTI-MEM I, McCoy's 5a Medium, and
+TrypLE Express were obtained from Gibco, Life Technologies (USA).
+2.2. Preparation and characterization of the formulations
+2.2.1. Experimental design
+Statgraphics® plus software version 4 was used to adapt the 23
+factorial design approach to optimize the curcumin-loaded PLGA
+nanoparticle (C-PNP). The independent variables for optimization
+were 1) the amount of PLGA in the organic phase (X1 ¼ c PLGA), 2)
+the PVA concentration in the aqueous phase (X2 ¼ c PVA) and 3) the
+amount of curcumin in the organic phase (X3 ¼ c CUR). The selected
+responses were 1) the mean particle size of the C-PNPs (Y1), 2) the
+zeta potential of the C-PNPs (Y2), 3) the encapsulation efﬁciency
+(Y3) and 4) the percentage (%) of the cumulative drug released after
+24 h (Y4). Each independent variable was given a high and low level
+value as shown in Table 1.
+2.2.2. Preparation of curcumin-loaded PLGA nanoparticles (C-PNPs)
+C-PNPs were prepared by using the single emulsion-solvent
+evaporation technique reported by Khalil et al. [24] with slight
+modiﬁcations. Brieﬂy, 100e200 mg of PLGA polymer was dissolved
+in 5 ml of dichloromethane (DCM) in a glass tube. Then 10 or 20 mg
+of curcumin powder was added to the polymer/solvent mixture and
+allowed to dissolve for 30 min, with intermittent vortexing. The
+organic phase containing PLGA and curcumin was rapidly added
+drop wise into a glass tube containing 10 ml of PVA in an aqueous
+solution, while vortexing. Once all the drug/polymer mixture was
+added to the PVA solution, the contents were vortexed for an
+additional 10 s at a high setting. The tube contents were then
+emulsiﬁed by using sonication for 7 min at 40% amplitude in an ice
+- water bath by using a probe sonicator (Vibra-Cell VCX 750 soni-
+cator, Sonics & Materials Inc., Newtown, CT, USA). The resulting ﬁne
+(O/W) emulsion was immediately poured into 30 ml of an aqueous
+PVA 0.5% w/v solution under rapid stirring with a magnetic stirrer.
+Dichloromethane was then evaporated from the droplets under
+magnetic stirring at 800 rpm for 3 h. The nanoparticles were
+collected by centrifugation at 20,000 rpm for 15 min and washed 3
+times with Milli-Q water. Supernatants were collected to evaluate
+the encapsulation efﬁciency of curcumin. Finally, the pellet of the
+nanoparticles was re-suspended in 5 ml of Milli-Q water.
+2.2.3. Physicochemical characterization and drug encapsulation
+efﬁciency
+2.2.3.1. Particle size determination. The average particle size and
+PDI of the C-PNPs were measured with dynamic light scattering by
+using a ZetaSizer Nano ZS instrument (Malvern Instruments Ltd,
+Table 1
+Independent and dependent variables used for the 23 factorial design approach.
+Independent variables
+Level
+Dependent variables
+Low
+High
+Amount of PLGA
+100 mg
+200 mg
+Particle size
+Concentration of PVA
+2%
+4%
+Zeta potential
+Amount of curcumin
+10 mg
+20 mg
+Encapsulation efﬁciency
+In vitro release over 24 h.
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+11
+
+Worcestershire, UK). Samples for particle size measurements were
+prepared by taking 300 ml of each nanoparticle suspension and
+diluting these with 3 ml of Milli-Q water and sonicating for 30 s.
+Particle size measurements were performed at RT with a detection
+angle of 90о. Each sample was measured in triplicate.
+2.2.3.2. Zeta potential measurements. Samples for zeta potential
+measurements were prepared in the same way as those for particle
+size measurements. Zeta potentials for three replicates of each
+sample were measured at RT with a ZetaSizer Nano ZS instrument
+(Malvern Instruments Ltd, Worcestershire, UK).
+2.2.3.3. Determination of drug encapsulation efﬁciency. The encap-
+sulation efﬁciency of curcumin in the C-PNPs was determined by a
+direct technique reported by Tsai et al. [20] with minor modiﬁca-
+tions. Brieﬂy, 1 ml of each C-PNP suspension was centrifuged at
+15,000 rpm for 30 min. The supernatant was removed after
+centrifugation and 1 ml of acetonitrile (a common solvent for PLGA
+and the drug) was added to the C-PNP pellets. Then the samples in
+acetonitrile were sonicated for 15 min to break the C-PNP structure
+and to release the curcumin. The amounts of curcumin in the C-
+PNPs were analyzed by UPLC at 426 nm after dilution with the
+mobile phase composed of 38% acetonitrile and 62% of a 0.05%
+phosphoric acid solution. The drug encapsulation efﬁciency (EE %)
+for each C-PNP was then calculated by using the following
+equation:
+%EE ¼ ½ðCurcumin encapsulated=Curcumin totalÞ  100
+(1)
+2.2.4. In vitro drug release and release kinetics
+2.2.4.1. In-vitro curcumin release. The in vitro release of curcumin
+from the C-PNPs was determined by the dialysis bag method re-
+ported earlier by Zanotto-Filho et al. [30] with slight modiﬁcations.
+Brieﬂy, 1 ml of each C-PNP solution was transferred in dialysis bags
+(Sigma, St. Louis, MO, USA) with a molecular cut-off 12e14 kDa. The
+bags were suspended in 150 ml of release medium containing 2%
+SDS. SDS was employed in the buffer solution not only to maintain
+sink condition but also to provide solubility for curcumin in the
+aqueous phase. The whole set-up was placed in a shaking water
+bath (Grant OLS200, Cambridge Ltd, England) adjusted to a con-
+stant speed of 100 rpm at 37 ± 0.5 C. Samples were withdrawn at
+appropriate time intervals from the outer solution to estimate the
+percentage of the drug released. In order to mimic the in vivo
+release characteristics of the C-PNP formulations, a three-stage
+approach
+with
+three-different
+pH
+release
+media
+was
+used
+following the recommendations on methods for dosage forms
+testing by US Pharmacopeia 36 [31]. The time interval and medium
+used for the three different stages were the following:
+Stage 1. Time interval: 1e2 h. Simulated gastric ﬂuid (SGF); 0.2 g
+sodium chloride, 0.32 g pepsin and 0.7 ml concentrated HCl in
+100 ml water, pH 1.2.
+Stage 2. Time interval: 3e5 h. Simulated intestinal ﬂuid (SIF);
+0.68 mg KH2PO4 and 7.7 ml of 0.2 M NaOH in 100 ml water, pH
+6.8.
+Stage3. Time interval: 6e24 h. Simulated colonic ﬂuid SCF; PBS,
+pH 7.4.
+One ml of sample was taken from the outer solution at appro-
+priate time intervals, i.e. 1, 2, 3, 4, 5, 6, 7, 8, 12 and 24 h. The sample
+was then ﬁltered by using a 0.45 mm ﬁlter membrane. The curcumin
+concentration was determined by diluting the ﬁltrate with the
+mobile phase mixture composed of 38% of acetonitrile and 62% of a
+0.05% phosphoric acid solution and measured with UPLC at lmax
+426 nm. After the sample was taken, 1 ml of fresh medium was
+always added back to the outer media.
+2.2.4.2. Drug release kinetics. The in vitro drug release data were
+ﬁtted to three different kinetic models which are often used to
+describe the behavior of the drug release from nanospheres, i.e.
+zero-order, ﬁrst-order and Higuchi diffusion models. The proper
+mode of release was determined on the basis of the correlation
+coefﬁcient (r) for the linear regression ﬁt of the parameters
+involved, where the highest correlation coefﬁcient represents the
+actual mode of the release.
+2.2.5. Characterization of the optimized C-PNP formulation
+2.2.5.1. Morphology
+of
+the
+polymeric
+nanoparticles.
+Transmission electron microscopy (TEM) was used for morpho-
+logical analysis of the optimized C-PNP formulation. The samples of
+freshly made C-PNP suspensions in aqueous media were dropped
+onto a copper grid with a carbon ﬁlm support and extra solution
+was removed with a ﬁlter paper. Samples were observed directly
+with TEM (JEOL 1200 EX II, JEOL Ltd., Tokyo, Japan) after they were
+dried below room temperature without further staining.
+2.2.5.2. Fourier- Transform infrared spectroscopy (FT-IR). The FT-IR
+spectra (range 4000e650 cm1) were recorded on freeze dried
+samples using a Vertex 70 (Bruker Optics GmbH, Germany) spec-
+trophotometer (spectral resolution of 4 cm1 and 32 co-added
+scans) equipped with a MIRacle™ATR device (Pike Optics, Ger-
+many) with a single reﬂection diamond crystal (1.8 mm spot size).
+The raw materials, the blank optimized PNP without curcumin and
+the optimized C-PNP formulations were analyzed with attenuated
+total reﬂectance (ATR). The samples were deposited on top of a
+diamond crystal and secured with a high-pressure clamp. The
+average of characteristic peaks of IR transmission spectra was
+recorded from triplicate samples.
+2.2.5.3. Differential scanning calorimetry (DSC). DSC studies were
+performed in order to characterize the physical state of curcumin in
+the optimized C-PNP formulation. Thermograms of the raw mate-
+rials, the blank optimized PNP without curcumin and the optimized
+C-PNP formulations were obtained by using a DSC 823 instrument
+(Mettler Toledo, Switzerland). About 4e5 mg of each sample was
+weighed, crimped into an aluminum pan along with the standard
+reference aluminum pan and analyzed at a scanning temperature
+range from 50 to 300 C at a heating rate of 10 C/min. The baseline
+was optimized before each run.
+2.2.6. In vitro cellular drug uptake
+2.2.6.1. Cell culture and cell preparation. Human Caucasian colon
+adenocarcinoma (HT29) cells, obtained from the European Collec-
+tion of Cell Cultures (ECACC), were cultured in a McCoy's 5a me-
+dium
+supplemented
+with
+10%
+FBS
+at
+a
+density
+of
+about
+2  106 cells/mL in 75 cm2 culture ﬂasks. The cells were maintained
+at 37 C, 95% relative humidity and 5% CO2. The cells were harvested
+weekly from plastic ﬂasks (75 cm2) with TrypLE Express and the
+medium was changed twice a week.
+2.2.6.2. Cellular drug uptake assay. HT29 cells were cultured in a
+12-well plate with a cell density of 1  104 cells/per well and
+incubated in a 5% CO2 incubator at 37 C for 24 h before cellular
+drug uptake studies. The cell association assay was carried out at
+37 C in OPTI-MEM I reduced serum medium which contained
+either enough pure curcumin or the optimized C-PNP formulation.
+Each well contained the same absolute amount of 200 mg curcumin.
+Washing the wells with ice-cold PBS three times terminated the
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+12
+
+incubation of both the cells with pure curcumin and the optimized
+C-PNP formulation. The washed cells were lysed in PBS containing
+0.5% Triton X-100, after which they were vortexed for 3 min. Then
+the cell lysate was centrifuged to remove the cellular debris. The
+amount of curcumin in the cell lysate was determined by diluting
+the cell lysate with the mobile phase mixture composed of 38% of
+acetonitrile and 62% of a 0.05% phosphoric acid solution and
+measured with UPLC at lmax ¼ 426 nm.
+2.2.7. In vitro stability of C-PNP formulations
+The evaluation of the in vitro stability of the C-PNP formulations
+was performed with two different tests: 1) the effect of storage
+temperature on particle size and 2) the effect of SGF, SIF and SCF on
+particle size. The particle size of each C-PNP stored for up to two
+months at 4 C and RT was regularly measured at RT with a Zeta-
+Sizer Nano ZS instrument (Malvern Instruments Ltd, Worcester-
+shire, UK). The pH dependency of the stability of the C-PNPs was
+evaluated at three pHs (i.e. pH 1.2, 6.8, 7.4) in order to evaluate the
+stability of the C-PNPs in the gastrointestinal tract. The C-PNPs
+were incubated at 37
+C and samples were collected at pre-
+determined time points of 0, 0.5, 2, 6 and 24 h. Simulated gastric
+ﬂuid (SGF) with and without pepsin and simulated intestinal ﬂuid
+(SIF) with and without pancreatin were prepared according to the
+US Pharmacopeia 36 [31]. SGF was composed of 0.2% sodium
+chloride (NaCl), 0.2% pepsin, and 0.7% hydrochloric acid (HCl) in
+water, and the pH was adjusted to 1.2. SIF was composed of 0.68%
+monobasic potassium phosphate (KH2PO4) (pH adjusted to 6.8
+using NaOH) and 3 mM sodium taurocholate to simulate the effect
+of bile salts. For each C-PNP formulation, 5 ml of the suspension was
+added to 15 ml of simulated ﬂuid followed by incubation for 2 h in
+SGF and 6 h in SIF at 37 C.
+3. Results
+3.1. Curcumin-loaded PLGA nanoparticles for optimizing the C-PNP
+composition
+The single-emulsion solvent-evaporation method was success-
+fully utilized for preparing a range of C-PNP formulations. All
+together eight different C-PNP formulations with different ratios of
+curcumin, PLGA and PVA (C-PNP1 to C-PNP8, Table 2) were pre-
+pared and characterized according to the 23 factorial design
+approach. The amounts of curcumin (X1), PLGA (X2) and PVA (X3)
+were chosen as independent parameters, whereas measurements
+of particle size, polydispersity index (PDI), zeta potential (ZP),
+encapsulation efﬁciency (EE%) and percentage of drug released
+after 24 h (DR%) were used as input of the dependent parameters in
+the 23 factorial design model in order to ﬁnd the most optimal C-
+PNP composition.
+3.2. Experimentally determined input parameters of C-PNPs for
+optimization purposes
+Table 2 shows the measured values of particle size, PDI and ZP,
+EE% and DR% for the eight C-PNP formulations prepared during the
+optimization stage. It is clear that the particle sizes of all the C-PNPs
+were in the nano-size range. The smallest particle size of 181.5 nm
+was observed for C1-PNP and the largest particle size of 206.9 nm
+was observed for C4-PNP. The PDI values of the C-PNPs were also
+very small (i.e. between 0.010 and 0.060), which shows that the
+particle size populations of the C-PNPs were very homogeneous. A
+small PDI value (i.e. ~ 0.2) is often taken as an indication of a ho-
+mogenous particle size population, while a larger PDI value
+(i.e. > 0.3) reﬂects a heterogeneous particle size population.
+The ZP of all of the C-PNP formulations displayed a high negative
+value between 30.5 mV and 41.7 mV. A ZP value for nano-
+particles in this range usually predicts that the nanoparticles are
+very well dispersed in the aqueous media and that the nano-
+suspensions will have a very good stability and tolerance against
+aggregation.
+The EE%s of the C-PNPs were also very promising. A high EE% is
+usually desirable for NPs because it increases the probability that
+the NPs can deliver and release a sufﬁcient amount of drug to the
+target site, especially if the NPs are designed so that they have a
+proper triggered release mechanism and drug release rate. The
+highest and the lowest EE% of 83.2% and 58.1% were observed for
+C4-PNP and C5-PNP, respectively (Table 2). The EE%s of the C-PNPs
+in this study clearly correlated with the particle size, i.e. the larger
+the particle size of the C-PNP the higher the EE% and vice versa.
+The in vitro drug release characteristics of the C-PNPs were
+determined by using a three-different pH release media (SGF pH
+1.2, SIF pH 6.8 and SCF pH 7.4) approach in order to mimic the GI
+tract. The in vitro release proﬁles of curcumin were obtained by
+graphing the cumulative percentage of the drug released with
+respect to the total amount of curcumin encapsulated in the C-PNPs
+as a function of the time (Fig. 1). Negligible amounts of curcumin
+were released in the buffer medium at pH 1.2 which indicates that
+curcumin is not released from any of the C-PNPs at gastric and ileal
+pH (acidic pH). Only a slight release of curcumin took place at pH
+6.8 (i.e. < 5%), whereas a substantial amount of curcumin was
+released at the higher colonic pH values of pH ¼ 7.4. All the C-PNPs
+also displayed a sustained release of curcumin up to 24 h at colonic
+pH values (Fig. 1). The highest release of curcumin after 24 h, 62.8%,
+was observed for the C-PNP4 formulation (Fig. 1A, Table 2), whereas
+the lowest release of curcumin, 34.4%, was observed for the C-PNP1
+formulation (Fig. 1A, Table 2).
+The release kinetic parameters obtained by ﬁtting kinetic
+models to the drug release data of the C-PNP formulations are
+shown in Table S1 (supporting information). The release of curcu-
+min from the C-PNPs followed mainly the Higuchi diffusion model,
+Table 2
+Composition of curcumin-loaded PLGA nanoparticles and experimentally measured input responses.
+Run
+Factor (code
+value)
+Response
+X1
+X2
+X3
+PDI
+Particle size (nm) Y1
+Zeta potential (mV) Y2
+Encapsulation efﬁciency (%) Y3
+Cumulative drug release (DR%) Y4
+C-PNP1
+100
+4
+10
+0.060 ± 0.011
+181.5 ± 2.2
+41.7 ± 0.7
+59.1 ± 1.9
+34.4
+C-PNP2
+200
+4
+20
+0.040 ± 0.041
+204.6 ± 2.8
+37.5 ± 1.4
+77.9 ± 2.0
+39.1
+C-PNP3
+100
+4
+20
+0.020 ± 0.015
+192.2 ± 0.5
+33.5 ± 1.2
+61.8 ± 1.7
+40.3
+C-PNP4
+200
+2
+20
+0.010 ± 0.014
+206.9 ± 2.1
+40.8 ± 0.3
+83.2 ± 2.1
+62.8
+C-PNP5
+100
+2
+10
+0.030 ± 0.008
+185.0 ± 2.1
+30.6 ± 0.8
+58.1 ± 1.3
+36.8
+C-PNP6
+200
+4
+10
+0.035 ± 0.017
+191.1 ± 1.9
+36.2 ± 1.2
+66.3 ± 0.4
+46.5
+C-PNP7
+100
+2
+20
+0.034 ± 0.035
+196.7 ± 1.4
+37.5 ± 0.8
+63.9 ± 3.5
+36.7
+C-PNP8
+200
+2
+10
+0.042 ± 0.034
+200.9 ± 2.2
+40.0 ± 0.9
+75.5 ± 2.3
+38.6
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+13
+
+except for the C-PNP7 formulation which followed best the zero
+order model. This indicates that the release of curcumin from the C-
+PNP formulations was mainly taking place by diffusion from the
+matrix and not due to the degradation of PLGA.
+3.3. Optimization of C-PNP composition by using the 23 factorial
+design model
+The criteria for optimizing the C-PNP formulation were smaller
+particle size, higher zeta potential, higher EE % and higher DR%. The
+experimentally measured input parameters were analyzed by using
+the Statgraphics® plus software. The ANOVA analysis for the
+dependent parameters where the statistical signiﬁcance of each
+effect was tested by comparing the mean square against an esti-
+mate of the experimental error is shown in Table S2 (supporting
+information). The analysis provided mathematical relationships
+between the independent variables and the dependent responses
+in the form of polynomial equations (Table S3, supporting infor-
+mation). These polynomial equations represent the quantitative
+effect of the process variables (X1, X2 and X3) and their interaction
+on the designated responses and can be graphically visualized
+through Pareto charts, main effects and surface plots (Figs. S1eS3,
+supporting information). Table S2 and Figs. S1eS3 show that the
+independent variables selected for our study, i.e. the amount of
+PLGA (X1), concentration of PVA (X2) and amount of curcumin (X3),
+signiﬁcantly inﬂuenced the dependent parameters of particle size
+(Y1), zeta potential (Y2), EE % (Y3) and drug release % (Y4).
+The ﬁnal optimal composition of the C-PNP9 formulation ob-
+tained from the analysis by using the 23 factorial design model
+contained 176.8 mg of PLGA, 2% of PVA and 16.6 mg of curcumin
+(Table 3). This optimized formulation was further characterized by
+particle size, PDI, ZP, EE%, DR%, FT-IR spectroscopy, DSC and ﬁnally
+evaluated with in vitro cell uptake studies.
+3.4. Physico-chemical properties of optimized PNPs
+The experimentally measured particle size, PDI, ZP and EE% of
+the
+optimized
+C-PNP9
+formulation
+were
+219.6
+±
+1.6
+nm,
+0.186 ± 0.023, -36.8 and 74.4 ± 8.2%, respectively (Table 3). The
+average diameter and PDI demonstrate that the optimized C-PNP9
+formulation is composed of nanoparticles with a narrow size dis-
+tribution. The size, PDI and ZP of a blank PNP with the same
+composition as the optimized C-PNP but without curcumin were
+found to be 198.3 ± 4.1 nm, 0.270 ± 0.021 and 41.5 ± 0.1 mV,
+respectively.
+In order to assess the protection of the content under acidic
+conditions and to verify an effective delivery at neutral pH the
+in vitro release proﬁle of curcumin from the optimized C-PNP9
+formulation was investigated in buffers with different pH values. As
+was previously seen for the C-PNP1 e C-PNP8 formulations, negli-
+gible amounts of curcumin were released in the buffer medium at
+pH 1.2 meaning that curcumin was not released from the optimized
+Fig. 1. In-vitro release of curcumin from A) C-PNP1 e C-PNP4 and B) C-PNP5 e C-PNP8 formulations.
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+14
+
+C-PNP at gastric and ileal pH (acidic pH). This indicates that the
+optimized C-PNP9 formulation was able to protect curcumin under
+highly acidic conditions. Similarly, only a slight release of curcumin
+took place at pH 6.8 (<5%), whereas a substantial amount of cur-
+cumin was released from the optimized C-PNP9 at higher colonic
+pH values of pH ¼ 7.4 (i.e. 56.2% over 24 h and 72.7% over 48 h). The
+in vitro release data of curcumin for the optimized C-PNP9 formu-
+lation were best ﬁtted by a Higuchi diffusion model with r2 ¼ 0.974
+(Table S1, supporting information).
+3.5. FT-IR analysis
+FT-IR spectroscopy was used to identify the chemical composi-
+tion of the materials used for the optimized C-PNP9 formulation,
+and for revealing any signiﬁcant interactions between the materials
+in the formulation mixtures. Fig. 2A shows the characteristic FT-IR
+spectra of acid terminated PLGA powder, curcumin powder, the
+blank optimized nanoparticle without curcumin (B-PNP9) and the
+optimized curcumin-loaded nanoparticle (C-PNP9).
+The PLGA spectrum shows a strong peak at 1750 cm1 which is
+attributed to carbonyl stretching (C]O) in the PLGA backbone [32].
+The strongest peak, seen at 1087 cm1, is a characteristic peak for
+PLGA and originates from the CeOeC stretching. The shoulder at
+1050 cm1 is attributed to CeCH3 vibrations from the polymer
+backbone, while the peak at 1454 cm1 is due to the CeH stretching
+in the methyl groups. The bands at 1385 cm1 and 877 cm1 are
+assigned to OeH in-plane and out-of-plane bending vibrations,
+respectively. The band at 757 cm1 is assigned to out-of-plane
+bending vibration of CeH. Other peaks such as 1184 cm1 were
+assigned to bonded hydroxyl end groups of the PLGA chains, and
+1268 cm1 and 1385 cm1 to the PLGA ester groups. The blank
+optimized nanoparticle without curcumin (B-PNP9) showed the
+same characteristic peaks in the FT-IR spectrum as the pure PLGA
+powder which indicates that PLGA remains intact during the pro-
+cessing steps to form nanoparticles.
+The FT-IR spectrum of curcumin (Fig. 2A) shows a characteristic
+absorption band at 3490 cm1, which can be attributed to the
+phenolic OeH stretching vibration [33]. The bands at 1506 and
+1429 cm1 are due to the stretching vibrations of CeC of the ben-
+zene ring and oleﬁnic bending vibration of the C]C group bound to
+the benzene ring, respectively [34]. These peaks were shifted to
+1515 and 1453 cm1 in the optimized C-PNP9 formulation which
+conﬁrmed that curcumin was encapsulated by the PLGA polymer.
+The peak at 1629 cm1 is attributed to the carbonyl (eC]O)
+stretching of the conjugated ketone. This was shifted to 1753 cm1
+in the optimized C-PNP9 formulation. Other peaks in the curcumin
+spectrum were the sharp absorption peaks at 1602 cm1 corre-
+sponding to the benzene ring stretching [35], the peak at 810 cm1
+originating from the stretching vibration of CeO in eCeOCH3 and
+the peak for the CeOeC stretching of ether that appeared at
+1029 cm1 [36]. The peak for the phenyl ring was observed at
+867 cm1 in the optimized C-PNP9 formulation. All major bands of
+both curcumin and PLGA shift to higher frequencies in the
+optimized C-PNP9 formulation indicating that curcumin and PLGA
+were bound together to form a more stable nanoparticle. The
+optimized C-PNP9 formulation showed characteristic peaks which
+were close to the principal IR peaks of the drug, conﬁrming the
+presence of curcumin in the nanospheres.
+3.6. DSC analysis
+DSC measurements were employed to study the crystal trans-
+formation of the optimized C-PNP9 formulation. The DSC curves of
+native curcumin powder, acid terminated PLGA powder, B-PNP9
+and optimized C-PNP9 are shown in Fig. 2B. Native curcumin
+powder displayed a sharp peak at 181.9 C corresponding to the
+melting point of crystalline regions. The PLGA polymer showed a
+small peak at around 52 C. This peak is referred to the relaxation
+peak that follows the glass transition and is consistent with earlier
+studies [37,38]. No notable melting point was observed for PLGA
+due to its amorphous nature. The DSC curves of pure PLGA show
+that the polymer is thermally stable up to 220 C. Moreover, it can
+also be seen from Fig. 2B that the PLGA polymer had the same
+melting peak as the optimized C-PNP9 formulation. This indicates
+that the encapsulation process did not affect the polymer structure.
+However, no crystalline drug material in the optimized C-PNP9
+formulation was detected as the sharp peak of curcumin was
+absent.
+3.7. Morphology of optimized PNPs
+The morphological appearance of the optimized C-PNP9 and
+blank optimized B-PNP9 without curcumin were visualized with a
+Transmission Electron Microscope (TEM) (Fig. 3A and B, respec-
+tively). The TEM images show that both samples present nano-
+structures with a spherical morphology with no evidence of
+particle aggregation. The sizes of the optimum C-PNP9 and B-PNP9
+are 189.0 ± 20.3 nm and 195.9 ± 25.2 nm, respectively. The sizes
+obtained from the TEM measurements are in sound accordance
+with the results obtained from the particle size measurements by
+dynamic light scattering (Table 2).
+3.8. In vitro cellular uptake of curcumin
+HT-29 human colorectal adenocarcinoma cells were chosen as
+target cells to demonstrate the success of using the optimized C-
+PNP9 formulation as a formula for improving the cell uptake and
+cell internalization of curcumin. Since curcumin was practically
+insoluble in water it was necessary to prepare the pure curcumin
+reference solution by dissolving it in an aqueous solution of DMSO
+(1.4% V/V). Fig. 3C shows the curcumin cell uptake in HT-29 cells
+when the same absolute amount of curcumin (200 mg) was incu-
+bated with the cells in the form of the pure reference solution and
+the optimized C-PNP9 formulation. The curcumin uptake by HT-
+29 cells in case of native curcumin solution and the optimized C-
+PNP9 formulation after 2 h was 3.7 ± 0.6 and 7.0 ± 0.3 mg per
+Table 3
+Composition of factors and responses for the optimized C-PNP9 formulation.
+Independent Variable
+Low
+High
+Optimum
+X1: Amount of PLGA in organic Phase
+100 mg
+200 mg
+176.8 mg
+X2: Concentration of PVA in Aqueous Phase
+2%
+4%
+2%
+X3: Amount of Curcumin in organic phase
+10 mg
+20 mg
+16.6 mg
+Response
+Predicted
+Observed
+Residual
+Y1: Particle size
+202.3 nm
+219.6 nm
+17.3
+Y2: Zeta potential
+39.7 mV
+36.8 mV
+2.9
+Y3: Entrapment Efﬁciency
+76.4%
+74.4%
+2.0
+Y4: Cumulative drug release after 24 h.
+50.4%
+56.2%
+5.8
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+15
+
+106 cells, respectively. Thus, the optimized C-PNP9 formulation
+displayed a higher curcumin uptake with a signiﬁcant difference
+when compared with the pure curcumin reference solution
+(P ¼ 0.00059 at a signiﬁcance level of 0.001).
+3.9. In vitro stability studies of C-PNP formulations
+The stability of all of the C-PNP formulations in this study was
+investigated by storing the samples for 2 months at room tem-
+perature and at 4 C. Table S4 summarizes the particle sizes and PDI
+values of the C-PNP formulations measured after one month and
+two months of storage. The particle size and PDI of the different C-
+PNP formulations have clearly remained within a good range,
+which indicates a good long term stability of all the C-PNP for-
+mulations prepared in this study.
+In view of oral delivery we also examined the colloidal stability
+of the optimized C-PNP formulation in a GI tract environment by
+using simulated gastric ﬂuid (SGF) with and without enzyme and
+simulated intestinal ﬂuid (SIF) with bile salt. The optimized C-PNP9
+formulation was incubated at 37 C in different pH media (i.e. 1.2,
+6.8 and 7.4) with and without enzyme in order to mimic the
+simulated GI ﬂuids: SGF, SIF and SCF. The colloidal stability of the
+optimized C-PNP9 was then monitored by measuring the particle
+size during incubation in 1) SGF without enzyme for one day, 2) SGF
+with pepsin for 2 h and 3) SIF with bile salt for 6 h. As can be seen
+from Tables S5 and S6, no signiﬁcant changes in particle size and
+PDI were observed for the optimized C-PNP9 formulation incubated
+at 37 C either with SGF with or without enzyme, or with SIF
+containing bile salt.
+4. Discussion
+Nanoparticle-based drug delivery systems are of high impor-
+tance because they can signiﬁcantly affect the stability and func-
+tionality and also the pharmacokinetics and pharmacodynamics of
+the drug of interest. In a quest of developing an optimum oral
+formulation for colon treatment, we have prepared a series of
+curcumin-loaded PLGA nanoparticles (C-PNPs) and used a 23
+factorial design approach to achieve a small size, maximum
+entrapment efﬁciency and speciﬁc maximal release of curcumin in
+a colonic environment. The C-PNPs were successfully obtained with
+the single-emulsion solvent-evaporation method. PVA was used as
+the emulsiﬁer since it has widely been used as a stabilizer for PLGA
+polymers and other pharmaceutical formulations. PLGA was chosen
+as a carrier matrix due to its many advantages and attractive
+properties. Namely, PLGA i) is a biodegradable polymer with good
+biocompatibility, ii) is approved by FDA and EMEA for drug delivery
+systems, iii) has well described formulation methods which are
+Fig. 2. A) FT-IR spectra of curcumin powder, acid terminated PLGA powder, blank optimized nanoparticle without curcumin (B-PNP9) and optimized curcumin-loaded nanoparticle
+(C-PNP9). B) DSC Thermograms of curcumin powder, acid terminated PLGA powder, blank optimized nanoparticle (B-PNP9) and optimized C-PNP9 formulation.
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+16
+
+easy to adapt to various types of drugs e.g. hydrophilic or hydro-
+phobic small molecules or macromolecules, iv) has the ability to
+protect the encapsulated drug from degradation, v) enables the
+preparation of sustained release formulations, vi) provides the
+possibility to easily modify surface properties to introduce stealth
+properties and/or better interaction with biological materials and
+vii) allows to develop targeted nanoparticles to speciﬁc organs or
+cells [26]. Moreover, PLGA degrades into nontoxic lactic acid and
+glycolic acid in the body. PLGA has also been shown to be a suitable
+matrix for encapsulating
+lipophilic
+drugs
+[39].
+Furthermore,
+biodegradable polymers, such as PLGA, often keep their rigidity in
+physiological temperatures, thus preventing detergents and bile
+salts to permeate into the polymer matrix. This in combination with
+the fact that PLGA can be tuned to degrade at a speciﬁc pH makes it
+a highly suitable matrix for oral drug delivery purposes where it is
+of utmost importance to protect the drug of interest from the harsh
+environment in the stomach and the intestine that contain a lot of
+enzymes and detergents.
+Particle size and size distribution (PDI) are important parame-
+ters when developing suitable nanomedicines for therapeutic
+purposes. They determine the in vivo distribution, toxicity and the
+targeting ability of nanoparticle systems and consequently the fate
+of administered nanoparticles by inﬂuencing their pharmacoki-
+netics, including the time of circulation, absorption and distribution
+[40,41]. In addition, particle size and size distribution can also in-
+ﬂuence the drug loading, drug release and stability of drug inside
+nanoparticles [42]. Moreover, the size of the particles inﬂuences
+substantially their ability to act as drug delivery vehicles. For
+example, 0.1 mm sized nanoparticles have shown to have about a
+10-fold higher intracellular uptake in an in vitro cell culture model
+compared to 10 mm-sized microparticles [43]. Furthermore, nano-
+particles which are smaller than 0.1 mm have been reported to have
+about a 27-fold higher transfection efﬁcacy than nanoparticles
+which are larger than 0.1 mm [44]. A recent study has also
+demonstrated that nanoparticles smaller than 200 nm are distrib-
+uted more efﬁciently in tumors than larger ones [45]. Particle size
+governs the distribution of nanoparticles in the body and smaller
+particles are considered to be more efﬁcient for passive targeting to
+tumor tissues through the enhanced permeability and retention
+effect [46]. Thus, by reducing the particle size of a drug delivery
+system and by using nanosized formulations the colonic residence
+time is believed to increase, but they can also provide additional
+beneﬁts for cancer therapy, such as a selective accumulation in
+inﬂamed tissues. Reducing the size of an oil-in-water emulsion has
+been shown to be an efﬁcient approach for preparing polymer-
+based nanoparticle drug delivery systems, especially for lipophilic
+drugs such as curcumin. The particle size and PDI values for all of
+the C-PNPs in this study clearly show that they are all homogeneous
+nanoformulations in the size range 180e210 nm (Table 2). This was
+also conﬁrmed by the TEM images of the blank and curcumin-
+loaded optimized C-PNP formulations (Fig. 3A and B). These re-
+sults are in good agreement with other studies showing similar
+morphology of PLGA NPs with sizes between 100 and 163 nm
+[15,20,37,47,48].
+Zeta potential, on the other hand, is a measure of the surface
+charge of the particles, which in turn determines the stability of
+colloidal suspensions, and mucoadhesion properties of particles
+[49]. The surface charge of the particles controls their stability in
+nanoparticulate formulations through strong electrostatic re-
+pulsions between the particles. Therefore, the zeta potential values,
+Fig. 3. A TEM image of A) blank optimum nanoparticles without curcumin (B-PNP9) and B) optimized curcumin loaded PLGA nanoparticles (C-PNP9). C) In vitro HT-29 cell uptake of
+curcumin from pure curcumin solution and the optimized C-PNP9 formulation (n ¼ 3).
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+17
+
+irrespective of charge type, either positive or negative, should
+preferentially be high (i.e. > 30 mV) in order to ensure stability and
+avoid aggregation of the particles. Moreover, surface charge plays a
+key role in the cellular uptake and intra-cellular distribution of
+nanoparticles [46,50]. PLGA nanoparticles are in general negatively
+charged due to the dissociation of the free terminal carboxylic
+group of the acid-terminated PLGA polymer. Table 2 shows that the
+C-PNPs in this study display a sufﬁciently high negative zeta po-
+tential to ensure that the nanoparticles will disperse very well in
+the aqueous media and that the nanosuspensions will have a very
+good stability and tolerance against aggregation.
+Determination of the encapsulation parameters, particularly the
+EE% for nanoparticle formulations is of utmost importance for
+evaluating the therapeutic efﬁcacy of a drug delivery system. It is
+generally recognized that the encapsulation efﬁciency of a chemical
+compound in PLGA polymers correlates with the concentration,
+molecular weight, and volume ratio of PLGA [51,52]. The EE%s of
+curcumin for the C-PNPs prepared in this study were between 58
+and 83% (Table 2). A recent study has reported a curcumin EE% of up
+to 92% for PLGA-based nanoparticles for oral delivery [38]. The
+higher curcumin EE% in that particular study compared to the C-
+PNPs prepared in the current study can be due to the use of PLGA
+and PVA of different molecular weights and/or a different prepa-
+ration technique (i.e. solid-in-oil-in-water solvent evaporation
+technique). However, other studies that have used the same tech-
+nique as the current study for preparing PLGA-based nanoparticles
+for oral delivery of curcumin and another poorly soluble drug gli-
+pizide have reported EE%s of 76% and 16e57%, respectively [27,28].
+Thus, the EE%s of the C-PNPs in this study can be considered to be
+sufﬁciently high for oral delivery. The high EE% can be attributed to
+several factors. Firstly, the hydrophobic nature of PLGA molecules
+makes it relatively easy to entrap lipophilic curcumin into PLGA.
+Secondly, there is a favorable interaction taking place between the
+phenolic hydroxyl of curcumin and the carboxylic groups of PLGA.
+Thirdly, the lipophilic nature of curcumin and consequently its low
+solubility in aqueous solutions results in a minimal loss of the drug
+to the external aqueous phase during the formulation process.
+A sustained and triggered release of the drug in a delivery sys-
+tem is an important property closely related to its pharmacoki-
+netics and efﬁcacy. The in vitro release characteristics of the C-PNPs
+in Fig.1 show that practically no curcumin was released from any of
+the C-PNP formulations in the SGF medium (~zero), whereas a
+slight release of curcumin took place in the SIF (i.e. < 5% of curcu-
+min released). Once the pH reached neutral values (i.e. pH 7.4),
+curcumin was, however, rapidly released in a biphasic manner
+reaching a sustained release of 34e63% after 24 h. This behavior
+differs from the one presented in the study by Xie et al. [38] where a
+burst release of curcumin of up to 25% and a sustained release of
+48% at pH ¼ 2 were reported for PLGA-based NPs for oral admin-
+istration. Furthermore, Xie et al. [38] and Cartiera et al. [27] re-
+ported that curcumin-loaded PLGA-based NPs for oral delivery
+released curcumin in a biphasic manner reaching a sustained
+release of ~55% and ~20% after 24 h. Thus, it can be concluded that
+the sustained release of curcumin from the C-PNPs in this study is
+high and in good agreement with other similar studies. The fact
+that negligible amounts of curcumin were released in the pH range
+2e6.8 clearly shows that a triggered release of curcumin from the
+C-PNPs in an environment mimicking the colon is taking place, and
+that the amount of curcumin released is substantially higher in a
+colonic environment than in an environment mimicking the
+stomach or small intestine. This means that the main absorption of
+curcumin from the C-PNP formulations should take place in the
+large intestine, and not in the stomach or small intestine, unless the
+C-PNPs are taken up earlier in the villi of the small intestine.
+However, the uptake of the C-PNPs before they reach the colon
+could possibly be minimized by a proper surface functionalization
+of the NPs. Thus, the optimized C-PNP9 formulation developed here
+should enable a further development of an oral formulation for
+triggered, sustained, targeted and effective colon treatment with
+curcumin.
+The kinetic constants and mode of release obtained from the
+release kinetic ﬁts to the in vitro release proﬁles of the C-PNPs
+(Fig. 1) are shown in Table S1. The controlled release pattern of
+curcumin from the C-PNPs followed mainly the Higuchi diffusion
+model with a half-life of 7e29 h. This indicates that a sustained
+release of curcumin from the C-PNPs mainly takes place by diffu-
+sion from the PLGA matrix and not through extensive degradation/
+erosion processes of the PLGA nanoparticles. This is in sound
+accordance with the fact that degradation of PLGA can last from
+weeks to months [52], and if the diffusion of the drug is faster than
+the matrix degradation, then the mechanism of drug release should
+occur mainly by diffusion [23,53]. The release mechanism of the C-
+PNPs is in good agreement with recent studies that have reported
+that drug-loaded PLGA NPs exhibit a controlled release pattern
+following the Higuchi diffusion model [17,20,54].
+The factorial design analysis approach is a helpful tool during
+formulation optimization as it allows elucidating the relationship
+between the dependent and independent variables during the
+optimization
+process.
+The
+main
+effects,
+interaction
+proﬁles,
+response surface and contour plots obtained from the 23 factorial
+design analysis of the C-PNPs in this study are shown in Figs. S1eS3.
+Table S3 shows the corresponding regression equations for the
+responses obtained by analyzing the experimentally determined
+input parameters. The coefﬁcients in the regression equations with
+more than one factor term represent an interaction term. A positive
+value for a response in the regression equation represents an effect
+that favors the optimization (synergistic effect), while a negative
+value indicates an inverse relationship (antagonistic effect) be-
+tween the factors and the response [55]. Thus, the regression
+equations in Table S3, and Figs. S1eS3 clearly show that X1 and X3
+have the main effects on the dependent parameters while X2 has a
+similar effect as X3 but to a lesser extent. X1 and X3 have a positive
+effect on Y1 and Y3, while X2 has a negative effect on Y1, Y3 and Y4.
+On the other hand, X1 has a positive effect on Y2, while X2 and X3
+have a negligible effect on it. The regression equation for particle
+size in Table S3 also clearly shows a negative sign for X2 (PVA),
+which indicates that the size of the nanoparticles decreases when
+the concentration of the stabilizer is increased, whereas a positive
+sign for X1 (PLGA) and X3 (curcumin) indicates a positive effect on
+the particle size, i.e. an increasing particle size with increasing
+concentration. A more detailed discussion concerning the effects of
+the independent variables is summarized in the supporting
+information.
+The observed and predicted physicochemical characteristics, i.e.
+values of the dependent responses under investigation for the
+optimized C-PNP9 formulation, are shown in Table 3, along with the
+residual values. It can clearly be seen that the experimentally
+measured and the predicted values are well in line. The fact that the
+observed values for particle size, zeta potential, EE % and DR% after
+24 h are close to the predicted values validates the successful use of
+the 23 factorial design and thus also the equations derived for the
+dependent variables.
+FT-IR spectroscopy is a technique for identifying the chemical
+composition of a material, but can also be used for revealing in-
+teractions between materials in formulation mixtures. The opti-
+mized C-PNP9 formulation showed characteristic peaks which were
+close to the principal IR peaks of the drug (Fig. 2A), conﬁrming the
+presence of curcumin in the nanospheres, but also indicating that
+there are no strong interactions between the drug and the poly-
+mers used for the nanoencapsulation process. Similar results were
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+18
+
+also obtained by Sampath et al. [56] during an FT-IR analysis of
+curcumin-loaded PLGA NPs. The DSC measurements (Fig. 2B) did
+not detect any crystalline drug material in the optimized C-PNP9
+sample as the sharp peak of curcumin was absent. Thus, the ther-
+mograms suggest that curcumin is in an amorphous or disordered-
+crystalline phase of molecular dispersion form or in a solid solution
+state inside the PLGA polymer matrix [48]. The DSC results further
+support the FT-IR results that there are no signiﬁcant interactions
+between the drug and any other components in the optimized C-
+PNP9 formulation. The indication that curcumin was molecularly
+dispersed in the PLGA polymer matrix is also supported by the fact
+that the release mechanism of curcumin from the optimized C-
+PNP9 formulation followed the Higuchi diffusion model. Polakovic
+et al. [57] have shown this with lidocaine loaded PNPs. They
+concluded that when lidocaine is molecularly dispersed in a poly-
+mer matrix its release kinetics ﬁt better to a diffusion model,
+whereas if lidocaine is in crystal form within the polymer matrix its
+release kinetics could be described by a dissolution model.
+The in vitro cell uptake studies in Fig. 3C clearly show an
+enhanced uptake of curcumin in HT-29 human colorectal adeno-
+carcinoma cells for the optimized C-PNP9 formulation compared to
+the native curcumin solution. The enhanced uptake can be attrib-
+uted to the small particle size of the optimized C-PNP9 formulation
+and the effect of PVA on the ﬂuidity of the cell membrane. In
+addition, PLGA-nanoparticles are internalized by cells partly via
+ﬂuid-phase pinocytosis as well as via clathrin-mediated endocy-
+tosis. This allows PLGA NPs to rapidly escape the endolysosomes
+and enter the cytoplasm even within 10 min of incubation. This
+facilitates the interactions of PLGA NPs with the vesicular mem-
+branes which leads to transient and localized destabilization of the
+membrane. This consequently results in the escape of the PLGA NPs
+into the cytosol [26,58].
+The overall stability of the C-PNPs prepared in this study can be
+attributed to their high zeta potential values as well as the pro-
+tective effect of PLGA. In general, bile acid affects the GI stability of
+polymeric NPs. The optimized C-PNP9 formulation prepared in this
+study was, however, expected to be more stable against bile acid
+because it consists of PLGA with a transition temperature (Tc) of
+52 C, which is much higher than the temperature of the gastro-
+intestinal tract. Polymer matrices still keep their rigidity below the
+Tc, which means that detergents and bile salts have a harder job to
+permeate into the polymer matrix. An increase of PDI of the opti-
+mized C-PNP9 formulation incubated in SIF with bile acid for one
+hour may still be attributed to the effect of bile salt. In conclusion,
+the stability studies revealed a good colloidal stability of the opti-
+mized curcumin-loaded PLGA formulation in synthetic gastroin-
+testinal ﬂuids, even though a slight increase in size distribution was
+observed in presence of bile salt.
+5. Conclusions
+Curcumin-loaded PLGA nanoparticles for colon delivery were
+successfully prepared with the emulsion solvent evaporation
+technique. The use of the 23 factorial design model enabled
+development
+of
+an
+optimized
+curcumin-loaded
+PLGA-based
+nanoformulation using minimum amount of raw materials and
+minimum time. On the basis of the optimization criteria it was
+found that the composition of the optimized formulation should
+contain 176.8 mg PLGA, 2% PVA and 16.6 mg curcumin. The
+observed responses of particle size (~220 nm), zeta potential
+(>-30 mV), EE% (>70%) and drug release after 48 h (>70%) corre-
+lated well with the predicted values obtained from the 23 factorial
+design model. DSC studies conﬁrmed the presence of curcumin in
+an
+amorphous
+or
+disordered-crystalline
+phase
+of
+molecular
+dispersion form or in a solid solution state in the polymer matrix.
+FT-IR studies conﬁrmed that there are no substantial interactions
+between curcumin and PLGA. TEM images of the optimized blank
+(B-PNP9) and curcumin-loaded PLGA NPs (C-PNP9) revealed that
+the NPs were discrete, non-aggregated, spherical in shape, and
+displayed a good size distribution. The results of small size, sus-
+tained release, good colloidal stability in synthetic gastrointestinal
+ﬂuids, long term stability and a clearly higher cellular uptake in HT-
+29 cells compared to pure curcumin solution show that the opti-
+mized curcumin-loaded PLGA nanoparticle formulation (C-PNP9)
+has high potential as an initial platform for a further development
+of an efﬁcient oral-targeted drug delivery system to the colon,
+especially if it is further functionalized with a mucoadhesive
+polymer (e.g. chitosan) or a speciﬁc targeting ligand (e.g. wheat
+germ agglutinin or specially designed peptides for colon targeting).
+Acknowledgments
+This research was funded by Center for International Mobility
+CIMO, Egypt (Grant No. KM-14-9066) and Academy of Finland
+(Grant Nos. 137 053 and 263861). We also want to address our
+special thanks to Tiina Lipi€ainen and Sara Fraser for their kind help
+with the experimental work of the DSC and FTIR studies, respec-
+tively. The Electron Microscopy Unit of University of Helsinki is
+acknowledged for help with acquiring the TEM images.
+Appendix A. Supplementary data
+Supplementary data related to this article can be found at http://
+dx.doi.org/10.1016/j.jddst.2016.01.007.
+References
+[1] American
+Cancer
+Society.
+http://www.cancer.org/cancer/
+colonandrectumcancer/detailedguide/colorectal-cancer-key-statistics,
+2015.
+Last accessed 21.10.2015.
+[2] M. Das, C. Mohanty, S.K. Sahoo, Ligand-based targeted therapy for cancer
+tissue, Expert Opin. Drug. Deliv. 6 (2009) 285e304.
+[3] S.K. Sahoo, S. Parveen, J. Panda, The present and future of nanotechnology in
+human health care, Nanomedicine 3 (2007) 20e31.
+[4] B.B. Aggarwal, K.B. Harikumar, Potential therapeutic effects of curcumin, the
+anti-inﬂammatory agent, against neurodegenerative, cardiovascular, pulmo-
+nary, metabolic, autoimmune and neoplastic diseases, Int. J. Biochem. Cell Biol.
+41 (2009) 40e59.
+[5] R.A. Fryer, C. Galustian, A.G. Dalgelish, Recent advances and developments in
+treatment strategies against pancreatic cancer, Curr. Clin. Pharmacol. 4 (2009)
+102e112.
+[6] X.
+Gao, J.
+Kuo, H.
+Jiang,
+D.
+Deeb,
+Y.
+Liu, G.
+Divine,
+R.A.
+Chapman,
+S.A. Dulchavsky, S.C. Gautam, Immunomodulatory activity of curcumin: sup-
+pression of lymphocyte proliferation, development of cell-mediated cytotox-
+icity, and cytokine production in vitro, Biochem. Pharmacol. 68 (2004) 51e61.
+[7] A.P. Lakshmanan, K. Watanabe, R.A. Thandavarayan, F.R. Sari, H. Meilei,
+V. Soetikno, S. Arumugam, V.V. Giridharan, K. Suzuki, M. Kodama, Curcumin
+attenuates hyperglycaemia-mediated AMPK activation and oxidative stress in
+cerebrum of streptozotocin-induced diabetic rat, Free Radic. Res. 45 (2011)
+788e795.
+[8] R. De, P. Kundu, S. Swarnakar, T. Ramamurthy, A. Chowdhury, G.B. Nair,
+A.K. Mukhopadhyay, Antimicrobial activity of curcumin against Helicobacter
+pylori isolates from India and during infections in mice, Antimicrob. Agents
+Chemother. 53 (2009) 1592e1597.
+[9] Z.M. Shao, Z.Z. Shen, C.H. Liu, M.R. Sartippour, V.L. Go, D. Heber, M. Nguyen,
+Curcumin exerts multiple suppressive effects on human breast carcinoma
+cells, Int. J. Cancer 98 (2002) 234e240.
+[10] S. Bisht, G. Feldmann, S. Soni, R. Ravi, C. Karikar, A. Maitra, A. Maitra, Polymeric
+nanoparticle-encapsulated curcumin (‘nanocurcumin’): a novel strategy for
+human cancer therapy, J. Nanobiotechnol. 5 (2007) 3.
+[11] R.K. Maheshwari, A.K. Singh, J. Gaddipati, R.C. Srimal, Multiple biological ac-
+tivities of curcumin: a short review, Life Sci. 78 (2006) 2081e2087.
+[12] S. Lev-Ari, L. Strier, D. Kazanov, L. Madar-Shapiro, H. Dvory-Sobol, I. Pinchuk,
+B. Marian, D. Lichtenberg, N. Arber, Celecoxib and curcumin synergistically
+inhibit the growth of colorectal cancer cells, Clin. Cancer Res. 11 (2005)
+6738e6744.
+[13] W.W. Quitschke, in: M. Diederich, K. Noworyta (Eds.), Ch 5, Bioavailability and
+metabolism of curcuminoids in Natural Compounds as Inducers of Cell Death,
+vol. 1, Springer, 2012.
+[14] H. Kharkwal, K. Bala, D.D. Joshi, D. Pande Katare, Bioavailability enhancement
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+19
+
+of curcuminoids using natural polymer, Der Pharm. Lett. 4 (2012) 1698e1711.
+[15] P. Anand, H.B. Nair, B. Sung, A.B. Kunnumakkara, V.R. Yadav, R.R. Tekmal,
+B.B. Aggarwal, Design of curcumin-loaded PLGA nanoparticles formulation
+with enhanced cellular uptake, and increased bioactivity in vitro and superior
+bioavailability in vivo, Biochem. Pharmacol. 79 (2010) 330e338.
+[16] A. Lazar, S. Mourtas,
+I.
+Youssef, C. Parizot,
+A. Dauphin, B.
+Delatour,
+S.G. Antimisiaris, C. Duyckaerts, Curcumin-conjugated nanoliposomes with
+high afﬁnity for Ab deposits: possible applications to Alzheimer disease,
+Nanomed. Nanotechnol. 9 (2013) 712e721.
+[17] M.M. Yallapu, M. Jaggi, S.C. Chauhan, Curcumin nanoformulations: a future
+nanomedicine for cancer, Drug Discov. Today 17 (2012) 71e80.
+[18] M. Gou, K. Men, H. Shi, M. Xiang, J. Zhang, J. Song, J. Long, Y. Wan, F. Luo,
+X. Zhao, Z. Qian, Curcumin-loaded biodegradable polymeric micelles for colon
+cancer therapy in vitro and in vivo, Nanoscale 3 (2011) 1558e1567.
+[19] A.O. Elzoghby, W.M. Samy, N.A. Elgindy, Albumin-based nanoparticles as
+potential controlled release drug delivery systems, J. Control. Release 157
+(2012) 168e182.
+[20] Y.M. Tsai, C.F. Chien, L.C. Lina, T.H. Tsai, Curcumin and its nano-formulation:
+the kinetics of tissue distribution and blood-brain barrier penetration, Int. J.
+Pharm. 416 (2011) 331e338.
+[21] K. Ganguly, T.M. Aminabhavi, A.R. Kulkarni, Colon targeting of 5-Fluorouracil
+using polyethylene glycol cross-linked chitosan microspheres enteric coated
+with
+cellulose
+acetate
+phthalate,
+Ind.
+Eng.
+Chem.
+Res.
+50
+(2011)
+11797e11807.
+[22] D. Peer, J.M. Karp, S. Hong, O.C. Farokhzad, R. Margalit, R. Langer, Nanocarriers
+as an emerging platform for cancer therapy, Nat. Nanotech 2 (2007) 751e760.
+[23] K.S. Soppimath, T.M. Aminabhavi, A.R. Kulkarni, W.E. Rudzinski, Biodegrad-
+able polymeric nanoparticles as drug delivery devices, J. Control. Release 70
+(2001) 1e20.
+[24] N.M. Khalil, T.C. do Nascimento, D.M. Casa, L.F. Dalmolin, A.C. de Mattos,
+I. Hoss, M.A. Romano, R.M. Mainardes, Pharmacokinetics of curcumin-loaded
+PLGA and PLGAePEG blend nanoparticles after oral administration in rats,
+Coll. Surf. B Biointerface 101 (2013) 353e360.
+[25] R.C. Mundargi, V.R. Babu, V. Rangaswamy, P. Patel, T.M. Aminabhavi, Nano/
+micro technologies for delivering macromolecular therapeutics using poly(D,
+L-lactide-co-glycolide) and its derivatives, J. Control. Release 125 (2008)
+193e209.
+[26] F. Danhier, E. Ansorena, J.M. Silva, R. Coco, A. Le Breton, V. Preat, PLGA-based
+nanoparticles: an overview of biomedical applications, J. Control. Release 161
+(2012) 505e522.
+[27] M.S. Cartiera, E.C. Ferreira, C. Caputo, M.E. Egan, M.J. Caplan, W.M. Saltzman,
+Partial correction of cystic ﬁbrosis defects with PLGA nanoparticles encap-
+sulating curcumin, Mol. Pharm. 7 (2009) 86e93.
+[28] S. Jain, S. Saraf, Inﬂuence of processing variables and in vitro characterization
+of glipizide loaded biodegradable nanoparticles, Diab. Metabol. Syndr. Clin.
+Res. Rev. 3 (2009) 113e117.
+[29] T. Ma, L. Wang, T. Yang, G. Ma, S. Wang, Homogeneous PLGA-lipid nano-
+particles as a promising oral vaccine delivery system for ovalbumin, Asian J.
+Pharm. Sci. 9 (2014) 129e136.
+[30] A. Zanotto-Filho, K. Coradini, E. Braganhol, R. Schr€oder, C.M. de Oliveiram,
+A. Sim~oes-Pires, A.M. Battastini, A.R. Pohlmann, S.S. Guterres, C.M. Forcelini,
+R.C. Beck, J.C. Moreira, Curcumin-loaded lipid-core nanocapsules as a strategy
+to improve pharmacological efﬁcacy of curcumin in glioma treatment, Eur. J.
+Pharm. Biopharm. 83 (2013) 156e167.
+[31] USP 36 NF 31. United State Pharmacopeia and National Formulary, 2013.
+[32] N.T. Paragkumar, D. Edith, J.-L. Six, Surface characteristics of PLA and PLGA
+ﬁlms, Appl. Surf. Sci. 253 (2006) 2758e2764.
+[33] R. Benassi, E. Ferrari, S. Lazzari, F. Spagnolo, M. Saladini, Theoretical study on
+Curcumin: a comparison of calculated spectroscopic properties with NMR,
+UVevis and IR experimental data, J. Mol. Struct. 892 (2008) 168e176.
+[34] T.M. Kolev, E.A. Velcheva, B.A. Stamboliyska, M. Spiteller, DFT and experi-
+mental studies of the structure and vibrational spectra of curcumin, Int,
+J. Quantum Chem. 102 (2005) 1069e1079.
+[35] A.
+Anitha,
+M.
+Sreeranganathan,
+K.P.
+Chennazhi,
+V.K.
+Lakshmanan,
+R. Jayakumar, In vitro combinatorial anticancer effects of 5-ﬂuorouracil and
+curcumin loaded N, O-carboxymethyl chitosan nanoparticles toward colon
+cancer and in vivo pharmacokinetic studies, Eur. J. Pharm. Biopharm. 88
+(2014) 238e251.
+[36] K. Renuka, M. Ramakant, V. Ashwni, D. Pankaj, K. Vivek, G. Varsha,
+K.P. Sarvesh, R.M. Prabhat, K.D. Anil, Colon-speciﬁc delivery of curcumin by
+exploiting Eudragit-decorated chitosan nanoparticles in vitro and in vivo,
+J. Nanopart. Res. 15 (2013) 1893.
+[37] A. Mukerjee, J.K. Vishwanatha, Formulation, characterization and evaluation
+of curcumin-loaded PLGA nanospheres for cancer therapy, Anticancer Res. 29
+(2009) 3867e3875.
+[38] X. Xie, Q. Tao, Y. Zou, F. Zhang, M. Guo, Y. Wang, H. Wang, Q. Zhou, S. Yu, PLGA
+nanoparticles improve the oral bioavailability of curcumin in rats: charac-
+terizations and mechanisms, J. Agric. Food Chem. 59 (2011) 9280e9289.
+[39] C. Wang, P.C. Ho, L.Y. Lim, Wheat germ agglutinin-conjugated PLGA nano-
+particles for enhanced intracellular delivery of paclitaxel to colon cancer cells,
+Int. J. Pharm. 400 (2010) 201e210.
+[40] D.P.
+Lankveld,
+A.G.
+Oomen,
+P.
+Krystek,
+A.
+Neigh,
+A.
+Troost-de
+Jong,
+C.W. Noorlander, J.C. Van Eijkeren, R.E. Geertsma, W.H. De Jong, The kinetics
+of the tissue distribution of silver nanoparticles of different sizes, Biomaterials
+31 (2010) 8350e8361.
+[41] S.A. Kulkarni, S.-S. Feng, Effects of particle size and surface modiﬁcation on
+cellular uptake and biodistribution of polymeric nanoparticles for drug de-
+livery, Pharm. Res. 30 (2013) 2512e2522.
+[42] V.J. Mohanraj, Y. Chen, Nanoparticles: a review, Trop. J. Pharm. Res. 5 (2006)
+561e573.
+[43] M.P. Desai, V. Labhasetwar, E. Walter, R.J. Levy, G.L. Amidon, The mechanism
+of uptake of biodegradable microparticles in Caco-2 cells is size dependent,
+Pharm. Res. 14 (1997) 1568e1573.
+[44] S. Prabha, W.-Z. Zhou, J. Panyam, V. Labhasetwar, Size-dependency of
+nanoparticle-mediated gene transfection: studies with fractionated nano-
+particles, Int. J. Pharm. 244 (2002) 105e115.
+[45] C. He, Y. Hu, L. Yin, C. Tang, C. Yin, Effects of particle size and surface charge on
+cellular uptake and biodistribution of polymeric nanoparticles, Biomaterials
+31 (2010) 3657e3666.
+[46] F. Akhtar, M.A. Rizvi, S.K. Kar, Oral delivery of curcumin bound to chitosan
+nanoparticles cured Plasmodium yoelii infected mice, Biotech. Adv. 30 (2012)
+310e320.
+[47] S. Abbas, E. Karangwa, M. Bashari, K. Hayat, X. Hong, H.R. Sharif, X. Zhang,
+Fabrication of polymeric nanocapsules from curcumin-loaded nanoemulsion
+templates by self-assembly, Ultrason. Sonochem. 23 (2014) 81e92.
+[48] K.L. Nair, A.K. Thulasidasan, G. Deepa, R.J. Anto, G.S. Kumar, Purely aqueous
+PLGA nanoparticulate formulations of curcumin exhibit enhanced anticancer
+activity with dependence on the combination of the carrier, Int. J. Pharm. 425
+(2012) 44e52.
+[49] J. Vandervoort, A. Ludwig, Biocompatible stabilizers in the preparation of
+PLGA nanoparticles: a factorial design study, Int. J. Pharm. 238 (2002) 77e92.
+[50] J. Panyam, W.Z. Zhou, S. Prabha, S.K. Sahoo, V. Labhasetwar, Rapid endo-
+lysosomal escape of poly (D, L-lactide-co-glycolide) nanoparticles: implica-
+tions for drug and gene delivery, FASEB J. 16 (2002) 1217e1226.
+[51] C.E. Astete, C.M. Sabliov, Synthesis and characterization of PLGA nanoparticles,
+J. Biomater. Sci. Polym. Ed. 17 (2006) 247e289.
+[52] C. Wischke, S.P. Schwendeman, Principles of encapsulating hydrophobic drugs
+in PLA/PLGA microparticles, Int. J. Pharm. 364 (2008) 298e327.
+[53] T. Niwa, H. Takeuchi, T. Hino, N. Kunou, Y. Kawashima, Preparations of
+biodegradable nanospheres of water-soluble and insoluble drugs with D, L-
+lactide/glycolide copolymer by a novel spontaneous emulsiﬁcation solvent
+diffusion method, and the drug release behaviour, J. Control. Release 25
+(1993) 89e98.
+[54] K.K.
+Chereddy,
+R.
+Coco,
+P.B.
+Memvanga,
+B.
+Ucakar,
+A.
+des
+Rieux,
+G. Vandermeulen, V. Preat, Combined effect of PLGA and curcumin on wound
+healing activity, J. Control. Release 171 (2013) 208e215.
+[55] Y. Duan, S. Xu, Q. Wang, J. Liu, Z. Zhang, Optimization of preparation of DHAQ-
+loaded PEG-PLGA-PEG nonaparticles using central composite design, J. Mater.
+Sci. Mater. Med. 17 (2006) 559e563.
+[56] M. Sampath, R. Lakra, P. Korrapati, B. Sengottuvelan, Curcumin loaded poly
+(lactic-co-glycolic) acid nanoﬁber for the treatment of carcinoma, Coll. Surf. B
+Biointerface 117 (2014) 128e134.
+[57] M. Polakovc, T. G€orner, R. Gref, E. Dellacherie, Lidocaine loaded biodegradable
+nanospheres II. Modelling of drug release, J. Control. Release 60 (1999)
+169e177.
+[58] J.K. Vasir, V. Labhasetwar, Biodegradable nanoparticles for cytosolic delivery
+of therapeutics, Adv. Drug. Deliv. Rev. 59 (2007) 718e728.
+M.A. Akl et al. / Journal of Drug Delivery Science and Technology 32 (2016) 10e20
+20

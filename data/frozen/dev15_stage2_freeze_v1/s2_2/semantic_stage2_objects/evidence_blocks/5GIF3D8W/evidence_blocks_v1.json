@@ -1,0 +1,281 @@
+{
+  "paper_key": "5GIF3D8W",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_scope_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_candidate_artifact_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/semantic_stage2_objects/candidate_blocks/5GIF3D8W/candidate_blocks_v1.json",
+  "input_contract": {
+    "input_packing_mode": "ordered_blocks",
+    "table_mode": "summary",
+    "summary_first_column_enhancement": true,
+    "ordered_block_order": [
+      "metadata",
+      "synthesis_method",
+      "materials_procurement",
+      "experimental_design",
+      "table",
+      "paragraph",
+      "paragraph",
+      "synthesis_method"
+    ],
+    "selector_strategy": "role_aware_selector_v1"
+  },
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_2_evidence_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_profile": "role_aware_general_v1",
+  "archetype_overlay": "doe_optimization_v1",
+  "evidence_blocks": [
+    {
+      "block_id": "5GIF3D8W__metadata__01",
+      "block_type": "metadata",
+      "source_type": "document_metadata",
+      "origin_locator": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+      "selection_reason": "document_identity_context",
+      "selection_feature": "build_metadata_block",
+      "rank_score": null,
+      "order_index": 0,
+      "text_content": "[METADATA]\nkey: 5GIF3D8W\ndoi: 10.1080/10717540802174662\ntitle: Etoposide-Loaded PLGA and PCL Nanoparticles I: Preparation and Effect of Formulation Variables",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": null,
+      "role_assignment": null,
+      "role_priority": "primary",
+      "role_score_breakdown": null
+    },
+    {
+      "block_id": "5GIF3D8W__preparation_method__01",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt#paragraph:2#segment:1",
+      "selection_reason": "role_constrained_preparation_method_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 15,
+      "order_index": 1,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: The optimized formulation was prepared using nanoprecipitation method as follows: polymer (50 mg) and etoposide (5 mg) were dissolved in acetone. Dichloromethane was used to dissolve PCL and etoposide in case of emulsion solvent evaporation method. Resulting organic phase was added slowly under moderate magnetic stirring into triple distilled wa- ter(TDW) containingF68asstabilizer(1.0%w/v).Thisaqueous phase immediately turns milky with formation of nanoparticle dispersion. The organic solvent was then removed by evaporat- ing under magnetic stirring or under reduced pressure at 35◦C for approximately 1 hr (Rotavapor, Buchi, Switzerland). Entire dis- persion was centrifuged at 14,000 rpm at 25◦C for 10 min (Cool- ing Compufuge, Remi, Mumbai) in three cycles. Supernatant was analyzed for free drug content and the sediment constituting nanoparticles was freeze-dried. For freeze-drying, prefreezing of samples was done at –20◦C for 20 hr, then the ﬂasks were connected to freeze-drier (Maxi Dry Lyo, Heto, Germany) un- der vacuum (1 mbar, –110◦C). The process was continued till free-ﬂowing powder was obtained. Different formulation variables like polymer amount (25, 50, 100, and 200 mg), concentration of stabilizer (0.5, 0.75, 1.0, and 2.0% w/v), and etoposide amount (2.5, 5, 10, and 20 mg) were varied and the effect on size, zeta potential, and entrap- ment efﬁciency was studied. Only one parameter was changed in each series of experiments. Drug free nanoparticles were pre- pared by the same methods without the addition of etoposide and characterized. Characterization Average particle diameter, polydispersity index, and surface potential for each batch of prepared nanoparticles were deter- mined by using Zetasizer 3000HS (Malvern Instruments, UK). Values reported are the mean and standard deviation of three batches of nanoparticles.",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 5.0,
+        "cue_score": 8.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 15.0
+      }
+    },
+    {
+      "block_id": "5GIF3D8W__materials__01",
+      "block_type": "materials_procurement",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt#paragraph:2#segment:0",
+      "selection_reason": "role_constrained_materials_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 10,
+      "order_index": 2,
+      "text_content": "[MATERIALS_PROCUREMENT_BLOCK]\nMaterials: M. SNEHALATHA ET AL. weight of 40,000), and Pluronic F 68 (F68) were procured from Sigma-Aldrich Chemicals, USA. PLGA 75/25 (Purasorb PDLGA ⃝ R 75/25, molecular weight of 10,000) and PLGA 85/15 (Purasorb PDLGA ⃝ R 85/15, molecular weight of 10,000) were generously gifted by Purac, The Netherlands.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "MATERIALS",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 10.0
+      }
+    },
+    {
+      "block_id": "5GIF3D8W__experimental_design__01",
+      "block_type": "experimental_design",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt#paragraph:3#segment:0",
+      "selection_reason": "role_constrained_experimental_design_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 7,
+      "order_index": 3,
+      "text_content": "[EXPERIMENTAL_DESIGN_BLOCK]\nExperimental design: varying concentrations or batches. 6.71. En- trapment efﬁciency ranging from 57 to 80% was obtained for the formulations, and the percent drug content was low for all batches with a maximum of around 1.45 for PLGA 85/15 and PCL.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "EXPERIMENTAL_DESIGN",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.0
+      }
+    },
+    {
+      "block_id": "5GIF3D8W__formulation_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_07__pdf_table.csv",
+      "selection_reason": "role_constrained_formulation_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 6,
+      "order_index": 4,
+      "text_content": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=37, cols=3\n- first_column_row_labels_preview: FIG. 6., FIG. 8. In vitro release proﬁles of pure drug and nanoparticle formulations, prepared with PLGA copolymers and PCL., The particles have a high surface area; therefore, some amount, of the drug will be at or near the particle surface and can be im-, 75/25 (20.65%) and PLGA 85/15 (7.65%) in the ﬁrst hour of, mediately released. Furthermore, the diffusion distances present, study. Release was extended for 24 hr for PLGA 50/50 and it, in the particles are small, which allow drug trapped in the core, extended to 36 hr and 48 hr for PLGA 75/25 and PLGA 85/15,, to rapidly diffuse out and also for, respectively. This decrease in release was due to increase in lac- ...\n- sample_rows:\n- sample_row_1: FIG. 6. | Effect of stabilizer concentration on mean size of particles.\n- sample_row_2: FIG. 7. | Effect of stabilizer concentration on drug content of formulations. | Weibull models) to know the release kinetics, and among all the\n- sample_row_3: was present in the matrix along with PCL and, therefore, release\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 1.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 6.32
+      }
+    },
+    {
+      "block_id": "5GIF3D8W__optimization_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt#paragraph:4#segment:1",
+      "selection_reason": "role_constrained_optimization_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 9,
+      "order_index": 5,
+      "text_content": "[OPTIMIZATION_RESULT_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. 1997). Ab- sence of drug peak can be attributed to complete encapsulation of etoposide or there might be very less adsorbed drug on the surface of nanoparticles. Effect of Formulation Variables Stabilizer Concentration Increase in concentration of F68 from 0.5 to 1.0% w/v made signiﬁcant decrease in size of nanoparticles prepared with all the polymers in the study. Above 1.0% w/v of F68, there was no sig- niﬁcant decrease in size of the particles. Therefore, 1.0% w/v of F68 was considered as optimum for the preparation of nanopar- ticles and used for optimized products. The effect of stabilizer concentration on the mean size of particles is shown in Figure 6. An optimum concentration of stabilizer leads to a reduced size of nanoparticles. Insufﬁcient amount of stabilizer is unable to cover the dispersed nanoparticles completely and fails in sta- bilizing and causes aggregation leading to larger nanoparticles (Feng and Huang 2001). In the solvent evaporation and nano- precipitation methods, formation and stabilization of particles are crucial factors. The amount of surfactant plays an impor- tant role in the protection of particles because it can avoid the agglomeration of particles. There was no difference in size of the particles as the concentration of stabilizer increased to 2% w/v indicating excess stabilizer. Further increase in concentra- tion of stabilizer increased particle size because of the viscosity of the aqueous phase due to higher stabilizer concentration at speciﬁc stirring speed (Murakami et al. 1999). Polydispersity index values of the formulations prepared are less than 0.9 for all formulations prepared in the study indicating narrow and ho- mogenous size distribution. Particles prepared with F68 as sta- bilizer have signiﬁcant negative surface charge ranging around −33.38 to −18.91 mV for PLGA-copolymers and −33.14 to −23.62 mV for PCL. It was observed that increase in stabi- lizer concentration changed the zeta potential toward positive value. Decrease in drug content was observed with increase in sta- bilizer concentration. The effect of stabilizer on the drug content of the formulations is shown in Figure 7. Increase in stabilizer concentration upto 1.0% w/v did not inﬂuence entrapment ef- ﬁciency of etoposide. However, slight decrease in entrapment efﬁciency was obtained when the stabilizer concentration in- creased to 2.0% w/v. When the concentration of stabilizer is increased, it helps in solubilizing drug in the aqueous phase. Due to this, when organic solvent is added to the aqueous phase, more amount of etoposide was soluble in the aqueous phase and also helps in leaching of drug from nanoparticles. Polymer Content An increase in the polymer amount affected the morphology, particle size, polydispersity, zeta potential, drug content, and en- capsulation efﬁciency of the nanoparticles. Initially on increase from 25 to 50 mg, there was no signiﬁcant increase in mean size of the particles but polydispersity index was slightly increased. Nanoparticles prepared with 25 and 50 mg of polymer formed milky dispersions without any agglomerates. For formulations withPLGA-copolymers,increaseinamountto100mgincreased the size (167.8 and 235.4 nm for 100 and 200 mg, respectively,",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "OPTIMIZATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 9.0
+      }
+    },
+    {
+      "block_id": "5GIF3D8W__context_fallback__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt#paragraph:5#segment:0",
+      "selection_reason": "role_constrained_context_fallback_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 6,
+      "order_index": 6,
+      "text_content": "[PARAGRAPH_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. ETOPOSIDE-LOADED NANOPARTICLES FIG. 2. Transmission electron microscopy image of formulation prepared with (A) PLGA 50/50 (×24,000), (B) PLGA 75/25 (×20,000), (C) PLGA 85/15 (×21,000) and (D) PCL (×24,000). forPLGA50/50)andtherewasformationofsmallagglomerates. But in formulations prepared with PCL, agglomeration started with 100 mg and when increased to 200 mg, agglomeration was very high leading to precipitation of polymer into large ﬂakes. This is because aqueous phase containing stabilizer was not able to hold this amount of polymer and making to precip- itate into agglomerates. Increase in particle size was observed with an increase in amount of polymers by other authors also (Ogawa et al.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "CONTEXT_FALLBACK",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 6.0
+      }
+    },
+    {
+      "block_id": "5GIF3D8W__preparation_method__02",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/5GIF3D8W.pdf.txt#paragraph:1#segment:0",
+      "selection_reason": "role_constrained_preparation_method_secondary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 7,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: Preparation and Effect of Formulation Variables Movva Snehalatha, Kolachina Venugopal, and Ranendra N. Saha Pharmacy Group, Faculty Division III, Birla Institute of Technology and Science (BITS), Pilani, Rajasthan, India Etoposide-loaded nanoparticles were prepared using nano- precipitation and emulsion solvent evaporation techniques using polylactide-co-glycolic acid and poly(ε-caprolactone) in presence of Pluronic F68, respectively. Effect of formulation variables like stabilizer concentration, amount of polymer, and drug was stud- ied.",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": false,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "secondary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 2.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    }
+  ],
+  "coverage_summary": {
+    "total_blocks": 8,
+    "synthesis_blocks": 2,
+    "table_blocks": 1,
+    "caption_blocks": 0,
+    "paragraph_blocks": 4,
+    "has_optimization_signal": true,
+    "has_doe_signal": true,
+    "has_sequential_signal": false
+  },
+  "required_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "selected_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+    "PREPARATION_METHOD"
+  ],
+  "missing_or_weak_roles": [
+    "VARIABLE_TABLE"
+  ],
+  "duplicate_table_suppression_events": [],
+  "feature_activation_snapshot": {
+    "ordered_evidence_packing": true,
+    "summary_table_mode": true,
+    "table_selection_scoring": true,
+    "selector_debug_available": true,
+    "candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+    "section_aware_candidate_split": true,
+    "candidate_table_isolation": true,
+    "candidate_noise_filtering": true,
+    "doe_pre_llm_detection": true,
+    "sequential_optimization_detection": false,
+    "role_aware_evidence_selection": true,
+    "doe_overlay_selection": true,
+    "duplicate_table_suppression": false
+  },
+  "technical_status": {
+    "artifact_readable": true,
+    "required_top_level_fields_present": true,
+    "required_block_fields_present": true,
+    "non_empty_evidence_blocks": true,
+    "overall": "pass"
+  },
+  "design_status": {
+    "input_contract_satisfied": true,
+    "required_features_active": false,
+    "required_roles_present": [
+      "CONTEXT_FALLBACK",
+      "EXPERIMENTAL_DESIGN",
+      "FORMULATION_TABLE",
+      "MATERIALS",
+      "OPTIMIZATION_RESULT",
+      "PREPARATION_METHOD"
+    ],
+    "missing_or_weak_roles": [
+      "VARIABLE_TABLE"
+    ],
+    "overall": "fail",
+    "nonconformance_reasons": [
+      "missing_or_weak_role:VARIABLE_TABLE"
+    ]
+  }
+}

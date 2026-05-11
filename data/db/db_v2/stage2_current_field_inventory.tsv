@@ -1,0 +1,44 @@
+field_name	source_location	stage2_present	output_examples_found	semantic_role	downstream_used	downstream_consumers	keep_in_llm	move_to_deterministic	notes
+key	active Stage2 TSV top-level column	yes	5ZXYABSU; WIVUCMYG	document identity	yes	Stage3, Stage5	no	no	Stable document key.
+doi	active Stage2 TSV top-level column	yes	10.2147/ijn.s130908; 10.1002/jps.24101	document identity	yes	Stage3, Stage5	no	no	Stable document DOI.
+model	active Stage2 TSV top-level column	yes	gemini-2.5-flash	provenance	partial	Stage3	no	no	Useful as run provenance only.
+local_instance_id	active Stage2 TSV top-level column	yes	NPR1; UFXX9WXE_DOE_Row_11	formulation identity	yes	Stage3	no	no	Stage3 candidate id fallback.
+formulation_id	active Stage2 TSV top-level column	yes	NPR1; F21; PLGA-PEG-NP-FITC-01	formulation identity	yes	Stage3, Stage5	yes	no	Authoritative row identifier inside current Stage2 contract.
+raw_formulation_label	active Stage2 TSV top-level column	yes	NPR1; Sr. No. 1; FITC-loaded PLGA-PEG nanoparticles	formulation identity	yes	Stage3, Stage5	yes	no	Paper-native label should remain raw.
+polymer_identity	active Stage2 TSV top-level column	yes	PLGA; PEG-PLGA; PCL	formulation identity/material	yes	Stage3, Stage5	yes	no	Useful high-level polymer family signal.
+polymer_name_raw	active Stage2 TSV top-level column	yes	PLGA; Resomer	material identity	yes	Stage3, Stage5	yes	no	Should remain raw text.
+instance_kind	active Stage2 TSV top-level column	yes	new_formulation; variant_formulation; candidate_non_formulation	formulation identity	yes	Stage3, Stage5	yes	no	Critical routing field.
+instance_kind_reconciliation	active current code only; absent from active Stage2 TSV	drift_only	instance_kind_raw; instance_kind_inferred; instance_kind_reconciliation_note	formulation identity	partial	Current code only	no	yes	Observed code/artifact drift. Better handled deterministically after extraction.
+parent_instance_id	active Stage2 TSV top-level column	yes	NPR1; F2.2	formulation identity	yes	Stage3, Stage5	yes	no	Needed for family and parent-link semantics.
+change_descriptions	active Stage2 TSV top-level column	yes	["PVA concentration changed..."]; ["w/o phase volume ratio=6"]	process or identity semantics	yes	Stage3, Stage5	yes	no	Useful semantic explanation surface.
+change_role	active Stage2 TSV top-level column	yes	synthesis_defining; non_synthesis; unclear	process or identity semantics	yes	Stage3, Stage5	yes	no	Critical routing field.
+instance_context_tags	active Stage2 TSV top-level column	yes	["doe","sweep"]; []	process or identity semantics	yes	Stage3, Stage5	yes	no	Useful semantic tags.
+change_context_tags	active Stage2 TSV top-level column	yes	["table_enumeration"]; []	process or identity semantics	yes	Stage3, Stage5	yes	no	Useful semantic tags but should stay compact.
+supporting_evidence_refs	active Stage2 TSV top-level column	yes	full_text_window span; table_row JSON	provenance or evidence hint	partial	Stage3, Stage5	partial	yes	Currently overloaded mixed bag of locators, spans, and support claims.
+formulation_role	active Stage2 TSV top-level column	yes	baseline; variant; characterization_only	formulation identity	yes	Stage3, Stage5	yes	no	Useful semantic role.
+instance_confidence	active Stage2 TSV top-level column	yes	high; low	formulation identity	yes	Stage3, Stage5	yes	no	Can stay coarse at formulation level.
+candidate_source	active Stage2 TSV top-level column	yes	llm_extracted; doe_numbered_table_row; figure_variable_sweep	provenance or routing	yes	Stage3, Stage5	no	yes	Better assigned deterministically for additive deterministic rows.
+instance_evidence_bundle	active Stage2 TSV top-level columns	yes	full_text_window; UFXX9WXE__numbered_doe_table_01	provenance or evidence hint	partial	Stage3, Stage5	no	yes	Includes instance_evidence_region_type, evidence_section, evidence_span_text, evidence_span_start, evidence_span_end. Too coarse for audit-grade binding.
+emul_type	active Stage2 TSV field group	yes	nanoprecipitation; oil-in-water	process or formulation type	partial	Stage3	yes	no	Keep as raw semantic extraction.
+emul_method	active Stage2 TSV field group	yes	acetone-water system; solvent displacement technique	process semantics	yes	Stage3	yes	no	Keep raw; normalize downstream.
+la_ga_ratio	active Stage2 TSV field group	yes	50:50; 1.0	material property	yes	Stage3, Stage5	yes	no	Raw text plus later deterministic normalization.
+polymer_mw_or_plga_mw	active Stage2 TSV field group	yes	Resomer RG 502 (PLGA grade); 15.1 kDa	material property	yes	Stage3, Stage5	yes	no	Observed legacy naming in active artifact and canonical naming in code.
+plga_mass_mg	active Stage2 TSV field group	yes	50; 10; 50.0	component amount	yes	Stage3, Stage5	yes	no	Raw amount text should stay; conversions move downstream.
+surfactant_name	active Stage2 TSV field group	yes	PVA; Polysorbate 80; Pluronic F68	component identity	yes	Stage3, Stage5	yes	no	Useful component identity field.
+surfactant_concentration_text	active Stage2 TSV field group	yes	1%; 15; 3.5 mg	component amount	yes	Stage3, Stage5	yes	no	Raw amount expression belongs in extraction.
+pva_conc_percent	active Stage2 TSV field group	yes	1.0; 0.5; 1.5	component amount	yes	Stage3, Stage5	yes	no	Specialized but still raw component amount.
+organic_solvent	active Stage2 TSV field group	yes	acetone; ACN	component identity or phase	yes	Stage3, Stage5	yes	no	Keep raw solvent wording; normalize downstream.
+drug_name	active Stage2 TSV field group	yes	Rhodamine; Pranoprofen; FITC	component identity	yes	Stage3, Stage5	yes	no	Keep raw drug wording.
+drug_feed_amount_text	active Stage2 TSV field group	yes	2.5 mg; 3; 5 mg	component amount	yes	Stage3, Stage5	yes	no	Keep raw amount expression; unit conversion moves downstream.
+size_nm	active Stage2 TSV field group	yes	234.8; 421.0	measurement outcome	no	core Stage3 or Stage5	yes	no	Not used in Stage3 or Stage5 identity logic, but needed for modeling.
+pdi	active Stage2 TSV field group	yes	0.153; 0.04	measurement outcome	no	core Stage3 or Stage5	yes	no	Needed for modeling, not identity.
+zeta_mV	active Stage2 TSV field group	yes	-23.0; -7.63	measurement outcome	no	core Stage3 or Stage5	yes	no	Needed for modeling, not identity.
+encapsulation_efficiency_percent	active Stage2 TSV field group	yes	55.3; 80; 77.15	measurement outcome	no	core Stage3 or Stage5	yes	no	Primary modeling target.
+loading_content_percent	active Stage2 TSV field group	yes	2.63; 2.42	measurement outcome	no	core Stage3 or Stage5	yes	no	Primary modeling target when present.
+field_scope_groups	active Stage2 TSV field suffix columns	yes	global_shared; instance_specific	ownership semantics	partial	Stage3	partial	yes	Useful semantic hint, but should not be the final evidence-ownership layer.
+field_membership_confidence_groups	active Stage2 TSV field suffix columns	yes	high; low	semantic uncertainty	no	core Stage3 or Stage5	optional	yes	Observed but not actively consumed downstream.
+field_evidence_region_type_groups	active Stage2 TSV field suffix columns	yes	methods_sentence; table_row; unknown	provenance or evidence hint	partial	Stage3	optional	yes	Too coarse for final evidence binding.
+field_missing_reason_groups	active Stage2 TSV field suffix columns	yes	not_reported; Molecular weight not provided	extraction-state metadata	no	core Stage3 or Stage5	optional	yes	Can stay as audit metadata but should not drive deterministic ownership.
+paper_notes	raw Stage2 JSONL or raw responses	yes	prioritized Table 1 value; inferred global_shared parameter	arbitration narrative	no	core Stage3 or Stage5	no	yes	Direct evidence that the LLM is doing conflict narration and arbitration.
+preparation_method	current code and later validation run only	drift_only	present in 2026-03-24 validation run	process semantics	yes	Stage3, Stage5	yes	no	Good field, but not present in the active authoritative Stage2 TSV.
+emulsion_structure	current code and later validation run only	drift_only	present in 2026-03-24 validation run	phase or formulation type	partial	Later validation only	yes	no	Useful deterministic enrichment target; absent from active authoritative Stage2 TSV.

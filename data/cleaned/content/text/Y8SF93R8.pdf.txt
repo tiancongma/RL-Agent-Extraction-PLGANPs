@@ -1,0 +1,1588 @@
+Delafloxacin-Loaded Poly(D,L‑lactide-co-glycolide) Nanoparticles for
+Topical Ocular Use: In Vitro Characterization and Antimicrobial
+Activity
+Abdullah K. Alshememry, Mohd Abul Kalam, Mudassar Shahid, Raisuddin Ali, Sulaiman S. Alhudaithi,
+Nada A. Alshumaimeri, Ziyad A. BinHudhud, Abdulrazzaq A. Aldaham, Ziyad Binkhathlan,
+and Aliyah A. Almomen*
+Cite This: ACS Omega 2024, 9, 50476−50490
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+ABSTRACT: Objective: We developed delafloxacin (Dela)-
+loaded PLGA nanoparticles (PNPs) for potential ocular application
+via a topical route to treat eye infections caused by Gram-positive
+and Gram-negative bacteria. Methodology: Dela-PNPs were
+formulated using the emulsification-solvent evaporation method
+and stabilized using poly(vinyl alcohol) (PVA). Size and
+morphology were characterized by using dynamic light scattering
+(DLS) and scanning electron microscopy (SEM). Drug loading and
+encapsulation efficiency were measured via HPLC. Differential
+scanning calorimetry (DSC) and Fourier-transform infrared
+spectroscopy (FTIR) assessed the physical state and drug−polymer
+interaction. The in vitro drug release was evaluated using the
+dialysis bag method in simulated tear fluid (STF, pH 7.4) with
+Tween 80 (0.5%). The antimicrobial efficacy was determined by a minimum inhibitory concentration (MIC) and zone of inhibition
+tests against various bacteria. Results: Optimally sized PNPs were produced (238.9 ± 10.2 nm) with a PDI of 0.258 ± 0.084 and a ζ-
+potential of 2.78 ± 0.34 mV. Using 40 mg of PLGA, 4 mg of Dela, and 1% PVA, drug encapsulation and loading were 84.6 ± 7.3 and
+12.9 ± 1.7%, respectively. DSC indicated that Dela was entrapped in an amorphous state within the PNPs. FTIR spectra showed no
+drug−polymer interactions. The formulation showed 40.6 ± 4.2% drug release within 24 h and 84.4 ± 6.1% by 96 h. MIC tests
+showed high susceptibility of Streptococcus pneumoniae, Klebsiella pneumoniae, and Escherichia coli (∼0.31 μg/mL) compared to
+Staphylococcus aureus and MRSA-6538 (∼0.63 μg/mL) and Bacillus subtilis (2.5 μg/mL). Stability studies showed minimal changes
+in particle characteristics over 3- and 6-month storage at 25 and 37 °C. Conclusion: Dela-PNPs exhibit significant potential as a
+nanoformulation for ocular applications.
+1. INTRODUCTION
+Delafloxacin (Dela) is a recently developed fluoroquinolone
+antibiotic that received approval from the US FDA in 2017.1
+Its chemical designation is 1-(6-amino-3,5-difluoropyridin-2-
+yl)-8-chloro-6-fluoro-7-(3-hydroxyazetidin-1-yl)-4-oxoquino-
+line-3 carboxylic acid with a molecular weight of 440.8 g/mol.
+The molecular structure of Dela is shown in Figure 1. This
+anionic fluoroquinolone is effective against a wide range of
+pathogens, including those responsible for “acute bacterial skin
+and skin structure infections (ABSSSIs)”.2−4 Being an anionic
+fluoroquinolone that acts equally against Gram-positive and
+Gram-negative pathogenic bacteria, it exerts its effects through
+dual-targeted inhibition of essential bacterial enzymes,
+including DNA gyrase (topoisomerase-II) and topoisomer-
+ase-IV. Dela exhibits a distinct binding affinity to these
+enzymes compared to other fluoroquinolones (such as
+ciprofloxacin, levofloxacin, and trovafloxacin), resulting in
+enhanced inhibition of both topoisomerase-II and topoisomer-
+ase-IV1, 2.5−8 It is indicated for treating community-acquired
+respiratory tract infections and is currently being evaluated in
+clinical trials for similar applications.9,10 Following oral
+administration, Dela is quickly absorbed, reaching peak plasma
+concentrations within 1−2.5 h;11 however, its poor aqueous
+solubility results in a relatively low absolute oral bioavailability
+of 58.8%.12
+Received:
+August 24, 2024
+Revised:
+October 8, 2024
+Accepted:
+November 28, 2024
+Published: December 12, 2024
+Article
+http://pubs.acs.org/journal/acsodf
+© 2024 The Authors. Published by
+American Chemical Society
+50476
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+This article is licensed under CC-BY-NC-ND 4.0
+Downloaded via UNIV OF MARYLAND COLG PARK on October 21, 2025 at 17:18:33 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+Due to rapid metabolism (half-life of ≤2.5 h) and low
+absolute bioavailability, frequent administration of conven-
+tional dosage forms of Dela might be needed even as topical
+use for the treatment of eye infections. There is limited ocular
+availability of drug(s) via topical ocular application of
+conventional dosage forms due to low corneal permeability
+caused by the physiological barrier and defensive mechanism
+of the eye structures (i.e., distinctive outer epithelial, middle
+stroma, and inner endothelial layers), blinking of the eyelids,
+rapid tear dilution, and other factors.13−15 The ocular
+physiological barrier is also supplemented by the physico-
+chemical barrier of the mucin layer that restricts the ocular
+uptake of drug(s)/antigen(s).14 Consequently, free drug
+solutions (conventional ocular dosage forms) are eliminated
+from the ocular surfaces immediately after dosing, and only
+around 5−7% of the administered dose is actually available to
+the intraocular tissues.15−18 To achieve a therapeutic
+concentration of applied drugs, recurrent dosing is needed,
+which can be a reason for adverse drug reactions and patient
+noncompliance.19 These facts encouraged us to develop a
+nanocarrier for the ocular delivery of Dela that would provide
+prolonged drug release to intraocular tissues.
+Among the nanocarriers such as lipid nanocarriers,20,21
+microemulsions,13 bilosomes,7,18 chitosan-based nanopar-
+ticles,16,22 ploy(D,L-lactide-co-glycolide, 50:50 D,L-lactide: gly-
+colide or PLGA) based nanoparticles (PNPs) have gained
+popularity for the targeted and controlled ocular drug delivery
+carrier of numerous therapeutic agents.8,13,23 The preparation
+of PLGA-based NPs makes it easier to get the smaller-sized
+uniform particles with efficient drug encapsulation as
+compared to the above nanocarriers. Moreover, because of
+their smaller size and solid spherical structures, PNPs are very
+effective for the delivery and targeting of drugs, as the NPs can
+easily diffuse across the ocular cells, penetrate the bacterial
+cells, and interfere with their vital molecular pathways, thus
+providing an exceptional antimicrobial mechanism. PLGA, a
+US-FDA-approved synthetic copolymer, is biocompatible and
+biodegradable, and its nanoparticle acts as a potential carrier
+system for superior interaction with biological membranes.
+After thoroughly reviewing the available literature, we found
+that very limited work has been reported until now to improve
+the ocular bioavailability of Dela using PNPs as carriers by
+increasing the drug concentration across the eye structures.
+With this in mind, we developed Dela-loaded PNPs by a
+double emulsion-solvent evaporation method and character-
+ized them in terms of particle size, size distribution, and surface
+charge by Zetasizer. The structural morphology of the optimal
+formulation was examined by scanning electron microscopy.
+The drug encapsulation and loading in PNPs were estimated.
+Differential scanning calorimetry and Infrared spectroscopy
+were performed to see the amorphous state of the loaded drug
+into NPs. In vitro release of Dela from the optimal PNPs as
+compared to Dela aqueous suspension was performed in
+simulated tear fluid (pH 7.4), and the kinetics of drug release
+was investigated. The sterility testing of the optimal Dela-PNP
+suspension was done, the minimum inhibitory concentration of
+Dela-PNPs was determined, and the antimicrobial potential
+was determined against certain Gram-positive and Gram-
+negative bacterial strains to confirm the ophthalmic suitability
+of the developed formulation.
+2. MATERIALS AND METHODS
+2.1.
+Materials.
+Delafloxacin
+(purity
+≥98%,
+C18H12ClF3N4O4; MW: 440.8 g/mol, log P: 2.7) was purchased
+from “Amadis Chemical Company Ltd. Zhejiang, China”.
+Poly(D,L-lactide-co-glycolide), 50:50
+D,L-lactide:glycolide
+(PLGA, MW: 30,000−60,000), poly(vinyl alcohol) (PVA
+87−90% hydrolyzed, MW: 30,000−70,000), and hydrochloric
+acid (HCl, Ph. Eur. Fuming ≥37%) were purchased from
+Sigma-Aldrich Co. (St. Louis, MO)”. Tween 80 was purchased
+from Eurostar Scientific Ltd., Liverpool, U.K. Methanol
+(HPLC grade) was purchased from “BDH Ltd. (Poole,
+England)”. Acetonitrile, CHROMASOLV, gradient grade, for
+HPLC ≥99.9% was purchased from Sigma-Aldrich Lab.,
+GmbH, Germany. An in-house Milli-Q purifying system
+(Millipore, France) was used to obtain purified water. All
+other chemicals and solvents were of analytical grade and used
+as obtained without further purification.
+2.2. Preparation of PLGA-Based Nanoparticles
+(PNPs). Polymeric nanoparticles (PNPs) were synthesized
+using an emulsification-solvent evaporation technique.13,24 To
+begin, 40 mg of polymer (PLGA) was precisely weighed and
+dissolved in 2.5 mL of acetone, forming the organic phase.
+Various concentrations of poly(vinyl alcohol) (PVA), serving
+as a stabilizer, were prepared by dissolving specific amounts of
+PVA in Milli-Q water, creating the aqueous phase (with
+concentrations of 0.25, 0.5, and 1%, w/v). The organic phase
+(2.5 mL) was gradually introduced into the aqueous phase (7.5
+mL) under continuous magnetic stirring at 800 rpm and
+homogenized at 21,500 rpm for 15 min to form a primary
+emulsion. Subsequently, a larger volume of the aqueous phase
+(approximately 3 times the volume of the primary emulsion)
+was slowly added to the emulsion while maintaining magnetic
+stirring. This process led to the formation of organic phase
+droplets. The magnetic stirring was sustained for 4 h to
+evaporate the excess organic solvent (acetone), resulting in a
+suspension of blank PLGA nanoparticles (PNPs).
+In a similar manner, delafloxacin (Dela)-loaded PLGA
+nanoparticles (Dela-PNPs) were prepared by dissolving 4 mg
+of Dela in the organic phase, maintaining a drug/polymer ratio
+of 1:10 (w/w); the remaining steps followed the procedure
+described above. The suspended PNPs were purified by
+washing with Milli-Q water (3 times) using ultracentrifugation
+at 30,000 rpm for 25 min at 4 °C to eliminate any residual
+surfactant or stabilizer. After the final wash, the PNP pellets
+were collected, redispersed in 10 mL of Milli-Q water, and
+freeze-dried. The freeze-dried formulations were stored in a
+refrigerator until needed for further studies. For comparison,
+an aqueous suspension of Dela (Dela-AqS) was prepared by
+suspending 10 mg of the drug in 10 mL of normal saline
+containing 0.003% (w/v) phenyl mercuric nitrate as a
+Figure 1. Molecular structure of delafloxacin (C18H12ClF3N4O4).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50477
+
+preservative.13,25 In the Del-AqS, 0.25% (w/v) Tween 80 was
+added to increase the aqueous solubilization of the drug.
+2.3. Chromatographic Analysis of Dela. For the analysis
+of delafloxacin (Dela), a reverse-phase high-performance liquid
+chromatography (HPLC) method with ultraviolet (UV)
+detection was employed based on a previously reported
+procedure with minor adjustments.26,27 The HPLC system
+used was a Waters 1500-series controller equipped with a UV
+detector (Waters Model 2489), a binary pump (Waters Model
+1525), and an automated sampling system (Waters Model
+2707 Autosampler). The system’s operation and data
+processing were managed using “Breeze software”. A sample
+volume of 20 μL was injected into the analytical column, which
+was a C18 column (Macherey-Nagel, 150 × 4.6 mm2, 5 μm)
+maintained at 60 °C in the column oven. The mobile phase
+consisted of a 50:50 (v/v) mixture of acetonitrile and Milli-Q
+water with 0.2% hydrochloric acid, adjusted to a pH of 3.5.
+This was pumped isocratically at a flow rate of 1 mL/min, with
+a total run time of 7 min. The drug, Dela, was eluted at
+approximately 3.25 ± 0.51 min, and UV detection was
+performed at 290 nm (λmax).
+2.4. Characterization and Structural Morphology of
+PNPs. The characterization of delafloxacin-loaded polymeric
+nanoparticles (Dela-PNPs), including size, polydispersity index
+(PDI), and ζ-potential, was conducted using the dynamic light
+scattering (DLS) technique, utilizing a Zetasizer Nano-Series
+instrument (Nano-ZS, Malvern Inc. Ltd., United Kingdom).
+The system was operated at a detection angle of 90° and a
+temperature of 25 °C. Before each measurement, the PNPs
+were suspended and diluted (1:10, v/v) with a mixture of
+Milli-Q water, which has a dielectric constant of 78.5. ζ-
+Potential measurements were performed using the same
+instrument under identical conditions. All measurements
+were carried out in triplicate.
+The structural and surface morphology of the PNPs were
+analyzed through scanning electron microscopy (SEM) using a
+Zeiss EVO LS10 (Cambridge, U.K.). The SEM analysis was
+conducted using the standard gold-sputter technique to
+enhance imaging and morphological assessment. The nano-
+particles were coated with gold by an “Ion-Sputter” at 20 mA
+current for 1 min prior to scanning. The scanning was then
+performed at an accelerating voltage of 20 kV, with a working
+distance (WD) of 6.5−8.5 mm and at a magnification of 50
+KX.
+2.5. Encapsulation and Drug-Loading Efficiencies.
+The encapsulation and loading of delafloxacin (Dela) in
+polymeric nanoparticles (PNPs) were assessed using an
+indirect method, which involved determining the amount of
+unentrapped drug. This was done by calculating the differences
+between the initial drug amount used to prepare the Dela-
+PNPs and the amount of drug quantified in the supernatant (as
+described below). Accurately measured 10 mL of Dela-PNP
+suspension was vortexed and centrifuged (for 5 min at 12,000
+rpm). A 20 μL sample of the supernatant was then injected
+into the HPLC-UV system for Dela analysis, as previously
+described. The encapsulation efficiency and drug loading were
+subsequently calculated using the following eqs (eqs 1 and 2)
+=
+×
+%EE
+amount of Dela used in PNPs
+amount of Dela in the supernatant
+amount of Dela used in PNPs
+100
+i
+k
+jjjj
+y
+{
+zzzz
+(1)
+=
+×
+%DL
+amount of Dela used in PNPs
+amount of Dela in the supernatant
+total amount of Dela PNPs
+100
+i
+k
+jjjj
+y
+{
+zzzz
+(2)
+2.6. Differential Scanning Calorimetry. Differential
+scanning calorimetry (DSC) was employed to analyze the
+physical state and thermal behavior of pure delafloxacin
+(Dela), polymer (PLGA), a physical mixture (PM) of Dela and
+PLGA, and freeze-dried Dela-loaded polymeric nanoparticles
+(Dela-PNPs). This analysis was performed by using a DSC-
+8000 instrument from PerkinElmer Instruments (Shelton,
+CT). The DSC measurements were conducted under an inert
+nitrogen atmosphere, with a nitrogen flow rate of 20 mL/min
+and a heating rate of 10 °C/min. The temperature range
+scanned was between 50 and 300 °C. Approximately 4−5 mg
+of each test sample was placed into aluminum pans, which
+were then sealed with lids for analysis. A similar unfilled pan
+was used as the reference in the DSC instrument. The resulting
+thermograms for all of the samples were recorded and analyzed
+using the “PYRIS Version-11” software, which is integrated
+with the DSC instrument.
+2.7. Fourier Transformed Infrared (FTIR) Spectrosco-
+py. Fourier-transform infrared (FTIR) spectroscopy was
+conducted on pure Dela, PLGA, the physical mixture (PM),
+and Dela-PNPs using a BRUKER Optik GmBH (Model Alpha,
+Germany) instrument. This technique was used to assess
+potential drug−polymer interactions and, to some extent, the
+physical state of the encapsulated drug. Approximately 4−5 mg
+of each sample was placed on the instrument’s holder plate and
+exposed to infrared light. The IR spectra of all samples were
+recorded using the “OPUS V-7.8” software, which recorded the
+IR spectra of all of the samples from wavenumber 4000 to 400
+cm−1 at a resolution of 2 cm−1.
+2.8. In Vitro Drug Release and Release Kinetics. A
+comparative in vitro release study was conducted to evaluate
+the release profiles of the pure drug suspension (Dela-AqS)
+and optimized drug-loaded polymeric nanoparticles (Dela-
+PNPs). The study was carried out using a dialysis membrane
+with a molecular weight cutoff of 12−14 kDa (Spectra/Por
+Dialysis Membrane, Spectrum Laboratories, Inc., Rancho
+Dominguez, CA). In brief, 1 mL of either Dela-AqS or the
+nanosuspension of Dela-PNPs was placed into separate dialysis
+bags, with both ends of the bags securely closed using Spectra/
+Por Weighted Closures. The suspensions were prepared in
+phosphate buffer (pH 7.4) with a drug concentration of 1000
+μg/mL. The dialysis bags were then placed into separate
+beakers containing 50 mL of simulated tear fluid (STF, pH 7.4
+with 0.5% w/v Tween 80) as the release medium. The entire
+setup was maintained at 35 ± 1 °C (mimicking ocular
+physiological temperature) in a shaking water bath (100
+strokes per minute). At predetermined time intervals, 1 mL of
+the sample was withdrawn, and the same volume of prewarmed
+(at 35 ± 1 °C) fresh release medium (STF, pH 7.4 with 0.5%
+w/v Tween 80) was added to maintain a constant volume and
+sink conditions. The drug content in the collected samples was
+analyzed using the HPLC-UV method previously described.
+The percentage of drug released (%DR) was calculated using
+the following equation (eq 3), and the amount of drug released
+(%) was plotted against time (h).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50478
+
+=
+×
+×
+×
+%DR
+conc. ( g/mL)
+DF
+vol. of release medium (mL)
+initial amount of Dela used ( g)
+100
+(3)
+The release data were fitted into various kinetic models,
+including zero-order, first-order, Korsmeyer−Peppas, Higuchi-
+matrix, and Hixson−Crowell models. The best-fit model for
+Dela release from the PLGA NPs was determined based on the
+highest correlation coefficient (R2) value, which approached
+1.00. From the slope values, the release exponent (n-values)
+and other kinetic parameters were calculated to determine the
+order of reaction and the mechanism of drug release.16,28
+2.9. Antimicrobial Studies. 2.9.1. Sterilization and
+Sterility Testing of Dela-AqS, Blank PNPs, and Dela-PNPs.
+The formulations intended for microbiological use were
+prepared in an aseptic environment, following the guidelines
+for the aseptic filling method applicable to eye preparations.29
+The freeze-dried polymeric nanoparticles (PNPs) were
+sterilized by exposure to UV radiation (254 nm) for 3 h.
+After sterilization, the product was dispersed in water for
+injection and packed in sterile glass vials. The Dela aqueous
+suspension (Dela-AqS) was also prepared in the aseptic area
+using water for injection.
+Sterility evaluation is a crucial quality control test for
+ophthalmic and parenteral products. In this study, sterility
+testing of the sterilized products was conducted according to
+the USP method.29,30 Two containers of each sterilized
+product were used for the test. Approximately 2 mL of each
+product from the two containers was pooled under aseptic
+conditions and further diluted with 8 mL of water for injection.
+A sterile membrane filter with a 0.22 μm pore size (Corning
+Inc., New York, NY 14831) was placed in the membrane-filter
+funnel unit. The membrane filter was premoistened with
+sterilized Fluid-A (0.1% w/v of Peptone). The diluted pooled
+samples were then passed through membrane filters. Since the
+products contained antimicrobial drugs, the membrane filters
+were washed 4 times with Fluid-A.
+Subsequently, the membrane filters were divided into two
+pieces. One piece was placed into autoclaved “Soybean Casein
+Digest Media” or “Tryptone Soya Broth (TSB)” (for fungi/
+molds and lower bacteria) and incubated for 14 days at 20−25
+°C. The other piece was placed into sterilized “Fluid
+Thioglycollate Media (FTM)” (for anaerobic and/or aerobic
+microorganisms) and incubated for 14 days at 30−35 °C. The
+absence of any microbial growth was confirmed by the
+presence of a clear, transparent solution/suspension.
+2.9.2. Minimum Inhibitory Concentration (MIC) Determi-
+nation. The minimum inhibitory concentrations (MICs) of an
+antibacterial drug against a specific microorganism are defined
+as the lowest concentration (or highest dilution) of the drug
+that inhibits the visible growth of the microorganism after at
+least 12 h of incubation. The MICs of delafloxacin (Dela) were
+determined against various Gram-positive bacteria, including
+Staphylococcus aureus, Bacillus subtilis, Streptococcus pneumoniae,
+and a methicillin-resistant S. aureus (MRSA) strain (SA-6538),
+as well as Gram-negative pathogens such as Escherichia coli and
+Klebsiella pneumoniae. The test was performed using an Iso-
+Sensitest agar medium, which contains stabilized minerals to
+prevent the antagonistic effects of metal ions on antimicrobials.
+This medium supports the growth of most microorganisms
+without the need for additional supplements. Dela (4 mg) was
+dissolved in 200 μL of DMSO, and then the final volume was
+made up to 10 mL with sterile Milli-Q water to get 400 μg/mL
+drug concentration (stock solution). The stock solution was
+further diluted with sterile water to obtain a range of drug
+concentrations (20−0.156 μg/mL). The highest used concen-
+tration was 20 μg/mL, which contained only 1 μL of DMSO in
+1 mL of 20 μg/mL drug solution (0.1% DMSO, v/v). This
+small volume of DMSO in 1 mL of drug solution was
+negligible, as the maximum tolerable limit of DMSO in MICs
+determination is 0.5% v/v, i.e., 5 μL/mL.31
+Equivalent concentrations of Dela were prepared by
+suspending the appropriate amount of Dela-PNPs. The
+aqueous suspension of Dela-PNPs was prepared by suspending
+10 mg of the drug in 10 mL of normal saline without a
+preservative.
+Blank nanoparticles (B-PNPs) were also prepared similarly
+without adding the drug. In 96-well plates, 100 μL of each drug
+product (solution and PNP suspension) was accurately
+measured and added to each well. Then, 100 μL of 1 × 105
+CFU/mL suspension of the tested pathogens were transferred
+into each well. The addition of the pathogen suspension
+further diluted the drug products, resulting in a final
+concentration range of 10−0.078 μg/mL of Dela. The plates
+were then incubated at 37 °C for 24 h. Visual inspection for
+turbidity in the wells was conducted with the MIC being the
+lowest concentration of Dela that completely inhibited
+microbial growth, indicated by a clear, transparent well.
+2.9.3. Antibacterial Activity by Zone of Inhibition Assay.
+The antimicrobial activity of delafloxacin in Dela-PNPs and
+Dela-AqS (as a control preparation) was assessed using the
+agar diffusion method.22,32 B Based on the “Global Priority
+Pathogens List”, various Gram-positive and Gram-negative
+ATCC standard bacterial strains were obtained from the
+Microbiology Unit, Department of Pharmaceutics, College of
+Pharmacy, King Saud University, Riyadh, to evaluate their
+susceptibility to Dela. Each bacterial strain was spread on
+separate Mueller-Hinton agar plates. After 45 min, three wells
+with a diameter of 6 mm were created on each plate using a
+sterile borer. In well-1, 100 μL of Dela-AqS (containing 50 μg
+of Dela) was added; in well-2, an equivalent quantity of Dela-
+PNP nanosuspension (≈50 μg of Dela) was added; and in
+well-3, the same amount of blank nanoparticles (B-PNPs) was
+added. After the plates were allowed to stand for 2 h, they were
+incubated at 37 ± 1 °C for 24 h. The zones of inhibition
+produced by the different formulations were measured
+(millimeters) in triplicate.
+2.10. Physical Stability. The optimal Dela-PNPs were
+periodically evaluated for storage stability based on size
+characteristics, ζ-potential, drug encapsulation, and loading
+capacity.16,33 Precisely weighed samples (10 mg) of freeze-
+dried Dela-PNPs were placed in glass containers. Over a 6-
+month period, three containers were stored at 25 ± 2 °C with
+75 ± 5% relative humidity (RH), while another three were
+kept at 37 ± 2 °C with 75 ± 5% RH. At specified intervals (1
+week, 1, 3, and 6 months), the samples were examined for
+changes in the aforementioned parameters. Before each
+assessment, the stored samples were reconstituted by being
+suspended in simulated tear fluid (STF).
+2.11. Statistical Analysis. All results are expressed as the
+mean of at least three measurements with standard deviations
+(mean ± SD) unless otherwise indicated. The comparison
+between the mean values was performed by applying a one-way
+analysis of variance (ANOVA) using GraphPad Prism
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50479
+
+statistical software, followed by “Tukey’s multiple comparison
+post hoc tests”, where p < 0.05 indicates statistical significance.
+3. RESULTS AND DISCUSSION
+3.1. Formulation Development. In preliminary trials, a
+total of nine blank PLGA-based nanoparticles (in triplicate)
+were prepared by taking varying amounts of PLGA with three
+concentrations of PVA (%), as shown in Table 1. As the
+concentrations of PLGA and PVA increased, the nanoparticle
+size also increased. However, the PDI improved (lowered) at
+the highest PVA concentration (1%). The ζ-potential
+remained nearly constant across all cases, consistent with
+previous observations during the development of lipid−
+polymer hybrid nanoparticles encapsulated with Dela.34
+Given its smaller size and lower PDI, Blank-6 was selected as
+the best composition. Therefore, 40 mg of PLGA and PVA
+(1%) was chosen further to prepare the drug-loaded PLGA
+nanoparticles (Dela-PNPs), as illustrated in Table 2.
+Three different weights of Dela were selected to prepare the
+drug-loaded PNPs. The formulation using the lowest drug
+weight (4 mg) with 40 mg of PLGA produced smaller particles
+(238.9 nm) with a low PDI (0.258) compared to formulations
+with higher drug amounts using the same PLGA quantity. The
+ζ-potentials of all three formulations were relatively similar.
+Table 1. Preparation of Blank PLGA Nanoparticles (B-PNPs) for the Optimization of the Amount of PLGA (mg) and
+Concentration of the Stabilizer Poly(vinyl alcohol), PVA
+formulation factors
+outcome parameters (mean ± SD, n = 3)
+B-PNPs
+PLGA (mg)
+PVA (%, w/v)
+particle size (nm)
+polydispersity index (PDI)
+ζ-potential (mV)
+Blank-1
+20.0
+0.25
+246.7 ± 8.9
+0.537 ± 0.042
+1.67 ± 0.86
+Blank-2
+20.0
+0.5
+222.1 ± 10.2
+0.521 ± 0.041
+2.04 ± 0.97
+Blank-3
+20.0
+1.0
+201.2 ± 9.3
+0.469 ± 0.039
+1.76 ± 0.84
+Blank-4
+40.0
+0.25
+244.6 ± 10.1
+0.253 ± 0.041
+2.06 ± 0.85
+Blank-5
+40.0
+0.5
+212.1 ± 11.6
+0.247 ± 0.038
+2.56 ± 1.01
+Blank-6
+40.0
+1.0
+204.6 ± 9.9
+0.246 ± 0.034
+2.34 ± 0.96
+Blank-7
+60.0
+0.25
+260.4 ± 12.5
+0.412 ± 0.037
+1.47 ± 0.83
+Blank-8
+60.0
+0.5
+237.3 ± 10.6
+0.339 ± 0.042
+1.76 ± 0.84
+Blank-9
+60.0
+1.0
+223.6 ± 9.8
+0.326 ± 0.038
+1.68 ± 0.86
+Table 2. Characteristics of Drug-Loaded PLGA Nanoparticles (Dela-PNPs) Demonstrating the Influence of Formulation
+Factors on the Properties of the Developed Dela-PNPsa
+formulation factors
+outcome parameters (mean ± SD, n = 3)
+formulations (Dela-PNPs)
+Dela (mg)
+drug/PLGA (w/w)
+particle size (nm)
+PDI
+ζ-potential (mV)
+%EE
+%DL
+Batch-1
+4.0
+1:10
+238.9 ± 10.2
+0.258 ± 0.084
+2.78 ± 0.34
+84.6 ± 7.3
+12.9 ± 1.6
+Batch-2
+6.0
+1.5:10
+252.6 ± 12.2
+0.278 ± 0.045
+3.15 ± 0.62
+80.4 ± 6.1
+10.4 ± 1.8
+Batch-3
+8.0
+2:10
+264.5 ± 13.1
+0.303 ± 0.049
+3.05 ± 0.81
+77.4 ± 5.2
+7.7 ± 1.7
+aPLGA (40 mg) and stabilizer (PVA, 1%, w/v) were fixed in all three batches.
+Figure 2. Particle size (a) and ζ-potential distributions (b) of Blank PLGA nanoparticles (B-PNPs, Blank-6). Particle size (c) and ζ-potential
+distributions (d) of the optimal Dela-loaded PLGA nanoparticles (Dela-PNPs, Batch-1).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50480
+
+However, the encapsulation efficiency (%EE) and drug loading
+(%DL) were higher for the formulation with a low drug-to-
+polymer weight ratio (1:10 w/w), achieving approximately
+84.6 and 12.9%, respectively (Table 2). The likely reason for
+this is that the larger surface area of the polymer matrix
+provided ample space to encapsulate the lipophilic drug (Dela)
+within the polymer matrix, as suggested by previous
+reports.24,35 Additionally, the higher %EE and %DL were
+likely due to the rapid incorporation of Dela in the core of the
+nanoparticles, facilitated by the excellent stabilizing capacity of
+PVA.13,36 Therefore, Batch-1 (1:10, w/w Dela: PLGA) was
+chosen as the optimal formulation.
+3.2. PNP Characterization and Surface Morphology.
+The size and ζ-potential distributions of the blank PLGA
+nanoparticles (Blank-6, B-PNPs) and the optimal drug-loaded
+PLGA nanoparticles (Batch-1, Dela-PNPs) are represented in
+Figure 2. The average size of B-PNPs prepared using 40 mg of
+PLGA was 204.4 ± 9.9 nm, while slightly larger particles
+(238.9 ± 10.2 nm) were obtained when Dela was loaded.
+The size of the drug-loaded PNPs (Batch-2 and Batch-3), as
+shown in Table 2, was further increased to some extent with an
+increase in the drug amount. This might be associated with the
+adsorption of the excess drug on the surface of PNPs, as the
+extra drug molecules were not entrapped properly into the core
+of the PNPs. The size range of the drug-loaded nanoparticles
+(Dela-PNPs) appears suitable for the intended delivery of Dela
+into the eyes following topical application for the treatment of
+bacterial eye infections. These size ranges are unlikely to cause
+eye irritation, as the human eye can tolerate particulate matter
+up to 10 μm.37,38 The PDI values were 0.246 ± 0.034 and
+0.258 ± 0.084 for B-PNPs and Dela-PNPs, respectively. The
+low PDI values indicated that the PNPs exhibited an unimodal
+and narrow size distribution, as illustrated in Figure 2a (for B-
+PNPs) and Figure 2c (for Dela-PNPs).
+Blank (B-PNPs) and drug-loaded optimal (Dela-PNPs)
+formulations had slightly positive surface charges (Figure 2b
+for B-PNPs and Figure 2d for Dela-PNPs), and their values
+were nearly identical (i.e., 2.34 ± 0.96 and 2.78 ± 0.34 mV,
+respectively). Positively charged particles will interact with the
+negatively charged mucin layer of eye surfaces, which would
+prolong the ocular retention of Dela-PNPs, thereby providing
+sustained ocular delivery of the loaded drug. The low ζ-
+potential (ZP) values of Blank and Dela-PNPs indicated that
+the emulsification-solvent evaporation method did not affect
+the surface charge of the PNPs even in the presence of Dela
+(anionic fluoroquinolone). It is well-known that the NPs with
+low ZPs cannot have colloidal stability; thus, the prepared
+Dela-PNPs should be kept in freeze-dried form rather than
+aqueous suspension state, which can be reconstituted at the
+time of its use.39 According to previous reports, as the pH of
+PLGA and PVA-based NPs increases, the carbonyl groups in
+PLGA and −OH in PVA get closer to the surface of NPs,
+resulting in high negative ζ-potentials. While at neutral pH, the
+surface charges of NPs decrease and approach near zero.40,41
+This might be the reason for the low positive ζ-potential of
+Dela-PNPs in this study.
+SEM imaging of the B-PNPs and Dela-PNPs showed that
+they were spherical, solid, dense structures with both smooth
+and uneven surfaces (Figure 3a,b). The only difference
+observed was that the freeze-dried Dela-PNPs appeared
+slightly larger, as shown in Figure 3b. This was also noted
+when the particle size was measured by the DLS technique.
+3.3. Encapsulation Efficiency (%EE) and Drug-Load-
+ing Capacity (%DL). The %EE and %DL of the optimal Dela-
+PNPs were comparatively higher than those of the other
+batches (84.6 ± 7.3 and 12.9 ± 1.7%, respectively). The
+reasons for the relatively higher %EE and %DL were discussed
+earlier in the formulation development section. Additionally,
+the preparation method of Dela-PNPs (emulsification-solvent
+evaporation) involved dissolving the hydrophobic drug (Dela)
+and PLGA in acetone (a water-miscible solvent) and then
+adding this solution drop by drop into an aqueous phase
+containing a stabilizer (1% PVA) while continuously stirring
+with a magnetic stirrer. During this process, the droplets
+solidified and formed PNPs as acetone evaporated. Con-
+sequently, the increased %EE and %DL might be attributed to
+the lipophilicity and strong polarity of delafloxacin due to the
+presence of a chlorine atom in its molecular structure.42
+Although all three batches of Dela-PNPs were prepared with
+the same concentration of PVA (1%), some of the outcome
+parameters (size, %EE, and %DL) varied slightly (Table 2) due
+to the different amounts of drug used. It is important to note
+Figure 3. Scanning electron microscopy (SEM) images of blank PNPs (a) and Dela-PNPs (b).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50481
+
+that using a high amount of Dela to prepare Dela-PNPs by this
+method is not feasible due to the very low aqueous solubility of
+Dela during the primary emulsification step.35
+3.4. Differential Scanning Calorimetry (DSC). The
+thermograms of the pure drug (Dela), polymer (PLGA),
+physical mixture (PM) of Dela and PLGA, and the freeze-dried
+drug-loaded polymeric nanoparticles (Dela-PNPs) were
+obtained by scanning at the temperature range 50−300 °C
+as represented in Figure 4. The thermogram shows a sharp
+endothermic peak of pure Dela at 242.54 °C (Figure 4a),
+which was close to the reported melting point of Dela and
+confirmed the crystalline characteristic of the pure drug.34,43−45
+The DSC curve of pure PLGA shows a melting temperature of
+62.5 °C without degradation (Figure 4b), which was also
+reported by de Melo et al.46
+The PM shows two broad parabolic endotherms; the first
+one was at around 195.23 °C, which might be due to the
+evaporation of moisture from the physically admixed PM
+during heating, suggesting the hygroscopic nature of Dela
+(Figure 4c). Apart from its hygroscopic nature, Dela has shown
+Figure 4. Differential scanning calorimetry (DSC) thermograms of pure Dela (a); PLGA (b); a physical mixture (PM) of Dela and PLGA (c); and
+the freeze-dried Dela-loaded PLGA-based nanoparticles (d).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50482
+
+polymorphism with kinetically stable, metastable, and trihy-
+drate forms.47 The stable form was variable hemihydrate,
+which might be a reason for the slight shift in the melting
+endotherm of Dela in the PM. The second curve that appeared
+Figure 5. FTIR spectra of pure Dela (a); PLGA (b); physical mixture (PM) of Dela and PLGA (c); and freeze-dried Dela-loaded PLGA-based
+nanoparticles (d).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50483
+
+around the melting region of PLGA in the same endotherm
+was associated with the pure PLGA present in the PM. Thus,
+the endothermic behavior of PLGA and the slightly broad
+endotherm of melting temperature of Dela was observed in the
+DSC curve of the PM, indicating the existence of a crystalline
+state of Dela in the PM.45 The endotherm associated with Dela
+did not appear around its melting region in the thermogram of
+the optimal freeze-dried drug-loaded nanoparticles (Dela-
+PNPs), as shown in Figure 4d. This clearly demonstrates that
+the drug was transformed into an amorphous state and
+encapsulated maximally in the matrix of the PLGA during the
+preparation of PNPs and the process of freeze-drying
+completely dried the product. However, a slightly depressed
+endotherm appeared in the same thermogram around the
+melting region of PLGA, which might be due to the bulk
+amount of PLGA in the drug-loaded PNPs.
+3.5. FTIR Analysis. The FTIR spectra of pure Dela, PLGA,
+PM of Dela and PLGA, and Dela-PNPs were obtained by
+FTIR spectroscopy in the wavenumber range of 400−4000
+cm−1, as represented in Figure 5. One of the objectives of
+performing an FTIR spectral analysis was to check the
+compatibility of Dela with PLGA while encapsulated into the
+PNPs in association with the identification, characterization,
+and purity check of the drug. The characteristic bands of Dela
+that appeared in the spectra showed strong CO stretching
+(conjugated aldehyde or conjugated acid) at wavenumber
+1704.4 cm−1, CC stretching of α−β-unsaturated ketones at
+1616.3 cm−1, strong N−O stretching (nitro compound) at
+1530.5 cm−1, strong C−F stretching (fluoro compound) at
+1452.7 cm−1, C−H bending (alkane) at 1378.2 cm−1, strong
+C−O stretching in association with strong C−N stretching at
+1226.3 cm−1, and strong C−O stretching (primary alcohol) at
+1069.8 cm−1 (Figure 5a), which may confirm the purity of
+Dela.34,45 The FTIR spectra of PLGA (Figure 5b) have C−H
+bending vibration bands at 1084.09, 1170.09, and 1268.39
+cm−1. Also, the IR spectra of PLGA have the bending vibration
+of CO (at 1385.87 cm−1), −COO stretching (at 1747.39
+cm−1), and C−H stretching vibration (at 2951.87 cm−1).
+These are the characteristic bands of IR spectra of PLGA.48
+The above-identified IR bands of Dela were obvious and
+remarkable in the IR spectra of PM, as shown in Figure 5c.
+Also, the important and characteristic bands of Dela were
+distinct in the IR spectra of Dela-PNPs, approximately at the
+same wavenumbers (Figure 5d), and they precisely coincided
+with the spectra of PM with subtle shifting in their position.
+This indicates the nonexistence of any covalent interactions
+between Dela and PLGA, as well as drug and other solvents
+used during the preparation of PNPs. Some bands of Dela were
+either missing or appeared with reduced intensity in the IR
+spectra of Dela-PNPs, which might be due to the overlapping
+of distinct bands of PLGA and Dela. This was also reported
+previously during the development of lipid−polymer-based
+nanoformulation34 and nanoparticulate solid dispersions45 of
+Dela.
+3.6. In Vitro Release of Dela from Dela-PNPs and
+Release Mechanism. The release of drug from the pure drug
+suspension was faster and relatively high during the initial
+hours (till 12 h) and reached up to 32.08 ± 6.36%. The %DR
+remained nearly unchanged even after 24 h of incubation in
+the release medium (32.72 ± 6.34%). After that, a very slow
+drug release was noted, which was 34.61 ± 6.02% at 36 h and
+reached 44.56 ± 5.77% at the end (until 96 h). In contrast, the
+drug release from PNPs was sustained, and only a small
+fraction of the loaded drug was released (21.30 ± 1.39%)
+within the first 12 h. After 12 h, the drug release from PNPs
+was increased linearly (as seen in Figure 6), reaching
+approximately 40.64 ± 4.22% at 24 h and 50.08 ± 4.15% at
+36 h. The cumulative drug release continued to increase at
+subsequent time points, ultimately reaching a maximum of
+84.47 ± 6.11% at 96 h. Therefore, sustained drug release was
+noted from the Dela-loaded PNPs.
+A biphasic release of Dela was found from Dela-PNPs during
+the in vitro release experiment with an initial rapid release
+(40.64 ± 4.22%) at 24 h, which might be attributed to the
+surface-adsorbed drug on the polymeric matrix of PLGA
+nanoparticles. The surface-adsorbed drug molecules were
+desorbed rapidly when the PNPs came in contact with the
+release medium (STF), which was also found during the in
+vitro release of rifampicin from the PLGA-based NPs.49 The
+second phase showed a slower/sustained release of the drug as
+the encapsulated drug was diffused out slowly from the PLGA
+matrix into the release medium, and around 84.47 ± 6.11% of
+the drug was released within 96 h. The sustained release of
+drug from Dela-PNPs was at a constant rate, where the
+concentration of the drug was above the MIC90 range (0.015
+to 2.0 μg/mL against the Gram-positive pathogens). At this
+concentration range, among S. aureus, approximately 83.6% of
+MRSA strains were found to be inhibited at the susceptible
+breakpoint of ≤0.25 μg/mL.50
+The mechanism of drug release is considered as the rate-
+limiting step that controls the rate of drug release from a
+carrier/nanocarrier until the exhaustion of drug release. The
+diffusion of the encapsulated drug into the polymer matrix,
+solvent penetration into carriers (responsible for swelling of
+the carriers), erosion and degradation of the polymeric matrix,
+or the combination of all of these are the main mechanisms of
+drug release. The degradation of PLGA occurs by hydrolytic
+cleavage of the polyester backbone.51,52 As the degradation of
+PLGA is a very slow process, the release of Dela from PNPs
+was associated mainly with the erosion/degradation of PLGA
+and, to some extent, due to the diffusion of the drug from the
+PLGA matrix into the medium.49,51,53,54
+In the present investigation, the mechanism of drug release
+from Dela-PNPs primarily followed the Higuchi-matrix model,
+where the value of the correlation coefficient (R2) was highest
+(0.9936) and the second best-fit was the first-order model (R2
+= 0.9935). There was linearity in the release profile of Dela
+Figure 6. In vitro release of Dela from Dela-PNPs and control
+formulation (Del-AqS). Results are the averages of three measure-
+ments with standard deviations (mean ± SD, n = 3). * p < 0.05,
+significantly improved release of the drug occurred from PNPs as
+compared to AqS.
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50484
+
+from PNPs from the PLNs, as summarized in Table 3 and
+represented well in Figure 7. Considering the highest R2 values
+and using the values of the slope of these plots, the release
+exponents (n-values) were calculated and found to be 0.0407
+and 0.0034 for the Higuchi-matrix and first-order kinetic
+models, respectively. The calculation of n-values suggested that
+the drug release from PNPs followed the Fickian diffusion
+mechanism.
+Though zero-order release kinetics is considered the most
+appropriate, where the rate of release is completely
+independent of the concentration of dissolved drug into the
+release medium, and the drug is released at a constant rate
+throughout the time course. However, this type of release
+kinetics was impractical in the case of PLGA-based nano-
+particles. Therefore, erosion/degradation of the PLGA matrix
+can be the most appropriate mechanism that is of nonzero
+order type, where the release rate is dependent on the
+degradation kinetics of PLGA.51 Also, the drug diffusion
+mechanism can be the second most prevalent mechanism,
+which is dependent on the concentration of dissolved drug as
+defined by “Fick’s second Law”, where the concentration
+gradient varies with time length. Based on the drug release
+pattern and release mechanism, the developed Dela-PNPs can
+be applied as a single topical dose into the infected eyes, which
+would maintain the therapeutic level of the drug (which was
+much more than its MIC90 value) for a prolonged period of
+time (24 h) and the Dela-PNPs would be an ideal nanocarrier
+system for ocular use.
+There is a substantial amount of published literature on the
+mathematical modeling of drug release kinetics from PLGA-
+based nanoparticles. However, the benefits of this approach
+have not been adequately emphasized. Therefore, it is
+important to focus on the application of mechanistic models
+instead of solely relying on mathematical models. This shift
+would enhance our understanding of release mechanisms and
+improve the extrapolation for various polymeric drug delivery
+systems.51,54 Therefore, there remains significant potential for
+developing new modeling approaches to provide better and
+innovative toolkits, which can help avoid the trial-and-error
+methods currently used to achieve the desired and predictable
+outcomes.
+3.7. Sterility Testing and Minimum Inhibitory
+Concentrations (MICs). During the incubation period of
+the optimized formulation in the sterility testing, both media
+were visually examined every day for 14 days to check the
+appearance of cloudiness/turbidity due to any microbial
+growth. In this investigation, no turbidity was observed in
+both media, confirming the absence of any viable micro-
+organisms. The absence of turbidity for the tested products
+(even on the 14th day) indicated that these were sterile. Thus,
+the developed products would be safe and suitable for
+ophthalmic applications.55
+The minimum inhibitory concentrations (MICs) of a pure
+drug (Dela-AqS) and Dela-PNPs against the tested Gram-
+Table 3. Kinetic Investigation of the Drug Released from
+the Delafloxacin-Loaded PLGA Nanoparticles (Del-PNPs)
+applied release models
+R2
+slope
+an-values
+zero order (fraction of drug released versus
+time)
+0.9593
+0.0088
+first order (log% drug remaining versus
+time)
+0.9935
+0.0079
+0.0034
+Korsmeyer−Peppas (log fraction of drug
+released versus log time)
+0.9923
+0.6829
+Hixson−Crowell (Mo
+1/3 −Mt
+1/3 versus
+time)
+0.7405
+0.0364
+Higuchi matrix (fraction of drug released
+versus square root of time)
+0.9936
+0.0934
+0.0407
+an-values indicate the values of the release exponent or diffusion
+exponent.
+Figure 7. Fitting of release data obtained from the in vitro drug release profiling of Dela-PNPs in different kinetic models. (a) Zero-order; (b) first-
+order; (c) Korsmeyer−Peppas; (d) Hixson−Crowell, and (e) Higuchi matrix models. In vitro drug release study was performed using STF (pH
+7.4) as a release medium accompanied by Tween 80 (0.5%, w/v) at ocular surface temperature (35 ± 1 °C).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50485
+
+positive and Gram-negative pathogens were determined using
+optical density measurements. This was needed to evaluate the
+enhanced antimicrobial activity of Dela while being loaded in
+PNPs. The results indicate that in the presence of blank
+nanoparticles (B-PNPs, control experiments), the optical
+density associated with microbial growth increased. However,
+as the concentration of Dela-containing formulations in-
+creased, the optical density of the microorganisms decreased,
+aligning with previous reports on Dela.4,56,57 The MICs of Dela
+were measured in a concentration range of 0.078−10 μg/mL.
+The determined MICs of Dela in Dela-AqS and Dela-PNPs,
+compared to B-PNPs, against the Gram-positive (Figure 8)
+and Gram-negative (Figure 9) pathogens are summarized in
+Table 4. The results indicated a higher susceptibility of S.
+pneumoniae, K. pneumoniae, and E. coli at the lowest
+Figure 8. MICs of Dela (concentration range of 0.078−10 μg/mL) in Dela-AqS and Dela-PNPs as compared with B-PNPs against the Gram-
+positive microbes.
+Figure 9. MICs of Dela (concentration range of 0.078−10 μg/mL) in Dela-AqS and Dela-PNPs as compared to B-PNPs against the Gram-negative
+pathogens.
+Table 4. Minimum Inhibitory Concentration (MICs) Values
+of Dela from Dela-AqS and Dela-PNPs against Some Gram-
+Positive and Gram-Negative Microorganisms
+MICs of dela present in different formulations
+microorganisms
+Dela-AqS
+Dela-PNPs
+B-PNPs
+Gram-Positive
+S. pneumoniae
+0.3125 μg/mL
+0.3125 μg/mL
+not obtained
+S. aureus
+1.25 μg/mL
+0.63 μg/mL
+not obtained
+MRSA (SA-6538)
+1.25 μg/mL
+0.63 μg/mL
+not obtained
+B. subtilis
+2.50 μg/mL
+2.50 μg/mL
+not obtained
+Gram-Negative
+E. coli
+0.3125 μg/mL
+0.3125 μg/mL
+not obtained
+K. pneumoniae
+0.3125 μg/mL
+0.3125 μg/mL
+not obtained
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50486
+
+concentration (∼0.31 μg/mL) toward Dela as compared to
+other microorganisms in the present investigation.
+Similarly, the susceptibility of S. aureus and MRSA-6538
+strains in the case of Dela-PNPs was higher (∼0.63 μg/mL)
+compared to that of B. subtilis (2.5 μg/mL). This finding was
+in agreement with previous reports where the methicillin-
+sensitive S. aureus (MSSA) and MRSA were found to be ∼98
+and ∼87% susceptible, respectively, to Dela after 24 h
+incubation.2,58
+The obtained MICs were equivalent to the reported values
+of an aromatically fused imidazole derivative (structurally
+similar to Dela), where the antibacterial activity against MRSA
+was noted at 512 μg/mL of MICs.59,60 This compound also
+showed strong activity against K. pneumonia with MICs of 0.5
+μg/mL, E. coli with MICs of 0.25 μg/mL, P. aeruginosa with
+MICs of 1 μg/mL, and Acinetobacter baumannii with MICs of
+0.5 μg/mL.60,61
+3.8. Antibacterial Activity of Dela-PNPs. The results of
+the antimicrobial activity of Dela-containing products against
+the chosen microorganisms are summarized in Table 5. The
+Dela-PNPs, as compared to Dela-AqS, showed a significant
+improvement (p < 0.05) in the antimicrobial potency of Dela
+against the used bacterial strains. The blanks (B-PNPs) did not
+show any inhibitory effect on bacterial growth (Figure 10).
+From the previous reports, it was found that Dela is a broad-
+spectrum antibiotic with prolonged antibacterial activity
+against Gram-positive microorganisms, including the quino-
+lone-resistant S. pneumoniae and S. aureus. Dela has an
+antibacterial activity comparable to that of ciprofloxacin
+(MIC 0.06−0.25 μg/mL) against P. aeruginosa. It has shown
+a notable in vitro activity against Mycobacterium tuberculosis,
+Helicobacter pylori, and Mycoplasma pneumoniae with MIC
+values of 0.25−8 μg/mL.62−64
+With the blanks (B-PNPs), virtually no antibacterial activity
+was detected. The results are summarized in Table 5b. The
+amplified activity of Dela-PNPs compared to Dela-AqS
+indicated that the process variables and steps could not
+adversely affect the primary structural activity relationship and
+basic antibacterial potency of Dela. Eventually, the loading of
+Dela into PLGA nanoparticles (PNPs) would not only
+maintain its antibacterial potency but also be expected to
+improve its bioavailability for the treatment of bacterial
+infections in the eyes.
+3.9. Stability Study. The optimal formulation (Dela-
+PNPs) was evaluated periodically to evaluate its physical
+stability. This study was performed to establish the limits of
+stability for the maintenance of its storage at ambient (25 ± 2
+°C) and slightly elevated (37 ± 2 °C) temperatures for a
+period of 6 months. The outcomes of the evaluated parameters
+are detailed in Table 6.
+The stability results did not indicate any remarkable change
+in the PDI and ζ-potential of the stored sample under both
+storage conditions. A slight increase in the particle size was
+noted at 25 °C while it was a little higher at the stressed
+temperature (37 °C). A subtle increase in the particle sizes was
+noted at 6 months of storage at 25 ± 2 °C (±10 nm) and 37 ±
+2 °C (±17 nm). A related but nonsignificant size increase of
+PLGA-based NPs has also been reported at the same storage
+conditions.13,65
+No alteration in %DL was noted throughout the storage
+period. However, a minor reduction in the %EE was found at
+both temperatures on prolonged storage, especially in the third
+and 6 months. A significant increase in the size of the freeze-
+dried PNPs in the present investigation was obtained at 37 °C,
+Table 5. Antimicrobial Activity of Dela-Containing Productsa,b
+(a) antimicrobial vulnerability of Dela containing products
+zone of inhibitions (mm), mean ± SD, n = 3
+microorganisms
+Dela-AqS
+Dela-PNPs
+B-PNPs
+fold increased (PNPs/AqS)
+Gram-positive
+S. pneumoniae
+27.4 ± 1.6
+37.0 ± 3.2
+8.2 ± 0.8
+1.35
+S. aureus
+24.3 ± 1.7
+34.6 ± 2.4
+6.7 ± 0.2
+1.42
+MRSA (SA-6538)
+23.7 ± 1.5
+34.8 ± 2.2
+7.4 ± 0.2
+1.46
+B. subtilis
+22.4 ± 1.6
+31.2 ± 2.3
+7.0 ± 0.7
+1.38
+Gram-negative
+K. pneumoniae
+27.5 ± 1.2
+35.9 ± 2.6
+7.6 ± 0.6
+1.31
+E. coli
+28.2 ± 1.4
+35.9 ± 1.1
+8.3 ± 0.7
+1.28
+(b) significance level by one-way ANOVA followed by “Tukey’s multiple comparison test”
+comparison test
+mean difference
+q (√2*D/SED)
+significance level (p < 0.05)
+95% CI of difference
+Dela-AqS vs Dela-PNPs
+−8.867
+10.30
+yes (***)
+−12.03 to −5.703
+Dela-AqS vs B-PNPs
+18.53
+21.53
+yes (***)
+15.37 to 21.70
+Dela-PNPs vs B-PNPs
+27.40
+31.82
+yes (***)
+aData analysis with one-way analysis of variance bWhere “D” is the difference between the two means, SED is the standard error of that difference,
+and CI is the confidence interval.
+Figure 10. Antimicrobial activity of Dela-PNPs and Dela-AqS as
+compared to B-PNPs against S. pneumoniae, S. aureus, MRSA (SA-
+6538), B. subtilis, K. pneumoniae, and E. coli. Results include average
+and standard deviations of triplicate measurements of inhibition
+zones. Where “a” p < 0.05, Dela-PNPs versus Dela-AqS (for S.
+pneumoniae); “b” p < 0.05, Dela-PNPs versus Dela-AqS (for S. aureus);
+“c” p < 0.05, Dela-PNPs versus Dela-AqS (for MRSA: SA-6538); and
+“d” p < 0.05, Dela-PNPs versus Dela-AqS (for B. subtilis). Similarly, “e”
+p < 0.05, Dela-PNPs versus Dela-AqS (for K. pneumoniae) and “f” p <
+0.05, Dela-PNPs versus Dela-AqS (for E. coli).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50487
+
+which was attributed to dehydration of the stabilizer (PVA),
+which might have prevented the protection of the particles and
+resulted in minor aggregation. Another possibility is that there
+might be a minor hydrolytic degradation of PLGA at elevated
+temperatures.66 At the same time, loss by degradation of the
+entrapped drug may occur, which could lead to a decrease in
+the %EE.67 Taken together, Dela-PNPs were more stable upon
+storage at 25 °C without any significant size increase or loss of
+encapsulated drug for up to 6 months.
+4. CONCLUSIONS
+Dela was successfully encapsulated into PNPs by the double
+emulsion-solvent-evaporation method. The developed formu-
+lation was spherical, optimally sized, uniformly distributed, and
+slightly positively charged with Dela-PNPs. Dela-PNPs
+demonstrated a significantly higher antimicrobial activity
+compared with an aqueous suspension (Dela-AqS) against
+several Gram-positive and Gram-negative bacteria. Moreover,
+the developed Dela-PNPs were found to be stable at 25 and 37
+°C for 6 months. Therefore, we conclude that encapsulation of
+Dela into PLGA nanoparticles would be a promising delivery
+carrier for ocular applications. Additional experiments, such as
+in vivo eye irritation, ocular pharmacokinetics, and pharmaco-
+dynamics in animal models, are needed to confirm the safety,
+bioavailability, and efficacy of Dela-loaded PLGA nano-
+particles.
+■ASSOCIATED CONTENT
+Data Availability Statement
+The data used is available throughout the manuscript text.
+■AUTHOR INFORMATION
+Corresponding Author
+Aliyah A. Almomen −Department of Pharmaceutical
+Chemistry, College of Pharmacy, King Saud University,
+Riyadh 11491, Saudi Arabia; Email: alalmomen@
+ksu.edu.sa
+Authors
+Abdullah K. Alshememry −Department of Pharmaceutics,
+College of Pharmacy, King Saud University, Riyadh 11451,
+Saudi Arabia;
+orcid.org/0000-0002-1306-1625
+Mohd Abul Kalam −Department of Pharmaceutics, College of
+Pharmacy, King Saud University, Riyadh 11451, Saudi
+Arabia;
+orcid.org/0000-0002-5713-8858
+Mudassar Shahid −Department of Pharmaceutics, College of
+Pharmacy, King Saud University, Riyadh 11451, Saudi
+Arabia
+Raisuddin Ali −Department of Pharmaceutics, College of
+Pharmacy, King Saud University, Riyadh 11451, Saudi
+Arabia;
+orcid.org/0000-0001-9892-2158
+Sulaiman S. Alhudaithi −Department of Pharmaceutics,
+College of Pharmacy, King Saud University, Riyadh 11451,
+Saudi Arabia
+Nada A. Alshumaimeri −Al-Ghad International Colleges for
+Applied Medical Sciences, Riyadh 13629, Saudi Arabia
+Ziyad A. BinHudhud −Department of Pharmaceutics, College
+of Pharmacy, King Saud University, Riyadh 11451, Saudi
+Arabia
+Abdulrazzaq A. Aldaham −Department of Pharmaceutics,
+College of Pharmacy, King Saud University, Riyadh 11451,
+Saudi Arabia
+Ziyad Binkhathlan −Department of Pharmaceutics, College of
+Pharmacy, King Saud University, Riyadh 11451, Saudi
+Arabia;
+orcid.org/0000-0003-1853-7490
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsomega.4c07805
+Funding
+The authors extend their appreciation to the Deputyship for
+Research and Innovation, Ministry of Education in Saudi
+Arabia, for funding this research work through project number
+(DRI-KSU-863).
+Notes
+The authors declare no competing financial interest.
+The graphical abstract was created with BioRender https://
+biorender.com/.
+■REFERENCES
+(1) Hori, T.; Owusu, Y. B.; Sun, D. US FDA-Approved Antibiotics
+During the 21st Century. In Encyclopedia of Infection and Immunity;
+Rezaei, N., Ed.; Elsevier: Oxford, 2022; pp 556−585.
+(2) Hurst, A. L.; Neemann, K. A.; Chatterjee, A. New Antibiotics. In
+Viral, Parasitic, Bacterial, and Fungal Infections; Bagchi, D.; Das, A.;
+Downs, B. W., Eds.; Academic Press, 2023; Chapter 55, pp 675−698.
+Table 6. Effect on the Selected Outcome Parameters of Dela-PNPs for 6 Months of Storage at 25 ± 2 and 37 ± 2 °C
+Temperature Conditionsa
+evaluated parameters (mean ± SD, n = 3)
+time points
+particle size (nm)
+PDI
+ζ-potential (mV)
+%EE
+%DL
+Stored at 25 ± 2 °C
+initially (0 h)
+238.9 ± 10.2
+0.258 ± 0.084
+2.78 ± 0.34
+84.6 ± 7.2
+7.6 ± 0.6
+at 1 week
+241.4 ± 8.8
+0.262 ± 0.085
+2.76 ± 0.32
+83.1 ± 8.4
+7.5 ± 0.8
+at 1 month
+244.4 ± 6.7
+0.272 ± 0.078
+2.73 ± 0.34
+81.9 ± 9.1
+7.4 ± 0.8
+at 3 months
+248.2 ± 10.7
+0.282 ± 0.088
+2.68 ± 0.31
+79.8 ± 10.8
+7.3 ± 0.9
+at 6 months
+249.8 ± 8.2
+0.302 ± 0.097
+2.64 ± 0.44
+77.9 ± 11.3
+7.0 ± 1.0
+Stored at 37 ± 2 °C
+initially (0 h)
+238.9 ± 10.2
+0.258 ± 0.083
+2.78 ± 0.33
+84.5 ± 7.3
+7.6 ± 0.6
+at 1 week
+243.8 ± 9.4
+0.267 ± 0.084
+2.74 ± 0.31
+82.6 ± 8.5
+7.6 ± 0.8
+at 1 months
+247.1 ± 9.0
+0.278 ± 0.086
+2.78 ± 0.32
+80.8 ± 10.4
+7.4 ± 0.9
+at 3 months
+252.4 ± 11.6
+0.288 ± 0.091
+2.63 ± 0.31
+78.1 ± 13.9
+7.1 ± 1.3
+at 6 months
+255.2 ± 8.4
+0.312 ± 0.089
+2.54 ± 0.31
+76.3 ± 13.4
+6.9 ± 1.2
+aThe data were represented as the mean of three measurements with standard deviations (mean ± SD, n = 3).
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50488
+
+(3) Hatoum, H. T.; Akhras, K. S.; Lin, S.-J. The attributable clinical
+and economic burden of skin and skin structure infections in
+hospitalized patients: a matched cohort study. Diagn. Microbiol. Infect.
+Dis. 2009, 64 (3), 305−310.
+(4) Lemaire, S.; Tulkens, P. M.; Van Bambeke, F. Contrasting effects
+of acidic pH on the extracellular and intracellular activities of the anti-
+gram-positive fluoroquinolones moxifloxacin and delafloxacin against
+Staphylococcus aureus. Antimicrob. Agents Chemother. 2011, 55 (2),
+649−658.
+(5) Scott, L. J. Delafloxacin: A Review in Acute Bacterial Skin and
+Skin Structure Infections. Drugs 2020, 80 (12), 1247−1258.
+(6) Mogle, B. T.; Steele, J. M.; Thomas, S. J.; Bohan, K. H.; Kufel,
+W. D. Clinical review of delafloxacin: a novel anionic fluoroquinolone.
+J. Antimicrob. Chemother. 2018, 73 (6), 1439−1451.
+(7) Zafar, A.; Alsaidan, O. A.; Imam, S. S.; Yasir, M.; Alharbi, K. S.;
+Khalid, M. Formulation and Evaluation of Moxifloxacin Loaded
+Bilosomes In-Situ Gel: Optimization to Antibacterial Evaluation. Gels
+2022, 8 (7), No. 418, DOI: 10.3390/gels8070418.
+(8) Ameeduzzafar; Khan, N.; Alruwaili, N. K.; Bukhari, S. N. A.;
+Alsuwayt, B.; Afzal, M.; Akhter, S.; Yasir, M.; Elmowafy, M.; Shalaby,
+K.; Ali, A. Improvement of Ocular Efficacy of Levofloxacin by
+Bioadhesive Chitosan Coated PLGA Nanoparticles: Box-behnken
+Design, In-vitro Characterization, Antibacterial Evaluation and
+Scintigraphy Study. Iran J. Pharm. Res. 2020, 19 (1), 292−311.
+(9) Cho, J. C.; Crotty, M. P.; White, B. P.; Worley, M. V. What is old
+is new again: delafloxacin, a modern fluoroquinolone. Pharmacother.:
+J. Human Pharmacol. Drug Ther. 2018, 38 (1), 108−121.
+(10) Markham, A. Delafloxacin: first global approval. Drugs 2017,
+77, 1481−1486.
+(11) Shiu, J.; Ting, G.; Kiang, T. K. Clinical pharmacokinetics and
+pharmacodynamics of delafloxacin. Eur. J. Drug Metab. Pharmacokinet.
+2019, 44, 305−317.
+(12) Hoover, R.; Hunt, T.; Benedict, M.; Paulson, S. K.; Lawrence,
+L.; Cammarata, S.; Sun, E. Safety, Tolerability, and Pharmacokinetic
+Properties of Intravenous Delafloxacin After Single and Multiple
+Doses in Healthy Volunteers. Clin. Ther. 2016, 38 (1), 53−65.
+(13) Kalam, M. A.; Alshamsan, A. Poly (d, l-lactide-co-glycolide)
+nanoparticles for sustained release of tacrolimus in rabbit eyes.
+Biomed. Pharmacother. 2017, 94, 402−411.
+(14) Knop, E.; Knop, N. Anatomy and immunology of the ocular
+surface. Chem. Immunol. Allergy 2007, 92, 36−49.
+(15) Zhang, W.; Prausnitz, M. R.; Edwards, A. Model of transient
+drug diffusion across cornea. J. Controlled Release 2004, 99 (2), 241−
+258.
+(16) Kalam, M. A. Development of chitosan nanoparticles coated
+with hyaluronic acid for topical ocular delivery of dexamethasone. Int.
+J. Biol. Macromol. 2016, 89, 127−136.
+(17) Kalam, M. A. The potential application of hyaluronic acid
+coated chitosan nanoparticles in ocular delivery of dexamethasone.
+Int. J. Biol. Macromol. 2016, 89, 559−568.
+(18) Alsaidan, O. A.; Zafar, A.; Yasir, M.; Alzarea, S. I.; Alqinyah, M.;
+Khalid, M. Development of Ciprofloxacin-Loaded Bilosomes In-Situ
+Gel for Ocular Delivery: Optimization, In-Vitro Characterization, Ex-
+Vivo Permeation, and Antimicrobial Study. Gels 2022, 8 (11),
+No. 687, DOI: 10.3390/gels8110687.
+(19) Souza, J. G.; Dias, K.; Pereira, T. A.; Bernardi, D. S.; Lopez, R.
+F. Topical delivery of ocular therapeutics: carrier systems and physical
+methods. J. Pharm. Pharmacol. 2014, 66 (4), 507−530.
+(20) Kalam, M. A.; Sultana, Y.; Ali, A.; Aqil, M.; Mishra, A. K.;
+Chuttani, K.; Aljuffali, I. A.; Alshamsan, A. Part II: Enhancement of
+transcorneal delivery of gatifloxacin by solid lipid nanoparticles in
+comparison to commercial aqueous eye drops. J. Biomed. Mater. Res. A
+2013, 101A (6), 1828−1836.
+(21) Joshi, P. H.; Youssef, A. A. A.; Ghonge, M.; Varner, C.;
+Tripathi, S.; Dudhipala, N.; Majumdar, S. Gatifloxacin Loaded Nano
+Lipid Carriers for the Management of Bacterial Conjunctivitis.
+Antibiotics 2023, 12 (8), No. 1316, DOI: 10.3390/antibiot-
+ics12081318.
+(22) Alkholief, M.; Kalam, M. A.; Alshememry, A. K.; Ali, R.;
+Alhudaithi, S. S.; Alsaleh, N. B.; Raish, M.; Alshamsan, A. Topical
+Application of Linezolid-Loaded Chitosan Nanoparticles for the
+Treatment of Eye Infections. Nanomaterials 2023, 13 (4), No. 681,
+DOI: 10.3390/nano13040681.
+(23) Vasconcelos, A.; Vega, E.; Perez, Y.; Gomara, M. J.; Garcia, M.
+L.; Haro, I. Conjugation of cell-penetrating peptides with poly(lactic-
+co-glycolic acid)-polyethylene glycol nanoparticles improves ocular
+drug delivery. Int. J. Nanomed. 2015, 10, 609−631.
+(24) Shin, S. B.; Cho, H. Y.; Kim, D. D.; Choi, H. G.; Lee, Y. B.
+Preparation and evaluation of tacrolimus-loaded nanoparticles for
+lymphatic delivery. Eur. J. Pharm. Biopharm. 2010, 74 (2), 164−171.
+(25) Fujita, E.; Teramura, Y.; Shiraga, T.; Yoshioka, S.; Iwatsubo, T.;
+Kawamura, A.; Kamimura, H. Pharmacokinetics and tissue distribu-
+tion of tacrolimus (FK506) after a single or repeated ocular
+instillation in rabbits. J. Ocul. Pharmacol. Ther. 2008, 24 (3), 309−
+319.
+(26) Hernandis, V.; Escudero, E.; Marin, P. A novel liquid
+chromatography-fluorescence method for the determination of
+delafloxacin in human plasma. J. Sep. Sci. 2022, 45 (3), 706−716.
+(27) SIELC Technologies. HPLC Method for Determination of
+Delafloxacin on Primesep 100 Column. 2022.
+(28) Ritger, P. L.; Peppas, N. A. A simple equation for description of
+solute release II. Fickian and anomalous release from swellable
+devices. J. Controlled Release 1987, 5 (1), 37−42.
+(29) Kupiec, T. C. United States Pharmacopeia Chapter <71>
+Sterility Tests. Int. J. Pharm. Compd. 2007, 11 (5), 400−403.
+(30) Alshememry, A.; Alkholief, M.; Kalam, M. A.; Raish, M.; Ali, R.;
+Alhudaithi, S. S.; Iqbal, M.; Alshamsan, A. Perspectives of Positively
+Charged Nanocrystals of Tedizolid Phosphate as a Topical Ocular
+Application in Rabbits. Molecules 2022, 27 (14), 4619.
+(31) Ilieva, Y.; Dimitrova, L.; Zaharieva, M. M.; Kaleva, M.; Alov, P.;
+Tsakovska, I.; Pencheva, T.; Pencheva-El Tibi, I.; Najdenski, H.;
+Pajeva, I. Cytotoxicity and Microbicidal Activity of Commonly Used
+Organic Solvents: A Comparative Study and Application to a
+Standardized Extract from Vaccinium macrocarpon. Toxics 2021, 9
+(5), No. 92, DOI: 10.3390/toxics9050092.
+(32) Al-Yousef, H. M.; Amina, M.; Alqahtani, A. S.; Alqahtani, M. S.;
+Malik, A.; Hatshan, M. R.; Siddiqui, M. R. H.; Khan, M.; Shaik, M. R.;
+Ola, M. S.; Syed, R. Pollen bee aqueous extract-based synthesis of
+silver nanoparticles and evaluation of their anti-cancer and anti-
+bacterial activities. Processes 2020, 8 (5), No. 524.
+(33) Tsai, M.-L.; Chen, R.-H.; Bai, S.-W.; Chen, W.-Y. The storage
+stability of chitosan/tripolyphosphate nanoparticles in a phosphate
+buffer. Carbohydr. Polym. 2011, 84 (2), 756−761.
+(34) Anwer, M. K.; Iqbal, M.; Muharram, M. M.; Mohammad, M.;
+Ezzeldin, E.; Aldawsari, M. F.; Alalaiwe, A.; Imam, F. Development of
+Lipomer Nanoparticles for the Enhancement of Drug Release, Anti-
+microbial Activity and Bioavailability of Delafloxacin. Pharmaceutics
+2020, 12 (3), No. 252, DOI: 10.3390/pharmaceutics12030252.
+(35) Alshamsan, A. Nanoprecipitation is more efficient than
+emulsion solvent evaporation method to encapsulate cucurbitacin I
+in PLGA nanoparticles. Saudi Pharm. J. 2014, 22 (3), 219−222.
+(36) Alshamsan, A.; Binkhathlan, Z.; Kalam, M. A.; Qamar, W.;
+Kfouri, H.; Alghonaim, M.; Lavasanifar, A. Mitigation of Tacrolimus-
+Associated Nephrotoxicity by PLGA Nanoparticulate Delivery
+Following Multiple Dosing to Mice while Maintaining its
+Immunosuppressive Activity. Sci. Rep. 2020, 10 (1), No. 6675.
+(37) Zimmer, A.; Kreuter, J. Microspheres and nanoparticles used in
+ocular delivery systems. Adv. Drug Delivery Rev. 1995, 16 (1), 61−73.
+(38) Zimmer, A. K.; Zerbe, H.; Kreuter, J. Evaluation of pilocarpine-
+loaded albumin particles as drug delivery systems for controlled
+delivery in the eye I. In vitro and in vivo characterisation. J. Controlled
+Release 1994, 32 (1), 57−70.
+(39) do Reis, S. R. R.; Helal-Neto, E.; da Silva de Barros, A. O.;
+Pinto, S. R.; Portilho, F. L.; de Oliveira Siqueira, L. B.; Alencar, L. M.
+R.; Dahoumane, S. A.; Alexis, F.; Ricci-Junior, E.; Santos-Oliveira, R.
+Dual Encapsulated Dacarbazine and Zinc Phthalocyanine Polymeric
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50489
+
+Nanoparticle for Photodynamic Therapy of Melanoma. Pharm. Res.
+2021, 38 (2), 335−346.
+(40) dos Santos Matos, A. P.; Lopes, D.; Peixoto, M. L. H.; da Silva
+Cardoso, V.; Vermelho, A. B.; Santos-Oliveira, R.; Vicosa, A. L.;
+Holandino, C.; Ricci-Junior, E. Development, characterization, and
+anti-leishmanial activity of topical amphotericin B nanoemulsions.
+Drug Delivery Transl. Res. 2020, 10 (6), 1552−1570.
+(41) Ekinci, M.; Yegen, G.; Aksu, B.; Ilem-Ozdemir, D. Preparation
+and Evaluation of Poly(lactic acid)/Poly(vinyl alcohol) Nanoparticles
+Using the Quality by Design Approach. ACS Omega 2022, 7 (38),
+33793−33807.
+(42) Gulyás, D.; Kamotsay, K.; Szabo, D.; Kocsis, B. Investigation of
+Delafloxacin Resistance in Multidrug-Resistant Escherichia coli Strains
+and the Detection of E. coli ST43 International High-Risk Clone.
+Microorganisms 2023, 11 (6), No. 1602, DOI: 10.3390/micro-
+organisms11061602.
+(43) Anwer, M. K.; Mohammad, M.; Khalil, N. Y.; Imam, F.; Ansari,
+M. J.; Aldawsari, M. F.; Shakeel, F.; Iqbal, M. Solubility,
+thermodynamics and molecular interaction studies of delafloxacin in
+environmental friendly ionic liquids. J. Mol. Liq. 2020, 305,
+No. 112854.
+(44) Hanselmann, R.; Reeve, M. M. Crystalline Forms of D-Glucitol,
+1-Deoxy-1-(Methylamino)-, 1-(6-Amino-3, 5-Difluoropyridine-2-Yl)-
+8-Chloro-6-Fluoro-1, 4-Dihydro-7-(3-Hydroxyazetidin-1-Yl)-4-Oxo-
+3-Quinolinecarboxylate. U.S. Patent US20160046603A1, 2016.
+(45) Ramzan, M.; Yousaf, A. M.; Khan, I. U. Fabrication and in vitro
+characterization of delafloxacin-laden electrosprayed hydroxypropyl
+cellulose nanoparticulated solid dispersions for enhanced aqueous
+solubility and release rate of the drug. Int. J. Polym. Mater. Polym.
+Biomater. 2023, 73, 1367−1373.
+(46) de Melo, L. P.; Salmoria, G. V.; Fancello, E. A.; Roesler, C. R.
+M. Effect of Injection Molding Melt Temperatures on PLGA
+Craniofacial Plate Properties during In Vitro Degradation. Int. J.
+Biomater. 2017, 2017, No. 1256537.
+(47) EMEA. Quofenix: International Non-Proprietary Name: Dela-
+floxacin; European Medicines Agency, Science Medicines Health: An
+Agency of the European Union: Neitherland, 2019, pp 1-123.
+(48) Singh, G.; Kaur, T.; Kaur, R.; Kaur, A. Recent biomedical
+applications and patents on biodegradable polymer-PLGA. Int. J.
+Pharmacol. Pharm. Sci. 2014, 1 (2), 30−42.
+(49) Tripathi, A.; Gupta, R.; Saraf, S. A. PLGA nanoparticles of anti
+tubercular drug: drug loading and release studies of a water in-soluble
+drug. Int. J. Pharm. Tech Res. 2010, 2 (3), 2116−2123.
+(50) Pfaller, M. A.; Flamm, R.; McCurdy, S.; Pillar, C.; Shortridge,
+D.; Jones, R. Delafloxacin in vitro broth microdilution and disk
+diffusion antimicrobial susceptibility testing guidelines: susceptibility
+breakpoint criteria and quality control ranges for an expanded-
+spectrum anionic fluoroquinolone. J. Clin. Microbiol. 2018, 56 (8),
+No. e00339−18.
+(51) Hines, D. J.; Kaplan, D. L. Poly (lactic-co-glycolic) acid−
+controlled-release systems: experimental and modeling insights. Crit.
+Rev. Ther. Drug Carrier Syst. 2013, 30 (3), 257−276, DOI: 10.1615/
+CritRevTherDrugCarrierSyst.2013006475.
+(52) Houchin, M.; Topp, E. Chemical degradation of peptides and
+proteins in PLGA: a review of reactions and mechanisms. J. Pharm.
+Sci. 2008, 97 (7), 2395−2404.
+(53) Makadia, H. K.; Siegel, S. J. Poly lactic-co-glycolic acid (PLGA)
+as biodegradable controlled drug delivery carrier. Polymers 2011, 3
+(3), 1377−1397.
+(54) Friess, W.; Schlapp, M. Release mechanisms from gentamicin
+loaded poly (lactic-co-glycolic acid)(PLGA) microparticles. J. Pharm.
+Sci. 2002, 91 (3), 845−855.
+(55) Elsayed, M. M.; Elsayed, A.; Fouad, M.; Mohamed, M. S.; Lee,
+S.; Mahmoud, R. A.; Sabry, S. A.; Ghoneim, M. M.; Hassan, A. H.;
+Abd Elkarim, R. A.; et al. Development and optimization of
+vildagliptin solid lipid nanoparticles loaded ocuserts for controlled
+ocular delivery: A promising approach towards treating diabetic
+retinopathy. Int. J. Pharm.: X 2024, 7, No. 100232.
+(56) Remy, J. M.; Tow-Keogh, C. A.; McConnell, T. S.; Dalton, J.
+M.; DeVito, J. A. Activity of delafloxacin against methicillin-resistant
+Staphylococcus aureus: resistance selection and characterization. J.
+Antimicrob. Chemother. 2012, 67 (12), 2814−2820.
+(57) DeLeo, F. R.; Chambers, H. F. Reemergence of antibiotic-
+resistant Staphylococcus aureus in the genomics era. J. Clin. Invest.
+2009, 119 (9), 2464−2474.
+(58) Saravolatz, L. D.; Pawlak, J. M.; Wegner, C. Delafloxacin
+activity against Staphylococcus aureus with reduced susceptibility or
+resistance to methicillin, vancomycin, daptomycin or linezolid. J.
+Antimicrob. Chemother. 2020, 75 (9), 2605−2608.
+(59) Bulut, O.; Oktem, H. A.; Yilmaz, M. D. A highly substituted
+and fluorescent aromatic-fused imidazole derivative that shows
+enhanced antibacterial activity against methicillin-resistant Staph-
+ylococcus aureus (MRSA). J. Hazard. Mater. 2020, 399, No. 122902.
+(60) Borah, P.; Hazarika, S.; Chettri, A.; Sharma, D.; Deka, S.;
+Venugopala, K. N.; Shinu, P.; Al-Shar’i, N. A.; Bardaweel, S. K.; Deb,
+P. K. Heterocyclic Compounds as Antimicrobial Agents. In Viral,
+Parasitic, Bacterial, and Fungal Infections; Bagchi, D.; Das, A.; Downs,
+B. W., Eds.; Academic Press, 2023; Chapter 61, pp 781−804.
+(61) Abd El-Aleam, R. H.; George, R. F.; Hassan, G. S.; Abdel-
+Rahman, H. M. Synthesis of 1,2,4-triazolo[1,5-a]pyrimidine deriva-
+tives: Antimicrobial activity, DNA Gyrase inhibition and molecular
+docking. Bioorg. Chem. 2020, 94, No. 103411.
+(62) Finch, R. G.; Greenwood, D.; Whitley, R. J.; Norrby, S. R.
+Antibiotic and Chemotherapy e-book.; Elsevier Health Sciences, 2010.
+(63) Pham, T. D. M.; Ziora, Z. M.; Blaskovich, M. A. T. Quinolone
+antibiotics. Medchemcomm 2019, 10 (10), 1719−1739.
+(64) Turban, A.; Guerin, F.; Dinh, A.; Cattoir, V. Updated Review
+on Clinically-Relevant Properties of Delafloxacin. Antibiotics 2023, 12
+(8), No. 1241, DOI: 10.3390/antibiotics12081241.
+(65) Li, Z.; Tao, W.; Zhang, D.; Wu, C.; Song, B.; Wang, S.; Wang,
+T.; Hu, M.; Liu, X.; Wang, Y.; et al. The studies of PLGA
+nanoparticles loading atorvastatin calcium for oral administration in
+vitro and in vivo. Asian J. Pharm. Sci. 2017, 12 (3), 285−291.
+(66) Park, T. G. Degradation of poly(lactic-co-glycolic acid)
+microspheres: effect of copolymer composition. Biomaterials 1995,
+16 (15), 1123−1130.
+(67) Huang, W.; Zhang, C. Tuning the Size of Poly(lactic-co-
+glycolic Acid) (PLGA) Nanoparticles Fabricated by Nanoprecipita-
+tion. Biotechnol J. 2018, 13 (1), No. 1700203, DOI: 10.1002/
+biot.201700203.
+ACS Omega
+http://pubs.acs.org/journal/acsodf
+Article
+https://doi.org/10.1021/acsomega.4c07805
+ACS Omega 2024, 9, 50476−50490
+50490

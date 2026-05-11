@@ -1,0 +1,766 @@
+Cationic poly(lactic-co-glycolic acid) iron oxide
+microspheres for nucleic acid detection†
+Chandra Mouli Pandey,ab Aditya Sharma,a Gajjala Sumana,*a Ida Tiwarib
+and Bansi Dhar Malhotra*ac
+Herein, we envisage the possibility of preparing stable cationic poly(lactic-co-glycolic acid) (PLGA)
+microspheres encapsulating the iron oxide nanoparticles (IONPs; 8–12 nm). The IONPs are incorporated
+into PLGA in organic phase followed by microsphere formation and chitosan coating in aqueous
+medium via nano-emulsion technique. The average size of the microspheres, as determined by dynamic
+light scattering are about 310 nm, while the zeta potential for the composite remains near 35 mV at pH
+4.0. These microspheres are electrophoretically deposited onto indium tin oxide (ITO)-coated glass
+substrate used as cathode and parallel platinum plate as the counter electrode. This platform is utilized
+to fabricate a DNA biosensor, by immobilizing a probe sequence speciﬁc to Escherichia coli. The
+bioelectrode shows a surface-controlled electrode reaction with the electron transfer coeﬃcient (a) of
+0.64 and charge transfer rate constant (ks) of 61.73 s1. Under the optimal conditions, this biosensor
+shows a detection limit of 8.7  1014 M and is found to retain about 81% of the initial activity after
+9 cycles of use.
+Introduction
+The biomedical applications of nanoscale materials are governed
+by the fact that they exhibit size compatibility with bio-receptors
+such as cells, viruses, proteins and nucleic acids.1 In this context,
+iron oxide nanoparticles (IONPs) have established a special
+relevance due to their unique size-dependent magnetic proper-
+ties, thermal stability, chemical inertness and biocompatible
+characteristics.2,3 The use of magnetic particles for biomedical
+applications oﬀers a number of additional advantages such as
+control and transport of the bio-assembly to a specic location
+onto the transducer surface.4 Furthermore, they can be retained
+and removed with a magnet without aﬀecting the transducer
+surface, thus creating possibilities for regeneration and their
+reuse.5 Biomedical applications rely on the stability of these
+particles in physiological conditions, which are, however, limited
+by their tendency towards aggregation, arising from the strong
+dipolar interactions among them. It has been reported that the
+large surface area-to-volume ratio of uncoated IONPs renders
+them to form clusters via agglomeration.6 In an attempt to
+overcome the instability of these particles in suspension, much
+eﬀort has been devoted to their functionalization, eﬀectively in
+the form of the core–shell system.7 Potential stabilizing agents
+including polymers, long-chain carboxylic acids and phosphates
+are preferred in this regard as they yield thermodynamically
+stable dispersions of IONPs.8 Further, the combination of the
+nanoparticles with polymers that are supplied with active func-
+tional groups have attracted much interest as the polymer shell
+can facilitate the interaction with the biomolecules. In this
+context, the use of poly(D,L-lactic-co-glycolic acid) (PLGA) has been
+extensively explored to obtain IONPs-embedded PLGA micro-
+spheres owing to the strong coordination interaction of the
+carboxylate group with that of Fe(III).9–11
+The surface charge of nanoparticles imparts an important
+eﬀect on their interaction with the biological molecules. Posi-
+tively charged nanoparticles are reported to allow a higher
+extent of immobilization, apparently as a result of the ionic
+interactions established between the particles and anion-rich
+biomolecules.12 PLGA-coated nanoparticles exhibit negative
+charge that can be shied to neutral or positive charges by
+surface modication.11,13 Herein, we explore the possibility of
+preparing a stable aqueous suspension of PLGA–IONPs micro-
+spheres with chitosan (Ch) coating by a nano-emulsion tech-
+nique. The process involves the formation of a conventional
+oil-in-water emulsion which consists of an oil phase containing
+a partially water-miscible solvent, PLGA and IONPs, and an
+aqueous phase containing Ch. The presence of amino groups in
+Ch helps in stabilizing the microspheres, which are otherwise
+unstable as reported in literature.14–16
+aBiomedical Instrumentation Section, National Physical Laboratory (Council of
+Scientic & Industrial Research), New Delhi-110012, India. E-mail: sumanagajjala@
+gmail.com; Fax: +91-11-45609312; Tel: +91-11-45609152
+bDepartment of Chemistry, Faculty of Sciences, Banaras Hindu University, Varanasi-
+221005, India
+cDepartment of Biotechnology, Delhi Technological University, Delhi 110042, India.
+E-mail: bansi.malhotra@gmail.com; Fax: +91-11-27871023; Tel: +91-11-27871043
+† Electronic
+supplementary
+information
+(ESI)
+available.
+See
+DOI:
+10.1039/c3nr34355c
+Cite this: Nanoscale, 2013, 5, 3800
+Received 31st December 2012
+Accepted 8th February 2013
+DOI: 10.1039/c3nr34355c
+www.rsc.org/nanoscale
+3800 | Nanoscale, 2013, 5, 3800–3807
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale
+PAPER
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+View Journal | View Issue
+
+For biosensing application, a precise control over the spatial
+arrangement and distribution of the nanoparticles onto the
+substrate is utmost important.17 Among the various techniques,
+electrophoretic deposition (EPD) oﬀers rapid deposition of
+desired materials and their composites with a simple design
+setup, thereby presenting a scope as an automated and
+continuous process on an industrial scale.18 It provides tunable
+control over the degree of deposition of the charged colloidal
+particles onto an electrode surface under the inuence of an
+applied electric eld. Recent studies highlight the importance
+of pH change at the electrode surface and demonstrate the
+possibility of EPD using pH-dependent additives.19 Chitosan is
+one of the most studied polymers owing to its pH-responsive
+behaviour and excellent adhesive property. Under acidic
+conditions, protonation of the amine groups of this polymer
+provide eﬀective charge to the colloids necessary to impart a
+high degree of solubility in polar solvents, such as water and
+ethanol, through electrostatic stabilization. However, on appli-
+cation of the requisite potential, the repulsion is reduced at the
+electrode surface, wherein particles coagulate to form a lm.18,19
+Zeta potential analysis reveals that the prepared microspheres
+are positively charged at pH 4.0, which enables their cathodic
+electro-deposition onto an ITO-coated glass electrode. Subse-
+quently, this microspheres-based platform has been utilized for
+the fabrication of nucleic acid biosensor by covalent immobi-
+lization of the Escherichia coli specic amine-terminated DNA as
+the capture probe. Electrochemical impedance spectroscopy
+(EIS) has been used for the transduction of the hybridization
+reaction with complementary target sequence specic to E. coli
+(O157:H7), single-base mismatch, and non-complementary
+sequences, to investigate the response characteristics of this
+nucleic acid sensor. To the best of our knowledge, the present
+work is the rst report employing utilization of cationic PLGA
+microspheres encapsulating IONPs for biosensing application.
+Experimental section
+Chemicals
+Iron(III) acetylacetonate, 1,2-hexadecanediol, oleic acid, oleylamine,
+glutaraldehyde, PLGA (Mw ¼ 40 000–75 000), 1-ethyl-(dimethyla-
+minopropyl)carbodiimide (EDC), N-hydroxysuccinimide (NHS),
+polyvinyl alcohol (PVA), and chitosan (Mw ¼ 15 000–20 000) were
+of analytical grade and purchased from Sigma-Aldrich. The details
+of oligonucleotide DNA sequences and processing of cultures of
+water-borne pathogens were reported elsewhere.20
+Synthesis of oleic acid-capped IONPs
+IONPs were synthesised by the reported procedure with slight
+modications.21 Briey, Iron(III) acetylacetonate (4 mmol), 1,2-
+hexadecanediol (10 mmol), oleic acid (12 mmol), oleylamine
+(6 mmol), and phenyl ether (20 mL) were mixed at constant
+stirring at 200 C for 2 h mechanically under inert nitrogen
+atmosphere. The obtained black coloured mixture was cooled to
+room temperature (25 C) and puried using repeated washing
+with pure ethanol followed by separation via centrifugation. The
+formed product was dispersed in hexane and the partially
+dispersed mixture was centrifuged at 10 000 rpm for about 10
+min to remove any un-dispersed residue.
+Preparation of PlgNPs
+PlgNPs were prepared using a nano-emulsion method. For this,
+a mixture of PLGA (200 mg) and IONPs (30 mg) was dissolved in
+10 mL of dichloromethane under continuous stirring.16 This
+organic solution was then added to 20 mL of aqueous solution
+containing PVA (1.0%) and Ch (0.3%) as the stabilizer mixture
+followed by the addition of EDC (0.4 M) and NHS (0.05 M).
+Thereaer, the organic–aqueous solution mixture was emulsi-
+ed for 15 min using an ultrasonicator (Vibronics Pvt. Ltd,
+Mumbai, India) operated at 24 kHz. Further, the organic solvent
+was evaporated using a water bath maintained at 40 C and the
+solution was subjected to centrifugation (20 000 rpm) for three
+repetitive cycles.22,23 Thus prepared PlgNPs were re-suspended
+in 20 mL of water and stored at 4 C.
+Electrophoretic deposition of PlgNPs onto ITO electrode
+The synthesized PlgNPs were cathodically deposited using
+electrophoretic deposition technique (Bio Rad, Model 200/2.0)
+onto a pre-hydrolyzed ITO electrode using a two-electrode
+system, with parallel-placed platinum as the counter electrode.
+Prior to deposition, the prepared colloidal suspension was
+diluted with ethanol in a 1 : 2 ratio, of which 12 mL of the
+aliquot was taken out and subjected to EPD at a DC potential of
+5 V for 60 s.19 The obtained uniform lm was repeatedly washed
+with deionized water and stored in a desiccator. For control
+experiments, Ch–IONPs electrodes were prepared by EPD of Ch-
+coated IONPs onto ITO electrodes (Ch–IONPs/ITO) under
+similar conditions.
+Fabrication of nucleic acid-functionalized PlgNPs/ITO
+electrode
+The bioconjugation of aminated probe DNA (pDNA) to the
+PlgNPs/ITO electrode surface was performed using glutaralde-
+hyde as a cross linker. For this purpose, the PlgNPs/ITO surface
+was activated by incubation in aqueous glutaraldehyde solution
+(0.1% v/v) for 1 h followed by washing with deionized water. To
+allow coupling between the amine terminal of pDNA and the
+glutaraldehyde-modied PlgNPs/ITO electrode, 20 mL of pDNA
+was spread onto the modied electrode surface followed by 5 h
+incubation in a humid chamber at room temperature (25 C).
+The pDNA/PlgNPs/ITO bioelectrode was rinsed with Tris–HCl
+(10 mM) and EDTA (1 mM) buﬀer solution (TE, pH 8.0) to
+remove any physically adsorbed pDNA on the electrode surface.
+The prepared pDNA/PlgNPs/ITO bioelectrodes were utilized for
+detection of E. coli by subjecting them to various concentrations
+of complementary target DNA for 30 min and the corresponding
+diﬀerence in RCT value was measured by EIS.24
+Characterization
+The X-ray diﬀraction (XRD) spectrum of the powdered IONPs
+sample was recorded on a Rigaku instrument over the 2q range
+from 25 to 70 using monochromatized X-ray beam with Cu-Ka
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale, 2013, 5, 3800–3807 | 3801
+Paper
+Nanoscale
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+
+radiation (l ¼ 1.5406 ˚A). Field emission transmission electron
+microscope (TEM, JEOL JEM-2100F), at an accelerating voltage
+of 200 kV, was used to determine the IONPs size and the
+formation of PlgNPs. Dynamic light scattering (DLS) measure-
+ments were performed with a Zetasizer Nano-ZS90 (Malvern
+Instruments) at a scattering angle of 90 and constant temper-
+ature of 25 C to determine the particle size and zeta potential of
+PlgNPs. Contact angle (CA) measurements were done using
+Data Physics OCA15EC. Fourier transform infrared (FTIR)
+spectra were recorded using a Perkin-Elmer spectrometer
+(Spectrum BX) at 25 C over the frequency range of 4000–
+400 cm1. The morphology of the deposited microspheres was
+determined with scanning electron microscopy (LEO 440) with
+an accelerating voltage of 10 kV. Electrochemical characteriza-
+tion was carried out by an Autolab Potentiostat/Galvanostat (Eco
+Chemie, Netherlands) using a three-electrode system with ITO
+as the working electrode, Ag/AgCl as reference electrode, and
+platinum foil as counter electrode, in phosphate-buﬀer (PBS;
+50 mM, pH 7.4) containing 5 mM [Fe(CN)6]3/4.
+Results and discussion
+Scheme 1 shows the various steps used for the preparation of
+PlgNPs, their deposition onto the ITO electrode, and the
+immobilization of pDNA onto the electro-deposited micro-
+spheres. It is known that the uncapped IONPs, due to their high
+surface energy, clump together and form aggregates in a short
+duration of time, which cannot be dispersed even by ultra-
+sonication.23 Keeping this in view, the IONPs were initially
+capped with oleic acid to render them stable in solution.
+Further, in the process of preparing PlgNPs, the IONPs were
+transferred to an organic phase containing PLGA, which coated
+the particles and made them readily dispersed in organic
+medium.
+Oil-in-water
+emulsion was
+prepared
+by adding
+aqueous Ch solution containing PVA to this PLGA–IONPs
+solution and the formation of nanosized droplets were induced
+by sonication.22,25 The PVA surfactant probably stabilizes these
+nano-droplets and helps in the uniform chitosan coating to
+provide stable microspheres.11 The eﬀect of chitosan concen-
+tration was studied till a stable suspension of cationic PlgNPs
+was obtained, as revealed by zeta potential analysis (Table S1†).
+Chitosan, present on the surface of the microspheres, has
+primary amino groups with pKa values around 6.3, below which
+most of the amino groups get protonated making PlgNPs
+dispersed in aqueous medium. At an applied voltage of 5 V
+between two electrodes for a certain time, Ch experiences a
+higher pH than pKa near the cathode, wherein its amino groups
+are deprotonated and become insoluble resulting in deposition
+of the PlgNPs onto the ITO substrate.18
+The TEM image (Fig. 1; panel i) shows that the oleic acid-
+capped IONPs are mono-dispersed and nearly spherical in
+shape having a particle size of 8–12 nm. The results of XRD
+studies (Fig. 1; panel ii), show the prominent diﬀraction peaks
+at (2 2 0), (3 1 1), (4 0 0), (5 1 1), and (4 4 0) with a spinal
+structure corresponding to Fe3O4 or g-Fe2O3 having a face
+centred cubic crystal lattice (JCPDS no: 87-0245).26 Except for the
+broadening of the peaks, all the position and relative intensity
+of diﬀraction peaks are identical with the standard spectrum for
+bulk magnetite. Fig. 1 (panel iii) shows the TEM image of the
+synthesized PLGA–IONPs in which the IONPs are slightly
+aggregated within the PLGA microspheres, which may perhaps
+be due to evaporation of the particles on the TEM grid. It can be
+seen that when these PLGA–IONPs are treated with Ch in
+aqueous phase, there is formation of a polymer layer of about
+10 nm around the surface of the PLGA–IONPs (Fig. 1; panel iv).
+The average size of formed PlgNPs is about 310 nm with a
+polydispersity index of 0.4 as can be seen from the results of
+DLS measurements (Fig. 2; panel i). It has been reported that
+factors like the size of the vials that are used for making the
+emulsions, sonication intensity, the position of the sonicator
+head in the solution, and the duration of sonication, inuence
+the size of the microspheres. In general, longer sonication times
+and higher sonication powers may result in the formation of
+smaller spheres.22 To determine the particle stability, zeta
+potential measurements have been conducted as a function of
+pH at 25 C, indicating the isoelectric point of the PlgNPs to be
+7.3 (Fig. 2; panel ii). At pH values suﬃciently diﬀerent from the
+isoelectric point, the particles are stabilized by electrostatic
+repulsions. Further, the zeta potential measurements reveal
+that the complex is positively charged with a zeta potential of
+about 35 mV at the pH value of 4.0, indicating the stability of
+this composite at this pH (Fig. 2; inset panel ii).
+FTIR spectroscopic analysis has been carried out to charac-
+terize the capping of organic oleate in the synthesized IONPs
+and the formation of PLGA–IONP composites. As shown in
+Fig. 3 (curve i), the wide band in the range of 3130–3630 cm1 is
+assigned to O–H vibrations. The characteristic absorption peak
+of Fe–O is observed at 583 cm1. The sharp bands seen at 2924
+and 2854 cm1 are attributed to asymmetric and symmetric
+C–H vibrations of the methylene groups. The band at 1642 and
+1446 cm1 can be ascribed to the asymmetric and symmetric
+COO stretching, respectively.27,28 Based on the FTIR spectrum,
+it is interpreted that oleic acid has perhaps capped the surface
+of the IONPs. In the Ch spectrum, the bands at 1653 and
+1594 cm1 (curve ii) are due to the presence of amide I and II
+groups, respectively.16 The band at about 1457 cm1 in the
+spectrum of the PLGA–IONPs (curve iii), assigned to the
+symmetric CH2 bending vibration, is found to be shied to a
+lower wavenumber (1452 cm1) in the spectrum of PlgNPs
+Scheme 1
+Schematic illustration for the preparation of PlgNPs, EPD of PlgNPs
+onto ITO electrode and its application for electrochemical detection of E. coli.
+3802 | Nanoscale, 2013, 5, 3800–3807
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale
+Paper
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+
+(curve iv) which may be due to the change in conformation of
+CH2OH at C-6 position. Further, the peak at 1188 cm1 (curve iv)
+is attributed to the C–O–C stretch vibration, which arises due to
+both the bands at 1193 cm1 in the spectrum of the PLGA–
+IONPs (curve iii) and 1153 cm1 in the spectrum of the Ch
+(curve ii).
+Contact angle studies have been carried out to characterize
+the immobilization of pDNA onto the PlgNPs/ITO electrode. The
+CA value of the PlgNPs/ITO electrode is found to be 49.34
+(Fig. S1; panel i†), which decreases with increased DNA immo-
+bilization. This may be assigned to the enhanced hydrophilicity
+of the electrode surface aer DNA immobilization owing to the
+presence of the phosphodiester backbone of DNA. The CA
+measurements were monitored at a regular time interval (1 h),
+and reveal that the bioelectrode reaches a constant value of
+27.39 (Fig. S1; panel ii†) aer about 5 h (Fig. S1; panel iii†),
+indicating that the complete immobilization of the probe has
+occurred. However, it may be noted that the CA value does not
+approach 0 aer DNA immobilization, which may be due to the
+presence of the aromatic ring structure of nitrogenous bases
+present in the nucleic acid.
+SEM images of the PlgNPs/ITO electrode (Fig. 4; panel i and
+ii) indicate the presence of the well-isolated microspheres of
+PlgNPs, with a mean diameter of about 300 nm. This reveals
+that during electro-deposition, the PlgNPs do not agglomerate
+and maintain their spherical shape as the formation of clusters
+is not observed throughout the electrode surface. However, aer
+incubation of the PlgNPs/ITO electrode with pDNA, the
+observed variation in morphology may be correlated to the
+immobilization of pDNA (Fig. 4; panel iii and iv).
+Electrochemical impedance spectroscopic analysis aer
+various stages of chemical functionalization, to extract circuit
+element parameters for the Randles model is depicted in Fig. 5.
+The interfacial layer at the working electrode is represented by
+the parallel combination of resistance, which models charge
+transfer across the functionalized layer, and capacitance Cdl,
+which accounts for the electrical double layer that is formed at
+the interface. The series impedance Zw is the standard Warburg
+term that describes concentration depletion of the redox
+species near the interface. EIS measures Zre versus Zim that can
+be plotted as a Nyquist diagram which typically exhibits two
+important regions for a reversible reaction at a solid interface.
+As indicated in the sketch, the semicircle obtained at high
+modulation frequency describes the Faradic electron-transfer
+process at the electrode, whereas the straight region obtained
+for the lower modulation frequency contains information about
+the diﬀusion-limited transport of the redox species in the
+electrolyte to the electrode interface. We have utilized the
+semicircle diameter to observe the change of electronic transfer
+resistance (RCT). Aer electrophoretic deposition of PlgNPs onto
+the ITO surface, an RCT value for the PlgNPs/ITO electrode is
+obtained as 0.7 kU (curve i). When the pDNA is immobilized on
+the electrode surface, the electron-transfer by the negatively
+charged redox marker, [Fe(CN)6]3/4, is hindered resulting in
+an increased RCT (1.1 kU, curve ii) as compared to that of the
+PlgNPs/ITO electrode.
+The results of cyclic voltammetric studies obtained as a
+function of scan rate (y, 10–300 mV s1) for the pDNA/PlgNPs/
+ITO electrode are shown in Fig. S2.† The positive and negative
+peaks correspond to the oxidation and reduction reactions of
+the [Fe(CN)6]3/4 redox pair, respectively. The peak currents Ip
+for both oxidation and reduction follow a linear relation with
+respect to the square root of scan rate (Fig. S2; inset i†) indi-
+cating the existence of diﬀusion-controlled electrochemical
+reaction rates for the redox pair at the electrode. It can be seen
+that the oxidation peak shis to a more positive value and the
+Fig. 1
+(i) Transmission electron micrograph (20 nm scale) and (ii) X-ray diﬀraction pattern of oleic acid-capped IONPs; TEM images of (iii) PLGA–IONPs, and (iv) PlgNPs.
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale, 2013, 5, 3800–3807 | 3803
+Paper
+Nanoscale
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+
+reduction peak to more negative values with increase of the scan
+rate and both the peak potentials are linearly dependent on the
+log of the scan rate (Fig. S2; inset ii†), which agrees well with
+Laviron's theory29 and may be given as:
+Epa ¼ Eo + Xln[(1  a)Fy/RTks]
+(1)
+Epc ¼ Eo + Yln[(a)Fy/RTks]
+(2)
+ln ks ¼ aln(1  a) + (1  a)ln a  ln(RT/nFy)
+ a(1  a)nFDEp/RT
+(3)
+where a and ks are the electron transfer coeﬃcient and charge
+transfer rate constant, respectively.29,30 The plot of ln y versus the
+anodic peak potential (Epa) and cathodic peak potential (Epc)
+yields two straight lines with their slopes of X ¼ RT/(1  a)nF
+and Y ¼ RT/anF, respectively. Based on the plot (Fig. S2; inset
+ii†) and eqns (1) and (3), the values of a and ks have been
+determined as 0.64 and 61.73 s1, respectively. According to
+Laviron's equation, the relationship between peak current (Ip)
+and surface coverage can be described as:
+Ip ¼ n2F 2yAG(4RT)1
+(4)
+where, Ip is peak current, n is the number of electrons trans-
+ferred, y is the scan rate (50 mV s1), A is the electrode area
+(0.25 cm2), and G is the average surface coverage of the electrode
+redox substance (mol cm2). Taking the average of both the
+cathodic and anodic results, G is found to be 1.07 
+107 mol cm2. On the basis of the linear slope of the anodic
+peak currents on the square root of the potential sweep rates,
+and the Randles–Sevcik equation,31
+Ip ¼ (2.99  105)a1/2n3/2ACD1/2y1/2
+(5)
+the
+diﬀusion
+coeﬃcient
+(D)
+is
+calculated
+as
+2.26
+
+1010 cm2 s1. Here n is the number of transferred electrons
+for the redox reaction, C is the molar concentration of
+[Fe(CN)6]3/4, and y is the scan rate (50 mV s1). By performing
+a linear regression for Ip versus y1/2, the slope S can be obtained
+and the eﬀective surface area of the electrode (A) is calculated to
+be 0.73 mm2 using eqn (6):32,33
+A ¼ S/(2.99  105)n3/2a1/2CD1/2
+(6)
+For comparison, control experiments have been carried out
+using the pDNA/Ch–IONPs/ITO bioelectrode and the values
+obtained are given in Table 1. The improved kinetics of pDNA/
+PlgNPs/ITO compared to that of the pDNA/Ch–IONPs/ITO bio-
+electrode may perhaps be due to better dispersion of IONPs in
+PlgNPs than in pristine chitosan. This uniform distribution may
+be attributed to the fact that carboxylate and hydroxyl terminal
+groups of PLGA have strong coordination with the surface of the
+IONPs.9–11 However, in the Ch–IONPs composite, the IONPs are
+dispersed merely due to electrostatic interactions, resulting in
+the entrapment of IONPs within the polymer matrix.
+The DNA hybridization on the modied electrode has been
+veried by EIS, which is known to be very sensitive to changes in
+Fig. 2
+DLS measurements of PlgNPs showing (i) particle size distributions and (ii)
+zeta potential values as a function of pH. Inset ﬁgure shows the zeta potential
+measurement of PlgNPs at pH 4.0.
+Fig. 3
+FTIR spectra of (i) oleic acid-capped IONPs, (ii) chitosan, (iii) PLGA–IONPs,
+and (iv) PlgNPs.
+3804 | Nanoscale, 2013, 5, 3800–3807
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale
+Paper
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+
+interfacial impedance upon bio-recognition events occurring at
+the surface/electrolyte interface.34 As mentioned earlier, when
+pDNA is immobilized onto the PlgNPs/ITO electrode, an
+increase in RCT value is observed which may be due to the
+negatively charged phosphate backbone of pDNA exposed to the
+electrolyte, which in turn perhaps repel [Fe(CN)6]3/4. When
+the pDNA is incubated with its complementary target DNA
+sequence (cDNA), the hybridization reaction occurs and more
+negatively charged phosphate backbones are introduced, hence
+the RCT value increases following the formation of double-
+stranded DNA (Fig. 5, curve iii). It can thus be inferred that with
+a change in negative-charge and conformation transition, there
+is a change in the interfacial properties. With increase of the
+cDNA concentration, the RCT value increases correspondingly
+(Fig. 6, curve ix–i). The diﬀerence between the value of RCT for
+the pDNA immobilized electrode and aer hybridization with
+cDNA (DRCT ¼ RCTcDNA  RCTpDNA) has been used as the
+measurement signal. The analytical signal (in terms of DRCT)
+shows linear relationship with the logarithmic value of the
+complementary target DNA concentration ranging from 1013
+to 106 M (Fig. S3†) and follows the following equation:
+DRCT ¼ 73.030log C + 1028.957
+(7)
+with a linear regression coeﬃcient of 0.994. The detection limit
+is calculated to be 8.7  1014 M using the expression
+3s/sensitivity, where s is standard deviation.
+Fig. 4
+SEM images of (i and ii) PlgNPs/ITO electrode and (iii and iv) pDNA/PlgNPs/ITO bioelectrode at magniﬁcations of 5 k and 10 k respectively.
+Fig. 5
+Nyquist diagram (Zim versus Zre) for the Faradic impedance measured in
+PBS solution (pH 7.4) containing 5 mM [Fe(CN)6]3/4, in the frequency range
+from 106 to 102 Hz for (i) PlgNPs/ITO electrode, (ii) pDNA/PlgNPs/ITO bio-
+electrode, and (iii) cDNA on pDNA/PlgNPs/ITO bioelectrode.
+Table 1
+Kinetic parameters calculated for the fabricated bioelectrodes
+Sl. no
+Name of the electrode
+Electron transfer
+coeﬃcient, a
+Charge transfer
+rate constant, ks/s1
+Eﬀective surface
+area, Aeﬀ/mm2
+Average surface
+coverage, G/mol cm2
+Diﬀusion coeﬃcient,
+D/cm2 s1
+1
+pDNA/PlgNPs/ITO
+0.64
+61.73
+0.73
+1.07  107
+2.26  1010
+2
+pDNA/Ch–IONPs/ITO
+0.57
+28.90
+0.33
+6.46  108
+1.45  1010
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale, 2013, 5, 3800–3807 | 3805
+Paper
+Nanoscale
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+
+Selectivity of the pDNA/PlgNPs/ITO bioelectrode towards
+non-complementary,
+one-base
+mismatch
+sequences
+and
+various water-borne pathogens (Salmonella typhimurium, Neis-
+seria meningitides, Shigella dysenteriae, Clostridium botulinum
+and Klebsiella pneumonia) has been further studied using EIS
+(Fig. 7). When the pDNA/PlgNPs/ITO bioelectrode is treated
+with the non-complementary DNA, a negligible increase in RCT
+value is observed (DRCT ¼ 28.49 U). Since, the non-comple-
+mentary DNA bases do not match with the pDNA bases, it is
+expected that there is no duplex formation and hence the RCT
+value remains unvaried. When the pDNA/PlgNPs/ITO bio-
+electrode is incubated with the single-base mismatch DNA
+sequence, a signicant value of DRCT (149.28 U) is obtained.
+This may be due to the partial hybridization of pDNA that
+results in a slight increase of negative charge on the bio-
+electrode surface, leading to repulsion of [Fe(CN)6]3/4 redox
+ions. Specicity studies have been conducted by isolating DNA
+from a panel of strains of E. coli, and other water-borne path-
+ogens as shown in the bar diagram. A marked increase of
+549.98 U in the RCT value is seen aer incubation of the bio-
+electrode with the clinical E. coli strain, which indicates
+complete hybridization. A negligible change in RCT value is
+noticed for pDNA/PlgNPs/ITO bioelectrode aer incubation
+with clinical samples of other water-borne pathogens, revealing
+the specicity of this biosensor for E. coli detection.
+Regeneration studies have been performed by immersing
+the fabricated bioelectrode into Tris–EDTA buﬀer solution
+(pH 8.0) at 100 C for 5 min, followed by cooling in the ice bath
+for about 30 min.20 The results obtained for each successive
+denaturation and regeneration process have been plotted in
+terms of DRCT versus the number of detection cycles. It is found
+that the DRCT value for the bioelectrode decreases aer each
+cycle and reduces to about 81% of the initial value (1st cycle)
+aer eight regeneration processes (Fig. S4†). Also, it is to be
+mentioned that the RCT value of the bioelectrode slightly
+increased with each consecutive measurement, whereas a
+decrease in the RCT value is obtained aer hybridization. The
+slight increase in RCT value aer each denaturation process
+may be assigned to the incomplete denaturation at the bio-
+electrode surface,35 which might lead to a reduced hybridiza-
+tion eﬃciency thereby resulting in a decreased RCT value aer
+hybridization. Further, the stability of the fabricated DNA
+biosensor has been investigated via EIS aer its hybridization
+with complementary target DNA. It is found that the bio-
+electrode retains about 95% of its initial response aer about 6
+weeks, when stored at 4 C (data not shown). These results
+indicate that the label-free EIS strategy based on the PlgNPs/
+ITO electrode has scope to detect cDNA in a wide concentra-
+tion range and has a good reusability in comparison to other
+reported nanomaterials-based impedimetric DNA sensors
+(Table S2†).36–38
+Conclusions
+Cationic poly(lactic-co-glycolic acid) iron oxide hybrid micro-
+spheres have been synthesized by the nano-emulsion method.
+TEM examination of the particles gives strong evidence for the
+presence of nanoscale iron oxide within the polymer matrix.
+These nano-composites are nearly spherical in shape with a
+mean size of 310 nm. The prepared microspheres provide an
+excellent platform for DNA immobilization when they are
+electrophoretically deposited onto an ITO-coated glass elec-
+trode. The fabricated biosensor is found to exhibit good selec-
+tivity for E. coli detection and retains signicant activity (81% of
+the initial activity) aer 9 cycles of use. The experiments relating
+to studies of device performance with respect to change in the
+size of the microspheres, compositions of PLGA and IONPs and
+electro-deposition parameters are in progress. Further, results
+of these studies have implications towards the application of
+these biocompatible microspheres in magnetic-eld-assisted
+drug delivery systems, cell/enzyme immobilization, and many
+other biomedical related elds.
+Fig. 6
+EIS response of pDNA/PlgNPs/ITO bioelectrode as a function of cDNA
+concentration (1013 to 106 M) in PBS solution (pH 7.4) containing 5 mM
+[Fe(CN)6]3/4.
+Fig. 7
+Bar diagram showing the impedimetric response (in terms of DRCT) of
+pDNA/PlgNPs/ITO bioelectrode incubated with (i) non-complementary, (ii) single-
+base mismatch, and (iii–viii) DNA extracted from culture of water-borne
+pathogens.
+3806 | Nanoscale, 2013, 5, 3800–3807
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale
+Paper
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online
+
+Acknowledgements
+We thank Director, NPL, New Delhi, India for the facilities.
+C.M.P. and A.S. are thankful to CSIR, India, for the award of
+SRF. Thanks are due to Dr. Seema Sood for providing the
+bacterial culture samples and Dr. Ashutosh Kumar Pandey
+(AIIMS, New Delhi, India) for the useful discussions. The
+nancial support received from Department of Science and
+Technology, India (Grant No. DST/TSG/ME/2008/18) and Indian
+Council of Medical Research, India (Grant No. ICMR/5/3/8/91/
+GM/2010-RHN) is gratefully acknowledged.
+References
+1 S. F. Medeiros, A. M. Santos, H. Fessi and A. Elaissari, Int.
+J. Pharm., 2011, 403, 139–161.
+2 M. Corti, A. Lascialfari, E. Micotti, A. Castellano, M. Donativi,
+A. Quarta, P. D. Cozzoli, L. Manna, T. Pellegrino and
+C. Sangregorio, J. Magn. Magn. Mater., 2008, 320, e320–e323.
+3 Y. W. Jun, Y. M. Huh, J. S. Choi, J. H. Lee, H. T. Song, S. Yoon,
+K. S. Kim, J. S. Shin, J. S. Suh and J. Cheon, J. Am. Chem. Soc.,
+2005, 127, 5732–5733.
+4 P. R. Solanki, A. Kaushik, V. V. Agrawal and B. D. Malhotra,
+NPG Asia Mater., 2011, 3, 17–24.
+5 J. Wang, A. N. Kawde, A. Erdem and M. Salazar, Analyst, 2001,
+126, 2020–2024.
+6 M. Pauly, B. P. Pichon, P. Panissod, S. Fleutot, P. Rodriguez,
+M. Drillon and S. Begin-Colin, J. Mater. Chem., 2012, 22,
+6343–6350.
+7 J. E. Wong, A. K. Gaharwar, D. M¨uller-Schulte, D. Bahadur
+and W. Richtering, J. Colloid Interface Sci., 2008, 324, 47–54.
+8 A. K. Gupta and M. Gupta, Biomaterials, 2005, 26, 3995–4021.
+9 M. Kim, Y. Chen, Y. Liu and X. Peng, Adv. Mater., 2005, 17,
+1429–1432.
+10 G.-D. Fu, G. L. Li, K. G. Neoh and E. T. Kang, Prog. Polym. Sci.,
+2011, 36, 127–167.
+11 M. N. V. Ravi Kumar, U. Bakowsky and C. M. Lehr,
+Biomaterials, 2004, 25, 1771–1777.
+12 C. Foged, B. Brodin, S. Frokjaer and A. Sundblad, Int.
+J. Pharm., 2005, 298, 315–322.
+13 K.
+Tahara,
+T.
+Sakai,
+H.
+Yamamoto,
+H.
+Takeuchi,
+N. Hirashima and Y. Kawashima, Int. J. Pharm., 2009, 382,
+198–204.
+14 Y. Wang, A. S. Angelatos and F. Caruso, Chem. Mater., 2007,
+20, 848–858.
+15 J. R. Grech, J. Mano and R. Reis, J. Mater. Sci.: Mater. Med.,
+2010, 21, 1855–1865.
+16 Z. Liu, H. Wang, B. Li, C. Liu, Y. Jiang, G. Yu and X. Mu,
+J. Mater. Chem., 2012, 22, 15085–15091.
+17 A. Sharma, C. M. Pandey, Z. Matharu, U. Soni, S. Sapra,
+G.
+Sumana,
+M.
+K.
+Pandey,
+T.
+Chatterjee
+and
+B. D. Malhotra, Anal. Chem., 2012, 84, 3082–3089.
+18 A. R. Boccaccini, S. Keim, R. Ma, Y. Li and I. Zhitomirsky,
+J. R. Soc., Interface, 2010, 7, S581–S613.
+19 A. Sharma, C. M. Pandey, G. Sumana, U. Soni, S. Sapra,
+A. K. Srivastava, T. Chatterjee and B. D. Malhotra, Biosens.
+Bioelectron., 2012, 38, 107–113.
+20 C. M. Pandey, R. Singh, G. Sumana, M. K. Pandey and
+B. D. Malhotra, Sens. Actuators, B, 2011, 151, 333–340.
+21 S. Sun, H. Zeng, D. B. Robinson, S. Raoux, P. M. Rice,
+S. X. Wang and G. Li, J. Am. Chem. Soc., 2003, 126, 273–279.
+22 R. A. Wassel, B. Grady, R. D. Kopke and K. J. Dormer, Colloids
+Surf., A, 2007, 292, 125–130.
+23 H. Zhao, K. Saatchi and U. O. H¨afeli, J. Magn. Magn. Mater.,
+2009, 321, 1356–1363.
+24 C.
+M.
+Pandey,
+G.
+Sumana
+and
+B.
+D.
+Malhotra,
+Biomacromolecules, 2011, 12, 2925–2932.
+25 S. J. Lee, J. R. Jeong, S. C. Shin, J. C. Kim, Y. H. Chang,
+K. H. Lee and J. D. Kim, Colloids Surf., A, 2005, 255, 19–25.
+26 A. Corrias, G. Mountjoy, D. Loche, V. Puntes, A. Falqui,
+M. Zanella, W. J. Parak and M. F. Casula, J. Phys. Chem. C,
+2009, 113, 18667–18675.
+27 L. M. Bronstein, X. Huang, J. Retrum, A. Schmucker,
+M. Pink, B. D. Stein and B. Dragnea, Chem. Mater., 2007,
+19, 3624–3632.
+28 A.
+Hofmann,
+S.
+Thierbach,
+A.
+Semisch,
+A.
+Hartwig,
+M. Taupitz, E. Ruhl and C. Graf, J. Mater. Chem., 2010, 20,
+7842–7853.
+29 E. Laviron, J. Electroanal. Chem., 1979, 100, 263–270.
+30 G.
+Karim-Nezhad,
+M.
+Hasanzadeh,
+L.
+Saghatforoush,
+N. Shadjou, S. Earshad and B. Khalilzadeh, J. Braz. Chem.
+Soc., 2009, 20, 141–151.
+31 A. J. Bard and L. R. Faulkner, Electrochemical Methods, John
+Wiley and Sons, New York, 2001.
+32 J. Shi, J. C. Claussen, E. S. McLamore, A. ul Haque, D. Jaroch,
+A.
+R.
+Diggs,
+P.
+Calvo-Marzal,
+J.
+L.
+Rickus
+and
+D. M. Portereld, Nanotechnology, 2011, 22, 355502–355502.
+33 I. Tiwari and M. Singh, Microchim. Acta, 2011, 174, 223–230.
+34 Y. Hu, F. Li, X. Bai, D. Li, S. Hua, K. Wang and L. Niu, Chem.
+Commun., 2011, 47, 1743–1745.
+35 Y. Xu, H. Cai, P. G. He and Y. Z. Fang, Electroanalysis, 2004,
+16, 150–155.
+36 N. Zhou, T. Yang, Y. Zhang, C. Jiang and K. Jiao, Thin Solid
+Films, 2009, 518, 338–342.
+37 Y. Chen, B. Jiang, Y. Xiang, Y. Chai and R. Yuan, Chem.
+Commun., 2011, 47, 12798–12800.
+38 N. Zhou, T. Yang, C. Jiang, M. Du and K. Jiao, Talanta, 2009,
+77, 1021–1026.
+This journal is ª The Royal Society of Chemistry 2013
+Nanoscale, 2013, 5, 3800–3807 | 3807
+Paper
+Nanoscale
+Published on 12 February 2013. Downloaded by University of Maryland - College Park on 10/23/2025 4:15:41 PM.
+View Article Online

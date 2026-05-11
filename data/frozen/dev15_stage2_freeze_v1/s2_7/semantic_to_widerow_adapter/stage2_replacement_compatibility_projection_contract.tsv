@@ -1,0 +1,24 @@
+legacy_field	replacement_object_type	replacement_field_or_rule	projection_status	direct_or_derived	notes
+formulation_id	formulation_identity_candidate	formulation_candidate_id	direct	direct	Transitional deterministic projection.
+raw_formulation_label	formulation_identity_candidate	raw_formulation_label	direct	direct	Transitional deterministic projection.
+parent_instance_id	formulation_identity_candidate	parent_candidate_id	direct	direct	Transitional deterministic projection.
+instance_kind	formulation_identity_candidate	instance_kind	direct	direct	Transitional deterministic projection.
+polymer_identity	component_candidate	infer family from polymer component names	derived	derived	No new LLM arbitration added.
+polymer_name_raw	component_candidate	component_name_raw where role=polymer	direct_or_compressed	mixed	Multiple polymer components are compressed with delimiter pipes.
+la_ga_ratio	component_candidate	component_properties_raw	direct_or_unavailable	mixed	Family-specific property is only projected when available.
+polymer_mw_kDa	component_candidate	component_properties_raw.molecular_weight	direct_or_unavailable	mixed	Uses generic polymer MW properties.
+plga_mass_mg	component_candidate	amount_expression_raw or parsed_value_raw	direct_or_unavailable	mixed	Legacy naming retained only for downstream compatibility.
+surfactant_name	component_candidate	component_name_raw where role=surfactant/stabilizer	direct_or_compressed	mixed	Multiple stabilizers are compressed.
+organic_solvent	component_candidate	component_name_raw where role=organic_solvent	direct_or_compressed	mixed	Supports co-solvent compression during transition.
+drug_name	component_candidate	component_name_raw where role=drug	direct_or_compressed	mixed	Multiple payloads are compressed if present.
+emul_method	process_step_candidate	process_name_raw	direct_or_compressed	mixed	General process semantics are projected into the legacy slot.
+emul_type	phase_candidate + variable_or_factor_candidate	derive from phase codes or factor expressions	derived_or_unavailable	derived	No hidden inference beyond simple deterministic rules.
+preparation_method	process_step_candidate	process_name_raw	direct_or_compressed	mixed	Transition-friendly generalized process field.
+emulsion_structure	phase_candidate	phase_code_raw	direct_or_compressed	mixed	Phase-aware field remains supported.
+size_nm/pdi/zeta_mV/encapsulation_efficiency_percent/loading_content_percent	measurement_candidate	measurement_name_raw + measurement_value_raw + measurement_unit_raw	direct_or_compressed	mixed	Measurements map by deterministic name matching.
+supporting_evidence_refs	evidence_handoff	source_locator_text/supporting_snippet	coarse_direct_or_unavailable	direct	Coarse evidence handoff only.
+instance_evidence_region_type/evidence_section/evidence_span_text	evidence_handoff	source_region_type/source_locator_text/supporting_snippet	coarse_direct_or_unavailable	direct	Not audit-grade ownership binding.
+identity_variables_json	variable_or_factor_candidate	preserve normalized factor_name_raw + factor_expression_raw for identity_defining_signal=yes only	direct_or_unavailable	direct	Additive metadata carrier for downstream identity preservation without changing legacy field bundles.
+*_scope	all projected row values	derive per-document shared vs instance-specific status	derived	derived	Only a transitional compatibility hint.
+*_membership_confidence	projection engine	projected_direct/projected_compressed/projected_derived	derived	derived	Does not reintroduce field-level LLM confidence.
+*_missing_reason	projection engine	set when deterministic projection is unavailable	derived	derived	Audit-friendly transitional metadata.

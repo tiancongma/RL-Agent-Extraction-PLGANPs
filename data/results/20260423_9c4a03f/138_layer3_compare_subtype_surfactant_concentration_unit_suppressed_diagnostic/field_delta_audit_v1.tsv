@@ -1,0 +1,10 @@
+field	old_recall	new_recall	old_accuracy	new_accuracy	old_match	new_match	old_missing	new_missing	old_mismatch	new_mismatch	old_extra	new_extra	old_blocked	new_blocked	old_risk	new_risk
+drug_mass_mg	0.604651	0.604651	1.000000	1.000000	26	26	17	17	0	0	0	0	14	14	31	31
+polymer_mass_mg	0.612903	0.612903	1.000000	1.000000	57	57	22	22	0	0	0	0	14	14	36	36
+emulsifier_stabilizer_name	0.558140	0.558140	0.857143	0.857143	96	96	46	46	16	16	0	0	14	14	76	76
+emulsifier_stabilizer_concentration_value	0.574324	0.682432	1.000000	1.000000	85	101	49	33	0	0	7	7	14	14	70	54
+emulsifier_stabilizer_concentration_unit	0.601770	0.601770	0.931507	0.931507	68	68	28	28	5	5	2	2	14	14	49	49
+particle_size_nm	0.656250	0.656250	0.972222	0.972222	105	105	38	38	3	3	0	0	14	14	55	55
+ee_percent	0.633540	0.633540	0.962264	0.962264	102	102	41	41	4	4	0	0	14	14	59	59
+drug_name	0.680233	0.680233	0.991525	0.991525	117	117	40	40	1	1	0	0	14	14	55	55
+solvent_name	0.785714	0.785714	0.977778	0.977778	132	132	19	19	3	3	4	4	14	14	40	40

@@ -1,0 +1,1115 @@
+Vol:.(1234567890)
+Drug Delivery and Translational Research (2023) 13:1074–1087
+https://doi.org/10.1007/s13346-022-01273-9
+1 3
+ORIGINAL ARTICLE
+Exploring paclitaxel‑loaded adenosine‑conjugated PEGylated PLGA
+nanoparticles for targeting triple‑negative breast cancer
+Dasharath Chaudhari1 · Kaushik Kuche1 · Vivek Yadav1 · Rohan Ghadi1 · Tushar Date1 · Nallamothu Bhargavi1 ·
+Sanyog Jain1 
+Accepted: 29 November 2022 / Published online: 17 December 2022
+© Controlled Release Society 2022
+Abstract
+In present investigation, we developed paclitaxel (PTX)-loaded adenosine (ADN)-conjugated PLGA nanoparticles for
+combating triple-negative breast cancer (TNBC), where ADN acts as a substrate for adenosine receptors (AR) that are
+overexpressed in TNBC. Using synthesized PLGA-PEG-ADN, PTX-loaded nanoparticles (PTX ADN-PEG-PLGA NPs)
+were prepared via emulsion diffusion evaporation process that rendered particles of size 135 ± 12 nm, PDI of 0.119 ± 0.03,
+and entrapment-efficiency of 79.26 ± 2.52%. The NPs showed higher %cumulative release at pH 5.5 over 7.4 with Higuchi
+release kinetics. The PTX ADN-PEG-PLGA NPs showed ~ 4.87- and 5.22-fold decrease in %hemolysis in comparison to
+free PTX and ­Intaxel®, indicating their hemocompatible nature. The ADN modification assisted cytoplasmic internaliza-
+tion of particles via AR-mediated endocytosis that resulted in ~ 3.77- and 3.51-fold reduction in ­IC50 and showed apoptosis
+index of 0.93 and 1.18 in MDA-MB-231 and 4T1 cells respectively. The pharmacokinetic profile of ADN-PEG-PLGA NPs
+revealed higher AUC and t1/2 than ­Intaxel® and ­Nanoxel® pharmacodynamic activity showed ~ 18.90-fold lower %tumor
+burden than control. The kidney and liver function biomarkers showed insignificant change in the levels, when treated with
+PTX ADN-PEG-PLGA NPs and exhibited no histological alterations in the liver, spleen, and kidney. Overall, the optimized
+particles were found to be biocompatible with improved anti-TNBC activity.
+Keywords  Adenosine · Paclitaxel · Triple-negative breast cancer · PLGA nanoparticles · Adenosine receptor
+Introduction
+Breast cancer (BC) is a complex disease and comprises of
+collective diseases rather than being a homogeneous condi-
+tion. Hence, finding a generalized therapy for managing BC
+is not a wise strategy [1]. This has resulted in several clinical
+and pre-clinical investigations to identify types/subtypes of
+BC so that, a potential treatment strategy can be developed
+with respect to the molecular targets, observed in BC. For
+example, estrogen receptor (ER) or progesterone receptor
+(PR) expressing BC exhibit hormone-dependent growth.
+Thus, employing hormonal therapy for combating such type
+of BC can assist well in shrinking the tumor before it is
+surgically removed with low chances of reoccurrence [2].
+However, devising a strategy for a type of BC which does
+not express ER, PR, and HER2 receptors or so called “tri-
+ple negative breast cancer” (TNBC) is difficult [3]. Due to
+such molecular framework, TNBC has poor prognosis and
+the systemic chemotherapy (e.g., paclitaxel, capecitabine,
+eribulin, ixabepilone) is the only “go through” strategy in
+early and/or metastatic stages [4]. Further, due to no-defined
+molecular targets in TNBC, issues like, high risk of relapse,
+short progression-free survival, and overall survival tend to
+persist at clinical level. This leads to higher mortality rate
+in patients diagnosed with TNBC.
+In chemotherapy, taxanes along with anthracycline
+is the most preferred treatment regime along with other
+agents listed by international guidelines. But the major
+problem with this strategy is the lack of ability to deliver
+therapeutic agents specifically to TNBC cells [5–7]. There
+were trails conducted for evaluating targeted therapeutics
+against TNBC but majority of them showed insignificant
+improvement in therapy [5]. Thus, many attempts have
+ *	 Sanyog Jain
+
+sanyogjain@niper.ac.in; sanyogjain@rediffmail.com
+1
+Centre for Pharmaceutical Nanotechnology, Department
+of Pharmaceutics, National Institute of Pharmaceutical
+Education and Research (NIPER), S.A.S. Nagar,
+Punjab 160062, India
+
+1075
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+been made by researchers, for improving the targetability
+of delivery system containing taxanes and/or therapeutics
+towards TNBC. Duan et al., developed heparinase (HPA)
+aptamer-decorated PLGA nanoparticles containing pacli-
+taxel (PTX) for achieving TNBC-specific delivery, where
+HPA aptamer acted as a targeting ligand [8]. The HPA was
+able to guide the PLGA NPs containing PTX and showed
+improved anti-invasive and anti-angiogenesis activity via
+HPA-related signaling pathways. Johnson et al. developed
+reconstituted high-density lipoproteins (rHDL) containing
+anti-TNBC drugs, where tumor targeting was achieved via
+scavenger receptor class B type 1 receptors [9]. Similarly,
+Bressler et al. used AXT050, a collagen IV-derived peptide,
+that can bind to tumor-associated integrins with high affin-
+ity, as targeting moiety, for delivering their nanoparticles
+specifically towards TNBC cells [10]. Further, Wang et al.
+used hyaluronic acid to modify vitamin E TPGS to form
+mixed micelles, which rendered TNBC targeting ability via
+CD44 receptor interaction [11]. Recently, adenosine (ADN)
+receptors are also been identified as the crucial mediators
+for tumor growth and progression in TNBC [12]. To sub-
+stantiate this, human TNBC cell line, MDA-MB-231 also
+exhibits high expression of ADN receptors. Eventually,
+ADN receptors gained attention as a potential diagnostic
+and prognostic marker for TNBC [13]. Swami et al. showed
+that ADN can be effectively used as targeting ligand for
+guiding the delivery system specifically to cancer cells [14].
+Hence, here we used ADN as targeting ligand for our
+developed delivery system. For this, we synthesized ADN-
+conjugated PEG-PLGA, which was later used for prepar-
+ing PLGA NPs. The PLGA formed the core of the NPs
+and ADN was anchored outside while, PEG acted as the
+hydrophilic linker, as shown in Fig. 1A. The addition
+of linker was crucial as it allows the targeting ligand to
+interact with the receptor freely and improve the chances
+of receptor mediated internalization [15]. Another reason
+for adding PEG as a linker was to impart hydrophilicity to
+the system and to avoid RES uptake [16]. The therapeutic
+moiety used was PTX. PTX is a BCS class IV drug and
+has several clinical limitations due to its poor water solu-
+bility, shorter t1/2, and hepato- and nephro-toxicity. FDA
+has approved marketed formulation of PTX in the name
+of ­Taxol® and ­Abraxane®, while Korea have approved
+Genexol-PM®. While formulating ­Taxol® and ­Intaxel®, the
+(A)
+(B)
+(C)
+(D)
+(E)
+(F)
+(G)
+Fig. 1   Synthesis scheme and physicochemical characterization of
+PTX ADN-PEG-PLGA NPs. A The scheme used for synthesizing
+ADN-PEG-PLGA which was later used for preparing nanoparticles.
+B The size distribution (% intensity) graph of prepared PTX ADN-
+PEG-PLGA NPs. C The morphology of PTX ADN-PEG-PLGA
+NPs observed under HR-TEM. D The in vitro release profile of PTX
+from mentioned NPs at pH 7.4 and E at pH 5.5. F The % hemoly-
+sis observed in 1% RBC suspension when incubated with respective
+groups, where (i) is the digital photograph of treated 1% RBC suspen-
+sion with respective group and ii shows the quantitative % hemoly-
+sis exhibited by the treated groups (studies were performed at n = 3
+where, **** = P < 0.0001 and ns = P > 0.05, with respect to control).
+G The morphology of treated RBCs (that were separated by centrifu-
+gating the micro-centrifuge tubes shown in i) with respective groups
+when observed under SEM
+
+1076
+
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+PTX is solubilized in polyethoxylated castor oil (Cremo-
+phor EL R, a non-ionic surfactant) and ethanol (50:50) [17,
+18]. The solvent used is reported as to be the main reason
+for nephro-, neuro-, and hepto-toxicity of ­Taxol®. Similarly,
+Genexol-PM® is a novel formulation of PTX encompass-
+ing proprietary polymeric micelle technology. The polymer
+monomethoxy-poly(ethylene glycol)-blockpoly(d,l-lactide)
+(mPEG-PDLLA) is used as a solubilizer in the formula-
+tion [19]. ­Abraxane® (PTX-bound albumin system) is a
+nanoparticulate-based system and is more compatible than
+solvent-based system. Thus, to resolve the delivery related
+issues of PTX and to explore the tumor targeting potential
+of ADN, PTX-loaded ADN-modified PLGA NPs were pre-
+pared. In present investigation, the particles were optimized
+systematically and were evaluated extensively at in vitro
+and in vivo level for their anti-cancer efficacy, TNBC tar-
+geting ability, and for toxicity.
+Materials and methods
+Materials
+Paclitaxel (PTX) was procured as a gift sample from USP
+Fresenius Kabi, India. PLGA, i.e., Resomer RG 502 H
+[Poly(D,L-lactide-co-glycolide) 50:50; MW-7-17kD], was
+purchased from Evonik, GmbH. ­NH2-PEG-COOH was pro-
+cured from Jenkem Technology, USA. 1-Ethyl-3-(3 dimeth-
+ylaminopropyl) carbodiimide (EDC), N-hydroxysuccinimide
+(NHS), anhydrous dichloromethane, anhydrous dimethyl sul-
+foxide, 1-hydroxy-7-azabenzotriazole (HOAt), Annexin V
+Apoptosis Detection Kit, diamidino-2-phenylindole (DAPI),
+di-isopropylcarbodiimide (DIC), MTT, dipyridamole, and
+all other chemicals were purchased from Sigma-Aldrich,
+Burlington, MA, USA. Acetonitrile (HPLC grade), chloro-
+form (HPLC grade), diethyl ether, methanol (HPLC grade),
+and ethyl acetate (HPLC grade) were procured from Fischer
+Scientific, USA. Accurex Biomedical Pvt. Ltd., India, pro-
+vided additional assay kits, including alanine transaminase
+(ALT), aspartate transaminase (AST), blood urea nitrogen
+(BUN), and creatinine. Throughout the studies, deionized
+and Millipore-filtered (pore diameter 0.22 m) water was
+used. All other chemicals and reagents were purchased from
+local vendors and were of analytical grade.
+Preparation of ADN‑conjugated PLGA nanoparticles
+Synthesis of PLGA‑PEG‑ADN conjugate
+PLGA-PEG-ADN was synthesized in two steps as described
+in Fig. 1A. To begin with, PLGA (2 g) was dissolved in
+8 mL of anhydrous dichloromethane (DCM) to which 2 mL
+of DCM containing EDC (92 mg) and NHS (135 mg) was
+added drop wise [20–22]. The reaction mixture was stirred
+for 24 h under neutral ­N2 atmosphere at room temperature
+(RT). The intermediate (PLGA-NHS ester) formed was pre-
+cipitated by adding 50 mL ice cold diethyl ether. The precip-
+itate was collected and dried overnight under vacuum. The
+collected precipitate (500 mg) was dissolved in anhydrous
+DCM in to which DCM solution containing ­NH2-PEG-
+COOH (125 mg) and N, N-diisopropylethylamine (14 mg;
+DIPEA) solubilized separately was added dropwise. The
+reaction was allowed to proceed for 12 h under neutral ­N2
+environment at RT. The synthesized PLGA-PEG co-polymer
+was then precipitated using ice cold ether followed by wash-
+ing and drying (under vacuum). This PLGA-PEG copolymer
+was used for preparing PTX-loaded PEGylated PLGA nano-
+particles (PTX PEG-PLGA NPs).
+In second step, PLGA-PEG-COOH (1 g) was solubilized
+in 20 mL anhydrous dimethyl sulfoxide (DMSO) containing
+ADN (20 mg), EDC (92 mg), and NHS (135 mg), and stirred
+for 24 h at RT under ­N2 atmosphere. The product formed
+(PLGA-PEG-ADN) was precipitated (ice-cold diethyl ether),
+washed (with methanol), filtered, and dried in similar fash-
+ion as described previously. The synthesized PLGA-PEG-
+ADN conjugate was characterized using FTIR and 1H NMR
+(DMSO-d6, 500 Hz) (details are given in supplementary
+material) and was used for preparing PTX-loaded nanopar-
+ticles (PTX ADN-PEG-PLGA NPs).
+Preparation and optimization of PTX‑loaded PLGA NPs
+PTX-loaded PLGA NPs were prepared using emulsion dif-
+fusion evaporation method, with minor modifications. Dif-
+ferent types of stabilizers and their concentrations (DMAB,
+polyvinyl alcohol (PVA), ­Tween® 80, and PluronicTM
+F-127) were screened. The process parameters like sonica-
+tion cycle (at different amplitudes of sonication, i.e., 25, 30,
+35, and 40%) and theoretical drug loading (2.5, 5, 7.5, and
+10% w/w) were thoroughly optimized. For details, kindly
+follow the supplementary file Sect. 2.
+For preparing nanoparticles, PLGA (50 mg) and PTX
+(theoretical loading- 7.5% w/w) were dissolved in 2.5 mL
+of ethyl acetate at RT. The organic phase was directly mixed
+with 5 mL of optimized stabilizer aqueous solution (PVA,
+2% w/v). The emulsion was stirred at 1000 RPM for 20 min
+followed by probe sonication under optimized amplitude
+(35%) and interval (sonication time: 120 s; 5 s on/off) (Refer
+supplementary file Sect. 2). The emulsion formed was added
+to 25 mL of distilled water and was stirred continuously, so
+as to diffuse the organic solvent followed by evaporation.
+Solvent evaporation results in nanoprecipitation and the
+formation of PTX-loaded PLGA NPs. The particle size, PDI,
+and Z-potential of the diluted nanoparticles were determined
+using dynamic light scattering (Nano ZS Malvern, UK). The
+% entrapment efficiency (%EE) of drug was determined
+
+1077
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+by extracting PTX from the PLGA matrix using acetone.
+The solvent extract was then quantified for determining the
+PTX present using validated HPLC method. Colum used
+was ­LiChrospher® 100, RP 18(5 μm), where mobile phase
+used was ACN:Water (55:45% v/v) and flow rate of 1 mL/
+min was maintained and PTX was quantified using PDA
+detector at 227 nm. The formula used for estimating the %
+EE is as follows,
+Further, the particles prepared were lyophilized, for
+which suitable lyoprotectant was screened. For details kindly
+refer supplementary file Sect. 3. The surface morphology
+and shape pattern of formulated nanoparticles were deter-
+mined using TEM (FEI Tecnai G2F20, Netherlands) [23].
+A drop of NP dispersion (diluted with HPLC grade water)
+was placed on the carbon-coated copper grid and stained
+with phosphotungestic acid (2% w/v). The grid was dried
+and scanned at various magnifications under the microscope
+at an accelerating voltage of 80 kV.
+Storage stability of lyophilized PTX ADN‑PEG‑PLGA
+NPs
+The storage stability for freeze-dried PTX ADN-PEG-PLGA
+NPs was performed using the accelerated stability protocols
+as per ICH guidelines [24]. The, freeze-dried PTX ADN-
+PEG-PLGA NPs were transferred to 5-mL glass vials, sealed
+with plastic caps, and were kept in a stability chamber at
+temperature 30 ± 2 °C and relative humidity (65 ± 5%) for
+6 months. After that, the PTX ADN-PEG-PLGA NPs were
+examined for any changes in particle size, PDI, and %EE.
+In vitro drug release
+The in vitro release of PTX from prepared PLGA NPs was
+investigated using dialysis bag method at pH 7.4 and pH
+5.5 to mimic the blood and tumor environment, respectively
+[25, 26]. The lyophilized nanoparticles equivalent to 1 mg
+of entrapped PTX was dispersed in 500 µL of release media
+and transferred to dialysis bag (MWCO 12,000 Da, Sigma-
+Aldrich). The dialysis bags were submerged in 15 mL of
+phosphate buffer saline pH 7.4 and acetate buffer pH 5.5
+containing ­Tween® 80 (1%v/v) separately to maintain the
+sink condition. The dialysis assemblies were kept on shaker
+bath at 100 strokes per minute at 37 °C. At predetermined
+time points, 1 mL aliquots were withdrawn from release
+medium and were replaced with equal volume of fresh
+release medium. The collected aliquots were then quantified
+for PTX concentration using validated RP-HPLC method.
+%EE =
+Amount of drug encapsulated in PLGA NP
+Total amount of drug added during preparation × 100
+Cell culture
+The in vitro investigations of PLGA NPs were performed
+using TNBC cell lines MDA-MB 231(human) and 4T1
+(mice) procured from ATCC, Manassas, USA. The cell
+lines were grown in RPMI 1640 (Sigma-Aldrich, Burling-
+ton, MA, USA) cell culture media under humid environ-
+ment containing 5% CO2 as per ATCC protocols. Once the
+cells were confluent to 80%, it was detached using 0.25%
+trypsin–EDTA solution and used for studies.
+Kindly refer supplementary file for detailed description
+of qualitative and quantitative cellular uptake (Sect. 4), cyto-
+toxicity (Sect. 5), and Annexin-V apoptosis (Sect. 6) assay.
+In vitro hemolytic toxicity
+The prepared formulations are intended for intravenous
+administration hence, evaluating their hemolytic potential
+is crucial. The protocol followed was similar to our previ-
+ously reported method [27, 28]. Blood samples were col-
+lected from Swiss albino (25–30 g) mice in heparinized cen-
+trifuge tubes and were centrifuged at 4 °C and 2500 RPM
+for 5 min to separate the RBCs. The buffy layer as well as
+the supernatant formed was removed, and the RBC pellet
+which settled at the bottom was washed with isotonic solu-
+tion at least 3 times.
+Finally, the formed RBC pellet was resuspended in PBS
+(pH 7.4) and was considered as 100% RBC suspension. For
+hemolytic study, RBC suspension with 1% v/v concentration
+was prepared using PBS (pH 7.4). Free PTX, PTX-loaded
+PLGA NPs, and PTX containing marketed formulations, i.e.,
+­Intaxel® and ­Nanoxel® (equivalent to 1 mg of free PTX),
+were added to 1 mL of RBC suspension. Further, 0.1% v/v
+Triton-X™ 100 and PBS (pH 7.4) was used as positive con-
+trol and negative control, respectively. The samples were
+incubated for 1 h at 37 °C in shaker bath, followed by cen-
+trifugation at 2500 RPM while maintaining temperature at
+4 °C for 5 min. The supernatant was separated and pellet was
+stored. The supernatant was left at RT for 30 min to allow
+hemoglobin undergo oxidation. The spectrophotometric
+absorbance of oxygenated hemoglobin (Oxy-Hb) was meas-
+ured at 540 nm, and % hemolysis is was determined using
+the following formula [29].
+where Abs = absorbance of the sample, ­Ab100 = absorbance
+of the control.
+Further, the pellet stored was fixed using 0.5% v/v glutar-
+aldehyde (3 times the volume of pellet) and incubating them
+for not more than 30 min. fixed RBCs were washed using
+%Hemolysis = Abs
+Ab100
+×100
+
+1078
+
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+deionized water and was subjected to scanning electron
+microscopy (S-3, 400N, Hitachi, Japan) analysis. The sam-
+ples were placed on double sided adhesive carbon tape previ-
+ously adhered to metallic stub. Subsequently samples were
+gold coated using Hitachi ion sputter for 30 sec at 15mA
+to obtain a conducting surface and finally visualised under
+microscope.
+In vivo pharmacokinetic study
+The pharmacokinetic study was performed on healthy female
+Sprague Dawley (~ 200 g) rats procured from Central Animal
+Facility (NIPER S.A.S. Nagar, India) and animal experiments
+were carried out as per the directions of the Committee for
+the Purpose of Control and Supervision of Experiments on
+Animals (CPCSEA), India (Institute Animal Ethics Commit-
+tee approval number: IAEC/19/72). Initially, animals were
+acclimatized under the dictated environmental conditions, i.e.,
+temperature 25 ± 2 °C; humidity 55 ± 5%RH; 12-h light/dark
+cycles. The animals were randomly divided in groups based
+on the treatment received like ­Intaxel®, ­Nanoxel®, and PTX-
+loaded various PLGA NPs (5 animals in each group). The lyo-
+philized PTX-loaded NPs, ­Intaxel®, ­Nanoxel®, and free PTX
+(dispersed in the 500 µL deionized water) were administered
+at dose 5 mg/kg intravenously through tail vein. The samples
+(~ 250 µL) were collected from tail vein at predetermined time
+intervals (0.5, 1, 2, 4, 6, 8, 12, 24, and 48 h) in EDTA-coated
+vacutainer tubes. The plasma was extracted by precipitat-
+ing the proteins by addition of ACN and methanol, followed
+by centrifugation at 3000 RPM for 5 min at 4 °C [30]. The
+obtained clear supernatant was subjected to quantification
+for PTX concentration using validated RP-HPLC bioanalyti-
+cal method, where docetaxel (DTX) was used as an internal
+standard. The mobile phase used was ACN:Water (60:40) and
+the LOQ for PTX was found to be 122.65 ng/mL. Further,
+accuracy of HPLC method was confirmed by performing the
+recovery study as per ICH norms at three different concentra-
+tions (i.e., 80, 100 and 120%), and average % recovery of PTX
+was found to be 98.16%, 99.28%, and 100.93% for 200 ng/mL,
+400 ng/mL, and 700 ng/mL, respectively. The drug plasma
+concentration–time profile was plotted and various pharma-
+cokinetic parameters were calculated using the Kinetica soft-
+ware (Thermo Scientific, Waltham, MS).
+Tumor inhibition study
+The anti-tumor study was performed on 6-–8-week-old
+BALB/c mice. The xenograft model for breast cancer was
+developed by injecting 1 × ­106 TNBC cell line 4T1 (mice)
+in the fourth mammary fat pad [31]. Once the injected mice
+exhibited tumor volume of 100 ­mm3, they were randomly
+divided in groups based on the treatment received like con-
+trol (saline), free PTX, various PLGA NPs, ­Intaxel®, and
+­Nanoxel®, where 5 animals were kept in each group. The
+PTX-loaded PLGA NPs, free PTX, and marketed PTX for-
+mulations were administered intravenously at dose equiva-
+lent to 5 mg/kg of PTX. During these 21 days, each group
+received 4 doses with an interval of 5 days. Every alternate
+day the length (L) and width (W) of the tumor was meas-
+ured using a digital Vernier caliper. The tumor volume was
+calculated using below mentioned formula,
+Also, the percent tumor burden was calculated using
+below mentioned formula,
+Qualitative evaluation of bio‑distribution
+For this investigation, coumarin-6 (C6)-loaded PLGA NPs
+were prepared in similar manner as described in the “Prepa-
+ration of ADN-conjugated PLGA nanoparticles” section.
+The only change made was the use of C6 instead of PTX.
+The developed nanoparticles (concentration equivalent to
+0.1 mg/kg of free C6) were injected intravenously in tumor-
+induced BALB/c mice (25–30 g) with tumor volume > 100
+­mm3 [32]. After 24 h of administration, animals were sac-
+rificed under anesthetic condition and major organs such as
+the liver, lung, spleen, and kidney along with tumor were
+excised. The thin sections of excised organs were cut and
+the sections were visualized for the green fluorescence using
+CLSM (Olympus, FV1000).
+Toxicity study
+The toxicity studies of formulated PTX-loaded PLGA NPs
+were examined in healthy Swiss Albino (25–30 g) mice. The
+animals were randomly divided in five groups containing 6
+animals each. Vehicle, ­Intaxel®, ­Nanoxel®, and PTX-loaded
+PLGA NPs (targeted, and non-targeted) were administered
+(equivalent to 5 mg/kg free PTX) intravenously in each mice
+of the respective groups. Animals from negative control
+group received saline injections to portray the basal integrity
+of animals. After 7 days, animals were humanely sacrificed
+and blood was collected in heparinized microcentrifuge tube
+and centrifuged at 2500 RPM for 5 min at 4 °C to separate
+the RBCs and serum. The obtained serum was evaluated
+for aspartate aminotransferase (AST), alanine transaminase
+(ALT), blood urea Nitrogen (BUN), and creatinine levels as
+toxicity markers with the help of ­Accurex® kit [31, 33]. The
+organ toxicity profile was further strengthened through his-
+tological evaluation. The major organs such as the spleen,
+Tumor volume (Cu.mm) = L ∗W2
+2
+%Tumor burden =
+Weight of tumor isolated
+Weight of the respective animal ∗100
+
+1079
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+liver, and kidney were excised from sacrificed animals and
+were fixed using 10% v/v neutral buffered formalin solution.
+Thereafter, the organs were embedded in paraffin cartridges
+and thin sectioning was performed using microtome. The
+prepared sections were stained with hematoxylin and eosin
+(H&E) and microscopically visualized to depict organ toxic-
+ity site [23]. The organ toxicities in H&E staining were deter-
+mined on the basis of splenocyte rupture (non-differentiation
+between red and blue pulp portion of the spleen), reduction
+in hepatocyte cellular density in the liver, and inflammatory
+response in the kidney tissue (enlargement of Bowman’s cap-
+sule and reduction in tissue density).
+Statistical analysis
+The experiment results are reported as mean standard devia-
+tion (SD). ­Prism® (GraphPad Software, Inc. CA, USA) was
+used for statistical analysis, with one-way ANOVA followed by
+Tukey–Kramer multiple comparison tests and two-way ANOVA
+followed by Bonferroni post-tests to compare replicate means by
+rows. The level of significance was determined to be p < 0.05.
+Results and discussion
+Preparation of ADN‑conjugated PLGA nanoparticles
+Synthesis of PLGA‑PEG‑ADN conjugate
+The synthesized product, i.e., PLGA-PEG, PLGA-PEG-
+ADN, and PLGA-ADN, were characterized using FTIR and
+1H NMR. Detailed explanation of the spectroscopy-based
+analysis is given in the supplementary file, Sect. 1.
+Preparation and optimization of PTX‑loaded PLGA NPs
+The PTX-loaded NPs were prepared by screening surfactant,
+in which PVA was found suitable. Later, the concentration
+of PVA (2% w/v), amplitude (35%) used for sonication,
+and % theoretical drug loading (7.5% w/w) was optimized
+(Refer supplementary file, Sect. 2 and Table S1). Based on
+the optimized parameters, different PTX-loaded NPs were
+prepared (PTX PEG-PLGA-NPs, PTX ADN-PLGA NPs,
+and PTX ADN-PEG-PLGA NPs) as shown in Table 1. The
+particle size distribution of PTX ADN-PEG-PLGA NPs (PDI
+of ~ 0.12) is shown in Fig. 1B. The formed particles showed
+spherical morphology with smooth surfaces as shown in
+Fig. 1C. Additionally, the obtained size (~ 135 nm) was found
+to be in correlation with the NPs observed through HR-TEM.
+The lyoprotectants were screened, in which 5% w/v of treha-
+lose was observed to exhibit lowest size reconstitution ratio
+(supplementary file Table S2). Hence, trehalose was selected
+as the suitable lyoprotectant in our further studies.
+Storage stability of lyophilized PTX ADN‑PEG‑PLGA
+NPs
+The accelerated stability study was performed till 6 months.
+The lyophilized NPs cake showed no change in terms of
+shrinkage or any other change in physical appearance. Fur-
+ther, Insignificant (p > 0.05) increase in particle size (from
+135 ± 12 to 146 ± 10 nm) and PDI (from 0.119 ± 0.03 to
+0.131 ± 0.09) were observed after until 6 months of testing
+(Kindly refer supplementary file Table S3).
+In vitro drug release
+The drug release from NPs demonstrated sustained release
+pattern at pH 7.4, wherein PTX PLGA NPs and PTX ADN-
+PLGA NPs showed < 15% PTX release and PTX PEG-
+PLGA NPs and PTX-ADN-PEG-PLGA NPs showed < 10%
+PTX release in 24 h. At the end of 25th day, PTX PLGA
+NPs, PTX ADN-PLGA NPs, and PTX PEG-PLGA NPs
+showed < 65% PTX release, whereas PTX ADN-PEG-PLGA
+NPs showed ~ 59% PTX release (Fig. 1D). However, at pH
+5.5, the release rate was observed to be relatively higher than
+what was observed at pH 7.4. On day 1, ≥ 20% PTX was
+released from non-PEGylated and PEGylated PLGA NPs.
+At the end of 25th day, PTX PLGA NPs, PTX ADN-PLGA
+NPs, and PTX PEG-PLGA NPs showed ≥ 80% PTX release
+and PTX ADN-PEG-PLGA NPs showed ~ 73% PTX release
+(Fig. 1E). The % cumulative drug release profile shown by
+the prepared NPs at pH 7.4 and 5.5 was different. The faster
+release at pH 5.5 was observed because the acidic pH acceler-
+ates the hydrolysis of ester bond between lactic acid and gly-
+colic acid subunits of polymer [34]. Additionally, drug release
+from PTX ADN-PEG-PLGA NPs was slower than PTX PEG-
+PLGA as drug experiences additional barrier offered by ADN.
+The cumulative drug release from PLGA NPs were then
+fitted into zero-order, first-order, Higuchi’s square plot, Hixson
+Table 1   Physical attributes of
+the developed PLGA NPs
+Formulations
+Size (nm)
+PDI
+Z-potential (mV)
+%EE
+PTX PLGA NPs
+123 ± 12
+0.094 ± 0.05
+ − 9.26 ± 2.28
+78.96 ± 2.18
+PTX PEG-PLGA NPs
+137 ± 10
+0.112 ± 0.02
+ − 21.34 ± 2.42
+77.21 ± 3.19
+PTX ADN-PLGA NPs
+131 ± 7
+0.091 ± 0.06
+ − 9.26 ± 2.28
+80.33 ± 1.05
+PTX ADN-PEG-PLGA NPs
+135 ± 12
+0.119 ± 0.03
+ − 8.52 ± 3.65
+79.26 ± 2.52
+
+1080
+
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+Crowell cube root plot, and Peppas model and the one with
+correlation coefficient close to unity was selected as order of
+release. At pH 7.4, the mathematical model-based release pro-
+file indicated that PTX ADN-PLGA NPs follow the Higuchi
+kinetics with non-Fickian transport, whereas PTX PEG-PLGA
+NPs and PTX ADN-PEG-PLGA NPs showed Higuchi kinetics
+with super case II transport. Such observation could be due to
+polymer degradation and surface erosion phenomena that occur
+at the later stages of drug elution (Table S4) [35, 36]. Addition-
+ally, a different release kinetic model was observed to be fit-
+ting ADN-PLGA NPs when compared to PEGylated versions
+of the NPs. Probable reason for such observation is that the
+PEGylation changes the molecular weight, polymer degradation
+rate, and aqueous diffusion rate across the particles leading to
+altered release kinetics [37–39]. Further, at pH 5.5, all PLGA
+NPs showed Higuchi release kinetics with Fickian transport.
+Hemolytic toxicity
+Haemolytic toxicity profiles of Free PTX, ­Intaxel®, ­Nanoxel®,
+and various NPs compared to positive control (Triton-XTM
+100) and negative control (PBS, pH 7.4) are depicted in Fig. 1F.
+Free PTX and ­Intaxel® showed significantly higher toxicity
+(P < 0.0001) as compared to negative control PBS. On the other
+hand, there was insignificant difference (P > 0.05) in % hemolysis
+between other tested formulations and PBS control group. How-
+ever, ­Nanoxel® showed no significant difference in hemolytic
+potential when compared with PTX ADN-PEG-PLGA NPs.
+Also, the morphology of RBCs observed through SEM
+exhibited similar trend as observed in spectrophotometric
+absorbance method. The SEM images of RBCs incubated
+with respective groups is depicted in Fig. 1G. The PLGA
+NPs and ­Nanoxel® exhibited similar morphological attrib-
+utes of RBC when compared with vehicle group, indicating
+suitable hemocompatibility. The hemotoxicity observed for
+­Intaxel® was found to be correlating with our previously
+published data [18, 19, 40]. Additionally, the hemotoxicity
+results can be well correlated with the in vitro release data.
+The PLGA NPs restrict the direct exposure of drug to the
+RBCs by sustaining the release for longer duration, whereas
+in the case of ­Intaxel®, which is a PTX solution-based sys-
+tem, there is a direct exposure of PTX with RBCs leading to
+increase in % hemolysis. Similarly, ­Nanoxel® being an NP-
+based delivery system hinders the direct exposure of PTX
+with RBCs that result in its low hemolytic potential [25].
+Cell culture studies
+Qualitative and quantitative cellular uptake
+In qualitative cellular uptake, C6-loaded PLGA NPs and free C6
+were incubated with TNBC cells and observed using CLSM,
+the images are shown in Fig. 2A. The ADN-conjugated NPs
+showed higher fluorescence than free C6 and NPs without ADN
+modification. This indicates that ADN assists in improving the
+internalization of PLGA NPs which is desirable. To confirm
+the role of ADN receptors in internalization, dipyridamole was
+used to block the ADN receptors on TNBC cells. The blockade
+of ADN receptors resulted in drastic decrease in fluorescence
+in both the cell lines that were incubated with C6-loaded ADN-
+PEG-PLGA NPs. This inferred that the ADN-PEG-PLGA NPs
+exhibit ADN receptor-mediated internalization [36].
+The quantitative cellular uptake also revealed similar results
+as that of qualitative cellular uptake. Higher PTX content was
+observed from the cells incubated with ADN-modified PLGA
+NPs than ADN non-modified NPs, as shown in Fig. 2B. The
+time-dependent internalization showed that after 2 h of incuba-
+tion, there was insignificant increase in PTX content within the
+cell lysate. This could have been observed due to the saturation
+of ADN receptors that resulted in insignificant increase in par-
+ticle uptake when incubated beyond 2 h. Additionally, the role
+of ADN receptor in internalization of PTX ADN-PEG-PLGA
+NPs was confirmed as significantly reduced PTX levels were
+observed from cells that were incubated with ADN receptor
+blocker. Thus, the cellular uptake and ADN receptor blockade
+assay strengthens our hypothesis of using ADN as targeting
+ligand for developed PLGA NPs [41].
+Cytotoxicity study
+The effect of free PTX and PTX-loaded PLGA NPs on %
+cell viability is shown in Fig. 3A. In both the cell lines,
+PTX ADN-PEG-PLGA NPs showed superior cytotoxicity
+than the ADN non-modified PLGA NPs and free PTX.
+The PTX ADN-PEG-PLGA NPs showed ­IC50 value of
+3.42 µg/mL and 3.16 µg/mL in MDA-MB-231 and 4T1
+cells respectively. If the efficacy is compared with free
+PTX, then ~ 3.77- and 3.51-fold reduction in ­IC50 values
+were observed for PTX ADN-PEG-PLGA NPs in MDA-
+MB-231 and 4T1 cells respectively. Similar comparison
+of ­IC50 values of other tested groups with free PTX is
+shown in Fig. 3B. The cytotoxicity data was found to be
+in accordance with the results observed in cellular uptake.
+The cellular uptake indicated that the ADN-modified
+PLGA NPs were able to internalize more effectively in
+TNBC cells in comparison to non-modified cells due to
+ADN receptor-mediated uptake [41].
+Thus, higher cellular uptake would have resulted in
+higher PTX content inside the cell resulting in increased
+cytotoxicity in the case of PTX ADN-PEG-PLGA NPs.
+Annexin‑V apoptosis assay
+Considering the uptake and cytotoxicity study, it was
+evident that ADN-modified PLGA NPs showed superior
+
+1081
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+internalization which has resulted in improved cytotoxic-
+ity. Further, to evaluate whether the internalized PTX is
+able to induce the apoptosis upon internalization was evalu-
+ated using Annexin-V apoptosis assay and data observed
+is shown in Fig. 3C. Overall, PTX PLGA NPs showed
+higher apoptosis index than the free PTX; however, apop-
+tosis index for PTX ADN-PEG-PLGA NPs was signifi-
+cantly higher (0.93 and 1.18 in MDA-MB 231 and 4T1
+cells respectively) in comparison to non-targeted PLGA
+NPs. Such results were observed due to the fact that PTX
+ADN-PEG-PLGA NPs were able to internalized effec-
+tively through receptor-mediated internalization [42]. This
+allowed higher drug titter to enter the cell and induce cancer
+cell death via induction of apoptosis pathway.
+In vivo pharmacokinetic study
+The pharmacokinetic profile, i.e., the plasma drug concen-
+tration vs the time profile of PTX when delivered as free
+PTX solution, as PTX-loaded PLGA NPs, or through mar-
+keted formulations like ­Intaxel® and ­Nanoxel®, are shown
+in Fig. 4A. The AUC(0-∞) of PTX ADN-PEG-PLGA NPs
+(107,894 ± 4081 ng/mL × h) was significantly higher than its
+marketed counterparts, ­Intaxel® (21,521 ± 927 ng/mL × h),
+and ­Nanoxel® (54,635 ± 2576 ng/mL × h). The AUC(0-∞) of
+PTX PLGA NPs (66,562 ± 3042 ng/mL × h) was also found
+to be significantly lower than PTX ADN-PEG-PLGA NPs.
+The t1/2 of PTX ADN-PEG-PLGA NPs (23.76 ± 3.17 h)
+was found to significantly higher than that of ­Intaxel®
+(4.35 ± 0.95 h) and PTX PLGA NPs (13.45 ± 2.11 h).
+However, the PTX PEG-PLGA NPs and PTX ADN-
+PEG-PLGA NPs exhibited an improved AUC(0-∞) and
+t1/2 (p < 0.01) in comparison to the marketed formulation
+­Nanoxel®. The half-life of PTX was increased by ~ 3.09-,
+2.09-, 6.92-, and 5.46-fold in the case of PTX PLGA NPs,
+PTX ADN-PLGA NPs, PTX PEG-PLGA NPs, and PTX
+ADN-PEG-PLGA NP, respectively, when compared to
+­Intaxel®. A probable reason for such observation is that the
+PLGA NPs exhibit a sustained release behavior (as observed
+in in vitro release study) that prevents the PTX clearance
+[43]. Additionally, PEGylation of NPs help in improving
+the MRT of particles leading to improved exposure of PTX
+to desired site of action. The MRT of PTX ADN-PEG-
+PLGA NPs (30.66 ± 2.57 h) was found to be significantly
+higher than MRT of ­Intaxel® (5.47 ± 1.39 h), ­Nanoxel®
+(28.70 ± 2.695 h), and PTX PLGA NPs (19.18 ± 2.71 h).
+(A)
+(B)
+Fig. 2   In vitro cell uptake of PTX ADN-PEG-PLGA NPs. A The quali-
+tative cellular uptake of respective treatments in MDA-MB-231 and 4T1
+cells. B The quantitative uptake of PTX and PTX-loaded NPs in (i) MDA-
+MB-231 and (ii) 4T1 cells, with respect to time (where **** = P < 0.0001
+and ns = P > 0.05)
+
+1082
+
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+Such improved MRT values assist in improving duration of
+action and can reduce the dosing frequency. Further, sus-
+tained release behavior of PLGA NPs can also explain why
+­Intaxel® has higher Cmax than PLGA NPs. ­Intaxel® being
+a PTX solution exposes the drug entirely (burst release)
+resulting in increased plasma concentration with shorter t1/2
+and higher clearance rate. Overall, the PEG present on the
+periphery of the particles prevents RES uptake and improves
+the PK parameters of developed NPs when compared to non-
+PEGylated NPs and marketed counterparts (Table 2).
+Tumor inhibition study
+The ability of developed PLGA NPs to inhibit the growth
+of tumor until 20 days was evaluated using 4T1 xenograft
+model and tumor volume increase or decrease was observed
+on each day is shown in Fig. 4B. The PTX ADN-PEG-PLGA
+NP-treated group exhibited significant reduction in tumor
+volume (p < 0.001) with respect to control, ­Intaxel®, and
+­Nanoxel®. The tumor volume observed on 20th day was in
+the following order arranged in lowest to highest manner;
+PTX ADN-PEG-PLGA NPs < ­Nanoxel® < ­Intaxel® < Con-
+trol. Moreover, PTX ADN-PEG-PLGA NPs showed the
+lowest tumor burden (0.372 ± 0.124%) when compared to
+control (7.032 ± 2.47%) and all other tested groups, Fig. 4C.
+Such significant regression in tumor volume and tumor bur-
+den in animals treated with PTX-ADN-PEG-PLGA NPs was
+observed due to two major reasons. First, the size in nanom-
+eter range allows NPs to accumulate in tumor region due
+to the leaky vasculature of tumor tissues, leading to higher
+exposure of drug to the cancer cells. Second, ADN modi-
+fication over NPs allows receptor-mediated internalization
+Fig. 3   In vitro cell culture evaluation of PTX ADN-PEG-PLGA
+NPs. A The % viability observed in (i) MDA-MB-231 and (ii) 4T1
+cells when treated with mentioned groups for 24 h. B Graphical rep-
+resents the IC50 values of mentioned groups in comparative manner.
+C The CLSM images of MDA-MB-231 and 4T1 cells when treated
+with mentioned groups and stained with Annexin V-Cy3.18 and
+6-carboxyfluorescein diacetate (6-CFDA) double staining dye. The
+6-CFDA is non-fluorescent but when internalized it gets hydrolyzed
+to form fluorescent 6-carboxyfluorescein (6-CF)
+
+1083
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+in to the cancer cells that imparts cytotoxicity and provides
+better control over tumor growth. The photograph of repre-
+sentative tumor from each group is shown in Fig. 4B(ii)).
+Overall, PTX-ADN-PEG-PLGA NPs showed maximum
+tumor inhibitory effect, whereas ­Intaxel® showed the least
+anti-tumor efficacy.
+Qualitative evaluation of bio‑distribution
+The main purpose of this study was to investigate whether
+the ADN-PEG-PLGA NPs possess the ability to accumulate
+in tumor region more, in comparison to other organs (kid-
+ney, liver, spleen, lungs, and heart). The qualitative CLSM
+images of organ slices showing the fluorescence observed
+from each organ are illustrated in Fig. 4D. The C6-loaded
+ADN-PEG-PLGA NPs showed highest fluorescence in
+tumor section than in other organs. On the contrary, free
+C6 showed higher fluorescence in the kidney, liver, heart,
+and spleen but showed low fluorescence in tumor section.
+However, in the case of C6-loaded PEG-PLGA NPs, overall
+low fluorescence was observed in all the organs except the
+liver. However, in the case of C6-loaded PEG-PLGA NPs,
+relatively low fluorescence was observed in all the organs
+except tumor region. The probable reason for such observa-
+tion is that the over expression of ADN receptors in TNBC
+cells retained ADN-PEG-PLGA NPs specifically in tumor
+region. Whereas in the case of PEG-PLGA NPs, they exhib-
+ited stealth effect because of PEGylation. Also, due to the
+hydrophilic corona of PEG-PLGA NPs, the chances of inter-
+nalization within the complex layered mass of TNBC cells
+Fig. 4   In vivo pharmacokinetic, anticancer efficacy and toxicity study. A
+The pharmacokinetic profile of developed PLGA NPs and their coun-
+terparts. B The (i) tumor growth inhibition rate upon administration of
+mentioned treatment and shows the representative (ii) tumor isolated
+from each treated group. C A graphical representation of % tumor bur-
+den remaining in the treated animal at the end of the treatment regime.
+D The CLSM images of isolated organs from the treated animals for
+qualitatively evaluating the biodistribution
+Table 2   Pharmacokinetic parameters of marketed formulations in comparison with PLGA NPs
+Parameters
+Intaxel®
+Nanoxel®
+PTX PLGA NPs
+PTX PEG-PLGA NPs
+PTX ADN-PLGA NPs
+PTX ADN-
+PEG-PLGA
+NPs
+Cmax (ng/mL)
+6225 ± 
+473
+6319 ± 835
+5613 ± 761
+5586 ± 854
+5509 ± 694
+5505 ± 913
+AUC​(0-α) (ng/mL × h)
+21,521 ± 927
+54,635 ± 2576
+66,562 ± 3042
+155,763 ± 4695
+47,439 ± 2413
+10,789 ± 
+4081
+t1/2 (h)
+4.35 ± 0.95
+23.22 ± 2.76
+13.45 ± 2.11
+30.09 ± 3.38
+9.08 ± 1.26
+23.76 ± 3.17
+MRT (h)
+5.47 ± 1.39
+28.70 ± 2.69
+19.18 ± 2.71
+40.91 ± 2.44
+11.56 ± 2.07
+30.66 ± 2.57
+
+1084
+
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+would have been difficult which resulted in lower fluores-
+cence than ADN-PEG-PLGA NPs. A similar kind of trend
+(in terms of evaluation parameters) can be observed in the
+case of internalization, cytotoxicity. and apoptosis studies.
+Toxicity study
+The alterations in the level of the kidney and liver biomark-
+ers were evaluated in animals treated with PTX-loaded
+PLGA NPs and their marketed counterparts and the data
+obtained is shown in Fig. 5A. The ­Intaxel®-treated group
+showed significant increase in AST, ALT, BUN, and creati-
+nine levels in serum, as compared to vehicle group. Whereas
+in the case of PTX ADN-PEG-PLGA NPs and ­Nanoxel®,
+they showed insignificant changes in the biomarker levels,
+indicating their biocompatible nature. Further, the histo-
+pathological evaluation of isolated organs from PTX ADN-
+PEG-PLGA NPs and Nanoxel® treated animals revealed
+no major morphological deformations as shown in Fig. 5B,
+whereas ­Intaxel® showed toxicity in all three organs, i.e.,
+splenocyte rupture in the spleen, decreased hepatocyte den-
+sity in the liver, and enlarged Bowman capsule and reduced
+cellular density in the kidney. These results corroborated
+the tumor inhibition and bio-distribution study. Since ADN-
+PEG-PLGA NPs showed specific accumulation in tumor
+region owing to overexpression of ADN, its exposure to
+other organs was low resulting in lower morphological and/
+Fig. 5   In vivo toxicity study. A The change in the ALT, AST, BUN,
+and creatinine levels in animals which were treated with mentioned
+treatment regime, where * = P < 0.05; ** = P < 0.01; *** = P < 0.001;
+**** = P < 0.0001; and ns = P > 0.05). B The histopathology images
+of the liver, kidney, and spleen isolated from treated animals
+
+1085
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+or functional toxicity. In the case of ­Intaxel®, the solution
+exhibits non-specific behavior and circulates indiscrimi-
+nately in vital organs leading to morphological and func-
+tional toxicity. ­Nanoxel® being a nanoparticulate-based
+delivery system exhibited characteristics similar to PTX
+ADN-PEG-PLGA NPs. Thus, developed PTX-loaded and
+modified particles can be termed non-toxic when adminis-
+tered in tested concentration and duration.
+Conclusion
+The developed PTX-loaded PLGA NPs, having ADN as the
+targeting ligand and PEG as the linker, showed improved
+anticancer activity in comparison to free PTX and marketed
+counterpart ­Intaxel®. The ADN-PEG-PLGA NPs achieved
+loading of 7.5% w/w, which is sufficient for in vivo dos-
+ing and for achieving the desired therapeutic concentration.
+The particles exhibited pH-dependent release behavior,
+i.e., slow release at physiological pH and higher release at
+acidic (tumor microenvironment) pH. Such slow-release
+behavior at physiological pH prevented direct exposure of
+PTX to RBCs and exhibited hemocompatibility. The ADN
+modification over PLGA NPs render higher internalization
+of particles that resulted in > 3.5-fold reduction in ­IC50 val-
+ues in TNBC cells. Further, the ADN modification allowed
+particles to exhibit higher apoptosis index in TNBC cells
+when compared to non-modified PLGA NPs and free PTX
+group. The PTX ADN-PEG-PLGA NPs exhibited improved
+pharmacokinetic parameters (AUC, MRT, and t1/2) in com-
+parison to ­Intaxel®, other non-targeted and non-PEGylated
+PLGA particles.
+ADN modification assisted PLGA NPs in achieving
+tumor specific distribution and retention which resulted
+in lower organ toxicity and insignificant alteration in the
+kidney and liver biomarker levels when compared to con-
+trol group. Further, PTX ADN-PEG-PLGA NPs showed
+superior anti-cancer efficacy (in terms of tumor volume
+reduction and % tumor burden) when compared to all other
+tested groups including ­Intaxel® and ­Nanoxel®. Overall, the
+developed strategy, i.e., to involve ADN as targeting ligand
+for TNBC, has been successfully explored with promising
+results and can be explored further for managing TNBC.
+Supplementary Information  The online version contains supplemen-
+tary material available at https://​doi.​org/​10.​1007/​s13346-​022-​01273-9.
+Acknowledgements  The authors are grateful to the Director, NIPER
+SAS Nagar, for providing infrastructure for research work. Authors
+acknowledge the support and technical assistance provided by Mr.
+Rahul Mahajan during this research project.
+Author contribution  DC designed and performed the experiments
+mentioned in this research paper; KK and VY assisted in analysis and
+experimentation; RG, TD, and NB assisted in conceptualization and
+interpretation of data; KK and VY wrote the paper and participated
+in the revisions of it. SJ mentored and supervised the entire research
+and provided the funds and workspace for conducting the experiments
+(Dasharath Chaudhari: DC; Kaushik Kuche: KK; Vivek Yadav: VY;
+Rohan Ghadi: RG; Tushar Date: TD; Nallamothu Bhargavi: NB; Sanyog
+Jain: SJ).
+Data availability  Data will be available on request to authors.
+Declarations 
+Ethics approval and consent to participate  All the procedures per-
+formed in this study involving animals were in accordance with the
+ethical standards of NIPER and protocols were approved by the Insti-
+tutional Animals Ethics Committee (Approval number: IAEC/19/72).
+Consent for publication  All authors have read and approved the sub-
+mitted manuscript.
+Competing interests  The authors declare no competing interests.
+References
+	 1.	 Malavia N, Kuche K, Ghadi R, Jain S. A bird’s eye view of the
+advanced approaches and strategies for overshadowing triple
+negative breast cancer. J Controlled Release. 2021;330:72–100.
+	 2.	 Madigan LI, Dinh P, Graham JD. Neoadjuvant endocrine therapy
+in locally advanced estrogen or progesterone receptor-positive
+breast cancer: determining the optimal endocrine agent and treat-
+ment duration in postmenopausal women—a literature review and
+proposed guidelines. Breast Cancer Res. 2020;22:77.
+	 3.	 Bianchini G, Balko JM, Mayer IA, Sanders ME, Gianni L. Triple-
+negative breast cancer: challenges and opportunities of a hetero-
+geneous disease. Nat Rev Clin Oncol. Nature Publishing Group;
+2016;13:674–90.
+	 4.	 Sharma P. Biology and management of patients with triple-negative
+breast cancer. Oncologist. 2016;21:1050–62.
+	 5.	 Cardoso F, Costa A, Norton L, Senkus E, Aapro M, André F, et al.
+ESO-ESMO 2nd international consensus guidelines for advanced
+breast cancer (ABC2). The Breast Elsevier. 2014;23:489–502.
+	 6.	 Senkus E, Kyriakides S, Ohno S, Penault-Llorca F, Poortmans P,
+Rutgers E, et al. Primary breast cancer: ESMO Clinical Practice
+Guidelines for diagnosis, treatment and follow-up†. Ann Oncol
+Elsevier. 2015;26:v8-30.
+	 7.	 Coates AS, Winer EP, Goldhirsch A, Gelber RD, Gnant M, Piccart-
+Gebhart M, et al. Tailoring therapies—improving the management
+of early breast cancer: St Gallen International Expert Consensus
+on the Primary Therapy of Early Breast Cancer 2015. Ann Oncol.
+2015;26:1533–46.
+	 8.	 Duan T, Xu Z, Sun F, Wang Y, Zhang J, Luo C, et al. HPA
+aptamer functionalized paclitaxel-loaded PLGA nanoparticles for
+enhanced anticancer therapy through targeted effects and microen-
+vironment modulation. Biomed Pharmacother. 2019;117: 109121.
+	 9.	 Johnson R, Sabnis N, Sun X, Ahluwalia R, Lacko AG. SR-
+B1-targeted nanodelivery of anti-cancer agents: a promising new
+approach to treat triple-negative breast cancer. Breast Cancer Tar-
+gets Ther. 2017;9:383–92.
+
+1086
+
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+	10.	 Bressler EM, Kim J, Shmueli RB, Mirando AC, Bazzazi H, Lee
+E, et al. Biomimetic peptide display from a polymeric nano-
+particle surface for targeting and antitumor activity to human
+triple-negative breast cancer cells. J Biomed Mater Res A.
+2018;106:1753–64.
+	11.	 Wang Z, Sau S, Alsaab HO, Iyer AK. CD44 directed nanomicellar
+payload delivery platform for selective anticancer effect and tumor
+specific imaging of triple negative breast cancer. Nanomedicine
+Nanotechnol Biol Med. 2018;14:1441–54.
+	12.	 Fernandez-Gallardo M, González-Ramírez R, Sandoval A, Felix
+R, Monjaraz E. Adenosine stimulate proliferation and migration
+in triple negative breast cancer cells. PLOS ONE. Public Library
+of Science; 2016;11:e0167445.
+	13.	 Panjehpour M, Castro M, Klotz K-N. Human breast cancer cell
+line MDA-MB-231 expresses endogenous A2B adenosine recep-
+tors mediating a Ca2+ signal. Br J Pharmacol. 2005;145:211–8.
+	14.	 Swami R, Singh I, Jeengar MK, Naidu VGM, Khan W, Sistla R.
+Adenosine conjugated lipidic nanoparticles for enhanced tumor
+targeting. Int J Pharm. 2015;486:287–96.
+	15.	 Kolate A, Baradia D, Patil S, Vhora I, Kore G, Misra A. PEG — a
+versatile conjugating ligand for drugs and drug delivery systems.
+J Controlled Release. 2014;192:67–81.
+	16.	 Akiyama Y, Mori T, Katayama Y, Niidome T. The effects of PEG
+grafting level and injection dose on gold nanorod biodistribution
+in the tumor-bearing mice. J Controlled Release. 2009;139:81–4.
+	17.	 Ahmad J, Mir SR, Kohli K, Chuttani K, Mishra AK, Panda
+AK, et al. Solid-nanoemulsion preconcentrate for oral deliv-
+ery of paclitaxel: formulation design, biodistribution, and γ
+scintigraphy imaging. BioMed Res Int. 2014 [cited 2022 Nov
+15];2014:984756. Available from: https://​www.​ncbi.​nlm.​nih.​gov/​
+pmc/​artic​les/​PMC41​21227/.
+	18.	 Katiyar SS, Patil R, Ghadi R, Kuche K, Kushwah V, Dora CP,
+et  al. Lipid-and TPGS-Based core–shell-type nanocapsules
+endowed with high paclitaxel loading and enhanced anticancer
+potential. AAPS PharmSciTech Springer. 2022;23:1–12.
+	19.	 Rege MD, Ghadi R, Katiyar SS, Kushwah V, Jain S. Exploring
+an interesting dual functionality of anacardic acid for efficient
+paclitaxel delivery in breast cancer therapy. Nanomed. 2019 [cited
+2022 Nov 15];14:57–75. Available from: https://​doi.​org/​10.​2217/​
+nnm-​2018-​0138.
+	20.	 Esmaeili F, Ghahremani MH, Ostad SN, Atyabi F, Seyedabadi M,
+Malekshahi MR, et al. Folate-receptor-targeted delivery of doc-
+etaxel nanoparticles prepared by PLGA–PEG–folate conjugate. J
+Drug Target Taylor & Francis. 2008;16:415–23.
+	21.	 Jain S, Rathi VV, Jain AK, Das M, Godugu C. Folate-decorated
+PLGA nanoparticles as a rationally designed vehicle for the oral
+delivery of insulin. Nanomed. 2012;7:1311–37.
+	22.	 Cheng J, Teply BA, Sherifi I, Sung J, Luther G, Gu FX, et al. For-
+mulation of functionalized PLGA–PEG nanoparticles for in vivo
+targeted drug delivery. Biomaterials Elsevier. 2007;28:869–76.
+	23.	 Jain S, Desai MR, Nallamothu B, Kuche K, Chaudhari D,
+Katiyar SS. Partial inclusion complex assisted crosslinked
+β-cyclodextrin nanoparticles for improving therapeutic poten-
+tial of docetaxel against breast cancer. Drug Deliv Transl Res.
+2021 [cited 2021 Dec 28]; Available from: https://​doi.​org/​10.​
+1007/​s13346-​021-​00956-z.
+	24.	 Muthu MS, Feng S-S. Pharmaceutical stability aspects of nano-
+medicines. Nanomed Future Med. 2009;4:857–60.
+	25.	 Katiyar SS, Ghadi R, Kushwah V, Dora CP, Jain S. Lipid and
+biosurfactant based core–shell-type nanocapsules having high
+drug loading of paclitaxel for improved breast Cancer therapy.
+ACS Biomater Sci Eng ACS Publications. 2020;6:6760–9.
+	26.	 Chaudhari D, Katari O, Ghadi R, Kuche K, Date T, Bhargavi
+N, et al. Unfolding the potency of adenosine in targeting triple
+negative breast cancer via paclitaxel-incorporated pH-responsive
+stealth liposomes. ACS Biomater Sci Eng. 2022;8(8):3473–84.
+Available from: https://​doi.​org/​10.​1021/​acsbi​omate​rials.​2c005​94.
+	27.	 Swami R, Kumar Y, Chaudhari D, Katiyar SS, Kuche K, Katare
+PB, et al. pH sensitive liposomes assisted specific and improved
+breast cancer therapy using co-delivery of SIRT1 shRNA and
+Docetaxel. Mater Sci Eng C. 2021;120: 111664.
+	28.	 Date T, Kuche K, Ghadi R, Kumar P, Jain S. Understanding
+the role of axial ligands in modulating the biopharmaceutical
+outcomes of cisplatin(IV) derivatives. Mol Pharm American
+Chemical Society. 2022;19:1325–37.
+	29.	 Dora CP, Kushwah V, Katiyar SS, Kumar P, Pillay V, Suresh S,
+et al. Improved oral bioavailability and therapeutic efficacy of
+erlotinib through molecular complexation with phospholipid.
+Int J Pharm Elsevier. 2017;534:1–13.
+	30.	 Sirvi A, Kuche K, Chaudhari D, Ghadi R, Date T, Katiyar SS,
+et al. Supersaturable self-emulsifying drug delivery system: a
+strategy for improving the loading and oral bioavailability of
+quercetin. J Drug Deliv Sci Technol. 2022;71: 103289.
+	31.	 Bathara M, Date T, Chaudhari D, Ghadi R, Kuche K, Jain S.
+Exploring the Promising potential of high permeation vesicle-
+mediated localized transdermal delivery of docetaxel in breast
+cancer to overcome the limitations of systemic chemotherapy.
+Mol Pharm American Chemical Society. 2020;17:2473–86.
+	32.	 Bergman AM, Kuiper CM, Voorn DA, Comijn EM, Myhren F,
+Sandvold ML, et al. Antiproliferative activity and mechanism
+of action of fatty acid derivatives of arabinofuranosylcytosine
+in leukemia and solid tumor cell lines. Biochem Pharmacol.
+2004;67:503–11.
+	33.	 Rege MD, Ghadi R, Katiyar SS, Kushwah V, Jain S. Exploring
+an interesting dual functionality of anacardic acid for efficient
+paclitaxel delivery in breast cancer therapy. Nanomed Future
+Medicine. 2019;14:57–75.
+	34.	 Rezvantalab S, Drude NI, Moraveji MK, Güvener N, Koons
+EK, Shi Y, et al. PLGA-based nanoparticles in cancer treatment.
+Front Pharmacol. 2018 [cited 2022 Aug 4];9. Available from:
+https://​doi.​org/​10.​3389/​fphar.​2018.​01260.
+	35.	 Palanikumar L, Al-Hosani S, Kalmouni M, Nguyen VP, Ali
+L, Pasricha R, et al. pH-responsive high stability polymeric
+nanoparticles for targeted delivery of anticancer therapeutics.
+Commun Biol Nature Publishing Group. 2020;3:1–17.
+	36.	 Zolnik BS, Burgess DJ. Effect of acidic pH on PLGA microsphere
+degradation and release. J Controlled Release. 2007;122:338–44.
+	37.	 Yelles MH-B, Tan VT, Danede F, Willart JF, Siepmann J. PLGA
+implants: How Poloxamer/PEO addition slows down or acceler-
+ates polymer degradation and drug release. J Controlled Release.
+Elsevier; 2017;253:19–29.
+	38.	 Guo D, Li Q, Sun Y, Guo J, Zhao Q, Yin X, et al. Evaluation of
+controlled-release triamcinolone acetonide-loaded mPEG-PLGA
+nanoparticles in treating experimental autoimmune uveitis. Nano-
+technology. IOP Publishing; 2019;30:165702.
+	39.	 Samkange T, D’Souza S, Obikeze K, Dube A. Influence of
+PEGylation on PLGA nanoparticle properties, hydrophobic drug
+release and interactions with human serum albumin. J Pharm
+Pharmacol Oxford University Press. 2019;71:1497–507.
+	40.	 Katiyar SS, Ghadi R, Kushwah V, Dora CP, Jain S. Lipid and bio-
+surfactant based core–shell-type nanocapsules having high drug
+loading of paclitaxel for improved breast cancer therapy. ACS
+Biomater Sci Eng. 2020 [cited 2022 Nov 15];6:6760–9. Available
+from: https://​doi.​org/​10.​1021/​acsbi​omate​rials.​0c012​90.
+	41.	 Jacobson KA, Gao Z-G. Adenosine receptors as therapeutic tar-
+gets. Nat Rev Drug Discov. 2006;5:247–64.
+	42.	 Li S, Geiger NH, Soliman ML, Hui L, Geiger JD, Chen X. Caf-
+feine, Through adenosine a 3 receptor-mediated actions, suppresses
+amyloid-β protein precursor internalization and amyloid-β genera-
+tion. J Alzheimers Dis IOS Press. 2015;47:73–83.
+
+1087
+Drug Delivery and Translational Research (2023) 13:1074–1087
+1 3
+	43.	 Averineni RK, Shavi GV, Gurram AK, Deshpande PB, Arumugam
+K, Maliyakkal N, et al. PLGA 50:50 nanoparticles of paclitaxel:
+development, in vitro anti-tumor activity in BT-549 cells and in vivo
+evaluation. Bull Mater Sci. 2012 [cited 2022 Nov 22];35:319–26.
+Available from: https://​doi.​org/​10.​1007/​s12034-​012-​0313-7.
+Publisher's Note  Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds
+exclusive rights to this article under a publishing agreement with the
+author(s) or other rightsholder(s); author self-archiving of the accepted
+manuscript version of this article is solely governed by the terms of
+such publishing agreement and applicable law.

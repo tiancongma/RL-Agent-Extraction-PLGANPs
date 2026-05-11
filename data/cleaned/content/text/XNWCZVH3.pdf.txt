@@ -1,0 +1,557 @@
+O R I G I N A L  R E S E A R C H
+Combination of Ketorolac Tromethamine and
+Prednisolone-Loaded PLGA Nanocomposite for
+Effective Chronic Pain Relief in Mice
+Tuyet-Nhi Do
+1, Yen-Chin Liu2–4, Yu-Che Chuang
+5, Tsung-Lin Tsai1,6,7, Ping-Ching Wu1,6,8–10
+1Department of Biomedical Engineering, College of Engineering, National Cheng Kung University, Tainan, 701, Taiwan; 2School of Post-Baccalaureate,
+College of Medicine, Kaohsiung Medical University, Kaohsiung, 812, Taiwan; 3Department of Anesthesiology, Kaohsiung Municipal Siaogang Hospital,
+Kaohsiung Medical University Hospital, Kaohsiung Medical University, Kaohsiung, 812, Taiwan; 4Department of Anesthesiology, National Cheng Kung
+University Hospital, College of Medicine, National Cheng Kung University, Tainan, 701, Taiwan; 5Department of Pathology and Laboratory Medicine,
+Taipei Veterans General Hospital, Taipei, 112, Taiwan; 6Center of Applied Nanomedicine, National Cheng Kung University, Tainan, 701, Taiwan;
+7Department of Oncology, National Cheng Kung University Hospital, College of Medicine, National Cheng Kung University, Tainan, 701, Taiwan;
+8Institute of Oral Medicine and Department of Stomatology, National Cheng Kung University Hospital, College of Medicine, National Cheng Kung
+University, Tainan, 701, Taiwan; 9Medical Device Innovation Center, Taiwan Innovation Center of Medical Devices and Technology, National Cheng
+Kung University Hospital, National Cheng Kung University, Tainan, 701, Taiwan; 10University Center of Bioscience and Biotechnology, National Cheng
+Kung University, Tainan, 701, Taiwan
+Correspondence: Ping-Ching Wu, Department of Biomedical Engineering, National Cheng Kung University, Tainan, 701, Taiwan, Email wbcxyz@gmail.com;
+Tsung-Lin Tsai, Department of Oncology, National Cheng Kung University Hospital, College of Medicine, National Cheng Kung University, Tainan, 701,
+Taiwan, Email sloantsai@mail.ncku.edu.tw
+Introduction: Chronic pain is a complex condition that requires timely and effective management to prevent long-term emotional,
+social, and economic consequences. This study aims to develop a poly(lactic-co-glycolic acid) (PLGA)-based nanocomposite co-
+loaded with ketorolac tromethamine (KT) and prednisolone (PRED) to improve therapeutic efficacy and reduce systemic side effects
+associated with conventional treatments.
+Methods: KT-PRED-PLGA nanoparticles were synthesized via a double emulsion method and characterized for their physicochem­
+ical properties and biocompatibility. A chronic inflammatory pain model was established in ICR mice using Complete Freund’s
+Adjuvant (CFA). Mechanical pain thresholds were evaluated using Dixon’s up-and-down method. Histopathological and immunohis­
+tochemical analyses were performed to evaluate systemic toxicity and inflammation-related protein expression.
+Results: The KT-PRED-PLGA nanoparticles exhibited favorable characteristics, including a mean particle size of 166.2 ± 8.0 nm,
+a polydispersity index of 0.14, a zeta potential of −15.8 ± 0.3 mV, and encapsulation efficiency exceeding 80%. The nanoparticles
+sustained drug release up to 92.5% over 120 h. In vitro assays demonstrated the KT-PRED-PLGA nanoparticles revealed high
+biocompatibility in Vero cells after 72 h of exposure. In vivo experiments demonstrated significantly reduced pain behaviors and tissue
+inflammation, with minimal toxicity. Behavioral assessments confirmed enhanced analgesic and anti-allodynic effects over the free
+drugs. Reduced expression of cyclooxygenases (COX-1 and COX-2) and prostaglandin E2 (PGE2) in hind paw tissues confirmed
+improved anti-inflammatory activity.
+Conclusion: KT-PRED-PLGA nanoparticles offer safe, sustained analgesia with enhanced therapeutic efficacy and reduced systemic
+toxicity, highlighting their strong potential for future clinical translation in chronic pain therapy.
+Keywords: ketorolac tromethamine and prednisolone encapsulation, PLGA nanoparticle drug delivery, nanomedicine, double
+emulsion strategy, chronic inflammatory pain relief
+Introduction
+Pain is a sensation of discomfort associated with tissues, including acute and chronic pain. Trauma or internal diseases
+typically cause acute pain, a type of intense pain that lasts for a short period.1 It typically manifests within less than four
+weeks and subsides once the wound heals. Chronic pain lasts longer than acute, usually up to 3–6 months, and can be
+mild, dull, or intense pain of any cause.2 Pain is conceptualized as a pathological state requiring prompt intervention to
+International Journal of Nanomedicine 2025:20 8343–8357
+8343
+© 2025 Do et al. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.php
+and incorporate the Creative Commons Attribution – Non Commercial (unported, v4.0) License (http://creativecommons.org/licenses/by-nc/4.0/). By accessing the work
+you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For
+permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+International Journal of Nanomedicine
+Open Access Full Text Article
+Received: 17 January 2025
+Accepted: 9 June 2025
+Published: 27 June 2025
+International Journal of Nanomedicine downloaded from https://www.dovepress.com/
+For personal use only.
+
+prevent consequences that extend beyond individual suffering to encompass familial and societal ramifications.2,3 These
+ramifications are multifaceted, encompassing emotional, economic, and social dimensions. The American Society of
+Anesthesiologists (ASA) published this burden status for approximately 60 million people, with at least 10% of the
+world’s population suffering from chronic pain. The estimation rates are nearly 20–25% in some countries and regions.1,2
+Optimal medicine, high pain relief, safety, and low degradability are still needed to avoid waste and save on the budget.4
+Therefore, we wanted to profoundly investigate the role of “chronic pain relief” with the best efficiency and safety. The
+prevailing clinical analgesics are commonly categorized into potent opioids and nonsteroidal anti-inflammatory drugs
+(NSAIDs).4–6 Relevant investigations have shown that ketorolac tromethamine (KT), an NSAID, is highly effective for
+managing moderate to severe pain, often outperforming other analgesics and even rivaling narcotic options.7,8 Prednisolone
+(PRED) a type of corticosteroid, reduces inflammation by addressing swelling and allergic reactions.9,10 KT and PRED offer
+a synergistic approach to treating pain and inflammation, making them ideal for dual therapy.11,12 Previous studies using KT
+0.5% and PRED acetate 1% solutions have demonstrated limited clinical performance due to rapid systemic clearance, short
+half-life, and frequent dosing requirements. These conventional free drugs are also associated with severe gastrointestinal and
+renal side effects when administered systemically.13,14 Conversely, PLGA-based co-encapsulation offers a sustained and
+controlled drug release profile, potentially enhancing therapeutic efficacy while reducing dosing frequency and minimizing
+adverse effects.15,16 Encapsulating KT and PRED within poly (lactic-co-glycolic acid) (PLGA) nanoparticles addresses
+limitations such as rapid clearance and low bioavailability, allowing controlled, sustained drug release (DR).17–19 This double
+emulsion ensures prolonged therapeutic effects, improved stability, and targeted delivery, reducing side effects. Incorporating
+hydrophilic KT and hydrophobic PRED into a single system is the most challenging aspect. Therefore, precise optimization of
+the double emulsion process is essential to achieve high drug loading (DL), encapsulation efficiency (EE), stable DR, and
+consistent drug stability.3,20 The development of novel pharmacological treatment methods with enduring efficacy and
+minimal adverse effects remains a principal challenge in /investigating chronic inflammatory pain. However, this challenge
+has been addressed through the advancement of single-step water-in-oil-in-water (W/O/W) synthesis methods for PLGA
+nanoparticles.11,18,21 This innovation originates from the development of systematic W/O/W synthesis approaches for PLGA
+nanoparticles. These nanoparticles enable the concurrent encapsulation of the hydrophilic NSAID KT and the hydrophobic
+corticosteroid PRED, yielding a dual-encapsulation strategy.22 By utilizing these nanocarriers, the nanocarriers promote
+compatibility, contribute to the effectiveness of long-term treatment, and diminish adverse effects, including several severe
+complications associated with KT therapy such as liver and/or acute renal failure, gastrointestinal ulceration, postoperative
+Graphical Abstract
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8344
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+bleeding, perforation, and anaphylactic and anaphylactoid reactions.22,23 Furthermore, integrating a one-step synthesis
+approach for PLGA with a corticosteroid (specifically, the hydrophobic drug PRED) extends the uptake period, thereby
+optimizing the management of chronic inflammatory pain.24,25 Given these limitations of conventional free drugs, we
+hypothesized that dual-drug-loaded PLGA nanoparticles would provide synergistic analgesic and anti-inflammatory effects
+with improved pharmacokinetics and safety in chronic inflammatory pain models.
+Our research aimed to amalgamate double emulsification nanocarriers to offer a synergistic therapeutic combination
+and facilitate dosage reduction, attenuation of side effects, and cost-effectiveness in treatment. A novel strategy for pain
+relief in this study, involving the development of dual drug-encapsulated PLGA nanoparticles. Different dosages were
+administered to assess the effectiveness of the analgesic treatment, and the expression levels of COX-1, COX-2,6,26,27
+and PGE2
+28 were evaluated to confirm the reliability of the pain relief pathway.
+Materials and Methods
+Poly(lactic-co-glycolic acid) 50:50 (PLGA, Evonik); poly(vinyl alcohol) (PVA, Sigma–Aldrich); ketorolac tromethamine
+(KT, 042412, Yungshin Co., Taichung City, Taiwan); prednisolone (PRED, Sigma–Aldrich); dichloromethane (DCM, J.T.
+Baker); ethyl acetate (EtAc, Macron); dimethyl sulfoxide (DMSO, Sigma–Aldrich); 99.9% ethanol (EtOH, Sigma–
+Aldrich); xylenes (Sigma–Aldrich); Tween 20 (Sigma–Aldrich); 10× Phosphate-buffered saline (PBS, TissuePro); high
+glucose Dulbecco’s Modified Eagle’s Medium (HG-DMEM, Gibco); sodium bicarbonate (Sigma–Aldrich); cell counting
+kit-8 (CCK-8 kit, Dojindo); paraformaldehyde (PFA, Sigma–Aldrich); fetal bovine serum (FBS, Gibco); trypsin-EDTA
+solution (Caisson Labs); antibiotics and antimycotics (GeneDireX); hydrochloric acid (HCl, Sigma–Aldrich); hematox­
+ylin and eosin (H&E, Leica); isoflurane (USP, Halocarbon); Complete Freund’s Adjuvant (CFA, Sigma–Aldrich); 3,3′-
+diaminobenzidine (DAB, Vector SK-4100); hematoxylin solution (Mayer’s, modified); anti-cyclooxygenase 1 (COX-1,
+ab133319, Abcam, Cambridge, MA, USA); anti-cyclooxygenase 2 (COX-2, ab15191, Abcam, Cambridge, UK); rabbit
+anti-prostaglandin E2 polyclonal antibody (PGE2, Bioss Inc., Woburn, MA, USA).
+Preparation of KT-PRED-PLGA Nanoparticles via Dual Emulsion Encapsulation
+A dual-encapsulated painkiller was formulated by encapsulating hydrophilic KT and hydrophobic PRED within PLGA
+nanoparticles in a pain model. The process was thorough, beginning with the addition of 1 mL of KT (30 mg/mL) and
+30 mg of PLGA (50:50 DLG 4.5A) to 2.5 mL of EtAc in an ice bath and sonication at 60% amplitude for 2 min via
+a VCX 130 Ultrasonic Processor. Next, 30 mg of PRED and 100 mg of PLGA in 2.5 mL of DCM were mixed with the
+KT/PLGA solution, followed by a second round of sonication for 2 min at 60% amplitude.29 The mixture was then
+combined with 10 mL of a 1% w/v PVA stabilizer and sonicated again. After sonication, the mixture was transferred to
+a two-neck bottle, where it was subjected to constant stirring at 400 rpm in a water container heated to 80 °C to facilitate
+diffusion and remove the organic solvents. Using a vacuum system at this stage was critical to ensure the complete
+removal of the organic solvents and promote the reaction.29,30 Finally, the remaining free drugs and PVA were removed
+by ultracentrifugation at 12,000 rpm for 15 min at 4 °C. The resulting KT-PRED-PLGA nanoparticles, a product of the
+entire process, were washed three times with deionized water and then stored in deionized water at 4 °C.
+Determination of Drug Encapsulation Efficiency and Size Characterization of
+KT-PRED-PLGA Nanoparticles
+The nanocapsules were comprehensively analyzed via UV-VIS spectrophotometry with a Thermo Scientific
+NanoDropOne microvolume instrument. UV absorption was measured at 248 nm and 325 nm for PRED and KT. The
+EE percentage (%EE) was calculated by dividing the weight of drugs encapsulated in the KT-PRED-PLGA nanoparticles
+by the initial weight of the drug used. The DL percentage (%DL) was determined by dividing the weight of the drugs in
+the KT-PRED-PLGA nanoparticles by the total weight of the nanoparticles.21,31
+Equation 1. The formula for %EE:
+International Journal of Nanomedicine 2025:20
+https://doi.org/10.2147/IJN.S515452
+8345
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Equation 2. The formula for %DL:
+The mean particle size (hydrodynamic diameter) was determined via thoroughness via dynamic light scattering (DLS)
+after diluting the nanocapsule suspension (1:100, v/v) in deionized water, which was measured with a Delsa Nano
+(Beckman Coulter) at 25 °C. The size distribution and polydispersity were reported as the mean of three determinations
+performed in triplicate. The value of the zeta potential was determined with the zeta potential (Beckman Coulter Delsa
+Nano instrument). Analyses were performed by diluting the nanocapsule suspension in deionized water (1:100, v/v), and
+the results were expressed in three replicates. We used the JEM-1400 Transmission Electron Microscope (TEM, JEOL,
+USA) technique to analyze the shape of the PLGA, KT-PLGA, and KT-PRED-PLGA nanoparticles.32 The samples were
+dissolved completely and diluted with deionized water, and then placed onto a mesh made of copper, after which negative
+staining was performed. After that, the examination will be conducted using the solutions 15k and 60k.
+Vitro Drug Release Study of KT-PRED-PLGA Nanoparticles
+In vitro drug diffusion experiments were performed via the dialysis bag technique.17 Drug-loaded nanoparticles (5 mL) were
+dispersed within the dialysis bags, which were subsequently immersed in a glass screw-capped bottle filled with 35 mL of pH
+8.5 hG-DEMEM and 20% FBS.33 The bottle was maintained at 37 ± 1°C with a magnetic stirrer and constant agitation
+throughout the experiment. During the whole of the experiment, the speed of the stir bar was maintained at 100 rpm. Samples
+(0.1 mL) were withdrawn and substituted at predetermined time points with equal volumes of freshly prepared pH 8.5 hG-
+DMEM.17,32 Following appropriate dilution, the samples were thoroughly analyzed via a UV-Vis spectrophotometer at 325
+nm for KT and 248 nm for PRED, ensuring the validity of our results. The DR percentage (%DR) was calculated as the weight
+of drug release divided by the weight of drugs in nanoparticles through cumulative time.
+Equation 3. The formula for %DR:
+Assessment of Cell Cytotoxicity Using CCK-8
+Free drugs and nanoparticles have been assessed for toxicity through in vitro tests on Vero cell lines (ATCC-CCL-81). The cells
+were cultured under physiological conditions in an incubator (37 °C, 5% CO2, 95% relative humidity). Vero cells were harvested
+and cultured in 96-well plates with 5000 cells in each well.34,35 Different treatments were added, including HG-DMEM
+supplemented with 10% FBS, free drugs, and nanoparticles at various concentrations (100 µL/well). The number of viable
+cells in a population was measured at continuous retention times of 1 h, 3 h, 6 h, 12 h, 24 h, 48 h, and 72 h after treatment. The
+number of viable cells was quantified via a cell CCK-8 assay. Following the protocol, a CCK-8 kit was added to each well (10 µL/
+well) for 2 ± 0.5 h before measurement. The absorbance of the cells was measured with a microplate reader at a wavelength of 450
+nm. The data were calculated by dividing the cell viability in real-time by the blank through the absorbance and proportion with
+various dosages of treatment.5,34 The cell experiments were conducted with at least three times repetition.
+Histological Evaluation of Key Organs Using H&E Staining
+The H&E staining was used for the tissue toxicology assay. At pre-established times for biopsy up to 14 d, the kidney,
+liver, and stomach tissues were harvested and immediately stored in 4% PFA at 4 °C. The tissues were subsequently
+rinsed with 1× PBS, subjected to standard histological processing, and embedded in paraffin for sectioning (4 μm thick)
+was obtained before staining.36–38 The tissue was then examined and assessed in detail via a highly accurate Nikon
+Eclipse E100 upright microscope, ensuring the reliability of the results.
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8346
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+In vivo Behavioral Assessment Using ICR Mice
+Male Outbred BLTW: CD1 (ICR) mice, aged 6–8 weeks and weighing 30 ± 2 g at the start of the experiments, were used in
+this study. All animal procedures were carried out following the criteria of the National Cheng Kung Medical College Animal
+Care Committee (IACUC Approval No.: 108,170). The animal pain model was induced by administering 5 μL of CFA to each
+mouse. After establishing inflammatory pain, baseline behavioral assessments and withdrawal threshold measurements were
+performed via Dixon’s up-and-down method.39,40 The assessment of mechanical allodynia was performed with Von Frey
+filaments (Touch Test® Sensory Assessors, North Coast), applied to the foot via filaments with increasing logarithmic stiffness
+(0.02–2.56 g).5 Following these assessments, all the experimental groups received intravenous injections of 200 μL of the
+prepared solutions, which contained different dosages of the free drugs and nanoparticles, under anesthesia with 1%
+isoflurane. After cessation of anesthesia, the mice were placed on an overhead metal grid to recover before further behavioral
+assessments.41 The analgesic effects of the drugs were evaluated every 2 h to 10 h on the first day and daily until the
+seventh day after pain induction. We euthanized the mice after the experiment (on 7 d and 14 d) using 4% isoflurane to induce
+deep anesthesia, then collected the liver, kidney, stomach, and hind paw tissues for histological examination.
+Immunohistochemistry Analyses
+At the end of the animal behavioral experiment (8 h), the hind paw tissues were harvested and used for IHC examination. The
+paraffin-embedded sections (4 μm thick) were subjected to a thorough process of dewaxing and rehydration involving
+sequential immersion in xylene, followed by 99.9%, 95%, and 75% EtOH solutions and 1× PBS, respectively. The antigen
+retrieval process was performed by treating the sections with a buffer solution containing 10 mm Tris base, 1 mm EDTA, and
+0.05% Tween 20, with the pH set to 9.0 in a pressure cooker for 5 min. Endogenous peroxidase activity was inhibited by
+incubating the sections for 10 min with 3% hydrogen peroxide, followed by blocking with a 5% FBS solution in 1× PBS for
+60 min. The sections were subsequently incubated overnight at 4 °C with primary antibodies (diluted at 1:50), including anti-
+COX-1, anti-COX-2, and rabbit anti-PGE2. After rinsing with PBST (1× PBS containing 0.1% Tween 20), the sections were
+incubated at room temperature for 2 h with a prediluted secondary antibody (1:100 dilution) — anti-rabbit HRP in blocking
+solution. Following another wash with PBST, the immunoreactivity of the primary antibodies was detected via DAB for 5 min.
+Finally, the slides were dehydrated by sequential immersion in 75% EtOH, xylene, 95% EtOH, and 99.9% EtOH, and cleared
+with xylene, then mounted with the Thermo Scientific DPX mounting media and covered with a glass coverslip.
+Quantification and Statistics
+The data were graphically visualized via GraphPad Prism, version 10.0.3 (217) software, demonstrating our comprehensive
+approach to data visualization. H&E images were captured through CaptaVision plus Imaging Software (v2.1) (Nikon Eclipse
+E100-LED Upright Microscope) and processed via a computer-assisted imaging analysis platform (ImageJ, NIH).42 IHC
+images were captured and quantified via TissueFAXS, Zeiss AxioImager Z1 Microscope System (Tissue-Gnostics). All data
+were analyzed statistically using either a one-way analysis of variance (ANOVA) followed by Bonferroni’s multiple
+comparisons test, or a two-way ANOVA followed by Tukey’s multiple comparisons test for comparisons involving two
+variables (p < 0.05) to assess the significance between data points. All measurements were triplicated for reliability, with
+calibration curves and representative absorption peaks of KT and PRED shown in Supplementary Figure S1 to validate
+analytical accuracy. Data are presented as the mean ± standard error of the mean (SEM).
+Results
+Synthesis and Characterization of KT-PRED-PLGA Nanoparticles
+The PLGA, KT-PLGA, and KT-PRED-PLGA nanoparticles were formulated, synthesized, and characterized by related
+particle size, polydispersity index (PDI), and zeta potential. According to The TEM images, the average particle size of the
+PLGA, KT-PLGA, and KT-PRED-PLGA nanoparticles were 147.29 ± 3.27, 170.37 ± 3.35, and 166.20 ± 7.97 nm in diameter,
+respectively, with a spherical shape (Figure 1A–C). Furthermore, the PDI for each type of nanoparticle was 0.17 ± 0.0013 for
+the PLGA, 0.25 ± 0.0128 for the KT-PLGA and 0.14 ± 0.0003 for the KT-PRED-PLGA, as measured via DLS (Figure 1D–F).
+The effective electric surface charge on the entrapped drug KT-PRED-PLGA was negative at −15.81 ± 0.34 mV (Figure 1G).
+International Journal of Nanomedicine 2025:20
+https://doi.org/10.2147/IJN.S515452
+8347
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Figure 1 Characterization of the synthesized nanoparticles: nanoparticle morphology (A-C) via TEM, hydrodynamic size (D-F) of PLGA, KT-PLGA, and KT-PRED-PLGA,
+respectively, and zeta potential (G) of KT-PRED-PLGA measured by DLS. The values are presented as the mean ± SEM, n = 3 per group.
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8348
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Characterization of Loading Capacity, Encapsulation Efficiency, and Drug Release Profile
+The DL, EE, and DR profile of KT and PRED within PLGA nanoparticles were measured using UV-Vis spectro­
+photometry, with optical absorbance at 325 nm for KT and 248 nm for PRED (Figure 2). The loading capacity was >18%
+for both KT and PRED, and the EE exceeded 80%, >24 mg (Figure 2A). Cumulative DR (%) was monitored over 120 h,
+showing a release of 92.53% for KT and 81.12% for PRED on the first day (Figure 2B).
+Assessment of Cellular Toxicity
+Evaluating the biocompatibility of therapeutic drugs is essential for their clinical application. The cytotoxicity of both
+KT-PRED-PLGA nanoparticles and KT + PRED free drugs was assessed using a CCK-8 assay at different concentrations
+(100, 500, and 1000 μg/mL) and exposure times in Vero cells. Cell viability was measured by light absorbance at 450 nm
+using a microplate reader. As shown in Figure 3, both KT-PRED-PLGA nanoparticles and KT + PRED free drugs
+exhibited minimal toxicity across all concentrations. Notably, KT-PRED-PLGA nanoparticles were safer than KT +
+PRED free drugs after 72 h of continuous treatment. Over time, the KT-PRED-PLGA nanoparticles and the KT + PRED
+free drugs had very different effects on the viability of cells.
+In Vivo Assessment of Biosafety
+In addition to in vitro cell tests, an animal study was conducted to assess biosafety. Tissue samples from the liver, kidney,
+and stomach were collected and stained with H&E after 7 d and 14 d of treatment to observe any morphological or
+histological changes. On account of vulnerability scores of 0.6–1.2 on a 3-point scale, the KT-PRED-PLGA nanoparticles
+at low (40 mg/kg) and high (80 mg/kg) doses (Figure 4A–C) caused minimal tissue damage in the liver, kidney, and
+stomach, maintaining near-normal morphology over 14 d, compared with PBS and KT + PRED free drugs. In contrast,
+the KT + PRED free drugs resulted in substantial tissue damage (Figure 4D-F). Notably, the highest dose of KT 80 mg/
+kg + PRED 80 mg/kg severely damaged kidney tissue (Figure 4F). No changes were observed in the appearance or
+behavior of the mice.
+Mechanical Allodynia Testing for Analgesic Efficacy Evaluation
+The multi-dosage experiment aimed to optimize pain relief among treatment groups: PBS, KT (80 mg/kg) + PRED (8 mg/
+kg), KT (80 mg/kg) + PRED (80 mg/kg), and KT-PRED-PLGA nanoparticles (80 mg/kg). Highly, KT (80 mg/kg) + PRED
+(8 mg/kg) exhibited significant analgesia from 1 h to 4 h, peaking at 2.08 ± 0.23, then declining to 1.14 ± 0.16. After 4 h, KT-
+PRED-PLGA nanoparticles (80 mg/kg) in Figure 5A demonstrated increasing and sustained pain relief, peaking at 1.7 ± 0.35.
+Figure 2 (A) EE and DR percentage (wt%) of KT and PRED inside PLGA nanoparticles. (B) In vitro drug release, correlation coefficients (r) for mathematical models that fit
+the release kinetics in HG-DMEM +20%FBS, pH 8.5. The release profiles of KT and PRED loaded PLGA nanoparticles were determined by measuring the optical absorption
+via UV-Vis spectrophotometry at 325 nm for KT and 248 nm for PRED. The values are presented as the mean ± SEM, n = 3 per group.
+International Journal of Nanomedicine 2025:20
+https://doi.org/10.2147/IJN.S515452
+8349
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Figure 3 Cell viability of Vero cells exposed to KT + PRED free drugs and KT-PRED-PLGA nanoparticles at different concentrations over time. (A) 100 µg/mL, (B) 500 µg/
+mL, and (C) 1000 µg/mL. The CCK-8 assay was performed at 1, 3, 6, 12, 24, 48, and 72 h post-treatment. Groups: Control, KT + PRED free drugs, and KT-PRED-PLGA
+nanoparticles. Two-way ANOVA: *indicates p < 0.05, **indicates p < 0.01, ***indicates p < 0.001, and ****indicates p < 0.0001 versus the KT + PRED free drugs. Data are
+presented as mean ± SEM (n = 3).
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8350
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Mechanical sensitivity tests using Dixon’s up-and-down method confirmed that KT-PRED-PLGA nanoparticles provided
+consistent analgesia from 6 h to 26 h (Figure 5B), with detailed values as follows: at 6 h, PBS (1.14 ± 0.23), KT-PRED-PLGA
+nanoparticles (40 mg/kg) (1.48 ± 0.36), and KT-PRED-PLGA nanoparticles (80 mg/kg) (1.79 ± 0.19), and with similar results
+at 8 h, 10 h, and 24 h. Overall, KT-PRED-PLGA nanoparticles produced superior analgesic effects compared to free drugs.
+Protein Expression Profiling in the Arachidonic Acid (AA) Pathway
+IHC analysis of COX-1, COX-2, and PGE2 protein expression in hind paw tissues revealed significant inhibition of these
+proteins following treatment. Immunostaining images (Figure 6A–C) and corresponding intensity scores (Figure 6D–F)
+illustrate these effects. The study, which included control, PBS, KT (80 mg/kg) + PRED (80 mg/kg), and KT-PRED-
+Figure 4 (A-C) Histological trauma intensity and proportion compared to normal tissue and (D-F) histological injury scores of the liver, stomach, and kidney after the
+indicated treatments. The injury scores were based on the level of damage intensity, including factors such as inflammation and cytoarchitectural changes. Two-way ANOVA:
+*indicates p < 0.05, **indicates p < 0.01, ***indicates p < 0.001, and ****indicates p < 0.0001. The values are presented as the mean ± SEM, n = 17. Scale bar = 100 μm.
+International Journal of Nanomedicine 2025:20
+https://doi.org/10.2147/IJN.S515452
+8351
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Figure 5 Mechanical pain sensitivity was measured to assess the effects of KT + PRED free drugs and KT-PRED-PLGA nanoparticles. The treatment was divided into two
+phases: (A) the initial 6 h, n = 12 and (B) the extended treatment period up to 48 h, n = 14. Two-way ANOVA: **indicates p < 0.01; ****indicates p < 0.0001. The values are
+presented as the mean ± SEM.
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8352
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+PLGA nanoparticles (80 mg/kg), showed high reliability. Specifically, COX-1 expression levels were 2.63 ± 0.18 in the
+control, 5 in PBS, 3.52 ± 0.11 in KT + PRED free drugs, and 2.51 ± 0.15 in KT-PRED-PLGA nanoparticles (Figure 6D).
+COX-2 levels were 2.84 ± 0.30 in the control, 5 in PBS, 4.13 ± 0.24 in KT + PRED free drugs, and 3.26 ± 0.25 in KT-
+PRED-PLGA nanoparticles (Figure 6E). PGE2 levels were 3.34 ± 0.19 in the control, 5 in PBS, 4.13 ± 0.26 in KT +
+PRED, and 3.05 ± 0.23 in KT-PRED-PLGA nanoparticles (Figure 6F).
+Figure 6 Immunostaining was performed to evaluate the protein expression of cyclooxygenase (COX-1), COX-2, and PGE2. (A-C) Images of IHC staining samples and
+(D-F) associated intensities are presented as intensity scores for the indicated treatments. The DAB score was determined and referenced following the scoring system
+outlined by Klein et al. One-way ANOVA: *indicates p < 0.05, **indicates p < 0.01, ***indicates p < 0.001, and ****indicates p < 0.0001. The values are presented as the
+mean ± SEM, n = 19. Scale bar = 100 μm.
+International Journal of Nanomedicine 2025:20
+https://doi.org/10.2147/IJN.S515452
+8353
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Discussion
+The double-emulsion (W/O/W) technique was selected in this study to address a central challenge in dual-drug delivery:
+the co-encapsulation of hydrophilic and hydrophobic compounds with controlled release. This approach is widely
+recognized for enhancing drug loading efficiency and achieving sustained delivery, especially in polymer-based
+nanocarriers.43 Compared to single-emulsion or co-administration strategies, W/O/W systems provide compartmentalized
+loading and precise modulation of release profiles.44,45 These features are particularly beneficial in chronic pain
+management, where maintaining therapeutic drug levels while minimizing side effects is essential.9,46,47
+The co-encapsulation of KT and PRED within a single PLGA nanoparticle leverages the complementary pharmacological
+actions of each drug. PRED, a corticosteroid, provides rapid anti-inflammatory and immunomodulatory effects, while KT, an
+NSAID, offers sustained analgesic and anti-inflammatory action.45,46,48 Their combined release from a single matrix enables
+both immediate and sustained control of inflammation. Although prior studies have investigated each drug individually in
+PLGA carriers,9,10 the integration of both agents within a unified nanoplatform remains underexplored.26,41 Moreover, the KT-
+PRED-PLGA nanoparticles had a low PDI of less than 0.2, which means they are all about the same size, helping to release the
+drug steadily and enhances in vivo performance.49 Additionally, their moderately negative zeta potential supports excellent
+colloidal stability and minimizes nonspecific cellular interactions, both of which are advantageous for systemic administration
+and therapeutic efficacy.49,50
+Notably, our formulation strategy aligns with emerging evidence supporting the therapeutic benefits of nanocarrier-
+enabled combinatorial drug delivery systems. Previous investigations have shown that such systems can reduce overall
+dosing frequency and mitigate systemic toxicity.11,31 In our study, the minimized tissue damage and acceptable cytocompat­
+ibility observed suggest that the nanoparticle matrix effectively buffers local drug concentrations and limits off-target
+effects.18,20 These results reinforce the protective role of PLGA as both a sustained-release system and a biocompatible carrier.
+Beyond formulation advantages, the therapeutic mechanism is further supported by molecular evidence. Tests indicated
+that KT-PRED-PLGA nanoparticles reduce important substances that cause inflammation in the AA pathway, such as COX-1,
+COX-2,51 and PGE2.4,26,52,53 This pathway plays a pivotal role in chronic inflammatory conditions,51,54 and dual inhibition at
+both enzymatic and downstream levels has been associated with enhanced therapeutic efficacy.53,55–57 The 8 h timepoint for
+IHC analysis was selected based on the observed onset and stabilization of the analgesic effect of KT-PRED-PLGA
+nanoparticles. At this time, the KT-PRED-PLGA NPs 80 mg/kg exhibited significantly enhanced analgesia compared to the
+KT 80 mg/kg + PRED 80 mg/kg (Two-way ANOVA, p < 0.0001), as illustrated in Supplementary Figure S2. This behavioral
+improvement corresponded with a pronounced reduction in COX-1, COX-2, and PGE2 expression, confirming the formula­
+tion’s effective anti-inflammatory action at the protein level. By simultaneously suppressing multiple pro-inflammatory
+targets, the nanoparticles achieve a broader and more coordinated regulation of the inflammatory cascade than free-drug
+administration alone.
+Conclusion
+In this study, we demonstrated the successful application of a double-emulsion method for formulating PLGA nano­
+particles capable of co-delivering hydrophilic and hydrophobic drugs with sustained release and favorable biocompat­
+ibility. The KT-PRED-PLGA nanoparticles provide clear benefits for treatment, such as better pain relief, less harm to
+tissues, and greater safety than traditional methods. Its capacity to modulate key inflammatory pathways further supports
+its utility in chronic pain management. These findings highlight the formulation’s promise as a safer and more effective
+nanotherapeutic platform. Future investigations should explore its clinical translation, large-scale production, and
+application in broader inflammatory or pain-related conditions.
+Ethics Approval and Informed Consent
+The animal studies were performed according to the National Cheng Kung Medical College Animal Care Guidelines
+(IACUC approval No: 108170).
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8354
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Consent for Publication
+All the authors have reviewed all the manuscripts and stated that the manuscript has no significant part of it under
+consideration elsewhere.
+Acknowledgments
+This work was supported by the Center of Applied Nanomedicine (CAN) and Medical Device Innovation Center (MDIC)
+at National Cheng Kung University (NCKU), through the Featured Areas Research Center Program under the Higher
+Education Sprout Project of the Ministry of Education (MOE), Taiwan, and by the National Science and Technology
+Council (NSTC), Taiwan. We acknowledge the technical assistance of the Taiwan Cryo-EM Consortium, National Core
+Facility for Biopharmaceuticals, NSTC, Taiwan; the University Center of Bioscience and Biotechnology at NCKU; and
+the Instrument Development Center at NCKU. The Bioimaging Core Facility at NCKU provided support for TissueQuest
+software. The graphical abstract was created using BioRender.com.
+Author Contributions
+All authors made a significant contribution to the work reported, whether that is in the conception, study design,
+execution, acquisition of data, analysis and interpretation, or in all these areas; took part in drafting, revising or critically
+reviewing the article; gave final approval of the version to be published; have agreed on the journal to which the article
+has been submitted; and agree to be accountable for all aspects of the work.
+Funding
+This work was supported by the Center of Applied Nanomedicine (CAN) and the Medical Device Innovation Center
+(MDIC) at National Cheng Kung University (NCKU) through the Featured Areas Research Center Program under the
+Higher Education Sprout Project of the Ministry of Education (MOE), Taiwan, and by the National Science and
+Technology Council (NSTC), Taiwan (grant numbers: NSTC-113-2640-B-006-002-, NSTC-112-2314-B-006-032-MY3,
+and MOST-108-2314-B-006-053-).
+Disclosure
+The authors declare that there is no conflict of interest related to this manuscript.
+References
+1. Raja SN, Carr DB, Cohen M, et al. The revised international association for the study of pain definition of pain: concepts, challenges, and
+compromises. Pain. 2020;161(9):1976––1982. doi:10.1097/j.pain.0000000000001939
+2. Carr D, Schatman M. Cannabis for chronic pain: not ready for prime time. Am J Public Health. 2019;109(1):50––51. doi:10.2105/
+AJPH.2018.304593
+3. Barakzoy AS, Moss AH. Efficacy of the World Health Organization analgesic ladder to treat pain in end-stage renal disease. J Am Soc Nephrol.
+2006;17(11):3198––3203. doi:10.1681/ASN.2006050477
+4. Brune K, Patrignani P. New insights into the use of currently available non-steroidal anti-inflammatory drugs. J Pain Res. 2015;8:105––118. doi:10.2147/
+JPR.S75160
+5. Bhadelia A, De Lima L, Arreola-Ornelas H, Kwete XJ, Rodriguez NM, Knaul FM. Solving the global crisis in access to pain relief: lessons from
+country actions. Am J Public Health. 2019;109(1):58––60. doi:10.2105/AJPH.2018.304769
+6. Kowalski ML, Asero R, Bavbek S, et al. Classification and practical approach to the diagnosis and management of hypersensitivity to nonsteroidal
+anti-inflammatory drugs. Allergy. 2013;68(10):1219––1232. doi:10.1111/all.12260
+7. Litvak KM, McEvoy GK. Ketorolac, an injectable nonnarcotic analgesic. Clin Pharm. 1990;9(12):921––935. doi:10.1093/ajhp/48.1.168
+8. Ho ML, Chang JK, Wang GJ. Effects of ketorolac on bone repair: a radiographic study in modeled demineralized bone matrix grafted rabbits.
+Pharmacology. 1998;57(3):148––159. doi:10.1159/000028236
+9. Khaled KA, Sarhan HA, Ibrahim MA, Ali AH, Naguib YW. Prednisolone-loaded PLGA microspheres. In vitro characterization and in vivo
+application in adjuvant-induced arthritis in mice. AAPS Pharm Sci Tech. 2010;11(2):859––869. doi:10.1208/s12249-010-9445-5
+10. Giovagnoli S, Blasi P, Ricci M, Schoubben A, Perioli L, Rossi C. Physicochemical characterization and release mechanism of a novel prednisone
+biodegradable microsphere formulation. J Pharm Sci. 2008;97(1):303––317. doi:10.1002/jps.21073
+11. Fargnoli AS, Mu A, Katz MG, et al. Anti-inflammatory loaded poly-lactic glycolic acid nanoparticle formulations to enhance myocardial gene
+transfer: an in-vitro assessment of a drug/gene combination therapeutic approach for direct injection. J Transl Med. 2014;12(1):1––9. doi:10.1186/
+1479-5876-12-171
+12. Brown CR, Moodie JE, Dickie G, et al. Analgesic efficacy and safety of single-dose oral and intramuscular ketorolac tromethamine for
+postoperative pain. Pharmacotherapy. 1990;10(6P2):59S––70S. doi:10.1002/j.1875-9114.1990.tb03582.x
+International Journal of Nanomedicine 2025:20
+https://doi.org/10.2147/IJN.S515452
+8355
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+13. Simone JN, Pendelton RA, Jenkins JE. Comparison of the efficacy and safety of ketorolac tromethamine 0.5% and prednisolone acetate 1% after
+cataract surgery. J Cataract Refract Surg. 1999;25(5):699–704. doi:10.1016/S0886-3350(99)00023-1
+14. Perry HD, Donnenfeld ED. An update on the use of ophthalmic ketorolac tromethamine 0.4%. Expert Opin Pharmacother. 2006;7(1):99–107.
+doi:10.1517/14656566.7.1.99
+15. Zeb A, Gul M, Nguyen TTL, Maeng HJ. Controlled release and targeted drug delivery with poly(lactic-co-glycolic acid) nanoparticles: reviewing
+two decades of research. J Pharm Investig. 2022;52(6):683–724. doi:10.1007/s40005-022-00584-w
+16. Phm TL, Kim DW. Poly(lactic-co-glycolic acid) nanomaterial-based treatment options for pain management: a review. Nanomedicine. 2020;15(19).
+doi:10.2217/nnm-2020-0114
+17. Bohrey S, Chourasiya V, Pandey A. Polymeric nanoparticles containing diazepam: preparation, optimization, characterization, in-vitro drug release
+and release kinetic study. Nano Converg. 2016;3(1):3. doi:10.1186/s40580-016-0061-2
+18. Te Boekhorst BCM, Jensen LB, Colombo S, et al. MRI-assessed therapeutic effects of locally administered PLGA nanoparticles loaded with
+anti-inflammatory siRNA in a murine arthritis model. J Control Release. 2012;161(3):772––780. doi:10.1016/j.jconrel.2012.05.004
+19. Mundargi RC, Babu VR, Rangaswamy V, Patel P, Aminabhavi TM. Nano/micro technologies for delivering macromolecular therapeutics using
+poly(d, l-lactide-co-glycolide) and its derivatives. J Control Release. 2008;125(3):193––209. doi:10.1016/j.jconrel.2007.09.013
+20. Wang X, Wang S, Zhang Y. Advance of the application of nano-controlled release system in ophthalmic drug delivery. Drug Deliv. 2016;23
+(8):2897––2901. doi:10.3109/10717544.2015.1116025
+21. Zhu Z, Li Y, Yang X, Pan W, Pan H. The reversion of anti-cancer drug antagonism of tamoxifen and docetaxel by the hyaluronic acid-decorated
+polymeric nanoparticles. Pharmacol Res. 2017;126:84––96. doi:10.1016/j.phrs.2017.07.011
+22. Brocks DR, Jamali F. Clinical Pharmacokinetics of Ketorolac Tromethamine. Clin Pharmacokinet. 1992;23(6):415––427. doi:10.2165/00003088-
+199223060-00003
+23. Massó González EL, Patrignani P, Tacconelli S, García Rodríguez LA. Variability among nonsteroidal antiinflammatory drugs in risk of upper
+gastrointestinal bleeding. Arthritis Rheum. 2010;62(6):1592––1601. doi:10.1002/art.27412
+24. Kawabata A. Prostaglandin E2 and pain - An update. Biol Pharm Bull. 2011;34(8):1170––1173. doi:10.1248/bpb.34.1170
+25. Yu T, Lao X, Zheng H. Influencing COX-2 activity by COX related pathways in inflammation and cancer. Mini-Rev Med Chem. 2016;16
+(15):1230––1243. doi:10.2174/1389557516666160505115743
+26. Ali KA, Maity A, Roy SD, Das Pramanik S, Pratim Das P, Shaharyar MA. Insight into the mechanism of steroidal and non-steroidal anti-
+inflammatory drugs. In: How Synthetic Drugs Work: Insights Into Molecular Pharmacology of Classic and New Pharmaceuticals. Academic Press;
+2023:61––94. doi:10.1016/B978-0-323-99855-0.00004-X
+27. Praveen Rao PN, Knaus EE. Evolution of nonsteroidal anti-inflammatory drugs (NSAIDs): cyclooxygenase (COX) inhibition and beyond. J Pharm
+Pharm Sci. 2008;11(2):81s––110s. doi:10.18433/j3t886
+28. Mahesh G, Kumar KA, Reddanna P. Overview on the discovery and development of anti-inflammatory drugs: should the focus be on synthesis or
+degradation of PGE2? J Inflamm Res. 2021;14:253––263. doi:10.2147/JIR.S278514
+29. Floyd JA, Galperin A, Ratner BD. Drug encapsulated aerosolized microspheres as a biodegradable, intelligent glioma therapy. J Biomed Mater Res
+A. 2016;104(2):544––552. doi:10.1002/jbm.a.35547
+30. Wei B, Cai C, Tian Y. Nano-sized starch: preparations and applications. In: Jin Z, editor. Functional Starch and Applications in Food. Singapore:
+Springer; 2018:147––176. doi:10.1007/978-981-13-1077-5
+31. Danhier F, Ansorena E, Silva JM, Coco R, Le Breton A, Préat V. PLGA-based nanoparticles: an overview of biomedical applications. J Control
+Release. 2012;161(2):505––522. doi:10.1016/j.jconrel.2012.01.043
+32. Wagh D, Pothineni VR, Inayathullah M, Liu S, Kim KM, Rajadas J. Borreliacidal activity of Borrelia metal transporter A (BmtA) binding small
+molecules by manganese transport inhibition. Drug Des Devel Ther. 2015;9:805––816. doi:10.2147/DDDT.S77063
+33. Lau AKS, Wong TTW, Ho KK, et al. Interferometric time-stretch microscopy for ultrafast quantitative cellular and tissue imaging at 1 μm.
+J Biomed Opt. 2014;19(7):1––7. doi:10.1117/1.jbo.19.7.076001
+34. Saini N, Mathur R, Agrawal SS. Qualitative and quantitative assessment of four marketed formulations of Brahmi. Indian J Pharm Sci. 2012;74
+(1):24. doi:10.4103/0250-474X.102539
+35. Bian YY, Guo J, Zhu KX, Guo XN, Peng W, Zhou HM. Resistance investigation of wheat bran polyphenols extracts on HEK293 cells against
+oxidative damage. RSC Adv. 2015;5(21):16116––16124. doi:10.1039/c4ra13602k
+36. Thoolen B, Maronpot RR, Harada T, et al. Proliferative and nonproliferative lesions of the rat and mouse hepatobiliary system. Toxicol Pathol.
+2010;38(7 Suppl):5S––81S. doi:10.1177/0192623310386499
+37. Clatworthy MR, Kettunen MI, Hu DE, et al. Magnetic resonance imaging with hyperpolarized [1, 4-13C2] fumarate allows detection of early renal
+acute tubular necrosis. Proc Natl Acad Sci. 2012;109(33):13374––13379. doi:10.1073/pnas.1205539109
+38. Nolte T, Brander-Weber P, Dangler C, et al. Nonproliferative and proliferative lesions of the gastrointestinal tract, pancreas and salivary glands of
+the rat and mouse. J Toxicol Pathol. 2016;29(1 Suppl):1S––125S. doi:10.1293/tox.29.1S
+39. Kim JE, Nam JH, Cho JY, Kim KS, Hwang DY. Annual tendency of research papers used ICR mice as experimental animals in biomedical research
+fields. Lab Anim Res. 2017;33(2):171––174. doi:10.5625/lar.2017.33.2.171
+40. Gould TD, Einat H. Animal models of bipolar disorder and mood stabilizer efficacy: a critical need for improvement. Neurosci Biobehav Rev.
+2007;31(6):825––831. doi:10.1016/j.neubiorev.2007.05.007
+41. Ho KY, Gwee KA, Cheng YK, Yoon KH, Hee HT, Omar AR. Nonsteroidal anti-inflammatory drugs in chronic pain: implications of new data for
+clinical practice. J Pain Res. 2018;11:1937––1948. doi:10.2147/JPR.S168188
+42. Gurcan MN, Boucheron LE, Can A, Madabhushi A, Rajpoot NM, Yener B. Histopathological image analysis: a review. IEEE Rev Biomed Eng.
+2009;2:147––171. doi:10.1109/RBME.2009.2034865
+43. Iqbal M, Zafar N, Fessi H, Elaissari A. Double emulsion solvent evaporation techniques used for drug encapsulation. Int J Pharm. 2015;496
+(2):173––190. doi:10.1016/j.ijpharm.2015.10.057
+44. Chirag N, Narendra C, Sandip P, Upendra P, Keyur A, Dhruti N. Design and characterization of bioadhesive microspheres prepared by double
+emulsion solvent evaporation method. Acta Pharma Sci. 2009;51(3):261––270.
+45. Vadivelu N, Gowda AM, Urman RD, et al. Ketorolac tromethamine - Routes and clinical implications. Pain Pract. 2015;15(2):175––193.
+doi:10.1111/papr.12198
+https://doi.org/10.2147/IJN.S515452
+International Journal of Nanomedicine 2025:20
+8356
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+46. Araújo J, Gonzalez E, Egea MA, Garcia ML, Souto EB. Nanomedicines for ocular NSAIDs: safety on drug delivery. Nanomedicine. 2009;5
+(4):394––401. doi:10.1016/j.nano.2009.02.003
+47. Sinha VR, Trehan A. Formulation, characterization, and evaluation of ketorolac tromethamine-loaded biodegradable microspheres. Drug Delivery.
+2005;12(3):133––139. doi:10.1080/10717540590925726
+48. Sinha VR, Kumar RV, Singh G. Ketorolac tromethamine formulations: an overview. Expert Opin Drug Deliv. 2009;6(9):961––975. doi:10.1517/
+17425240903116006
+49. Danaei M, Dehghankhold M, Ataei S, et al. Impact of particle size and polydispersity index on the clinical applications of lipidic nanocarrier
+systems. Pharmaceutics. 2018;10(2):57. doi:10.3390/pharmaceutics10020057
+50. Zhang HH, Kuo WS, Tu PY, et al. Enhancing lung recovery: inhaled poly(lactic-co-glycolic) acid encapsulating FTY720 and nobiletin for
+lipopolysaccharide-induced lung injury, with advanced inhalation tower technology. ACS Nano. 2025;19(8):7634–7649. doi:10.1021/
+acsnano.3c12532
+51. Wu PC, Bin SD, Hsiao HT, Wang JCF, Lin YC, Liu YC. Magnetic field distribution modulation of intrathecal delivered ketorolac iron-oxide nanoparticle
+conjugates produce excellent analgesia for chronic inflammatory pain. J Nanobiotechnology. 2018;16(1). doi:10.1186/s12951-018-0375-9
+52. Wang B, Wu L, Chen J, et al. Metabolism pathways of arachidonic acids: mechanisms and potential therapeutic targets. Signal Transduct Target
+Ther. 2021;6(1):94. doi:10.1038/s41392-020-00443-w
+53. Ahmadi M, Bekeschus S, Weltmann KD, von Woedtke T, Wende K. Non-steroidal anti-inflammatory drugs: recent advances in the use of synthetic
+COX-2 inhibitors. RSC Med Chem. 2022;13:471––496. doi:10.1039/d1md00280e
+54. Wu PC, Hsiao HT, Lin YC, Bin SD, Liu YC. The analgesia efficiency of ultrasmall magnetic iron oxide nanoparticles in mice chronic inflammatory
+pain model. Nanomedicine. 2017;13(6):1975–1981. doi:10.1016/j.nano.2017.05.005
+55. Meta IF, Bermolen M, MacChi R, Aguilar J. Randomized controlled trial comparing the effects of 2 analgesic drug protocols in patients who
+received 5 dental implants. Implant Dent. 2017;26(3):412––416. doi:10.1097/ID.0000000000000544
+56. Warner TD, Giuliano F, Vojnovic I, Bukasa A, Mitchell JA, Vane JR. Nonsteroid drug selectivities for cyclo-oxygenase-1 rather than
+cyclo-oxygenase-2 are associated with human gastrointestinal toxicity: a full in vitro analysis. Proc Natl Acad Sci U S A. 1999;96(13):7563––
+7568. doi:10.1073/pnas.96.13.7563
+57. Gordon SM, Brahim JS, Rowan J, Kent A, Dionne RA. Peripheral prostanoid levels and nonsteroidal anti-inflammatory drug analgesia: replicate
+clinical trials in a tissue injury model. Clin Pharmacol Ther. 2002;72(2):175––183. doi:10.1067/mcp.2002.126501
+International Journal of Nanomedicine
+Publish your work in this journal
+The International Journal of Nanomedicine is an international, peer-reviewed journal focusing on the application of nanotechnology in diagnostics,
+therapeutics, and drug delivery systems throughout the biomedical field. This journal is indexed on PubMed Central, MedLine, CAS, SciSearch®,
+Current Contents®/Clinical Medicine, Journal Citation Reports/Science Edition, EMBase, Scopus and the Elsevier Bibliographic databases. The
+manuscript management system is completely online and includes a very quick and fair peer-review system, which is all easy to use. Visit http://
+www.dovepress.com/testimonials.php to read real quotes from published authors.
+Submit your manuscript here: https://www.dovepress.com/international-journal-of-nanomedicine-journal
+International Journal of Nanomedicine 2025:20
+8357
+Do et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)

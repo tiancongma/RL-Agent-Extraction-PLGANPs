@@ -1,0 +1,18 @@
+# Section A: Curated rows for DOI
+reference	small_molecule_name	surfactant_name	solvent	polymer_MW	LA/GA	drug/polymer	surfactant_concentration	aqueous/organic	pH	particle_size	EE	LC	doi_norm
+10.1089/jamp.2009.0759	salbutamol	none	acetone	12	1	0.053	0	5	0	127	25.2	1.3	10.1089/jamp.2009.0759
+
+# Section B: Extracted rows for DOI
+key	model	formulation_id	emul_type	emul_method	la_ga_ratio	plga_mw_kDa	plga_mass_mg	pva_conc_percent	organic_solvent	drug_name	drug_feed_amount_text	size_nm	pdi	zeta_mV	encapsulation_efficiency_percent	loading_content_percent	notes	evidence_section	evidence_span_text	evidence_span_start	evidence_span_end	evidence_method	evidence_quality	doi_norm
+VHSU9G7W	gemini-2.5-flash	PLGA_Salbutamol_Nanoparticles	solvent displacement	Injection of organic phase (polymer + drug in acetone) into aqueous phase (double-distilled water, pH 7.0) under magnetic stirring (500 rpm) via syringe pump (10 mL/min), followed by solvent removal under reduced pressure for 3 hours.	50:50		47.5		acetone	salbutamol	2.5 mg	127.0	0.115	-36.5	25.2	1.3	PLGA used was Resomer RG 502 H. All characterization values (size, PDI, zeta-potential, encapsulation efficiency, drug loading) are mean values from Table 1, measured directly after nanoparticle preparation. Standard deviations are ±6.1 nm, ±0.013, ±2.6 mV, ±4.9%, and ±0.2% respectively.	fulltext	and poly(vinyl sulfonate-co-vinyl alcohol)-
+graft-poly(D,L-lactide-co-glycolide) (VS(72)-10) nanoparticles were prepared by a modiﬁed solvent displace-
+ment technique with a mean particle size of approximately 120 nm and a polydispersity index below 0.150.
+VS(72)-10 nanoparticles showed a more negative z-potential of 54.2  3.3 mV compared to PLGA nanoparticles
+(36.5  2.6 mV). Salbutamol encapsulation efﬁciency was 25.2  4.9% and 63.4  3.5% for PLGA and VS(72)-10
+na	1172	1648	pattern_window	A	10.1089/jamp.2009.0759
+VHSU9G7W	gemini-2.5-flash	VS72-10_Salbutamol_Nanoparticles	solvent displacement	Injection of organic phase (polymer + drug in acetone) into aqueous phase (double-distilled water, pH 7.0) under magnetic stirring (500 rpm) via syringe pump (10 mL/min), followed by solvent removal under reduced pressure for 3 hours.			47.5		acetone	salbutamol	2.5 mg	118.9	0.132	-54.2	63.4	3.2	Polymer used was VS(72)-10, a biocompatible, branched polyester: poly(vinyl sulfonate-co-vinyl alcohol)-graft-poly(D,L-lactide-co-glycolide). The '72' refers to the total average number of sulfonate functions on the PVA backbone, and '10' to the PLGA side-chain length. Increased negative zeta potential was observed compared to PLGA nanoparticles due to negatively charged functional groups in the polymer structure, promoting electrostatic interactions with salbutamol. All characterization values (size, PDI, zeta-potential, encapsulation efficiency, drug loading) are mean values from Table 1, measured directly after nanoparticle preparation. Standard deviations are ±9.6 nm, ±0.011, ±3.3 mV, ±3.5%, and ±0.2% respectively.	fulltext	and poly(vinyl sulfonate-co-vinyl alcohol)-
+graft-poly(D,L-lactide-co-glycolide) (VS(72)-10) nanoparticles were prepared by a modiﬁed solvent displace-
+ment technique with a mean particle size of approximately 120 nm and a polydispersity index below 0.150.
+VS(72)-10 nanoparticles showed a more negative z-potential of 54.2  3.3 mV compared to PLGA nanoparticles
+(36.5  2.6 mV). Salbutamol encapsulation efﬁciency was 25.2  4.9% and 63.4  3.5% for PLGA and VS(72)-10
+na	1172	1648	pattern_window	A	10.1089/jamp.2009.0759

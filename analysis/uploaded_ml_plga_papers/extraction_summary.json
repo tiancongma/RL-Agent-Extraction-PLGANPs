@@ -1,0 +1,299 @@
+[
+  {
+    "pdf": "A_Machine_Learning_Approach_for_PLGA_Nanoparticles_in_Antiviral_Drug_Delivery_2023.pdf",
+    "pages": 17,
+    "title_probe": "--- PAGE 1 --- | Citation: Noorain, L.; Nguyen, V.; | Kim, H.-W.; Nguyen, L.T.B. | A Machine Learning Approach for | PLGA Nanoparticles in Antiviral",
+    "abstract": ": In recent years, nanoparticles have been highly investigated in the laboratory. However, only a few laboratory discoveries have been translated into clinical practice. These ﬁndings in the laboratory are limited by trial-and-error methods to determine the optimum formulation for successful drug delivery. A new paradigm is required to ease the translation of lab discoveries to clinical practice. Due to their previous success in antiviral activity, it is vital to accelerate the discovery of novel drugs to treat and manage viruses. Machine learning is a subﬁeld of artiﬁcial intelligence and consists of computer algorithms which are improved through experience. It can generate predictions from data inputs via an algorithm which includes a method built from inputs and outputs. Combining nanotherapeutics and well-established machine-learning algorithms can simplify antiviral-drug development systems by automating the analysis. Other relationships in bio- pharmaceutical networks would eventually aid in reaching a complex goal very easily. From previous laboratory experiments, data can be extracted and input into machine learning algorithms to generate predictions. In this study, poly (lactic-co-glycolic acid) (PLGA) nanoparticles were investigated in antiviral drug delivery. Data was extracted from research articles on nanoparticle size, polydispersity index, drug loading capacity and encapsulation efﬁciency. The Gaussian Process, a form of machine learning algorithm, could be applied to this data to generate graphs with predictions of the datasets. The Gaussian Process is a pro",
+    "text_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/analysis/uploaded_ml_plga_papers/A_Machine_Learning_Approach_for_PLGA_Nanoparticles_in_Antiviral_Drug_Delivery_2023.txt",
+    "contexts": [
+      {
+        "kw": "encapsulation efficiency",
+        "ctx": "osen based on the study’s requirements and the nanoparticle’s function. --- PAGE 6 --- Pharmaceutics 2023, 15, 495 6 of 17 Figure 2. PLGA 50:50—graph showing size (nm), Polydispersity Index (PDI) and Encapsulation Efﬁciency (EE%). Figure 3. PLGA 50:50—graph showing size (nm), % Drug Load (DL) and Encapsulation Efficiency (EE%). 3.2. PLGA 65:15 Nanoparticles Data was gathered on PLGA 65:15, 75:25 and 85:15 nanoparticles from one single paper [23] with nine data points. The data for PLGA 65:15 is represented in Table 2. Figures 4–6 illustrate the three predicted graphs from the data gathered from Table 2, representing the size, polydispersity index, drug load and encapsulation efﬁciency of PLGA 65:15 nanoparticles. There is a smaller amount of data available for t"
+      },
+      {
+        "kw": "drug loading",
+        "ctx": "periments, data can be extracted and input into machine learning algorithms to generate predictions. In this study, poly (lactic-co-glycolic acid) (PLGA) nanoparticles were investigated in antiviral drug delivery. Data was extracted from research articles on nanoparticle size, polydispersity index, drug loading capacity and encapsulation efﬁciency. The Gaussian Process, a form of machine learning algorithm, could be applied to this data to generate graphs with predictions of the datasets. The Gaussian Process is a probabilistic machine learning model which deﬁnes a prior over function. The mean and variance of the data can be calculated via matrix multiplications, leading to the formation of prediction graphs—the graphs generated in this study which co"
+      },
+      {
+        "kw": "PLGA",
+        "ctx": "--- PAGE 1 --- Citation: Noorain, L.; Nguyen, V.; Kim, H.-W.; Nguyen, L.T.B. A Machine Learning Approach for PLGA Nanoparticles in Antiviral Drug Delivery. Pharmaceutics 2023, 15, 495. https://doi.org/10.3390/ pharmaceutics15020495 Academic Editors: Prabir Patra and Ziyad S. Haidar Received: 17 November 2022 Revised: 25 January 2023 Accepted: 31 January 2023 Published: 2 February 2023 Copyright: © 2023 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons"
+      },
+      {
+        "kw": "machine learning",
+        "ctx": "--- PAGE 1 --- Citation: Noorain, L.; Nguyen, V.; Kim, H.-W.; Nguyen, L.T.B. A Machine Learning Approach for PLGA Nanoparticles in Antiviral Drug Delivery. Pharmaceutics 2023, 15, 495. https://doi.org/10.3390/ pharmaceutics15020495 Academic Editors: Prabir Patra and Ziyad S. Haidar Received: 17 November 2022 Revised: 25 January 2023 Accepted: 31 January 2023 Published: 2 February 2023 Copyright: © 2023 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the"
+      },
+      {
+        "kw": "SHAP",
+        "ctx": "Machine learning in drug discovery: A review. Artif. Intell. Rev. 2022, 55, 1947–1999. [CrossRef] 6. Wang, M.; Wang, T.; Cai, P.; Chen, X. Nanomaterials Discovery and Design through Machine Learning. Small Methods 2019, 3, 1900025. [CrossRef] 7. Champion, J.A.; Katare, Y.K.; Mitragotri, S. Particle shape: A new design parameter for micro- and nanoscale drug delivery carriers. J. Control. Release 2007, 121, 3–9. [CrossRef] 8. Ren, J.; Hong, H.; Song, J.; Ren, T. Particle size and distribution of biodegradable poly-D,L-lactide-co-poly(ethylene glycol) block polymer nanoparticles prepared by nanoprecipitation. J. Appl. Polym. Sci. 2005, 98, 1884–1890. [CrossRef] 9. Rizvi, S.A.; Saleh, A.M. Applications of nanoparticle systems in drug delivery tech"
+      },
+      {
+        "kw": "dataset",
+        "ctx": "d in antiviral drug delivery. Data was extracted from research articles on nanoparticle size, polydispersity index, drug loading capacity and encapsulation efﬁciency. The Gaussian Process, a form of machine learning algorithm, could be applied to this data to generate graphs with predictions of the datasets. The Gaussian Process is a probabilistic machine learning model which deﬁnes a prior over function. The mean and variance of the data can be calculated via matrix multiplications, leading to the formation of prediction graphs—the graphs generated in this study which could be used for the discovery of novel antiviral drugs. The drug load and encapsulation efﬁciency of a nanoparticle with a speciﬁc size can be predicted using these graphs. This c"
+      },
+      {
+        "kw": "features",
+        "ctx": "h a particle size of 100–150 nm. The smaller particle size of 30 nm nanoparticles was quickly washed out from the body, and larger particle sizes of approximately 300 nm were gathered in the spleen and liver [27]. --- PAGE 15 --- Pharmaceutics 2023, 15, 495 15 of 17 Another study investigated the features needed for polymer nanoparticle prediction using an Artiﬁcial Neural Network (ANN) algorithm. Fifty-one samples were used with four data inputs: the quantity of drug, polymer concentration, solvent ratio and mixing rate. This ANN algorithm was used to generate a method to predict the size of the polymer- based nanoparticles. This study found that the polymer concentration was one of the most vital features for determining the particle size [28]."
+      },
+      {
+        "kw": "variables",
+        "ctx": "gorithm was used to generate a method to predict the size of the polymer- based nanoparticles. This study found that the polymer concentration was one of the most vital features for determining the particle size [28]. A separate study predicted the drug load with the machine learning algorithm. The variables included were molecular weight, the ratio of polymer to drug and the number of blocks per polymer. The ratio of the polymer was critical for estimations to be generated [29]. The studies above researched the components separately, where the best parts were discovered via machine learning. In this research, in contrast, size, PDI, drug load and entrapment efﬁciencies were found in combination, which has not yet been completed. Spherical nucleic a"
+      },
+      {
+        "kw": "DoE",
+        "ctx": "est drug load of approximately 4% was for the smaller-sized nanoparticles of 100 nm and PDI between 0–0.1. The lowest drug load of less than 2% was seen in two different nanomaterial sizes: one at approximately 200 nm with a PDI of 0.2 and the other between 500–600 nm with a higher PDI of 0.4. This does not represent any connection between size and drug load. However, the data heavily lies between 100–200 nm, and the limited data between 300–600 nm nanomaterial sizes are insufﬁcient for prediction via GP. Therefore, predictions may be inaccurate in the 300–600 nm range. In Figure 8, the graph represents PLGA 75:25 nanoparticles with size, PDI and encap- sulation efﬁciency. The graph predicts that a smaller nanoparticle size between 100–200 nm"
+      },
+      {
+        "kw": "Bayesian",
+        "ctx": "MA, USA, 2006; 4p. 14. Nguyen, V.; Deisenroth, M.P.; Osborne, M. Gaussian Process Sampling and Optimization with Approximate Upper and Lower Bounds. Available online: https://arxiv.org/abs/2110.12087 (accessed on 8 November 2022). 15. Nguyen, V.; Osborne, M.A. Knowing the What but Not the Where in Bayesian Optimization. In Proceedings of the 37th International Conference on Machine Learning, Virtual Event, 13–18 July 2020; pp. 7317–7326. --- PAGE 17 --- Pharmaceutics 2023, 15, 495 17 of 17 16. Venkatesh, D.N.; Baskaran, M.; Karri, V.V.S.R.; Mannemala, S.S.; Radhakrishna, K.; Goti, S. Fabrication and in vivo evaluation of Nelﬁnavir loaded PLGA nanoparticles for enhancing oral bioavailability and therapeutic effect. Saudi Pharm. J. 2015, 23, 667–6"
+      },
+      {
+        "kw": "prediction",
+        "ctx": "nical practice. Due to their previous success in antiviral activity, it is vital to accelerate the discovery of novel drugs to treat and manage viruses. Machine learning is a subﬁeld of artiﬁcial intelligence and consists of computer algorithms which are improved through experience. It can generate predictions from data inputs via an algorithm which includes a method built from inputs and outputs. Combining nanotherapeutics and well-established machine-learning algorithms can simplify antiviral-drug development systems by automating the analysis. Other relationships in bio- pharmaceutical networks would eventually aid in reaching a complex goal very easily. From previous laboratory experiments, data can be extracted and input into machine learning al"
+      }
+    ]
+  },
+  {
+    "pdf": "Intelligence_prediction_of_microfluidically_prepared_nanoparticles_2025.pdf",
+    "pages": 15,
+    "title_probe": "--- PAGE 1 --- | Intelligence prediction of | microfluidically prepared | nanoparticles | Nima Hanari1, Sara Mihandoost1 & Sima Rezvantalab2",
+    "abstract": "",
+    "text_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/analysis/uploaded_ml_plga_papers/Intelligence_prediction_of_microfluidically_prepared_nanoparticles_2025.txt",
+    "contexts": [
+      {
+        "kw": "encapsulation efficiency",
+        "ctx": "other’s prediction, they provide distinct insights into nanoparticle formulation. Our results demonstrate that machine learning can effectively guide the design of drug delivery systems with desired properties, accelerating their development. Keywords Data mining, Machine learning, Drug loading, Encapsulation efficiency Over the past few years, scientists have focused their attention on the development of drug delivery systems (DDSs) with controlled sizes, payloads, and release profiles1. In addition to controlling drug concentrations, such DDSs can also reduce harmful side effects associated with the formulation and lead to a reduction in off-target delivery2. The amount of DL and EE are key performance indicators in the preparation of DDSs and significantl"
+      },
+      {
+        "kw": "entrapment efficiency",
+        "ctx": "he preparations). The relative proportions of solvents modulate polymer solubility, drug partitioning, and precipitation dynamics. For instance, a more volatile solvent (e.g., DCM) paired with a slower-diffusing one (e.g., DMSO) can fine-tune the rate of PLGA deposition, thereby influencing drug entrapment efficiency. Our data revealed that an optimal solvent ratio maximizes DL by balancing rapid NP solidification (to prevent drug loss) with sufficient drug– polymer interaction time. These findings highlight that while the absolute type of solvent may have a secondary impact on DL compared to other factors (e.g., [drug]), solvent-associated process parameters (such as flow rate and sol.2/sol.1ratios) are pivotal in optimizing drug incorporation. This alig"
+      },
+      {
+        "kw": "drug loading",
+        "ctx": "remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key features related to their preparation on microfluidic platforms. We applied various machine learning algorithms to predict encapsulation efficiency (EE) and drug loading (DL). The random forest model showed the best performance, achieving R² values of 0.93 and 0.96 for DL and EE predictions, respectively. Although EE and DL had minimal impact on each other’s prediction, they provide distinct insights into nanoparticle formulation. Our results demonstrate that machine learning can effectively guide the design of drug delivery systems with desired properties, accelerating their development. Keywords Data mini"
+      },
+      {
+        "kw": "PLGA",
+        "ctx": "--- PAGE 1 --- Intelligence prediction of microfluidically prepared nanoparticles Nima Hanari1, Sara Mihandoost1 & Sima Rezvantalab2 Developing poly(lactic-co-glycolic) acid (PLGA) nanoparticles with optimized drug encapsulation and loading is crucial for effective drug delivery. However, controlling the physicochemical properties of these nanoparticles remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key features related to their preparation on microfluidic platforms. We applied various machine learning algorithms to predict encapsu"
+      },
+      {
+        "kw": "machine learning",
+        "ctx": "owever, controlling the physicochemical properties of these nanoparticles remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key features related to their preparation on microfluidic platforms. We applied various machine learning algorithms to predict encapsulation efficiency (EE) and drug loading (DL). The random forest model showed the best performance, achieving R² values of 0.93 and 0.96 for DL and EE predictions, respectively. Although EE and DL had minimal impact on each other’s prediction, they provide distinct insights into nanoparticle formulation. Our results demonstrate that machine learning can effectively guide the design of drug delivery systems with d"
+      },
+      {
+        "kw": "random forest",
+        "ctx": "n this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key features related to their preparation on microfluidic platforms. We applied various machine learning algorithms to predict encapsulation efficiency (EE) and drug loading (DL). The random forest model showed the best performance, achieving R² values of 0.93 and 0.96 for DL and EE predictions, respectively. Although EE and DL had minimal impact on each other’s prediction, they provide distinct insights into nanoparticle formulation. Our results demonstrate that machine learning can effectively guide the design of drug delivery systems with desired properties, accelerating their development. Keywords Data mining, Machine learning, Dr"
+      },
+      {
+        "kw": "SHAP",
+        "ctx": "nt biodistribution9. These limitations also impact the cost, manufacturing, toxicity, off-target delivery, and side effects of DDSs10. To address these issues, researchers have identified key criteria for improving the delivery efficiency of anti-tumor agents, including material properties, size, shape, zeta potential, active-targeting strategies, and cancer type. Several strategies have been explored to overcome these challenges11,12. For instance, combining physical encapsulation with chemical conjugation has been used to prepare NPs with high DL capacity13. However, physicochemical limitations restrict the applicability of this approach for many drugs14. Remote loading, a method used for loading doxorubicin into liposomal formulations,"
+      },
+      {
+        "kw": "dataset",
+        "ctx": "t1 & Sima Rezvantalab2 Developing poly(lactic-co-glycolic) acid (PLGA) nanoparticles with optimized drug encapsulation and loading is crucial for effective drug delivery. However, controlling the physicochemical properties of these nanoparticles remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key features related to their preparation on microfluidic platforms. We applied various machine learning algorithms to predict encapsulation efficiency (EE) and drug loading (DL). The random forest model showed the best performance, achieving R² values of 0.93 and 0.96 for DL and EE predictions, respectively. Although EE and DL had minimal impact on each other’s pr"
+      },
+      {
+        "kw": "features",
+        "ctx": "h optimized drug encapsulation and loading is crucial for effective drug delivery. However, controlling the physicochemical properties of these nanoparticles remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key features related to their preparation on microfluidic platforms. We applied various machine learning algorithms to predict encapsulation efficiency (EE) and drug loading (DL). The random forest model showed the best performance, achieving R² values of 0.93 and 0.96 for DL and EE predictions, respectively. Although EE and DL had minimal impact on each other’s prediction, they provide distinct insights into nanoparticle formulation. Our results demons"
+      },
+      {
+        "kw": "variables",
+        "ctx": "mization, which can be time-consuming and resource-intensive. Still, identifying an efficient microfluidic synthesis for a given formulation still relies heavily on empirical approaches and require many trials and errors, which result in time-consuming and expensive experiments. The hierarchy of variables is crucial for preparing DDSs with high DL and EE. How might microfluidic operation conditions or intrinsic material characteristics affect microfluidic operation? In another word, a small change in microfluidic operation conditions, such as flow rate, and channel geometry, as well as intrinsic material characteristics, such as viscosity, interfacial tension, and chemical composition, can significantly shift the outcomes of microfluidic proc"
+      },
+      {
+        "kw": "microfluidic",
+        "ctx": "--- PAGE 1 --- Intelligence prediction of microfluidically prepared nanoparticles Nima Hanari1, Sara Mihandoost1 & Sima Rezvantalab2 Developing poly(lactic-co-glycolic) acid (PLGA) nanoparticles with optimized drug encapsulation and loading is crucial for effective drug delivery. However, controlling the physicochemical properties of these nanoparticles remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, including 25 key fea"
+      },
+      {
+        "kw": "design of experiment",
+        "ctx": "and cost constraints, experimental studies often focus on a limited number of variables to understand how their changes impact the response. In microfluidic settings, numerous variables influence size, DL, and EE, which exhibit complex, nonlinear relationships. Unlike traditional methods such as Design of Experiments (DOE), Machine Learning (ML) can handle and compare a larger number of variables simultaneously, providing a more comprehensive understanding of the factors influencing these outcomes. ML offers a distinct advantage over DOE, especially in scenarios where it is difficult to assess the interplay of multiple variables at once, making it particularly valuable for process optimization in formulation sciences. Artificial intelligence (AI) and ML"
+      },
+      {
+        "kw": "DoE",
+        "ctx": "experimental studies often focus on a limited number of variables to understand how their changes impact the response. In microfluidic settings, numerous variables influence size, DL, and EE, which exhibit complex, nonlinear relationships. Unlike traditional methods such as Design of Experiments (DOE), Machine Learning (ML) can handle and compare a larger number of variables simultaneously, providing a more comprehensive understanding of the factors influencing these outcomes. ML offers a distinct advantage over DOE, especially in scenarios where it is difficult to assess the interplay of multiple variables at once, making it particularly valuable for process optimization in formulation sciences. Artificial intelligence (AI) and ML are b"
+      },
+      {
+        "kw": "R2",
+        "ctx": "problems in microfluidics is controlling the size of microparticles or droplets28–30. For example, Lashkaripour et al.30,31 predicted droplet size using microfluidic geometry and flow conditions. Additionally, fluid characteristics are considered as an effective feature in another follow-up paper29 to cover a wide range of variables in the synthesis process on microfluidic platforms as well. Damiati et al.32 determined the DL and EE of PLGA-based microparticles containing indomethacin as well as their optimum size and therapeutic loading for microfluidic formulations. Although the training and testing datasets contained few data due to experimental limitations, researchers identified the PLGA concentration and flow rates of both aqueo"
+      },
+      {
+        "kw": "RMSE",
+        "ctx": "data while reducing the risk of overfitting. In this study, after testing various kernels such as RBF and polynomial, we opted for the kernel = linear option. Metrics This study assesses performance using a comprehensive set of metrics, including Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and R-squared (R2). MAE computes the average of the absolute differences between predicted and actual values. The formula is: Features Targets response Material intrinsic properties Solution Microfluidics operation Surfactant type [Drug1] (mg/ml) Method EE.(%) Solvent1 type [Drug2] (mg/ml) Total flow (ml/min) DL.(%) Solvent2 type [PLGA1] (mg/ml) Aqueous flow (ml/min) Drug1 type [Surfactant] (w/v%) Organic flow (ml/min) Drug2 type [PVA] (w/v%)"
+      },
+      {
+        "kw": "prediction",
+        "ctx": "--- PAGE 1 --- Intelligence prediction of microfluidically prepared nanoparticles Nima Hanari1, Sara Mihandoost1 & Sima Rezvantalab2 Developing poly(lactic-co-glycolic) acid (PLGA) nanoparticles with optimized drug encapsulation and loading is crucial for effective drug delivery. However, controlling the physicochemical properties of these nanoparticles remains challenging. In this study, we compiled a dataset of over 300 PLGA nanoparticle formulations from the literature, inc"
+      },
+      {
+        "kw": "synthesis",
+        "ctx": "in controlling the quality and scalability of formulations which are critical for therapeutic efficacy and regulatory compliance, making it a powerful tool for the production of therapeutics24,25. Nevertheless, for more complex formulations or novel systems, identifying an efficient microfluidic synthesis may still rely on empirical approaches and require iterative optimization, which can be time-consuming and resource-intensive. Still, identifying an efficient microfluidic synthesis for a given formulation still relies heavily on empirical approaches and require many trials and errors, which result in time-consuming and expensive experiments. The hierarchy of variables is crucial for preparing DDSs with high DL and EE. How might microfluidic"
+      }
+    ]
+  },
+  {
+    "pdf": "Machine_learning_assisted_exploration_of_the_influential_parameters_on_the_PLGA_nanoparticles_sci_rep_2024.pdf",
+    "pages": 12,
+    "title_probe": "--- PAGE 1 --- | 1 | Vol.:(0123456789) | Scientific Reports | (2024) 14:1114 | | https://doi.org/10.1038/s41598-023-50876-w",
+    "abstract": "",
+    "text_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/analysis/uploaded_ml_plga_papers/Machine_learning_assisted_exploration_of_the_influential_parameters_on_the_PLGA_nanoparticles_sci_rep_2024.txt",
+    "contexts": [
+      {
+        "kw": "encapsulation efficiency",
+        "ctx": "ysicochemical and technical properties that affect NP size and drug loading characteristics, predicting the influential features remains difficult. In the present study, we employed four different machine learning (ML) techniques to create ML models using effective parameters related to NP size, encapsulation efficiency (E.E.%), and drug loading (D.L.%). These parameters were extracted from the different literature. Least Absolute Shrinkage and Selection Operator was used to investigate the input parameters and identify the most influential features (descriptors). Initially, ML models were trained and validated using tenfold validation methods, and subsequently, next their performances were evaluated and compared in terms of absolute error, mean absolute, e"
+      },
+      {
+        "kw": "drug loading",
+        "ctx": ", Sara Mihandoost 2* & Masoumeh Rezaiee 1 Poly (lactic-co-glycolic acid) (PLGA)-based nanoparticles (NPs) are widely investigated as drug delivery systems. However, despite the numerous reviews and research papers discussing various physicochemical and technical properties that affect NP size and drug loading characteristics, predicting the influential features remains difficult. In the present study, we employed four different machine learning (ML) techniques to create ML models using effective parameters related to NP size, encapsulation efficiency (E.E.%), and drug loading (D.L.%). These parameters were extracted from the different literature. Least Absolute Shrinkage and Selection Operator was used to investigate the input parameters and ide"
+      },
+      {
+        "kw": "PLGA",
+        "ctx": "--- PAGE 1 --- 1 Vol.:(0123456789) Scientific Reports | (2024) 14:1114 | https://doi.org/10.1038/s41598-023-50876-w www.nature.com/scientificreports Machine learning assisted exploration of the influential parameters on the PLGA nanoparticles Sima Rezvantalab 1*, Sara Mihandoost 2* & Masoumeh Rezaiee 1 Poly (lactic-co-glycolic acid) (PLGA)-based nanoparticles (NPs) are widely investigated as drug delivery systems. However, despite the numerous reviews and research papers discussing various physicochemical and technical properties that affect NP size and drug loading characteristics, predicting the influential features remains difficult. In the present study, we empl"
+      },
+      {
+        "kw": "machine learning",
+        "ctx": "--- PAGE 1 --- 1 Vol.:(0123456789) Scientific Reports | (2024) 14:1114 | https://doi.org/10.1038/s41598-023-50876-w www.nature.com/scientificreports Machine learning assisted exploration of the influential parameters on the PLGA nanoparticles Sima Rezvantalab 1*, Sara Mihandoost 2* & Masoumeh Rezaiee 1 Poly (lactic-co-glycolic acid) (PLGA)-based nanoparticles (NPs) are widely investigated as drug delivery systems. However, despite the numerous reviews and research papers discussing various physicochemical and technical properties that affect NP size and drug loading characteristics, predicting the infl"
+      },
+      {
+        "kw": "random forest",
+        "ctx": "nfold validation methods, and subsequently, next their performances were evaluated and compared in terms of absolute error, mean absolute, error and R-square. After comparing the performance of different ML models, we decided to use support vector regression for predicting the size and E.E.% and random forest for predicting the D.L.% of PLGA-based NPs. Furthermore, we investigated the interactions between these target variables using ML methods and found that size and E.E.% are interrelated, while D.L.% shows no significant relationship with the other targets. Among these variables, E.E.% was identified as the most influential parameter affecting the NPs’ size. Additionally, we found that certain physicochemical properties of PLGA, including mol"
+      },
+      {
+        "kw": "SHAP",
+        "ctx": "Urmia 57166‑419, Iran. *email: s.rezvantalab@uut.ac.ir; s.mihandoost@uut.ac.ir --- PAGE 2 --- 2 Vol:.(1234567890) Scientific Reports | (2024) 14:1114 | https://doi.org/10.1038/s41598-023-50876-w www.nature.com/scientificreports/ of physicochemical properties of formulations (e.g. size, shape, drug loading efficiency, etc.) and even evaluation and optimization of (pre-)clinical ­data16,17. It is for this reason that these methods can help scientists cope with the complexity and ambiguity of practical DDSs, including polymer-based systems. Its abilities to load and deliver a broad range of therapeutic and theranostic agents have made PLGA a pre- ferred polymer-based ­DDS18,19. Due to its natural and non-toxic byproducts of PLGA deg"
+      },
+      {
+        "kw": "dataset",
+        "ctx": "acteristics so that future investigations could be guided accordingly. In this regard, a database of PLGA-based NPs has been constructed that covers a broad range of information about the polymer chemistry and NPs’ preparation method. Figure 1 outlines the main workflow of the current study. The dataset is constructed with data from over a hundred research articles using keyword “PLGA NPs” which the detailed information was gathered all the reported factors. Eight features were identified as influential fea- tures in the final properties and performances of NPs. In this study, we selected the NPs’ size, E.E.%, and D.L.% as significant parameters that can have a significant impact on formulation performance and therapeutic effect. Here are th"
+      },
+      {
+        "kw": "features",
+        "ctx": "glycolic acid) (PLGA)-based nanoparticles (NPs) are widely investigated as drug delivery systems. However, despite the numerous reviews and research papers discussing various physicochemical and technical properties that affect NP size and drug loading characteristics, predicting the influential features remains difficult. In the present study, we employed four different machine learning (ML) techniques to create ML models using effective parameters related to NP size, encapsulation efficiency (E.E.%), and drug loading (D.L.%). These parameters were extracted from the different literature. Least Absolute Shrinkage and Selection Operator was used to investigate the input parameters and identify the most influential features (descriptors). Ini"
+      },
+      {
+        "kw": "variables",
+        "ctx": "ean absolute, error and R-square. After comparing the performance of different ML models, we decided to use support vector regression for predicting the size and E.E.% and random forest for predicting the D.L.% of PLGA-based NPs. Furthermore, we investigated the interactions between these target variables using ML methods and found that size and E.E.% are interrelated, while D.L.% shows no significant relationship with the other targets. Among these variables, E.E.% was identified as the most influential parameter affecting the NPs’ size. Additionally, we found that certain physicochemical properties of PLGA, including molecular weight (Mw) and the lactide-to-glycolide (LA/GA) ratio, are the most determining features for E.E.% and D.L.% of t"
+      },
+      {
+        "kw": "microfluidic",
+        "ctx": "-assisted methods it is possible to design formulations with better control of properties and optimal ­outcomes24–26. For instance, multilayer perceptron artificial neural networks (ANNs) were used by Damiati et al.27 to determine the sizes of (single or multiple) PLGA microparticles produced in microfluidic systems. PLGA solution concentration, microfluidic device geometry, and organic and aqueous flow rates have been used as input layers (effective factors) to train the ANN method. In their study, they reported highly accurate size predictions through microfluidics in the generation of PLGA-based microparticles. The same multilayer perceptron ANNs were used in a subsequent study to optimize indomethacin-loaded PLGA microparticle ­properties28."
+      },
+      {
+        "kw": "DoE",
+        "ctx": "and with its larger values, the coefficients are dimensionality lowers down to zero. A higher λ value needs a greater number of coefficients that should be shrunk. However, its zero value gives rise to an Ordinary Least Squares (OLS) regression. LASSO predictions are very accurate since the bias doesn’t change during the shrinking process. Additionally, by eliminating irrelevant variables, LASSO increases the interpretability of the model as well as decreases the overfitting. Regarding to the advantages, LASSO has been chosen for the feature selection task. Data availability The data that support the findings of this study are gathered from published papers during last decade. Data will be available from the authors upon reasonable reque"
+      },
+      {
+        "kw": "R2",
+        "ctx": "s important to note that correlation cannot capture non-linear relationships between variables. Therefore, further investigation is necessary to understand the contributions of individual inputs. Furthermore, Table S1 outlines effects of each input feature on each target individually in terms of ­r2. Figure 3. Validation of various ML models’ performance based on absolute error for the selected sets of features. Subfigure (a) displays the absolute errors (AE) obtained with different ML models for the 7th set of feature descriptors used to predict size. Subfigure (b) demonstrates the AE obtained with different ML models for the 7th set of feature descriptors in predicting E.E.%. Lastly, Subfigure (c) exhibits the AE obtained with diffe"
+      },
+      {
+        "kw": "prediction",
+        "ctx": "(single or multiple) PLGA microparticles produced in microfluidic systems. PLGA solution concentration, microfluidic device geometry, and organic and aqueous flow rates have been used as input layers (effective factors) to train the ANN method. In their study, they reported highly accurate size predictions through microfluidics in the generation of PLGA-based microparticles. The same multilayer perceptron ANNs were used in a subsequent study to optimize indomethacin-loaded PLGA microparticle ­properties28. A successful application of the AI method was reported in the design of microparticles with satisfactory D.L.% and E.E.% (7.79 and 62.35%, respectively). In this study, through the application of ML methods, we seek to advance our understand"
+      },
+      {
+        "kw": "synthesis",
+        "ctx": "ty between them were portrayed as a Rubik’s cube, where a small change in one brick (parameter) would affect the whole plane (other parameters and subsequent outcomes). NP size, drug loading and release are all influenced by the molecular weight (Mw) of the polymer, LA/GA ratio, solvent, and the synthesis ­method23. Since many parameters are ignored in traditional mathematical methods to avoid complexity, it appears impossible to establish a clear relationship between these effective parameters and their outcomes. For example, diffusion-driven models of drug-carrier interactions and diffusion-driven theoretical simulations of drug loading and release are limited by many assumptions. In this type of simulation, polymer segments are ignored due"
+      }
+    ]
+  },
+  {
+    "pdf": "materials-synthesis-insights-from-scientific-literature-via-text-extraction-and-machine-learning.pdf",
+    "pages": 9,
+    "title_probe": "--- PAGE 1 --- | Materials Synthesis Insights from Scientiﬁc Literature via Text | Extraction and Machine Learning | Edward Kim,† | Kevin Huang,† Adam Saunders,‡ Andrew McCallum,‡ Gerbrand Ceder,§",
+    "abstract": "",
+    "text_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/analysis/uploaded_ml_plga_papers/materials-synthesis-insights-from-scientific-literature-via-text-extraction-and-machine-learning.txt",
+    "contexts": [
+      {
+        "kw": "machine learning",
+        "ctx": "--- PAGE 1 --- Materials Synthesis Insights from Scientiﬁc Literature via Text Extraction and Machine Learning Edward Kim,† Kevin Huang,† Adam Saunders,‡ Andrew McCallum,‡ Gerbrand Ceder,§ and Elsa Olivetti*,† †Department of Materials Science and Engineering, Massachusetts Institute of Technology, Cambridge, Massachusetts 02139, United States ‡Computer Science Department, University of Massachusetts Amherst, Amherst, Massachusetts 01003, United States §Materials Science and Engineering, University of California Berkeley, Berkeley, California 94720, Unite"
+      },
+      {
+        "kw": "features",
+        "ctx": "strongly predictive when compared to NaOH concentration or hydrothermal temperature. For this reason, NaOH concentration and hydrothermal temperature are selected as the variables for further analysis based on the construction of the learned decision tree rules (in Figure 2b). We chose exactly two features for further analysis to facilitate a visualizable and easily interpretable two-dimensional diagram. However, this does come at the necessary cost of some classiﬁcation accuracy, which can be observed by comparing the accuracies of the full decision tree (82%) and the 2D logistic regression classiﬁer (76%). Although these classiﬁcation accuracies are not perfect, they are indeed suﬃcient for the machine learning models to learn an overall correla"
+      },
+      {
+        "kw": "variables",
+        "ctx": "and automatically select a strongly predictive reduced subset of synthesis parameters which drive the behavior of the model.33 By training a decision tree across 22 065 journal articles, a hierarchy of single-variable divisions for titania nanotube formation is selected from a pool of 27 synthesis variables (e.g., annealing temperature, drying time). Figure 2a shows an excerpt of the learned decision tree with the nodes nearest to the root node representing the foremost rules learned by the model for maximally separating nanotube and not-nanotube results. The root node in the decision tree splits the data set by NaOH concentration, and the distributions of the data projected onto this univariate axis conﬁrm that the majority of recipes use NaOH at"
+      },
+      {
+        "kw": "DoE",
+        "ctx": "nd hydrothermal temperature are selected as the variables for further analysis based on the construction of the learned decision tree rules (in Figure 2b). We chose exactly two features for further analysis to facilitate a visualizable and easily interpretable two-dimensional diagram. However, this does come at the necessary cost of some classiﬁcation accuracy, which can be observed by comparing the accuracies of the full decision tree (82%) and the 2D logistic regression classiﬁer (76%). Although these classiﬁcation accuracies are not perfect, they are indeed suﬃcient for the machine learning models to learn an overall correlation between synthesis conditions and the resultant product morphologies. Figure 2b plots a machine-learned phase diag"
+      },
+      {
+        "kw": "prediction",
+        "ctx": "This type of data-driven analysis can therefore also be used to guide literature review by highlighting correlations and patterns which are only made apparent when many journal articles are examined simultaneously. Finally, we show the potential for transfer learning by producing synthesis outcome predictions across diverse materials systems using this text-mined synthesis data set. While the previous example focused on hydrothermal reactions, Chemistry of Materials Article DOI: 10.1021/acs.chemmater.7b03500 Chem. Mater. 2017, 29, 9436−9444 9440 --- PAGE 6 --- here we examine a set of syntheses which span across a few additional synthesis methods (e.g., hydrothermal, sol−gel, and solid state). We predict tetragonal phase formation (versus all othe"
+      },
+      {
+        "kw": "synthesis",
+        "ctx": "--- PAGE 1 --- Materials Synthesis Insights from Scientiﬁc Literature via Text Extraction and Machine Learning Edward Kim,† Kevin Huang,† Adam Saunders,‡ Andrew McCallum,‡ Gerbrand Ceder,§ and Elsa Olivetti*,† †Department of Materials Science and Engineering, Massachusetts Institute of Technology, Cambridge, Massachusetts 02139, United States ‡Computer Science Department, University of Massachusetts Amherst, Amherst, Massachusetts 01003, United States §Materials Science and Engin"
+      }
+    ]
+  },
+  {
+    "pdf": "Optimising_the_production_of_PLGA_nanoparticles_by_combining_design_of_experiment_and_machine_learning__2024.pdf",
+    "pages": 8,
+    "title_probe": "--- PAGE 1 --- | Optimising the production of PLGA nanoparticles by combining design of | experiment and machine learning | Nidhi Seegobin , Youssef Abdalla , Ge Li , Sudaxshina Murdan , David Shorthouse , | Abdul W. Basit *",
+    "abstract": "",
+    "text_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/analysis/uploaded_ml_plga_papers/Optimising_the_production_of_PLGA_nanoparticles_by_combining_design_of_experiment_and_machine_learning__2024.txt",
+    "contexts": [
+      {
+        "kw": "encapsulation efficiency",
+        "ctx": "s crucial for the development of robust and reproducible manufacturing processes, which are essential for scaling up production while main­ taining product quality. In nanoparticle synthesis, factors such as poly­ mer concentration or solvent type can significantly influence the particle size and encapsulation efficiency. By systematically varying these pa­ rameters within a DOE framework, researchers can optimise these at­ tributes to meet specific therapeutic goals, thus enhancing the efficacy and safety of the final pharmaceutical product. However, it is important to note that DOE has certain limitations, such as difficulties in managing complex data analysis, the constraints imposed by rigid experimental designs, and limitations on scalability (Grangeia"
+      },
+      {
+        "kw": "PLGA",
+        "ctx": "--- PAGE 1 --- Optimising the production of PLGA nanoparticles by combining design of experiment and machine learning Nidhi Seegobin , Youssef Abdalla , Ge Li , Sudaxshina Murdan , David Shorthouse , Abdul W. Basit * Department of Pharmaceutics, UCL School of Pharmacy, University College London, 29-39 Brunswick Square, London WC1N 1AX, United Kingdom A R T I C L E I N F O Keywords: PLGA Nanotechnology Nanoprecipitation Machine learning Artificial intelligence Computational modelling Oral d"
+      },
+      {
+        "kw": "machine learning",
+        "ctx": "--- PAGE 1 --- Optimising the production of PLGA nanoparticles by combining design of experiment and machine learning Nidhi Seegobin , Youssef Abdalla , Ge Li , Sudaxshina Murdan , David Shorthouse , Abdul W. Basit * Department of Pharmaceutics, UCL School of Pharmacy, University College London, 29-39 Brunswick Square, London WC1N 1AX, United Kingdom A R T I C L E I N F O Keywords: PLGA Nanotechnology Nanoprecipitation Machine learning Artificial intelligence Computational modelling Oral drug delivery A B S T R A C T Poly(lactic-co-glycolic acid) (PLGA) is a"
+      },
+      {
+        "kw": "random forest",
+        "ctx": "ing machine learning 2.5.1. Machine learning model To determine which ML model is best able to make predictions based on the datasets, five different supervised ML models were employed. A variety of models were employed, including tree-based ensembles like extreme gradient boosting (XGBoost) and random forest (RF), a memory-based model (k-nearest neighbors, kNN), a kernel-based model (support vector machine regressor, SVM), and a neural network model known as a multilayer perceptron (MLP). Model hyperparameters were optimised using 100 different randomly chosen hyperparameter com­ binations (random search), evaluated using 5-fold cross validation. The ML models were used for predictions of particle size and ζ potential. All ML models were run o"
+      },
+      {
+        "kw": "XGBoost",
+        "ctx": "sess and compare the predictive performance of Design of Experiments (DOE) and Machine Learning (ML) models for the optimisation of PLGA nanoparticle size and zeta potential produced by nano­ precipitation. Various ML methods were employed to predict particle size, with Extreme Gradient Boosting (XGBoost) identified as the best performing. The key finding is that integrating ML with DOE provides deeper insights into the dataset than either method alone. While ML outperformed DOE in predictive performance, as evidenced by lower root mean squared error values and higher coefficients of determination, both methods struggled to accurately predict zeta potential, generating models with high errors. However, ML proved more effective in identifying"
+      },
+      {
+        "kw": "dataset",
+        "ctx": "on of PLGA nanoparticle size and zeta potential produced by nano­ precipitation. Various ML methods were employed to predict particle size, with Extreme Gradient Boosting (XGBoost) identified as the best performing. The key finding is that integrating ML with DOE provides deeper insights into the dataset than either method alone. While ML outperformed DOE in predictive performance, as evidenced by lower root mean squared error values and higher coefficients of determination, both methods struggled to accurately predict zeta potential, generating models with high errors. However, ML proved more effective in identifying the parameters that most significantly influence NP size, even with a smaller DOE dataset. Combining DOE datasets with ML for"
+      },
+      {
+        "kw": "features",
+        "ctx": "erimental conditions, such as material composition and processing parameters, and desired proper­ ties, such as stability, compatibility, size and yield (Xu et al., 2023; Abdalla et al., 2024). By leveraging these ML models, researchers can potentially optimise NP synthesis by manipulating input features to reach desired outcomes. This has been particularly beneficial for opti­ mising the size of NPs using microfluidic production techniques (Ortiz- Perez et al., 2024; Nathanael et al., 2023; Chen and Lv, 2022), where ML models help adjust flow rates and reagent concentrations to achieve the desired NP size. Similarly, leveraging ML capabilities in NPR can allow researchers to predict and optimise PLGA NP properties based on input parameter"
+      },
+      {
+        "kw": "variables",
+        "ctx": "bles a comprehensive understanding of the relation­ ships between process parameters and product quality attributes, mak­ ing it invaluable in the development of high-quality pharmaceutical products (Tavares Luiz and Viegas, 2021). DOE’s efficiency lies in determining causal relationships between variables in an experimental design. Among the various DOE strategies, screening designs, such as fractional or full factorial designs, identify the most influential factors early in the process. Response surface methodologies such as Central Composite Design (CCD) are then conducted to explore optimal factor levels. This method allows modelling of linear relationships, in­ teractions, and quadratic effects, providing a detailed understanding of the"
+      },
+      {
+        "kw": "microfluidic",
+        "ctx": "tability, compatibility, size and yield (Xu et al., 2023; Abdalla et al., 2024). By leveraging these ML models, researchers can potentially optimise NP synthesis by manipulating input features to reach desired outcomes. This has been particularly beneficial for opti­ mising the size of NPs using microfluidic production techniques (Ortiz- Perez et al., 2024; Nathanael et al., 2023; Chen and Lv, 2022), where ML models help adjust flow rates and reagent concentrations to achieve the desired NP size. Similarly, leveraging ML capabilities in NPR can allow researchers to predict and optimise PLGA NP properties based on input parameters, thereby reducing the number of necessary experimental trials and saving both time and resources (Silveira et al.,"
+      },
+      {
+        "kw": "design of experiment",
+        "ctx": "le for NP production, nanoprecipitation is distinguished by its simplicity and scalability. However, it requires careful optimisation to achieve the desired NP characteristics, making the process potentially lengthy and costly. This study aimed to assess and compare the predictive performance of Design of Experiments (DOE) and Machine Learning (ML) models for the optimisation of PLGA nanoparticle size and zeta potential produced by nano­ precipitation. Various ML methods were employed to predict particle size, with Extreme Gradient Boosting (XGBoost) identified as the best performing. The key finding is that integrating ML with DOE provides deeper insights into the dataset than either method alone. While ML outperformed DOE in predictive performance, as"
+      },
+      {
+        "kw": "DoE",
+        "ctx": "nanoprecipitation is distinguished by its simplicity and scalability. However, it requires careful optimisation to achieve the desired NP characteristics, making the process potentially lengthy and costly. This study aimed to assess and compare the predictive performance of Design of Experiments (DOE) and Machine Learning (ML) models for the optimisation of PLGA nanoparticle size and zeta potential produced by nano­ precipitation. Various ML methods were employed to predict particle size, with Extreme Gradient Boosting (XGBoost) identified as the best performing. The key finding is that integrating ML with DOE provides deeper insights into the dataset than either method alone. While ML outperformed DOE in predictive performance, as evide"
+      },
+      {
+        "kw": "R2",
+        "ctx": "ed model. This is determined by identifying the number of times a parameter is used to split a tree, across all trees in the ensemble (Abdalla et al., 2023). 2.6. Data analysis DOE and ML results included regression analyses, their performance was measured using the coefficient of determination (R2) and the root mean squared error (RMSE) of predictions. R2 is a measure of the goodness of fit of the model and is defined as the proportion of the total variance of the experimental points explained by the model. The R2 was used to measure the reliability and robustness of the model as shown in Eq. (1). We note however, that a high R2 does not necessarily indicate a good model, only that the model explains the variance in the collected d"
+      },
+      {
+        "kw": "RMSE",
+        "ctx": "ifying the number of times a parameter is used to split a tree, across all trees in the ensemble (Abdalla et al., 2023). 2.6. Data analysis DOE and ML results included regression analyses, their performance was measured using the coefficient of determination (R2) and the root mean squared error (RMSE) of predictions. R2 is a measure of the goodness of fit of the model and is defined as the proportion of the total variance of the experimental points explained by the model. The R2 was used to measure the reliability and robustness of the model as shown in Eq. (1). We note however, that a high R2 does not necessarily indicate a good model, only that the model explains the variance in the collected data to a high level. R2 = 1 − ∑n i=1(yi"
+      },
+      {
+        "kw": "prediction",
+        "ctx": "ive power and the potential to streamline experimental design and optimisation. These results suggest that the synergistic use of ML and DOE can lead to more robust feature analysis and improved optimisation outcomes, particularly for NP size. This integrated approach can enhance the accuracy of predictions and supports more efficient experimental design, streamlining nanoparticle production processes, especially under resource-constrained conditions. 1. Introduction Poly(lactic-co-glycolic acid) (PLGA) is a biodegradable and biocompatible polymer that has gained significant attention in the field of drug delivery and nanoparticle (NP) formulation (McCoubrey et al., 2024). Its excellent properties, such as controlled drug release, minimal tox"
+      },
+      {
+        "kw": "synthesis",
+        "ctx": "eta potential (Tavares Luiz and Viegas, 2021; Camacho Vieira et al., 2024; Saka et al., 2020). This identification is crucial for the development of robust and reproducible manufacturing processes, which are essential for scaling up production while main­ taining product quality. In nanoparticle synthesis, factors such as poly­ mer concentration or solvent type can significantly influence the particle size and encapsulation efficiency. By systematically varying these pa­ rameters within a DOE framework, researchers can optimise these at­ tributes to meet specific therapeutic goals, thus enhancing the efficacy and safety of the final pharmaceutical product. However, it is important to note that DOE has certain limitations, such as difficulties"
+      }
+    ]
+  }
+]

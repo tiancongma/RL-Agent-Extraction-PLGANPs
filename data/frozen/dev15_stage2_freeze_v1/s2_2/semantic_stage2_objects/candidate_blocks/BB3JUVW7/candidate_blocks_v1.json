@@ -1,0 +1,4354 @@
+{
+  "paper_key": "BB3JUVW7",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 187,
+    "prose_candidates": 185,
+    "table_candidates": 2,
+    "candidates_with_noise_flags": 183,
+    "candidates_with_quality_flags": 185,
+    "has_doe_signal": false,
+    "has_sequential_signal": false,
+    "has_optimization_signal": true
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "Journals & Books Help Search View PDF Download full issue Outline Abstract Graphical abstract Keywords Abbreviations 1. Introduction 2. Materials and methods 3. Results 4. Discussion 5.",
+      "text_preview": "Journals & Books Help Search View PDF Download full issue Outline Abstract Graphical abstract Keywords Abbreviations 1. Introduction 2. Materials and methods 3. Results 4. Discussion 5."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Introduction 2. Materials and methods",
+      "text_preview": "Introduction 2. Materials and methods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.1. Materials",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.1. Materials",
+      "text_preview": "2.1. Materials"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.2. Methods",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.2. Methods",
+      "text_preview": "2.2. Methods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:3",
+      "paragraph_index": 0,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.1. Preparation of artemether loaded PLGA nanospheres",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.1. Preparation of artemether loaded PLGA nanospheres",
+      "text_preview": "2.1. Preparation of artemether loaded PLGA nanospheres"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:5",
+      "paragraph_index": 0,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.2. Preparation of artemether loaded PLGA nanorods Download: Download high-res image (801KB) Download: Download full-size ima",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.2. Preparation of artemether loaded PLGA nanorods Download: Download high-res image (801KB) Download: Download full-size image Fig. 1 . In house fabricated film stretching apparatus a) Schematic representation of the apparatus b) Image acquired by digital camera.",
+      "text_preview": "2.2. Preparation of artemether loaded PLGA nanorods Download: Download high-res image (801KB) Download: Download full-size image Fig. 1 . In house fabricated film stretching apparatus a) Schematic representation of the a"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.3. Characterization of nanospheres and nanorods",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.3. Characterization of nanospheres and nanorods",
+      "text_preview": "2.3. Characterization of nanospheres and nanorods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:8",
+      "paragraph_index": 0,
+      "segment_index": 8,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.1. Particle size and PDI 2",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "3.1. Particle size and PDI 2.3.2. % Entrapment efficiency (EE) 2.3.3. % Drug loading",
+      "text_preview": "3.1. Particle size and PDI 2.3.2. % Entrapment efficiency (EE) 2.3.3. % Drug loading"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.4. Drug content",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.4. Drug content",
+      "text_preview": "3.4. Drug content"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:12",
+      "paragraph_index": 0,
+      "segment_index": 12,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.5. Field emission scanning electron microscopy",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.5. Field emission scanning electron microscopy",
+      "text_preview": "3.5. Field emission scanning electron microscopy"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.4. Calculation of shape descriptors of nanorods",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.4. Calculation of shape descriptors of nanorods",
+      "text_preview": "2.4. Calculation of shape descriptors of nanorods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:15",
+      "paragraph_index": 0,
+      "segment_index": 15,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "4.1. Feret diameter and minor Feret diameter Download: Download high-res image (87KB) Download: Download full-size image Fig",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.1. Feret diameter and minor Feret diameter Download: Download high-res image (87KB) Download: Download full-size image Fig. 2 . Schematic representation of the shape descriptors used for the characterisation of a rod-shaped particle. Segment a-b and c-d represent the major axis and minor axis of the nanorod, respectively. Distance between point e to f and point g to h represent the Feret diameter and minor Feret diameter.",
+      "text_preview": "4.1. Feret diameter and minor Feret diameter Download: Download high-res image (87KB) Download: Download full-size image Fig. 2 . Schematic representation of the shape descriptors used for the characterisation of a rod-s"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:17",
+      "paragraph_index": 0,
+      "segment_index": 17,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "4.2. Major axis, minor axis and aspect ratio",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.2. Major axis, minor axis and aspect ratio",
+      "text_preview": "4.2. Major axis, minor axis and aspect ratio"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:19",
+      "paragraph_index": 0,
+      "segment_index": 19,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "4.3. Size distribution of nanorods",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.3. Size distribution of nanorods",
+      "text_preview": "4.3. Size distribution of nanorods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.5. Evaluation of nanospheres and nanorods",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.5. Evaluation of nanospheres and nanorods",
+      "text_preview": "2.5. Evaluation of nanospheres and nanorods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:22",
+      "paragraph_index": 0,
+      "segment_index": 22,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "5.1. In vitro release study",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "5.1. In vitro release study",
+      "text_preview": "5.1. In vitro release study"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:24",
+      "paragraph_index": 0,
+      "segment_index": 24,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "5.2. Cytotoxicity",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.2. Cytotoxicity",
+      "text_preview": "5.2. Cytotoxicity"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:26",
+      "paragraph_index": 0,
+      "segment_index": 26,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "5.3. Haemolysis study",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.3. Haemolysis study",
+      "text_preview": "5.3. Haemolysis study"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.6. Statistical analysis 3",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.6. Statistical analysis 3. Results",
+      "text_preview": "2.6. Statistical analysis 3. Results"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.1.",
+      "text_preview": "3.1."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "Preparation of nanospheres Table 1",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Preparation of nanospheres Table 1 .",
+      "text_preview": "Preparation of nanospheres Table 1 ."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Particle size, PDI, %EE, %DL and zeta potential of the artemether loaded nanospheres.",
+      "text_preview": "Particle size, PDI, %EE, %DL and zeta potential of the artemether loaded nanospheres."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.2.",
+      "text_preview": "3.2."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "Preparation of nanorods Table 2",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Preparation of nanorods Table 2 .",
+      "text_preview": "Preparation of nanorods Table 2 ."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Physicochemical parameters of nanorods obtained by varying the process conditions. Download: Download high-res image (727KB) Download: Download full-size image Fig. 3 . Characterisation of size and shape of the nanorods obtained from mechanical stretching of nanospheres after solvent treatment.",
+      "text_preview": "Physicochemical parameters of nanorods obtained by varying the process conditions. Download: Download high-res image (727KB) Download: Download full-size image Fig. 3 . Characterisation of size and shape of the nanorods"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_downstream_assay",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_downstream_assay",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Size-frequency distribution curves of major axis (a-d), minor axis (e-h) and SEM images (j-m) of nanorods, (i) of nanospheres; a) major axis, e) minor axis and j) SEM image of nanorods (film thickness = 100 µm, L/G ratio = 75: 25, stretching extent = 2x), b) major axis, f) minor axis and k) SEM image of nanorods (film thickness = 100 µm, L/G ratio = 75: 25, stretching extent = 4x), c) major axis, g) minor axis and l) SEM image of nanorods (film thickness = 150 µm, L/G ratio = 75: 25, stretching extent = 4x), d) major axis, h) minor axis and m) SEM image of nanorods (film thickness = 100 µm, L/G ratio = 50: 50, stretching extent = 4x). Download: Download high-res image (617KB) Download: Download full-size image Fig. 4 . Characterisation of size and shape of the nanorods obtained from mechanical stretching of nanospheres after heat treatment. Size-frequency distribution curves of major axis (a-c), minor axis (d-f) and SEM images (h-j) of nanorods, (g) of nanospheres; a) major axis, d) minor axis and h) SEM image of nanorods (film thickness = 100 µm, L/G ratio = 75: 25, stretching extent = 4x, incubation time = 5 min), b) major axis, e) minor axis and i) SEM image of nanorods (film thickness = 100 µm, L/G ratio = 75: 25, stretching extent = 2x, incubation time = 15 min), c) major axis, f) minor axis and j) SEM image of nanorods (film thickness = 100 µm, L/G ratio = 75: 25, stretching extent = 4x, incubation time = 15 min).",
+      "text_preview": "Size-frequency distribution curves of major axis (a-d), minor axis (e-h) and SEM images (j-m) of nanorods, (i) of nanospheres; a) major axis, e) minor axis and j) SEM image of nanorods (film thickness = 100 µm, L/G ratio"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.3. In vitro drug release Download: Download high-res image (424KB) Download: Download full-size image Fig",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "3.3. In vitro drug release Download: Download high-res image (424KB) Download: Download full-size image Fig. 5 . In vitro evaluation of nanospheres and nanorods a) In vitro release profile of nanosphere and nanorods in 50 ml of 10 mM phosphate buffer pH 7.4 with sodium lauryl sulphate (SLS) (1% w/v) for 72 h under stirring (100 rpm) at 37⁰ C b) % cell viability of artemether loaded nanospheres, artemether loaded nanorods and artemether free drug at different artemether concentrations in THP-1 monocyte cell lines, c) % haemolysis of RBCs obtained from rat blood after treatment with artemether loaded nanospheres, artemether loaded nanorods at different artemether concentrations, Each data represents the mean ± SD; n = 3; * represents p < 0.05.",
+      "text_preview": "3.3. In vitro drug release Download: Download high-res image (424KB) Download: Download full-size image Fig. 5 . In vitro evaluation of nanospheres and nanorods a) In vitro release profile of nanosphere and nanorods in 5"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__39",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.4. Cytotoxicity",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.4. Cytotoxicity",
+      "text_preview": "3.4. Cytotoxicity"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__40",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.5. In vitro haemolysis 4",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.5. In vitro haemolysis 4. Discussion 5. Conclusion Author contribution Declaration of Competing Interest Acknowledgements References Aphesteguy et al., 2015 Aphesteguy, J.C., Kurlyandskaya, G. V., De Celis, J.P., Safronov, A.P., Schegoleva, N.N., 2015. Magnetite nanoparticles prepared by co-precipitation method in different conditions. Mater. Chem. Phys. https://doi.org/10.1016/j.matchemphys.",
+      "text_preview": "3.5. In vitro haemolysis 4. Discussion 5. Conclusion Author contribution Declaration of Competing Interest Acknowledgements References Aphesteguy et al., 2015 Aphesteguy, J.C., Kurlyandskaya, G. V., De Celis, J.P., Safro"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__41",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:34",
+      "paragraph_index": 0,
+      "segment_index": 34,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__42",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:35",
+      "paragraph_index": 0,
+      "segment_index": 35,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__43",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:36",
+      "paragraph_index": 0,
+      "segment_index": 36,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__44",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:37",
+      "paragraph_index": 0,
+      "segment_index": 37,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.",
+      "text_preview": "5."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__45",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:38",
+      "paragraph_index": 0,
+      "segment_index": 38,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__46",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "5.044. Google Scholar Arnida et al",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "5.044. Google Scholar Arnida et al., 2011 Arnida, Janát-Amsbury, M.M., Ray, A., Peterson, C.M., Ghandehari, H., 2011. Geometry and surface characteristics of gold nanoparticles influence their biodistribution and uptake by macrophages. Eur. J. Pharm. Biopharm. https://doi.org/10.1016/j.ejpb.",
+      "text_preview": "5.044. Google Scholar Arnida et al., 2011 Arnida, Janát-Amsbury, M.M., Ray, A., Peterson, C.M., Ghandehari, H., 2011. Geometry and surface characteristics of gold nanoparticles influence their biodistribution and uptake"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__47",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:40",
+      "paragraph_index": 0,
+      "segment_index": 40,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__48",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:41",
+      "paragraph_index": 0,
+      "segment_index": 41,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__49",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:42",
+      "paragraph_index": 0,
+      "segment_index": 42,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__50",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:43",
+      "paragraph_index": 0,
+      "segment_index": 43,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.",
+      "text_preview": "0."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__51",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:44",
+      "paragraph_index": 0,
+      "segment_index": 44,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__52",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:46",
+      "paragraph_index": 0,
+      "segment_index": 46,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__53",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:47",
+      "paragraph_index": 0,
+      "segment_index": 47,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__54",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:48",
+      "paragraph_index": 0,
+      "segment_index": 48,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8",
+      "text_preview": "8"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__55",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:49",
+      "paragraph_index": 0,
+      "segment_index": 49,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__56",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:50",
+      "paragraph_index": 0,
+      "segment_index": 50,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6",
+      "text_preview": "6"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__57",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:51",
+      "paragraph_index": 0,
+      "segment_index": 51,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__58",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:52",
+      "paragraph_index": 0,
+      "segment_index": 52,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7",
+      "text_preview": "7"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__59",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:53",
+      "paragraph_index": 0,
+      "segment_index": 53,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6.",
+      "text_preview": "6."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__60",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:54",
+      "paragraph_index": 0,
+      "segment_index": 54,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__61",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:55",
+      "paragraph_index": 0,
+      "segment_index": 55,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__62",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:56",
+      "paragraph_index": 0,
+      "segment_index": 56,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__63",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Asian J. Pharm. Sci. https://doi.org/10.1016/j.ajps.",
+      "text_preview": "Asian J. Pharm. Sci. https://doi.org/10.1016/j.ajps."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__64",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:58",
+      "paragraph_index": 0,
+      "segment_index": 58,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__65",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:59",
+      "paragraph_index": 0,
+      "segment_index": 59,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__66",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:60",
+      "paragraph_index": 0,
+      "segment_index": 60,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__67",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:61",
+      "paragraph_index": 0,
+      "segment_index": 61,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.",
+      "text_preview": "8."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__68",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:62",
+      "paragraph_index": 0,
+      "segment_index": 62,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__69",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:64",
+      "paragraph_index": 0,
+      "segment_index": 64,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__70",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:65",
+      "paragraph_index": 0,
+      "segment_index": 65,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__71",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:66",
+      "paragraph_index": 0,
+      "segment_index": 66,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__72",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:67",
+      "paragraph_index": 0,
+      "segment_index": 67,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.",
+      "text_preview": "4."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__73",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:68",
+      "paragraph_index": 0,
+      "segment_index": 68,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__74",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_result_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_result_to_downstream",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Google Scholar Gérard Yaméogo et al., 2020 Gérard Yaméogo, J.B., Mazet, R., Wouessidjewe, D., Choisnard, L., Godin-Ribuot, D., Putaux, J.L., Semdé, R., Gèze, A., 2020. Pharmacokinetic study of intravenously administered artemisinin-loaded surface-decorated amphiphilic γ-cyclodextrin nanoparticles. Mater. Sci. Eng. C 106, 110281. https://doi.org/10.1016/j.msec.",
+      "text_preview": "Google Scholar Gérard Yaméogo et al., 2020 Gérard Yaméogo, J.B., Mazet, R., Wouessidjewe, D., Choisnard, L., Godin-Ribuot, D., Putaux, J.L., Semdé, R., Gèze, A., 2020. Pharmacokinetic study of intravenously administered"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__75",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:70",
+      "paragraph_index": 0,
+      "segment_index": 70,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__76",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:71",
+      "paragraph_index": 0,
+      "segment_index": 71,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__77",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:72",
+      "paragraph_index": 0,
+      "segment_index": 72,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__78",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:74",
+      "paragraph_index": 0,
+      "segment_index": 74,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__79",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:75",
+      "paragraph_index": 0,
+      "segment_index": 75,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__80",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:76",
+      "paragraph_index": 0,
+      "segment_index": 76,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__81",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:77",
+      "paragraph_index": 0,
+      "segment_index": 77,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.",
+      "text_preview": "7."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__82",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:78",
+      "paragraph_index": 0,
+      "segment_index": 78,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__83",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "9.028. Google Scholar Jindal and Devarajan, 2015 Jindal, A",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.028. Google Scholar Jindal and Devarajan, 2015 Jindal, A.B., Devarajan, P. V., 2015. Asymmetric lipid-polymer particles (LIPOMER) by modified nanoprecipitation: Role of non-solvent composition. Int. J. Pharm. https://doi.org/10.1016/j.ijpharm.",
+      "text_preview": "9.028. Google Scholar Jindal and Devarajan, 2015 Jindal, A.B., Devarajan, P. V., 2015. Asymmetric lipid-polymer particles (LIPOMER) by modified nanoprecipitation: Role of non-solvent composition. Int. J. Pharm. https://d"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__84",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:80",
+      "paragraph_index": 0,
+      "segment_index": 80,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__85",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:81",
+      "paragraph_index": 0,
+      "segment_index": 81,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__86",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:82",
+      "paragraph_index": 0,
+      "segment_index": 82,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__87",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:83",
+      "paragraph_index": 0,
+      "segment_index": 83,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.",
+      "text_preview": "5."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__88",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:84",
+      "paragraph_index": 0,
+      "segment_index": 84,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__89",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:86",
+      "paragraph_index": 0,
+      "segment_index": 86,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__90",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:87",
+      "paragraph_index": 0,
+      "segment_index": 87,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__91",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:88",
+      "paragraph_index": 0,
+      "segment_index": 88,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__92",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:89",
+      "paragraph_index": 0,
+      "segment_index": 89,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6.",
+      "text_preview": "6."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__93",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:90",
+      "paragraph_index": 0,
+      "segment_index": 90,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__94",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:92",
+      "paragraph_index": 0,
+      "segment_index": 92,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__95",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:93",
+      "paragraph_index": 0,
+      "segment_index": 93,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7",
+      "text_preview": "7"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__96",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:94",
+      "paragraph_index": 0,
+      "segment_index": 94,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__97",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:95",
+      "paragraph_index": 0,
+      "segment_index": 95,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__98",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:96",
+      "paragraph_index": 0,
+      "segment_index": 96,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5",
+      "text_preview": "5"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__99",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:97",
+      "paragraph_index": 0,
+      "segment_index": 97,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__100",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:98",
+      "paragraph_index": 0,
+      "segment_index": 98,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__101",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:99",
+      "paragraph_index": 0,
+      "segment_index": 99,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.",
+      "text_preview": "7."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__102",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:100",
+      "paragraph_index": 0,
+      "segment_index": 100,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__103",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:101",
+      "paragraph_index": 0,
+      "segment_index": 101,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__104",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:102",
+      "paragraph_index": 0,
+      "segment_index": 102,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__105",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "5.963055. Google Scholar Mhatre and Sodha, 2019 Mhatre, O",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.963055. Google Scholar Mhatre and Sodha, 2019 Mhatre, O., Sodha, S., 2019. Pharmaceutical feasibility and flow characteristics of polymeric non-spherical particles. Nanomedicine Nanotechnology, Biol. Med. https://doi.org/10.1016/j.nano.",
+      "text_preview": "5.963055. Google Scholar Mhatre and Sodha, 2019 Mhatre, O., Sodha, S., 2019. Pharmaceutical feasibility and flow characteristics of polymeric non-spherical particles. Nanomedicine Nanotechnology, Biol. Med. https://doi.o"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__106",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:104",
+      "paragraph_index": 0,
+      "segment_index": 104,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__107",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:105",
+      "paragraph_index": 0,
+      "segment_index": 105,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__108",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:106",
+      "paragraph_index": 0,
+      "segment_index": 106,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__109",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:107",
+      "paragraph_index": 0,
+      "segment_index": 107,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.",
+      "text_preview": "9."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__110",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:108",
+      "paragraph_index": 0,
+      "segment_index": 108,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__111",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:110",
+      "paragraph_index": 0,
+      "segment_index": 110,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__112",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:111",
+      "paragraph_index": 0,
+      "segment_index": 111,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__113",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:112",
+      "paragraph_index": 0,
+      "segment_index": 112,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__114",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:113",
+      "paragraph_index": 0,
+      "segment_index": 113,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.",
+      "text_preview": "5."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__115",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:114",
+      "paragraph_index": 0,
+      "segment_index": 114,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__116",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "8.012 View PDF View article View in Scopus Google Scholar Palazzo et al",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.012 View PDF View article View in Scopus Google Scholar Palazzo et al., 2017 C. Palazzo, G. Ponchel, J.J. Vachon, S. Villebrun, F. Agnely, C. Vauthier Obtaining nonspherical poly(alkylcyanoacrylate) nanoparticles by the stretching method applied with a marketed water-soluble film Int. J. Polym. Mater. Polym. Biomater. (2017), 10.1080/",
+      "text_preview": "8.012 View PDF View article View in Scopus Google Scholar Palazzo et al., 2017 C. Palazzo, G. Ponchel, J.J. Vachon, S. Villebrun, F. Agnely, C. Vauthier Obtaining nonspherical poly(alkylcyanoacrylate) nanoparticles by th"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__117",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:116",
+      "paragraph_index": 0,
+      "segment_index": 116,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__118",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:117",
+      "paragraph_index": 0,
+      "segment_index": 117,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__119",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:118",
+      "paragraph_index": 0,
+      "segment_index": 118,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9",
+      "text_preview": "9"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__120",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:119",
+      "paragraph_index": 0,
+      "segment_index": 119,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__121",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:120",
+      "paragraph_index": 0,
+      "segment_index": 120,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__122",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:121",
+      "paragraph_index": 0,
+      "segment_index": 121,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__123",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:122",
+      "paragraph_index": 0,
+      "segment_index": 122,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__124",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:123",
+      "paragraph_index": 0,
+      "segment_index": 123,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.",
+      "text_preview": "7."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__125",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:124",
+      "paragraph_index": 0,
+      "segment_index": 124,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__126",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:125",
+      "paragraph_index": 0,
+      "segment_index": 125,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__127",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:126",
+      "paragraph_index": 0,
+      "segment_index": 126,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__128",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "6.1233420 Google Scholar Raina et al",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6.1233420 Google Scholar Raina et al., 2017 H. Raina, S. Kaur, A.B. Jindal Development of efavirenz loaded solid lipid nanoparticles: Risk assessment, quality-by-design (QbD) based optimisation and physicochemical characterisation J. Drug Deliv. Sci. Technol., 39 (2017), pp. 180-191, 10.1016/j.jddst.",
+      "text_preview": "6.1233420 Google Scholar Raina et al., 2017 H. Raina, S. Kaur, A.B. Jindal Development of efavirenz loaded solid lipid nanoparticles: Risk assessment, quality-by-design (QbD) based optimisation and physicochemical charac"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__129",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:128",
+      "paragraph_index": 0,
+      "segment_index": 128,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__130",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:129",
+      "paragraph_index": 0,
+      "segment_index": 129,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__131",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:130",
+      "paragraph_index": 0,
+      "segment_index": 130,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__132",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:131",
+      "paragraph_index": 0,
+      "segment_index": 131,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.",
+      "text_preview": "7."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__133",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:132",
+      "paragraph_index": 0,
+      "segment_index": 132,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__134",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:134",
+      "paragraph_index": 0,
+      "segment_index": 134,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__135",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:135",
+      "paragraph_index": 0,
+      "segment_index": 135,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__136",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:136",
+      "paragraph_index": 0,
+      "segment_index": 136,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6",
+      "text_preview": "6"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__137",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:137",
+      "paragraph_index": 0,
+      "segment_index": 137,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9",
+      "text_preview": "9"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__138",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:138",
+      "paragraph_index": 0,
+      "segment_index": 138,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__139",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:139",
+      "paragraph_index": 0,
+      "segment_index": 139,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__140",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:140",
+      "paragraph_index": 0,
+      "segment_index": 140,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__141",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:141",
+      "paragraph_index": 0,
+      "segment_index": 141,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.",
+      "text_preview": "1."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__142",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:142",
+      "paragraph_index": 0,
+      "segment_index": 142,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__143",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:143",
+      "paragraph_index": 0,
+      "segment_index": 143,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__144",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:144",
+      "paragraph_index": 0,
+      "segment_index": 144,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__145",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:146",
+      "paragraph_index": 0,
+      "segment_index": 146,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__146",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:147",
+      "paragraph_index": 0,
+      "segment_index": 147,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__147",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:148",
+      "paragraph_index": 0,
+      "segment_index": 148,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__148",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:149",
+      "paragraph_index": 0,
+      "segment_index": 149,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.",
+      "text_preview": "3."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__149",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:150",
+      "paragraph_index": 0,
+      "segment_index": 150,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__150",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "4.011 Google Scholar Truong et al",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.011 Google Scholar Truong et al., 2015 Truong, N.P., Whittaker, M.R., Mak, C.W., Davis, T.P., 2015. The importance of nanoparticle shape in cancer drug delivery. Expert Opin. Drug Deliv. https://doi.org/10.1517/",
+      "text_preview": "4.011 Google Scholar Truong et al., 2015 Truong, N.P., Whittaker, M.R., Mak, C.W., Davis, T.P., 2015. The importance of nanoparticle shape in cancer drug delivery. Expert Opin. Drug Deliv. https://doi.org/10.1517/"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__151",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:152",
+      "paragraph_index": 0,
+      "segment_index": 152,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__152",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:153",
+      "paragraph_index": 0,
+      "segment_index": 153,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7",
+      "text_preview": "7"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__153",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:154",
+      "paragraph_index": 0,
+      "segment_index": 154,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__154",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:155",
+      "paragraph_index": 0,
+      "segment_index": 155,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__155",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:156",
+      "paragraph_index": 0,
+      "segment_index": 156,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5",
+      "text_preview": "5"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__156",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:157",
+      "paragraph_index": 0,
+      "segment_index": 157,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__157",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:158",
+      "paragraph_index": 0,
+      "segment_index": 158,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__158",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:159",
+      "paragraph_index": 0,
+      "segment_index": 159,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.",
+      "text_preview": "7."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__159",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:160",
+      "paragraph_index": 0,
+      "segment_index": 160,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__160",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:161",
+      "paragraph_index": 0,
+      "segment_index": 161,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__161",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:162",
+      "paragraph_index": 0,
+      "segment_index": 162,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__162",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:164",
+      "paragraph_index": 0,
+      "segment_index": 164,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__163",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:165",
+      "paragraph_index": 0,
+      "segment_index": 165,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__164",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:166",
+      "paragraph_index": 0,
+      "segment_index": 166,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6",
+      "text_preview": "6"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__165",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:167",
+      "paragraph_index": 0,
+      "segment_index": 167,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5",
+      "text_preview": "5"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__166",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:168",
+      "paragraph_index": 0,
+      "segment_index": 168,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__167",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:169",
+      "paragraph_index": 0,
+      "segment_index": 169,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__168",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:170",
+      "paragraph_index": 0,
+      "segment_index": 170,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__169",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:171",
+      "paragraph_index": 0,
+      "segment_index": 171,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.",
+      "text_preview": "8."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__170",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:172",
+      "paragraph_index": 0,
+      "segment_index": 172,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__171",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:173",
+      "paragraph_index": 0,
+      "segment_index": 173,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__172",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:174",
+      "paragraph_index": 0,
+      "segment_index": 174,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__173",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "8.1441915 Google Scholar Wang et al",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.1441915 Google Scholar Wang et al., 2019 L. Wang, B. Zhou, S. Huang, M. Qu, Q. Lin, T. Gong, Y. Huang, X. Sun, Q. He, Z. Zhang, L. Zhang Novel fibronectin-targeted nanodisk drug delivery system displayed superior efficacy against prostate cancer compared with nanospheres Nano Res (2019), 10.1007/s12274-019-2488-3 Google Scholar Yoo et al., 2010 Yoo, J.W., Doshi, N., Mitragotri, S., 2010. Endocytosis and intracellular distribution of PLGA particles in endothelial cells: Effect of particle geometry.",
+      "text_preview": "8.1441915 Google Scholar Wang et al., 2019 L. Wang, B. Zhou, S. Huang, M. Qu, Q. Lin, T. Gong, Y. Huang, X. Sun, Q. He, Z. Zhang, L. Zhang Novel fibronectin-targeted nanodisk drug delivery system displayed superior effic"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__174",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Macromol. Rapid Commun. https://doi.org/10.1002/marc.200900592. Google Scholar Yoo and Mitragotri, 2010 Yoo, J.W., Mitragotri, S., 2010. Polymer particles that switch shape in response to a stimulus. Proc. Natl. Acad. Sci. U. S. A. https://doi.org/10.1073/pnas.1000346107. Google Scholar Yu and Hancock, 2008 Yu, W., Hancock, B.C., 2008. Evaluation of dynamic image analysis for characterizing pharmaceutical excipient particles. Int. J. Pharm. https://doi.org/10.1016/j.ijpharm.",
+      "text_preview": "Macromol. Rapid Commun. https://doi.org/10.1002/marc.200900592. Google Scholar Yoo and Mitragotri, 2010 Yoo, J.W., Mitragotri, S., 2010. Polymer particles that switch shape in response to a stimulus. Proc. Natl. Acad. Sc"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__175",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:176",
+      "paragraph_index": 0,
+      "segment_index": 176,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__176",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:177",
+      "paragraph_index": 0,
+      "segment_index": 177,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__177",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:178",
+      "paragraph_index": 0,
+      "segment_index": 178,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__178",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:179",
+      "paragraph_index": 0,
+      "segment_index": 179,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.",
+      "text_preview": "8."
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__179",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:180",
+      "paragraph_index": 0,
+      "segment_index": 180,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__180",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "5.025. Google Scholar Zhang et al",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.025. Google Scholar Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation for simvastatin delivery Colloids Surfaces B Biointerfaces (2021), 10.1016/j.colsurfb.",
+      "text_preview": "5.025. Google Scholar Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__181",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:182",
+      "paragraph_index": 0,
+      "segment_index": 182,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__182",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:183",
+      "paragraph_index": 0,
+      "segment_index": 183,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__183",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:0#segment:184",
+      "paragraph_index": 0,
+      "segment_index": 184,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__184",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "=== TABLE 1 (TSV) === Composition Particle size (nm) PDI Zeta potential (mV) %EE % DL Artemether (mg) PLGA (mg) PVA (mg) Acetone (mL) Aqueous phase (mL) 5 75 75 5 15 190.2 ± 18.0 0.06 ± 0.01 −8.0 ± 0.58 78.5 ± 1.8 4.9 ± 0.1 5 75 150 5 15 214.3 ± 6.2 0.238 −1.8 ± 0.22 80.0 ± 0.1 5.0 ± 0.0 10 75 300 10 30 196.8 ± 1.1 0.214 −2.2 ± 0.16 78.3 ± 0.0 9.2 ± 0.0 10 75 150 10 30 245.5 ± 44.5 0.183 −3.2 ± 0.24 80.6 ± 0.4 9.5 ± 0.0 10 75 150 15 30 129.3 ± 3.6 0.06 ± 0.01 −7.4 ± 0.69 86.9 ± 0.2 10.2 ± 0.0",
+      "text_preview": "=== TABLE 1 (TSV) === Composition Particle size (nm) PDI Zeta potential (mV) %EE % DL Artemether (mg) PLGA (mg) PVA (mg) Acetone (mL) Aqueous phase (mL) 5 75 75 5 15 190.2 ± 18.0 0.06 ± 0.01 −8.0 ± 0.58 78.5 ± 1.8 4.9 ±"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_paragraph__185",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BB3JUVW7.html.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "=== TABLE 2 (TSV) === Process conditions Major axis (nm) Minor axis (nm) AR Feret’s diameter (nm) Minor Feret’s diameter (nm) Drug content (µg/mg) Film thickness (µm) PLGA type (lactide: glycolide) Extent of stretching Liquefaction method Incubation period (min) 100 75:25 4x Acetone 15 234.1 ± 61.7 61.3 ± 8.7 3.8 ± 0.8 237.2 ± 61.9 77.8 ± 13.3 1.8 150 75:25 4x Acetone 15 295.1 ± 64.9 58.1 ± 12.0 5.1 ± 0.8 265.4 ± 66.3 59.6 ± 15.2 1.4 100 50:50 4x Acetone 15 211.3 ± 44.1 61.1 ± 11.6 3.5 ± 0.7 198.1 ± 37.5 67.7 ± 10.4 2.6 100 75:25 2x Acetone 15 128.1 ± 23.1 61.5 ± 10.3 2.1 ± 0.3 127.5 ± 22.9 61.3 ± 10.4 1.6 100 75:25 4x Heat* 5 241.7 ± 76.3 140.1 ± 31.3 1.7 ± 0.3 294.0 ± 85.8 157.6 ± 32.8 0.9 100 75:25 2x Heat* 15 329.6 ± 79.3 92.2 ± 14.9 3.6 ± 0.7 343.0 ± 79.7 98.9 ± 17.8 0.8 100 75:25 4x Heat* 15 510.7 ± 114.6 102.0 ± 23.7 5.1 ± 0.9 559.5 ± 102.8 119.3 ± 28.8 3.2",
+      "text_preview": "=== TABLE 2 (TSV) === Process conditions Major axis (nm) Minor axis (nm) AR Feret’s diameter (nm) Minor Feret’s diameter (nm) Drug content (µg/mg) Film thickness (µm) PLGA type (lactide: glycolide) Extent of stretching L"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BB3JUVW7/BB3JUVW7__table_01__html_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "numeric runs",
+      "table_score": 320,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BB3JUVW7/BB3JUVW7__table_01__html_table.csv]\n- table_id: Table 1\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: Composition || Artemether (mg) || Composition || PLGA (mg) || Composition || PVA (mg) || Composition || Acetone (mL) || Composition || Aqueous phase (mL) || Particle size (nm) || Particle size (nm) || PDI || PDI || Zeta potential (mV) || Zeta potential (mV) || %EE || %EE || % DL || % DL\n- header_units: mg, mL, nm, mV\n- row_identifier_pattern: numeric runs\n- table_role_hint: formulation\n- table_shape_hint: rows=5, cols=10\n- first_column_row_labels_preview: 5, 5, 10, 10, 10\n- sample_rows:\n- sample_row_1: 5 | 75 | 75 | 5 | 15 | 190.2 ± 18.0 | 0.06 ± 0.01 | −8.0 ± 0.58 | 78.5 ± 1.8 | 4.9 ± 0.1\n- sample_row_2: 10 | 75 | 300 | 10 | 30 | 196.8 ± 1.1 | 0.214 | −2.2 ± 0.16 | 78.3 ± 0.0 | 9.2 ± 0.0\n- sample_row_3: 10 | 75 | 150 | 15 | 30 | 129.3 ± 3.6 | 0.06 ± 0.01 | −7.4 ± 0.69 | 86.9 ± 0.2 | 10.2 ± 0.0\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BB3JUVW7/BB3JUVW7__table_01__html_table.csv] - table_id: Table 1 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: Composit"
+    },
+    {
+      "candidate_id": "BB3JUVW7__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BB3JUVW7/BB3JUVW7__table_02__html_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "numeric runs",
+      "table_score": 170,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BB3JUVW7/BB3JUVW7__table_02__html_table.csv]\n- table_id: Table 2\n- title_or_caption: (not available)\n- column_headers: Process conditions || Film thickness (µm) || Process conditions || PLGA type (lactide: glycolide) || Process conditions || Extent of stretching || Process conditions || Liquefaction method || Process conditions || Incubation period (min) || Major axis (nm) || Major axis (nm) || Minor axis (nm) || Minor axis (nm) || AR || AR || Feret’s diameter (nm) || Feret’s diameter (nm) || Minor Feret’s diameter (nm) || Minor Feret’s diameter (nm) || Drug content (µg/mg) || Drug content (µg/mg)\n- header_units: µm, lactide: glycolide, min, nm, µg/mg\n- row_identifier_pattern: numeric runs\n- table_role_hint: unknown\n- table_shape_hint: rows=7, cols=11\n- first_column_row_labels_preview: 100, 150, 100, 100, 100, 100, 100\n- sample_rows:\n- sample_row_1: 100 | 75:25 | 4x | Acetone | 15 | 234.1 ± 61.7 | 61.3 ± 8.7 | 3.8 ± 0.8 | 237.2 ± 61.9 | 77.8 ± 13.3 | 1.8\n- sample_row_2: 100 | 75:25 | 2x | Acetone | 15 | 128.1 ± 23.1 | 61.5 ± 10.3 | 2.1 ± 0.3 | 127.5 ± 22.9 | 61.3 ± 10.4 | 1.6\n- sample_row_3: 100 | 75:25 | 4x | Heat* | 15 | 510.7 ± 114.6 | 102.0 ± 23.7 | 5.1 ± 0.9 | 559.5 ± 102.8 | 119.3 ± 28.8 | 3.2\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BB3JUVW7/BB3JUVW7__table_02__html_table.csv] - table_id: Table 2 - title_or_caption: (not available) - column_headers: Process conditions || Film thickness (µm) || Pr"
+    }
+  ]
+}

@@ -1,0 +1,1125 @@
+Nanotechnology
+
+PAPER
+Ketoconazole-loading strategy to improve
+antifungal activity and overcome cytotoxicity on
+human renal proximal tubular epithelial cells
+To cite this article: Irem Coksu et al 2024 Nanotechnology 35 115702
+
+View the article online for updates and enhancements.
+You may also like
+Metalloprotease Genes Expression in
+Trichophyton mentagraphytes and
+Trichophyton simii Contains Genetic
+Variations Isolated from Iraqi Patients
+Resistance to Ketoconazole and
+Amphotericin B
+Qadisiyah Hilal Hashoosh and Alaa
+Mohsin. Al-Aaraji
+-
+Green Electrochemical Complexation of
+Fluconazole, Itraconazole, Voriconazole,
+Ketoconazole and Clotrimazole with Silver,
+Copper and Zinc Cations
+Zahra Godini, Davood Nematollahi and
+Faezeh Zivari-Moshfegh
+-
+Effectiveness Comparison of Bitter Melon
+Fruit (Momordica charantia L.) Extract with
+2% Ketoconazole in Inhibiting
+Pityrosporum ovale Growth In Vitro
+A Mulyono, K Ratnaningrum and I D
+Kurniati
+-
+This content was downloaded from IP address 129.2.89.164 on 22/10/2025 at 17:41
+
+Ketoconazole-loading strategy to improve
+antifungal activity and overcome cytotoxicity
+on human renal proximal tubular epithelial
+cells
+Irem Coksu1, Yagmur Bozkurt1,2, Ilkgul Akmayan3, Hasan Demirci4,
+Tulin Ozbek3
+and Serap Acar1,∗
+1 Yildiz Technical University, Faculty of Chemical and Metallurgical, Department of Bioengineering,
+Istanbul, Turkey
+2 National University of Ireland Galway, Mechanical and Biomedical Engineering, Galway, Ireland
+3 Yildiz Technical University, Faculty of Arts and Sciences, Department of Molecular Biology and
+Genetics, Istanbul, Turkey
+4 Institute of Functional Anatomy, Charité-Universitätsmedizin Berlin, Berlin, Germany
+E-mail: serapacar5@gmail.com
+Received 25 July 2023, revised 23 November 2023
+Accepted for publication 10 December 2023
+Published 27 December 2023
+Abstract
+Ketoconazole (KTZ), an antifungal agent used to treat localized or systemic fungal infections by
+inhibiting ergosterol synthesis, exhibits restricted efﬁcacy within eukaryotic cells owing to its
+elevated toxicity and limited solubility in water. This study aims to improve the biological
+activity and overcome cytotoxic effects in the renal system of the hydrophobic KTZ by
+incorporating it into poly(lactic-co-glycolic acid) (PLGA) nanoparticles (NPs) utilizing
+biomaterial nano-engineering techniques. KTZ-loaded PLGA NPs (KTZ-NPs) were prepared by
+single emulsion solvent evaporation method and characterized by using dynamic light scattering
+(DLS), electrophoretic light scattering (ELS), Fourier transform-infrared (FT-IR) spectroscopy
+and scanning light microscopy (SEM). Particle size and zeta potential of KTZ-NPs were
+determined as 182.0 ± 3.27 nm and −27.4 ± 0.56 mV, respectively. Antifungal activity was
+analyzed with the time-kill and top agar dilution methods on Candida albicans (C. albicans) and
+Aspergillus ﬂavus (A. ﬂavus). Both KTZ and KTZ-NPs caused a signiﬁcant decrease in A. ﬂavus
+cell growth; however, the same effect was only observed in time-killing analysis on C. albicans,
+indicating a methodological difference in the antifungal analysis. According to the top agar
+method, the MIC value of KTZ-NPs against A. ﬂavus was 9.1 μg ml−1, while the minimum
+inhibition concentration (MIC) value of KTZ was 18.2 μg ml−1. The twofold increased
+antifungal activity indicates that nanoparticular drug delivery systems enhance the water
+solubility of hydrophobic drugs. In addition, KTZ-NPs were not cytotoxic on human renal
+proximal tubular epithelial cells (HRPTEpCs) at fungistatic concentration, thus reducing fungal
+colonization without cytotoxic on renal excretion system cells.
+Keywords: antifungal activity, biocompatibility, controlled release systems, ketoconazole,
+nanoparticles, PLGA
+1. Introduction
+Aspergillus species (mostly A. fumigatus and less frequently
+A. ﬂavus, A. niger, A. nidulans, and A. terreus) serve as the
+Nanotechnology
+Nanotechnology 35 (2024) 115702 (13pp)
+https://doi.org/10.1088/1361-6528/ad1444
+∗Author to whom any correspondence should be addressed.
+© 2023 IOP Publishing Ltd
+1
+All rights, including for text and data mining, AI training, and similar technologies, are reserved.
+
+source of a disease called ‘aspergillosis,’ which can range
+from localized skin/nail/ocular infections to pulmonary dis-
+ease and disseminated invasive systemic infections. It is
+particularly the most common cause of otomycosis world-
+wide. Candidiasis, caused by especially Candida albicans,
+which is the most common cause of invasive fungal infections
+and associated mortality, includes deep-seated infections in
+submucosal areas that can occur either in conjunction with
+candidemia and associated bloodstream infections or inde-
+pendently [1–7]. The treatment of choice for the diseases is
+based on the use of antifungal drugs such as voriconazole,
+itraconazole, posaconazole, ketoconazole, thiabendazole and
+more recently, isavuconazole. As a matter of fact, in the lit-
+erature, it is often confused as a genus/species studied in
+studies with ketoconazole, other antifungals or plant sec-
+ondary metabolites [2, 4, 5, 8].
+The increasing incidence of fungal infections in recent
+years makes them one of the major public health problems
+worldwide. This is thought to be caused using immune-
+modulating procedures or the increase in the patient popula-
+tion susceptible to rare fungal infections [9]. Although
+superﬁcial mycosis affects about 25% of the world’s popu-
+lation among fungal infections, invasive fungal infections are
+more worrisome because they are life-threatening due to
+diagnostic
+difﬁculties
+and
+limited
+therapeutic
+options.
+Nowadays, these high mortality rates in fungal infections can
+be reduced with the use of broad-spectrum antibiotics, but it is
+known that these antibiotics have high toxicity, too [10].
+Ketoconazole, (KTZ; 1-[4-[4-{[2-(2,4-dichlorophenyl)-2-
+(imidazol-1-ylmethyl)-1, 3-dioxolan-4yl] methoxy} phenyl]
+piperazin-1-yl] ethan-1-one; ﬁgure 1), is a hydrophobic chiral
+imidazole antimycotic drug, which is categorized as Bio-
+pharmaceutics Classiﬁcation System (BCS) class II com-
+pound [11]. It is used in the treatment of topical or systemic
+fungal infections (Aspergillosis, Pneumocystis pneumonia,
+Candidiasis, Cryptococcosis, etc) as broad-spectrum anti-
+biotic [12, 13]. KTZ shows its effect by blocking the synth-
+esis of ergosterol, the primary fungal membrane sterol. This
+effect occurs because of the blockage of C-14 α-demethylase,
+a cytochrome P-450 enzyme that converts lanosterol to
+ergosterol. Due to the blockage, the function of the membrane
+impairs, its permeability increases, and it increases the leak-
+age of amino acids, small ions, and proteins from the fungi,
+leading to cell death [11, 12, 14–17]. The effectiveness of
+ketoconazole treatment in urinary tract infection caused by
+Candida has been demonstrated in clinical study [18]. How-
+ever, high toxicity in eukaryotic cells [19, 20] and low water
+solubility [21–23] of KTZ impair its pharmacodynamic
+properties, thus the biological activity of KTZ [19]. In a study
+performed by El-Baky et al it was shown that KTZ has efﬂux
+pump inhibition activity. Additionally, it is known that most
+of the compounds (e.g. reserpine, omeprazole, phenothiazine)
+exhibit this activity at concentrations that are toxic to eukar-
+yotic cells [19].
+The biological activities of antimicrobial agents can be
+effectively enhanced by encapsulating drugs into nanos-
+tructures.
+Superior
+physicochemical
+properties
+such
+as
+enhanced
+solubility
+and
+stability,
+speciﬁc
+site-targeted
+distribution, and sustained release can be achieved by loading
+antimicrobial agents into nano-sized carrier systems [24, 25].
+In addition, the side effects of the drug can be minimized, it
+can be targeted through its speciﬁc accumulation in the
+infected area, the therapeutic index can be expanded, ther-
+apeutic life can be extended due to its slow elimination,
+antimicrobial resistance can be reduced, protection against
+chemical degradation can be increased and the frequency of
+administration can be reduced [24, 26, 27]. Among the new
+drug delivery systems, polymeric nanoparticles have been
+recognized as up-and-coming carriers of antimicrobial agents
+[24]. Polymeric nanostructures have several advantages such
+as simple production techniques, higher stability compared to
+other colloidal carriers, high therapeutic agent loading ability,
+and biodegradability [27].
+Various drugs and natural products used can cause
+nephrotoxicity resulting in acute kidney failure. One of the
+major problems in drug development studies and clinical use
+of existing drugs is renal toxicity [28]. In preclinical studies,
+2% of drug development failures, 19% of Phase 3 failures,
+and 20% of acute renal failure are due to nephrotoxicity [29].
+It has also been reported that drug-induced kidney injury is
+responsible for 14%–26% of acute kidney injury cases [30].
+One of the common sites of drug-induced kidney injury is the
+proximal tubule cells. Because they are both exposed to cir-
+culating chemicals and have important roles in carrier-medi-
+ated drug clearance [28].
+PLGA, a Food and Drug Administration (FDA) approved
+polymer [31], is biocompatible with long-term durability and
+convenient for application via parenteral injection and used
+frequently in controlled release studies with polymeric NPs.
+The PLGA NPs have higher stability, improved water solu-
+bility, and high drug loading capacity compared to other
+nanocarriers. PLGA NPs improve the biological activity of
+many drugs by controlled release properties [32].
+In the present study, we aimed to synthesize KTZ-loaded
+NPs efﬁciently and compare their antifungal activity with free
+KTZ. Furthermore, we hypothesized that the high nephro-
+toxicity of KTZ may be modulated via encapsulation. For this
+purpose, KTZ-loaded nanostructures were prepared with a
+single emulsion-solvent evaporation method and then the
+prepared NPs were characterized in detail and their antifungal
+Figure 1. Chemical structure of ketoconazole (created with
+ChemDraw Professional 16.0).
+2
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+activity was evaluated against C. albicans and, for the ﬁrst
+time, A. ﬂavus. In addition, the cytotoxic effect of the pre-
+pared NPs on human renal proximal tubular epithelial cells
+(HRPTEpC) was also investigated for the ﬁrst time. It is also
+noteworthy that KTZ-NPs do not have nephrotoxic effects
+against HRPTEpC at the effective dose of ketoconazole for
+antifungal activity.
+2. Materials and methods
+2.1. Materials
+PLGA
+(lactide:glycolide
+=
+50:50;
+inherent
+viscosity
+0.16-0.24 dL g−1, Mw ∼7–17 kDa), polyvinyl alcohol (PVA)
+(Mw = 31–50 kDa), KTZ (99.0%–101.0% (EP, titration)) and
+dichloromethane (DCM) was obtained from Ridel de Haen;
+ethanol,
+3-(4,5-dimetil
+triazol-2-il)−2,5-difeniltetrazolium-
+bromid (MTT) and dimethyl sulfoxide (DMSO) were pur-
+chased from Sigma Aldrich (St. Louis, USA). Sabouraud
+Dextrose Agar, and Sabouraud Dextrose Broth media (both
+from Sigma Aldrich, St. Louis, USA) were used for anti-
+fungal activity tests. C. albicans (ATCC number: 10231) and
+A. ﬂavus (ATCC number: 204304) were provided by the
+Yildiz Technical University Department of Molecular Biol-
+ogy and Genetics (Istanbul, Turkey). RenaEpi Growth Med-
+ium (Sigma-Aldrich) was used for the culture of primary
+human renal proximal tubular epithelial cells (HRPTEpC).
+HRPTEpC (catalog no: 930–05 A) was purchased from
+Sigma Aldrich (St. Louis, USA) Ultra-pure water was
+obtained from the Millipore Milli-Q Gradient system. All the
+chemicals and solvents were of analytical grade.
+2.2. Preparation of KTZ-loaded PLGA NPs
+KTZ-loaded PLGA NPs were synthesized using the oil-in-water
+(o/w) single emulsion solvent evaporation method as previously
+described [33]. Firstly, KTZ and PLGA were dissolved in etha-
+nol-DCM and DCM, respectively. The KTZ and PLGA solutions
+were mixed and vortexed to ensure to obtain organic phase
+homogeneously. This organic phase was emulsiﬁed with aqueous
+PVA solution (3% w/v) by sonication using a microtip probe
+sonicator (Bandelin Sonopuls, Germany) over an ice bath. The
+obtained emulsion was added dropwise to 0.1% w/v PVA
+solution and stirred for 4 h on a magnetic stirrer at room temp-
+erature where organic solvents were removed under constant
+stirring. The prepared NPs were precipitated by centrifugation
+(40 min., 9000 rpm), washed three times with ultrapure water,
+and then freeze-dried. Free NPs were prepared by the same
+method without using KTZ. All lyophilized NPs were stored at
+−20 °C until used for further analysis.
+2.3. Characterization studies
+2.3.1. Reaction yield (RY), encapsulation efficiency (EE), and
+loading capacity (LC).
+One of the important points in the
+production of NPs is to produce NPs with a high reaction
+yield to minimize chemical loss and product cost. The
+reaction yield was determined gravimetrically and calculated
+using equation (1) [32].
+( )
+(
+)
+(
+)
+(
+)
+1
+RY %
+amount of weight NPs mg
+amount of initial KTZ
+PLGA added mg
+100.
+=
++
+´
+Encapsulation efﬁciency was calculated indirectly by
+subtracting the amount of unentrapped KTZ (the amount of
+KTZ in the supernatant) from the total amount of KTZ used
+when synthesizing the NPs. After the centrifugation step, the
+amount of KTZ in the supernatant was determined with a
+UV–vis spectrophotometer at 296 nm. The concentration of
+KTZ in the supernatant was calculated using a standard
+calibration
+curve
+previously
+constructed.
+Encapsulation
+efﬁciency (EE) and loading capacity (LC) of KTZ were
+calculated using equations (2) and (3), respectively [34]
+(
+)
+(
+)
+(
+)
+( )
+EE %
+encapsulated KTZ in NPs mg
+initial KTZ added mg
+100
+2
+=
+´
+(
+)
+(
+)
+(
+)
+( )
+LC %
+encapsulated KTZ in NPs mg
+amount of weight NPs mg
+100.
+3
+=
+´
+2.3.2. Particle size, polydispersity index, and zeta potential
+measurements.
+The dynamic light scattering method was
+used to measure the mean size and polydispersity index (PDI)
+of NPs [35], and the electrophoretic light scattering method
+was used to determine the zeta potential of NPs, and these
+measurements were performed using the Zetasizer (Zetasizer
+Nano ZS, Malvern, UK) instrument [36]. Measurements were
+carried out in triplicate, automatically, at 25 °C ± 0.1 °C with
+using 0.8872 cP of viscosity and 1.330 of refractive index for
+the solutions. All samples were diluted at 1:30 before
+measurement.
+2.3.3. FT-IR analysis.
+FT-IR spectra of free KTZ, PLGA, and
+freeze-dried nanoparticles were obtained in the attenuation total
+reﬂectance (ATR) mode using an FT-IR spectrophotometer
+(Shimadzu, Japan) for chemical analysis of functional groups
+present in NPs and to conﬁrm encapsulation of KTZ into NPs
+[37]. The spectra were obtained from 4000 to 600 cm−1 and
+4 cm−1 resolution with 16 scans per sample.
+2.3.4. SEM analysis.
+The surface morphology, shape, and
+size of the produced NPs were examined using scanning
+electron microscopy [38]. Freeze-dried powdered NPs were
+ﬁxed on metallic studs with double-sided conductive tape,
+then coated with gold under vacuum and analyzed with a
+Zeiss EVO LS 10 (Germany) scanning electron microscope at
+an acceleration voltage of 7.00 kV.
+2.3.5. In vitro KTZ release study.
+In vitro release study of
+KTZ was performed according to the dissolution method
+3
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+described by Arasoglu [39] with minor modiﬁcations. KTZ-
+NPs were suspended in 0.01 M PBS (phosphate buffer
+saline) (pH 7.4) with 0.01% sodium azide at a concentration
+of 1 mg ml−1 and incubated at 37 °C and 150 rpm in a
+shaking incubator. PBS with a pH of 7.4 was used to
+simulate the physiological pH. At the speciﬁed time
+intervals (1, 2, 3, 4, 5 h, and 1, 2, 3 and 4 d) nanoparticle
+suspension was centrifuged at 6000 rpm for 20 min. The
+release medium (supernatant) was fully removed, and fresh
+medium (PBS) was replaced each time. The concentration of
+KTZ released from the NPs into the supernatant was
+measured by UV–vis spectrophotometer at 296 nm by
+comparing the concentration to the standard calibration
+curve created before.
+2.3.6. In vitro antifungal activity.
+The antifungal activity of
+KTZ and KTZ-NPs was investigated by the top agar dilution
+method and time-kill assay methods [39, 40]. These methods
+were carried out separately for C. albicans (ATCC 10231)
+and A. ﬂavus (ATCC 204304). Two different fungi isolates
+were
+subcultured
+according
+to
+a
+previously
+described
+method [40].
+2.3.6.1. Top Agar dilution method.
+In the top agar dilution
+method, the fungus spores were exposed directly to the test
+samples for an hour in a sterile tube containing buffered
+media. In this method, the stock solution was prepared by
+dissolving KTZ and KTZ-NPs in sterile PBS, separately.
+Stock solutions were prepared to contain equal amounts of
+KTZ by considering the loading capacity of the KTZ-NPs.
+Brieﬂy, four different concentrations of each sample were
+prepared (2.048, 1.024, 0.512, and 0.256 mg ml−1 for KTZ-
+loaded NPs; 0.42, 0.21, 0.105, and 0.05 mg ml−1 for KTZ) in
+sterile
+tubes.
+After
+that,
+100 μl
+of
+the
+fungal
+spore
+suspensions (adjusted spectrophotometrically to 78%-82%
+transmittance for C. albicans and 68%-70% transmittance for
+A. ﬂavus at OD 560 nm) was added into the tubes and they
+were preincubated for 1 h at room temperature. Then, 2 ml of
+molten top agar containing 0.5 mM NaCl was added to the
+tubes and spread rapidly to plates containing Sabouraud
+Dextrose Agar (SDA) (Sigma Aldrich, St. Louis, USA). After
+incubation for 24 h C. albicans (at 37 °C), and A. ﬂavus (at
+25 °C), antifungal activity was evaluated according to the
+presence or absence of fungus growth, and the MIC value was
+calculated based on this growth. MIC values were determined
+as the lowest concentration inhibiting fungal growth. Our
+previous study [40] showed that drug-free PLGA NPs had no
+biological activity. Therefore, free PLGA NPs were not
+examined as a control group in this study. Additionally, in the
+antifungal activity experiments, the Petri dishes including
+only fungal culture were used as a control.
+2.3.6.2. Time kill assay.
+This method was performed based on
+ASTM standard E2149- 13a [41] with a minor modiﬁcation. In
+this method, the antifungal activity was study designed
+continuously and directly contacted to test samples with fungal
+culture at shaking conditions. Brieﬂy, test samples were placed in
+a tube containing 3 ml of Sabouraud Dextrose Broth (SDB), and
+then 300 μl of fungal culture was added and the mixture was
+incubated at 37 °C in a shaking incubator. At certain time
+intervals (0, 2, 4, 8, 24, 48, 72 h), 100 μl of the sample was both
+measured spectrophotometrically and spread to SDA. After that,
+the Petri dishes were incubated at 37 °C for 24 h. Viable colonies
+were counted. The results were evaluated as fungicidal activity
+according to the following formula:
+( )
+B
+A
+B
+Growth Inhibition Effect, %, CFU ml
+100.
+4
+/
+=
+-
+´
+Here, A is representing the CFU/ml for the ﬂask containing the
+KTZ-NPs at the selected time, while B is representing CFU/ml
+for the containing the free KTZ after the selected time.
+2.3.6.3.
+Statistical
+analysis.
+Statistical
+analysis
+was
+performed using the SPSS version 22. All the data are
+expressed as means ± SDs of independent three separate
+experiments. Statistical differences between control and
+treated groups for growth inhibition were analyzed by one
+way-ANOVA test (*p-values < 0.05). The homogeneity of
+variance was analyzed by the Tukey test.
+2.3.7. HRPTEpC cytotoxicity evaluation
+2.3.7.1. Cell Culture.
+Primary human renal proximal tubular
+epithelial cells (HRPTEpC) were cultured in RenaEpi Growth
+Medium supplemented with 10% FCS (Thermo Fisher Scientiﬁc)
+in a humidiﬁed incubator (Binder) at 37 °C with 5% CO2.
+2.3.7.2. Viability.
+The effect of free KTZ and KTZ-NPs
+on cell viability in human renal proximal tubular epithelial
+cells
+was
+evaluated
+by
+3-(4,5-dimethylthiazol-2-yl)-2,5-
+diphenyltetrazolium bromide MTT analysis. [42]. Brieﬂy,
+104 HRPTEpC were inoculated in each well of a 96-well plate
+and incubated at 37 °C for 24 h. KTZ-NPs were dissolved in
+the cell culture medium while free ketoconazole powder was
+ﬁrst dissolved in the DMSO stock solution and then in the
+culture medium. The ﬁnal DMSO amount did not exceed
+0.5%. After cells were grown in a monolayer, the medium
+was aspirated and cells were treated with either ketoconazole-
+loaded nanoparticles or free ketoconazole-containing media in
+concentrations of 6.25, 12.5, 25, 50, and 100 μg ml−1 and
+incubated for 24 h. The control group was treated with a drug-
+free medium. Meanwhile, 5 mg ml−1 MTT was dissolved in
+PBS and ﬁltered using a 0.22 μm syringe ﬁlter (Whatman) for
+sterilization. After the treatment, 10 μl of MTT solution was
+added to each well and incubated at 37 °C for 1 h. Afterward,
+the medium was discarded and precipitated formazan crystals
+were dissolved in 100 μl DMSO. The well plate was gently
+shaken at 37 °C for 15 min to allow DMSO to dissolve
+formazan crystals appropriately. Absorbance was measured at
+560 nm immediately with a microplate reader (Biochrom
+Asys Expert 96). Control growth without any drug treatment
+4
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+was 100% viable and relative viability was calculated using
+equation (5):
+(
+)
+( )
+Cell viability %
+OD value of the treated cells
+OD value of control cells
+100.
+5
+=
+´
+2.3.7.3. Microscopy.
+HRPTEp cells were inoculated in a
+24-well plate including coverslips. After cell conﬂuency
+reached 80%, cells were treated with 0, 12.5, 25, and
+50 μg ml−1 of either KTZ-NPs or free ketoconazole. After
+24 h of treatment, cells were ﬁxed in 4% paraformaldehyde
+(PFA),
+and
+cell
+nuclei
+were
+stained
+with
+DAPI
+(4′,6-diamidino-2-phenylindole) which is a blue-ﬂuorescent
+DNA stain. Imaging was carried out with a ﬂuorescence
+microscope (400X magniﬁcation, Axio Imager 2, Zeiss).
+3. Results and discussion
+3.1. Preparation and characterization studies
+Free-NPs and KTZ-NPs were prepared using the single
+emulsion solvent evaporation method. The encapsulation
+efﬁciency of KTZ-NPs was calculated by determining the
+amount of unentrapped KTZ from the supernatant obtained
+after centrifugation by the indirect method. The particles were
+then freeze-dried and weighed to determine the reaction yield
+and KTZ loading capacity. The particle size and zeta potential
+of NPs were measured using dynamic and electrophoretic
+light scattering methods, respectively. Table 1 shows the
+synthesis parameters and RY, EE, LC, particle size, PDI, and
+zeta potential values of prepared nanostructures.
+The gravimetrically determined reaction efﬁciency was
+61.08% for KTZ-NPs and 53.80% for free NPs. EE and LC
+of KTZ–NPs were calculated as 56.04% and 21.07%,
+respectively.
+Figure 2 shows the particle size (a) and zeta potential (b)
+distribution of KTZ-NPs. The particle size of Free-NPs and
+KTZ-NPs were found as 141.5 ± 1.47 and 182.0 ± 3.27 nm,
+respectively. An increase in the particle size was observed
+after the encapsulation of KTZ into NPs. It can be seen in
+ﬁgure 2(a) that the prepared KTZ-NPs size range belongs to a
+single population (100% density). At the same time, the low
+PDI value (0.23 ± 0.004) conﬁrms that monodisperse parti-
+cles are produced, and the particle size is homogeneous. Zeta
+potential values of Free-NPs and KTZ-NPs were measured as
+−27.2 ± 1.98 mV and −27.4 ± 0.56 mV, respectively. Zeta
+potential is one of the key physicochemical properties of
+the stability of nanostructures, which depends on several
+parameters, including the type of drug encapsulated, the
+PLGA end group, and the type of emulsiﬁer [43]. The mea-
+sured negative zeta potential value is due to the presence of
+ionized carboxyl groups (because of acid-terminated PLGA)
+on the surface of the particles [44] and non-ionic PVA used as
+an emulsiﬁer during synthesis [39]. A high (extremely
+positive or negative, >± 30 mV) zeta potential value ensures
+long-term colloidal stabilization by preventing aggregation of
+nanostructure through electrostatic interactions (repulsive
+forces) [45]. Thus, it contributes to biological activity by
+preventing protein adsorption of nanostructure and their
+interaction with serum components.
+FT-IR spectra of KTZ, PLGA, and KTZ-loaded PLGA
+NPs (KTZ-NPs) were evaluated for the analysis of functional
+groups in nanostructures and conﬁrmation of encapsulation of
+KTZ into PLGA NPs. Comparative FT-IR spectra KTZ,
+PLGA, and KTZ-NPs are given in ﬁgure 3.
+In the FT-IR spectrum of PLGA and KTZ-NPs given in
+ﬁgure 3, the bands at 2993 and 2989 cm−1 belong to C–H
+stretching of CH2 and C–H stretching of -CH respectively.
+The band at 1750 cm−1 belongs to the C=O stretching
+vibration of the ester bond, the bands at 1166 and 1086 cm−1
+belong to the C–O stretch, and these bands are the char-
+acteristic peaks of the PLGA molecule. The KTZ showed the
+characteristic peaks of C=O stretching vibration of the car-
+bonyl group, C=C aromatic stretching, tertiary amine groups,
+and C–Cl stretching at 1647 cm−1, 1510 cm−1, 1244 cm−1,
+and 814 cm−1 respectively [46, 47]. However, the signiﬁcant
+decrease in the intensity of the main peaks of KTZ in the
+spectrum of KTZ-NPs and the predominance of characteristic
+peaks of PLGA indicate that KTZ is encapsulated into PLGA
+nanoparticles. However, the low intensity of the C=C aro-
+matic bond at 1510 cm−1 in the FT-IR spectrum of KTZ-NPs
+indicates that a small amount of KTZ is adsorbed on the
+surface of particles.
+The surface morphology and shape of KTZ-NPs were
+analyzed by SEM and the obtained SEM micrograph was
+given in ﬁgure 4. The images of KTZ-NPs conﬁrmed the
+production of spherical-shaped particles with smooth surfaces
+and the size and uniformity of size (low PDI value, 0.23 ±
+0.004) obtained by the dynamic light scattering method.
+3.2. In vitro KTZ release study
+The in vitro release of KTZ-NPs was evaluated in PBS buffer
+at pH 7.4 by dissolution method. The release proﬁle of KTZ
+was followed for 96 h and the graph showing the cumulative
+percentage of KTZ released as a function of time is given in
+ﬁgure 5.
+As shown in ﬁgure 5, the release graphic of KTZ was
+typically diphasic. KTZ-loaded nanoparticles showed initial
+burst release reaching 60% in the ﬁrst 2 h. Burst release of
+drug molecules from particles is generally observed due to the
+rapid diffusion of drug localized near the NP surface or
+adsorbed directly to the surface. In the second phase, the drug
+release reached 79.78% and then the release speed slowed
+down. Nearly linear sustained release was observed between
+48 and 96 h intervals and 84.28% of the KTZ in the NPs was
+released at the end of 96 h. A similar release pattern of
+ketoconazole from PLGA nanoparticles has been reported by
+other researchers [48].
+5
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+Table 1. Synthesis parameters and physicochemical properties of nanostructures.
+NPs
+PLGA amount (mg)
+KTZ amount (mg)
+Reaction yield (%)
+Encapsulation efﬁciency (%)
+Loading capacity (%)
+Size (nm)
+Zeta potential (mV)
+PDI
+Free NPs
+100
+—
+53.80
+—
+—
+141.5 ± 1.47
+−27.2 ± 1.98
+0.18 ± 0.012
+KTZ-NPs
+100
+30
+61.08
+56.04
+21.07
+182.0 ± 3.27
+−27.4 ± 0.56
+0.23 ± 0.004
+6
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+3.3. In vitro antifungal activity
+The antifungal activities of KTZ and KTZ-NPs were eval-
+uated for microbial growth on two different fungus species
+(C. albicans and A. ﬂavus) by two methods (top agar dilution
+and time-kill assay methods). The top agar dilution method
+was used by adding molten top agar to fungal spores directly
+exposed to KTZ and KTZ-NPs for one hour. In this method,
+molten top agar was added to fungal spores that were directly
+exposed to KTZ and KTZ-NPs for one hour. Figure 6 pre-
+sents the results obtained from this method and includes the
+Petri dish images of C. albicans and A. ﬂavus treated with the
+test samples, along with the corresponding control groups
+(only
+fungal
+spores
+not
+treated
+KTZ
+and
+KTZ-NPs).
+According to the results in the top agar method, we observed
+that both KTZ and KTZ-NPs caused a signiﬁcant decrease in
+fungal growth on A. ﬂavus; the antifungal activity was not
+detected in the doses applied in both test samples on C. albicans
+(ﬁgures 6(a)–(b)). The minimum inhibitory concentration (MIC)
+value of KTZ-NPs and KTZ against A. ﬂavus, as determined by
+the top agar dilution method, was observed to be 9.1 μg ml−1
+and 18.2 μg ml−1, respectively.
+In the time-kill method, antifungal activity was evaluated
+by exposing to test samples an aqueous medium for 72 h with
+Figure 2. The particle size (a) and zeta potential (b) distribution of KTZ-NPs.
+Figure 3. FT-IR spectra of ketoconazole, PLGA, and KTZ-NPs.
+Figure 4. SEM micrograph of KTZ-NPs at 10000x magniﬁcation.
+Figure 5. Cumulative in vitro release of KTZ from KTZ-NPs
+at pH 7.4.
+7
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+the fungal spores. In the assay, the decrease in the number of
+fungal colonies and absorbance values at 560 nm was inter-
+preted as growth inhibition efﬁciency. Based on the ﬁndings,
+it was observed that both KTZ and KTZ-NPs induced a
+considerable reduction in the colony count of C. albicans after
+8 h (Petri dish images are given in ﬁgure 7), in comparison to
+the growth of the fungus (as depicted in ﬁgure 8(a)). On the
+other hand, a similar impact was observed for A. ﬂavus after a
+time period of 4 h (as presented in ﬁgures 7 and 8(b)). The
+reduction in the colony count was positively associated with
+the absorbance values evaluated concurrently. The inhibitory
+effects of the aforementioned agents were sustained for 3 d for
+both fungal species.
+Figure 8 shows the growth inhibition effect of KTZ and
+KTZ-NPs for C. albicans (c) and A. ﬂavus (d). In this study, it
+was observed that for C. albicans, an initial decline in the
+viable colony count was observed after the 4th-hour, with
+reductions of 34% and 62% for the respective test specimens.
+This was followed by a notable increase in colony count at the
+8th hour, with values of 96% and 94%, respectively, and
+subsequently remained at 100% for the following three days.
+Conversely, a high growth inhibition effect for A. ﬂavus was
+attained within the ﬁrst two hours of testing, with reductions
+of 69% and 70%, respectively, followed by complete inhi-
+bition in subsequent assessments. The observed growth
+inhibitory effect was further corroborated by the Petri dish
+images obtained, as outlined in ﬁgure 7. Notably, no colony
+formation was detected after 24 h of treatment with KTZ and
+KTZ-NPs for C. albicans, as determined by the time-depen-
+dent study. Furthermore, the images obtained at the 8th hour
+indicated that the nanostructures exhibited a greater antifungal
+effect than free ketoconazole. Similarly, for A. ﬂavus, no
+Figure 6. Petri images of KTZ and KTZ-NPs compared with fungal control according to the top agar dilution method against (a) C. albicans
+and (b) A. ﬂavus. The mg/ml values show the KTZ concentration for both free KTZ and KTZ-NPs in the top agar dilution method. The
+concentration of the fungal control suspensions was 106 CFU ml−1.
+8
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+viable colonies were observed for both test specimens starting
+from the 2nd hour of testing. The results obtained from the
+study were consistent with the colony number (CFU/ml) and
+growth inhibition (%) data. Furthermore, as illustrated in
+ﬁgures 8(c), (a) statistically signiﬁcant difference was detec-
+ted between the KTZ and KTZ-NP groups in the 2nd and 4th-
+hour results, while no signiﬁcant difference was observed
+between the other hours, both of which exhibited complete
+growth inhibition (p < 0.05).
+The ﬁndings of our study have highlighted the crucial
+role of the long-term interaction of fungal spores in a liquid
+culture of the antifungal drug ketoconazole, as evidenced by
+the signiﬁcant differences observed between the two test
+methods employed. These results emphasize the importance
+of extended exposure periods to the drug to achieve optimal
+effectiveness. Although our study demonstrated the efﬁcacy
+of ketoconazole against A. ﬂavus, in contrast to the existing
+literature, it did not exhibit any activity against C. albicans.
+For example, Sadozai et al reported that the MIC value for
+C. albicans of PLGA NPs loaded with ketoconazole was
+0.625 mg ml−1 [48]. The present study demonstrates a sig-
+niﬁcant reduction in the MIC values of pure ketoconazole and
+PLGA nanoparticle formulation, dissolved in dimethyl sulf-
+oxide, upon the inclusion of silver nanoparticles, with the
+values dropping from 0.625 mg ml−1 to 40 μg ml−1. More-
+over, the diameter of the growth inhibition zone of ketoco-
+nazole-PLGA nanoparticles was remarkably lower (6.8 mm)
+in the agar diffusion method implemented in this study. Our
+Figure 7. The petri images of (a) C. albicans and (b) A. ﬂavus according to time kill method for different time interval.
+9
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+observations suggest that the variability observed in the
+results may be attributed primarily to the microbiological
+methods utilized in the study.
+Considering the obtained MIC values, it was observed
+that KTZ-NPs exhibited greater antifungal efﬁcacy against A.
+ﬂavus than KTZ. The limited water solubility of antifungal
+drugs represents a signiﬁcant impediment to their biological
+activity. The twofold increase in antifungal activity observed
+with KTZ-NPs can be attributed to the enhanced water
+solubility of KTZ facilitated by nanoparticles. The sustained
+and controlled release of the drug from KTZ-NPs likely
+extended the interaction time with fungal spores in the aqu-
+eous medium, thereby contributing to the observed decrease
+in the MIC value relative to the free drug. In various studies,
+it has been reported that antifungal agent/drug-loaded poly-
+meric nanoparticles increase antifungal activity compared to
+free drugs [49–51]. Peng et al produced voriconazole-PLGA
+nanoparticles and showed that they have a more permanent
+and more effective antifungal activity than free voriconazole
+[52]. Patel et al produced nanoparticles of different sizes to
+examine a mechanism of action of the antifungal activity of
+itraconazole-loaded PLGA nanoparticles against fungal cells.
+It was also shown by Patel et al that 200 nm particles showed
+consistent inhibitory activity at all concentrations compared to
+free itraconazole, while particles with 630 and 1060 nm sizes
+showed less antifungal activity at the lowest drug con-
+centration. Patel et al suggested that other mechanisms may
+play a role in facilitating itraconazole penetration into fungal
+cells, but that particle size is a crucial parameter for drug
+delivery efﬁciency [53]. The particle sizes we obtained below
+200 nm may inﬂuence the antifungal activity. Considering the
+size of the produced nanoparticles, an increase in efﬁciency in
+nanoformulation is an expected result.
+3.4. HRPTEpC cell cytotoxicity evaluation
+To obtain preliminary information about the nephrotoxic
+effect of free KTZ and KTZ-NPs on the renal system, the
+cytotoxic effect of nanostructures and free KTZ on human
+renal proximal tubular epithelial cells was evaluated by MTT
+analysis. Cell viability assay was carried out to detect diff-
+erential nephrotoxicity levels of free KTZ versus KTZ-NPs
+(ﬁgure 9(a)). The results revealed that high concentrations of
+free
+KTZ,
+induced
+cell
+death
+more
+than
+KTZ-NPs.
+50 μg ml−1 of free KTZ treatment caused signiﬁcantly more
+cellular death than KTZ-NPs. On the other hand, the maximal
+difference was observed in the highest concentration. MTT
+assay showed that 100 μg/ml free KTZ treatment resulted in
+only 14% cell viability, while cells treated with KTZ-NPs
+were 77% viable.
+To verify MTT results, DAPI staining was performed to
+detect apoptosis. The microscopy images (ﬁgure 9(b))
+revealed that cellular conﬂuency decreased in a dose-depen-
+dent manner. However, free KTZ treatment caused more
+cellular death compared to KTZ-NPs. Besides, chromatin
+condensation
+and
+nuclear
+shrinkage
+are
+morphological
+Figure 8. The colony number and absorbance values obtained by time-kill method for C. albicans (a) and A. ﬂavus (b); the growth inhibition
+effect of KTZ and KTZ loaded NPs obtained by time-kill method on C. albicans (c) and A. ﬂavus (d).
+10
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+evidence of apoptosis [54]. Microscopy images indicate that
+free KTZ induced more apoptosis compared to KTZ-NPs.
+4. Conclusion
+Ketoconazole is a broad-spectrum synthetic imidazole anti-
+fungal approved by the FDA [55] for the treatment of sys-
+temic fungal infections [56]. Its aqueous solubility is not
+sufﬁcient (0.087 mg l−1 at 25 °C) [57] to dissolve the entire
+dose in gastrointestinal ﬂuids under normal conditions and is
+not absorbed systemically after topical application. Studies
+have shown that KTZ has toxicity in mammalian cells and
+tissues when used at high oral therapeutic doses [58, 59]. It
+has also been reported to have toxic effects on the liver after
+oral administration [60].
+In this study, PLGA-based polymeric nanoparticles were
+synthesized with low particle size and size distribution (182.0
+± 3.27 nm and 0.23 ± 0.004, respectively) and high surface
+charge (−27.4 ± 0.56 mV) by single emulsion solvent eva-
+poration method for an effective carrier system design of
+hydrophobic ketoconazole. KTZ and KTZ-NPs caused a
+signiﬁcant reduction in A. ﬂavus cell growth; however, the
+same effect was not observed on C. albicans. According to
+the results of the top agar dilution method, the MIC value of
+KTZ-NPs was 9.1 μg ml−1, while the MIC value of KTZ was
+18.2 μg ml−1 against A. ﬂavus. Antifungal activity against A.
+ﬂavus twofold increased with the long-term release of keto-
+conazole (approximately 96 h) despite low-dose exposure.
+Nephrotoxicity evaluation showed that KTZ NPs resulted in
+higher cell viability compared to free KTZ treatment. This
+indicates that the encapsulation of KTZ into nanostructures
+improves its biocompatibility. It is thought that these outputs
+will provide important beneﬁts in future therapeutic applica-
+tions. In addition, in further studies, the surface of NPs pro-
+duced
+for
+selective
+targeting
+of
+fungal
+cells
+can
+be
+functionalized using synthetic peptides.
+Figure 9. Cell viability (a) and ﬂuorescence microscopy images (b) of free KTZ and KTZ-NPs at different concentrations.
+11
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+Acknowledgments
+This research was supported by the Scientiﬁc and Techno-
+logical Research Council of Turkey (TUBITAK) (Programme
+Code: 2209-B; Application No: 1139B411800439). Authors
+Irem Coksu and Ilkgul Akmayan are granted a scholarship by
+the Republic of Turkey, Council of Higher Education, 100/
+2000 Scholarship Programme of Doctorate, in the ﬁelds of
+‘Biomedical Technology and Equipments’ and ‘Biomaterials
+and Tissue Engineering’, respectively.
+Data availability statement
+All data that support the ﬁndings of this study are included
+within the article (and any supplementary ﬁles).
+Disclosure statement
+No potential conﬂict of interest was reported by the author(s).
+ORCID iDs
+Tulin Ozbek
+https://orcid.org/0000-0001-6858-7045
+Serap Acar
+https://orcid.org/0000-0002-6662-6642
+References
+[1] Ralte R et al 2022 Antifungal sensitivity testing of aspergillus
+species isolated from recurrent canine skin infection Indian
+J. Canine Pract. Vol. 14 48–51
+[2] Nosratabadi M et al 2023 In vitro combination of terbinaﬁne
+with ketoconazole against aspergillus species with
+terbinaﬁne high mic values isolated from otomycosis
+Mycopathologia 188 119–27
+[3] Oji E O 1982 Ketoconazole: a new imidazole antifungal agent
+has both prophylactic potential and therapeutic efﬁcacy in
+keratomycosis of rabbits Int. Ophthalmol. 5 163–7
+[4] Shin S 2003 Anti-aspergillus activities of plant essential oils
+and their combination effects with ketoconazole or
+amphotericin B Arch. Pharmacal Res. 26 389–93
+[5] Shin S and Kang C A 2003 Antifungal activity of the essential
+oil of agastache rugosa kuntze and its synergism with
+ketoconazole Lett. Appl. Microbiol. 36 111–5
+[6] Shukla K et al 2019 Role of Candida infection in the malignant
+transformation of oral leukoplakia: a systematic review of
+observational studies Transl. Res. Oral Oncol. 4
+2057178X19828229
+[7] Monday L M, Parraga Acosta T and Alangaden G 2021
+T2Candida for the diagnosis and management of invasive
+candida infections J. Fungi 7 178
+[8] Štěpánek O et al 2022 Piperazine-modiﬁed ketoconazole
+derivatives show increased activity against fungal and
+trypanosomatid pathogens Chem. Med. Chem. 17
+e202200385
+[9] Lockhart S R and Guarner J 2019 Emerging and reemerging
+fungal infections Seminars in Diagnostic Pathology
+(Elsevier)
+[10] Voltan A R et al 2016 Fungal diseases: could nanostructured
+drug delivery systems be a novel paradigm for therapy? Int.
+J. Nanomed. 11 3715
+[11] Tiwari N et al 2018 Enhanced antifungal activity of
+ketoconazole using rose oil based novel microemulsion
+formulation J. Drug Deliv. Sci. Technol. 47 434–44
+[12] Dudhipala N and Ay A A 2020 Amelioration of ketoconazole
+in lipid nanoparticles for enhanced antifungal activity and
+bioavailability through oral administration for management
+of fungal infections Chem. Phys. Lipids 232 104953
+[13] Popovska O, Kavrakovski Z and Rafajlovska V 2014
+Development and validation of UV spectroscopic method
+for determination of ketoconazole in pharmaceutical
+formulations Int. J. Pharm. 4 95–101
+[14] Shrivastava S, Shrivastava S and Tiwle R 2020 Validation of
+novel UV Spectrophotometric method for the determination
+of ketoconazole in pharmaceutical formulation
+J. Pharmaceutical Adv. Res. 3 792–8
+[15] Ahmed T A and Aljaeid B M 2017 A potential in situ gel
+formulation loaded with novel fabricated poly (lactide-co-
+glycolide) nanoparticles for enhancing and sustaining the
+ophthalmic delivery of ketoconazole Int. J. Nanomed. 12 1863
+[16] Tavakoli M et al 2021 Studying the ophthalmic toxicity
+potential of developed ketoconazole loaded nanoemulsion
+in situ gel formulation for ophthalmic administration
+Toxicol. Mech. Methods 31 572–80
+[17] Sriyani M E et al 2016 Biological safety evaluation of 99mtc-
+dtpa-ketoconazole for diagnosis of fungal infection
+Indonesian J. Phys. Nucl. Appl. 1 138–44
+[18] Graybill J R et al 1983 Ketoconazole therapy for fungal urinary
+tract infections J. Urol. 129 68–70
+[19] Abd El-Baky R M et al 2019 A novel mechanism of action of
+ketoconazole: inhibition of the NorA efﬂux pump system
+and bioﬁlm formation in multidrug-resistant staphylococcus
+aureus Infection Drug Resis. 12 1703
+[20] Wiesinger H et al 2015 Pharmacokinetic interaction between
+the CYP3A4 inhibitor ketoconazole and the hormone
+drospirenone in combination with ethinylestradiol or
+estradiol Br. J. Clin. Pharmacol. 80 1399–410
+[21] Hiendrawan S et al 2015 Solubility enhancement of
+ketoconazole via salt and cocrystal formation Int. J. Pharm.
+Pharm. Sci. 7 160–4
+[22] Hosmani A H and Thorat Y S 2011 Synthesis and evaluation
+of nanostructured particles of salt of ketoconazole for
+solubility enhancement Digest. J. Nanomat. Biostruct. 6
+1411–8
+[23] Molaei M-A et al 2018 Enhancement of ketoconazole
+dissolution rate by the liquisolid technique Acta
+Pharmaceutica 68 325
+[24] Gumustas M et al 2017 Effect of polymer-based nanoparticles
+on the assay of antimicrobial drug delivery systems
+Multifunctional Systems for Combined Delivery, Biosensing
+and Diagnostics (Elsevier) pp 67–108
+[25] Arvanag F M et al 2019 A comprehensive study on
+antidiabetic and antibacterial activities of ZnO nanoparticles
+biosynthesized using Silybum marianum L seed extract
+Mater. Sci. Eng.C 97 397–405
+[26] Esfandyari-Manesh M et al 2013 Study of antimicrobial
+activity of anethole and carvone loaded PLGA nanoparticles
+J. Pharmacy Res. 7 290–5
+[27] Derman S, Kizilbey K and Akdeste Z M 2013 Polymeric
+nanoparticles Sigma J. Eng. Nat. Sci. 31 107–20
+[28] Li S et al 2017 Development and application of human renal
+proximal tubule epithelial cells for assessment of compound
+toxicity Curr. Chem. Genomics Transl. Med. 11 19
+[29] Jang K-J et al 2013 Human kidney proximal tubule-on-a-chip
+for drug transport and nephrotoxicity assessment Integr.
+Biol. 5 1119–29
+12
+Nanotechnology 35 (2024) 115702
+I Coksu et al
+
+[30] Vormann M K et al 2021 Implementation of a human renal
+proximal tubule on a chip for nephrotoxicity and drug
+interaction studies J. Pharm. Sci. 110 1601–14
+[31] Ghitman J et al 2020 Review of hybrid PLGA nanoparticles:
+future of smart drug delivery and theranostics medicine
+Mater. Des. 193 108805
+[32] Derman S 2015 Caffeic acid phenethyl ester loaded PLGA
+nanoparticles: effect of various process parameters on
+reaction yield, encapsulation efﬁciency, and particle size
+J. Nanomater. 2015 341848
+[33] Arasoğlu T and Derman S 2018 Assessment of the
+antigenotoxic activity of poly (d, l-lactic-co-glycolic acid)
+nanoparticles loaded with caffeic acid phenethyl ester using
+the Ames Salmonella/microsome assay J. Agric. Food
+Chem. 66 6196–204
+[34] Erisen S et al 2020 Cytotoxic and mutagenic potential of
+juglone: a comparison of free and nano-encapsulated form
+Archives Indust. Hygiene Toxicol. 71 69–77
+[35] Bayrami A et al 2020 Co-regulative effects of chitosan-fennel
+seed extract system on the hormonal and biochemical factors
+involved in the polycystic ovarian syndrome Mater. Sci.
+Eng.C 117 111351
+[36] Derman S and Akdeste Z M 2015 Particle size and zeta potential
+investigation of synthetic peptide-protein conjugates/Sentetik
+peptid-protein konjugatlarının parçacık boyutu ve zeta
+potensiyel analizi Turkish J. Biochem. 40 282–9
+[37] Ozdemir C et al 2023 A new strategy to achieve high antimicrobial
+activity: green synthesised silver nanoparticle formulations with
+and Archives Indust. Hygiene Toxicol. 74 90–8
+[38] Chen X-t and Wang T 2019 Preparation and characterization of
+atrazine-loaded biodegradable PLGA nanospheres
+J. Integrative Agric. 18 1035–41
+[39] Arasoglu T, Derman S and Mansuroglu B 2015 Comparative
+evaluation of antibacterial activity of caffeic acid phenethyl
+ester and PLGA nanoparticle formulation by different
+methods Nanotechnology 27 025103
+[40] Arasoglu T et al 2016 Enhancement of antifungal activity of
+juglone (5-Hydroxy-1, 4-naphthoquinone) using a poly (d,
+l-lactic-co-glycolic acid)(PLGA) nanoparticle system
+J. Agric. Food Chem. 64 7087–94
+[41] E-13a 2013 A Standard Test Method for Determining the
+Antimicrobial Activity of Antimicrobial Agents Under
+Dynamic Contact Conditions (American Society for Testing
+and Materials)
+[42] ISO-Standards, ISO 10993-5: 2009 (E) 2009 Biological
+evaluation of medical devices: V. Tests for cytotoxicity in
+vitro(International Organizational for Standardization
+Geneve)
+[43] Ahmadi F et al 2019 Doxorubicin-verapamil dual loaded
+PLGA nanoparticles for overcoming P-glycoprotein
+mediated resistance in cancer: effect of verapamil
+concentration J. Drug Deliv. Sci. Technol. 53 101206
+[44] Sahoo S K et al 2002 Residual polyvinyl alcohol associated
+with poly (D, L-lactide-co-glycolide) nanoparticles affects
+their physical properties and cellular uptake J. Controlled
+Release 82 105–14
+[45] Bhatt P et al 2020 Nanodelivery of resveratrol-loaded PLGA
+nanoparticles for age-related macular degeneration AAPS
+PharmSciTech 21 1–9
+[46] Vieira I R S et al 2019 Waterborne poly (urethane-urea) s ﬁlms
+as a sustained release system for ketoconazole e-Polymers
+19 168–80
+[47] Karolewicz B et al 2014 Thermal, spectroscopic, and
+dissolution studies of ketoconazole–Pluronic F127 system
+J. Therm. Anal. Calorim. 115 2487–93
+[48] Sadozai S K et al 2020 Ketoconazole-loaded PLGA
+nanoparticles and their synergism against candida albicans
+when combined with silver nanoparticles J. Drug Deliv. Sci.
+Technol. 56 101574
+[49] Arasoglu T et al 2017 Synthesis, characterization and
+antibacterial activity of juglone encapsulated PLGA
+nanoparticles J. Appl. Microbiol. 123 1407–19
+[50] Gómez-Sequeda N, Torres R and Ortiz C 2017 Synthesis,
+characterization, and in vitro activity against candida spp. of
+ﬂuconazole encapsulated on cationic and conventional
+nanoparticles of poly (lactic-co-glycolic acid).
+nanotechnology Sci. Appl. 10 95
+[51] Gursu B Y, Dag İ and Dikmen G 2022 Antifungal and
+antibioﬁlm efﬁcacy of cinnamaldehyde-loaded poly (DL-
+lactide-co-glycolide)(PLGA) nanoparticles against candida
+albicans Int. Microbiol. 25 245–58
+[52] Peng H-S et al 2008 Voriconazole into PLGA nanoparticles:
+improving agglomeration and antifungal efﬁcacy Int. J.
+Pharm. 352 29–35
+[53] Patel N R et al 2011 Size dependency of PLGA-nanoparticle
+uptake and antifungal activity against aspergillus ﬂavus
+Nanomedicine 6 1381–95
+[54] Rogalińska M 2002 Alterations in cell nuclei during apoptosis
+Cell. Mol. Biol. Lett. 7 995–1018
+[55] Doheny D et al 2022 An FDA-approved antifungal,
+ketoconazole, and its novel derivative suppress tGLI1-
+mediated breast cancer brain metastasis by inhibiting the
+DNA-binding activity of brain metastasis-promoting
+transcription factor tGLI1 Cancers 14 4256
+[56] Chen X et al 2020 Ketoconazole: solving the poor solubility
+via cocrystal formation with phenolic acids Cryst. Growth
+Des. 20 6973–82
+[57] Fathi M, Sodeiﬁan G and Sajadian S A 2022 Experimental
+study of ketoconazole impregnation into polyvinyl
+pyrrolidone and hydroxyl propyl methyl cellulose using
+supercritical carbon dioxide: process optimization
+J. Supercrit.ical Fluids 188 105674
+[58] Yang L et al 2018 Effects of ketoconazole on
+cyclophosphamide metabolism: evaluation of CYP3A4
+inhibition effect using the in vitro and in vivo models Exp.
+Animals 67 71–82
+[59] Sugar A et al 1987 Pharmacology and toxicity of high-dose
+ketoconazole Antimicrob. Agents Chemother. 31 1874–8
+[60] Choi F D, Juhasz M L and Mesinkovska N A 2019 Topical
+ketoconazole: a systematic review of current dermatological
+applications and future developments J. Dermatol. Treat. 30
+760–71
+13
+Nanotechnology 35 (2024) 115702
+I Coksu et al

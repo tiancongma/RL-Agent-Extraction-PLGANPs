@@ -1,0 +1,23 @@
+0,1,2,3,4,5,6,7,8
+Table 1: Independent,and,dependent,variables,levels,in Box-,,drug entrapment and drug loading [34] of nanoparticles was,
+Behnken design.,,,,,,calculated by using the following equations:,,
+,,,,Levels,,,,
+,,,,,,Encapsulation efficiency (%),,
+,,,−1,0,1,,,
+,,,,,,,,
+Independent variables,,,,,,(total amount of the drug − amount of,the free drug),
+,,,,,,= (,,)
+,𝑋1 = polymer concentration (w/v),,10,35,60,,,
+,,,,,,total drug,,
+,𝑋2 = surfactant concentration (w/v),,2,8.50,15,,,
+,,,,,,× 100,,
+,𝑋3 = aqueous/organic phase ratio (v/v),,2,6,10,,,
+,,,,,,,,(2)
+,𝑋4 = drug concentration (w/v),,1,3,5,,,
+Dependent Variables:,,,,Constraints,,,,
+,,,,,,Drug Loading (%),,
+𝑌1 = 𝑧-average (d⋅nm),,,,Minimize,,,,
+𝑌2 = % drug entrapment,,,,Maximize,,(Amount of drug − Un entrapped drug),,
+,,,,,,= (,),
+,,,,,,,,(3)
+,,,,,,weight of Lzp-PLGA-NPs,,

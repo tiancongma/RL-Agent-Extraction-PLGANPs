@@ -1,0 +1,792 @@
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+Available online 2 May 2022
+0141-8130/© 2022 Elsevier B.V. All rights reserved.
+Controlled synthesis of in-situ gold nanoparticles onto chitosan
+functionalized PLGA nanoparticles for oral insulin delivery
+Hajar A. Asal a, Kamel R. Shoueir b,c,*, Maha A. El-Hagrasy a, Elshahat A. Toson a
+a Department of Chemistry, Faculty of Science, Damietta University, Damietta, Egypt
+b Institute of Nanoscience & Nanotechnology, Kafrelsheikh University, 33516 Kafrelsheikh, Egypt
+c Institut de Chimie et Proc´ed´es pour l’´Energie, l’Environnement et la Sant´e (ICPEES), CNRS UMR 7515-Universit´e de Strasbourg, 25 rue Becquerel, 67087 Strasbourg,
+France
+A R T I C L E  I N F O
+Keywords:
+Chitosan reduced gold nanoparticles
+Emulsion solvent diffusion
+Functionalization with PLGA
+Oral insulin delivery
+Diabetes
+A B S T R A C T
+Chitosan-based nanoparticles (chitosan nanoparticles (ChNps), chitosan gold Nps (ChAuNps), and chitosan gold
+Nps functionalized with poly lactic-co-glycolic acid (PLGA) (ChAuNps/PLGA)) were prepared as nanocarriers for
+insulin to improve its oral uptake. The emulsion solvent diffusion method was employed to functionalize the Nps
+with PLGA. TEM, SEM, DLS, and zeta potential were conducted to characterize the Nps. The morphological
+analysis confirmed the formation of spherical Nps with hydrodynamic particle sizes of 138±23, 16±2.2, and 50
+±9.3 nm for ChNps, ChAuNps, and ChAuNps/PLGA, respectively. Zeta potential measurements indicated two
+types of Nps, regardless of insulin entrapment, positively charged, (ChNps (+36 ± 4.2, +31 ± 2.2mv)) and
+ChAuNps (+37 ± 4.3, +33 ± 2.5mv) and negatively charged (ChAuNps/PLGA (−31 ± 2.7, −26 ± 2.1 mv)). The
+in vitro studies were assessed by measuring the entrapment efficiencies (EE%) and the release profiles of insulin at
+different pH values. EE% for ChNps, ChAuNps, and ChAuNps/PLGA were 97 ± 1.5, 98.4 ± 1.9, and 99 ± 1.2%,
+respectively. At an acidic medium, a significant level of insulin retention was observed (96 ± 0.08%) for
+ChAuNps/PLGA. While a high amount was released at higher pH values over an extended period of time. In vivo
+studies, diabetic rats treated with insulin-loaded Nps had reduced blood glucose level (BGL) (38 ± 2.8, 35 ± 6.5,
+and 27 ± 5.6%) for ChNps ChAuNps and ChAuNps/PLGA, respectively. The pharmacological availability (PA%)
+and bioavailability (FR%) for insulin-loaded ChAuNps/PLGA were 15.8 ± 0.71% and 7.7 ± 0.93%, respectively.
+Altogether, emphasize the role of biocompatible Nps and their efficiency in the convenient delivery of insulin,
+thus lowering the BGL in a safe condition.
+1. Introduction
+Diabetes mellitus (DM) has spread over the globe, affecting millions
+of people, and is anticipated to become the leading cause of death by
+2030 [1]. With its various kinds, DM is induced by an inability to
+manage blood glucose levels, resulting in high blood glucose levels [2].
+DM complications can vary from one to another, and it is readily
+detected when a patient exhibits characteristic hyperglycemia symp­
+toms and has a random blood glucose level of 200 mg/dl or above [3].
+Controlling blood glucose levels in diabetic patients with insulin
+insufficiency necessitates exogenous insulin. Nowadays, the most com­
+mon treatment for DM is regular insulin injections into the skin [4].
+Numerous and frequent insulin injections, on the other hand, can cause a
+variety of problems, including local infection, fat deposits at injection
+sites, stress, and insulin resistance, leading to inpatient discomfort, poor
+compliance, and ineffective treatment [5]. Insulin (5800 Da peptide
+hormone) consists of 51 amino acids arranged in two peptide chains (A
+and B chains) linked by disulfide bonds. It regulates carbohydrate, fat,
+and protein metabolism by boosting cellular uptake of peripheral
+glucose and synthesizing hepatic glycogen, fatty acids, and proteins [6].
+Oral administration is the preferred route for drug delivery. How­
+ever, the efficacy of the drug delivery continues to be challenging for
+many reasons, including the drug’s physicochemical properties. To
+overcome such problems, nanoscale delivery methods, including natural
+and synthetic polymeric nanoparticles, liposomes, solid lipid nano­
+particles, nanoemulsions, and inorganic nanoparticles, have been
+developed for insulin administration [7]. Natural polymeric nano­
+particles, such as chitosan and poly(Lactic acid-co-Glycolic acid)
+* Corresponding author at: Institute of Nanoscience & Nanotechnology, Kafrelsheikh University, 33516 Kafrelsheikh, Egypt.
+E-mail address: kamel_rezk@nano.kfs.edu.eg (K.R. Shoueir).
+Contents lists available at ScienceDirect
+International Journal of Biological Macromolecules
+journal homepage: www.elsevier.com/locate/ijbiomac
+https://doi.org/10.1016/j.ijbiomac.2022.04.200
+Received 4 March 2022; Received in revised form 26 April 2022; Accepted 27 April 2022
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2189
+(PLGA), were found to have superior biocompatibility and biodegrad­
+ability and are safer when used with physiological substances [8].
+When designing efficient insulin-loaded nanoparticle systems,
+physiological barriers in the GI tract, including chemical, enzymatic,
+and physical barriers, should be considered [9]. These systems should
+have high stability when passing through a wide range of gastrointes­
+tinal tract pH, including a sudden drop in pH from 6.8 (mouth) to 1.2
+(stomach), accompanied by a change from a highly acidic environment
+to a slightly basic environment (pH 6.5 to 8.0) in the small intestine,
+which could induce deprotonation or protonation of proteins and
+polysaccharides-based nanoparticles [10].
+Surface characteristics play an active role in nanoparticle absorption
+via the transcellular pathway. Positively charged nanoparticles,
+including chitosan and hydrophobic nanoparticles, like PLGA, are well
+known for their high affinity to interact with the negatively charged
+mucoid epithelial cell membranes [11].
+Chitosan (Ch) is a biodegradable, non-toxic linear polysaccharide
+with mucoadhesive physicochemical features and generated from its
+main source chitin by a deacetylation reaction and used for different
+trends [12–17]. It has been applied as a surface of the nanoparticles to
+act as a coating layer and improve the chemical, enzymatic stability, and
+mucoadhesion properties [18]. Chitosan reacts with insulin when
+negatively charged, acting as a polyanion to form nanoparticles with a
+size of 210 nm [19]. In addition, Ch was also reported as a reducing and
+stabilizing agent for the gold ions, generating a ruby-red solution of
+insulin-loaded gold nanoparticles for nasal and oral insulin delivery
+[20].
+Due to their numerous deep-rooted benefits, gold nanoparticles
+(AuNps) have recently gained much attention. AuNps can be obtained in
+various shapes and sizes by utilizing many different methods such as
+chemical, physical, or environmentally friendly biological processes
+[21]. For such preparation, gold ions (Au3+) are reduced into zerovalent
+nanogold (Auo) by various reducing agents, and citrate ions are the most
+commonly used [22]. Because AuNps are biodegradable and biocom­
+patible, they were conjugated to many biomaterials and employed as
+drug delivery systems for anticancer drugs, nucleic acids, and biological
+proteins [23]. AuNps having surface plasmon absorption offer good
+optical properties that can be used in imaging, labeling, and sensing
+[24]. The characteristics of nanoparticles used as drug-delivery systems
+can be improved when coated with polymeric materials [25]. PLGA is a
+type of polymer useful in medicine and is approved by the Food and
+Drug Administration (FDA) for drug administration because it is
+biodegradable, biocompatible, and degrades in vivo to non-toxic prod­
+ucts [26]. Elodie Czuba et al. designed PLGA nanoparticles loaded in­
+sulin utilizing the double emulsion diffusion method and illustrated that
+the negatively charged nanoparticles are not-toxic, extra effective for in
+vitro and in vivo studies, and at the same time, demonstrate greater
+performance with a diabetic rat in comparison to the positively charged
+nanoparticles such as ChNps [27].
+Insulin is generally delivered by injection, which is undesirable and
+painful for patients. So, the current research aims to prepare and char­
+acterize chitosan-based nanoparticles (ChNps) and investigate the con­
+ditions for the sufficient entrapment of insulin for oral administration.
+ChNps were designed and used as a reducing agent to obtain AuNps and
+then functionalized with PLGA to exhibit different surface charges to
+improve their size, stability, and loading efficiency. The in vitro drug
+release was evaluated, and the efficiency of the as-prepared nano­
+materials for the in vivo ability to reduce blood glucose levels with a
+sustained release in diabetic rats was investigated.
+2. Experimental and techniques
+2.1. Materials and animals
+Chitosan (degree of deacetylation ≥75%, Mwt:190,000 Da). Poly
+(Lactic acid-co-Glycolic acid) (PLGA), Gold(III) chloride hydrate,
+Polyvinyl alcohol (PVA, Mwt: 31,000 Da), Sodium tripolyphosphate
+anhydrous (TTP, Mwt: 367.86) were purchased from Sigma Aldrich Co.
+(USA). Act rapid insulin (1 mL containing 100 IU human insulin) was
+obtained from Novo Nordisk, Egypt. Streptozotocin was obtained from
+mp-bio, USA. A blood glucose monitoring system (Glucometer, Check
+Gold) was purchased from SD Biosensor, Germany. Glycosylated He­
+moglobin (HbA1c) was purchased from Biomed diagnostic, Egypt.
+Human insulin and Rat C-peptide ELISA kit were purchased from
+Bioassay Technology Laboratory, China. ELISA performed on Fully
+Automated Immunoassay System (stat Fax), Awareness Technology,
+USA. Sixty adult male swiss albino rats weighing 120–150 g were ob­
+tained from the animal hospital, Abo Rawash, in Egypt. According to
+Good Laboratory Practice (GLP), all animals were housed for about 14,
+under standard conditions (temperature of 23 ◦C ± 2, relative humidity,
+and a 12/12 h light/dark cycle), before being experimented.
+2.2. Preparation of insulin loaded chitosan nanoparticles (ChNps/insulin)
+ChNps/insulin was prepared through the ionic gelation/poly­
+electrolyte complexation method [28] but with some minor modifica­
+tions: follows: 0.5 g of Ch was dissolved in distilled water (98 mL)
+completely blended with 2 ml of glacial acetic acid. The final pH was
+4.5. After complete dispersion and dissolution, 10 mL of the prepared
+tripolyphosphate (10%) with (pH = 8.8) was added drop by drop to the
+Ch solution while mechanical stirring was performed to ensure the
+complete mixing and further dispersion. The pale yellow solution of
+ChNps was developed at the end of the addition. The excess acetic acid
+was allowed to evaporate during the rapid stirring, and the generated
+nanoparticles were collected using an ultracentrifugation method. A
+calculated volume of act rapid insulin was added dropwise to the
+redispersed ChNps, followed by complete blending and homogeneity for
+60 min before incubation at 2–8 ◦C for 24 h. Then, ultracentrifugation at
+30,000 rpm for 30 min was performed for pellets precipitation. The
+pellets were then removed from the supernatant solution and re-
+dispersed in distilled water for future use and application.
+2.3. Preparation of insulin loaded chitosan reduced gold nanoparticles
+(ChAu Nps/insulin)
+0.5 g of Ch was dissolved in 100 mL distilled water (80 mL) acidified
+with glacial acetic acid (2 mL) while mechanically stirred at room
+temperature. After complete dissolution, the temperature was raised to
+50 ◦C, then 3 ml of HAuCl4 (1 mM) was added dropwise until the so­
+lution turned ruby red, indicating the reduction of Au3+ by Ch molecules
+into AuNPs [20]. After evaporating the excessive solvents, nanoparticles
+were collected by ultracentrifugation. The known volume of insulin was
+introduced dropwise under stirring for one hour, followed by incubating
+the fabricated nanoparticles for 24 h at 2–8 ◦C. Ultracentrifugation was
+carried out for 30 min at 30.000 rpm, and the red powder was then
+removed from the supernatant solution and redissolved in distilled
+water before being used.
+2.4. Preparation of insulin loaded chitosan reduced gold nanoparticles
+that functionalized with PLGA (ChAuNps/insulin/PLGA)
+The preparation was carried out via the emulsion solvent diffusion
+method as previously reported [28] with slight modification. The first
+water phase was formed by adding 10 mL of insulin (predetermined
+concentration) to 10 mL of ChAuNps colloidal solution under stirring
+dropwise, then adding 1% PVA solution (10 mL; 1%). The second water
+phase was obtained by dissolving 0.5 g of PVA in 50 mL of distilled at 80
+◦C while stirring. The oily phase was produced by dissolving 100 mg of
+PLGA in 10 mL ethyl acetate. Finally, the first water phase was added
+dropwise to the solution of PLGA under sonication in an ice bath. Then,
+for 60 min at ambient temperature, 50 mL of the second water phase
+(PVA, 1%) was added to the previous mixture (first water and oil phase).
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2190
+Organic solvents were evaporated, and then the solution was ultracen­
+trifugation at 30,000 rpm for 40 min to complete the emulsion evapo­
+ration process. The nanoparticles were removed from the supernatant
+solution and redissolved in distilled water before being utilized.
+2.5. Physical and biological characterization of the prepared
+nanoparticles
+A drop of nanocomposite suspensions was placed onto carbon-coated
+copper grids, wiped, cleaned, negatively stained with 2% (w/v) phos­
+photungstic acid (2% w/v), air dried, and then studied using a Phillips
+CM-12 transmission electron microscope running at 120 kV. Scanning
+electron microscopy (SEM) was used to examine the morphologies of the
+produced nanocomposites. Under vacuum, nanoparticle samples were
+gold coated before being analyzed on a JEOL JSM-840 SEM (10 kV,
+Japan). Dynamic light scattering was used to determine the average
+hydrodynamic size of the produced nanocomposites using (DLS; Nano
+ZS, Nanoseries, Malvern Instruments, UK). Regarding zeta potential
+measurements, the evaluation for each sample was taken in triplicate,
+each with a sample duration of 40 s, and the results were averaged.
+Thus, the zeta potential of nanocomposites loaded with and without
+insulin was evaluated using (Nanoseries, Malvern Instruments, UK).
+2.6. Insulin encapsulation efficiency (EE%)
+The percentage of insulin entrapment efficiency (EE) in the designed
+nanoparticles was calculated using an indirect approach of detecting the
+insulin concentration in the supernatant after ultracentrifugation at
+30,000 rpm for 30 min at 271 nm with a UV–visible double beam
+spectrophotometer (Jasco V-630, Japan).
+The EE (%) was calculated according to Eq. (1).
+EE% = The total conc.of insulin added
+−the conc.of insulin in the supernatant/the total conc.of insulin added
+× 100
+(1)
+2.7. In vitro release profile of insulin at different pHs
+The release of insulin from the carrier was investigated in simulated
+gastrointestinal media without enzymes. The dialysis method created
+simulated gastric fluid (SGF; 80 mM HCL, pH = 1.2) and intestinal fluid
+(SIF; duodenum; 50 mM KH2PO4, pH = 6.8 and ileum;10 mM KH2PO4,
+pH = 7.4). Ultracentrifugation was used to separate the nanoparticle
+pellets, then re-dispersed in the release medium. One milliliter of each
+sample was placed in an activated dialysis system (Dialysis Membrane-
+50, MWCO:14 kDa, HiMedia Laboratories Pvt. Ltd., India) [29]. The
+device was submerged in 20 mL of the release medium and incubated at
+37 ◦C. At predetermined intervals, one milliliter was removed from the
+external media and replaced with equal quantities of the release me­
+dium. A UV–visible spectrophotometer was used to evaluate the samples
+collected at 271 nm.
+2.8. In vivo study: pharmacodynamics and hypoglycemic effects
+Diabetes was induced in Swiss albino rats weighting (120–150 g) by
+a single intraperitoneal injection of streptozotocin (STZ, 60 mg/kg) so­
+lution dissolved in cold 0.1 M citrate buffer (pH 4.5) as previously
+described [30]. Rats were allowed to drink 5% glucose solution over­
+night to overcome hypoglycemia caused by STZ administration. Dia­
+betes was confirmed after 48 h of STZ administration by measuring
+fasting blood glucose concentration from the tail vein using blood
+glucose monitoring strips. Only rats with fasting blood glucose levels
+above 250 mg/dl were considered diabetic. Healthy control rats
+received an equivalent amount of buffer. To ensure that diabetic rats
+depend on free human insulin injected subcutaneously or loaded on
+nanoparticles induced orally, Rat C-peptide Concentrations (ng/ml)
+were performed.
+Rats were divided into ten groups (each with six rats) as follows: A
+healthy control group, a diabetic group subcutaneously treated with
+insulin (8 IU/Kg), a diabetic group treated orally by intragastric gavage
+with (insulin solution, 60 IU/Kg), ChNps, ChNPs/insulin, ChAuNps,
+ChAuNPs/insulin, ChAuNps/PLGA, and ChAuNPs/insulin/PLGA.
+The biological activity of insulin loading nanoparticles was evalu­
+ated by the pharmacological activity (PA), and bioavailability (FR)
+associated with subcutaneous administration of insulin was calculated
+using the trapezoidal method. The area above and below the curve of
+blood glucose levels of serum insulin concentrations was coded as AAC
+and AUC. AAC and AUC are represented by the change in initial blood
+glucose level and insulin level after treatment with time. The percentage
+of PA and FR were calculated according to the following equations:
+PA% = AAC × dose sc
+AAC sc × dose × 100
+(2)
+FR% = AUC × dose sc
+AUC sc × dose × 100
+(3)
+Scheme 1. Chart representative of the synthetic pathway of the prepared nanocomposite.
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2191
+2.9. Statistical analysis
+GraphPad La Jolla performed the statistical analysis, and the t-test or
+one-way ANOVA analysis was carried out to assess the statistically sig­
+nificant differences. P < 0.05 was considered significant for all analyses.
+Results are presented as mean ± S.D.
+3. Result and discussion
+3.1. Characterization of composites
+Three Ch-based nanomaterials were prepared, characterized, and
+loaded with insulin. ChNps were prepared using TPP, acting as a
+crosslinking agent to form a network of nanoparticles of Ch, employing
+the ionic-gelation method. The pH of TPP was adjusted to 8.8 to improve
+the dissociation of its functional groups to ensure the formation of the
+negatively charged TPP molecules, enabling the electrostatic attraction
+to the positively charged chitosan (pH = 4.5), producing ChNps posi­
+tively at neutral pH. To prepare the second nanocomposite (ChAuNps),
+AuNps solution was prepared using Ch as both a reducing and stabilizing
+agent, taking advantage of the urgent need for clean chemistry in the
+preparation and the application of Ch as a medicinally used polymer. Ch
+has a reducing power enough to convert gold ions into nanoparticles,
+and the high content of hydroxyl groups promotes the stabilization of
+the nanoparticles against agglomeration. The third material, ChAuNps/
+PLGA, was prepared by the functionalization of ChAuNps with PLGA.
+The three nanocomposites were encapsulated with insulin and then
+examined for the in vitro release profile of insulin at different pH con­
+ditions, and were also applied for in vivo study (Scheme 1).
+Fig. 1a shows that the shape of the ChNps is almost spherical with
+one phase and individual particles, free from agglomeration. The size of
+Fig. 1. TEM images of (a) ChNps via ionic gelation, (b) ChAuNps, and (c) ChAuNps/PLGA.
+Fig. 2. SEM of the surface texture of (a) ChNps, (b) ChAuNps, and (c) ChAu Nps functionalized PLGA.
+Fig. 3. DLS of the hydrodynamic size distribution of (a) ChNps, (b) ChAuNps, and (c) ChAuNps coated PLGA.
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2192
+ChNps seems to be less than range around 100–150 nm [15,31]. TEM
+image of ChAuNps (Fig. 1b) illustrates that most particles have a
+spherical shape, with a diameter below 20 nm, and the particles have
+two phases; a black-colored one (AuNps) surrounded by a faint-colored
+(Ch chains). Fig. 1c shows the TEM image of ChAuNps/PLGA, indicating
+that though the particle diameter is larger than that of ChAuNps, the
+particles are still in the nanosized form that PLGA does not influence the
+nano state of ChAuNps [32].
+The surface morphology was investigated by SEM (Fig. 2). As
+depicted in Fig. 2a, the ChNps have agglomerated particles with no clear
+edges, demonstrating that Ch particles tend to agglomerate into large
+particles. Meanwhile, ChAuNps (Fig. 2b) exhibited morphological fea­
+tures of finely dispersed particles of AuNps coated with Ch. The
+morphological structure of ChAuNps covered by PLGA (Fig. 2c) shows
+the AuNps are covered with a thick layer of PLGA which led to the
+formation of the agglomerated sheet that formed with remarkable edges
+[33]. AuNps developed due to the reducing effect of Ch have a smaller
+average size when compared with that of ChNps or AuNps covered with
+PLGA.
+To further confirm the size of the as-prepared nanoparticles, DLS
+measurements were performed to evaluate the hydrodynamic particle
+size [34]. Fig. 3 displayed the average hydrodynamic size of ChNps,
+ChAuNps, and ChAuNps/PLGA. It can be observed that ChNps exhibit a
+size with an average diameter equal to 138 ± 23 nm (Fig. 3a), while that
+of ChAuNps is around 16 ± 2.2 nm (Fig. 3b). ChAuNps have an average
+very small size than that of ChNps, indicating that the formation of
+AuNps helps split Ch chains, keeping them apart from each other, which,
+in turn, leads to the formation of small-sized nanoparticles. ChAuNps/
+PLGA (Fig. 3c) has an average size that is very close to 50 ± 9.3 nm,
+confirming the insignificant impact of PLGA on the nano state of the
+material [35]. These findings are in accordance with TEM data.
+To employ these Nps for biological applications, it is necessary to
+evaluate their stabilities in solution. Thus, Zeta potential was assessed to
+evaluate the surface charge of the as-prepared materials. Fig. 4 shows
+the surface charge of the Nps before and after loading with insulin in
+terms of zeta potential. As established from previous studies, zeta
+potential with a value above +30 or −30 provides good stability of
+nanoparticles
+in
+solutions,
+prohibiting
+their
+aggregation
+or
+precipitation.
+The zeta potential values for the prepared ChNps, ChAuNps, and
+ChAuNps coated PLGA are +36 ± 4.2, +31 ± 2.2, +37 ± 4.3, and after
+loading with insulin, the zeta values became +33 ± 2.5, −31 ± 2.7, and
+−26 ± 2.1 mv, implying the well stability of the produced Nps [36]. The
+high zeta value +36 indicates good stability of the as-synthesized
+nanoparticles related to the positive charge of Ch [37]. This positive
+charge supports transporting the nanoparticles easily to the cell mem­
+brane. The attachment of Ch and AuNPs in the colloidal solution elec­
+trokinetic potential was +31 ± 2.2 owing to wrapping or coating AuNPs
+on the surface of cationic Ch.
+On the contrary, the charge of ChAuNps, after being coated with
+PLGA, was switched into negative either before or after insulin loading,
+and this negative charge is due to PLGA hydrolysis in an aqueous me­
+dium [8,38].
+Insulin has an isoelectric point (PI) of 5.4; at which the net surface
+charge is zero; at pH values lower than or greater than PI, insulin surface
+would become either positively or negatively charged, enabling elec­
+trostatic attraction of opposite charges. The encapsulation of insulin,
+negatively charged at the investigated pH, onto ChNps and ChAuNps,
+which are positively charged, resulted in partial charge neutralization.
+Accordingly, the zeta potential values would decrease. In the case of
+insulin-ChAuNps/PLGA, insulin was added to the positively charged
+ChAuNps before being coated with PLGA.
+3.2. Encapsulation efficiency (EE) of insulin with different nanoparticles
+formulations
+After loading into polymeric nanocarriers, bioactive compounds
+such as enzymes, hormones, and protein medicines must have high
+biological efficiency to induce desired impacts inside the animal system
+[39]. For efficient oral insulin delivery, the nanoparticles must have a
+high insulin entrapment efficiency, as low one could postpone the
+introduction of polymeric delivery techniques. EE% values of ChNps,
+Fig. 4. Zeta-potential of (a) ChNps, (b) ChNps/insulin, (c) ChAuNps, (d) ChAuNps/insulin, (e) ChAuNps coated PLGA, and (f) ChAuNps/insulin/PLGA.
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2193
+ChAuNps, and ChAuNps/PLGA were determined to be 97 ± 1.5, 98.4 ±
+1.9, and 99 ± 1.2%, respectively (Fig. 5). However, it has been discov­
+ered that a large amount of insulin can pass easily through the tight
+junction of intestinal epithelial cells, lowering blood glucose levels in
+diabetic rats [8,40].
+3.3. In vitro release profile of insulin at different pHs
+Based on the PI value of insulin (5.4), the net surface charge would
+vary from positive to negative, depending on the pH of the medium.
+Accordingly, insulin release profiles from the as-prepared Nps were
+assessed using simulated gastric fluid (SGF) (pH = 1.2) and simulated
+intestinal fluid (duodenum; pH = 6.8, and ileum; pH = 7.4) without
+enzymes [41]. Fig. 6 displayed the release profile of insulin from the
+solutions of free insulin and insulin encapsulated Nps (ChNps, ChAuNps,
+and ChAuNps/PLGA, respectively) in SGF (pH = 1.2), demonstrating
+that insulin is safe from degradation in an acidic medium after encap­
+sulation into the as-prepared Nps, which is in agreement with other
+studies [42]. Approximately 60 ± 0.22% (3.6 ± 0.22 IU/ml) of free
+insulin solution was released after 4 h of incubation at 35 ◦C. However,
+the release of insulin from ChNps (5.82 IU/ml), ChAuNps (5.9 IU/ml),
+and ChAuNps functionalized by PLGA (5.94 IU/ml) was 20 ± 0.09%
+(1.1 ± 0.09 IU/ml), 7 ± 0.08% (0.4 ± 0.08 IU/ml), and (4 ± 0.06)%
+(0.23 ± 0.06 IU/ml), respectively. The protonation of Ch in an acidic
+environment could be the reason for increasing the insulin release from
+ChNps [43]. At lower pH, ChAuNps coated by PLGA can provide
+significant insulin protection and enhance the controlled release
+[39,44].
+In SIF (pH = 6.8) and (pH = 7.4), free insulin solution was released in
+the uncontrolled release manner (fast release). The highly protected
+insulin in ChAuNps/PLGA displayed considerable insulin release in SIF,
+as about 35 ± 0.09% (2.08 ± 0.09 IU/ml) and 48 ± 0.21% (2.88 ± 0.22
+IU/ml) were released at pH = 6.8 and pH = 7.4, respectively. At an
+acidic pH, about 96 ± 0.08% of the loaded insulin on ChAuNps/PLGA
+wasn’t released, indicating a significant level of insulin retention. While
+a large amount of insulin was observed at a higher pH over an extended
+period of time. In an in vivo context, this pH triggers nanoparticles’
+release form, making oral insulin administration much easier [45].
+3.4. In vivo Study
+3.4.1. Pharmacodynamics and hypoglycemic effects
+Table 1 compares the pharmacological availability (PA %) and
+bioavailability (FR %) of insulin-loaded Nps or free insulin solution
+administered orally versus insulin solution administered subcutaneously
+(Sc). The PA and FR for the oral administration of insulin-loaded
+ChAuNps/PLGA were 15.8 ± 0.71% and 7.7 ± 0.93%, respectively,
+which are significantly greater than those of orally administered insulin
+solution (1.42 ± 0.21) and (0.75 ± 0.1). The effective oral insulin nano-
+delivery technology provides excellent drug preservation and facilitates
+drug absorption via the intestinal mucosa.
+3.4.2. Hypoglycemic effects by monitoring blood glucose level (BGL)
+The pharmacodynamics efficacy of insulin-loaded Nps was assessed
+in diabetic rats by measuring BGL, and the data were set in Fig. 7. The
+baseline values were taken from mean blood glucose levels measured in
+diabetic rat samples collected before administering the insulin
+Fig. 5. The entrapment efficiency (EE%) of insulin-loaded nanoparticles
+formulations.
+Fig. 6. In vitro release profile of free insulin solution, ChNps/insulin, ChAu Nps/insulin, and (f) ChAuNps/insulin/PLGA at (a) pH = 1.2, (b) pH = 6.8, and pH = 7.4.
+Table 1
+Calculated pharmacodynamics parameters of diabetic rats after subcutaneously
+injecting insulin (8 IU/kg), oral administration of different nanoparticles (60 IU/
+kg), and insulin solution (60 IU/kg). (n = 6) AUC: area under the serum insulin
+level-time curve, AAC: the area above the curve of the blood glucose level.
+Dose
+(IU/Kg)
+AAC
+AUC
+Fr %
+PA %
+Insulin solution
+(SC)
+8
+70,882.5 ±
+42
+10,516 ±
+46
+–
+–
+Insulin solution
+(Oral)
+60
+35,250 ±
+29
+1997 ± 39
+0.75 ±
+0.1
+1.42 ±
+0.21
+ChNps/insulin
+60
+69,142.5 ±
+37
+11,245 ±
+43
+6.4 ±
+0.36
+13.0 ±
+0.42
+ChAuNps/
+insulin
+60
+77,655 ±
+39
+12,574.5 ±
+37
+7.0 ±
+0.85
+14.6 ±
+0.52
+ChAuNps/
+insulin/PLGA
+60
+84,067.5 ±
+45
+13,719 ±
+33
+7.7 ±
+0.93
+15.8 ±
+0.71
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2194
+nanoparticle compositions. The percentage of BGL relative to this
+baseline (100%) was assessed at each time interval (Fig. 7a). After
+subcutaneous injection of free insulin, the mean percentage of BGL
+versus the time profile obtained serves as a baseline for subsequent in­
+vestigations using nanoparticles-based insulin formulations. This rapid
+decrease in blood glucose subcutaneously administered insulin has been
+unable to reach this portal-systemic insulin concentration gradient,
+reducing hepatic glucose regulation [46]. Nevertheless, insulin con­
+centrations throughout meals may be high, leading to hypoglycemia.
+Subcutaneous or intramuscular insulin injection can generate peripheral
+hyperinsulinemia, leading to diabetic microvascular problems [47].
+Even after 5 h, the oral delivery of free insulin solution could not
+significantly decrease BGL. This is due to inadequate insulin absorption
+and enzymatic breakdown by gastrointestinal enzymes. Although the
+oral route of medication administration has become the most popular
+and widely acknowledged, several nanoparticles are employed in insulin
+loading to manage blood glucose levels because of their low cost and
+convenience of administration. Fig. 7b shows how blood glucose levels
+changed over time after different insulin nanoparticle formulations were
+administered. Free insulin was given orally, and blank nanoparticle
+formulations did not affect BGL. Within 3 h, Ch-loaded insulin nano­
+particles reduce the BGL by 38 ± 2.8% in diabetic rats. In addition, The
+BGL was decreased by 35 ± 6.5% when the diabetic rats were treated
+with insulin-loaded ChAuNps. Meanwhile, insulin-loaded ChAuNps
+functionalized with PLGA reduced the BGL by 27 ± 5.6%; after 7 h, BGL
+came to be about 67 ± 2% of its baseline, ensuring the effect of sustained
+release of insulin by nanoparticles.
+3.4.3. Hypoglycemic effects by monitoring glycated hemoglobin (HbA1c)
+Mucus-penetrating nanoparticles have interesting properties that
+might help with oral insulin administration, particularly when paired
+with biocompatible and mucoadhesive polymers like chitosan and
+PLGA, which cause the nanoparticles to adhere to the intestinal mem­
+brane [48]. This makes it easier for nanoparticles to engage with mucoid
+membranes, prompting tight junctions to change completely and then
+transfer the linked insulin along the paracellular route [49]. Rats orally
+administered insulin loaded ChAuNps/PLGA showed a highly signifi­
+cant change in HbA1c level (4.03 ± 0.50) (Fig. 8) when compared to
+subcutaneous insulin administration (7.07 ± 0.34), insulin loaded
+ChAuNps (4.4 ± 0.42), and insulin loaded ChNps (5.76 ± 0.4) after a
+month of oral administration for all prepared Nps.
+3.4.4. Serum insulin level
+Fig. 9 displayed the serum insulin level for the diabetic rats treated
+with insulin-loaded different Nps. Fig. 9a indicates that loading Nps with
+insulin enhanced the oral absorption of the drug. Insulin-loaded
+ChAuNps and insulin ChNps demonstrated serum insulin levels of 35
+± 0.7 and 32.9 ± 0.91μІU/ml, respectively, for diabetic rats.
+After 4 h (Fig. 9b) of oral administration, insulin-loaded ChAuNps/
+PLGA serum insulin level gradually increased to 64 ± 4.8 μIU/ml, while
+a sudden decrease to 17 ± 1.2 was noticed after the subcutaneous
+administration of free insulin solution. Altogether, emphasize the role of
+biocompatible nanoparticles and their efficiency in the convenient
+Fig. 7. A blood glucose level of the diabetic rats treated with insulin loaded with different nanoparticles (a) after 2 h. Each bar represents the mean ± SD. (n = 6 in
+each group). (*) significant, P < 0.05 (**) very significant, P < 0.01 and (***) extremely significant, P < 0.001 versus those of the healthy control group, versus those
+of the diabetic group ($, $$ and $$$), versus those of the subcutaneously treated diabetic rats (!,!! and!!!) and (ns) not significant and (b) after 7 h.
+Fig. 8. Glycated hemoglobin (HbA1c) evaluation for the diabetic rats treated
+with insulin loaded different nanoparticles. Each bar represents the mean ± SD.
+(n = 6 in each group). (*) significant, P < 0.05 (**) very significant, P < 0.01
+and (***) extremely significant, P < 0.001 versus those of the healthy control
+group, versus those of the diabetic group ($, $$ and $$$), versus those of the
+subcutaneously treated diabetic rats (!,!! and!!!) and (ns) not significant.
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2195
+delivery of insulin, thus lowering the blood glucose level in a safe con­
+dition. As a result, the oral delivery of insulin via nanoparticles could be
+a substitute for painful and traumatic subcutaneous delivery in the
+treatment of postprandial hyperglycemia [20,50].
+4. Conclusion
+This study aimed to develop and characterize insulin-loaded Nps
+systems using ChNps, ChAuNps, and ChAuNps/PLGA. AuNps were
+prepared using a facile, cost-effective chemical reduction method using
+Ch, which played the dual role of reducing and stabilizing AuNps.
+Successful preparation was fully investigated in terms of particle shape,
+surface morphology, DLS, and their surface charge (zeta potential). The
+EE%, of insulin, in vitro release at different pH values, and the in vivo
+studies using diabetic rats were also investigated. The findings illus­
+trated that the as-prepared Ch had a positive surface charge with a size
+around 130 nm. In addition, ChAuNps have a very small size (15 nm)
+and are positively charged due to chitosan as a stabilizing agent.
+After functionalization with PLGA, the particles kept their nano-sized
+structure but with a negatively charged surface owing to the coating
+effect of PLGA. Insulin was efficiently entrapped into all the prepared
+Nps. Furthermore, the release of the incorporated insulin from the as-
+prepared Nps directly correlates to a physical process and/or adsorp­
+tion phenomena in addition to electrostatic interactions.
+Regarding the in vivo studies, the results proved that the function­
+alization of ChAuNps with PLGA exhibited significant effects in lowering
+blood glucose levels within 6 h of oral administration. Also, after 4 h of
+oral administration of insulin-loaded ChAuNps/PLGA, serum insulin
+level gradually increased to 64 ± 4.8, compared to a sudden decrease to
+17 ± 1.2, noticed after subcutaneous administration of free insulin so­
+lution. Additionally, the results show that the value of HbA1c for the
+treated diabetic rats with the functionalized ChAuNps/PLGA is very
+close to that of the healthy rats. From these obtained promising data, it
+can be concluded that the functionalization of ChAuNps with PLGA is
+feasible and effective for the oral delivery of insulin to treat diabetic
+disease.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Data availability
+No data was used for the research described in the article.
+References
+[1] P. Sharma, S. Singh, V. Thakur, N. Sharma, A.S. Grewal, Novel and emerging
+therapeutic drug targets for management of type 2 diabetes mellitus, Obes. Med. 23
+(2021), 100329.
+[2] Q. Zou, K. Qu, Y. Luo, D. Yin, Y. Ju, H. Tang, Predicting diabetes mellitus with
+machine learning techniques, Front. Genet. 9 (2018) 515.
+[3] M. Meher, J.K. Panda, Impact of glycemic control over cardiac autonomic
+neuropathy, J. Diabetes Metab. Disord. 19 (2020) 1339–1344.
+[4] G. Asimina, M. Nebojsa, Insulin therapy in adults with type 1 diabetes mellitus : a
+narrative review, Diabetic Ther. 11 (2020) 387–409.
+[5] S. Ebrahimpour, M. Zakeri, A. Esmaeili, Crosstalk between obesity, diabetes, and
+Alzheimer’s disease: introducing quercetin as an effective triple herbal medicine,
+Ageing Res. Rev. 62 (2021), 101095.
+[6] J. Yu, Y. Zhang, H. Bomba, Z. Gu, in: Stimuli-responsive Delivery of Therapeutics
+for Diabetes Treatment 1, 2016, pp. 323–337.
+[7] W. Fan, D. Xia, Q. Zhu, X. Li, S. He, C. Zhu, S. Guo, L. Hovgaard, M. Yang, Y. Gan,
+Functional nanoparticles exploit the bile acid pathway to overcome multiple
+barriers of the intestinal epithelium for oral insulin delivery, Biomaterials 151
+(2018) 13–23.
+[8] F. Mohammadpour, F. Hadizadeh, M. Tafaghodi, K. Sadri, A.H. Mohammadpour,
+M.R. Kalani, L. Gholami, A. Mahmoudi, J. Chamani, Preparation, in vitro and in
+vivo evaluation of PLGA/Chitosan based nano-complex as a novel insulin delivery
+formulation, Int. J. Pharm. 572 (2019), 118710.
+[9] J. Sheng, L. Han, J. Qin, G. Ru, R. Li, L. Wu, D. Cui, P. Yang, Y. He, J. Wang, N-
+trimethyl chitosan chloride-coated PLGA nanoparticles overcoming multiple
+barriers to oral insulin absorption, ACS Appl. Mater. Interfaces 7 (2015)
+15430–15441.
+[10] Q. Hu, Y. Luo, Recent advances of polysaccharide-based nanoparticles for oral
+insulin delivery, Int. J. Biol. Macromol. 120 (2018) 775–782.
+[11] X. Tan, N. Yin, Z. Liu, R. Sun, J. Gou, T. Yin, Y. Zhang, H. He, X. Tang, Hydrophilic
+and electroneutral nanoparticles to overcome mucus trapping and enhance oral
+delivery of insulin, Mol. Pharm. 17 (2020) 3177–3191.
+[12] S. Shawky, N.M. El-Shafai, I.M. El-Mehasseb, K.R. Shoueir, M.A. El-Kemary,
+Spectroscopic study of self-assembly of anti-hepatitis C virus sofosbuvir drug with
+bio-polymeric nanoparticles for improving the drug release effect, Spectrochim.
+Acta Part A Mol. Biomol. Spectrosc. 261 (2021), 120008.
+[13] M.H. Teaima, F.A. Abdelnaby, M. Fadel, M.A. El-Nabarawi, K.R. Shoueir, Synthesis
+of biocompatible and environmentally nanofibrous mats loaded with moxifloxacin
+as a model drug for biomedical applications, Pharmaceutics. 12 (2020) 1029.
+[14] N. Ismail, K.R. Shoueir, E.A. Toson, Hepatoprotective activity and free radical
+scavenging against induction of CCl4 in an experimental model using
+Fig. 9. Serum insulin level for the diabetic rats treated with insulin loaded with different nanoparticles; Ch Nps, Ch Au Nps, and Ch Au Nps coated PLGA (a). Each bar
+represents the mean ± SD. (n = 6 in each group). ($) significant, P < 0.05 ($$) very significant, P < 0.01 and ($$$) extremely significant, P < 0.001 versus those of
+the diabetic group, versus those of the subcutaneously treated diabetic rats (!,!! and!!!) and (ns) not significant and (b) through 4 h.
+H.A. Asal et al.
+
+International Journal of Biological Macromolecules 209 (2022) 2188–2196
+2196
+dendronaphthya crude extract loaded chitosan nanocarrier, J. Drug Deliv. Sci.
+Technol. 66 (2021), 102906.
+[15] N.Z. Shaban, A.M. Aboelsaad, K.R. Shoueir, S.A. Abdulmalek, D. Awad, S.
+Y. Shaban, H. Mansour, Chitosan-based dithiophenolato nanoparticles:
+preparation, mechanistic information of DNA binding, antibacterial and cytotoxic
+activities, J. Mol. Liq. 318 (2020), 114252.
+[16] K.R. Shoueir, N. El-Desouky, M.M. Rashad, M.K. Ahmed, I. Janowska, M. El-
+Kemary, Chitosan based-nanoparticles and nanocapsules: overview,
+physicochemical features, applications of a nanofibrous scaffold, and bioprinting,
+Int. J. Biol. Macromol. 167 (2021) 1176–1197.
+[17] M.H. Teaima, M.K. Elasaly, S.A. Omar, M.A. El-Nabarawi, K.R. Shoueir, Wound
+healing activities of polyurethane modified chitosan nanofibers loaded with
+different concentrations of linezolid in an experimental model of diabetes, J. Drug
+Deliv. Sci. Technol. 67 (2021), 102982.
+[18] K.Al Rubeaan, M. Rafiullah, S. Jayavanth, K.Al Rubeaan, Oral insulin delivery
+systems using chitosan-based formulation: a review, Expert Opin. Drug Deliv. 13
+(2013) 376–382.
+[19] P. Mukhopadhyay, K. Sarkar, M. Chakraborty, S. Bhattacharya, R. Mishra, P.
+P. Kundu, Oral insulin delivery by self-assembled chitosan nanoparticles: in vitro
+and in vivo studies in diabetic animal model, Mater. Sci. Eng. C. 33 (2013)
+376–382.
+[20] D.R. Bhumkar, H.M. Joshi, M. Sastry, V.B. Pokharkar, Chitosan reduced gold
+nanoparticles as novel carriers for transmucosal delivery of insulin, Pharm. Res. 24
+(2007) 1415–1426.
+[21] K. Shoueir, A. Mohanty, I. Janowska, Industrial molasses waste in the performant
+synthesis of few-layer graphene and its Au/Ag nanoparticles nanocomposites.
+Photocatalytic and supercapacitance applications, J. Clean. Prod. 351 (2022)
+131540.
+[22] M. Das, K.H. Shim, Review on gold nanoparticles and their applications, Toxicol.
+Environ. Health Sci. 3 (2011) 193–205.
+[23] G.M. Sulaiman, H.M. Wa, M.S. Jabir, H.K. Shaymaa, Hesperidin loaded on gold
+nanoparticles as a drug delivery system for a successful biocompatible,anti-cancer,
+anti-inflammatory and phagocytosis inducer model, Sci. Rep. 10 (2020) 9362.
+[24] A. R´onav´ari, N. Igaz, D.I. Adamecz, B. Szerencs´es, C. Molnar, Z. K´onya, I. Pfeiffer,
+M. Kiricsi, Green silver and gold nanoparticles: biological synthesis approaches and
+potentials for biomedical applications, Molecules 26 (2021) 844.
+[25] H.I. Chiu, N.A. Samad, L. Fang, V. Lim, Cytotoxicity of targeted PLGA
+nanoparticles: a systematic review, RSC Adv. 11 (2021) 9433–9449.
+[26] J. Ghitman, E.I. Biru, R. Stan, H. Iovu, Review of hybrid PLGA nanoparticles: future
+of smart drug delivery and theranostics medicine, Mater. Des. 193 (2020), 108805.
+[27] E. Czuba, M. Diop, C. Mura, A. Schaschkow, A. Langlois, W. Bietiger, R. Neidl,
+A. Virciglio, N. Auberval, D. Julien-David, E. Maillard, Y. Frere, E. Marchioni,
+M. Pinget, S. Sigrist, Oral insulin delivery, the challenge to increase insulin
+bioavailability: influence of surface charge in nanoparticle system, Int. J. Pharm.
+542 (2018) 47–55.
+[28] M.G. Arafa, H.A. Mousa, N.N. Afifi, Preparation of PLGA-chitosan based
+nanocarriers for enhancing antibacterial effect of ciprofloxacin in root canal
+infection, Drug Deliv. 27 (2020) 26–39.
+[29] A. Makhlof, Y. Tozuka, H. Takeuchi, Design and evaluation of novel pH-sensitive
+chitosan nanoparticles for oral insulin delivery, Eur. J. Pharm. Sci. 42 (2011)
+445–451.
+[30] D.M. Adams, M.T. Yakubu, Aqueous extract of Digitaria exilis grains ameliorate
+diabetes in streptozotocin-induced diabetic male wistar rats, J. Ethnopharmacol.
+249 (2020), 112383.
+[31] K. Shoueir, S. Kandil, H. El-hosainy, M. El-Kemary, Tailoring the surface reactivity
+of plasmonic Au@TiO2 photocatalyst bio-based chitosan fiber towards cleaner of
+harmful water pollutants under visible-light irradiation, J. Clean. Prod. 230 (2019)
+383–393.
+[32] X. Liu, N. Tan, Y. Zhou, H. Wei, S. Ren, F. Yu, H. Chen, C. Jia, G. Yang, Y. Song,
+Delivery of antagomiR204-conjugated gold nanoparticles from PLGA sheets and its
+implication in promoting osseointegration of titanium implant in type 2 diabetes
+mellitus, Int. J. Nanomedicine 12 (2017) 7089.
+[33] G. Laurent, C. Benbalit, C. Chr´etien, C. Dupuis, Y. Pellequer, R. Bazzi, V.S. Thakare,
+F. Denat, S. Roux, A. B´eduneau, Characterization and biodistribution of Au
+nanoparticles loaded in PLGA nanocarriers using an original encapsulation process,
+Colloids Surf. B Biointerfaces 205 (2021), 111875.
+[34] X. Rong, J. Yang, Y. Ji, X. Zhu, Y. Lu, X. Mo, Biocompatibility and safety of insulin-
+loaded chitosan nanoparticles/PLGA-PEG-PLGA hydrogel (ICNPH) delivered by
+subconjunctival injection in rats, J. Drug Deliv. Sci. Technol. 49 (2019) 556–562.
+[35] A.M. Alkilany, S.R. Abulateefeh, C.J. Murphy, Facile functionalization of gold
+nanoparticles with PLGA polymer brushes and efficient encapsulation into PLGA
+nanoparticles: toward spatially precise bioimaging of polymeric nanoparticles,
+Part. Part. Syst. Charact. 36 (2019) 1800414.
+[36] W. Wang, C. Yu, F. Zhang, Y. Li, B. Zhang, J. Huang, Z. Zhang, L. Jin, Improved oral
+delivery of insulin by PLGA nanoparticles coated with 5β-cholanic acid conjugated
+glycol chitosan, Biomed. Mater. 16 (2021) 64103.
+[37] Q. Hu, Y. Luo, Chitosan-based nanocarriers for encapsulation and delivery of
+curcumin: a review, Int. J. Biol. Macromol. 179 (2021) 125–135.
+[38] A. Jaradat, M.H. Macedo, F. Sousa, K. Arkill, C. Alexander, J. Aylott, B. Sarmento,
+Prediction of the enhanced insulin absorption across a triple co-cultured intestinal
+model using mucus penetrating PLGA nanoparticles, Int. J. Pharm. 585 (2020),
+119516.
+[39] A. Abdel-Moneim, H. Ramadan, Novel strategies to oral delivery of insulin: current
+progress of nanocarriers for diabetes management, Drug Dev. Res. 83 (2021)
+301–316.
+[40] Y. Shi, L. Jia, Q. Du, J. Niu, D. Zhang, Surface-modified PLGA nanoparticles with
+chitosan for oral delivery of tolbutamide, Colloids Surf. B Biointerfaces 161 (2018)
+67–72.
+[41] R. Primavera, E. Bellotti, D. Di Mascolo, M. Di Francesco, J. Wang, B.D. Kevadiya,
+A. De Pascale, A.S. Thakor, P. Decuzzi, Insulin granule-loaded MicroPlates for
+modulating blood glucose levels in Type-1 diabetes, ACS Appl. Mater. Interfaces 13
+(2021) 53618–53629.
+[42] N.B. Mutlu-Agardan, S. Han, In vitro and in vivo evaluations on nanoparticle and
+phospholipid hybrid nanoparticles with absorption enhancers for oral insulin
+delivery, Pharm. Dev. Technol. 26 (2021) 157–166.
+[43] N. Sedyakina, A. Kuskov, K. Velonia, N. Feldman, S. Lutsenko, G. Avramenko,
+Modulation of entrapment efficiency and in vitro release properties of BSA-loaded
+chitosan microparticles cross-linked with citric acid as a potential protein-drug
+delivery system, Materials (Basel). 13 (2020) 1989.
+[44] Y.-W. Zhang, L.-L. Tu, Z. Tang, Q. Wang, G.-L. Zheng, L.-N. Yin, pH-sensitive
+chitosan-deoxycholic acid/alginate nanoparticles for oral insulin delivery, Pharm.
+Dev. Technol. 26 (2021) 943–952.
+[45] G.R. Dey, A. Saha, Surface engineered PLGA nanoparticle for threshold responsive
+glucose monitoring and “self-programmed” insulin delivery, ACS Biomater. Sci.
+Eng. 7 (2021) 4645–4658.
+[46] V. Covolan, D. Giustarini, P. Fanti, in: Insulin Administration: Present Strategies
+and Future Directions for a Noninvasive (Possibly More Physiological) Delivery 9,
+2015, pp. 3109–3118.
+[47] N. Ramamoorthy, Oral delivery of insulin- making needles needless, trends
+biomater, Artif. Organs 15 (2001) 12–16.
+[48] S. Das, P. Roy, R. Pal, R.G. Auddy, A.S. Chakraborti, A. Mukherjee, Engineered
+silybin nanoparticles educe efficient control in experimental diabetes, PLoS One. 9
+(2014), e101818.
+[49] D. Sharma, J. Singh, Long-term glycemic control and prevention of diabetes
+complications in vivo using oleic acid-grafted-chitosan-zinc-insulin complexes
+incorporated in thermosensitive copolymer, J. Control. Release 323 (2020)
+161–178.
+[50] S. Szunerits, S. Melinte, A. Barras, Q. Pagneux, A. Voronova, A. Abderrahmani,
+R. Boukherroub, The impact of chemical engineering and technological advances
+on managing diabetes: present and future concepts, Chem. Soc. Rev. 50 (2021)
+2102–2146.
+H.A. Asal et al.

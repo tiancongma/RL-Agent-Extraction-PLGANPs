@@ -1,0 +1,249 @@
+{
+  "paper_key": "PA3SPZ28",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_scope_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_candidate_artifact_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/semantic_stage2_objects/candidate_blocks/PA3SPZ28/candidate_blocks_v1.json",
+  "input_contract": {
+    "input_packing_mode": "ordered_blocks",
+    "table_mode": "summary",
+    "summary_first_column_enhancement": true,
+    "ordered_block_order": [
+      "metadata",
+      "synthesis_method",
+      "materials_procurement",
+      "table",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "selector_strategy": "role_aware_selector_v1"
+  },
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_2_evidence_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_profile": "role_aware_general_v1",
+  "archetype_overlay": null,
+  "evidence_blocks": [
+    {
+      "block_id": "PA3SPZ28__metadata__01",
+      "block_type": "metadata",
+      "source_type": "document_metadata",
+      "origin_locator": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+      "selection_reason": "document_identity_context",
+      "selection_feature": "build_metadata_block",
+      "rank_score": null,
+      "order_index": 0,
+      "text_content": "[METADATA]\nkey: PA3SPZ28\ndoi: 10.1038/s41598-017-00696-6\ntitle: Garcinol loaded vitamin E TPGS emulsified PLGA nanoparticles: preparation, physicochemical characterization, in vitro and in vivo studies",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": null,
+      "role_assignment": null,
+      "role_priority": "primary",
+      "role_score_breakdown": null
+    },
+    {
+      "block_id": "PA3SPZ28__preparation_method__01",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:0",
+      "selection_reason": "role_constrained_preparation_method_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 1,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: Preparation of GAR-loaded nanoparticles (GAR-NPs). Nanoparticles were prepared by the nanopre- cipitation method20. Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature. The solvent was allowed to evaporate overnight. The suspension obtained was filtered (Whatman filter paper 1) to remove any precipitate and centrifuged at 18,000 rpm at 4 °C (Sorvall RC 5 Plus). The supernatant containing the free drug was discarded; the pellet obtained was washed 2–3 times with distilled water and lyophilised (VirTis, USA) for 48 h to get a free flowing powder. Drug free nanoparticles were prepared according to the same procedure. Fluorescent nanoparticles were pre- pared by replacing GAR with FITC (5 mg).",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 2.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    },
+    {
+      "block_id": "PA3SPZ28__materials__01",
+      "block_type": "materials_procurement",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:1",
+      "selection_reason": "role_constrained_materials_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 10,
+      "order_index": 2,
+      "text_content": "[MATERIALS_PROCUREMENT_BLOCK]\nMaterials: Vitamin E TPGS NF Grade was gifted by Antares Health Products. HPLC grade acetone was purchased from Spectrochem (Mumbai, India). All other solvents and chemicals were of analytical grade and procured from Merck, India. 99MoO4 − was purchased from Bhabha Atomic Research Centre (Mumbai, India) and 99mTcO4 − was extracted from a 5 N NaOH solution of 99MoO4 − by butan-2-one. ECIL gamma counter (Model LV 4755) obtained from ECIL was used for measuring tissue and organ radioactivities.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "MATERIALS",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 10.0
+      }
+    },
+    {
+      "block_id": "PA3SPZ28__formulation_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv",
+      "selection_reason": "role_constrained_formulation_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 3,
+      "text_content": "Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=11, cols=5\n- first_column_row_labels_preview: After storage at 4 °C, Parameters, Drug:Polymer ratio, PLGA grade, Size (nm), PDI, Zeta potential (mV), Drug loading (DL, %), Encapsulation efficiency, 53.43 ± 2.8, (EE, %)\n- sample_rows:\n- sample_row_1: Drug:Polymer ratio | 1:20 | 1:10 | 1:6.66 | 1:10\n- sample_row_2: After storage at 4 °C\n- sample_row_3: PDI | 0.212 ± 0.07 | 0.170 ± 0.05 | 0.237 ± 0.09 | 0.295 ± 0.08\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 3.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.8
+      }
+    },
+    {
+      "block_id": "PA3SPZ28__formulation_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:6",
+      "selection_reason": "role_constrained_formulation_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 5,
+      "order_index": 4,
+      "text_content": "[FORMULATION_RESULT_BLOCK]\nThe disappearance of distinct peaks in GAR-NPs suggested the conversion of crystalline state to amor- phous state during nanoparticulate formulation. In vitro drug release study of GAR-NPs. Figure 2d depicts the drug release profile of GAR encapsulated NPs. Initial rapid release (around 39 ± 2.5%) was observed within the first 4 h. The release was moderate up to 12 h; this was followed by a slower sustained release. Around 86 ± 3.9% of GAR was released from nanopar- ticulated formulation over the period of 6 days. The initial burst release may be due to GAR loosely associated with the surface or embedded in the surface layer of the polymer, whereas sustained release occurred due to the Figure 1. Particle size distribution, zeta potential measurement profile and microscopic imaging of GAR-NPs. (a) Particle size distribution pattern, (b) zeta potential distribution profile, (c) FESEM image, (d) TEM image, (e) AFM image and (f) three dimensional view of AFM image.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "FORMULATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 3.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 5.0
+      }
+    },
+    {
+      "block_id": "PA3SPZ28__optimization_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:21",
+      "selection_reason": "role_constrained_optimization_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 5,
+      "text_content": "[OPTIMIZATION_RESULT_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. 1a), zeta potential (Fig. 1b), drug loading, and encapsulation efficiency of blank and GAR-NPs. Nanoprecipitation technique yielded GAR-NPs with most nar- row size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "OPTIMIZATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 2.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    },
+    {
+      "block_id": "PA3SPZ28__context_fallback__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:0#segment:0",
+      "selection_reason": "role_constrained_context_fallback_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 5,
+      "order_index": 6,
+      "text_content": "[PARAGRAPH_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. preparation, physicochemical characterization, in vitro and in vivo studies Raghuvir H. Gaonkar1, Soumya Ganguly1, Saikat Dewanjee2, Samarendu Sinha3, Amit Gupta3, Shantanu Ganguly3, Dipankar Chattopadhyay4 & Mita Chatterjee Debnath1 Garcinol (GAR) is a naturally occurring polyisoprenylated phenolic compound. It has been recently investigated for its biological activities such as antioxidant, anti-inflammatory, anti ulcer, and antiproliferative effect on a wide range of human cancer cell lines. Though the outcomes are very promising, its extreme insolubility in water remains the main obstacle for its clinical application. Herein we report the formulation of GAR entrapped PLGA nanoparticles by nanoprecipitation method using vitamin E TPGS as an emulsifier. The nanoparticles were characterized for size, surface morphology, surface charge, encapsulation efficiency and in vitro drug release kinetics.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "CONTEXT_FALLBACK",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 3.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 5.0
+      }
+    }
+  ],
+  "coverage_summary": {
+    "total_blocks": 7,
+    "synthesis_blocks": 1,
+    "table_blocks": 1,
+    "caption_blocks": 0,
+    "paragraph_blocks": 4,
+    "has_optimization_signal": true,
+    "has_doe_signal": false,
+    "has_sequential_signal": false
+  },
+  "required_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "FORMULATION_TABLE",
+    "FORMULATION_RESULT",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "selected_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "FORMULATION_TABLE",
+    "FORMULATION_RESULT",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "missing_or_weak_roles": [],
+  "duplicate_table_suppression_events": [],
+  "feature_activation_snapshot": {
+    "ordered_evidence_packing": true,
+    "summary_table_mode": true,
+    "table_selection_scoring": true,
+    "selector_debug_available": true,
+    "candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+    "section_aware_candidate_split": true,
+    "candidate_table_isolation": true,
+    "candidate_noise_filtering": true,
+    "doe_pre_llm_detection": false,
+    "sequential_optimization_detection": false,
+    "role_aware_evidence_selection": true,
+    "doe_overlay_selection": false,
+    "duplicate_table_suppression": false
+  },
+  "technical_status": {
+    "artifact_readable": true,
+    "required_top_level_fields_present": true,
+    "required_block_fields_present": true,
+    "non_empty_evidence_blocks": true,
+    "overall": "pass"
+  },
+  "design_status": {
+    "input_contract_satisfied": true,
+    "required_features_active": true,
+    "required_roles_present": [
+      "CONTEXT_FALLBACK",
+      "FORMULATION_RESULT",
+      "FORMULATION_TABLE",
+      "MATERIALS",
+      "OPTIMIZATION_RESULT",
+      "PREPARATION_METHOD"
+    ],
+    "missing_or_weak_roles": [],
+    "overall": "pass",
+    "nonconformance_reasons": []
+  }
+}

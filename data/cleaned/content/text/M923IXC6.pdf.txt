@@ -1,0 +1,968 @@
+Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+Contents lists available at ScienceDirect
+Colloids and Surfaces A: Physicochemical and
+Engineering Aspects
+journal homepage: www.elsevier.com/locate/colsurfa
+Enhancing encapsulation efﬁciency of highly water-soluble antibiotic in
+poly(lactic-co-glycolic acid) nanoparticles: Modiﬁcations of standard
+nanoparticle preparation methods
+Wean Sin Cheow, Kunn Hadinoto ∗
+School of Chemical and Biomedical Engineering, Nanyang Technological University, Singapore 637459, Singapore
+a r t i c l e
+i n f o
+Article history:
+Received 30 June 2010
+Received in revised form 11 August 2010
+Accepted 30 August 2010
+Available online 9 September 2010
+Keywords:
+Nanoparticle
+Encapsulation
+Nanoprecipitation
+Emulsiﬁcation
+Polymer
+Bioﬁlm
+a b s t r a c t
+Effective encapsulations of drugs that are highly soluble in both water and organic solvents are notori-
+ously difﬁcult to achieve using standard nanoparticle preparation methods, such as nanoprecipitation
+(NPC), single (ESE), and double (DESE) emulsiﬁcation-solvent-evaporation methods. Modiﬁcations of the
+standard preparation methods are therefore needed to enhance encapsulation efﬁciency of this group of
+drugs. The present work investigates the feasibility of enhancing the encapsulation efﬁciency of highly
+water and solvent-soluble levoﬂoxacin, which is widely used in antibiotic therapy against pulmonary
+bioﬁlm infections, into poly(lactic-co-glycolic acid) (i.e. PLGA) nanoparticles. In addition, the nanoparti-
+cles are evaluated in terms of their drug loading, size, production yield, and in-vitro drug release proﬁle.
+Lecithin inclusion into the aqueous phase in the ESE method results in two-fold improvements in the
+encapsulation efﬁciency and drug loading (i.e. 23% and 2.3%, w/w, respectively) compared to the standard
+method. Similar results are obtained when the water-miscibility level of the oil phase is increased in the
+DESE method. Importantly, these nanoparticles possess size ≈200–300 nm and biphasic extended drug
+release proﬁles suitable for anti-bioﬁlm therapy. Lastly, the nanoparticles can be readily transformed into
+inhalable solid dosage forms without jeopardizing their drug loadings and antibacterial activities.
+© 2010 Elsevier B.V. All rights reserved.
+1. Introduction
+The use of nano-scale formulations in the delivery of therapeutic
+agents through the pulmonary route has recently gained signiﬁ-
+cant interest [1]. While nanoparticles can also be delivered through
+the oral and parenteral routes, inhalation of nanoparticles repre-
+sents a more attractive delivery route, because of the avoidance
+of the ﬁrst-pass metabolism, ease of administration, and fast drug
+absorptions due to the lungs’ high surface area and thin epithelial
+layer. Speciﬁcally, polymer-based nanoparticle formulations have
+been actively researched as inhaled therapeutic carriers owed to
+the prospects of having (i) targeted drug deliveries by surface func-
+tionalization of the polymer and (ii) sustained drug deliveries by
+drug encapsulation in the polymer.
+In this regard, antibiotic-loaded polymeric nanoparticles are
+highly applicable for the treatment of persistent pulmonary infec-
+tions, such as cystic ﬁbrosis (CF) and chronic obstructive pulmonary
+diseases (COPD), a disease suffered by more than 50 million peo-
+ple worldwide [2]. Bacterial bioﬁlm colonies present in the lungs of
+CF and COPD patients are surrounded by thick stationary sputum
+notorious for binding and deactivating antibiotics, thereby negat-
+∗Corresponding author. Tel.: +65 6514 8381; fax: +65 6794 7553.
+E-mail address: kunnong@ntu.edu.sg (K. Hadinoto).
+ing the therapeutic effects of inhaled antibiotics. Encapsulation of
+antibiotics into polymeric nanoparticles overcomes the problem
+of antibiotic deactivations as it prevents interactions between the
+antibiotics and the sputum contents.
+Even though the encapsulation can also be achieved using
+micro-scale
+polymeric
+carriers,
+nano-scale
+formulations
+are
+favored
+because
+the
+average
+spacing
+of
+sputum
+mesh
+is
+≈60–300 nm [3], such that only nanoparticles can pass through the
+sputum to reach embedded bioﬁlm colonies. By using nanoparticles
+as the carriers, the antibiotics can be released in a sustained manner
+in the vicinity of bioﬁlm colonies resulting in enhanced antibacte-
+rial efﬁcacies compared to that obtained from antibiotic solutions
+[4,5]. In addition, by virtue of their small size, nanoparticles can
+effectively evade the pulmonary phagocytic clearance resulting in
+an increased antibiotic bioavailability in the lungs [6].
+To this end, the nanoparticles are ideally delivered to the lungs
+using the dry powder inhaler (DPI) platform. The adoption of the
+DPI platform translates to portability, improved shelf-life, and high
+delivery efﬁciency of the inhaled antibiotics, in contrast to the rel-
+ative inconvenience (e.g. lengthy treatment time, non-portability)
+and low delivery efﬁciency associated with the conventional neb-
+ulization delivery platform [1]. However, nanoparticles in the
+dry-powder form exhibit a strong tendency to severely aggregate
+due to their high surface energy, thus resulting in non-aerosolizable
+powders. Furthermore, nanoparticles, with the exception of par-
+0927-7757/$ – see front matter © 2010 Elsevier B.V. All rights reserved.
+doi:10.1016/j.colsurfa.2010.08.050
+
+80
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+ticles with aerodynamic diameter (dA) < 50 nm, are predominantly
+exhaled from the lung without depositing [6]. To effectively deliver
+the nanoparticles to the lungs, they are typically transformed into
+micro-scale dry-powder aggregates in the inhalable size range
+(1 ≤dA ≤5 m) by spray-drying technique [7,8].
+To be therapeutically effective, good aerosolization proper-
+ties of the nanoparticle aggregates must be complemented by
+having a potent antibiotic encapsulated into the nanoparticles. Lev-
+oﬂoxacin, a ﬂuoroquinolone antibiotic, is highly efﬁcacious against
+pulmonary bioﬁlm cells as it does not have the propensity for spu-
+tum binding, unlike aminoglycoside antibiotics [9,10]. However,
+the high solubilities of levoﬂoxacin in both organic solvents (e.g.
+dichloromethane, ethanol, acetone) and water (≈200–300 mg/mL
+at pH ≈2–8) render its encapsulation in polymeric nanoparticles
+highly inefﬁcient [11].
+The low encapsulation efﬁciency of levoﬂoxacin is particularly
+true when the nanoparticles are prepared by standard methods,
+such as nanoprecipitation and emulsiﬁcation-solvent-evaporation.
+For these methods, high drug solubility in either the organic phase
+or the aqueous phase, but not both, is required to achieve high drug
+encapsulation efﬁciency, as the drug must not leak out from its
+initial dissolved phase upon precipitations of the polymer chains
+to form the nanoparticles.
+In this regard, several investigators have employed standard
+nanoparticle preparation methods to encapsulate drugs that are
+highly soluble in both water and organic solvents (∝102 mg/mL),
+such as procaine hydrochloride, sodium cromoglycate, and pheno-
+barbital, into polymeric nanoparticles [12–14]. Not unexpectedly,
+low drug encapsulation efﬁciency (<20%, w/w) and low drug load-
+ings (≈1%, w/w) were reported. For this reason, modiﬁcations to
+the standard method were subsequently performed, including (i)
+incorporation of salt additives, (ii) pH variation, and (iii) using
+alternative solvents, which led to signiﬁcant improvements in the
+encapsulation efﬁciency (≈40–50%, w/w) and consequently the
+drug loading.
+The main objective of the present work is to investigate the
+effects of modiﬁcations of the standard nanoparticle preparation
+methods on the encapsulation efﬁciency and drug loading of lev-
+oﬂoxacin in poly(lactic-co-glycolic acid) nanoparticles (i.e. PLGA).
+Three different nanoparticle preparation methods (i.e. nanoprecipi-
+tation, single, and double emulsiﬁcation-solvent-evaporations) are
+examined. PLGA is selected as the polymeric carrier because of its
+well-established biodegradability and biocompatibility manifested
+by its widespread applications as therapeutic carrier materials.
+In addition to the encapsulation efﬁciency and drug loading, the
+nanoparticles are evaluated in terms of their size, production yield,
+and in-vitro drug release proﬁle. In this regard, small nanoparticle
+sizes (<300 nm) are desirable to facilitate an effective sputum pene-
+tration, whereas sustained antibiotic release proﬁles are favored as
+they can potentially reduce the dosing frequency and lower the risk
+of systemic toxicity. Moreover, the feasibility of transforming the
+levoﬂoxacin-loaded PLGA nanoparticle suspension into inhalable
+dry-powder nanoparticle aggregates by spray drying is investi-
+gated. Lastly, the antibacterial efﬁcacy of the solid dosage form
+formulation is examined against Pseudomonas aeruginosa (P. aerug-
+inosa) bioﬁlm cells, which constitute a majority of the bacterial
+pathogens present in the lungs of CF and COPD patients [15].
+2. Materials and methods
+2.1. Materials
+PLGA polymer (Purasorb 5004A) is provided by PURAC Bioma-
+terials (Netherlands). Chemicals used in the nanoparticle synthesis,
+i.e. non-hydrochloride form of levoﬂoxacin (LEV), dichloromethane
+(DCM), acetone, ethyl acetate, Pluronic F-68, poly(vinyl alcohol)
+(PVA, MW = 13–23,000), polyethylene glycol (PEG, MW = 4000),
+tyloxapol, and chitosan, are purchased from Sigma–Aldrich (USA).
+Drying adjuvants (i.e. lecithin and l-leucine) and bioﬁlm growth
+medium (i.e. Mueller Hinton Broth or MHB) are also purchased from
+Sigma–Aldrich (USA). Phosphate buffer saline solution (PBS, pH
+7.4) and dialysis membrane with a molecular weight cut-off size of
+12,400 g/mol used in the in-vitro drug release study are purchased
+from 1st Base (Singapore) and Sigma–Aldrich (USA), respectively.
+P. aeruginosa PAO1 strain is obtained from American Type Culture
+Collection (ATCC, USA).
+2.2. Methods
+2.2.1. Nanoparticle preparations by standard methods
+2.2.1.1. LEV-loaded PLGA nanoparticles by nanoprecipitation (NPC).
+PLGA and LEV are dissolved in water-miscible acetone. Upon addi-
+tion of the PLGA/LEV solution into water, the acetone rapidly
+diffuses into the aqueous phase resulting in the formation of LEV-
+loaded PLGA nanoparticles. Speciﬁcally, 8 mg of LEV and 100 mg of
+PLGA are dissolved in 5 mL of acetone after which the solution is
+poured into 10 mL aqueous solution of 0.1% (w/v) Pluronic F-68.
+The resulting nanoparticle suspension is stirred overnight at room
+temperature to evaporate off the acetone present in the aqueous
+phase, which is followed by twice centrifugations at 14,000 RPM
+and two washing cycles to remove the non-encapsulated LEV and
+the remaining acetone.
+2.2.1.2. LEV-loaded PLGA nanoparticles by single emulsiﬁcation-
+solvent-evaporation
+(ESE). PLGA
+and
+LEV
+are
+dissolved
+in
+a
+water-immiscible
+solvent
+(i.e.
+DCM).
+Upon
+addition
+of
+the
+PLGA/LEV solution into water under ultrasonication, an oil-in-
+water nano-emulsion is formed. The DCM is slowly evaporated
+to transform the nano-emulsion into a nanoparticle suspension.
+Speciﬁcally, 8 mg of LEV and 80 mg of PLGA are dissolved in 2 mL
+of DCM after which the solution is poured into 6 mL aqueous solu-
+tion of 1.0% (w/v) PVA. The resulting solution is emulsiﬁed for 60 s
+using a Vibra-Cell probe sonicator (VC 5040, Sonics and Materi-
+als, USA). The nano-emulsion is next poured into 10 mL aqueous
+solution of 0.1% (w/v) PVA and the DCM is evaporated overnight at
+room temperature. The resulting nanoparticle suspension is cen-
+trifuged twice at 11,000 RPM and two washing cycles to remove
+the non-encapsulated LEV and DCM trace.
+2.2.1.3. LEV-loaded PLGA nanoparticles by double-emulsiﬁcation-
+solvent-evaporation (DESE). PLGA and LEV are dissolved separately
+in a water-immiscible solvent (i.e. DCM) and deionized water,
+respectively. The two solutions are emulsiﬁed under ultrasonica-
+tion to form w/o nano-emulsion, which is subsequently added to a
+second aqueous phase to form w/o/w nano-emulsion. Speciﬁcally,
+9 mg of LEV is dissolved in 300 L of deionized water and 90 mg
+of PLGA is dissolved in 3 mL of DCM. The aqueous LEV solution
+is emulsiﬁed in the PLGA organic solution by sonication for 60 s.
+The resulting nano-emulsion is poured into 12 mL aqueous solu-
+tion of 2.0% (w/v) PVA and is sonicated for 60 s. The nano-emulsion
+is stirred overnight at room temperature to evaporate off the DCM.
+The resulting nanoparticle suspension is centrifuged and washed
+following similar procedures described in the ESE method.
+2.2.2. Nanoparticle physical characterizations
+The drug encapsulation efﬁciency (i.e. % encapsulation) is deter-
+mined from the mass ratio of the encapsulated drug to the drug
+initially added. The encapsulated drug amount is determined by
+subtracting the drug amount present in the supernatant after the
+ﬁrst centrifugation from the drug amount initially added. The drug
+
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+81
+concentration in the supernatant is measured using UV–vis spec-
+trophotometer (UV Mini-1240, Shimadzu, Japan) at absorbance
+wavelength of 254 nm. The drug loading is determined from the
+mass ratio of the encapsulated drug to the total nanoparticles
+produced. The nanoparticle production yield is determined from
+the mass ratio of the nanoparticle produced to the PLGA initially
+added. The nanoparticle size and zeta potential are measured by
+photon correlation spectroscopy (PCS) using a Brookhaven 90Plus
+Nanoparticle Size Analyzer (Brookhaven Instruments Corporation,
+USA).
+2.2.3. In-vitro drug release study
+The drug release rate from the nanoparticles is determined using
+the dialysis-bag method under a sink condition. The dissolution test
+is conducted at 37 ◦C in a water bath under a continuous stirring.
+The dialysis bag containing 2 mL nanoparticle suspension is placed
+in an opaque bottle to prevent photodegradation of LEV. 6 mL PBS
+is used as the release medium. At ﬁxed intervals, 4 mL of the release
+medium is withdrawn and the amount of LEV released is mea-
+sured by the UV–vis spectrophotometer. The withdrawn sample
+is replaced with 4 mL of fresh PBS to maintain the sink condition.
+2.2.4. Spray-drying experiment
+The LEV-loaded PLGA nanoparticle suspension is transformed
+into dry-powder nanoparticle aggregates using a Büchi B-290
+mini spray dryer (Büchi, Switzerland). Drying adjuvants are use
+(i) to protect the structural integrity of the nanoparticles upon
+drying and (ii) to ensure the nanoparticle aggregates can be recon-
+stituted into primary nanoparticles upon their exposure to an
+aqueous environment. The particle geometric size (dG) and shape
+are characterized using a Scanning Electron Microscope (SEM)
+model JSM-6700F (JEOL, USA), whereas the particle effective den-
+sity (e) is determined using a tap densitometer (Quantachromme,
+USA). The aerodynamic diameter (dA) is determined from Eq. (1) in
+which s = 1 g/cm3.
+dA = dG
+
+e
+S
+(1)
+2.2.5. Antibacterial activity testing
+P. aeruginosa bioﬁlm cells are cultivated according to the method
+of Harrison et al. [16]. Brieﬂy, a bacterial cell suspension used as the
+inoculum is adjusted to 1.0 McFarland standard and is diluted by
+30-fold in MHB to produce 1.0 × 107 colony forming units (CFU)/mL.
+Next, 150 L of the inoculum is transferred to each well of a 96-
+well microplate and a 96-peg lid is ﬁtted on top of the microplate
+to provide a surface for the bioﬁlm growth. After 24-h-incubation
+in a shaking incubator at 150 RPM and 37 ◦C, the peg lid is lifted
+and the bioﬁlm formed on the pegs is rinsed with PBS to remove
+loosely attached planktonic cells.
+Table 1
+Physical characteristics of nanoparticles prepared by the standard methods.
+Run
+Method
+Size (nm)
+% Encapsulation
+Drug loading (%)
+A
+NPC
+80 ± 30
+15
+0.7
+B
+ESE
+190 ± 50
+16
+1.1
+C
+DESE
+190 ± 80
+10
+1.0
+To determine the antibacterial activity, bioﬁlm cells formed on
+the pegs are exposed to a 20 L suspension of the dry-powder
+nanoparticle aggregates and 180 L of MHB at dosing equal to
+7 g/mL of LEV. Bioﬁlm cells exposed to 20 L of PBS and 180 L of
+MHB are used as the experimental control. After 6, 12, and 24 h of
+incubation at 37 ◦C, bioﬁlm cells remaining on the pegs are rinsed
+with PBS and transferred to a new microplate containing 200 L of
+PBS after a ﬁve-minute sonication. The recovered bioﬁlm cells are
+serially diluted 10-fold and are plated onto agar plates to be incu-
+bated overnight at 37 ◦C to determine the viable CFU. The results
+reported are based on two replicates. The antibacterial activity of
+the nanoparticle suspension is also tested to examine, if any, the
+effect of the dry-powder transformation.
+3. Results and discussions
+3.1. LEV-loaded PLGA nanoparticles prepared by standard
+methods
+3.1.1. Physical characteristics
+A summary of the LEV-loaded PLGA nanoparticles produced
+by using the three standard methods (i.e. NPC, ESE, and DESE in
+Runs A–C, respectively) is presented in Table 1. Despite the similar
+initial amount of PLGA used (80–100 mg), nanoparticles prepared
+by the NPC method exhibit a considerably smaller size (≈100 nm)
+compared to that of nanoparticles prepared by the ESE and DESE
+methods (≈200 nm). The sizes of the three nanoparticles produced
+nevertheless remain within the range ideal for sputum penetra-
+tions [3].
+Particle size distribution of the nanoparticles produced by the
+ESE method is presented in Fig. 1A, where a highly uniform distri-
+bution is observed. Similarly, uniform size distributions are also
+observed for the nanoparticles produced by the NPC and DESE
+methods. SEM image of the nanoparticles in Fig. 1B indicates spher-
+ical nanoparticles are produced and veriﬁes their highly uniform
+size distribution. Zeta potentials of the three nanoparticles are in
+the range of (−) 10–30 mV indicating colloidally stable nanoparti-
+cles.
+In addition to the smaller size, the NPC method results in a lower
+production yield (≈65%) than the ESE and DESE methods (≈90%),
+which can be attributed to greater particle losses during the cen-
+trifugation and washing steps as a result of the smaller particle size.
+Fig. 1. (A) Particle size distribution of LEV-loaded PLGA nanoparticles indicating a highly monodisperse distribution and (B) their SEM image for veriﬁcation.
+
+82
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+Due to the high aqueous solubility of LEV, % encapsulations of LEV
+in nanoparticles prepared by the standard methods are expectably
+low (≤16%, w/w) as LEV diffuses out into the aqueous phase during
+the nanoparticle preparation steps. Even for the DESE method, the
+% encapsulation is also low, despite the double emulsiﬁcation, due
+to the high LEV solubility in the oil phase, which leads to the escape
+of LEV from the inner to the outer aqueous phase.
+Consequently, drug loadings of the nanoparticles are also low
+(≤1.1%, w/w), where the NPC method results in the lowest drug
+loading at 0.70% (w/w). Experimental uncertainties in the % encap-
+sulation and drug loading measurements are between 4–8% and
+5%, respectively, based on three replicates. The extremely low drug
+loading of the nanoparticles produced by the NPC method is caused
+byLEVdiffusesoutintotheaqueousphase,together withthe water-
+miscible acetone, upon PLGA precipitations, which results in LEV
+being predominantly adsorbed onto the nanoparticle surface. Con-
+sequently, LEV is washed off more easily during the centrifugation
+step, compared to when LEV is encapsulated within the polymer
+matrix, resulting in a low drug loading. The dominant presence
+of LEV on the surface of the nanoparticles produced by the NPC
+method is manifested in its fast release proﬁle as presented in the
+next section.
+The use of water-immiscible DCM in the ESE and DESE meth-
+ods prevents LEV from being predominantly adsorbed onto the
+nanoparticle surface as reﬂected in the higher drug loading. In
+this regard, the NPC and ESE methods are commonly employed to
+encapsulate hydrophobic drugs into nanoparticles, where the lack
+of drug solubility in the aqueous phase ensures high encapsulation
+efﬁciency. Thus, when highly water-soluble drugs, such as LEV, are
+encapsulated using the NPC and ESE methods, % encapsulations
+achieved are expectably low.
+The DESE method, on the other hand, is typically employed
+to encapsulate water-soluble, but not solvent-soluble, drugs, as
+the inner aqueous phase acts as a reservoir in which the drug is
+dissolved, whereas the oil phase serves as a dissolution barrier pre-
+venting the drug leakage from the inner to the outer aqueous phase.
+For LEV, which is highly soluble in both the aqueous and oil/organic
+phases, standard NPC, ESE, and DESE methods have been shown
+to be incapable of producing high % encapsulations. Hence, mod-
+iﬁcations to the standard methods are needed to enhance the %
+encapsulation of LEV.
+3.1.2. In-vitro drug release
+In-vitro release proﬁles of LEV from the nanoparticles produced
+in Runs A–C are shown in Fig. 2. Experimental uncertainties in the %
+drug released, based on three replicates, are approximately 5%. As
+previously mentioned, nanoparticles prepared by the NPC method
+0
+20
+40
+60
+80
+100
+0
+3
+6
+9
+12
+% drug released
+Time (hours)
+Run A
+Run B
+Run C
+Fig. 2. In-vitro drug release proﬁles from nanoparticles prepared by the standard
+methods.
+exhibit a monophasic burst release proﬁle as a result of LEV being
+predominantly present on the nanoparticle surface. Speciﬁcally,
+≈80% of the loaded LEV is released within the ﬁrst hour and the
+entire loaded drug is completely released within 3 h.
+In contrast, nanoparticles prepared by the ESE and DESE meth-
+ods display biphasic release proﬁles, where a high burst release
+in the ﬁrst hour (≈40–50%) is observed due to the presence of
+LEV on the nanoparticle surface. The burst release is followed by
+a slower release of the remaining LEV contributed by LEV that is
+encapsulated within the PLGA matrix. Not all of the loaded LEV,
+however, only 80–90%, is released after 24 h. Nevertheless, the
+extended biphasic LEV release proﬁles produced by the ESE and
+DESE methods are more desirable than the burst release proﬁle as
+they can ensure that LEV concentrations are maintained above the
+level needed to inhibit the bioﬁlm growth in-between dosings [17],
+as well as reducing the risk of systemic toxicity.
+Thus, nanoparticles prepared by the ESE and DESE methods are
+deemed superior compared to those prepared by the NPC method,
+because of (i) the higher production yield and drug loading and (ii)
+the sustained release proﬁles. For this reason, subsequent modiﬁ-
+cation attempts to improve the % encapsulation and drug loading
+are focused on the ESE and DESE methods. A summary of modiﬁca-
+tions that are attempted and their corresponding results (i.e. size,
+% encapsulation, and drug loading) is presented in Tables 2–4. The
+modiﬁcations reported in the present work are not aimed towards
+Table 2
+Physical characteristics of nanoparticles prepared by the modiﬁed ESE methods.
+Run
+Modiﬁed phase
+ESE modiﬁcation
+Size (nm)
+% Encapsulation
+Drug loading (%)
+B1
+Organic
+50% (v/v) DCM:ethyl acetate
+≈200
+≈15
+≈1.0
+B2
+50% (v/v) DCM:acetone
+B3
+Aqueous
+50% (w/w) PVA:lecithin
+240 ± 50
+23
+2.3
+Table 3
+Physical characteristics of nanoparticles prepared by the modiﬁed single-phase DESE methods.
+Run
+Modiﬁed phase
+DESE modiﬁcation
+Size (nm)
+% Encapsulation
+Drug loading (%)
+C1
+Inner aqueous
+PBS core
+190 ± 70
+6
+0.6
+C2
+0.1% PEG (w/v)
+200 ± 70
+8
+0.8
+C3
+0.1% PVA (w/v)
+360 ± 120
+22
+2.1
+C4
+Oil
+50% (v/v) DCM:acetone
+110 ± 40
+22
+2.4
+C5
+50% (v/v) DCM:ethyl acetate
+140 ± 50
+20
+2.1
+
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+83
+Table 4
+Physical characteristics of nanoparticles prepared by the modiﬁed multiple-phase DESE methods.
+Run
+Inner aqueous phase
+Oil phase
+Outer aqueous phase
+Size (nm)
+% Encapsulation
+Drug loading (%)
+C6
+0.1% (w/v) PVA
+DCM:acetone
+Standard
+170 ± 80
+6
+0.5
+C7
+DCM:ethyl acetate
+180 ± 80
+10
+1.0
+C8
+Standard
+50% (w/w) PEG
+290 ± 110
+11
+1.0
+C9
+50% (w/w) chitosan
+720 ± 290
+8
+0.8
+C10
+50% (w/w) tyloxapol
+720 ± 340
+4
+0.4
+the more usual parameters, such as stirring speed, pH change, start-
+ing polymer and drug concentrations, or the volume ratio of the
+aqueous to organic phase, because these parameters have been
+found in our preliminary study to be non-inﬂuential towards the
+LEV encapsulation process.
+3.2. LEV-loaded PLGA nanoparticles prepared by the modiﬁed ESE
+methods
+Three modiﬁcations to the standard ESE method are performed,
+which are (1, 2) using alternative solvents composed of 50% (v/v)
+mixture of DCM and either acetone or ethyl acetate in Runs B1
+and B2, and (3) addition of 50% (w/w) lecithin into the aqueous
+PVA solution in Run B3. For the effect of using alternative solvents,
+precipitations of PLGA chains to form solid nanoparticles are slower
+when completely water-immiscible solvents, such as DCM, are used
+as it takes longer for the polymer molecules to be exposed to the
+aqueous phase upon emulsiﬁcations. The slower PLGA precipitation
+rate provides an opening for the highly water-soluble LEV to leak
+out of the organic phase into the aqueous phase resulting in the low
+% encapsulation.
+For this reason, varying the water-miscibility level of the solvent
+is thought to potentially have an impact on the % encapsulation.
+The solvent composition is therefore varied from 100% (v/v) DCM
+in the standard ESE method to 50% (v/v) of DCM and ethyl acetate
+in Run B1, and to 50% (v/v) of DCM and acetone in Run B2. The
+water-miscibility levels of these mixtures increase in the following
+order: 100% (v/v) DCM < 50% (v/v) DCM/ethyl acetate < 50% (v/v)
+DCM/acetone, which is attributed to the partial-miscibility of ethyl
+acetate and full-miscibility of acetone in water.
+Completely replacing DCM with a highly water-miscible sol-
+vent, such as acetone, however, is not pursued as it denotes a shift
+from the ESE method to the NPC method, which has been found to
+produce less-than-ideal nanoparticles. The results of Runs B1 and
+B2 in Table 2 nonetheless suggest that the effects of the water-
+miscibility level of the solvent on the % encapsulation and drug
+loading are minimal, where their respective values remain in the
+15% (w/w) and 1.0% (w/w) ranges. Hence, instead of attempting
+to reduce the time-scale of the drug leak-out, the next modiﬁca-
+tion attempt aims to incorporate physicochemical barriers into the
+nanoparticles, so that the drug leak-out can be minimized.
+In this regard, adding phospholipid lecithin into the aqueous
+phase during PLGA nanoparticle preparation has been shown to
+result in adsorptions of the amphiphilic lecithin onto the nanopar-
+ticle surface through hydrophobic interactions [18]. As LEV is
+lipophilic [19], it interacts with the hydrophobic tails of the lecithin
+similar to the PLGA–lecithin interactions, such that incorporating
+lecithin onto the nanoparticle surface can potentially enhance the
+% encapsulation by entrapping LEV in the phospholipid layer.
+Indeed, two-fold increases in the % encapsulation and drug load-
+ing to 23% and 2.3% (w/w), respectively, are observed in Run B3,
+where lecithin is added to the 1.0% (w/v) aqueous PVA solution at
+50% (w/w) PVA to lecithin ratio. Moreover, in spite of the higher
+drug loading, the lecithin inclusion slows down the LEV release
+rate due to the hydrophobic interactions as shown in Fig. 3. As a
+result, the PLGA–lecithin nanoparticles exhibit the ideal extended
+biphasic release proﬁle.
+3.3. LEV-loaded PLGA nanoparticles prepared by the modiﬁed
+DESE methods
+For the DESE method, the modiﬁcations are ﬁrst performed
+one-at-a-time on either the inner aqueous phase or the oil phase
+of the w/o/w nano-emulsion to identify formulation parameters
+(e.g. solvent, surfactant) that have the most signiﬁcant impacts
+on the % encapsulation. Subsequently, simultaneous modiﬁcations
+involving the signiﬁcant parameters are carried out in both the
+inner/outer aqueous and oil phases.
+3.3.1. Single-phase modiﬁcations
+First, the effects of modifying the inner aqueous phase on the
+% encapsulation and drug loading are investigated by substituting
+deionized water used in the standard DESE method with 100% (v/v)
+PBS in Run C1, and 0.1% (w/v) aqueous PEG and PVA solutions in
+Runs C2 and C3, respectively. The oil and outer aqueous phases
+remain unchanged from the standard DESE method.
+First, owed to the higher observed solubility of LEV in PBS
+than that in deionized water, the use of PBS as the inner aque-
+ous phase is thought to be able to increase the % encapsulation,
+where LEV would remain longer in the aqueous core upon emul-
+siﬁcations due to the lower degree of supersaturation. However,
+the results of Run C1 presented in Table 3 suggest otherwise,
+where the % encapsulation and drug loading are lowered to 6% and
+0.6% (w/w), respectively, from 10% and 1.0% (w/w) in the standard
+DESE method. The nanoparticle size is nevertheless unaffected and
+remains in the ≈200–300 nm range.
+Second, the inclusion of a surfactant in the inner aqueous phase
+of the DESE method has been shown at the micro-scale to enhance
+the primary w/o emulsion stability, which increases the aqueous
+pore volume of the carrier particles, resulting in higher % encap-
+sulation and drug loading [20]. For this reason, the inclusion of
+surfactants in the aqueous core is now attempted at the nano-scale
+0
+20
+40
+60
+80
+0
+6
+12
+18
+24
+% drug released
+Time (hours)
+Run B w/o lecithin
+Run B3 w/ lecithin
+Fig. 3. Effect of lecithin inclusion on the in-vitro drug release proﬁle.
+
+84
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+to examine whether a similar ﬁnding is observed. Using PEG as
+the surfactant, the results of Run C2 indicate that % encapsulation
+and drug loading are lowered to 8% and 0.8% (w/w), respectively,
+without any signiﬁcant impacts on the nanoparticle size.
+In contrast, using PVA as the surfactant in Run C3 yields nanopar-
+ticles having higher % encapsulation and drug loading (i.e. 22% and
+2.1%, w/w, respectively), which is similar to the results obtained
+with the lecithin inclusion in the ESE method (i.e. Run B3). How-
+ever, the nanoparticle size in Run C3 is increased to ≈400–500 nm
+range, which makes them less suitable for sputum penetration. The
+signiﬁcant difference in the effects of PEG and PVA inclusion on the
+% encapsulation is likely due to the fact that adsorbed PEG is washed
+off the PLGA nanoparticle surface more easily than PVA [21]. Sig-
+niﬁcantly, the results of Runs B3 and C3 indicate that the presence
+of surfactant layer on the PLGA nanoparticle surface can enhance
+the % encapsulation and drug loading provided that the surfactant
+remains adsorbed upon washing.
+Third, the modiﬁcations are performed in the oil phase by
+replacing the 100% (v/v) DCM in the standard DESE method with
+50% (v/v) mixture of DCM/acetone in Run C4 and DCM/ethyl acetate
+in Run C5. DCM cannot be completely replaced as the DESE method
+requires the presence of a completely water-immiscible solvent.
+In this regard, the type of solvent used as the oil phase has been
+reported to impact the % drug encapsulation in nanoparticles due
+to the different nanoparticle precipitation rates depending on the
+water-miscibility level of the solvent used [22].
+Speciﬁcally, in the second emulsiﬁcation step, the polymer pre-
+cipitates at a rate proportional to the water-miscibility level of the
+solvent, where the more water-miscible the solvent is, the faster
+the polymer precipitates to form w/o/w nano-emulsion as a result
+of the faster exposure to the aqueous phase. The faster the poly-
+mer precipitates and encapsulates the drug in the process, less drug
+leaks out from the inner to the outer aqueous phase, which in theory
+should improve the % encapsulation.
+For this reason, the effect of varying the water-miscibility level
+of the oil phase is investigated in Runs C4 and C5 by adding miscible
+acetone and partially miscible ethyl acetate into the DCM. In con-
+trast to the results of a similar study in the ESE method (i.e. Runs
+B1–B2), the results in Table 3 indicate that increasing the water-
+miscibility level of the oil phase does lead to improvements in the
+% encapsulation and drug loading to 20–22% and 2.1–2.4% (w/w),
+respectively, which is more than two-fold higher than the values
+obtained from the standard DESE method.
+The slightly higher drug loading achieved in Run C4 is attributed
+to the higher water-miscibility of the DCM/acetone mixture com-
+pared to the DCM/ethyl acetate mixture. Importantly, the higher
+drug loading does not jeopardize the nanoparticle sizes, which in
+fact are slightly reduced to be below 200 nm. Despite the increased
+drug loading, the in-vitro LEV release proﬁles of Runs C4 and C5
+presented in Fig. 4 are similar to that of the standard DESE method
+in Run C, where 90% of the drug is released within 6 h.
+The difference in the effects of varying the water-miscibility
+level on the % encapsulation between the ESE and DESE methods
+is postulated to be caused by the fact that in the DESE method, the
+drug is dissolved in the inner aqueous phase, such that faster poly-
+mer precipitations at higher water-miscibility levels can prevent
+the drug leak-out from the inner aqueous core to the outer aque-
+ous phase resulting in higher % encapsulation. In contrast, the drug
+is dissolved in the oil phase (i.e. solvent phase) in the ESE method,
+such that even though faster polymer precipitations increase the
+% encapsulation, the diffusion of the water-miscible component of
+the oil phase (i.e. either ethyl acetate or acetone) into the aqueous
+phase upon emulsiﬁcation results in the dissolved drug being trans-
+ported out to the aqueous phase together with the water-miscible
+solvent. As a result, the increase in the % encapsulation owed to the
+faster polymer precipitation is cancelled out by the drug loss due to
+0
+20
+40
+60
+80
+100
+0
+6
+12
+18
+24
+% drug released
+Time (hours)
+Run C
+Run C4
+Run C5
+Fig. 4. Effect of varying the water-miscibility level of the oil phase on the in-vitro
+drug release proﬁle.
+the solvent outward diffusion resulting in insigniﬁcant net effects
+on the % encapsulation.
+3.3.2. Multiple-phase modiﬁcations
+To examine whether further improvements in the % encapsula-
+tion and drug loading can be achieved, simultaneous modiﬁcations
+involving the inner and outer aqueous phases, as well as the oil
+phase, are investigated in Runs C6–C10 presented in Table 4. 0.1%
+(w/v) aqueous PVA solution is used as the inner aqueous phase in
+Runs C6–C10 as it has been found in Run C3 to signiﬁcantly improve
+the % encapsulation and drug loading, though it also results in a
+larger nanoparticle size.
+First, the effects of simultaneously modifying the inner aqueous
+phase and the oil phase, while keeping the outer aqueous phase
+unchanged (i.e. 2.0% (w/v) aqueous PVA solution), are examined
+in Runs C6 and C7. DCM/acetone and DCM/ethyl acetate mixtures
+are used as the oil phase in Runs C6 and C7, respectively, as they
+have been found to increase the % encapsulation in Runs C4–C5. The
+results, however, indicate that a synergistic effect is not observed
+when the inner aqueous phase and the oil phase are modiﬁed simul-
+taneously.
+In fact, less favorable results in terms of the % encapsulation and
+drug loading are observed in Runs C6–C7 compared to the single-
+phase modiﬁcation results. Speciﬁcally, the % encapsulation is back
+to be ≤10% (w/w) similar to that obtained using the standard DESE
+method. Similarly, the drug loading falls below 1.0% (w/w) and the
+nanoparticle size is back in the ≈200–300 nm range.
+Second, the effects of simultaneously modifying the inner
+and outer aqueous phases, while keeping the oil phase remains
+unchanged (i.e. 100% (v/v) DCM), are investigated in Runs C8–C10.
+The outer aqueous phase is modiﬁed by adding new surfactants or
+polymers widely used in drug delivery formulation, such as PEG,
+chitosan, and tyloxapol, into the 2.0% (w/v) aqueous PVA solution.
+The presence of these materials at 50% (w/w) ratio in the outer
+aqueous phase is thought to have the potential to inﬂuence the
+drug leak-out rate.
+The results nonetheless indicate that the % encapsulation, drug
+loading, and nanoparticle size deteriorate signiﬁcantly compared
+to the single-phase modiﬁcations in Runs C3–C5. Speciﬁcally, the
+% encapsulations are low between 4% and 11% (w/w) resulting
+in low drug loadings between 0.1% and 1.0% (w/w). Furthermore,
+the nanoparticle sizes in Runs C9 and C10 are excessively large at
+≈700 nm, hence signifying the importance of either PVA or PEG
+
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+85
+in maintaining the colloidal stability of the w/o/w nano-emulsion
+formed.
+To summarize, for the DESE method, simultaneous mod-
+iﬁcations involving multiple phases negatively affect the %
+encapsulation and drug loading. In contrast, single-phase modiﬁ-
+cations in Runs C3–C5 result in two-fold improvements in the %
+encapsulation and drug loading. However, the large nanoparticle
+size produced in Run C3 (i.e. ≥400 nm) is undesirable due to the
+lack of sputum penetration ability. For the ESE method, the lecithin
+inclusion in Run B3 similarly results in a two-fold improvement
+in the % encapsulation and drug loading, while maintaining the
+nanoparticle size in the 200–300 nm range.
+Importantly, the nanoparticles produced in Run B3 exhibit a
+slower sustained LEV release proﬁle, which make them more
+attractive than those produced in Runs C4 and C5, despite the sim-
+ilarities in terms of their size, % encapsulation, drug loading, and
+production yield. In addition, the ESE method is simpler than the
+DESE method owed to the single-emulsiﬁcation step. For this rea-
+son, the lecithin-modiﬁed nanoparticles produced in Run B3 are
+selected as the optimal formulation for further spray-drying and
+antibacterial activity testing experiments.
+3.4. Spray-drying production of dry-powder LEV-loaded PLGA
+nanoparticles
+The following spray-drying conditions are employed, i.e.
+inlet temperature = 100 ◦C, feed rate = 2.8 mL/min, atomizing ﬂow
+rate = 350 L/h, and feed concentration = 1.0% (w/w). Due to the high
+drying temperature, which is above the glass transition tempera-
+ture of PLGA (i.e. ≈35 ◦C), the inclusion of leucine and PVA as drying
+adjuvants is necessary to protect the structural integrity of the PLGA
+nanoparticles. The ratio of the nanoparticles to the drying adju-
+vants is maintained at 1:1. Dry-powder nanoparticle aggregates
+produced at this spray drying condition possess dG between 6 and
+9 m and low eff (≈0.3 g/cm3) owed to the hollow morphology as
+shown in Fig. 5A. Due to the hollow morphology, dA of these par-
+ticles is between 3 and 5 m rendering them suitable for inhaled
+delivery.
+Importantly, the drug loading of the dry-powder nanoparticles
+is similar in magnitude to that of the suspension form indi-
+cating a minimal drug loss in the drying process. Furthermore,
+these nanoparticle aggregates readily reconstitute into individual
+nanoparticles upon their exposure to an aqueous environment. The
+nanoparticle size after the re-constitution in Fig. 5B, however, is
+about twice larger than their size prior to the dry-powder transfor-
+mation, which is due to the coalescence of the PLGA nanoparticles
+upon exposure to a high temperature above their glass transition
+temperature as can be seen in Fig. 5C.
+3.5. Antibacterial activity of dry-powder LEV-loaded PLGA
+nanoparticles
+To ensure that the activity of the nanoparticles is not affected
+by their transformation into the dry-powder form, antibacterial
+activities of both the dry-powder and suspension forms of the
+nanoparticles are tested against P. aeruginosa bioﬁlm cells. The
+antibacterial activities of the nanoparticles are evaluated in a time-
+kill study after 6, 12, and 24 h of antibiotic exposures using a LEV
+dose of 7 ± 0.3 g/mL, which is above the minimum inhibitory con-
+centration (MIC) of the planktonic cells (≈2 g/mL) as bioﬁlm cells
+are well-known to exhibit a higher antibiotic tolerances than their
+planktonic cell counterparts.
+The experimental control (i.e. bioﬁlm cells exposed to PBS)
+shown in Fig. 6A remains at a density of ≈8 log (CFU/peg) through-
+out the duration of the study signifying a steady-state bioﬁlm
+density when no antibiotic is introduced. After 6 h of exposure to
+Fig. 5. (A) SEM image of dry-powder nanoparticle aggregates prepared by spray-
+drying, (B) particle size distribution of the nanoparticles before the dry-powder
+transformation and after re-constitution, and (C) SEM image of the re-dispersed
+nanoparticles.
+the nanoparticles, 99.999% of the bioﬁlm cells are killed with only
+3 log (CFU/peg) of surviving bioﬁlm cells, which is attributed to
+the high antibiotic concentration produced by the burst release.
+The number of bioﬁlm cells, however, increases at the 12th and
+24th hour to 5 log (CFU/peg) as the surviving bioﬁlm cells begin to
+multiply due to the subsequent slower antibiotic release. Overall,
+99.9% of the bioﬁlm cells are eradicated after 24 h. Importantly, at all
+time-points, the extents of bioﬁlm cell eradications afforded by the
+dry-powder form are nearly identical to that of the nanoparticle
+suspension, which indicates that the dry-powder transformation
+does not affect the antibacterial activity of the nanoparticles.
+In addition, to verify that the bioﬁlm eradications presented in
+Fig. 6A are solely attributed to the LEV-loaded nanoparticles, and
+not because of the presence of hazardous solvent trace from the
+nanoparticle preparation steps, antibacterial activity of the blank
+nanoparticles (i.e. no antibiotic) is examined. The results in Fig. 6B
+indicate that the blank nanoparticles, in their suspension and dry-
+
+86
+W.S. Cheow, K. Hadinoto / Colloids and Surfaces A: Physicochem. Eng. Aspects 370 (2010) 79–86
+Fig. 6. (A) Antibacterial activities of the LEV-loaded nanoparticles at three differ-
+ent time-points (DP3 = dry-powder nanoparticles, NP3 = nanoparticle suspension)
+against P. aeruginosa bioﬁlm cells and (B) non-activity of blank nanoparticles.
+powder forms, do not exhibit any antibacterial activities towards
+the bioﬁlm cells as the log (CFU/peg) of the bioﬁlm cells exposed
+to the blank nanoparticles are similar in magnitude to that of the
+control experiment.
+4. Conclusions
+LEV-loaded PLGA nanoparticles are prepared by employing the
+standard and modiﬁed NPC, ESE and DESE methods. In compari-
+son to the standard methods, single-phase modiﬁcations involving
+(i) the addition of lecithin into the aqueous phase (ESE) and (ii)
+the use of alternative solvents (DESE) result in two-fold improve-
+ments in the % encapsulation and drug loading (i.e. ≈22–24% and
+2.1–2.4%, w/w, respectively). Signiﬁcantly, the experimental results
+indicate that simultaneous modiﬁcations involving multiple phases
+do not lead to additive effects of the single-phase modiﬁcations. In
+other words, an observed doubling of the % encapsulation when
+two single-phase modiﬁcations are performed separately does not
+translate to quadrupled % encapsulation when the two modiﬁ-
+cations are performed simultaneously. The optimal formulation,
+which is evaluated in terms of the nanoparticle size, % encapsu-
+lation, drug loading, in-vitro drug release proﬁle, and production
+yield, has been identiﬁed in the form of PLGA-lecithin nanopar-
+ticles prepared by the ESE method. Lastly, the nanoparticles can
+be straightforwardly transformed into the inhalable solid dosage
+form by spray-drying with the inclusion of drying adjuvants. The
+dry-powder nanoparticles exhibit similar antibacterial activities as
+their aqueous suspension form against P. aeruginosa bioﬁlm cells.
+Acknowledgement
+A ﬁnancial support from Nanyang Technological University’s
+Start-Up Grant (Grant No. SUG 8/07) is gratefully acknowledged.
+References
+[1] P.G.A. Rogueda, D. Traini, The nanoscale in pulmonary delivery. Part 2: Formu-
+lation platforms, Expert Opin. Drug Deliv. 4 (2007) 607–620.
+[2] P.R.A. Pauwels, K.F. Rabe, Burden and clinical features of chronic obstructive
+pulmonary disease (COPD), Lancet 364 (2004) 613–620.
+[3] J.S. Suk, S.K. Lai, Y.-Y. Wang, L.M. Ensign, P.L. Zeitlin, M.P. Boyle, J. Hanes, The
+penetration of fresh undiluted sputum expectorated by cystic ﬁbrosis patients
+by non-adhesive polymer nanoparticles, Biomaterials 30 (2009) 2591–2597.
+[4] P. Meers, M. Neville, V. Malinin, A.W. Scotto, G. Sardaryan, R. Kurumunda,
+C. Mackinson, G. James, S. Fisher, W.R. Perkins, Bioﬁlm penetration, trig-
+gered release and in vivo activity of inhaled liposomal amikacin in chronic
+Pseudomonas aeruginosa lung infections, J. Antimicrob. Chemother. 61 (2008)
+859–868.
+[5] M. Halwani, S. Hebert, Z.E. Suntres, R.M. Lafrenie, A.O. Azghani, A. Omri,
+Bismuth-thiol incorporation enhances biological activities of liposomal
+tobramycin against bacterial bioﬁlm and quorum sensing molecules produc-
+tion by Pseudomonas aeruginosa, Int. J. Pharm. 373 (2009) 141–146.
+[6] P.G.A. Rogueda, D. Traini, The nanoscale in pulmonary delivery. Part 1:
+deposition, fate, toxicology and effects, Expert Opin. Drug Deliv. 4 (2007)
+595–606.
+[7] K. Hadinoto, W.S. Cheow, Hollow spherical nanoparticulate aggregates as
+potential ultrasound contrast agent: shell thickness characterization, Drug Dev.
+Ind. Pharm. 35 (2009) 1167–1179.
+[8] K. Hadinoto, Mechanical stability of hollow spherical nano-aggregates as ultra-
+sound contrast agent, Int. J. Pharm. 374 (2009) 153–161.
+[9] H. Ishida, Y. Ishida, Y. Kurosaka, T. Otani, K. Sato, H. Kobayashi, In vitro and in
+vivo activities of levoﬂoxacin against bioﬁlm-producing Pseudomonas aerugi-
+nosa, Antimicrob. Agents Chemother. 42 (1998) 1641–1645.
+[10] S. Schwank, Z. Rajacic, W. Zimmerli, J. Blaser, Impact of bacterial bioﬁlm for-
+mation on in vitro and in vivo activities of antibiotics, Antimicrob. Agents
+Chemother. 42 (1998) 895–898.
+[11] A. Frick, H. Möller, E. Wirbitzki, Biopharmaceutical characterization of oral
+immediate release drug products. In vitro/in vivo comparison of phe-
+noxymethylpenicillin potassium, glimepiride and levoﬂoxacin, Eur. J. Pharm.
+Biopharm. 46 (1998) 305–311.
+[12] T. Govender, S. Stolnik, M.C. Garnett, L. Illum, S.S. Davis, PLGA nanoparticles
+prepared by nanoprecipitation: drug loading and release studies of a water
+soluble drug, J. Controlled Release 57 (1999) 171–185.
+[13] J.M. Barichello, M. Morishita, K. Takayama, T. Nagai, Encapsulation of
+hydrophilic and lipophilic drugs in PLGA nanoparticles by the nanoprecipi-
+tation method, Drug Dev. Ind. Pharm. 25 (1999) 471–476.
+[14] L. Peltonen, J. Aitta, S. Hyvönen, M. Karjalainen, J. Hirvonen, Improved entrap-
+ment efﬁciency of hydrophilic drug substance during nanoprecipitation of
+poly(l)lactide nanoparticles, AAPS PharmSciTech 5 (2004) [electronic resource].
+[15] D. Worlitzsch, R. Tarran, M. Ulrich, U. Schwab, A. Cekici, K.C. Meyer, P. Bir-
+rer, G. Bellon, J.r. Berger, T. Weiss, K. Botzenhart, J.R. Yankaskas, S. Randell,
+R.C. Boucher, G. Döring, Effects of reduced mucus oxygen concentration in
+airway Pseudomonas infections of cystic ﬁbrosis patients, Journal of Clinical
+Investigation 109 (2002) 317–325.
+[16] J. Harrison, H. Ceri, J. Yerly, C. Stremick, Y. Hu, R. Martinuzzi, R. Turner, The use
+of microscopy and three-dimensional visualization to evaluate the structure of
+microbial bioﬁlms cultivated in the calgary bioﬁlm device, Biol. Proced. Online
+8 (2006) 194–215.
+[17] W. Cheow, M. Chang, K. Hadinoto, Antibacterial efﬁcacy of inhalable
+levoﬂoxacin-loaded polymeric nanoparticles against E. coli bioﬁlm cells: the
+effect of antibiotic release proﬁle, Pharm. Res. 27 (2010) 1597–1609.
+[18] L. Zhang, J.M. Chan, F.X. Gu, J.-W. Rhee, A.Z. Wang, A.F. Radovic-Moreno,
+F. Alexis, R. Langer, O.C. Farokhzad, Self-assembled lipid-polymer hybrid
+nanoparticles: a robust drug delivery platform, ACS Nano 2 (2008) 1696–1702.
+[19] A. Lambert, J.-B. Regnouf-de-Vains, M.F. Ruiz-López, Structure of levoﬂoxacin
+in hydrophilic and hydrophobic media: Relationship to its antibacterial prop-
+erties, Chem. Phys. Lett. 442 (2007) 281–284.
+[20] Y.-Y. Yang, T.-S. Chung, N. Ping Ng, Morphology, drug distribution, and in vitro
+release proﬁles of biodegradable polymeric microspheres containing protein
+fabricated by double-emulsion solvent extraction/evaporation method, Bio-
+materials 22 (2001) 231–241.
+[21] L. Mu, P.H. Seow, S.N. Ang, S.S. Feng, Study on surfactant coating of polymeric
+nanoparticles for controlled delivery of anticancer drug, Colloid Polym. Sci. 283
+(2004) 58–65.
+[22] E. Cohen-Sela, M. Chorny, N. Koroukhov, H.D. Danenberg, G. Golomb, A new
+double emulsion solvent diffusion technique for encapsulating hydrophilic
+molecules in PLGA nanoparticles, J. Controlled Release 133 (2009) 90–95.

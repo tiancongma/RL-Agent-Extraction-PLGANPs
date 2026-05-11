@@ -1,0 +1,4 @@
+doi_norm	hypothesis_category	evidence_hint
+10.1016/j.ejpb.2004.09.002	duplicate_mentions_or_over_splitting	extracted_rows=8 vs curated_rows=2
+10.1039/c5ra27386b	duplicate_mentions_or_over_splitting	extracted_rows=6 vs curated_rows=1
+10.1089/jamp.2009.0759	table_row_mapping_issue	row cardinality differs (curated_rows=1, extracted_rows=2)

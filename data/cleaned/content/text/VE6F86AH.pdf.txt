@@ -1,0 +1,786 @@
+RESEARCH ARTICLE
+www.particle-journal.com
+Optimizing Formulation Conditions of PLGA Microparticles
+to Enhance Indomethacin Encapsulation
+Martina Arabia, Eleonora Maretti, Armita Sedighidarijani, Cecilia Rustichelli,
+and Eliana Leo*
+Drug delivery systems can avoid the drawbacks of Indomethacin (IND), a
+non-steroidal anti-inﬂammatory drug used to treat osteoarthritis and arthritis,
+which requires high doses to reach therapeutic plasma levels leading to
+signiﬁcant systemic side eﬀects. This study aims to optimize
+poly(lactic-co-glycolic acid) (PLGA) microparticles (MPs) for intra-articular
+IND administration. MPs are prepared by solvent evaporation and
+freeze-dried for stability. Initial formulations with Tween 80 yield rubbery
+samples with low drug loading (1%); replacement of Tween 80 with Gelatin
+produces a stable powder with syringable MPs (particles size: 7 μm),
+although, DL (3%) and EE (30%) remain suboptimal, due to IND polymorphic
+transformation. Diﬀerential Scanning Calorimetry and Fourier-Transform
+Infrared spectroscopy demonstrate a molecular dispersion of IND in PLGA.
+Adjusting the aqueous phase to pH 3 in the formulation process, i.e below
+IND pKa, signiﬁcantly enhances EE (90%) due to the reduction of drug
+solubility in the external aqueous phase. In vitro release study shows
+prolonged IND release over several days, conﬁrming an eﬀective drug
+encapsulation. This study provides a foundational framework toward the
+optimization of the successful encapsulation of IND in PLGA MPs, potentially
+advancing future clinical applications of such drug delivery systems.
+1. Introduction
+Indomethacin
+(IND)
+is
+a
+nonsteroidal
+anti-inﬂammatory
+drug
+(NSAID)
+known
+for
+its
+antipyretic,
+analgesic,
+and
+M. Arabia, E. Maretti, A. Sedighidarijani, C. Rustichelli, E. Leo
+Department of Life Sciences
+University of Modena and Reggio Emilia
+via G. Campi 103, Modena 41125, Italy
+E-mail: eliana.leo@unimore.it
+A.Sedighidarijani
+Department of Pharmaceutics
+School of Pharmacy
+MashhadUniversity of Medical Sciences
+Mashhad,Iran
+The ORCID identiﬁcation number(s) for the author(s) of this article
+can be found under https://doi.org/10.1002/ppsc.202400135
+© 2024 The Author(s). Particle & Particle Systems Characterization
+published by Wiley-VCH GmbH. This is an open access article under the
+terms of the Creative Commons Attribution-NonCommercial-NoDerivs
+License, which permits use and distribution in any medium, provided the
+original work is properly cited, the use is non-commercial and no
+modiﬁcations or adaptations are made.
+DOI: 10.1002/ppsc.202400135
+anti-inﬂammatory
+eﬀects.
+Chemically
+classiﬁed as an indole-acetic acid deriva-
+tive, it is speciﬁcally identiﬁed as 1-(p-
+chlorobenzoyl)-5-methoxy-2-methylindole-
+3-acetic acid. IND inhibits cyclooxygenase
+(COX) isoforms, crucial enzymes in the
+synthesis of prostaglandins and throm-
+boxane A2, making it eﬀective for treating
+painful and inﬂammatory conditions such
+as arthritis and osteoarthritis. However,
+IND is a non-selective NSAID, inhibiting
+both COX-1 and COX-2, which reduces
+prostaglandin production but also results
+in gastrointestinal and cardiovascular side
+eﬀects. IND belongs to Class II of the Bio-
+pharmaceutics Classiﬁcation System (BCS)
+due to its low aqueous solubility and high
+permeability. Additionally, it has limited
+solubility in alcohol and a pKa of 4.5.[1]
+The polymorphism of IND signiﬁcantly
+impacts its solubility. Diverse polymorphic
+forms have been observed: 𝛼, 𝛽, 𝛾, 𝛿, and an
+additional unnamed form. More recently,
+three more forms have been identiﬁed and
+named 𝜖, 𝜁, and 𝜂as reported by Surwase
+et al.[2] The 𝛾form is the commercially used and the most ther-
+modynamically stable form, while the common 𝛽and 𝛼forms
+are metastable. Despite the higher solubility of the amorphous
+form, it tends to crystallize into the 𝛼or 𝛾forms during storage,
+losing its solubility advantage. Crystallization into the 𝛾form oc-
+curs at low humidity and temperatures below the glass transition
+(Tg), while the 𝛼form appears at high humidity and tempera-
+tures above the Tg in aqueous environments. The Tg is reported
+between 42 and 45 °C, with the 𝛼polymorph favored at 60 °C and
+the 𝛾polymorph predominant at 35 °C.
+These complex physicochemical aspects render IND a second-
+choice drug for inﬂammation treatment, highlighting the need
+for innovative pharmaceutical formulations to improve its eﬃ-
+cacy and bioavailability while reducing side eﬀects.
+Poly(lactic-co-glycolic acid) (PLGA) is a promising biodegrad-
+able copolymer for drug delivery due to its biocompatibil-
+ity, biodegradability, and FDA/EMA approval. The proper-
+ties of PLGA, such as hydrophilicity and degradation rates,
+can be tailored by adjusting the lactate/glycolate ratio during
+polymerization.[3,4] A key property to consider is the Tg of PLGA,
+which ranges between 30 and 60 °C, aﬀecting its glassy behav-
+ior. Depending on the copolymer composition, molecular weight,
+handling techniques, and type of loaded drug, the Tg value will
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (1 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+
+www.advancedsciencenews.com
+www.particle-journal.com
+shift to a lower (plasticizer eﬀect) or higher (antiplasticizer eﬀect)
+value.[5,6]
+PLGA-based drug delivery systems, particularly microparti-
+cles, provide controlled drug release, prolonged therapeutic ef-
+fects, and enhanced patient compliance.[7] Various prepara-
+tion methods, including emulsion-based and precipitation-based
+techniques, oﬀer distinct advantages according to the drug’s
+characteristics and desired release proﬁles.[8–10] In musculoskele-
+tal diseases such as osteoarthritis and rheumatoid arthritis,
+where symptomatic relief is critical, intra-articular drug deliv-
+ery presents a promising opportunity. PLGA-based intra-articular
+particles oﬀer targeted drug delivery to intra-joint components,
+enabling sustained therapeutic eﬀects and minimizing systemic
+side eﬀects.[11,12] Moreover, clinical studies have shown the eﬃ-
+cacy of PLGA-based controlled drug delivery systems in treating
+osteoarthritis and other joint diseases.[4,13]
+For these reasons, a combination of IND and PLGA repre-
+sents a valuable therapeutic approach for treating musculoskele-
+tal diseases. IND oﬀers rapid symptom relief, while PLGA pro-
+vides a versatile platform for targeted drug delivery. Integrating
+these two compounds could lead to signiﬁcant improvements
+in managing joint diseases, enhancing patients’ quality of life,
+and reducing the side eﬀects associated with conventional treat-
+ments. Despite the potential beneﬁts, there is limited literature
+on the combined use of IND and PLGA for musculoskeletal
+diseases.[14,15] This gap underscores the need for more compre-
+hensive studies to optimize the formulation parameters, such as
+the drug-to-polymer ratio, particle size, and release kinetics, to
+maximize therapeutic outcomes.
+Therefore, this work focused on optimizing microparticle
+preparation and characterization, including drug loading eﬃ-
+ciency, morphology, diameter, and drug release kinetics. Further
+investigations by thermal and infrared analysis will explore the
+interaction between PLGA and diﬀerent polymorphic forms of
+IND, aiming to reﬁne formulation parameters and optimize drug
+loading and release proﬁles.
+2. Experimental Section
+2.1. Materials
+Indomethacin (IND, ɣ form) from ThermoFisher Scientiﬁc (Mi-
+lan, Italy), Resomer RG 504 from Evonik Degussa GmbH (Es-
+sen, Germany), Gelatin Type A from Acros Organics (Geel, Bel-
+gium), and Tween 80 from Sigma–Aldrich (Milan, Italy) were pur-
+chased. Sodium hydroxide and potassium dihydrogen phosphate
+salts from Sigma–Aldrich were used to prepare Phosphate buﬀer
+pH 7.4. High purity water was obtained from the MilliQ system
+(Millipore, MA, USA). All chemicals and solvents were of analyt-
+ical grade.
+2.2. Methods
+2.2.1. Preparation of Indomethacin-Loaded Microparticles
+Polymeric microparticles (MPs) were prepared using the solvent
+evaporation method. Brieﬂy, PLGA (100 mg) and IND𝛾(10 mg)
+Table 1. Formulation conditions of each sample.
+Sample name
+Type and concentration of surfactant
+pH of aqueous phasea)
+MPs_T
+Tween 80 (1%, w/v)
+7
+MPs_G
+Gelatin type A (0.5%, w/v)
+7
+MPs_G_1
+Gelatin type A (0.5%, w/v)
+1
+MPs_G_3
+Gelatin type A (0.5%, w/v)
+3
+MPs_G_5.5
+Gelatin type A (0.5%, w/v)
+5.5
+MPs_G_9
+Gelatin type A (0.5%, w/v)
+9
+a)For MPs_G_*samples the pH of the aqueous phase was adjusted using HCl or
+NaOH.
+were dissolved in dichloromethane (DCM, 4 mL) and then emul-
+siﬁed by an Ultra Turrax (T-25 basic Ika Labortechnik, Staufen,
+Germany) at 8000 rpm for 10 min with 50 mL of aqueous so-
+lution containing a surfactant, as reported in Table 1. The sol-
+vent was evaporated ﬁrst under agitation at room temperature
+(RW 20 DZM, Ika Labortechnik, Staufen, Germany) at 1900 rpm
+for 1 h and then by rotary evaporator (R-100, Buchi, Milan, Italy)
+for 3 min. The MPs suspension was recovered by centrifugation
+at 8000 rpm for 10 min at 25 °C (Rotina 380R, Hettich, Kirch-
+lengern, Germany) and washed two times with 50 mL of MilliQ
+water. Samples (Table 1) were frozen and then freeze-dried (Lio
+5P, Cinquepascal, Milan, Italy) for at least 24 h without the use
+of cryoprotectants.
+When mentioned, the empty MPs were prepared by the same
+technique without IND.
+2.2.2. Morphology and Size Distribution
+Morphological characteristics of the MPs (i.e. shape, size, and
+size distribution) were studied by Environmental Scanning Elec-
+tron Microscope (ESEM) (Quanta 200, Fei, Hillsboro, Oregon,
+USA). For each sample, a few drops of re-suspended freeze-
+dried MPs were placed on an aluminum stub (TAAB Laborato-
+ries Equipment Ltd, Aldermaston, Berks, UK) covered by a glass
+dish (TAAB Laboratories Equipment) and observed after drying
+Figure
+1. A
+picture
+representing
+sample
+MPs_T
+recovered
+after
+freeze-drying.
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (2 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Figure 2. ESEM images of sample MPs_T at two diﬀerent magniﬁcations (1200x and 5000x).
+and vacuum coating with gold-palladium in argon atmosphere
+for 60 s (Sputter Coater Emitech K550, Emitech Ltd, Ashford,
+Kent, UK).
+The mean size of particles was obtained by measuring al-
+most one hundred particles for each sample from ESEM images.
+The data are processed using ImageJ (version 1.53k) and Prism
+GraphPad (version 9.0.0).
+The particle size distribution was calculated using the Span
+value as follows:
+Span =
+DV,90% −DV, 10%
+DV,50%
+(1)
+where Dv,90%, Dv,50%, and Dv,10% are the size diameters at 90%,
+50%, and 10% cumulative volumes, respectively. A smaller Span
+value indicates a closer size distribution.[16]
+2.2.3. Drug Loading and Encapsulation Eﬃciency
+Drug content was determined by dissolving a weighed amount
+of freeze-dried MPs (≈10 mg) in 0.5 mL of DCM. Then, 9.5 mL
+aliquot of ethanol was added. The mixture was vortexed for 3
+min and then centrifuged at 8,300 RCF for 10 min at 25 °C. The
+drug was determined in the supernatant using spectrophotomet-
+ric analysis (Lambda 35 UV/VIS, Perkin–Elmer, Woltham, USA)
+at 320 nm. A standard calibration curve in ethanol was used for
+the determination of drug concentration. The supernatant of the
+corresponding empty MPs (n = 3) was used as a blank, in order
+to eliminate any possible interference in the measurements.
+Drug Loading (DL) and Encapsulation Eﬃciency (EE) were de-
+termined by applying the equations below:
+DL =
+(weight of drug in microparticles
+weight of microparticles
+)
+× 100
+(2)
+Table 2. Drug loading (DL) and encapsulation eﬃciency (EE) of MPs_T.
+Sample
+DL [%,
+w/w]
+EE [%]
+MPs_T
+1.0 ± 0.3
+10.1 ± 0.2
+EE =
+(
+actual drug loading
+theoretical drug loading
+)
+× 100
+(3)
+2.2.4. Thermal and Infrared Analyses
+In order to investigate surfactant/polymer, drug/polymer interac-
+tions, and IND polymorphism, thermal analysis was performed
+using a Diﬀerential Scanning Calorimeter (DSC4000, Perkin–
+Elmer, Norwalk, Connecticut, USA). The DSC instrument was
+previously calibrated with indium. A heating rate of 10°C min−1
+was employed over a temperature range of 30–180 °C with nitro-
+gen purging (30 mL min−1).
+Fourier-Transform Infrared Spectroscopy (FT-IR) was carried
+out using a Spectrum Two spectrometer equipped with Universal
+Attenuated Total Reﬂection (ATR) sampling accessory (Perkin-
+Elmer, Milano, Italy) by depositing the samples onto the ATR
+crystal. The spectra were acquired in the spectral range 4000–
+450 cm−1 with a spectral resolution of 4 cm−1. A 16 scan num-
+ber value was selected to optimize the signal-to-noise ratio. The
+same conditions were applied for the background spectrum
+acquisition.
+Figure 3. A picture representing a MPs_G sample recovered after
+freeze-drying.
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (3 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Figure 4. DSC thermograms of a) raw PLGA; b) empty MPs_T; and c) empty MPs_G.
+Plain materials, MPs samples, a physical mixture of PLGA and
+IND𝛾, and solid dispersions (in the same component ratio used
+for MPs) were analyzed. In particular, the ﬁrst solid dispersion
+was prepared by dissolving IND𝛾in DCM and then removing the
+solvent using a Concentrator plus instrument (Eppendorf AG,
+Germany) to obtain IND𝛽polymorph; the second solid disper-
+sion was prepared using the same solvent method with the addi-
+tion of PLGA for simulating MPs.
+2.2.5. IND Solubility
+The solubility of ɣ and 𝛽form of IND was measured by dissolving
+an excess amount of IND in MilliQ water at 37 ± 1 °C under mag-
+netic stirring for 24 h. Then mixtures were centrifuged at 13000
+rpm for 10 min (Mirko 120, Hettich Zentrifugen) and the amount
+of IND in solution was spectrophotometrically determined at 320
+nm using a standard calibration curve in ethanol.
+2.2.6. In Vitro Release Study
+An exactly weighed amount of MPs containing ≈5 mg of IND
+was incubated in 50 mL of Phosphate buﬀer pH 7.4 at 37 ± 1 °C
+under magnetic stirring. At ﬁxed time intervals (0.5, 1, 2, 3, 4, 5,
+6, 24h, and each 24h for the subsequent 10 days) an aliquot of
+the suspension (1 mL) was withdrawn and centrifuged at 13500
+RCF for 10 min to separate MPs from the medium. The drug con-
+tent in the supernatant was determined spectrophotometrically at
+320 nm from a standard calibration curve prepared in Phosphate
+Figure 5. ESEM images of MPs_G sample at two diﬀerent magniﬁcations (1200x and 5000x).
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (4 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Table 3. Drug loading (DL) and encapsulation eﬃciency (EE) of MPs_G.
+Sample
+DL [%,
+w/w]
+EE [%]
+MPs_G
+2.7 ± 0.3
+30.2 ± 3.4
+buﬀer and using as blank the supernatant of the corresponding
+empty MPs (n = 3). After each analysis, supernatant and pellet
+were accurately mixed and added back into the release medium
+to maintain constant the volume and the amount of MPs.
+2.2.7. Statistical Analysis
+Data obtained were evaluated statistically using one-way analy-
+sis of variance (ANOVA). Signiﬁcance was indicated by p < 0.05
+(*p < 0.05; **p < 0.02; ***p < 0.01).
+3. Results
+The aim of the work was to produce, characterize, and optimize
+PLGA-MPs for the intra-articular prolonged release of IND. To
+prepare the MPs, the conventional single emulsion followed by
+solvent evaporation was chosen as the formulation technique.
+The settled formulation conditions are the result of a step-by-step
+understanding of IND-PLGA interaction.
+3.1. Characterization of Initial Preparation (MPs_T sample)
+Table 1 shows the adopted formulation conditions of each
+sample-. It is known that the preparation of MPs with homoge-
+nous size is not possible without surfactant. Therefore, Tween
+80, one of the most commonly used non-ionic surfactants for
+its biocompatibility and poor toxicity,[17] was added ﬁrst in the
+aqueous phase. However, after freeze-drying, the preparation ap-
+peared sticky and rubbery as illustrated in Figure 1.
+Despite appearances, ESEM analysis on the samples showed
+that MPs formation has occurred, although they are clearly glued
+to each other with a translucent external shell (Figure 2).
+Moreover, the obtained MPs revealed a low drug loading (DL)
+with only 10% drug encapsulation eﬃciency (EE) (Table 2).
+3.2. Characterization of MPs_G Preparation
+Assuming that Tween 80/PLGA interaction is involved in the rub-
+bery state of the freeze-dried MPs and also in the low drug en-
+capsulation, the surfactant was replaced with Gelatin, a protein
+known for its surfactant features and suitable for injection use.[10]
+Gelatin type A is obtained through acid hydrolysis and has an iso-
+electric point between pH 7.5 and 9.4, on the contrary, Gelatin
+type B is obtained by basic hydrolysis and has an isoelectric point
+at pH 4.8–5.2. When the pH of the aqueous phase is close to
+the isoelectric point of Gelatin, it loses its surfactant properties.
+Therefore, Gelatin A was selected owing to the possible acidiﬁ-
+cation action of IND in the external aqueous phase during the
+preparation process.
+As shown in Figure 3, after freeze-drying, the aspect of MPs
+prepared with Gelatin (MPs_G) was similar to a dry powder.
+To elucidate the inﬂuence of the surfactant on the physical
+state of the formulation, DSC analyses of raw PLGA, empty
+MPs_T, and empty MPs_G were performed (Figure 4). The ther-
+mogram of raw PLGA (Figure 4a) shows a transition referred to
+the Tg of the polymer at ≈30 °C. The thermograms of the two
+MPs show diﬀerent behavior: in the thermogram of MPs formu-
+lated with Tween 80 (MPs_T, Figure 4b), the Tg of the polymer
+occurs at a lower value (≈25 °C) compared to that of raw PLGA;
+conversely, MPs formulated with Gelatin (MPs_G, Figure 4c)
+do not lead to any modiﬁcation of the Tg compared to raw
+PLGA.
+The same consideration can be made in terms of PLGA melt-
+ing temperature (Tm), which is ≈56 °C for raw PLGA and
+MPs_G, while a decrease of melting temperature (at ≈51 °C) was
+observed for MPs_T, due to Tween 80/PLGA interaction.
+Even in this case, ESEM analysis of MPs_G was performed
+to evaluate the eﬀect on the particle morphology resulting from
+the replacement of Tween 80 with Gelatin (Figure 5). The images
+showed MPs perfectly formed, regular in shape, and smooth on
+the surface, conﬁrming the success in avoiding the rubbery as-
+pect of the sample.
+However, the new preparation conditions led only to a slight
+improvement in terms of DL and EE (Table 3). The permanence
+of the values at unsatisfactory levels can be attributed to the pres-
+ence of a polymorphic form diﬀerent from IND𝛾. To conﬁrm this
+hypothesis a DSC analysis was conducted. IND𝛾was solubilized
+in DCM, the solvent used as an organic phase during the formu-
+lation, and after the solvent evaporation the obtained IND powder
+was analyzed by DSC and infrared spectroscopy, and compared
+to the initial stable 𝛾form (Figure 6). The 𝛾form of IND shows
+an endothermic peak at ≈163 °C due to its fusion, whereas the
+IND obtained after dissolution in DCM shows a diﬀerent ther-
+mogram. In detail, an endo- and an exothermic peak, respec-
+tively at 91 and 101 °C were observed. Comparing this thermo-
+gram with data in the literature, it can be assumed that it rep-
+resents the thermogram of the metastable 𝛽form of IND.[6,18]
+The peak at ≈154 °C indicates the conversion of the 𝛽form into
+the 𝛼form, which, in turn, converts into the 𝛾form (peak at
+≈160 °C).
+Both IND polymorphs were analyzed also with FT-IR spec-
+troscopy. The spectrum of 𝛽form has a strong vibration band
+at 1676 cm−1 that can be assigned as amide carbonyl and a sec-
+ond peak at 1698 cm−1 corresponding to the asymmetric stretch
+of hydrogen-bonded acid carbonyl. The main absorption peaks
+for the 𝛾form are at 1689 cm−1 due to a single vibration mode
+for the amide carbonyl group, and at 1712 cm−1 that corresponds
+to another stretching band for the carboxylic acid carbonyl group
+(Figure 7).[19]
+Eventually, solubility tests in water were carried out on both
+polymorphs (𝛽and ɣ). These analyses conﬁrmed the higher solu-
+bility of the metastable 𝛽form (9 μg mL−1) compared to the stable
+𝛾one (5 μg mL−1).
+Therefore, the low DL observed for the MPs_G sample could
+be due to the increase in water solubility of IND during the for-
+mulation triggered by a polymorph transition.
+To increase the DL, a strategy involving a reduction of drug
+solubility in the external water phase was adopted.
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (5 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Figure 6. DSC thermograms of IND polymorphs: IND𝛽in black and INDɣ in red.
+3.3. Optimization of Drug Loading (MPs_G_* Samples)
+Since the solubility of a weak acid drug such as IND is strongly
+aﬀected by the pH, diﬀerent pH values of the external aque-
+ous phase, below and above the pKa of IND (pKa = 4.5), were
+investigated.[20] All MPs_G samples were prepared using the
+same solvent evaporation method and the DL and EE are reported
+in Table 4.
+As can be observed from Table 4, the acidiﬁcation of the aque-
+ous phase is a relevant factor to improve DL and EE. Indeed, at
+values below the pKa of the drug (i.e. pH 1 and pH 3), high EE
+values were obtained (≈90%), while above the pKa, EE values
+Figure 7. FT-IR spectra of IND polymorphs in the spectral region between 1800 and 1550 cm−1: IND𝛽in black and INDɣ in red.
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (6 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Table 4. Drug loading (DL) and encapsulation eﬃciency (EE) of MPs_G_*
+samples.
+Samples
+pH of aqueous
+phase
+DL [%, w/w]
+EE [%]
+MPs_G_1
+1
+8.3 ± 0.3
+91.7 ± 3.5
+MPs_G_3
+3
+8.2 ± 0.7
+90.6 ± 7.7
+MPs_G_5.5
+5.5
+6.2 ± 1.6
+68.4 ± 3.0
+MPs_G
+7
+2.7 ± 0.3
+30.2 ± 3.4
+MPs_G_9
+9
+0.4 ± 0.3
+4.7 ± 1.7
+decrease as the pH increases. Therefore, considering the simi-
+lar high drug loading of MPs_G_1 and MPs_G_3, a less drastic
+pH 3 value was selected as the optimized ﬁnal formulation to be
+analyzed from a physical-chemical point of view.
+3.4. Physical-Chemical Characterization of Optimized
+Formulation
+Size distribution of MPs_G_3 was achieved by measuring at least
+100 particles from ESEM images and processed using ImageJ.
+As observed in Table 5, the sample containing IND exhibited
+a diameter of ≈7 μm with a low homogeneity in size distribu-
+tion. This observation was conﬁrmed qualitatively in Figure 8a
+and quantiﬁed by the SPAN value (0.7). The same size, but dif-
+ferent size distribution, was obtained for empty MPs_G_3 that
+present a lower SPAN value (0.5) and therefore greater dimen-
+sional homogeneity (Figure 8b). Morphology analysis by ESEM
+conﬁrmed the previous data. Indeed, empty MPs appear perfectly
+spherical (Figure 9a), while IND-loaded MPs show a poor spheri-
+cal shape (most of the particles are similar to a coﬀee bean) along
+with a wrinkled surface (Figure 9b).
+IND-loaded MPs_G_3 was analyzed by DSC and compared to
+the physical mixture and empty MPs to verify IND incorpora-
+tion. As observed in Figure 10, in the thermogram of a physi-
+cal mixture, two distinct endothermic peaks can be clearly ob-
+served, attributed to the fusion of the single components, PLGA
+between 53 and 57 °C (Figure 4a) and IND𝛾slightly below 162 °C
+(Figure 6). As expected, empty MPs show only the peak related
+to the melting of the crystalline fraction of the polymer. Also for
+MPs_G_3 only a single endothermic peak at ≈54 °C is visible
+(Tm). A slight reduction in this value is observable compared to
+plain PLGA (55.4 °C) and a marked reduction compared to the
+polymer in empty microparticles (57 °C). No peak attributable to
+Tm of IND is detected, indicating the amorphization of the drug
+in the polymer. Also when PLGA was added to IND in DCM and
+Table 5. Mean particle size and SPAN value of loaded MPs_G_3 and empty
+MPs_G_3 samples.
+Sample
+Mean particle size
+[μm] ± SD
+SPAN value
+IND loaded
+MPs_G_3
+7.3 ± 2.1
+0.7
+Empty MPs_G_3
+7.0 ± 1.3
+0.5
+then evaporated (solid dispersion), no IND peak can be observed,
+suggesting the drug amorphization in the polymer matrix.
+Regarding the Tg, as previously reported in Figure 4, empty
+MPs_G_3 formulated with Gelatin does not lead to any modiﬁ-
+cation of the value (30 °C) compared to raw PLGA.
+Conversely, when formulating with IND, as observed in the
+solid dispersion and in the IND-loaded MPs_G_3 sample, a slight
+reduction in the polymer’s Tg occurs (approximately from 30 to
+28.5 °C) underscoring a drug/polymer interaction. However, IND
+simply added in a physical mixture does not aﬀect the Tg.
+Figure 11 presents the drug release proﬁle of MPs_G_3 in
+Phosphate buﬀer at 37 °C over two weeks.. The drug release
+follows a typical biphasic pattern, initially diﬀusion-controlled
+and later driven by chemical erosion.[14] Speciﬁcally, an initial
+phase of rapid release, known as the “burst eﬀect,” was observed,
+during which a signiﬁcant percentage of the drug was released.
+Notably, 80% of IND was released within three days. This was
+followed by a slower, second phase, referred to as the “plateau
+phase,” during which the remaining drug was gradually released,
+reaching a maximum of ≈85% after eleven days.
+4. Discussion
+The compatibility between IND and PLGA is nowadays known
+to be poor, which is in alignment with the experimental results
+showing low drug loading in terms of amorphous drug content.
+It has been suggested in the literature that drug-polymer com-
+patibility can signiﬁcantly aﬀect drug loading, MPs solid-state
+properties, and drug release.[21] Moreover, identifying and un-
+derstanding the critical variables in MPs development is not an
+easy task. Therefore, the eﬀect of each variable is often analyzed
+individually,[22] as in this study, leading to suitable formulation
+conditions that are the result of a step-by-step understanding of
+IND-PLGA interaction.
+One of the fundamental properties to consider during the for-
+mulation process of MPs is the Tg of PLGA (between 30 and
+60 °C). Depending on the handling techniques, type of drug
+loaded, and surfactants used, Tg temperature of the polymer may
+change.[5] According to literature, the rubbery state of the poly-
+mer represents a liquid-like structure with high molecular mo-
+bility and is more prone to physical and chemical changes than
+the glassy state.[23] Acting as a surfactant, Tween 80 helps to sta-
+bilize the emulsion but also acts as a plasticizer by embedding
+itself within the polymer matrix. A high concentration of Tween
+80 can lower the Tg of the PLGA (from ≈30 to 25 °C), enhanc-
+ing polymer chain mobility.[23] The ability of Tween 80 to act as
+a plasticizer appears to be responsible for a sticky and rubbery
+sample and not a classic powder. The complete replacement of
+Tween with Gelatin was the strategy adopted to avoid the rubbery
+state of the sample, since DSC analysis showed that the latter did
+not inﬂuence the Tg value of the polymer[24] leading, at the same
+time, to a slight increase in DL and EE.
+Park et al. demonstrate that also IND interacts with PLGA,
+causing a slight reduction in the polymer’s Tg.[25] The authors
+underlined that IND behaves as a plasticizer by intercalating be-
+tween the polymer chains, increasing their mobility, and inter-
+acting at an intermolecular level. Regarding the plasticizing ef-
+fect, authors hypothesized that the interactions responsible for
+this slight reduction of Tg are (polar) hydrogen bonds established
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (7 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Figure 8. Size distribution of (a) IND loaded MPs_G_3 and (b) empty MPs_G_3 samples.
+between the carboxyl group of IND and the ester groups of PLGA.
+Also, molecular dynamics simulations reported in the litera-
+ture show that, at low temperatures, molecules of NSAID drugs
+around the PLGA are inclined to establish hydrogen bonds.[6] On
+the other side, at higher temperatures, the number of molecules
+around the PLGA increases even if the probability of establish-
+ing hydrogen bonds decreases. Since the results of the simula-
+tions suggest that the interaction of the drug with the polymer in-
+creases with temperature, it is hypothesized that hydrogen bonds
+are not the only interactions involved, and non-polar interactions
+may be responsible too as the temperature rises.[6] Since DCM
+can also act as a plasticizer during MPs formation, it induces high
+molecular mobility that allows the reorganization of uncharged
+IND molecules into dimers, essential for unit cell formation, and
+crystal growth. Furthermore, the stress applied during stirring is
+known to leave the system with a higher energy, i.e., a less sta-
+ble state.[25] The 𝛽polymorph is structurally similar to the amor-
+phous form and appears to be the least stable form. Since this
+form exhibits the highest degree of disorder, it has the lowest ac-
+tivation energy in the amorphous-crystalline barrier and is, there-
+fore the one favored by the kinetic driving force.[19] The 𝛽poly-
+morph could be responsible for a low IND encapsulation, being
+the metastable as well as the most soluble form.
+To increase the drug loading, a strategy involving the reduc-
+tion of drug solubility in the external aqueous phase was adopted.
+The pH of the external aqueous phase during the preparation
+of MPs can signiﬁcantly inﬂuence the drug encapsulation eﬃ-
+ciency, especially for drugs with pH-dependent solubility charac-
+teristics like IND, a weak acid with a pKa of ≈4.5. At pH values
+below its pKa (e.g., pH 3), it predominantly exists in its union-
+ized form, which has lower solubility in aqueous solutions. Con-
+sequently, in this form, IND is less likely to pass into the exter-
+nal aqueous phase of the emulsion during formulation, remain-
+ing mostly incorporated into the polymer matrix. MPs_G_3, be-
+ing characterized by suitable formulation conditions to obtain
+a high EE (≈90%), was selected and analyzed from a chemical-
+physical point of view. DSC analysis provides further evidence of
+IND incorporation and FT-IR spectroscopy corroborates the DSC
+ﬁndings. MPs_G_3 exhibits a slightly irregular, coﬀee bean-like
+shape with a wrinkled surface, indicating the encapsulation pro-
+cess. The incorporation of a plasticizer drug aﬀects the MPs in-
+ternal and surface structure by interfering with the polymer’s Tg
+and causing deformation. MPs_G_3 particles have an average di-
+ameter ≈7 μm, suitable for syringability and retention in the syn-
+ovial capsule. Complete retention of MPs has been observed at
+diameters of at least 3 μm, regardless of the joint’s inﬂammatory
+state.[26] MPs ranging from 3 to 100 μm can act as depots, be-
+ing small enough for syringe injection but large enough to avoid
+drainage and clearance by phagocytic cells.[27]
+The released form of IND is most likely the amorphous one,
+being the form with the highest degree of disorder, as dis-
+cussed above. The drug release proﬁle from MPs_G_3 shows a
+Figure 9. Representative pictures of a) empty MPs_G_3 and b) IND-loaded MPs_G_3 from ESEM analysis.
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (8 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+Figure 10. DSC thermograms of the physical mixture in green, solid dispersion in blue, empty MPs_G_3 in red, and IND-loaded MPs_G_3 in black.
+two-stage mechanism. Initially, a rapid release phase, or “burst
+eﬀect,” occurs, with 80% of IND released within the ﬁrst three
+days, likely due to the dissolution of surface-bound IND. This is
+followed by a slower release phase, where the remaining drug is
+gradually released, reaching ≈85% after eleven days. This bipha-
+sic proﬁle, typical for PLGA-based systems, includes an initial
+diﬀusion-controlled release followed by a degradation-controlled
+release. The initial burst release ensures a quick therapeutic ef-
+fect, while the sustained phase provides prolonged drug availabil-
+Figure 11. The drug release proﬁle of sample MPs_G_3 with a focus on
+the ﬁrst 24 h.
+ity, potentially reducing administration frequency and enhancing
+patient compliance. The gradual drug release during the steady-
+state phase occurs as the polymer degrades enzymatically, and
+the release does not reach 100% in vitro.[25]
+5. Conclusion
+Despite the extensive literature on the development of polymeric
+MPs, there are no universal protocols for producing MPs with
+predictable DL, EE, particle size, size distribution, and drug re-
+lease. Identifying and understanding the critical variables in MPs
+development is challenging and the design of experiments (DOE)
+or artiﬁcial intelligence (AI) methodologies could be good tools
+to solve this inconvenience. However, these approaches are not
+feasible for modeling the results and drawing correct conclusions
+when the variables involve the interaction among constituents.[22]
+Thereby, in this study, optimization of each speciﬁc formula-
+tion parameter, such as the type of surfactant or the pH of the
+aqueous phase, was complemented by an in-depth study of the
+physical-chemical implications. As a result, the obtained IND-
+loaded PLGA MPs exhibit a high encapsulation eﬃciency (over
+90%) and sustained drug release proﬁle and are potentially ca-
+pable of providing a reduction of the administration dose and
+minimization of systemic side eﬀects. In the future, computa-
+tional approaches, such as Design of Experiment (DOE) o Artiﬁ-
+cial Intelligence (AI), may be applied to further improve particle
+features. Nevertheless, this study provides a foundational frame-
+work toward the optimization of the IND encapsulation in PLGA
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (9 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+www.advancedsciencenews.com
+www.particle-journal.com
+MPs, potentially advancing future clinical applications of such
+drug delivery system.
+Acknowledgements
+M.A. and E.M. contributed equally to this work.
+Conﬂict of Interest
+The authors declare no conﬂict of interest.
+Data Availability Statement
+The data that support the ﬁndings of this study are available from the cor-
+responding author upon reasonable request.
+Keywords
+diﬀerential scanning calorimetry, intra-articular administration, microen-
+capsulation, NSAID, poly(lactic-co-glycolic) acid
+Received: June 16, 2024
+Revised: July 22, 2024
+Published online: August 26, 2024
+[1] J. R. Vane, R. M. Botting, Mech. Action Nonsteroidal Anti-Inﬂamm.
+Drugs 1998, 104, 2s.
+[2] S. A. Surwase, J. P. Boetker, D. Saville, B. J. Boyd, K. C. Gordon, L.
+Peltonen, C. J. Strachan, Mol. Pharmaceutics 2013, 10, 4472.
+[3] Y. W. Lim, W. S. Tan, K. L. Ho, A. R. Mariatulqabtiah, N. H. A. Kasim,
+N. A. Rahman, T. W. Wong, C. F. Chee, Pharmaceutics 2022, 14, 614.
+[4] C. V. Rocha, V. Gonçalves, M. C. Da Silva, M. Bañobre-López, J. Gallo,
+Int. J. Mol. Sci. 2022, 23, 2034.
+[5] G. Liu, K. McEnnis, Polymers 2022, 14, 993.
+[6] P. Blasi, S. Casagrande, A. Pedretti, D. Fioretto, G. Vistoli, S. Corezzi,
+Int. J. Pharm. 2020, 580, 119235.
+[7] N. Eghbal, W. Liao, E. Dumas, S. Azabou, P. Dantigny, A.
+Gharsallaoui, Appl. Sci. 2022, 12, 3837.
+[8] C. Busatto, J. Pesoa, I. Helbling, J. Luna, D. Estenoz, Int. J. Pharm.
+2018, 536, 360.
+[9] C. Contado, E. Vighi, A. Dalpiaz, E. Leo, Anal. Bioanal. Chem. 2013,
+405, 703.
+[10] E. Leo, A. Scatturin, E. Vighi, A. Dalpiaz, J. Nanosci. Nanotechnol.
+2006, 6, 3070.
+[11] R. Patel, M. Patel, J. Kwak, A. K. Iyer, R. Karpoormath, S. Desai, V.
+Rarh, Polym. Adv. Technol. 2017, 28, 1595.
+[12] Z. Sun, X. Gu, T. Hao, J. Liu, R. Gao, Y. Li, B. Yu, H. Xu, Drug Deliv.
+2022, 29, 3317.
+[13] F. M. Gambaro, A. Ummarino, F. Torres Andón, F. Ronzoni, B. Di
+Matteo, E. Kon, Int. J. Mol. Sci. 2021, 22, 9137.
+[14] E. Lagreca, V. Onesto, C. Di Natale, S. La Manna, P. A. Netti, R.
+Vecchione, Prog. Biomater. 2020, 9, 153.
+[15] S. A. Damiati, S. Damiati, Front. Mol. Biosci. 2021, 8, 677547.
+[16] E.-P. Lai, Y.-X. Wang, Y. Wei, G. Li, Polymers 2016, 8, 90.
+[17] C. Wischke, S. P. Schwendeman, Int. J. Pharm. 2008, 364, 298.
+[18] N. Kaneniwa, M. Otsuka, T. Hayashi, Chem. Pharm. Bull. 1985, 33,
+3447.
+[19] T. Van Duong, D. Lüdeker, P.-J. Van Bockstal, T. De Beer, J. Van
+Humbeeck, G. Van Den Mooter, Mol. Pharmaceutics 2018, 15,
+1037.
+[20] E. Leo, S. Pecquet, J. Rojas, P. Couvreur, E. Fattal, J. Microencapsul.
+1998, 15, 421.
+[21] A. Iemtsev, A. L. V. Zumaya, M. Dinh, F. Hassouna, M. Fulem, Int. J.
+Pharm. 2024, 650, 123724.
+[22] R. Martinez-Borrajo, P. Diaz-Rodriguez, M. Landin, Drug Deliv. 2023,
+30, 2219864.
+[23] S. Koocheki, S. S. Madaeni, P. Niroomandi, Saudi Pharm. J. 2011, 19,
+255.
+[24] E. Leo, F. Forni, M. T. Bernabei, Int. J. Pharm. 2000, 196, 1.
+[25] K. Park, A. Otte, F. Shariﬁ, J. Garner, S. Skidmore, H. Park, Y. K. Jhon,
+B. Qin, Y. Wang, Mol. Pharmaceutics 2021, 18, 18.
+[26] I. Saito, T. Koshino, K. Nakashima, M. Uesugi, T. Saito, Osteoarthritis
+Cartilage 2002, 10, 156.
+[27] J. Pradal, P. Maudens, C. Gabay, C. A. Seemayer, O. Jordan, E.
+Allémann, Int. J. Pharm. 2016, 498, 119.
+Part. Part. Syst. Charact. 2025, 42, 2400135
+2400135 (10 of 10)
+© 2024 The Author(s). Particle & Particle Systems Characterization published by Wiley-VCH GmbH
+ 15214117, 2025, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/ppsc.202400135 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

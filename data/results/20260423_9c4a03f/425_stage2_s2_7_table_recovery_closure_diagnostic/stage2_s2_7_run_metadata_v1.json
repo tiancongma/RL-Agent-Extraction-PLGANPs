@@ -1,0 +1,50 @@
+{
+  "schema": "stage2_s2_7_run_metadata_v1",
+  "run_id": "425_stage2_s2_7_table_recovery_closure_diagnostic",
+  "run_dir": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic",
+  "stage_boundary": "S2-7",
+  "boundary_class": "mainline_resume_boundary",
+  "authoritative_for_downstream": true,
+  "lawful_resume_boundary": true,
+  "resume_entrypoint": "src/stage3_relation/run_formulation_relation_artifacts_v1.py",
+  "owner_script": "src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py",
+  "owner_function_surface": [
+    "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py::run_projection",
+    "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py::project_document"
+  ],
+  "inputs": {
+    "source_s2_6_run_dir": "data/results/20260423_9c4a03f/420_stage2_dev15_cleantext_current_s2_6_contract_diagnostic",
+    "source_validation_report": "data/results/20260423_9c4a03f/420_stage2_dev15_cleantext_current_s2_6_contract_diagnostic/analysis/stage2_semantic_authority_contract_report_v1.json",
+    "source_validation_status": "pass",
+    "source_s2_5_run_dir": "data/results/20260423_9c4a03f/419_stage2_dev15_cleantext_current_s2_5_parse_diagnostic",
+    "semantic_jsonl": "data/results/20260423_9c4a03f/419_stage2_dev15_cleantext_current_s2_5_parse_diagnostic/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+    "authority_reattachment_sidecar": "data/results/20260423_9c4a03f/419_stage2_dev15_cleantext_current_s2_5_parse_diagnostic/semantic_stage2_objects/authority_reattachment_sidecar_v1.json"
+  },
+  "outputs": {
+    "compat_dir": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter",
+    "completed_stage2_tsv": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "completed_stage2_jsonl": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
+    "compatibility_trace_tsv": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv",
+    "compatibility_summary_json": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter/compatibility_projection_summary_v1.json",
+    "feature_activation_report_v2_tsv": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/analysis/feature_activation_report_v2.tsv",
+    "execution_ledger_v2_tsv": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/analysis/execution_ledger_v2.tsv",
+    "numbered_doe_guard_tsv": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter/numbered_doe_regression_guard_v1.tsv",
+    "projection_contract_tsv": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/semantic_to_widerow_adapter/stage2_replacement_compatibility_projection_contract.tsv",
+    "run_context": "data/results/20260423_9c4a03f/425_stage2_s2_7_table_recovery_closure_diagnostic/RUN_CONTEXT.md"
+  },
+  "stop_boundary": "completed_stage2_artifact_written",
+  "next_lawful_step": "Stage3 relation materialization",
+  "not_executed": [
+    "Stage3",
+    "Stage4",
+    "Stage5"
+  ],
+  "projection_summary": {
+    "documents": 15,
+    "projected_rows": 228,
+    "stage2_semantic_source_modes": [
+      "llm_first_composite"
+    ]
+  },
+  "generated_at": "2026-05-10T07:28:31"
+}

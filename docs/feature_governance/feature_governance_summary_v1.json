@@ -1,0 +1,87 @@
+{
+  "artifact_version": "v1",
+  "generated_for": "repository-wide feature governance recovery",
+  "inventory_path": "docs/feature_governance/feature_master_inventory_v1.tsv",
+  "run_backfill_path": "docs/feature_governance/run_feature_contract_backfill_v1.tsv",
+  "feature_applicability_schema_path": "docs/feature_governance/feature_applicability_schema_v1.tsv",
+  "feature_execution_ledger_backfill_path": "docs/feature_governance/feature_execution_ledger_backfill_summary_v1.json",
+  "feature_execution_ledger_index_path": "docs/feature_governance/feature_execution_ledger_backfill_index_v1.tsv",
+  "feature_execution_ledger_report_path": "docs/feature_governance/feature_execution_ledger_system_report_v1.md",
+  "feature_execution_ledger_guide_path": "docs/feature_governance/how_to_use_feature_execution_ledger_v1.md",
+  "gap_watchlist_path": "docs/feature_governance/feature_gap_watchlist_v1.tsv",
+  "report_path": "docs/feature_governance/feature_governance_recovery_report_v1.md",
+  "counts": {
+    "total_recovered_items": 45,
+    "active_maintained": 18,
+    "active_conditional": 16,
+    "historical_reference": 4,
+    "experimental_nonmainline": 1,
+    "review_needed": 3,
+    "superseded": 3
+  },
+  "major_runtime_vs_design_mismatches": [
+    "Maintained summary-mode and summary-first-column features exist in code and run history but are not covered by the current feature-unit registry or observers.",
+    "Stage2-only diagnostic runs can fail the current feature-activation gate because compare-only GT authority is treated as required outside compare runs.",
+    "Replay runs can rebuild authoritative completed Stage2 artifacts while hiding the original live prompt-preview surface unless the parent live run is inspected.",
+    "Historical table-first and synthesis-first packing work exists in deprecated extractor docs/code and is easy to misremember as maintained current behavior."
+  ],
+  "feature_execution_ledger_backfill_stats": {
+    "runs_backfilled": 6,
+    "clean_resume_or_terminal_ledgers": 2,
+    "live_stage2_ledgers_with_remaining_mismatches": 4
+  },
+  "adjudicated_summary": {
+    "runtime_input_contract_features": [
+      "stage2_input_evidence_packing_ordered_blocks",
+      "stage2_controlled_evidence_pack",
+      "stage2_table_summary_mode",
+      "stage2_table_selection_strategy",
+      "stage2_summary_first_column_enhancement",
+      "stage2_summary_table_ranking"
+    ],
+    "semantic_feature_unit_features": [],
+    "observability_features": [
+      "stage2_prompt_preview_observability",
+      "stage2_prompt_layout_class_surface",
+      "stage2_ordered_block_order_surface",
+      "replay_mode_prompt_visibility_gap"
+    ],
+    "fallback_features": [
+      "stage2_default_raw_prefix_then_table_excerpts_layout",
+      "stage2_raw_prefix_mode"
+    ],
+    "features_outside_feature_unit_system": [
+      "stage2_input_evidence_packing_ordered_blocks",
+      "stage2_controlled_evidence_pack",
+      "stage2_table_summary_mode",
+      "stage2_table_selection_strategy",
+      "stage2_summary_first_column_enhancement",
+      "stage2_summary_table_ranking",
+      "stage2_default_raw_prefix_then_table_excerpts_layout",
+      "stage2_raw_prefix_mode",
+      "stage2_prompt_preview_observability",
+      "stage2_prompt_layout_class_surface",
+      "stage2_ordered_block_order_surface",
+      "replay_mode_prompt_visibility_gap",
+      "locality_preserving_literal_binding_pack"
+    ]
+  },
+  "input_contract_hierarchy": {
+    "core": [
+      "stage2_input_evidence_packing_ordered_blocks",
+      "stage2_table_summary_mode",
+      "stage2_table_selection_strategy"
+    ],
+    "subcontract": [
+      "stage2_controlled_evidence_pack",
+      "stage2_summary_first_column_enhancement",
+      "stage2_summary_table_ranking"
+    ]
+  },
+  "mismatch_policy": {
+    "blocking": "Resolve before semantic analysis; core input-contract failures can invalidate downstream interpretation.",
+    "secondary": "Important follow-up after core input contracts are satisfied; not the first root-cause blocker.",
+    "observability": "Affects debugging visibility rather than execution semantics.",
+    "not_applicable": "Expected for the current run scope, replay path, or lawful resume boundary."
+  }
+}

@@ -1,0 +1,772 @@
+Vol:.(1234567890)
+Journal of Thrombosis and Thrombolysis (2020) 49:404–412
+https://doi.org/10.1007/s11239-019-02022-5
+1 3
+Sustained release and enhanced oral bioavailability of rivaroxaban
+by PLGA nanoparticles with no food effect
+Md. Khalid Anwer1 · Muqtader Mohammad1 · Muzaffar Iqbal2,3 · Mohd Nazam Ansari4 · Essam Ezzeldin2,3 ·
+Farhat Fatima1 · Saad M. Alshahrani1 · Mohammed F. Aldawsari1 · Ahmed Alalaiwe1 · Aiman A. Alzahrani1 ·
+Abdullah M. Aldayel1
+Published online: 2 January 2020
+© Springer Science+Business Media, LLC, part of Springer Nature 2020
+Abstract
+The purpose of the currents study was to enhance bioavailability of rivaroxaban (RXB) and reduce the food effect. RXB
+loaded PLGA nanoparticles (RXB-PLGA-NPs) were prepared by emulsion solvent evaporation method and optimized
+using central composite design (CDD). The optimized RXB-PLGA-NPs (F8) with composition, PLGA (125 mg), PVA
+(0.5%w/w) and RXB (20 mg) was found optimum with particle size (496 ± 8.5 nm), PDI (0.607), ZP (− 18.41 ± 3.14 mV),
+%EE (87.9 ± 8.6) and %DL (9.5 ± 1.6). The optimized NPs (F8) was further evaluated in vitro for DSC, FTIR, SEM and
+in vitro release studies. A comparative pharmacokinetic studies with commercial tablet (XARELTO®) were conducted on
+fasted and fed state rats. Compared to commercial tablet (XARELTO®), the RXB-PLGA-NPs (F8) exhibited a significant
+enhancement of bioavailability in both fasted and fed state. In addition, the bioavailability of RXB from NPs (F8) was found
+unaffected in the presence of food.
+Keywords  Rivaroxaban · PLGA · Nanoparticles · Bioavailability · Food effect
+Highlights
+•	 Development of sustained release of Rivaroxaban loaded
+PLGA nanoparticles (RXB-PLGA-NPs).
+•	 Development of various RXB-PLGA-NPs (F1-F13) were
+prepared and optimized by a central composite design
+(CCD) using design expert.
+•	 The optimized NPs (F8) was further evaluated in vitro
+for DSC, FTIR, SEM and in vitro release studies.
+•	 Comparative pharmacokinetic studies with commercial
+tablet (XARELTO®) were conducted on fasted and fed
+state rats.
+•	 The RXB-PLGA-NPs (F8) exhibited a significant
+enhancement of bioavailability in both fasted and fed
+state. In addition, the bioavailability of RXB from NPs
+(F8) was found to be unaffected in the presence of food.
+Introduction
+Rivaroxaban (RXB) is a first potent oral anticoagulant exten-
+sively used as prophylactic of deep vein thrombosis (DVT),
+lung embolism and to diminution threat of systemic embo-
+lism followed by stroke due to nonvalvular arterial fibril-
+lation. Traditional anticoagulant drugs such as vitamin K,
+unfractionated heparin, and fawarin are not widely used due
+to unsatisfactory effectiveness of treatment and toxic effect
+[1–4]. RXB competitively inhibits factor Xa responsible for
+activation of factor- IIa(thrombin) from factor II (prothrom-
+bin) [5]. The potency of factor Xa is more profound could
+ *	 Md. Khalid Anwer
+
+mkanwer2002@yahoo.co.in
+1
+Department of Pharmaceutics, College of Pharmacy,
+Prince Sattam Bin Abdulaziz University, Al‑Kharj 11942,
+Saudi Arabia
+2
+Department of Pharmaceutical Chemistry, College
+of Pharmacy, King Saud University, Riyadh 11451,
+Saudi Arabia
+3
+Bioavailability Laboratory, College of Pharmacy, King Saud
+University, Riyadh 11451, Saudi Arabia
+4
+Department of Pharmacology, College of Pharmacy,
+Prince Sattam Bin Abdulaziz University, Al‑Kharj 11942,
+Saudi Arabia
+
+405
+Sustained release and enhanced oral bioavailability of rivaroxaban by PLGA nanoparticles…
+1 3
+generate thousands of thrombin molecules and its network,
+thus selective binding of RXB terminates thrombin forma-
+tion and clotting. RXB considered to be safe and doesn’t
+required therapeutic drug monitoring as compared to other
+anticoagulant drug for instance vitamin K antagonists (war-
+farin) adversely effects of perfuse internal bleeding leading
+to lethal disability, brain death or death. RXB was proved to
+be superior to warfarin in the disease management of strokes
+and embolism, avoiding major bleedings [2]. RXB exhib-
+its low solubility and high permeability, hence classified as
+BCS II class drug [6–9]. RXB is available in the market in
+tablet dosage strength of 10, 15 and 20 mg. USFDA recom-
+mends to administer lower dose (10 mg) with or without
+food, and higher dose (15, 20 mg) with food. The bioavail-
+ability of lower dose (10 mg) is unaffected with food. How-
+ever, higher dose (15, 20 mg) bioavailability increases when
+take with food [10, 11].
+‘Poly(D,L-lactide-co-glycolide) (PLGA)’ is an excellent
+polymer which is used to sustain the release, improve the
+stability, enhance the oral bioavailability and therapeutic
+efficacy of poorly soluble drugs. PLGA has been exten-
+sively used as an excellent carrier to deliver low bioavailable
+drugs [12–15]. PLGA polymer was successfully loaded the
+drugs and enhanced the dispersibility, solubility, and release
+in vitro, sustain the plasma concentration for longer period
+of time [12, 16].
+The purpose of this study to enhance the in vitro release,
+bioavailability and sustained the release of RXB in the fasted
+state. Based on the through literature search, RXB loaded
+PLGA polymeric nanoparticles/microparticles have not yet
+been studied in order to sustained the release of RXB. The
+objective of this study is to prepare RXB loaded PLGA
+nanoparticles that could potentially sustained the release of
+drug that might reduce the frequency of dose in fasted state.
+Materials and methods
+Material
+Rivaroxaban (RXB) was received from “Mesochem
+Technology (Beijing, China)”. “Poly (D, L-lactide-co-
+glycolide) lactide:glycolide (50:50) (PLGA) mol. wt
+4000–15000” and ‘Polyvinyl alcohol (PVA)’ were pro-
+cured from “Sigma-Aldrich, St. Louis, USA”. The solvents
+used in the experiments were purchased from “Sigma-
+Aldrich, USA”. The chemical and solvents used during
+this work was of pure and analytical grade.
+Preparation of RXB loaded PLGA NPs
+Emulsification and solvent evaporation method was
+adopted for the preparation of RXB loaded PLGA nan-
+oparticles [13]. Briefly, accurately weighed amount of
+RXB (20 mg) was dissolved in 4 mL of PLGA polymeric
+solution in dichloromethane (DCM). Separately, aqueous
+phases were prepared by dissolving the required amount of
+PVA (0.5–2%w/v) in distilled water (8 mL). Furthermore,
+the prepared organic phase was emulsified with the aque-
+ous phase dropwise under probe sonication for 3 min at
+60% voltage efficiency (“Fisher Scientific; Made in USA”)
+with 10 s on–off pulse. The dispersion is subsequently
+placed over a magnetic stirrer (“Labtec; Made in Korea”)
+for 24 h at 700 rpm to evaporate the organic phase. After
+complete evaporation, the dispersion was centrifuged
+(“HermleLabortechnik; Made in Germany”) at 14,000×g
+for 15 min. To remove the adsorbed drug as well as the
+excessive surfactant, the sediment was washed thrice with
+Milli-Q water; both the supernatant and filtrate were pre-
+served for drug content estimations. The concentrated NPs
+were lyophilized and preserved for further analysis.
+Table 1   Thirteen experimental
+runs created by expert design
+Run
+PLGA (mg)
+PVA (%w/v)
+Size (nm)
+PDI
+ZP (mV)
+%EE
+%DL
+F1
+50
+1.25
+978 ± 12.2
+1.0
+− 0.60 ± 0.21
+41.7 ± 5.7
+4.9 ± 0.7
+F2
+125
+1.25
+470 ± 5.7
+0.5
+− 6.72 ± 1.27
+55.6 ± 4.3
+4.5 ± 1.2
+F3
+200
+0.5
+963 ± 14.3
+0.571
+− 4.12 ± 0.92
+35.0 ± 4.9
+2.7 ± 0.5
+F4
+125
+1.25
+470 ± 9.6
+0.5
+− 6.72 ± 1.74
+55.6 ± 6.3
+4.5 ± 1.4
+F5
+125
+2
+1329 ± 10.8
+1.0
+− 6.13 ± 1.78
+67.9 ± 5.3
+5.5 ± 1.2
+F6
+200
+1.25
+882 ± 11.3
+0.725
+− 14.65 ± 3.76
+72.3 ± 9.1
+4.5 ± 0.9
+F7
+125
+1.25
+470 ± 7.9
+0.5
+− 6.72 ± 1.99
+55.6 ± 5.9
+4.5 ± 1.1
+F8
+125
+0.5
+496 ± 8.5
+0.607
+− 18.41 ± 3.14
+87.9 ± 8.6
+9.5 ± 1.6
+F9
+125
+1.25
+470 ± 7.7
+0.5
+− 6.72 ± 1.83
+55.64 ± 7.5
+4.5 ± 1.3
+F10
+200
+2
+1276 ± 12.4
+1.0
+− 9.03 ± 2.21
+69.7 ± 6.6
+3.7 ± 1.1
+F11
+50
+0.5
+543 ± 7.9
+0.476
+− 10.74 ± 3.17
+19.2 ± 2.5
+3.5 ± 1.0
+F12
+125
+1.25
+470 ± 5.4
+0.5
+− 6.72 ± 0.68
+55.6 ± 3.8
+4.5 ± 0.8
+F13
+50
+2
+809 ± 12.4
+0.525
+− 0.72 ± 0.09
+65.1 ± 7.2
+5.6 ± 2.1
+
+406
+
+M. K. Anwer et al.
+1 3
+Experimental design for RXB loaded PLGA NPs
+Various RXB loaded PLGA NPs were prepared by a cen-
+tral composite design (CCD) utilizing the design expert
+“(version 12, state-Ease Inc., Minnepolis, MN)” [17, 18].
+Thirteen (13) experimental runs were planned for the
+optimization of the formulation by selecting three inde-
+pendent variables such as PLGA ­(X1) and PVA ­(X2) as
+polymer and surfactant respectively. The dependent vari-
+ables (responses) were particle size ­(Y1), PDI ­(Y2), zeta
+potential ­(Y3), %EE (Y4) and %DL (Y5) with constrains
+applied on the RXB loaded PLGA NPs. The two-level
+concentrations of independent variables in the study were
+selected along with high and low levels (Tables 1, 2).
+Particle characterization
+The mean size and PDI of the RXB loaded PLGA NPs were
+measured with the help of a “Malvern particle size analyzer
+(Zetasizer Nano ZS; Holtsville, NY)” at temperature of
+25 ± 1 °C. The light scattering angle of measurement was
+set at 90° to incident laser light or they record back scat-
+tering (173°–177°), this angle works best depends on scat-
+tering intensity and concentration of the sample [15]. The
+required amount of NPs was reconstituted in distilled water
+with suitable dilution (1:200) in order to get a transparent
+aqueous dispersion. The aqueous dispersion was sonicated
+for 10 min and transferred in a disposable transparent plastic
+cuvette for the measurement of particle size and PDI. The
+same technique was adopted for the measurement of zeta
+potential (ZP), except the aqueous dispersion was transferred
+into a glass electrode sample holder [19].
+Drug encapsulation efficiency
+The percent drug entrapment efficiency (%EE) and per-
+cent drug loading (%DL) were measured by centrifuging a
+freshly prepared NPs suspension (F1–F13) at 15,000 rpm for
+10 min. The un-entrapped drug in the supernatant was meas-
+ured by UV spectroscopy at 250 nm [20] “(Jasco V-630;
+Made in Japan)”. The %EE and %DL were calculated using
+following Eq:
+Evaluation of optimized NPs
+Differential scanning calorimetry (DSC)
+Thermal spectra of the samples were recorded by using DSC
+“(Metler 822 DSC).” The samples under study were sealed
+in an aluminum pan (test) and an empty pan (reference) and
+were subjected to a heating rate of 10 °C ­min−1 at a tempera-
+ture range of approximately 50–400 °C under inert nitrogen
+gas environment.
+Fourier transform infrared (FTIR)
+FTIR spectra of RXB and RXB loaded PLGA NPs were
+recorded from 400 to 4000 cm−1 using KBr pellet tech-
+nique “(Jasco FTIR Spectrophotometer; Made in Japan)”
+and the spectra was interpreted by predicting different
+types of vibrational and functional peaks with the help of
+software.
+Scanning electron microscopy (SEM)
+The images of the optimized RXB-PLGA NPs (F8) were
+viewed under the SEM “JSM-6360LV Scanning Micro-
+scope, Jeol, Tokyo, Japan”. The NPs (F8) were vortexed for
+2 min, and a drop of suspended nanoparticles was spreaded
+on a glass slide dried in in a desiccators. The dried NPs
+sample was put on carbon tape and sputter-covered utilizing
+a thin gold palladium layer under an argon climate utiliz-
+ing a gold sputter module in a high-vacuum evaporator and
+coated sample was then scanned for imaging using software
+(SMILE VIEW™ Map, Tokyo, Japan) [21].
+In vitro release study
+Release studies of RXB loaded PLGA NPs in comparison to
+XARELTO® tablet (20 mg) were performed in phosphate
+buffer (pH 6.8). Accurately weighed XARELTO® tablet
+(20 mg) and RXB loaded PLGA NPs (F8) was dispersed in
+% EE = [(drug added in NPs−Drug in supernatant)∕
+drug added in NPs] ∗100
+% DL = [weight of encapsulated drug in NPs∕
+weight of total NPs] ∗100
+Table 2   Considerable variables and responses with their level and
+constraints
+Factors
+Levels
+Independent variables
+Low
+High
+X1 = PLGA (mg)
+50
+200
+X2 = PVA (%w/v)
+0.5
+2
+Dependent variables
+Constraints
+Y1 = Particle size (nm)
+470 to 1329
+Y2 = Polydispersity index (PDI)
+0.476 to 1.00
+Y3 = Zeta potential (mV)
+− 0.607 to − 18.41
+Y4 = Percent entrapment efficiency (%EE)
+35.08 to 87.91
+Y5 = Percent drug loading (%DL)
+2.7 to 9.5
+
+407
+Sustained release and enhanced oral bioavailability of rivaroxaban by PLGA nanoparticles…
+1 3
+900 mL in phosphate buffer under continuous stirring at a
+speed of 100 rpm at temperature 37 ± 2 °C and the release
+profile was monitored for 48 h. At a different time points
+(0.5, 1, 2, 3, 6, 12, 24 and 48 h), 1 mL of aliquots was with-
+drawn and analyzed for the drug content after suitable dilu-
+tion by UV method at 250 nm [20, 22].
+Fig..1   3-D plot for the effects of PLGA and PVA on the particles size, PDI and zeta potential, drug entrapment and drug loading
+Fig. 2   DSC spectra of opti-
+mized RXB-PLGA-NPs (F8) in
+comparison to RXB pure drug
+
+408
+
+M. K. Anwer et al.
+1 3
+Bio‑analytical methods
+Briefly, an ultra performance liquid chromatography (UPLC)
+coupled with mass spectrometry (UPLC MS/MS) was used
+for the analysis of RXB in rat plasma (“Micromass® Quat-
+tro micro Waters Corp, Milford, MA, USA”). Our previous
+studies has been reported in rat plasma [23]. To increase the
+sensitivity of the assay, the electrospray ionization was oper-
+ated in positive mode and the calibration range was between
+1 and 1000 ng/mL with lower limit of quantification (LOQ)
+1 ng/mL in plasma samples. The analyte (RXB) and the
+internal standard (IS) were detected at ion transition of m/z
+436.00 ˃ 1.44.87 for RXB and m/z 411.18 ˃ 191.07 for IS
+with dwell time of 0.061 in the multiple reaction monitoring
+(MRM) mode.
+Pharmacokinetic studies in rats
+Male Wistar rats weighing 220–230 gm (n = 6) were uti-
+lized for the pharmacokinetic studies of RXB. Rats were
+issued from “Animal Care Unit, College of Pharmacy,
+Prince Sattam Bin Abdulaziz University” and studied were
+preformed as per “International standard guidelines of the
+animal care and use”. Prior to the test, the animals were
+kept on overnight fasting in plastic enclosures under stand-
+ard research center conditions, and the pellet diet was given
+with water ad libitum. The in vivo pharmacokinetic study of
+RXB loaded PLGA NPs (F8) and reference formulation of
+XARELTO® (both of them containing 20 mg RXB) were
+tested under fasted and fed conditions in a parallel study with
+two groups of rats (n = 6), each group has six rats [10]. Ani-
+mals were randomly divided into four groups (n = 6) which
+served as RXB loaded PLGA NPs (F8) (fed and fasted state)
+and XARELTO® tablet (Fed and fasted state) suspension in
+PEG400 to treatment groups, respectively. RXB (equivalent
+to 1 mg/kg, oral) was administered to the respective group
+and blood samples (0.5 mL) were withdrawn in heparinized
+tubes from the retro-orbital plexus of rats at different time
+intervals (predose, 0.25, 0.5, 1, 2, 4, 8, 24, and 48 h). The
+blood sample were centrifuged at 4500×g for 8 min to col-
+lect plasma and were stored frozen at 80 ± 10 °C till further
+Fig. 3   FTIR spectra of opti-
+mized RXB-PLGA-NPs (F8) in
+comparison to RXB pure drug
+Fig. 4   SEM micrograph of optimized RXB loaded PLGA- nanopar-
+ticles (F8)
+
+409
+Sustained release and enhanced oral bioavailability of rivaroxaban by PLGA nanoparticles…
+1 3
+analysis. The obtained pharmacokinetic parameters were
+calculated and analyzed with the help of “WinNonlinsoft-
+ware (Pharsight Co, Mountain View CA)”. The parameters
+­Cmax, ­Tmax, AUC​last, AUC​tot, ­kel, half life ­(T1/2) and Mean
+residence time (MRT).
+Results and discussion
+Preparation and optimization of RXB loaded PLGA
+NPs using central composite design (CDD)
+The optimization of RXB loaded PLGA NPs was selected
+based on five responses like particle size, PDI, ZP, entrap-
+ment efficiency and drug loading by applying point predic-
+tion method of Design-Expert 12 software. Based on the 13
+developed formulations by Expert Design® software, parti-
+cle size, PDI, ZP, %EE and %DL with a range from 470 to
+1329 nm, 0.476–1.00, − 0.607 to − 18.41 mV, 35.08–87.91%
+and 2.7–9.5% were prepared respectively (Table 2). Among
+these nanoparticles, Formulation (F8) with composition,
+PLGA (125 mg), PVA (0.5% w/v) and 20 mg of RXB was
+found to be optimum with particle size (496 nm), PDI
+(0.607), ZP (18.41 mV), EE (87.91%) and DL (9.5%).The
+response surface 3D graph generated by Expert-Design soft-
+ware showing influence of independent variables on particle
+size, PDI, ZP, %EE and %DL (Fig. 1). These graphs were
+used to study the effect of one independent variables on the
+responses while the second variables at a constant level. The
+optimized formulation (F8) was further subjected for mor-
+phology, spectroscopic characterization and pharmacoki-
+netic studies in animal.
+Fig. 5   In vitro drug release
+profile of optimized RXB-
+PLGA-NPs (F8) in comparison
+to RXB pure drug in phosphate
+buffer (pH 6.8)
+0
+20
+40
+60
+80
+100
+0
+6
+12
+18
+24
+30
+36
+42
+48
+% Cumulative drug release
+Time  (hrs.)
+XARELTO®
+8F
+Table 3   Analyzed comparative pharmacokinetic parameters of XARELTO® and RXB loaded PLGA-NPs (F8) in fasted and fed state
+*P < 0.05 significant compared with XARELTO®, Fasted state
+**P < 0.01 highly significant compared with XARELTO®, Fasted state
+***P < 0.001 extremely significant compared with XARELTO®, Fasted state
+Parameters
+XARELTO®, Fasted state
+(Mean ± SD)
+XARELTO®, Fed state
+(Mean ± SD)
+F8, Fasted state
+(Mean ± SD)
+F8, Fed state (Mean ± SD)
+Cmax (ng/ml)
+148 ± 33
+291 ± 51*
+553 ± 157***
+566 ± 40***
+Tmax(h)
+1
+0.25
+0.5
+1
+AUC​last (ng h/ml)
+1638 ± 183
+2704 ± 753**
+4196 ± 546***
+3589 ± 138***
+AUC​tot (ng h/ml)
+1790 ± 239
+3011 ± 743**
+4317 ± 469***
+3697 ± 202***
+Kel (h)
+0.05 ± 0.009
+0.044 ± 0.007
+0.081 ± 0.021
+0.07 ± 0.014
+T1/2 (h)
+14.49 ± 2.53
+15.82 ± 2.56
+9.45 ± 3.03*
+10.01 ± 2.26*
+MRT (h)
+16.57 ± 1.84
+19.25 ± 2.94
+11.44 ± 3.78*
+10.09 ± 1.31**
+Relative bioavailability (%)
+100
+165
+256
+216
+
+410
+
+M. K. Anwer et al.
+1 3
+DSC studies
+A comparative DSC spectra of pure RXB and optimized
+RXB loaded PLGA-NPs (F8) are shown in the Fig. 2. The
+DSC spectra of pure RXB showed a sharp endothermic melt-
+ing peak at 234.72 °C followed by abroad decomposition
+exothermic peaks at 337.09 °C, which is characteristics of
+pure drug as reported in literature [24]. However, endother-
+mic peak of RXB completely disappeared in DSC spectra
+of RXB loaded PLGA-NPs (F8), indicating its complete
+entrapment inside the PLGA polymer.
+FTIR studies
+A comparative FTIR spectra were recorded for pure RXB
+and RXB loaded PLGA NPs (F8) to know the interaction
+between RXB and PLGA polymer (Fig. 3). The FTIR spec-
+trum of pure drug (RXB) showed all the peaks in range of
+400–4000 cm−1. The major peaks of pure RXB was assigned
+corresponding to functional groups, –N–H– stretching
+(3351.68 cm−1), lactone carbonyl stretching (1736.58 cm−1),
+–C–O– stretching (1119.48 cm−1), aromatic C–H– bending
+(827.31 cm−1) and –C–Cl– stretching (756.92 cm−1) con-
+firmed drug sample purity [25]. The major peaks of RXB
+was significantly shifted or reduced in intensity in the spec-
+trum of RXB loaded PLGA NPs (F8), confirmed RXB suc-
+cessful encapsulation inside PLGA polymer.
+SEM analysis
+SEM images of RXB loaded optimized PLGA NPs (F8) for-
+mulation are shown in Fig. 4. The images of SEM confirmed
+a spherical in shape having smooth surface nanoparticles.
+It was observed that the PLGA polymer has been properly
+coated over the drug moiety had led to better adhesion and
+smooth surface of nanoparticles, hence maintained the par-
+ticle morphology. The particle size observed from SEM
+image close enough to the size measured by the particle
+size analyzer.
+In vitro release studies
+In vitro release studies were performed to check the pattern
+of drug release from polymeric nanoparticles that would be
+useful scientific steps in the formulation development. The
+release of RXB from commercial tablet (XARELTO®) and
+RXB-PLGA-NPs (F8) are shown in the Fig. 5. A enhanced
+Fig. 6   Pharmacokinetic profile
+of optimized RXB-PLGA-NPs
+(F8) in comparison to marketed
+tablet (XARELTO®) in fed and
+fasted state
+0.00
+100.00
+200.00
+300.00
+400.00
+500.00
+600.00
+0
+6
+12
+18
+24
+30
+36
+42
+48
+Mean Plasma Conc. of RXB
+Time (hr)
+F8 (Fasted group)
+F8 (Fed group)
+XARELTO® (Fasted group)
+XARELTO® (Fed group)
+Fig. 7   Representative MRM chromatogram of rivaroxaban in plasma
+sample
+
+411
+Sustained release and enhanced oral bioavailability of rivaroxaban by PLGA nanoparticles…
+1 3
+with sustained release of RXB from RXB-PLGA-NPs (F8)
+was recorded (97.64%) as compared to marketed tablet
+XARELTO® (68.45%) after 48 h. The sustained release of
+RXB perhaps due the presence of PLGA polymer matrix
+over NPs, hence PLGA promoted the sustained release pat-
+tern of the drug. The sustained release of RXB from the
+RXB-PLGA-NPs (F8) might be helpful in reducing the fre-
+quency and dose of dosage form [16].
+Pharmacokinetic studies
+The concentration of RXB in rat blood sample was
+measured by extrapolating the plasma calibration curve
+(1–1000 ng mL−1) prepared in blank plasma. The measured
+pharmacokinetic parameters after oral administration of
+RXB are documented in Table 3. The extent of absorption
+(AUC​0–48 and AUC​0–inf) of F8 NPs in fed and fasted state
+was found significantly (P < 0.5) higher in comparison to
+XARELTO® tablet. The maximum extent of absorption was
+observed in F8 NPs in fasted state as compared to fed state,
+it clearly indicates no food effect on absorption of RXB. The
+obtained values of ­Cmax and AUC​last of XARELTO® tab-
+let under fasted state (148 ± 33 ng/ml, 1638 ± 183 ng h/ml)
+were found lower in comparison to fed state (291 ± 51 ng/
+ml, 2704 ± 753 ng h/ml), this confirmed food enhances the
+absorption of commercial XARELTO® tablet. However, in
+the case of RXB loaded PLGA NPs (F8) under fasted and
+fed state were found almost similar as (553 ± 157 ng/ml,
+4196 ± 546 ng h/ml and 566 ± 40 ng/ml, 3589 ± 138 ng h/ml)
+respectively. This results revealed that RXB loaded PLGA
+NPs successfully enhanced the bioavailability of RXB with
+no food effect. The main reason to increase the bioavail-
+ability of RXB due to PLGA polymer and nano size par-
+ticles [26, 27]. Based on statistics analysis, ­Cmax, AUC​last,
+and AUC​last of RXB loaded PLGA NPs (F8) in both fasted
+and fed state showed an extremely significant (***P ˂ 0.001)
+difference when compared with XARELTO® in fasted state.
+The relative bioavailability of NPs (F8) was found very close
+in fasted (256%) and fed state (216%) when compared to
+XARELTO® tablet in fasted and fed state respectively. The
+mean plasma concentration profile of RXB after oral admin-
+istration of NPs (F8) and RXB, in fasted and fed state are
+presented in Fig. 6. The representative chromatogram of
+RXB are presented in Fig. 7.
+Conclusion
+An improved formulation of rivaroxaban with enhanced bio-
+availability with no effect was successfully prepared. Thir-
+teen formulations of the rivaroxaban were designed by using
+central composite design. The optimized rivaroxaban loaded
+PLGA nanoparticles (F8) had a suitable particle size, PDI,
+zeta potential, drug entrapment and drug loading, which was
+truly confirmed by in vitro release and in vivo pharmacoki-
+netic studies. Comparative pharmacokinetic studies of NPs
+(F8) with commercial tablet (XARELTO®), following oral
+administration in fasted and fed state to rats confirmed an
+enhance in bioavailability with no food effect. Hence, it is
+concluded that the developed nanoparticles benefits from
+the nano size and promise better therapeutic efficacy with
+no food effect.
+Acknowledgements  This project was supported by the Deanship of
+Scientific Research at Prince Sattam Bin Abdulaziz University under
+the research Project No. 2019/03/10912.
+Compliance with ethical standards 
+Conflict of interest  No conflict of interest is associated with this study.
+References
+	 1.	 Bellin A, Berto P, Themistoclakis S, Chandak A, Giusti P, Cavalli
+G, Bakshi S, Tessarin M, Deambrosis P, Chinellato A (2019) New
+oral anti-coagulants versus vitamin K antagonists in highthrom-
+boembolic risk patients. PLoS ONE 14:e0222762
+	 2.	 Kalani C, Awudi E, Alexander T, Udeani G, Surani S (2019)
+Evaluation of the efficacy of direct oral anticoagulants (DOACs)
+in comparison to warfarin in morbidly obese patients. Hosp Pract
+(1995) 47(4):181–185
+	 3.	 Minematsu K, Ikeda T, Ogawa S, Kitazono T, Nakagawara J,
+Miyamoto S, Murakawa Y, Takeichi M, Kidani Y, Okayama Y,
+Sunaya T, Sato S, Yamanaka S (2019) Real-world outcomes of
+rivaroxaban treatment in patients with both nonvalvular atrial
+fibrillation and a history of ischemic stroke/transient ischemic
+attack. Cerebrovasc Dis 2:1–8
+	 4.	 Vanassche T, Verhamme P (2013) Rivaroxaban for the treatment
+of pulmonary embolism. Adv Ther 30:589–606
+	 5.	 Coleman CI, Baker WL, Meinecke AK, Eriksson D, Martinez BK,
+Bunz TJ, Alberts MJ (2019) Effectiveness and safety of rivaroxa-
+ban vs. warfarin in patients with non-valvular atrial fibrillation
+and coronary or peripheral artery disease. Eur Heart J Cardiovas-
+cPharmacother. https​://doi.org/10.1093/ehjcv​p/pvz04​7
+	 6.	 Sherje AP, Jadhav M (2018) β-Cyclodextrin-based inclusion com-
+plexes and nanocomposites of rivaroxaban for solubility enhance-
+ment. J Mater Sci Mater Med 29(12):186
+	 7.	 Metre S, Mukesh S, Samal SK, Chand M, Sangamwar AT (2018)
+Enhanced biopharmaceutical performance of rivaroxaban through
+polymeric amorphous solid dispersion. Mol Pharm 15:652–668
+	 8.	 Abouhussein DMN, El Din Bahaa, Mahmoud D, Mohammad FE
+(2019) Design of a liquid nano-sized drug delivery system with
+enhanced solubility of rivaroxaban for venous thromboembolism
+management in paediatric patients and emergency cases. J Lipo-
+some Res 1:1–14
+	 9.	 Ganesh M (2016) Design and optimization of rivaroxaban lipid
+solid dispersion for dissolution enhancement using statistical
+experimental design. Asian J Pharm 10:1–6
+	10.	 Xue X, Cao M, Ren L, Qian Y, Chen G (2018) Preparation and
+optimization of rivaroxaban by self-nanoemulsifying drug deliv-
+ery system (SNEDDS) for enhanced oral bioavailability and no
+food effect. AAPS PharmSciTech 19:1847–1859
+
+412
+
+M. K. Anwer et al.
+1 3
+	11.	 US Food and Drug Administration. Centre for Drug Evalua-
+tion and Research. Highlights of prescribing information of
+­XARELTO® (Rivaroxaban). tablets. https​://www.acces​sdata​.fda.
+gov/drugs​atfda​_docs/label​/2014/02240​6s015​lbl.pdf. Accessed Jan
+2014
+	12.	 Anwer MK, Mohammad M, Ezzeldin E, Fatima F, Alalaiwe A,
+Iqbal M (2019) Preparation of sustained release apremilast-loaded
+PLGA nanoparticles: in vitro characterization and in vivo phar-
+macokinetic study in rats. Int J Nanomed 14:1587–1595
+	13.	 Jamil A, Mirza MA, Anwer MK, Thakur PS, Alshahrani SM,
+Alshetaili AS et al (2019) Co-delivery of gemcitabine and simv-
+astatin through PLGA polymeric nanoparticles for the treatment
+of pancreatic cancer: in vitro characterization, cellular uptake, and
+pharmacokinetic studies. Drug Dev Ind Pharm 45:745–753
+	14.	 Anwer MK, Al-Shdefat R, Ezzeldin E, Alshahrani SM, Alshetaili
+AS, Iqbal M (2017) Preparation, evaluation and bioavailability
+studies of eudragit coated PLGA nanoparticles for sustained
+release of eluxadoline for the treatment of irritable bowel syn-
+drome. Front Pharmacol 8:844
+	15.	 Anwer MK, Al-Mansoor MA, Jamil S, Al-Shdefat R, Ansari MN,
+Shakeel F (2016) Development and evaluation of PLGA polymer
+based nanoparticles of quercetin. Int J BiolMacromol 92:213–219
+	16.	 Sapna K, Sudhakar G, Kumar RS (2012) A review article to
+develop sustain release rivaroxaban formulation. J Atoms Mol
+2:14–16
+	17.	 Ahmed N, Hasan I, Saifuddin M, Chowdhury JA, Reza MS (2016)
+Formulation and optimization of carbamazepine microspheres by
+2 factor 2 level central composite design. Bangladesh Pharm J
+19:152–160
+	18.	 Singh S, Verma D, Mirza MA, Das AK, Dudeja M, Anwer MK,
+Talegaonkar S, Iqbal Z (2017) Development and optimization of
+ketoconazole loaded nano-transfersomal gel for vaginal delivery
+using Box-Behnken design: in vitro, ex vivo characterization and
+antimicrobial evaluation. J Drug Deliv Sci Technol 39:95–103
+	19.	 Alshahrani SM, Alshetaili AS, Alalaiwe A, Alsulays BB, Anwer
+MK, Al-Shdefat R et al (2017) Anticancer efficacy of self-nanoe-
+mulsifying drug delivery system of sunitinib malate. AAPS
+PharmSciTech 19:123–133
+	20.	 Çelebier M, Kaynak MS, Altınöz S, Sahin S (2014) UV spectro-
+photometric method for determination of the dissolution profile
+of rivaroxaban. Dissolution Technol 21(4):56–59
+	21.	 Altamimi MA, Elzayat EM, Qamar W, Alshehri SM, Sherif AY,
+Haq N et al (2019) Evaluation of the bioavailability of hydro-
+cortisone when prepared as solid dispersion. Saudi Pharm J
+27:629–636
+	22.	 Alsulays BB, Anwer MK, Aldawsari MF, Aodah A, Adam E,
+Alshehri S et al (2019) Preparation and evaluation of a stable
+and sustained release of lansoprazole-loaded poly(d, l-lactide-co-
+glycolide) polymeric nanoparticles. J Polym Eng 39:822–829
+	23.	 Iqbal M, Khalil NY, Imam F, Anwer MK (2014) A validated high-
+throughput UHPLC-MS/MS assay for accurate determination of
+rivaroxaban in plasma sample. J Thromb Thrombol 39:79–88
+	24.	 Ding T, Chen L, Zhai L-H, Fu Y, Sun B-W (2017) Compatibility
+study of rivaroxaban and its pharmaceutical excipients. J Therm
+Anal Calorim 130:1569–1573
+	25.	 Patel P (2017) Formulation, development and evaluation of rivar-
+oxaban tablets by using solubility enhancement technique. Int J
+Pharm Sci Sci Res 3:51–55
+	26.	 Miao Y, Sun J, Chen G, Lili R, Ouyang P (2015) Enhanced oral
+bioavailability of lurasidone by self-nanoemulsifying drug deliv-
+ery system in fasted state. Drug Dev Ind Pharm 42:1234–1240
+	27.	 Anwer MK, Jamil S, Ansari MJ, Iqbal M, Imam F, Shakeel F
+(2016) Development and evaluation of olmesartanmedoxomil
+loaded PLGA nanoparticles. Mat Res Innov 20:193–197
+Publisher’s Note  Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.

@@ -1,0 +1,26 @@
+{
+  "paper_key": "5ZXYABSU",
+  "selector_calibration_version": "v2",
+  "archetype": "single_main_formulation_table_with_supporting_method_text",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph if present",
+      "primary preparation-method paragraph",
+      "authoritative formulation table",
+      "compact supporting result paragraph only if it adds explicit table interpretation"
+    ],
+    "should_drop": [
+      "duplicate result prose mirroring the selected table",
+      "broad fallback context"
+    ],
+    "minimal_evidence_set": [
+      "0-1 materials block",
+      "1 preparation block",
+      "1 authoritative table block",
+      "0-1 supporting paragraph"
+    ]
+  },
+  "selection_notes": [
+    "Keep the pack compact when one authoritative formulation table is already available."
+  ]
+}

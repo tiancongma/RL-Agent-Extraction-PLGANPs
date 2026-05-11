@@ -1,0 +1,1044 @@
+Pharmaceutics, Drug Delivery and Pharmaceutical Technology
+Injectable PLGA/Hydroxyapatite/Chitosan Microcapsules Produced by
+Supercritical Emulsion Extraction Technology: An In Vitro Study on
+Teriparatide/Gentamicin Controlled Release
+Giovanna Della Porta 1, *, Roberta Campardelli 1, Vincenzo Cricchio 1, Francesco Oliva 2,
+Nicola Maffulli 3, Ernesto Reverchon 1
+1 Department of Industrial Engineering, University of Salerno, Fisciano, Salerno 84084, Italy
+2 Department of Orthopedics and Traumatology, University of Rome “Tor Vergata” School of Medicine, Rome, Italy
+3 Department of Musculoskeletal Medicine and Surgery, Faculty of Medicine and Surgery, University of Salerno, Baronissi, Salerno 84081, Italy
+a r t i c l e
+i n f o
+Article history:
+Received 14 March 2016
+Revised 28 April 2016
+Accepted 3 May 2016
+Available online 9 June 2016
+Keywords:
+controlled release
+drug delivery systems
+microencapsulation
+PLGA
+supercritical ﬂuids
+a b s t r a c t
+Supercritical emulsion extraction (SEE) is proposed as a green and effective strategy for the fabrication of
+chitosan-covered poly-lactic-co-glycolic acid (chi-PLGA) injectable microcapsules for the controlled
+release of teriparatide (THA) and teriparatide/gentamicin sulfate (THA/Gen). These formulations can be
+used for locally bone pathologies treatment or in complex fracture healing of aged patients. Several
+oil-water (o-w) and water-oil-water (w-o-w) emulsions were processed by SEE to produce multifunc-
+tional microcapsules containing hydroxyapatite (HA) within a poly-lactic-co-glycolic acid (PLGA) matrix
+(up to 24 mg/g) and with both THA (0.45 mg/g) and Gen (up to 9 mg/g). Chitosan coating was also
+successfully added, as external layer (0.4 mm). SEE-fabricated microcapsules showed good encapsulation
+efﬁciency (up to 90%) for all the drugs tested and a mean size ranging between 1.4 (±0.4) mm and 2.2
+(±0.5) mm. Different drug amounts loaded and microcapsules compositions assured a controlled drug
+release over a wide range of times and concentrations, as in vitro monitored in PBS medium at 37C for
+15/20 days. HA embedded into the biopolymer structure delayed the THA release proﬁle; chitosan
+coating strongly reduced the initial drug “burst” release. In addition, the coencapsulation of both THA
+and Gen, which have very different water solubility, accelerated the release proﬁle of the less water-
+soluble drug. No drugs degradation was also monitored after the SEE manufacturing. Apparent drug
+diffusivities (D) were calculated by ﬁtting of the release proﬁles. In the case of Gen, D ranged between
+2.9  108 and 1.6  109 cm2s1 if the drug was entrapped in simple PLGA or in the chitosan-coated
+microcapsules, respectively. In the case of THA, the calculated values ranged between 8.1  109 and
+7.4  1010 cm2s1 when the drug was entrapped in PLGA/HA microcapsules or in the chitosan-coated
+ones, respectively. These mass transfer values are consistent with the different release behaviors
+observed and conﬁrmed the possibility of multicomponent microcapsules fabrication by SEE.
+© 2016 American Pharmacists Association®. Published by Elsevier Inc. All rights reserved.
+Introduction
+Osteoporosis affects more than 75 million people in USA, Europe,
+and Japan,1 with a consequent increase in bone fragility and
+susceptibility to fracture at any skeletal site,2,3 and an enormous
+economic
+burden
+on
+health
+care
+systems
+in
+Europe
+and
+worldwide.
+Teriparatide
+(THA)
+is
+currently
+Food
+and
+Drug
+Administrationeapproved for the treatment of osteoporosis and
+osteoarthritis4 and may strongly improve fracture healing or repair
+bone defects.5 THA has been reported to accelerate and improve
+healing at the standard available dose of 20-40 mg/day, especially for
+aged patients with a fracture.6-8 THA is the recombinant 1-34 amino
+acid segment of the parathyroid hormone (PHT) with a molecular
+weight of 4117.72 g/mol. THA binds to the receptor for PHT present in
+bone and stimulates the G-protein-related production of cyclic
+adenosine monophosphate.9 During treatment, an increase in
+trabecular connectivity and cortical thickness is observed, with
+consequent improvement of the microarchitectural strength of
+bone10; THA may also stimulate mesenchymal stem cell proliferation
+and stem cell maturation in the musculoskeletal lineage.11
+This article contains supplementary material available from the authors by request
+or via the Internet at http://dx.doi.org/10.1016/j.xphs.2016.05.002.
+* Correspondence
+to:
+Della
+Porta
+Giovanna
+(Telephone:
+þ39089964104;
+Fax: þ39089964057).
+E-mail address: gdellaporta@unisa.it (G. Della Porta).
+Contents lists available at ScienceDirect
+Journal of Pharmaceutical Sciences
+journal homepage: www.jpharmsci.org
+http://dx.doi.org/10.1016/j.xphs.2016.05.002
+0022-3549/© 2016 American Pharmacists Association®. Published by Elsevier Inc. All rights reserved.
+Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+
+Despite the demonstrated clinical efﬁcacy of THA, patient
+acceptance and compliance is limited by the need for daily sub-
+cutaneous injections. The development of an equally efﬁcient
+formulation not requiring daily injections would signiﬁcantly
+expand the present market.12,13 Moreover, among all the possible
+drug administration, a local therapy, if indicated, has many po-
+tential advantages such as circumventing possible adverse side
+effects resulting from systemic administration, decreasing dose or
+number of dosages, and maintaining local agent levels within a
+desirable range.14 Several devices have been already explored for
+THA (and PHT)-controlled delivery such as, multipulse subcu-
+taneous implantable devices15,16 or microchip,17 coated micro-
+needle patch system,18 or implantable biopolymer scaffold.19 Eli
+Lilly recently has launched a new THA formulation in the injectable
+form and Daiichi and West Pharmaceuticals are working on nasal
+formulations.
+Poly-lactic-co-glycolic acid (PLGA) excellent biocompatibility
+and biodegradability makes this biopolymer an appropriate carrier
+for drug delivery; in addition, PLGA has been approved by the Food
+and Drug Administration as a safe biomaterial for clinical applica-
+tions. The intraarticular and local injection of microcarriers, fabri-
+cated with PLGA and able of controlled and local THA delivery may
+be an interesting option.20 Recently, it was reported a successful
+suppression of osteoarthritis progression in rats replacing the
+single-dose injection, required every 3 days, by using PLGA (65:35)
+microspheres able to release the drug for 19 days with a concen-
+tration range of 5-100 nM (covering 10 nM) at 37C. The in vivo
+study showed after intraarticular treatment with either 3 days/in-
+jection or PLGA microspheres (15 days/injection) for 5 weeks a
+similar
+effect
+on
+suppressing
+papain-induced
+osteoarthritis
+changes, by decreasing production of GAG and Col II and increasing
+Col III in rat knee cartilage.21
+An engineered size distribution, as well as, excellent drug
+encapsulation efﬁciency are very important fabrication parameters
+for microcapsules industrial production to ensure a controlled and
+reproducible drug sustained release formulation. In this sense,
+supercritical ﬂuid technologies may offer an improved control over
+the morphology and composition of microdevices and nanodevices
+coupled with good fabrication process robustness.22-25 The basic
+idea of use supercritical carbon dioxide (SC-CO2) as the extracting
+agent of the oily phase of an emulsion, leading solvent-free mi-
+crospheres was proposed in 200626; the original process was per-
+formed using a batch operative layout, then was later improved by
+other
+authors
+and
+named
+supercritical
+emulsion
+extraction
+(SEE).27-29 After these pioneering articles, new SEE continuous
+process layout was proposed using a countercurrent-packed tower
+to reduce the emulsion processing time (few minutes of residence
+time),
+improve
+the
+encapsulation
+efﬁciency
+(especially
+if
+double
+emulsions
+are
+treated),
+and
+assured
+higher
+process
+reproducibility.30
+In this work, we will explore the SEE technology (continuous
+layout) to fabricate an engineered, versatile, and multiloaded PLGA
+microdevice for THA sustained release. Particularly, hydroxyapatite
+(HA) will be embedded into the microcarrier structure because it is
+widely used in bone tissue engineering and is reported to be good
+matrix for bone cell differentiation and mineralization.31 Indeed,
+in vitro and in vivo studies of biopolymer/HA composites found that
+osteoblast cells adhered to HA preferentially, leading to subsequent
+cell proliferation, and the composite implants displayed good bone
+integration and osteoconductivity in rabbit models.32,33 Artiﬁcial
+defects induced in the osteoporotic bone of the rat mandible were
+also successfully reconstructed following implantation of HA
+nanoparticles coated with cholecalciferol-loaded PLGA devices,34
+whereas hollow HA microspheres loaded with clinically safe
+doses of bone morphogenetic proteine2 could provide promising
+implants for healing nonloaded bone defects.35 Chitosan (Chi) will
+be also chosen because it was already used to repair critical bone
+defects36-38; some authors also indicated that Chi/PLGA micro-
+sphere combined with appropriate drug delivery can achieve
+accelerated bone healing both in vitro and in vivo and were able to
+guide bone formation in a rabbit ulnar critical-sized-defect
+model.39 In our hypothesis, the basic inorganic component of HA
+could interfere with the acidic degradation products of PLGA
+polymer, affecting the drug release, whereas the chitosan coating
+would additionally delay the drug release. Gentamicin (Gen) is
+largely used in the treatment of osteomyelitis,40 and it will be also
+coencapsulated in the microcarriers to understand SEE versatility
+in producing
+microcapsules
+with a simultaneous release of
+different molecules.
+Different oil-in-water (o-w) and water-in-oil-in-water (w-o-w)
+emulsions will be processed by SEE and the fabricated microcap-
+sule (1) morphology will be observed using scanning electron mi-
+croscopy, (2) particle size distribution (PSD) and zeta potential
+measured by a laser scattering. HA loading and its dispersion in the
+biopolymer matter will be measured by thermogravimetric anal-
+ysis (TGA) and energy-dispersive X-ray analysis (EDX), respectively,
+whereas drugs loading and encapsulation efﬁciency will be moni-
+tored by chemical analysis. The effect of HA embedding and chi-
+tosan coating on drugs release will be both explored by monitor the
+in vitro drug release proﬁles obtained in PBS medium at 37C. THA
+and Gen apparent diffusivities will be calculated by ﬁtting the
+release proﬁles obtained from the different microcapsules.
+Materials and Methods
+Materials
+CO2 (99.9%) was purchased from SON (Naples, Italy). Polyvinyl
+alcohol (mol wt: 30,000-55,000), polysorbate (Tween80), ter-
+iparatide (THA, lyophilized powder, purity 99.9%; water solubility
+0.40 mg/mL), gentamicin sulfate (Gen, powder, purity 99.9%; water
+solubility 50 mg/mL) were received from Sigma Aldrich Co. (Milan,
+Italy). Hydroxyapatite nanoparticles (HA, nanopowder, mean size
+100) were supplied by Sigma-Aldrich (PLGA 50:50, RESOMER®
+RG 504H, Mol wt: 38,000-54,000) was obtained from Evonik In-
+dustries (Essen, Germany). Ethyl acetate (EA, purity 99.9%), acetone
+(purity 99.9%), 2-propanol, and methanol were supplied by Carlo
+Erba
+Reagents
+(Milan,
+Italy).
+Sodium
+borate,
+ortho-
+phthaldialdehyde, and 2-mercaptoethanol were used for the
+preparation of the reagents in the analytical method and were all
+supplied by Sigma-Aldrich Co. HPLC grade acetonitrile and tri-
+ﬂuoroacetic acid were purchased from Sigma-Aldrich. Ultrapure
+water was obtained using Milli-Qs UF-Plus (Millipore) system.
+Emulsion Preparation and Supercritical Emulsion Extraction
+Apparatus
+Different o-w emulsions (ratio 20:80 w/w) were used to load HA
+into PLGA. The oily phase was always prepared by dissolving 2 g of
+PLGA in 20 g of EA, whereas the amount of HA was varied between
+100 and 50 mg to reach nominal loadings of 25-50 mg/gPLGA,
+respectively. HA was dispersed as solid nanoparticles in the oily
+phase by sonication at 40% of the nominal power (mod. S-450D,
+Branson Ultrasonics Corporation, Danbury, CT) for 1 min. The oily
+phase was then added into 80 g of EA-saturated aqueous Tween80
+solution (0.6% w/w in water) by high-speed stirring (mod. L4RT,
+Silverson Machines Ltd., Waterside, CheshamBucks, UK) for 3 min
+at 3200 rpm. Several w-o-w emulsions (ratio 1:19:80 w/w) were
+used to load THA and Gen into PLGA or HA/PLGA microcapsules.
+One mL of polyvinyl alcohol solution (0.06% w/w) with a ﬁxed
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2165
+
+amount of drug was used as the water internal phase and mixed
+with the oily phase (with or without HA) to form a primary w1-o
+emulsion by sonication at 30% of the nominal power (mod. S-450D;
+Branson Ultrasonics Corporation) for 1 min. The primary emulsion
+was, then, immediately added into the external water phase.
+The emulsions were processed by SEE immediately after prep-
+aration. The continuous layout apparatus consisted of a high
+pressure column (100 cm height; 133 cm3 internal volume) formed
+by 3 stages of stainless steel cylindrical elements packed with
+stainless steel packing (1889 m1 speciﬁc surface; 0.94 of voidage;
+ProPak, Scientiﬁc Development Company, State College, PA). The
+apparatus was thermally insulated by ceramic cloths, and its tem-
+perature proﬁle was controlled by 6 temperature controllers.
+SC-CO2 was fed at the bottom of the column by a high-pressure
+diaphragm pump (model Milroyal B; Milton Roy, Pont Saint-
+Pierre, France) at a constant ﬂow rate, whereas the emulsion was
+fed from the top at a constant ﬂow rate using a high-pressure piston
+pump (model 305; Gilson, Villiers le Bel, France). Operative pres-
+sure and temperature conditions used in the present work were 8
+MPa and 38C, respectively, with a SC-CO2 ﬂow rate of 1.4 kg/h and
+a liquid/gas ﬂow rates ratio (L/G) of 0.1 on mass based.30 Micro-
+sphere suspension was also continuously collected at the bottom of
+the extraction column and washed with water before its lyophili-
+zation. The drug not encapsulated was removed during the washing
+procedure.
+Droplet and Microsphere Morphology
+The droplets formed in the emulsion were observed using an
+optical microscope (OM, mod. BX 50 Olympus, Tokyo, Japan)
+equipped with a phase contrast condenser. Microsphere shape and
+morphology were investigated by ﬁeld emissionescanning elec-
+tron microscopy (mod. LEO 1525, Carl Zeiss SMT AG, Oberkochen,
+Germany) coupled with an EDX (INCA Energy 350, UK). Samples of
+powder were placed on a double-sided adhesive carbon tape pre-
+viously stuck to an aluminum stub and coated with a thin gold ﬁlm
+(layer thickness 250 Å) using a sputter coater (mod.108 A; Agar
+Scientiﬁc, Stansted, UK).
+Microcapsule Size Distributions and Suspension Z-Potential
+PSDs were measured using a Mastersizer S apparatus (mod.
+Mastersizer S, Malvern Instruments Ltd., Worcestershire, UK),
+based on dynamic light scattering. Analyses were performed
+immediately after the preparation of the emulsions and of the
+microsphere suspensions, using several milligrams of each sample,
+appropriately diluted with distilled water. A Zetasizer (mod.
+NanoZS Malvern Inc., Wocherstershire, UK) equipped with a 5.0-
+mW He-Ne laser operating at 633 nm was used for zeta-potential
+measurements. Samples were analyzed in glass cuvettes at 25C
+and scattering angle of 173; all the results are based on an average
+of 3 measurements, which was calculated on an average of 10 runs.
+Zeta-potential value expressed in mV indicates the potential dif-
+ference between the dispersion medium and the stationary layer of
+ﬂuid attached on the dispersed particle and is a key indicator of the
+dispersion stability.
+Solid-State Characterization
+The HA encapsulation efﬁciency was calculated by TGA, as the
+dry residue remained after the total combustion of the polymer.
+Thermal Analyser (mod. Pyris 1; Perkin Elmer, Shelton, CT)
+measured the amount of weight change of a material as a function
+of increasing temperature in an atmosphere of nitrogen, helium, air,
+other gas, or in vacuum. In our case, air was used. The sample was
+accurately weighted (5 ± 0.02 mg) into an alumina crucibles and
+heated up to 600C at a rate of 10C/min, under a constant air ﬂow
+of 50 Ncm3/min.
+Chitosan Coating
+To obtain chitosan-coated microdevices (chi-PLGA), the micro-
+capsules, as recovered after the SEE process, were washed by
+ultracentrifugation, resuspended in a chitosan chloride solution
+(0.3 mg/mL, pH 3.4) and incubated for 1 h at room temperature.
+After incubation, the uncoated chitosan was removed by ultra-
+centrifugation and washing with pure water, repeated twice.
+Drug Loading
+Encapsulation of Gen and THA into PLGA microparticles was
+measured by dispersing accurate weighed amount (approximately
+20 ± 0.2 mg) of microparticles in 1.5 mL of NaOH 1N with shaking at
+room for 1 h to hydrolyze the polymer use. The experiments were
+performed in triplicate. In the case of chitosan-coated micro-
+devices, an additional step of soaking in 1.5 mL of acid chloride
+solution (pH 3.4) for 1 h was added before the NaOH treatment.
+Drug incorporation was expressed as actual drug loading (weight of
+drug in microspheres/weight of microspheres, mg/g) and encap-
+sulation efﬁciency (%) represented by actual drug encapsulated/
+theoretical drug encapsulated  100.
+Gen was assayed photometrically at 332 nm with a spectro-
+photometer (model 1200 series; Agilent Technologies Inc.) after
+derivation with o-phthalaldehyde reagent solution. o-Phthaldial-
+dehyde reagent was prepared by adding 2.5 g of o-phthaldialde-
+hyde, 62.5-mL methanol, and 3 mL of 2-mercaptoethanol to
+560-mL 0.04M sodium borate in deionized water solution. The
+reagent was stored in a brown bottle in darkness and settled for at
+least 24 h before use.41 Gen solution, o-phthaldialdehyde, and iso-
+propanol (to avoid precipitation of the products formed) were
+mixed in similar proportions and stored for 30 min at room tem-
+perature to promote reaction of Gen amino groups into chromo-
+phoric products.42
+THA was assayed by HPLC-UVvis method with an Agilent LC
+system (1100 and 1200 series) equipped with an injection valve
+(quaternary), 210 UV detector and ChemStation software was used
+for HPLC method. A reversed-phase C18 column (2.1 mm ID_100
+mm L, porosity 300Å, particle size 3 mm) with guard column
+(reversed-phase C18 column of 2.1 mmID_12.5 mm L, porosity
+300Å particle size 5 mm) was used for separation. Good separation
+results were obtained using a Mobile phase “A” consisting of 0.1%
+(v/v) TFA in MilliQ water and mobile phase “B” consisting of 0.1% (v/
+v) TFA in acetonitrile with a ﬂow rate of 0.3 mL/min and column
+temperature of 60C. The gradient program for mobile phase was
+optimized using a timed gradient program T (min)/mobile phase A
+(%): 0/80, 6/80, 26.1/45, 28/0, 31/0, 31.5/80, and 40/80.43 In these
+conditions, THA retention time was of 21.9 min.
+In Vitro Release Study
+In vitro release data were obtained by suspending 20 mg of
+microcapsules in 3 mL of PBS solution (10), placed in an incubator
+at 37C, and stirred continuously. Every 24 h, the samples were
+centrifuged at 2 g for 15 min, and the supernatant was completely
+removed and replaced with fresh media to maintain sink condi-
+tions. Drug concentrations from collected samples were then
+assayed as described previously. Release experiments were per-
+formed in triplicate; error bars are also reported to better describe
+the data. The release proﬁles were monitored for 4 weeks; after this
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2166
+
+period, a marked breakdown of the polymeric network of the
+PLGA-based systems was reported at the conditions explored.44
+Diffusion Coefﬁcient Calculation
+The mathematical approach used to describe drug release rates
+assumes that the release is governed by diffusion and, therefore,
+the mass transfer process can be quantiﬁed using Fick's second
+law45 (see Eqs. 1 and 2 in Annex I). It is known, from the literature
+that PLGA degradation follows pseudo ﬁrst-order kinetics, it is
+inﬂuenced by (1) polymer molecular weight (2), microsphere
+size44,46 and not affected by (3) encapsulated molecule.47 The
+degradation mechanism in an aqueous environment can be
+described through cleavage of its backbone ester linkages and the
+reaction can be kinetically quantiﬁed as a heterogeneous hydrolytic
+degradation.48,49 Therefore, we suppose water imbibes into the
+microparticles, after exposure to the release medium, leading to an
+autocatalytic reaction (see Eq. 3 in Annex I) that produces a
+reduction of the polymer macromolecular weight (Mw).50 A kdeg
+value of 0.46 weeks1 at pH 7.4 and 37C was calculated and used.47
+The drug diffusivity (D) increases as the molecular weight (Mw) of
+the polymer decreases, as a consequence of the polymer degrada-
+tion (see Eq. 4 in Annex I). The constant (k) that characterizes the
+dependence
+of
+the
+diffusivity
+on
+the
+molecular
+weight
+of
+the polymer has a value of 5.9 1011 cm2/kDa/s, as reported in the
+literature.51 The ﬁtting procedure for D calculation was based on
+the application of least squares method.
+Results and Discussion
+SEE Processing of Emulsions
+In the SEE process, the scope of the packed column is to provide
+a very large surface for contact between the falling liquid phase and
+the going up gas phase (liquid emulsion and supercritical extracting
+agent, respectively); as a consequence, SC-CO2 rapidly diffuses into
+the oily phase of emulsion, causing the formation of an “expanded”
+oily phase droplet in where the solvent is rapidly extracted. A fast
+polymer hardening is obtained with the formation of solid micro-
+spheres (see SEE process illustration in Fig. 1). Water is not miscible
+with the carbon dioxide at the operative conditions selected, and
+the microspheres can be continuously recovered at the bottom of
+the column after only 4 min of residence time into the apparatus.
+For all the emulsion processed, a recovery of 98% of the loaded
+biopolymer was always obtained. Different emulsion formulations
+were tested for multifunctional microcapsules production. All the
+results obtained in terms of microdevices composition, size and
+distribution, encapsulation efﬁciency, or drug loading are listed in
+Table 1.
+HA Embedding in PLGA Microdevices: Loading and Size and
+Morphology Optimization
+Different droplet shrinkages between 18 and 3% were observed
+and were correlated to the absence and presence of suspended HA
+(see nanoparticles SEM image reported in Fig. 2a) into the oily
+phase. Indeed, ﬁxing the amount of PLGA in the oily phase, the
+presence of HA dispersed within reduced the droplet shrinkage to
+the 3%, whereas the droplet shrinkage was of 18%, when only the
+polymer was loaded. This observation suggests an effective nano-
+particles entrapment into the biopolymer matrix. An optical mi-
+croscope image of the o-w emulsion is reported in Figure 2b,
+whereas SEM image of the spherical microcapsules produced by
+SEE is illustrated in Figure 2d when 25 mg/gPLGA of HA were loaded.
+An good dispersion of HA embedded into the biopolymer matrix
+was obtained in this case, as conﬁrmed by the EDX analysis (see
+Fig. 2c) that showed the presence of X-ray emitted by phosphor
+atoms.
+PSD of PLGA/HA microparticles fabricated using different HA
+nominal loadings of 25 mg/gPLGA and 50 mg/gPLGA, respectively,
+were also illustrated in Figure 3a; the microspheres showed an
+averaged mean size between 1.5 (±0.4) mm and 1.7 (±1.0) mm,
+respectively, but the narrowest distribution was obtained when the
+amount of 25 mg/gPLGA was embedded within. TGA measurements
+were used to measure the real HA loading into the microcapsules;
+the resulted traces are reported in Figure 3b. TGA curves indicated
+an encapsulation efﬁciency of 99%, when 25 mg/gPLGA were loaded,
+whereas only 74% of the loaded HA was encapsulated when the
+nominal loading of 50 mg/gPLGA was used. In addition, when HA
+amounts higher than 25 mg/gPLGA were added in the oily phases,
+often irregular and not spherical microspheres shapes were pro-
+duced after SEE processing of the emulsion; thus, to ensure a well
+spherical shape of the fabricated devices and the best encapsula-
+tion efﬁciency, the HA loading of 25 mg/g was used in all the
+microcapsule formulation described as follows.
+Chitosan Covering of PLGA Microdevices
+In addition to particle morphology and size, the surface charge is
+considered one of the most important parameters governing
+microcapsule versus tissue interactions. Zeta potential is a useful
+indicator of surface charge, and it can be used as an index of the
+stability of the suspension. The resulting zeta potentials for
+chitosan-coated microparticles were compared to those of the
+uncoated ones at pH 5.5 and an inversion from 6 to 22 mV was
+measured (see Table 1). In accordance with Kim et al.,38 the
+observed zeta potential inversion toward positive values indicates a
+successful coating, on account of an immobilization of cationic
+chitosan on the microsphere surfaces, which suppressed the orig-
+inal negative charge of the PLGA. The covered microcapsules
+showed a spherical shape (see Fig. 4a), and the increase in mean
+size was used to estimate a chitosan layer of 0.4 mm deposited onto
+the PLGA microsphere surface (see Fig. 4b).
+Gentamicin and Teriparatide Loading
+Gen loading was obtained by processing several w-o-w emul-
+sions by SEE. Its encapsulation efﬁciency varied with the amount
+loaded in the internal water phase of the emulsion; in detail, ﬁxing
+the amount of PLGA in the oily phase, and varying the nominal drug
+Figure 1. Schematic representation of the SEE process evolution: SC-CO2 diffuses into
+the oily phase of emulsion causing its expansion and rapid solvent extraction, as a
+consequence, fast polymer shrinking and hardening is obtained with the formation of
+solid microcapsules that can be recovered from the external water phase.
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2167
+
+loading from 10 to 25 mg/gPLGA, the lowest value of encapsulation
+efﬁciency (35%) was obtained when the highest drug/polymer ratio
+was used (25 mg/gPLGA). When 10 mg/gPLGA was loaded, a drug
+entrapment up to 90% was observed. The presence of HA in the oily
+phase also had a positive effect on improving the Gen entrapment
+efﬁciency, and microsphere coated with chitosan showed the best
+encapsulation performance (see data reported in Table 1). The
+higher Gen entrapment obtained when nominal loading of 10
+mg/gPLGA was used, can be explained by considering the fact that
+the ultrasonication of inner water and oily phases induces very
+small and homogeneous drop size of inner water phase, but
+probably reduced the overall amount of drug that can be loaded
+within (i.e., more drug loaded more loss). In contrast, the presence
+of HA in the oily phase improved the entrapment efﬁciency because
+it should increase the viscosity of the oily phase, reducing the
+possibility of internal water phase migration to the external water
+phase. In addition, the very short residence time of the emulsion
+into the high pressure column prevented additional water internal
+phase diffusion into the external aqueous medium during the oily
+phase extraction. It is worth of note that the entrapment efﬁciency
+described in this work are very difﬁcult to be obtained when using a
+high water-soluble drug, such as gentamicin; indeed, encapsulation
+efﬁciency between 45% and 13% were commonly described when
+spray drying or emulsion plus solvent evaporation methods were
+used, respectively.42 The ultrasonication method in emulsion
+formulation may improve the encapsulation efﬁciency of genta-
+micin up to 95% but only when methylene chloride as oily phase
+solvent is used.40 Because our process is proposed as green tech-
+nology, we prefer to do not use chlorinated solvents in all micro-
+sphere fabrication steps, and only EA is proposed in the present
+work.
+THA entrapment efﬁciency was also very high (up to 90%) in all
+the microdevices produced by SEE because of the use of the same
+emulsion
+formulation
+parameters
+and
+processing
+conditions
+Table 1
+List of Microcapsule Produced by SEE, Mean Size (MS), and Standard Deviation (±), Drug Encapsulation Efﬁciency Expressed as Percentage (%), and Drug Real Loadings
+Expressed as mg/g (g is Referred to the Amount of Biopolymer Contained in the Product); Z-Potential (Zp) Values Measured at pH 5.5
+Microcapsule Composition
+MS (mm)
+HA (%)
+HA (mg/g)
+Gen (%)
+Gen (mg/g)
+THA (%)
+THA (mg/g)
+Zp (mV)
+PLGA/HA
+1.5 (±0.4)
+99
+25
+d
+d
+d
+7.1
+PLGA/HA
+1.7 (±1.0)
+74
+37
+d
+d
+d
+d
+5.2
+PLGA/Gen
+1.4 (±0.4)
+d
+d
+66
+6.6
+d
+d
+6.2
+PLGA/Gen
+1.5 (±0.4)
+d
+d
+35
+6.9
+d
+d
+6.7
+PLGA/HA/
+1.7 (±0.5)
+99
+25
+69
+6.9
+d
+d
+5.7
+PLGA/HA/THA
+1.7 (±0.5)
+99
+25
+d
+d
+82
+0.41
+6.7
+PLGA/HA/Gen/THA
+1.7 (±0.4)
+99
+25
+80
+8.0
+84
+0.42
+5.8
+Chi-PLGA/Gen
+1.9 (±0.4)
+d
+d
+87
+8.7
+d
+d
+22.5
+Chi-PLGA/HA/Gen
+2.2 (±0.5)
+99
+25
+89
+8.9
+d
+d
+18.9
+Chi-PLGA/HA//THA
+2.2 (±0.5)
+99
+25
+d
+d
+90
+0.45
+24.7
+Chi-PLGA/HA/Gen/THA
+2.2 (±0.4)
+99
+25
+90
+9.0
+90
+0.45
+21.5
+HA, hydroxyapatite; Gen, gentamicin sulfate; THA, teriparatide; Chi, chitosan.
+Figure 2. Field emissionescanning electron microscope (FE-SEM) image of HA nanoparticles (a). Optical microscope image of o-w emulsion obtained loading 25 mg/g (HA/PLGA) in
+the oily phase (b). EDX traces showing the presence of phosphorous (P) X-ray; the Cr signals are related to chromium used to coat the sample (c). FE-SEM image of PLGA/HA
+microcapsule loaded with 25 mg/g (d).
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2168
+
+previously optimized with Gen. In addition, the chitosan covering
+further improved the THA encapsulation efﬁciency up to 90%, as
+already described for Gen (see overall data also in Table 1).
+Release Study
+The cumulative amount of Gen released (%) versus time (days)
+from uncoated and chitosan-coated PLGA microspheres is illus-
+trated in Figure 5. Experimental points over the complete time
+assay are presented in the scatter plot with the standard deviation
+(3 replicates were performed); the dash-dot line represents the
+curve ﬁtting. Almost 30% of loaded Gen was released in the ﬁrst 2
+days. This “burst” effect (useful in the case of an antibiotic thera-
+peutic effect) is followed by a sustained release of 4%/day for the
+following 10 days, with complete release obtained in 20 days. The
+chitosan coating reduced to one half the drug “burst” release and
+delayed the Gen overall release. Indeed, only 10% of the loaded
+molecule was released in the ﬁrst 3 days, followed by a slower Gen
+release of 2%/day for the other 25 days. The amount of Gen released
+from the coated system was almost one half per day if compared to
+the uncoated one and, therefore, the total release time was
+doubled; indeed, after 20 days, the overall amount released was
+only 50% of the total drug loaded.
+Gen release proﬁles from PLGA microcapsules loaded with HA
+(25 mg/g) are reported in Figure 6, for coated and uncoated
+microcapsules. The presence of HA further delayed the Gen release;
+indeed, when HA was embedded into the PLGA microcapsules, only
+18% of loaded Gen was released in the ﬁrst 2 days, followed by a
+sustained release of 2%/day for the subsequent 20 days, with 70% of
+the total release obtained in 30 days. This “HA effect” can be
+explained by an antagonist effect between the basic inorganic
+component of HA and the acid degradation products of PLGA52;
+indeed, as also observed by Ho et al.,53 the presence of OH can
+delay the biopolymer degradation promoted by an acid environ-
+ment, resulting in a delayed drug release. Chitosan coating addi-
+tionally
+delayed
+the
+overall
+Gen
+release
+from
+PLGA/HA
+microspheres and prevented the “burst” effect; in this way, only the
+6% of the drug load was released in the ﬁrst 2 days (almost 3%/days).
+THA release proﬁles from PLGA/HA microcapsules (with or
+without coating) are shown in Figure 7. In this case, 19% of loaded
+THA was released in the ﬁrst 2 days (in this case, the dosage can be
+toxic), followed by a sustained release of 3% a day for the following
+18 days. Microsphere coating delayed THA release and strongly
+reduced the “burst” effect, with only 10% of THA released in the ﬁrst
+2 days, followed by a controlled release of 1.3% a day for the
+following 20 days.
+Figure 3. Size distribution of PLGA/HA microparticles fabricated using different HA nominal loadings in polymer solutions: 50 mg/gPLGA versus 25 mg/gPLGA (a); TGA curves of the
+different materials used to check the real HA loading into the microcapsules that was 37 mg/gPLGA versus 25 mg/gPLGA (b).
+Figure 4. Scanning electron microscope (SEM) image of PLGA microcapsules loaded with gentamicin and coated with chitosan (a). Size distribution of the uncoated and chitosan-
+coated microcapsules (b).
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2169
+
+Gen and THA were also loaded together in the same PLGA/HA
+microcapsules, at the same loading values previously explored for
+each drug, to check whether the copresence may reciprocally in-
+ﬂuence their release. The Gen release proﬁle was not inﬂuenced by
+the presence of THA and almost the same Gen release proﬁle
+illustrated in Figure 5 was monitored. On the contrary, THA release
+was accelerated by the presence of Gen, as illustrated in Figure 8,
+where THA release proﬁle from PLGA/HA/Gen microcapsules is
+reported. Indeed, a faster THA release in the presence of coreleased
+Gen was observed for the uncoated microcapsules. The 2 drugs
+show very different water solubility (50 mg/mL for Gen vs. 0.4 mg/
+mL for THA), and the amount of Gen was 20 times higher than the
+loaded amount of THA; the observed behavior may be explained
+considering that the coencapsulation of a high water-soluble
+molecule probably increases the porosity of the microcapsules
+and accelerates the water:drug diffusion, inducing a consequent
+faster release also of the less water-soluble coencapsulated drug.
+Diffusivity Calculation
+PLGA microspheres are widely studied for controlled release
+drug delivery applications, and many models have been proposed
+to describe PLGA degradation and erosion, as well as, drug release
+from the bulk polymer. Kinetic models based on various processes
+with mechanisms such as diffusion, and degradation or erosion of
+the polymeric matrix, are described.50 Moreover, autocatalysis has
+a complex role in the dynamics of PLGA erosion and drug transport
+and can lead to size-dependent heterogeneities in otherwise
+Figure 5. Cumulative amount of gentamicin (GEN) released (%) versus time (days)
+from uncoated and chitosan-coated microspheres. Experimental points over the
+complete time assay are represented in the scatter plot with the standard deviation (3
+replicates were performed); the dash-dot lines represent curve ﬁtting.
+Figure 6. Cumulative amount of gentamicin (GEN) released (%) versus time (days)
+from PLGA/HA microcapsules from chitosan uncoated and coated. Experimental points
+over the complete time assay are represented in the scatter plot with the standard
+deviation (3 replicates were performed); the dash-dot lines represent curve ﬁtting.
+Figure 7. Cumulative amount of THA released (%) versus time (days) from PLGA/HA
+microcapsules. Experimental points are represented in the scatter plot with the
+standard deviation (3 replicates were performed); the dash-dot lines represent curve
+ﬁtting.
+Figure 8. Cumulative amount of THA released (%) versus time (days) from PLGA/HA/
+GEN microcapsules. Experimental points are represented in the scatter plot with the
+standard deviation (3 replicates were performed); the dash-dot lines represent curve
+ﬁtting.
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2170
+
+uniformly bulk-eroding polymer microspheres.54 In our case, the
+equations described in the Annex I were applied to evaluate their
+suitability in describing Gen and THA release from PLGA micro-
+spheres. Graphic representation, standard deviations of the model's
+parameters and calculated coefﬁcient values were used as criteria
+to evaluate the goodness of ﬁt for the considered model. The
+calculated diffusion coefﬁcients (D) and R2 values for the different
+drugs and microcapsule compositions are listed in Table 2. In the
+case of Gen, the calculated diffusion coefﬁcient for the coated PLGA
+microcapsules was 1 order of magnitude (1.6  109 cm2s1)
+smaller compared to one of the uncoated devices (2.9  108
+cm2s1) conﬁrming that chitosan coating effectively delays the
+drug diffusion by generation an additional barrier. When HA was
+added into the microcapsules, the measured diffusion coefﬁcient
+for coated microcapsules was of 1.1  109 cm2s1: this value was a
+smaller, but of the same order of magnitude if compared to one of
+the coated devices, but without HA embedded within. These data
+indicated that chitosan coating may have a strong inﬂuence in
+controlling the drug diffusion. On the other hand, a higher D value
+of 7.1  109 cm2s1 was measured for the uncoated PLGA/HA/Gen
+microcapsules, as expected.
+In the case of THA release, the measured diffusion coefﬁcients
+were consistent with the observed release proﬁles. The D value for
+the coated microcapsules was reduced to 7.4  1010 cm2s1,
+whereas for the uncoated ones, the calculated value was 8.1  109
+cm2s1; that is, 1 order of magnitude higher, and of the same order
+of magnitude of the one measured for Gen entrapped into PLGA/HA
+microcapsules. THA has a higher molecular weight compared to
+Gen; however, when Gen was coentrapped with THA in the same
+PLGA/HA microcapsules, the release proﬁles of THA were acceler-
+ated, and the measured diffusion coefﬁcient became very close to
+the ones measured for the coencapsulated drug. Probably, higher
+microcapsule porosity produced by the additional load and release
+of the high water-soluble Gen55 facilitates THA diffusion through
+the capsules and accelerates its release.
+The initial “burst” (when present) is well described by the
+mathematical model, whereas the subsequent constant drug
+release is less well described; indeed, the burst effect should be
+controlled purely by diffusion, and, generally, shows a very high
+drug release rate at the beginning, given the small diffusion path-
+ways at the early time points. Later, other phenomena additionally
+contribute to the release mechanism, and probably the modeling
+approach used is not suitable to describe the drug release rates over
+the entire period, especially in the later phases. The underestima-
+tion of the drug release at the late time points might result from the
+beginning of the breakdown of the polymeric structure, which is
+partly neglected in the present model. However, the time depen-
+dence of the drug diffusivity in the proposed approach gave a good
+description of the experimental data because on polymer degra-
+dation, diffusivity increases; therefore, the higher D values were
+estimated compared to the ones calculated by Equation 2 (see
+Methods section). Moreover, as the existence of “nanopores”
+cannot be excluded, D represents an apparent diffusivity, taking
+into account drug transfer through the polymer itself, as well as,
+possible drug transfer through water-ﬁlled “nanopores.”
+Conclusions and Perspectives
+SEE conﬁrmed to be a green, ﬂexible, and robust technology to
+fabricate multiloaded microcapsules, coupling the efﬁciency of
+continuous operation to easy process scalability. Both Gen and THA
+molecules were not chemically modiﬁed or degraded by the
+encapsulation technology and should maintain their biological
+activity. The emulsion formulations explored, coupled with the
+supercritical technology, can be used to fabricate versatile micro-
+devices, able to control the drug release over a wide range of time
+and concentrations, depending on speciﬁc applications. Moreover,
+the “burst” effect was largely reduced when chitosan coating was
+added. Good encapsulation efﬁciency and high reproducibility
+mean sizes will also ensure efﬁcient and reliable drug release
+proﬁles, as well as, the possibility of delay or accelerate the drugs
+delivery in dependence of the required target.
+A perspective of this work will be the sustained delivery of THA
+or THA/Gen for 15-20 days directly at the site where its biological
+action is required, instead of a systemic and daily dose injection.
+Alternatively, because PLGA microspheres were recently proposed
+as a spacer into the apatite calcium phosphate cement to induce
+macroporosity56,57 or provide acid degradation products that
+seemed to accelerate calcium phosphate cement degradation,58 the
+described microcapsules may be also used in orthopedical surgery
+formulations as multipurpose microﬁllers not only able to generate
+macropores but, additionally, to deliver THA or Gen/THA in situ
+enhancing bone ingrowth, especially in aged patients. Future
+studies will involve the in vivo testing of the proposed formulations
+in a rat model of fracture healing.
+References
+1. Hamdy RC. Osteoporosis, the deafening silent epidemic. South Med J. 2002;95:
+567-568.
+2. Waller J, Angbratt M, Blomberg C, et al. Logics and logistics of community
+intervention against osteoporosis: an evidence basis. J Med Syst. 1997;21:33-
+47.
+3. Werner P. Knowledge about osteoporosis: assessment, correlates and out-
+comes. Osteoporos Int. 2005;16:115-127.
+4. Tashjian AH, Gagel RF. Teriparatide [human PTH(1-34)]: 2.5 years of experience
+on the use and safety of the drug for the treatment of osteoporosis. J Bone Miner
+Res. 2006;21:354-365.
+5. Hodsman AB, Bauer DC, Dempster DW, et al. Parathyroid hormone and ter-
+iparatide for the treatment of osteoporosis: a review of the evidence and
+suggested guidelines for its use. Endocr Rev. 2005;26:688-703.
+6. Aspenberg P, Genant HK, Johansson T, et al. Teriparatide for acceleration of
+fracture repair in humans: a prospective, randomized, double-blind study of
+102 postmenopausal women with distal radial fractures. J Bone Mineral Res.
+2010;25:404-414.
+7. Bukata SV, Puzas JE. Orthopedic uses of teriparatide. Curr Osteoporos Rep.
+2010;8:28-33.
+8. Coppola C, Del Buono A, Maffulli N. Teriparatide in fracture non-unions. Transl
+Med UniSa. 2015;12:47-53.
+9. Kent GN, Loveridge N, Reeve J, Zanelli JM. Pharmacokinetics of synthetic human
+parathyroid hormone 1-34 in man measured by cytochemical bioassay and
+radioimmunoassay. Clin Sci. 1985;68:171-177.
+10. Dempster DW, Cosman F, Kurland ES, et al. Effects of daily treatment with
+parathyroid hormone on bone microarchitecture and turnover in patients with
+osteoporosis: a paired biopsy study. J Bone Mineral Res. 2001;16:1846-1853.
+11. Nakazawa T, Nakajima A, Shiomi K, Moriya H, Einhorn TA, Yamazaki M. Effects
+of low-dose, intermittent treatment with recombinant human parathyroid
+hormone (1-34) on chondrogenesis in a model of experimental fracture heal-
+ing. Bone. 2005;37:711-719.
+12. Hoyer H, Perera G, Bernkop-Schnurch A. Noninvasive delivery systems for
+peptides and proteins in osteoporosis therapy: a retroperspective. Drug Dev Ind
+Pharm. 2010;36:31-44.
+13. Morley P. Delivery of parathyroid hormone for the treatment of osteoporosis.
+Expert Opin Drug Deliv. 2005;2:993-1002.
+Table 2
+Drug Diffusion Coefﬁcients (D) Calculated by Fitting of the Drug Release Proﬁles
+Obtained in PBS at 37C
+Microcapsule Composition
+D (cm2s1)
+R2
+PLGA/Gen
+2.9  108
+0.96
+PLGA/HA/Gen
+7.1  109
+0.96
+PLGA/HA/THA
+8.1  109
+0.97
+PLGA/HA/Gen/THA/
+2.6  108a
+0.88
+Chi-PLGA/Gen
+1.6  109
+0.91
+Chi-PLGA/HA/Gen
+1.1  109
+0.92
+Chi-PLGA/HA//THA
+7.4  1010
+0.89
+Chi-PLGA/HA/THA/Gen
+1.3  109a
+0.96
+a Related to THA.
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2171
+
+14. Puig-Domingo M, Diaz G, Nicolau J, Fernandez C, Rueda S, Halperin I. Suc-
+cessful
+treatment
+of
+vitamin
+D
+unresponsive
+hypoparathyroidism
+with
+multipulse subcutaneous infusion of teriparatide. Eur J Endocrinol. 2008;159:
+653-657.
+15. Liu X, Pettway GJ, McCauley LK, Ma PX. Pulsatile release of parathyroid
+hormone from an implantable delivery system. Biomaterials. 2007;28:4124-
+4131.
+16. Proos ER, Prescott JH, Staples MA. Long-term stability and in vitro release of
+hPTH(1-34) from a multi-reservoir array. Pharm Res. 2008;25:1387-1395.
+17. Cosman F, Lane NE, Bolognese MA, et al. Effect of transdermal teriparatide
+administration on bone mineral density in postmenopausal women. J Clin
+Endocrinol Metab. 2010;95:151-158.
+18. Daddona PE, Matriano JA, Mandema J, Maa YF. Parathyroid hormone (1-34)-
+coated microneedle patch system: clinical pharmacokinetics and pharmaco-
+dynamics for treatment of osteoporosis. Pharm Res. 2011;28:159-165.
+19. Jacobson JA, Yanoso-Scholl L, Reynolds DG, et al. Teriparatide therapy and beta-
+tricalcium phosphate enhance scaffold reconstruction of mouse femoral
+defects. Tissue Eng Part A. 2011;17:389-398.
+20. Wei G, Pettway GJ, McCauley LK, Ma PX. The release proﬁles and bioactivity of
+parathyroid hormone from poly(lactic-co-glycolic acid) microspheres. Bio-
+materials. 2004;25:345-352.
+21. Eswaramoorthy R, Chang CC, Wu SC, Wang GJ, Chang JK, Ho ML. Sustained
+release of PTH(1-34) from PLGA microspheres suppresses osteoarthritis pro-
+gression in rats. Acta Biomater. 2012;8:2254-2262.
+22. Baldino L, Cardea S, De Marco I, Reverchon E. Chitosan scaffolds formation by a
+supercritical freeze extraction process. J Supercrit Fluids. 2014;90:27-34.
+23. Campardelli R, Oleandro E, Adami R, Reverchon E. Polymethylmethacrylate
+(PMMA) sub-microparticles produced by supercritical assisted injection in a
+liquid antisolvent. J Supercrit Fluids. 2014;92:93-99.
+24. Espirito Santo I, Campardelli R, Albuquerque EC, de Melo SV, Reverchon E, Della
+Porta G. Liposomes size engineering by combination of ethanol injection and
+supercritical processing. J Pharm Sci. 2015;104(11):3842-3850.
+25. Campardelli R, Baldino L, Reverchon E. Supercritical ﬂuids applications in
+nanomedicine. J Supercrit Fluids. 2015;101:193-214.
+26. Shekunov BY, Chattopadhyay P, Seitzinger J, Huff R. Nanoparticles of poorly
+water-soluble drugs prepared by supercritical ﬂuid extraction of emulsions.
+Pharm Res. 2006;23(1):196-204.
+27. Della Porta G, Reverchon E. Nanostructured microspheres produced by su-
+percritical ﬂuid extraction of emulsions. Biotechnol Bioeng. 2008;100(5):1020-
+1033.
+28. Kluge J, Fusaro F, Casas N, Mazzotti M. Production of PLGA micro-and nano-
+composites by supercritical ﬂuid extraction of emulsions: I. Encapsulation of
+lysozyme. J Supercrit Fluid. 2009;50(3):327-335.
+29. Della Porta G, Falco N, Reverchon E. NSAID drugs release from injectable mi-
+crospheres produced by supercritical ﬂuid emulsion extraction. J Pharm Sci.
+2010;99:1484-1499.
+30. Falco N, Reverchon E, Della Porta G. Injectable PLGA/hydrocortisone formula-
+tion produced by continuous supercritical emulsion extraction. Int J Pharm.
+2013;441:589-597.
+31. Wang M. Developing bioactive composite materials for tissue replacement.
+Biomaterials. 2003;24:2133-2151.
+32. Sato M, Slamovich EB, Webster TJ. Enhanced osteoblast adhesion on hydro-
+thermally
+treated
+hydroxyapatite/titania/poly(lactide-co-glycolide)
+solegel
+titanium coatings. Biomaterials. 2005;26:1349-1357.
+33. Stevens B, Yang Y, Mohandas A, Stucker B, Nguyen KT. A review of materials,
+fabrication methods, and strategies used to enhance bone regeneration in
+engineered bone tissues. J Biomed Mater Res B Appl Biomaterials. 2008;85:573-
+582.
+34. Ignjatovic N, Uskokovic V, Ajdukovic Z, Uskokovic D. Multifunctional hy-
+droxyapatite and poly(D,L-lactide-co-glycolide) nanoparticles for the local
+delivery of cholecalciferol. Mater Sci Eng C. 2013;33:943-950.
+35. Xiao W, Sonny Bal B, Rahaman MN. Preparation of resorbable carbonate-
+substituted hollow hydroxyapatite microspheres and their evaluation in
+osseous defects in vivo. Mater Sci Eng C. 2016;60:324-332.
+36. Borden M, El-Amin SF, Attawia M, Laurencin CT. Structural and human cellular
+assessment of a novel microsphere-based tissue engineered scaffold for bone
+repair. Biomaterials. 2003;24:597-609.
+37. Janes KA, Calvo P, Alonso MJ. Polysaccharide colloidal particles as delivery
+systems for macromolecules. Adv Drug Deliv Rev. 2001;47:83-97.
+38. Kim I-Y, Seo S-J, Moon H-S, et al. Chitosan and its derivatives for tissue engi-
+neering applications. Biotechnol Adv. 2008;26:1-21.
+39. Jiang T, Nukavarapu SP, Deng M, et al. Chitosan-poly(lactide-co-glycolide)
+microsphere-based scaffolds for bone tissue engineering: in vitro degradation
+and in vivo bone regeneration studies. Acta Biomater. 2010;6:3457-3470.
+40. Virto MR, Elorza B, Torrado S, Elorza Mde A, Frutos G. Improvement of genta-
+micin poly(d,l-lactic-co-glycolic acid) microspheres for treatment of osteomy-
+elitis induced by orthopedic procedures. Biomaterials. 2007;28:877-885.
+41. Diez-Pena E, Frutos G, Frutos P, Barrales-Rienda JM. Gentamicin sulphate
+release from a modiﬁed commercial acrylic surgical radiopaque bone cement. I.
+Inﬂuence of the gentamicin concentration on the release process mechanism.
+Chem Pharm Bull. 2002;50:1201-1208.
+42. Prior S, Gamazo C, Irache JM, Merkle HP, Gander B. Gentamicin encapsulation
+in PLA/PLGA microspheres in view of treating Brucella infections. Int J Pharm.
+2000;196:115-125.
+43. Rane SS, Ajameri A, Mody R, Padmaja P. Development and validation of RP-HPLC
+and RP-UPLC methods for quantiﬁcation of parathyroid hormones (1-34) in
+medicinal product formulated with meta-cresol. J Pharm Anal. 2012;2:136-142.
+44. Dunne M, Corrigan OI, Ramtoola Z. Inﬂuence of particle size and dissolution
+conditions on the degradation properties of polylactide-co-glycolide particles.
+Biomaterials. 2000;21:1659-1668.
+45. Crank J. The Mathematics of Diffusion. Oxford, UK: Clarendon Press; 1979.
+46. Siepmann J, G€opferich A. Mathematical modeling of bioerodible, polymeric
+drug delivery systems. Adv Drug Deliv Rev. 2001;48:229-247.
+47. Siepmann J, Elkharraz K, Siepmann F, Klose D. How autocatalysis accelerates
+drug release from PLGA-based microparticles: a quantitative treatment. Bio-
+macromolecules. 2005;6:2312-2319.
+48. G€opferich A. Bioerodible implants with programmable drug release1. J Control
+Release. 1997;44:271-281.
+49. Sansdrap P, Mo€es AJ. In vitro evaluation of the hydrolytic degradation of
+dispersed and aggregated poly(dl-lactide-co-glycolide) microspheres. J Control
+Release. 1997;43:47-58.
+50. Ford Versypt AN, Pack DW, Braatz RD. Mathematical modeling of drug delivery
+from autocatalytically degradable PLGA microspheresda review. J Control
+Release. 2013;165:29-37.
+51. Faisant N, Siepmann J, Benoit JP. PLGA-based microparticles: elucidation of
+mechanisms and a new, simple mathematical model quantifying drug release.
+Eur J Pharm Sci. 2002;15:355-366.
+52. Siegel R, Rathbone M. Overview of controlled release mechanisms. In:
+Siepmann J, Siegel RA, Rathbone MJ, eds. Fundamentals and Applications of
+Controlled Release Drug Delivery. US: Springer; 2012:19-43.
+53. Ho ML, Fu YC, Wang GJ, et al. Controlled release carrier of BSA made by W/O/W
+emulsion method containing PLGA and hydroxyapatite. J Control Release.
+2008;128:142-148.
+54. Fredenberg S, Wahlgren M, Reslow M, Axelsson A. The mechanisms of drug
+release in poly(lactic-co-glycolic acid)-based drug delivery systems-A review.
+Int J Pharm. 2011;415:34-52.
+55. Klose D, Siepmann F, Elkharraz K, Krenzlin S, Siepmann J. How porosity and
+size affect the drug release mechanisms from PLGA-based microparticles. Int J
+Pharm. 2006;314:198-206.
+56. Felix Lanao RP, Leeuwenburgh SC, Wolke JG, Jansen JA. Bone response to fast-
+degrading, injectable calcium phosphate cements containing PLGA micropar-
+ticles. Biomaterials. 2011;32:8839-8847.
+57. Qi X, Ye J, Wang Y. Improved injectability and in vitro degradation of a calcium
+phosphate cement containing poly(lactide-co-glycolide) microspheres. Acta
+Biomater. 2008;4:1837-1845.
+58. Habraken WJ, Wolke JG, Mikos AG, Jansen JA. Injectable PLGA microsphere/
+calcium phosphate cements: physical properties and degradation characteris-
+tics. J Biomater Sci Polym Ed. 2006;17:1057-1074.
+G. Della Porta et al. / Journal of Pharmaceutical Sciences 105 (2016) 2164-2172
+2172

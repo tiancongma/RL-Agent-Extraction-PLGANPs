@@ -1,0 +1,41 @@
+{
+  "paper_key": "INMUTV7L",
+  "table_scopes": [
+    {
+      "table_id": "Table 1",
+      "scope_kind": "formulation_table",
+      "is_formulation_bearing": true,
+      "is_doe": false,
+      "parent_table_hint": null,
+      "confidence": "high"
+    }
+  ],
+  "semantic_signals": {
+    "has_variable_sweep": true,
+    "has_sequential_optimization": false,
+    "has_parent_child_table_relation": false,
+    "has_downstream_non_synthesis_variants": false,
+    "has_measurement_only_variants": false,
+    "primary_preparation_method_hint": "solvent displacement method (nanoprecipitation-like)",
+    "primary_variable_names": [
+      "surfactant_type",
+      "surfactant_concentration",
+      "drug_loading (DXI presence)"
+    ],
+    "selected_condition_hints": []
+  },
+  "formulation_candidates": [
+    {
+      "candidate_id": "FAMILY_1",
+      "candidate_kind": "formulation_family",
+      "source_table_id": "Table 1",
+      "label_hint": "PLGA nanoparticles with varying surfactants (PVA, Tween 80, Lutrol F68) and drug presence",
+      "instance_role": "synthesis_core",
+      "parent_candidate_hint": null,
+      "core_change_hint": "surfactant type and concentration variation",
+      "shared_context_hint": "PLGA (90 mg), acetone solvent, aqueous phase pH 3.5, solvent displacement method",
+      "status": "reported",
+      "confidence": "high"
+    }
+  ]
+}

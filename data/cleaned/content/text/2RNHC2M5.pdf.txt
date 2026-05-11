@@ -1,0 +1,2078 @@
+Optimizing the Process
+Parameters for Encapsulation
+of Linamarin into PLGA
+Nanoparticles Using Double
+Emulsion Solvent Evaporation
+Technique
+AHMED S. HUSSEIN
+Advanced Materials and Nanotechnology Laboratory, Institute of Advanced Technology,
+Universiti Putra Malaysia, 43400 UPM Serdang, Selangor, Malaysia
+Department of Chemical & Environmental Engineering, Faculty of Engineering, Universiti Putra
+Malaysia, 43400 UPM Serdang, Selangor, Malaysia
+NORHAFIZAH ABDULLAH, A. FAKRU’L-RAZI
+Department of Chemical & Environmental Engineering, Faculty of Engineering, Universiti Putra
+Malaysia, 43400 UPM Serdang, Selangor, Malaysia
+Received: December 19, 2011
+Accepted: May 29, 2012
+ABSTRACT:
+Linamarin-loaded poly(lactide-co-glycolide) (PLGA)
+nanoparticles were prepared by using a double emulsion solvent evaporation
+method using polyvinyl alcohol as a surfactant. A two-factor full factorial design,
+Box–Behnken design and surface response methodology, were employed to
+improve the nanoparticle yield, particle size, and drug encapsulation efﬁciency
+Correspondenceto:Ahmed S.Hussein; e-mail: elhadish@gmail.com
+Advances in Polymer Technology, Vol. 32, No. S1, E486–E504 (2013)
+C⃝2012 Wiley Periodicals, Inc.
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+by determining the optimum levels of the process parameters, namely the
+polymer concentration, surfactant concentration, and homogenization speed.
+Both linear and quadratic empirical models were developed to express each
+response parameter as a function of the studied factors. A total of 12 and 17
+experimental runs were necessary to obtain adequate empirical models (p < 0.05)
+for both factorial and Box–Behnken designs, respectively. The ﬁnal optimum
+values for the polymer concentration, surfactant concentration, and
+homogenization speed were determined at 9.8 mg/mL, 50 mg/mL, and
+23,000 rpm, respectively. Formulations obtained at this optimum preparing
+condition resulted on average 96% yield, 61.2% drug encapsulation efﬁciency,
+and 144.6 nm particle size. However, all prepared nanoparticles showed some
+kind of controlled drug release; most likely the ﬁnal optimized nanoparticles
+exhibited the most biphasic controlled drug release proﬁle with a minimal burst
+release and overall drug release of <30% in 120 h of incubation.
+C⃝2012 Wiley
+Periodicals, Inc. Adv Polym Techn 32: E486–E504, 2013; View this article online at
+wileyonlinelibrary.com. DOI 10.1002/adv.21295
+KEY WORDS:
+Biodegradable, Drug delivery systems, Linamarin,
+Nanoparticles, Polyesters
+Introduction
+P
+olymeric and gold nanoparticles have been in-
+vestigated as drug delivery systems for differ-
+ent biomedical applications such as in vitro and in
+vitro assay, in vivo imaging, and cancer therapy.1−3
+Targeting cancer cells is a major goal for most
+researchers who aim to convey a sufﬁcient and
+controlled dose of drug to the tumor.4 Linamarin
+(Fig. 1), a cyanogenic glycoside (2-β-D-glucopy-
+ranosyloxy-2-methylpropanenitrile), is found in cas-
+sava (Manihot esculenta Crantz) root cortex and
+parenchyma and has good water solubility. The bit-
+ter taste of fresh cassava roots is associated with
+high levels (>90%) of cyanogenic glycosides, mainly
+linamarin.5,6 Cytotoxicity effects of pure linamarin
+as well as aqueous and methanol extract of cas-
+FIGURE 1. Chemical structure of linamarin.
+sava linamarin on Caov3, MCF-7, HT-29, and HL-
+60 cells had proved to have a bright future as an
+alternative anticancer.7,8 This anticancer activity of
+linamarin is attributed to the release of hydrogen
+cyanide (CN) upon hydrolysis of linamarin. It is im-
+portant to highlight that HCN is toxic and can subse-
+quently kill both cancerous as well as normal cells.
+Therefore, because of both the high water solubil-
+ity of linamarin and toxicity of HCN, it is crucial
+to formulate well the drug delivery carrier to en-
+sure that only the correct amount of linamarin is
+released in the human system at the right time and
+area to enhance drug efﬁcacy and avoid any side ef-
+fects. Linamarin’s high water solubility represents a
+major challenge for its nanoencapsulation using an
+aqueous medium. A biodegradable poly(D,L-lactide-
+co-glycolide) (PLGA) polymer has been used in the
+current research as a carrier polymer to nanoencap-
+sulated linamarin.
+To improve product or process quality, it is cru-
+cial to understand the process behavior as well
+as amount of variability and its impact on the
+process. Most of the experimental designs involve
+changing one variable at a time while maintain-
+ing the others at a ﬁxed level. The limitation of
+this type of experimentation is that it is unreliable,
+time consuming, requires a large number of runs
+and resources, and may also give false data be-
+cause it ignores the interaction effects between the
+investigated process parameters. To overcome this
+problem, highly automated statistical tools such as
+Advances in Polymer Technology
+DOI 10.1002/adv
+E487
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+design of experiments and response surface method-
+ology (RSM) are highly recommended. The advan-
+tages of these statistical tools for empirical modeling,
+analysis, and optimization of any process are that all
+the parameters can be varied simultaneously over a
+set of experimental runs. Moreover, valid, reliable,
+and sound conclusions can be drawn effectively and
+economically. Experimental deigns such as factorial
+design and RSM have been widely used to ﬁnd an
+approximating function for the prediction of future
+responses and to determine the factor values that
+could optimize the response function.9−12 These are
+highly empirical models and treat the system as a
+black box. They relate the inputs and outputs by
+empirical correlations that ﬁt reasonably well with
+the experimental results and are reliable only within
+the region of input–output of these experimental re-
+sults. Because of the complexity of the physical and
+chemical phenomena involved, each drug delivery
+system should be ﬁrst characterized precisely before
+carrying out the above-mentioned empirical model-
+ing. Therefore, the best physicochemical characteris-
+tics of nanoparticles can be obtained by optimizing
+their encapsulation process. The aim of this work is
+to optimize the process parameters for preparation
+of linamarin-loaded PLGA nanoparticles.
+Materials and Methods
+MATERIALS
+PLGA, with lactide:glycolide (L/G) ratios; (50:50),
+and average molecular weights of 40,000–75,000,
+98% hydrolyzed polyvinyl alcohol (PVA) with
+an
+average
+molecular
+weight
+of
+16,000,
+and
+dichloromethane (DCM) assay (≥99.8%) were pur-
+chased from Sigma–Aldrich (Poole, UK). Other
+analytical-grade chemicals, such as dipotassium hy-
+drogen phosphate and potassium dihydrogen phos-
+phate, disodium hydrogen phosphate, sodium hy-
+droxide, sodium chloride, and potassium chloride
+were also supplied by Sigma–Aldrich. Linamarin
+with a purity of >97% was purchased from AG Sci-
+entiﬁc, Inc. (San Diego, CA).
+EXPERIMENTAL DESIGN
+The experimental design for the formulation of
+linamarin-loaded PLGA nanoparticles was carried
+out in two stages. PLGA nanoparticles prepared
+by using the emulsiﬁcation solvent evaporation
+method have been found to be inﬂuenced by multi-
+ple parameters such as a PLGA (lactide/glycolide)
+ratio, polymer concentration, surfactant type and
+concentration, solvent nature, stirring rate and time,
+and formulation temperature.13−18 A preliminary
+scouting study (screening process) was carried out
+by preparing some batches to determine the most
+signiﬁcant process parameters that greatly affect the
+characteristics of the nanoparticles (NPs). After the
+screening process, the effect of only two factors,
+namely PVA concentration (A) and polymer concen-
+tration (B), were investigated using a 22 full factorial
+design.19,20 The selected high and low levels were 30
+and 50 mg/mL for PVA and 2.5 and 10 mg/mL for
+PLGA. The design was carried out in triplicate, two
+center points with a total of 14 completely random-
+ized experiments. In the second stage, a new pro-
+cess parameter, namely homogenization speed (C),
+which ranged from 15,000 to 23,000 rpm, was intro-
+duced to the best values of the PVA concentration
+(A) and PLGA concentration (B) selected from the
+ﬁrst stage. Both Box–Behnken design21−23 combined
+with RSM19,20 have been employed in the second
+stage of optimization. Meanwhile, in both stages the
+studied responses are nanoparticle yield, drug en-
+capsulation efﬁciency, and particle size. Design Ex-
+pert (6.0.4, Stat-Ease Inc., Minneapolis, MN) soft-
+ware was employed to design and analyze the data.
+The data collected using both designs were analyzed
+using ANOVA.22
+PREPARATION OF THE NANOPARTICLES
+Linamarin-loaded nanoparticles were prepared
+using a double emulsion solvent evaporation,
+sometimes referred to as the water-in-oil-in-water
+(W/O/W) technique. The W/O/W technique em-
+ployed in the current research was according to the
+one used by researchers.24−27 Meanwhile, the prepa-
+ration process was based on the use of a homoge-
+nizer (Heidolph DIAX 900, Germany) in a two-step
+emulsiﬁcation process.
+MORPHOLOGY OF THE NANOPARTICLES
+To examine the surface morphology, the freeze-
+dried nanoparticles were adhered to a double-sided
+adhesive carbon tape placed on an aluminum stub
+and then coated with gold–palladium (Baltec SC030
+Sputter Coater, Germany). The morphological char-
+acteristics of the nanoparticles were evaluated using
+a scanning electron microscope (Philips XL30 ESEM,
+Eindhoven, Netherlands).
+E488
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+YIELD
+A preparation technique with a high yield would
+reduce material loss and reduce the manufacturing
+cost. The yield was calculated gravimetrically as a
+percentage using Eq. (1)28,29
+Nanoparticle yield (%)
+=
+Mass of nanoparticles produced
+Mass of initial polymer material + drug × 100
+(1)
+DRUG ENCAPSULATION EFFICIENCY
+A nondestructive indirect method was applied to
+determine the drug encapsulation efﬁciency (DEE).
+First, the amount of free linamarin in both the super-
+natant and washings was measured at a wavelength
+of 545 nm using a UV-spectrophotometer (Spectronic
+Genesys TM and PC model 336003, Spectronic In-
+struments, San Diego, CA). Then, an amount of the
+encapsulated linamarin was calculated by subtract-
+ing the amount of free drug from the total amount
+of the drug used in the formulation. The percentage
+of DEE was calculated using Eq. (2),29,30:
+Drug encapsulation efﬁciency
+=
+Mass of drug in nanoparticles
+Mass of drug used in formulation × 100
+(2)
+PARTICLE SIZE
+The average particle size was investigated us-
+ing the photon correlation spectroscopy. The mea-
+surements of the particle size were performed as
+follows: 10 μL of the nanoparticle fresh emulsion
+was well suspended in 1 mL of distilled water to
+ensure a complete homogeneity. The average par-
+ticle size of the suspension was then measured
+using a particle-size analyzer (Nanophox, Sympa-
+tec Gmball, System-Partikel-Technik, K¨onigsbrunn,
+Germany).
+IN VITRO DRUG RELEASE
+A weighed quantity of the NPs was suspended
+in a closed conical ﬂask containing a speciﬁc vol-
+ume of 0.1 M phosphate-buffered saline pH 7.4. The
+NP suspensions were then incubated at 37◦C, un-
+der a constant shaking rate at 150 rpm. At predeter-
+mined time intervals, 1.5 mL liquor of each sample
+was removed and centrifuged at 10,000 rpm to sep-
+arate nanoparticles. One milliliter of sample super-
+natant was placed in a cuvette, and the absorbance
+of linamarin was measured at a wavelength of 545
+nm (Spectronic Genesys TM and PC model 336003;
+Spectronic Instruments). A fresh 1.5-mL buffer solu-
+tion was placed in the centrifuge tube and vigorously
+shaken to release the nanoparticles that adhered to
+the walls and bottom of the tube. Then, the liquor
+was returned to the incubation ﬂask.
+Results and Discussion
+This research beneﬁts from the advantage of
+biodegradable PLGA polymer to formulate PLGA
+nanoparticles loaded with linamarin as a controlled
+release anticancer candidate. Nanoparticulate drug
+delivery systems have been chosen as the convenient
+carriers to be prepared because of their multiple ad-
+vantages such as high stability and drug loading ca-
+pacity and good penetration into the cells. At the pre-
+liminary factor screening process, two copolymers,
+namely PLGA (50:50) and PLGA (85:15), were tested
+for the production of nanoparticles. Nanoparticles
+produced using PLGA (50:50) were better in terms
+of their physicochemical characteristics compared to
+nanoparticles prepared using PLGA (85:15); there-
+fore, PLGA (50:50) was employed throughout this
+work. It was also observed that increasing the vol-
+ume of an internal aqueous drug solution increases
+the particle size and decreases the DEE. The same
+observation was also previously reported by other
+researchers.18,31 Therefore, the volume of the internal
+aqueous solution was kept at 1 mL throughout all ex-
+periments. The internal aqueous solution of volume
+<1 mL was excluded due to difﬁculty in dispersing
+the concentrated and viscous drug solution into the
+organic phase. It is also expected that drug loss on
+container walls will increase during its transfer to
+the organic solution.
+Successful
+formulations
+of
+linamarin-loaded
+PLGA nanoparticles were carried out by employ-
+ing the double emulsion solvent evaporation tech-
+nique. The best PVA concentration limits were se-
+lected as 30–50 mg/mL because a concentration
+of <30 mg/mL yielded microparticles rather than
+nanoparticles, whereas those of >50 mg/mL yielded
+Advances in Polymer Technology
+DOI 10.1002/adv
+E489
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+TABLE I
+Combinations and Values of the Independent Process Parameters and Responses Based on Factorial Design
+PVA Concentration
+PLGA Concentration
+Nanoparticles
+Drug Encapsulation
+Particle
+Standard Order
+Run
+(mg/mL)
+(mg/mL)
+Yield (%)
+Efﬁciency (%)
+Size (nm)
+7
+1
+30
+10
+77.1
+58.7
+1364.1
+10
+2
+50
+10
+87.4
+57.4
+737.9
+9
+3
+30
+10
+73.0
+53.3
+1525.5
+12
+4
+50
+10
+74.6
+62.0
+825.6
+2
+5
+30
+2.5
+32.5
+25.9
+1007.0
+4
+6
+50
+2.5
+43.1
+31.4
+889.4
+5
+7
+50
+2.5
+37.7
+28.6
+769.5
+8
+8
+30
+10
+70.5
+49.6
+1502.7
+1
+9
+30
+2.5
+36.3
+19.8
+982.1
+13
+10
+40
+6.25
+53.6
+46.0
+558.9
+6
+11
+50
+2.5
+39.5
+35.8
+979.4
+14
+12
+40
+6.25
+48.3
+52.8
+626.8
+11
+13
+50
+10
+81.2
+55.0
+781.8
+3
+14
+30
+2.5
+28.3
+26.1
+1103.9
+n = 3.
+TABLE II
+Summary and ANOVA Table of the Factorial Design
+Y1
+Y2
+Y3
+Sum of
+Adjusted
+Sum of
+Adjusted
+Sum of
+Adjusted
+Source
+Squares
+p > F
+R2
+Squares
+p > F
+R2
+Squares
+p > F
+R
+Model
+5235.94
+<0.0001
+0.9590
+2484.49
+<0.0001
+0.9276
+8.172E + 005
+<0.0001
+0.9204
+A
+174.42
+0.0133
+112.91
+0.0257
+5.215E + 005
+<0.0001
+B
+5061.47
+<0.0001
+2361.25
+<0.0001
+84,368.19
+0.0041
+AB
+0.047
+0.9609
+10.32
+0.4405
+2.113E + 005
+0.0002
+Curvature
+57.42
+0.1116
+93.68
+0.0379
+3.414E + 005
+<0.0001
+Pure error
+166.13
+142.67
+51,880.11
+Total
+5459.48
+2720.84
+1.210E + 006
+Y1 = Yield, Y2 = drug encapsulation efﬁciency, and Y3 = particle size.
+nanoparticles with high surface residual PVA that
+was difﬁcult to remove by washing. The screening
+process revealed that homogenization has an ad-
+vantage over sonication as a method of emulsiﬁ-
+cation because the latter produced particles with a
+size of >50 μm. The best-selected total homogeniza-
+tion time for the double emulsiﬁcation process was
+selected at 6 min (3 min/each). This selectivity was
+due to the fact that at the homogenization time of
+>6 min, no obvious differences in particle sizes were
+observed; instead, some distortions were observed
+on the particle surfaces (broken particles). After the
+screening process, the surfactant (PVA) and polymer
+(PLGA) were ﬁrst selected as two important factors
+to be studied and their concentration limits were
+determined. The effect of these selected factors on
+characteristics of the nanoparticles was ﬁrst inves-
+tigated using the factorial design. The number and
+exact composition of the prepared batches according
+to the proposed experimental design are shown in
+Table I.
+The characterized properties of the nanoparticles
+are yield, particle size, and drug encapsulation ef-
+ﬁciency. An ANOVA table of the factorial design is
+shown in Table II.
+From Table II, it is clear that A and B are sta-
+tistically signiﬁcant factors (p < 0.05) with respect
+to both yield and drug encapsulation efﬁciency,
+whereas A, B, and their interaction AB are statis-
+tically signiﬁcant factors (p < 0.05) with respect to
+E490
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+TABLE III
+Combinations and Values of the Independent Process Parameters and Measured Responses Based on Box–
+Behnken Design
+PVA Concentration
+PLGA Concentration
+Homogenization
+Yield
+DEE
+Particle
+Standard Order
+Run
+(mg/mL)
+(mg/mL)
+Speed (rpm)
+(%)
+(%)b
+Size (nm)
+8
+1
+50
+8.13
+23,000
+87.3
+59.4
+211.9
+7
+2
+40
+8.13
+23,000
+74.6
+56.7
+482.5
+2
+3
+50
+6.25
+19,000
+63.5
+44.6
+224.1
+13
+4
+45
+8.13
+19,000
+63.1
+54.2
+672.7
+17
+5
+45
+8.13
+19,000
+61.5
+50.6
+752.1
+15
+6
+45
+8.13
+19,000
+65.4
+51.7
+760.5
+5
+7
+40
+8.13
+15,000
+52.4
+39.8
+882.9
+14
+8
+45
+8.13
+19,000
+58.3
+49.7
+808.2
+1
+9
+40
+6.25
+19,000
+57.7
+36.3
+417.3
+10
+10
+45
+10.00
+15,000
+58
+47.3
+1183.6
+4
+11
+50
+10.00
+19,000
+84.2
+61.8
+725.7
+6
+12
+50
+8.13
+15,000
+73.1
+52.9
+973.4
+3
+13
+40
+10.00
+19,000
+60.8
+54.2
+832.5
+11
+14
+45
+6.25
+23,000
+59.5
+40.8
+203.4
+12
+15
+45
+10.00
+23,000
+76.4
+55.6
+328.3
+16
+16
+45
+8.13
+19,000
+57.8
+50.2
+793.6
+9
+17
+45
+6.25
+15,000
+53.3
+31.2
+453.8
+aDEE indicates drug encapsulation efﬁciency.
+n = 3.
+the particle size. Some linear empirical models rep-
+resenting the effect of the process factors on the re-
+sponses were generated from the factorial design as
+shown in Eqs. (3)–(5):
+Yield = +56.76 + 3.81∗A+ 20.54∗B
+−0.062∗A∗B
+√
+2
+(3)
+Drug encapsulation efﬁciency
+= +41.99 + 3.06∗A+ 14.04∗B −0.094∗A∗B
+(4)
+Nanoparticle size = 1039.06 −208.46∗A+ 83.86∗B
+−132.71∗A∗B
+(5)
+Based on the results gathered from the factorial
+design, the best-selected values for PVA and PLGA
+concentration were 40–50 and 6.25–10 mg/mL, re-
+spectively. These selected values for PVA (A) and
+PLGA (B) factors beside the homogenization speed
+(C) ranged from 15,000 to 23,000 rpm as a third
+process factor was further investigated using the
+Box–Behnken statistical design. In the Box–Behnken
+design, the factor levels were set at 40, 45, and
+50 mg/mL; 6.25, 8.13, and 10 mg/mL; 15,000, 19,000,
+and23,000rpmforPVA, PLGA, andhomogenization
+speed, respectively (Table III). The Box–Behnken de-
+sign has been widely used by researchers to optimize
+the process factors.32−34
+In the Box–Behnken design, the effects of all three
+process factors on nanoparticle yield, drug encapsu-
+lation efﬁciency, and particle size were assessed. A
+polynomial equation including main factors effects
+and the interactions was selected on the basis of es-
+timated statistical parameters, multiple correlation
+coefﬁcients (R-squared), adjusted multiple correla-
+tion coefﬁcient (adjusted R-squared), and predicted
+residual sum of squares (PRESS). A summary of the
+model analysis is presented in Table IV.
+Table IV shows that the selected model has a sta-
+tistically insigniﬁcant lack of ﬁt, indicating that the
+model ﬁts the data. The adequacy of the model has
+also been conﬁrmed with the residual plot tests of re-
+gression empirical models. The quadratic empirical
+model given in Eq. (6) was used to ﬁt the experimen-
+tal data.
+Yk = b0 +
+n
+
+i=1
+bi Xi +
+n−1
+
+i=1
+n
+
+j=i+1
+bi j Xi Xj +
+n
+
+i=1
+bii X2
+i
+(6)
+where bi is the estimated coefﬁcient for the factor
+Xi and Yk is the measured response. The coefﬁcients
+Advances in Polymer Technology
+DOI 10.1002/adv
+E491
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+TABLE IV
+Summary and ANOVA Table of the Box–Behnken Design: (a) Model Analysis, (b) Lack of Fit, and (c) R 2 Analysis
+for Measured Responses.
+Y1
+Y2
+Y3
+Source
+Sum of Squares
+p > F
+Sum of Squares
+P > F
+Sum of Squares
+p > F
+Model analysis
+Mean
+72,072.21
+41,209.94
+6.743E + 006
+Linear
+1212.62
+0.0009
+883.32
+<0.0001
+1.064E + 006
+<0.0001
+2F1
+130.65
+0.3679
+27.59
+0.7109
+1.259E + 005
+0.0970
+Quadratic
+309.49
+0.0040
+177.52
+0.0006
+1.379E + 005
+0.0005
+Cubic
+20.21
+0.6220
+5.99
+0.6369
+2673.86
+0.8111
+Residual
+41.31
+12.83
+11,102.87
+Total
+73,786.49
+42,317.18
+8.084E + 006
+Lack of ﬁt
+Linear
+460.35
+0.0690
+211.09
+0.0355
+2.665E + 005
+0.0180
+2F1
+329.70
+0.0638
+183.50
+0.0234
+1.405E + 005
+0.0291
+Quadratic
+20.21
+0.6220
+5.99
+0.6369
+2673.86
+0.8111
+Cubic
+0.000
+0.000
+0.000
+Pure Error
+41.31
+12.83
+11,102.87
+R2 analysis
+Adjusted R2
+PRESS
+Adjusted R2
+PRESS
+Adjusted R2
+PRESS
+Linear
+0.6398
+937.24
+0.7511
+436.18
+0.7453
+4.918E + 005
+2F1
+0.6537
+1436.99
+0.7163
+873.48
+0.8191
+4.081E + 005
+Quadratic
+0.9180
+387.98
+0.9612
+115.84
+0.9765
+60,129.95
+Cubic
+0.9036
+ND
+0.9537
+ND
+0.9669
+ND
+Y1 = Yield; Y2 = drug encapsulation efﬁciency; Y3 = particle size; ND = case(s) with leverage of 1.0000: PRESS statistic not deﬁned.
+corresponding to the linear effects (bi), interaction
+(b ji), and quadratic effects (bii) were determined
+from the results of the experiment.
+Nanoparticle Yield
+Preparation techniques with high yields avoid
+considerably material loss, enhance production, and
+reduce manufacturing cost. Interestingly, nearly all
+the formulated batches gave yields that ranged be-
+tween 40% and 87%. Variations observed with all
+formulations indicate that the responses are strongly
+affected by the process factors. From the ANOVA ta-
+ble, it was found that the factors A, B, C, A2, and
+AB are statistically signiﬁcant (p < 0.05). The model
+has good correlation coefﬁcients (R 2 = 0.9641 and
+adjusted R 2 = 0.9180), indicating that the empirical
+model is suitable for the prediction of the response
+with respect to the process factors. The data normal-
+ity was evaluated using the normal probability plot
+of residuals (Fig. 2).
+Studentized residuals
+Normal % probability
+Normal plot of residuals
+−1.35
+−0.62
+0.11
+0.84
+1.58
+1
+5
+10
+20
+30
+50
+70
+80
+90
+95
+99
+FIGURE 2. Normal plot of residuals for the yield.
+E492
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+The multiple regression analysis of the yield
+yielded the following empirical polynomial model
+(Eq. (7)):
+Yield = +61.22 + 7.83∗A+ 5.68∗B + 7.63∗C
++ 7.69∗A2 −2.36∗B2 + 2.94∗C2 + 4.40∗A∗B
+−2.00∗A∗C + 3.05∗B∗C
+(7)
+It was found that to get a high yield, the surfactant
+concentration (A), polymer concentration, and ho-
+mogenization speed (B) should be set at high levels.
+Generally, a strong and signiﬁcant (p < 0.05) relation-
+ship between the yield and both surfactant (PVA)
+and polymer (PLGA) concentrations was observed
+but the greater effect on yield was for the PLGA
+concentration.
+The yield was changed from 40% to >80% with
+an increase in the polymer (PLGA) concentration
+from 2.5 mg/mL (coded 1.00) to 10 mg/mL (coded
++1.00), indicating that the higher the polymer con-
+centration used in the formulation, the greater the
+yield was. Three-dimensional response surface and
+contour plots were also used to estimate the effects
+of the independent process factors on the yield. The
+response surface plot shown in Fig. 3, which dis-
+plays the effect of PVA and PLGA concentrations on
+the yield where it is clear that the PVA concentra-
+tion had a greater impact on the yield when PLGA
+also was set at a high level. As illustrated in Fig. 3,
+it is clear that the yield increased from about 60%
+to >85% when both PVA and PLGA were at high
+values of 40 and 10 mg/mL, respectively (Figs. 3a
+and 3b).
+The effects of the PVA concentration and homog-
+enization speed on the yield are shown in Fig. 4. The
+yield increases with both parameters; however, the
+effect of PVA with increasing homogenization speed
+became narrower even at high values.
+Meanwhile, the yield increased from 52% to
+nearly 80%, with increasing PVA concentration from
+40 to 50 mg/mL at a homogenization speed of
+15,000 rpm. On the other hand, at a high homog-
+enization speed of 23,000 rpm, the yield was only
+increased from 73% to 85%. These ﬁndings indicate
+that there is a maximum limit, beyond which the
+effect of these parameters on the yield diminishes.
+Finally, Fig. 5a shows that both the homoge-
+nization speed and PLGA concentration should be
+used at high values to get high yields. Neverthe-
+less, the effect of increasing homogenization speed
+on the yield was more predominant at the high
+PLGA concentration. As depicted from the ﬁgure,
+at low PLGA concentrations (<8.125 mg/mL) the
+increase in the yield was limited (<60%) even at a
+maximum homogenization speed of 23,000 rpm. At
+53
+61
+69
+77
+84
+  Yield
+  40
+  43
+  45
+  48
+  50
+6.25
+7.19
+8.13
+9.06
+10.00
+  A: PVA
+  B: PLGA
+Yield
+A: PVA
+B: PLGA
+40
+43
+45
+48
+50
+6.25
+7.19
+8.13
+9.06
+10.00
+58
+63
+69
+74
+79
+a
+b
+FIGURE 3. Response surface (a) and contour (b) plots showing the effect of PVA and PLGA concentrations on yield
+(homogenization speed held constant at 19,000 rpm).
+Advances in Polymer Technology
+DOI 10.1002/adv
+E493
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+53
+61
+69
+77
+85
+  Yield
+  40
+  43
+  45
+  48
+  50
+15,000
+17,000
+19,000
+21,000
+23,000
+  A: PVA
+  C: Homog. speed
+Yield
+A: PVA
+C: Homog. speed
+40
+43
+45
+48
+50
+15,000
+17,000
+19,000
+21,000
+23,000
+58
+63
+69
+74
+79
+a
+b
+FIGURE 4. Response surface (a) and contour (b) plots showing the effect of the PVA concentration and
+homogenization speed on yield (PLGA concentration held constant at 8.13 mg/mL).
+51
+58
+65
+71
+78
+  Yield
+  6.25
+  7.19
+  8.13
+  9.06
+  10.00
+15,000
+17,000
+19,000
+21,000
+23,000
+  B: PLGA
+  C: Homog. speed
+Yield
+B: PLGA
+C: Homog. speed
+6.25
+7.1875
+8.125
+9.0625
+10
+15,000
+17,000
+19,000
+21,000
+23,000
+58
+63
+69
+74
+a
+b
+FIGURE 5. Response surface (a) and contour (b) plots showing the effect of the PLGA concentration and
+homogenization speed on yield (PVA concentration held constant at 45 mg/mL).
+high values for both the PLGA concentration and
+homogenization speed, a yield of up to 74% was
+achieved.
+The greater increase in the yield (from 49.3% to
+>85%) was observed with higher values in both
+the PLGA concentration (10 mg/mL) and homoge-
+nization speed (23,000 rpm). Meanwhile, increasing
+homogenization speed, from 15,000 to 23,000 rpm,
+was also associated with an increase in the yield
+from 50% to 62% and from 60% to >85% at 6.25
+E494
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+and 10 mg/mL of PLGA concentration, respectively
+(Fig. 5b).
+The curvature observed on the surface response
+and the contour plots explain a nonlinear relation-
+ship between the yield and the different process pa-
+rameters, and it also indicates the interaction effect.
+In fact, it is clearly seen that the yield ranging be-
+tween 68% and 73% could only be obtained at high
+levels of the different process parameters. The in-
+crease in the yield with increasing PLGA and PVA
+concentrations could be explained by the greater sta-
+bilizing property of PVA during the emulsiﬁcation
+process, which will enhance stabilization of the glob-
+ules and formation of more particles.35,36 The high
+PLGA concentration means viscous solutions, lead-
+ing to larger and denser particles being produced,
+and this will subsequently increase the yield. The in-
+crease in the yield with PVA, PLGA concentrations,
+and homogenization speed observed in this research
+work correlates with those reported by Mao and col-
+leagues, who reported an increase in the yield from
+77% to 83% with an increasing PLGA concentration
+from 8% to 32%. The author also reported an in-
+crease in the yield from 80% to 83% when the PVA
+concentration increased from 0.1% to 1%.30,37
+Drug Encapsulation Efﬁciency
+It is desirable to produce a drug delivery system
+with a high drug encapsulation efﬁciency to reduce
+the quantity and frequency of the administration of
+the drug. Efforts and precautions have been made to
+enhance encapsulation efﬁciencies (EE) because the
+double emulsion method (W/O/W) generally suf-
+fers from low EE because of the long time required
+for solvent removal and washings.27,38−41 The data
+observed for EE were analyzed, and from ANOVA
+results, the empirical model has a signiﬁcant F value
+(p < 0.0001), insigniﬁcant lack of ﬁt (p < 0.6369), and
+R 2 (0.9830) and adjusted R 2 (0.9612). It was found
+that A, B, C, A2, B2, C2, and AC are statistically sig-
+niﬁcant model terms (p < 0.05), whereas AB and BC
+are not signiﬁcant. The ﬁtness of the quadratic em-
+pirical model was also estimated from the normal
+plot of the residuals, as shown in Fig. 6.
+The empirical polynomial model in terms of
+coded parameters is shown in Eq. (8).
+Drug encapsulation efﬁciency (%)
+= +51.28 + 3.96∗A+ 8.25∗B + 5.16∗C + 3.21∗A2
+−5.27∗B2 −2.29∗C2 −0.18∗A∗B
+−2.60∗A∗C −0.32∗B∗C
+(8)
+Generally, all the parameters, e.g., the PVA con-
+centration, PLGA concentration, and homogeniza-
+tion speed, showed positive effects on the DEE. In
+other words, the DEE increases with the increase in
+each of the three parameters. In particular, the great-
+est effect was observed for the PLGA concentration,
+followed by the PVA concentration, and the smallest
+effect was found for the homogenization speed. The
+response surface and contour plots were employed
+to investigate the effects of the three process param-
+eters on the DEE. Figure 7 shows that the greatest
+values (>60%) of DEE were obtained at 50 mg/mL
+of PVA and 10 mg/mL of PLGA. Meanwhile, the
+lowest DEE (i.e., 31%) was obtained at low concen-
+trations (40 and 6.25 mg/mL) of PVA and PLGA,
+respectively. This means that the NPs formulated at
+a combination of high PVA and PLGA concentra-
+tion are more favorable to obtain at a high DEE. This
+may be due to a great interaction between PLGA
+and PVA,42 or the fact that PVA enhances the sta-
+bilization of the inner water droplets against coa-
+lescence, which will result in a more uniform drug
+distribution.43
+Figure 8 shows a considerable increase in the DEE
+(i.e., from 31% to 62%) with the increase in both
+the PVA concentration and homogenization speed to
+their maximum values. However, the DEE increased
+from 31% to 56.7% with an increasing homogeniza-
+tion speed from 15,000 to 23,000 rpm at 40 mg/mL
+Studentized residuals
+Normal % probability
+Normal plot of residuals
+−1.48
+−0.61
+0.26
+1.12
+1.99
+1
+5
+10
+20
+30
+50
+70
+80
+90
+95
+99
+FIGURE 6. Normal plot of the residuals of drug
+encapsulation efﬁciency.
+Advances in Polymer Technology
+DOI 10.1002/adv
+E495
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+36
+43
+49
+55
+62
+  Drug encaps. efficiency
+  40
+  43
+  45
+  48
+  50
+6.25
+7.19
+8.13
+9.06
+10.00
+  A: PVA
+  B: PLGA
+Drug encaps. efficiency
+A: PVA
+B: PLGA
+40
+43
+45
+48
+50
+6.25
+7.19
+8.13
+9.06
+10.00
+41
+45
+49
+53
+57
+a
+b
+FIGURE 7. Response surface (a) and contour (b) plots showing effects of PVA and PLGA concentrations on DEE
+(homogenization speed held constant at 19,000 rpm).
+40
+45
+50
+54
+59
+a
+b
+  Drug encaps. efficiency
+  40
+  43
+  45
+  48
+  50
+15,000
+17,000
+19,000
+21,000
+23,000
+  A: PVA
+  C: Homog. speed
+Drug encaps. efficiency
+A: PVA
+C: Homog. speed
+40
+43
+45
+48
+50
+15,000
+17,000
+19,000
+21,000
+23,000
+45
+49
+53
+57
+FIGURE 8. Response surface (a) and contour (b) plots showing the effect of the PVA and homogenization speed on
+DEE (the PLGA concentration held constant at 8.13 mg/mL).
+PVA, and from 52.9% to 59.4% at 50 mg/mL
+PVA concentration. This indicates that beyond
+50 mg/mL PVA the effect of the homogenization
+speed on the DEE tends to be small. These results
+could also be easily depicted by the contour plots
+(Fig. 8b).
+The limited effect of the homogenization speed at
+a high PVA concentration could be due to the limited
+E496
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+dispersion of the highly viscous PVA solution. Mao
+and colleagues reported an increase in drug DEE
+from 83% to 90% with increasing PVA concentration
+from 0.1% to 1%.37,44 The authors also reported an in-
+crease in the DEE from 81% to 91% with an increasing
+homogenization speed from 13,500 to 22,500 rpm.44
+However, our results correlate with those found by
+Mao and colleagues; they contradict those reported
+by Manchanda and colleagues, who reported a de-
+crease in the DEE from 70% to 5% for indocyanine
+green and from 40% to 10% for doxorubicin when
+they increased the PVA concentration from 1% to
+5%.45
+From Figs. 9a and 9b, it is also apparent that there
+is a sharp increase in the DEE with the increase in
+both PLGA and homogenization speed. The curvi-
+linear lines shown in contour plots (Figs. 7b, 8b,
+and 9b) indicate a nonlinear relationship between
+the process parameters, the PLGA concentration
+and homogenization speed, and the DEE. The DEE
+was observed to increase, that is, from the range
+of (31.2–40.8%) to the range of (47.3–55%), with an
+increase in the PLGA concentration (i.e., from 6.25
+to 10 mg/mL), and homogenization speed (from
+15,000 to 23,000 rpm). The great effect of the ho-
+mogenization speed on the DEE might be attributed
+to the energy exerted, which could have enhanced
+the dispersion of liquids, as well as the forma-
+tion of the globules that accommodated the drug.46
+Generally, the change in DEE with respect to the
+PLGA concentration was greater than that observed
+with changing PVA concentration. The lowest DEE
+was 19.7%, whereas the highest was around 62.0%.
+The highest values of the DEE (i.e., from 53.0% to
+62.0%) were obtained with high PLGA concentra-
+tions (8.13–10 mg/mL).
+The increase in the DEE related to the polymer
+concentration might be related to the increasing
+viscosity of the organic phase (emulsion droplet)
+of W/O/W emulsion, which lies in between two
+aqueous phases (internal drug solution and exter-
+nal surfactant solution). Any increase in the viscos-
+ity this organic phase could reduce the drug dif-
+fusion, that is, from the inner aqueous phase to the
+outer aqueous one. As a result, more drug molecules
+will be incorporated into the nanoparticles; hence
+an enhanced DEE will be expected. A twofold in-
+crease in DEE, as a result of the increasing poly-
+mer concentration (i.e., from 8% to 32%) was also
+reported by Mao and colleagues.44 Manchanda and
+colleagues also reported an increase in DEE from
+15% to 22% for indocyanine green (ICG) and to 38%
+for doxorubicin when they increased the PLGA con-
+centration from 13.3 to 66.7 mg/mL.45 Meanwhile,
+an increase in the DEE with the increase in the
+polymer concentration was also reported by other
+authors.16,17,47−49
+The increase in the DEE, associated with the hike
+in the PVA concentrations, could also be explained
+by the greater stabilizing property of the higher
+surfactant (PVA) concentration during the emul-
+siﬁcation process.43 The rise in the DEE with the
+PVA concentration was also observed by Feng and
+Huang.50 The smaller the particle sizes produced at
+the high PVA concentration, the larger surface ar-
+eas will be, and this may increase the chance for
+drug molecules to be attached to the nanoparticle
+surfaces; thus the DEE will be increased. The re-
+sult of high DEE with increasing the homogeniza-
+tion speed was also found by several authors.51,52
+Most of the nanoparticles produced in this study
+exhibited a DEE greater than 45%, which are consid-
+ered good values for water-soluble drugs since they
+suffer from low EE due to their rapid partitioning to
+the external aqueous phase.27,53−55 From the contour
+plots, it is clear that the process parameters should be
+set at one of three different parameter combinations
+to produce nanoparticles with high DEE (>50%).
+The combinations are (a) about 45–50 mg/mL
+PVA with >9 mg/mL PLGA (Fig. 7), (b) about
+>45 mg/mL PVA with >20,000 rpm homogeniza-
+tion speed (Fig. 8), or (c) at a value of >8.13 mg/mL
+PLGA with >19,000 rpm homogenization speed
+(Fig. 9).
+Nanoparticle Size and Size Distribution
+Nanoparticle size was investigated because it af-
+fects the physical stability, cellular uptake, biodis-
+tribution, drug release, and polymer degradation.
+Generally, all measurements of particle size and size
+distribution using photon correlation spectroscopy
+gave a slightly different interpretation and more ac-
+curate results than those observed using the SEM
+micrographs. Particle size measurements were ana-
+lyzed, and the model F value was found to be signiﬁ-
+cant (p < 0.0001). The process parameters A, B, C, A2,
+B2, C2, AC, and BC were statistically signiﬁcant (p <
+0.05), whereas AB was insigniﬁcant, and the model
+has an insigniﬁcant lack of ﬁt (p = 0.8111), high R 2
+(0.9897), and adjusted R 2 (0.9765). The model ﬁtness
+was also evaluated using the normal plot of residu-
+als (Fig. 10).
+Advances in Polymer Technology
+DOI 10.1002/adv
+E497
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+30
+37
+44
+50
+57
+  Drug encaps. efficiency
+  6.25
+  7.19
+  8.13
+  9.06
+  10.00
+15,000
+17,000
+19,000
+21,000
+23,000
+  B: PLGA
+  C: Homog. speed
+Drug encaps. efficiency
+B: PLGA
+C: Homog. speed
+6.25
+7.19
+8.13
+9.06
+10.00
+15,000
+17,000
+19,000
+21,000
+23,000
+41
+45
+49
+53
+a
+b
+FIGURE 9. Response surface (a) and contour (b) plots showing the effect of the PLGA concentration and
+homogenization speed on DEE (the PVA concentration held constant at 45 mg/mL).
+The full empirical polynomial model in terms of
+the coded parameters is shown in Eq. (9).
+Particle size = +757.42 −60.01∗A+ 221.44∗B
+−283.45∗C −56.06∗A2 −151.46∗B2
+−63.69∗C2 + 21.60∗A∗B
+−90.28∗A∗C −151.23∗B∗C
+(9)
+The average particle sizes of the produced
+nanoparticles ranged from about 150 up to 1500 nm.
+The small-sized nanoparticles ensure efﬁcient adhe-
+sions to and interactions with biological cells.56,57
+Large particles (>1.5 μm) were also observed in
+the samples after being freeze dried. Since measure-
+ments were carried out on fresh nanoparticles emul-
+sions and resuspended freeze-dried nanoparticles,
+the formation of large particles might be a result
+of the aggregation or fusion of small-sized particles
+during solvent evaporation or the freeze-drying pro-
+cess. The tendency of nanoparticles to aggregate to
+form larger particles during the freeze-drying pro-
+cess was also previously reported.58,59 To obtain a
+better performance of the NPs, the size was reduced
+as small as possible by optimizing the process pa-
+rameters. Effects of the process parameters, poly-
+mer (PLGA) concentration, surfactant (PVA) con-
+Studentized residuals
+Normal % probability
+Normal plot of residuals
+−2.14
+−1.28
+-0.43
+0.43
+1.28
+1
+5
+10
+20
+30
+50
+70
+80
+90
+95
+99
+FIGURE 10. Normal plot of the residuals for the particle
+size.
+centration, and homogenization speed on the size
+of the particles were evaluated. Our results indi-
+cate that increasing both PVA concentration and
+E498
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+247
+397
+547
+697
+847
+  Particle size
+  40
+  43
+  45
+  48
+  50
+6.25
+7.19
+8.13
+9.06
+10.00
+  A: PVA
+  B: PLGA
+Particle size
+A: PVA
+B: PLGA
+40
+43
+45
+48
+50
+6.25
+7.19
+8.13
+9.06
+10.00
+347
+447
+547
+647
+747
+a
+b
+FIGURE 11. Response surface (a) and contour (b) plots showing the effects of PVA and PLGA concentrations on the
+particle size (homogenization speed held constant at 19,000 rpm).
+homogenization speed reduces the particle size. On
+the other hand, increasing PLGA concentration in-
+creases the particle size.
+Response surface and contour plots display the
+effects of the process parameters on the particle
+size. Fig. 11a shows that to obtain smaller parti-
+cles it is favorable to formulate nanoparticles using
+high PVA and relatively low PLGA concentration.
+Nanoparticles with an average size <350 nm were
+produced at high PVA concentrations (>48 mg/mL)
+and low PLGA concentrations (<6.5 mg/mL). For-
+mulations at <45 mg/mL PVA and >8.13 mg/mL
+PLGA yielded nanoparticles with an average size
+>747 nm (Fig. 11b).
+The response surface and contour plots (Figs. 12a
+and 12b) show the effects of the PVA concentration
+and homogenization speed on the particle size. It is
+obvious that small nanoparticles, with an average
+size of 203 nm, are likely to be produced when both
+the PVA concentration and homogenization speed
+are set at high levels at 50 mg/mL and 23,000 rpm,
+respectively. The decrease in the particle size with
+PVA is gradual, whereas there is a sharp decrease
+in the particle size with respect to an increase in the
+homogenization speed.
+Figures 13a and 13b show that high homogeniza-
+tion speed and relatively low PLGA concentration
+are favorable formulation conditions for the produc-
+tion of smaller nanoparticles. The smallest nanopar-
+ticles (188.6 nm) were produced at the 6.25-mg/mL
+PLGA concentration and 23,000 rpm. The change in
+the particle size, as a result of increasing PLGA con-
+centration (6–10 mg/mL), was large (453–1198 nm).
+An increase in the particle size with increasing PLGA
+concentration was also previously reported by Bi-
+lati and collegues.60 On the other hand, the size de-
+creased from 453 to 203.4 nm with an increasing ho-
+mogenization speed from 15,000 to 23,000 rpm. The
+contour plot shows a nonlinear relationship between
+the particle size and PLGA concentration and ho-
+mogenization speed, which signiﬁes strong interac-
+tions between these process parameters, speciﬁcally
+at high values. Although all contour plots showed
+some degree of interaction, the effect was more pre-
+dominant in the PLGA concentration with homoge-
+nization speed contour plot (Fig. 13b).
+Thus, it could be generally concluded that the
+particle size decreased and the granulometric dis-
+tribution became narrower when the PVA concen-
+tration was increased. This PVA concentration effect
+could be explained by stabilization of the globules
+during emulsiﬁcation, which is the most crucial step
+in the double emulsion solvent evaporation method.
+Meanwhile, the amount of surfactant plays a key role
+Advances in Polymer Technology
+DOI 10.1002/adv
+E499
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+204
+398
+593
+787
+981
+  Particle size
+  40
+  43
+  45
+  48
+  50
+15,000
+17,000
+19,000
+21,000
+23,000
+  A: PVA
+  C: Homog. speed
+Particle size
+A: PVA
+C: Homog. speed
+40
+43
+45
+48
+50
+15,000
+17,000
+19,000
+21,000
+23,000
+347
+447
+547
+647
+747
+a
+b
+FIGURE 12. Response surface (a) and contour (b) plots showing the effect of the PVA concentration and
+homogenization speed on the particle size (the PLGA concentration held constant at 8.13 mg/mL).
+189
+441
+694
+946
+1198
+  Particle size
+  6.25
+  7.19
+  8.13
+  9.06
+  10.00
+15,000
+17,000
+19,000
+21,000
+23,000
+  B: PLGA
+  C: Homog. speed
+Particle size
+B: PLGA
+C: Homog. speed
+6.25
+7.19
+8.13
+9.06
+10.00
+15,000
+17,000
+19,000
+21,000
+23,000
+347
+447
+547
+647
+747
+a
+b
+FIGURE 13. Response surface (a) and contour (b) plots showing the effect of the PLGA concentration and
+homogenization speed on particle size (the PVA concentration held constant at 45 mg/mL).
+in the emulsiﬁcation process as well as protection
+of the droplets, which avoids the coalescence of the
+globules.61,62 In particular, a very low surfactant con-
+centration usually leads to the aggregation of poly-
+mer droplets and production of large particles; con-
+sequently, little or even no nanoparticle will be pro-
+duced. Thus, the surfactant concentration should be
+between the “limits” to control the nanoparticle size
+E500
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+and other properties such as DEE.63,64 Manchanda
+and coworkers reported a decrease in the particle
+size from 159 to 113 nm with an increasing PVA
+concentration from 1% to 5%, whereas the particle
+size increased from 137 to 164 nm with an increas-
+ing PLGA concentration from 13.3 to 66.7 mg/mL.65
+The decrease in the particle size with an increas-
+ing PVA concentration has been widely reported by
+other researchers.58,60,66−69
+The increase in the particle size with respect
+to the PLGA concentration could probably be due
+to the enhanced viscosity of the organic phase,
+and consequently this will reduce dispersion of the
+aqueous phase containing a drug into the poly-
+mer organic phase. Because the ﬁnal size of the
+particles is dependent upon the ﬁrst globule size
+generated throughout the emulsiﬁcation process,
+coarse emulsions or a greater aggregation num-
+ber may be obtained as a result of a high PLGA
+concentration and this will lead to larger particles
+with wider size distributions.66,70−72 Our ﬁndings
+correlate with those found by Le-sheng and col-
+leagues, who reported an increase in both particle
+size (i.e., from 34.3% to 70%) and DEE (i.e., from
+55% to 76%) when they increased the PLGA con-
+centration from 15% to 40%. The authors also re-
+ported a decrease in the size with the homogeniza-
+tion speed.73 A similar observation was also found
+by Budhian and coworkers, who reported an in-
+crease in the particle size from 200 to 300 nm when
+the polymer concentration was varied from 5 to
+66.6 mg/mL.74 Meanwhile, the increase in the par-
+ticle size with an increasing polymer concentration
+for the PLA and PLGA polymers has been widely
+reported.3,18,37,61,66,75,76
+After investigating the effects of the PVA and
+PLGA concentration and homogenization speed on
+the yield, DEE, and particle size, the best val-
+ues of these parameters for semiﬁnal optimization
+were determined as follows: (1) about >48 mg/mL
+PVA concentration and <6.5 mg/mL PLGA con-
+centration; (2) about >47 mg/mL PVA concentra-
+tion and >22,000 rpm homogenization speed; and
+(3) about <7.19 mg/mL PLGA concentration and
+>20,000 rpm homogenization speed. Based on these
+selected values, a numerical optimization using the
+desirability approach was applied to locate the opti-
+mal settings of the formulation parameters to obtain
+the desired responses. Based on the desired nanopar-
+ticle properties, numerous formulations were pro-
+posed by setting constraints on the independent pro-
+cess parameters and responses.
+Numerous suggestions were given by the model
+but ﬁve formulations were selected and formulated
+in triplicate based on the desirability. A comparison
+was made on the observed and predicted values of
+the NP yield, particle size, and DEE. The predic-
+tion error (%) for the responses was calculated using
+Eq. (10).77
+Prediction error (%)
+= Observed value −Predicted value
+Predicted value
+× 100 (10)
+Moreover, based on the result obtained from these
+ﬁve formulations, three NP batches were formulated
+in triplicate at 45–50 mg/mL PVA concentration,
+9.44–10 mg/mL PLGA concentration, and 22,800–
+23,000 rpm homogenization speed. The three for-
+mulated NP batches showed an average of 92%–
+95% yield, <200 nm particle size, and >60% DEE.
+The absolute values of the prediction error (%) for
+semiﬁnal and ﬁnal formulated NPs ranged from
+1.3% to 2.7%; which are considered good. Mean-
+while, the low values of residuals and/or predic-
+tion error indicate the high predictive ability of
+the generated model to assess the response val-
+ues. The same approach, based on the factorial de-
+sign and response surface analysis, was used by
+other researchers, who developed a quadratic em-
+pirical model for the prediction of the responses.78−81
+Finally, the optimal values for PVA, PLGA, and
+homogenization speed were found at 50 mg/mL,
+9.8 mg/mL, and 23,000 rpm, respectively. Interest-
+ingly, the ﬁnal optimized NPs showed an average
+of 95.3% yield, 162.4 nm particle size, and 61.4%
+DEE.
+DRUG RELEASE FROM THE OPTIMIZED
+NANOPARTICLES
+The drug release proﬁles of the optimized, nonop-
+timized nanoparticles compared to that of free drug,
+are shown in Fig. 14. From the ﬁgure, it is clear that
+the free drug (linamarin) was released completely
+within a period of less than 8 h. The nonoptimized
+nanoparticles exhibited fast (burst) release >40%
+within the ﬁrst 10 h, whereas the optimized nanopar-
+ticles showed good biphasic release proﬁles having
+small burst release values (10%–20%) followed by
+a controlled release phase compared to that of the
+nonoptimized nanoparticles.
+The burst release values observed in the current
+research using optimized PLGA nanoparticles are
+Advances in Polymer Technology
+DOI 10.1002/adv
+E501
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+Time (h)
+0
+20
+40
+60
+80
+100
+120
+140
+Cumulative % drug released
+0
+20
+40
+60
+80
+100
+120
+Optimized NPs
+Optimized NPs
+Nonoptimized NPs
+Nonoptimized NPs
+Free linamarin
+FIGURE 14. Drug release proﬁles of the free linamarin and optimized and nonoptimized linamarin-loaded PLGA
+(50:50) nanoparticles.
+considered good compared to values previously re-
+ported by Jiang and his coworkers82 and Teixeira
+and coworkers,83 which are 20%–45% and 30%–
+70%, respectively. However, nonoptimized nanopar-
+ticles showed a total of about 60%–80% drug re-
+lease after 120 h, the optimized nanoparticles re-
+leased only about 25%–35% of their encapsulated
+drug. These results are good compared to the re-
+sults found by Cohen-Sela and coworkers, who re-
+ported 89.2% drug release from the PLGA nanopar-
+ticles in only 6 h.27 The slow controlled release of
+PLGA nanoparticles observed in the present study
+correlates with those found by Mu and Feng,84 who
+reported a release of only 50%–70% of the encap-
+sulated anticancer drug (Paclitaxel) from the PLGA
+nanoparticles in 30 days. It could be concluded
+that the optimized nanoparticles exhibited better re-
+lease (slow and controlled) properties compared to
+both nonoptimized nanoparticles and the free drug
+(linamarin).
+Conclusions
+Successful linamarin-loaded PLGA nanoparticles
+were fabricated by using the double emulsion sol-
+vent evaporation method. The effect of the most ef-
+fective process parameters, namely polymer (PLGA)
+concentration, surfactant (PVA) concentration, and
+homogenization speed on the NP yield, particle
+size, and DEE was evaluated. The optimal values
+of the studied process parameters were determined
+with the aid of both a two-factor full factorial de-
+sign and Box–Behnken design with surface response
+methodology (RSM). The ﬁnal optimum values for
+the PLGA concentration, PVA concentration, and ho-
+mogenization speed were determined at 9.8 mg/mL,
+50 mg/mL, and 23,000 rpm, respectively. The ex-
+perimental results were found to be in good agree-
+ment with those predicted by the empirical model.
+Thus it could be concluded that RSM represents an
+effective and potential technique for optimization
+of linamarin-loaded PLGA nanoparticles. Interest-
+ingly, the optimized nanoparticles showed a sus-
+tained and controlled drug release (lasting for days)
+compared to both the free drug as well as the nonop-
+timized drug.
+References
+1. Cai, W.; Gao, T.; Hong, H.; Sun, J. Nanotechnol Sci Appl 2008,
+1, 17–32.
+2. Lim, Z. Z. J.; Li, J. E. J.; Ng, C. T.; Yung, L. Y. L.; Bay, B. H.
+Acta Pharmacol Sin 2011, 32, 983–990.
+3. Cheng, J.; Teply, B. A.; Sheriﬁ, I.; Sung, J.; Luther, G.; Gu, F.
+X.; Levy-Nissenbaum, E.; Radovic-Moreno, A. F.; Langer, R.;
+Farokhzad, O. C. Biomaterials 2007, 28, 869–876.
+E502
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+4. Chouhan, R.; Bajpai, A. K. J Mater Sci: Mater Med 2009, 20,
+1103–1114.
+5. Sundaresan, S.; Amma, C. S. E.; Nambisan, B. Indian J Agric
+Sci 1987, 57, 37–40.
+6. Sornyotha, S.; Kyu, K. L.; Ratanakhanokchai, K. Food Chem
+2006, 4, 1750–1754.
+7. Alfourjani, W. A. MSc thesis, Universiti Putra Malaysia, Se-
+langor, Malaysia, 2005.
+8. Iyuke, S. E.; Yusuf, U. F.; Razil, R.; Fakhuru, A.; Billa, N.;
+Achike, F. I. In 7th World Congress of Chemical Engineering,
+Glasgow, UK, 2004.
+9. Yadav, K. S.; Sawant, K. K. Curr Drug Deliv 2010, 7, 51–64.
+10. Rafati, H.; Mirzajani, F. Pharmazie 2011, 66, 31–36.
+11. Kollipara, S.; Bende, G.; Movva, S.; Saha, R. Drug Dev Ind
+Pharm 2010, 36, 1377–1387.
+12. Shi, K.; Cui, F.; Yamamoto, H.; Kawashima, Y. Pharmazie
+2008, 63, 721–725.
+13. Dey, S. K.; Mandal, B.; Bhowmik, M.; Ghosh, L. K. Braz J
+Pharml Sci 2009, 45.
+14. Astete, R. C. E. MSc thesis, Louisiana State University, 2005.
+15. Avgoustakis, K.; Beletsi, A.; Panagi, Z.; Klepetsanis, P.; Livan-
+iou, E.; Evangelatos, G.; Ithakissios, D. S. Int J Pharm 2003,
+259, 115–127.
+16. Yang, Y.-Y.; Chung, T.-S.; Bai, X.-L.; Chan, W.-K. Chem Eng
+Sci 2000, 55, 2223–2236.
+17. Yang, Y.-Y.; Chia, H.-H.; Chung, T.-S. J Controlled Release
+2000, 69, 81–96.
+18. Lee, J.-H.; Park, T. G.; Choi, H.-K. Int J Pharm 2000, 196, 75–83.
+19. Montgomery, D. C. Design and Analysis of Experiments; Wi-
+ley: New York, 2001.
+20. Mandenius, C.-F.; Brundin, A. Biotechnol Prog 2008, 24, 1191–
+1203.
+21. Ferreira, S. L. C.; Bruns, R. E.; Ferreira, H. S.; Matos, G. D.;
+David, J. M.; Brand˜ao, G. C.; Silva, E. G. P. d.; Portugal, L. A.;
+Reis, P. S. d.; Souza, A. S.; Santos, W. N. L. d. Anal Chim Acta
+2007, 597, 179–186.
+22. Liu, Y.; Zheng, Y.; Wang, A. Adsorption Sci Technol 2011, 28,
+913–922.
+23. Woitiski, C.; Ribeiro, F. V. A.; Neufeld, R. In XVIth Interna-
+tional Conference on Bioencapsulation: Dublin, Ireland, 2008;
+p 1–4.
+24. Nkansah,M.K.;Tzeng,S.Y.;Holdt,A.H.;Lavik,E.B.Biotech-
+nol Bioeng 2008, 100, 1010–1019.
+25. Panyam, J.; Dali, M. M.; Sahoo, S. K.; Ma, W.; Chakravarthi,
+S. S.; Amidon, G. L.; Levy, R. J. ; Labhasetwar, V. J Controlled
+Release 2003, 92, 173–187.
+26. Sahoo, S. K.; Panyam, J.; Prabha, S.; Labhasetwar, V. J Con-
+trolled Release 2002, 82, 105–114.
+27. Cohen-Sela, E.; Chorny, M.; Koroukhov, N.; Danenberg, H.
+D.; Golomb, G. J Controlled Release 2009, 133, 90–95.
+28. Prabu, S. L.; Shirwaikar, A. A.; Shirwaikar, A.; Kumar, A. ARS
+Pharm 2009, 50, 51–62.
+29. Khoee, S.; Yaghoobian, M. Eur J Med Chem 2009, 44, 2392–
+2399.
+30. Mao, S.; Xu, J.; Cai, C.; Germershaus, O.; Schaper, A.; Kissel,
+T. Int J Pharm 2007, 334, 137–148.
+31. O’Donnell, P. B.; McGinity, J. W. Adv Drug Deliv Rev 1997,
+28, 25–42.
+32. Singare, D. S.; Marella, S.; Gowthamrajan, K.; Kulkarni, G. T.;
+Vooturi, R.; Rao, P. S. Int J Pharm 2010, 402, 213–220.
+33. Ganti, V.; Mengesha, A. E.; Marszalek, J.; Youan, B. B. Acta
+Pharm 2010, 60, 281–293.
+34. Pillay, S.; Pillay, V.; Choonara, Y. E.; Naidoo, D.; Khan, R. A.;
+du Toit, L. C.; Ndesendo, V. M.; Modi, G.; Danckwerts, M. P.;
+Iyuke, S. E. Int J Pharm 2009, 382, 277–290.
+35. Sahana, D. K.; Mittal, G.; Bhardwaj, V.; Kumar, M. N. J Pharm
+Sci 2008, 97, 1530–1542.
+36. Cascone, M. G.; Lazzeri, L.; Carmignani, C.; Zhu, Z. J Mater
+Sci: Mater Med 2002, 13, 523–526.
+37. Mao, S.; Shi, Y.; Li, L.; Xu, J.; Schaper, A.; Kissel, T. Eur J Pharm
+Biopharm 2008, 68, 214–223.
+38. Katsikogianni, G.; Avgoustakis, K. J Nanosci Nanotechnol
+2006, 6, 3080–3086.
+39. Jang, J. Y.; Kwon, B. S.; Lee, H. E.; Kim, D. H.; Kang, H. K.;
+Kang, J. S.; Lee, S.; Choi, G. J. J Ind Eng Chem 2007, 13, 1043–
+1046.
+40. Kim, H. K.; Park, T. G. Int J Pharm 2001, 229, 107–116.
+41. Freytag, T.; Dashevsky, A.; Tillman, L.; Hardee, G. E.; Bod-
+meier, R. J Controlled Release 2000, 69, 197–207.
+42. McCarron, P. A.; Donnelly, R. F.; Marouf, W. J Microencapsul
+2006, 23, 480–498.
+43. Yang, Y. Y.; Chung, T. S.; Ng, N. P. Biomaterials 2001, 22,
+231–241.
+44. Mao, S.; Xu, J.; Cai, C.; Germershaus, O.; Schaper, A.; Kissel,
+T. Int J Pharm 2007, 334, 137–148.
+45. Manchanda, R.; Fernandez-Fernandez, A.; Nagesetti, A.; Mc-
+Goron, A. J. Colloid Surf B: Biointerfaces 2010, 75, 260–267.
+46. Liu, H.; Liu, D.; Yao, F.; Wu, Q. Bioresour Technol 2010, 101,
+5685–5692.
+47. Cui, F.; Shi, K.; Zhang, L.; Tao, A.; Kawashima, Y. J Controlled
+Release 2006, 114, 242–250.
+48. Jyothi, N. V. N.; Sakarkar, S. N.; Kumar, G. Y. S.; Prasanna, M.
+Int J Nanotechnol 2009, 187–197.
+49. Mehta, R. C.; Thanoo, B. C.; Deluca, P. P. J Controlled Release
+1996, 41, 249–257.
+50. Feng, S.-S.; Huang, G. J Controlled Release 2001, 71, 53–69.
+51. Basarkar, A.; Devineni, D.; Palaniappan, R.; Singh, J. Int J
+Pharm 2007, 343, 247–254.
+52. Lee, W. K.; Park, J. Y.; Yang, E. H.; Suh, H.; Kim, S. H.; Chung,
+D. S.; Choi, K.; Yang, C. W.; Park, J. S. J Controlled Release
+2002, 84, 115–123.
+53. Ishihara, T.; Takahashi, M.; Higaki, M.; Mizushima, Y. Int J
+Pharm 2009, 365, 200–205.
+54. Chavanpatil, M. D.; Khdair, A.; Patil, Y.; Handa, H.; Mao, G.;
+Panyam, J. J Pharm Sci 2007, 96, 3379–3389.
+55. Nii, T.; Ishii, F. Int J Pharm 2005, 298, 198–205.
+56. Mittal, G.; Sahana, D. K.; Bhardwaj, V.; Kumar, M. N. V. R. J
+Controlled Release 2007, 119, 77–85.
+57. Win, K. Y.; Feng, S.-S. Biomaterials 2005, 26, 2713–2722.
+58. Vandervoort, J.; Ludwig, A. Int J Pharm 2002, 238, 77–92.
+59. Ohshima, H.; Miyagishima, A.; Kurita, T.; Makino, Y.; Iwao,
+Y.; Sonobe, T.; Itai, S. Int J Pharm 2009, 377, 180–184.
+60. Bilati, U.; All´emann, E.; Doelker, E. J Microencapsul 2005, 22,
+205–214.
+61. Kwon, H.-Y.; Lee, J.-Y.; Choi, S.-W.; Jang, Y.; Kim, J.-H. Colloid
+Surf A 2001, 182, 123–130.
+Advances in Polymer Technology
+DOI 10.1002/adv
+E503
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+OPTIMIZING ENCAPSULATION OF LINAMARIN PLGA NANOPARTICLES
+62. Murakami, H.; Kobayashi, M.; Takeuchi, H.; Kawashima, Y.
+Int J Pharm 1999, 178, 143–152.
+63. Hans, M. L.; Lowman, A. M. Curr Opin Solid St M 2002, 6,
+319–327.
+64. Lemoine, D.; Pr´eat, V. J Controlled Release 1998, 54, 15–27.
+65. Manchanda,
+R.;
+Fernandez-Fernandez,
+A.;
+Nagesetti,
+A.;
+McGoron,
+A.
+J.
+Colloid
+Surf
+B
+2010,
+75,
+260–
+267.
+66. Mainardes, R. M.; Evangelista, R. C. Int J Pharm 2005, 290,
+137–144.
+67. Zhou, F.; Zhou, R.; Hao, X.; Wu, X.; Rao, W.; Chen, Y.; Gao,
+D. Radiat Phys Chem 2008, 77, 169–173.
+68. Song, K. C.; Lee, H. S.; Choung, I. Y.; Cho, K. I.; Ahn, Y.; Choi,
+E. J. Colloids Surf A 2006, 276, 162–167.
+69. Parikh, R. H.; Parikh, J. R.; Dubey, R. R.; Soni, H. N.; Kapadia,
+K. N. AAPS PharmSciTech 2003, 4, 1–8.
+70. Zhang, H.; Cui, W.; Bei, J.; Wang, S. Polym Degrad Stabil 2006,
+91, 1929–1936.
+71. Zhang, L.; Hu, Y.; Jiang, X.; Yang, C.; Lu, W.; Yang, Y. H. J
+Controlled Release 2004, 96, 135–148.
+72. Zhang, Y.; Zhang, Q.; Zha, L.; Yang, W.; Wang, C.; Jiang, X.;
+Fu, S. Colloid Polym Sci 2004, 282, 1323–1328.
+73. Le-sheng, T.; Chao-jun, J.; Xiang-you, L.; Yuan-chen, D.;
+Chun-mei, L.; Qing-fan, M.; You-xin, L. Chem Res Chinese U
+2010, 26, 75–80.
+74. Budhian, A.; Siegel, S. J.; Winey, K. I. Int J Pharm 2007, 336,
+367–375.
+75. Mishima, K. Adv Drug Deliv Rev 2008, 60, 411–432.
+76. Chorny, M.; Fishbein, I.; Danenberg, H. D.; Golomb, G. J Con-
+trolled Release 2002, 83, 389–400.
+77. Kim, M.-S.; Kim, J.-S.; You, Y.-H.; Park, H. J.; Lee, S.; Park,
+J.-S.; Woo, J.-S.; Hwang, S.-J. Int J Pharm 2007, 341, 97–104.
+78. Bozkir, A.; Saka, O. M. Farmaco 2005, 60, 840–846.
+79. Dillen, K.; Vandervoort, J.; Van den Mooter, G.; Verheyden,
+L.; Ludwig, A. Int J Pharm 2004, 275, 171–187.
+80. Dillen, K.; Vandervoort, J.; Ludwig, A. J Controlled Release
+2005, 101, 369–371.
+81. Shivakumar, H. N.; Patel, P. B.; Desai, B. G.; Ashok, P.; Arul-
+mozhi, S. Acta Pharm 2007, 57, 269–285.
+82. Jiang, W.; Gupta, R. K.; Deshpande, M. C.; Schwendeman, S.
+P. Adv Drug Deliv Rev 2005, 57, 391–410.
+83. Teixeira, M.; Alonso, M. J.; Pinto, M. M.; Barbosa, C. M. Eur J
+Pharm Biopharm 2005, 59, 491–500.
+84. Mu, L.; Feng, S. S. J Controlled Release 2003, 86, 33–48.
+E504
+Advances in Polymer Technology
+DOI 10.1002/adv
+ 10982329, 2013, S1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/adv.21295 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

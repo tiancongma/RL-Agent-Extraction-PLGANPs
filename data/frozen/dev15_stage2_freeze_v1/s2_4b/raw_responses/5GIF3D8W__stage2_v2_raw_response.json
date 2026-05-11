@@ -1,0 +1,963 @@
+{
+  "document_key": "5GIF3D8W",
+  "doi": "10.1080/10717540802174662",
+  "formulation_candidates": [
+    {
+      "candidate_id": "form_opt",
+      "raw_label": "The optimized formulation",
+      "normalized_label": "optimized formulation",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s52"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_ctrl",
+      "raw_label": "Drug free nanoparticles",
+      "normalized_label": "drug free nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "form_opt",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s53"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_poly_opt",
+      "formulation_candidate_id": "form_opt",
+      "component_name": "polymer",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s17"
+      ]
+    },
+    {
+      "component_id": "comp_eto_opt",
+      "formulation_candidate_id": "form_opt",
+      "component_name": "etoposide",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s18"
+      ]
+    },
+    {
+      "component_id": "comp_f68_opt",
+      "formulation_candidate_id": "form_opt",
+      "component_name": "F68",
+      "component_role": "surfactant",
+      "amount_text": "1.0% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s19"
+      ]
+    },
+    {
+      "component_id": "comp_f68_mat",
+      "formulation_candidate_id": "",
+      "component_name": "Pluronic F 68",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s41"
+      ]
+    },
+    {
+      "component_id": "comp_plga7525_mat",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA 75/25",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s42"
+      ]
+    },
+    {
+      "component_id": "comp_plga8515_mat",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA 85/15",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s43"
+      ]
+    },
+    {
+      "component_id": "comp_pcl_mat",
+      "formulation_candidate_id": "",
+      "component_name": "PCL",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s44"
+      ]
+    },
+    {
+      "component_id": "comp_eto_mat",
+      "formulation_candidate_id": "",
+      "component_name": "etoposide",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s45"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_method_nano",
+      "formulation_candidate_id": "",
+      "variable_name": "preparation method",
+      "value_text": "nanoprecipitation method",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s20"
+      ]
+    },
+    {
+      "variable_id": "var_stir_mod",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring",
+      "value_text": "moderate magnetic stirring",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s21"
+      ]
+    },
+    {
+      "variable_id": "var_temp_evap",
+      "formulation_candidate_id": "",
+      "variable_name": "evaporation temperature",
+      "value_text": "35◦C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s22"
+      ]
+    },
+    {
+      "variable_id": "var_time_evap",
+      "formulation_candidate_id": "",
+      "variable_name": "evaporation time",
+      "value_text": "1 hr",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s23"
+      ]
+    },
+    {
+      "variable_id": "var_speed_cent",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation speed",
+      "value_text": "14,000 rpm",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s24"
+      ]
+    },
+    {
+      "variable_id": "var_temp_cent",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation temperature",
+      "value_text": "25◦C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s25"
+      ]
+    },
+    {
+      "variable_id": "var_time_cent",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation time",
+      "value_text": "10 min",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s26"
+      ]
+    },
+    {
+      "variable_id": "var_temp_pref",
+      "formulation_candidate_id": "",
+      "variable_name": "prefreezing temperature",
+      "value_text": "–20◦C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s27"
+      ]
+    },
+    {
+      "variable_id": "var_time_pref",
+      "formulation_candidate_id": "",
+      "variable_name": "prefreezing time",
+      "value_role": "shared_context",
+      "value_text": "20 hr",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s28"
+      ]
+    },
+    {
+      "variable_id": "var_vac_fd",
+      "formulation_candidate_id": "",
+      "variable_name": "freeze-drier vacuum",
+      "value_text": "1 mbar",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s29"
+      ]
+    },
+    {
+      "variable_id": "var_temp_fd",
+      "formulation_candidate_id": "",
+      "variable_name": "freeze-drier temperature",
+      "value_text": "–110◦C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s30"
+      ]
+    },
+    {
+      "variable_id": "var_doe_poly_amt",
+      "formulation_candidate_id": "",
+      "variable_name": "polymer amount",
+      "value_text": "25, 50, 100, and 200 mg",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s31"
+      ]
+    },
+    {
+      "variable_id": "var_doe_stab_conc",
+      "formulation_candidate_id": "",
+      "variable_name": "concentration of stabilizer",
+      "value_text": "0.5, 0.75, 1.0, and 2.0% w/v",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s32"
+      ]
+    },
+    {
+      "variable_id": "var_doe_eto_amt",
+      "formulation_candidate_id": "",
+      "variable_name": "etoposide amount",
+      "value_text": "2.5, 5, 10, and 20 mg",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s33"
+      ]
+    },
+    {
+      "variable_id": "var_id_plga5050",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA 50/50",
+      "value_text": "PLGA 50/50",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s48"
+      ]
+    },
+    {
+      "variable_id": "var_id_plga7525",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA 75/25",
+      "value_text": "PLGA 75/25",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s49"
+      ]
+    },
+    {
+      "variable_id": "var_id_plga8515",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA 85/15",
+      "value_text": "PLGA 85/15",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s50"
+      ]
+    },
+    {
+      "variable_id": "var_id_pcl",
+      "formulation_candidate_id": "",
+      "variable_name": "PCL",
+      "value_text": "PCL",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s51"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_size_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "size",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s34"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "zeta_potential",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s35"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "entrapment_efficiency",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s36"
+      ]
+    },
+    {
+      "measurement_id": "meas_diam_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "size",
+      "value_text": "Average particle diameter",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s37"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "pdi",
+      "value_text": "polydispersity index",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s38"
+      ]
+    },
+    {
+      "measurement_id": "meas_surf_pot_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "zeta_potential",
+      "value_text": "surface potential",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s39"
+      ]
+    },
+    {
+      "measurement_id": "meas_free_drug_gen",
+      "formulation_candidate_id": "",
+      "measurement_name": "other",
+      "value_text": "free drug content",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s40"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_range",
+      "formulation_candidate_id": "",
+      "measurement_name": "entrapment_efficiency",
+      "value_text": "57 to 80%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s65"
+      ]
+    },
+    {
+      "measurement_id": "meas_dc_max",
+      "formulation_candidate_id": "",
+      "measurement_name": "loading_content",
+      "value_text": "around 1.45",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s62"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_range",
+      "formulation_candidate_id": "",
+      "measurement_name": "pdi",
+      "value_text": "less than 0.9",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s64"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_range",
+      "formulation_candidate_id": "",
+      "measurement_name": "zeta_potential",
+      "value_text": "−33.38 to −18.91 mV for PLGA-copolymers and −33.14 to −23.62 mV for PCL",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s63"
+      ]
+    },
+    {
+      "measurement_id": "meas_size_plga5050_100mg",
+      "formulation_candidate_id": "",
+      "measurement_name": "size",
+      "value_text": "167.8 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "for PLGA50/50 with 100mg polymer",
+      "evidence_span_ids": [
+        "s47"
+      ]
+    },
+    {
+      "measurement_id": "meas_size_plga5050_200mg",
+      "formulation_candidate_id": "",
+      "measurement_name": "size",
+      "value_text": "235.4 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "for PLGA50/50 with 200mg polymer",
+      "evidence_span_ids": [
+        "s47"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_opt_method",
+      "source_candidate_id": "form_opt",
+      "target_candidate_id": "var_method_nano",
+      "relation_type": "uses_method",
+      "note": "Optimized formulation prepared using nanoprecipitation method",
+      "evidence_span_ids": [
+        "s1"
+      ]
+    },
+    {
+      "relation_id": "rel_ctrl_inherits_method",
+      "source_candidate_id": "form_ctrl",
+      "target_candidate_id": "form_opt",
+      "relation_type": "inherits_from",
+      "note": "Drug free nanoparticles prepared by the same methods as optimized formulation",
+      "evidence_span_ids": [
+        "s4"
+      ]
+    },
+    {
+      "relation_id": "rel_ctrl_varies_eto",
+      "source_candidate_id": "form_ctrl",
+      "target_candidate_id": "var_doe_eto_amt",
+      "relation_type": "varies_by",
+      "note": "Drug free nanoparticles prepared without the addition of etoposide",
+      "evidence_span_ids": [
+        "s4"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "s1",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "The optimized formulation was prepared using nanoprecipitation method as follows: polymer (50 mg) and etoposide (5 mg) were dissolved in acetone. Dichloromethane was used to dissolve PCL and etoposide in case of emulsion solvent evaporation method. Resulting organic phase was added slowly under moderate magnetic stirring into triple distilled wa- ter(TDW) containingF68asstabilizer(1.0%w/v).Thisaqueous phase immediately turns milky with formation of nanoparticle dispersion. The organic solvent was then removed by evaporat- ing under magnetic stirring or under reduced pressure at 35◦C for approximately 1 hr (Rotavapor, Buchi, Switzerland). Entire dis- persion was centrifuged at 14,000 rpm at 25◦C for 10 min (Cool- ing Compufuge, Remi, Mumbai) in three cycles. Supernatant was analyzed for free drug content and the sediment constituting nanoparticles was freeze-dried. For freeze-drying, prefreezing of samples was done at –20◦C for 20 hr, then the ﬂasks were connected to freeze-drier (Maxi Dry Lyo, Heto, Germany) un- der vacuum (1 mbar, –110◦C). The process was continued till free-ﬂowing powder was obtained."
+    },
+    {
+      "span_id": "s2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Different formulation variables like polymer amount (25, 50, 100, and 200 mg), concentration of stabilizer (0.5, 0.75, 1.0, and 2.0% w/v), and etoposide amount (2.5, 5, 10, and 20 mg) were varied and the effect on size, zeta potential, and entrap- ment efﬁciency was studied."
+    },
+    {
+      "span_id": "s3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Only one parameter was changed in each series of experiments."
+    },
+    {
+      "span_id": "s4",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Drug free nanoparticles were pre- pared by the same methods without the addition of etoposide and characterized."
+    },
+    {
+      "span_id": "s5",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Average particle diameter, polydispersity index, and surface potential for each batch of prepared nanoparticles were deter- mined by using Zetasizer 3000HS (Malvern Instruments, UK)."
+    },
+    {
+      "span_id": "s6",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Values reported are the mean and standard deviation of three batches of nanoparticles."
+    },
+    {
+      "span_id": "s7",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "Pluronic F 68 (F68) were procured from Sigma-Aldrich Chemicals, USA."
+    },
+    {
+      "span_id": "s8",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "PLGA 75/25 (Purasorb PDLGA ⃝ R 75/25, molecular weight of 10,000) and PLGA 85/15 (Purasorb PDLGA ⃝ R 85/15, molecular weight of 10,000) were generously gifted by Purac, The Netherlands."
+    },
+    {
+      "span_id": "s9",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "En- trapment efﬁciency ranging from 57 to 80% was obtained for the formulations, and the percent drug content was low for all batches with a maximum of around 1.45 for PLGA 85/15 and PCL."
+    },
+    {
+      "span_id": "s10",
+      "source_region_type": "table_caption",
+      "source_locator_text": "TABLE_SUMMARY data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv",
+      "supporting_text": "table_id: Table 4 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: Formulation characters for the optimized nanoparticle formulations - table_role_hint: formulation - first_column_row_labels_preview: 0, PLGA 50/50 (Mean ± SD), Empty, Diameter (nm), PIa, ZPb (mV), Recovery (%), Drug content (%), EEc (%)"
+    },
+    {
+      "span_id": "s11",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Increase in concentration of F68 from 0.5 to 1.0% w/v made signiﬁcant decrease in size of nanoparticles prepared with all the polymers in the study. Above 1.0% w/v of F68, there was no sig- niﬁcant decrease in size of the particles. Therefore, 1.0% w/v of F68 was considered as optimum for the preparation of nanopar- ticles and used for optimized products."
+    },
+    {
+      "span_id": "s12",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Polydispersity index values of the formulations prepared are less than 0.9 for all formulations prepared in the study indicating narrow and ho- homogenous size distribution."
+    },
+    {
+      "span_id": "s13",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Particles prepared with F68 as sta- bilizer have signiﬁcant negative surface charge ranging around −33.38 to −18.91 mV for PLGA-copolymers and −33.14 to −23.62 mV for PCL."
+    },
+    {
+      "span_id": "s14",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "An increase in the polymer amount affected the morphology, particle size, polydispersity, zeta potential, drug content, and en- capsulation efﬁciency of the nanoparticles. Initially on increase from 25 to 50 mg, there was no signiﬁcant increase in mean size of the particles but polydispersity index was slightly increased. Nanoparticles prepared with 25 and 50 mg of polymer formed milky dispersions without any agglomerates. For formulations withPLGA-copolymers,increaseinamountto100mgincreased the size (167.8 and 235.4 nm for 100 and 200 mg, respectively, forPLGA50/50)"
+    },
+    {
+      "span_id": "s15",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "But in formulations prepared with PCL, agglomeration started with 100 mg and when increased to 200 mg, agglomeration was very high leading to precipitation of polymer into large ﬂakes."
+    },
+    {
+      "span_id": "s16",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA 50/50 (×24,000), (B) PLGA 75/25 (×20,000), (C) PLGA 85/15 (×21,000) and (D) PCL (×24,000)."
+    },
+    {
+      "span_id": "s17",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "polymer (50 mg)"
+    },
+    {
+      "span_id": "s18",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "etoposide (5 mg)"
+    },
+    {
+      "span_id": "s19",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "F68asstabilizer(1.0%w/v)"
+    },
+    {
+      "span_id": "s20",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "nanoprecipitation method"
+    },
+    {
+      "span_id": "s21",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "moderate magnetic stirring"
+    },
+    {
+      "span_id": "s22",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "35◦C"
+    },
+    {
+      "span_id": "s23",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "1 hr"
+    },
+    {
+      "span_id": "s24",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "14,000 rpm"
+    },
+    {
+      "span_id": "s25",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "25◦C"
+    },
+    {
+      "span_id": "s26",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "10 min"
+    },
+    {
+      "span_id": "s27",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "–20◦C"
+    },
+    {
+      "span_id": "s28",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "20 hr"
+    },
+    {
+      "span_id": "s29",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "1 mbar"
+    },
+    {
+      "span_id": "s30",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "–110◦C"
+    },
+    {
+      "span_id": "s31",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "polymer amount (25, 50, 100, and 200 mg)"
+    },
+    {
+      "span_id": "s32",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "concentration of stabilizer (0.5, 0.75, 1.0, and 2.0% w/v)"
+    },
+    {
+      "span_id": "s33",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "etoposide amount (2.5, 5, 10, and 20 mg)"
+    },
+    {
+      "span_id": "s34",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "size"
+    },
+    {
+      "span_id": "s35",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "zeta potential"
+    },
+    {
+      "span_id": "s36",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "entrap- ment efﬁciency"
+    },
+    {
+      "span_id": "s37",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Average particle diameter"
+    },
+    {
+      "span_id": "s38",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "polydispersity index"
+    },
+    {
+      "span_id": "s39",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "surface potential"
+    },
+    {
+      "span_id": "s40",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "free drug content"
+    },
+    {
+      "span_id": "s41",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "Pluronic F 68 (F68)"
+    },
+    {
+      "span_id": "s42",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "PLGA 75/25"
+    },
+    {
+      "span_id": "s43",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "PLGA 85/15"
+    },
+    {
+      "span_id": "s44",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "PCL"
+    },
+    {
+      "span_id": "s45",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "etoposide"
+    },
+    {
+      "span_id": "s46",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "1.0% w/v of F68 was considered as optimum"
+    },
+    {
+      "span_id": "s47",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "size (167.8 and 235.4 nm for 100 and 200 mg, respectively, forPLGA50/50)"
+    },
+    {
+      "span_id": "s48",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA 50/50"
+    },
+    {
+      "span_id": "s49",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA 75/25"
+    },
+    {
+      "span_id": "s50",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA 85/15"
+    },
+    {
+      "span_id": "s51",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PCL"
+    },
+    {
+      "span_id": "s52",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "The optimized formulation"
+    },
+    {
+      "span_id": "s53",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Drug free nanoparticles"
+    },
+    {
+      "span_id": "s54",
+      "source_region_type": "table_caption",
+      "source_locator_text": "TABLE_SUMMARY data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv",
+      "supporting_text": "Formulation characters for the optimized nanoparticle formulations"
+    },
+    {
+      "span_id": "s55",
+      "source_region_type": "table_caption",
+      "source_locator_text": "TABLE_SUMMARY data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv",
+      "supporting_text": "Formulation table with drug/polymer/loading variables."
+    },
+    {
+      "span_id": "s56",
+      "source_region_type": "table_column_header",
+      "source_locator_text": "TABLE_SUMMARY data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv",
+      "supporting_text": "Diameter (nm), PIa, ZPb (mV), Recovery (%), Drug content (%), EEc (%)"
+    },
+    {
+      "span_id": "s57",
+      "source_region_type": "table_row",
+      "source_locator_text": "TABLE_SUMMARY data/cleaned/content_goren_2025/tables/5GIF3D8W/5GIF3D8W__table_04__pdf_table.csv",
+      "supporting_text": "PLGA 50/50 (Mean ± SD)"
+    },
+    {
+      "span_id": "s58",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "polymer amount"
+    },
+    {
+      "span_id": "s59",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "concentration of stabilizer"
+    },
+    {
+      "span_id": "s60",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "etoposide amount"
+    },
+    {
+      "span_id": "s61",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "1.0% w/v"
+    },
+    {
+      "span_id": "s62",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "percent drug content was low for all batches with a maximum of around 1.45 for PLGA 85/15 and PCL."
+    },
+    {
+      "span_id": "s63",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "−33.38 to −18.91 mV for PLGA-copolymers and −33.14 to −23.62 mV for PCL."
+    },
+    {
+      "span_id": "s64",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "less than 0.9"
+    },
+    {
+      "span_id": "s65",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "57 to 80%"
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "unobs_reporting_std",
+      "category": "reported_but_unassigned",
+      "note": "Reporting standard for values as mean and standard deviation of three batches.",
+      "evidence_span_ids": [
+        "s6"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 4",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "s10"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 4",
+      "varying_variables": [
+        "Polymer type"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Polymer type"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "",
+      "selected_variable": "concentration of stabilizer",
+      "selected_value": "1.0% w/v",
+      "explicit": true,
+      "evidence_span": "s11"
+    }
+  ],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 4",
+      "inherits_from_preparation": true,
+      "evidence_span": "s1"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 4",
+      "is_doe": false
+    }
+  ]
+}

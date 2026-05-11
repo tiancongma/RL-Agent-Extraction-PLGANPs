@@ -1,0 +1,1410 @@
+Contents lists available at ScienceDirect
+Journal of Infection and Public Health
+journal homepage: www.elsevier.com/locate/jiph
+Original Article
+Levofloxacin loaded chitosan and poly-lactic-co-glycolic acid nano-
+particles against resistant bacteria: Synthesis, characterization and
+antibacterial activity
+Rabia Hayee a, Mehwish Iqtedar b, Norah A. Albekairi c, Abdulrahman Alshammari c,⁎,
+Mauhammad Atif Makhdoom d, Muhammad Islam a, Nadeem Ahmed e,
+Muhammad Fawad Rasool f, Chen Li g, Hamid Saeed a,⁎
+a Department of Pharmaceutics, College of Pharmacy, University of the Punjab, Allama Iqbal Campus, 54000 Lahore, Pakistan
+b Department of Biotechnology, Lahore College for Women University, Jail Road, Lahore, Pakistan
+c Department of Pharmacology and Toxicology, College of Pharmacy, King Saud University, Post Box 2455, Riyadh 11451, Saudi Arabia
+d Institute of Metallurgy & Materials Engineering, University of the Punjab Lahore, Pakistan
+e Center of Excellence in Molecular Biology, University of the Punjab, Lahore, Pakistan
+f Faculty of Pharmacy, Bahauddin Zakariya University, Bason Road, Multan, India
+g Dept. of Pathology and Physiopathology, Guangxi Key Laboratory of Tumor Immunology and Microenvironmental Regulation, Guilin Medical University, Guilin,
+Guangxi, China
+a r t i c l e  i n f o
+Article history:
+Received 2 January 2024
+Received in revised form 18 March 2024
+Accepted 19 March 2024
+Keywords:
+Bacterial resistance
+Levofloxacin
+Nano-particles
+Chitosan
+PLGA
+a b s t r a c t
+Background: With the global increase in antibacterial resistance, the challenge faced by developing coun­
+tries is to utilize the available antibiotics, alone or in combination, against resistant bacterial strains. We
+aimed to encapsulate the levofloxacin (LVX) into polymeric nanoparticles using biodegradable polymers i.e.
+Chitosan and PLGA, estimating their physicochemical characteristics followed by functional assessment as
+nanocarriers of levofloxacin against the different resistant strains of bacteria isolated from biological
+samples collected from tertiary care hospital in Lahore, Pakistan.
+Methods: LVX-NPs were synthesized using ion gelation and double emulsion solvent-evaporation method
+employing chitosan (CS) and poly-lactic-co-glycolic acid (PLGA), characterized via FTIR, XRD, SEM, and
+invitro drug release studies, while antibacterial activity was assessed using Kirby-Bauer disc-diffusion
+method.
+Results: Data revealed that the levofloxacin-loaded chitosan nanoparticles showed entrapment efficiency of
+57.14%  ±  0.03 (CS-I), 77.30%  ±  0.08(CS-II) and 87.47%  ±  0.08 (CS-III). The drug content, particle size, and
+polydispersity index of CS-I were 52.22%  ±  0.2, 559 nm  ±  31 nm, and 0.030, respectively, whereas it was
+66.86%  ±  0.17, 595 nm  ±  52.3 nm and 0.057, respectively for CS-II and 82.65%  ±  0.36, 758 nm  ±  24 nm and
+0.1, respectively for CS-III. The PLGA-levofloxacin nanoparticles showed an entrapment efficiency of
+42.80%  ±  0.4 (PLGA I) and 23.80%  ±  0.4 (PLGA II). The drug content, particle size and polydispersity index of
+PLGA-I were 86%  ±  0.21, 92 nm  ±  10 nm, and 0.058, respectively, whereas it was 52.41%  ±  0.45,
+313 nm  ±  32 nm and 0.076, respectively for PLGA-II. The XRD patterns of both polymeric nanoparticles
+showed an amorphous nature. SEM analysis reflects the circular-shaped agglomerated nanoparticles with
+PLGA polymer and dense spherical nanoparticles with chitosan polymer. The in-vitro release profile of
+PLGA-I nanoparticles showed a sustained release of 82% in 120 h and it was 58.40% for CS-III. Both types of
+polymeric nanoparticles were found to be stable for up to 6 months without losing any major drug content.
+Among the selected formulations, CS-III and PLGA-I, CS-III had better antibacterial potency against gram+ve
+and gram-ve bacteria, except for K. pneumonia, yet, PLGA-I demonstrated efficacy against K. pneumonia as
+Journal of Infection and Public Health 17 (2024) 906–917
+https://doi.org/10.1016/j.jiph.2024.03.023
+1876-0341/© 2024 The Author(s). Published by Elsevier Ltd on behalf of King Saud Bin Abdulaziz University for Health Sciences. This is an open access article under the CC BY-NC-
+ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+]]]]
+]]]]]]
+⁎ Correspondence to: College of Pharmacy, University of the Punjab, Lahore,
+Pakistan.
+E-mail addresses: rabiahayee1@gmail.com (R. Hayee),
+miqtedar@gmail.com (M. Iqtedar), nalbekairi@ksu.edu.sa (N.A. Albekairi),
+abdalshammari@ksu.edu.sa (A. Alshammari),
+atif.imme@pu.edu.pk (M.A. Makhdoom), islam.pharmacy@pu.edu.pk (M. Islam),
+nadeem.cemb@pu.edu.pk (N. Ahmed), fawadrasool@bzu.edu.pk (M.F. Rasool),
+chenli@glmc.edu.cn (C. Li), hamid.pharmacy@pu.edu.pk (H. Saeed).
+
+per CSLI guidelines. All formulations did not exhibit any signs of hemotoxicity, nonetheless, the CS-NPs tend
+to bind on the surface of RBCs.
+Conclusion: These data suggested that available antibiotics can effectively be utilized as nano-antibiotics
+against resistant bacterial strains, causing severe infections, for improved antibiotic sensitivity without
+compromising patient safety.
+© 2024 The Author(s). Published by Elsevier Ltd on behalf of King Saud Bin Abdulaziz University for Health
+Sciences. This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/li­
+censes/by-nc-nd/4.0/).
+1. Introduction
+Undoubtedly, antibiotics have been widely used by humans over
+the past 60 years, either as prophylaxis or as a therapeutic option,
+against various infections [1] – contributing to significantly reduced
+infection-associated mortality. [2] Among others, Levofloxacin (LVX),
+a third-generation fluoroquinolone, is known to be a drug of choice
+in many infections including gram-negative, gram-positive, and
+atypical pathogens – controlling urinary tract, respiratory tract, skin,
+and soft tissue infections [3]. However, it requires frequent dosing
+and exhibits diverse pharmaceutical concentrations in the blood. [4]
+Additionally, in Pakistan, quinolones have shown resistance against
+enterobacteria and salmonella typhi [5,6].
+The use of nanocarriers to deliver antibiotics has been well-
+documented to help overcome the current limitations associated
+with antibiotic therapy. [7] In this context, many efforts have been
+made to develop a sustained delivery system of LVX in the form of
+capsulate [8], filament [9], microsphere [10], and nanoparticles. [4,7]
+In these efforts, several natural polymers, such as alginate or chit­
+osan (CS), synthetic polymers, such as polycaprolactone (PCL) and
+poly(lactic-co-glycolic acid) (PLGA) are extensively used. [7] PLGA,
+the most widely used biodegradable and biocompatible polymer in
+the preparation of nanoparticles, is approved by the Food and Drug
+Administration (FDA) for human use. [11] On the other hand, chit­
+osan (CS), a natural polymer, cationic in nature, water-soluble, bio­
+compatibility, and low toxicity makes it an attractive choice for the
+preparation of nano-carriers. [12] Numerous literature report de­
+monstrated the loading of LVX in several polymeric nanoparticles,
+e.g., LVX-CS nanoparticles for ocular delivery, [13], LVX-PLGA nano­
+particles for antibacterial activity against gram-negative (-) and
+gram-positive (+) bacteria, [14] LVX-PLGA nano-particles against
+mycobacterium tuberculosis. [15] More recently, an attempt has
+been made to optimize the preparation of both LVX-CS and LVX-
+PLGA nano-particles using ion-gelation and double-emulsion solvent
+evaporation methods, respectively [7].
+Besides, both polymers, CS and PLGA, have been utilized to pre­
+pare bioactive luteolin loaded CS-PLGA-NPs employing emulsifica­
+tion-evaporation process demonstrating 3.19 and 2.63 folds
+improvements in AUC as evidenced from permeation and pharma­
+cokinetic studies, respectively [16]. Likewise, using both CS and
+PLGA, forskolin and rutin loaded CS-coated PLGA-NPs were prepared
+for improved ocular delivery. The prepared NPs showed sustained
+release of forskolin and rutin with significantly high permeation [17].
+Similarly, forskolin loaded CS coated PLGA-NPs enhanced ocular
+hypotensive effects attributable to forskolin release and enhanced
+permeation profile [18]. Furthermore, metal nano-composites, such
+as iron, titanium dioxide and iron oxide, have been used with
+fluoroquinolone antibiotics, e.g., ciprofloxacin (CIP), to further im­
+prove the use of CIP against resistant bacteria, i-e., E.coli in mastitis
+induced rabbit model with no changes in rabbit vital organs [19]. In a
+similar attempt, CIP loaded gold (Au) nanoparticles were prepared to
+test against the colonization of Enterococcus faecalis in the liver and
+kidney of mice. Data suggested that CIP-Au-NPs successfully eradi­
+cated Enterococcus faecalis from the host tissues [20]. These data
+clearly suggest that use of both CS and PLGA significantly enhanced
+the delivery of antibiotics to the target site improving the permea­
+tion and pharmacokinetic profile of the drug. Studies from Pakistan
+suggest that the most common isolated pathogens from the clinical
+settings include, Pseudomonas aeruginosa, Staphylococcus aureus,
+Escherichia coli, Klebsiella pneumonia isolated from pus, tracheal se­
+cretions, urine and blood [21]. In this context, the number of AMR
+deaths in Pakistan is higher than deaths from neoplasms, respiratory
+infections, tuberculosis, diabetes and kidney disease with greater
+number of deaths related to E. coli, S. aureus, P. aeruginosa, and K.
+pneumonia [22]. However, the use of LVX loaded polymeric, CS and
+PLGA, nanoparticles against the resistant bacterial strains, Gram
+negative; E. coli, P. aeruginosa, and K. pneumonia and Gram Positive;
+S. aureus and S. pneumonia and Methicillin Resistant S. aureus, MRSA,
+from patient biological samples, prevalent in a tertiary care hospital
+of Lahore, Pakistan, have not been investigated before. Thus, the
+present study, to our knowledge the first report, was aimed at the
+development of various LVX loaded polymeric, CS and PLGA, nano-
+formulations by altering polymer (CS) and surfactant (PVA) con­
+centrations to examine their antibacterial activity against resistant
+gram-negative and gram-positive bacterial strains form patient
+biological samples.
+2. Materials and methods
+2.1. Materials & biological samples
+The Levofloxacin hemihydrate used as a drug sample was gifted
+by Neon Chemicals Ltd. (batch no. DC-004–1911001). All the che­
+micals used in this study were of analytical grade; Low molecular
+weight
+Chitosan
+50,000-
+190,000-Dalton
+(Sigma
+Aldrich,
+CAS#9012–76-4 lot# STBH6262), Sodium tripolyphosphate (Sigma
+Aldrich, CAS#72061 lot#BCCC2990), Sodium Hydroxide (Merck,
+Germany) and Glacial Acetic Acid (Sigma Aldrich, USA), PLGA, or Poly
+(lactic-co-glycolic acid) 50:50 IV 1.0 dl/g (Polysciences, Inc. USA.
+Lot# A777168), Polyvinyl Alcohol, the average molecular weight of
+30,000 to 70,000 Dalton (Sigma Aldrich, USA) and Dichloromethane
+(Reagents, Duksaw). PBS tablets (Sigma Aldrich, USA) and levo­
+floxacin discs (Oxoid, Catalog No. CT1587B).
+Muller Hilton Agar for sensitivity test (Oxoid, CM0337).
+Dialysis tubing (12,000–14,000 molecular weight), and Medicell
+Membranes Ltd. Identification discs (Blank) were purchased from
+Abtek Biologicals Ltd, UK. The commercially available levo­
+floxacin discs (Oxoid, Catalog No. CT1587B) were used as re­
+ference standards.
+Six species of resistant bacteria were isolated from the patient
+samples of blood, urine, and tracheal aspirate gifted by the Ittefaq
+Hospital Trust, Lahore to carry out the antibacterial studies. Gram-
+negative bacteria included Escherichia coli, Pseudomonas aeruginosa,
+and
+Klebsiella
+pneumonia.
+Gram-positive
+bacteria
+included
+Staphylococcus aureus and Streptococcus pneumonia and Methicillin
+Resistant Staphylococcus aureus, MRSA.
+For toxicological studies, washed peripheral red blood cells
+(PRBCs) were obtained from the blood bank of Ittefaq Hospital Trust,
+Lahore.
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+907
+
+2.2. Preparation methods
+2.2.1. Synthesis of blank nanoparticles
+Synthesis of blank nano-particles are described in supplementary
+material.
+2.2.2. Synthesis of chitosan-based nanoparticles
+2.2.2.1. Levofloxacin loaded chitosan (LVX-CS) nanoparticles. The
+different composition of LVX and CS for the preparation of LVX-CX-
+NPs are summarized in Table S1. Different concentrations of
+Chitosan gel solution (i.e. 2 mg/mL, 4 mg/mL and 6 mg/mL) were
+prepared by dissolving the chitosan in 1% glacial acetic acid. These
+solutions were subjected to continuous stirring overnight by
+magnetic stirrer at 300–400 rpm speed until a clear gel solution
+was obtained. The resultant solution pH was adjusted at 4.7 to 5.0 by
+dropwise adding 1 M NaOH. The chitosan solution was then filtered
+with syringe filter having pore size 0.45 µm. To aforementioned
+prepared gel solution of different concentrations, constant amount
+of LVX was added in three different ratios, 1:1, 1:2 and 1:3 and
+stirred for 1 h. The aqueous solution of sodium tripolyphosphate was
+prepared in accordance with the concentration of polymer i.e. 1:1,
+1:2 and 1:3. The sodium tripolyphosphate solution was added
+dropwise into the drug-chitosan solutions at rate of 12 mL/hour
+with vigorous stirring, 700–800 rpm, at room temperature to obtain
+CS-I, CS-II and CS-III. These solutions were subjected to probe
+sonication for 5 min with amplitude of 40%. The suspensions were
+then homogenized on magnetic stirring for 2 h to evaporate the
+organic solvent. The resultant final suspensions (CS-I, CS-II and CS-
+III) were then subjected to ultracentrifugation at 12000 rpm for
+40 mins. Later, the collected pellets from supernatant were washed
+with deionized water to remove free drug from pellets. The
+supernatants were then analyzed further to determine the drug
+entrapment efficiency. These pellets were again suspended in
+deionized water by magnetic stirring and then ultracentrifuged at
+speed of 12000 rpm for 40 min. The washing process repeated in
+triplicate to completely remove the excess free drug.
+The resultant pellets were then suspended in deionized water
+and freeze dried at 0.4mbar and − 40ᵒC for 24 h. This lyophilized
+levofloxacin loaded chitosan nanoparticles of different con­
+centrations were stored at 2–4ᵒC for further characterization. The
+two more batches were prepared with same abovementioned
+technique to determine the reproducibility of the method.
+[4,7,23,24]. The schematic diagram of LVX-CS-NPs synthesis I s
+shown in Fig. 1A.
+2.2.3. Synthesis of PLGA-based nanoparticles
+The PLGA nanoparticles were prepared with and without loading
+the levofloxacin by double emulsion-solvent evaporation tech­
+nique [25].
+2.2.3.1. Levofloxacin-loaded PLGA (LVX-PLGA) nanoparticles. LVX-
+PLGA nanoparticles were prepared using varying the concentration
+of PVA (1% and 2%), while keeping levofloxacin and polymer ratios
+constant, i-e., 1:2 (Table S2) (Fig. 1B).
+Briefly, PLGA was dissolved in 10 mL DCM by vortexing.
+Levofloxacin was added in 6 mL of PVA solution with vigorous stir­
+ring until a clear solution. Next, 5 mL of the organic phase was added
+drop-wise in the aqueous phase on a magnetic stirrer containing
+drug and stabilizer PVA to form an oil-water (o/w) emulsion. The
+emulsion is subjected to probe sonication for 90 s at 40% amplitude.
+The resultant o/w emulsion was added dropwise into the remaining
+5 mL organic phase with constant stirring to form a double emulsion
+and re-sonicated under the same conditions. This double emulsion
+was added drop-wise in PVA solution to stabilize the double emul­
+sion followed by sonication for 5.5 min at 40% amplitude. The or­
+ganic solvent was placed on a magnetic stirrer for overnight
+evaporation. Pellets were obtained by centrifugation, washed with
+deionized water, and suspended again in deionized water followed
+by centrifugation for 40 min at 12000 rpm. The centrifugation and
+washing were done twice to remove the free drug. The supernatant
+was stored The obtained levofloxacin-loaded PLGA nanoparticles
+were freeze-dried at 0.4 m bar and − 40ᵒC for 24 h. The nanoparticles
+were stored at 2–4ᵒC. The schematic diagram of LVX-PLGA-NPs
+synthesis I s shown in Fig. 1B.
+2.3. Characterization
+2.3.1. Fourier transform infrared spectroscopy (FTIR)
+The FTIR spectra were obtained for the following; free-LVX, poly­
+mers; CS, PLGA, blank PLGA-NPs & CS-NPs, levofloxacin loaded PLGA
+nanoparticles (LVX-PLGA-NPs) and chitosan nanoparticles (LVX-CS-NPs)
+via Cary 630 FTIR spectrometer (Benchtop FTIR instrument). All spectra
+were obtained by scanning the samples in IR from 400 to 4000 cm−1
+range with 8 cm−1 spectra resolution and beam size of 10–100 µm. A
+total three scans were obtained for each sample and the best one was
+chosen for comparison. The spectra of free-LVX, CS, CS-NPs, and LVX-CS-
+NPs were compared, likewise, spectra of free-LVX, PLGA, PLGA-NPs, and
+LVX-PLGA-NPs were compared.
+Fig. 1. Schematic diagram of the synthesis of Levofloxacin nanoparticles. (A) Scheme of the synthesis of LVX-CS nanoparticles. (B) Scheme of the synthesis of LVX-PLGA nano­
+particles.
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+908
+
+2.3.2. Percentage entrapment efficiency (EE)
+The percentage entrapment efficiency of the prepared NPs, LVX-
+CS and LVX-PLGA, were directly determined by dissolving known
+mass of both lyophilized LVX-CS-NPs and LVX-PLGA-NPs in 5 mL of
+their respective solvents and centrifugation at 12000 rpm for 40 min.
+The amount of incorporated drug in the precipitates of the cen­
+trifuged nanosuspension was measured via UV–visible spectro­
+photometer at 288 nm wavelength. Thereafter, using previously
+obtained typical standard curve [26] the percentage entrapment
+efficiency (EE%) of LVX in CS and PLGA was determined using fol­
+lowing formula
+=
+×
+Entrapment
+efficiency
+total
+amount
+of
+drug
+nonbound
+drug
+total
+drug
+100
+(1.1)
+2.3.3. Percentage drug content
+The drug content study was performed as described previously
+[20]. In summary, using a UV spectrophotometer the amount of LVX
+loaded onto CS and PLGA-NPs was quantified by comparing it with
+standard curve of free (standard) levofloxacin.
+Determination of drug content of levofloxacin loaded chitosan na­
+noparticles.
+5 mg of LVX-CS-NPs were dissolved in 5 mL of 1% glacial acetic
+acid with continuous magnetic stirring for 12 h. The collected su­
+pernatant was assayed in triplicates by a UV spectrophotometer at
+288 nm. Absorbance was noted and concentration was determined
+with a reference calibration curve of standard levofloxacin. % Drug
+content was determined by the following formula in the equation
+=
+×
+Drug
+content
+weight
+of
+drug
+in
+nanoparticles
+weight
+of
+nanoparticles
+100
+%
+(1.2)
+2.3.3.1. Determination of drug content of levofloxacin-loaded PLGA
+nanoparticles. 5 mg of LVX-PLGA-NPs were dissolved in 5 mL of
+DCM and 5 mL of deionized water with continuous magnetic
+stirring for 8 h. The collected supernatant was assayed in
+triplicates by a UV spectrophotometer at 288 nm. Absorbance was
+recorded and concentration was determined with the reference
+calibration curve of standard levofloxacin. % Drug content was
+determined by the drug content formula Eq. 1.2.
+2.3.4. Particle size analysis
+The particle size of LVX-NPs (PLGA and Chitosan-based) was
+determined by using a BT-90 Nano laser particle size analyzer. The
+required quantity of nanoparticles was dissolved in deionized water
+and sonicated on a bath sonicator for 30 min to reduce particle ad­
+hesion. This solution is diluted to maintain the photon number in the
+range of 20–40 K. The sample was run for 3 min at 30ᵒC. Six mea­
+surements were taken for each sample and the average of those
+values (standard deviation) were considered.
+2.3.5. Scanning
+electron
+microscope-energy
+dispersive
+X-ray
+spectroscopy (SEM-EDX)
+The surface morphology of LVX-NPs was observed via scanning
+electron microscopy. It was carried out on SEM (model S-3400)
+operated at 10–15KV voltage. The Samples were placed directly onto
+the SEM by double-sided sticking tape and then coated with ion
+sputter-gold spray. Micro-images were obtained on different re­
+solutions from 10–100 µm.
+2.3.6. X-ray diffraction patterns
+The patterns of X-ray diffraction were determined for polymeric
+LVX-NPs. XRD measurements were taken by exposing the samples in
+monochromatic nickel-filtered copper radiations in an X-ray dif­
+fractometer (D8 Advance, Bruker).
+2.3.7. In-vitro dissolution profile
+The in-vitro dissolution study of polymeric LVX-NPs was carried
+out using dissolution apparatus USP II with dialysis tubing method
+to determine the sustained release pattern of both types of nano­
+particles i.e. LVX-CS-NPs and LVX-PLGA-NPs. Briefly, the dialysis
+membrane was pre-treated with distilled water for 4 h to remove
+glycerol and placed overnight in a buffer solution, pH 7.4 (Sodium
+chloride NaCl 0.137 M and potassium chloride KCl 0.0027 M) at 25ᵒC.
+In a plastic tube, 5 mg of levofloxacin-loaded nanoparticles
+equivalent to 5 mg of LVX with 2 mL PBS solution were added, the
+base of which was enclosed with a presoaked dialysis membrane.
+The dialysis tubing system was affixed on a paddle in a separate
+dissolution flask containing 90 mL dissolution medium at pH 7.4 and
+37ᵒC temperature. The sink conditions were maintained by dissol­
+ving of NPs in fresh medium time to time, ensuring adequate volume
+of dissolution medium and removing the dissolved drug by parti­
+tioning it [27]. The paddles were rotated at 100 rpm for 72 h. Next,
+4 mL of the medium was drawn from each vessel according to pre-
+determined time intervals i.e., 2 h, 4 h, 6 h, 8 h, 12 h, 24 h, 36 h, 48 h,
+and 72 h. The obtained media were then centrifuged and filtered
+before assay using a UV spectrophotometer at a wavelength of
+288 nm. An equal quantity of fresh PBS was added back to the dis­
+solution medium to replace the lost fluid. [28].
+The dissolution release rate curve was determined by the fol­
+lowing formulas
+=
+Concentration
+of
+drug
+Absorbance
+intercept
+Slope
+(1.3)
+=
+×
+×
+Amount
+of
+drug
+concentration
+dilution
+factor
+volume
+of
+dilution
+media
+1000
+(1.4)
+=
+×
+drug
+release
+amount
+of
+drug
+dose
+100
+%
+(1.5)
+2.3.8. Stability studies
+Stability studies were conducted to determine the stability of
+LVX-NPs by keeping them in amber glass bottles wrapped with
+aluminum foil and kept in an incubator at 37 °C and 75% relative
+humidity (RH) for 6 months. The changes in appearance and drug
+content were investigated after 1 month, 3 months and 6 months.
+2.4. Biological assay
+2.4.1. Biological samples
+The blood samples of febrile patients were collected in Versatrek
+Redox 1 (aerobic) and Redox 2 (anaerobic). The samples of febrile
+patients were collected included urine, tracheal swabs, and wound
+swabs. The samples were inoculated with the help of a needle/in­
+oculating loop on agar culture media plates under a laminar flow
+hood and were incubated for 72 h at 37ᵒC. The plates were examined
+after every 24 h. The collecting colonies were identified by using
+VITEK 2 identification (ID) GN, by uploading directly and after ad­
+justing the turbidity of colony suspension (greater than 0.5
+McFarland). [29,30].
+2.4.2. In-vitro antibacterial studies
+The antibacterial activity of Blank, free-LVX, LVX-CS-NPs, and LVX-
+PLGA-NPs against gram-negative; Escherichia coli, Pseudomonas aerugi­
+nosa, and Klebsiella pneumonia, gram-positive bacteria; Staphylococcus
+aureus
+and
+Streptococcus
+pneumonia
+and
+Methicillin
+Resistant
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+909
+
+Staphylococcus aureus, MRSA was carried out via Kirby-Bauer Disk
+Diffusion susceptibility test method employing Muller Hinton agar. [31]
+The bacterial strains of both gram-negative and gram-positive bacteria
+were spread on different culture media, such as blood base, DNASE agar,
+MacConkey, Cled medium with Andrade indicator, chocolate, and Muller
+Hinton agar using sterile cotton swabs.
+Sterile blank discs were placed in petri dishes 5 mm apart. By
+using a micropipette, a fixed volume of 10uL (containing levo­
+floxacin) was loaded on each disc in a laminar flow hood. After
+drying 10 μL solution was again instilled on each disc and dried at
+37ᵒC for 4 h, and later transferred to a sterile air-tight container
+followed by storage in a freezer at − 20ᵒC with CaCl2 as a desiccant.
+2.4.2.1. Kirby-Bauer disc diffusion method. The biological samples
+demonstrating positive growth of bacterial species were selected
+for further antibacterial susceptibility studies. The prepared Muller
+Hinton plates were inoculated with isolated colonies by streak
+method. The desired discs i.e. impregnated with LVX-PLGA-NPs,
+LVX-CS-NPs, and commercially available free-levofloxacin were
+placed in the plates with the help of a needle. The commercial
+antibiotic discs were used as standard and the prepared
+nanoparticles were loaded onto blank discs. Plates were incubated
+for the next 24 h. After 24 h of incubation, the zone of inhibition was
+measured with a measuring scale in mm for each disc. [32].
+2.4.2.2. Minimum inhibitory concentration (MIC). The MIC of LVX-CS-
+NPs and LVX-PLGA-NPs was determined using the standard broth
+serial microdilution method. The bacterial inoculums were adjusted
+to the concentration of 6 × 105 CFU/mL. For every experiment
+negative control (medium only) and positive control (medium and
+inoculum) were included in 96-well micro-well plates. In each well
+medium and test compounds were added and serially diluted
+followed by the addition of bacterial inoculum and incubation at
+37 °C for 18 – 24 h. The absorbance of the wells was read at 570 nm
+using microtiter plate reader. The lowest concentration of
+antibacterial agent that inhibits bacterial growth was considered
+as MIC value.
+2.4.3. In-vitro toxicological studies
+The in vitro toxicological studies were conducted to determine
+the safety margin of prepared polymeric nanoparticles, LVX-CS, LVX-
+PLGA - 50 μg/mL, 500 μg/mL, 1 mg/mL, and 5 mg/mL in EP glass vial
+for 1 h at 37ᵒC. The cytotoxic effects were estimated by employing
+human erythrocytes. The fresh human blood was obtained from
+Blood Bank Ittefaq Hospital Trust, Lahore. The red blood cells (RBCs)
+were incubated in PBS (control), with free-LVX, LVX-CS, and LVX-
+PLGA, all in triplicates. The treatment effects of nanoparticles were
+compared with the control concerning erythrocyte morphology and
+erythrocyte sedimentation rate (ESR) [33].
+2.4.4. Statistical analysis
+Data were analyzed using GraphPad Prism version 9. Significant
+differences among the groups were estimated using one way
+ANOVA. An alpha value to 0.05 or more was considered statistically
+significant.
+3. Results
+In this study, two types of levofloxacin-loaded nanoparticles
+(LVX-NPs) were prepared using two different polymers, i.e., Poly
+lactic-co-glycolic Acid (PLGA) and low molecular weight chit­
+osan (CS).
+3.1. UV Spectra, encapsulation efficiency, and drug loading capacity of
+nanoparticles
+The drug loading capacity (LC), was estimated via LVX calibration
+curve (Fig. 2A). The LC of LVX-CS-NPs; CS-I, CS-II and CS-III was
+52.2%  ±  0.2%, 66.86%  ±  0.17%, and 82.65%  ±  0.36, respectively. The
+LC of PLGA-I and PLGA-II formulations was 86%  ±  0.21 and
+52.41  ±  0.45, respectively (Table 1).
+UV spectra obtained showed the presence of LVX in polymeric
+PLGA and CS NPs (Fig. 2B), with maximum absorbance at 288 nm.
+Among various LVX-CS-NPs, the CS-III formulation exhibited a
+maximum encapsulation of 87.47% ±  0.08, while CS-I exhibited the
+lowest encapsulation of 57.14%.  ±  0.03 The entrapment efficiency
+(EE) of PLGA-I and PLGA-II nanoparticles was 42.8%  ±  0.65% and
+23.08%  ±  0.4, respectively (Table 1).
+Fig. 2. UV and FTIR spectra of free-LVX, CS-blank, PLGA-blank, LVX-CS-NPs and LVX-PLGA-NPs. A) LVX calibration curve, B) UV spectra of free-LVX, LVX-CS-NPs, LVX-PLGA-NPs. C)
+FTIR spectra of CS, D) FTIR spectra of different LVX-CS-NPs, E) FTIR spectra of PLGA, F) FTIR spectra of different LVX-PLGA-NPs.
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+910
+
+3.2. Size and polydispersity index of nanoparticles
+As shown in Table 1, NPs synthesized using a 1:1 ratio of LVX and
+CS (CS-I) demonstrated the smallest particle size of 559 nm, followed
+by the particle size of 595 nm and 758 nm for 1:2 (CS-II) and 1:3 (CS-
+III), respectively. The particle sizes of LVX-PLGA-I (PVA1%) and LVX-
+PLGA-II (PVA2%) were 92 nm and 313 nm, respectively, keeping the
+LVX-PLGA ratios constant (Table 1). The polydispersity index (PI), a
+measure of heterogeneity in a sample based on size, was 0.030 and
+0.057 for CS-1, and CS-II, respectively, and 0.058 for PLGA-I, sug­
+gesting more of a mono-dispersion system compared to 0.1 for CS-III
+and 0.076 for PLGA-II (Table 1).
+3.3. Fourier transfer infrared (FTIR) spectra
+FTIR spectra were performed to determine characteristic peaks of
+a pure drug in synthesized nanoparticles.
+3.4. FTIR spectra of LVX-CS-NPs
+FTIR spectra of free-levofloxacin (LVX), CS polymer, sodium tri­
+polyphosphate, and LVX-CS-NPs; CS-I, CS-II, and CS-III are docu­
+mented in Table 2. The LVX spectrum exhibited characteristic peaks
+at 3265.cm−1 due to COOH (aromatic), 2933 cm−1 due to C-CH3 (C-
+methyl group), 1722 cm−1 due to C]O i.e., carbonyl group, 1295 cm−1
+due to C-N group and 1088 cm−1 due to Fluoro group (Fig. 2C). The
+FTIR spectra of chitosan and blank chitosan nanoparticles showed
+characteristic peaks at 3358 cm−1 linked to an amino group (NH2)
+and a hydroxyl group (OH) stretching vibration, while the peaks at
+1636 cm−1 and 1526 cm−1 showed the presence of CONH2 and NH2
+groups (Table 2). These peaks were shifted from 1647 cm−1 and
+1558 cm−1 in CS-blank-NPs probably due to the interaction of the
+NH3 group of chitosan and phosphate group of tripolyphosphate.
+Another significant peak in CS-blank-NPs was at 1220.7 cm−1
+showing the presence of phosphate group stretching vibration
+(Fig. 2D). The FTIR spectra of CS-I, CS-II, and CS-III showed the
+characteristic peak of both CS-NPs and a drug (LVX) in Fig. 2E. When
+the IR bands of levofloxacin, chitosan and LVX-CS nanoparticles were
+compared, a marked shift was observed in the intensity of the bands
+of LVX-CS-NPs compared to CS-blank-NPs, reflecting the ionic-in­
+teraction between chitosan and levofloxacin (Fig. 2D&E) (Table 2).
+3.4.1. FTIR spectra of LVX-PLGA-NPs
+FTIR spectra of LVX-PLGA-NPs did not show major shifts in the
+peaks. The intensity of bands representing the characteristic peaks
+remained similar in both reference and LVX-PLGA-NPs (Fig. 2F-H).
+These data demonstrated that the functional groups were intact
+with drug encapsulation in PLGA, thereby, the drug characteristic
+peaks had less intensity than PLGA (Table 3).
+3.5. X-ray diffractometry (XRD)
+The XRD analysis was performed for LVX-CS-NPs and LVX-PLGA-NPs.
+The X-ray diffraction of a pure drug showed crystalline shapes of free-
+LVX and sharp peaks, characteristic of LVX crystallinity [34]. Whereas,
+the chitosan showed two characteristic peaks as 2 = 10ᵒ and 20ᵒ. [35]. The
+PLGA is amorphous, so no crystallinity peak was observed [35].
+The XRD patterns of LVX-CS-NPs, CS-I, CS-II, CS-III, and LVX-
+PLGA-NPs, PLGA-I & PLGA-II, are shown in Fig. 3A & B. In both cases,
+reduced spectral peaks were observed. The comparative patterns of
+both LVX-PLGA-NPs and LVX-CS-NPs are shown in Fig. 3C. These
+patterns indicated the amorphous nature of both PLGA and Chit­
+osan-based LVX nanoparticles.
+3.6. In-vitro drug release study
+In-vitro drug release studies were performed and the free-LVX
+release was compared with all the formulations; CS-I, CS-II, CS-III,
+PLGA-I, and PLGA-II (Fig. 3D) (Table S1). Polymeric-Levofloxacin
+nanoparticles showed the biphasic release pattern, initially, there
+was a rapid discharge of the drug in the solution followed by the
+sustained release of LVX. The initial burst in CS-I, CS-II, and CS-III
+Table 1
+Characteristics of Levofloxacin loaded Chitosan & PLGA nanoparticles (NPs).
+Formulation Code
+Levofloxacin-loaded Chitosan Nano-particles (LVX-CS-NPs)
+Composition
+(Drug: Polymer)
+Ratio
+(Drug: Polymer)
+Particle Size (nm)
+Polydispersity Index (PDI)
+EE (%)
+LC (%)
+CS-I
+LVX-CS-NP-I
+1:1
+559 nm  ±  31 nm
+0.030
+57.14  ±  0.03
+52.22  ±  0.2
+CS-II
+LVX-CS-NP-II
+1:2
+595 nm  ±  52.3 nm
+0.057
+77.3  ±  0.08
+66.86  ±  0.17
+CS-III
+LVX-CS-NP-III
+1:3
+758 nm  ±  24 nm
+0.100
+87.47  ±  0.08
+82.65  ±  0.36
+Formulation Code
+Levofloxacin-loaded PLGA Nano-particles (LVX-PLGA-NPs)
+Composition
+(Drug-Polymer: stabilizer)
+Ratio
+(Drug-Polymer: stabilizer)
+Particle Size (nm)
+Polydispersity Index (PDI)
+EE (%)
+LC (%)
+PLGA-I
+LVX : PLGA-P VA
+1:2 & 1% PVA
+92 nm  ±  10 nm
+0.058
+42.8  ±  0.65
+86  ±  0.21
+PLGA-II
+LVX : PLGA-PVA
+1:2 & 2% PVA
+313 nm  ±  32 nm
+0.076
+23.08  ±  0.4
+52.41  ±  0.45
+Abbreviations: CS; chitosan, PLGA; poly (lactic-co-glycolic acid), nm: nanometer, EE; encapsulation efficiency, LC; loading capacity, PVA; polyvinyl alcohol
+Table 2
+Major bands in FTIR spectra of LVX, CS, LVX-CS-NPs.
+Bands
+Wavenumber cm−1
+Levofloxacin (LVX)
+Chitosan (CS)
+Blank NPs
+LVX-CS-NPs
+Functional Group
+1
+-
+3358.33
+3198.1
+3418.5113
+O-H bonding
+2
+3265.1
+-
+–
+3265.1
+OH stretch of carboxyl
+3
+-
+2875.641
+2879.4
+2931.552
+C-H
+4
+2933.4
+-
+-
+2931.552
+C-methyl stretch bond
+5
+-
+1647.48
+1636.3
+1636.3
+C]O, Amide I
+6
+1722.03
+-
+-
+1722.03
+C= =C stretch, carbonyl group
+7
+-
+1558.0272
+1526.3
+1539.39
+N-H, Amide II
+8
+1295.2
+-
+-
+1294.6
+C-N group
+9
+-
+1064.155
+1058.6
+1025.3
+C6—O
+10
+1088.3
+-
+-
+1073.47
+Fluoro group
+11
+-
+-
+1220.7
+-
+P = O
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+911
+
+showed LVX release of 25.06%, 33.96%, and 24.21%, respectively
+(Table S1). After 24 h, LVX release was 40.47%, 43.97%, and 48.65% for
+CS-I, CS-II, and CS-III, respectively. While, after 120 h, the LVX release
+was 61.21%, 58.44%, and 51.81% for CS-I, CS-II, and CS-III, respectively
+(Fig. 3D) (Table S1).
+The LVX-PLGA-NPs release profiles are shown in Table S1 and
+Fig. 2D. The initial burst release was 51.76% for PLGA-I and 39.08% for
+PLGA-II. At 120 h, the PLGA-I and PLGA-II showed % drug release of
+88.48% and 82. 60%, respectively (Fig. 3D & Table S1).
+3.7. Scanning electron microscopy (SEM)
+Scanning electron microscopy was performed to determine the
+morphology of PLGA and chitosan-based levofloxacin nanoparticles
+at a scale of 10–100 µm.
+3.7.1. SEM study of LVX-CS-NPs
+The SEM data showed that LVX-CS-NPs, CS-I, CS-II & CS-III, had
+irregular surfaces but few were seen as round with smooth surfaces,
+though with some agglomeration (Fig. 4A-Ci-ii), which might happen
+during ion-sputtering with the gold.
+Morphologically, the LVX-CS-NPs appeared dense cubical, rec­
+tangular, and spherical. They were attached, yet retained their shape.
+The addition of surfactants can improve the morphology of nano­
+particles – probably more spherical (Fig. 4A-Ci-ii).
+3.7.2. SEM analysis of LVX-PLGA-NPs
+The SEM analysis showed that LVX-PLGA-NPs, PLGA-I, and PLGA-
+II, had smooth circular surfaces but were agglomerated. There is a
+possibility that agglomeration might happen during the ion-sput­
+tering with the gold (Fig. 4D-Ei-ii).
+3.8. Stability study
+The stability data of CS-I, CS-II & CS-III, and PLGA-I and PLGA-II
+are shown in Table 4. Data suggested that there were no significant
+changes in the drug content starting from 1st month till 6th month –
+the difference was even less than 3% (Table 4). Likewise, no sig­
+nificant changes were observed in the color in the 1st, 3rd and 6th
+months (Table 4). The aggregation was observed in LVX-PLGA-NPs
+with passing time.
+3.9. Antibacterial study
+The bacteria were isolated from the patient’s blood, urine, and
+tracheal samples having high-grade fever and raised c-reactive
+Table 3
+Major bands in FTIR spectra of LVX, PLGA and LVX-PLGA-NPs.
+Bands
+Wavenumber cm−1
+Levofloxacin
+(LVX)
+Blank-PLGA
+Levofloxacin
+Loaded NPs
+Functional Group
+1
+-
+3354.01
+3406.7806
+O-H stretch
+2
+3265.1
+-
+3267.01
+OH stretch of
+carboxyl
+3
+-
+3000.507
+2933.552
+C-H
+4
+2933.4
+-
+2933.4
+Aromatic C-H
+stretching
+5
+-
+1746.25
+1753.71
+C]O
+6
+1722.03
+-
+1722.03
+C= =C stretch
+7
+-
+1086.59
+1088.83
+C-O stretch
+Fig. 3. Comparative XRD patterns of CS and PLGA nanoparticles. A) XRD patterns of different LVX-CS-NPs, CS-I, CS-II & CS-III. B) XRD patterns of different LVX-PLGA-NPs, PLGA-I
+& PLGA-II. C) XRD patterns of LVX-CS-NPs & LVX-PLGA-NPs. D) In vitro drug release profiles of different LVX-CS-NPs, LVX-PLGA-NPs & pure LVX.
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+912
+
+proteins (CRP) following their admission to Ittefaq Hospital (trust),
+Lahore. The samples were cultured and isolates were identified the
+same day via Versatrek automated microbial identification system
+and Vitek 2 identification system.
+Only CS-III and PLGA-I were selected for their antibacterial ac­
+tivity based on their characteristics, such as encapsulation efficiency,
+drug loading, etc. Data suggested that CS-III exhibited higher anti-
+bacterial activity except for Klebsiella pneumonia with an inhibition
+zone of 18 mm compared to 13 mm in PLGA-I samples (Fig. 5A-C,
+Table 5). Furthermore, against all gram-negative bacteria, CS-III de­
+monstrated greater anti-bacterial activity in terms of zone of in­
+hibition compared to PLGA-I and free-LVX. While, against gram-
+negative bacteria, almost similar zones of inhibitions were observed
+for both the formulations except for Klebsiella, which showed even
+less sensitivity against CS-III compared to free-LVX, i-e., 14 mm,
+whereas, the breakpoint of sensitivity should be equal to or greater
+than 17 mm as per CLSI guidelines, yet, the PLGA-I showed much
+better zone of inhibition i.e. 18 mm (Fig. 5A-C, Table 5).
+3.10. Toxicological study
+For toxicological studies, PLGA-I and CS-III formulations along
+with control and free-LVX were tested against freshly isolated
+human red blood cells (RBCs, n = 4). The PLGA-I and CS-III were in­
+cubated with RBCs for 1 h at 37ᵒC (Fig. 6A & B).
+The RBCs in the control and free-LVX samples demonstrated no
+morphological changes, i-e., the RBCs retained their spherical shapes
+with smooth surfaces (Fig. 6A & B). Likewise, the PLGA-I treated RBCs
+showed no changes in the morphology, no interaction with the
+surface of RBCs and no hemolysis (Fig. 6C).
+Similarly, the CS-III samples demonstrated no vivid morpholo­
+gical changes in RBCs, yet the nanoparticles adhered to the surface of
+erythrocytes, probably due to their positive ion. The RBCs retained
+their shapes but the CS-III adhered with RBCs. Also, no hemolysis
+was observed with CS-III treatment (Fig. 6D).
+4. Discussion
+Despite, several available options for antimicrobial therapy, the
+global increase in antimicrobial resistance is threatening the popu­
+lation worldwide. [36] With the number of new antibiotics egre­
+giously limited, the rising antibiotic resistance poses a continuous
+threat to confront infectious diseases [37]. Thus, the dwindled an­
+tibiotic conduits initiated a changeover in research stratagems to
+configure the existing antibiotic molecules, such as antibiotic func­
+tionalized nanoparticles and pure antibiotics engineered into na­
+noscale having potential for targeted delivery [37,38]. The present
+study demonstrated the synthesis, characterization, and anti­
+microbial sensitivity of LVX-NPs against resistant bacterial strains
+employing two different FDA-approved polymers, i-e., PLGA and
+Chitosan (CS). Three different CS-based, CS-I, CS-II & CS-III, and two
+different PLGA-based polymeric NPs, PLGA-I and PLGA-II, were
+prepared and characterized for the particle size, physiochemical
+nature, morphology, polydispersity, crystallographic structure and
+drug release profiles. Data revealed that CS-III and PLGA-I demon­
+strated the highest entrapment efficiency (EE) and loading capacity
+(LC), while CS-I and PLGA-I had smaller particle sizes. Both the for­
+mulations, CS-III and PLGA-I, had optimal drug release profiles and
+stability over 6 months, and were found effective against gram-po­
+sitive and gram-negative resistant bacterial strains compared to
+free-LVX.
+The composition of PLGA and CS nanoparticles was investigated
+by FTIR analysis. Both formulations showed the characteristic peaks
+of the drug and a polymer. However the few peaks of the drug were
+masked and were reduced in intensity possibly due to the entrap­
+ment property of the polymer. [24,39] The SEM and XRD analysis
+were carried out to determine the morphology and nature of
+Fig. 4. Scanning Electron Microscopic (SEM) micrographs of different LVX-CS-NPs and LVX-PLGA-NPs. Ai-ii) SEM micrograph of CS-I, 500 µm and 50 µm. Bi-ii) SEM micro­
+graphs of CS-II, (i) 500 µm and (ii) 50 µm. Ci-ii) SEM micrographs of CS-III, (i) 500 µm and (ii) 50 µm. Di-ii) SEM micrographs of PLGA-I, (i) 500 µm and (ii) 50 µm. Ei-ii) SEM
+micrographs of PLGA-II, (i) 500 µm and (ii) 50 µm.
+Table 4
+Stability data of LVX-PLGA-NPs; PLGA-I & PLGA-II, and LVX-CS-NPs; CS-I, CS-II & CS-III.
+Formulation
+Code
+1st month
+3rd month
+6th month
+Color
+Drug content %
+Color
+Drug content %
+Color
+Drug content %
+PLGA-I
+No change
+86  ±  2.2
+No change
+84.213  ±  1.6
+No change
+84.001  ±  2.1
+PLGA-II
+No change
+52.41  ±  2.6
+No change
+49.623  ±  1.2
+No change
+49.332  ±  1.9
+CS-I
+No change
+52.22  ±  1.8
+No change
+51.52  ±  2.7
+No change
+50.99  ±  3.1
+CS-II
+No change
+66.86  ±  3.1
+No change
+65.89  ±  3.2
+No change
+65.32  ±  2.86
+CS-III
+No change
+82.65  ±  3.5
+No change
+81.342  ±  4.5
+No change
+81.229  ±  4.2
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+913
+
+prepared polymeric nanoparticles. The SEM of LVX-PLGA-NPs
+showed a smooth circular surface but few were found agglomerated
+due to their very small size. The nano-size increases the surface area
+and the interaction forces among the particles which results in ag­
+glomeration. On the other hand, the LVX-CS-NPs had irregular sur­
+faces but few were round with smooth surfaces. Both CS and PLGA
+NPs demonstrated some agglomeration, which may be due to ion-
+sputtering with the gold [40]. The morphology of LVX-CS-NPs were
+seen as dense cubical, rectangular, and spherical. The XRD patterns
+of both polymeric nanoparticles showed the amorphous nature, as
+no characteristic peak of LVX was observed, and the drug is com­
+pletely interacted and encapsulated in the polymeric matrix [41].
+The utility spectrum of NPs is determined by morphological
+characteristics, such as particle size, polydispersity index, zeta po­
+tential, surface charge, and shape. These properties affect NP’s bio­
+logical activities, while preparation methods play a pivotal role in
+controlling these properties. Our data suggested that a constant ratio
+of LVX, yet with increasing CS ratio (1:3) resulted in large size NPs
+(CS-III) and increased PDI, indicative of broad particle size dis­
+tribution, and higher EE and LC. While out of three formulations, CS-I
+(1:1) with equal ratios exhibited the smallest particle size, and
+monodispersing system but with lower EE and LC, corroborating
+previous findings [42,43]. There have been conflicting reports with
+regards to the effect of mass ratios of CS and a drug on NP char­
+acteristics, e.g., particle size decreases with increasing concentration
+of CS [43,44], but with subsequent increase[43] and decrease [44] in
+EE%. The explanation of these differences compared to data pre­
+sented in this study could be the cross-linker concentration, which
+was not maneuvered, and the negligible contribution of the loading
+drug (LVX) as an ionic crosslinker. However, Zhang and Hu used
+Alphastatin, which acted as a polyanionic cross-linker with cationic
+CS [44], demonstrating enough ionic interaction that resulted in
+small particle size and high EE%, nonetheless, the reduced EE% in our
+case could be attributed to intermediate lipophilicity of LVX [45].
+However, the encapsulation efficiency and loading capacity of the
+CS-I (1:1) were among the lowest of all three formulations.
+Fig. 5. Anti-bacterial effects of LVX nano-particles, CS-III & PLGA-I, as diameter of inhibition zones (values are expressed in mm and are average of triplicates). (A) Zone of
+inhibition against Staphylococcus aureus. (B) Zone of inhibition against Escherichia coli. (C) Zone of inhibition against Klebsiella pneumonia.
+Table 5
+Susceptibility patterns of LVX-CS-NPs and LVX-PLGA-NPs against resistant gram -ve and gram +ve isolates.
+Gram Staining
+Organism
+Isolated from
+Sample
+MIC (μg/mL)
+Inhibition Zone (mm)  ±  SD
+Levofloxacin
+LVX-PLGA (PLGA-I)
+LVX-CS (CS-III)
+p-values
+Gram positive
+Escherichia coli
+Urine
+(0.35  ±  0.027)
+17  ±  1.1
+24  ±  0.91
+24  ±  0.68
+<  0.001 * *
+Staphylococcus aureus
+Blood
+(0.62  ±  0.039)
+19  ±  0.65
+24  ±  0.55
+26  ±  0.85
+<  0.001 * *
+Streptococcus pneumonia
+Tracheal secretions
+(0.43  ±  0.056)
+19  ±  0.73
+22  ±  0.80
+25  ±  1.21
+0.002 *
+MRSA
+Blood
+(0.178  ±  0.039)
+19  ±  1.02
+24  ±  0.67
+25  ±  1.17
+0.003 *
+Gram negative
+Pseudomonas aeruginosa
+Tracheal secretions
+(1.51  ±  0.09)
+17  ±  0.41
+21  ±  0.71
+21  ±  0.91
+<  0.001 * *
+Klebsiella pneumonia
+Blood
+(0.29  ±  0.023)
+14  ±  0.61
+18  ±  0.88
+13  ±  0.32
+0.0015 *
+Abbreviations: MRSA; methicillin resistant Staphylococcus aureus, LVX; levofloxacin, CS; chitosan, mm; millimeter, µg; micrograms
+PLGA-1 and CS-III were selected based on their characteristics, i-e., encapsulation efficiency, loading capacity and stability etc. p-values; 0.05 – 0.002 * , ≤ 0.001 * *
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+914
+
+The previous report clearly demonstrated that the PLGA and PVA
+concentrations have a direct impact on particle size of the NPs [46]
+prepared using the double emulsion-solvent evaporation method.
+However, it has also been shown that changing PLGA concentration
+does not have any significant effect on the PDI and particle size of
+NPs prepared using the double emulsion evaporation method. [47]
+Thus, we examined only the effects of surfactant (PVA) concentra­
+tion on NP characteristics keeping the drug (LVX) and PLGA con­
+centrations constant. The change in PVA concentrations can be
+argued based on previous findings that the increasing concentration
+of PVA guarantees better stabilization, optimal size, and reduced
+coalescence of emulsion [48], while increasing the concentration of
+PVA above 2.5% has been argued to exist as an aggregated form ra­
+ther than a single molecule. [49] We observed that by changing the
+concentrations of PVA, the particle size and PDI of LVX-PLGA-NPs
+increased with increasing PVA concentration, while the EE and LC
+decreased significantly. The increase in particle size can be attribu­
+table to the higher viscosity of the aqueous phase affecting the so­
+nication shear stress that might result in the formation of large
+emulsion droplets. While PVA concentration of more than 1% has
+been shown to reduce the EE and LC [50]. Seemingly, the 0.5% PVA is
+considered as the most optimum concentration to attain higher EE
+and LC, corroborating previous findings,which may be attributable to
+higher viscosity and large but fewer emulsion droplets. [50].
+Additionally, particle size and charge have been shown to impact
+EE and drug release. [51] We observed that by increasing CS con­
+centration the drug release decreased from 61% to 51% with a de­
+crease in particle size, though the pattern was bi-phasic. The drug
+release from CS NPs is governed by polymer swelling, loaded drug
+per se, diffusion, erosion, and degradation of the polymer.[52]
+Therefore, the main mechanism of LVX release, a hydrophilic drug,
+could be diffusion and polymer erosion and degradation, while
+higher drug release of CS-I over 120 h could be attributable to re­
+duced particle size which has been shown to exhibit larger initial
+burst release and optimal polymer swelling, erosion and degradation
+compared to CS-II. The slower drug release from CS-II or CS-III, due
+to increased polymer ratio, could be due to several factors, such as
+polymer swelling, polymer erosion or degradation and diffusion of
+drug from the polymer. Notably, drug diffusion from the matrix can
+be described by Fick’s law of diffusion – initial burst followed by
+slow release, attributable to diffusion barrier by polymeric chains
+associated with swelling or erosion [53]. While the swelling of the
+polymer matrix occurs via non-Fick’s diffusion system, affected by
+relaxation constant – higher value of the relaxation constant, slower
+will be the drug release from the matrix [53]. When it comes to
+PLGA, it has been reported that initial drug release from the PLGA
+matrix was via diffusion followed by the release of a drug by both
+diffusion and degradation of a polymer. [50] We observed that PLGA-
+I formulation (PVA1%) demonstrated improved drug release of
+∼88.58% over 120 h compared to PLGA-II (PVA2%) of 82.6% - corro­
+borating previous report that cumulative drug release was higher for
+the PLGA-NPs synthesized using 1% PVA compared to 2% PVA. [54].
+Other plausible explanations could be the higher PVA concentration
+[55] and impact of particle size on release kinetics, as small particles
+may have greater initial burst release due to surface absorption and
+the capacity of entrapment [56].
+The antibacterial potential of LVX-PLGA-NPs has been reported
+earlier with the slow release of LVX, yet having reduced antibacterial
+Fig. 6. Hemotoxicity of LVX pure, CS-III, PLGA-I formulations against freshly isolated blood samples. A) Micrograph showing morphology of red blood cells (RBCs) in the
+control sample. B) Micrograph showing morphology of red blood cells (RBCs) in the standard (LVX free/pure) sample. C) Micrograph showing morphology of red blood cells (RBCs)
+treated with PLGA-I. D) Micrograph showing morphology of red blood cells (RBCs) treated with CS-III.
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+915
+
+effects compared to free-LVX. [7] Contrary to this report, compared
+to free-LVX (17–19 mm), we found that both CS-III (22–24 mm) and
+PLGA-I (22–24 mm) demonstrated higher average zone of inhibition
+(24–26 mm) against resistant gram-negative E. coli, S. aureus, MRSA
+and S. pneumonia. The differences can be explainable by higher EE of
+43% by PLGA-I compared to 30% reported by Lopez-Lopez et al. [7].
+However, similar to our findings, CIP-CS-NPs has shown dose de­
+pendent improvements in antibacterial activity against E. coli and S.
+aureus [57]. Moreover, compared to free-LVX (14–17 mm), against
+resistant gram-positive bacteria, P. aeruginosa and K. pneumonia, the
+average zone of inhibition of LVX-PLGA-I was 18–21 mm while it was
+13–21 mm for LVX-CS-III – showing improved antibacterial activity
+by PLGA-NPs. However, compared to PLGA-1, only K. pneumonia
+demonstrated reduced sensitivity against CS-III, which in the case of
+PLGA-I, may be attributable to better and sustained drug release
+profiles as argued before regarding antibiotic slow-release profiles,
+[7,58]. Additionally, both PLGA-I and CS-III were found non-toxic, as
+no hemolysis was observed in human red blood cells (RBCs), none­
+theless, CS-III showed increased binding to the surface of RBCs,
+which might interfere with the functioning of RBCs or may be RBC’s
+function may be altered while carrying nanoparticles.[33].
+5. Conclusion
+Taken together, these data suggested that among various for­
+mulations of LVX-NPs, CS-III and PLGA-I demonstrated the highest
+loading capacity and entrapment efficiency, and with a significant
+effect of polymer (CS) and surfactant (PVA), on particle size. The
+polydispersity was optimal for all the formulations – mono-disper­
+sion system, except for CS-III and PLGA-II. Major shifts in FTIR
+spectra were observed for CS-NPs due to the interaction of NH3 and
+phosphate groups, while no shifts were observed for PLGA-NPs. SEM
+data suggested spherical shapes of CS-NPs and circular shapes of
+PLGA-NPs with some agglomeration. With formulations having an
+amorphous nature and stable for up to 6 months, the highest in vitro
+drug release patterns were observed for CS-I and PLGA-I after 120 h.
+CS-III, having a higher polymer ratio, demonstrated better anti­
+bacterial activity against resistant strains except against K. pneu­
+monia whereas PLGA-I, having 1% PVA, was found superior against K.
+pneumonia.
+Ethical Approval and consent to Participate
+The study was approved by the Ethical Committee on Human
+Research, reference#; PU/PUCP/1037/22. Informed consent, amount,
+and purpose of the sample, were obtained from the patients for
+blood samples.
+Funding statement
+The work was supported by Researchers Supporting Project,
+RSPD2024R1035, King Saud University, Riyadh, Saudi Arabia..
+Authorship contribution statement
+Rabia Hayee (R.H); conducted the experiments and wrote the 1st
+draft. Mehwish Iqtedar (M.I.Q); Supervised and designed and ana­
+lyzed anti-bacterial experiments. Norah A. Albekairi (N.A.A); data
+acquisition, data analysis and edited the manuscript. Abdulrahman
+Alshammari (A.A); study design, resources, research funds and
+edited the manuscript. Muhammad Atif Makhdoom (M.A.M); helped
+in experiments and analyzed data. Muhammad Islam (M.I); su­
+pervised the research and edited the manuscript. Nadeem Ahmed
+(N.A);
+provided
+resources,
+data
+analysis,
+and
+edited
+the
+manuscript. Muhammad Fawad Rasool (M.F.R); data analysis, edited
+the manuscript. Chen Li (C.L); data analysis, software, experimental
+design. Hamid Saeed (H.S); Designed the study, supervised and
+wrote the manuscript.
+Declaration of Competing Interest
+The authors declare that they have no known competing fi­
+nancial interests or personal relationships that could have appeared
+to influence the work reported in this paper.
+Acknowledgments
+Authors are thankful to the Researchers Supporting Project
+number (RSPD2024R1035), King Saud University, Riyadh, Saudi
+Arabia.
+Appendix A. Supporting information
+Supplementary data associated with this article can be found in
+the online version at doi:10.1016/j.jiph.2024.03.023.
+References
+[1] Ullah K, Baloch M, Khan AA, Saeed H, Islam M. Antibiotic prescribing trends in
+patients with upper respiratory tract infections reporting to tertiary care hos­
+pitals of Lahore. Pak J Pharm Sci 2020;33(4):1879–88.
+[2] Huh AJ, Kwon YJ. Nanoantibiotics”: a new paradigm for treating infectious dis­
+eases using nanomaterials in the antibiotics resistant era. J Control Release
+2011;156(2):128–45. https://doi.org/10.1016/j.jconrel.2011.07.002
+[3] Minov J, Stoleski S, Petrova T, Mijakoski D, Atanasovska A, Bislimovska D.
+Efficacy and safety of levofloxacin in the outpatient treatment of exacerbation of
+chronic obstructive pulmonary disease: levofloxacin 750 mg vs. levofloxacin 500
+mg. Eur J Respir Med 2020;4(1):262–7. https://doi.org/10.31488/EJRM.125
+[4] Guan J, Cheng P, Huang SJ, Wu JM, Li ZH, You XD, et al. Optimized preparation of
+levofloxacin-loaded chitosan nanoparticles by ionotropic gelation. Phys Procedia
+2011;22:163–9. https://doi.org/10.1016/j.phpro.2011.11.026
+[5] Firdous Y, Naeem A, and, Hameed A. In vitro synergistic effect of ciprofloxacin
+with aminoglycosides against multidrug resistant-Pseudomonas aeruginosa. Pak J
+Pharm Sci 2013;26(5):1041–4.
+[6] Qamar FN, Yousafzai MT, Khalid M, Qazi AM, Lohana H, Karim S, et al. Outbreak
+investigation of ceftriaxone-resistant Salmonella enterica serotype typhi and its
+risk factors among the general population in Hyderabad, Pakistan: a matched
+case-control study. Lancet Infect Dis 2018;18(12):1368–76. https://doi.org/10.
+1016/S1473-3099(18)30483-3
+[7] López-López M, Angela FD, Maria LM, Daniel BA, Cecilio C, Rafael RDLH, et al.
+Optimized preparation of levofloxacin loaded polymeric nanoparticles.
+Pharmaceutics 2019;11(2):57. https://doi.org/10.3390/pharmaceutics11020057
+[8] Mouzam MI, Dehghan MHG, Asif S, Sahuji T, Chudiwal P. Preparation of a novel
+floating ring capsule-type dosage form for stomach specific delivery. Saudi
+Pharm J 2011;19(2):85–93. https://doi.org/10.1016/j.jsps.2011.01.004
+[9] Mack BC, Wright KW, Davis ME. A biodegradable filament for controlled drug
+delivery. J Control Release 2009;139(3):205–11. https://doi.org/10.1016/j.jconrel.
+2009.06.020
+[10] Qian J, Ma Y. Preparation of levofloxacin-chitosan sustained-release micro­
+sphere. J Zheijiang Univ Tech 2004;32(1):20–4.
+[11] Kapoor DN, Bhatia A, Kaur R, Sharma R, Kaur G, Dhawan S. PLGA: a unique
+polymer for drug delivery. Ther Deliv 2015;6(1):41–58. https://doi.org/10.4155/
+tde.14.91
+[12] Quiñones JP, Peniche H, Peniche C. Chitosan based self-assembled nanoparticles
+in
+drug
+delivery.
+Polymers
+2018;10(3):235.
+https://doi.org/10.3390/
+polym10030235
+[13] Ameeduzzafar, Imam SS, Bukhari SNA, Ahmad J, Ali A. Formulation and opti­
+mization of levofloxacin loaded chitosan nanoparticle for ocular delivery: In-
+vitro characterization, ocular tolerance and antibacterial activity. Int J Biol
+Macromol 2018;108:650–9. https://doi.org/10.1016/j.ijbiomac.2017.11.170
+[14] Bagga P, Siddiqui HH, Akhta J, Mahmood T, Zhera M, Khan MS. Gold nano­
+particles conjugated levofloxacin: for improved antibacterial activity over levo­
+floxacin alone. Curr Drug Deliv 2017;14(8):1114–9.
+[15] Antonov EN, Andreevskaya SN, Bocharova IV, Bogorodsky SE, Krotova LI,
+Larionova EE, et al. PLGA carriers for controlled release of levofloxacin in anti-
+tuberculosis therapy. Pharmaceutics 2022;14(6):1275. https://doi.org/10.3390/
+pharmaceutics14061275
+[16] Zafar A, Alruwaili NK, Imam SS, Alsaidan OA, Alharbi KS, Alzarea SI, et al.
+Bioactive luteolin entrapped chitosan-PLGA nanoparticles: formulation optimi­
+zation to in-vivo preclinical evaluation. J Clust Sci 2023;34(1):437–49. https://
+doi.org/10.1007/s10876-022-02232-7
+[17] Dahiya P, Zafar A, Ahmad FJ, Khalid M, Ali A. Development of forskolin and rutin-
+loaded polymeric nanoparticles for enhancement of topical ocular delivery:
+optimization, in-vitro, ex-vivo, and toxicity evaluation. J Drug Deliv Sci Tech
+2023;82:104292. https://doi.org/10.1016/j.jddst.2023.104292
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+916
+
+[18] Khan N, Zafar A, Khanna K, Bhatnagar A, Ahmad FJ, Ali A. Chitosan coated PLGA
+nanoparticles amplify the ocular hypotensive effect of forskolin: statistical de­
+sign, characterization and in vivo studies. Int J Biol Macromol 2018;116:648–63.
+https://doi.org/10.1016/j.ijbiomac.2018.04.122
+[19] Zafar N, Uzair B, Meena F, Khan BA, Niazi MBK, Alaryani FS, et al. Moringa con­
+canensis-mediated synthesis and characterizations of ciprofloxacin encapsulated into
+Ag/TiO2/Fe2O3/CS nanocomposite: a therapeutic solution against multidrug resistant
+E. coli strains of livestock infectious diseases. Pharmaceutics 2022;14(8):1719. https://
+doi.org/10.3390/pharmaceutics14081719
+[20] Nawaz A, Ali SM, Rana NF, Tanweer T, Batool A, Webster TJ, et al. Ciprofloxacin-
+loaded gold nanoparticles against antimicrobial resistance: an in vivo assess­
+ment. Nanomaterials 2021;11(11):3152. https://doi.org/10.3390/nano11113152
+[21] Saleem Z, Haseeb A, Abuhussain SSA, Moore CE, Kamran SH, Qamar MU, et al.
+Antibiotic susceptibility surveillance in the Punjab province of Pakistan: findings
+and
+implications.
+Medicina
+2023;59(7):1215.
+https://doi.org/10.3390/
+medicina59071215
+[22] Institute for Health Metrices and Evaluation. The burden of antimicrobial re­
+sistance (AMR) in Pakistan. 2019. https://www.healthdata.org/sites/default/files/
+files/Projects/GRAM/Pakistan_0.pdf (Accessed 7 March 2024).
+[23] Elassal MI, El-Manofy NG. Chitosan nanoparticles as drug delivery system for
+cephalexin and its antimicrobial activity against multiidrug resistent bacteria.
+Int J Pharm Pharm Sci 2019;11(7):14–27. https://doi.org/10.22159/ijpps.
+2019v11i7.33375
+[24] Gevariya HB, Gami S, Patel N. Formulation and characterization of levofloxacin-
+loaded biodegradable nanoparticles. Asian J Pharm 2014;5(2):114–9. https://doi.
+org/10.4103/0973-8398.84552
+[25] Iqbal M, Zafar N, Fessi H, Elaissari A. Double emulsion solvent evaporation
+techniques used for drug encapsulation. Int J Pharm 2015;496(2):173–90.
+https://doi.org/10.1016/j.ijpharm.2015.10.057
+[26] Salatin S, Barar J, Barzegar-jalali M, Adibkia K, Kiafar F, Jelvehgari M.
+Development of a nanoprecipitation method for the entrapment of a very water
+soluble drug into Eudragit RL nanoparticles. Res Pharm Sci 2017;12(1):1–14.
+https://doi.org/10.4103/1735-5362.199041
+[27] Hasan M, Rehman M, Islam R, Hasan H, Hasan M, Rashid HR. A key approach on
+dissolution of pharmaceutical dosage forms. Pharm Innov J 2017;6(9):168–80.
+[28] D’Souza S. A review of in vitro drug release test methods for nano-sized dosage
+forms. Adv Pharm 2014;2014. https://doi.org/10.1155/2014/304757
+[29] Wadi J, Ashor WA, Al-Qwasmeh S, Kamel M. Prevalence and antimicrobial sus­
+ceptibility patterns of bloodstream isolates at Jordan hospital intensive care
+unit: three years experience. J R Med Serv 2011;18(3):80–6.
+[30] Angaali N, Vemu L, Padmasri C, Mamidi N, Teja VD. Direct identification and
+susceptibility testing of Gram-negative bacilli from turbid urine samples using
+VITEK2. J Lab Physicians 2018;10(03):299–303. https://doi.org/10.4103/JLP.JLP_
+118_17
+[31] Hudzicki J. Kirby-Bauer disk diffusion susceptibility test protocol. American
+Society for Microbiology, 2009. https://asm.org/protocols/kirby-bauer-disk-
+diffusion-susceptibility-test-pro (Accessed 6 March 2024).
+[32] Vineetha N, Vignesh R, and, Sridhar D. Preparation, standardization of antibiotic
+discs and study of resistance pattern for first-line antibiotics in isolates from
+clinical samples. Int J Appl Res 2015;1(11):624–31.
+[33] Grzyb T, Mrowczynska L, Szczeszak A, Sniadecki Z, Runowski M, Idzikowski B,
+et al. Synthesis, characterization, and cytotoxicity in human erythrocytes of
+multifunctional, magnetic, and luminescent nanocrystalline rare earth fluorides.
+J Nanopart Res 2015;17(10):1–18. https://doi.org/10.1007/s11051-015-3191-2
+[34] Ramaiah B, Nagaraja SH, Kapanigowda UG, Boggarapu PR. Improved lung con­
+centration of levofloxacin by targeted gelatin microspheres: In vivo pharmaco­
+kinetic evaluation of intake rate, targeting efficacy parameters and peak
+concentration ratio in albino mice. J Pharm Innov 2016;11(4):289–99. https://
+doi.org/10.1007/s12247-016-9252-y
+[35] Ali MEA, Aboelfadl MMS, Selim AM, Khalil HF, Elkady GM. Chitosan nano­
+particles extracted from shrimp shells, application for removal of Fe (II) and Mn
+(II) from aqueous phases. Sep Sci Technol 2018;53(18):2870–81. https://doi.org/
+10.1080/01496395.2018.1489845
+[36] Ullah K, Baloch M, Saleem F, Khan AA, Saeed H, Islam M. Antibiotic susceptibility
+patterns of bacterial isolates of patients with upper respiratory tract infections.
+Braz J Pharm Sci 2022;58:1–14. https://doi.org/10.1590/s2175-97902022e20484
+[37] Mamun MM, Sorinolu AJ, Munir M, Vejerano EP. Nanoantibiotics: functions and
+properties at the nanoscale to combat antibiotic resistance. Front Chem
+2021;9:687660. https://doi.org/10.3389/fchem.2021.687660
+[38] Capeletti LB, de Oliveira JFF, Loiola LMD, Galdino FE, Santos DES, Soares TA, et al.
+Gram‐negative bacteria targeting mediated by carbohydrate–carbohydrate in­
+teractions induced by surface‐modified nanoparticles. Adv Funct Mater
+2019;29(48):1904216. https://doi.org/10.1002/adfm.201904216
+[39] Kumar G, Sharma S, Shafiq N, Khuller GP, Malhotra S. Optimization, in vitro –in
+vivo evaluation, and short-term tolerability of novel levofloxacin-loaded PLGA
+nanoparticle formulation. J Pharm Sci 2012;101(6):2165–76. https://doi.org/10.
+1002/jps.23087
+[40] Khanal S, Adhikari U, Rijal NP, Bhattarai SR, Sankar J, Bhattarai N. pH-responsive
+PLGA nanoparticle for controlled payload delivery of diclofenac sodium. J Funct
+Biomater 2016;7(3):21. https://doi.org/10.3390/jfb7030021
+[41] Anand M, Sathyapriya P, Maruthupandy M, Beevi AH. Synthesis of chitosan na­
+noparticles by TPP and their potential mosquito larvicidal application. Front Lab
+Med 2018;2(2):72–8. https://doi.org/10.1016/j.flm.2018.07.003
+[42] Saeed RM, Dmour I, Taha MO. Stable chitosan-based nanoparticles using poly­
+phosphoric acid or hexametaphosphate for tandem ionotropic/covalent cross­
+linking and subsequent investigation as novel vehicles for drug delivery. Front
+Bioeng Biotechnol 2020;8:4. https://doi.org/10.3389/fbioe.2020.00004
+[43] Shahid N, Erum A, Zaman M, Tulain UM, Shoaib QUA, Malik NS, et al. Synthesis
+and evaluation of chitosan based controlled release nanoparticles for the de­
+livery of ticagrelor. Des Monomers Polym 2022;25(1):55–63. https://doi.org/10.
+1080/15685551.2022.2054117
+[44] Zhang L, Hu Y. Alphastatin-loaded chitosan nanoparticle preparation and its
+antiangiogenic effect on lung carcinoma. Int J Polyem Sci 2019;2019. https://doi.
+org/10.1155/2019/2751384
+[45] Cojutti PG, Ramos-martin V, Schiavon I, Rossi P, Baraldo M, Hope W, et al.
+Population pharmacokinetics and pharmacodynamics of levofloxacin in acutely
+hospitalized older patients with various degrees of renal function. Antimicrob
+Agent Chemother 2017;61(3):e02134-16. https://doi.org/10.1128/AAC.02134-16
+[46] Adebileje T, Valizadeh A, Amani A. Effect of formulation parameters on the size
+of PLGA nanoparticles encapsulating bovine serum albumin: a response surface
+methodology. J Conte Med Sci 2017;3(12):306–12.
+[47] Hernández-Giottonini KY, Rodriguez-Cordova RJ, Gutierrez-Valenzuela CA,
+Penunuri-Miranda O, Zavala-Rivera P, Guerrero-German P, et al. PLGA nano­
+particle preparations by emulsification and nanoprecipitation techniques: ef­
+fects of formulation parameters. RSC Adv 2020;10(8):4218–31. https://doi.org/
+10.1039/c9ra10857b
+[48] Vysloužil J, Dolezel P, Kejdusova M, Maskova E, Masek J, Lukac R, et al. The in­
+fluence of different formulations and process parameters during the preparation
+of drug-loaded PLGA microspheres evaluated by multivariate data analysis. Acta
+Pharm 2014;64(4):403–17. https://doi.org/10.2478/acph-2014-0032
+[49] Sahoo SK, Panyam J, Prabha S, Labhasetwar V. Residual polyvinyl alcohol asso­
+ciated with poly (D, L-lactide-co-glycolide) nanoparticles affects their physical
+properties and cellular uptake. J Control Release 2002;82(1):105–14. https://doi.
+org/10.1016/s0168-3659(02)00127-x
+[50] Kumar G, Malhotra S, Shafiq N, Panhi P, Khuller GK, Sharma S. In vitro physi­
+cochemical characterization and short term in vivo tolerability study of ethio­
+namide loaded PLGA nanoparticles: potentially effective agent for multidrug
+resistant tuberculosis. J Micro 2011;28(8):717–28. https://doi.org/10.3109/
+02652048.2011.615948
+[51] Loutfy SA, Elberry MH, Farroh KY, Mohamed HT, Mohamed AA, Mohamed EB,
+et al. Antiviral activity of chitosan nanoparticles encapsulating curcumin against
+hepatitis C virus genotype 4a in human hepatoma cell lines. Int J Nanomed
+2022;17:2891–2. https://doi.org/10.2147/IJN.S241702
+[52] Mohammed MA, Syeda JTM, Wasan KM, Wasan EK. An overview of chitosan
+nanoparticles and its application in non-parenteral drug delivery. Pharmaceutics
+2017;9(4):53. https://doi.org/10.3390/pharmaceutics9040053
+[53] Herdiana Y, Wathoni N, Shamsuddin S, Muchtaridi M. Drug release study of the
+chitosan-based nanoparticles. Heliyon 2022;8(1):e08674. https://doi.org/10.
+1016/j.heliyon.2021.e08674
+[54] Massadeh S, Alaamery M, Al-Qatanani S, Alarifi A, Bawazeer S, Alyafee Y.
+Synthesis of protein-coated biocompatible methotrexate-loaded PLA-PEG-PLA
+nanoparticles for breast cancer treatment. Nano Rev Exp 2016;7(1):31996.
+https://doi.org/10.3402/nano.v7.31996
+[55] Takeuchi I, Kato Y, and, Makino K. Effects of polyvinyl alcohol on drug release
+from nanocomposite particles using poly (L-lactide-co-glycolide). J Ole Sci
+2021;70(3):341–8. https://doi.org/10.5650/jos.ess20299
+[56] Hans ML, and, Lowman AM. Biodegradable nanoparticles for drug delivery and
+targeting. Curr Opin Solid State Mater Sci 2002;6(4):319–27. https://doi.org/10.
+1016/S1359-0286(02)00117-1
+[57] Yadav P, Yadav AB, Gaur P, Mishra V, Huma Z, Sharma N, et al. Bioengineered
+ciprofloxacin-loaded chitosan nanoparticles for the treatment of bovine mastitis.
+Biomedicines 2022;10(12):3282. https://doi.org/10.3390/biomedicines101232
+[58] Cheow WS, Chang MW, and, Hadinoto K. Antibacterial efficacy of inhalable le­
+vofloxacin-loaded polymeric nanoparticles against E. coli biofilm cells: the effect
+of antibiotic release profile. Pharm Res 2010;27:1597–609. https://doi.org/10.
+1007/s11095-010-0142-6
+R. Hayee, M. Iqtedar, N.A. Albekairi et al.
+Journal of Infection and Public Health 17 (2024) 906–917
+917

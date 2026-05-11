@@ -1,0 +1,37 @@
+{
+  "inputs": {
+    "extracted_v3": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\extracted_formulation_level_v3.tsv",
+    "curated_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\goren18_curated_overlap_subset.tsv"
+  },
+  "core_fields": {
+    "polymer_MW": "sig__polymer_MW",
+    "LA/GA": "sig__LA/GA",
+    "solvent": "sig__solvent",
+    "surfactant_name": "sig__surfactant_name",
+    "surfactant_concentration": "sig__surfactant_concentration",
+    "drug_to_polymer_ratio_w_w": "sig__drug/polymer"
+  },
+  "baseline": {
+    "recall": 0.5511811023622047,
+    "precision": 0.3978494623655914,
+    "rows": 93
+  },
+  "recall_floor": 0.5311811023622047,
+  "best_filter": {
+    "name": "B_n_core_ge_2",
+    "threshold": 2
+  },
+  "distribution_n_core_present": {
+    "0": 1,
+    "1": 1,
+    "2": 17,
+    "3": 14,
+    "4": 23,
+    "5": 37
+  },
+  "outputs": {
+    "diagnostics_row_completeness_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\precision_recovery_v1\\diagnostics_row_completeness.tsv",
+    "precision_recovery_sweep_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\precision_recovery_v1\\precision_recovery_sweep.tsv",
+    "extracted_best_filter_consolidated_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\precision_recovery_v1\\extracted_best_filter_consolidated.tsv"
+  }
+}

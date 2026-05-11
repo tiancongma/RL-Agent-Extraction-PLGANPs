@@ -1,0 +1,22 @@
+{
+  "source_run_dir": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f",
+  "source_run_id": "20260423_9c4a03f",
+  "source_run_dir_kind": "v2_bucket_root",
+  "source_resolution": "active_run_pointer",
+  "active_run_pointer_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/ACTIVE_RUN.json",
+  "source_files": {
+    "final_table_tsv": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/427_stage5_table_recovery_closure_diagnostic/final_formulation_table_v1.tsv",
+    "gt_counts_tsv": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv",
+    "scope_manifest_tsv": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv"
+  },
+  "generated_by": "src/stage5_benchmark/compare_final_table_to_gt_v1.py",
+  "generated_at": "2026-05-10T11:29:15.116006+00:00",
+  "note": "Stage5 final-table vs GT comparison authority metadata.",
+  "summary_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/428_compare_table_recovery_closure_diagnostic/final_table_vs_gt_summary.md",
+  "audit_counts_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/428_compare_table_recovery_closure_diagnostic/final_table_vs_gt_counts_by_doi.tsv",
+  "audit_summary_path": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/data/results/20260423_9c4a03f/428_compare_table_recovery_closure_diagnostic/final_table_vs_gt_count_audit.md",
+  "scope_name": "dev15_diagnostic_table_recovery_closure",
+  "compare_mode": "diagnostic",
+  "benchmark_valid": false,
+  "benchmark_mode": "disabled"
+}

@@ -1,0 +1,69 @@
+{
+  "run_id": "dev15_stage2_freeze_v1/s2_4b",
+  "run_dir": "data/frozen/dev15_stage2_freeze_v1/s2_4b",
+  "stage_boundary": "S2-4b",
+  "upstream_frozen_boundary": "S2-4a",
+  "owner_script": "src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py",
+  "owner_function_surface": [
+    "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect"
+  ],
+  "input_artifacts": {
+    "prompts_jsonl": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompts_v1.jsonl",
+    "prompt_template": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompt_template_v1.txt",
+    "prompt_audit": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompt_audit_v1.tsv",
+    "freeze_manifest": "data/frozen/dev15_stage2_freeze_v1/FREEZE_MANIFEST.md"
+  },
+  "source_run_dirs": [
+    "data/results/20260412_8517d36/13_H_s2_4b_parallel2_t180_r1_sleep5_v1",
+    "data/results/20260412_8517d36/04_s2_4b_live_llm_call_dev15_v1",
+    "data/results/20260412_8517d36/14_s2_4b_completion_remaining5_v1",
+    "data/results/20260412_8517d36/10_E_s2_4b_parallel2_t180_r1_v1"
+  ],
+  "expected_paper_keys": [
+    "5ZXYABSU",
+    "L3H2RS2H",
+    "WIVUCMYG",
+    "5GIF3D8W",
+    "7ZS858NS",
+    "BB3JUVW7",
+    "BXCV5XWB",
+    "INMUTV7L",
+    "PA3SPZ28",
+    "QLYKLPKT",
+    "RHMJWZX8",
+    "UFXX9WXE",
+    "V99GKZEI",
+    "WFDTQ4VX",
+    "YGA8VQKU"
+  ],
+  "reused_successful_papers": [
+    "5GIF3D8W",
+    "5ZXYABSU",
+    "7ZS858NS",
+    "BXCV5XWB",
+    "INMUTV7L",
+    "L3H2RS2H",
+    "PA3SPZ28",
+    "QLYKLPKT",
+    "RHMJWZX8",
+    "UFXX9WXE"
+  ],
+  "newly_generated_papers": [
+    "BB3JUVW7",
+    "V99GKZEI",
+    "WFDTQ4VX",
+    "WIVUCMYG",
+    "YGA8VQKU"
+  ],
+  "unresolved_papers": [],
+  "request_count": 15,
+  "success_count": 15,
+  "failure_count": 0,
+  "outputs": {
+    "raw_responses_dir": "data/frozen/dev15_stage2_freeze_v1/s2_4b/raw_responses",
+    "request_metadata_dir": "data/frozen/dev15_stage2_freeze_v1/s2_4b/request_metadata",
+    "request_summary_tsv": "data/frozen/dev15_stage2_freeze_v1/s2_4b/analysis/s2_4b_request_summary_v1.tsv",
+    "run_context": "data/frozen/dev15_stage2_freeze_v1/s2_4b/RUN_CONTEXT.md"
+  },
+  "diagnostic_only_note": "This frozen set is a replayable S2-4b raw-response boundary only and is not a lawful Stage3 resume boundary until replayed through the maintained composite Stage2 path."
+}

@@ -1,0 +1,13 @@
+doi_norm	paper_key	pilot_reason	gt_formulation_rows	gt_candidate_non_formulation_rows	pred_formulation_rows	raw_count_before_reconciliation	reconciled_count_after_reconciliation	reconciliation_applied	reconciliation_reason	pred_candidate_non_formulation_rows	pred_unclear_rows	pred_new_formulation_rows	pred_variant_formulation_rows	pred_variant_with_parent_rows	over_segmentation	under_segmentation	boundary_status	non_formulation_suppressed	inheritance_variant_separated
+10.1007/s10439-019-02430-x	BXCV5XWB	remaining_dev15_expansion_after_fixed_tuning3	3	5	3	3	3	no		0	0	3	0	0	no	no	mixed	no	no
+10.1016/j.colsurfb.2009.03.028	YGA8VQKU	remaining_dev15_expansion_after_fixed_tuning3	16	19	18	18	18	no		0	0	18	0	0	yes	no	broken	no	no
+10.1016/j.ijpharm.2021.120820	BB3JUVW7	remaining_dev15_expansion_after_fixed_tuning3	12	0	12	12	12	no		0	0	2	10	10	no	no	preserved	not_applicable	yes
+10.1021/acsomega.0c00111	7ZS858NS	remaining_dev15_expansion_after_fixed_tuning3	1	7	1	1	1	no		6	0	1	0	0	no	no	mixed	partial	not_observed
+10.1038/s41598-017-00696-6	PA3SPZ28	remaining_dev15_expansion_after_fixed_tuning3	5	3	5	5	5	no		1	0	2	3	3	no	no	mixed	partial	yes
+10.1039/c5ra27386b	V99GKZEI	remaining_dev15_expansion_after_fixed_tuning3	6	2	6	6	6	no		0	0	2	4	4	no	no	mixed	no	yes
+10.1080/10717540802174662	5GIF3D8W	remaining_dev15_expansion_after_fixed_tuning3	26	0	6	6	6	no		0	0	6	0	0	no	yes	broken	not_applicable	no
+10.1080/10717544.2016.1199605	WFDTQ4VX	remaining_dev15_expansion_after_fixed_tuning3	29	1	29	30	29	yes	WFDTQ4VX DoE coordinate reconciliation applied: design rows keyed by drug mg + polymer mg + surfactant percent; checkpoint rows mapped from Table 7 coded levels through Table 1 factor levels; predicted/observed values ignored for identity.	0	0	30	0	0	no	no	mixed	no	no
+10.1111/jphp.12481	RHMJWZX8	remaining_dev15_expansion_after_fixed_tuning3	1	7	1	1	1	no		0	0	1	0	0	no	no	mixed	no	not_observed
+10.1155/2014/156010	UFXX9WXE	remaining_dev15_expansion_after_fixed_tuning3	26	0	5	5	5	no		0	0	5	0	0	no	yes	broken	not_applicable	no
+10.2147/ijn.s54040	QLYKLPKT	remaining_dev15_expansion_after_fixed_tuning3	7	31	8	8	8	no		13	0	2	6	6	yes	no	mixed	partial	yes
+10.3390/nano10040720	INMUTV7L	remaining_dev15_expansion_after_fixed_tuning3	12	0	12	12	12	no		0	0	12	0	0	no	no	preserved	not_applicable	no

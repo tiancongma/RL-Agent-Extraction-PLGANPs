@@ -1,0 +1,776 @@
+{
+  "children": [
+    {
+      "id": "/page/0/Page/268",
+      "block_type": "Page",
+      "html": "<content-ref src='/page/0/PageHeader/1'></content-ref><content-ref src='/page/0/Picture/0'></content-ref><content-ref src='/page/0/Picture/2'></content-ref><content-ref src='/page/0/Text/3'></content-ref><content-ref src='/page/0/Text/4'></content-ref><content-ref src='/page/0/Text/5'></content-ref><content-ref src='/page/0/SectionHeader/6'></content-ref><content-ref src='/page/0/SectionHeader/7'></content-ref><content-ref src='/page/0/Text/8'></content-ref><content-ref src='/page/0/Text/9'></content-ref><content-ref src='/page/0/Text/10'></content-ref><content-ref src='/page/0/SectionHeader/11'></content-ref><content-ref src='/page/0/Text/12'></content-ref><content-ref src='/page/0/Text/13'></content-ref><content-ref src='/page/0/Text/14'></content-ref><content-ref src='/page/0/SectionHeader/15'></content-ref><content-ref src='/page/0/Text/16'></content-ref><content-ref src='/page/0/Text/18'></content-ref><content-ref src='/page/0/Text/19'></content-ref><content-ref src='/page/0/Text/20'></content-ref><content-ref src='/page/0/PageFooter/21'></content-ref><content-ref src='/page/0/Footnote/17'></content-ref>",
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          595.0,
+          0.0
+        ],
+        [
+          595.0,
+          794.0
+        ],
+        [
+          0.0,
+          794.0
+        ]
+      ],
+      "bbox": [
+        0.0,
+        0.0,
+        595.0,
+        794.0
+      ],
+      "children": [
+        {
+          "id": "/page/0/PageHeader/1",
+          "block_type": "PageHeader",
+          "html": "",
+          "polygon": [
+            [
+              208.5986328125,
+              46.1357421875
+            ],
+            [
+              377.1044921875,
+              46.1357421875
+            ],
+            [
+              377.1044921875,
+              56.21582031249999
+            ],
+            [
+              208.5986328125,
+              56.21582031249999
+            ]
+          ],
+          "bbox": [
+            208.5986328125,
+            46.1357421875,
+            377.1044921875,
+            56.21582031249999
+          ],
+          "children": null,
+          "section_hierarchy": {},
+          "images": {}
+        },
+        {
+          "id": "/page/0/Picture/0",
+          "block_type": "Picture",
+          "html": "",
+          "polygon": [
+            [
+              35.647705078125,
+              47.10498046875
+            ],
+            [
+              101.481201171875,
+              47.10498046875
+            ],
+            [
+              101.481201171875,
+              111.07470703124999
+            ],
+            [
+              35.647705078125,
+              111.07470703124999
+            ]
+          ],
+          "bbox": [
+            35.647705078125,
+            47.10498046875,
+            101.481201171875,
+            111.07470703124999
+          ],
+          "children": null,
+          "section_hierarchy": {},
+          "images": {}
+        },
+        {
+          "id": "/page/0/Picture/2",
+          "block_type": "Picture",
+          "html": "",
+          "polygon": [
+            [
+              236.39111328125,
+              56.64228515624999
+            ],
+            [
+              349.31201171875,
+              56.64228515624999
+            ],
+            [
+              349.31201171875,
+              81.37724609375
+            ],
+            [
+              236.39111328125,
+              81.37724609375
+            ]
+          ],
+          "bbox": [
+            236.39111328125,
+            56.64228515624999,
+            349.31201171875,
+            81.37724609375
+          ],
+          "children": null,
+          "section_hierarchy": {},
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/3",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500</p>",
+          "polygon": [
+            [
+              167.41409301757812,
+              100.4130859375
+            ],
+            [
+              421.845703125,
+              100.4130859375
+            ],
+            [
+              421.845703125,
+              109.654052734375
+            ],
+            [
+              167.41409301757812,
+              109.654052734375
+            ]
+          ],
+          "bbox": [
+            167.41409301757812,
+            100.4130859375,
+            421.845703125,
+            109.654052734375
+          ],
+          "children": null,
+          "section_hierarchy": {},
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/4",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\"></p>",
+          "polygon": [
+            [
+              452.93212890625,
+              55.82812499999999
+            ],
+            [
+              541.83349609375,
+              55.82812499999999
+            ],
+            [
+              541.83349609375,
+              94.59765625
+            ],
+            [
+              452.93212890625,
+              94.59765625
+            ]
+          ],
+          "bbox": [
+            452.93212890625,
+            55.82812499999999,
+            541.83349609375,
+            94.59765625
+          ],
+          "children": null,
+          "section_hierarchy": {},
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/5",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\"><a href=\"http://www.elsevier.com/locate/ejpb\">www.elsevier.com/locate/ejpb</a></p>",
+          "polygon": [
+            [
+              445.087890625,
+              112.04394531249999
+            ],
+            [
+              545.029296875,
+              112.04394531249999
+            ],
+            [
+              545.029296875,
+              120.57324218749999
+            ],
+            [
+              445.087890625,
+              120.57324218749999
+            ]
+          ],
+          "bbox": [
+            445.087890625,
+            112.04394531249999,
+            545.029296875,
+            120.57324218749999
+          ],
+          "children": null,
+          "section_hierarchy": {},
+          "images": {}
+        },
+        {
+          "id": "/page/0/SectionHeader/6",
+          "block_type": "SectionHeader",
+          "html": "<h2>Research paper</h2>",
+          "polygon": [
+            [
+              255.0830078125,
+              129.387451171875
+            ],
+            [
+              330.66845703125,
+              129.387451171875
+            ],
+            [
+              330.66845703125,
+              141.342529296875
+            ],
+            [
+              255.0830078125,
+              141.342529296875
+            ]
+          ],
+          "bbox": [
+            255.0830078125,
+            129.387451171875,
+            330.66845703125,
+            141.342529296875
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/6"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/SectionHeader/7",
+          "block_type": "SectionHeader",
+          "html": "<h2>Development and characterization of PLGA nanospheres and nanocapsules containing xanthone and 3-methoxyxanthone</h2>",
+          "polygon": [
+            [
+              74.375,
+              147.4906005859375
+            ],
+            [
+              511.328125,
+              147.4906005859375
+            ],
+            [
+              511.328125,
+              184.3831787109375
+            ],
+            [
+              74.375,
+              184.3831787109375
+            ]
+          ],
+          "bbox": [
+            74.375,
+            147.4906005859375,
+            511.328125,
+            184.3831787109375
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/7"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/8",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">Maribel Teixeiraa,b, Maria J. Alonsoc , Madalena M.M. Pinto<sup>a</sup> , Carlos M. Barbosad,e,*</p>",
+          "polygon": [
+            [
+              70.63929748535156,
+              195.3216552734375
+            ],
+            [
+              520.3969116210938,
+              195.3216552734375
+            ],
+            [
+              520.3969116210938,
+              211.541748046875
+            ],
+            [
+              70.63929748535156,
+              211.541748046875
+            ]
+          ],
+          "bbox": [
+            70.63929748535156,
+            195.3216552734375,
+            520.3969116210938,
+            211.541748046875
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/7"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/9",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">a Centro de Estudos de Quı´mica Orgaˆnica, Fitoquı´mica e Farmacologia da Universidade do Porto-Faculdade de Farma´cia do Porto, Porto, Portugal b Instituto Superior de Cieˆncias da Sau´de-Norte, Gandra PRD, Portugal c Laborato´rio de Farma´cia Gale´nica, Facultad de Farma´cia, Santiago de Compostela, Spain d CTMUP/Faculdade de Farma´cia do Porto, Porto, Portugal e CETMED-Centro Tecnolo´gico do Medicamento, Porto, Portugal</p>",
+          "polygon": [
+            [
+              49.970703125,
+              219.53009033203125
+            ],
+            [
+              536.1819458007812,
+              219.53009033203125
+            ],
+            [
+              536.1819458007812,
+              269.27630615234375
+            ],
+            [
+              49.970703125,
+              269.27630615234375
+            ]
+          ],
+          "bbox": [
+            49.970703125,
+            219.53009033203125,
+            536.1819458007812,
+            269.27630615234375
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/7"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/10",
+          "block_type": "Text",
+          "html": "<blockquote><p block-type=\"Text\">Received 23 June 2004; accepted in revised form 3 September 2004 Available online 30 October 2004</p></blockquote>",
+          "polygon": [
+            [
+              181.8701171875,
+              276.814453125
+            ],
+            [
+              404.1119079589844,
+              276.814453125
+            ],
+            [
+              404.1119079589844,
+              295.2667541503906
+            ],
+            [
+              181.8701171875,
+              295.2667541503906
+            ]
+          ],
+          "bbox": [
+            181.8701171875,
+            276.814453125,
+            404.1119079589844,
+            295.2667541503906
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/7"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/SectionHeader/11",
+          "block_type": "SectionHeader",
+          "html": "<h2>Abstract</h2>",
+          "polygon": [
+            [
+              41.2548828125,
+              315.9716796875
+            ],
+            [
+              75.82950592041016,
+              315.9716796875
+            ],
+            [
+              75.82950592041016,
+              326.1021728515625
+            ],
+            [
+              41.2548828125,
+              326.1021728515625
+            ]
+          ],
+          "bbox": [
+            41.2548828125,
+            315.9716796875,
+            75.82950592041016,
+            326.1021728515625
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/11"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/12",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">The aim of the present work was to develop and characterize two different nanosystems, nanospheres and nanocapsules, containing either xanthone (XAN) or 3-methoxyxanthone (3-MeOXAN), with the final goal of improving the delivery of these poorly water-soluble compounds. The xanthones-loaded nanospheres (nanomatrix systems) and nanocapsules (nanoreservoir systems), made of poly(DL-lactideco-glycolide) (PLGA), were prepared by the solvent displacement technique. The following characteristics of nanoparticle formulations were determined: particle size and morphology, zeta potential, incorporation efficiency, thermal behaviour, in vitro release profiles and physical stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative surface charge (zeta potential !K36 mV). Their incorporation efficiencies were 33% for XAN and 42% for 3-MeOXAN. The presence of the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed at a molecular level within the polymeric nanomatrix. Nanocapsules were also nanometric (mean size !300 nm) and exhibited a negative charge (zeta potential !K36 mV). Their incorporation efficiency values (O77%) were higher than those corresponding to nanospheres for both xanthones. The release of 3-MeOXAN from nanocapsules was similar to that observed for the correspondent nanoemulsion, indicating that drug release is mainly governed by its partition between the oil core and the external aqueous medium. In contrast, the release of XAN from nanocapsules was significantly slower than from the nanoemulsion, a behaviour that suggests an interaction of the drug with the polymer. Nanocapsule formulations exhibited good physical stability at 4 8C during a 4-month period for XAN and during a 3-month period for 3-MeOXAN.</p>",
+          "polygon": [
+            [
+              40.673828125,
+              334.5810546875
+            ],
+            [
+              545.029296875,
+              334.5810546875
+            ],
+            [
+              545.029296875,
+              497.501220703125
+            ],
+            [
+              40.673828125,
+              497.501220703125
+            ]
+          ],
+          "bbox": [
+            40.673828125,
+            334.5810546875,
+            545.029296875,
+            497.501220703125
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/11"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/13",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">q 2004 Elsevier B.V. All rights reserved.</p>",
+          "polygon": [
+            [
+              41.8359375,
+              498.18847656249994
+            ],
+            [
+              195.234375,
+              498.18847656249994
+            ],
+            [
+              195.234375,
+              508.9800720214844
+            ],
+            [
+              41.8359375,
+              508.9800720214844
+            ]
+          ],
+          "bbox": [
+            41.8359375,
+            498.18847656249994,
+            195.234375,
+            508.9800720214844
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/11"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/14",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">Keywords: Xanthone; 3-Methoxyxanthone; Nanoparticles; Nanospheres; Nanocapsules; PLGA</p>",
+          "polygon": [
+            [
+              40.673828125,
+              519.8994140625
+            ],
+            [
+              348.30126953125,
+              519.8994140625
+            ],
+            [
+              348.30126953125,
+              529.4083862304688
+            ],
+            [
+              40.673828125,
+              529.4083862304688
+            ]
+          ],
+          "bbox": [
+            40.673828125,
+            519.8994140625,
+            348.30126953125,
+            529.4083862304688
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/11"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/SectionHeader/15",
+          "block_type": "SectionHeader",
+          "html": "<h2>1. Introduction</h2>",
+          "polygon": [
+            [
+              42.51969909667969,
+              563.3212890625
+            ],
+            [
+              107.22380065917969,
+              563.3212890625
+            ],
+            [
+              107.22380065917969,
+              575.1591796875
+            ],
+            [
+              42.51969909667969,
+              575.1591796875
+            ]
+          ],
+          "bbox": [
+            42.51969909667969,
+            563.3212890625,
+            107.22380065917969,
+            575.1591796875
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/16",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">Xanthones are natural, semisynthetic and totally synthetic heterocyclic compounds with the dibenzo-g-pyrone framework. Xanthone molecules having a variety of substituents on the different carbons of the nucleus constitute a group of compounds with a broad spectrum of</p>",
+          "polygon": [
+            [
+              41.8359375,
+              589.5453948974609
+            ],
+            [
+              281.64691162109375,
+              589.5453948974609
+            ],
+            [
+              281.64691162109375,
+              650.1650390625
+            ],
+            [
+              41.8359375,
+              650.1650390625
+            ]
+          ],
+          "bbox": [
+            41.8359375,
+            589.5453948974609,
+            281.64691162109375,
+            650.1650390625
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/18",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">E-mail address: mauricio.barbosa@anf.pt (C.M. Barbosa).</p>",
+          "polygon": [
+            [
+              52.294921875,
+              699.7900390625
+            ],
+            [
+              243.49853515625,
+              699.7900390625
+            ],
+            [
+              243.49853515625,
+              709.0680999755859
+            ],
+            [
+              52.294921875,
+              709.0680999755859
+            ]
+          ],
+          "bbox": [
+            52.294921875,
+            699.7900390625,
+            243.49853515625,
+            709.0680999755859
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/19",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">biological activities <a href=\"#page-8-0\">[1,2].</a> Among others, anti-inflammatory <a href=\"#page-8-0\">[3]</a>, hepatoprotective <a href=\"#page-8-0\">[4],</a> immunomodulatory <a href=\"#page-8-0\">[5–7]</a>, modulatory activity of PKC isoforms <a href=\"#page-8-0\">[8,9]</a> and antitumor activities of the growth of human cancer cell lines <a href=\"#page-8-0\">[7]</a>.</p>",
+          "polygon": [
+            [
+              305.51739501953125,
+              565.2814788818359
+            ],
+            [
+              545.029296875,
+              565.2814788818359
+            ],
+            [
+              545.029296875,
+              611.8685913085938
+            ],
+            [
+              305.51739501953125,
+              611.8685913085938
+            ]
+          ],
+          "bbox": [
+            305.51739501953125,
+            565.2814788818359,
+            545.029296875,
+            611.8685913085938
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Text/20",
+          "block_type": "Text",
+          "html": "<p block-type=\"Text\">The poor aqueous solubility of xanthone (XAN) and of many of its derivatives such as 3-methoxyxanthone (3-MeOXAN) (<a href=\"#page-1-0\">Fig. 1)</a> is a major drawback not only for their use in the therapy but even for the in vitro assessment of their biological activity. One approach to overcome the difficulty of administration of poorly water-soluble compounds is their incorporation in polymeric nanocarriers <a href=\"#page-9-0\">[10–12]</a>. Depending on the processing conditions, either</p>",
+          "polygon": [
+            [
+              303.310546875,
+              613.333984375
+            ],
+            [
+              544.6207885742188,
+              613.333984375
+            ],
+            [
+              544.6207885742188,
+              709.5528793334961
+            ],
+            [
+              303.310546875,
+              709.5528793334961
+            ]
+          ],
+          "bbox": [
+            303.310546875,
+            613.333984375,
+            544.6207885742188,
+            709.5528793334961
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/PageFooter/21",
+          "block_type": "PageFooter",
+          "html": "",
+          "polygon": [
+            [
+              42.4169921875,
+              718.8428955078125
+            ],
+            [
+              279.2115478515625,
+              718.8428955078125
+            ],
+            [
+              279.2115478515625,
+              737.396484375
+            ],
+            [
+              42.4169921875,
+              737.396484375
+            ]
+          ],
+          "bbox": [
+            42.4169921875,
+            718.8428955078125,
+            279.2115478515625,
+            737.396484375
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        },
+        {
+          "id": "/page/0/Footnote/17",
+          "block_type": "Footnote",
+          "html": "<p><sup>* </sup>Corresponding author. CTMUP/Faculdade de Farma´cia do Porto, R. Anı´bal Cunha, 164, 4050-047 Porto, Portugal. Tel.: C351 22 207 8900; fax: C351 22 200 3977.</p>",
+          "polygon": [
+            [
+              42.4169921875,
+              668.7744140625
+            ],
+            [
+              281.68853759765625,
+              668.7744140625
+            ],
+            [
+              281.68853759765625,
+              700.0340194702148
+            ],
+            [
+              42.4169921875,
+              700.0340194702148
+            ]
+          ],
+          "bbox": [
+            42.4169921875,
+            668.7744140625,
+            281.68853759765625,
+            700.0340194702148
+          ],
+          "children": null,
+          "section_hierarchy": {
+            "2": "/page/0/SectionHeader/15"
+          },
+          "images": {}
+        }
+      ],
+      "section_hierarchy": {
+        "2": "/page/0/SectionHeader/15"
+      },
+      "images": null
+    }
+  ],
+  "block_type": "Document"
+}

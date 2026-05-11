@@ -1,0 +1,811 @@
+Gene delivery using dimethyldidodecylammonium bromide-coated
+PLGA nanoparticles
+François Fay a, Derek J. Quinn b, Brendan F. Gilmore a, Paul A. McCarron c, Christopher J. Scott a,*
+a School of Pharmacy, Queens University of Belfast, 97 Lisburn Road, Belfast BT9 7BL, UK
+b School of Medicine, Dentistry and Biomedical Sciences, Queens University of Belfast, 97 Lisburn Road, Belfast BT9 7BL, UK
+c Department of Pharmacy and Pharmaceutical Science, University of Ulster, Coleraine BT52 1SA, UK
+a r t i c l e
+i n f o
+Article history:
+Received 22 October 2009
+Accepted 29 January 2010
+Available online 24 February 2010
+Keywords:
+Gene therapy
+Nanoparticle
+Drug delivery
+Polyglycolic acid
+Polylactic acid
+Dimethyldidodecylammonium bromide
+a b s t r a c t
+In this present work we describe a poly(lactic-co-glycolic acid) (PLGA) nanoparticle formulation for
+intracellular delivery of plasmid DNA. This formulation was developed to encapsulate DNA within PLGA
+nanoparticles that combined salting out and emulsion–evaporation processes. This process reduced the
+requirement for sonication which can induce degradation of the DNA. A monodispersed nanoparticle
+population with a mean diameter of approximately 240 nm was produced, entrapping a model plasmid
+DNA in both supercoiled and open circular structures. To induce endosomal escape of the nanoparticles,
+a superﬁcial cationic charge was introduced using positively charged surfactants cetyl trimethy-
+lammonium bromide (CTAB) and dimethyldidodecylammonium bromide (DMAB), which resulted in
+elevated zeta potentials. As expected, both cationic coatings reduced cell viability, but at equivalent
+positive zeta potentials, the DMAB coated nanoparticles induced signiﬁcantly less cytotoxicity than
+those coated with CTAB. Fluorescence and transmission electron microscopy demonstrated that the
+DMAB coated cationic nanoparticles were able to evade the endosomal lumen and localise in the cytosol
+of treated cells. Consequently, DMAB coated PLGA nanoparticles loaded with a GFP reporter plasmid
+exhibited signiﬁcant improvements in transfection efﬁciencies with comparison to non-modiﬁed
+particles, highlighting their functional usefulness. These nanoparticles may be useful in delivery of
+gene therapies to targeted cells.
+ 2010 Elsevier Ltd. All rights reserved.
+1. Introduction
+The application of nucleic acids as therapeutic agents for gene
+therapy has been extensively studied in a broad range of diseases
+[1–4]. However, a recurrent limitation in these therapies is the
+efﬁcient delivery of the therapeutic DNA to the disease site. To
+address this issue, various strategies have been examined including
+vectors engineered from adeno- or adeno-associated viruses [5],
+but clinical trials have demonstrated substantial obstacles to their
+use, such as immunogenicity and inﬂammatory potential [6].
+An alternative strategy is the application of non-viral gene
+delivery vectors, including liposomes [7], dendrimers [8], poly-
+cationic polymers [9,10] and polymeric nanoparticles (NP) [11] to
+reduce or avoid immunogenicity and associated risks of toxicity
+[12]. A frequently employed biodegradable polymer in NP formu-
+lation is poly(lactic-co-glycolic acid) (PLGA). PLGA NP have shown
+particular promise in the delivery of a range of drug molecules to
+disease sites to improve efﬁcacies [13–16]. Moreover, the non-toxic
+biodegradability of PLGA has resulted in FDA approval for the
+application of this polymer in various medicinal products [17].
+One approach in the application of PLGA NP for nucleic acid
+delivery uses adsorption of the anionic DNA molecules onto
+cationic NP [18,19]. Despite this efﬁcient formulation procedure, the
+peripheral exposure of the labile DNA limits stability and shortens
+its half-life, particularly in the acidic environment found within late
+endosomes where the particles will accumulate upon internal-
+isation [20,21]. Therefore, formulations that can encapsulate and
+protect the DNA from degradation are attractive for gene therapy
+approaches.
+In addition to the protection of the DNA cargo, the physical
+characteristics of the nanoparticles can be manipulated to escape
+the degradative endosomal lumen, resulting in cytosolic local-
+isation. Various strategies have been used to promote this sub-
+cellular relocalisation including application of fusogenic peptides
+[22], proton sponge polymers [23], light excitation [24] and cationic
+coating [18,19,25,26]. It is thought that the presence of a cationic
+surface charge promotes interaction and binding of the NP to the
+endosomal membrane, inducing membrane destabilisation and
+* Corresponding author. Tel.: þ44 (0) 2890972350.
+E-mail address: c.scott@qub.ac.uk (C.J. Scott).
+Contents lists available at ScienceDirect
+Biomaterials
+journal homepage: www.elsevier.com/locate/biomaterials
+0142-9612/$ – see front matter  2010 Elsevier Ltd. All rights reserved.
+doi:10.1016/j.biomaterials.2010.01.143
+Biomaterials 31 (2010) 4214–4222
+
+cytosolic relocalisation of the NP [27].On this basis, the objective of
+this current study was to develop a PLGA NP formulation that
+would combine the ability to produce NP encapsulating DNA with
+the capacity to evade endosomal degradation.
+2. Materials and methods
+2.1. Materials
+PLGA (Resomer RG 502 H) with an acid value of 9 mg KOH per g PLGA, molecular
+weight 12 kDa, was a generous gift from Boehringer Ingelheim, Germany. Poly(vinyl
+alcohol) (PVA), 87–89% hydrolysed with molecular weight 13–23 kDa, and dime-
+thyldidodecylammonium bromide (DMAB) were obtained from Sigma Aldrich,
+Germany. Magnesium chloride hexahydrate (MgCl2$6H2O), sodium bicarbonate
+NaHCO3, Tris-EDTA buffer and 3-(4,5-dimethyl-2-thiazolyl)-2,5-diphenyl-2H-tetra-
+zolium bromide (MTT reagent) were obtained from Sigma Aldrich, Germany. Hex-
+adecyltrimethylammonium bromide (CTAB) was obtained from Fluka, Germany.
+Acetone (Fisher Scientiﬁc, UK) was used as a water-miscible solvent during NP
+preparation, while dichloromethane (DCM) (Riedel-de Haee¨n, Germany) was used
+as a water-immiscible solvent. pSUPER-GFP plasmid DNA was obtained from Oli-
+goengine. PBS (phosphate-buffered saline) tablets and Dulbecco’s Modiﬁed Eagle’s
+Medium (DMEM) with L-glutamine were obtained from Gibco, Invitrogen. Foetal
+bovine serum was obtained from Biosera. Calcein was obtained from Invitrogen. A
+murine monocytic macrophage cell line (RAW 264.7) and a cell line derived from
+cervical cancer cells (HeLa) were a gift from Professor J. Johnston (Queen’s University
+Belfast).
+2.2. Preparation and puriﬁcation of DNA-loaded nanoparticles
+The double-stranded DNA vector pSUPER-GFP, containing genes encoding green
+ﬂuorescent protein (GFP) and kanamycin resistance, was diluted to a concentration
+of 15 mg ml1 in 10 mM Tris buffer, pH 7.5 containing 1 mM EDTA (TE buffer) sup-
+plemented with 100 mM NaHCO3. Ice-cold plasmid DNA solution (100 ml) was then
+carefully mixed with 700 ml of ice-cold organic phase comprising 20 mg PLGA in
+200 ml DCM and 500 ml acetone. The emulsion formed was then injected under
+moderate stirring into 3 ml of ice-cold solution containing 2.5% (w/v) PVA and 45%
+(w/v) MgCl2$6H2O. Both phases were then sonicated in an ice bath at 20 mW. An
+additional 5 ml of 2.5% (w/v) PVA solution was ﬁnally added under moderate stirring
+to initiate acetone diffusion. Samples were left stirring overnight to allow for organic
+solvent evaporation. NP were centrifuged at 85,000 g for 10 min at 4 C, then
+washed using suspension-spin cycles with deionised water. NP pellets (20 mg) were
+resuspended in 8 ml deionised water to produce a NP suspension of 2.5 mg ml1
+prior to further use.
+2.3. Surfactant adsorption
+Diverse volumes of a DMAB or CTAB solution (1% w/v) were added to 0.5 ml of
+a puriﬁed NP (2.5 mg ml1 PLGA) suspension. The DMAB/NP and CTAB/NP
+suspensions were sonicated intermittently to ensure uniform mixing and agitated
+gently for 1 h at room temperature. To remove unbound DMAB, NP suspensions
+were centrifuged at 20,000 g for 60 min and the pellets were resuspended in
+deionised water.
+2.4. Cell viability assay
+HeLa and RAW 264.7 cells were prepared and incubated with the NP formula-
+tions as above. After 72 h, cell viability was assessed by the methylthiazolyldiphenyl-
+tetrazolium bromide (MTT) colorimetric assay in 96-well plates. MTT solution (20 ml
+of 5 mg ml1) in PBS was added to each well and the plates were incubated for 2 h at
+37 C and 5% CO2 to allow for the formation of formazan crystals. The MTT medium
+solution was removed, 100 ml of dimethylsulfoxide was added and optical densities
+were determined at 570 nm (Tecan Spectra III, Austria). Cell survival percentages
+were calculated from absorbance ratios when compared to untreated control cells.
+2.5. Nanoparticle characterisation
+NP size and zeta potential were measured using photon correlation spectros-
+copy and laser Doppler anemometry, respectively (ZetaSizer 3000 HS, Malvern
+instruments, UK). The polydispersity index was also determined on this instru-
+mentation. Measurements were taken at a ﬁxed angle of scatter (90). Determina-
+tions were carried out at room temperature (25 C), with each done in triplicate and
+an average particle size expressed as the mean diameter (Zave).
+DNA entrapment efﬁciency was determined by dissolving puriﬁed DNA-loaded
+NP in 1 ml DCM and 0.5 ml TE buffer with mild shaking for 3 h at 4 C. TE buffer
+solution containing free DNA was then extracted by two successive centrifugations
+at 800 g for 5 min at 4 C. DNA was then isolated by ethanol precipitation and
+centrifugation for 60 min at 20,000 g at 0 C. DNA extracted was then resuspended in
+100 ml TE buffer and the concentration was measured using a Quant-iT assay
+(Invitrogen). Entrapment efﬁciency was calculated using Equation (1).
+Entrapment efficiencyð%Þ ¼ Mass of DNA recoveredðmgÞ
+Mass of DNA addedðmgÞ
+$100
+(1)
+2.6. DNA release from PLGA NP
+The release proﬁles of DNA from suspensions of 20 mg of NP were evaluated
+using phosphate-buffered saline (pH 7.4) as the receiver medium. Measurements are
+performed on a 24-h cycle, whereupon test suspensions were centrifuged at 85,000g
+for 10 min at 4 C. The concentration of DNA in the supernatant phase was deter-
+mined by precipitation in ethanol, resuspension in 100 ml TE buffer and assayed
+using a Quant-iT kit (Invitrogen). The fractional DNA release was determined by
+comparison with the total mass of DNA incorporated in the NP.
+2.7. Agarose gel electrophoresis of plasmid DNA
+Plasmid DNA solutions were analysed by 0.7% agarose gel electrophoresis. The
+gels were prepared with 0.7% agarose in Tris-acetate-EDTA buffer containing
+0.5 mg ml1 ethidium bromide. DNA solutions were analysed after treatment with
+BlueJuice loading buffer (Invitrogen, USA). Gel electrophoresis was performed at
+a constant 75 mV for 1 h and the resulting gel imaged on a UV trans-illuminator.
+2.8. In vitro evaluation of plasmid DNA functionality
+The functionality of released plasmid DNA was examined through trans-
+formation and selection of transformed Escherichia coli colonies with kanamycin
+resistance. DNA solutions (200 ng) were used to transform chemically competent
+TOP10F’ E. coli following manufacturer’s instructions (Invitrogen). The transformed
+cells were then plated on Luria Broth media agar plates (50 mg ml1 kanamycin) and
+allowed to grow overnight at 37 C.
+2.9. In vitro evaluation of the cationic effect on endo/lysosomal vesicles
+RAW 264.7 and HeLa cells were plated in 96-well microplates at 50  103 cells
+per well in 200 ml DMEM þ 2 mM Glutamine þ 10% foetal bovine serum (FBS) and
+allowed to adhere at 37 C and 5% CO2. Twenty-four hours later, cells were washed
+and incubated in 200 ml of serum free media containing 150 mg mL1 calcein. NP
+suspensions were added to the wells and allowed to incubate with cells for 3 h. Cells
+were then washed and re-incubated in 200 ml of PBS. The localisation of the calcein
+dye was then analysed by ﬂuorescence microscopy.
+2.10. Evaluation of intracellular localisation by confocal microscopy
+Fluorescent NP were prepared by dissolving 0.1 mg ml1 of coumarin-6 (Sigma)
+in the DCM solution used during the PLGA NP formulation. Raw 264.7 cells were
+seeded on coverslips in six-well plates at 2  105 cells per well and allow to grow
+overnight. This was followed by 3 h incubation at 37 C and 5% CO2 in serum free
+media with 50 nM of LysoTracker Red (Invitrogen) and 2 mL dispersion of
+2.5 mg ml1 dye-loaded NP that were coated or not with DMAB. Cells were then
+washed three times with PBS then ﬁxed in 4% para-formaldehyde for 1 h, washed
+three times with PBS then 30 min in pH 8 HEPES buffer. For nuclear staining, cells
+were incubated with 1/200 solution of TO-PRO-3 iodide (Invitrogen) solution and
+subsequently washed 3 times with PBS. Coverslips were then mounted on micro-
+sope slides using SlowFade Gold reagent (Invitrogen) and samples analyses were
+performed using confocal scanning laser microscopy (Leica Confocal TCS Sp2,
+Germany). Excitation was done using laser illumination at 488 nm for green ﬂuo-
+rescence, 543 nm for red ﬂuorescence and 633 nm for far red ﬂuorescence.
+2.11. Evaluation of intracellular localisation by transmission electron microscopy
+HeLa cells were plated in 6-well microplates at 250  103 cells per well in 2 ml
+DMEM containing 2 mM Glutamine supplemented with 10% FBS and allowed to
+adhere at 37 C and 5% CO2. Cells were washed after 24 h and incubated in 2 ml of
+medium without FBS. Different NP suspensions were added to the wells and incu-
+bated with cells for 3 h. Subsequently, cells were resuspended with trypsin and
+washed successively with medium supplemented with FBS then PBS and centri-
+fuged. Cell pellets were then ﬁxed in glutaraldehyde, dehydrated, imbedded in resin
+and sliced into ultra-thin sections. Sub-cellular localisation of the NP in relation to
+endo/lysosomal vesicles within the cells was assessed using transmission electron
+microscopy.
+2.12. In vitro transfection
+RAW 264.7 cells were plated in 96-well microplates at 10  103 cells and were
+allowed to adhere for 12 h then washed and incubated in 200 ml of medium without
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4215
+
+FBS. Different DNA solutions or DNA-loaded NP suspensions corresponding to
+1.25 mg PLGA were incubated with cells for 3 h. Cells were then washed and re-
+incubated in 200 ml of medium containing FBS for 3 days. Expression of GFP
+within cells was assessed after 60 h by ﬂuorescence.
+2.13. Statistical analyses
+Statistical analyses were performed using Student’s t distribution analysis to
+compare all pairs of preparations (Graph-Pad Prism, San Diego, CA, USA). Rejection
+of the null hypothesis was considered when the p value was <0.05.
+3. Results and discussion
+3.1. Nanoparticle formulation
+Upon internalisation by endocytosis, NP preferentially localise
+to late endosomes [20]. This localisation can be destructive to cargo
+DNA, particularly if adsorbed to the surface of cationic NP. Prema-
+ture dissociation of surface-adsorbed DNA from NP in endosomal
+compartments following cellular internalisation has previously
+been observed [21], where degradation occurs rapidly in the acid-
+iﬁed environment. Thus, the ability to entrap the nucleic acid inside
+the PLGA NP is attractive in order to protect the cargo DNA and thus
+increase its stability and half-life. Furthermore, many forms of
+plasmid DNA are bacterially-derived and these have been shown to
+induce an immune response in mammals [28–30]. Therefore, the
+encapsulation of the plasmid DNA inside the carrier may prevent or
+attenuate the activation of an immune response [31].
+Previous
+studies
+examining
+the
+encapsulation
+of
+circular
+double-stranded plasmid DNA into polymeric nanoparticles have
+highlighted the labile nature of the DNA as a major limiting factor.
+Conditions used in the NP preparation, such as sonication, can
+create shear stresses that result in the degradation of the DNA [32–
+34]. Here, a formulation method was developed that combined the
+water-in-oil-in-water (W/O/W) emulsion–evaporation method-
+ology [35,36] with a salting out process [37]. It was hypothesised
+that this approach would generate NP with encapsulated DNA
+using only a minimal application of sonication.
+The selected formulation process facilitated the production of NP
+of an adaptable diameter range. NP diameter is a major factor in
+cellular internalisation efﬁciencies, with NP of different diameters
+taken-up via different mechanisms and rates. Therefore, the
+production of NP with a diameter in the range of 200 nm was initially
+selected as the optimum size as they have previously been shown to
+internalise efﬁciently by endocytosis through clathrin-coated pits
+[38]. A range of sonication conditions were assessed, varying both the
+duration mode of application (continuous or pulsed). The results
+shown in Table 1 demonstrate how in general, longer sonication
+times resulted in the generation of NP with smaller diameters, but
+that speciﬁcally, 15 s of continuous sonication was sufﬁcient to
+produce the optimum size (203.3  6.6 nm). Moreover, pulse soni-
+cationwas examined inparallel to allow comparisonwith continuous
+sonication, as this approach may enable improved heat dispersal,
+which may also help protect the integrity of the cargo DNA. This
+variation in the formulationprocess proved relatively ineffective with
+a 30
+s
+pulse
+sonication producing NP with a diameter of
+219.9  2.0 nm; only marginally smaller than those prepared via
+a 10 s continuous sonication (237.7  1.5 nm). These results obtained
+using a combination of W/O/W emulsion–evaporation and salting
+out methods produced smaller NP in comparison to conventional W/
+O/W emulsion with a 60 s sonication step (260 nm  6.3 nm) [39],
+demonstrating the ability to generate small NP using only a minimal
+sonication step. On the basis of these ﬁndings, application of the W/
+O/W formulation process with the 10 s continuous sonication step
+was selected as a compromise between NP diameter and potential
+DNA degradation for further studies; whereby it was hypothesised
+the shorter period of sonication would limit shearing of the DNA.
+DNA degradation may also occur during or after formulation as
+a result of the acidiﬁcation of the localised particulate environment,
+induced by PLGA polymer decomposition. Therefore, in an effort to
+improve DNA stability during NP formulation, the plasmid DNA was
+solubilised in TE buffer. Furthermore, NaHCO3 (0.1 M) was added to
+the TE buffer as its buffering properties assist the maintenance of
+a neutral pH during both NP formulation and decomposition [40].
+After the formulation of the NP incorporating the DNA was
+completed, the encapsulation efﬁciency was measured by disas-
+sembly of the NP using solvents and recovery of the entrapped DNA
+via ethanol precipitation. The entrapment efﬁciencies measured (8%;
+50 ng mg1 PLGA) were lower in comparison to a previous approach
+where DNA entrapped PLGA NP were prepared using a double
+emulsion formulation (around 18%) [11]. An explanation for the low
+efﬁciency of entrapment may be due to the length of the formulation
+procedure employed here (15 h). Blum and co-workers observed
+a rapid release of DNA (up to 90%) from their PLGA NP within 12 h
+[11]. It is therefore possible that a proportion of the entrapped DNA
+has already been released by the start of our release study.
+Another essential considerationwas the integrity of the DNA that
+had been incorporated into the NP. This was ﬁrst examined by
+analysis of the DNA extracted from the NP by agarose gel electro-
+phoresis (Fig. 1). Control unformulated maxiprep plasmid DNA was
+present mainly in its supercoiled form, while DNA extracted from
+the NP was shown to be mainly present in an open circular
+conformation. However, the change in electrophoretic migration of
+the DNA extracted from the NP could suggest that the DNA is now
+non-functional.
+Therefore
+to
+examine
+encapsulated
+plasmid
+activity, and thus, the integrity of the circular double-stranded DNA,
+solutions of recovered plasmid were assessed in their ability to
+transform competent E. coli cells. After transformation, cells were
+plated on selection agar plates containing kanamycin (selection
+Table 1
+Effect of sonication mode and duration on size and polydispersity of PLGA NP.
+Sonication step/s
+Particle size/nm
+Polydispersity index
+None
+900.0  188
+1.000
+10 Continuous
+237.7  1.5a
+0.14  0.05
+15 Continuous
+203.3  6.6a
+0.17  0.02
+30 Continuous
+159.4  3.0a
+0.14  0.05
+60 Continuous
+120.8  8.4a
+0.15  0.02
+30 (pulsed)
+219.9  2.0b
+0.29  0.31
+60 (pulsed)
+182.0  10.5b
+0.17  0.03
+Results presented are mean  SD (n ¼ 3).
+a p < 0.05 With respect to each other in continuous mode formulations.
+b p < 0.05 With respect to each other in pulsed mode formulations.
+Fig. 1. Agarose gel electrophoresis of DNA extracted from PLGA NP. Lane 1, mass ruler;
+Lane 2, maxiprep(control) plasmid DNA; Lane 3, plasmid DNA extracted from NP after
+solubilisation in DCM and recovered through ethanol precipitation.
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4216
+
+marker for pSUPER-EFP), and therefore, only cells transformed with
+a functional plasmid formed colonies after overnight incubation.
+Using this approach, it was determined that at least 12.5% of the
+total DNA incorporated was functionally active in comparison to
+non-formulated control supercoiled plasmid DNA. Given that this
+procedure is based on the functionality of the entrapped plasmid
+DNA, it may be a more accurate determination of entrapment efﬁ-
+ciency. However, uncoiling of the DNA during formulation may also
+have reduced the transformation efﬁciencies observed between the
+maxiprep control (mainly present in supercoiled form which will
+transform more readily) and the DNA extracted from the NP. Thus,
+the percentage of functional DNA measured may be under-
+estimated by this analysis. Nonetheless, these analyses clearly
+demonstrated that the salting out W/O/W formulation process had
+successfully resulted in the encapsulation of functionally active
+plasmid DNA. Given the small amounts of DNA required to transfect
+cells successfully to produce high GFP positivity (103 copies/cell;
+w0.005 pg/cell) [41], the levels of entrapped DNA measured were
+considered
+sufﬁcient
+for
+application
+in
+cell
+transfection
+experiments.
+3.2. Manipulation of surface charge of PLGA NP
+In order to obtain efﬁcient transfection, plasmid DNA must
+localise to the nucleus. Therefore, the second step of this study was
+to develop an approach to facilitate endosomal escape of the NP
+into the cytosol, thus reducing/avoiding acid-induced degradation
+of the nucleic acid within the endosomal lumen, and leaving
+released DNA free to translocate to the nucleus. Previously, the
+application of cationic coatings have been examined to facilitate
+this translocation [18,19,26]. The presence of a surface cationic
+charge on NP has been shown to interact with the negatively
+charged endosomal membranes upon internalisation. This results
+in endosome/lysosome membrane destabilisation, resulting in NP
+escape/relocalisation into the cytosol [25,27].
+Unmodiﬁed PLGA NP present a low anionic potential (5 to
+20 mV) due to the negative charge of the PLGA polymer, but
+introduction of polymers such as poly(ethylenimine) [10,18,42,43],
+chitosan [26] and CTAB [19,43], during or after formulation to
+increase the zeta potential have been examined. On this basis, we
+examined coating the DNA encapsulated PLGA NP with CTAB [44–
+47], and DMAB which has previously been used to improve oral
+availability of NP [48–50]. After the introduction of these cationic
+coatings, NP diameter and zeta potential of the different formula-
+tions were examined. The addition of cationic surfactants increased
+the zeta potential of the NP in comparison to the anionic zeta
+potential of the non-modiﬁed NP (Fig. 2). However, there were
+differences in the behaviour of the particles coated with either
+CTAB or DMAB. In the DMAB concentration range examined (up to
+100.5 mg per mg PLGA) a concentration dependent increase in zeta
+potential was observed (Fig. 2A, top panel) with a small but non-
+signiﬁcant increase in NP diameter, as can be seen from Fig. 2B
+(top panel, from 236 to 264 nm). Particles coated with CTAB
+exhibited a different proﬁle with no concentration dependent
+increase in zeta potential observed until concentrations of 400 mg
+per mg PLGA were applied (Fig. 2A, lower panel) suggesting that
+CTAB is less efﬁcient in coating the particles than DMAB. Indeed,
+the zeta potential is only increased in the CTAB particles in
+combination with a signiﬁcant increase in particle diameter (Fig. 2B
+lower panel), suggesting a co-operativity in coating efﬁciency with
+CTAB; distinct from that of the dose-dependent effect of DMAB
+under the conditions that we have employed. These ﬁndings are in
+Fig. 2. Effect of the amount of cationic surfactant incubated with the NP on zeta potential (A) and diameter (B). (n ¼ 3, error bars represent standard error of the mean, *p < 0.001).
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4217
+
+agreement with previous research showing that CTAB can desorb
+easily from PLGA microparticles due to its weak association with
+PLGA [51].
+3.3. Assessment of cationic nanoparticle cytotoxicity
+Previously it has been observed that the internalisation of
+strongly cationic NP can induce cell death through various intra-
+cellular mechanisms including lysosomal disruption and mito-
+chondrial damage [52–54]. Therefore, the cytotoxicity of the NP
+formulations were examined by MTT assays and as anticipated, the
+incubation of positively charged NP did reduce HeLa cell viability
+after 72-h incubation (Fig. 3). However, it was also observed that in
+comparisons of CTAB and DMAB coated NP of equivalent cationic
+zeta potential (6.5  1.4 mV and 9.5  1.7 mV, respectively), the
+CTAB-coated particles appeared more toxic (46  16.7% and
+74  12% viability, respectively). These effects were further vali-
+dated by the determination of their IC50, conﬁrming the increased
+toxicity of CTAB-coated NP (IC50 ¼ 83 mg PLGA ml1) compared to
+their DMAB coated counterparts (IC50 ¼ 168 mg PLGA ml1). This
+reduced cytotoxicity may be explained by the much smaller
+amount of DMAB required to produce equivalent cationic zeta
+potentials to CTAB. Furthermore, as it has been observed here that
+CTAB coats the PLGA NP less efﬁciently than DMAB, CTAB may be
+more readily released from the surface of the NP to elicit toxic
+effects as has been shown previously [55]. Consequently, on the
+basis of these collective ﬁndings, DMAB coated PLGA NP (at
+4.7 mg mg1 PLGA) was selected for subsequent experiments.
+3.4. DNA release from PLGA nanoparticles
+Release of the cargo DNA from the modiﬁed DMAB coated PLGA
+NP in PBS at 37 C was next examined. The DNA release proﬁles
+observed (Fig. 4) showed a biphasic release kinetic with an initial
+burst release of 83.7  1.3% (unmodiﬁed NP) and 89.2  8.4%
+(DMAB coated NP) during the ﬁrst 48 h, followed by a slower
+sustained release lasting for approximately 4 days. This biphasic
+release proﬁle is common with DNA [56] or other molecules
+encapsulated in PLGA particles [57,58]. The initial DNA burst release
+may be attributed to the preferential release of DNA localised close
+to the surface of the NP or to the presence of pores within the
+particles that facilitate the rapid diffusion of a proportion of the
+DNA [59]. Interestingly, the release proﬁles of both unmodiﬁed and
+DMAB coated NP were very similar. This outcome was unantici-
+pated as interactions between the cationic surfactant and negative
+DNA would have been expected to result in slower release or
+a delay of the DNA. However, the small amounts of DMAB adsorbed
+(4.7 mg DMAB mg1 PLGA) may explain why it did not have
+a signiﬁcant effect on the DNA release kinetics.
+3.5. Cellular localisation studies with NP formulations
+Next, the ability of the DMAB coated NP to enter the cells and
+escape the endosomal compartments was examined. This was done
+by incubation of RAW 264.7 and HeLa cells with calcein in the
+presence of the various NP formulations. Calcein is a cell-
+impermeable green ﬂuorescent dye that has previously been used
+to assess endosomal membrane stabilities [60]. Calcein can be
+internalised through active endocytosis/pinocytosis resulting in the
+staining of only endosomal lumens. Destabilisation of the endo-
+somes/lysosomes by the particles induces release of the calcein
+from the endo/lysosomal vesicles and resulting in disperse cyto-
+solic staining as demonstrated with the lysosomal disrupting agent
+L-Leucine– L-Leucinemethyl ester (LLME) [61] (Fig. 5A).
+Fig. 3. Effect on amount of either CTAB or DMAB cationic surfactant coated on the NP on HeLa cell viability after 72 h using MTT assay (n ¼ 5, error bars represent standard
+deviation).
+Fig. 4. DNA released proﬁles from non-coated PLGA and DMAB coated NP. The NP
+were incubated in PBS and centrifuged every 24 h. DNA content of the supernatant
+phase was measured and results presented as a percentage of total DNA released (n ¼ 3
+error bars represent standard deviation).
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4218
+
+In Fig. 5 the majority of cells incubated with calcein alone
+(Fig. 5A, panels 1 and 2), and cells incubated with anionic NP in
+combination with the calcein dye (Fig. 5A, panels 5 and 6) displayed
+punctuate staining, indicative of its distribution in endocytic vesi-
+cles and highlighting their integrity (Fig. 5B panel 9). Conversely,
+incubation of the cell lines with cationic NP coated with the
+selected ratio of DMAB (1.4 mg mg1 PLGA), produced a markedly
+higher proportion of the cells eliciting broad cytosolic calcein
+distribution, similar to the effects elicited by LLME (Fig. 5A, panels
+3, 4 and 7, 8; Fig. 5C). This shows the ability of cationic NP to
+destabilise endosomal membranes, thereby redistributing the cal-
+cein dye into the cytosol (Fig. 5C).
+Further examination of the ability of the DMAB coated NP to
+escape endosomal compartments was carried out by comparing the
+sub-cellular localisation of anionic and DMAB coated NP using
+a lysosomal tracking dye (LysoTracker Red, Invitrogen) in RAW
+264.7 (Fig. 6). When incubated with non-coated anionic NP,
+a strong colocalisation pattern (yellow ﬂuorescence) indicative of
+NP accumulation within late endosomes/lysosomes was observed
+(Fig. 6, panels A and C). Conversely, in the presence of the cationic
+DMAB coated NP, the colocalisation was reduced and there was an
+increase in green ﬂuorescence (NP) within the cell cytoplasm
+(Fig. 6, panels B and D) indicative of endosomal escape.
+Finally, HeLa cells incubated with the NP formulations were
+analysed by transmission electron microscopy (TEM). TEM analysis
+facilitates the direct detection and visualisation of NP in prepared
+sections and has previously been employed in the study of sub-
+cellular localisation of NP [60]. As can be seen in Fig. 7, distinct
+differences in the distribution of the anionic and cationic particles
+were observed. Anionic NP were detected inside submicron vesicle
+structures, indicative of endosomal/lysosomal lumens (Fig. 7A and
+B), whereas a large majority of cationic DMAB coated NP were
+identiﬁed inside the cytosol (Fig. 7C and D).
+Collectively, these data suggest that the alteration of the NP zeta
+potential to a cationic state result in their ability to evade the
+endosomal/lysosomal lumen and localise in the cytosol as a result
+of membrane destabilisation. On the basis of these ﬁndings, the
+ability to exploit the cationic NP cytosolic localisation was pursued
+for DNA delivery to these cell lines.
+3.6. Transfection studies with DMAB coated NP
+NP transfection efﬁciencies were assessed by exploitation of the
+green ﬂuorescent protein (GFP) reporter gene in the pSUPER-GFP
+plasmid. RAW 264.7 and HeLa cells were incubated for 3 h with
+the NP formulations and the GFP positivity was observed by ﬂuo-
+rescence microscopy. RAW 264.7 cells untreated or incubated with
+un-encapsulated DNA produced no GFP expression as anticipated
+(Fig. 8A, panels 1 and 2). The incubation of PLGA-only NP DNA
+formulations resulted in GFP expression in a small number of cells
+(Fig. 8A, panel 3) as previously reported in ref. [62]. Conversely,
+DNA encapsulated in the cationic DMAB coated PLGA NP (Fig. 8A,
+panel 4) resulted in a signiﬁcant increase in GFP-positive cells
+(quantitatively shown in Fig. 8B) (approximately 20% transfection
+efﬁciency; p < 0.01). This is indicative of their improved ability to
+protect the plasmid DNA and deliver it into the cytosol, where it can
+Fig. 5. (A). Combination of ﬂuorescent and phase contrast or ﬂuorescent only microscopy images of HeLa cells incubated with calcein. 1, 2: control; 3, 4 cells treated with LLME; 5, 6
+cells treated with anionic NP; and 7, 8 cells treated with cationic NP. Scale bar ¼ 1 mm (B). Further magniﬁed ﬂuorescent microscopy images of HeLa cells incubated with calcein. 9:
+cells treated with anionic NP; 10: cells treated with cationic DMAB coated NP. Scale bar ¼ 100 mm (C). Percentage of total cells showing cytosolic distribution of calcein due to
+disruption of endo/lysosomal membranes. 500 cells were sampled for each experiment. * (p < 0.05).
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4219
+
+Fig. 6. Fluorescent confocal microscope image of cross-sections of RAW 264.7. Cells were co-incubated with lysosomal tracking dye (LysoTracker Red, appeared in red) and
+coumarin-6 loaded NP (appeared in green). (A) cells treated with anionic NP (B) cells treated with cationic NP. After incubation cells were ﬁxed and counterstained with TOPRO 3 to
+stain the cell nuclei (appeared in blue). Colocalisation pattern in panel A (yellow ﬂuorescence) are indicated by white arrows while green ﬂuorescence of NP within the cell
+cytoplasm are indicated by blue arrows in panel B.
+Fig. 7. Transmission electron microscope image of cross-sections of HeLa cells treated with anionic NP (A and B) or cationic DMAB coated NP (C and D).
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4220
+
+then translocate to the nucleus of the treated cells. Although the
+transfection percentages are relatively low, these efﬁciencies could
+be compared to lipofectamine (10%, data not shown) and other
+commercial cationic liposomal delivery systems routinely used for
+DNA transfection [63]. However, the transfection rates that have
+been observed here are a result of introducing approximately the
+equivalent of 3–5 ng of DNA per 5  105 cells, compared to 1–5 mg
+generally employed with cationic liposomal reagents. It may be
+possible to increase these transfection rates through optimisation
+of DNA entrapment by introduction of co-polymers such as poly-L-
+lysine into the DMAB coated particles, thus providing particles with
+improved DNA entrapment efﬁciencies. Furthermore, as targeting
+and uptake of PLGA NP through antibody conjugation can improve
+cellular uptake [64,65], this may represent another strategy to
+further increase these transfection efﬁciencies.
+4. Conclusion
+In summary, the application of a salting out and emulsion–
+evaporation process has successfully resulted in the formulation of
+240 nm DNA-loaded NP. The introduction of a cationic surfactant
+(DMAB) has facilitated the endosomal escape of endocytosed NP,
+thus preventing premature degradation of the transfected DNA.
+This effect was exempliﬁed by the observation of improved trans-
+fection efﬁciencies over anionic NP carrying a reporter plasmid.
+These DNA delivery modalities require approximately 1000-fold
+less DNA than cationic liposomal delivery agents to achieve
+comparable transfection efﬁciencies and given that PLGA NP are
+easily targeted to speciﬁc cell types by surface conjugation of
+antibodies, sugars or peptides, these NP represent potential new
+non-viral gene therapy vectors.
+Appendix
+Figures with essential colour discrimination. Certain ﬁgures in
+this article, in particular Figs. 5 and 8, have parts that are difﬁcult to
+interpret in black and white. The full colour images can be found in
+the on-line version, at doi:10.1016/j.biomaterials.2010.01.143.
+References
+[1] Alexander BL, Ali RR, Alton EW, Bainbridge JW, Braun S, Cheng SH, et al.
+Progress and prospects: gene therapy clinical trials (part 1). Gene Ther 2007;
+20:1439–47.
+[2] Guinn BA, Mulherkar R. International progress in cancer gene therapy. Cancer
+Gene Ther 2008;12:765–75.
+[3] Scherer L, Rossi JJ, Weinberg MS. Progress and prospects: RNA-based therapies
+for treatment of HIV infection. Gene Ther 2007;14:1057–64.
+[4] Androic I, Kramer A, Yan R, Rodel F, Gatje R, Kaufmann M, et al. Targeting
+cyclin B1 inhibits proliferation and sensitizes breast cancer cells to taxol. BMC
+Cancer 2008;8:391.
+[5] Brun A, Albina E, Barret T, Chapman DA, Czub M, Dixon LK, et al. Antigen
+delivery systems for veterinary vaccine development. Viral-vector based
+delivery systems. Vaccine 2008;26:6508–28.
+[6] Nafee N, Taetz S, Schneider M, Schaefer UF, Lehr CM. Chitosan-coated PLGA
+nanoparticles for DNA/RNA delivery: effect of the formulation parameters on
+complexation and transfection of antisense oligonucleotides. Nanomedicine
+2007;3:173–83.
+[7] Geusens B, Lambert J, De Smedt SC, Buyens K, Sanders NN, Van Gele M.
+Ultradeformable cationic liposomes for delivery of small interfering RNA
+(siRNA) into human primary melanocytes. J Control Release 2009;133:214–20.
+[8] Zhou J, Wu J, Hafdi N, Behr JP, Erbacher P, Peng L. PAMAM dendrimers for
+efﬁcient siRNA delivery and potent gene silencing. Chem Commun (Camb)
+2006;22:2362–4.
+[9] Park TG, Jeong JH, Kim SW. Current status of polymeric gene delivery systems.
+Adv Drug Deliv Rev 2006;58:467–86.
+[10] Son S, Kim WJ. Biodegradable nanoparticles modiﬁed by branched poly-
+ethylenimine for plasmid DNA delivery. Biomaterials 2010;31:133–43.
+[11] Blum JS, Saltzman WM. High loading efﬁciency and tunable release of plasmid
+DNA encapsulated in submicron particles fabricated from PLGA conjugated
+with poly-L-lysine. J Control Release 2008;129:66–72.
+[12] Dewey RA, Morrissey G, Cowsill CM, Stone D, Bolognani F, Dodd NJ, et al.
+Chronic brain inﬂammation and persistent herpes simplex virus 1 thymidine
+kinase expression in survivors of syngeneic glioma treated by adenovirus-
+mediated
+gene
+therapy:
+implications
+for
+clinical
+trials.
+Nat
+Med
+1999;11:1256–63.
+[13] Chen H, Gao J, Lu Y, Kou G, Zhang H, Fan L, et al. Preparation and character-
+ization of PE38KDEL-loaded anti-HER2 nanoparticles for targeted cancer
+therapy. J Control Release 2008;128:209–16.
+[14] McCarron PA, Marouf WM, Donnelly RF, Scott C. Enhanced surface attachment
+of protein-type targeting ligands to poly(lactide-co-glycolide) nanoparticles
+using variable expression of polymeric acid functionality. J Biomed Mater Res
+A 2008;87:873–84.
+[15] Kocbek P, Obermajer N, Cegnar M, Kos J, Kristl J. Targeting cancer cells using
+PLGA nanoparticles surface modiﬁed with monoclonal antibody. J Control
+Release 2007;120:18–26.
+[16] Garinot M, Fievez V, Pourcelle V, Stoffelbach F, des Rieux A, Plapied L, et al.
+PEGylated PLGA-based nanoparticles targeting M cells for oral vaccination. J
+Control Release 2007;120:195–204.
+Fig. 8. (A). Combination of ﬂuorescent and phase contrast microscopy pictures of transformed macrophage RAW 264.7. 1: control; 2: transformation with plasmid DNA alone; 3:
+transformation with plasmid DNA encapsulated anionic NP; 4: transformation with plasmid DNA encapsulated cationic NP. Scale bar ¼ 50 mm (B). quantitative analysis of cells
+showing GFP expression using 4 ﬁelds of view were sampled for each condition (n ¼ 3 error bars represents standard deviation) * (p < 0.01).
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4221
+
+[17] Shive MS, Anderson JM. Biodegradation and biocompatibility of PLA and PLGA
+microspheres. Adv Drug Deliv Rev 1997;28:5–24.
+[18] Kim IS, Lee SK, Park YM, Lee YB, Shin SC, Lee KC, et al. Physicochemical
+characterization of poly(L-lactic acid) and poly(D,
+L-lactide-co-glycolide)
+nanoparticles with polyethylenimine as gene delivery carrier. Int J Pharm
+2005;298:255–62.
+[19] Basarkar A, Devineni D, Palaniappan R, Singh J. Preparation, characterization,
+cytotoxicity and transfection efﬁciency of poly(DL-lactide-co-glycolide) and
+poly(DL-lactic acid) cationic nanoparticles for controlled delivery of plasmid
+DNA. Int J Pharm 2007;343:247–54.
+[20] Panyam J, Sahoo SK, Prabha S, Bargar T, Labhasetwar V. Fluorescence and
+electron microscopy probes for cellular and tissue uptake of poly(D, L-lactide-
+co-glycolide) nanoparticles. Int J Pharm 2003;262:1–11.
+[21] Grosse S, Thevenot G, Aron Y, Duverger E, Abdelkarim M, Roche AC, et al. In vivo
+gene delivery in the mouse lung with lactosylated polyethylenimine, questioning
+the relevance of in vitro experiments. J Control Release 2008;132:105–12.
+[22] Oliveira S, van Rooy I, Kranenburg O, Storm G, Schiffelers RM. Fusogenic
+peptides enhance endosomal escape improving siRNA-induced silencing of
+oncogenes. Int J Pharm 2007;331:211–4.
+[23] Duan H, Nie S. Cell-penetrating quantum dots based on multivalent and
+endosome-disrupting surface coatings. J Am Chem Soc 2007;129:3333–8.
+[24] Shieh MJ, Peng CL, Lou PJ, Chiu CH, Tsai TY, Hsu CY, et al. Non-toxic photo-
+triggered gene transfection by PAMAM-porphyrin conjugates. J Control
+Release 2008;129:200–6.
+[25] Hoekstra D, Rejman J, Wasungu L, Shi F, Zuhorn I. Gene delivery by cationic
+lipids: in and out of an endosome. Biochem Soc Trans 2007;35:68–71.
+[26] Vila A, Sanchez A, Tobio M, Calvo P, Alonso MJ. Design of biodegradable
+particles for protein delivery. J Control Release 2002;78:15–24.
+[27] Leroueil PR, Hong S, Mecke A, Baker Jr JR, Orr BG, Banaszak Holl MM. Nano-
+particle interaction with biological membranes: does nanotechnology present
+a Janus face? Acc Chem Res 2007;40:335–42.
+[28] Messina JP, Gilkeson GS, Pisetsky DS. Stimulation of in vitro murine
+lymphocyte proliferation by bacterial DNA. J Immunol 1991;147:1759–64.
+[29] Pisetsky DS. Antibody responses to DNA in normal immunity and aberrant
+immunity. Clin Diagn Lab Immunol 1998;5:1–6.
+[30] Bauer M, Heeg K, Wagner H, Lipford GB. DNA activates human immune cells
+through a CpG sequence-dependent manner. Immunology 1999;97:699–705.
+[31] Skjorringe T, Gjetting T, Jensen TG. A modiﬁed protocol for efﬁcient DNA
+encapsulation into pegylated immunoliposomes (PILs). J Control Release
+2009;139:140–5.
+[32] Sato H, Hattori S, Kawamoto S, Kudoh I, Hayashi A, Yamamoto I, et al. In vivo
+gene gun-mediated DNA delivery into rodent brain tissue. Biochem Biophys
+Res Commun 2000;270:163–70.
+[33] Adami RC, Collard WT, Gupta SA, Kwok KY, Bonadio J, Rice KG. Stability of
+peptide-condensed plasmid DNA formulations. J Pharm Sci 1998;87:678–83.
+[34] Walter E, Moelling K, Pavlovic J, Merklea H. Microencapsulation of DNA using
+poly(Image-lactide-co-glycolide): stability issues and release characteristics. J
+Control Release 1999;61:361–74.
+[35] Yin J, Noda Y, Yotsuyanagi T. Properties of poly(lactic-co-glycolic acid) nano-
+spheres containing protease inhibitors: camostat mesilate and nafamostat
+mesilate. Int J Pharm 2006;314:46–55.
+[36] Perez C, De Jesus P, Griebenow K. Preservation of lysozyme structure and
+function upon encapsulation and release from poly(lactic-co-glycolic) acid
+microspheres prepared by the water-in-oil-in-water method. Int J Pharm
+2002;248:193–206.
+[37] McCarron PA, Donnelly RF, Marouf W. Celecoxib-loaded poly(D, L-lactide-co-
+glycolide) nanoparticles prepared using a novel and controllable combination
+of diffusion and emulsiﬁcation steps as part of the salting-out procedure. J
+Microencapsul 2006;23:480–98.
+[38] Win KY, Feng SS. Effects of particle size and surface coating on cellular uptake
+of polymeric nanoparticles for oral delivery of anticancer drugs. Biomaterials
+2005;26:2713–22.
+[39] Niu X, Zou W, Liu C, Zhang N, Fu F. Modiﬁed nanoprecipitation method to fabricate
+DNA-loaded PLGA nanoparticles. Drug Dev Ind Pharm 2009;35:1375–83.
+[40] Jilek S, Zurkaulen H, Pavlovic J, Merkle HP, Walter E. Transfection of a mouse
+dendritic cell line by plasmid DNA-loaded PLGA microparticles in vitro. Eur J
+Pharm Biopharm 2004;58:491–9.
+[41] Schindelhauer D, Laner A. Visible transient expression of EGFP requires
+intranuclear injection of large copy numbers. Gene Ther 2002;9:727–30.
+[42] Ogris M, Brunner S, Schuller S, Kircheis R, Wagner E. PEGylated DNA/
+transferrin-PEI complexes: reduced interaction with blood components,
+extended circulation in blood and potential for systemic gene delivery. Gene
+Ther 1999;4:595–605.
+[43] Oster CG, Kim N, Grode L, Barbu-Tudoran L, Schaper AK, Kaufmann SH, et al.
+Cationic microparticles consisting of poly(lactide-co-glycolide) and poly-
+ethylenimine as carriers systems for parental DNA vaccination. J Control
+Release 2005;104:359–77.
+[44] Singh M, Ott G, Kazzaz J, Ugozzoli M, Briones M, Donnelly J, et al. Cationic
+microparticles are an effective delivery system for immune stimulatory cpG
+DNA. Pharm Res 2001;18:1476–9.
+[45] He X, Jiang L, Wang F, Xiao Z, Li J, Liu LS, et al. Augmented humoral and cellular
+immune responses to hepatitis B DNA vaccine adsorbed onto cationic
+microparticles. J Control Release 2005;107:357–72.
+[46] Singh M, Ugozzoli M, Briones M, Kazzaz J, Soenawan E, O’Hagan DT. The effect
+of CTAB concentration in cationic PLG microparticles on DNA adsorption and
+in vivo performance. Pharm Res 2003;20:247–51.
+[47] Singh M, Briones M, Ott G, O’Hagan DT. Cationic microparticles: a potent
+delivery system for DNA vaccines. Proc Natl Acad Sci U S A 2000;18:811–6.
+[48] Dawson M, Krauland E, Wirtz D, Hanes J. Transport of polymeric nanoparticle
+gene carriers in gastric mucus. Biotechnol Prog 2004;20:851–7.
+[49] Sonaje K, Italia JL, Sharma G, Bhardwaj V, Tikoo K, Kumar MN. Development of
+biodegradable nanoparticles for oral delivery of ellagic acid and evaluation of
+their antioxidant efﬁcacy against cyclosporine A-induced nephrotoxicity in
+rats. Pharm Res 2007;24:899–908.
+[50] Bhardwaj V, Ankola DD, Gupta SC, Schneider M, Lehr CM, Kumar MN. PLGA
+nanoparticles stabilized with cationic surfactant: safety studies and applica-
+tion in oral delivery of paclitaxel to treat chemical-induced breast cancer in
+rat. Pharm Res; 2009;. doi:10.1007/s11095-009-9965-4 [Epub ahead of print].
+[51] Wischke C, Borchert HH, Zimmermann J, Siebenbrodt I, Lorenzen DR. Stable
+cationic microparticles for enhanced model antigen delivery to dendritic cells.
+J Control Release 2006;114:359–68.
+[52] Zang Y, Beard RL, Chandraratna RA, Kang JX. Evidence of a lysosomal pathway
+for apoptosis induced by the synthetic retinoid CD437 in human leukemia HL-
+60 cells. Cell Death Differ 2001;8:477–85.
+[53] Xia T, Kovochich M, Liong M, Zink JI, Nel AE. Cationic polystyrene nanosphere
+toxicity depends on cell-speciﬁc endocytic and mitochondrial injury path-
+ways. ACS Nano 2008;2:85–96.
+[54] Heydenreich AV, Westmeier R, Pedersen N, Poulsen HS, Kristensen HG.
+Preparation and puriﬁcation of cationic solid lipid nanospheres-effects on
+particle size, physical stability and cell toxicity. Int J Pharm 2003;254:
+83–7.
+[55] Alkilany AM, Nagaria PK, Hexel CR, Shaw TJ, Murphy CJ, Wyatt MD, et al.
+Cellular uptake and cytotoxicity of gold nanorods: molecular origin of cyto-
+toxicity and surface effects. Small 2009;5:701–8.
+[56] Mok H, Park TG. Direct plasmid DNA encapsulation within PLGA nanospheres
+by single oil-in-water emulsion method. Eur J Pharm Biopharm 2008;68:
+105–11.
+[57] Cheng J, Teply BA, SheriﬁI, Sung J, Luther G, Gu FX, et al. Formulation of
+functionalized PLGA-PEG nanoparticles for in vivo targeted drug delivery.
+Biomaterials 2007;28:869–76.
+[58] Jin C, Wu H, Liu J, Bai L, Guo G. The effect of paclitaxel-loaded nanoparticles
+with radiation on hypoxic MCF-7 cells. J Clin Pharm Ther 2007;32:41–7.
+[59] Ahmed AR, Dashevsky A, Bodmeier R. Reduction in burst release of PLGA
+microparticles by incorporation into cubic phase-forming systems. Eur J
+Pharm Biopharm 2008;70:765–9.
+[60] Verma A, Uzun O, Hu Y, Hu Y, Han HS, Watson N, et al. Surface-structure-
+regulated cell-membrane penetration by monolayer-protected nanoparticles.
+Nat Mater 2008;7:588–95.
+[61] Cirman T, Oresic K, Mazovec GD, Turk V, Reed JC, Myers RM, et al. Selective
+disruption of lysosomes in HeLa cells triggers apoptosis mediated by cleavage
+of Bid by multiple papain-like lysosomal cathepsins. J Biol Chem 2004;279:
+3578–87.
+[62] Panyam J, Zhou WZ, Prabha S, Sahoo SK, Labhasetwar V. Rapid endo-lysosomal
+escape of poly(DL-lactide-co-glycolide) nanoparticles: implications for drug
+and gene delivery. FASEB J 2002;16:1217–26.
+[63] Escher G, Hoang A, Georges S, Tchoua U, El-Osta A, Krozowski Z, et al.
+Demethylation using the epigenetic modiﬁer, 5-azacytidine, increases the
+efﬁciency of transient transfection of macrophages. J Lipid Res 2005;46:
+356–65.
+[64] Scott CJ, Marouf WM, Quinn DJ, Buick RJ, Orr SJ, Donnelly RF, et al. Immu-
+nocolloidal targeting of the endocytotic siglec-7 receptor using peripheral
+attachment of siglec-7 antibodies to poly(lactide-co-glycolide) nanoparticles.
+Pharm Res 2008;25:135–46.
+[65] McCarron PA, Marouf WM, Quinn DJ, Fay F, Burden RE, Olwill SA, et al. Anti-
+body targeting of camptothecin-loaded PLGA nanoparticles to tumor cells.
+Bioconjug Chem 2008;19:1561–9.
+F. Fay et al. / Biomaterials 31 (2010) 4214–4222
+4222

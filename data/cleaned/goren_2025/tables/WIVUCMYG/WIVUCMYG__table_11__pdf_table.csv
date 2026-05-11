@@ -1,0 +1,10 @@
+0,1,2,3,4,5,6,7,8,9
+Table 5.,"Mean Parameter Obtained after Fitting the Release Data from PF-Loaded NPs Before and After Freeze-Drying, Free Drug Solution,",,,,,,,,
+and Eye Drops to Different Release Models,,,,,,,,,
+,,,Before Lyophilization,,,After Lyophilization,,,
+Models,Parameter,F11,F19,F20,F11,F19,F20,Free Drug,Eye Drops
+Zero Order,AIC,101.98,86.58,106.47,92.63,83.83,96.05,115.50,114.85
+First Order,AIC,53.22,70.31,52.16,58.87,54.52,65.82,67.01,56.51
+Higuchi,AIC,87.05,66.70,93.61,72.94,64.22,78.99,107.85,104.52
+Korsmeyer–,n,0.46,0.48,0.42,0.45,0.48,0.40,0.28,0.38
+Peppas,AIC,86.35,58.77,91.55,70.90,63.87,73.49,102.10,101.26

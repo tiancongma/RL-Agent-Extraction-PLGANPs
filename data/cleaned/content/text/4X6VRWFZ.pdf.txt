@@ -1,0 +1,786 @@
+Contents lists available at ScienceDirect
+Biomedicine & Pharmacotherapy
+journal homepage: www.elsevier.com/locate/biopha
+Original article
+Development and characterization of hyaluronic acid modiﬁed PLGA based
+nanoparticles for improved eﬃcacy of cisplatin in solid tumor
+Noor Alama, Mytre Koulb, Mubashir J. Mintoob,c, Vaibhav Kharea, Rahul Guptaa, Neha Rawatd,
+Parduman Raj Sharmab, Shashank K. Singhb,c, Dilip M. Mondheb,c, Prem N. Guptaa,c,⁎
+a Formulation & Drug Delivery Division, CSIR-Indian Institute of Integrative Medicine, Canal Road, Jammu 180001, India
+b Cancer Pharmacology Division, CSIR-Indian Institute of Integrative Medicine, Canal Road, Jammu 180001, India
+c Academy of Scientiﬁc and Innovative Research (AcSIR), Anusandhan Bhawan, 2 RaﬁMarg, New Delhi 110001, India
+d Department of Pharmacy, Maharaja Ranjit Singh Punjab Technical University, Bathinda, India
+A R T I C L E I N F O
+Keywords:
+Cancer targeting
+CD44
+Hyaluronic acid
+Nanoparticles
+Targeted drug delivery
+A B S T R A C T
+Cisplatin is a potent and widely used chemotherapeutic agent to treat a variety of tumors. However, its clinical
+use is associated with undesirable side eﬀects and acquired resistance to cisplatin. In this study, cisplatin loaded
+hyaluronic acid (HA) functionalized poly (lactic-co-glycolic acid)–poly (ethylene glycol) nanoparticles (CP-HA-
+PLGA-PEG-NPs) were fabricated using double emulsion solvent evaporation method to target CD44 receptor
+expressed on cancerous cells. The developed nanoconstructs were characterized for various in vitro parameters,
+including size distribution, zeta potential, morphology, drug loading and in vitro release. The HA content on the
+HA-PLGA-PEG-NPs was quantiﬁed by a turbidimetric method. The in vitro anticancer study in human ovarian
+cancer (SKOV-3) cells showed signiﬁcantly (p < 0.05) higher cytotoxicity of CP-HA-PLGA-PEG NPs as com-
+pared to free cisplatin and non-targeted nanoparticles (CP-PLGA-PEG NPs). Further, laser scanning confocal
+microscopy revealed that there was enhanced cellular uptake of HA-PLGA-PEG NPs in CD44-over expressing
+ovarian cancer cell line (SKOV-3). The in vivo antitumor activity of CP-HA-PLGA-PEG-NPs was signiﬁcantly
+(p < 0.05) higher than free cisplatin and CP-PLGA-PEG-NPs in Ehrlich tumor (solid) bearing mice. The results
+demonstrated the potential of target speciﬁc nanoconstruct of cisplatin in the improved cancer chemotherapy.
+1. Introduction
+Chemotherapy is a key therapeutic approach for the treatment of
+cancer. Most of the conventional chemotherapeutics are unable to dif-
+ferentiate between cancerous and normal cells, and lead to adverse
+eﬀects. The selective delivery of anticancer agents to cancer tissue
+would be of great signiﬁcance in cancer chemotherapy. In order to
+obtain better therapeutic eﬃcacy as well as reduce toxicity, numerous
+drug delivery systems have been developed [1,2]. Nanoparticles are
+receiving immense recognition as potential delivery vehicle in cancer
+chemotherapy, in addition to their role as eﬀective gene delivery
+modality and cancer stem cell targeting agent [3,4]. Further, nano-
+particle mediated selective drug delivery, via passive or active tar-
+geting, in the tumor tissue is of great signiﬁcance because it can reduce
+the side eﬀect of chemotherapeutic agents [5]. The passive targeting of
+the nanoparticles is based on the enhanced permeability and retention
+(EPR) eﬀect of the tumor vessels. The major drawbacks associated with
+this strategy are unsatisfactory tumor targetability and the possibility of
+toxic eﬀects to normal cells as well. Active targeting is a promising
+approach to resolve such limitations. In active targeting, speciﬁc ligand
+can be conjugated directly to therapeutics or onto the surface of the
+therapeutics containing nanovehicles that have a high binding aﬃnity
+for receptors over expressed on cancer cells to improve tumor targeting
+eﬃciency [5].
+Hyaluronic acid (HA), or hyaluronan is a naturally occurring bio-
+degradable, non-immunogenic, non-toxic, water-soluble and linear
+anionic polysaccharide [6]. HA is made up of repeating disaccharide
+units of β-1,4-D-glucuronic acid-β-1,3-D-N-acetylglucosamine. Recently,
+hyaluronic acid has received wide recognition as an active targeting
+ligand [7]. CD44 is a cell surface glycoprotein that is over expressed on
+diﬀerent type of tumor tissue and acts as receptor for HA for tumor
+targeting [8,9]. HA is responsible for several important cellular func-
+tions, like cell adhesion and motility, cell proliferation and diﬀer-
+entiation, and cell migration through speciﬁc interactions with its re-
+ceptor. The recognition and interaction of HA with CD44 over
+expressed in diﬀerent types of tumors increases the application of HA
+http://dx.doi.org/10.1016/j.biopha.2017.08.108
+Received 5 May 2017; Received in revised form 22 August 2017; Accepted 23 August 2017
+⁎ Corresponding author at: Formulation & Drug Delivery Division, CSIR-Indian Institute of Integrative Medicine, Canal Road, Jammu-Tawi 180001, India.
+E-mail address: pngupta@iiim.ac.in (P.N. Gupta).
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+0753-3322/ © 2017 Elsevier Masson SAS. All rights reserved.
+MARK
+
+for the formulation of nanovehicles, as a tumor-targeting agent [10,11].
+Cisplatin (cis-diamminedichloroplatinum) is a commonly employed
+anti-neoplastic agent for the treatment of diﬀerent type of solid tumors
+such as small cell and non-small cell lung cancer, testicular cancer,
+ovarian cancer, gastric cancer, and head and neck squamous sarcoma
+[12]. However, its therapeutic application is associated with serious
+side eﬀects, particularly nephrotoxicity, ototoxicity and neurotoxicity
+[13]. The selective targeting of cisplatin to tumor tissue is required to
+minimize adverse eﬀect and in turn, to improve its therapeutic poten-
+tial. In order to achieve more selective cisplatin exposure, diﬀerent
+kinds of carriers have been explored, including drug conjugate with
+polycarboxylates
+[14],
+polyamidoamines
+[15],
+and
+N-(2-hydro-
+xypropyl) methacrylamide [16], PLGA nanoparticles [17,18], poly
+(ethylene glycol)–poly (aspartic acid) copolymers based micelles [19],
+liposomes [20] and PLGA-PEG nanoparticles [21]. In addition, many
+eﬀorts have been made for selective delivery of cisplatin by direct
+conjugation of cisplatin with the HA molecule [22–25]. Additionally,
+the surface of PLGA-PEG nanoparticles was modiﬁed with divers kinds
+of ligands such as a prostate speciﬁc membrane antibody (PSMA) ap-
+tamer [26] and CD44 antibody [27] for targeted delivery of cisplatin to
+improve its eﬃcacy. In the present study, cisplatin loaded PLGA-PEG
+nanoparticles were fabricated by double emulsion solvent evaporation
+method and surface modiﬁed with HA by simple carbodiimide cou-
+pling. The prepared nanoparticles were characterized for various in
+vitro characteristics. Subsequently, the developed formulation was in-
+vestigated for the in vitro cytotoxicity and cellular uptake potential in
+SKOV-3 cell line. Further, in vivo anticancer activity was investigated in
+Ehrlich tumor (solid) model.
+2. Materials and method
+2.1. Materials
+PLGA (Resomer RG502H, viscosity 0.21 dl/g) was purchased from
+Evonik Industries (Germany). Polyethylene glycol (PEG) diamine (PEG-
+NH2, MW: 3.4 kDa), cisplatin (MW: 300), polyvinyl alcohol (PVA, MW:
+31–50 kDa),
+N-hydroxysuccinimide
+(NHS),
+N,N′-dicyclohex-
+ylcarbodimide (DCC), N-(3-dimethylaminopropyl)-N-ethylcarbodimide
+hydrochloride (EDC), coumarin-6, 4,6-diamidino-2-phenylindole dihy-
+drochloride (DAPI), dimethyl sulfoxide (DMSO), diethylether, anhy-
+drous dichloromethane (DCM), streptomycin and penicillin were ob-
+tained from Sigma–Aldrich (India). Hyaluronic acid sodium salt (HA,
+MW: 13 kDa, Lot Number 024505, Speciﬁcation number LPD-9800042)
+was purchased from Lifecore Biomedical, USA. Sodium diethyldithio-
+carbamate (DDTC) was obtained from Himedia. All other chemicals
+used were of analytical grade.
+2.2. Synthesis of PLGA-PEG-NH2 copolymer
+PLGA-PEG-NH2 copolymer was synthesized in two steps by using
+carbodiimide chemistry [28]. Firstly, the carboxylic group of PLGA was
+activated by the DCC/NHS, followed by conjugation of activated PLGA
+with the amine group of PEG bis-amine. In the ﬁrst step, PLGA
+(1 equiv.), DCC (3 equiv.) and NHS (3 equiv.) were added in 6 ml of
+anhydrous dichloromethane, and the reaction was carried out for 24 h
+with continuous stirring at room temperature under nitrogen environ-
+ment. The resultant product was ﬁltered to remove by-product dicylo-
+hexylurea using 0.45 μm PTFE syringe ﬁlter (Millipore). The activated
+PLGA was puriﬁed and isolated by precipitation with excess cold an-
+hydrous diethylether. The precipitated activated PLGA was centrifuged,
+washed to remove unreacted components, dried under vacuum and
+stored until use.
+In the second step, activated PLGA (1 equiv.) and PEG-NH2
+(2.5 equiv.) were dissolved in 6 ml anhydrous DCM and then triethy-
+lamine was added to the solution. The reaction mixture was kept on
+stirrer for 24 h at room temperature under nitrogen environment. The
+product mixture was precipitated in ice cold diethyl ether to obtain
+PLGA-PEG-NH2 di-block copolymer. The collected product was dried
+under reduced pressure. The dried product was dissolved in anhydrous
+DMSO and dialyzed in the Pur-A-lyzer (MWCO: 3.5 kDa) against water
+at room temperature. The product was freeze dried and stored until use.
+2.3. Characterization of PLGA-PEG-NH2 copolymer
+The copolymer was characterized by FTIR spectroscopy (Spectrum
+RXI, FTIR instrument, Perkin Elmer, USA) and 1H NMR spectroscopy
+(UXNMR, Bruker Analytische Messtechnik GmbH, 400 MHz) using
+deuterated chloroform. In order to know the degree of activation of
+PLGA, the NHS content was quantiﬁed in activated PLGA. The hydro-
+xamate method was used to determine the NHS content reacted with
+PLGA [29]. Brieﬂy, 1 ml of sample solutions (containing 0.1–0.2 mmol
+of the NHS moiety) or 1 ml of standard NHS (0.01–1 mmol of NHS)
+were mixed with 0.2 ml of NaOH (2 N) and incubated at 60 °C for
+10 min. The reaction mixtures were acidiﬁed with 1.5 ml of 0.85 N HCl
+and then centrifuged to separate the precipitated PLGA. The super-
+natant (2 ml) was mixed with 5% FeCl3 in 0.1 N HCI (0.5 ml). The
+absorbance
+was read
+immediately
+at 500 nm using UV-spectro-
+photometer (Thermo Fischer Scientiﬁc, Finland). The NHS content in
+the samples was calculated by comparing the absorbance of samples
+with standard solution.
+2.4. Preparation of cisplatin loaded PLGA-PEG-NH2 nanoparticles
+CP-PLGA-PEG-NPs were prepared by using double emulsion solvent
+evaporation method [21], with minor modiﬁcations. Brieﬂy, an aqu-
+eous solution (0.5 ml) of cisplatin (2 mg/ml) was emulsiﬁed in di-
+chloromethane containing polymer (1.75%, w/v) using ultrasonic
+homogenizer (Labsonic M, Sartorious, Germany). The primary emulsion
+was added drop wise to PVA solution (6 ml, 2%, w/v) containing cis-
+platin (1 mg/ml) and the mixture was sonicated. The resultant emulsion
+was subjected to magnetic stirring for removal of organic solvent. The
+nanoparticles were collected by centrifugation at 19,000 rpm for
+15 min (Sigma 3–30 K, Germany), and washed with water, and lyo-
+philized (Advantage freeze dryer, VirTis, Gardiner, NY, USA) with
+mannitol (6%, w/v) as cryoprotectant and stored in desiccators.
+2.5. Preparation of cisplatin loaded hyaluronic acid conjugated PLGA
+nanoparticles
+HA sodium salt was dissolved in deionized water, desalted by dia-
+lysis using Pur-A-lyzer (MWCO: 3.5 kDa) against hydrochloric acid so-
+lution (0.1 N) and subsequently lyophilized. The CP-HA-PLGA-PEG-NPs
+were prepared as described earlier [30]. Brieﬂy, desalted HA (1
+equivalent) was dissolved in 2-(N-morpholino) ethane sulfonic acid
+(MES) buﬀer (0.01 M, pH 5.5) and then EDC (2 equiv.) and NHS
+(2 equiv.) were added to activate carboxylic groups of HA. Subse-
+quently, the mixture was incubated with nanoparticles suspension
+under continuous stirring for 2 h at room temperature. The CP-HA-
+PLGA-PEG-NPs were puriﬁed by washing using centrifugation at
+19,000 rpm for 15 min (Sigma 3–30 K), and lyophilized. The super-
+natant was collected for the estimation of HA.
+2.6. Characterization of cisplatin loaded nanoparticles
+2.6.1. Evaluation of HA content onto nanoparticles
+The estimation of HA conjugated onto nanoparticles was performed
+by determination of HA in supernatant collected after centrifugation of
+nanoparticles using hexadecyltrimethylammonium bromide (CTAB)
+turbidimetric method [31], with slight modiﬁcation. Brieﬂy, 50 μl of
+the HA standard solution or supernatant sample was mixed in triplicate
+in a 96-well plate with 50 μl of sodium acetate buﬀer (0.2 M, pH 5.5)
+and incubated at 37 °C for 10 min. Subsequently, CTAB (100 μl, 10 mM)
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+857
+
+solution was mixed to the wells and the absorbance was read at 570 nm
+within 10 min using UV-spectrophotometer (Thermo Fischer Scientiﬁc,
+Finland). The HA concentration in the supernatant was determined by
+using a standard curve of HA. The content of HA conjugated to the
+nanoparticles was quantiﬁed by subtracting the HA amount in the su-
+pernatant from the total HA used for the conjugation reaction.
+2.6.2. Particle size, polydispersity index and zeta potential measurement
+The mean particle size, polydispersity and zeta potential of the
+developed formulation were measured at 25 °C by dynamic light scat-
+tering using Zetasizer (Zetasizer Nano ZS90, Malvern Instruments, UK)
+operating at a scattering angle of 90°. To ensure the free diﬀusion and
+unhindered Brownian motion of the particles, samples were suitably
+diluted [32]. All measurements were performed in triplicate.
+2.6.3. Morphology of nanoparticles
+The morphological examination of CP-PLGA-PEG-NPs and CP-HA-
+PLGA-PEG-NPs was performed using a transmission electron micro-
+scope (TEM, Philips, Morgagni-268) operating at 70 kV. A drop of na-
+noparticle suspension was kept on copper grids after sonication. The
+samples were dried, treated with phosphotungstic acid (2%) and were
+observed under the TEM.
+2.6.4. Cisplatin loading in nanoparticles
+The quantiﬁcation of cisplatin in the nanoparticles was carried out
+by high performance liquid chromatography (HPLC) method [33,34].
+The weighed amount of nanoparticles was suspended in sodium hy-
+droxide solution (1 N) and incubated in a water bath shaker incubator
+(New Brunswick Scientiﬁc, USA) at 37 °C overnight with constant
+stirring. The suspension was centrifuged (19,000 rpm, 15 min) to col-
+lect the supernatant. After addition of 50 μl of a solution of sodium
+diethyl dithiocarbamate (DDTC, 10% (w/v) prepared with 0.1 N NaOH)
+to an aliquot of the collected supernatant in microcentrifuge tube,
+samples were incubated in a water bath shaker incubator (New
+Brunswick Scientiﬁc, USA) at 37 °C for 1 h. The formed platinum–DDTC
+complex was extracted with chloroform by vortexing and then cen-
+trifuged to collect chloroform layer. An aliquot of samples was diluted
+with acetonitrile and injected into a C18-column (250 mm × 5 μm). A
+mixture of methanol:water (75:25) was used as mobile phase and the
+eluate was monitored at 254 nm.
+2.6.5. In vitro release
+The weighed amount of CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-
+NPs was separately suspended in phosphate buﬀer saline (PBS, pH 7.4
+and pH 5.5). The suspensions were placed into microcentrifuge tubes
+and incubated in water bath shaker (New Brunswick Scientiﬁc, USA) at
+37 °C with constant stirring. At speciﬁed time interval, suspensions
+were centrifuged (19,000 rpm, 10 min) to collect the supernatants and
+replaced by equal volume of fresh PBS. Analysis of the samples was
+performed by HPLC method using the procedure described above.
+2.7. In vitro cell culture
+2.7.1. Cell culture
+Human ovarian cancer cell line (SKOV-3) was grown in complete
+growth medium (RPMI-1640/DMEM medium) provided with fetal calf
+serum (10%), streptomycin (100 μg/ml) and penicillin (100 units/ml)
+in a CO2 incubator at 37 °C, 5% CO2 and 98% RH.
+2.7.2. In vitro cytotoxicity study
+The in vitro cytotoxicity of free cisplatin, CP-PLGA-PEG-NPs and CP-
+HA-PLGA-PEG-NPs was performed by MTT assay. Cells were seeded
+(1 × 104 cells per well) and incubated for 24 h prior to assay. The cells
+were treated with diﬀerent concentrations of free drug or drug loaded
+nanoparticles or blank nanoparticles for 48 h. The MTT (3-(4,5-di-
+methylthiazol-2-yl)-2,5 diphenyltetrazolium bromide; 0.5 mg/ml) dye
+was added to each well and the plates were incubated for 4 h at 37 °C.
+Following this, excess media was removed and 150 μl of DMSO was
+added to solubilize the purple formazan crystals. The plates were placed
+on a shaker for 5 min for complete solubilization of dye and absorbance
+was read at 570 nm on a microplate reader (BioTek Synergy HT) to
+calculate IC50 by using Graph Pad prism (Software Version 5.0).
+2.7.3. In vitro cellular uptake of nanoparticles
+In order to investigate in vitro cellular uptake of PLGA-PEG-NPs and
+HA-PLGA-PEG-NPs, coumarin-6 was used as a ﬂuorescence probe.
+Coumarin-6-loaded PLGA-PEG-NPs (C6-PLGA-PEG-NPs) and C6-HA-
+PLGA-PEG-NPs were prepared in the same way as described earlier
+[35]. Brieﬂy, 20 μl of coumarin-6 (1 mg/ml) was added to the polymer
+solution (1.75%, w/v) and then poured into 2% (w/v) PVA and emul-
+siﬁed by sonication. The subsequent procedures for the preparation of
+C6-PLGA-PEG-NPs and C6-HA-PLGA-PEG-NPs were the same as de-
+scribed in Sections 2.4 and 2.5 respectively.
+For in vitro cellular uptake study, SKOV-3 cells (1 × 105 cells/well)
+were seeded in 6-well plate over glass cover slips for 24 h. Following
+incubation, in order to maintain the equal concentration of coumarin-6
+in the wells, the medium was changed with 2 ml of fresh medium
+containing
+C6-PLGA-PEG-NPs
+(5 μg/ml)
+or
+C6-HA-PLGA-PEG-NPs
+(6 μg/ml) and incubated for 1 h and 6 h. The cells were washed with
+ice-cold PBS and ﬁxed with 4% (w/w) paraformaldehyde solution for
+30 min at room temperature. Cells were further washed twice with PBS
+and the nuclei were stained with DAPI (1 μg/ml in PBS). The cells were
+imaged by using a laser scanning confocal microscope (Olympus
+Fluoview FV1000) after mounting the cover slips over glass slides.
+2.7.4. Receptor mediated cellular internalization
+In order to examine the receptor mediated uptake of HA-functio-
+nalized nanoparticles, SKOV-3 cells (1 × 105 cells/well) were seeded in
+6-well plate over glass cover slips for 24 h. Prior to addition of nano-
+particles, HA receptors were blocked with free HA (5 mg/ml) as de-
+scribed previously [36]. Nanoparticles were added to the wells and
+incubated for 6 h and the subsequent procedure was same as described
+in Section 2.7.3.
+2.7.5. Quantitative cellular uptake analysis
+For the quantitative cellular uptake analysis, SKOV-3 cells were
+cultivated and seeded into 96-well black plates at 1 × 105 cells/well.
+The medium was changed with the C6-PLGA-PEG-NPs and C6-HA-
+PLGA-PEG-NPs suspensions after the cells reached 80% conﬂuence. In
+other set of experiment, prior to addition of nanoparticles, HA receptors
+were blocked with free HA (5 mg/ml). After the designated time in-
+terval (1 or 6 h), the nanoparticles suspension was removed and washed
+the cell monolayer with 50 μl of ice-cold PBS (pH 7.4). After that, the
+cells were lysed with lysis buﬀer (0.5% triton-X in 0.2 N NaOH). The
+cellular uptake was quantiﬁed by measuring the ﬂuorescence intensity
+in the desired wells using microplate reader (Inﬁnite M200 PRO,
+TECAN, Switzerland) with the excitation wavelength at 450 nm and
+emission wavelength 490 nm. The cellular uptake eﬃciency was re-
+presented as the percentage of the ﬂuorescence coupled with testing
+sample treated wells versus positive control.
+2.8. In vivo antitumor activity
+The antitumor activity of free cisplatin, CP-PLGA-PEG-NPs and CP-
+HA-PLGA-PEG-NPs was evaluated in murine model according to the
+protocols approved by the Institutional Animal Ethics Committee. The
+Swiss albino mice (24–30 g) were used in this study and fed with
+standard pellet diet and autoclaved water. Ehrlich ascites carcinoma
+(EAC) cells were removed from the peritoneal cavity of mice harboring
+8–10 days old ascitic tumor, and around 1 × 107 cells were inoculated
+intramuscularly in the right thigh of mice for the growth of solid tumor
+on day 0. The tumor bearing animals were randomly assigned to four
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+858
+
+groups on the next day. All four groups injected with three intravenous
+injections into the tail vein weekly. The group A (control) received
+saline, the group B received 5 mg/kg of free cisplatin solution, the
+group C received 5 mg/kg of cisplatin in CP-PLGA-PEG-NPs, and the
+group D received 5 mg/kg of cisplatin in CP-HA-PLGA-PEG-NPs in
+saline. The tumor volume was calculated as 1/2[a × b2], on day 21,
+where (a) was the longest and (b) the shortest diameter. The body
+weight of the mice was also monitored on days 1, 5, 11, 17 and 21 as an
+indicator of systemic toxicity.
+2.9. Statistical analysis
+The results were presented as mean ± SD. The statistical analysis
+was performed using one-way analysis of variance (ANOVA) with
+Bonferroni test. Statistical signiﬁcance was designated as p < 0.05.
+3. Result and discussion
+3.1. Characterization of PLGA-PEG-NH2 co-polymer
+The synthesized co-polymer (PLGA-PEG-NH2) was characterized
+using FTIR (Fig. 1A). The IR band at 1760 cm−1 in PLGA and PLGA-
+PEG represents the C]O stretching in PLGA. A series of peaks between
+2800 and 3000 cm−1 could be attributed to the CeH stretching
+vibration correlated to methylene groups in the PEG chain. In the IR
+spectrum of PLGA-PEG, the peak at 1664 cm−1 and 1535 cm−1 corre-
+sponds to the amide I and amide II bond respectively [37]. The IR
+spectra conﬁrm the successful formation of the amide bond between
+PLGA and PEG.
+In order to further characterize the co-polymer, the 1H NMR spectra
+of pure PLGA, PEG and PLGA-PEG-NH2 were recorded (Fig. 1B). The 1H
+NMR spectra of PLGA showed the typical signals approximately
+1.21–1.75 ppm, assigned to the methyl groups of the D- and L-lactic acid
+monomers of pure PLGA and the multiplets around 5.10–5.3 and
+4.7–4.85 ppm, due to the CH groups of lactic acid and CH2 groups of
+glycolic acid, respectively. Whereas PLGA-PEG copolymer revealed
+characteristic peak of PLGA and peak at 3.65 ppm due to the methane
+proton (CH2eCH2eO)m as the characteristic peak of PEG conﬁrm the
+formation of PLGA-PEG conjugate. The NHS content in the reaction
+products estimated by the hydroxamate method was in the order of
+88%.
+3.2. Preparation of PLGA-PEG-NPs and HA-PLGA-PEG-NPs
+The actively targeted HA-PLGA-PEG-NPs were developed for the site
+speciﬁc delivery of cisplatin through HA mediated selective binding to
+CD44 receptor over expressed on tumor cells. The double emulsion
+method was used to encapsulate cisplatin in PLGA-PEG-NH2 nano-
+particles and subsequently HA was conjugated to the free surface amino
+group of PLGA-PEG-NH2 nanoparticles using EDC/NHS carbodiimide
+chemistry (Fig. 2).
+3.3. Characterization of cisplatin loaded targeted nanoparticles
+3.3.1. Estimation of HA conjugated to nanoparticles
+The HA was successfully anchored to the surface of nanoparticles
+and it was conﬁrmed by CTAB method which is reported to be more
+accurate, sensitive and speciﬁc than the carbazole method [38]. CTAB
+is a cationic surfactant that binds to negatively charged polysaccharides
+such as HA and form complex [39]. The turbidity due to the formation
+of these insoluble complexes is proportional to the concentration of HA.
+It was found that 95.4 ± 5 μg of HA was conjugated to per milligram
+of nanoparticles. The conjugation of HA was also conﬁrmed by a re-
+duction in zeta potential of HA functionalized nanoparticles compared
+to nanoparticles without HA as described in Section 3.3.2.
+3.3.2. Particle size, polydispersity and zeta potential
+CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-NPs were prepared using
+an emulsion solvent evaporation technique. CP-PLGA-PEG-NPs showed
+mean
+particle
+size,
+polydispersity
+index
+and
+zeta
+potential
+of
+169.43 ± 5.71 nm, 0.111 ± 0.033 and −4.01 ± 0.34 mV respec-
+tively (Fig. 3A and C). On the other hand, CP-HA-PLGA-PEG-NPs ex-
+hibited mean particle size, polydispersity index and zeta potential as
+216.26 ± 4.64 nm, 0.084 ± 0.017 and −10.38 ± 0.84 mV respec-
+tively (Fig. 3B and D). A slight increase in the mean diameter of HA
+conjugated nanoparticles with respect to plain counterpart could be due
+to the presence of HA moieties. Nanoparticles exhibited a negative zeta
+potential value that was lower for hyaluronated nanoparticles com-
+pared to plain counterpart, due to the negative carboxylic residues of
+HA. This decrease in zeta potential value of HA-PLGA-PEG-NPs con-
+ﬁrmed the localization of anionic HA polymer component on the sur-
+face of nanoparticles [40].
+3.3.3. Morphological study
+The morphology of cisplatin nanoparticles was investigated under
+TEM. TEM micrographs of CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-
+NPs showed that nanoparticles were spherical and uniform in size
+(Fig. 4A and B). Nanoparticles size measured by TEM was in the range
+as observed by dynamic light scattering.
+Fig. 1. Characterization of PLGA-PEG-NH2: (A) FT-IR spectra of PEG bis-amine (i), PLGA
+(ii), and PLGA-PEG-NH2 (iii), and (B) 1H NMR spectra of PLGA-PEG-NH2 (i), PEG bis-
+amine (ii), PLGA (iii) in CDCl3.
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+859
+
+3.3.4. Drug loading
+The low drug loading has been observed in cisplatin nanoparticles
+due to physico-chemical characteristics of cisplatin [21,41]. It is not
+easy to encapsulate cisplatin into the hydrophobic carrier due to its
+insoluble nature in organic solvent and slightly soluble nature in aqu-
+eous systems. In an attempt to increase the drug loading proﬁle, cis-
+platin was added in external aqueous media as reported earlier [18,21].
+In order to quantify cisplatin using HPLC, cisplatin has been derivatized
+with DDTC that forms hydrophobic complex, which has a maximum
+absorption at 254 nm. The drug loading in case of CP-PLGA-PEG-NPs
+was quantiﬁed as 4.08 ± 0.611 μg/mg nanoparticles. However, in
+case of CP-HA-PLGA-PEG-NPs, the drug loading was estimated as
+3.61 ± 0.707 μg/mg
+nanoparticles.
+The
+slight
+decrease
+in
+drug
+loading in CP-HA-PLGA-PEG-NPs might be due to release of the drug
+during the HA conjugation process.
+3.3.5. In vitro release study
+The in vitro release of cisplatin from CP-PLGA-PEG-NPs and CP-HA-
+PLGA-PEG-NPs in PBS (pH 7.4 and pH 5.5) at 37 °C is shown in Fig. 4C.
+The release proﬁle of cisplatin from nanoparticles revealed a biphasic
+characteristic involving an initial and rapid release phase followed by a
+sustained release at both pH values. The initial burst release on day one
+is contributed by cisplatin fraction which was adsorbed to the surface of
+the nanoparticles. The initial rapid release is also aﬀected by PEG
+component of the nanoparticles, a higher PEG amount may contribute
+to greater drug release. The burst release might be due to higher drug
+content in the vicinity of the surface or faster drug diﬀusion or both
+[21]. The sustained release is corresponding to release of the fraction of
+the cisplatin content present inside the polymeric matrix. For CP-PLGA-
+PEG-NPs, in the ﬁrst 48 h the drug release in order of 50% and 45% was
+observed at pH 5.5 and pH 7.4, respectively. A signiﬁcant diﬀerence
+(p < 0.05) in release was observed on day seven and nine at pH 5.5
+(78% and 90%, respectively) as compared to pH 7.4 (66% and 82%,
+respectively). In the case of CP-HA-PLGA-PEG-NPs, in the ﬁrst 48 h the
+drug release in order of 56% and 47% was observed at pH 5.5 and pH
+7.4, respectively. A signiﬁcant diﬀerence (p < 0.05) in release was
+observed on day seven at pH 5.5 (77%) as compared to pH 7.4 (64%). It
+has been observed that as compared to pH 7.4, the drug release was
+slightly high at pH 5.5 (mimics the pH of tumor microenvironment)
+which could be correlated to the comparatively higher polymer de-
+gradation at lower pH [42]. The observed pattern of cisplatin release
+from nanoparticles could be helpful for avoiding toxicity by reducing
+the release in systemic circulation at pH 7.4 and favoring mass of the
+release at tumors site.
+3.4. In vitro cytotoxicity
+The eﬃcacy of the cisplatin nanoparticles was assessed in terms of
+their cytotoxicity for cancer cells. The cytotoxicity of diﬀerent for-
+mulations (blank PLGA-PEG-NPs, blank HA-PLGA-PEG-NPs, free cis-
+platin, cisplatin loaded PLGA-PEG-NPs and HA-PLGA-PEG-NPs) against
+SKOV-3 cells was compared. The cytotoxic activity of free cisplatin, CP-
+PLGA-PEG-NPs, CP-HA-PLGA-PEG-NPs increased with increasing cis-
+platin concentration (Fig. 4D). With equivalent cisplatin concentration
+in the culture medium, CP-HA-PLGA-PEG-NPs showed signiﬁcantly
+(p < 0.05)
+higher cytotoxicity
+than
+CP-PLGA-PEG-NPs
+and
+free
+Fig. 2. A schematic illustration of the preparation of cisplatin loaded HA-PLGA-PEG nanoparticles.
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+860
+
+cisplatin at higher tested concentration for incubation of 48 h. The IC50
+(μM) values were 16.88 ± 1.86, 19.76 ± 1.29 and 11.23 ± 1.20 for
+free cisplatin, CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-NPs respec-
+tively. The improved cytotoxicity of CP-HA-PLGA-PEG-NPs might be
+explained by the speciﬁc interaction with CD44 that over expressed on
+SKOV-3 cells. It is possible that the enhanced cellular internalization of
+HA-PLGA-PEG-NPs into SKOV-3 cells via receptor mediated endocytosis
+may lead to improved cytotoxicity. The CP-PLGA-PEG-NPs exhibited
+comparable in vitro anticancer activity to that of free cisplatin at all
+tested concentrations. The cytotoxicity of the nanocarrier is linked with
+their cellular uptake eﬃciency. It is also related with the inherent
+toxicity of the material used for the fabrication of nanoparticles. Cis-
+platin may enter the cell by diﬀusion, whereas the nanoparticles may
+internalize via endocytosis process which is a relatively slow process
+than diﬀusion. However, nanoparticles could deliver relatively higher
+concentration of cisplain than free drug. It could be due to the reason
+that the nanoparticles would deliver many drug molecules during their
+internalization by the cells, causing intracellular concentration of cis-
+platin higher than in case of free drug. This mechanism is supported by
+a previous report [43]. Although, nanoparticles oﬀer facilitated uptake
+of drug, the cellular uptake of CP-PLGA-PEG-NPs could be reduced by
+the hydrophilic character conferred by the surfacial PEG moiety of the
+nanoparticles. These considerations attributed to the comparable cy-
+totoxicity of CP-PLGA-PEG-NPs and free drug in this study. The blank
+PLGA-PEG-NPs and HA-PLGA-PEG-NPs did not show cytotoxicity to-
+ward the cells at the polymer concentration similar to that used in
+cisplatin-loaded nanoparticles.
+3.5. Cellular uptake study
+To examine the eﬀect of CD44 receptor on cellular uptake, the ex-
+tent of cellular internalization of C6-PLGA-PEG-NPs and C6-HA-PLGA-
+PEG-NPs by SKOV-3 cells was evaluated by CLSM. The time dependent
+cellular internalization was observed (Fig. 5A). Cells treated with C6-
+HA-PLGA-PEG-NPs showed very strong ﬂuorescence intensity as com-
+pared to cells incubated with C6-PLGA-PEG-NPs especially after 6 h. It
+indicates the cellular internalization of the coumarin-6 loaded HA-
+PLGA-PEG-NPs is mainly based on a HA receptor mediated endocytosis
+mechanism. It is further supported by the quantitative measurement of
+cellular uptake conducted by ﬂuorescence spectroscopy (Fig. 5B). Cel-
+lular uptake studies showed that there was signiﬁcantly (p < 0.05)
+higher internalization of HA conjugated PLGA-PEG nanoparticles in
+comparison to plain counterpart.
+In order to investigate the competitive eﬀect of HA on HA-PLGA-
+PEG-NPs internalization, cells were pretreated with HA before adding
+nanoparticles. HA-PLGA-PEG-NPs treated group exhibited reduced
+ﬂuorescence intensity. These results suggested that the enhanced cel-
+lular uptake of C6-HA-PLGA-PEG-NPs was dependent on the HA-CD44
+speciﬁc interaction which is in agreement with a previous report [44].
+On the other hand, free HA had no interference on the ﬂuorescence
+intensity of PLGA-PEG-NPs. In conclusion, CLSM study demonstrated
+that C6-HA-PLGA-PEG-NPs bound to and internalized in CD44 over
+expressing SKOV-3 cells in a CD44 dependent way. Therefore, it can be
+assumed that HA-PLGA-PEG nanoparticles carry chemotherapeutic
+agent across the cell membrane through endocytosis and target eﬃ-
+ciently into the cells.
+3.6. In vivo antitumor activity
+The Ehrlich tumor (solid) model in mice was used for the evaluation
+of in vivo anticancer activity of free cisplatin, CP-PLGA-PEG-NPs and
+CP-HA-PLGA-PEG-NPs. The saline treated mice (control group) re-
+vealed a fast tumor development with a mean tumor volume of about
+2015.05 mm3 on day 21 (Fig. 6A). After three treatments at 7 day
+Fig. 3. Characterization of nanoparticles: a representative size distribution (A, B) and zeta potential (C, D) of CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-NPs, respectively. Particles
+suspended in buﬀer were analyzed using a photon correlation spectroscopy, and data for size distribution and zeta potential were recorded.
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+861
+
+interval, the mice treated with free cisplatin, CP-PLGA-PEG-NPs and
+CP-HA-PLGA-PEG-NPs
+exhibited
+tumor
+volume
+in
+order
+of
+1326.21 mm3, 1205.41 mm3, and 953.71 mm3 respectively. The tumor
+volume for CP-HA-PLGA-PEG-NPs treated mice was signiﬁcantly
+(p < 0.05) reduced as compared to saline, free cisplatin and CP-PLGA-
+PEG-NPs treated mice. In this study, we have used FDA approved and
+well accepted polymer for the development of nanoparticles. Further, in
+our previous study, it has been observed that PLGA based formulation
+lead to a reduction in systemic toxicity of cisplatin, particularly the
+nephrotoxicity [17], which is in accordance to a previous report [45].
+On the basis of our previous investigation regarding improved eﬃcacy
+and reduction in nephrotoxicity of cisplatin using PLGA based nano-
+particles, we have developed cisplatin loaded HA modiﬁed PLGA-PEG
+nanoparticles in this study. The results of our study demonstrated the
+advantage of target speciﬁc nanoconstruct of cisplatin in the improved
+cancer chemotherapy and it could have potential for reduction of drug
+associated toxicity as well. The augmented antitumor eﬃcacy of HA
+functionalized nanoparticles could be attributed to the HA-CD44 spe-
+ciﬁc interaction, that lead to active targeting to tumor tissue. In order to
+examine the systemic toxicity, body weight for all four groups was
+monitored. The free cisplatin showed a signiﬁcant (p < 0.05) reduc-
+tion in average body weight after second administration in respect to
+control representing a sign of systemic toxicity (Fig. 6B). Whereas
+comparable results were observed in the case of body weight of CP-
+PLGA-PEG-NPs and CP-HA-PLGA-PEG-NPs treated animals with respect
+to control. The result of both tumor growth inhibition and the body
+weight determination indicated that HA-PLGA-PEG-NPs could be an
+eﬀective and potential carrier for cisplatin delivery to the CD44 over
+expressing tumors.
+4. Conclusion
+Cisplatin is one of the most potent and widely used chemother-
+apeutic agents, however, its clinical applicability is compromised due to
+its oﬀ-target eﬀects. Therefore, targeted delivery of cisplatin to tumor
+tissue could be of great signiﬁcance. In this investigation, cisplatin
+loaded targeted nanoparticles were successfully developed and char-
+acterized. The targeted nanoparticles exhibited improved cytotoxicity
+in CD44 receptor over-expressing cell line (SKOV-3) as compared to
+non-targeted cisplatin nanoparticles. This could be attributed to the
+enhanced cellular uptake of the HA-coupled nanoparticles, as con-
+ﬁrmed by cellular uptake study. The advantage of site-speciﬁc accu-
+mulation of the drug in the desired area was translated in the improved
+in vivo eﬃcacy of the targeted nanoparticles of cisplatin. Therefore,
+looking into the chemotherapeutic importance and adverse eﬀect of
+cisplatin, this study, demonstrating the potential of the HA conjugated
+nanoparticles in the targeted delivery of the cisplatin, could be seminal.
+Conﬂict of interest
+The authors disclose no conﬂicts of interest.
+Fig. 4. Transmission electron photomicrographs of CP-PLGA-PEG-NPs (A), and CP-HA-PLGA-PEG-NPs (B); in vitro cisplatin release proﬁle from CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-
+NPs in PBS (pH 7.4 and pH 5.5) at 37 °C. Data represent mean ± SD, n = 3 (C); in vitro cytotoxicity analysis against of various concentrations of blank PLGA-PEG-NPs, blank HA-PLGA-
+PEG-NPs, free cisplatin, CP-PLGA-PEG-NPs and CP-HA-PLGA-PEG-NPs for 48 h against SKOV-3 (*p < 0.05, signiﬁcantly diﬀerent from CP-PLGA-PEG-NPs and free cisplatin). Data
+represent mean ± SD, n = 3 (D).
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+862
+
+Acknowledgements
+The authors are grateful to the Director, CSIR-IIIM, Jammu for
+providing necessary support for carrying out this work. The study was
+supported by funding from Council of Scientiﬁc and Industrial Research
+(CSIR), New Delhi, India (MLP6006 and MLP5001). The ﬁnancial as-
+sistance to Noor Alam in the form of Senior Research Fellowship from
+Indian Council of Medical Research, New Delhi is truly acknowledged.
+The institutional publication number for this manuscript is IIIM/1969/
+2016.
+References
+[1] S.S. Feng, S. Chien, Chemotherapeutic engineering: application and further devel-
+opment of chemical engineering principles for chemotherapy of cancer and other
+diseases, Chem. Eng. Sci. 58 (2003) 4087–4114.
+[2] S.S. Feng, L.Y. Zhao, Z.P. Zhang, et al., Chemotherapeutic engineering: vitamin E
+TPGS-emulsiﬁed nanoparticles of biodegradable polymers realized sustainable
+Paclitaxel chemotherapy for 168 h in vivo, Chem. Eng. Sci. 62 (2007) 6641–6648.
+[3] K. Wang, H. Qian, Q. Fuming, et al., Non-viral delivery systems for the application
+in p53 cancer gene therapy, Curr. Med. Chem. 22 (2015) 4118–4136.
+[4] J. Xiao, J. Mu, T. Liu, et al., Dig the root of cancer: targeting cancer stem cells
+therapy, J. Med. Discov. 2 (2017).
+[5] F. Danhier, E. Ansorena, J.M. Silva, et al., PLGA-based nanoparticles: an overview
+of biomedical applications, J. Control. Release 161 (2012) 505–522.
+[6] Y.J. Jin, T. Ubonvan, D.D. Kim, Hyaluronic acid in drug delivery systems, J. Pharm.
+Investig. 40 (2010) 33–43.
+[7] S. Ganesh, A.K. Iyer, D.V. Morrissey, et al., Hyaluronic acid based self-assembling
+nanosystems for CD44 target mediated siRNA delivery to solid tumors, Biomaterials
+34 (2013) 3489–3502.
+[8] M.S. Sy, H. Mori, D. Liu, CD44 as a marker in human cancers, Curr. Opin. Oncol. 9
+(1997) 108–112.
+[9] M. Zoller, CD44: can a cancer-initiating cell proﬁt from an abundantly expressed
+molecule? Nat. Rev. Cancer 11 (2011) 254–267.
+[10] A. Banzato, S. Bobisse, M. Rondina, et al., A paclitaxel-hyaluronan bioconjugate
+targeting ovarian cancer aﬀords a potent in vivo therapeutic activity, Clin. Cancer
+Res. 14 (2008) 3598–3606.
+[11] G. Pitarresi, F.S. Palumbo, A. Albanese, et al., Self-assembled amphiphilic
+Fig. 5. (A) Cellular uptake analysis of coumarin-6 loaded PLGA-PEG na-
+noparticles and coumarin-6 loaded HA-PLGA-PEG nanoparticles in SKOV-
+3 cells using confocal laser scanning microscope. Blue color represents
+ﬂuorescence of DAPI, indicating nucleus staining. Coumarin-6 loaded
+nanoparticles are showing green color ﬂuorescence. (B) Quantiﬁcation of
+cellular uptake of C6-PLGA-PEG-NPs and C6-HA-PLGA-PEG-NPs in SKOV-
+3 cells by ﬂuorescence spectrophotometry (*p < 0.05, signiﬁcantly dif-
+ferent from C6-PLGA-PEG-NPs at same time point). The data represent
+mean ± SD (n = 3). (For interpretation of the references to color in this
+ﬁgure legend, the reader is referred to the web version of the article.)
+Fig. 6. In vivo anti-tumor activity of free cisplatin, CP-PLGA-PEG-NPs and CP-HA-PLGA-
+PEG-NPs in Ehrlich Tumor (solid) bearing mice. Each formulation was administered with
+three treatments at 7-day intervals. (A) Eﬀect of treatment on tumor volume (*p < 0.05,
+signiﬁcantly diﬀerent from CP-PLGA-PEG-NPs and free cisplatin, and (B) eﬀect of treat-
+ment on body weight of mice (*p < 0.05, free cisplatin versus control).
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+863
+
+hyaluronic acid graft copolymers for targeted release of antitumoral drug, J. Drug
+Target. 18 (2010) 264–276.
+[12] V. Launay-Vacher, J.B. Rey, C. Isnard-Bagnis, et al., Prevention of cisplatin ne-
+phrotoxicity: state of the art and recommendations from the European Society of
+Clinical Pharmacy Special Interest Group on Cancer Care, Cancer Chemother.
+Pharmacol. 61 (2008) 903–909.
+[13] V.M. González, M.A. Fuertes, C. Alonso, et al., Is cisplatin-induced cell death always
+produced by apoptosis? Mol. Pharmacol. 59 (2001) 657–663.
+[14] D. Avichezer, B. Schechter, R. Arnon, Functional polymers in drug delivery: carrier-
+supported CDDP (cisplatin) complexes of polycarboxylates – eﬀect on human
+ovarian carcinoma, React. Funct. Polym. 36 (1998) 59–69.
+[15] P. Ferruti, E. Ranucci, F. Trotta, et al., Synthesis, characterization and antitumor
+activity of platinum II complexes of novel functionalized poly (amidoamine)s,
+Macromol. Chem. Phys. 200 (1999) 1644–1654.
+[16] E. Gianasi, M. Wasil, E.G. Evagorou, et al., HPMA copolymer palatinates as novel
+antitumor agents: in vitro properties, pharmacokinetics and antitumor activity in
+vivo, Eur. J. Cancer 35 (1999) 994–1002.
+[17] N. Alam, V. Khare, R. Dubey, et al., Biodegradable polymeric system for cisplatin
+delivery: development, in vitro characterization and investigation of toxicity pro-
+ﬁle, Mater. Sci. Eng. C: Mater. Biol. Appl. 38 (2014) 85–93.
+[18] D. Moreno, C.T. DeIlarduya, E. Bandres, et al., Characterization of cisplatin cyto-
+toxicity delivered from PLGA-systems, Eur. J. Pharm. Biopharm. 68 (2008)
+503–512.
+[19] N. Nishiyama, Y. Kato, Y. Sugiyama, et al., Cisplatin-loaded polymer–metal complex
+micelle with time-modulated decaying property as a novel drug delivery system,
+Pharm. Res. 18 (2001) 1035–1041.
+[20] M.S. Newman, G.T. Colbern, P.K. Working, et al., Comparative pharmacokinetics,
+tissue distribution, and therapeutic eﬀectiveness of cisplatin encapsulated in long
+circulating, pegylated liposomes (SPI-077) in tumor-bearing mice, Cancer
+Chemother. Pharmacol. 43 (1999) 1–7.
+[21] K. Avgoustakis, A. Beletsi, Z. Panagi, et al., PLGA-mPEG nanoparticles of cisplatin:
+in vitro nanoparticle degradation, in vitro drug release and in vivo drug residence in
+blood properties, J. Control. Release 79 (2002) 123–135.
+[22] S. Cafaggi, E. Russo, R. Stefani, et al., Preparation, characterization and preliminary
+antitumour activity evaluation of a novel nanoparticulate system based on a cis-
+platin-hyaluronate complex and N-trimethyl chitosan, Invest. New Drugs 29 (2011)
+443–455.
+[23] S. Cai, Y. Xie, N.M. Davies, et al., Carrier-based intralymphatic cisplatin che-
+motherapy for the treatment of metastatic squamous cell carcinoma of the head &
+neck, Ther. Deliv. 1 (2010) 237–245.
+[24] S. Ganesh, A.K. Iyer, F. Gattacceca, et al., In vivo biodistribution of siRNA and
+cisplatin administered using CD44-targeted hyaluronic acid nanoparticles, J.
+Control. Release 172 (2013) 699–706.
+[25] S.D. Li, S.B. Howell, CD44-targeted microparticles for delivery of cisplatin to
+peritoneal metastases, Mol. Pharm. 7 (2010) 280–290.
+[26] S. Dhar, N. Kolishetti, S.J. Lippard, et al., Targeted delivery of a cisplatin prodrug
+for safer and more eﬀective prostate cancer therapy in vivo, Proc. Natl. Acad. Sci. U.
+S. A. 108 (2011) 1850–1855.
+[27] M.Y. Bai, S.Z. Liu, A simple and general method for preparing antibody-PEG-PLGA
+sub-micron particles using electrospray technique: an in vitro study of targeted
+delivery of cisplatin to ovarian cancer cells, Colloids Surf. B: Biointerfaces 117
+(2014) 346–353.
+[28] H.S. Yoo, T.G. Park, Folate receptor targeted biodegradable polymeric doxorubicin
+micelles, J. Control. Release 96 (2004) 273–283.
+[29] R.L. Schnaar, Y.C. Lee, Polyacrylamide gels copolymerized with active esters, a new
+medium for aﬃnity systems, Biochemistry 14 (1975) 1535–1541.
+[30] K.K. Vangara, J.L. Liu, S. Palakurthi, Hyaluronic acid-decorated PLGA-PEG nano-
+particles for targeted delivery of SN-38 to ovarian cancer, Anticancer Res. 33 (2013)
+2425–2434.
+[31] H.S. Qhattal, X. Liu, Characterization of CD44-mediated cancer cell uptake and
+intracellular distribution of hyaluronan grafted liposomes, Mol. Pharm. 8 (2011)
+1233–1246.
+[32] S. Zamani, S. Khoee, Preparation of core–shell chitosan/PCL-PEG triblock copo-
+lymer nanoparticles with ABA and BAB morphologies: eﬀect of intraparticle in-
+teractions on physicochemical properties, Polymer 53 (2012) 5723–5736.
+[33] N. Alam, R.D. Dubey, A. Kumar, et al., Reduced toxicological manifestations of
+cisplatin following encapsulation in folate grafted albumin nanoparticles, Life Sci.
+142 (2015) 76–85.
+[34] P.A. Andrew, W.E. Wung, S.B. Howell, A high-performance liquid chromatographic
+assay with improved selectivity for cisplatin and active platinum (II) complexes in
+plasma ultraﬁltrate, Anal. Biochem. 143 (1984) 46–56.
+[35] J.H. Park, J.Y. Lee, U. Termsarasab, et al., Development of poly (lactic-co-glycolic)
+acid nanoparticles-embedded hyaluronic acid-ceramide-based nanostructure for
+tumor-targeted drug delivery, Int. J. Pharm. 473 (2014) 426–433.
+[36] J. Huang, H. Zhang, Y. Yu, et al., Biodegradable self-assembled nanoparticles of
+poly (D,L-lactide-co-glycolide)/hyaluronic acid block copolymers for target delivery
+of docetaxel to breast cancer, Biomaterials 35 (2014) 550–566.
+[37] Y. Wang, L. Dou, H. He, et al., Multifunctional nanoparticles as nanocarrier for
+vincristine sulfate delivery to overcome tumor multidrug resistance, Mol. Pharm. 11
+(2014) 885–894.
+[38] Y.H. Chen, Q. Wang, Establishment of CTAB turbidimetric method to determine
+hyaluronic acid content in fermentation broth, Carbohydr. Polym. 78 (2009)
+178–181.
+[39] J.M. Song, J.H. Im, J.H. Kang, et al., A simple method for hyaluronic acid quanti-
+ﬁcation in culture broth, Carbohydr. Polym. 78 (2009) 633–634.
+[40] M.F. Ebbesen, M.T. Olesen, M.C. Gjelstrup, et al., Tunable CD44-speciﬁc cellular
+retargeting with hyaluronic acid nanoshells, Pharm. Res. 32 (2015) 1462–1474.
+[41] J. Fujiyama, Y. Nakase, K. Osaki, et al., Cisplatin incorporated in microspheres:
+development and fundamental studies for its clinical application, J. Control. Release
+89 (2003) 397–408.
+[42] W.X. Shen, W. Nuo, Synthesis, characterization, biodegradation, and drug delivery
+application of biodegradable lactic/glycolic acid polymers. Part II: biodegradation,
+J. Biomater. Sci. Polym. Ed. 12 (2001) 21–34.
+[43] H. Zhang, F. Li, J. Yi, C. Gu, L. Fan, Y. Qiao, Y. Tao, C. Cheng, H. Wu, Folate
+decorated maleilated pullulan–doxorubicin conjugate for active tumor-targeted
+drug delivery, Eur. J. Pharm. Sci. 42 (2011) 517–526.
+[44] R. Pradhan, T. Ramasamy, J.Y. Choi, et al., Hyaluronic acid-decorated poly (lactic-
+co-glycolic acid) nanoparticles for combined delivery of docetaxel and tanespi-
+mycin, Carbohydr. Polym. 123 (2015) 313–323.
+[45] G. Mattheolabakis, E. Taouﬁk, S. Haralambous, et al., In vivo investigation of tol-
+erance and antitumor activity of cisplatin-loaded PLGA-mPEG nanoparticles, Eur. J.
+Pharm. Biopharm. 71 (2) (2009) 190–195.
+N. Alam et al.
+Biomedicine & Pharmacotherapy 95 (2017) 856–864
+864

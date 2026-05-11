@@ -1,0 +1,992 @@
+ORIGINAL ARTICLE
+An injectable microparticle formulation for the sustained release
+of the specific MEK inhibitor PD98059: in vitro
+evaluation and pharmacokinetics
+Youssef W. Naguib1,2
+& Brittany E. Givens1,3
+& Giang Ho1 & Yang Yu4 & Shun-Guang Wei4,5,7 & Robert M. Weiss4 &
+Robert B. Felder4,6,7 & Aliasger K. Salem1,8
+# Controlled Release Society 2020
+Abstract
+PD98059 is a reversible MEK inhibitor that we are investigating as a potential treatment for neurochemical changes in the brain
+that drive neurohumoral excitation in heart failure. In a rat model that closely resembles human heart failure, we found that central
+administration of PD98059 inhibits phosphorylation of ERK1/2 in the paraventricular nucleus of the hypothalamus, ultimately
+reducing sympathetic excitation which is a major contributor to clinical deterioration. Studies revealed that the pharmacokinetics
+and biodistribution of PD98059 match a two-compartment model, with drug found in brain as well as other body tissues, but with
+a short elimination half-life in plasma (approximately 73 min) that would severely limit its potential clinical usefulness in heart
+failure. To increase its availability to tissues, we prepared a sustained release PD98059-loaded PLGA microparticle formulation,
+using an emulsion solvent evaporation technique. The average particle size, yield percent, and encapsulation percent were found
+to be 16.73 μm, 76.6%, and 43%, respectively. In vitro drug release occurred over 4 weeks, with no noticeable burst release.
+Following subcutaneous injection of the microparticles in rats, steady plasma levels of PD98059 were detected by HPLC for up
+to 2 weeks. Furthermore, plasma and brain levels of PD98059 in rats with heart failure were detectable by LC/MS, despite
+expected erratic absorption. These findings suggest that PD98059-loaded microparticles hold promise as a novel therapeutic
+intervention countering sympathetic excitation in heart failure, and perhaps in other disease processes, including cancers, in
+which activated MAPK signaling is a significant contributing factor.
+Keywords Microparticles . MEK1/2 inhibitor . Sustained release . Heart failure . LC/MS . PD98059
+Introduction
+The mitogen-activated protein kinase (MAPK) cascade is a
+ubiquitous evolutionarily conserved serine/threonine protein
+kinase pathway essential for multiple cellular processes, in-
+cluding cell survival, proliferation, differentiation, develop-
+ment, apoptosis, metabolism, migration, and senescence
+[1–3]. This pathway transmits upstream signals from cell
+membrane receptors to the nucleus via a series of sequential
+phosphorylation processes [4]. Following external stimuli-
+related ligand binding to G protein-coupled receptors in the
+cell membrane, the signal transmission is initiated by the ac-
+tivation of the GDP/GTP binding protein Ras, which in turn
+activates (phosphorylates) Raf (also known as MAPK kinase
+kinase, MAPKKK, ERK kinase, or ERKK) [1, 5, 6].
+Consequently, activation of MAPKKK activates MEK (also
+known as MAPKK or MAPK-ERK kinase), which finally
+activates one of four different effector protein kinases, namely
+* Aliasger K. Salem
+aliasger-salem@uiowa.edu
+1
+Department of Pharmaceutical Sciences and Experimental
+Therapeutics, College of Pharmacy, University of Iowa, Iowa
+City, IA 52242, USA
+2
+Department of Pharmaceutics, Faculty of Pharmacy, Minia
+University, Minia 61519, Egypt
+3
+Department of Chemical and Materials Engineering, University of
+Kentucky, Lexington, KY 40506, USA
+4
+Department of Internal Medicine, Carver College of Medicine,
+University of Iowa, Iowa City, IA 52242, USA
+5
+Iowa Neuroscience Institute, Carver College of Medicine, University
+of Iowa, Iowa City, IA 52242, USA
+6
+Veterans Affairs Medical Center, Iowa City, IA 52242, USA
+7
+Francois M. Abboud Cardiovascular Research Center, Carver
+College of Medicine, University of Iowa, Iowa City, IA 52242, USA
+8
+Holden Comprehensive Cancer Center, University of Iowa, Iowa
+City, IA 52242, USA
+https://doi.org/10.1007/s13346-020-00758-9
+Published online: 7 May 2020
+Drug Delivery and Translational Research (2021) 11:182–191
+
+ERK1/2 (extracellular signal-regulated kinase, also called
+p42/44), c-JNK (c-jun N-terminal kinase), p38 MAPK, and
+ERK5 [2, 7]. The most widely studied MAPK pathway is the
+Ras-Raf-MEK-ERK. Mutations in Ras (including the three
+highly conserved HRas, KRas, and NRas) predispose an indi-
+vidual to many types of cancer [6, 8–12]. The MEK-ERK
+pathway is also activated downstream of other tyrosine kinase
+receptors highly involved in cancer, such as epithelial growth
+factor receptor (EGFR) [13]. While targeting Ras mutations
+with small molecules may seem far from reach, a panel of
+inhibitors that target the downstream Raf-MEK-ERK kinases
+recently came into focus as successful alternative approaches
+[6, 14–17]. Most MEK1/2 inhibitors exhibit reversible kinase
+inhibitor activity and relatively short half-lives [4, 18]. Thus,
+in order to achieve long-term therapeutic effects, these agents
+would need to be administered frequently, or new molecules
+with longer half-lives would need to be developed [18].
+Over the past decade, our laboratory has been investigating
+the role of the MAPK pathway in the hypothalamic
+paraventricular nucleus (PVN) in regulating the sympathetic
+excitation in a rat model of heart failure induced by myocar-
+dial infarction [19–26]. Initial studies revealed that phosphor-
+ylated ERK1/2 (pERK1/2) was increased in the PVN of rats
+with chronic heart failure, along with PVN neuronal
+activitation, and that a 1-h intracerebroventricular (ICV) infu-
+sion of the MEK1/2 inhibitor PD98059 decreased the pERK1/
+2 expression and neuronal excitation in PVN, and renal sym-
+pathetic nerve activity in rats with heart failure [23]. In subse-
+quent work, chronic (4 weeks) ICV infusions of PD98059 in
+heart failure rats reduced plasma norepinephrine, an index of
+overall sympathetic nerve activity [19]. These powerful ef-
+fects of ICV PD98059 likely reflect the central interactions
+between ERK1/2 and major neurochemical systems in the
+brain that drive sympathetic activity, including the brain
+renin-angiotensin system, neuroinflammatory cytokines and
+chemokines, and endoplasmic reticulum stress [19–25,
+27–29]. However, because of its short half-life and its revers-
+ible inhibition of MEK1/2, PD98059 requires persistent drug
+exposure to be effective. Moreover, central drug administra-
+tion is not practical and feasible clinically. In an effort to har-
+ness the therapeutic potential of PD98059 as an agent
+targeting central sympatho-excitatory mechanisms in heart
+failure, we sought to develop a novel pharmaceutical prepara-
+tion that might deliver a sustained plasma level sufficient to
+facilitate passage of effective levels of PD98059 into the brain.
+In this research, we examined the pharmacokinetics of
+PD98059 dissolved in a US FDA-approved vehicle (10% v/v
+Tween 80 in sterile phosphate buffered saline (PBS), pH 7.4)
+and injected intravenously (IV) in normal rats. To overcome
+its short plasma half-life we designed a poly lactide-co-
+glycolide (PLGA) microparticle formulation of PD98059.
+PLGA is a biocompatible and biodegradable polyester that
+has been utilized to prepare microparticles to provide
+sustained release of small molecules and macromolecules
+alike [30–35]. Slow drug release from the bulk-eroding poly-
+mer matrix not only provides sustained plasma concentrations
+at therapeutic levels, but also prevents sharp peaks and troughs
+in plasma levels that can result from multiple administrations
+and may result in toxicity or sub-therapeutic levels.
+We hypothesized that this novel PLGA formulation would
+provide a sustained steady plasma drug level that would facil-
+itate passage of PD98059 into the brain. We tested this hy-
+pothesis in normal rats and in rats with heart failure, whose
+compromised circulation might adversely affect subcutaneous
+absorption.
+Experimental
+Materials
+PD98059 was purchased from Selleck Chemicals (Houston,
+TX). Poly lactide-co-glycolide (PLGA, Resomer RG 503 H)
+was purchased from Evonik (Parsippany, NJ). Poly vinyl al-
+cohol (PVA, Mowiol 8-88, MW 67,000) and 7-
+hydroxyflavone were purchased from Sigma-Aldrich (St
+Louis, MO). Tween 80 was purchased from Fisher
+Chemicals (Waltham, MA). All other chemicals and reagents
+were at least of analytical grade and were used as received
+without further purification.
+Preparation of the microparticles
+Microparticles were prepared using an emulsion-solvent evap-
+oration method as previously reported [30]. Briefly, 200 mg of
+PLGA and 12 mg of PD98059 were dissolved in 1.5 ml of
+dichloromethane (DCM), and this organic solution was added
+into 30 ml of 1% PVA solution. The mixture was emulsified at
+6500 rpm at room temperature for 5 min (Ultra-turrax T25
+basic, Ika Works, Inc., Wilmington, NC). The emulsion was
+then magnetically stirred at room temperature at 600 rpm for
+2 h to evaporate DCM. The microparticle suspension was then
+collected by centrifugation at 1000×g for 10 min (Eppendorf
+centrifuge 5864 R, Eppendorf North America, Hauppauge,
+NY). The microparticles were resuspended in 45 ml of
+nanopure water (Barnstead Thermolyne Nanopure water pu-
+rification system, Thermo Fisher, Waltham, MA), washed and
+centrifuged as mentioned earlier. This process was carried out
+twice to remove any remaining PVA and unencapsulated
+PD98059. Finally, the microparticles were resuspended in
+1 ml of purified water and lyophilized overnight at 0.045 mbar
+and a collector temperature of −105 °C (Labconco Free zone
+4.5L–105 °C, Labconco, Kansas City, MO).
+183
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+In vitro characterization of the prepared
+microparticles
+Morphology of the microparticles
+The morphology of the microparticles was investigated using
+scanning electron microscopy (SEM). Microparticles
+(lyophilized) were spread onto a carbon double-adhesive tape
+mounted on an aluminum stub, and then were sputter-coated
+with gold and palladium using an argon beam Emitech K550
+sputter-coater. A Hitachi S-4800 scanning electron micro-
+scope (SEM) operated at 3 kV accelerating voltage (Hitachi
+High Technologies America Inc., Schaumburg, IL) was used
+to capture the images of the microparticles. The particle size
+was analyzed using ImageJ software (NIH, Bethesda, MA)
+after a minimum of 100 particles in SEM images were mea-
+sured, and the data were plotted using Microsoft Excel.
+Determination of microparticle drug content
+Microparticles were dissolved in DCM at 1 mg/ml; then,
+100 μl of this solution was added to 6.4 ml of methanol and
+centrifuged (12,000×g for 5 min). The supernatant was mixed
+with 3.5 ml of purified water, and the resultant solution was
+injected into the HPLC as mentioned below.
+Drug content in the microparticles was calculated using
+equation 1, as follows:
+Drug content
+μg
+mg
+
+
+¼
+measured amount of PD98059 μg
+ð
+Þ
+weight of lyophilized microparticles mg
+ð
+Þ
+ð1Þ
+Yield percentage was calculated using equation 2, as
+follows:
+Yield% ¼ Weight of the lyophilized microparticles
+Weight of the starting materials
+ 100
+ð2Þ
+Finally, encapsulation efficiency percentage (EE%) was
+calculated using equation 3, as follows:
+EE%
+¼
+Amount of PD98059 in 1 mg of microparticles
+Expected amount of PD98059 in 1 mg of microparticles assuming 100%encapsulation  100
+ð3Þ
+The expected amount of PD98059 in 1 mg of microparti-
+cles, assuming 100% encapsulation, is 12 mg/212 mg
+(56.6 μg).
+Differential scanning calorimetry
+Weighed amounts of PD98059, PLGA, PLGA/PD98059
+physical mixture (20:1 w/w), and PD98059-loaded PLGA mi-
+croparticles were added into aluminum crimped pans and dif-
+ferential scanning calorimetric (DSC) thermograms were ob-
+tained using a TA Instruments model Q20 DSC (New Castle,
+DE, USA). A temperature ramp rate of 5 °C/min, within a
+range of 0 to 200 °C, was used.
+In vitro drug release
+Aweighed amount of the microparticles was suspended in 1×
+DPBS (Dulbecco’s phosphate-buffered saline, Life Science,
+Waltham, MA) at 0.5 mg microparticles/ml. One milliliter of
+this suspension was transferred to a 1-ml screw-capped dialy-
+sis tube (Spectra/Por™Float-A-Lyzer™G2 MWCO 8–
+10 kDa, Sigma-Aldrich). The tube was submerged in 12 ml
+of 0.4% v/v solution of Tween 80 in 1× DPBS and placed in an
+orbital shaker (New Brunswick Scientific, Edison, NJ) at
+300 rpm and 37 °C. The solubility of PD98059 in this release
+medium was approximately 113 μg/ml at 37 °C. At pre-
+determined time points, the whole volume of the release me-
+dium (12 ml) was removed and replaced completely with
+fresh medium. The concentration of PD98059 was measured
+in the samples using the HPLC method described below.
+Experimental protocols
+Twenty-three male Sprague-Dawley rats (6–8 weeks, 275–
+300 g, Harlan labs, Indianapolis, IN) were used in this exper-
+iment. Rats were kept under controlled temperature
+(23 ± 2 °C) at the University of Iowa animal care facility.
+They were exposed to 12 h of light and dark cycles, and food
+was provided ad libitum. All animal experiments performed
+were approved by the University of Iowa Institutional Animal
+Care and Use Committee.
+1: Pharmacokinetics of PD98059. Rats were anesthetized
+using urethane and a canula was inserted in the femoral vein.
+A solution of PD98059 dissolved in 10% Tween 80 in sterile
+1× DPBS at a concentration of 0.5 mg/ml (total volume 2 ml)
+was administered slowly by intravenous infusion. After 5, 15,
+30, 60, 180, and 360 min, blood samples were withdrawn
+from rats. Major organs (liver, kidney, brain, and heart) were
+collected from rats after 1 and 3 h (n = 3/time point).
+2: Subcutaneous administration of PD98059-loaded PLGA
+microparticles–normal rats. PD98059-loaded microparticles
+suspended in sterile 1× DPBS were injected subcutaneously
+(SC) in healthy rats (n = 3) at a dose of 2.4 mg PD98059 in
+1 ml per rat. At predetermined time intervals (30 min, 1 day,
+7 days, and 14 days, 21 days, and 28 days), rats were anes-
+thetized using isoflurane and blood samples were withdrawn
+184
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+from the tail vein. Plasma was collected and treated as men-
+tioned previously, and drug levels were determined by HPLC.
+3: Subcutaneous administration of PD98059-loaded PLGA
+microparticles–heart failure rats. Under sterile conditions,
+male Sprague-Dawley rats were anesthetized with ketamine/
+xylazine and underwent left coronary artery ligation to induce
+heart failure, as previously described [22–24]. Twenty-four
+hours later, and after heart failure was confirmed by echocar-
+diographic demonstration of reduced systolic function (left
+ventricular ejection fraction < 40%), the rats were subcutane-
+ously injected with the microparticle suspension at a dose of
+3.6 mg in 1-ml sterile 1X DPBS. After 1, 7, and 14 days, rats
+were euthanized (n = 2–3 per time point) and their plasma and
+brains were collected.
+Plasma and tissue preparation
+All blood samples were collected into 4-ml BD Vacutainer®
+blood collection tubes (K2-EDTA, Becton, Dickinson, and
+Company, Franklin Lakes, NJ). Plasma samples were collect-
+ed by centrifugation (3300×g, 15 min) and frozen at −80 °C
+until analyzed. Plasma samples were thawed on ice, and a
+volume of 100 μl of plasma was transferred to a 15-ml tube
+and spiked with 15 μl of the internal standard (IS) solution
+(10 μg/ml of 7-hydroxyflavone in methanol). Collected or-
+gans were rinsed in 1x DPBS, then frozen at −80 °C. For
+organs, a portion of each organ (200–400 mg) was accurately
+weighed and homogenized (Fisher Brand Bead Mill 4
+Homogenizer, Hampton, NH) in 250 μl of 1× DPBS using
+20–25 2.5-mm ceramic beads per sample, and spiked with
+15 μl of the internal standard (IS) solution. One milliliter of
+cold acetonitrile was added to 100 μl of plasma samples or
+400 μl of the tissue homogenate and vortexed for 1 min. The
+samples were kept on ice for 15 min to precipitate the proteins,
+then the tubes were centrifuged (4 °C, 3300×g, 10 min) and
+the supernatant was collected, and evaporated under nitrogen
+stream.
+In the case of protocols 1 and 2, the residue in each tube
+was then dissolved in the mobile phase (described in the
+HPLC section below), centrifuged (12,000×g, 5 min), and
+the supernatant was injected in the HPLC and analyzed by
+the method described below. Standard curves were prepared
+using plasma and tissues collected from naïve rats. These
+plasma or tissue homogenate samples were spiked with
+15 μl of the IS solution as mentioned above, in addition to
+15 μl of standard solutions of PD98059 in methanol at differ-
+ent concentrations. Pharmacokinetic parameters were calcu-
+lated using PK Solver [36, 37].
+In the case of protocol 3, residues were redissolved in the
+mobile phase, and PD98059 levels in the plasma and brain
+were measured using LC/MS/MS with multiple reaction mon-
+itoring (MRM) using 7-hydroxyflavone as an IS. Standard
+curves were constructed in plasma and brain tissues collected
+from naïve rats.
+HPLC and LC/MS/MS
+An Agilent HPLC workstation was used for sample analysis
+(Agilent Infinity 1100, Santa Clara, CA) that consisted of an
+Agilent quaternary pump, automatic injection port, and
+Agilent diode array detector (Agilent Corporation, Santa
+Clara, CA). A RP-C18 column was used for analysis
+(Waters Symmetry, 5 μm pore size, 4.6 mm × 150 mm,
+Milford, MA). The mobile phase consisted of methanol/
+water 70:30 with 0.1% v/v trifluoroacetic acid, and the flow
+rate was 1 ml/min at room temperature. The detection wave-
+length was set to 300 nm.
+The LC/MS/MS system consisted of a Waters Acquity
+TQD (Milliford, MA), which includes a triple quadruple mass
+spectrometer and Acquity H-Class UPLC. The same column,
+temperature, mobile phase, and flow rate stated above with the
+HPLC method were used. Quantitative analysis of PD98059
+and IS was carried out using positive electrospray ionization
+via the highly sensitive and specific MRM mode. PD98059
+was detected at three transition channels for brain samples
+(268.03 →104.86, 268.03 →121.01, and 268.03 →133.06)
+and five transition channels for plasma samples (268.03 →
+104.86, 268.03 →121.01, 268.03 →133.06, 268.03 →
+148.08, and 268.03 →236.07), while the IS was detected as
+three transition channels in both brain and plasma samples
+(239.03 →77.04, 239.03 →129.03, 239.03 →136.97). The
+standard curves were linear over a range of 0.1–30 μg/ml for
+both plasma and brain.
+Results
+Preparation and in vitro characterization of the microparticles
+The drug-loaded microparticles contained 24.3 μg PD98059/
+mg. Scanning electron microscopy showed that the micropar-
+ticles were mostly spherical in shape, with smooth surfaces,
+while no unencapsulated drug was observed (Fig. 1a), as ob-
+served when larger amounts of the drug were loaded. Particle
+size analysis revealed a normal distribution (Fig. 1b). Average
+particle size was approximately 16.7 μm (Fig. 1b). DSC ther-
+mograms (Fig. 1c) showed that the drug exhibited a sharp
+endothermic peak at 171 °C that indicates the drug melting
+point. The polymer had a brief endothermic peak at 48.33 °C,
+which indicates the glass transition temperature (Tg) of the
+polymer. The physical mixture of the drug and polymer at a
+ratio of 1:20 showed a Tg of PLGA (at 49.1 °C), while the drug
+melting point peak appeared as a broad endothermic incident
+at 162.3 °C. The microparticles did not show any endothermic
+peaks, neither at the polymer Tg nor at or around the melting
+185
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+point of PD98059. This may indicate physicochemical inter-
+action between PD98059 and PLGA, which resulted from the
+drug being in an amorphous state, or may simply be due to the
+microparticle preparation processing. The average particle
+size, yield %, drug loading (μg drug/mg microparticles), and
+encapsulation efficiency % (EE %) were 16.73 ± 6.22 μm,
+76.6 ± 2.35%, 24.33 ± 3.1 μg/mg, and 43 ± 5.47%, respective-
+ly. In vitro drug release from PLGA microparticles was slow,
+with less than 40% of loaded drug being released in the first
+week. Approximately 73% of the loaded drug was released
+within 4 weeks (Fig. 1d). In general, the release followed a
+biphasic pattern with no burst release, where the initial release
+during the first 2 days was faster than the rest of the release
+period.
+Pharmacokinetics of PD98059 following IV injection
+The PD98059 HPLC peak came after 3 min, while the
+retention time of the IS (7-hydroxyflavone) was 3.6 min.
+The pharmacokinetics of PD98059 were studied after the
+data were fitted to one-compartment or two-compartment
+models using PK Solver add-in [36, 37]. It can be clearly
+seen that PD98059 pharmacokinetics follow the two-
+compartment model (Fig. 2a), which was confirmed by
+the R2 value (0.999 and 0.981 for two- and one-
+compartment models, respectively). Pharmacokinetics pa-
+rameters are displayed in Table 1. Distribution and elimi-
+nation half-lives of the drug were approximately 7 and
+73 min, respectively. After 1 and 3 h, levels of PD98059
+in major organs were also measured (n = 3) in order to gain
+information on tissue distribution and organ drug levels. It
+can be seen that the drug levels in the liver and kidney were
+comparatively higher than those in the brain and heart, and
+yet a significant portion of the drug was found in brain
+tissue. Nevertheless, there was a quick decline in brain
+PD98059 levels from approximately 410 to 76 ng/g be-
+tween 1 and 3 h.
+Pharmacokinetics and brain levels of PD98059 following
+subcutaneous injection of PD98059-loaded microparticles
+In the normal rats treated subcutaneously with PD98059-
+loaded microparticles, there was a sustained level of
+PD98059 in the plasma of rats of 50–100 ng/ml over a period
+of 2 weeks (Fig. 3). It was found that the AUC0-t value fol-
+lowing the SC injection of 2.4 mg of PD98059 in PLGA
+microparticles was 22,213.1 ng.h/ml, compared with
+Fig. 1 Characterization of the prepared PD98059-loaded PLGA micro-
+particles. a Scanning electron microscopy (SEM) image of the drug-
+loaded microparticles. b Particle size distribution, measured by ImageJ
+analysis of 100 particles in SEM images. c Differential scanning
+calorimetry (DSC) thermograms of PD98059 (green), PLGA (black), a
+physical mixture of the two (blue), and PD98059-loaded microparticles
+(red). d In vitro release profile of PD98059 from PLGA microparticles
+(data represent mean ± SD, n = 3)
+186
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+2378.7 ng.h/ml following IV injection of 1 mg of PD98059 in
+solution.
+The brain levels of PD98059 in the heart failure rats de-
+clined gradually over the course of 2 weeks. The levels in the
+brain were found to be approximately 37, 16, and 8 ng/g after
+1, 7, and 14 days, respectively. The plasma levels were found
+to be about 7.1, 3.5, and 8.6 ng/ml after 1, 7, and 14 days of
+injection of the microparticles (Fig. 4).
+Table 1
+Pharmacokinetics of PD98059 following IV injection
+Non-compartmental analysis (NCA)
+One-compartment model
+Two-compartment model
+Parameter
+Unit
+Value
+Parameter
+Unit
+Value
+Parameter
+Unit
+Value
+K
+min−1
+0.0074
+C0
+ng/ml
+3433.44
+A
+ng/ml
+3236.5
+T1/2
+min
+93.93
+K
+min−1
+0.045
+α
+min
+0.104
+C0
+ng/ml
+3863.5
+T1/2
+min
+15.5
+B
+ng/ml
+980.76
+AUC0-t
+ng.min/ml
+142,723.37
+V
+ml
+291.25
+β
+min
+0.0094
+AUC0-inf
+ng.min/ml
+152,980.9
+Cl
+ml/min
+13.03
+K10
+min−1
+0.031
+AUMC0-inf
+ng.min2/ml
+14,922,241.77
+AUC0-t
+ng.min/ml
+76,774.82
+K12
+min−1
+0.05
+MRT0-inf
+min
+97.54
+AUC0-inf
+ng.min/ml
+76,774.83
+K21
+min−1
+0.031
+V
+ml
+885.82
+AUMC
+ng.min2/ml
+1,716,754
+T1/2α
+min
+6.7
+Cl
+ml/min
+6.54
+MRT
+min
+22.36
+T1/2β
+min
+73.36
+Vss
+ml
+637.62
+Vss
+ml
+291.25
+C0
+ng/ml
+4217.23
+R2
+0.9807
+V
+ml
+237.12
+Cl
+ml/min
+7.4
+AUC0-t
+ng.min/ml
+131,605.22
+AUC0-inf
+ng.min/ml
+135,064
+AUMC
+ng.min2/ml
+11,287,504.55
+MRT
+min
+83.57
+Vss
+ml
+618.76
+R2
+0.999
+K elimination rate constant, T1/2 plasma half-life, C0 plasma concentration at 0 time, AUC area under the plasma concentration-time curve, AUMC area
+under the moment curve, MRT mean residence time, V volume of distribution, Cl clearance, Vss steady-state volume of distribution
+Fig. 2 a Plasma PD98059 levels vs. time (n = 3 for all time points, except 6 h, which has n = 1) and b organ levels of PD98059 (data represent mean ±
+SD, n = 3) following IV injection of 1 mg of PD98059 dissolved in 10% w/v Tween 80 aqueous solution in healthy rats
+187
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+Discussion
+Our previous work highlighted the ability of centrally admin-
+istered PD98059 to lower pERK1/2 levels in the PVN of rats
+with heart failure, with abrogation of the sympathetic excita-
+tion that contributes to further deterioration of cardiac function
+[21–23]. Such findings pave the way towards development of
+a new therapeutic modality in drug-based treatments of heart
+failure and introduce the new concept of using small mole-
+cules to target the central nervous system mechanisms driving
+sympathetic excitation in heart failure. Researchers in the can-
+cer chemotherapy field have also successfully used inhibitors
+of the MEK-ERK pathway to potentiate existing cancer treat-
+ments [38, 39]. In both cases, the short half-life and reversibil-
+ity of ERK1/2 inhibitory activity of most of these inhibitors
+have been major problems that have hindered their progres-
+sion to clinical applications. These two problems have neces-
+sitated either the repeated administration of these agents at
+high dosing frequencies [39] or the development of MEK-
+ERK inhibitors with long half-lives [18].
+In this research, we successfully formulated a PLGA mi-
+croparticle formulation capable of slow release of PD98059,
+which is a specific MEK inhibitor with a versatile application
+spectrum and high clinical potential in many conditions, in-
+cluding cancer and heart failure. Although there was signifi-
+cant variability in plasma and brain levels of PD98059 in this
+small number of animals, the findings suggest that PD98059
+microparticles have a four-fold higher bioavailability, based
+on the dose-normalized AUC, compared to IV injection of
+soluble PD98059 (Fig. 3). The rapid decline in drug plasma
+levels following IV injection (Fig. 2) can be explained based
+on its relatively high volume of distribution, with a t1/2α as
+short as 6.7 min, and the quite short elimination half-life of
+73 min (Table 1). Those two factors were compensated by the
+continuous slow release of PD98059 from the microparticles
+at the SC injection site, which guaranteed a steady plasma
+level in healthy rats (Fig. 3). The pharmacokinetics of
+PD98059 were best fit to a two-compartment model
+(Table 1). To maintain sustained levels in the brain of a drug
+that has a short half-life, it is crucial to maintain a continuous
+supply. PLGA-based microparticles are commonly used to
+provide sustained drug release in the body following intra-
+muscular (IM) or SC injection. PLGA is a bulk-eroding poly-
+ester from which the drug release usually follows a biphasic
+pattern, comprising an initial diffusion-based release which
+extends for a few days to a few weeks (depending on the
+molecular weight of the polymer), and a subsequent constant
+release phase explained by erosion of the matrix combined
+with some contribution from the declining diffusion [40, 41].
+The microparticles had an encapsulation efficiency of 43%
+and an average size of 16.7 μm in diameter. The drug release
+was monitored over 4 weeks in normal rats, even though the
+plasma levels were detected for only 2 weeks. Plasma drug
+levels after 3 and 4 weeks could not be detected by HPLC. The
+in vitro release study showed that 55% of the drug was re-
+leased within the first 2 weeks, compared to a further 19%
+over the next 2 weeks (between weeks 2 and 4). This marked
+reduction of drug release rate after the second week may ex-
+plain the absence of measurable drug levels in the plasma
+during this time, taking into account the short half-life of the
+drug.
+Ultimately, we hope to determine whether subcutaneous
+administration of this sustained-release microparticle prepara-
+tion might be a novel therapeutic approach to modulate the
+excess ERK1/2 activity in cardiovascular regions of the brain
+that drive sympathetic excitation in a rat model of heart failure
+[21, 22]. Heart failure alters the pharmacokinetics of many
+drugs, mainly BCS class II and IV drugs (i.e., those with poor
+solubility and good permeation and those with poor solubility
+and poor permeability, respectively), and absorption of these
+drugs following oral administration was described as erratic,
+delayed, and poor [42–44]. Shammas and Dickstein reported
+that the reduced blood flow to the muscles in congestive heart
+failure adversely affects the absorption of poorly water-
+soluble drugs and thus their intramuscular administration
+should be avoided [43]. More importantly, in a study on 46
+patients, Ariza-Andraca reported that the rate and extent of
+absorption of subcutaneously injected insulin was significant-
+ly lowered in diabetic patients with generalized edema [45].
+The insulin amount absorbed after 6 h was three to four times
+less in diabetic patients with edema compared to patients
+Fig. 3 Comparison of plasma PD98059 levels over time following IV
+injection of PD98059 and SC injection of PD98059-loaded PLGA mi-
+croparticles (data represent mean ± SD, n = 3). AUC0-t calculations were
+based on non-compartmental analysis (NCA) using PK Solver add-in
+188
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+without edema. The authors related this sharp decline in rate
+and extent to subcutaneous edema [45]. Congestive heart fail-
+ure is one of the major reasons of peripheral edema [46].
+In the present study, plasma levels in rats with established
+heart failure injected with PD98059-loaded microparticles
+were lower and more variable than those in healthy rats
+(Fig. 4), which may be a result of decreased subcutaneous
+absorption in heart failure rats, the use of different rats at
+different time points, or both. Nevertheless, plasma levels,
+and of more significance brain levels, were still detectable
+for up to 2 weeks. Previously, we treated HF rats with
+PD98059 solution via the ICV route for 1 h and 4 weeks
+and obtained therapeutic effects in both cases. For the short-
+term experiment (1 h), the dose was 40 μl/h of 20 μM solution
+of PD98059 for 1 h. This is equivalent to approximately
+214 ng/h. In the long-term experiment (4 weeks), the dose
+was 0.25 μl/h of 0.6 mM solution of PD98059 for 4 weeks.
+This is equivalent to approximately 40 ng/h. Our data show
+that the brain levels are approximately 40 ng/g of brain tissue
+after 24 h, which makes the amount delivered to the brain
+(average weight 1.5–2 g) about 60–80 ng. The brain levels
+declined later, reaching about 8 ng/g after 2 weeks. We are
+currently optimizing the microparticle formulation to enable
+the delivery of even higher doses of PD98059, and to maintain
+constant brain levels for extended periods in HF rats.
+Current heart failure therapy has little impact on central
+nervous system mechanisms contributing to sympathetic ex-
+citation. The prospect of targeting a central pathway regulat-
+ing sympathetic outflow in heart failure with a systemically
+administered long-acting drug preparation has clear transla-
+tional potential.
+Despite being widely used in in vitro testing, very few
+in vivo applications, and no clinical trials have been reported
+for PD98059. Sufficient pharmacokinetic information is diffi-
+cult to find/unavailable in the literature. To our knowledge,
+this is the first report that describes the pharmacokinetics of
+this drug, and also gives a hint about its biodistribution in
+major organs. Also, it is worth mentioning that this is one of
+the very few reports to shed some light on the effect of heart
+failure on subcutaneous absorption of drug molecules from a
+slow release microparticle. Further research to optimize the
+microparticle preparation to provide higher steady-state plas-
+ma and brain levels of PD98059 for prolonged periods (1–
+2 months) and to determine whether these microparticles are
+capable of producing long-term inhibition of PVN ERK1/2
+activity and reducing sympathetic activation in heart failure
+rats without inducing adverse systemic side effects, is current-
+ly ongoing.
+Conclusion
+PD98059, a potent but reversible MEK inhibitor, has a short
+elimination half-life, barely above 1 h, in rats. When com-
+bined with a reversible MEK inhibitory activity, a continuous
+supply of the drug needs to be provided in order to achieve
+long-term therapeutic goals. PD98059-loaded PLGA micro-
+particles were successfully prepared and characterized using
+emulsion solvent evaporation technique. The prepared micro-
+particles produced steady plasma levels of PD98059 in rats
+following SC injection. Detectable levels of PD98059 in the
+brain were also present for up to 2 weeks in rats with heart
+failure, encouraging the further development of this formula-
+tion for long-term inhibition of pERK1/2 in brain regions like
+the PVN that contributes to the increased sympathetic nerve
+activity in heart failure and for use in cancers in which ERK1/
+2 activity may contribute to progression.
+Acknowledgements Graphical abstract was designed using
+mindthegraph.com.
+Funding information This work was supported by the National Institute
+of Health grants R01-HL-136149 to R.B.F. and S10-OD-019941 to
+R.M.W., and by the Lyle and Sharon Bighley Professorship (A.K.S.).
+B.E.G. was supported by the National GEM Consortium, the Alfred P.
+Sloan Minority Ph.D. Scholarship and the University of Iowa Graduate
+College Dean’s Fellowship.
+Compliance with ethical standards
+Conflict of interest
+The authors declare that they have no conflict of
+interest.
+Disclaimer
+The content of this manuscript is solely the responsibility of
+the authors and does not necessarily represent the official views of the
+National Institutes of Health.
+Fig. 4 Plasma and brain PD98059 levels vs. time following the SC
+injection of 3.6 mg of PD98059 in PD98059-loaded PLGA microparti-
+cles in rats with heart failure (data represent mean ± SD, n = 2–3)
+189
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+References
+1.
+Chang L, Karin M. Mammalian MAP kinase signalling cascades.
+Nature. 2001;410(6824):37–40. https://doi.org/10.1038/35065000.
+2.
+Pearson G, Robinson F, Beers Gibson T, Xu BE, Karandikar M,
+Berman K, et al. Mitogen-activated protein (MAP) kinase path-
+ways: regulation and physiological functions. Endocr Rev.
+2001;22(2):153–83. https://doi.org/10.1210/edrv.22.2.0428.
+3.
+Cseh B, Doma E, Baccarini M. "RAF" neighborhood: protein-
+protein interaction in the Raf/Mek/Erk pathway. FEBS Lett.
+2014;588(15):2398–406. https://doi.org/10.1016/j.febslet.2014.06.
+025.
+4.
+Wu PK, Park JI. MEK1/2 inhibitors: molecular activity and resis-
+tance mechanisms. Semin Oncol. 2015;42(6):849–62. https://doi.
+org/10.1053/j.seminoncol.2015.09.023.
+5.
+Blaukat A, Barac A, Cross MJ, Offermanns S, Dikic I. G protein-
+coupled receptor-mediated mitogen-activated protein kinase activa-
+tion through cooperation of Galpha(q) and Galpha(i) signals. Mol
+Cell Biol. 2000;20(18):6837–48. https://doi.org/10.1128/mcb.20.
+18.6837-6848.2000.
+6.
+Neuzillet C, Tijeras-Raballand A, de Mestier L, Cros J, Faivre S,
+Raymond E. MEK in cancer and cancer therapy. Pharmacol Ther.
+2014;141(2):160–71. https://doi.org/10.1016/j.pharmthera.2013.
+10.001.
+7.
+Chang F, Steelman LS, Lee JT, Shelton JG, Navolanic PM, Blalock
+WL, et al. Signal transduction mediated by the Ras/Raf/MEK/ERK
+pathway from cytokine receptors to transcription factors: potential
+targeting for therapeutic intervention. Leukemia. 2003;17(7):1263–
+93. https://doi.org/10.1038/sj.leu.2402945.
+8.
+Li L, Zhao GD, Shi Z, Qi LL, Zhou LY, Fu ZX. The Ras/Raf/MEK/
+ERK signaling pathway and its role in the occurrence and develop-
+ment of HCC. Oncol Lett. 2016;12(5):3045–50. https://doi.org/10.
+3892/ol.2016.5110.
+9.
+Costigan DC, Dong F. The extended spectrum of RAS-MAPK
+pathway mutations in colorectal cancer. Genes, chromosomes &
+cancer. 2019. https://doi.org/10.1002/gcc.22813.
+10.
+Li S, Balmain A, Counter CM. A model for RAS mutation patterns
+in cancers: finding the sweet spot. Nat Rev Cancer. 2018;18(12):
+767–77. https://doi.org/10.1038/s41568-018-0076-6.
+11.
+Savoia P, Fava P, Casoni F, Cremona O. Targeting the ERK signal-
+ing pathway in melanoma. Int J Mol Sci. 2019;20(6). https://doi.
+org/10.3390/ijms20061483.
+12.
+Wang AX, Qi XY. Targeting RAS/RAF/MEK/ERK signaling in
+metastatic melanoma. IUBMB Life. 2013;65(9):748–58. https://
+doi.org/10.1002/iub.1193.
+13.
+Basu S, Harfouche R, Soni S, Chimote G, Mashelkar RA, Sengupta
+S. Nanoparticle-mediated targeting of MAPK signaling predisposes
+tumor to chemotherapy. Proc Natl Acad Sci U S A. 2009;106(19):
+7957–61. https://doi.org/10.1073/pnas.0902857106.
+14.
+Cheng Y, Tian H. Current development status of MEK inhibitors.
+Molecules. 2017;22(10). https://doi.org/10.3390/
+molecules22101551.
+15.
+Miao L, Tian H. Development of ERK1/2 inhibitors as a therapeutic
+strategy for tumour with MAPK upstream target mutations. J Drug
+Target. 2019;28:1–12. https://doi.org/10.1080/1061186X.2019.
+1648477.
+16.
+Broman KK, Dossett LA, Sun J, Eroglu Z, Zager JS. Update on
+BRAF and MEK inhibition for treatment of melanoma in metasta-
+tic, unresectable, and adjuvant settings. Expert Opin Drug Saf.
+2019;18(5):381–92. https://doi.org/10.1080/14740338.2019.
+1607289.
+17.
+Li S, Liu S, Deng J, Akbay EA, Hai J, Ambrogio C, et al. Assessing
+therapeutic efficacy of MEK inhibition in a KRAS(G12C)-driven
+mouse model of lung cancer. Clin Cancer Res. 2018;24(19):4854–
+64. https://doi.org/10.1158/1078-0432.CCR-17-3438.
+18.
+Gilmartin AG, Bleam MR, Groy A, Moss KG, Minthorn EA,
+Kulkarni SG, et al. GSK1120212 (JTP-74057) is an inhibitor of
+MEK activity and activation with favorable pharmacokinetic prop-
+erties for sustained in vivo pathway inhibition. Clin Cancer Res.
+2011;17(5):989–1000. https://doi.org/10.1158/1078-0432.CCR-
+10-2200.
+19.
+Wei SG, Yu Y, Weiss RM, Felder RB. Inhibition of brain mitogen-
+activated protein kinase signaling reduces central endoplasmic re-
+ticulum stress and inflammation and sympathetic nerve activity in
+heart failure rats. Hypertension. 2016;67(1):229–36. https://doi.org/
+10.1161/HYPERTENSIONAHA.115.06329.
+20.
+Wei SG, Yu Y, Weiss RM, Felder RB. Endoplasmic reticulum stress
+increases brain MAPK signaling, inflammation and renin-
+angiotensin system activity and sympathetic nerve activity in heart
+failure. Am J Physiol Heart Circ Physiol. 2016;311(4):H871–H80.
+https://doi.org/10.1152/ajpheart.00362.2016.
+21.
+Wei SG, Yu Y, Zhang ZH, Felder RB. Angiotensin II upregulates
+hypothalamic AT1 receptor expression in rats via the mitogen-
+activated protein kinase pathway. Am J Physiol Heart Circ
+Physiol. 2009;296(5):H1425–33. https://doi.org/10.1152/ajpheart.
+00942.2008.
+22.
+Wei SG, Yu Y, Zhang ZH, Weiss RM, Felder RB. Mitogen-
+activated protein kinases mediate upregulation of hypothalamic an-
+giotensin II type 1 receptors in heart failure rats. Hypertension.
+2 0 0 8 ; 5 2 ( 4 ) : 6 7 9 – 8 6 . h t t p s : / / d o i . o r g / 1 0 . 1 1 6 1 /
+HYPERTENSIONAHA.108.113639.
+23.
+Wei SG, Yu Y, Zhang ZH, Weiss RM, Felder RB. Angiotensin II-
+triggered p44/42 mitogen-activated protein kinase mediates sympa-
+thetic excitation in heart failure rats. Hypertension. 2008;52(2):
+342–50. https://doi.org/10.1161/HYPERTENSIONAHA.108.
+110445.
+24.
+Yu Y, Wei SG, Zhang ZH, Weiss RM, Felder RB. ERK1/2 MAPK
+signaling in hypothalamic paraventricular nucleus contributes to
+sympathetic excitation in rats with heart failure after myocardial
+infarction. Am J Physiol Heart Circ Physiol. 2016;310(6):H732–
+9. https://doi.org/10.1152/ajpheart.00703.2015.
+25.
+Yu Y, Xue BJ, Zhang ZH, Wei SG, Beltz TG, Guo F, et al. Early
+interference with p44/42 mitogen-activated protein kinase signaling
+in hypothalamic paraventricular nucleus attenuates angiotensin II-
+induced hypertension. Hypertension. 2013;61(4):842–9. https://doi.
+org/10.1161/HYPERTENSIONAHA.111.00080.
+26.
+Zhang ZH, Yu Y, Wei SG, Felder RB. Aldosterone-induced brain
+MAPK signaling and sympathetic excitation are angiotensin II
+type-1 receptor dependent. Am J Physiol Heart Circ Physiol.
+2012;302(3):H742–51. https://doi.org/10.1152/ajpheart.00856.
+2011.
+27.
+Felder RB, Yu Y, Zhang ZH, Wei SG. Pharmacological treatment
+for heart failure: a view from the brain. Clin Pharmacol Ther.
+2009;86(2):216–20. https://doi.org/10.1038/clpt.2009.117.
+28.
+Kang YM, Zhang ZH, Xue B, Weiss RM, Felder RB. Inhibition of
+brain proinflammatory cytokine synthesis reduces hypothalamic
+excitation in rats with ischemia-induced heart failure. Am J
+Physiol Heart Circ Physiol. 2008;295(1):H227–36. https://doi.org/
+10.1152/ajpheart.01157.2007.
+29.
+Wei SG, Zhang ZH, Yu Y, Weiss RM, Felder RB. Central actions of
+the chemokine stromal cell-derived factor 1 contribute to neurohu-
+moral excitation in heart failure rats. Hypertension. 2012;59(5):
+991–8. https://doi.org/10.1161/HYPERTENSIONAHA.111.
+188086.
+30.
+Khaled KA, Sarhan HA, Ibrahim MA, Ali AH, Naguib YW.
+Prednisolone-loaded PLGA Microspheres. In vitro characterization
+and in vivo application in adjuvant-induced arthritis in mice. AAPS
+PharmSciTech 2010;11(2):859–869. doi:https://doi.org/10.1208/
+s12249-010-9445-5.
+31.
+Geary SM, Hu Q, Joshi VB, Bowden NB, Salem AK.
+Diaminosulfide based polymer microparticles as cancer vaccine
+190
+Drug Deliv. and Transl. Res.  (2021) 11:182–191
+
+delivery systems. J Control Release. 2015;220(Pt B):682–90.
+https://doi.org/10.1016/j.jconrel.2015.09.002.
+32.
+Intra J, Salem AK. Fabrication, characterization and in vitro evalu-
+ation of poly(D,L-lactide-co-glycolide) microparticles loaded with
+polyamidoamine-plasmid DNA dendriplexes for applications in
+nonviral gene delivery. J Pharm Sci. 2010;99(1):368–84. https://
+doi.org/10.1002/jps.21840.
+33.
+Lew B, Kim IY, Choi H, Kim KK. Sustained exenatide delivery via
+intracapsular microspheres for improved survival and function of
+microencapsulated porcine islets. Drug Deliv Transl Res.
+2018;8(3):857–62. https://doi.org/10.1007/s13346-018-0484-x.
+34.
+Ansary RH, Rahman MM, Awang MB, Katas H, Hadi H,
+Doolaanea AA. Preparation, characterization, and in vitro release
+studies of insulin-loaded double-walled poly(lactide-co-glycolide)
+microspheres. Drug Deliv Transl Res. 2016;6(3):308–18. https://
+doi.org/10.1007/s13346-016-0278-y.
+35.
+Andhariya JV, Shen J, Choi S, Wang Y, Zou Y, Burgess DJ.
+Development of in vitro-in vivo correlation of parenteral naltrexone
+loaded polymeric microspheres. J Control Release. 2017;255:27–
+35. https://doi.org/10.1016/j.jconrel.2017.03.396.
+36.
+Naguib YW, Lansakara PD, Lashinger LM, Rodriguez BL, Valdes
+S, Niu M, et al. Synthesis, characterization, and in vitro and in vivo
+e v a l u a t i o n s o f 4 - ( N ) - D o c o s a h e x a e n o y l 2 ′ , 2 ′ -
+Difluorodeoxycytidine with potent and broad-spectrum antitumor
+activity. Neoplasia. 2016;18(1):33–48. https://doi.org/10.1016/j.
+neo.2015.11.012.
+37.
+Zhang Y, Huo M, Zhou J, Xie S. PKSolver: an add-in program for
+pharmacokinetic and pharmacodynamic data analysis in Microsoft
+excel. Comput Methods Prog Biomed. 2010;99(3):306–14. https://
+doi.org/10.1016/j.cmpb.2010.01.007.
+38.
+Yao J, Qian C, Shu T, Zhang X, Zhao Z, Liang Y. Combination
+treatment of PD98059 and DAPT in gastric cancer through induc-
+tion of apoptosis and downregulation of WNT/beta-catenin. Cancer
+Biol Ther. 2013;14(9):833–9. https://doi.org/10.4161/cbt.25332.
+39.
+Awasthi N, Monahan S, Stefaniak A, Schwarz MA, Schwarz RE.
+Inhibition of the MEK/ERK pathway augments nab-paclitaxel-
+based chemotherapy effects in preclinical models of pancreatic can-
+cer. Oncotarget. 2018;9(4):5274–86. https://doi.org/10.18632/
+oncotarget.23684.
+40.
+Cilurzo F, Selmin F, Minghetti P, Montanari L. Design of methyl-
+prednisolone biodegradable microspheres intended for intra-
+articular administration. AAPS PharmSciTech. 2008;9(4):1136–
+42. https://doi.org/10.1208/s12249-008-9158-1.
+41.
+Zhang H, Gao S. Temozolomide/PLGA microparticles and antitu-
+mor activity against glioma C6 cancer cells in vitro. Int J Pharm.
+2007;329(1–2):122–8. https://doi.org/10.1016/j.ijpharm.2006.08.
+027.
+42.
+Ogawa R, Stachnik JM, Echizen H. Clinical pharmacokinetics of
+drugs in patients with heart failure: an update (part 2, drugs admin-
+istered orally). Clin Pharmacokinet. 2014;53(12):1083–114. https://
+doi.org/10.1007/s40262-014-0189-3.
+43.
+Shammas FV, Dickstein K. Clinical pharmacokinetics in heart fail-
+ure. An updated review. Clin Pharmacokinet. 1988;15(2):94–113.
+https://doi.org/10.2165/00003088-198815020-00002.
+44.
+Nies AS. Clinical pharmacokinetics in congestive heart failure. In:
+Hosenpud JD, Greenberg BH, editors. Congestive heart failure:
+pathophysiology, diagnosis, and comprehensive approach to man-
+agement. New York: Springer New York; 1994. p. 323–40.
+45.
+Ariza-Andraca CR, Altamirano-Bustamante E, Frati-Munari AC,
+Altamirano-Bustamante P, Graef-Sanchez A. Delayed insulin ab-
+sorption due to subcutaneous edema. Arch Invest Med. 1991;22(2):
+229–33.
+46.
+Navas JP, Martinez-Maldonado M. Pathophysiology of edema in
+congestive heart failure. Heart Dis Stroke. 1993;2(4):325–9.
+Publisher’s note Springer Nature remains neutral with regard to jurisdic-
+tional claims in published maps and institutional affiliations.
+191
+Drug Deliv. and Transl. Res.  (2021) 11:182–191

@@ -1,0 +1,124 @@
+{
+  "baseline_id": "baseline_20260417_dev15_no_marker_live_v1",
+  "baseline_type": "full_pipeline_baseline",
+  "date": "2026-04-17",
+  "purpose": "Register the maintained DEV15 no-marker full live baseline as one governed baseline object rooted at the existing 2026-04-17 run lineage, with diagnostic-only compare continuation after identity-freeze failure.",
+  "authority_root": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live",
+  "source_run_dir": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live",
+  "source_type": "governed_run_lineage",
+  "reproducibility_status": "materialized_run_with_governed_compare_normalization",
+  "llm_usage": "live_llm_in_stage2_only",
+  "pipeline_variant": "full_pipeline_no_marker_live_stage2_plus_deterministic_stage3_stage5",
+  "intended_use": "superseded_dev15_development_diagnostic_baseline",
+  "source_artifacts": {
+    "run_context": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/RUN_CONTEXT.md",
+    "stage2_run_metadata": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/stage2_run_metadata_v1.json",
+    "scope_manifest": "data/results/20260417_385b6e1/03_dev15_full_baseline_no_marker/dev15_scope.tsv",
+    "targeted_manifest": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/targeted_manifest.tsv",
+    "completed_stage2_tsv": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "relation_records": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/formulation_relation_records_v1.tsv",
+    "resolved_relation_fields": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/resolved_relation_fields_v1.tsv",
+    "final_formulation_table": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/final_formulation_table_v1.tsv",
+    "final_output_decision_trace": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/final_output_decision_trace_v1.tsv",
+    "identity_freeze_summary": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/audit/identity_freeze_guardrail_v1/identity_freeze_summary_v1.tsv",
+    "diagnostic_compare_counts": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/gt_authority_v2_variantaware/final_table_vs_gt_counts.tsv",
+    "diagnostic_compare_summary": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/gt_authority_v2_variantaware/final_table_vs_gt_summary.md",
+    "baseline_registration": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/audit/baseline_registration_v1.json",
+    "baseline_summary": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/audit/baseline_summary_2026-04-17_dev15_no_marker_live.md"
+  },
+  "artifact_chain": [
+    {
+      "boundary": "Stage1_reused_clean_text",
+      "path": "data/results/20260417_385b6e1/03_dev15_full_baseline_no_marker/dev15_scope.tsv",
+      "artifact_role": "declared DEV15 scope manifest over existing maintained clean-text assets"
+    },
+    {
+      "boundary": "Stage2",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+      "artifact_role": "completed maintained Stage2 compatibility surface"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/formulation_relation_records_v1.tsv",
+      "artifact_role": "relation materialization records"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/resolved_relation_fields_v1.tsv",
+      "artifact_role": "resolved relation carry-through fields"
+    },
+    {
+      "boundary": "Stage5",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/final_formulation_table_v1.tsv",
+      "artifact_role": "benchmark-facing final table for this lineage"
+    },
+    {
+      "boundary": "identity_freeze",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/audit/identity_freeze_guardrail_v1/identity_freeze_summary_v1.tsv",
+      "artifact_role": "benchmark-validity gate result"
+    },
+    {
+      "boundary": "diagnostic_compare",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/gt_authority_v2_variantaware/final_table_vs_gt_counts.tsv",
+      "artifact_role": "governed debug_identity final-table count comparison"
+    }
+  ],
+  "lineage_chain": [
+    {
+      "label": "bucket_root",
+      "path": "data/results/20260417_385b6e1",
+      "coverage": "governed 2026-04-17 work bucket",
+      "authority_status": "bucket_container"
+    },
+    {
+      "label": "full_pipeline_run",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live",
+      "coverage": "maintained no-marker live Stage2 through Stage5 plus identity-freeze lineage",
+      "authority_status": "baseline_authority_root"
+    },
+    {
+      "label": "governed_compare_normalization",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/gt_authority_v2_variantaware",
+      "coverage": "diagnostic-only debug_identity compare package normalized into the run lineage",
+      "authority_status": "baseline_compare_surface"
+    }
+  ],
+  "stage_coverage": [
+    "Stage1_reused_clean_text",
+    "Stage2",
+    "Stage3",
+    "Stage5",
+    "identity_freeze",
+    "diagnostic_compare"
+  ],
+  "boundary_classification": {
+    "lawful_resume_boundary": "Stage5_final_formulation_table",
+    "boundary_classes": {
+      "Stage1_reused_clean_text": "mainline_input_surface",
+      "Stage2": "mainline_resume_boundary",
+      "Stage3": "internal_intermediate",
+      "Stage5": "mainline_resume_boundary",
+      "identity_freeze": "diagnostic_boundary",
+      "diagnostic_compare": "diagnostic_terminal_surface"
+    }
+  },
+  "benchmark_validity": "diagnostic_only",
+  "limitations": [
+    "Identity freeze failed, so this baseline is not benchmark-valid.",
+    "The governed compare surface is diagnostic-only because it was run in debug_identity mode.",
+    "The baseline reuses existing maintained clean-text assets and does not include a fresh Stage1 regeneration.",
+    "The baseline is no-marker and must not be described as a marker-backed baseline.",
+    "The scope manifest used by compare remains the GT-authority-contracted DEV15 scope path pinned by ACTIVE_RUN.json.",
+    "This baseline was superseded for ongoing DEV15 debugging by baseline_20260417_dev15_repaired_diagnostic_v1."
+  ],
+  "linked_audits": [
+    "docs/audits/dev15_baseline_governance_membership_audit_2026-04-17.md",
+    "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/audit/daily_baseline_v1/dev15_full_pipeline_baseline_2026_04_17/audit_manifest.json",
+    "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/audit/baseline_summary_2026-04-17_dev15_no_marker_live.md"
+  ],
+  "baseline_lookup_aliases": [
+    "baseline_20260417_dev15_no_marker_live_v1",
+    "2026-04-17 DEV15 no-marker live baseline",
+    "dev15 no-marker full live baseline"
+  ]
+}

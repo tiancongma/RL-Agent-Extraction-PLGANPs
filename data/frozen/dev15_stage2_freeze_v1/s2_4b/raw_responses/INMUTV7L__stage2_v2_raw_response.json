@@ -1,0 +1,365 @@
+{
+  "document_key": "INMUTV7L",
+  "doi": "10.3390/nano10040720",
+  "formulation_candidates": [
+    {
+      "candidate_id": "formulation_0",
+      "raw_label": "PLGA based nanoparticles encapsulating dexibuprofen",
+      "normalized_label": "PLGA-Dexibuprofen Nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_1",
+        "span_16"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "formulation_F1",
+      "raw_label": "F1",
+      "normalized_label": "Formulation F1",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "formulation_0",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_15"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "component_plga",
+      "formulation_candidate_id": "formulation_0",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_2"
+      ]
+    },
+    {
+      "component_id": "component_dexibuprofen",
+      "formulation_candidate_id": "formulation_0",
+      "component_name": "dexibuprofen",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_2"
+      ]
+    },
+    {
+      "component_id": "component_acetone",
+      "formulation_candidate_id": "formulation_0",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "5 mL",
+      "amount_kind": "concentration",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_2"
+      ]
+    },
+    {
+      "component_id": "component_aqueous_surfactant_solution",
+      "formulation_candidate_id": "formulation_0",
+      "component_name": "aqueous surfactant solution",
+      "component_role": "solvent",
+      "amount_text": "10 mL",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_3"
+      ]
+    },
+    {
+      "component_id": "component_surfactant_varying",
+      "formulation_candidate_id": "formulation_0",
+      "component_name": "surfactant",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "Amount not specified, only that different surfactants were used.",
+      "evidence_span_ids": [
+        "span_3",
+        "span_10",
+        "span_16"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "variable_preparation_method",
+      "formulation_candidate_id": "",
+      "variable_name": "Preparation method",
+      "value_text": "solvent displacement method",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_1",
+        "span_16"
+      ]
+    },
+    {
+      "variable_id": "variable_ph",
+      "formulation_candidate_id": "",
+      "variable_name": "pH",
+      "value_text": "3.5",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_3"
+      ]
+    },
+    {
+      "variable_id": "variable_polymer_used",
+      "formulation_candidate_id": "formulation_0",
+      "variable_name": "Polymer Used",
+      "value_text": "PLGA 503 H",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Table sample shows 'PLGA 503 H', but the column header is 'Polymer Used', implying it could vary. The synthesis method mentions 'PLGA' generally.",
+      "evidence_span_ids": [
+        "span_9"
+      ]
+    },
+    {
+      "variable_id": "variable_surfactant",
+      "formulation_candidate_id": "formulation_0",
+      "variable_name": "Surfactant",
+      "value_text": "Tween80",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Table sample shows 'Tween80', but the column header is 'Surfactant', implying it could vary. The paragraph mentions 'different surfactants'.",
+      "evidence_span_ids": [
+        "span_10"
+      ]
+    },
+    {
+      "variable_id": "variable_formulation_number",
+      "formulation_candidate_id": "formulation_0",
+      "variable_name": "Formulation Number",
+      "value_text": "5",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "Sample row shows '5', but this is an identifier for a specific formulation.",
+      "evidence_span_ids": [
+        "span_8"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "measurement_pi_f1",
+      "formulation_candidate_id": "formulation_F1",
+      "measurement_name": "pdi",
+      "value_text": "slightly increased",
+      "unit_text": "",
+      "ambiguity_note": "Qualitative description, not a numerical value.",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "measurement_id": "measurement_size_f1",
+      "formulation_candidate_id": "formulation_F1",
+      "measurement_name": "size",
+      "value_text": "more than 200 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "Qualitative description, not a precise numerical value.",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "measurement_id": "measurement_avg_size_ratio",
+      "formulation_candidate_id": "formulation_0",
+      "measurement_name": "size",
+      "value_text": "1.00",
+      "unit_text": "ratio",
+      "ambiguity_note": "This is a ratio after sterilization, not the absolute size. Sample value '1.00' is from a specific row.",
+      "evidence_span_ids": [
+        "span_11"
+      ]
+    },
+    {
+      "measurement_id": "measurement_pdi_ratio",
+      "formulation_candidate_id": "formulation_0",
+      "measurement_name": "pdi",
+      "value_text": "0.92",
+      "unit_text": "ratio",
+      "ambiguity_note": "This is a ratio after sterilization, not the absolute PDI. Sample value '0.92' is from a specific row.",
+      "evidence_span_ids": [
+        "span_12"
+      ]
+    },
+    {
+      "measurement_id": "measurement_zeta_potential_ratio",
+      "formulation_candidate_id": "formulation_0",
+      "measurement_name": "zeta_potential",
+      "value_text": "1.05",
+      "unit_text": "ratio",
+      "ambiguity_note": "This is a ratio after sterilization, not the absolute zeta potential. Sample value '1.05' is from a specific row.",
+      "evidence_span_ids": [
+        "span_13"
+      ]
+    },
+    {
+      "measurement_id": "measurement_ee_ratio",
+      "formulation_candidate_id": "formulation_0",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "1.01",
+      "unit_text": "ratio",
+      "ambiguity_note": "This is a ratio after sterilization, not the absolute EE. Sample value '1.01' is from a specific row.",
+      "evidence_span_ids": [
+        "span_14"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "span_1",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "2.1. Preparation of Polymeric Nanoparticles",
+      "supporting_text": "2.1. Preparation of Polymeric Nanoparticles PLGA nanoparticles (NPs) containing DXI were prepared by using the solvent displacement method [10,11]."
+    },
+    {
+      "span_id": "span_2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "In summary, 90 mg of PLGA...",
+      "supporting_text": "In summary, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany) and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and dissolved in 5 mL of acetone."
+    },
+    {
+      "span_id": "span_3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The organic solution was added dropwise...",
+      "supporting_text": "The organic solution was added dropwise into 10 mL of an aqueous surfactant solution at pH 3.5 under magnetic stirring."
+    },
+    {
+      "span_id": "span_4",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "Experimental design: varying concentrations or batches.",
+      "supporting_text": "varying concentrations or batches."
+    },
+    {
+      "span_id": "span_5",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "Formulation table: drug/polymer ratio, loading, EE, DL.",
+      "supporting_text": "Formulation table: drug/polymer ratio, loading, EE, DL."
+    },
+    {
+      "span_id": "span_6",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2. Sterilization using gamma radiation (ratio between before and after sterilization)."
+    },
+    {
+      "span_id": "span_7",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 6 (from TABLE_SUMMARY)",
+      "supporting_text": "Formulation table with drug/polymer/loading variables."
+    },
+    {
+      "span_id": "span_8",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'Formulation Number'",
+      "supporting_text": "Formulation Number"
+    },
+    {
+      "span_id": "span_9",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'Polymer Used'",
+      "supporting_text": "Polymer Used"
+    },
+    {
+      "span_id": "span_10",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'Surfactant'",
+      "supporting_text": "Surfactant"
+    },
+    {
+      "span_id": "span_11",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'Average Size Ratio'",
+      "supporting_text": "Average Size Ratio"
+    },
+    {
+      "span_id": "span_12",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'Polydispersity Index Ratio'",
+      "supporting_text": "Polydispersity Index Ratio"
+    },
+    {
+      "span_id": "span_13",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'Zeta Potential Ratio'",
+      "supporting_text": "Zeta Potential Ratio"
+    },
+    {
+      "span_id": "span_14",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, column header 'EE Ratio'",
+      "supporting_text": "EE Ratio"
+    },
+    {
+      "span_id": "span_15",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "As shown in Table 2, the majority...",
+      "supporting_text": "As shown in Table 2, the majority of the formulations were not aﬀected by the irradiation and only PI was slightly increased in F1, which was the only formulation with more than 200 nm of average size."
+    },
+    {
+      "span_id": "span_16",
+      "source_region_type": "paragraph",
+      "source_locator_text": "Therefore, several formulations of PLGA based nanoparticles...",
+      "supporting_text": "Therefore, several formulations of PLGA based nanoparticles encapsulating dexibuprofen (active enantiomer of Ibuprofen) were prepared using the solvent displacement method employing diﬀerent surfactants."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "span_4, span_5, span_6, span_7"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "Polymer Used",
+        "Surfactant"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Formulation Number"
+      ]
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 2",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_1, span_16"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 2",
+      "is_doe": true
+    }
+  ]
+}

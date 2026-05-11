@@ -1,0 +1,1075 @@
+Vol.:(0123456789)
+Pharmaceutical Research (2025) 42:1153–1165
+https://doi.org/10.1007/s11095-025-03889-1
+ORIGINAL RESEARCH ARTICLE
+Inhalable N‑Acetylcysteine‑loaded Lactose‑coated PLGA Nanoparticles
+for Tuberculosis Treatment
+Kabi Raj Chaudhary1 · Cláudia Viegas2,3,4,5 · Paola Pirela4,5 · Mariana Atalaia4,5 · Beatriz Ruivinho3 · Sanchit Arora1 ·
+Arti Singh6 · Pedro Brandão4,5,7,8 · Charan Singh1,9 · Pedro Fonte3,4,5,10 
+Received: 17 March 2025 / Accepted: 21 June 2025 / Published online: 10 July 2025
+© The Author(s) 2025
+Abstract
+Objective  Glutathione (GSH), known for having mucolytic, anti-inflammatory, and antioxidant activities, is used in clinical
+practice in several pathologies, including tuberculosis (TB). N-acetylcysteine (NAC) has been primarily used to treat lung
+conditions and paracetamol-induced liver toxicity. However, NAC exhibits potential antimycobacterial activity through
+several mechanisms including immunomodulation, enhancement of GSH levels, and direct antimycobacterial effect. In this
+work, we aim to develop an effective drug delivery system for NAC for inhalable formulations.
+Methods  Herein, we report the development of lactose-coated NAC-loaded Poly(lactic-co-glycolic acid) (PLGA) nanoparti-
+cles (NAC-PLGA NPs) obtained by double emulsion methodology. Lactose has a double role, as a cryoprotectant agent and
+dispersant for inhalable formulations. The physicochemical properties of lactose-coated NAC-PLGA NPs were examined
+in terms of particle size, polydispersity index (PdI), zeta potential (ZP), encapsulation efficiency, and morphology. The in
+vitro release and lung deposition studies were assessed.
+Results  The physicochemical characterization studies revealed the compatibility of the drug with the selected excipients.
+Moreover, lactose-coated NAC-PLGA NPs showed particle size of 310 ± 3 nm, PdI of 0.15 ± 0.01, and of -11.5 ± 0.4 mV.
+The in vitro release study suggested a biphasic release profile. Likewise, in vitro lung deposition studies revealed desirable
+lung deposition parameters, indicating effective particle size for efficient pulmonary delivery. Additionally, in vitro studies
+for antimycobacterial activity exhibited superior antibacterial activity against Mycobacterium Tuberculosis (MTB) H37Rv.
+Conclusions  These preliminary findings suggest that lactose-coated NAC-PLGA NPs can open the door to new therapeutic
+options against one of the most drug-refractory and drug-resistant infectious diseases, TB.
+Keywords  dry powder · inhalable particles · N-acetylcysteine · PLGA nanoparticles · pulmonary delivery · tuberculosis
+Introduction
+Tuberculosis (TB) is one of the most contagious and deadli-
+est diseases, emerging as a leading cause of mortality world-
+wide [1]. The contagious nature of TB is due to its etio-
+logical agent known as Mycobacterium Tuberculosis (MTB)
+[2]. According to the World Health Organization (WHO)
+Global TB Report 2023, a quarter of the total population
+has been infected with TB, with 7.5 million new infections
+reported globally in 2022 [3, 4]. Currently, TB is treated
+using a combination of first-line antibiotics, including isoni-
+azid, rifampicin, pyrazinamide, and ethambutol, however for
+drug-resistant cases second-line agents are also used (e.g.,
+fluoroquinolones, bedaquiline, delamanid) [5]. Although
+there are first and second-line approved drugs to fight TB,
+antibiotic resistance and undesirable side effects hinder the
+therapeutic outcomes. Current therapeutic options often
+require high-frequency dosing, leading to hepatotoxicity,
+ototoxicity, nephrotoxicity, neuropathy, and hypersensitiv-
+ity, limiting treatment application [6–8]. Additionally, poor
+bioavailability caused by the hepatic metabolism of orally
+administered drugs decreases the efficacy of its systematic
+use. Similarly, the mutational behavior of mycobacterium,
+the complex nature of bacterial cell wall, and granuloma
+formation are important variables that cause drug resistance,
+including multiple drug resistance (MDR) and extensive
+drug resistance (XDR), leading to restrictions for its wider
+use and therapeutic failure [9, 10]. Poverty, unsanitary prac-
+tices, and poor therapeutic compliance (including irregular
+Extended author information available on the last page of the article
+
+1154
+
+Pharmaceutical Research (2025) 42:1153–1165
+and incomplete dosing) are other reasons that contribute to
+drug resistance [11, 12].
+However, nanotechnology-inspired drug delivery systems
+exhibiting antimycobacterial activity are emerging as suit-
+able pathways to overcome the afore mentioned constraints.
+Various drug nanocarriers such as NPs, including solid-
+lipid NPs (SLNs), nanostructured lipid carriers (NLCs),
+liposomes, polymeric particles or microparticles consisting
+of composites, metal–organic frameworks [13], and micro-
+spheres emerge as suitable drug development platforms for
+the treatment of TB [14–17].
+N-acetylcysteine (NAC) is a U.S. Food and Drug Admin-
+istration (US-FDA) approved drug and WHO-recommended
+essential list drug [18, 19]. The wide range of pharmacologi-
+cal activities of NAC makes it a highly investigated mol-
+ecule. Among its various pharmacotherapeutic applications,
+the antimycobacterial activity of this drug is majorly investi-
+gated when administered in an inhalational route. NAC dis-
+plays a dual mechanism of action, comprising direct antimi-
+crobial action and suppression of the host oxidative response
+due to its antioxidative activity, and hence its interest in TB
+treatment. NAC is a precursor of glutathione (GSH) and
+facilitates the production of nitric oxide, which could bind
+with GSH to form S-nitroso glutathione (GSSNO), the major
+factor for the antimycobacterial effect [20, 21]. Interestingly,
+the thiol group of the molecule causes a redox imbalance of
+mycothiol (MSH) in the mycobacteria, which leads to inhibi-
+tion of mycobacterial growth. In addition, NAC facilitates
+the production of cytokines, namely interleukin-2 (IL-2),
+interleukin-12 (IL-12), tumor necrosis factor (TNF), and
+interferon (IFN), by enhancing the immunological activi-
+ties of various cells including natural killer (NK) cells and
+macrophages, which could further suppress the mycobacte-
+rial growth [22–24]. Despite being characterized by high
+solubility and high permeability, NAC exhibits poor bio-
+availability (~ 10%), which significantly limits its therapeu-
+tic efficacy. This challenge stems from its rapid metabolism
+and systemic clearance. In this sense, drug delivery systems
+that stabilize NAC, enhance its bioavailability, and provide
+targeted delivery while preventing premature degradation
+are fundamental. Thus, encapsulating NAC in polymeric
+NPs for pulmonary delivery via the inhalational route offers
+a promising solution. This approach allows for a localized
+increase in drug concentration at the site of action, mini-
+mizing systemic exposure and degradation, while improving
+therapeutic outcomes for respiratory conditions [25, 26].
+Unfortunately, the complex nature of the airway anatomy
+of the lungs creates another challenge for drug delivery. The
+aerodynamic properties of inhalable particles greatly influ-
+ence the drug deposition pattern to deep lung structures and
+can also determine that these particles will be immediately
+exhaled after inspiration [27, 28]. For instance, particles of
+micron size (1–5 µm) are regarded to be the most efficiently
+delivered into deep lungs, where mycobacteria predominate.
+Either nano range size particles (< 1 µm) delivery or larger
+micron size particles (> 5 µm) delivery showed inefficient
+drug deposition due to quick exhalation and deposition at
+the upper respiratory tract (trachea), respectively [29, 30].
+In this regard, several researchers have demonstrated that
+microparticles with a particle size range of 1–5 µm are
+efficient dry powder formulation for deep lung targeting.
+Using biodegradable and biocompatible PLGA co-polymer
+for cargo delivery was approved by the US-FDA and Euro-
+pean Medicines Agency (EMA) and provides a remarkable
+targeted capability with minimal or no toxicities [31–33].
+Additionally, to address the challenge of achieving effi-
+cient drug delivery to the deep lung, excipients like lactose
+are often used as carriers in dry powder formulations. Lac-
+tose facilitates the formation of larger particle agglomerates,
+thereby increasing the aerodynamic diameter of the formu-
+lation. This strategy is particularly beneficial for improving
+the flowability and dispersion of smaller particles, such as
+nanoparticles, during inhalation. By creating microparticles
+within the ideal size range of 1–5 µm, lactose ensures opti-
+mal aerodynamic properties that prevent immediate exhala-
+tion while promoting efficient deposition in the deep lung
+structures. Furthermore, lactose is a biocompatible and does
+not elicit significant immune responses when deposited in
+the lungs (namely with alveolar macrophages), once it is
+readily metabolized by endogenous enzymes or cleared from
+the respiratory tract via mucociliary mechanisms. For these
+reasons, it is widely accepted excipient in inhalable formu-
+lations, enhancing the safety profile of the delivery system
+while maintaining its effectiveness [34–36].
+Considering the pulmonary system, particularly the
+lungs, as the primary site of MTB infection, this study aims
+to develop an innovative formulation for the treatment of
+pulmonary TB via inhalation. The proposed dry powder
+formulation consists of lactose-coated NAC-PLGA NPs,
+designed to achieve controlled and sustained drug release.
+This strategy seeks to minimize dosing frequency, reduce
+systemic toxicity, improve patient compliance, ensure site-
+specific delivery, and enhance therapeutic efficacy.
+Materials and Methods
+Materials
+NAC and polyvinyl alcohol (PVA) (PVA  78 K, 88%
+hydrolyzed grade) were purchased from TCI Chemical,
+India. PLGA (50:50 DL-PLG grade) and lactose (α-lactose
+monohydrate: InhaLac 160 of sieved grade) were obtained
+from Sigma Aldrich, New Delhi, India. Likewise, solvent
+dichloromethane (DCM) was provided by SRL Labora-
+tory Pvt. Ltd, New Delhi, India. MTB H37Rv strain was
+
+1155
+Pharmaceutical Research (2025) 42:1153–1165
+purchased from TB Research Centre, Chennai, India. All
+the other chemicals used were of analytical grade.
+Preparation of NAC‑PLGA NPs
+In the experiment, three different formulations (F1, F2,
+and F3) were engineered by varying the drug: polymer
+ratio and PVA concentration to physicochemical charac-
+terization. Initially, 10 mg of the drug was dissolved in 1
+mL of distilled water (W1: internal phase). In a separate
+vessel, 50 mg (F1), 100 mg (F2), or 150 mg (F3) of PLGA
+were dissolved in 3 mL of DCM (oil phase). Subsequently,
+the W1 phase was added to each of the respective oil
+phases under continuous stirring for 30 min to afford the
+primary W1/O emulsions, which were then subjected to
+probe sonication for 3 min using Sonics Vibra Cell (VCX
+130 PB) USA. Each of the primary W1/O emulsions were
+then added dropwise to 5 mL PVA solution (W2: external
+phase) of three different concentrations: 0.25% w/v for
+F1, 0.50% w/v for F2 and 0.75% w/v for F3 to get W1/O/
+W2 double emulsion, followed by probe sonication for
+2 min. Moreover, α-lactose monohydrate solution (cry-
+oprotectant) equivalent to 2% w/v was further prepared
+in an aqueous solution. Afterward, developed W1/O/W2
+double emulsions were slowly poured onto the cryopro-
+tectant with continuous stirring for 24 h, to evaporate the
+organic solvent completely. Another batch was prepared in
+the same way by pouring the W1/O/W2 double emulsions
+into water. By the end of this process, the resulting organic
+solvent-free solutions were lyophilized at −30°C for 24 h,
+followed by freeze drying at 40°C for 48 h to obtain a dry
+powder of lactose-coated NAC-PLGA NPs and uncoated
+NAC-PLGA NPs, respectively [26, 37–40]. All the formu-
+lations were performed in triplicate.
+NPs Physicochemical Characterization
+Particle Size, Polydispersity Index (PdI), and Zeta Potential
+(ZP) Measurement
+The particle size of developed NAC-PLGA NPs was meas-
+ured by dynamic light scattering (DLS) technique using
+Delsa Nano Zetasizer. Additionally, the polydispersity index
+(PdI) was measured to determine the stability of nanosus-
+pension. Moreover, electrostatic repulsion between parti-
+cles of the same charge, zeta potential (ZP), was measured
+by electrophoretic light scattering (ELS) technique using
+NanoZS/ZEN 3600 Zetasizer (Malvern instrument Ltd.
+UK). All samples were performed in triplicate in aliquots
+collected after solvent evaporation and before the drying
+process.
+Entrapment Efficiency (EE), Drug Loading (DL), and Yield
+Recovery Determination
+Entrapment efficiency (EE) percentage was determined
+by quantification of the free drug in the supernatant after
+centrifugation at 4500 rpm for 40 min (Centrifuge 5418R
+Eppendorf, USA). A UV visible spectrophotometer (UV-
+1700, Shimadzu, Japan) at λmax 204 nm was used for free
+drug quantification. The formula to determine % EE is given
+below:
+Similarly, drug loading (DL) percentage was determined
+as the total amount of drug added to the formulation, divided
+by the total solid content added (drug + polymer), as given
+by the formula:
+The relation between total powder mass recovered after
+freeze-drying and total solid content added to the formula-
+tion is required to determine yield (%) recovery as men-
+tioned below:
+All evaluations were performed in triplicate in aliquots
+collected after solvent evaporation and before the drying
+process.
+Morphological Identification
+Morphological characteristics of both uncoated NAC-PLGA
+and lactose-coated NAC-PLGA NPs were investigated using
+field-emission scanning electron microscopy (FE-SEM) of
+type JSM-5200 scanning microscope (JEOL Ltd, Tokyo,
+Japan) via sprinkled of powdered sample into SEM stub.
+Likewise, the internal structure of the developed formulation
+has also been determined with high-resolution transmission
+electron microscopy (HR-TEM). In addition, the coating of
+PLGA NPs was also confirmed through HR-TEM.
+Microparticles Physical‑state Characterization
+Studies
+Fourier‑transform Infrared (FTIR) Spectroscopy
+Drug and excipient interaction or compatibility can be iden-
+tified by using FTIR spectroscopy (FTIR spectrometer of
+PerkinElmer, USA). Herein, with the help of infrared grade
+%EE = Total added drug −Free drug in supernatant
+Total added drug
+× 100
+%DL = Total added drug −Free drug in supernatant
+Total drug loaded + polymer
+× 100
+% Yield = Total powder recovered
+Total solid content
+× 100
+
+1156
+
+Pharmaceutical Research (2025) 42:1153–1165
+KBr, samples were finely ground and then pressed into pel-
+lets at ambient temperature followed by recording spectra
+over the range of 4000–400 ­cm−1. FTIR spectra for NAC,
+PLGA, physical mixture, and lactose-coated NAC-PLGA
+were recorded.
+Differential Scanning Calorimetry (DSC)
+Thermal properties of given samples for NAC, PLGA, phys-
+ical mixture, and lactose-coated NAC-PLGA were deter-
+mined by DSC analysis (Perkin Elmer, USA). Performing
+the analysis at a temperature ranging from 25°C to 300°C, a
+weighed amount of drug-loaded sealed aluminum pan was
+subjected to heating at the rate of 10°C/min under a nitrogen
+atmosphere purged at 40 mL/min.
+Powder X‑ray Diffraction (PXRD)
+The crystalline nature of the given powder sample was
+assessed through wide-angle PXRD (X’PertPRO diffractom-
+eter, PANalytical, The Netherlands) at a voltage of 40kV and
+current 30 mA (range of 4° to 42°) using a step size of 0.02
+2θ with a dwell time of 2 s. NAC, PLGA, physical mixture,
+and NAC-PLGA were examined for this study.
+Dry Powder Formulation Evaluation
+Flow Property of Powder Determination
+The flow property of freeze-dried NAC-PLGA NPs was
+studied through an angle of repose, Hausner ratio, and Carr’s
+index determination. First, an accurately weighed quantity
+of powder was poured into a graduated measuring cylinder
+of 10mL and the volume occupied was recorded as bulk
+volume ­(Vbulk). The filled cylinder was then tapped 1000
+times with the help of a tapped density tester (stamp volu-
+meter STAV 2003: Engelmann Ludwigshafen Germany) and
+recorded as tapped volume ­(Vtap). Finally, bulk density and
+tapped density were determined along with the Hausner ratio
+and Carr’s index using the given formula.
+In Vitro Dissolution Study
+Release of NAC from freeze-dried lactose-coated NAC-
+PLGA and uncoated NAC-PLGA NPs was determined by an
+in vitro dissolution study using United States Pharmacopeia
+Hausner ratio = Tapped density
+Bulk density
+%Carrs index = Tapped density −Bulk density
+Tapped density
+(USP) dissolution apparatus II. Maintaining the dissolution
+medium at pH 7.4 and temperature at 37.0 ± 0.5°C, an accu-
+rately weighted quantity of freeze-dried NAC-PLGA NPs
+(equivalent to 10 mg drug) were subjected to sprinkled on
+the surface of 300 mL PBS. Finally, the samples were with-
+drawn at a predefined time interval and subjected to spec-
+trophotometric analysis at λmax 204 nm [41].
+In Vitro Pulmonary Deposition Study
+The aerosolization properties of the developed formula-
+tion (freeze-dried lactose-coated NAC-PLGA and uncoated
+NAC-PLGA NPs) were studied using a next-generation
+impactor (NGI) (Copley Scientific, Nottingham, UK)
+equipped with a USP induction port (Apparatus 1, USP
+35). An accurately weighed quantity (20 mg) of each for-
+mulation was placed in a gelatine capsule (size 3, Quali-V®,
+Qualicaps® Inc, Whitsett, USA), which was then inserted
+in a hand inhaler (Osmohaler®, Plastiape, Italy) followed
+by puncturing, with the airflow rate being maintained at 60
+L/min, measured by a flow meter (DFM2, Copley Scien-
+tific, UK). Furthermore, aerosolization characteristics of
+powdered samples as mass median aerodynamic diameter
+(MMAD), geometric standard deviation (GSD), % fine par-
+ticle fraction (FPF) and % emitted dose (ED) were deter-
+mined. MMAD can be estimated as the particle distribution
+pattern in the lungs. GSD determines the variability in the
+diameter of inhalable particles in the system. FPF is the frac-
+tion of particles having an aerodynamic diameter below 5
+µm of an administered dose. ED is the total amount of pow-
+dered formulation ejected from the gelatine capsule.
+In Vitro Antimycobacterial Activity
+Antimycobacterial activity of both free NAC and devel-
+oped NAC-PLGA NPs were evaluated using the BACTEC
+technique for minimum inhibitory concentration (MIC)
+and minimum bactericidal concentration (MBC) against
+MTB H37Rv strain (TB Research Centre, Chennai, India).
+MTB H37Rv strains were cultured in a medium consisting
+of 10% oleic acid, albumin, and dextrose including Mid-
+dlebrook 7H9 broth (OADC; HiMedia, India), which were
+subjected to aliquots at −65°C till required. BACTEC™
+MGIT™ 960 System (Becton Dickinson, USA) was used
+to determine the MTB growth index (GI), over a period of
+3–7 days, depending on the bacterial growth rate, for quan-
+titative identification of 14CO2 released as expressed in a
+scale of 0 to 999 from 14C-labelled substrate metabolism
+in the medium. Herein, 0.1 mL bacterial culture inoculated
+BACTEC 12B vials were subjected to incubation at 37°C
+and 5% ­CO2 enriched medium, after incubation, MIC was
+recorded as the lowest concentration of the NAC that com-
+pletely suppresses the growth. GI value was evaluated daily
+
+1157
+Pharmaceutical Research (2025) 42:1153–1165
+until and unless the values were observed to be greater than
+30, under suitable aerobic condition of 1:100 control. Both
+positive and negative controls consisting of either bacterial
+suspension or broth alone were included in all test groups.
+The percentage of growth inhibition was estimated for each
+drug concentration. The determined MIC and MBC values
+provide strong evidence for growth inhibition activity and
+bactericidal potential of the developed formulations, respec-
+tively [26].
+Statistical Analysis
+All data are represented as mean ± standard deviation (SD)
+in triplicate. Student t-test was applied for comparative anal-
+ysis of statistical data in the experiments performed using
+GraphPad Prism software.
+Results and Discussion
+Particle size, PdI, and ZP Determination
+Among the three formulations developed in this study (F1-
+F3), the F2 formulation was selected for further characteriza-
+tion due to its optimal physicochemical properties, including
+a particle size of 310 ± 3 nm, a PdI of 0.15 ± 0.01, and a ZP
+of −11.5 ± 0.4 mV, as summarized in Table I. The F2 for-
+mulation, characterized by its desirable particle size, high
+%DL, and %EE, was identified as the optimized formulation
+for further investigation. In contrast, the particle sizes of the
+F1 and F3 formulations exceeded the acceptable range of
+200–400 nm, rendering them unsuitable for further devel-
+opment. The increased size of the F1 NP compared to F2
+is due to the aggregation of PLGA particles, as the PVA
+concentration is lower. Moreover, the F3 formulation has a
+larger particle size compared to F2 which might be due to
+the increased concentration of PLGA. These results are also
+justified by results reported by Manchanda et al. [42], show-
+casing an increment in particle size with increased PLGA
+concentration. Likewise, the lower PdI of the F2 formulation
+compared to F1 is due to the optimum PVA concentration
+that makes the nanosuspension more stable. PdI of F3 is
+higher than F2, which might be the reason for larger particle
+sizes leading to decreased stability of the nanosuspension.
+Increased negative ZP of F3 formulation is caused by higher
+PVA concentration. A similar effect of PVA concentration
+on particle size, PdI, and ZP was observed in various previ-
+ous investigations reported in the literature [43, 44]. The
+particle size, PdI, and ZP of reconstituted freeze-dried lac-
+tose-coated NAC-PLGA NPs were found to be 320 ± 3 nm,
+0.20 ± 0.10, and −11.8 ± 0.6 mV, respectively. The obtained
+results only showcase slight differences, indicating that our
+developed formulation, even after coating with lactose,
+remains stable.
+Drug Loading (DL), Entrapment Efficiency (EE),
+and Yield Recovery
+As shown in Table I, the F2 formulation exhibits desirable
+particle size, PdI, and ZP with additional higher DL (10%)
+and EE (72%) when compared to the F1 formulation and
+with slight differences when compared with the F3 formu-
+lation. Some studies suggest that increased PVA concen-
+tration does not change the DL and, EE significantly, but
+can significantly impact particle size, PdI, and ZP [43, 44].
+Moreover, the drug: PLGA ratio significantly changes the
+DL and EE. Increasing the PLGA concentration by keeping
+the drug concentration constant enhances the drug loading
+and entrapment efficiency as observed in the study. With
+the polymer content increasing while maintaining constant
+drug concentration, drug loading improves due to enhanced
+encapsulation efficiency and stronger polymer-drug inter-
+actions. A higher polymer concentration provides a larger
+matrix to retain the drug, reduces diffusion losses during for-
+mulation, and increases the viscosity of the polymer phase,
+which slows drug migration out of the system. Additionally,
+the greater availability of polymer minimizes competition
+for encapsulation, ensuring more drug is incorporated into
+the nanoparticles. This results in a denser, more efficient
+drug-polymer matrix, enhancing overall encapsulation effi-
+ciency and drug loading [45]. This is also in accordance
+with results previously reported in the literature [46, 47]. In
+Table I   Optimization of Three
+Different Formulations for
+F1, F2, and F3, Keeping the
+Drug Concentration Constant
+with Varying PLGA and PVA
+Concentrations
+F2 formulation being a desirable particle size with good % DL and % EE was regarded as an optimized one
+and being further carried out for characterization
+PdI: polydispersity index; DL: drug loading; EE: entrapment efficiency. Values are expressed as a
+mean ± standard deviation (SD), n = 3
+Formulations
+(NAC-PLGA)
+Drug:
+Polymer ratio
+(w/w)
+PVA conc
+(w/v)
+Size (nm)
+PdI
+ZP
+(mV)
+DL (%)
+EE (%)
+F1
+1:5
+0.25%
+480 ± 6
+0.42 ± 0.05
+−8.3 ± 0.6
+5.0 ± 0.2
+47.0 ± 3.9
+F2
+1:10
+0.50%
+310 ± 3
+0.15 ± 0.01
+−11.5 ± 0.4
+10.0 ± 0.2
+72.0 ± 2.4
+F3
+1:15
+0.75%
+540 ± 7
+0.31 ± 0.06
+−12.6 ± 0.3
+11.0 ± 1.0
+77.0 ± 5.5
+
+1158
+
+Pharmaceutical Research (2025) 42:1153–1165
+addition, the % yield recovery of freeze-dried lactose-coated
+NAC-PLGA NPs was found to be 90%, while freeze-dried
+NAC-PLGA NPs was found to be 89%.
+Morphology Study by FE‑SEM and HR‑TEM
+After morphological evaluation of uncoated as well as
+coated NAC-PLGA particles by FE-SEM, particles were
+observed as possessing spherical shape. Irrespective of
+uncoated NAC-PLGA NP, HR-TEM images confirmed that
+the lactose coating of PLGA particles enables the forma-
+tion of inhalable PLGA composites. Figure 1 depicts (A)
+uncoated NAC-PLGA NPs by FE-SEM, (B) lactose-coated
+NAC-PLGA NPs by FE-SEM, (C) lactose-coated NAC-
+PLGA NPs by HR-TEM and (D) intensity distribution graph
+of uncoated NAC-PLGA NPs.
+FTIR
+FTIR spectrum of NAC, PLGA, physical mixture of
+NAC-PLGA-lactose, and lactose-coated NAC-PLGA NPs
+were studied, finding compatibility between drug and excipi-
+ents as shown in Fig. 2. FTIR spectra of NAC (A) observed
+at a different wavelength of 3360 ­cm−1, 2550 ­cm−1, 1700
+­cm−1, 1650 ­cm−1,1350 ­cm−1, 1080–1190 ­cm−1 is due to the
+presence of various functional groups characterized with
+stretching O–H, S–H group, C = O bond, COO bond, N–H
+group, and C-N groups of NAC, respectively. Moreover,
+ascribed peaks at a wavelength of 3400–3500 ­cm−1, 1750
+­cm−1, 1450 ­cm−1, and 748 ­cm−1 were observed in the FTIR
+spectrum of PLGA (B), which was due to the presence of
+the O–H group, COO group, ­CH3 group, ­CH2 group, respec-
+tively. Henceforth, after observing the FTIR spectrum of
+the physical mixture (C), it was demonstrated that there
+is compatibility between the drug and excipients, with no
+significant changes in the mixture spectrum. Most impor-
+tantly, the appearance of a broad band at 3300–3500 ­cm−1
+with characteristics loss of S–H and C-N group’s peak at a
+wavelength of 2550 ­cm−1 and 1080–1190 ­cm−1 respectively
+in lactose-coated NAC-PLGA NPs, (D) suggested complete
+dispersion of NAC-PLGA NPs within the cryoprotectant.
+Our results were like those found in the literature [48–51].
+DSC
+Thermal properties of NAC, PLGA, physical mixture of
+NAC-PLGA-lactose, and lactose-coated NAC-PLGA NPs
+were studied throughout the analysis of DSC thermogram
+as shown in Fig. 3. With exhibiting crystalline behavior,
+the obtained DSC thermogram for NAC (A) illustrated a
+sharp endothermic peak with a melting temperature ­(Tm) at
+111.95°C while the DSC thermogram of PLGA (B) showed
+glass transition temperature (Tg) at 50°C due to its amor-
+phous characteristics. However, the DSC thermogram of
+Fig. 1   Morphological char-
+acterization of developed (A)
+uncoated NAC-PLGA NPs by
+FE-SEM, (B) lactose-coated
+NAC-PLGA NPs by FE-SEM,
+(C) uncoated NAC-PLGA NPs
+by HR-TEM, (D) lactose-coated
+NAC-PLGA NPs by HR-TEM.
+Bar scale represents 10 µm.
+
+1159
+Pharmaceutical Research (2025) 42:1153–1165
+the physical mixture of NAC-PLGA-lactose (C) exhibited
+the melting temperature ­(Tm) of NAC at 110.30°C, Tg for
+PLGA at 55–60°C, and ­Tm for lactose was observed at a
+range of 160–175°C. The obtained results were aligned with
+the results reported by Mahumane et al. [49]. Finally, evalu-
+ating the DSC thermogram of lactose-coated NAC-PLGA
+NPs (D), it was observed that the intense peak of NAC was
+diminished along with the peak of PLGA, indicating that
+the NAC-PLGA NPs were significantly dispersed within the
+lactose dispersant matrix.
+PXRD
+PXRD pattern of NAC, PLGA, and physical mixture of
+NAC-PLGA-lactose and lactose-coated NAC-PLGA NPs
+are depicted in Fig. 4. The sharp intense peaks of NAC
+(A) were visualized at ­270 followed by ­210, and ­200 at 2θ,
+suggesting the crystalline nature of the drug. In addition to
+this, a very broad pattern with a low intense peak of PLGA
+(B) at ­190 for 2θ, is depicted for its amorphous features.
+Moreover, each diffraction pattern for the respective NAC,
+PLGA, and lactose in the given physical mixture sample
+(NAC-PLGA-lactose) (C) was observed at its position in the
+given diffractogram, confirming compatibility between the
+drug and excipients. Importantly, the diffraction pattern of
+NAC was not observed in the final formulation of lactose-
+coated NAC-PLGA NPs (D), although a sharp intense peak
+of lactose was present at ­200 followed by small two peaks at
+­120 and 16.50 at 2θ, which concluded that NAC-PLGA par-
+ticles were purely encapsulated within lactose cryoprotect-
+ant with no interaction between them. However, the results
+obtained in our study were satisfactory as compared to the
+Muhamane et al. findings [49].
+Flow Properties of the Powder
+The angle of repose, Hausner ratio, and Carr’s index are
+indirect indicators to measure the powder flow properties.
+The flowability of a powder greatly influences the in vitro
+deposition [52]. In our study, the flowability of uncoated
+NAC-PLGA particles and lactose-coated freeze-dried NAC-
+PLGA NPs were investigated. The obtained values are listed
+in Table II. The angle of repose, Hausner ratio, and Carr’s
+index for lactose-coated NAC-PLGA NPs, indicate improved
+flow properties, whereas NAC-PLGA particles demon-
+strated very poor flowability. The reason for the undesirable
+Fig. 2   FTIR characterization of (A) NAC (drug), (B) PLGA (polymer), (C) NAC-PLGA-lactose (physical mixture), (D) lactose-coated NAC-
+PLGA NPs.
+
+1160
+
+Pharmaceutical Research (2025) 42:1153–1165
+Fig. 3   Thermal properties determination by DSC characterization at temperature up to 300°C of (A) NAC (Drug), (B) PLGA (polymer), (C)
+NAC-PLGA-Lactose (physical mixture), (D) lactose-coated NAC-PLGA NPs.
+Fig. 4   Powder x-ray diffraction
+(PXRD) of (A) NAC (drug),
+(B) PLGA (polymer), (C)
+NAC-PLGA-lactose (physical
+mixture), (D) lactose-coated
+NAC-PLGA NPs at position 2θ.
+
+1161
+Pharmaceutical Research (2025) 42:1153–1165
+flowability of uncoated particles was due to particle–particle
+aggregation [53]. Herein, the lactose's role as a formula-
+tion dispersant prevents particles from aggregating, hence
+enhancing the flowability.
+In Vitro Drug Release Study
+In vitro, release studies for lactose-coated NAC-PLGA NPs
+in phosphate buffer (at pH 7.4) indicated a biphasic pattern
+of release as depicted in Fig. 5(B). The initial burst release
+of 40% for two hours was visualized for this formulation due
+to rapid dissolution and release of adsorbed NAC at the sur-
+face of the particle or encapsulated near the particle surface.
+However, a slow, and sustained release profile was attained
+after 48 h with 90% drug release, indicating slow drug dif-
+fusion and matrix erosion once the PLGA NPs contact with
+the dissolution media and as the PLGA core degrades, NAC
+molecules also diffuse through the porous network formed
+by the degrading polymer. Additionally, the drug dissolu-
+tion profile of free NAC was estimated to be 100% within 3
+min as shown in Fig. 5(A), indicating the hydrophilic nature
+(solubility: 100 mg/mL) of NAC, as enlisted in BCS class
+I [54–56]. We need to take into account that drug release
+from biodegradable and biocompatible PLGA particles is
+highly dependent on the drug’s physical–chemical proper-
+ties since drugs exhibiting low molecular weight and high
+hydrophilicity tend to display rapid leakage from polymeric
+particles [57–59].
+In Vitro Pulmonary Deposition Study
+For the efficient delivery of dry powder via the inhalation
+route, its aerodynamic properties should be taken into con-
+sideration. Some studies revealed that MMAD ranging from
+1 to 5 µm would be optimal for pulmonary delivery [60]. In
+our study, obtained results suggested that developed formu-
+lation showed an acceptable range of MMAD (2.50 ± 0.20
+Table II   Powder Flow Property of Coated (lactose-coated NAC-PLGA NPs) and Uncoated (NAC-PLGA NPs) Particles
+a Angle of Repose: 25–30, Excellent; 31–35, good; 36–40, fair; 41–45, passable; 46–55, poor; 56–65, very poor; > 66, very-very poor
+b Carr’s Index: 5–12%, Excellent; 12–18%, good; 18–21%, fair; 21–25%, poor, fluid; 25–32%, poor, cohesive; 32–38%, very poor; > 40%,
+extremely poor
+c Hausner ratio: 1.00–1.11, Excellent; 1.12–1.18, good; 1.19–1.25, fair; 1.26–1.34, passable; 1.35–1.45, poor; 1.46–159, very poor; > 1.60, very-
+very poor
+Formulations
+Angle of repose (θ)a
+Bulk density (g/cm3)
+Tapped density (g/cm3)
+Carr’s ­indexb
+Hausner
+­ratioc
+Lactose-coated NAC-
+PLGA NPs
+34.58 ± 1.20
+0.152 ± 0.008
+0.186 ± 0.004
+18.27 ± 3.87
+1.22 ± 6.04
+NAC-PLGA NPs
+62.16 ± 4.06
+0.092 ± 0.004
+0.150 ± 0.080
+38.66 ± 5.20
+1.63 ± 0.44
+Fig. 5   In vitro drug release profile of (A) free drug (NAC), (B) lactose-coated NAC-PLGA NPs at phosphate buffer of pH 7.4.
+Table III   In Vitro Aerosolization Study of Freeze-dried Lactose-
+coated (NAC-PLGA NCs) and Uncoated (NAC-PLGA NPs) Particles
+MMAD: mass median aerodynamic diameter; GSD: geometric stand-
+ard deviation; FPF: fine particle fraction; ED: emitted dose. Values
+are expressed as a mean ± standard deviation (SD), n = 3
+Formulation
+MMAD
+(µm)
+GSD (µm)
+FPF (%)
+ED (%)
+Lactose-
+coated
+NAC-
+PLGA NPs
+2.50 ± 0.20
+1.49 ± 0.25 65.50 ± 5.50 92.28 ± 0.20
+Uncoated
+NAC-PLGA
+NPs
+6.30 ± 0.40
+1.68 ± 0.35 28.60 ± 5.50 68.43 ± 0.40
+
+1162
+
+Pharmaceutical Research (2025) 42:1153–1165
+µm), GSD (1.49 ± 0.25 µm), FPF (65.50 ± 5.50%),and ED
+(92.28 ± 0.2%) as shown in Table III, indicating desirable
+features for an efficient deep pulmonary drug delivery [61,
+62]. Moreover, the drug deposition study performed by NGI
+showed the highest deposition for lactose-coated NAC-
+PLGA NPs as compared to uncoated NAC-PLGA NPs at
+stage 3 followed by 4 and 5, indicating the deep lung depo-
+sition of the developed lactose-coated NPs, as depicted in
+Fig. 6. Singh et al. also observed the similar deposition of
+inhalable liposphere at stage 3 followed by 4 in a previously
+reported study [63].
+In Vitro Study for Antimycobacterial Activity
+The potency for the antimycobacterial activity of free NAC
+and developed freeze-dried lactose-coated NAC-PLGA NPs
+were investigated against the MTB H37Rv strain. MIC and
+MBC values were determined with 2.37 mg/mL and 19.25
+mg/mL for free NAC, while 0.64 mg/mL and 5.18 mg/mL
+for the developed formulation, respectively. The inhibitory
+potential of NAC against mycobacterial strain were studied
+by various researchers, showing its potential to inhibit the
+growth of mycobacterium. In our study, freeze-dried lactose-
+coated NAC-PLGA NPs demonstrated a 4-fold increase in
+antimycobacterial activity, compared to free NAC [26, 64].
+These results show that incorporating NAC in PLGA NPs
+coated with lactose as a cryoprotectant/dispersant agent
+can be a promising formulation strategy for pulmonary TB
+therapeutics.
+Conclusion
+NAC-loaded PLGA particles were prepared by double emul-
+sion method and were then coated with lactose followed by
+freeze-drying to obtain respirable NPs for deep-lung drug
+administration. The obtained results showed the compat-
+ibility between drug and excipients after physicochemical
+characterization, prolonged and sustained release of drug
+through in vitro release study, and efficient drug deposition
+to lower respiratory zone with an optimum MMAD (1–5
+µm), establishing a promising formulation strategy for TB
+treatment. Importantly, the results obtained, showing higher
+in vitro drug deposition at stage 3 followed by 4 may sig-
+nificantly reduce the dosing frequency, comprising several
+therapeutic advantages, such as improved patient compliance
+and increased drug efficacy. Moreover, the biphasic release
+pattern with a slow and sustained release profile may further
+contribute to shutout rapid dosing.
+Finally, freeze-dried lactose-coated NAC-PLGA nanopar-
+ticles exhibited a 4-fold enhancement in antimycobacterial
+activity compared to free NAC. However, further studies are
+required to comprehensively assess their in vivo antibacte-
+rial efficacy, including evaluating activity at multiple time
+points to determine both short- and long-term effects. It is
+also critical to evaluate whether the dose delivered locally to
+the lungs exceeds therapeutic levels, potentially leading to
+off-target effects such as altered immune cell activity, oxida-
+tive imbalance, or unintended cytotoxicity. Thus, the results
+herein reported pave the road to new formulation strategies
+towards a better approach for pulmonary TB treatment.
+Fig. 6   In vitro drug deposi-
+tion study performed by Next
+Generation Impactor (NGI) of
+both uncoated NAC-PLGA NPs
+and lactose-coated NAC-PLGA
+NPs.
+
+1163
+Pharmaceutical Research (2025) 42:1153–1165
+Acknowledgements  This research was funded by Fundação
+para a Ciência e a Tecnologia (FCT) in the scope of the pro-
+jects UIDB/04326/2020 (https://​doi.​org/​10.​54499/​UIDB/​04326/​
+2020), UIDP/04326/2020 (https://​doi.​org/​10.​54499/​UIDP/​04326/​
+2020) and LA/P/0101/2020 (https://​doi.​org/​10.​54499/​LA/P/​0101/​
+2020) of the Research Unit Center for Marine Sciences—CCMAR;
+UIDB/04565/2020 (https://​doi.​org/​10.​54499/​UIDB/​04565/​2020) and
+UIDP/04565/2020 (https://​doi.​org/​10.​54499/​UIDP/​04565/​2020) of
+the Research Unit Institute for Bioengineering and Biosciences—IBB;
+and LA/P/0140/2020  (https://​doi.​org/​10.​54499/​LA/P/​0140/​2020) of
+the Associate Laboratory Institute for Health and Bio-economy—
+4HB; and UIDB/04585/2020 (https://​doi.​org/​10.​54499/​UIDB/​04585/​
+2020) of the Research Unit Egas Moniz Center for Interdisciplinary
+Research (CiiEM). Cláudia Viegas thanks the FCT for the PhD fel-
+lowship (2020.08839. BD).
+Funding  Open access funding provided by FCT|FCCN (b-on).
+Declarations 
+Conflict of Interest  There is no conflict of interest to declare.
+Open Access  This article is licensed under a Creative Commons Attri-
+bution 4.0 International License, which permits use, sharing, adapta-
+tion, distribution and reproduction in any medium or format, as long
+as you give appropriate credit to the original author(s) and the source,
+provide a link to the Creative Commons licence, and indicate if changes
+were made. The images or other third party material in this article are
+included in the article’s Creative Commons licence, unless indicated
+otherwise in a credit line to the material. If material is not included in
+the article’s Creative Commons licence and your intended use is not
+permitted by statutory regulation or exceeds the permitted use, you will
+need to obtain permission directly from the copyright holder. To view a
+copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+References
+	 1.	 Alam A, Imam N, Siddiqui MF, Ali MK, Ahmed MM, Ishrat R.
+Human gene expression profiling identifies key therapeutic tar-
+gets in tuberculosis infection: A systematic network meta-analysis.
+Infect Genet Evol. 2021;87:104649.
+	 2.	 Jacob JJ, Paul PAM, Feingold KR, Ahmed SF, Anawalt B et al
+(2021) Infections in Endocrinology: Tuberculosis. In editors.
+Endotext [Internet]. South Dartmouth (MA): MDText.com, Inc.;
+2000-. Available from: https://​www.​ncbi.​nlm.​nih.​gov/​books/​
+NBK56​8566/
+	 3.	 Chakaya J, Petersen E, Nantanda R, Mungai BN, Migliori GB,
+Amanullah F, Lungu P, Ntoumi F, Kumarasamy N, Maeurer
+M. The WHO Global Tuberculosis 2021 Report–not so good
+news and turning the tide back to End TB. Int J Infect Dis.
+2022;124:26–9.
+	 4.	 Dadu A, Yedilbayev A, Migliori GB, Ahmedov S, Falzon D,
+den Boon S, Kanchar A, Matteelli A (2024) PASS to End TB in
+Europe: Accelerated efforts on Prevention and Systematic Screen-
+ing to End Tuberculosis in the WHO European Region by 2030.
+Int J Infect Dis 141 (Suppl.):106980
+	 5.	 Peloquin CA, Davies GR. The Treatment of Tuberculosis. Clin
+Pharmacol Ther. 2021;110:1455–66.
+	 6.	 Nicoletti P, Devarbhavi H, Goel A, Venkatesan R, Eapen CE,
+Grove JI, Zafer S, Bjornsson E, Lucena MI, Andrade RJ. Genetic
+risk factors in drug-induced liver injury due to isoniazid-con-
+taining antituberculosis drug regimens. Clin Pharmacol Ther.
+2021;109:1125–35.
+	 7.	 Imam F, Sharma M, Khayyam KU, Al-Harbi NO, Rashid MK,
+Ali MD, Ahmad A, Qamar W. Adverse drug reaction prevalence
+and mechanisms of action of first-line anti-tubercular drugs. Saudi
+Pharm J. 2020;28:316–24.
+	 8.	 Leibold JE. The ocular toxicity of ethambutol and its relation to
+dose. Ann N Y Acad Sci. 1966;135:904–9.
+	 9.	 Sheikh BA, Bhat BA, Mehraj U, Mir W, Hamadani S, Mir MA.
+Development of new therapeutics to meet the current chal-
+lenge of drug resistant tuberculosis. Curr Pharm Biotechnol.
+2021;22:480–500.
+	10.	 Udwadia ZF, Amale RA, Ajbani KK, Rodrigues C. Totally drug-
+resistant tuberculosis in India. Clin Infect Dis. 2012;54:579–81.
+	11.	 Saunders MJ, Evans CA (2020) COVID-19, tuberculosis and pov-
+erty: preventing a perfect storm. Eur Respir Soc 56(1):2001348
+	12.	 Ayukekbong JA, Ntemgwa M, Atabe AN. The threat of antimicro-
+bial resistance in developing countries: causes and control strate-
+gies, Antimicrobial Resistance & Infection. Control. 2017;6:1–8.
+	13.	 Kujur S, Singh A, Singh C. Inhalation potential of rifampicin-
+loaded novel metal–organic frameworks for improved lung
+delivery: Physicochemical characterization, in vitro aerosoliza-
+tion and antimycobacterial studies, Journal of Aerosol Medicine
+and Pulmonary. Drug Deliv. 2022;35:259–68.
+	14.	 Kirtane AR, Verma M, Karandikar P, Furin J, Langer R, Tra-
+verso G. Nanotechnology approaches for global infectious dis-
+eases. Nat Nanotechnol. 2021;16:369–84.
+	15.	 Ferreira M, Ogren M, Dias JN, Silva M, Gil S, Tavares L,
+Aires-da-Silva F, Gaspar MM, Aguiar SI. Liposomes as antibi-
+otic delivery systems: a promising nanotechnological strategy
+against antimicrobial resistance. Mol. 2021;26:2047.
+	16.	 Andrade F, Fonte P, Costa A, Reis CC, Nunes R, Almeida A,
+Ferreira D, Oliva M, Sarmento B. Pharmacological and toxi-
+cological assessment of innovative self-assembled polymeric
+micelles as powders for insulin pulmonary delivery. Nanomed.
+2016;11:2305–17.
+	17.	 Kumar M, Virmani T, Kumar G, Deshmukh R, Sharma A,
+Duarte S, Brandão P, Fonte P. Nanocarriers in Tuberculosis
+Treatment: Challenges and Delivery Strategies. Pharmaceuti-
+cals. 2023;16:1360.
+	18.	 Šalamon Š, Kramar B, Marolt TP, Poljšak B, Milisav I. Medical
+and dietary uses of N-acetylcysteine. Antioxid. 2019;8:111.
+	19.	 World Health Organization (2023) Web Annex A. World Health
+Organization Model List of Essential Medicines – 23rd List,
+2023. In: The selection and use of essential medicines 2023:
+Executive summary of the report of the 24th WHO Expert Com-
+mittee on the Selection and Use of Essential Medicines, Geneva:
+World Health Organization
+	20.	 Amaral EP, Conceição EL, Costa DL, Rocha MS, Marinho JM,
+Cordeiro-Santos M, D’Império-Lima MR, Barbosa T, Sher A,
+Andrade BB. N-acetyl-cysteine exhibits potent anti-mycobac-
+terial activity in addition to its known anti-oxidative functions.
+BMC Microbiol. 2016;16:1–10.
+	21.	 Balazy M, Kaminski PM, Mao K, Tan J, Wolin MS. S-Nitro-
+glutathione, a product of the reaction between peroxynitrite
+and glutathione that generates nitric oxide. J Biol Chem.
+1998;273:32009–15.
+	22.	 Teskey G, Prasad C, Subbian S, Venketaraman V. The synergis-
+tic effects of the glutathione precursor NAC and first-line anti-
+biotics in the granulomatous response against Mycobacterium
+tuberculosis. Front Immunol. 2018;9:384563.
+	23.	 Guerra C, Morris D, Sipin A, Kung S, Franklin M, Gray D, Tan-
+zil M, Guilford F, Khasawneh FT, Venketaraman V. Glutathione
+and adaptive immune responses against Mycobacterium tuber-
+culosis infection in healthy and HIV infected individuals. PLoS
+ONE. 2011;6:e28378.
+	24.	 Ejigu DA, Abay SM (2020) N-Acetylcysteine as an Adjunct in
+the Treatment of Tuberculosis. Tuberc Res Treat 2020:5907839
+
+1164
+
+Pharmaceutical Research (2025) 42:1153–1165
+	25.	 Teder K, Maddison L, Soeorg H, Meos A, Karjagin J (2021) The
+Pharmacokinetic profile and bioavailability of enteral N-Ace-
+tylcysteine in Intensive care Unit. Medicina. 57:1218
+	26.	 Puri V, Chaudhary KR, Singh A, Singh C. Inhalation potential
+of N-Acetylcysteine loaded PLGA nanoparticles for the man-
+agement of tuberculosis: In vitro lung deposition and efficacy
+studies. Curr Res Pharmacol Drug Discov. 2022;3:100084.
+	27.	 Singh C, Bhatt TD, Gill MS, Suresh S. Novel rifampicin–phos-
+pholipid complex for tubercular therapy: synthesis, physico-
+chemical characterization and in-vivo evaluation. Int J Pharm.
+2014;460:220–7.
+	28.	 Marante T, Viegas C, Duarte I, Macedo AS, Fonte P (2020) An
+overview on spray-drying of protein-loaded polymeric nanopar-
+ticles for dry powder inhalation. Pharmaceutics 12(11):1032.
+	29.	 M.M. Mehanna, S.M. Mohyeldin, N.A. Elgindy (2019)
+Rifampicin-carbohydrate spray-dried nanocomposite: a futur-
+istic multiparticulate platform for pulmonary delivery. Int J
+Nanomed 14:9089–9112
+	30.	 Sung JC, Pulliam BL, Edwards DA. Nanoparticles for drug
+delivery to the lungs. Trends Biotechnol. 2007;25:563–70.
+	31.	 Lü J-M, Wang X, Marin-Muller C, Wang H, Lin PH, Yao Q,
+Chen C. Current advances in research and clinical applica-
+tions of PLGA-based nanotechnology. Expert Rev Mol Diagn.
+2009;9:325–41.
+	32.	 Makadia HK, Siegel SJ. Poly lactic-co-glycolic acid (PLGA)
+as biodegradable controlled drug delivery carrier. Polymers.
+2011;3:1377–97.
+	33.	 Bhakay A, Rahman M, Dave RN, Bilgili E. Bioavailability
+enhancement of poorly water-soluble drugs via nanocompos-
+ites: Formulation-Processing aspects and challenges. Pharms.
+2018;10:86.
+	34.	 Grenha A, Seijo B, Remuñán-López C. Microencapsulated chi-
+tosan nanoparticles for lung protein delivery, European journal of
+pharmaceutical sciences : official journal of the European Federa-
+tion for. Pharm Sci. 2005;25:427–37.
+	35.	 Hebbink GA, Jaspers M, Peters HJW, Dickhoff BHJ. Recent
+developments in lactose blend formulations for carrier-based dry
+powder inhalation. Adv Drug Deliv Rev. 2022;189:114527.
+	36.	 Zeng XM, Martin GP, Marriott C, Pritchard J. Lactose as a carrier
+in dry powder formulations: The influence of surface characteris-
+tics on drug delivery. J Pharm Sci. 2001;90:1424–34.
+	37.	 Iqbal M, Zafar N, Fessi H, Elaissari A. Double emulsion solvent
+evaporation techniques used for drug encapsulation. Int J Pharm.
+2015;496:173–90.
+	38.	 Cohen-Sela E, Chorny M, Koroukhov N, Danenberg HD, Golomb
+G. A new double emulsion solvent diffusion technique for encap-
+sulating hydrophilic molecules in PLGA nanoparticles. J Control
+Release. 2009;133:90–5.
+	39.	 Fonte P, Andrade F, Azevedo C, Pinto J, Seabra V, van de Weert
+M, Reis S, Sarmento B. Effect of the freezing step in the stabil-
+ity and bioactivity of protein-loaded PLGA nanoparticles upon
+lyophilization. Pharm Res. 2016;33:2777–93.
+	40.	 Fonte P, Soares S, Sousa F, Costa A, Seabra V, Reis S, Sarmento
+B. Stability study perspective of the effect of freeze-drying using
+cryoprotectants on the structure of insulin loaded into PLGA
+nanoparticles. Biomacromol. 2014;15:3753–65.
+	41.	 Lu H, Qiu Y, Wang Q, Li G, Wei Q. Nanocomposites prepared by
+electrohydrodynamics and their drug release properties. Mater Sci
+Eng, C. 2018;91:26–35.
+	42.	 Manchanda R, Fernandez-Fernandez A, Nagesetti A, McGoron
+AJ. Preparation and characterization of a polymeric (PLGA) nano-
+particulate drug delivery system with simultaneous incorporation
+of chemotherapeutic and thermo-optical agents. Colloids Surf, B.
+2010;75:260–7.
+	43.	 Vandervoort J, Ludwig A. Biocompatible stabilizers in the prep-
+aration of PLGA nanoparticles: a factorial design study. Int J
+Pharm. 2002;238:77–92.
+	44.	 Sahoo SK, Panyam J, Prabha S, Labhasetwar V. Residual polyvi-
+nyl alcohol associated with poly (D, L-lactide-co-glycolide) nano-
+particles affects their physical properties and cellular uptake. J
+Control Release. 2002;82:105–14.
+	45.	 Hawthorne D, Pannala A, Sandeman S, Lloyd A. Sustained and
+targeted delivery of hydrophilic drug compounds: A review of
+existing and novel technologies from bench to bedside. J Drug
+Deliv Sci Technol. 2022;78:103936.
+	46.	 Chaisri W, Ghassemi AH, Hennink WE, Okonogi S. Enhanced
+gentamicin loading and release of PLGA and PLHMGA micro-
+spheres by varying the formulation parameters. Colloids Surf, B.
+2011;84:508–14.
+	47.	 Halayqa M, Domańska U. PLGA biodegradable nanoparticles
+containing perphenazine or chlorpromazine hydrochloride: effect
+of formulation and release. Int J Mol Sci. 2014;15:23909–23.
+	48.	 Du W, Liao L, Yang L, Qin A, Liang A. Aqueous synthesis of
+functionalized copper sulfide quantum dots as near-infrared lumi-
+nescent probes for detection of Hg2+, Ag+ and Au3+. Sci Rep.
+2017;7:11451.
+	49.	 Mahumane GD, Kumar P, Pillay V, Choonara YE. Repositioning
+N-acetylcysteine (NAC): NAC-loaded electrospun drug delivery
+scaffolding for potential neural tissue engineering application.
+Pharm. 2020;12:934.
+	50.	 Ahmaditabar P, Momtazi-Borojeni AA, Rezayan AH, Mahmoodi
+M, Sahebkar A, Mellat M. Enhanced entrapment and improved
+in vitro controlled release of n-acetyl cysteine in hybrid PLGA/
+lecithin nanoparticles prepared using a nanoprecipitation/self-
+assembly method. J Cell Biochem. 2017;118:4203–9.
+	51.	 Zhu Y, Song F, Ju Y, Huang L, Zhang L, Tang C, Yang H, Huang
+C (2019) NAC-loaded electrospun scaffolding system with dual
+compartments for the osteogenesis of rBMSCs in vitro. Int J
+Nanomed. 14:787–798
+	52.	 Labiris NR, Dolovich MB. Pulmonary drug delivery Part II: the
+role of inhalant delivery devices and drug formulations in thera-
+peutic effectiveness of aerosolized medications. Br J Clin Phar-
+macol. 2003;56:600–12.
+	53.	 Mahajan HS, Gundare SA. Preparation, characterization and
+pulmonary pharmacokinetics of xyloglucan microspheres as dry
+powder inhalation. Carbohyd Polym. 2014;102:529–36.
+	54.	 Zarchi AAK, Abbasi S, Faramarzi MA, Gilani K, Ghazi-Khansari
+M, Amani A. Development and optimization of N-Acetylcysteine-
+loaded poly (lactic-co-glycolic acid) nanoparticles by electrospray.
+Int J Biol Macromol. 2015;72:764–70.
+	55.	 Chiesa E, Monti L, Paganini C, Dorati R, Conti B, Modena T,
+Rossi A, Genta I. Polyethylene glycol-poly-lactide-co-glycolide
+block copolymer-based nanoparticles as a potential tool for off-
+label use of N-acetylcysteine in the treatment of diastrophic dys-
+plasia. J Pharm Sci. 2017;106:3631–41.
+	56.	 Chiesa E, Dorati R, Modena T, Conti B, Genta I. Multivariate
+analysis for the optimization of microfluidics-assisted nanopre-
+cipitation method intended for the loading of small hydrophilic
+drugs into PLGA nanoparticles. Int J Pharm. 2018;536:165–77.
+	57.	 Huang X, Brazel CS. On the importance and mechanisms of burst
+release in matrix-controlled drug delivery systems. J Control
+Release. 2001;73:121–36.
+	58.	 Ng S-M, Choi J-Y, Han H-S, Huh J-S, Lim JO. Novel microencap-
+sulation of potential drugs with low molecular weight and high
+hydrophilicity: hydrogen peroxide as a candidate compound. Int
+J Pharm. 2010;384:120–7.
+	59.	 Yoo J, Won Y-Y. Phenomenology of the initial burst release
+of drugs from PLGA microparticles. ACS Biomater Sci Eng.
+2020;6:6053–62.
+
+1165
+Pharmaceutical Research (2025) 42:1153–1165
+	60.	 Shah SR, Prajapati HR, Sheth DB, Gondaliya EM, Vyas AJ, Soni-
+wala MM, Chavda JR. Pharmacokinetics and in vivo distribution
+of optimized PLGA nanoparticles for pulmonary delivery of levo-
+floxacin. J Pharm Pharmacol. 2020;72:1026–37.
+	61.	 Liang Z, Ni R, Zhou J, Mao S. Recent advances in controlled
+pulmonary drug delivery. Drug Discovery Today. 2015;20:380–9.
+	62.	 Singh C, Koduri LSK, Bhatt TD, Jhamb SS, Mishra V, Gill MS,
+Suresh S. In vitro-in vivo evaluation of novel co-spray dried
+rifampicin phospholipid lipospheres for oral delivery. AAPS
+PharmSciTech. 2017;18:138–46.
+	63.	 Singh C, Koduri LSK, Dhawale V, Bhatt TD, Kumar R, Grover
+V, Tikoo K, Suresh S. Potential of aerosolized rifampicin lipo-
+spheres for modulation of pulmonary pharmacokinetics and bio-
+distribution. Int J Pharm. 2015;495:627–32.
+	64.	 Zhao T, Liu Y. N-acetylcysteine inhibit biofilms produced by
+Pseudomonas aeruginosa. BMC Microbiol. 2010;10:1–8.
+Publisher's Note  Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+Authors and Affiliations
+Kabi Raj Chaudhary1 · Cláudia Viegas2,3,4,5 · Paola Pirela4,5 · Mariana Atalaia4,5 · Beatriz Ruivinho3 · Sanchit Arora1 ·
+Arti Singh6 · Pedro Brandão4,5,7,8 · Charan Singh1,9 · Pedro Fonte3,4,5,10 
+ *	 Charan Singh
+
+c.singhniper009@gmail.com
+ *	 Pedro Fonte
+
+prfonte@ualg.pt
+1
+Department of Pharmaceutics, ISF College of Pharmacy,
+Moga, Affiliated to IK Gujral Punjab Technical University,
+Jalandhar, Punjab 142001, India
+2
+Faculty of Medicine and Biomedical Sciences (FMCB),
+Universidade do Algarve, Gambelas Campus, 8005‑139 Faro,
+Portugal
+3
+Centro de Ciências do Mar do Algarve (CCMAR/CIMAR
+LA), Campus de Gambelas, Universidade do Algarve,
+8005‑139 Faro, Portugal
+4
+iBB—Institute for Bioengineering and Biosciences,
+Department of Bioengineering, Instituto Superior Técnico,
+Universidade de Lisboa, Av Rovisco Pais, 1049‑001 Lisboa,
+Portugal
+5
+Associate Laboratory i4HB - Institute for Health
+and Bioeconomy at Instituto Superior Técnico, Universidade
+de Lisboa, Av Rovisco Pais, 1049‑001 Lisboa, Portugal
+6
+Department of Pharmaceutical Sciences, School
+of Health Science and Technology, UPES,
+Dehradun‑248007 Uttarakhand, India
+7
+Egas Moniz Center for Interdisciplinary Research (CiiEM),
+Egas Moniz School of Health & Science, 2829‑511 Almada,
+Portugal
+8
+CQC-IMS, Department of Chemistry, University of Coimbra,
+Rua Larga, 3004‑535 Coimbra, Portugal
+9
+Department of Pharmaceutical Sciences, HNB Garhwal
+University (A Central University) Chauras Campus, 246174,
+Srinagar Garhwal, Uttrakhand, India
+10	 Department of Chemistry and Pharmacy, Faculty of Sciences
+and Technology, University of Algarve, Gambelas Campus,
+8005‑139 Faro, Portugal

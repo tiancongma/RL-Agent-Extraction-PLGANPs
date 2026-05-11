@@ -1,0 +1,4 @@
+original_path	chosen_action	new_path	category	reason
+docs/SCRIPT_GOVERNANCE_POLICY.md	moved	docs/governance/SCRIPT_GOVERNANCE_POLICY.md	governance_support	Destination is clearly better and no active project governance doc references the top-level path.
+docs/mdec084_writer_contract_v1.md	kept	docs/mdec084_writer_contract_v1.md	governance_support	Kept at top level because project/FILE_NAMING_AND_VERSIONING.md references this exact path and this pass must not touch project/.
+docs/run_spec_template.md	kept	docs/run_spec_template.md	method_template	Kept at top level because project/4_DECISIONS_LOG.md references this exact path and this pass must not touch project/.

@@ -1,0 +1,14 @@
+surface	path_or_context	check_type	result	root_cause_signal	notes
+prior_live_reference	data/frozen/dev15_stage2_freeze_v1/s2_4b	prior_run_audit	true_live_s2_4b_success	no_blocker_signal	Frozen DEV15 S2-4b surface records 15 successful live Gemini raw responses.
+prior_request_metadata	data/frozen/dev15_stage2_freeze_v1/s2_4b/request_metadata/5GIF3D8W__stage2_v2_request_metadata.json	prior_run_metadata_check	stream_collect_gemini_2_5_flash	no_blocker_signal	Request metadata records model `gemini-2.5-flash`, request_mode `stream_collect`, and success.
+maintained_s2_4b_runner	src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py	code_inspection	delegates_to_call_gemini_stream_collect	no_blocker_signal	Live S2-4b runner calls the maintained helper before writing raw responses.
+maintained_composite_runner	src/stage2_sampling_labels/run_stage2_composite_v1.py	code_inspection	explicit_dotenv_load_before_live_backend_probe	no_blocker_signal	Composite Stage2 loads `PROJECT_ROOT / ".env"` at startup.
+maintained_gemini_initializer	src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py	code_inspection	explicit_dotenv_load_and_exact_key	no_blocker_signal	`ensure_genai()` loads `PROJECT_ROOT / ".env"` and reads exactly `GEMINI_API_KEY`.
+project_root_resolution	src/utils/paths.py	code_inspection	project_root_is_repo_anchored	no_cwd_bug_signal	`PROJECT_ROOT` comes from `Path(__file__).resolve().parents[2]`.
+dotenv_surface	/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/.env	file_presence_check	exists	no_blocker_signal	Repo-root `.env` is present.
+dotenv_key_surface	.env	key_presence_check	GEMINI_API_KEY_present	no_blocker_signal	Secret value not printed.
+ambient_process_env	repo_root_python	process_env_check	not_visible_before_load	false_negative_risk	A plain process does not see `GEMINI_API_KEY` before `load_dotenv(...)`.
+maintained_runtime_visibility	repo_root_python_plus_ensure_genai	runtime_visibility_check	visible_after_maintained_load	no_blocker_signal	After `ensure_genai(...)`, `GEMINI_API_KEY` is visible in-process.
+workdir_independence	/tmp_plus_PYTHONPATH	runtime_visibility_check	visible_after_maintained_load_from_non_repo_cwd	no_cwd_bug_signal	The maintained loader still finds repo-root `.env` outside repo cwd.
+minimal_connectivity_probe	call_gemini_stream_collect_subprocess_25s	connectivity_check	timed_out_without_auth_result	transport_or_network_hang_before_auth_confirmation	Probe reached outbound request start and then stalled without returning auth success or auth failure.
+root_cause_summary	maintained_stage2_gemini_path	root_cause_classification	not_a_missing_dotenv_or_wrong_var_name	false_negative_prior_block	The earlier blocker is consistent with checking ambient env state before maintained `.env` loading.

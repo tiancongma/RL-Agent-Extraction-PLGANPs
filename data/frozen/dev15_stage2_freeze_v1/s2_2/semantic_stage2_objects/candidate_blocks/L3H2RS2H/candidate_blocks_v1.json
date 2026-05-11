@@ -1,0 +1,3340 @@
+{
+  "paper_key": "L3H2RS2H",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 143,
+    "prose_candidates": 131,
+    "table_candidates": 12,
+    "candidates_with_noise_flags": 124,
+    "candidates_with_quality_flags": 136,
+    "has_doe_signal": false,
+    "has_sequential_signal": false,
+    "has_optimization_signal": false
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Research paper Development and characterization of PLGA nanospheres and nanocapsules containing xanthone and 3-methoxyxanthone Maribel Teixeiraa,b, Maria J.",
+      "text_preview": "Research paper Development and characterization of PLGA nanospheres and nanocapsules containing xanthone and 3-methoxyxanthone Maribel Teixeiraa,b, Maria J."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Alonsoc, Madalena M.M. Pintoa, Carlos M. Barbosad,e,* aCentro de Estudos de Quı´mica Orgaˆnica, Fitoquı´mica e Farmacologia da Universidade do Porto-Faculdade de Farma´cia do Porto, Porto, Portugal bInstituto Superior de Cieˆncias da Sau´de-Norte, Gandra PRD, Portugal cLaborato´rio de Farma´cia Gale´nica, Facultad de Farma´cia, Santiago de Compostela, Spain dCTMUP/Faculdade de Farma´cia do Porto, Porto, Portugal eCETMED-Centro Tecnolo´gico do Medicamento, Porto, Portugal Received 23 June 2004; accepted in revised form 3 September 2004 Available online 30 October 2004 Abstract The aim of the present work was to develop and characterize two different nanosystems, nanospheres and nanocapsules, containing either xanthone (XAN) or 3-methoxyxanthone (3-MeOXAN), with the ﬁnal goal of improving the delivery of these poorly water-soluble compounds. The xanthones-loaded nanospheres (nanomatrix systems) and nanocapsules (nanoreservoir systems), made of poly(DL-lactide- co-glycolide) (PLGA), were prepared by the solvent displacement technique. The following characteristics of nanoparticle formulations were determined: particle size and morphology, zeta potential, incorporation efﬁciency, thermal behaviour, in vitro release proﬁles and physical stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative surface charge (zeta potential !K36 mV).",
+      "text_preview": "Alonsoc, Madalena M.M. Pintoa, Carlos M. Barbosad,e,* aCentro de Estudos de Quı´mica Orgaˆnica, Fitoquı´mica e Farmacologia da Universidade do Porto-Faculdade de Farma´cia do Porto, Porto, Portugal bInstituto Superior de"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed at a molecular level within the polymeric nanomatrix. Nanocapsules were also nanometric (mean size !300 nm) and exhibited a negative charge (zeta potential !K36 mV). Their incorporation efﬁciency values (O77%) were higher than those corresponding to nanospheres for both xanthones. The release of 3-MeOXAN from nanocapsules was similar to that observed for the correspondent nanoemulsion, indicating that drug release is mainly governed by its partition between the oil core and the external aqueous medium. In contrast, the release of XAN from nanocapsules was signiﬁcantly slower than from the nanoemulsion, a behaviour that suggests an interaction of the drug with the polymer. Nanocapsule formulations exhibited good physical stability at 4 8C during a 4-month period for XAN and during a 3-month period for 3-MeOXAN. q 2004 Elsevier B.V. All rights reserved. Keywords: Xanthone; 3-Methoxyxanthone; Nanoparticles; Nanospheres; Nanocapsules; PLGA 1.",
+      "text_preview": "Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed at a"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:3",
+      "paragraph_index": 0,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:4",
+      "paragraph_index": 0,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.",
+      "text_preview": "4."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:0#segment:5",
+      "paragraph_index": 0,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0",
+      "text_preview": "0"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The evaluation of the activity of these molecules, such as the inhibitory effect on nitric oxide (NO) production from macrophages and the inhibitory activity on different human cancer cell lines growth, represents a major interest of our research group. PLGA was selected for the preparation of the nanocarriers because of its adequate biocompatibility and biodegrad- ability [17].",
+      "text_preview": "The evaluation of the activity of these molecules, such as the inhibitory effect on nitric oxide (NO) production from macrophages and the inhibitory activity on different human cancer cell lines growth, represents a majo"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:2",
+      "paragraph_index": 1,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Both systems, nanospheres and nanocapsules were prepared according to the solvent displacement technique described by Fessi et al. [18,19]. This is a simple method that is particularly useful for the encapsulation of lipophilic substances [13,20,21]. Formulations were charac- terized with regard to their particle size distribution, zeta potential, drug incorporation efﬁciency and thermal beha- viour. In vitro drug release and stability studies were also performed for the most promising formulations. 2. Materials and methods",
+      "text_preview": "Both systems, nanospheres and nanocapsules were prepared according to the solvent displacement technique described by Fessi et al. [18,19]. This is a simple method that is particularly useful for the encapsulation of lip"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "2.1. Materials Xanthone (XAN), PLGA (50:50) MW 50 000–75 000, Pluronic F-68, phosphate buffered saline tablets and soybean lec",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.1. Materials Xanthone (XAN), PLGA (50:50) MW 50 000–75 000, Pluronic F-68, phosphate buffered saline tablets and soybean lecithin (40% purity by thin-layer chromatography) were purchased from Sigma-Aldrich Quı´mica (Sintra, Portugal). Threalose dihydrate was purchased from Fluka (Sintra, Portugal).",
+      "text_preview": "2.1. Materials Xanthone (XAN), PLGA (50:50) MW 50 000–75 000, Pluronic F-68, phosphate buffered saline tablets and soybean lecithin (40% purity by thin-layer chromatography) were purchased from Sigma-Aldrich Quı´mica (Si"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "3-Methoxyxanthone (3-MeOXAN) was synthesised in our laboratory according to Fernandes et al. [22]. Myritol 318 (caprilic/capric acid triglyceride) was kindly supplied by Henkel (Lisboa, Portugal). HPLC-grade methanol and acetonitrile were obtained from Merck (Lisboa, Portugal).",
+      "text_preview": "3-Methoxyxanthone (3-MeOXAN) was synthesised in our laboratory according to Fernandes et al. [22]. Myritol 318 (caprilic/capric acid triglyceride) was kindly supplied by Henkel (Lisboa, Portugal). HPLC-grade methanol and"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:2",
+      "paragraph_index": 1,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Water was puriﬁed by reverse osmosis Milli-Q system (Milliporew, Lisboa, Portugal). Other chemicals were of analytical grade.",
+      "text_preview": "Water was puriﬁed by reverse osmosis Milli-Q system (Milliporew, Lisboa, Portugal). Other chemicals were of analytical grade."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "2.2. Preparation of nanospheres Nanospheres containing XAN or 3-MeOXAN were prepared by the solvent displacement technique des",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "2.2. Preparation of nanospheres Nanospheres containing XAN or 3-MeOXAN were prepared by the solvent displacement technique described by Fessi et al. [18]. Brieﬂy, an organic solution of PLGA (63 mg) and different amounts of XAN or 3-MeOXAN in acetone (10 mL) was poured, under moderate magnetic stirring, into 10 mL of an aqueous solution of Pluronicw F-68 0.25% (w/v). Following 5 min of stirring, the volume of nanosphere dispersion was concentrated to 10 mL under reduced pressure. Separation of non-encapsu- lated compounds was performed by centrifugation at 2000!g for 30 min. (Heraeus Sepatec centrifuge, Porto, Portugal) after solubilization of a certain amount of threalose dihydrate for achieving a 5% (w/v) concentration. The supernatant was discarded and the pellet containing the nanospheres was redispersed in water to complete the initial volume of nanosphere dispersion submitted to centrifu- gation.",
+      "text_preview": "2.2. Preparation of nanospheres Nanospheres containing XAN or 3-MeOXAN were prepared by the solvent displacement technique described by Fessi et al. [18]. Brieﬂy, an organic solution of PLGA (63 mg) and different amounts"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "variant_preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "variant_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:variant_split",
+        "variant_supporting_candidate"
+      ],
+      "text_content": "Empty nanospheres were prepared according to the same procedure but omitting the xanthones in the organic phase.",
+      "text_preview": "Empty nanospheres were prepared according to the same procedure but omitting the xanthones in the organic phase."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "2.3. Physicochemical characterization of nanospheres",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.3. Physicochemical characterization of nanospheres",
+      "text_preview": "2.3. Physicochemical characterization of nanospheres"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:4",
+      "paragraph_index": 1,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "3.1. Particle size and zeta potential Particle size analysis of nanospheres was performed by photon correlation spectroscopy (",
+      "section_kind": "result",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.1. Particle size and zeta potential Particle size analysis of nanospheres was performed by photon correlation spectroscopy (PCS). This technique yields the mean particle diameter and the polydispersity index (PI), which is a dimensionless measure of the broadness of the particle size distribution. Zeta potential was evaluated by laser Doppler anemometry (LDA). In both determinations, samples were analysed following appro- priate dilution with ﬁltered (0.22 mm) ultrapure water, using a Zetasizer 3000 (Malvern Instruments, Malvern, UK). Values reported are the meanGSD of at least three different batches of each nanosphere formulation.",
+      "text_preview": "3.1. Particle size and zeta potential Particle size analysis of nanospheres was performed by photon correlation spectroscopy (PCS). This technique yields the mean particle diameter and the polydispersity index (PI), whic"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:1#segment:6",
+      "paragraph_index": 1,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "where A is the drug concentration (mg/mL) in the nanosphere dispersion and B is the theoretical drug concentration (mg/mL).",
+      "text_preview": "where A is the drug concentration (mg/mL) in the nanosphere dispersion and B is the theoretical drug concentration (mg/mL)."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "3.3. Differential scanning calorimetry (DSC) DSC was performed in order to characterize the physical state of XAN and 3-MeOXAN",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.3. Differential scanning calorimetry (DSC) DSC was performed in order to characterize the physical state of XAN and 3-MeOXAN in nanospheres. Thermograms were obtained using a Shimadzu DSC-50 (Shimadzu Co., Kyoto, Japan). The adopted scanning temperature range was from 25 to 300 8C at a heating rate of 10 8C/min.",
+      "text_preview": "3.3. Differential scanning calorimetry (DSC) DSC was performed in order to characterize the physical state of XAN and 3-MeOXAN in nanospheres. Thermograms were obtained using a Shimadzu DSC-50 (Shimadzu Co., Kyoto, Japan"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:3",
+      "paragraph_index": 2,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "3.4. Morphological studies Morphological examination of nanospheres was per- formed by transmission electron microscopy (TEM)",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.4. Morphological studies Morphological examination of nanospheres was per- formed by transmission electron microscopy (TEM) (Zeiss microscope M-10C, New York, USA) following negative staining with uranyl acetate solution (1%, w/v) or phosphotungstic acid solution (2%, w/v).",
+      "text_preview": "3.4. Morphological studies Morphological examination of nanospheres was per- formed by transmission electron microscopy (TEM) (Zeiss microscope M-10C, New York, USA) following negative staining with uranyl acetate soluti"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.4. Preparation of nanocapsules XAN and 3-MeOXAN-containing PLGA nanocapsules were prepared by the interfacial polymer deposi",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "2.4. Preparation of nanocapsules XAN and 3-MeOXAN-containing PLGA nanocapsules were prepared by the interfacial polymer deposition technique described by Fessi et al. [19]. Brieﬂy, about 50 mg of polymer and 100 mg of soybean lecithin were dissolved in 10 mL of acetone. Different amounts of XAN or 3-MeOXAN were dissolved in 0.5–0.6 mL of Myritolw 318 and the solution obtained was added to the previously prepared acetonic solution. The ﬁnal solution was poured into 20 mL of an aqueous solution of Pluronicw F-68 0.5% (w/v) under moderate stirring, leading to the formation of the nanocapsules.",
+      "text_preview": "2.4. Preparation of nanocapsules XAN and 3-MeOXAN-containing PLGA nanocapsules were prepared by the interfacial polymer deposition technique described by Fessi et al. [19]. Brieﬂy, about 50 mg of polymer and 100 mg of so"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "variant_preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "variant_supporting_candidate"
+      ],
+      "text_content": "Then, acetone was removed under vacuum and the colloidal dispersion of nanocapsules was concentrated to 5–10 mL by evaporation under reduced pressure. The amount of non-encapsulated xanthones (either XAN or 3-MeOXAN) was separated by ultraﬁltration/ centrifugation technique [19] using centrifugal ﬁlter devices (Centricon YM-50, Milliporew, Lisboa, Portugal) at 4000!g for 2 h (Beckman UL-80 ultracentrifuge, Albertville, USA). Empty nanocapsules were prepared according to the same procedure but omitting the xanthones in the organic phase. XAN and 3-MeOXAN nanoemulsions were prepared as nanocapsules, omitting the polymer in the organic phase.",
+      "text_preview": "Then, acetone was removed under vacuum and the colloidal dispersion of nanocapsules was concentrated to 5–10 mL by evaporation under reduced pressure. The amount of non-encapsulated xanthones (either XAN or 3-MeOXAN) was"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.5. Physicochemical characterization of nanocapsules",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.5. Physicochemical characterization of nanocapsules",
+      "text_preview": "2.5. Physicochemical characterization of nanocapsules"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:7",
+      "paragraph_index": 2,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "5.1. Particle size and zeta potential Particle size analysis of nanocapsules was performed by photon correlation spectroscopy",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.1. Particle size and zeta potential Particle size analysis of nanocapsules was performed by photon correlation spectroscopy (PCS). This technique yields the mean particle diameter and the polydispersity index (PI), which is a dimensionless measure of the broadness of the particle size distribution. Zeta potential was evaluated by laser Doppler anemometry (LDA). In both determinations, samples were analysed following appropriate dilution with ﬁltered (0.22 mm) ultrapure water, using a Zetasizer 5000 (Malvern Instruments, Malvern, UK). Values reported are the meanGSD of at least three different batches of each nanocapsule formulation.",
+      "text_preview": "5.1. Particle size and zeta potential Particle size analysis of nanocapsules was performed by photon correlation spectroscopy (PCS). This technique yields the mean particle diameter and the polydispersity index (PI), whi"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:9",
+      "paragraph_index": 2,
+      "segment_index": 9,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "5.2. Quantiﬁcation of XAN and 3-MeOXAN content in nanocapsules The content of XAN and 3-MeOXAN of the nanocap- sules was deter",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.2. Quantiﬁcation of XAN and 3-MeOXAN content in nanocapsules The content of XAN and 3-MeOXAN of the nanocap- sules was determined by a previously validated HPLC method [24], following the dissolution of an aliquot of the nanocapsule dispersion in acetonitrile. Incorporation efﬁciency was calculated as described for nanospheres (Section 2.3.2).",
+      "text_preview": "5.2. Quantiﬁcation of XAN and 3-MeOXAN content in nanocapsules The content of XAN and 3-MeOXAN of the nanocap- sules was determined by a previously validated HPLC method [24], following the dissolution of an aliquot of t"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:11",
+      "paragraph_index": 2,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "5.3. In vitro release studies of XAN and 3-MeOXAN from nanocapsules In vitro release studies of XAN and 3-MeOXAN from the nano",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "5.3. In vitro release studies of XAN and 3-MeOXAN from nanocapsules In vitro release studies of XAN and 3-MeOXAN from the nanocapsules were carried out at 37 8C, by the bulk equilibrium reverse dialysis bag technique, as previously described by Levy and Benita [25]. Brieﬂy, for each xanthonic compound, a volume of a nanocapsule dis- persion—corresponding to 20% of the maximum aqueous solubility of each compound in phosphate buffered saline solution",
+      "text_preview": "5.3. In vitro release studies of XAN and 3-MeOXAN from nanocapsules In vitro release studies of XAN and 3-MeOXAN from the nanocapsules were carried out at 37 8C, by the bulk equilibrium reverse dialysis bag technique, as"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "0.1 M, pH7",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.1 M, pH7.4 (PBS) at 37 8C—or an aqueous solution, was placed directly into 200 mL of PBS, where numerous dialysis sacs (cellulose membrane Mw cut-off 12 000 D, Sigma-Adrich Quı´mica, Sintra, Portugal) con- taining 1 mL of PBS, had been previously immersed.",
+      "text_preview": "0.1 M, pH7.4 (PBS) at 37 8C—or an aqueous solution, was placed directly into 200 mL of PBS, where numerous dialysis sacs (cellulose membrane Mw cut-off 12 000 D, Sigma-Adrich Quı´mica, Sintra, Portugal) con- taining 1 mL"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The dialysis sacs were equilibrated with PBS prior to the experiments. At given time intervals, a dialysis bag was withdrawn from the stirred release medium and the XAN or 3-MeOXAN content was directly assayed by a modiﬁcation of a previously validated HPLC method [24], setting the detection wavelength at 240 nm. XAN or 3-MeOXAN stock solutions in acetonitrile were diluted with PBS to obtain calibration solutions over the range of 0.1–1.4 mg/mL. Values reported are the meanGSD of the values corresponding to three different batches of each formulation of nanocapsules.",
+      "text_preview": "The dialysis sacs were equilibrated with PBS prior to the experiments. At given time intervals, a dialysis bag was withdrawn from the stirred release medium and the XAN or 3-MeOXAN content was directly assayed by a modiﬁ"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:14",
+      "paragraph_index": 2,
+      "segment_index": 14,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "5.4. Physical stability The effect of storage time on the particle size and zeta potential of XAN and 3-MeOXAN-containing nano",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.4. Physical stability The effect of storage time on the particle size and zeta potential of XAN and 3-MeOXAN-containing nanocap- sules formulations was assessed. Nanocapsules aqueous dispersions were stored in sealed glass bottles at 4 8C and protected from light, during a 4-month period.",
+      "text_preview": "5.4. Physical stability The effect of storage time on the particle size and zeta potential of XAN and 3-MeOXAN-containing nanocap- sules formulations was assessed. Nanocapsules aqueous dispersions were stored in sealed g"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:16",
+      "paragraph_index": 2,
+      "segment_index": 16,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__39",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "5.5. Morphological studies The morphology of nanocapsules was assessed by TEM using a Zeiss EM-10C microscope (New York, USA),",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "5.5. Morphological studies The morphology of nanocapsules was assessed by TEM using a Zeiss EM-10C microscope (New York, USA), following negative staining with phosphotungstic acid solution (2%, w/v). M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500",
+      "text_preview": "5.5. Morphological studies The morphology of nanocapsules was assessed by TEM using a Zeiss EM-10C microscope (New York, USA), following negative staining with phosphotungstic acid solution (2%, w/v). M. Teixeira et al."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__40",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3. Results and discussion",
+      "text_preview": "3. Results and discussion"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__41",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "3.1. Characteristics of XAN and 3-MeOXAN-loaded nanospheres The loading capacity of the nanospheres was assessed using ﬁxed am",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "3.1. Characteristics of XAN and 3-MeOXAN-loaded nanospheres The loading capacity of the nanospheres was assessed using ﬁxed amounts of polymer and surfactant and variable quantities of XAN or 3-MeOXAN.",
+      "text_preview": "3.1. Characteristics of XAN and 3-MeOXAN-loaded nanospheres The loading capacity of the nanospheres was assessed using ﬁxed amounts of polymer and surfactant and variable quantities of XAN or 3-MeOXAN."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__42",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:1",
+      "paragraph_index": 3,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "optimization_candidate"
+      ],
+      "text_content": "According to the results shown in Table 1, maximum incorporation efﬁciencies were achieved either for XAN (",
+      "text_preview": "According to the results shown in Table 1, maximum incorporation efﬁciencies were achieved either for XAN ("
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__43",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:2",
+      "paragraph_index": 3,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__44",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:3",
+      "paragraph_index": 3,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.0G4.1%) or for 3-MeOXAN (",
+      "text_preview": "3.0G4.1%) or for 3-MeOXAN ("
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__45",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:4",
+      "paragraph_index": 3,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__46",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "1.5G7.6%) corresponding to a theoretical concentration of 60 mg/mL. For concentrations above 70 mg/mL both xanthones precipitated in the form of crystals, indicating that the maximum loading capacity of the carrier was reached. Thus, for the theoretical concentration of 60 mg/mL, the ﬁnal concentrations of encapsulated compounds were only of 20 mg/mL for XAN and 25 mg/ mL for 3-MeOXAN. According to Barichello et al. [26] when the drug has a low afﬁnity for the polymer, it tends to diffuse from the organic phase to the external aqueous medium during the nanosphere formation process, leading to low drug loading capacities. The relatively low association efﬁciency observed in the present study for XAN and 3-MeOXAN, suggests that these compounds have low afﬁnity for the polymer. In fact, for the theoretical concentration of 60 mg/mL, the ﬁnal concentrations achieved for encapsulated compounds were only of 20 and 25 mg/mL for XAN and 3-MeOXAN, respectively. Never- theless, the nanosphere aqueous dispersions developed show higher concentrations for both xanthones than the respective aqueous solutions. Indeed the water-solubility of both xanthones is about 5–6 mg/mL at 25 8C (data not shown).",
+      "text_preview": "1.5G7.6%) corresponding to a theoretical concentration of 60 mg/mL. For concentrations above 70 mg/mL both xanthones precipitated in the form of crystals, indicating that the maximum loading capacity of the carrier was r"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__47",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:10",
+      "paragraph_index": 3,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Particle size results (Table 2) of prepared empty XAN and 3-MeOXAN nanospheres showed that all samples were in the nanometric range (mean diameter !170 nm) and exhibited a narrow size distribution (PI!0.1).",
+      "text_preview": "Particle size results (Table 2) of prepared empty XAN and 3-MeOXAN nanospheres showed that all samples were in the nanometric range (mean diameter !170 nm) and exhibited a narrow size distribution (PI!0.1)."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__48",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:11",
+      "paragraph_index": 3,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "These results were conﬁrmed by TEM analysis. In fact, TEM micro- photographs of XAN- and 3-MeOXAN-loaded nanospheres (Fig. 2) show their spherical shape as well as their homogeneous size distribution. Similar results have been previously reported for PLGA nanoparticles containing various drugs [26].",
+      "text_preview": "These results were conﬁrmed by TEM analysis. In fact, TEM micro- photographs of XAN- and 3-MeOXAN-loaded nanospheres (Fig. 2) show their spherical shape as well as their homogeneous size distribution. Similar results hav"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__49",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:20",
+      "paragraph_index": 3,
+      "segment_index": 20,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Zeta potential results (Table 2) showed that both empty and drug-loaded nanosphere formulations exhibited a negative charge with values ranging from K38.9 to K36.0 mV, typically observed for these types of systems [27].",
+      "text_preview": "Zeta potential results (Table 2) showed that both empty and drug-loaded nanosphere formulations exhibited a negative charge with values ranging from K38.9 to K36.0 mV, typically observed for these types of systems [27]."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__50",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:21",
+      "paragraph_index": 3,
+      "segment_index": 21,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "The surface charge of colloidal particles can arise by a number of means, e.g. ionisation of chemical groups on the surface or adsorption of ions [28]. It has been previously reported [29,30] that the negative charge of PLGA nanoparticles is due to the ionisation of carboxylic-end groups of polymer on the surface. However, carboxylic end groups of the PLGA used in this study were esteriﬁed with lauryl groups and hence were not susceptible to ionisation. Thus, the negative charge of prepared nanoparticles can be attributed to the adsorption of anions on the colloidal surface.",
+      "text_preview": "The surface charge of colloidal particles can arise by a number of means, e.g. ionisation of chemical groups on the surface or adsorption of ions [28]. It has been previously reported [29,30] that the negative charge of"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__51",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:3",
+      "paragraph_index": 3,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The presence of both xanthones did not Table 1 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres Theoretical concen- tration (mg/mL) XAN nanospheres 3-MeOXAN nanospheres Final con- centration (mg/mL) Encapsula- tion efﬁ- ciency (%) Final con- centration (mg/mL) Encapsula- tion efﬁ- ciency (%)",
+      "text_preview": "The presence of both xanthones did not Table 1 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres Theoretical concen- tration (mg/mL) XAN nanospheres 3-MeOXAN nanospheres Final con- centration (mg/mL) Encap"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__52",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:6",
+      "paragraph_index": 3,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__53",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:7",
+      "paragraph_index": 3,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.0G1.1",
+      "text_preview": "3.0G1.1"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__54",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:8",
+      "paragraph_index": 3,
+      "segment_index": 8,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__55",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:9",
+      "paragraph_index": 3,
+      "segment_index": 9,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6.1G2.1",
+      "text_preview": "6.1G2.1"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__56",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:10",
+      "paragraph_index": 3,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__57",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:11",
+      "paragraph_index": 3,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.0G0.6",
+      "text_preview": "9.0G0.6"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__58",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:12",
+      "paragraph_index": 3,
+      "segment_index": 12,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__59",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:13",
+      "paragraph_index": 3,
+      "segment_index": 13,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.1G1.1",
+      "text_preview": "8.1G1.1"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__60",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:14",
+      "paragraph_index": 3,
+      "segment_index": 14,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__61",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:15",
+      "paragraph_index": 3,
+      "segment_index": 15,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.0G2.4",
+      "text_preview": "0.0G2.4"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__62",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:16",
+      "paragraph_index": 3,
+      "segment_index": 16,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__63",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:17",
+      "paragraph_index": 3,
+      "segment_index": 17,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.0G4.1",
+      "text_preview": "3.0G4.1"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__64",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:18",
+      "paragraph_index": 3,
+      "segment_index": 18,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__65",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:19",
+      "paragraph_index": 3,
+      "segment_index": 19,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.9G4.6",
+      "text_preview": "4.9G4.6"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__66",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:20",
+      "paragraph_index": 3,
+      "segment_index": 20,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__67",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:21",
+      "paragraph_index": 3,
+      "segment_index": 21,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.5G",
+      "text_preview": "1.5G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__68",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "7.6 Crystals of XAN ND Crystals of 3-MeOXAN ND Crystals of XAN ND Crystals of 3-MeOXAN ND Values express the mean resultsGSD",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "7.6 Crystals of XAN ND Crystals of 3-MeOXAN ND Crystals of XAN ND Crystals of 3-MeOXAN ND Values express the mean resultsGSD values of three different batches. ND, not determined.",
+      "text_preview": "7.6 Crystals of XAN ND Crystals of 3-MeOXAN ND Crystals of XAN ND Crystals of 3-MeOXAN ND Values express the mean resultsGSD values of three different batches. ND, not determined."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__69",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:1",
+      "paragraph_index": 3,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 2 Mean diameter, polydispersity index (PI) and zeta potential (z) of PLGA empty and loaded nanospheres Empty nanospheres XAN nanospheresa 3-MeOXAN nanospheresb Diameter (nm) 154G6 164G8 164G9 PI",
+      "text_preview": "Table 2 Mean diameter, polydispersity index (PI) and zeta potential (z) of PLGA empty and loaded nanospheres Empty nanospheres XAN nanospheresa 3-MeOXAN nanospheresb Diameter (nm) 154G6 164G8 164G9 PI"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__70",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:23",
+      "paragraph_index": 3,
+      "segment_index": 23,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.06G0.03",
+      "text_preview": "0.06G0.03"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__71",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:24",
+      "paragraph_index": 3,
+      "segment_index": 24,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.06G0.03",
+      "text_preview": "0.06G0.03"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__72",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:25",
+      "paragraph_index": 3,
+      "segment_index": 25,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.06G0.01 z (mV) K",
+      "text_preview": "0.06G0.01 z (mV) K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__73",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:26",
+      "paragraph_index": 3,
+      "segment_index": 26,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__74",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:27",
+      "paragraph_index": 3,
+      "segment_index": 27,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6.2G",
+      "text_preview": "6.2G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__75",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:28",
+      "paragraph_index": 3,
+      "segment_index": 28,
+      "section_label": "5.2 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.2 K",
+      "text_preview": "5.2 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__76",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:29",
+      "paragraph_index": 3,
+      "segment_index": 29,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__77",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:30",
+      "paragraph_index": 3,
+      "segment_index": 30,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.9G",
+      "text_preview": "8.9G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__78",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:31",
+      "paragraph_index": 3,
+      "segment_index": 31,
+      "section_label": "1.3 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.3 K",
+      "text_preview": "1.3 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__79",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:32",
+      "paragraph_index": 3,
+      "segment_index": 32,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__80",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:33",
+      "paragraph_index": 3,
+      "segment_index": 33,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6.0G",
+      "text_preview": "6.0G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__81",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "3.0 Values express the mean resultsGSD values of three different batches",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.0 Values express the mean resultsGSD values of three different batches. a XAN nanosphere with theoretical concentration of 60 mg/mL. b 3-MeOXAN nanospheres with theoretical concentration of 60 mg/mL. Fig. 2. Transmission electron microphotographs of PLGA nanospheres containing: (A) XAN or (B) 3-MeOXAN.",
+      "text_preview": "3.0 Values express the mean resultsGSD values of three different batches. a XAN nanosphere with theoretical concentration of 60 mg/mL. b 3-MeOXAN nanospheres with theoretical concentration of 60 mg/mL. Fig. 2. Transmissi"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__82",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:3#segment:1",
+      "paragraph_index": 3,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "Scale barZ150 nm. M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500",
+      "text_preview": "Scale barZ150 nm. M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__83",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:4#segment:0",
+      "paragraph_index": 4,
+      "segment_index": 0,
+      "section_label": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules Two strategies were adopted in order to prepare stable nanocapsul",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules Two strategies were adopted in order to prepare stable nanocapsule dispersions containing a high concentration of both xanthones. One of them was based on increasing the concentration of xanthones added to the oily core of the nanocapsules until the precipitation of the excess — non- encapsulated — occurred and could be observed. For this Fig. 3. DSC thermograms of threalose, physical mixture of XAN and empty PLGA nanospheres (1:1), XAN, PLGA and XAN-loaded nanospheres (XAN nps).",
+      "text_preview": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules Two strategies were adopted in order to prepare stable nanocapsule dispersions containing a high concentration of both xanthones. One of them was based on incr"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__84",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:4#segment:1",
+      "paragraph_index": 4,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Fig. 4. DSC thermograms of threalose, physical mixture of 3-MeOXAN and empty PLGA nanospheres (1:1), 3-MeOXAN, PLGA and 3-MeOXAN- loaded nanospheres (3-MeOXAN nps).",
+      "text_preview": "Fig. 4. DSC thermograms of threalose, physical mixture of 3-MeOXAN and empty PLGA nanospheres (1:1), 3-MeOXAN, PLGA and 3-MeOXAN- loaded nanospheres (3-MeOXAN nps)."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__85",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:4#segment:2",
+      "paragraph_index": 4,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500",
+      "text_preview": "M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__86",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "purpose, different batches of XAN or 3-MeOXAN nano- capsules were prepared using ﬁxed amounts of polymer (PLGA), surfactants (Pluronic F-68 and soybean lecithin) and 0.5 mL of oil and increasing theoretical concentrations of xanthones in the ﬁnal suspension ranging from 200 to 800 mg/mL for XAN and from 1000 to 1600 mg/mL for 3-MeOXAN.",
+      "text_preview": "purpose, different batches of XAN or 3-MeOXAN nano- capsules were prepared using ﬁxed amounts of polymer (PLGA), surfactants (Pluronic F-68 and soybean lecithin) and 0.5 mL of oil and increasing theoretical concentration"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__87",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:1",
+      "paragraph_index": 5,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "The resulting incorporation efﬁciency values were close to 90% for XAN formulations with theoretical concentrations ranging from 200 to 600 mg/mL (Table 3).",
+      "text_preview": "The resulting incorporation efﬁciency values were close to 90% for XAN formulations with theoretical concentrations ranging from 200 to 600 mg/mL (Table 3)."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__88",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:2",
+      "paragraph_index": 5,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_experimental_design_to_optimization",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_experimental_design_to_optimization",
+        "optimization_candidate"
+      ],
+      "text_content": "For higher concentrations, XAN crystals could be observed, indicating that the maximum loading capacity of the nanocapsules had been reached.",
+      "text_preview": "For higher concentrations, XAN crystals could be observed, indicating that the maximum loading capacity of the nanocapsules had been reached."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__89",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:3",
+      "paragraph_index": 5,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_optimization_to_experimental_design",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_optimization_to_experimental_design",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "For the 3-MeOXAN-loaded nanocapsules, the incorporation efﬁciency values were close to 80% for theoretical concentrations ranging from 1000 to 1400 mg/mL. As in the previous case, for higher concen- trations, 3-MeOXAN crystals could be detected.",
+      "text_preview": "For the 3-MeOXAN-loaded nanocapsules, the incorporation efﬁciency values were close to 80% for theoretical concentrations ranging from 1000 to 1400 mg/mL. As in the previous case, for higher concen- trations, 3-MeOXAN cr"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__90",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:4",
+      "paragraph_index": 5,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_experimental_design_to_optimization",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_experimental_design_to_optimization",
+        "optimization_candidate"
+      ],
+      "text_content": "Hence, maximum concentrations of xanthones encapsulated into the nanocapsules were attained for theoretical concen- trations of 600 mg/mL for XAN (corresponding to a concentration of 1.2%, w/v, in Myritol 318) and 1400 mg/ mL for 3-MeOXAN (corresponding to a concentration of 2.8%, w/v, in Myritol 318). According to different authors [31–33], the percentage of drug encapsulated in the nanocapsules is correlated to the drug solubility in the oil core. In the present case, the incorporation efﬁciency values of both xanthones were relatively close. However, the ﬁnal concentration of the nanoencapsulated 3-MeOXAN (1162 mg/mL) was higher than that of XAN (529 mg/mL). An explanation for these results may be the higher solubility of 3-MeOXAN in Myritol 318 than XAN. The second strategy adopted in order to increase the con- centration of the nanoencapsulated xanthones in the nanocapsules suspension was based on increasing the volume of Myritol 318 and on concentrating the ﬁnal dispersion to 5 mL instead of 10 mL. When using this strategy, one must be aware of the fact that, as observed by Guterres et al. [31] for PLA nanocapsules containing diclofenac, the increase of the oil volume can eventually reduce the stability of nanocapsules.",
+      "text_preview": "Hence, maximum concentrations of xanthones encapsulated into the nanocapsules were attained for theoretical concen- trations of 600 mg/mL for XAN (corresponding to a concentration of 1.2%, w/v, in Myritol 318) and 1400 m"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__91",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:5",
+      "paragraph_index": 5,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "More speciﬁcally, these authors found that the use of a volume of oil (benzylbenzo- ate) higher than 0.75 mL (corresponding to a concentration of 5%, v/v), led to the formation of unstable nanocapsules with the appearance of a precipitate and free oil. A common method used to study the stability of nanocapsules is the ultracentrifugation [34,35]. When nanocapsule dispersions prepared with an oil core with a density !1, such as Myritol 318, are submitted to centrifugation four possible phases can be detected. One is constituted by a small pellet attributed to the formation of nanospheres due to the inadequate polymer deposition at the interfacial level. An additional phase may be found containing surfactants and non-encapsulated compounds.",
+      "text_preview": "More speciﬁcally, these authors found that the use of a volume of oil (benzylbenzo- ate) higher than 0.75 mL (corresponding to a concentration of 5%, v/v), led to the formation of unstable nanocapsules with the appearanc"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__92",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:6",
+      "paragraph_index": 5,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "A ﬂoating cream layer corresponding to stable nanocapsules constitutes the third one. Finally, an oily phase may appear at the surface of the preparation due to oil drops that coalesced when surfactants could not stabilize the preparation. In the present work, to study the stability of nanocapsules prepared with high oil volumes (O0.5 mL), several formulations of empty nanocapsules were obtained using ﬁxed amounts of polymer and surfactants and different volumes of Myritol 318 (0.5, 0.6, 0.7 and 0.8 mL) and submitted to centrifugation (25 000!g, for 30 min). The formulations containing 0.5 and 0.6 mL of Myritol 318 showed a small pellet at the bottom of the ﬂask, attributed to nanospheres and a cream layer at the surface corresponding to nanocapsules. No free oil could be detected in these formulations indicating that the oil was completely coated by the polymer. The formulations including 0.7 and 0.8 mL of Myritol 318 showed a free oil layer at the surface of the dispersions upon centrifugation indicating a poor stability.",
+      "text_preview": "A ﬂoating cream layer corresponding to stable nanocapsules constitutes the third one. Finally, an oily phase may appear at the surface of the preparation due to oil drops that coalesced when surfactants could not stabili"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__93",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:7",
+      "paragraph_index": 5,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 3 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules XAN nanocapsules 3-MeOXAN nanocapsules Theoretical concentration (mg/mL) XAN/ Myritol 318% (w/v) Final concen- tration (mg/mL) Encapsulation efﬁciency (%) Theoretical concentration (mg/mL) 3-MeOXAN/ Myritol 318% (w/v) Final concen- tration (mg/mL) Encapsulation efﬁciency (%) 0.4 178G21 89G11 2.0 887G51 89G5 0.8 342G18 85G5 2.4 918G9 77G1 1.2 529G57 88G9 2.8 1162G80 83G6",
+      "text_preview": "Table 3 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules XAN nanocapsules 3-MeOXAN nanocapsules Theoretical concentration (mg/mL) XAN/ Myritol 318% (w/v) Final concen- tration (mg/mL) Encapsulation efﬁci"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__94",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:1",
+      "paragraph_index": 5,
+      "segment_index": 1,
+      "section_label": "1.4 Crystals of XAN ND",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.4 Crystals of XAN ND",
+      "text_preview": "1.4 Crystals of XAN ND"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__95",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:2",
+      "paragraph_index": 5,
+      "segment_index": 2,
+      "section_label": "3.2 Crystals of 3-MeOXAN ND",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.2 Crystals of 3-MeOXAN ND",
+      "text_preview": "3.2 Crystals of 3-MeOXAN ND"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__96",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "1.6 Crystals of XAN ND Values express the mean resultsGSD values of three different batches",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.6 Crystals of XAN ND Values express the mean resultsGSD values of three different batches. ND, not determined.",
+      "text_preview": "1.6 Crystals of XAN ND Values express the mean resultsGSD values of three different batches. ND, not determined."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__97",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:1",
+      "paragraph_index": 5,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 4 Mean diameter, polydispersity index (PI) and zeta potential (z) of empty and loaded PLGA nanocapsules Empty nanocapsules XAN nanocapsulesa 3-MeOXAN nanocapsulesb Diameter (nm) 274G3 278G15 280G19 PI",
+      "text_preview": "Table 4 Mean diameter, polydispersity index (PI) and zeta potential (z) of empty and loaded PLGA nanocapsules Empty nanocapsules XAN nanocapsulesa 3-MeOXAN nanocapsulesb Diameter (nm) 274G3 278G15 280G19 PI"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__98",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:4",
+      "paragraph_index": 5,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.455G0.130",
+      "text_preview": "0.455G0.130"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__99",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:5",
+      "paragraph_index": 5,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.412G0.051",
+      "text_preview": "0.412G0.051"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__100",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:6",
+      "paragraph_index": 5,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.376G0.104 z (mV) K",
+      "text_preview": "0.376G0.104 z (mV) K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__101",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:7",
+      "paragraph_index": 5,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__102",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:8",
+      "paragraph_index": 5,
+      "segment_index": 8,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.9G",
+      "text_preview": "0.9G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__103",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:9",
+      "paragraph_index": 5,
+      "segment_index": 9,
+      "section_label": "5.9 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5.9 K",
+      "text_preview": "5.9 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__104",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:10",
+      "paragraph_index": 5,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__105",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:11",
+      "paragraph_index": 5,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.1G",
+      "text_preview": "9.1G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__106",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:12",
+      "paragraph_index": 5,
+      "segment_index": 12,
+      "section_label": "0.7 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.7 K",
+      "text_preview": "0.7 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__107",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:13",
+      "paragraph_index": 5,
+      "segment_index": 13,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__108",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:14",
+      "paragraph_index": 5,
+      "segment_index": 14,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.5G",
+      "text_preview": "9.5G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__109",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "4.7 Values express the mean resultsGSD values of three different batches",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "4.7 Values express the mean resultsGSD values of three different batches. a XAN nanocapsules with theoretical concentration of 600 mg/mL. b 3-MeOXAN nanocapsules with theoretical concentration of 1400 mg/mL. M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500",
+      "text_preview": "4.7 Values express the mean resultsGSD values of three different batches. a XAN nanocapsules with theoretical concentration of 600 mg/mL. b 3-MeOXAN nanocapsules with theoretical concentration of 1400 mg/mL. M. Teixeira"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__110",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:0",
+      "paragraph_index": 6,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Thus, our results suggest that 0.6 mL is the limiting volume of Myritol 318 that allows the preparation of stable nanocapsule formulations. As a consequence, the new formulations of XAN and 3-MeOXAN-containing nano- capsules were prepared using 0.6 mL of Myritol 318, while maintaining the concentration of each compound in the oil volume (1.2%, w/v, for XAN and 2.8%, w/v, for 3- MeOXAN). This led to concentrations of nanoencapsulated XAN and 3-MeOXAN in the ﬁnal dispersions of 1173 mg/mL and of 2780 mg/mL, respectively.",
+      "text_preview": "Thus, our results suggest that 0.6 mL is the limiting volume of Myritol 318 that allows the preparation of stable nanocapsule formulations. As a consequence, the new formulations of XAN and 3-MeOXAN-containing nano- caps"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__111",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:2",
+      "paragraph_index": 6,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "In fact, it is known that high zeta potential values, above 30 mV, either positive or negative, lead to more stable nanocapsule dispersions due to the repulsion between particles, which prevents their aggregation [20]. Our results can be attributed to the speciﬁc composition of the nanocapsules (polymer and surfactant concentrations as well as to the type of oil core). According to several authors [20,35,38], the major components of nanocapsules, which can affect their zeta potential are lecithins, oil core, polymer and poloxamer. Lecithins and oils have compounds such as free acids or negatively charged phospholipids, which confer a negative charge to nanocapsules. Polymers, especially poly a-hydroxy acids, such as poly(DL-lactide), impart negative charge due to carboxyl groups. Poloxamer, a non-ionic surfactant, tends to reduce the absolute value of zeta potential.",
+      "text_preview": "In fact, it is known that high zeta potential values, above 30 mV, either positive or negative, lead to more stable nanocapsule dispersions due to the repulsion between particles, which prevents their aggregation [20]. O"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__112",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:0",
+      "paragraph_index": 6,
+      "segment_index": 0,
+      "section_label": "3.3. In vitro release The in vitro release proﬁles of 3-MeOXAN and of XAN from PLGA nanocapsules and from the corresponding co",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.3. In vitro release The in vitro release proﬁles of 3-MeOXAN and of XAN from PLGA nanocapsules and from the corresponding control nanoemulsions are shown in Figs.",
+      "text_preview": "3.3. In vitro release The in vitro release proﬁles of 3-MeOXAN and of XAN from PLGA nanocapsules and from the corresponding control nanoemulsions are shown in Figs."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__113",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "6 and 7. Nanoemulsions were used as control, in order to investigate the role of polymeric wall on drug release. These ﬁgures also show the corresponding release diffusion proﬁles of the free compounds in aqueous solution through the dialysis bag. The experiments were performed under ‘sink con- ditions’, in order to avoid the interference of the xanthones solubility in the in vitro release.",
+      "text_preview": "6 and 7. Nanoemulsions were used as control, in order to investigate the role of polymeric wall on drug release. These ﬁgures also show the corresponding release diffusion proﬁles of the free compounds in aqueous solutio"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__114",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "inline_table_text",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:2",
+      "paragraph_index": 6,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "inline_text_table_recovery",
+      "split_trigger": "inline_table_recovery",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "inline_formulation_table_recovered"
+      ],
+      "text_content": "As can be observed in both Table 5 Mean diameter, polydispersity index (PI), zeta potential (z) and incorporation parameters of various nanocapsule formulations: empty nanocapsules (0.6 mL Myritol 318 and without xanthones), XAN-loaded nanocapsules (0.6 mL Myritol 318, XAN theoretical concentration of 1440 mg/mL) and 3-MeOXAN-loaded nanocapsules (0.6 mL Myritol 318, 3-MeOXAN theoretical concentration of 3360 mg/mL) Sample Theoretical con- centration (mg/mL) Final concentration (mg/mL) [n] Encapsulation efﬁciency (%) Diameter (nm) [n] PI z (mV) [n] Empty nanocapsules – – – 261G17 [5]",
+      "text_preview": "As can be observed in both Table 5 Mean diameter, polydispersity index (PI), zeta potential (z) and incorporation parameters of various nanocapsule formulations: empty nanocapsules (0.6 mL Myritol 318 and without xanthon",
+      "table_role_hint": "formulation",
+      "table_row_pattern": "repeated categorical identifiers",
+      "table_score": 99
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__115",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:2",
+      "paragraph_index": 6,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.48G",
+      "text_preview": "0.48G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__116",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:3",
+      "paragraph_index": 6,
+      "segment_index": 3,
+      "section_label": "0.06 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.06 K",
+      "text_preview": "0.06 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__117",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:4",
+      "paragraph_index": 6,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__118",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:6",
+      "paragraph_index": 6,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.48G",
+      "text_preview": "0.48G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__119",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:7",
+      "paragraph_index": 6,
+      "segment_index": 7,
+      "section_label": "0.05 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.05 K",
+      "text_preview": "0.05 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__120",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:8",
+      "paragraph_index": 6,
+      "segment_index": 8,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3",
+      "text_preview": "3"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__121",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:10",
+      "paragraph_index": 6,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.43G",
+      "text_preview": "0.43G"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__122",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:11",
+      "paragraph_index": 6,
+      "segment_index": 11,
+      "section_label": "0.03 K",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.03 K",
+      "text_preview": "0.03 K"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__123",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:6#segment:12",
+      "paragraph_index": 6,
+      "segment_index": 12,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4",
+      "text_preview": "4"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__124",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "ﬁgures, practically the totality of both xanthones in solution diffused through the dialysis bag within 4 h. However, when the xanthones were either nanoencapsulated or incorporated into nanoemulsions, the amounts diffused to the inner side of the dialysis bag were reduced, as was also found by other authors for different substances [33,39]. As can be seen in Fig. 6, the release of 3-MeOXAN from nanocapsules and nanoemulsions yielded similar proﬁles. In both cases, an important initial release rate of the compound during the ﬁrst hour and a slower release rate up to the fourth hour were observed. At 1 h of the experiment, the mean amounts of 3-MeOXAN released from nanoemulsion and nanocapsule dispersion were approximately 70% and at 4 h were roughly 80%. Identical release proﬁles were already reported for other drugs [33,35,36]. The similarity of the release proﬁles obtained for both systems in the present study evidences that the polymer coating of nanocapsules has no role in the release process of 3-MeOXAN, being the compound’s partition between the oily core and the external aqueous medium the main factor governing the process, as was already reported for other drugs [35,36,40]. As can be seen in Fig. 7, the release of XAN from nanocapsules and nanoemulsions yielded different proﬁles. Despite the important initial release observed for both systems, a signiﬁcant difference (P!0.05) after the ﬁrst 30 min and up to the end of the experiment was noted. At 30 min, the mean amounts of XAN released from nanocapsule and nanoemulsion dispersions were",
+      "text_preview": "ﬁgures, practically the totality of both xanthones in solution diffused through the dialysis bag within 4 h. However, when the xanthones were either nanoencapsulated or incorporated into nanoemulsions, the amounts diffus"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__125",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:1",
+      "paragraph_index": 7,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "5",
+      "text_preview": "5"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__126",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:2",
+      "paragraph_index": 7,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.7G4.3% and",
+      "text_preview": "9.7G4.3% and"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__127",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:3",
+      "paragraph_index": 7,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6",
+      "text_preview": "6"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__128",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.0G2.5%, respectively. At 4 h. and until the end of the assay, the mean amounts of XAN released from nanocapsule and nanoemulsion dispersions were approximately 70 and 80%, respectively. The different release proﬁles indicates that another factor besides XAN partition between oil core and the aqueous medium Fig. 6. In vitro release proﬁles of 3-MeOXAN from PLGA nanocapsules and from nanoemulsion followed by its diffusion through the dialysis bag. The diffusion proﬁle of free 3-MeOXAN dissolved in the medium through the dialysis membrane is shown as a control.",
+      "text_preview": "9.0G2.5%, respectively. At 4 h. and until the end of the assay, the mean amounts of XAN released from nanocapsule and nanoemulsion dispersions were approximately 70 and 80%, respectively. The different release proﬁles in"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__129",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:1",
+      "paragraph_index": 7,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The theoretical 3-MeOXAN concentration was, in nanocapsules and nanoemulsion, 3360 mg/mL. Each point represents the meanGSD values obtained from three different batches.",
+      "text_preview": "The theoretical 3-MeOXAN concentration was, in nanocapsules and nanoemulsion, 3360 mg/mL. Each point represents the meanGSD values obtained from three different batches."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__130",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:2",
+      "paragraph_index": 7,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The inset shows the release proﬁles over the ﬁrst 8 h (*P!0.05). Fig. 7. In vitro release proﬁles of XAN from PLGA nanocapsules and from nanoemulsion followed by its diffusion through the dialysis bag. The diffusion proﬁle of free XAN dissolved in the medium through the dialysis membrane is shown as a control.",
+      "text_preview": "The inset shows the release proﬁles over the ﬁrst 8 h (*P!0.05). Fig. 7. In vitro release proﬁles of XAN from PLGA nanocapsules and from nanoemulsion followed by its diffusion through the dialysis bag. The diffusion proﬁ"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__131",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:3",
+      "paragraph_index": 7,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The theoretical XAN concentration was, in nanocapsules and nanoemulsion, 1440 mg/mL. Each point represents the meanGSD values obtained from three different batches.",
+      "text_preview": "The theoretical XAN concentration was, in nanocapsules and nanoemulsion, 1440 mg/mL. Each point represents the meanGSD values obtained from three different batches."
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_paragraph__132",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/L3H2RS2H.pdf.txt#paragraph:7#segment:4",
+      "paragraph_index": 7,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "The inset shows the release proﬁles over the ﬁrst 8 h (*P!0.05). Fig. 8. Evolution of mean size of empty nanocapsules, XAN- and 3- MeOXAN-loaded nanocapsules, during storage at 4 8C for 4 months. Fig. 9. Evolution of zeta potential of empty nanocapsules, XAN- and 3- MeOXAN-loaded nanocapsules, during storage at 4 8C for 4 months. M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500",
+      "text_preview": "The inset shows the release proﬁles over the ﬁrst 8 h (*P!0.05). Fig. 8. Evolution of mean size of empty nanocapsules, XAN- and 3- MeOXAN-loaded nanocapsules, during storage at 4 8C for 4 months. Fig. 9. Evolution of zet"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_03__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 49,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_03__pdf_table.csv]\n- table_id: Table 3\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=93, cols=2\n- first_column_row_labels_preview: 492, 318 [22]. Myritol (caprilic/capric acid triglyceride) was, kindly supplied by Henkel (Lisboa, Portugal). HPLC-grade, methanol and acetonitrile were obtained from Merck, (Lisboa, Portugal). Water was puriﬁed by reverse osmosis, Milli-Q system (Milliporew, Lisboa, Portugal). Other, chemicals were of analytical grade., 2.2. Preparation of nanospheres, Fig., Nanospheres containing XAN or 3-MeOXAN were, (RZOCH3)., prepared by the solvent displacement technique described ...\n- sample_rows:\n- sample_row_1: PLGA was selected for the preparation of the nanocarriers\n- sample_row_2: threalose dihydrate for achieving a 5% (w/v) concentration.\n- sample_row_3: 492 | M. Teixeira et al. / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_03__pdf_table.csv] - table_id: Table 3 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_09__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "characterization",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 44,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=43, cols=2\n- first_column_row_labels_preview: Fig. 8. Evolution of mean size of empty nanocapsules, XAN- and 3-, MeOXAN-loaded nanocapsules, during storage at 4 8C for 4 months., hour were observed. At 1 h of the experiment, the mean, Fig. 6. In vitro release proﬁles of 3-MeOXAN from PLGA nanocapsules, amounts of 3-MeOXAN released from nanoemulsion, and from nanoemulsion followed by its diffusion through the dialysis bag., The diffusion proﬁle of free 3-MeOXAN dissolved in the medium through, the dialysis membrane is shown as a control. The theoretical 3-MeOXAN, at 4 h were roughly 80%. Identical release proﬁles were, concentration was, in nanocapsules and nanoemulsion, 3360 mg/mL. Each, already reported for other drugs [33,35,36]. The similarity, point represents the meanGSD values obtained from three different ...\n- sample_rows:\n- sample_row_1: concentration was, in nanocapsules and nanoemulsion, 3360 mg/mL. Each\n- sample_row_2: Fig. 8. Evolution of mean size of empty nanocapsules, XAN- and 3-\n- sample_row_3: governing the process, as was already reported for other\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_09__pdf_table.csv] - table_id: Table 9 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__03",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_05__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 14,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_05__pdf_table.csv]\n- table_id: Table 5\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=61, cols=2\n- first_column_row_labels_preview: M. Teixeira et al. 494, Table 1, Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres, mL for 3-MeOXAN. According to Barichello et al. [26], XAN nanospheres 3-MeOXAN nanospheres Theoretical, concen-, Encapsula- Final con- Encapsula- Final con-, tration, tion efﬁ- centration tion efﬁ- centration, (mg/mL), ciency (%) (mg/mL) ciency (%) (mg/mL), 50 13.0G1.1 26.1G2.1 19.0G0.6 38.1G1.1 ...\n- sample_rows:\n- sample_row_1: concentration of 60 mg/mL, the ﬁnal concentrations\n- sample_row_2: a XAN nanosphere with theoretical concentration of 60 mg/mL.\n- sample_row_3: M. Teixeira et al. 494 | / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_05__pdf_table.csv] - table_id: Table 5 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__04",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_07__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 14,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=64, cols=2\n- first_column_row_labels_preview: M. Teixeira et al. 496, Table 3, Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules, XAN nanocapsules, XAN/ Final concen- Encapsulation Theoretical, Myritol tration (mg/mL) efﬁciency (%) concentration, 318% (mg/mL), (w/v), 200 0.4 178G21 89G11, 400 0.8 342G18 85G5, 600 1.2 529G57 88G9, 700 1.4 Crystals of XAN ND ...\n- sample_rows:\n- sample_row_1: Myritol tration (mg/mL) efﬁciency (%) concentration | Myritol tration (mg/mL) efﬁciency (%) concentration\n- sample_row_2: concentrations ranging from 200 to 600 mg/mL (Table 3). | deposition at the interfacial level. An additional phase may\n- sample_row_3: M. Teixeira et al. 496 | / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_07__pdf_table.csv] - table_id: Table 7 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__05",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_08__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 14,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=52, cols=2\n- first_column_row_labels_preview: 3-MeOXAN, 800 1.6 Crystals of XAN ND, Values express the mean resultsGSD values of three different batches. ND, not determined., purpose, different batches of XAN or 3-MeOXAN nano-, capsules were prepared using ﬁxed amounts of polymer, (PLGA), surfactants (Pluronic F-68 and soybean lecithin), and 0.5 mL of oil and increasing theoretical concentrations, of xanthones in the ﬁnal suspension ranging from 200 to, 800 mg/mL for XAN and from 1000 to 1600 mg/mL for, 3-MeOXAN. The resulting incorporation efﬁciency values, were close to 90% for XAN formulations with theoretical, concentrations ranging from 200 to 600 mg/mL (Table 3). ...\n- sample_rows:\n- sample_row_1: concentrations ranging from 200 to 600 mg/mL (Table 3). | deposition at the interfacial level. An additional phase may\n- sample_row_2: a XAN nanocapsules with theoretical concentration of 600 mg/mL.\n- sample_row_3: 3-MeOXAN\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_08__pdf_table.csv] - table_id: Table 8 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__06",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_01__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 10,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_01__pdf_table.csv]\n- table_id: Table 1\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 || 11 || 12 || 13\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=2, cols=14\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_01__pdf_table.csv] - table_id: Table 1 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 ||"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__07",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_10__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -11,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=79, cols=2\n- first_column_row_labels_preview: M. Teixeira et al., inﬂuences the release from nanocapsules, which may, suggest the existence of an interaction between the, compound and the polymer of the nanocapsules. Indeed,, as previously reported for other drugs [33], the slower, release from the nanocapsules as compared to the emulsion, could be attributed to an interaction between the compound, and the polymer wall of the nanocapsules., By comparing the release proﬁles of both xanthones from, the respective nanoemulsions (Figs. 6 and 7), the afore-, mentioned higher afﬁnity of 3-MeOXAN for Myritol 318 is, in accordance with its slower release rate. ...\n- sample_rows:\n- sample_row_1: could be attributed to an interaction between the compound | lations with higher concentrations of XAN or 3-MeOXAN\n- sample_row_2: mentioned higher afﬁnity of 3-MeOXAN for Myritol 318 is | 3-MeOXAN concentrations in the ﬁnal dispersions were 60\n- sample_row_3: M. Teixeira et al. | / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500 499\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_10__pdf_table.csv] - table_id: Table 10 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__08",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_06__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -16,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_06__pdf_table.csv]\n- table_id: Table 6\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=44, cols=2\n- first_column_row_labels_preview: Fig. 4. DSC thermograms of threalose, physical mixture of 3-MeOXAN and, empty PLGA nanospheres (1:1), 3-MeOXAN, PLGA and 3-MeOXAN-, loaded nanospheres (3-MeOXAN nps)., Fig. 4 shows DSC thermograms corresponding to the, following samples: PLGA; 3-MeOXAN; threalose; physi-, cal mixture of 3-MeOXAN and empty nanospheres (1:1), Fig. 3. DSC thermograms of threalose, physical mixture of XAN and empty, and 3-MeOXAN-loaded nanospheres. The thermogram of, PLGA nanospheres (1:1), XAN, PLGA and XAN-loaded nanospheres, 3-MeOXAN shows a thermal event at 131 8C correspond-, (XAN nps)., ing to its melting point. The physical mixture of 3- ...\n- sample_rows:\n- sample_row_1: dehydration was observed and it was not possible to clearly | nanocapsule dispersions containing a high concentration of\n- sample_row_2: change. Furthermore, since no XAN melting endotherm was | concentration of xanthones added to the oily core of the\n- sample_row_3: Fig. 4. DSC thermograms of threalose, physical mixture of 3-MeOXAN and\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_06__pdf_table.csv] - table_id: Table 6 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__09",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_11__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "characterization",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -23,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_11__pdf_table.csv]\n- table_id: Table 11\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=46, cols=2\n- first_column_row_labels_preview: inﬂuences their in vivo behaviour [44]. As shown in Fig. 8,, no signiﬁcant differences (PO0.05) on the mean size of, References, empty nanocapsules and XAN- or 3-MeOXAN-loaded, nanocapsules were observed during storage of the respective, [1] V. Peres, T.J. Nagem, F.F. de Oliveira, Tetraoxygenated naturally, aqueous dispersions at 4 8C for 4 months. Similarly, no, occurring xanthones, Phytochemistry 55 (2000) 683–710., signiﬁcant variation on zeta potential values (Fig. 9) was, [2] M.M.M. Pinto, E.P. Sousa, Natural and synthetic xanthonolignoids:, observed during storage for all studied nanocapsule, formulations (PO0.05). ...\n- sample_rows:\n- sample_row_1: which, with time, start to grow and precipitate. | effects on the proliferation of human limphocytes in vitro, Bioorg.\n- sample_row_2: present work was found to be appropriate for the preparation | xanthonolignoids, J. Enzym. Inhib. Med. Chem. 18 (2003) 357–370.\n- sample_row_3: inﬂuences their in vivo behaviour [44]. As shown in Fig. 8,\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_11__pdf_table.csv] - table_id: Table 11 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__10",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_02__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:8"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -43,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_02__pdf_table.csv]\n- table_id: Table 2\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=99, cols=2\n- first_column_row_labels_preview: M. Teixeira et al. 500, able microspheres and nanospheres for the controlled release of, J. Atkinson, P. Maincent, The antihypertensive effect of orally, administered nifedipine-loaded nanoparticles in spontaneously hyper-, [12] C. Fonseca, S. Simo˜es, R. Gaspar, Paclitaxel-loaded PLGA, nanoparticles: preparation, physicochemical characterization and in, [13] M.J. Alonso, Nanoparticulate drug carrier technology in: S. Cohen,, H. Bernstain (Eds.),, Microparticulate Systems for the Delivery of, Proteins and Vaccines, Marcel Dekker, New York, 1996, pp. 203–, [33] V. Ferranti, H. Marchais, C. Chabenat, A.M. Orecchioni, O. Lafont,, 242., Primidone-loaded poly-3-caprolactone nanocapsules: incorporation ...\n- sample_rows:\n- sample_row_1: nanoparticles: preparation, physicochemical characterization and in | and stability study, Int. J. Pharm. 113 (1995) 57–63.\n- sample_row_2: [13] M.J. Alonso, Nanoparticulate drug carrier technology in: S. Cohen, | Preparation and characterization of polyethyl-2-cyanoacrylate nano-\n- sample_row_3: M. Teixeira et al. 500 | / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_02__pdf_table.csv] - table_id: Table 2 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "L3H2RS2H__candidate_table__11",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_04__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -61,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_04__pdf_table.csv]\n- table_id: Table 4\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=91, cols=2\n- first_column_row_labels_preview: M. Teixeira et al., A where is the drug concentration (mg/mL) in, the nanosphere dispersion and B is the theoretical drug, concentration (mg/mL)., least three different batches of each nanocapsule, 2.3.3. Differential scanning calorimetry (DSC), DSC was performed in order to characterize the, physical state of XAN and 3-MeOXAN in nanospheres., 2.5.2. Quantiﬁcation of XAN and 3-MeOXAN content, Thermograms were obtained using a Shimadzu DSC-50, in nanocapsules, (Shimadzu Co., Kyoto, Japan). The adopted scanning ...\n- sample_rows:\n- sample_row_1: A where is the drug concentration (mg/mL) in | appropriate dilution with ﬁltered (0.22 mm) ultrapure\n- sample_row_2: concentration (mg/mL). | Malvern, UK). Values reported are the meanGSD of at\n- sample_row_3: M. Teixeira et al. | / European Journal of Pharmaceutics and Biopharmaceutics 59 (2005) 491–500 493\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/L3H2RS2H/L3H2RS2H__table_04__pdf_table.csv] - table_id: Table 4 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    }
+  ]
+}

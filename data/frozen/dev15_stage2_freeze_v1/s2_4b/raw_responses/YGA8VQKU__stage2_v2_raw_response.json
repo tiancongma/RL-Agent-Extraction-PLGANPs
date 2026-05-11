@@ -1,0 +1,595 @@
+{
+  "document_key": "YGA8VQKU",
+  "doi": "10.1016/j.colsurfb.2009.03.028",
+  "formulation_candidates": [
+    {
+      "candidate_id": "form_0",
+      "raw_label": "FB-loaded PLGA nanospheres",
+      "normalized_label": "FB-loaded PLGA nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_0",
+        "YGA8VQKU_span_6",
+        "YGA8VQKU_span_22"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_1",
+      "raw_label": "DOE Formulation (Table 1)",
+      "normalized_label": "DOE Formulation",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "form_0",
+      "ambiguity_note": "Represents multiple experimental runs (F1-F21) from a DOE table.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_2"
+      ],
+      "status": "derived_from_shared_context"
+    },
+    {
+      "candidate_id": "form_2",
+      "raw_label": "Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g)",
+      "normalized_label": "Low viscosity PLGA nanospheres",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "form_0",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3",
+        "YGA8VQKU_span_4",
+        "YGA8VQKU_span_5",
+        "YGA8VQKU_span_18"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_3",
+      "raw_label": "Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g)",
+      "normalized_label": "High viscosity PLGA nanospheres",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "form_0",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3",
+        "YGA8VQKU_span_4",
+        "YGA8VQKU_span_5",
+        "YGA8VQKU_span_19"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_0",
+      "formulation_candidate_id": "form_0",
+      "component_name": "FB",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_0",
+        "YGA8VQKU_span_6",
+        "YGA8VQKU_span_22"
+      ]
+    },
+    {
+      "component_id": "comp_1",
+      "formulation_candidate_id": "form_0",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_0",
+        "YGA8VQKU_span_6",
+        "YGA8VQKU_span_22"
+      ]
+    },
+    {
+      "component_id": "comp_2",
+      "formulation_candidate_id": "form_0",
+      "component_name": "P188",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_9"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_0",
+      "formulation_candidate_id": "form_1",
+      "variable_name": "cFB",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_7",
+        "YGA8VQKU_span_12"
+      ]
+    },
+    {
+      "variable_id": "var_1",
+      "formulation_candidate_id": "form_1",
+      "variable_name": "pH",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_8",
+        "YGA8VQKU_span_14"
+      ]
+    },
+    {
+      "variable_id": "var_2",
+      "formulation_candidate_id": "form_1",
+      "variable_name": "cP188",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Also mentioned as a constant value (15 mg/mL) for a specific response surface plot.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_9",
+        "YGA8VQKU_span_13"
+      ]
+    },
+    {
+      "variable_id": "var_3",
+      "formulation_candidate_id": "",
+      "variable_name": "cP188",
+      "value_text": "15 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Constant value for response surface plot, but also listed as a DOE factor in Table 1.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_9"
+      ]
+    },
+    {
+      "variable_id": "var_4",
+      "formulation_candidate_id": "",
+      "variable_name": "cPLGA",
+      "value_text": "9 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Constant value for response surface plot.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_10"
+      ]
+    },
+    {
+      "variable_id": "var_5",
+      "formulation_candidate_id": "form_2",
+      "variable_name": "PLGA viscosity",
+      "value_text": "0.32–0.44 dL/g",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3",
+        "YGA8VQKU_span_5",
+        "YGA8VQKU_span_18",
+        "YGA8VQKU_span_20",
+        "YGA8VQKU_span_23"
+      ]
+    },
+    {
+      "variable_id": "var_6",
+      "formulation_candidate_id": "form_3",
+      "variable_name": "PLGA viscosity",
+      "value_text": "0.7–1.1 dL/g",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3",
+        "YGA8VQKU_span_5",
+        "YGA8VQKU_span_19",
+        "YGA8VQKU_span_21",
+        "YGA8VQKU_span_24"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_0",
+      "formulation_candidate_id": "form_1",
+      "measurement_name": "size",
+      "value_text": "",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_1",
+        "YGA8VQKU_span_11",
+        "YGA8VQKU_span_15"
+      ]
+    },
+    {
+      "measurement_id": "meas_1",
+      "formulation_candidate_id": "form_1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_16"
+      ]
+    },
+    {
+      "measurement_id": "meas_2",
+      "formulation_candidate_id": "form_1",
+      "measurement_name": "zeta_potential",
+      "value_text": "",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_17"
+      ]
+    },
+    {
+      "measurement_id": "meas_3",
+      "formulation_candidate_id": "form_2",
+      "measurement_name": "size",
+      "value_text": "205.30 ± 2.52",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3"
+      ]
+    },
+    {
+      "measurement_id": "meas_4",
+      "formulation_candidate_id": "form_2",
+      "measurement_name": "zeta_potential",
+      "value_text": "−24.60 ± 0.95",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3"
+      ]
+    },
+    {
+      "measurement_id": "meas_5",
+      "formulation_candidate_id": "form_2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "97.75 ± 0.01",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3"
+      ]
+    },
+    {
+      "measurement_id": "meas_6",
+      "formulation_candidate_id": "form_3",
+      "measurement_name": "size",
+      "value_text": "232.80 ± 1.93",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3"
+      ]
+    },
+    {
+      "measurement_id": "meas_7",
+      "formulation_candidate_id": "form_3",
+      "measurement_name": "zeta_potential",
+      "value_text": "−25.79 ± 1.17",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3"
+      ]
+    },
+    {
+      "measurement_id": "meas_8",
+      "formulation_candidate_id": "form_3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "94.60 ± 0.42",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_0",
+      "source_candidate_id": "form_2",
+      "target_candidate_id": "form_0",
+      "relation_type": "inherits_from",
+      "note": "Variant of general FB-loaded PLGA nanospheres",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_0",
+        "YGA8VQKU_span_6",
+        "YGA8VQKU_span_22"
+      ]
+    },
+    {
+      "relation_id": "rel_1",
+      "source_candidate_id": "form_3",
+      "target_candidate_id": "form_0",
+      "relation_type": "inherits_from",
+      "note": "Variant of general FB-loaded PLGA nanospheres",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_0",
+        "YGA8VQKU_span_6",
+        "YGA8VQKU_span_22"
+      ]
+    },
+    {
+      "relation_id": "rel_2",
+      "source_candidate_id": "form_2",
+      "target_candidate_id": "form_3",
+      "relation_type": "varies_by",
+      "note": "Vary by PLGA viscosity",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_3",
+        "YGA8VQKU_span_4",
+        "YGA8VQKU_span_5"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "YGA8VQKU_span_0",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "title",
+      "supporting_text": "Effect of polymer viscosity on physicochemical properties and ocular tolerance of FB-loaded PLGA nanospheres"
+    },
+    {
+      "span_id": "YGA8VQKU_span_1",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "Experimental design: varying concentrations or batches. Response surface plot of the effect of the interaction between FB concentration and pH (cFB:pH) on the mean particle size (cP188 = 15 mg/mL; cPLGA = 9 mg/mL), mean size (nm) = 545.57 − 107.04 pH − 184.84 cFB + 7.91 pH 2 + 28.54 cFB 2 + 24.75 pH:cFB."
+    },
+    {
+      "span_id": "YGA8VQKU_span_2",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Experimental design: varying concentrations or batches. Variable table: formulation factors and concentrations. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__html_table.csv]\n- table_id: Table 1\n- title_or_caption: Experimental design variable table.\n- column_headers: Coded levels of factors || Empty Cell || Coded levels of factors || cFB (mg/mL) || Coded levels of factors || cP188 (mg/mL) || Coded levels of factors || pH || Measured responses || Mean size (nm) ± SD || Measured responses || EE (%) ± SD || Measured responses || Zeta potential (mV) ± SD\n- header_units: mg/mL, nm, %, mV\n- table_role_hint: design matrix\n- table_shape_hint: rows=21, cols=7\n- first_column_row_labels_preview: Factorial points, F1, F2, F3, F4, F5, F6, F7, F8, Axial points, F9, F10 ...\n- representation_status: repaired_summary\n- repair_primary_source: stage1_selected_table_asset\n- repair_actions: first_column_preservation\n- selector_readiness: ready\n- sample_rows:\n- sample_row_1: Factorial points | Factorial points | Factorial points | Factorial points | Factorial points | Factorial points | Factorial points\n- sample_row_2: Axial points | Axial points | Axial points | Axial points | Axial points | Axial points | Axial points\n- sample_row_3: F16 | 0 | 0 | 0 | 179.00 ± 0.00 | 64.94 ± 0.23 | −25.03 ± 0.57\n- footnotes_or_notes: (not available)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_3",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 7",
+      "supporting_text": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__html_table.csv]\n- table_id: Table 7\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: Empty Cell || Mean size (nm) ± SD || Zeta potential (mV) ± SD || Entrapment efficiency (%) ± SD\n- header_units: nm, mV, %\n- row_identifier_pattern: repeated categorical identifiers\n- table_role_hint: formulation\n- table_shape_hint: rows=2, cols=4\n- first_column_row_labels_preview: Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g), Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g)\n- representation_status: repaired_summary\n- repair_primary_source: stage1_selected_table_asset\n- repair_actions: first_column_preservation\n- selector_readiness: ready\n- sample_rows:\n- sample_row_1: Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g) | 205.30 ± 2.52 | −24.60 ± 0.95 | 97.75 ± 0.01\n- sample_row_2: Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g) | 232.80 ± 1.93 | −25.79 ± 1.17 | 94.60 ± 0.42\n- footnotes_or_notes: (not available)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_4",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Optimization result: best/highest/efficiency/loading outcome. Mean particle size, zeta potential and entrapment efficiency of FB-loaded nanospheres produced with low viscosity PLGA in comparison to nanospheres produced with high viscosity PLGA [24] ."
+    },
+    {
+      "span_id": "YGA8VQKU_span_5",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "Mean particle size and zeta potential of nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), monitored for 75 days. Download: Download full-size image Fig. 7 . Transmission (T) and back scattering (BS) profiles of nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), as a function of time (upper: 0–24 h) and of sample height (lower: 0–65 mm)."
+    },
+    {
+      "span_id": "YGA8VQKU_span_6",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "title",
+      "supporting_text": "FB-loaded PLGA nanospheres"
+    },
+    {
+      "span_id": "YGA8VQKU_span_7",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "FB concentration"
+    },
+    {
+      "span_id": "YGA8VQKU_span_8",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "pH"
+    },
+    {
+      "span_id": "YGA8VQKU_span_9",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "cP188 = 15 mg/mL"
+    },
+    {
+      "span_id": "YGA8VQKU_span_10",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "cPLGA = 9 mg/mL"
+    },
+    {
+      "span_id": "YGA8VQKU_span_11",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "mean size (nm)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_12",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, column header",
+      "supporting_text": "cFB (mg/mL)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_13",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, column header",
+      "supporting_text": "cP188 (mg/mL)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_14",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, column header",
+      "supporting_text": "pH"
+    },
+    {
+      "span_id": "YGA8VQKU_span_15",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, column header",
+      "supporting_text": "Mean size (nm) ± SD"
+    },
+    {
+      "span_id": "YGA8VQKU_span_16",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, column header",
+      "supporting_text": "EE (%) ± SD"
+    },
+    {
+      "span_id": "YGA8VQKU_span_17",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, column header",
+      "supporting_text": "Zeta potential (mV) ± SD"
+    },
+    {
+      "span_id": "YGA8VQKU_span_18",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 7, row label",
+      "supporting_text": "Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_19",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 7, row label",
+      "supporting_text": "Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_20",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "low viscosity PLGA (0.32–0.44 dL/g)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_21",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "high viscosity PLGA (0.7–1.1 dL/g)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_22",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "FB-loaded nanospheres"
+    },
+    {
+      "span_id": "YGA8VQKU_span_23",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA of low (0.32–0.44 dL/g)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_24",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA of high viscosity (0.7–1.1 dL/g)"
+    },
+    {
+      "span_id": "YGA8VQKU_span_25",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "monitored for 75 days"
+    },
+    {
+      "span_id": "YGA8VQKU_span_26",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "Transmission (T) and back scattering (BS) profiles"
+    },
+    {
+      "span_id": "YGA8VQKU_span_27",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "as a function of time (upper: 0–24 h) and of sample height (lower: 0–65 mm)"
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "obs_0",
+      "category": "reported_but_unassigned",
+      "note": "Duration of monitoring for nanospheres.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_25"
+      ]
+    },
+    {
+      "observation_id": "obs_1",
+      "category": "measurement_without_boundary",
+      "note": "Other characterization measurements mentioned.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_26"
+      ]
+    },
+    {
+      "observation_id": "obs_2",
+      "category": "reported_but_unassigned",
+      "note": "Conditions for Transmission and Back Scattering profiles.",
+      "evidence_span_ids": [
+        "YGA8VQKU_span_27"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "YGA8VQKU_span_2"
+    },
+    {
+      "table_id": "Table 7",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "YGA8VQKU_span_3"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "cFB",
+        "cP188",
+        "pH"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "cFB",
+        "cP188",
+        "pH"
+      ]
+    },
+    {
+      "table_id": "Table 7",
+      "varying_variables": [
+        "PLGA viscosity"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "PLGA viscosity"
+      ]
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    }
+  ]
+}

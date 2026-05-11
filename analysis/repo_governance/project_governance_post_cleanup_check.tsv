@@ -1,0 +1,13 @@
+remaining_path	category	authoritative_governance	keep	notes
+project/0_PROJECT_CHARTER.md	governance_contract	yes	yes	Intended governance charter slot; file is still empty and remains the only clearly borderline retained item.
+project/1_REQUIREMENTS.md	governance_contract	yes	yes	Mandatory startup governance context per AGENTS.md.
+project/2_ARCHITECTURE.md	governance_contract	yes	yes	Mandatory startup governance context per AGENTS.md.
+project/4_DECISIONS_LOG.md	governance_contract	yes	yes	Authoritative human-readable decision surface.
+project/ACTIVE_DATA_SOURCE_CONTRACT.md	governance_contract	yes	yes	Authoritative active data-source contract for current data/results workflows.
+project/ACTIVE_PIPELINE_FLOW.md	governance_contract	yes	yes	Authoritative active pipeline flow definition.
+project/ACTIVE_PIPELINE_RUNBOOK.md	governance_contract	yes	yes	Authoritative execution runbook.
+project/FILE_NAMING_AND_VERSIONING.md	governance_contract	yes	yes	Authoritative naming and versioning specification.
+project/PIPELINE_SCRIPT_MAP.md	governance_contract	yes	yes	Authoritative active script map and stage-role registry surface.
+project/feature_units/FEATURE_UNIT_GOVERNANCE.md	governed_feature_unit_contract	yes	yes	Explicit governed feature-unit contract retained per prior cleanup decision and user allowance.
+project/feature_units/feature_intervention_matrix.tsv	governed_feature_unit_contract	yes	yes	Explicit governed feature-unit matrix retained per prior cleanup decision and user allowance.
+project/feature_units/feature_unit_registry.json	governed_feature_unit_contract	yes	yes	Explicit governed feature-unit registry retained per prior cleanup decision and user allowance.

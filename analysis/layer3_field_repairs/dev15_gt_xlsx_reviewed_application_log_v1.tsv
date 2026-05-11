@@ -1,0 +1,53 @@
+paper_key	gt_formulation_id	source_field_name	target_field_name	old_value	user_value	applied_value	application_action	candidate_gt_decision	USER_NOTE	proposed_gt_value	gt_value_raw
+5GIF3D8W	5GIF3D8W_G001	emulsifier_stabilizer_concentration_unit	surfactant_concentration_unit		% w/v	% w/v	applied_user_value	reviewed			
+5GIF3D8W	5GIF3D8W_G001	emulsifier_stabilizer_concentration_value	surfactant_concentration_value		1.0%w/v	1.0%w/v	applied_user_value	reviewed			
+5GIF3D8W	5GIF3D8W_G001	la_ga_ratio_normalized	la_ga_ratio_normalized		N/A		reviewed_not_applicable_kept_blank	reviewed	PCL没有LA GA的比例		
+5GIF3D8W	5GIF3D8W_G001	la_ga_ratio_raw	la_ga_ratio_raw		N/A		reviewed_not_applicable_kept_blank	reviewed			
+5GIF3D8W	5GIF3D8W_G002	emulsifier_stabilizer_concentration_unit	surfactant_concentration_unit		% w/v	% w/v	applied_user_value	reviewed			
+5GIF3D8W	5GIF3D8W_G002	emulsifier_stabilizer_concentration_value	surfactant_concentration_value		1.0%w/v	1.0%w/v	applied_user_value	reviewed			
+5GIF3D8W	5GIF3D8W_G002	la_ga_ratio_normalized	la_ga_ratio_normalized		N/A		reviewed_not_applicable_kept_blank	reviewed			
+5GIF3D8W	5GIF3D8W_G002	la_ga_ratio_raw	la_ga_ratio_raw		N/A		reviewed_not_applicable_kept_blank	reviewed			
+5GIF3D8W	5GIF3D8W_G038	la_ga_ratio_normalized	la_ga_ratio_normalized		N/A		reviewed_not_applicable_kept_blank	reviewed			
+5GIF3D8W	5GIF3D8W_G038	la_ga_ratio_raw	la_ga_ratio_raw		N/A		reviewed_not_applicable_kept_blank	reviewed			
+5ZXYABSU	5ZXYABSU_G006	emulsifier_stabilizer_name	surfactant_name	Labrafil® M 1944 CS	Labrafil | PVA	Labrafil	applied_user_value_mapped_emulsifier_field	reviewed	两种稳定剂		Labrafil | PVA
+5ZXYABSU	5ZXYABSU_G006	emulsifier_stabilizer_name	stabilizer_name	PVA	Labrafil | PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed	两种稳定剂		Labrafil | PVA
+5ZXYABSU	5ZXYABSU_G009	emulsifier_stabilizer_name	surfactant_name	Labrafil® M 1944 CS	Labrafil | PVA	Labrafil	applied_user_value_mapped_emulsifier_field	reviewed			Labrafil | PVA
+5ZXYABSU	5ZXYABSU_G009	emulsifier_stabilizer_name	stabilizer_name	PVA	Labrafil | PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed			Labrafil | PVA
+7ZS858NS	7ZS858NS_G001	emulsifier_stabilizer_name	surfactant_name	Solutol HS 15	Solutol HS 15	Solutol HS 15	applied_user_value_mapped_emulsifier_field	reviewed	文中只有这一种稳定剂，没有出现PF68，需要检查污染源		Solutol HS 15
+7ZS858NS	7ZS858NS_G001	emulsifier_stabilizer_name	stabilizer_name	Solutol HS 15	Solutol HS 15	Solutol HS 15	applied_user_value_mapped_emulsifier_field	reviewed	文中只有这一种稳定剂，没有出现PF68，需要检查污染源		Solutol HS 15
+7ZS858NS	7ZS858NS_G001	method_type	method_type	nanoprecipitation	nanoprecipitation	nanoprecipitation	applied_user_value	reviewed			double_emulsion_w1_o_w2
+BXCV5XWB	BXCV5XWB_G001	emulsifier_stabilizer_name	surfactant_name	PVA	PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed	文中没有出现PF68，检查为什么污染		PVA
+BXCV5XWB	BXCV5XWB_G001	emulsifier_stabilizer_name	stabilizer_name	PVA	PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed	文中没有出现PF68，检查为什么污染		PVA
+BXCV5XWB	BXCV5XWB_G001	la_ga_ratio_normalized	la_ga_ratio_normalized		1:1 d,l-lactic to glycolic acid	1:1 d,l-lactic to glycolic acid	applied_user_value	reviewed			
+BXCV5XWB	BXCV5XWB_G001	solvent_name	solvent_name	ACN	ACN	ACN	applied_user_value	reviewed	acetonitrile (ACN)		ACN
+BXCV5XWB	BXCV5XWB_G001	zeta_mV	zeta_mV		~-33.1 mV mV	~-33.1 mV mV	applied_user_value	reviewed			
+BXCV5XWB	BXCV5XWB_G004	emulsifier_stabilizer_name	surfactant_name	PVA	PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed			PVA
+BXCV5XWB	BXCV5XWB_G004	emulsifier_stabilizer_name	stabilizer_name	PVA	PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed			PVA
+BXCV5XWB	BXCV5XWB_G004	la_ga_ratio_normalized	la_ga_ratio_normalized		1:1 d,l-lactic to glycolic acid	1:1 d,l-lactic to glycolic acid	applied_user_value	reviewed			
+BXCV5XWB	BXCV5XWB_G004	polymer_name	polymer_name	PLGA	PLGA-PEG	PLGA-PEG	applied_user_value	reviewed			PLGA
+BXCV5XWB	BXCV5XWB_G004	solvent_name	solvent_name	ACN	ACN	ACN	applied_user_value	reviewed			ACN
+BXCV5XWB	BXCV5XWB_G004	zeta_mV	zeta_mV		~-28.5 mV mV	~-28.5 mV mV	applied_user_value	reviewed			
+BXCV5XWB	BXCV5XWB_G007	emulsifier_stabilizer_name	surfactant_name	PVA	PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed			PVA
+BXCV5XWB	BXCV5XWB_G007	emulsifier_stabilizer_name	stabilizer_name	PVA	PVA	PVA	applied_user_value_mapped_emulsifier_field	reviewed			PVA
+BXCV5XWB	BXCV5XWB_G007	la_ga_ratio_normalized	la_ga_ratio_normalized		1:1 d,l-lactic to glycolic acid	1:1 d,l-lactic to glycolic acid	applied_user_value	reviewed			
+BXCV5XWB	BXCV5XWB_G007	polymer_name	polymer_name	PLGA	PLGA-PEG	PLGA-PEG	applied_user_value	reviewed			PLGA
+BXCV5XWB	BXCV5XWB_G007	solvent_name	solvent_name	ACN	ACN	ACN	applied_user_value	reviewed			ACN
+BXCV5XWB	BXCV5XWB_G007	zeta_mV	zeta_mV		~11.2 mV mV	~11.2 mV mV	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G001	zeta_mV	zeta_mV	−12.2 mV	−12.2 ± 1.3	−12.2 ± 1.3	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G002	zeta_mV	zeta_mV	−16.2 mV	−16.2 ± 0.7	−16.2 ± 0.7	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G003	zeta_mV	zeta_mV	−21.4 mV	−21.4 ± 0.8	−21.4 ± 0.8	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G004	zeta_mV	zeta_mV	−22.5 mV	−22.5 ± 0.5	−22.5 ± 0.5	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G005	zeta_mV	zeta_mV	−25.2 mV	−25.2 ± 0.6	−25.2 ± 0.6	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G006	zeta_mV	zeta_mV	−26.0 mV	−26.0 ± 0.1	−26.0 ± 0.1	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G007	zeta_mV	zeta_mV	−11.8 mV	−11.8 ± 0.9	−11.8 ± 0.9	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G008	zeta_mV	zeta_mV	−14.1 mV	−14.1 ± 1.1	−14.1 ± 1.1	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G009	zeta_mV	zeta_mV	−18.7 mV	−18.7 ± 1.4	−18.7 ± 1.4	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G010	zeta_mV	zeta_mV	−16.7 mV	−16.7 ± 0.7	−16.7 ± 0.7	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G011	zeta_mV	zeta_mV	−21.2 mV	−21.2 ± 0.6	−21.2 ± 0.6	applied_user_value	reviewed			
+INMUTV7L	INMUTV7L_G012	zeta_mV	zeta_mV	−23.1 mV	−23.1 ± 1.8	−23.1 ± 1.8	applied_user_value	reviewed			
+PA3SPZ28	PA3SPZ28_G003	polymer_to_drug_ratio_raw	polymer_to_drug_ratio_raw		10:1	10:1	applied_user_value	reviewed	文中说drug：polymer，方向反了		
+PA3SPZ28	PA3SPZ28_G004	polymer_to_drug_ratio_raw	polymer_to_drug_ratio_raw		20:1	20:1	applied_user_value	reviewed			
+PA3SPZ28	PA3SPZ28_G005	polymer_to_drug_ratio_raw	polymer_to_drug_ratio_raw		6.66:1	6.66:1	applied_user_value	reviewed			
+QLYKLPKT	QLYKLPKT_G005	emulsifier_stabilizer_concentration_value	surfactant_concentration_value	3	3	3	applied_user_value	reviewed	Therefore, 3 mg/mL of poloxamer 188 was chosen for the preparation of PLGA-ITZ-NS during the whole study. 前四个配方确定了3mg/mL是最佳，后三个配方应该用3		3
+QLYKLPKT	QLYKLPKT_G006	emulsifier_stabilizer_concentration_value	surfactant_concentration_value	3	3	3	applied_user_value	reviewed			3
+QLYKLPKT	QLYKLPKT_G007	emulsifier_stabilizer_concentration_value	surfactant_concentration_value	3	3	3	applied_user_value	reviewed			3

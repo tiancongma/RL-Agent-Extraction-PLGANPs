@@ -1,0 +1,28 @@
+{
+  "paper_key": "QLYKLPKT",
+  "selector_calibration_version": "v2",
+  "archetype": "variable_sweep_then_formulation_table",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph",
+      "primary preparation-method paragraph",
+      "variable-sweep or factor-definition table",
+      "authoritative formulation-bearing table",
+      "local optimization or selection paragraph if it explicitly carries forward a chosen condition"
+    ],
+    "should_drop": [
+      "proxy table paragraphs duplicated by the selected tables",
+      "broad context fallback once the selected table set already explains the formulation universe"
+    ],
+    "minimal_evidence_set": [
+      "1 materials block",
+      "1 preparation block",
+      "1 variable-structure table",
+      "1 formulation-bearing table",
+      "0-1 compact supporting optimization block"
+    ]
+  },
+  "selection_notes": [
+    "Authoritative table blocks may satisfy multiple downstream semantic needs without parallel proxy retention."
+  ]
+}

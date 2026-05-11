@@ -1,0 +1,160 @@
+"Please do not adjust margins",""
+"Journal Name","ARTICLE"
+"measured 
+by 
+Laser 
+Doppler 
+Electrophoresis 
+(Malvern","protein in these samples is zero (Eqs. 1 and 2). Before modelling,"
+"Instruments,  Worcestershire,  UK).  All  measurements  were","factors and responses were auto-scaled (average removal and"
+"performed  in  triplicate  using  nanoparticles  dispersed  in  DPBS","division by the variance). Models’ performance was assessed by"
+"(20 mg/mL) at 25 ºC.","calculating the root mean square error (RMSE) and range error"
+"","ratio (RER) parameters."
+"N
+anoparticles surface morphology evaluation","ni
+(Yi−Ŷi)2"
+"","=1
+ RMSE = √∑
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(3)"
+"","n"
+"The nanoparticles (PVA= 11 % (w/v), PolVisc= 0.6 dg/l and OVA=",""
+"0 % (w/w)) size, shape and surface morphology were evaluated",""
+"","In Eq. 3, Yi is the experimentally observed value for sample i, Ŷi"
+"by  Atomic  Force  Microscopy  (AFM),  using  a  Nanoscope  IIIa",""
+"","is the model predicted value for sample i and n is the number of"
+"Multimode  AFM  (Digital  Instruments,  Veeco).29  Nanoparticle",""
+"","samples."
+"were  diluted  to  10  mg/mL  with  purified  water.  The  samples",""
+"were added dropwise to cleaved mica at room temperature and","Ymax−Ymin"
+"","RER =
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(4)"
+"",""
+"dried with N2. The AFM analyses were performed at a scan rate","RMSE"
+"of  approximately  1.6  Hz,  using  tapping  mode  in  air  at  room",""
+"","In Eq. 4, Ymax is the maximum value of the response, Ymin is the"
+"temperature  with  etched  silicon  tips  (ca.  300  kHz),  obtaining",""
+"","minimum value of the response."
+"topography and phase images.",""
+"E","Models’ validation and design-space"
+"ntrapment efficiency and loading capacity assessment","The optimised models were used to estimate the manufacturing"
+"The EE and LC were determined by the indirect method,","properties 
+ideal 
+to 
+attain 
+the  nanoparticle 
+specifications"
+"analysing the amount of ovalbumin released in the","required for optimal delivery of antigens to targeted phagocytic"
+"supernatants by HPLC (Eqs. 1 and 2).","cells.21  Accordingly, 
+these 
+nanotechnology-based 
+vaccines"
+"","should  present  mean 
+size  diameter 
+lower 
+than  200  nm,"
+"","monodisperse  population  (PdI  ≤  0.200)  and  neutral  surface"
+"","charge,  in  order  to  enhance  their  capture  by  dendritic  cells,"
+"ovalbumin0−ovalbuminsup",""
+"EE(% w/w) =
+  
+ 
+ 
+ 
+(1)",""
+"","which  are  known  as  the  most  potent  professional  antigen-"
+"ovalbumin0",""
+"","presenting cells (APCs).21 This was achieved using the optimiser"
+"ovalbumin0−ovalbuminsup","feature of MODDE version 10.1 (MKS Umetrics, Sweden), which"
+"LC(μg/mg) =
+ 
+ 
+ 
+ 
+ 
+ 
+(2)",""
+"",""
+"polymer","includes  a  simplex  algorithm  for  optimisation.  The  targeted"
+"","specifications aforementioned were introduced in the optimiser"
+"","and series of estimations of the three factors were  proposed."
+"In  Eq.  1,  ovalbumin0  is  the  initial  amount  of  ovalbumin  and",""
+"","The estimation featuring the highest determinant was selected"
+"ovalbuminsup is the amount of ovalbumin in the supernatant. In",""
+"","for the preparation of a batch of nanoparticles, in triplicate. The"
+"Eq. 2, polymer is the amount of polymer.",""
+"","physicochemical properties of these carriers were determined,"
+"The  determination  of  OVA  was  performed  using  a  Beckman","as  described 
+in  section  2.4.  The  developed  models  were"
+"System  Gold  HPLC 
+(Beckman  Coulter 
+Inc.),  with  a  Shodex","validated  through  the  comparison  between  predictions  and"
+"Protein  KW-803  column  (8.0  mm  ID  x  300  mm,  5  µm  particle","experimental 
+values. 
+The 
+estimated 
+design-space 
+was"
+"size, 300 Å pore size) at room temperature, injecting samples","constructed around the nanoparticulate system presenting the"
+"with  a  volume  of  20  µl.  The  mobile  phase  was  composed  of","targeted specifications, applying the developed models for the"
+"sodium phosphate buffer 50 mM at pH 7.0 and sodium chloride","five 
+responses  with  MODDE  version  10.1 
+(MKS  Umetrics,"
+"0.3  M.  The  eluent  flow  rate  was  1.0  mL/min,  for  15  min.  The","Sweden).  The  design-space  was  built  in  terms  of  default  per"
+"signal was monitored at 220 nm by spectrophotometric analysis","million opportunities (DPMO)."
+"(Hitachi U-2001 UV-vis Spectrophotometer, USA).",""
+"F","I
+nteraction of nanoparticles with targeted cells"
+"TIR characterization of PLGA nanoparticles",""
+"PLGA  nanoparticles  were 
+lyophilized 
+(Modulyo  freeze-dryer","C
+onditions of cell culture"
+"(Edwards,  Germany)) 
+in  the  presence  of  the  cryoprotectant",""
+"","JAWSII  murine  immature  dendritic  cells  were  propagated  in"
+"sucrose (0.05 % w/w) for 18 h at an initial temperature of  -40ºC",""
+"","RPMI  medium  with  GlutaMAX  with  10  %  (v/v)  FBS,  1%  (v/v)"
+"ºC  and  0,1  mBar.  Lyophilized  nanoparticles  and  the  controls",""
+"","sodium  pyruvate,  1  %  (v/v)  penicillin  streptomycin,  1  %  (v/v)"
+"were  mixed  with  KBr  at  a  concentration  of  1,5%  (w/w)  and",""
+"","HEPES buffer, 0.1 % (v/v) 2-mercaptoethanol and 0.005 % (v/v)"
+"compressed  into  a  tablet  (12  mm  diameter)  using  a  manual",""
+"","GM-CSF."
+"tablet  presser.  The 
+infrared  spectra  were  measured  at  the",""
+"transmittance mode with 30 scans and a resolution of 2.0 cm-1",""
+"(Affinity-1 Shimadzu spectrophotometer, Japan).","I"
+"","n vitro cell viability"
+"M","Cell  viability  of  JAWSII  murine  immature  dendritic  cells  in  the"
+"odelling",""
+"","presence of PLGA nanoparticles ((PVA= 11 % (w/v), PolVisc= 0.6"
+"Multiple linear regression was used to model the five responses",""
+"","dg/l and OVA= 2.5 % (w/w)) was inferred by using AlamarBlue®"
+"against the three factors,56 resourcing to the software MODDE",""
+"","Assay. The cells (1×106) were incubated overnight at 37 ºC and"
+"version 10.1 (MKS Umetrics, Sweden). To model EE and LC, plain",""
+"","treated  with 
+increasing 
+concentrations  of 
+5  %  CO2  and"
+"nanoparticles experiments were discarded since the amount of",""
+"","nanoparticles 
+(125,  250,  500  and  1000  µg/mL) 
+for  48h."
+"This journal is © The Royal Society of Chemistry 20xx","J. Name., 2013, 00, 1-3 | 9"

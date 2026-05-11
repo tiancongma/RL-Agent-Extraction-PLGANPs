@@ -1,0 +1,1062 @@
+Vol.:(0123456789)
+BioNanoScience (2024) 14:4493–4505
+https://doi.org/10.1007/s12668-024-01330-2
+RESEARCH
+Investigating the Immunomodulatory Effects of Antigenic PLGA
+Nanoparticles and Nutritional Synergy in Caenorhabditis elegans
+Adheena Panangattu Baburajan1 · Sarita Ganapathy Bhat1 · Sreeja Narayanan1
+Accepted: 6 February 2024 / Published online: 14 February 2024
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2024
+Abstract
+This study explores the significance of antigenic nanoformulation in immunomodulation and in the interplay between immune
+response and nutrition. The work involves the development of a polylactic-co-glycolic acid (PLGA) biopolymer-based
+nanoparticle with immunogenic inclusions derived from Staphylococcus aureus cell wall and membrane (CWM) through
+a double emulsion method followed by their physio-chemical characterization and in vivo assessment in Caenorhabditis
+elegans (C. elegans). The prepared nanoparticles were monodispersed in nature and exhibited a diameter of ~ 25 nm with
+stable colloidal nature and a zeta potential of − 25 ± 2 mV. The inclusion release and carrier degradation profiling revealed
+controlled and steady kinetics supporting the sustained availability of the encapsulated payload. The immunomodulatory
+studies conducted in C. elegans revealed that the expression of the stress indicator gene viz., sodh-1 was significantly upregu-
+lated in the CWM-treated worms and was notably reduced in the worms treated with the nanoformulation indicative of the
+slow release of the antigen which does not trigger untoward stress responses. In contrast, the expression of host defense
+genes viz., clec-7, ilys-3, igg-1, and cyp-37B1 in response to the CWM treatment was found to be downregulated, while for
+the nanoformulation treatment, the extent of downregulation was relatively lesser. A notable observation emerged as these
+genes, previously downregulated, exhibited a significant upsurge when the nutritional supplementation was amplified. This
+highlighted the profound influence of nutrition in fine-tuning the immune responses. Our data offers insights that could
+pave the way for further research in designing nutritional strategies to augment immunomodulatory interventions, as well
+as advocate for nanoparticle-based immunomodulatory approaches to prevent immune stress.
+Keywords  Immunomodulation · Nanoparticle · C.elegans · Nutrition · Stress · Host defense
+1  Introduction
+The oral delivery of immunomodulators represents a sig-
+nificant stride in medical science, offering a novel approach
+to regulate and modulate the responses of the immune sys-
+tem [1]. Immunomodulators are substances that can either
+enhance or suppress immune activity, and their successful
+oral delivery holds great potential for a variety of therapeutic
+applications in managing chronic inflammatory conditions.
+However, the oral delivery of immunoboosters encounters
+multifaceted challenges stemming from the harsh conditions
+of the gastrointestinal environment, including acidity and
+enzymatic degradation, which can compromise the stability
+and bioavailability of these agents [2]. Additionally, the risk
+of first-pass metabolism in the liver and limited absorption
+due to large molecular sizes further hampers their effective-
+ness. The potential for immunogenicity and tolerance issues
+within the gut, coupled with the need for precise formulation
+techniques, compounds the complexity of designing effec-
+tive oral delivery systems.
+Nanoparticles offer a promising avenue for overcoming
+the challenges associated with the oral delivery of immuno-
+boosters [3, 4]. By encapsulating immunoboosters, nano-
+particles provide protection against the harsh conditions of
+the gastrointestinal tract, safeguarding their integrity and
+bioactivity. Their small size and unique properties enhance
+bioavailability by facilitating absorption across the intes-
+tinal epithelium, increasing the likelihood of reaching the
+systemic circulation. Furthermore, nanoparticles enable con-
+trolled release, ensuring a sustained supply of immunoboost-
+ers and reducing the need for frequent dosing. Of the various
+ *	 Sreeja Narayanan
+
+narayanan.sreeja@cusat.ac.in
+1
+Department of Biotechnology, Cochin University of Science
+and Technology, Kochi, India
+
+4494
+
+BioNanoScience (2024) 14:4493–4505
+nanoparticulate systems available, polymer-based nanopar-
+ticles have revolutionized drug delivery, offering solutions
+to challenges that were once considered insurmountable [5,
+6]. Poly lactic-co-glycolic acid (PLGA) is one such synthetic
+biopolymer that has gained significant attention in the fields
+of medicine, pharmaceuticals, and biotechnology [7].
+In the present study, we have demonstrated the immu-
+nomodulatory and stress-mitigating properties of PLGA
+nanoparticles incorporated with Staphylococcus aureus
+cell wall and membrane extract (CWM) after oral delivery
+in Caenorhabditis elegans. These antigenic PLGA nano-
+particles (aNPs) were prepared through a double emulsion
+method, and the physicochemical analyses were performed
+using FE-SEM, DLS-Zetasizer, and FTIR. The entrapment
+efficiency and release kinetics were assessed using ELISA
+specific for peptidoglycan, which is a major component of
+the immunogenic extract. The immunomodulation of the
+aNPs was evaluated by estimating the expression of stress
+indicator and host immunity genes in C. elegans viz., sodh-
+1, clec-7, ilys-3, igg-1, and cyp-37B1 in the presence of the
+natural diet of the nematode viz., E. coli OP50 strain in opti-
+mal and excess conditions. We observed a significant down-
+regulation of the stress indicator gene sodh-1 in response to
+exposure to aNPs, as compared to the control nematodes
+treated with CWM alone. Furthermore, an increase in OP50
+concentration exhibited a positive effect on the regulation of
+the sodh-1 gene, further enhancing the stress-downregulat-
+ing potential of aNPs, indicating significant modulation of
+stress gene expression under nutritional abundance. The host
+defense genes viz., clec-7, ilys-3, igg-1, and cyp-37B1 were
+also significantly upregulated under nutritional abundance,
+indicating the potential influence of nutrition on immu-
+nomodulation at the organism level. Our data supports the
+idea that positive immunomodulation could be effectively
+achieved only if the nutrition factor is also optimally sup-
+plemented. This research would pave the way to in-depth
+explorations to understand the interplay between nutrition,
+gene expression, and immune function, offering insights that
+could revolutionize nutritional strategies to effectively aug-
+ment oral delivery of immune boosters and vaccines.
+2  Materials and Methods
+2.1  Materials and Kits
+The following materials and kits were used without further
+purification or modification: acid-terminated poly-lactide-
+co-glycolic acid (PLGA) copolymers with glycolic-to-lactic
+mole percentage ratio (50/50 ratio; Polysciences), ethanol
+(HiMedia), acetone (Sigma), sodium hydroxide (Sigma),
+phosphate-buffered saline pellets (Sigma), sodium chloride
+(Himedia), peptidoglycan monoclonal antibody (Invitrogen),
+goat anti-mouse IgG(γ) F(ab')2–HRP (Invitrogen), Tween
+20 (Sigma), 2,2′-azino-bis-(3-ethylbenzthiazoline-6-sulfonic
+acid) (Sigma), and MilliQ water.
+Bacterial culture: Staphylococcus aureus and E. coli
+OP50 (sourced from the Microbial Type Culture Collection,
+India) were grown in Nutrient broth and Luria Bertani broth,
+respectively, at a temperature of 37 °C, within a shaking
+incubator operating at 200 rpm to ensure proper aeration.
+All the materials and consumables required for microbial
+culture were procured from HiMedia, India.
+Caenorhabditis elegans culture: Bristol N2 strain of C.
+elegans (sourced from CGC, University of Minnesota, USA)
+was maintained at 20 °C on solid Nematode Growth Medium
+(NGM) containing Escherichia coli OP50 as a food source.
+All the materials and consumables required for culture were
+procured from HiMedia, India.
+2.2  Preparation of Bacterial Cell Wall/Membrane
+Extract
+First, the bacterial culture, at the log phase (i.e., after ~ 16 h
+of incubation), was employed for deriving bacterial ghost
+cells as described by us earlier [8]. The ghost cells were then
+heat-treated at 95 °C for 10 min, followed by ultrasound son-
+ication for 10 min at 40% amplitude for 7 s on a 3-s off cycle.
+The extract is then further diluted in 5-ml milliQ water and
+homogenized under sterile conditions, following which it
+was centrifuged at 10,000 rpm for 10 min at 4 °C, and the
+final pellet was lyophilized to estimate the dry weight.
+2.3  Preparation and Optimization of Antigenic
+PLGA Nanoparticles
+Antigenic PLGA nanoparticles (aNPs) were synthesized
+using the water/oil/water (W/O/W) double emulsion method.
+The cell wall and membrane (CWM) aqueous extract from
+a single-prep was added to PLGA (in acetone) at varying
+PLGA:CWM w/w ratios and vortexed thoroughly for 1 min
+to obtain the primary emulsion (water-in-oil). This was then
+dropped into 5-ml milliQ water under constant magnetic stir-
+ring to obtain a stable w/o/w emulsion. The formulation was
+kept under stirring for an additional 1 h for solvent evapora-
+tion and was then centrifuged at 10,000 rpm for 10 min at
+4 °C. The resulting pellet was taken for further evaluation.
+2.4  Indirect Peptidoglycan ELISA
+For the estimation of entrapment efficiency, an indirect
+peptidoglycan ELISA was performed using 96-well ELISA
+plates, as reported previously [9]. The supernatant from
+the nanoformulation was collected and diluted in PBS. The
+wells were coated with 200 µL of the supernatant at 4 °C
+overnight, after which it was washed thrice with PBST (PBS
+
+4495
+BioNanoScience (2024) 14:4493–4505
+containing 0.1% Tween 20). Subsequently, 100 µL of the
+peptidoglycan monoclonal antibodies (mAbs), which were
+appropriately diluted in PBST, was introduced into each
+well of the plates. The plates were then incubated at 37 °C
+for a duration of 2 h. Following three PBST washes, 50 µL
+of a diluted solution (1 µg/mL) of goat anti-mouse IgG(γ)
+F(ab')2–HRP conjugate was introduced, and the plates were
+incubated for 1 h at 37 °C. After three washes with PBST,
+100 µL of the substrate 2,2′-azino-bis-(3-ethylbenzthiazo-
+line-6-sulfonic acid) was dispensed into each well, and the
+absorbance at 405 nm was determined using a microplate
+reader, allowing for the quantification of the bound antibod-
+ies in each well.
+2.5  Characterization of Antigenic PLGA
+Nanoparticles
+2.5.1  Field Emission Scanning Electron Microscopy
+(FE‑SEM) Analysis
+Morphology and size characterization were performed using
+FE-SEM analysis. The nanoparticle suspension was appro-
+priately diluted and dropped onto the carbon tape on a metal
+stub and air-dried overnight at room temperature, following
+which the sample was gold-sputtered. The imaging was done
+under the Field Emission Scanning Electron Microscope
+(Carl Zeiss Sigma, SMARTSEM).
+2.5.2  Dynamic Light Scattering and Zeta Potential Analyses
+Dynamic light scattering (DLS) is a rapid and non-intrusive
+technique that was used for assessing hydrodynamic size,
+size distribution, and stability of the suspension. We used
+the Horiba ZetaSizer (Horiba Nanopartica SZ-100) for the
+above measurements. The purified antigenic PLGA nanofor-
+mulation was appropriately diluted before analysis.
+2.5.3  Fourier Transform Infrared Spectroscopy
+The chemical integrity of the prepared antigenic PLGA
+nanoparticles was assessed using Fourier transform infra-
+red (FTIR) spectroscopy, utilizing the Nicolet™ iS50 FTIR
+Spectrometer (Thermo Scientific, USA). The scanning
+was done for a wavenumber range spanning from 4000 to
+500 ­cm−1, and prior to scanning, the samples were uniformly
+mixed with KBr which served as a reference.
+2.5.4  In Vitro Degradation of aNPs
+To study the degradation profile of the aNPs under physio-
+logical conditions, an in vitro degradation assessment based
+on pH change of the degradation medium was performed in
+a time-dependent manner (0 h, 4 h, 24 h, 30 h, and 48 h).
+Freshly prepared aNPs were resuspended into 15-ml phos-
+phate buffer solution (PBS) (pH = 7.2 ± 0.2) in a 50-ml coni-
+cal flask and was shaken at 100 cycles/min in a shaking incu-
+bator kept at a constant temperature of 37.0 ± 0.2 °C. After
+specific incubation time points, the pH of the solution was
+monitored using a regular laboratory pH meter.
+2.5.5  Antigen Release Study
+To study the release profile of the antigenic inclusion (i.e.,
+CWM), we performed a time-dependent release experi-
+ment (2 h, 4 h, 8 h, 12 h, 24 h, and 48 h). Freshly prepared
+antigenic PLGA nanoparticles were resuspended into 1-ml
+phosphate buffer solution (PBS) (pH = 7.2 ± 0.2) in a screw-
+capped tube and were shaken at 100 cycles/min in a shaking
+incubator kept at a constant temperature of 37.0 ± 0.2 °C.
+After specific incubation periods, 100 µl of the dissolu-
+tion medium was withdrawn after being centrifuged at
+10,000 rpm for 10 min at 4 °C. Following this, the indirect
+ELISA was performed as mentioned above to determine the
+peptidoglycan content in the dissolution medium for equat-
+ing the amount of released antigen.
+2.6  In Vivo Toxicity Evaluation
+Caenorhabditis elegans was cultivated at 20 °C on solid
+Nematode Growth Medium (NGM) enriched with Escheri-
+chia coli OP50 at a regular/normal concentration of 1 × ­1010
+units/plates as a food source. We synchronized the age of
+the nematodes by the sodium hydroxide bleach method of
+synchronization previously reported [10]. The mature worms
+were collected by washing with M9 buffer and centrifuged
+at 2000 rpm for 2 min for pelletizing them. Following this,
+a cocktail of 0.5 ml of 5 M NaOH and 1 ml 4% bleach solu-
+tion made up to 5 ml using double distilled water was poured
+onto the worms to eradicate them, leaving behind just the
+unhatched eggs. The suspension was then washed thor-
+oughly to remove any remaining bleach and debris, leaving
+behind synchronized nematode eggs. These eggs are typi-
+cally at the same developmental stage. The eggs were then
+transferred to a fresh NGM plate with E. coli OP50 lawn
+and allowed to hatch overnight. The newly hatched worms
+were continuously monitored until they reached the L4 larval
+stage in three days, after which they were collected using
+M9 buffer and washed twice with 5 mM PBS at pH 7.4 to
+eliminate OP50.
+For in vivo toxicity testing, L4 stage C. elegans were
+grouped into equal numbers and subjected to treatment with
+CWM, aNP, and bare PLGA nanoparticles under regular
+OP50 concentrations as mentioned above and incubated
+at 20 °C. Worms subjected to only OP50 were considered
+
+4496
+
+BioNanoScience (2024) 14:4493–4505
+as the untreated control. The survival rates in each experi-
+mental group were determined by enumerating the live and
+active C. elegans on day 0 (start of treatment) and day 3
+(72 h into treatment).
+2.7  Quantitative Real‑Time PCR (qRT‑PCR)
+The expression of the genes viz., sodh-1, clec-7, ilys-3, igg-
+1, and cyp-37B1 in response to the immunomodulation was
+assessed through qRT-PCR. The nematodes (approx. 2000
+per plate) were plated onto NGM agar with a regular OP50
+concentration of 1 × ­1010 units/plates, simultaneously with
+CWM or aNP individually and incubated for 24 h, while
+worms subjected to only OP50 were treated as the control.
+In yet another experiment, the aNPs were plated along with
+double the concentration (i.e., 2 × ­1010 units/plates) of regu-
+larly supplied OP50 and incubated for 24 h. This experi-
+ment was to check the influence of nutritional abundance
+on immunomodulation. After the incubation period, the C.
+elegans were washed with PBS and subsequently ground
+under liquid nitrogen. The resulting worm powder was then
+used for total RNA extraction using the RNeasy plus mini
+kit (Qiagen, GmbH). The RNA integrity and quality was
+verified using the NanoDrop spectrophotometer (NanoDro-
+pND-1000, Thermoscentific, USA) and agarose gel electro-
+phoresis. The complementary DNA (cDNA) was synthe-
+sized from 1 µg of total RNA using SuperScript III reverse
+transcriptase kit and random hexamers (Invitrogen, Carls-
+bad, CA) in a total volume of 20 µl. SYBR Green RT-PCR
+Master Mix (Applied Biosystem, USA) was used for expres-
+sion analysis of the gene. The quantitation of fold change
+was analyzed by the ­2−ΔΔCT method. All experiments were
+performed in two individual sets of triplicates. The primer
+sets used for the experiment are mentioned in Table 1.
+2.8  Statistical Analysis
+The data were analyzed using analysis of variance
+(ANOVA), and post hoc Tukey’s test was applied using
+GraphPad Prism, CA. The outcomes were presented as the
+mean ± SEM, and statistical significance was defined by dif-
+ferences with a p-value less than 0.05.
+3  Results
+3.1  aNP Preparation and Optimization
+In the present study, we have formulated an immunomodu-
+latory construct by incorporating S. aureus CWM extract
+into PLGA nanoparticles (referred to as antigenic nano-
+particle, aNP). Firstly, we had prepared the CWM formula
+and found that the dry weight of the antigenic material
+extracted from one preparation was 2.42 ± 0.83 mg. Our
+synthesis employed the emulsion method (Fig. 1a), a well-
+established technique for the preparation of polymeric
+nanoparticles [12]. To optimize this nanoformulation, we
+meticulously explored various polymer-to-drug w/w ratios,
+specifically 2:1, 4:1, 6:1, and 8:1, as depicted in Fig. 1b.
+However, our investigation revealed that the 4:1 ratio
+yielded a stable colloid, evident from their sustained sta-
+bility even after overnight standing at room temperature,
+and substantiated further by amplified antigen entrapment
+efficiency viz., 61.54 ± 9.1% (Fig. 1c).
+3.2  Chemical Characterization of aNPs
+A comprehensive characterization of nanoparticles was
+conducted, encompassing assessments of their physico-
+chemical properties through various analytical techniques.
+We first performed the FE-SEM to evaluate the overall size
+of the antigenic nanoconstructs. Figure 2a, b shows vary-
+ing magnifications of FE-SEM images depicting monodis-
+persed and structurally well-defined spherical nanoparti-
+cles with a size of ~ 25 nm. Furthermore, we conducted
+DLS measurements to evaluate the hydrodynamic particle
+size (Fig. 2c), which revealed that the average hydrody-
+namic diameter of the aNP was ~ 60 nm and showed a
+narrow size distribution, which validated the SEM images.
+Beyond the considerations of size and morphology, the
+stability of nanoparticles is also a crucial factor for their
+effective functionality. For this, we performed the zeta
+analysis and found the zeta potential to be − 25 ± 2 mV,
+indicating a colloidally stable formulation with a negative
+surface charge (Fig. 2d).
+Furthermore, the chemical composition and functional
+groups of the aNPs were studied using FTIR spectros-
+copy. Three samples viz., CWM, PLGA NPs, and aNPs
+were compared based on their FTIR spectra. As seen in
+Fig. 3, spectrum A shows the vibrational bands of CWM at
+3300–3250 ­cm−1, 3100–3050 ­cm−1, 2960–2880 ­cm−1, and
+2000–1000 ­cm−1.
+Spectrum B (PLGA nanoparticles) shows vibra-
+tion bands at 3000 ­cm−1, 1770–1750 ­cm−1, 1452 ­cm−1,
+1300–1150 ­cm−1, 1250–1100 ­cm−1, and 840 ­cm−1. Spec-
+trum C in Fig. 3 depicts the analysis of aNP and shows the
+characteristic peaks (1750 ­cm−1, 1537 ­cm−1, 1452 ­cm−1,
+1225 ­cm−1, and 1087 ­cm−1) of both the antigen (spectrum
+A) and those of PLGA (spectrum B).
+3.3  Particle Degradation and Antigen Release
+To explore the degradation kinetics of the PLGA nano-
+carrier, an in vitro assessment was conducted, monitoring
+the pH variation in the degradation medium. Figure 4a
+
+4497
+BioNanoScience (2024) 14:4493–4505
+depicts visual observations at various degradation time
+points revealing diminishing colloidal dispersion, and pH
+estimation of the degradation medium showcased a steady
+decrease (Fig. 4b). Commencing at pH 7.4, the pH declined
+to 6.75 ± 0.07 after 24 h and further decreased to 6.46 ± 0.05
+after 48 h, indicating continual formation of acidic mono-
+mers. Subsequently, an evaluation of antigen release kinetics
+from the nanomatrix was performed. Figure 4c depicts the
+in vitro cumulative release of the encapsulated antigen at pH
+7.4 using indirect ELISA. It showed that the antigen release
+progressively increased to approximately 41% within the
+first 24 h and remained sustained at 45% after 48 h.
+3.4  In Vivo Investigation on C. elegans
+In our preliminary exploration of the toxicity profile of
+aNPs, we conducted a time-dependent survival analysis
+using C. elegans. The concentrations for testing were
+prepared by diluting the CWM (from a single prepara-
+tion) four-fold in nematode medium, resulting in a final
+concentration of 605  μg/ml. Considering that CWM
+contains pathogen-associated molecular patterns, higher
+concentrations might induce toxicity. Therefore, we incor-
+porated a dilution step before the experiments to ensure
+safer testing conditions. The concentration of aNP was
+adjusted to match the equivalent loading of CWM within
+them for comparative analysis. Visual representations in
+Fig. 5a, b illustrate various treatment conditions [CWM
+(antigen), PLGA nanoparticle (vehicle), and aNP (nano-
+antigen)] compared against a control group fed with E.
+coli OP50 alone on day 0 (initiation of treatment) and day
+3 (72 h into treatment) respectively. We observed that the
+nematodes had progressed to adulthood and reproductive
+stages, as depicted in the microscopic images on day 3.
+Noticeable variations emerged in the nematode life cycle,
+meticulously assessed by enumerating distinct larval
+stages across each test plate and subsequently compared
+to the untreated control group. Figure 5c delineates a com-
+parison of the nematode population between day 0 and
+day 3. Our results showed that the control, aNP, as well as
+PLGA-treated groups had a similar range of reproduction,
+as was evident from their population size at day 3. But
+notably, the population size for the CWM-treated group
+was only ~ 50%, which was significant when compared to
+untreated control, PLGA-treated, and aNP-treated groups.
+We conducted a gene expression analysis focusing
+on the stress-responsive marker sodh-1 across all treat-
+ment groups, comparing them with the untreated control.
+Notably, Fig. 6a illustrates a substantial upregulation
+of 20.14-fold in the sodh-1 gene expression in the bare
+CWM-treated group. Contrastingly, the aNP-treated group
+exhibited a significantly reduced expression of 13.42-fold,
+highlighting the pivotal role of nano-encapsulation in miti-
+gating physiological stress responses. Following this, our
+investigation aimed to ascertain whether augmented nutri-
+tional supplementation could effectively mitigate stress
+levels and restore homeostasis by modulating the expres-
+sion of the stress-responsive sodh-1 gene. Interestingly, our
+observations yielded a remarkable revelation: Upon a two-
+fold increase in OP50 concentration (double food, DF, i.e.,
+2 × ­1010 cells/plate) in the CWM and aNP-exposed group,
+the expression of sodh-1 underwent a profound reduction,
+attaining a reduced level of 11.7-fold for CWM treatment
+and 6.5-fold for aNP group. These values were roughly
+half of the expression levels shown by the same treatments
+under regular OP50 supply (single food, SF, i.e., 1 × ­1010
+cells/plate).
+We next explored the effect of the aNPs on the host
+defense genes viz., clec-7, ilys-3, igg-1, and cyp-37B1 genes.
+To gauge the regulatory influence of the test samples on
+specific host defense genes, initial gene expression analy-
+ses were conducted on C. elegans exposed to CWM alone
+(bare antigen group), and comparing the results against a
+control group fed exclusively with a regular concentration
+of E. coli OP50 (i.e., single food, SF, 1 × ­1010 cells/plate). In
+Fig. 6b, the displayed fold change in gene expression within
+the CWM-treated C. elegans group showcased a consider-
+able downregulation in host defense genes in contrast to the
+untreated control group. Intriguingly, a downregulated status
+for the host defense genes was also noted in the aNP-treated
+group. Notably, our prior experiments had indicated signifi-
+cant upregulation of stress gene sodh-1 in both the CWM
+and aNP-treated groups, although the former was signifi-
+cantly higher than the latter (Fig. 6a).
+Table 1   List of primers used for the gene expression experiments on C. elegans 
+Gene
+Forward primer
+Reverse primer
+ilys-3
+5’-AGA​TCA​AAC​TCC​CCT​ACT​ACTAC-3’
+5’-TAG​CGG​TTG​TAG​GTA​GTT​CTC-3’
+clec-7 [11]
+5′-TTT​ATG​GGA​CGA​TTC​GAC​GG-3′
+5′-GTC​AAT​GCA​CCT​TGT​ACG​GA-3′
+cyp-37B1[11]
+5′-GAA​TGT​ATC​CGT​CAG​TGC​CA-3′
+5′-TCG​GAC​TCC​TTT​TGG​GAA​GA-3′
+sodh-1[11]
+5′-CTG​GAT​GGC​AAC​TTG​GAG​ACA​AAG​C-3′
+5′-GGT​GGC​AGA​GTG​GCT​CGT​GG-3′
+igg-1[11]
+5′-ACC​ATG​ACC​ACA​ATG​GGA​CAA​CTC​-3′
+5′-ACA​CTT​TCG​TCA​CTG​TAG​GCG​ATG​-3′
+snb-1 (housekeeping)
+5’-CGG​AAT​CAT​GAA​GGT​GAA​C-3’
+5’-TGA​TGT​TCT​TCC​ACC​AAT​AC-3’
+
+4498
+
+BioNanoScience (2024) 14:4493–4505
+Next, we conducted an experiment by providing a two-
+fold increased OP50 concentration (double food, DF, i.e.,
+2 × ­1010 cells/plate) to the CWM and aNP-exposed group
+while maintaining the CWM and aNP concentration the
+same as above. As illustrated in Fig. 6b, we again observed
+a downregulated status for the CWM-treated group even
+upon doubling the food supply. But a notable upregula-
+tion in the expression of all the tested host defense genes
+was observed within the aNP-treated group under condi-
+tions of nutritional abundance (i.e., DF) in comparison to
+the regular OP50 cell concentration (SF). This nutritional
+augmentation significantly impacted gene expression in the
+case of aNP-treated groups, with the clec-7 gene exhibit-
+ing a 1.23 ± 0.06-fold upregulation, ilys-3 demonstrating a
+remarkable 2.79 ± 0.18-fold increase, igg-1 displaying an
+3.03 ± 0.62-fold enhancement, and cyp-37B1 manifesting a
+2.42 ± 0.37-fold amplification.
+4  Discussion
+An effective immune system is pivotal in defense against
+infectious and chronic ailments. Hence, the quest for novel
+immunomodulators, encompassing both synthetic and
+biological entities such as antibodies, enzymes, bacterial
+derivatives, and plant metabolites, remains at the forefront
+of scientific exploration [13]. Staphylococcus aureus (S.
+aureus) is a significant human pathogen, adept at causing a
+wide spectrum of clinical infections and displaying impres-
+sive adaptability even under harsh conditions characterized
+by elevated salinity, limited water resources, and osmotic
+stress [14, 15]. There were no effective vaccines yet devel-
+oped against S. aureus owing to its complex biology, and
+therefore, the creation of a potent vaccine remains a crucial
+endeavor for the prevention of S. aureus infections [16, 17].
+S. aureus-derived antigens were used by various research-
+ers for investigating their immune-boosting potential [18,
+19]. However, they demonstrated robust immune responses
+characterized by hyperactivated immune cells and excessive
+cytokine production, potentially leading to adverse effects
+on host cells [20]. In such a scenario, a slow and controlled
+release of antigen is very essential for prolonged immuno-
+boosting with lesser cytotoxicity, and therefore, its encap-
+sulation into suitable biocompatible carriers is deemed fit.
+In the present study, we have formulated an immu-
+nomodulatory construct by incorporating S. aureus CWM
+extract into PLGA nanoparticles (referred to as antigenic
+nanoparticle, aNP). PLGA is one of the most favorable
+Fig. 1   Nanoparticle preparation and optimization protocol. a Sche-
+matic representation of antigenic nanoparticle (aNPs) preparation
+using PLGA as the matrix and S. aureus CWM as the antigenic pay-
+load, using the water-in-oil-in-water (W/O/W) emulsion method. b
+Photographs of the antigenic nanoformulation prepared using vary-
+ing PLGA:CWM weight ratios. c Entrapment efficiency of the anti-
+gen in the various formulations quantified using indirect ELISA.
+Bars represent mean ± SEM. *p-value < 0.05, **p-value < 0.005, and
+***p-value < 0.001; ns: not significant
+
+4499
+BioNanoScience (2024) 14:4493–4505
+Fig. 2   Characterization of optimized nanoparticles. a, b Field emis-
+sion scanning electron microscopy (FE-SEM) images of the antigenic
+nanoparticles (aNPs) captured at varying magnifications. c Dynamic
+light scattering analysis of aNPs showing a narrow size distribution
+and an average hydrodynamic particle size of ~ 60  nm. d The zeta
+potential of aNPs was found to be − 25 ± 2 mV, indicating a colloi-
+dally stable formulation
+Fig. 3   FTIR spectra of compo-
+nents utilized in aNP formula-
+tion. Spectrum A depicts the
+chemical composition and
+functional groups of the cell
+wall membrane (CWM) extract,
+spectrum B represents the poly
+lactic-co-glycolic acid (PLGA)
+nanoparticles, and spectrum C
+illustrates the aNPs
+
+4500
+
+BioNanoScience (2024) 14:4493–4505
+Fig. 4   In vitro assessment of
+degradation and antigen release
+kinetics. a Sequential images
+at significant time intervals
+displaying the diminishing
+colloid nature of aNPs in PBS
+solution, indicative of their
+degradation progression over
+time. b Graphical representation
+illustrating the pH changes at
+different incubation time points.
+c Time-dependent cumulative
+release profile of the antigen
+from aNPs recorded over 48 h
+of incubation. Error bars repre-
+sent mean ± SEM
+
+4501
+BioNanoScience (2024) 14:4493–4505
+biopolymers widely used for the encapsulation and con-
+trolled release of encapsulated payloads [21]. In our study,
+we decided to use PLGA as the carrier matrix as we
+intended to demonstrate a controlled and steady release of
+the extracted antigen. We have synthesized our antigenic
+nanoparticles (aNPs) through the double emulsion method,
+and their optimization was carried out using different pol-
+ymer-to-drug ratios (Fig. 1). Notably, the entrapment effi-
+ciency did not exhibit a commensurate increase with higher
+polymer-to-drug ratios. Past studies have suggested that
+augmenting the polymer concentration in the solvent gener-
+ally leads to greater encapsulation of the active compound
+[22]. Contrary to these findings, our observations did not
+manifest such a trend, intimating the plausible attainment
+of a saturation threshold by PLGA, limiting significant
+enhancements in encapsulation despite elevated polymer
+content. The size characterization performed for the aNPs
+showed monodispersed nanoparticles with appreciable
+Fig. 5   Microscopic images illustrating C. elegans under distinct
+treatment conditions: (i) control group, (ii) CWM-treated group,
+(iii) PLGA-treated group, and (iv) aNPs-treated group. a Micro-
+graphs captured at day 0, magnified at 4 × . b Micrographs captured
+at day 3, displayed at 1 × magnification. c Enumeration comparison
+of C. elegans populations at day 0 (D0) and day 3 (D3) across various
+treatment conditions. Bars represent mean ± SEM. *p-value < 0.05,
+**p-value < 0.005, and ***p-value < 0.001; ns: not significant
+Fig. 6   Gene expression profiling in C. elegans subjected to differ-
+ent treatment conditions. a Comparison of stress indicator sodh-1
+expression and its relative fold change across various treatments (UT
+– untreated, CWM – treated with SF, aNP + SF – antigenic nanopar-
+ticle with SF, CWM-treated with DF, aNP + DF – antigenic nanopar-
+ticles with DF). b Graphical representation illustrating the relative
+fold change in host defense gene expression in C. elegans treated
+with CWM (with SF or DF) and aNPs (with SF or DF). SF (single
+food, 1 × ­1010 cells/plate); DF (double food, 2 × ­1010 cells/plate).
+Bars represent mean ± SEM. *p-value < 0.05, **p-value < 0.005, and
+***p-value < 0.001; ns: not significant
+
+4502
+
+BioNanoScience (2024) 14:4493–4505
+colloidal stability, which are essential attributes of a scal-
+able therapeutic nanoformulation.
+The FTIR analysis helped to qualitatively decipher the
+interactions between the functional groups of the payload
+and the carrier in terms of the vibrational bands [23]. The
+spectrum of CWM indicates peaks at 3300–3250 ­cm−1
+corresponding to -OH groups from absorbed water, while
+shorter peaks between 3100 and 3050 ­cm−1 were associated
+with = C-H groups found in unsaturated fatty acid chains,
+as is commonly found in the phospholipid bilayer of bacte-
+rial cell membranes. Additionally, peaks around 2960 ­cm−1
+and 2880 ­cm−1 were attributed to the vibrations of -CH3
+groups, representing alkane groups [24]. Alkane groups
+are commonly associated with the hydrophobic tails of
+phospholipids in the bacterial cell membrane, where they
+contribute to its fluidity and stability, and any shift in the
+position of these alkane peaks is believed to reflect changes
+in the cell wall/membrane structure [25]. We also observed
+four notable peaks within the 2000–1000 ­cm−1 range that
+indicated amides, carboxyl, and glycosidic linkages as found
+in bacteria [26]: (1) vibrational stretching band centered at
+1635 ­cm−1 corresponding to C = 0 vibration within amide
+group indicating the presence of peptidoglycan and the
+interlinking peptides which are prominent cell wall mate-
+rial in S.aureus; (2) vibrations of amino acid side chains at
+1520 ­cm−1; (3) peaks between 1500 and 1300 ­cm−1 attrib-
+uted to the vibrations of -CH2 and -CH3 groups found in
+lipids and proteins; and (4) vibrational band at 1225 ­cm−1
+corresponding to glycosidic linkage which could be found
+plentifully in peptidoglycan. Spectrum B shows the PLGA
+peaks showing the stretching vibrations of the carbonyl
+groups present in the two monomers of PLGA, which is
+depicted by the intense bands between 1770 and 1750 ­cm−1
+[27]. Additionally, medium-intensity signals between 1300
+and 1150 ­cm−1 corresponding to asymmetric and symmet-
+ric C-C(= O)-O stretches, respectively, in esters were also
+observed. The minor twin peaks near 3000 ­cm−1 corre-
+sponded to -CH, -CH2, and -CH3 groups in PLGA. Also,
+the identifying signal at 1182 ­cm−1 can be linked to the
+presence of the ether group. The characteristic bands at
+1130 ­cm−1 and 1452 ­cm−1 are indicative of the C-O-C group
+and the C-H bond within the methyl group, respectively.
+The harmonic bands of the C-C-O group appeared around
+840 ­cm−1, while the absorption bands at 1100–1250 ­cm−1
+and 1750–1760 ­cm−1 represent the esters and carbonyl
+groups specific for PLGA [28, 29]. Spectrum C of aNPs
+shows the characteristic peaks of both antigen and PLGA.
+Though the common peaks were observed, their intensi-
+ties and positions were slightly varied, indicating inter- and
+intra-molecular interactions [29]. The characteristic peaks
+of PLGA at 1750 ­cm−1 and 1087 ­cm−1, indicating carbonyl
+group and C-O stretch, respectively, were clearly evident
+for aNPs with the same intensity and mild positional shift,
+potentially due to the interaction of PLGA with the CWM
+components. The characteristic peaks of the antigen CWM
+at 1537 ­cm−1, 1452 ­cm−1, and 1225 ­cm−1 corresponding to
+amino acids, C-H bonds, and glycosidic bonds, respectively,
+were evident in the spectra obtained for aNPs [30]. Inter-
+estingly, these spectral bands exhibited reduced absorption
+intensity, which serves as an indicative marker of the pres-
+ence of PLGA coating enveloping the antigen, rendering
+them vibrationally less accessible for analysis.
+Achieving a sustained and controlled drug release
+hinges upon the orchestrated degradation of the carrier
+matrix. PLGA stands as a widely employed biodegradable
+polymer in diverse particle formulations [12, 21, 31–33].
+Its hydrolytic degradation yields lactic acid and glycolic
+acid monomers [34, 35]. This degradation, initiated under
+physiological pH conditions, induces a gradual decline in
+pH over time due to accumulating acidic fragments [36].
+In vitro degradation study reveals that within a stipulated
+time period, complete degradation of particles occurs
+in physiological conditions. PLGA is known to undergo
+hydrolytic degradation into acidic monomers which could
+contribute to the acidification of the release medium. The
+burst release from PLGA formulations is considered a draw-
+back which could be deleterious to the host [37]. But, in our
+study, we observed a more gradual and controlled antigen
+release kinetics. This observed steady and controlled antigen
+release aligns with the gradual matrix degradation, indicat-
+ing congruence between release kinetics and carrier degra-
+dation. Our deliberate pursuit of precisely controlled antigen
+release, exemplified by the selected PLGA carrier, highlights
+our primary objective to potentially leverage this platform
+for finely modulated immunomodulatory applications.
+In our subsequent experiments, we embarked upon an
+exploration into the effects of post-oral administration of
+aNPs on host defense and stress genes in C. elegans, a
+remarkably simplistic yet resilient nematode. C. elegans
+has garnered widespread acclaim as an exceptionally ver-
+satile animal model in the realm of scientific investigation,
+spanning diverse research domains encompassing aging,
+neurodegenerative disorders, and, most notably, the intri-
+cate nuances of the innate immune system [38]. This model
+organism lacks certain facets of the adaptive immune system
+commonly found in vertebrates, rendering it a particularly
+invaluable platform for the meticulous dissection of piv-
+otal facets pertaining to innate immunity and the intricate
+interplay between host and microbe [39–41]. Apart from
+its scientific value, employing C. elegans as an experimen-
+tal model presents various practical benefits such as cost-
+effectiveness, a shortened generation time, easy cultivation
+protocols, and the ability to bypass extensive animal experi-
+mentation during initial screening stages [42].
+In our preliminary exploration of the toxicity profile of
+aNPs, we conducted a time-dependent survival analysis
+
+4503
+BioNanoScience (2024) 14:4493–4505
+using C. elegans. Our data indicated that the bare antigen
+treatment could lead to lesser reproductive acumen in the
+test group with a decrease in larval instars – a sign sug-
+gestive of induced stress response directly from the antigen
+exposure, decelerating life cycle progression [43]. Particu-
+larly noteworthy was the heightened compatibility observed
+with aNPs compared to the antigen group. This enhanced
+biocompatibility might stem from the gradual and sustained
+antigen release from aNPs, a stark contrast to the abrupt
+exposure experienced with bare CWM. These outcomes
+highlighted the protective effects of encapsulation technol-
+ogy, facilitating controlled antigen release and mitigating
+the immediate immune response associated with the naked
+antigen [44].
+In light of the observed adverse effects on the nema-
+tode life cycle due to exposure to bare CWM in our pre-
+vious experiment, our inquiry aimed to assess the status
+of the stress indicator gene sodh-1. Interestingly, the
+CWM-treated group had shown drastic upregulation of
+sodh-1, validating our observation on the link between
+stress and reproductive acumen. Also, the decreased lev-
+els of sodh-1 in the aNP-treated nematodes corroborated
+with the overall assessment in this aspect. However, an
+interesting factor was the observation that, upon dou-
+bling the food supply, the levels of stress were further
+downregulated. This phenomenon may be attributed to
+the fact that a surplus of nutrients offers the necessary
+metabolic substrates and energy, enabling the immune
+system to mount a more robust and effective response
+[45]. In situations of nutritional abundance, the nano-
+immunobooster can capitalize on these favorable condi-
+tions to boost the immune response, ultimately yielding
+improved outcomes.
+We next explored the effect of the aNPs on the host
+defense genes viz., clec-7, ilys-3, igg-1, and cyp-37B1
+genes. Our observations suggested that the bare antigen (i.e.,
+CWM) as well as aNPs under regular food (single food)
+supply were not competent enough to upregulate the host
+defense mechanisms in the organism. Similarly, the CWM-
+treated group also did not show any enhancement in the
+host defense, even upon doubling the food supply for the
+organism. Consequently, we hypothesize that the heightened
+expression state of sodh-1 might have contributed to the
+observed reduction in host defense gene expression levels.
+This interrelation suggests a potential link between stress
+responses and the modulation of immune defense genes,
+warranting further investigation into their intricate regula-
+tory dynamics. Upon examining the gene expression pat-
+terns alongside the stress indicator gene sodh-1, an inverse
+relationship between physiological stress and the immune
+defense capability of the host was observed in the CWM
+group. However, interestingly, we found that the aNP-
+treated group under double food supply showed significant
+upregulation of the host defense genes, providing substan-
+tial evidence supporting the role of nutritional abundance
+in the modulation of immune function [46]. While our data
+strongly advocates for the inclusion of nanocarrier-mediated
+delivery of immunoboosters for avoiding stress induction
+due to bare antigens, they also call for improvisation in the
+nutritional strategies that should be followed while undergo-
+ing immunomodulatory therapies.
+5  Conclusion
+Our study delves into the intricate relationship between
+stress, host defense response, and nutrition driven by the
+oral delivery of an antigenic PLGA nanoparticle developed
+by encapsulating bacterial antigen extract from the cell wall
+and membrane. The investigations have been on the model
+organism, Caenorhabditis elegans, where we understood the
+stress-management benefits that the nanoformulation could
+render over the bare antigen counterpart. More interestingly,
+our observations on how nutritional sufficiency had a role
+to play in immunomodulation were insightful, potentially
+opening up new avenues for personalized nutritional inter-
+ventions that could augment immunomodulatory strategies.
+Notably, the significance of our observations lies in its impli-
+cations for immunomodulatory treatments, such as vaccina-
+tion or immunotherapy, where the provision of nutritional
+sufficiency could emerge as a pivotal factor in augment-
+ing immunity and ameliorating stress responses within the
+organism while in the intervention. Moreover, the innovative
+approach of oral delivery of nano-immune boosters provides
+a promising avenue for the development of more effective
+and targeted immunotherapies. Nevertheless, our aspirations
+extend toward the pursuit of comprehensive studies within
+higher organisms, to further validate synergistic relation-
+ships between nutrition and success in immunomodulatory
+strategies.
+Acknowledgements  We express our sincere gratitude to the DBT-Well-
+come Trust India Alliance for the research funds and the Department of
+Biotechnology, CUSAT for the infrastructure. We would like to thank
+Department of Physics-CUSAT, Sophisticated Test and Instrumenta-
+tion Centre (STIC), CUSAT and Amrita Hospital instrumentation facil-
+ity, Kochi for providing technical assistance in the analyses.
+Author Contribution  S.N. was responsible for conceptualization and
+design of the study, data analysis. A.P.B contributed to experimental
+work, data analysis and manuscript writing. S.N, A.P.B, S.G.B revised
+and edited the manuscript. Critical feedback during the execution of
+the work was also provided by S.G.B, All authors approved the final
+version for submission.
+Funding  The research work was funded by the DBT/Wellcome Trust
+India Alliance vide Grant No. IA/E/18/1/504318.
+Data Availability  No datasets were generated or analyzed during the
+current study.
+
+4504
+
+BioNanoScience (2024) 14:4493–4505
+Declarations 
+Ethical Approval  Not applicable.
+Research Involving Humans and Animals  None.
+Competing Interests  The authors declare no competing interests.
+References
+	 1.	 Kharkar, P. B., Talkar, S. S., Kadwadkar, N. A., & Patravale, V. B.
+(2017). Nanosystems for oral delivery of immunomodulators. In
+Nanostructures for Oral Medicine (pp. 295–334). Elsevier. https://​
+doi.​org/​10.​1016/​B978-0-​323-​47720-8.​00012-2
+	 2.	 Verma, S., Goand, U. K., Husain, A., Katekar, R. A., Garg, R.,
+& Gayen, J. R. (2021). Challenges of peptide and protein drug
+delivery by oral route: Current strategies to improve the bioavail-
+ability. Drug Development Research, 82(7), 927–944. https://​doi.​
+org/​10.​1002/​ddr.​21832
+	 3.	 Karandikar, S., Mirani, A., Waybhase, V., Patravale, V. B., &
+Patankar, S. (2017). Nanovaccines for oral delivery-formulation
+strategies and challenges. In Nanostructures for Oral Medicine
+(pp. 263–293). Elsevier. https://​doi.​org/​10.​1016/​B978-0-​323-​
+47720-8.​00011-0
+	 4.	 Schunke, J., Mailänder, V., Landfester, K., & Fichter, M. (2023).
+Delivery of immunostimulatory cargos in nanocarriers enhances
+anti-tumoral nanovaccine efficacy. International Journal of
+Molecular Sciences, 24(15), 12174. https://​doi.​org/​10.​3390/​ijms2​
+41512​174
+	 5.	 Miao, Y.-B., Lin, Y.-J., Chen, K.-H., Luo, P.-K., Chuang, S.-H.,
+Yu, Y.-T., Tai, H.-M., Chen, C.-T., Lin, K.-J., & Sung, H.-W.
+(2021). Engineering nano- and microparticles as oral delivery
+vehicles to promote intestinal lymphatic drug transport. Advanced
+Materials, 33(51), 2104139. https://​doi.​org/​10.​1002/​adma.​20210​
+4139
+	 6.	 Wang, T., Fleming, E., & Luo, Y. (2022). An overview of the
+biochemistry, synthesis, modification, and evaluation of mucoad-
+hesive polymeric nanoparticles for oral delivery of bioactive
+compounds. Advanced Composites and Hybrid Materials, 6(1),
+6. https://​doi.​org/​10.​1007/​s42114-​022-​00586-0
+	 7.	 Sharma, D., Rout, S. R., Kenguva, G., Khatravath, M., Jain, G.
+K., Aggarwal, G., Kesharwani, P., & Dandela, R. (2023). Chap-
+ter 12—PLGA-based nanoparticles as regenerative medicine. In
+P. Kesharwani (Ed.), Poly(lactic-co-glycolic acid) (PLGA) nano-
+particles for drug delivery (pp. 335–356). Elsevier. https://​doi.​
+org/​10.​1016/​B978-0-​323-​91215-0.​00011-X
+	 8.	 Narayanan, S., Baburajan, A. P., Muhammad, M., Joseph, A.,
+Vemula, P. K., & Bhat, S. G. (2023). Demonstrating the immu-
+nostimulatory and cytokine-augmentation effects of bacterial
+ghosts on natural killer cells and Caenorhabditis Elegans. Bio-
+technology and Bioengineering. https://​doi.​org/​10.​1002/​bit.​28619
+	 9.	 Ohsawa, H., Baba, T., Enami, J., & Hiramatsu, K. (2015). Suc-
+cessful selection of an infection-protective anti-Staphylococcus
+aureus monoclonal antibody and its protective activity in murine
+infection models. Microbiology and Immunology, 59(4), 183–192.
+https://​doi.​org/​10.​1111/​1348-​0421.​12242
+	10.	 Porta-de-la-Riva, M., Fontrodona, L., Villanueva, A., & Cerón, J.
+(2012). Basic Caenorhabditis elegans methods: Synchronization
+and observation. JoVE (Journal of Visualized Experiments), (64),
+e4019. https://​doi.​org/​10.​3791/​4019
+	11.	 NgbaEssebe, C., Visvikis, O., Fines-Guyon, M., Vergne, A., Cat-
+toir, V., Lecoustumier, A., & Dunyach-Remy, C. (2017). Decrease
+of Staphylococcus aureus virulence by Helcococcus kunzii in a
+Caenorhabditis elegans model. Frontiers in Cellular and Infection
+Microbiology, 7, 77. https://​doi.​org/​10.​3389/​fcimb.​2017.​00077
+	12.	 Sun, Y., Heacock, J., Chen, C., Qiu, K., Zou, L., Liu, J., & Li, Y.
+V. (2023). Incorporation of gentamicin-encapsulated poly(lactic-
+co-glycolic acid) nanoparticles into polyurethane/poly(ethylene
+oxide) nanofiber scaffolds for biomedical applications. ACS
+Applied Nano Materials. https://​doi.​org/​10.​1021/​acsanm.​3c035​49
+	13	 Grazul, M., Kwiatkowski, P., Hartman, K., Kilanowicz, A., &
+Sienkiewicz, M. (2023). How to naturally support the immune
+system in inflammation—Essential oils as immune boosters.
+Biomedicines, 11(9), 9. https://​doi.​org/​10.​3390/​biome​dicin​es110​
+92381
+	14.	 Berends, E. T. M., Zheng, X., Zwack, E. E., Ménager, M. M.,
+Cammer, M., Shopsin, B., & Torres, V. J. (2019). Staphylococ-
+cus aureus impairs the function of and kills human dendritic cells
+via the LukAB toxin. MBio, 10(1), https://​doi.​org/​10.​1128/​mbio.​
+01918-​18
+	15.	 Onyango, L. A., & Alreshidi, M. M. (2018). Adaptive metabolism
+in Staphylococci: Survival and persistence in environmental and
+clinical settings. Journal of Pathogens, 2018, 1092632. https://​
+doi.​org/​10.​1155/​2018/​10926​32
+	16.	 Fattom, A., Fuller, S., Propst, M., Winston, S., Muenz, L., He, D.,
+Naso, R., & Horwith, G. (2004). Safety and immunogenicity of
+a booster dose of Staphylococcus aureus types 5 and 8 capsular
+polysaccharide conjugate vaccine (StaphVAX®) in hemodialysis
+patients. Vaccine, 23(5), 656–663. https://​doi.​org/​10.​1016/j.​vacci​
+ne.​2004.​06.​043
+	17.	 Kuklin, N. A., Clark, D. J., Secore, S., Cook, J., Cope, L. D.,
+McNeely, T., Noble, L., Brown, M. J., Zorman, J. K., Wang, X.
+M., Pancari, G., Fan, H., Isett, K., Burgess, B., Bryan, J., Brown-
+low, M., George, H., Meinz, M., Liddell, M. E., … Anderson,
+A. S. (2006). A Novel Staphylococcus aureus vaccine: Iron sur-
+face determinant B induces rapid antibody responses in rhesus
+macaques and specific increased survival in a murine S. aureus
+sepsis model. Infection and Immunity, 74(4), 2215–2223. https://​
+doi.​org/​10.​1128/​iai.​74.4.​2215-​2223.​2006
+	18.	 Boerhout, E., Vrieling, M., Benedictus, L., Daemen, I., Ravesloot,
+L., Rutten, V., Nuijten, P., van Strijp, J., Koets, A., & Eisenberg, S.
+(2015). Immunization routes in cattle impact the levels and neu-
+tralizing capacity of antibodies induced against S. aureus immune
+evasion proteins. Veterinary Research, 46(1), 115. https://​doi.​org/​
+10.​1186/​s13567-​015-​0243-7
+	19.	 Ngcobo, M., & Gqaleni, N. (2016). Evaluation of the immu-
+nomodulatory effects of a South African commercial traditional
+immune booster in human peripheral blood mononuclear cells.
+BMC Complementary and Alternative Medicine, 16(1), 300.
+https://​doi.​org/​10.​1186/​s12906-​016-​1294-7
+	20.	 Kolata, J. B., Kühbandner, I., Link, C., Normann, N., Vu, C. H.,
+Steil, L., Weidenmaier, C., & Bröker, B. M. (2015). The fall of a
+dogma? Unexpected high T-cell memory response to Staphylococ-
+cus aureus in humans. The Journal of Infectious Diseases, 212(5),
+830–838. https://​doi.​org/​10.​1093/​infdis/​jiv128
+	21.	 Cruz, L. J., Tacken, P. J., Eich, C., Rueda, F., Torensma, R., &
+Figdor, C. G. (2017). Controlled release of antigen and toll-like
+receptor ligands from PLGA nanoparticles enhances immuno-
+genicity. Nanomedicine, 12(5), 491–510. https://​doi.​org/​10.​2217/​
+nnm-​2016-​0295
+	22.	 Lancheros, R., Guerrero, C. A., & Godoy-Silva, R. D. (2018).
+Improvement of N-acetylcysteine loaded in PLGA nanoparticles
+by nanoprecipitation method. Journal of Nanotechnology, 2018,
+e3620373. https://​doi.​org/​10.​1155/​2018/​36203​73
+	23.	 Shen, Y., Zhao, S., Zhao, X., Sun, H., Shao, M., & Xu, H.
+(2019). In vitro adsorption mechanism of acrylamide by lactic
+acid bacteria. LWT, 100, 119–125. https://​doi.​org/​10.​1016/j.​
+lwt.​2018.​10.​058
+
+4505
+BioNanoScience (2024) 14:4493–4505
+	24	 Marseno, D. W., Haryanti, P., Adiseno, B., & Haryadi, H. (2014).
+Synthesis and characterization of hydroxypropylcellulose from
+oil palm empty fruit bunches (Elaeis guineensis Jacq). Indone-
+sian Food and Nutrition Progress, 13(1), 24–30. https://​doi.​org/​
+10.​22146/​jifnp.​112
+	25.	 Zhang, J., Su, P., Chen, H., Qiao, M., Yang, B., & Zhao, X. (2023).
+Impact of reactive oxygen species on cell activity and structural
+integrity of Gram-positive and Gram-negative bacteria in elec-
+trochemical disinfection system. Chemical Engineering Journal,
+451, 138879. https://​doi.​org/​10.​1016/j.​cej.​2022.​138879
+	26.	 Kochan, K., Perez-Guaita, D., Pissang, J., Jiang, J. H., Peleg, A.
+Y., McNaughton, D., ... & Wood, B. R. (2018). In vivo atomic
+force microscopy–infrared spectroscopy of bacteria. Journal of
+The Royal Society Interface, 15(140), 20180115. https://​doi.​org/​
+10.​1098/​rsif.​2018.​0115
+	27.	 Singh, G., Tanurajvir, K., Ravinder, K., & Kaur, A. (2014). Recent
+biomedical applications and patents on biodegradable polymer-
+PLGA. International Journal of Pharmacology and Pharmaceuti-
+cal Sciences, 1, 30–42. Corpus ID: 29361212
+	28.	 Norouzi, M., Rafienia, M., & Hosseini, S. (2023). Characterization
+and biological evaluation of new PLGA/fibrin/lignin biocomposite
+electrospun scaffolds. Physica Scripta, 98(9), 095506. https://​doi.​
+org/​10.​1088/​1402-​4896/​aceabc
+	29.	 Sadeghi-Avalshahr, A., Nokhasteh, S., Molavi, A. M., Khorsand-
+Ghayeni, M., & Mahdavi-Shahri, M. (2017). Synthesis and char-
+acterization of collagen/PLGA biodegradable skin scaffold fib-
+ers. Regenerative Biomaterials, 4(5), 309–314. https://​doi.​org/​10.​
+1093/​rb/​rbx026
+	30.	 Faghihzadeh, F., Anaya, N. M., Schifman, L. A., & Oyanedel-
+Craver, V. (2016). Fourier transform infrared spectroscopy to
+assess molecular-level changes in microorganisms exposed to
+nanoparticles. Nanotechnology for Environmental Engineering,
+1(1), 1. https://​doi.​org/​10.​1007/​s41204-​016-​0001-8
+	31.	 Kazek-Kęsik, A., Nosol, A., Płonka, J., Śmiga-Matuszowicz,
+M., Student, S., Brzychczy-Włoch, M., ... & Simka, W. (2020).
+Physico-chemical and biological evaluation of doxycycline loaded
+into hybrid oxide-polymer layer on Ti–Mo alloy. Bioactive Mate-
+rials, 5(3), 553–563.), https://​doi.​org/​10.​1016/j.​bioac​tmat.​2020.​
+04.​009
+	32.	 Gholizadeh, A., Shapoury, R., Pakzad, P., Mahdavi, M., & Dana-
+far, H. (2022). Evaluation of PLGA nanoparticles containing
+outer membrane proteins of Acinetobacter baumannii bacterium
+in stimulating the immune system in mice. Research in Pharma-
+ceutical Sciences, 17(4), 360–371. https://​doi.​org/​10.​4103/​1735-​
+5362.​350237
+	33.	 Raghuvanshi, R. S., Katare, Y. K., Lalwani, K., Ali, M. M., Singh,
+O., & Panda, A. K. (2002). Improved immune response from bio-
+degradable polymer particles entrapping tetanus toxoid by use
+of different immunization protocol and adjuvants. International
+Journal of Pharmaceutics, 245(1–2), 109–121. https://​doi.​org/​10.​
+1016/​S0378-​5173(02)​00342-3
+	34.	 Silva, A. T. C. R., Cardoso, B. C. O., e Silva, M. E. S. R., Freitas,
+R. F. S., & Sousa, R. G. (2015). Synthesis, characterization, and
+study of PLGA copolymer in vitro degradation. Journal of Bioma-
+terials and Nanobiotechnology, 6(01), 8. https://​doi.​org/​10.​4236/​
+jbnb.​2015.​61002
+	35.	 Vey, E., Roger, C., Meehan, L., Booth, J., Claybourn, M., Miller,
+A. F., & Saiani, A. (2008). Degradation mechanism of poly
+(lactic-co-glycolic) acid block copolymer cast films in phosphate
+buffer solution. Polymer Degradation and Stability, 93(10),
+1869–1876. https://​doi.​org/​10.​1016/j.​polym​degra​dstab.​2008.​07.​
+018
+	36.	 Machatschek, R., & Lendlein, A. (2020). Fundamental insights in
+PLGA degradation from thin film studies. Journal of controlled
+release, 319, 276–284. https://​doi.​org/​10.​1016/j.​jconr​el.​2019.​12.​
+044
+	37.	 Yoo, J., & Won, Y. Y. (2020). Phenomenology of the initial burst
+release of drugs from PLGA microparticles. ACS Biomaterials
+Science & Engineering, 6(11), 6053–6062. https://​doi.​org/​10.​
+1021/​acsbi​omate​rials.​0c012​28
+	38.	 Tran, T. D., & Luallen, R. J. (2023). An organismal understanding
+of C. elegans innate immune responses, from pathogen recogni-
+tion to multigenerational resistance. In Seminars in Cell & Devel-
+opmental Biology. Academic Press. https://​doi.​org/​10.​1016/j.​sem-
+cdb.​2023.​03.​005
+	39.	 Gravato-Nobre, M. J., & Hodgkin, J. (2005). Caenorhabditis ele-
+gans as a model for innate immunity to pathogens. Cellular Micro-
+biology, 7(6), 741–751. https://​doi.​org/​10.​1111/j.​1462-​5822.​2005.​
+00523.x
+	40.	 Sifri, C. D., Begun, J., Ausubel, F. M., & Calderwood, S. B.
+(2003). Caenorhabditis elegans as a model host for Staphylococ-
+cus aureus pathogenesis. Infection and Immunity, 71(4), 2208–
+2217. https://​doi.​org/​10.​1128/​IAI.​71.4.​2208-​2217.​2003
+	41.	 Wu, T., Xu, H., Liang, X., & Tang, M. (2019). Caenorhabditis
+elegans as a complete model organism for biosafety assessments
+of nanoparticles. Chemosphere, 221, 708–726. https://​doi.​org/​10.​
+1016/j.​chemo​sphere.​2019.​01.​021
+	42.	 Radeke, L. J., & Herman, M. A. (2021). Take a walk to the wild
+side of Caenorhabditis elegans-pathogen interactions. Microbiol-
+ogy and Molecular Biology Reviews, 85(2), 10–1128. https://​doi.​
+org/​10.​1128/​MMBR.​00146-​20
+	43.	 Galimov, E. R., & Gems, D. (2020). Shorter life and reduced
+fecundity can increase colony fitness in virtual Caenorhabditis
+elegans. Aging Cell, 19(5), e13141. https://​doi.​org/​10.​1111/​acel.​
+13141
+	44.	 Cun, D., Jensen, D. K., Maltesen, M. J., Bunker, M., Whiteside, P.,
+Scurr, D., ... & Nielsen, H. M. (2011). High loading efficiency and
+sustained release of siRNA encapsulated in PLGA nanoparticles:
+Quality by design optimization and characterization. European
+Journal of Pharmaceutics and Biopharmaceutics, 77(1), 26–35.
+https://​doi.​org/​10.​1016/j.​ejpb.​2010.​11.​008
+	45.	 Munteanu, C., & Schwartz, B. (2022). The relationship between
+nutrition and the immune system. Frontiers in Nutrition, 9,
+1082500. https://​doi.​org/​10.​3389/​fnut.​2022.​10825​00
+	46.	 Martorell, P., Llopis, S., Gonzalez, N., Ramón, D., Serrano, G.,
+Torrens, A., ... & Genovés, S. (2017). A nutritional supplement
+containing lactoferrin stimulates the immune system, extends
+lifespan, and reduces amyloid β peptide toxicity in Caenorhabdi-
+tis elegans. Food Science & Nutrition, 5(2), 255–265. https://​doi.​
+org/​10.​1002/​fsn3.​388
+Publisher's Note  Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds
+exclusive rights to this article under a publishing agreement with the
+author(s) or other rightsholder(s); author self-archiving of the accepted
+manuscript version of this article is solely governed by the terms of
+such publishing agreement and applicable law.

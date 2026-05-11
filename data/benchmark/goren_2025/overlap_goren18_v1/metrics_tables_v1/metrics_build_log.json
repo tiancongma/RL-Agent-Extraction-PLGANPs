@@ -1,0 +1,28 @@
+{
+  "cwd": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs",
+  "input_dir": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1",
+  "inputs": {
+    "doi_level_ee_scaffold_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\doi_level_ee_scaffold.tsv",
+    "rows_per_doi_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\rows_per_doi.tsv",
+    "agreement_summary_json": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\agreement_summary.json",
+    "audit_priority_doi_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\audit_priority__doi.tsv",
+    "build_log_json": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\build_log.json"
+  },
+  "input_row_counts": {
+    "doi_level_ee_scaffold_rows": 18,
+    "rows_per_doi_rows": 18,
+    "audit_priority_rows": 20,
+    "agreement_summary_exists": true,
+    "build_log_exists": true
+  },
+  "exclusions": {
+    "row_ratio_excluded_curated_rows_eq_0": 0,
+    "ee_comparable_required_for_ee_stats": 0
+  },
+  "outputs": {
+    "table1_structure_coverage_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\metrics_tables_v1\\table1_structure_coverage.tsv",
+    "table2_ee_agreement_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\metrics_tables_v1\\table2_ee_agreement.tsv",
+    "table3_error_distribution_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\metrics_tables_v1\\table3_error_distribution.tsv",
+    "top_doi_for_audit_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\metrics_tables_v1\\top_doi_for_audit.tsv"
+  }
+}

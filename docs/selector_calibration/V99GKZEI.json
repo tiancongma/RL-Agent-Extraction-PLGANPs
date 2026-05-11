@@ -1,0 +1,28 @@
+{
+  "paper_key": "V99GKZEI",
+  "selector_calibration_version": "v2",
+  "archetype": "single_authoritative_formulation_table_with_dual_methods",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph naming MB, PLGA, SC6OH, surfactants, and solvents",
+      "nanoprecipitation preparation paragraph",
+      "W/O/W reference preparation paragraph",
+      "authoritative Table 1 summary block"
+    ],
+    "should_drop": [
+      "paragraph proxy of Table 1 when the repaired table summary exists",
+      "numeric table-footnote residue that repeats Table 1 variable structure",
+      "broad historical or mechanistic background context"
+    ],
+    "minimal_evidence_set": [
+      "1 materials block",
+      "2 distinct preparation-method blocks",
+      "1 authoritative table block"
+    ]
+  },
+  "selection_notes": [
+    "The real table should outrank any paragraph proxy.",
+    "Two preparation blocks are valid because they describe genuinely distinct preparation branches.",
+    "Fallback context is optional and should usually be absent for this paper."
+  ]
+}

@@ -1,0 +1,2261 @@
+RESEARCH
+Journal of Pharmaceutical Innovation (2025) 20:152
+https://doi.org/10.1007/s12247-025-10051-2
+Tuğba Çopur and Nihat Kurt equally contributed to the article as
+first authors.
+
+ Sibel Bozdağ Pehlivan
+sbozdag@hacettepe.edu.tr
+Tuğba Çopur
+tugba.copur@hacettepe.edu.tr
+Nihat Kurt
+nihat.kurt@gop.edu.tr
+Esra Pezik
+epezik@erzincan.edu.tr
+Doruk Yalçın
+doruk.yalcin@ku.edu.tr
+Levent Öner
+loner@hacettepe.edu.tr
+1
+Hacettepe University, Ankara, Türkiye
+2
+Tokat Gaziosmanpaşa University, Tokat, Türkiye
+3
+Erzincan Binali Yıldırım University, Erzincan, Türkiye
+4
+Koç University, Istanbul, Türkiye
+Abstract
+The blood–brain barrier (BBB) separates blood from brain tissue, making drug delivery to the brain a significant chal­
+lenge. This study aims to develop and optimize a novel nanoparticle system that may overcome the BBB and have a
+potential effect on glioblastoma. Ketorolac tromethamine (KT)-loaded poly(lactic-co-glycolic acid) (PLGA) RG 503-H
+nanoparticles were prepared using water/oil/water (W/O/W) emulsification solvent evaporation. KT-loaded nanoparticles
+have a particle size of 155.5 ± 2.08 nm, a zeta potential of -12.9 ± 1.23 mV, a polydispersity index of 0.111 ± 0.035, and an
+encapsulation efficiency of 53.46%. A significant portion of the drug (> 90%) was released in 6 h and completed within
+24 h. When 3% (w/v) mannitol and trehalose were used as cryoprotectants, the nanoparticles remained physically stable.
+Additionally, it has been discovered that KT solution is cytotoxic at high doses to Rat Brain Glioblastoma (RG2) cells,
+and KT-loaded nanoparticles are more effective than drug solutions at lower doses.
+Accepted: 20 July 2025 / Published online: 29 July 2025
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2025
+Design and Evaluation of the PLGA Nanoparticles Containing
+Ketorolac Tromethamine in Glioblastoma Treatment
+Tuğba Çopur1 · Nihat Kurt1,2 · Esra Pezik1,3 · Doruk Yalçın4 · Sibel Bozdağ Pehlivan1 · Levent Öner1
+1 3
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+Introduction
+Primary brain tumors have considerable morbidity and death
+rates as part of the central nervous system (CNS) tumors [1].
+Gliomas are the most common type of brain tumor and are
+classified into four grades related to their clinical progres­
+sion and histology [2]: non-malignant grades I (pilocytic)
+and II (low-grade, well-differentiated), and the malignant
+grades III (anaplastic) and IV (glioblastoma multiforme)
+[3].
+Glioblastoma multiforme (GBM) is the most lethal and
+prevalent primary brain tumor [4], accounting for 48.3% of
+primary malignant brain tumors and 57.3% of all gliomas
+[5]. GBM’s prevalence is higher in older adults than in chil­
+dren, and incidence rises with age (the highest rate observed
+between 75 and 84 years). Also, men have the GBM 1.58-
+fold more than women [5]. The incidence of GBM in Europe
+changes depending on population diversity and ranges from
+3/100,000 to 5/100,000, while in the USA, it is 3.2/100,000
+[6]. Survival after the diagnosis of GBM is generally less
+than 20 months, and for the recurrent cases, roughly less
+than one year [7].
+GBM’s outline is the immense oxygen deprivation in the
+tumor center that causes sweeping necrosis in addition to
+superior vascular proliferation and enhanced permeation
+capacity of tumor cells [3]. Also, another GBM characteris­
+tic is a higher intratumoral heterogeneity [8]. GBM core and
+margin tissue display dissimilar molecular features. That’s
+why GBM treatment has gained acceptance as the hardest
+defiance in cancer [9].
+Conventional treatments, such as chemotherapy, sur­
+gery, radiotherapy, and a combination of chemotherapy and
+radiotherapy, showed insufficient effects for the remedy
+heretofore [4]. Insufficient treatment is related to various
+factors, such as tumor heterogeneity, target selection, and
+inadequate passage of chemotherapeutic agents through the
+blood-brain barrier (BBB) and into tumors [10]. The BBB
+separates peripheral circulation from the central nervous
+system (CNS) and regulates the outputs and inputs of the
+brain. All macromolecules and over 98% of small molecules
+(< 400 Da) are ineligible for penetration from the BBB [11].
+Despite the fact that there is quite an advancement in the new
+chemotherapeutic agent discovery and delivery systems for
+Graphical Abstract
+Keywords  PLGA nanoparticle · Drug delivery · Cryoprotectant · Ketorolac tromethamine · Glioblastoma · Release
+kinetics
+1 3
+152 
+Page 2 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+GBM treatment, an increase in median overall survival time
+for patients remains limited [6].
+Nanoparticles are systems that enable therapeutic and
+diagnostic drugs to penetrate target tissues better, control
+the release of the active substance they contain, and provide
+long-term effects due to the particle sizes, thereby increas­
+ing treatment efficacy and reducing side effects [12, 13].
+Developing poly(lactic-co-glycolic acid) (PLGA) nanopar­
+ticles loaded with anticancer agents constitutes a significant
+advancement in cancer therapies [14]. These nanoparticles
+have been designed to target tumor cells specifically, there­
+fore mitigating the potential harm inflicted on healthy cells
+and diminishing the occurrence of side effects [15]. The
+utilization of nanoparticles enables the regulated release of
+drugs over a specific duration, hence providing prolonged
+therapeutic efficacy and minimizing the frequency of
+administration [12, 16]. From this point of view, they dem­
+onstrate superiority over conventional treatments in treating
+brain tumors.
+Arachidonic acid is converted into prostaglandins by
+rate-restricting enzymes, which are called cyclooxygen­
+ases (COX). At present, COX has two isozymes: COX-1
+and COX-2. While COX-1 is fundamentally produced in
+various types of tissue, COX-2 is frequently produced in
+inflammatory and multiple cancer cells [17–19]. Studies
+have shown that inflammation is closely related to cancer,
+suggesting that eliminating inflammation may be a viable
+strategy for preventing and treating cancer [20, 21]. COX-2
+inhibitors may provide benefits in combating several can­
+cers, depending on their antitumor effects, such as celecoxib
+and rofecoxib. The long-standing utilization of COX-2
+inhibitors might reduce the prevalence and risk of several
+cancers. In one study, celecoxib, an anti-inflammatory drug,
+has been shown to have an anticancer effect [22]; in another
+study, it was combined with a chemotherapeutic agent and
+enhanced its antineoplastic activity [23]. Nonsteroidal anti-
+inflammatory drugs (NSAIDs) are extensively utilized
+for diminishing pain and inflammation worldwide. Even
+though the structure of the NSAIDs varies, all of them have
+antipyretic, anti-inflammatory, and analgesic efficacy [24].
+Ketorolac tromethamine (KT) is a compound consist­
+ing of the tromethamine salt of ketorolac. KT is soluble in
+water and exhibits additional characteristics, including a pH
+of 7.4 and an osmolality of 290 mOsmol/kg. Its pKa value
+is 3.5, and it has a molecular weight of 376.41 [25]. KT is
+an NSAID that impacts both COX enzymes, which impede
+prostaglandin production. KT significantly affects COX-1
+activity, as well as that of COX-2’s; on the other hand, it
+has no selectivity for COX-1 over COX-2 [26]. KT exhibits
+a high oral bioavailability of 90%; however, its biological
+half-life is relatively short, ranging from 3 to 4 h [27]. As a
+result, it necessitates increased dosing frequency to maintain
+therapeutic levels. Meanwhile, the penetration ability of KT
+is poor from the BBB [28].
+In this present study, KT-loaded PLGA nanoparticles
+were designed, and in vitro characterization studies (such as
+particle size, surface properties, encapsulation efficacy, in
+vitro release, and) and cryoprotectants (mannitol, dextran,
+trehalose, glucose, sucrose) effects on particle size, poly­
+dispersity index (PDI), and zeta values were determined.
+Furthermore, the effect of designed formulations on the via­
+bility of RG2 cells was evaluated for possible use in GBM
+treatment.
+Materials and Methods
+Materials
+Ketorolac tromethamine was obtained from Sigma Aldrich,
+USA. The polymer poly(lactic-co-glycolic acid) (PLGA)
+(50:50) Resomer RG 503 and RG 503-H (28–32.000 Da)
+was purchased from Boehringer Ingelheim, Germany, PVA
+(MA:30–70.000) and 0.22 μm sterile PVDF syringe filter
+from Sigma, USA, 0.45 μm PTFE membrane filter was pur­
+chased from Merck, Germany. Rat Glioblastoma cell line
+(RG2) was obtained from Merck-Millipore, USA, DMEM
+from Millipore, USA. All other chemicals used in the
+research studies were analytical grade.
+Methods
+Quantification of Ketorolac Tromethamine
+Quantification of KT was carried out by a high-pressure liq­
+uid chromatography (HPLC) method [29]. HPLC analysis
+was performed using a C18 column (150 mm x 4.6 Mm,
+5 μm). Methanol: Ammonium dihydrogen phosphate (55:45)
+(v: v) was used as a mobile phase (1 mL/min) and evaluated
+by the UV detector at 314 nm. The method was validated
+for the parameters of linearity (0.312–20 µg/mL), accuracy
+(0.312, 2.5 and 20 µg/mL), precision (0.312, 2.5 and 20 µg/
+mL), specificity, sensitivity (limit of detection (LOD) and
+limit of quantitation (LOQ)), and stability (24 h).
+Preparation of Nanoparticles
+Nanoparticle formulations were prepared by water/oil/water
+(W/O/W) emulsification solvent evaporation method [30].
+For this purpose, the oil phase was formed by dissolving
+PLGA in dichloromethane (DCM), and the water phase was
+created by dispersing KT in ultrapure water. The water phase
+was added to the oil phase, and the mixture was placed in an
+ice bath to prevent the active substance from breaking down
+1 3
+Page 3 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+sulated KT involved several steps. Firstly, the nanoparticle
+suspension was centrifuged at 13.500 rpm for 30 min and
+then washed three times to obtain a pellet. Subsequently,
+the supernatant was discarded, and DCM was added to the
+pellet. After vortexing for 5 min to dissolve the polymer, the
+active ingredient was released due to the disintegration of
+the nanoparticles. By adding phosphate buffer saline (PBS)
+(pH 7.4), the released active substance is allowed to pass
+into the PBS phase. Then, PBS phase was filtered through
+a membrane filter with a pore diameter of 0.45 μm and was
+injected into the HPLC column. Peak areas were placed in
+the calibration line, and concentrations were calculated.
+In Vitro Release Studies  In vitro release studies for nanopar­
+ticle formulations were carried out using the “Dialysis
+Membrane Method” [33]. All release studies were carried
+out under sink conditions because utilizing non-sink con­
+ditions could significantly underestimate the drug release
+from nanoparticles. For this purpose, the freshly prepared
+nanoparticle suspension was placed in a dialysis mem­
+brane (Sigma, D9277) with a molecular Cut-off value of
+14,000 MW and was transferred to 15 mL polypropylene
+tubes. Then, 10 mL of PBS (pH 7.4) solution was added
+to cover the dialysis membrane completely. The release
+samples prepared in the same way were placed in a horizon­
+tal shaker water bath, the temperature was kept constant at
+37 °C, and the samples were shaken at a speed of 100 rpm.
+All external media in the tubes were taken at certain inter­
+vals (0, 1, 2, 3, 6, and 24 h). Fresh 10 mL PBS (pH 7.4) was
+added instead, and the release cells were placed back in the
+water bath. The samples were filtered through a PTFE mem­
+brane filter with a 0.45 μm pore diameter and then injected
+into the HPLC column. Based on the calibration line, the
+due to the increasing temperature during the process. Soni­
+cation was then applied using an ultrasonic probe for 3 min
+at 60 watts. The obtained water/oil emulsion was added to
+a 2% (w/v) PVA solution and placed in an ice bath. Soni­
+cation was then performed again using an ultrasonic probe
+for 5 min at 60 watts. The formed emulsion was added to
+the diluted PVA solution (0.36% w/v). DCM was allowed
+to evaporate by mixing in the magnetic stirrer for 4 h at
+room temperature. The obtained nanoparticle suspension
+was centrifuged using filtered centrifuge tubes (Millipore,
+10 kDa) at 13.500 rpm for 30 min, it was then washed three
+times with ultrapure water, collected, and lyophilized for
+48 h. The preparation of the nanoparticles is shown sche­
+matically in Fig. 1.
+Sterilization of Nanoparticles
+The prepared nanoparticle suspension was sterilized by fil­
+tering through sterile PVDF syringe filters with a pore size
+of 0.22 μm in the sterile laminar flow cabin [31].
+Characterization of Nanoparticles
+Determination of Particle Size and Zeta Potential  Malvern
+Zetasizer Nano Series ZS device operating at a scattered
+angle of 173° was used to determine the prepared nanopar­
+ticle formulations’ particle sizes, PDI, and zeta potentials.
+The nanoparticle dispersions prepared in ultrapure water
+were diluted 1/10 and filtered through a 0.22 μm pore sized
+sterile PVDF syringe filter. After that, they were taken into
+the measuring cuvettes, and then the particle size and the
+zeta potential values were measured. The measurements
+were carried out in three replicates.
+Determination of the Encapsulated Drug Amount  The
+direct method [32] used to determine the amount of encap­
+Fig. 1  Schematic representation of the preparation of nanoparticles. Created using BioRender (biorender.com)
+
+1 3
+152 
+Page 4 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+Surface Properties  The shapes and surface properties of the
+prepared nanoparticle formulations were determined using
+Scanning Electron Microscopy (SEM). The prepared sam­
+ples were fixed to metal sheets using two-sided adhesive
+tape and coated with 100 A° of gold in the coating device
+(BIO-RAD). After coating, samples were visualized with
+SEM (FEI Nova Nanosem 430, USA).
+Fourier Transform-Infrared Spectroscopy (FT-IR)  The Fou­
+rier Transform-Infrared spectrum of the samples was also
+examined freshly and on day 90 after lyophilization, and
+analyzed using an FT-IR spectrophotometer (PerkinElmer
+BX, USA) within the 4000–600 cm− 1 spectral range.
+Differential Scanning Calorimetry (DSC)  In order to deter­
+mine the physical state of the drug and to evaluate any drug-
+polymer interactions, DSC experiments were conducted
+using freshly prepared samples as well as samples 90 days
+after lyophilization with a DSC Q 100 utilizing nitrogen as
+the purge gas. Samples (10  mg) were placed into alumi­
+num pans and sealed using an empty pan for reference. The
+temperature range tested was 25 to 300 ˚C, and sample was
+heated at a constant rate of 10 ˚C/min.
+In Vitro Cell Culture Studies
+Studies were conducted on Rat Brain Glioblastoma (RG2)
+cells to investigate KT’s in vitro cytotoxic effect. “Dulbec­
+co’s Modified Eagle Medium” (DMEM) containing fetal
+bovine serum, L-glutamine, penicillin, and streptomycin
+was used as a culture medium for RG2 cells.
+Preparation of RG2 Cells  RG2 cells stored in a nitrogen tank
+at approximately − 180 °C were opened in a cell culture cab­
+inet, suspended in DMEM, and transferred to flasks, where
+cells were grown. Then, the flasks were placed in a 37 °C
+incubator containing 5% CO2. RG2 cells were treated with
+trypsin-EDTA solution before the experiment to remove
+them from the flask floor. Then, it was suspended in the
+DMEM and centrifuged at 2000 rpm for 5 min. The superna­
+tant was removed, and the cells were resuspended by adding
+fresh DMEM. In the prepared cell suspension, cell counting
+was performed with trypan blue using a Thoma slide. The
+required cell suspension for cell culture in 96-well plates
+cumulative KT released was determined as a function of
+time.
+Mathematical investigations were conducted on several
+kinetic models and release processes, which serve as infor­
+mative indicators for innovative drug delivery systems, and
+in vitro release profiles were analyzed by DDSolver 1.0
+[34]. In the present context, an evaluation was conducted
+on six models, which include the first order, Hopfenberg,
+Korsmeyer–Peppas, Higuchi, Peppas–Sahlin, and Weibull
+models, along with three criteria, including the highest coef­
+ficient of determination (R2) and model selection criterion
+(MSC), and also lowest Akaike information criterion (AIC)
+[34, 35], to analyze in vitro release profile [34].
+In addition, a comparison was made between the release
+profile of KT from various formulations concerning both
+similarity (f2) and difference (f1) aspects [36, 37]. The
+computation of the difference factor (f1) and similarity
+factor (f2) was conducted to assess the release patterns of
+nanoparticles, using the methodology given in the Guidance
+for Industry provided by the Center for Drug Evaluation
+and Research (CDER) of the Food and Drug Administration
+(FDA) [37]. The definition of similarity indices is as fol­
+lows: Rt represents the proportion of dissolved material in a
+reference batch at a specific time, whereas Tt represents the
+proportion of dissolved material in a test batch. The variable
+n denotes the total number of time points considered in the
+analysis. The computations were performed on the average
+values of the six vessels for every brand. Factor f1 is the
+mean percentage difference across all time points in the dis­
+solution of the test brand relative to the reference brand. The
+f1 score is 0 when the test and reference patterns are alike,
+increasing the disparity between the two profiles as it rises.
+The f2 value ranges from 0 to 100. The numerical represen­
+tation of similarity between the test and reference profiles is
+100 when they are identical and diminishes towards zero as
+the dissimilarity between them rises [36, 37].
+KT release (%) = c (t)
+c (0) × 100
+c(t): amount of drug released in supernatant.
+c(0): total amount of drug encapsulated
+f1 =
+{
+[∑n
+t=1 (Rt −Tt)] /
+[∑n
+t=1 (Rt)]
+}
+× 100
+f2 = 50.log
+{[1 + 1
+n
+∑n
+t=1
+(Rt −Tt)2
+]−0.5
+× 100
+}
+1 3
+Page 5 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+were evaluated using a significance test for the difference
+between the two averages [38].
+Evaluation of Cryoprotectants Effect on Particle Size, PDI,
+and Zeta Potential
+In the present research, physical features such as particle
+size, PDI, and zeta potential of developed nanoparticles were
+investigated under different storage conditions (-20 ± 2 ˚C;
+4 ± 2 ˚C; 25 ± 2 ˚C, 60 ± 5% RH) based on the ICH Q1A(R2)
+guideline. Samples were protected from light during all
+storage conditions. Additionally, the effect of different cryo­
+protectants at a 3% concentration (w/v) on the freeze-drying
+process was evaluated. Samples were examined three times
+at four time points (0, 1, 2, and 3 months) and for each stor­
+age condition: before and after freeze-drying. Particle size
+after freeze-drying (Sf)/particle size before freeze-drying
+(Si) ratios (Sf/Si) calculated as aggregation scores.
+Statistical Analysis
+Statistical analysis was performed with GraphPad Prism
+8.0.1 (La Jolla, USA) by either using Mann-Whitney U test
+or unpaired two-tailed Student’s t-test or one-way ANOVA
+analysis with Dunnett’s multiple comparisons test with
+**** = p <.0001, *** = p <.001, ** = p <.01, * = p <.05 and
+ns = non-significant.
+Results and Discussion
+Quantification of Ketorolac Tromethamine
+Quantification of KT was successfully performed by HPLC
+analysis. As a result of the linearity study, a calibration line
+was obtained by using the peak areas obtained in the analy­
+sis of solutions of KT in PBS (pH 7.4) (0.3125-0.625-1.25-
+2.5-5-10-20 µg/mL) by HPLC analysis. The calibration line
+was demonstrated in Fig. 2, and calibration equation was
+y = 64.552x– 2.9713, and determination coefficient was R²
+= 0.9999. Also, precision for both inter-day and intra-day
+measurements across the three samples was less than 2%,
+respectively. These results meet the criteria outlined in the
+ICH guidelines [39]. LOD and LOQ were estimated to be
+0.2723  µg/mL and 0.8223  µg/mL, respectively. Results
+were similar to the literature [29] and applicable to the
+determination of KT.
+was prepared by adding the amount of DMEM calculated
+based on the cell count.
+Evaluation of the Cytotoxic Effect of Ketorolac Trometh­
+amine on RG2 Cells  In order to evaluate the cytotoxic effect
+of KT on RG2 cells, 100 µL of a cell suspension in pre­
+pared DMEM was seeded into 96-well plates containing
+5000 cells per well. The cells were incubated for 16–18 h
+to adhere to the well surfaces, and at the end of this period,
+the content was removed. Samples (KT solution; 0.47-0.94-
+1.88-3.75-7.5-15 mg/mL, blank, and KT-loaded RG 503-H
+nanoparticles) used in cell culture studies were prepared
+by dissolving and diluting in DMEM and applied to the
+cells. Blank and KT-loaded nanoparticles were precipitated
+by centrifugation. They were dispersed, diluted in DMEM
+(0.47-0.94-1.88 mg/mL), and then applied to the RG2 cells.
+Then, the plates were placed in an incubator containing 5%
+CO2 at 37 °C for 24 and 48 h. After incubation, 25 µL of
+3- [4,5-dimethylthiazol-2-yl] -2,5-diphenyltetrazolium bro­
+mide (MTT) (5  mg/mL) was added. After 4  h, a sodium
+dodecyl sulfate (SDS) solution dissolved in 80 µL of 45%
+dimethyl formamide (DMF) (23%, pH 4.7) was added. At
+the end of the incubation period, which lasted 16–18 h, a
+colorimetric measurement was made at 540  nm using an
+ELISA Plate Reader. The cell viability of the control groups
+was considered 100%, and the cell viability of the samples
+was calculated accordingly. Differences between groups
+Fig. 2  Calibration line of Ketorolac tromethamine solutions in PBS
+(pH 7.4) (n = 6)
+
+1 3
+152 
+Page 6 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+encapsulating hydrophilic molecules remain limited in
+availability [44]. Barichello et al. developed nanoparticles
+via a nanoprecipitation method in order to assess the EE
+of drugs exhibiting varying degrees of solubility. Con­
+sequently, the researchers noted reduced EE levels for all
+hydrophilic agents, while lipophilic medications exhib­
+ited elevated EE levels [44]. The influence of the various
+approaches to the preparation of PLGA nanoparticles on EE
+has been stated in the literature [43]; the W/O/W emulsion
+formulation is found to be favorable due to the utilization of
+two immiscible phases, which restricts drug diffusion in the
+external phase [43, 45, 46].
+As a result of studies with KT-loaded nanoparticles, it
+was determined that when PLGA RG 503-H and RG 503
+were used as polymers in W/O/W formulations, 53.46% and
+55.24% of the added KT were encapsulated into nanopar­
+ticles, which had relatively higher EE than other hydrophilic
+molecules [44], respectively.
+In Vitro Release Studies
+The in vitro release profiles of KT-loaded nanoparticles are
+shown in Fig. 3. Upon examination of the release profile,
+it was observed that the release of the KT-loaded nanopar­
+ticles was completed within 24 h, with a significant portion
+(> 90%) released within 6  h. Such a rapid release within
+the first 6 h can be essential for achieving quick therapeu­
+tic effects. Moreover, completed release within 24 h could
+contribute to a prolonged effect within the brain, potentially
+reducing the need for frequent dosing [47].
+The outcomes of the release kinetic modeling experi­
+ments are reported in Table 2, while graphical representa­
+tions are shown in Fig. 4.
+Characterization of Nanoparticles
+Determination of Particle Size and Zeta Potential
+The particle size, zeta potential, and PDI values of the blank
+and KT-loaded nanoparticles were obtaineddetermined, and
+the results were presented in Table 1.
+Nanoparticles with a particle size of between 150 and
+210 nm were obtained. Nanoparticles of around 100–200
+nanometers in size can have an improved ability to cross the
+BBB compared to larger particles, making them suitable for
+delivering drugs to the brain. KT loading into nanoparticles
+increased the particle sizes and did not change the negative
+value of the zeta potential; however, its value was reduced
+[40]. Based on our results, the KT-loaded nanoparticle diam­
+eter is generally ~ 5 to 22 nm higher than the blank nanopar­
+ticles. When the Mann-Whitney U tests were conducted to
+analyze the effects of drug loading on particle size and zeta
+potential, the results were found to be non-significant for the
+RG 503 and RG 503-H formulations. An increase in particle
+size of the formulations is expected after the drug loading
+process, even though a slight (non-significant) increase was
+observed in the present study. One of the reasons is that the
+drug molecules are placed between the polymer chains, cre­
+ating a swelling effect, which increases the particle volume.
+The second is that there are hydrogen bonds, van der Waals
+interactions, or electrostatic interactions between the drug
+and the polymer, which result in looser and bulkier parti­
+cles. The other is that the drug increases the viscosity of
+the polymer solution, resulting in larger droplets during the
+emulsification process [41, 42]. However, the difference in
+particle size between blank RG 503 and RG 503-H formula­
+tions (~ 38 nm), as well as between loaded RG 503 and RG
+503-H formulations (~ 55 nm), was found to be significant
+(p <.05).
+Determination of Encapsulation Efficiency
+The utilization of polymeric nanoparticles to encapsu­
+late and deliver lipophilic and hydrophilic drugs has been
+widely employed over an extended period [43]. However,
+the techniques now accessible for producing biodegrad­
+able microparticles and nanoparticles tend to focus mainly
+on lipophilic pharmaceuticals, while the procedures for
+Table 1  Particle size, zeta potential and PDI values of PLGA nanopar­
+ticle formulations (mean ± s.d., n = 3)
+Formulation
+Particle Size
+(nm)
+Zeta Poten­
+tial (mV)
+PDI
+Blank RG 503-H
+150.8 ± 0.124
+-17.8 ± 1.376 0.135 ± 0.041
+Loaded RG 503-H
+155.5 ± 2.08
+-12.9 ± 1.23
+0.111 ± 0.035
+Blank RG 503
+188.9 ± 1.539
+-14.5 ± 1.05
+0.211 ± 0.016
+Loaded RG 503
+210.3 ± 2.703
+-9.53 ± 1.01
+0.207 ± 0.041
+Fig. 3  In vitro release profiles of Ketorolac tromethamine-loaded
+nanoparticles (mean ± s.d., n = 6)
+
+1 3
+Page 7 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+The MSC is a variant of the AIC that has been adjusted
+to account for the reciprocal relationship between the two.
+Additionally, the MSC has undergone a normalization pro­
+cess to ensure its independence from the scaling of indi­
+vidual data points. When comparing various models, it is
+advisable to select the model with the highest MSC. Hence,
+it is relatively straightforward to understand the MSC’s
+implications concerning the model’s adequacy in capturing
+the data. In general, an MSC value more prominent than 2
+is favorable [34, 55]. The highest MSC value formulations
+were KT-loaded RG 503 and RG 503-H nanoparticles; how­
+ever, values were lower than 2 (1.921).
+Release profile differences of formulations containing
+RG 503-H and RG 503 were less than 5% for each period,
+and difference factor (f1) was found to be 5 (< 15), while
+similarity factor (f2) was 67 (> 50).
+Depending on characterization studies, it could be said
+that nanoparticles were successfully prepared and KT-loaded
+into them. Particles smaller than 200 nanometers (nm) pos­
+sess unique properties that enable them to traverse the BBB,
+a selective protective barrier that regulates the entry of sub­
+stances into the brain [56]. Larger nanoparticles (> 200 nm)
+are susceptible to phagocytosis by macrophages, preventing
+Based on the release kinetic parameters in PBS (pH 7.4)
+medium, the Weibull model exhibited the biggest R2 and
+MSC values, as well as the minimum AIC values, as seen
+in Table 2, for both RG 503 and RG 503-H formulations.
+However, it should be noted that if only R2 and AIC values
+were considered, there would be insignificant differences
+between the Peppas-Sahlin and Weibull models of KT-
+loaded RG 503-H formulation. The shape parameter “β” in
+the Weibull model is utilized as a criterion to elucidate the
+release profile from a polymeric matrix. A value of β ≤ 0.75
+signifies the occurrence of Fickian diffusion, whereas a
+value of β greater than 0.75 but less than 1 implies a mix of
+Fickian diffusion and controlled release; if β values exceed
+1, the drug release exhibits an intricate release profile [48–
+51]. The calculated values of β for the Weibull model were
+0.405 and 0.381 for the KT-loaded RG 503 and RG 503-H
+nanoparticles, respectively. The release profile is consistent
+with Fickian diffusion occurring during matrix erosion [48,
+52]. It is crucial to note that a smaller AIC value corresponds
+to a reduced amount of information loss. Consequently, the
+model exhibited a lower AIC value, which is deemed to pro­
+vide a better fit to the collected data [53, 54].
+Table 2  Release kinetic modelling and results of nanoparticle formulations
+Formulation
+RG 503-H
+RG 503
+Model and equation
+R2
+AIC
+MSC
+R2
+AIC
+MSC
+First-order
+F = 100.(1 − e−k1.t)
+-0.005
+54.543
+-1.682
+0.118
+54.231
+-1.625
+Higuchi
+F = kH.t0,5
+-0.082
+54.986
+-1.755
+-0.138
+55.767
+-1.881
+Korsmeyer–Peppas
+F = kKP.tn
+0.935
+38.767
+0.947
+0.949
+37.767
+1.118
+Peppas–Sahlin
+F = 100.[1-(1-kHC.t)3]
+0.963
+35.539
+1.485
+0.958
+36.870
+1.268
+Hopfenberg
+F = 100.[1−(1 − kHB.t)n]
+-0.744
+58.512
+-2.343
+-0.688
+58.793
+-2.385
+Weibull
+F = 100.[1 − e−((t−Ti)β)/α]
+0.965
+35.223
+1.537
+0.978
+32.953
+1.921
+Fig. 4  Release kinetics results were generated automatically by the DDSolver software for PBS (pH 7.4) release medium (*represents best fit
+models)
+
+1 3
+152 
+Page 8 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+(Fig. 6a) as well as on day 90 after lyophilization (Fig. 6b).
+RG 503-H has a carbonyl group (C = O) between 1740 and
+1760 cm− 1, while KT-loaded nanoparticles do not. On the
+other hand, KT’s loss of aromatic double bond (C = C) is
+observed between 1540 and 1590 cm− 1. RG 503-H inter­
+acted with KT and lost the carbonyl spectrum and hydroxyl
+group. Also, RG 503-H has a hydroxyl group (-OH) band
+between 3000 and 3400 cm− 1 compared to nanoparticles.
+Differential Scanning Calorimetry (DSC)
+The thermal behavior of the active substance, polymer,
+freshly prepared, and on day 90 post lyophilization blank
+nanoparticles, and loaded nanoparticles were compared in
+the DSC thermograms, as shown in Fig. 7. Pure KT had a
+peak of around 170 ˚C, well-matched with literature [60].
+RG 503-H, blank nanoparticles, and KT-loaded nanopar­
+ticles showed no significant peak between 20 and 300 ˚C
+when samples were freshly prepared or on day 90 after
+lyophilization was analyzed (Fig. 7).
+Based on FT-IR and DSC results, it might be stated that
+KT successfully loaded into nanoparticles and nanoparticles
+maintained their physicochemical characteristic till day 90.
+In Vitro Cell Culture Studies
+Evaluation of the Cytotoxic Effect of Ketorolac
+Tromethamine on RG2 Cells
+In order to evaluate the cytotoxic effect of KT, drug solu­
+tions of varying concentrations were applied to 96-well
+plates containing RG2 cells cultivated in DMEM. At the end
+of the 24 h and 48 h incubation periods, MTT was added,
+and after 4 h SDS-DMF was added. The absorbance val­
+ues of the plates were determined at 540 nm after 15–18 h.
+Cytotoxicity test results of KT solutions prepared at differ­
+ent concentrations (0.47-0.94-1.88-3.75-7.5-15 mg/mL) for
+24 h and 48 h were demonstrated in Fig. 8.
+Looking at the results of 24 h and 48 h cytotoxicity tests,
+it was seen that cell viability decreases as KT concentration
+increases, which means the KT solution caused cell death or
+inhibited cell growth in the RG2 cells at higher doses over
+time, with a significant difference observed compared to the
+control group (100% cell viability). On the other hand, the
+difference in cell viability was not significant at lower doses,
+except for the 0.47 mg/mL. Also, the cytotoxic effect of KT
+solutions after 24 h was found to be greater than observed
+after 48 h. This difference may be due to a decrease in the
+lethality of the active substance after 24 h, as cell prolifera­
+tion increased during the relevant period. Moreover, cyto­
+toxicity test results of KT solution, blank, and KT-loaded
+them from utilizing the enhanced permeability and retention
+(EPR) effect [57]. Nanoparticles can effectively navigate the
+tumor microenvironment through transvascular pores and
+fenestrations, emphasizing the crucial role of particle size
+in enhancing their penetration [56]. Among these particles,
+those in the optimal size range of 10 to 150 nm, as identified
+by Liu et al. [58], are particularly effective in drug deliv­
+ery. This characteristic not only facilitates the delivery of
+substantial amounts of medication directly to targeted brain
+tissues but also minimizes the likelihood of clearance by the
+lymphatic system [59]. By evading rapid clearance, these
+nanoparticles can achieve prolonged exposure to the drug,
+enhancing its therapeutic potential via passive targeting and
+paving the way for innovative treatments for various brain
+disorders. Since the nanoparticle formulations prepared by
+using RG 503-H have an optimum particle size (~ 155 nm)
+for brain drug delivery, further studies were conducted with
+RG 503-H nanoparticles.
+Surface Properties
+The surface properties of KT-loaded RG 503-H nanopar­
+ticles were examined by SEM analysis, and the obtained
+image is demonstrated in Fig. 5. Looking at the figure, it
+was seen that the KT-loaded nanoparticles have smooth sur­
+faces, indicating the absence of drug presence on their sur­
+faces, and their shapes are spherical.
+Fourier Transform-Infrared Spectroscopy (FT-IR)
+Freshly prepared KT-loaded nanoparticles and blank
+nanoparticles had similar spectrums regarding appearance
+Fig. 5  SEM image of Ketorolac tromethamine-loaded RG 503-H
+nanoparticles
+
+1 3
+Page 9 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+nanoparticles were evaluated. The results of the cytotoxicity
+test revealed that the nanoparticle formulations were associ­
+ated with a significantly higher cytotoxic effect at low doses
+compared to the pure active substance. In other words, the
+RG 503-H nanoparticle formulations for 24 h and 48 h were
+displayed in Fig. 9.
+The cell viability values obtained after 24  h and 48  h
+incubation of KT solution, blank, and KT-loaded RG 503-H
+Fig. 6  (a) The selected FT-IR spectrums of pure Ketorolac trometh­
+amine (blue), polymer RG 503-H (black), freshly prepared blank
+nanoparticles (yellow), freshly prepared Ketorolac tromethamine’s
+nanoparticles (pink) (b) The selected FT-IR spectrums of pure Ketoro­
+lac tromethamine (black), polymer RG 503-H (red), blank nanopar­
+ticles (pink) on day 90 after lyophilization, Ketorolac tromethamine’s
+nanoparticles (blue) on day 90 after lyophilization
+
+1 3
+152 
+Page 10 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+antineoplastic activity of KT is related to dose, similar to that
+of COX-2 inhibitors such as celecoxib [61, 62]. Addition­
+ally, a more pronounced cytotoxic effect was observed dur­
+ing the 48 h incubation period, as expected. The confidence
+nanoparticles enhanced the cytotoxic effect of KT in the
+RG2 cells when used at lower concentrations. However, as
+the dose increases, the difference between pure drug and
+nanoparticle formulations decreases. Depending on this, the
+Fig. 7  (a) The selected DSC spectrums of pure Ketorolac trometh­
+amine (red), polymer RG 503-H (green), freshly preparaed blank
+nanoparticles (blue), Ketorolac tromethamine’s nanoparticles (pink)
+(b) The selected DSC spectrums of pure Ketorolac tromethamine
+(red), polymer RG 503-H (green), blank nanoparticles (blue) on day
+90 after lyophilization, Ketorolac tromethamine’s nanoparticles (pink)
+on day 90 after lyophilization
+
+1 3
+Page 11 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+that 10%< change was obtained in sucrose added nanopar­
+ticles after the third month. The effects of freeze-drying
+on PDI, utilizing different cryoprotectants, were evaluated
+through paired t-tests. The results suggested insignificance
+for all RG 503-H formulations throughout all time inter­
+vals, apart from the third month. As for KT-loaded formula­
+tions without freeze-drying, changes in particle size were
+less than 10% after the first- and second-months, except for
+dextran added formulations. However, following the third
+month, 10%>change was observed for all formulations.
+Also, particle size changes of freeze-dried KT-loaded RG
+503-H formulations were similar to those without freeze-
+dried. The effects of freeze-drying on PDI, with the utili­
+zation of various cryoprotectants, were evaluated through
+paired t-tests. The results indicated that all RG 503-H for­
+mulations were insignificant, except for those with dextran,
+across all time intervals.
+In 4 ± 2 ˚C storage conditions (no freeze-drying), change
+in particle size of all blank RG 503-H nanoparticles with/
+without cryoprotectants was less than 10%, except dextran
+added ones after the first month; following the second- and
+third-months change remained 10%<. Also, particle size
+changes in freeze-dried blank formulations were similar to
+blank formulations without freeze-drying. The impact of
+freeze-drying on PDI when employing various cryoprotec­
+tants was assessed using paired t-tests. The findings indi­
+cated insignificance for all RG 503-H formulations across
+all time intervals. In KT-loaded RG 503-H nanoparticles
+without freeze-drying, the difference in particle size val­
+ues was less than 10% for all storage periods. Also, particle
+size difference for freeze-dried formulations was similar to
+that of those without freeze-dried ones, except for dextran
+interval of 80% revealed that the difference between the KT
+solution, blank, and KT-loaded RG 503-H nanoparticles was
+statistically significant, particularly at 0.94 mg/mL and less
+concentration following 48 h of observation. Though there
+was no significant difference between blank and KT-loaded
+RG 503-H nanoparticles, this situation was attributed to the
+presence of serum in the cell culture medium. It has been
+shown in the literature that the presence of serum in the cell
+culture medium affects the surface charge by creating a pro­
+tective shell around the nanoparticles, and this situation may
+affect the interaction of the nanoparticles with the cells, the
+release of the active substance from the nanoparticles, and
+the toxicity of the nanoparticles [63].
+Stability Studies
+While Tables 3, 4, 5, 6, 7 and 8 summarizes the particle sizes
+of, aggregation scores (Sf/Si ratios) of, Fig. 10 demonstrates
+the PDI of, and Fig. 11 displays the zeta values of all blank
+and KT-loaded RG 503-H nanoparticles before and after
+freeze-drying kept in storage conditions for three months.
+Under the − 20 ± 2 ˚C conditions (no freeze-drying),
+difference in particle size values of all blank RG 503-H
+nanoparticles with/without cryoprotectants were less than
+10% after the first month; dextran, trehalose, and sucrose
+added formulations change remained 10%< following the
+second month; however, after third month, change was
+greater than %10 for all groups. Though, difference in par­
+ticle size of freeze-dried blank formulations was higher than
+10% for dextran and sucrose added formulations after the
+first month; also, following the second month, 10%>differ­
+ence was observed in trehalose containing formulation; with
+Fig. 8  Cytotoxicity test results of
+Ketorolac tromethamine solutions
+on RG2 cells for 24 h and 48 h.
+Cell viability is expressed in
+percentages. Statistical signifi­
+cance was obtained with one-way
+ANOVA analysis with Dun­
+nett’s multiple comparisons test
+(control group was considered as
+100%) and significance is shown
+as * = p <.05, ** = p <.01, ***
+= p <.001, **** = p <.0001, and
+ns = not significant (mean ± s.d.,
+n = 3)
+
+1 3
+152 
+Page 12 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+When the formulations were kept in 25 ± 2 ˚C / 60% RH
+conditions (no freeze-drying), difference in particle size
+values of all blank RG 503-H nanoparticles with/without
+cryoprotectants were less than 10% except dextran and
+mannitol added ones after the first- and second-month;
+containing formulations. The effects of freeze-drying on PDI
+while utilizing different cryoprotectants were determined
+via paired t-test. The results demonstrated non-significance
+for the all RG 503-H formulations except for dextran added
+formulations at all periods.
+Fig. 9  Cytotoxicity test results on Ketorolac tromethamine solution,
+blank and Ketorolac tromethamine-loaded RG 503-H nanoparticle for­
+mulations on RG2 cells for 24 h and 48 h. Cell viability is expressed
+in percentages. Statistical significance was obtained with unpaired
+two-tailed Student’s t-test and significance is shown as * = p <.05 and
+ns = not significant (mean ± s.d., n = 3)
+
+1 3
+Page 13 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+Table 3  Physicochemical properties of blank RG 503-H nanoparticles before and after freeze-drying for different months under − 20 ± 2 ˚C
+(mean ± s.d., n = 3)
+Cryo­
+protec­
+tant
+(%w/v)
+Time (Month)
+0
+1
+2
+3
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle
+size ± s.d. (nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Before
+freeze-drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+No
+cryo­
+protec­
+tant
+171.4 ± 3.2
+174.1 ± 4.5 1.015
+0
+186.9 ± 3.8 188.7 ± 2.7 1.009
+0
+204.3 ± 5.9
+212.2 ± 3.8
+1.038
+0
+232.9 ± 4.9 253.7 ± 6.5
+1.089
+0
+Man­
+nitol
+(3%)
+176.2 ± 2.4
+178.2 ± 2.8 1.011
+0
+184.4 ± 4.4 193.7 ± 1.8 1.050
+0
+206.1 ± 2.3
+207.6 ± 2.5
+1.007
+0
+213.2 ± 4.1 242.1 ± 3.1
+1.135
+0
+Dextran
+(3%)
+172.4 ± 6.4
+176.4 ± 8.6 1.023
+0
+184.6 ± 9.6 199.3 ± 7.2 1.079
+0
+192.2 ± 10.2 201.43 ± 8.3 1.048
+0
+232.5 ± 9.4 258.43 ± 7.7 1.111
+0
+Treha­
+lose
+(3%)
+175.7 ± 3.5
+179.5 ± 4.7 1.021
+0
+183.5 ± 4.0 185.3 ± 4.2 1.009
+0
+185.3 ± 4.7
+207.50 ± 4.7 1.119
+0
+216.1 ± 3.7 238.5 ± 2.8
+1.103
+0
+Glucose
+(3%)
+173.4 ± 4.5
+176.7 ± 5.6 1.019
+0
+189.2 ± 3.8 192.4 ± 3.3 1.016
+0
+202.3 ± 3.4
+204.4 ± 2.7
+1.010
+0
+224.5 ± 1.7 240.8 ± 3.5
+1.072
+0
+Sucrose
+(3%)
+172.5 ± 3.7
+178.4 ± 4.1 1.034
+0
+178.1 ± 2.9 202.2 ± 4.9 1.135
+0
+182.2 ± 3.6
+224.4 ± 3.6
+1.231
+0
+228.5 ± 5.4 236.6 ± 4.2
+1.035
+0
+Values are mean ± s.d. n = 3. Sf. particle size after freeze-drying; Si. particle size before freeze-drying; PDI. polydispersity index. Agg. Score:
+Aggregation score: (0) absent. (1) scarce. (2) significant. ND: not determimed
+Table 4  Physicochemical properties of Ketorolac tromethamine-loaded RG 503-H nanoparticles before and after freeze-drying for different
+months under − 20 ± 2 ˚C (mean ± s.d., n = 3)
+Cryo­
+protec­
+tant
+(%w/v)
+Time (Month)
+0
+1
+2
+3
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle
+size ± s.d. (nm)
+Sf/Si
+Agg.
+Score
+Before
+freeze-drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+No
+cryo­
+protec­
+tant
+168.4 ± 6.1
+171.4 ± 4.5 1.017
+0
+170.6 ± 9.0 176.3 ± 8.5
+1.033
+0
+181.4 ± 4.5
+182.7 ± 4.1 1.007
+0
+245.3 ± 3.5 255.4 ± 5.5 1.041
+0
+Man­
+nitol
+(3%)
+172.5 ± 2.1
+178.2 ± 4.1 1.033
+0
+179.1 ± 3.7 182.25 ± 2.4 1.017
+0
+194.2 ± 2.4
+202.2 ± 6.4 1.041
+0
+228.9 ± 2.1 236.2 ± 3.4 1.031
+0
+Dextran
+(3%)
+175.9 ± 5.4
+ND
+ND
+2
+202.6 ± 5.9 ND
+ND
+2
+207.4 ± 6.8
+ND
+ND
+2
+234.8 ± 7.8 ND
+ND
+2
+Treha­
+lose
+(3%)
+170.6 ± 2.2
+172.6 ± 3.3 1.011
+0
+179.3 ± 3.8 189.1 ± 2.9
+1.054
+0
+180.50 ± 4.7 195.6 ± 2.7 1.083
+0
+214.5 ± 3.8 244.5 ± 4.7 1.088
+0
+Glucose
+(3%)
+168.4 ± 4.8
+175.4 ± 2.7 1.041
+0
+186.1 ± 4.2 187.1 ± 3.8
+1.005
+0
+192.7 ± 5.6
+198.1 ± 3.8 1.028
+0
+224.7 ± 5.2 248.7 ± 3.6 1.106
+0
+Sucrose
+(3%)
+173.2 ± 3.3
+174.3 ± 3.3 1.006
+0
+178.3 ± 3.5 187.5 ± 3.4
+1.051
+0
+188.4 ± 4.1
+195.1 ± 2.9 1.035
+0
+218.2 ± 3.2 222.2 ± 2.1 1.018
+0
+Values are mean ± s.d. n = 3. Sf. particle size after freeze-drying; Si. particle size before freeze-drying; PDI. polydispersity index. Agg. Score:
+Aggregation score: (0) absent. (1) scarce. (2) significant. ND: Not determimed
+1 3
+152 
+Page 14 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+Table 5  Physicochemical properties of blank RG 503-H nanoparticles before and after freeze-drying for different months under 4 ± 2 ˚C (mean ± s.d.,
+n = 3)
+Cryo­
+protec­
+tant
+(%w/v)
+Time (Month)
+0
+1
+2
+3
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle
+size ± s.d. (nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Before
+freeze-drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+No
+cryo­
+protec­
+tant
+171.4 ± 3.2
+174.1 ± 4.5 1.015
+0
+187.1 ± 3.4 188.43 ± 6.5 1.007
+0
+197.6 ± 2.2 199.2 ± 3.4 1.008
+0
+210.7 ± 2.3 213.4 ± 1.5
+1.012
+0
+Man­
+nitol
+(3%)
+176.2 ± 2.4
+178.2 ± 2.8 1.011
+0
+180.2 ± 2.6 182.5 ± 2.4
+1.012
+0
+186.6 ± 4.6 188.0 ± 1.7 1.007
+0
+192.6 ± 3.1 194.5 ± 2.4
+1.009
+0
+Dextran
+(3%)
+172.4 ± 6.4
+176.4 ± 8.6 1.023
+0
+218.2 ± 5.3 220.4 ± 8.8
+1.010
+0
+223.6 ± 7.6 231.2 ± 6.5 1.033
+0
+235.7 ± 4.5 242.4 ± 1.7
+1.028
+0
+Treha­
+lose
+(3%)
+175.7 ± 3.5
+179.5 ± 4.7 1.021
+0
+177.3 ± 5.1 180.50 ± 3.7 1.018
+0
+180.8 ± 4.4 189.5 ± 2.2 1.048
+0
+183.7 ± 3.2 193.50 ± 2.8 1.053
+0
+Glucose
+(3%)
+173.4 ± 4.5
+176.7 ± 5.6 1.019
+0
+176.7 ± 3.3 178.7 ± 5.6
+1.011
+0
+187.7 ± 2.9 189.0 ± 4.7 1.006
+0
+194.0 ± 3.1 195.7 ± 3.6
+1.008
+0
+Sucrose
+(3%)
+172.5 ± 3.7
+178.4 ± 4.1 1.034
+0
+178.9 ± 1.4 182.4 ± 4.6
+1.019
+0
+186.3 ± 1.4 188.7 ± 3.2 1.012
+0
+204.2 ± 1.8 206.4 ± 4.1
+1.010
+0
+Values are mean ± s.d. n = 3. Sf. particle size after freeze-drying; Si. particle size before freeze-drying; PDI. polydispersity index. Agg. Score:
+Aggregation score: (0) absent. (1) scarce. (2) significant. ND: not determimed
+Table 6  Physicochemical properties of Ketorolac tromethamine-loaded RG 503-H nanoparticles before and after freeze-drying for different
+months under 4 ± 2 ˚C (mean ± s.d., n = 3)
+Cryo­
+protec­
+tant
+(%w/v)
+Time (Month)
+0
+1
+2
+3
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle
+size ± s.d. (nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle
+size ± s.d. (nm)
+Sf/Si
+Agg.
+Score
+Before
+freeze-drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+No
+cryo­
+protec­
+tant
+168.4 ± 6.1
+171.4 ± 4.5
+1.017
+0
+179.6 ± 3.5 182.4 ± 2.4 1.015
+0
+184.5 ± 5.6 188.43 ± 4.5 1.021
+0
+189.8 ± 5.5 191.4 ± 6.8 1.008
+0
+Man­
+nitol
+(3%)
+172.5 ± 2.1
+178.2 ± 4.1
+1.033
+0
+181.2 ± 5.2 184.5 ± 4.1 1.018
+0
+188.3 ± 5.5 198.25 ± 2.4 1.052
+0
+192.3 ± 6.9 202.6 ± 3.4 1.053
+0
+Dextran
+(3%)
+175.9 ± 5.4
+ND
+ND
+2
+182.6 ± 8.9 ND
+ND
+2
+189.1 ± 6.5 ND
+ND
+2
+204.3 ± 7.5 ND
+ND
+2
+Treha­
+lose
+(3%)
+170.6 ± 2.2
+172.6 ± 3.3
+1.011
+0
+174.6 ± 6.2 179.4 ± 2.4 1.027
+0
+176.4 ± 4.9 180.50 ± 6.7 1.023
+0
+183.3 ± 3.5 185.6 ± 2.5 1.012
+0
+Glucose
+(3%)
+168.4 ± 4.8
+175.4 ± 2.7
+1.041
+0
+172.4 ± 4.4 178.6 ± 4.4 1.035
+0
+176.1 ± 3.4 182.7 ± 5.2
+1.037
+0
+178.2 ± 4.5 184.4 ± 4.3 1.034
+0
+Sucrose
+(3%)
+173.2 ± 3.3
+174.3 ± 3.3
+1.006
+0
+174.6 ± 3.2 184.4 ± 5.1 1.056
+0
+178.9 ± 2.6 188.4 ± 4.1
+1.053
+0
+185.3 ± 4.7 198.3 ± 1.1 1.070
+0
+Values are mean ± s.d. n = 3. Sf. particle size after freeze-drying; Si. particle size before freeze-drying; PDI. polydispersity index. Agg. Score:
+Aggregation score: (0) absent. (1) scarce. (2) significant. ND: Not determimed
+1 3
+Page 15 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+all RG 503-H formulations, apart from dextran added for­
+mulations at all periods.
+As displayed in Tables 3, 4, 5, 6, 7 and 8, the nanoparticles
+were physically stable during the freeze-drying process even
+when cryoprotectants were not used. This stability may be
+attributed to the presence of polyvinyl alcohol (PVA) on the
+surface of the nanoparticles, which acts as a steric barrier.
+PVA likely helps protect the nanoparticles from aggregation
+or damage during freeze-drying [64]. However, controver­
+sial results have been observed in literature, indicating that
+the steric stabilization provided by PVA may face challenges
+during the freezing process, especially when no cryoprotec­
+tants are present. They stated that when freezing occurs, ice
+forms, and as a result, the concentration of nanoparticles
+and other solutes in the liquid phase increases. This increase
+in concentration could lead to a reduction in interparticle
+distances and particle aggregation [65]. Moreover, cryopro­
+tectants not only prevent aggregation during freezing but
+also maintain separation during drying [64, 66, 67]. Thus, in
+this study, the effect of cryoprotectants on particle size, PDI,
+and zeta potential was evaluated. Several studies highlight
+the significance of sugars as cryoprotectants in maintaining
+the particle size of lyophilized PLGA nanoparticles [68–73].
+In a study, after lyophilization, a concentration of only 5%
+glucose or sucrose was effective in preventing agglomera­
+tion of nanoparticles for up to 4 months at -20 °C. Notably,
+when stored at 4 °C for the same duration, agglomeration
+however, following the third months, all formulations’
+particle size change was greater than 10%, except glucose
+added nanoparticles. Meanwhile, particle size differences in
+freeze-dried blank formulations were bigger than 10% for
+dextran, trehalose, and mannitol added formulations after
+the first month; following second month, 10%>difference
+was observed in particle size of all formulations, except no
+cryoprotectant, and glucose added ones, lastly, only glucose
+added formulations change remained below 10% after the
+third month. The effects of freeze-drying on PDI while using
+different cryoprotectants were analyzed via paired t-test.
+The results showed non-significance for the RG 503-H for­
+mulations initially and in the first month, while significance
+(p <.05) was observed at the second- and third-months. As
+for the KT-loaded RG 503-H nanoparticle formulations;
+changes in particle size were less than 10% after the first
+and second months, except for dextran added formulations.
+However, following the third month, > 10% change was
+observed for all formulations. Also, particle size difference
+freeze-dried formulations were less than 10%, except tre­
+halose, dextran, and sucrose added formulations following
+first month. Particle size change of all formulations was less
+than 10% after the second month, while > 10% change was
+detected after the third month. The freeze-drying effects on
+PDI while utilizing various cryoprotectants were evaluated
+via paired t-test. The results exhibited non-significance for
+Table 7  Physicochemical properties of blank RG 503-H nanoparticles before and after freeze-drying for different months under 25 ± 2 ˚C and 60%
+RH conditions (mean ± s.d., n = 3)
+Cryo­
+protec­
+tant
+(%w/v)
+Time (Month)
+0
+1
+2
+3
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Mean particle
+size ± s.d. (nm)
+Sf/Si
+Agg.
+Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg.
+Score
+Before
+freeze-drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+Before
+freeze-
+drying
+After
+freeze-
+drying
+No
+cryo­
+protec­
+tant
+171.4 ± 3.2
+174.1 ± 4.5 1.015
+0
+178.9 ± 2.4 180.5 ± 5.1
+1.008
+0
+182.3 ± 4.3 183.3 ± 8.2 1.005
+0
+230.2 ± 6.4 235.43 ± 5.5 1.022
+0
+Man­
+nitol
+(3%)
+176.2 ± 2.4
+178.2 ± 2.8 1.011
+0
+208.0 ± 3.2 216.9 ± 4.4
+1.042
+0
+236.5 ± 3.6 240.0 ± 4.8 1.014
+0
+263.2 ± 4.6 279.25 ± 6.2 1.060
+0
+Dextran
+(3%)
+172.4 ± 6.4
+176.4 ± 8.6 1.023
+0
+212.3 ± 7.7 215.43 ± 6.5 1.014
+0
+222.5 ± 6.9 231.4 ± 6.1 1.040
+0
+263.8 ± 3.3 272.43 ± 2.7 1.032
+0
+Treha­
+lose
+(3%)
+175.7 ± 3.5
+179.5 ± 4.7 1.021
+0
+182.6 ± 4.8 211.8 ± 3.4
+1.159
+0
+205.7 ± 2.6 234.7 ± 2.4 1.140
+0
+254.9 ± 2.1 260.5 ± 3.7
+1.021
+0
+Glucose
+(3%)
+173.4 ± 4.5
+176.7 ± 5.6 1.019
+0
+177.6 ± 3.5 187.8 ± 2.9
+1.057
+0
+194.7 ± 4.7 198.7 ± 3.1 1.020
+0
+206.7 ± 4.3 210.7 ± 5.6
+1.019
+0
+Sucrose
+(3%)
+172.5 ± 3.7
+178.4 ± 4.1 1.034
+0
+176.1 ± 2.7 189.8 ± 3.6
+1.077
+0
+188.3 ± 5.4 214.6 ± 4.9 1.139
+0
+224.4 ± 3.1 236.4 ± 2.8
+1.053
+0
+Values are mean ± s.d. n = 3. Sf. particle size after freeze-drying; Si. particle size before freeze-drying; PDI. polydispersity index. Agg. Score:
+Aggregation score: (0) absent. (1) scarce. (2) significant. ND: not determimed
+1 3
+152 
+Page 16 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+Table 8  Physicochemical properties of Ketorolac tromethamine-loaded RG 503-H nanoparticles before and after freeze-drying for different months under 25 ± 2 ˚C and 60% RH conditions
+(mean ± s.d., n = 3)
+Cryoprotectant
+(%w/v)
+Time (Month)
+0
+1
+2
+3
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg. Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg. Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg. Score
+Mean particle size ± s.d.
+(nm)
+Sf/Si
+Agg. Score
+Before
+freeze-drying
+After
+freeze-drying
+Before
+freeze-drying
+After
+freeze-drying
+Before
+freeze-drying
+After
+freeze-drying
+Before
+freeze-drying
+After
+freeze-drying
+No cryoprotectant 168.4 ± 6.1
+171.4 ± 4.5
+1.017
+0
+173.3 ± 6.2
+176.1 ± 3.9
+1.016
+0
+193.7 ± 2.5
+196.3 ± 4.8
+1.013
+0
+202.2 ± 3.6
+219.4 ± 4.8
+1.085
+0
+Mannitol
+(3%)
+172.5 ± 2.1
+178.2 ± 4.1
+1.033
+0
+176.9 ± 2.9
+185.3 ± 4.4
+1.047
+0
+194.5 ± 3.8
+199.6 ± 3.1
+1.026
+0
+227.0 ± 6.5
+232.5 ± 3.4
+1.024
+0
+Dextran
+(3%)
+175.9 ± 5.4
+ND
+ND
+2
+215.3 ± 4.9
+ND
+ND
+2
+239.8 ± 7.4
+ND
+ND
+2
+264.1 ± 4.6
+ND
+ND
+2
+Trehalose
+(3%)
+170.6 ± 2.2
+172.6 ± 3.3
+1.011
+0
+179.1 ± 3.8
+203.1 ± 5.1
+1.054
+0
+193.9 ± 2.2
+227.6 ± 4.9
+1.173
+0
+238.4 ± 2.5
+253.5 ± 4.7
+1.063
+0
+Glucose
+(3%)
+168.4 ± 4.8
+175.4 ± 2.7
+1.041
+0
+173.7 ± 2.4
+182.3 ± 3.5
+1.134
+0
+181.1 ± 4.4
+188.8 ± 2.3
+1.042
+0
+202.1 ± 3.9
+214.7 ± 5.6
+1.062
+0
+Sucrose
+(3%)
+173.2 ± 3.3
+174.3 ± 3.3
+1.006
+0
+183.4 ± 3.5
+202.3 ± 4.3
+1.103
+0
+193.9 ± 3.4
+212.5 ± 3.4
+1.095
+0
+227.5 ± 4.4
+247.4 ± 3.1
+1.087
+0
+Values are mean ± s.d. n = 3. Sf. particle size after freeze-drying; Si. particle size before freeze-drying; PDI. polydispersity index. Agg. Score: Aggregation score: (0) absent. (1) scarce. (2)
+significant. ND: Not determimed
+1 3
+Page 17 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+Fig. 11  Zeta potential values of blank and Ketorolac tromethamine-
+loaded RG 503-H nanoparticles before and after freeze-drying for dif­
+ferent periods. Storage conditions: (a) KT-loaded NP under − 20 ± 2 ˚C;
+(b) KT-loaded NP under 4 ± 2 ˚C; (c) KT-loaded NP under 25 ± 2 ˚C,
+60% RH; (d) Blank NP under − 20 ± 2 ˚C; (e) Blank NP under 4 ± 2 ˚C;
+(f) Blank NP under 25 ± 2 ˚C, 60% RH (mean ± s.d., n = 3)
+
+Fig. 10  PDI of blank and Ketorolac tromethamine-loaded RG 503-H
+nanoparticles before and after freeze-drying for different periods. Stor­
+age conditions: (a) KT-loaded NP under − 20 ± 2 ˚C; (b) KT-loaded NP
+under 4 ± 2 ˚C; (c) KT-loaded NP under 25 ± 2 ˚C, 60% RH; (d) Blank
+NP under − 20 ± 2 ˚C; (e) Blank NP under 4 ± 2 ˚C; (f) Blank NP under
+25 ± 2 ˚C, 60% RH (mean ± s.d., n = 3)
+
+1 3
+152 
+Page 18 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+study does not confirm that developed nanoparticles can
+cross the BBB.
+Furthermore, different cryoprotectants have varying
+effects on the physical stability of nanoparticles during the
+freeze-drying process. They play a critical role in protecting
+the integrity of nanoparticles, preventing aggregation, and
+maintaining their functionality. Cryoprotectants help main­
+tain the function of nanoparticles by preventing aggregation
+and preserving shape. Understanding the cryoprotection
+mechanism and the impact of different cryoprotectants on
+the outcome of freeze-dried nanoparticles is valuable, par­
+ticularly in the pharmaceutical industry. Our results show
+that when mannitol and trehalose are used as cryoprotec­
+tants, lower changes are obtained in nanoparticle character­
+ization during the preservation periods, whereas dextran is
+not a suitable candidate as a cryoprotectant. This knowledge
+could be applied to design more effective and stable lyophi­
+lized formulations for various applications. These findings
+demonstrate that utilizing nanoparticles as a drug delivery
+system can enhance the effectiveness of drugs.
+Designed KT-loaded nanoparticle formulations could be
+a promising approach for specifically targeting brain tumors.
+Besides, it might be considered for combination therapy
+with antineoplastic agents. However, further studies, such as
+in vitro and in vivo confirmation of the developed nanopar­
+ticles’ ability to cross the BBB, in vivo efficacy, biodistribu­
+tion, and toxicity, need to be carried out for confirmation.
+Author Contributions  Tuğba Çopur: Conceptualization, Methodology,
+Writing - Original Draft, Visualization Nihat Kurt: Conceptualiza­
+tion, Methodology, Writing - Original Draft, Visualization, Software,
+Formal analysis Esra Pezik: Conceptualization, Methodology, Writ­
+ing - Original Draft, Formal analysis Doruk Yalçın: Writing - Original
+Draft, Data Curation Sibel Bozdağ Pehlivan: Conceptualization, Writ­
+ing - Review & Editing, Visualization Levent Öner: Conceptualiza­
+tion, Visualization, Supervision.
+Data Availability  No datasets were generated or analysed during the
+current study.
+Declarations
+Competing Interests  The authors declare that they have no known
+competing financial interests or personal relationships that could have
+appeared to influence the work reported in this paper.
+References
+1.
+Akter F, Simon B, de Boer NL, Redjal N, Wakimoto H, Shah
+K. Pre-clinical tumor models of primary brain tumors: chal­
+lenges and opportunities. Biochimica et biophysica acta (BBA) -.
+Reviews Cancer. 2021;1875(1):188458. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​
+.​b​b​c​a​n​.​2​0​2​0​.​1​8​8​4​5​8.
+2.
+Sanai N, Berger MS. Surgical oncology for gliomas: the state of
+the Art. Nat Rev Clin Oncol. 2018;15(2):112–25. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​
+1​0​.​1​0​3​8​/​n​r​c​l​i​n​o​n​c​.​2​0​1​7​.​1​7​1.
+was also prevented with 5% sucrose and 10% glucose in
+nanoparticles. Conversely, no sugar type or concentration
+was found to be capable of preventing agglomeration during
+the long-term storage of nanoparticles at 25 °C [74].
+In another study, the addition of 5% mannitol prevented
+any significant changes in particle size, PDI, or zeta poten­
+tial [75]. The research by Fonte et al. demonstrated that the
+use of trehalose, a cryoprotectant, improved the stability
+of insulin-loaded PLGA nanoparticles during the lyophi­
+lization process [76]. The results of our study are consis­
+tent with the literature, the smaller disaccharides provide
+improved stability compared to larger saccharides (like
+ficoll and dextran) [77].
+All of the RG 503-H nanoparticle formulations’ particle
+sizes slightly increased after the freeze-drying. Dextran
+added KT-loaded nanoparticles demonstrated the highest
+Sf/Si ratio and PDI, indicating that the formulation was
+not monodisperse after freeze-drying procedure. When
+3% (w/v) mannitol and 3% (w/v) trehalose were used, Sf/
+Si ratio changes were minimal for the storage conditions.
+All formulations exhibited a slightly negative zeta poten­
+tial, and after the freeze-drying, no significant change was
+observed under any storage condition. When mannitol and
+trehalose were used as cryoprotectants, lower changes were
+observed in nanoparticle characterization, and they could
+provide better storage for nanoparticles.
+Conclusion
+GBM attracts interest from researchers due to its short sur­
+vival time and the lack of effective therapy. Even though
+the transition of molecules through the BBB gets smoother
+in the presence of brain tumors. BBB remains the primary
+obstacle to inadequate treatment. This is an active area of
+research and development in the field of pharmaceuticals
+and nanotechnology, with the goal of improving treatments.
+In the present study, observations revealed a decline in
+RG2 cell viability with escalating KT concentration, which
+is known as an inhibitor of both COX, suggesting that the
+KT solution induced cell death or impeded cell growth in
+RG2 cells at higher doses over time, resulting in a note­
+worthy discrepancy compared to the control group, and
+it might be proof of COX participation in tumor develop­
+ment. Based on existing literature, we have developed and
+optimized KT-loaded nanoparticles regarding particle size
+(155.5 ± 2.08  nm), zeta potential (-12.9 ± 1.23 mV), PDI
+(0.111 ± 0.035), etc., to enhance their ability to cross the
+BBB and target GBM through passive targeting. Developed
+nanoparticles exhibited a greater cytotoxic effect compared
+to pure drug solutions on RG2 cells. However, the present
+1 3
+Page 19 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+agents to prevent or treat highly aggressive breast cancer. IJMS.
+2024;25(11):6103. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​3​9​0​/​i​j​m​s​2​5​1​1​6​1​0​3.
+19.	 Tajdari M, Peyrovinasab A, Bayanati M, Ismail Mahboubi Rab­
+bani M, Abdolghaffari AH, Zarghi A, Dual. COX-2/TNF-α inhibi­
+tors as promising Anti-inflammatory and cancer chemopreventive
+agents: A review. Iran J Pharm Res. 2024;23(1):e151312. ​h​t​t​p​s​:​/​/​
+d​o​i​.​o​r​g​/​1​0​.​5​8​1​2​/​i​j​p​r​-​1​5​1​3​1​2.
+20.	 Huang R, Yu J, Zhang B, Li X, Liu H, Wang Y. Emerging COX-2
+inhibitors-based nanotherapeutics for cancer diagnosis and treat­
+ment. Biomaterials. 2025;315:122954. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​b​
+i​o​m​a​t​e​r​i​a​l​s​.​2​0​2​4​.​1​2​2​9​5​4.
+21.	 Kassab AE. Recent advances in targeting COX-2 for cancer ther­
+apy: a review. RSC Med Chem. 2025. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​3​9​/​D​5​
+M​D​0​0​1​9​6​J. 10.1039.D5MD00196J.
+22.	 Yerokun T, Winfield LL. Celecoxib and LLW-3-6 reduce survival
+of human glioma cells independently and synergistically with sul­
+fasalazine. Anticancer Res. 2015;35(12):6419–24.
+23.	 Augello FR, Lombardi F, Ciummo V, Ciafarone A, Cifone MG,
+Cinque B, et al. COX-2 Inhibition in glioblastoma cells coun­
+teracts resistance to Temozolomide by inducing oxidative stress.
+Antioxidants. 2025;14(4):459. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​3​9​0​/​a​n​t​i​o​x​1​4​0​
+4​0​4​5​9.
+24.	 Williams BS, Buvanendran A. Chapter 17 - Nonopioid analge­
+sics: nsaids, COX-2 inhibitors, and acetaminophen. In: Benzon
+HT, Raja SN, Liu SS, Fishman SM, Cohen SP, Hurley RW, et al.
+editors. Essentials of pain medicine (Third Edition). Third. Saint
+Louis: W.B. Saunders; 2011. pp. 130–9.
+25.	 Sandoval HP, Solomon KD. Ketorolac tromethamine 0.4% to
+relieve eye pain and inflammation following cataract extrac­
+tion and keratorefractive surgery. Expert Rev Ophthalmol.
+2009;4(5):461–8. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​5​8​6​/​e​o​p​.​0​9​.​3​5.
+26.	 Jett M-F, Ramesha CS, Brown CD, Chiu S, Emmett C, Voronin
+T, et al. Characterization of the analgesic and Anti-Inflammatory
+activities of ketorolac and its enantiomers in the rat. J Pharmacol
+Exp Ther. 1999;288(3):1288–97. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​S​0​0​2​2​-​
+3​5​6​5​(​2​4​)​3​8​0​8​5​-​1.
+27.	 Suhail M, Liu J-Y, Hsieh W-C, Lin Y-W, Usman Minhas M, Wu
+P-C. Designing of pH-responsive ketorolac tromethamine loaded
+hydrogels of alginic acid: characterization, in-vitro and in-vivo
+evaluation. Arab J Chem. 2022;15(2):103590. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​
+.​1​0​1​6​/​j​.​a​r​a​b​j​c​.​2​0​2​1​.​1​0​3​5​9​0.
+28.	 Kumpulainen E, Kokki H, Laisalmi M, Heikkinen M, Savolainen
+J, Rautio J, et al. How readily does ketorolac penetrate cerebro­
+spinal fluid in children?? J Clin Pharma. 2008;48(4):495–501. ​h​t​t​
+p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​7​7​/​0​0​9​1​2​7​0​0​0​7​3​1​3​3​8​9.
+29.	 Sunil G, Jambulingam M, Ananda Thangadurai S, Kamalakannan
+D, Sundaraganapathy R, Jothimanivannan C. Development and
+validation of ketorolac tromethamine in eye drop formulation by
+RP-HPLC method. Arab J Chem. 2017;10(Suppl 1):S928–935. ​h​
+t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​a​r​a​b​j​c​.​2​0​1​2​.​1​2​.​0​3​1.
+30.	 Bozdag S, Dillen K, Vandervoort J, Ludwig A. The effect
+of freeze-drying with different cryoprotectants and gamma-
+irradiation sterilization on the characteristics of Ciprofloxacin
+HCl-loaded poly(D,L-lactide-glycolide) nanoparticles. J Pharm
+Pharmacol. 2010;57(6):699–707. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​2​1​1​/​0​0​2​2​3​5​
+7​0​5​6​1​4​5.
+31.	 Fraise AP, Lambert PA, Maillard J-Y, editors. Russell, Hugo &
+ayliffe’s principles and practice of disinfection, preservation &
+sterilization. Fourth edition. Oxford, UK: Blackwell Publishing
+Ltd; 2004.
+32.	 Dalvi A, Ravi PR, Uppuluri CT. Rufinamide-Loaded Chitosan
+nanoparticles in Xyloglucan-Based thermoresponsive in situ gel
+for direct nose to brain delivery. Front Pharmacol. 2021;12:1–13. ​
+h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​3​8​9​/​f​p​h​a​r​.​2​0​2​1​.​6​9​1​9​3​6.
+33.	 Harivardhan Reddy L, Vivek K, Bakshi N, Murthy RSR. Tamoxi­
+fen citrate loaded solid lipid nanoparticles (SLN™): preparation,
+3.
+Quesnel A, Karagiannis GS, Filippou PS. Extracellular proteoly­
+sis in glioblastoma progression and therapeutics. Biochimica et
+biophysica acta (BBA) -. Reviews Cancer. 2020;1874(2):188428. ​
+h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​b​b​c​a​n​.​2​0​2​0​.​1​8​8​4​2​8.
+4.
+Zhang X, Peng L, Liang Z, Kou Z, Chen Y, Shi G, et al. Effects
+of aptamer to U87-EGFRvIII cells on the proliferation, radiosen­
+sitivity, and radiotherapy of glioblastoma cells. Mol Therapy -
+Nucleic Acids. 2018;10:438–49. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​o​m​t​n​.​2​
+0​1​8​.​0​1​.​0​0​1.
+5.
+Ostrom QT, Price M, Neff C, Cioffi G, Waite KA, Kruchko C,
+et al. CBTRUS statistical report: primary brain and other central
+nervous system tumors diagnosed in the united States in 2015–
+2019. Neurooncology. 2022;24(Suppl 5):v1–95. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​
+0​.​1​0​9​3​/​n​e​u​o​n​c​/​n​o​a​c​2​0​2.
+6.
+Chistiakov DA, Chekhonin IV, Chekhonin VP. The EGFR variant
+III mutant as a target for immunotherapy of glioblastoma multi­
+forme. Eur J Pharmacol. 2017;810:70–82. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​
+6​/​j​.​e​j​p​h​a​r​.​2​0​1​7​.​0​5​.​0​6​4.
+7.
+Desjardins A, Gromeier M, Herndon JE, Beaubier N, Bolognesi
+DP, Friedman AH, et al. Recurrent glioblastoma treated with
+Recombinant poliovirus. N Engl J Med. 2018;379(2):150–61. ​h​t​t​
+p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​5​6​/​N​E​J​M​o​a​1​7​1​6​4​3​5.
+8.
+Bastola S, Pavlyukov MS, Yamashita D, Ghosh S, Cho H, Kagaya
+N, et al. Glioma-initiating cells at tumor edge gain signals from
+tumor core cells to promote their malignancy. Nat Commun.
+2020;11(1):4660. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​3​8​/​s​4​1​4​6​7​-​0​2​0​-​1​8​1​8​9​-​y.
+9.
+Kim JS, Shin DH, Kim J-S. Dual-targeting immunoliposomes
+using angiopep-2 and CD133 antibody for glioblastoma stem
+cells. J Control Release. 2018;269:245–57. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​
+1​6​/​j​.​j​c​o​n​r​e​l​.​2​0​1​7​.​1​1​.​0​2​6.
+10.	 Gan HK, van den Bent M, Lassman AB, Reardon DA, Scott AM.
+Antibody–drug conjugates in glioblastoma therapy: the right
+drugs to the right cells. Nat Rev Clin Oncol. 2017;14(11):695–
+707. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​3​8​/​n​r​c​l​i​n​o​n​c​.​2​0​1​7​.​9​5.
+11.	 Pires PC, Santos AO. Nanosystems in nose-to-brain drug deliv­
+ery: A review of non-clinical brain targeting studies. J Control
+Release. 2018;270:89–100. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​j​c​o​n​r​e​l​.​2​0​1​
+7​.​1​1​.​0​4​7.
+12.	 Elumalai K, Srinivasan S, Anandakumar S. Review of the effi­
+cacy of nanoparticle-based drug delivery systems for cancer treat­
+ment. Biomedical Technol. 2024;5:109–22. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​
+1​6​/​j​.​b​m​t​.​2​0​2​3​.​0​9​.​0​0​1.
+13.	 Rashidi N, Davidson M, Apostolopoulos V, Nurgali K. Nanopar­
+ticles in cancer diagnosis and treatment: progress, challenges, and
+opportunities. J Drug Deliv Sci Technol. 2024;95:105599. ​h​t​t​p​s​:​/​
+/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​j​d​d​s​t​.​2​0​2​4​.​1​0​5​5​9​9.
+14.	 Nath V, Singh M, Jana BK, Sarkar T, Gogoi NR, Mazumder B.
+PLGA and cancer: a comprehensive patent-based review on the
+present state of Art. Pharm Patent Analyst. 2025;1–15. ​h​t​t​p​s​:​/​/​d​o​i​
+.​o​r​g​/​1​0​.​1​0​8​0​/​2​0​4​6​8​9​5​4​.​2​0​2​5​.​2​4​7​0​1​0​3.
+15.	 Sun R, Chen Y, Pei Y, Wang W, Zhu Z, Zheng Z, et al. The drug
+release of PLGA-based nanoparticles and their application in treat­
+ment of Gastrointestinal cancers. Heliyon. 2024;10(18):e38165. ​h​
+t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​h​e​l​i​y​o​n​.​2​0​2​4​.​e​3​8​1​6​5.
+16.	 Li Y, Deng G, Hu X, Li C, Wang X, Zhu Q, et al. Recent advances
+in mesoporous silica nanoparticle-based targeted drug-delivery
+systems for cancer therapy. Nanomedicine. 2022;17(18):1253–
+79. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​2​2​1​7​/​n​n​m​-​2​0​2​2​-​0​0​2​3.
+17.	 Li S, Jiang M, Wang L, Yu S. Combined chemotherapy with
+cyclooxygenase-2 (COX-2) inhibitors in treating human cancers:
+recent advancement. Biomed Pharmacother. 2020;129:110389. ​h​
+t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​b​i​o​p​h​a​.​2​0​2​0​.​1​1​0​3​8​9.
+18.	 Coutinho LL, Femino EL, Gonzalez AL, Moffat RL, Heinz
+WF, Cheng RYS, et al. NOS2 and COX-2 Co-Expression pro­
+motes cancer progression: A potential target for developing
+1 3
+152 
+Page 20 of 22
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+48.	 Papadopoulou V, Kosmidis K, Vlachou M, Macheras P. On the
+use of the Weibull function for the discernment of drug release
+mechanisms. Int J Pharm. 2006;309(1–2):44–50. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​
+0​.​1​0​1​6​/​j​.​i​j​p​h​a​r​m​.​2​0​0​5​.​1​0​.​0​4​4.
+49.	 Soha Azadi H, Ashrafi A, Azadi. Mathematical modeling of drug
+release from swellable polymeric nanoparticles. J App Pharma
+Sci. 2017;7(4):125–33. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​7​3​2​4​/​J​A​P​S​.​2​0​1​7​.​7​0​4​1​
+8.
+50.	 Paolino D, Tudose A, Celia C, Di Marzio L, Cilurzo F, Mircioiu
+C. Mathematical models as tools to predict the release kinetic of
+fluorescein from lyotropic colloidal liquid crystals. Materials.
+2019;12(5):693. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​3​9​0​/​m​a​1​2​0​5​0​6​9​3.
+51.	 Ünal S, Varan G, Benito JM, Aktaş Y, Bilensoy E. Insight into
+oral amphiphilic cyclodextrin nanoparticles for colorectal cancer:
+comprehensive mathematical model of drug release kinetic stud­
+ies and antitumoral efficacy in 3D spheroid colon tumors. Beil­
+stein J Org Chem. 2023;19:139–57. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​7​6​2​/​b​j​o​c​.​
+1​9​.​1​4.
+52.	 Kosmidis K, Argyrakis P, Macheras P. Fractal kinetics in
+drug release from finite fractal matrices. J Chem Phys.
+2003;119(12):6373–7. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​6​3​/​1​.​1​6​0​3​7​3​1.
+53.	 Gu Y, Wei H-L, Balikhin MM. Nonlinear predictive model selec­
+tion and model averaging using information criteria. Syst Sci
+Control Eng. 2018;6(1):319–28. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​8​0​/​2​1​6​4​2​5​
+8​3​.​2​0​1​8​.​1​4​9​6​0​4​2.
+54.	 Martín-Camacho U, de Rodríguez-Barajas J, Sánchez-Bur­
+gos N, Pérez-Larios JA. Weibull β value for the discernment
+of drug release mechanism of PLGA particles. Int J Pharm.
+2023;640:123017. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​i​j​p​h​a​r​m​.​2​0​2​3​.​1​2​3​0​1​
+7.
+55.	 Mayer BX, Mensik C, Krishnaswami S, Derendorf H, Eichler
+HG, Schmetterer L, et al. Pharmacokinetic-pharmacodynamic
+profile of systemic nitric oxide-synthase Inhibition withL-NMMA
+in humans. Br J Clin Pharmacol. 1999;47(5):539–44. ​h​t​t​p​s​:​/​/​d​o​i​.​o​
+r​g​/​1​0​.​1​0​4​6​/​j​.​1​3​6​5​-​2​1​2​5​.​1​9​9​9​.​0​0​9​3​0​.​x.
+56.	 Öztürk K, Kaplan M, Çalış S. Effects of nanoparticle size, shape,
+and zeta potential on drug delivery. Int J Pharm. 2024;666:124799. ​
+h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​i​j​p​h​a​r​m​.​2​0​2​4​.​1​2​4​7​9​9.
+57.	 Subhan MA, Yalamarty SSK, Filipczak N, Parveen F, Torchilin
+VP. Recent advances in tumor targeting via Epr effect for cancer
+treatment. J Personalized Med. 2021;11(6):571. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​
+.​3​3​9​0​/​j​p​m​1​1​0​6​0​5​7​1.
+58.	 Liu Y, Yang G, Jin S, Xu L, Zhao C-X. Development of High-
+Drug-Loading nanoparticles. ChemPlusChem. 2020;85(9):2143–
+57. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​2​/​c​p​l​u​.​2​0​2​0​0​0​4​9​6.
+59.	 Rizvi SAA, Saleh AM. Applications of nanoparticle systems in
+drug delivery technology. Saudi Pharm J. 2018;26(1):64–70. ​h​t​t​p​
+s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​j​s​p​s​.​2​0​1​7​.​1​0​.​0​1​2.
+60.	 Dasankoppa F, Ningangowdar M, Sholapur H. Formulation and
+evaluation of controlled porosity osmotic pump for oral delivery
+of ketorolac. J Basic Clin Pharma. 2013;4(1):2–9. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​
+1​0​.​4​1​0​3​/​0​9​7​6​-​0​1​0​5​.​1​0​9​3​9​8.
+61.	 Sareddy GR, Geeviman K, Ramulu C, Babu PP. The nonsteroi­
+dal anti-inflammatory drug celecoxib suppresses the growth and
+induces apoptosis of human glioblastoma cells via the NF-κB
+pathway. J Neurooncol. 2012;106(1):99–109. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​
+1​0​0​7​/​s​1​1​0​6​0​-​0​1​1​-​0​6​6​2​-​x.
+62.	 Kim TW, Whang C, Kim D, Jon S. Prodrug Celecoxib-Derived
+nanoparticles potentiate the efficacy of cancer immunother­
+apy by remodeling the tumor microenvironment. Adv Ther.
+2024;7:2300321. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​2​/​a​d​t​p​.​2​0​2​3​0​0​3​2​1.
+63.	 Nafee N, Schneider M, Schaefer UF, Lehr C-M. Relevance of the
+colloidal stability of chitosan/plga nanoparticles on their cytotox­
+icity profile. Int J Pharm. 2009;381(2):130–9. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​
+0​1​6​/​j​.​i​j​p​h​a​r​m​.​2​0​0​9​.​0​4​.​0​4​9.
+characterization, in vitro drug release, and Pharmacokinetic eval­
+uation. Pharm Dev Technol. 2006;11(2):167–77. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​
+0​.​1​0​8​0​/​1​0​8​3​7​4​5​0​6​0​0​5​6​1​2​6​5.
+34.	 Zhang Y, Huo M, Zhou J, Zou A, Li W, Yao C, et al. DDSolver: an
+Add-In program for modeling and comparison of drug dissolution
+profiles. AAPS J. 2010;12(3):263–71. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​2​0​8​/​s​1​2​
+2​4​8​-​0​1​0​-​9​1​8​5​-​1.
+35.	 Akaike H. A new look at the statistical model identification. IEEE
+Trans Automat Contr. 1974;19(6):716–23. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​0​
+9​/​T​A​C​.​1​9​7​4​.​1​1​0​0​7​0​5.
+36.	 Anderson NH, Bauer M, Boussac N, Khan-Malek R, Munden
+P, Sardaro M. An evaluation of fit factors and dissolution effi­
+ciency for the comparison of in vitro dissolution profiles. J Pharm
+Biomed Anal. 1998;17(4–5):811–22. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​S​0​7​
+3​1​-​7​0​8​5​(​9​8​)​0​0​0​1​1​-​9.
+37.	 Kassaye L, Genete G. Evaluation and comparison of in-vitro dis­
+solution profiles for different brands of amoxicillin capsules. Afr
+H Sci. 2013;13(2):369–75. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​4​3​1​4​/​a​h​s​.​v​1​3​i​2​.​2​5.
+38.	 Geldenhuys W, Mbimba T, Bui T, Harrison K, Sutariya V. Brain-
+targeted delivery of Paclitaxel using glutathione-coated nanopar­
+ticles for brain cancers. J Drug Target. 2011;19(9):837–45. ​h​t​t​p​s​:​
+/​/​d​o​i​.​o​r​g​/​1​0​.​3​1​0​9​/​1​0​6​1​1​8​6​X​.​2​0​1​1​.​5​8​9​4​3​5.
+39.	 Shabir GA. Validation of high-performance liquid chromatog­
+raphy methods for pharmaceutical analysis: Understanding the
+differences and similarities between validation requirements of
+the US food and drug administration, the US pharmacopeia and
+the international conference on harmonization. J Chromatogr A.
+2003;987(1–2):57–66. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​S​0​0​2​1​-​9​6​7​3​(​0​2​)​0​
+1​5​3​6​-​4.
+40.	 Grune C, Zens C, Czapka A, Scheuer K, Thamm J, Hoeppener S,
+et al. Sustainable Preparation of anti-inflammatory Atorvastatin
+PLGA nanoparticles. Int J Pharm. 2021;599:120404. ​h​t​t​p​s​:​/​/​d​o​i​.​o​
+r​g​/​1​0​.​1​0​1​6​/​j​.​i​j​p​h​a​r​m​.​2​0​2​1​.​1​2​0​4​0​4.
+41.	 Madani F, Esnaashari SS, Mujokoro B, Dorkoosh F, Khosra­
+vani M, Adabi M. Investigation of effective parameters on size
+of Paclitaxel loaded PLGA nanoparticles. Adv Pharm Bull.
+2018;8(1):77–84. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​5​1​7​1​/​a​p​b​.​2​0​1​8​.​0​1​0.
+42.	 Ullah F, Iqbal Z, Khan A, Khan SA, Ahmad L, Alotaibi A, et al.
+Formulation development and characterization of pH responsive
+polymeric Nano-Pharmaceuticals for targeted delivery of Anti-
+Cancer drug (Methotrexate). Front Pharmacol. 2022;13:911771. ​
+h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​3​8​9​/​f​p​h​a​r​.​2​0​2​2​.​9​1​1​7​7​1.
+43.	 Vrignaud S, Benoit J-P, Saulnier P. Strategies for the nanoen­
+capsulation of hydrophilic molecules in polymer-based nanopar­
+ticles. Biomaterials. 2011;32(33):8593–604. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​
+1​6​/​j​.​b​i​o​m​a​t​e​r​i​a​l​s​.​2​0​1​1​.​0​7​.​0​5​7.
+44.	 Barichello JM, Morishita M, Takayama K, Nagai T. Encapsu­
+lation of hydrophilic and lipophilic drugs in PLGA nanopar­
+ticles by the nanoprecipitation method. Drug Dev Ind Pharm.
+1999;25(4):471–6. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​8​1​/​D​D​C​-​1​0​0​1​0​2​1​9​7.
+45.	 Mundargi RC, Babu VR, Rangaswamy V, Patel P, Aminabhavi
+TM. Nano/micro technologies for delivering macromolecular
+therapeutics using poly(d,l-lactide-co-glycolide) and its deriva­
+tives. J Control Release. 2008;125(3):193–209. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​
+.​1​0​1​6​/​j​.​j​c​o​n​r​e​l​.​2​0​0​7​.​0​9​.​0​1​3.
+46.	 Kalaria DR, Sharma G, Beniwal V, Ravi Kumar MNV. Design
+of biodegradable nanoparticles for oral delivery of doxorubicin:
+in vivo pharmacokinetics and toxicity studies in rats. Pharm Res.
+2009;26(3):492–501.
+​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​s​1​1​0​9​5​-​0​0​8​-​9​7​6​3​
+-​4.
+47.	 Yan H, Hou Y-F, Niu P-F, Zhang K, Shoji T, Tsuboi Y, et al. Bio­
+degradable PLGA nanoparticles loaded with hydrophobic drugs:
+confocal Raman microspectroscopic characterization. J Mater
+Chem B. 2015;3(18):3677–80. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​3​9​/​c​5​t​b​0​0​4​3​
+4​a.
+1 3
+Page 21 of 22 
+152
+
+Journal of Pharmaceutical Innovation (2025) 20:152
+nanoparticles. J Pharm Sci. 2014;103(6):1839–50. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​
+g​/​1​0​.​1​0​0​2​/​j​p​s​.​2​3​9​6​0.
+73.	 Trenkenschuh E, Friess W. Freeze-drying of nanoparticles: how
+to overcome colloidal instability by formulation and process opti­
+mization. Eur J Pharm Biopharm. 2021;165:345–60. ​h​t​t​p​s​:​/​/​d​o​i​.​o​
+r​g​/​1​0​.​1​0​1​6​/​j​.​e​j​p​b​.​2​0​2​1​.​0​5​.​0​2​4.
+74.	 Koldankaya T, Mert S. Extending the shelf life of doxorubicin
+loaded PLGA nanoparticles with cryoprotectants. ChemistrySe­
+lect. 2024;9:e202401759. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​2​/​s​l​c​t​.​2​0​2​4​0​1​7​5​
+9.
+75.	 Sakhi M, Khan A, Khan I, Ahmad Khan S, Irum Khan S, Ali
+Khattak M, et al. Effect of polymeric stabilizers on the size
+and stability of PLGA Paclitaxel nanoparticles. Saudi Pharm J.
+2023;31(9):101697. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​j​s​p​s​.​2​0​2​3​.​1​0​1​6​9​7.
+76.	 Fonte P, Araújo F, Seabra V, Reis S, van de Weert M, Sarmento
+B. Co-encapsulation of lyoprotectants improves the stability of
+protein-loaded PLGA nanoparticles upon lyophilization. Int J
+Pharm. 2015;496(2):850–62. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​i​j​p​h​a​r​m​.​2​
+0​1​5​.​1​0​.​0​3​2.
+77.	 Quintanar-Guerrero D, Ganem-Quintanar A, Allémann E, Fessi
+H, Doelker E. Influence of the stabilizer coating layer on the puri­
+fication and freeze-drying of poly(D, L-lactic acid) nanoparticles
+prepared by an emulsion-diffusion technique. J Microencapsul.
+1998;15(1):107–19. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​1​0​9​/​0​2​6​5​2​0​4​9​8​0​9​0​0​6​8​4​
+0.
+Publisher’s Note  Springer Nature remains neutral with regard to juris­
+dictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds
+exclusive rights to this article under a publishing agreement with the
+author(s) or other rightsholder(s); author self-archiving of the accepted
+manuscript version of this article is solely governed by the terms of
+such publishing agreement and applicable law.
+64.	 Luo W-C, O’Reilly Beringhs A, Kim R, Zhang W, Patel SM,
+Bogner RH, et al. Impact of formulation on the quality and sta­
+bility of freeze-dried nanoparticles. Eur J Pharm Biopharm.
+2021;169:256–67. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​e​j​p​b​.​2​0​2​1​.​1​0​.​0​1​4.
+65.	 Abdelwahed W, Degobert G, Stainmesse S, Fessi H. Freeze-dry­
+ing of nanoparticles: formulation, process and storage consider­
+ations☆. Adv Drug Deliv Rev. 2006;58(15):1688–713. ​h​t​t​p​s​:​/​/​d​o​
+i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​a​d​d​r​.​2​0​0​6​.​0​9​.​0​1​7.
+66.	 Leslie SB, Israeli E, Lighthart B, Crowe JH, Crowe LM. Trehalose
+and sucrose protect both membranes and proteins in intact bacte­
+ria during drying. Appl Environ Microbiol. 1995;61(10):3592–7. ​
+h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​2​8​/​a​e​m​.​6​1​.​1​0​.​3​5​9​2​-​3​5​9​7​.​1​9​9​5.
+67.	 Crowe JH, Crowe LM, Carpenter JF, Wistrorn CA, Spargo B,
+Anchordoguy T. Interactions of sugars with membranes. Biochim
+Et Biophys Acta (BBA). 1988;947(2):367–84. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​
+1​0​1​6​/​0​3​0​4​-​4​1​5​7​(​8​8​)​9​0​0​1​5​-​9.
+68.	 Holzer M, Vogel V, Mäntele W, Schwartz D, Haase W, Langer
+K. Physico-chemical characterisation of PLGA nanopar­
+ticles after freeze-drying and storage. Eur J Pharm Biopharm.
+2009;72(2):428–37. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​e​j​p​b​.​2​0​0​9​.​0​2​.​0​0​2.
+69.	 Jeong Y-I, Shim Y-H, Kim C, Lim G-T, Choi K-C, Yoon C.
+Effect of cryoprotectants on the reconstitution of surfactant-free
+nanoparticles of poly(DL-lactide-co-glycolide). J Microencapsul.
+2005;22(6):593–601. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​8​0​/​0​2​6​5​2​0​4​0​5​0​0​1​6​2​6​
+5​9.
+70.	 Abdelwahed W, Degobert G, Fessi H. Investigation of nanocap­
+sules stabilization by amorphous excipients during freeze-drying
+and storage. Eur J Pharm Biopharm. 2006;63(2):87–94. ​h​t​t​p​s​:​/​/​d​
+o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​e​j​p​b​.​2​0​0​6​.​0​1​.​0​1​5.
+71.	 Cheow WS, Ng MLL, Kho K, Hadinoto K. Spray-freeze-drying
+production of thermally sensitive polymeric nanoparticle aggre­
+gates for inhaled drug delivery: effect of freeze-drying adjuvants.
+Int J Pharm. 2011;404(1–2):289–300. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​i​j​
+p​h​a​r​m​.​2​0​1​0​.​1​1​.​0​2​1.
+72.	 Zelenková T, Fissore D, Marchisio DL, Barresi AA. Size con­
+trol in production and Freeze-Drying of Poly-ε-Caprolactone
+1 3
+152 
+Page 22 of 22

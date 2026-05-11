@@ -1,0 +1,708 @@
+1743
+Int J Ophthalmol,    Vol. 15,  No. 11,  Nov.18,  2022         www.ijo.cn
+Tel: 8629-82245172     8629-82210956      Email: ijopress@163.com
+·Basic Research·
+A Trojan horse biomimetic delivery system using
+mesenchymal stem cells for HIF-1α siRNA-loaded
+nanoparticles on retinal pigment epithelial cells under
+hypoxia environment
+Lei Zhang
+1, Jie-Jing Yan
+2,3, Hai-Yan Wang
+1, Mu-Qiong Li
+4, Xi-Xi Wang
+5, Li Fan
+4, Yu-Sheng Wang
+2
+1Shaanxi Eye Hospital, Xi’an People’s Hospital (Xi’an Fourth
+Hospital), Xi’an 710004, Shaanxi Province, China
+2Department of Ophthalmology, Xijing Hospital, Xi’an
+710032, Shaanxi Province, China
+3Ophthalmology Department, Xi’an No.1 Hospital, the First
+Affiliated Hospital of Northwest University, Xi’an 710002,
+Shaanxi Province, China
+4Department of Pharmaceutical Chemistry and Analysis School
+of Pharmacy Air Force Medical University, Xi’an 710032,
+Shaanxi Province, China
+5Department of Mathematics and Statistics, University of
+Arkansas at Little Rock, Little Rock, AR 72204, USA
+Co-first authors: Lei Zhang and Jie-Jing Yan
+Correspondence to: Hai-Yan Wang. Shaanxi Eye Hospital,
+Xi’an People’s Hospital (Xi’an Fourth Hospital), Xi’an
+710004, Shaanxi Province, China. whyeye@126.com; Yu-
+Sheng Wang. Department of Ophthalmology, Xijing Hospital,
+Xi’an 710032, Shaanxi Province, China. wangys003@126.com
+Received: 2022-04-28        Accepted: 2022-09-15
+Abstract
+● AIM: To demonstrate the feasibility of mesenchymal
+stem cell (MSC)-mediated nano drug delivery, which was
+characterized by the “Trojan horse”-like transport of hypoxia-
+inducible factor-1α small interfering RNA (HIF-1α siRNA)
+between MSCs and retinal pigment epithelial cells (RPE)
+under hypoxia environment.
+● METHODS: Plasmid and lentivirus targeting the human
+HIF-1α gene were designed and constructed. HIF-1α
+siRNA was encapsulated into poly(lactic-co-glycolic acid)
+nanoparticles (PLGA-NPs) through the water-in-oil-in-water
+(w/o/w) multiple emulsion technique. The effect of PLGA-
+NPs uptake on the expression of HIF-1α mRNA was tested
+in RPE cells by real-time quantitative polymerase chain
+reaction (qPCR) and additional transfected conditions were
+used as control, including lentivirus group, nude plasmid
+group and blank PLGA group. MSCs were transfected with
+the NPs and the transfection efficacy was evaluated by flow
+cytometry. Transwell co-culture system of transfected MSCs
+and RPE cells was constructed under hypoxia environment.
+The effects of MSC-loaded HIF-1α siRNA PLGA-NPs on
+proliferation, apoptosis, and migration of RPE cells were
+then evaluated. The effect of transfected MSCs on HIF-1α
+expression of RPE cells was analyzed by using qPCR at the
+time points 24h, 3d, and 7d.
+● RESULTS: The average diameter of PLGA-NPs loaded
+with HIF siRNA was 314.1 nm and the zeta potential was
+-0.36 mV. The transfection efficiency of PLGA-NPs was
+67.3%±5.2% into MSCs by using flow cytometry. Compared
+with the lentivirus group, the PLGA-NPs loaded with HIF-1α siRNA
+can effectively reduce the expression of HIF-1α mRNA up
+to 7d in RPE (0.63±0.05 at 7d, P<0.001). In the Transwell
+co-culture system of transfected MSCs and RPE, the
+abilities of proliferation (2.34±0.17, 2.40±0.28, 2.47±0.24
+at 48h, F=0.23, P=0.80), apoptosis (14.83%±2.43%,
+12.94%±2.19%, 12.39%±3.21%; F=0.70, P=0.53) and
+migration (124.5±7.78, 119.5±5.32, 130±9.89, F=1.33,
+P=0.33) of the RPE cells had no differences between MSC-
+loaded HIF-1α siRNA PLGA-NPs and other groups. The
+inhibition of PLGA on the HIF-1α mRNA expression in RPE
+cells could continue until the 7
+th day, the level of HIF-1α mRNA
+was lower than that of other groups (F=171.98, P<0.001).
+● CONCLUSION: The delivery of PLGA-NPs loaded with
+HIF-1α siRNA carried by MSCs is found to be beneficial
+temporally for HIF-1α mRNA inhibition in RPE cells under
+hypoxia environment. The MSC-based bio-mimetic delivery
+of HIF-1α siRNA nanoparticles is a potential method for
+therapy against choroidal neovascularization.
+● KEYWORDS: hypoxia; mesenchymal stem cells;
+poly(lactic-co-glycolic acid) nanoparticles; hypoxia-inducible
+factor-1α; retinal pigment epithelial cells
+DOI:10.18240/ijo.2022.11.03
+Citation: Zhang L, Yan JJ, Wang HY, Li MQ, Wang XX, Fan
+L, Wang YS. A Trojan horse biomimetic delivery system using
+mesenchymal stem cells for HIF-1α siRNA-loaded nanoparticles
+
+1744
+on retinal pigment epithelial cells under hypoxia environment. Int J
+Ophthalmol  2022;15(11):1743-1751
+INTRODUCTION
+C
+horoidal neovascularization (CNV) is a significant
+cause of vision loss in all age groups. Anti-vascular
+endothelial growth factor (VEGF) drug can effectively treat
+neovascularization in most, but not all patients and there
+are safety concerns about its’ intrinsic defect and long‐term
+effects
+[1]. Therefore, better therapeutic agents are needed to
+study for the effective treatment of this vision‐threatening
+lesion
+[2]. It has long been known that hypoxia plays a central
+role in pathogenesis of CNV. In response to hypoxia, the
+hypoxia-inducible factor-1 (HIF-1) mediates the transcription
+of several target genes, including VEGF. Compared with anti-
+VEGF, inhibition of HIF-1 activity can simultaneously reduce
+a variety of downstream multiple proangiogenic factors
+[3-5].
+RNA interference (RNAi) is a promising gene knockdown
+strategy that employs small interfering RNA (siRNA) for
+silencing specific gene expression
+[6]. Nonetheless, there remain
+number challenges in vivo siRNA delivery such as the renal
+clearance and the inability of RNA to pass through the cell
+membrane
+[7]. Mesenchymal stem cells (MSCs) have high
+chemotaxis to the hypoxic microenvironment, and it has been
+shown that the hypoxic preconditioning increases the migration
+and homing of MSCs
+[8]. The use of stem cells as cellular
+vectors for drug-loaded nanoparticles seems to be a highly
+promising approach to targeting tissues
+[9]. In previous study,
+we found that MSCs also had the specific ability of migrate to
+the lesion site of CNV, and human pigment epithelial-derived
+factor (PEDF) production by adenoviral (Ad) PEDF/MSCs in
+vitro
+[10]. Our goal is to find a safer and longer-term method of
+using HIF-1α siRNA loaded in MSCs to reach the CNV site to
+inhibit the angiogenesis.
+Poly(lactic-co-glycolic acid) (PLGA) is a Food and Drug
+Administration (FDA) approved polymer with great
+biodegradability, biocompatibility, and excellent ocular safety
+for local use. A clinic trial of PLGA-based intravitreal (IVT)
+injectable formulation of sunitinib malate for the patients
+of neovascular age-related macular degeneration (AMD)
+is ongoing (NCT03249740)
+[11]. Our previous study showed
+PLGA nanoparticles (NPs) loaded with HIF-1α short hairpin
+RNA could transfer specific pDNA and inhibit the formation
+of experimental CNV in a laser-induced rat model by IVT
+administered
+[12]. However, the risks of retinal detachment and
+endophthalmitis will increase with frequent IVT injection as
+well as retina toxicity had to be concerned. A biodegradable
+nanoparticulate system consisting of PLGA was synthesized to
+be loaded with a HIF-1α siRNA agent, which was subsequently
+engulfed by MSCs, forming an MSC-based biomimetic
+delivery system (MSC-PLGA-HIF-1α siRNA). Therefore, by
+this delivery system, therapeutics can be efficiently delivered
+to CNV region by a so-called Trojan horse strategy
+[13].
+MATERIALS AND METHODS
+Ethical Approval  This research was approved by Xi’an
+People’s Hospital (Xi’an Fourth Hospital) Clinical Research
+Ethics Committee (No.20200037), which was adhered to the
+tenets of the Declaration of Helsinki.
+Cell Culture of ARPE-19  ARPE-19 cell line (American Type
+Culture Collections, Manassas, VA, USA, passage 4) were
+maintained and passaged 5-10 in standard culture dishes.
+Isolation and Culture of Human Mesenchymal Stem Cells
+The human mesenchymal stem cells (hMSCs) were obtained
+by heparinized human bone marrow from bone fragments in
+patients with fracture. Bone mononuclear cells were isolated
+by Percoll density gradient centrifugation (below 1.073 g/mL,
+Sigma, USA). Cells were cultured in Dulbecco’s modified
+Eagle’s medium-low glucose (DMEM-LG, Hyclone, USA)
+supplemented with 10% fetal bovine serum (FBS; Hyclone,
+USA), and maintained at 37℃ in 5% CO2. Non-adhered cells
+were removed by washing in 48h, and adherent cells were
+cultured with the medium being replaced every 3d. After the
+cells were 80%-90% confluent, the cells were detached with
+0.25% trypsin and then seeded at 1:3 in a flask, being used
+either for gene transfection or for further culture and passage
+3-4. hMSCs were checked for multi-linage differentiation
+by adipogenic and osteogenic differentiation assays. Briefly,
+osteogenesis was induced by culturing MSC monolayer in
+medium containing 10
+-8 mol/L dexamethasone, 10 mmol/L
+β-glycerol phosphate, and 50 mg/L ascorbic acid 2-phosphate.
+Calcium deposition was shown by Alzarin red staining.
+Adipogenesis was induced by using the induction medium
+including high-glucose DMEM, 10
+-6 mol/L dexamethasone,
+100 μg/mL indomethacin, 10 μg/mL insulin, and 0.5 mmol/L
+3-isobutyl-1-methylxanthine. Induction was confirmed by oil
+red O staining.
+Preparation of HIF siRNA-loaded PLGA Nanoparticles
+HIF-1α siRNA was designed, constructed, and purified
+by Shanghai Genechem Co., LTD (Shanghai, China). The
+antisense sequence of siRNA targeting HIF-1α was 5’-CCG
+GCGTTGTGAGTGGTATTATTCTCGAGAATAATACCAC
+TCACAACGTTTTTG-3’. The nanoparticles were prepared
+by a double emulsion solvent evaporation technique (w/o/w).
+Briefly, poly(lactide-co-glycolide) with acid end groups was
+dissolved in 1.5 mL of dichloromethane (DCM). The 100 μg
+HIF-1α siRNA plasmid lyophilized powder was dissolved in
+Tris-EDTA buffer solution to a final pH7.8. The solutions were
+mixed and emulsified using a high-speed agitator to obtain
+primary emulsion (w/o). The primary emulsion was added
+into a 10 mL 1% solution of polyvinyl alcohol (PVA) using a
+A Trojan horse biomimetic delivery system on RPE cells
+
+1745
+Int J Ophthalmol,    Vol. 15,  No. 11,  Nov.18,  2022         www.ijo.cn
+Tel: 8629-82245172     8629-82210956      Email: ijopress@163.com
+high speed agitator (24 000 rpm, 6min). The double emulsion
+was added into 30 mL 1% PVA solution and stirred it in the
+fume hood overnight. After centrifugation for 20min (4℃,
+13 000 rpm), the precipitates were collected and washed with
+deionized water for three times to remove free genes and PVA.
+The freeze-dried nanoparticles were stored at 4℃.
+Characterization of Nanoparticles  For size measurement,
+the nanoparticles were resuspended in purified deionized
+water. The microscopic morphology was observed by scanning
+electron microscopy; the particle size and Zeta potential were
+measured by Malvem laser particle size analyzer.
+In Vitro Transfection  Lentivirus or PLGA (γ-ray irradiation
+sterilization) was diluted  with the DMEM culture medium.
+Cells were cultured in 24-well plates and transfected with
+lentivirus at multiplicity of infection (MOI) =100 or PLGA NPs
+encapsulating siRNA. The siRNA concentration was constant
+at 100 nmol/L per well. Then 48-72h after transfection, the
+medium was replaced with fresh DMEM culture medium and
+transfected hMSCs were used in the following co-culture cell
+model studies.
+Cellular Uptake of PLGA Nanoparticles  The cells grow on
+cover glass for 72h. Then the coverslips were taken out and
+rinsed with phosphate balanced solution (PBS) twice. The
+adhesive cells were fixed for 30min in 4% polyoxymethylene
+in PBS at 4℃. Then the samples were covered with 50%
+glycerol (v/v) and green fluorescent protein (GFP) was
+observed under an inverted fluorescence microscope. The cells
+were enzymatically lifted from culture flasks and re-suspended
+with media at a density of 1×10
+6 cells/mL. Then GFP-positive
+cells were detected by using flow cytometry.
+Detection of HIF-1α mRNA in Retinal Pigment Epithelial
+Cells by Real-time Quantitative PCR  RNA extraction
+was performed using Trizol (Invitrogen, USA) according to
+the manufacturer’s instructions. Total RNA (1 mg) was reverse
+transcribed according to the manufacturer’s protocol (Invitrogen,
+USA). PCR reactions were performed using real-time 7500
+under the following conditions: 95℃ for 10min followed by
+40 cycles of 10s of denaturation at 95℃, and 30s of extension
+at 60℃. The primer sequences were as follows: GAPDH-F:
+5’-GCTGAGTACGTCGGTGGAG-3’; GAPDH-R:
+5’-CAGTTGGTGGTCAGGAGG-3’; The amplified fragment
+was 158 bp; HIF-1α-F: 5’-TCGGCGAAGTAAATCTGAA-3’;
+HIF-1α-R: 5’-CAAATCACCAGATCCAGAAG-3’; The
+amplified fragment was 151 bp.
+Establishment of Hypoxia Model and Co-culture Cell
+Model  Hypoxic model was established in a 5% O2 and 5%
+CO2 hypoxic cell incubator at 37℃. Co-culture cell model
+was established by using Transwell (pore size 0.4 μm). RPE
+cells were placed in the lower layer (24-well culture plates)
+and hMSCs were placed in the upper layer (chamber). The cell
+density was 1×10
+4 cells/mL, and a 200 μL volume was seeded.
+Trans-well Cell Proliferation, Migration, and Apoptosis
+Assays  Cell proliferation was determined using Trans-
+well chambers with 0.4-μm sized pores (Corning Costar,
+Cambridge, UK). RPE cells (2000 cells/0.2 mL) were placed
+in the upper chambers of each insert cultured in HG medium
+supplemented with 1% FBS, whereas hMSCs (2000 cells/0.2 mL)
+were placed in the lower chambers. After of incubation under
+hypoxia conditions (5% O2), 10% cell counting kit-8 (CCK-8)
+solution was added at 12, 24, and 48h, in accordance with the
+manufacturer’s instructions. The supernatants were transferred
+into 96 well plates and the absorbance value (optical density;
+OD) of each well was measured at 450 nm after incubation at
+37℃ for 3h.
+Cell migration was determined using Trans-well chambers with
+8-μm sized pores (Corning Costar, Cambridge, UK). RPE cells
+(2000 cells/0.2 mL) were placed in the upper chambers of each
+insert cultured in HG medium supplemented with 1% FBS,
+whereas hMSCs (2000 cells/0.2 mL) were placed in the lower
+chambers. After 24h of incubation under hypoxia conditions
+(5% O2), the inserts were removed. Cells that have migrated
+the bottom of the Transwell membrane were stained with 0.1%
+crystal violet. Six representative fields of each Trans-well were
+captured using a microscopy (Optika, Ponteranica, Italy). The
+migrated cells were counted in six randomly selected fields.
+Cell apoptosis was determined using Trans-well chambers with
+0.4-μm sized pores (Corning Costar, Cambridge, UK). hMSCs
+(2000 cells/0.2 mL) were placed in the upper chambers of
+each insert cultured in HG medium supplemented with 1%
+FBS, whereas RPE cells (2000 cells/0.2 mL) were placed in
+the lower chambers. After 24h of incubation under hypoxia
+conditions (5% O2), apoptotic effects were tested on RPE
+cells using flow cytometer (Accuri BD C6, USA) by Annexin
+V-FITC/PI.
+Statistical Analysis  All data were expressed as mean±standard
+deviation (SD) and analyzed by one-way analysis of variance
+(ANOVA) followed by contrast analysis (LSD t-test when
+equal variances assumed, and Dunnett’s T3 test when equal
+variances not assumed) using the IBM SPSS Statistics version
+26 (IBM SPSS Inc., Chicago, USA). A P value of less than
+0.05 was considered statistically significant.
+RESULTS
+Characterization of Hypoxia-Inducible Factor siRNA
+Loaded PLGA Nanoparticles  The HIF siRNA-loaded PLGA
+NPs prepared in this study were in round shape and with an
+average diameter of 314.1±16.4 nm (Figure 1). These NPs when
+dispersed in distilled water had a zeta potential of -0.36 mV
+(Figure 2). The scanning electron microscope (SEM) result
+showed that NPs were round shape and with an average
+diameter of 300 nm (Figure 3).
+
+1746
+Isolation and Culture of Human Mesenchymal Stem
+Cells  After 24h culture, irregular round or polygonal cells
+were observed, which were primary hMSCs (P0). After 1-3d
+primary culture, individual colonies were formed. Fourteen
+days later, 90% confluence of cells was visualized, and then
+the cells were trypsinized and passaged. After passaging, the
+cells grew in a uniform spindle and whirlpool shape. The
+individual cultured MSCs had osteogenic and adipogenic
+potential. On the 19
+th day of osteoblast induction, the cultured
+MSCs formed calcium nodules (Figure 4B). On the 7
+th day
+of adipoblast induction, lipid droplets were observed in the
+cytoplasm of MSCs (Figure 4C). In the control group, the
+cells grew densely and overlapped without calcium nodules or
+lipid droplets (Figure 4A). The flow cytometry analysis of cell
+surface markers showed: CD29+, CD34-, CD45-. The above
+results confirmed that they were MSCs (Figure 4D).
+Uptake of PLGA Nanoparticles Loaded-HIF siRNA  After
+48h of transfection, GFP green fluorescence could be seen
+around the nucleus of hMSCs (Figure 5). And the transfection
+efficiency was (67.3±5.2)% by using flow cytometry (Figure 6).
+Effect of PLGA Nanoparticles Uptake on the Expression
+of HIF-1α mRNA in Retinal Pigment Epithelial Cells
+All samples were divided in five groups, which were
+control group (without any treatment), lentivirus group
+(transfected with lentivirus with HIF-1α siRNA), nude
+plasmid group (transfected with empty plasmid), blank PLGA
+group (transfected with empty PLGA nanoparticles), and
+PLGA+siRNA group (transfected with nanoparticles loaded
+with HIF-1α siRNA). The expression of HIF-1α mRNA in
+RPE cells were detected at 24h, 3d, and 7d under hypoxic
+model. It was showed that HIF-1α mRNA in lentivirus group
+was significantly lower than that in the other four groups at
+24h (0.49±0.06, F=37.71, P<0.001). The expression of
+HIF-1α mRNA in PLGA+siRNA group was significantly
+lower than that in the control group, nude plasmid group and
+blank PLGA group at 24h, 3d, and 7d (P<0.05). Compared
+with the lentivirus group, there were differences at 3d and 7d
+(lentivirus group 0.84±0.06 vs PLGA+siRNA group 0.57±0.04
+at 3d, P=0.01; lentivirus group 1.13±0.10 vs PLGA+siRNA
+group 0.63±0.05 at 7d, P<0.001; Figure 7).
+Effect of Mesenchymal Stem Cells Loaded with HIF-1α
+siRNA Nanoparticles on Proliferation, Migration, and
+Apoptosis of Retinal Pigment Epithelial Cells in Hypoxia
+Model  There were three groups divided in this section, which
+were RPE group (only RPE cells were cultured in hypoxia
+model); co-culture group (RPE cells were co-cultured with
+MSCs in hypoxia model); PLGA+siRNA and co-culture group
+(RPE cells were co-cultured with MSCs loaded with HIF-1α
+siRNA NPs in hypoxia model).
+The CCK-8 test results revealed that the proliferation increased
+in all groups at 12, 24, and 48h, but there was no difference
+among three groups at the same time points (1.70±0.17,
+1.78±0.19, 1.80±0.14 at 12h, F=0.30, P=0.75; 1.93±0.19,
+2.03±0.24, 2.12±0.24 at 24h, F=0.54, P=0.61; 2.34±0.17,
+2.40±0.28, 2.47±0.24 at 48h, F=0.23, P=0.80; Figure 8).
+There was no significant difference in apoptosis among the
+three groups at 24h by flow cytometry (14.83%±2.43%,
+12.94%±2.19%, 12.39%±3.21%, F=0.70, P=0.53; Figure 9).
+Trans-well results showed that there was no difference in the
+number of RPE migrating cells among the three groups at 24h
+(124.5±7.78, 119.5±5.32, 130±9.89, F=1.33, P=0.33; Figure 10).
+Effect of Mesenchymal Stem Cells Loaded with HIF-1α
+siRNA Nanoparticles on the Expression of HIF-1α mRNA
+Figure 1 Particle size distribution of PLGA loaded with HIF-1α
+siRNA (nanoparticles diameter 302.4 nm)  PLGA: Poly(lactic-co-
+glycolic acid); HIF-1α: Hypoxia-inducible factor-1α.
+Figure 2 The zeta potential distribution of the nanoparticles.
+Figure 3 The scanning electron microscope (SEM) of PLGA
+loaded with HIF-1α siRNA  Bar=300 nm. PLGA: Poly(lactic-co-
+glycolic acid); HIF-1α: Hypoxia-inducible factor-1α.
+A Trojan horse biomimetic delivery system on RPE cells
+
+1747
+Int J Ophthalmol,    Vol. 15,  No. 11,  Nov.18,  2022         www.ijo.cn
+Tel: 8629-82245172     8629-82210956      Email: ijopress@163.com
+of Retinal Pigment Epithelial Cells in Hypoxia Model  The
+expression of HIF-1α mRNA in RPE cells was detected at 24h,
+3, and 7d. The results showed that the expression of HIF-1α mRNA
+in RPE cells co-cultured with MSCs loaded with HIF-1α
+siRNA NPs was significantly lower than that in RPE group
+and co-culture group at each time point (0.61±0.01, 1.49±0.07,
+Figure 5 Uptake of HIF-1α siRNA-loaded PLGA nanoparticles  DAPI in blue, GFP in green, and nanoparticles in cells indicated by arrow;
+bar=100 μm. PLGA: Poly(lactic-co-glycolic acid); HIF-1α: Hypoxia-inducible factor-1α; GFP: Green fluorescent proteins.
+Figure 4 The third passage of human mesenchymal stem cells showed uniform spindle growth (A) and after differentiation along the
+osteogenic (B, Alkaline red staining) and adipogenic pathways (C, oil red O staining). The positive rates of CD29, CD34 and CD45 were
+96.4%, 1.6% and 1.7%, respectively (D, the flow cytometry analysis)  Bar=200 μm.
+Figure 6 The transfection efficiency of HIF siRNA loaded in
+PLGA nanoparticles  n=5. PLGA: Poly(lactic-co-glycolic acid);
+HIF-1α: Hypoxia-inducible factor-1α.
+Figure 7 The relative expression of HIF-1α mRNA in retinal
+pigment epithelial cells
+aP<0.05 vs control group;
+cP<0.05,
+dP<0.001
+vs lentivirus group; n=3. PLGA: Poly(lactic-co-glycolic acid); HIF-1α:
+Hypoxia-inducible factor-1α.
+Figure 8 The growth curve of RPEs by different culture methods
+in hypoxia model  P>0.05, n=3. PLGA: Poly(lactic-co-glycolic acid);
+RPE: Retinal pigment epithelial cells.
+
+1748
+1.50±0.06 at 1d, F=273.24, P<0.001; 0.57±0.02, 1.51±0.05,
+1.44±0.07 at 3d, F=316.42, P<0.001; 0.75±0.03, 1.28±0.02,
+1.28±0.06 at 7d, F=171.98, P<0.001; Figure 11).
+DISCUSSION
+Specifically targeting HIF transcription factors have been
+an attractive strategy for co-regulating many downstream
+angiogenic factors. In our previous study, we developed
+intravitreal administered HIF-1α short hairpin RNA loaded in
+PLGA NPs which can inhibit the formation of experimental
+CNV
+[12]. However, there are still surgical risks in intravitreal
+injection and underlying retina toxicity, and it is necessary to
+find appropriate siRNA delivery methods to reduce adverse
+reactions and target CNV lesion precisely. We previously found
+that MSCs had the latent ability of migrate to the lesion site of
+CNV
+[10]. Therefore, here MSCs was used as systemic delivery
+vector of siRNA to reach a specific target, which is similar to
+“Trojan horse” vehicles. This method is also used to improve
+the delivery of drugs and being engineered with angiogenic,
+neurotrophic and anti-inflammatory molecules to accelerate
+the repair of injured or diseased tissues
+[14]. Stem cells loaded
+with prodrug-converting enzymes, apoptosis-inducing factors
+or oncolytic viruses (OVs) have reached clinical trial stage
+[14].
+The use of MSCs as drug carriers has been limited by the poor
+drug loading capacity, but NPs could increase the drug carrying
+capacity of MSCs as well as limit their diffusional clearance
+[12].
+MSCs have been engineered with various types of NPs (organic
+and inorganic matrices) to enhance their drug loading and
+therapeutic efficacy. PLGA has been approved for human
+use by FDA and shown immense potential as a good delivery
+material for a variety of drugs
+[15]. Generally, nucleic acids
+are loaded into PLGA NPs by encapsulating them or by
+adsorption via electrostatic attraction between the positively
+charged surface modification and negatively charged siRNA
+molecules
+[16]. PLGA can protect siRNA against RNase
+enzymatic degradation, and possesses favorable stability
+to promote safe and sustained release. For sustain release,
+degradation time of PLGA could be varied from days to
+Figure 9 The apoptosis of RPEs by different culture methods in hypoxia model for 24h  P>0.05, n=3. PLGA: Poly(lactic-co-glycolic acid);
+RPE: Retinal pigment epithelial cells.
+Figure 10 The migration of RPEs by different culture methods in hypoxia model for 24h P>0.05, n=3. PLGA: Poly(lactic-co-glycolic acid);
+RPE: Retinal pigment epithelial cells.
+Figure 11 Effect of mesenchymal stem cells loaded with HIF-1α
+siRNA nanoparticles on HIF-1α mRNA expression in RPEs under
+hypoxia model
+eP<0.001 vs RPE group, n=3. PLGA: Poly(lactic-co-
+glycolic acid); HIF-1α: Hypoxia-inducible factor-1α; RPE: Retinal
+pigment epithelial cells.
+A Trojan horse biomimetic delivery system on RPE cells
+
+1749
+Int J Ophthalmol,    Vol. 15,  No. 11,  Nov.18,  2022         www.ijo.cn
+Tel: 8629-82245172     8629-82210956      Email: ijopress@163.com
+years by regulating the molecular weight and the ratio of its
+monomers. Cun et al
+[17] incorporated the siRNA in PLGA NPs
+by using a double emulsion solvent evaporation method, and
+optimized the formulations of PLGA by varying the siRNA
+and PLGA ratio which achieved the encapsulation efficiency
+of more than 70%. In many studies, the size of PLGA NPs
+prepared by the same method was about 200 nm, and the
+surface charge was negative
+[18-19]. In this study, the average
+diameter of PLGA NPs loaded-HIF siRNA was 314.1 nm but
+with a rather narrow size distribution, and zeta potential was
+similar to other studies, showing -0.36 mV. Larger particles
+have a less burst release than smaller particles, since they have
+a longer path length of diffusion
+[20]. And our study showed
+the PLGA NPs loaded-HIF siRNA can effectively decrease
+the expression of HIF-1α mRNA by 30%-50% for 7d in RPE
+cells. SEM imaging revealed that spherical NPs possess a
+high surface area to volume ratio compared to other shapes
+(rod, cubic, etc.) which produce a more reactive surface
+and opportunities to therapeutic effects
+[18]. In the study of
+transfection of MSCs with PLGA NPs, MSCs demonstrated
+both concentration and time dependent uptake of NPs, with
+very little effect on cell viability
+[21]. Wang et al
+[22] loaded MSC
+with paclitaxel (Ptx)-PLGA NPs (1 pg/cell Ptx) had little
+effect on MSC-migration capacity, cell cycle, or multilineage-
+differentiation potential. Jeon et al
+[23] showed that GFP was
+expressed by 25.35% of hMSCs transfected with PLGA NP
+conjugated to polyethylenimine (PEI)/GFP. In this experiment,
+the transfection efficiency of the PLGA was 67.3%±5.2%
+by flow cytometry and could be seen around the nucleus of
+MSCs. Layek et al
+[24] evaluated the MSC-loaded Ptx-PLGA
+NPs actively homed to the tumor sites and released the drug
+payload over an extended time.
+Due to the existence of blood retinal barrier, this Trojan-
+horse strategy for retinal diseases therapy employing MSCs
+transfected with PLGA NPs was here presented. In this
+experiment, we transfected the PLGA NPs loaded-HIF siRNA
+into MSCs. The PLGA NPs with sustained-release effect can
+effectively silence the target gene for a long time to achieve the
+desired purpose.
+RPE cells perform a number of complex functions that are
+essential for maintenance of the visual function. The abnormal
+proliferation, migration, and degeneration of RPE cells have
+an effect on the CNV. In this experiment, RPE cells were co-
+cultured with MSC-loaded HIF-1α siRNA PLGA NPs in
+hypoxia model. The results showed that there was no effect
+of co-culture system on the proliferation, apoptosis, and
+migration of RPE cells, which showed the presence or absence
+of MSCs and with or without drug loading had no effect on the
+proliferation, apoptosis, and migration of RPE cells and partly
+confirmed safety of the drug delivery system designed in this
+experiment. In most cases, efficient transfection of ganglion
+cells can be achieved by intravitreal injections, whereas
+transfection in the outer retina (photoreceptor and RPE cells)
+require the more invasive subretinal injection. However,
+compared to direct injection of NPs, the cells with NPs serving
+as “Trojan Horse” vehicles could overcome the physiological
+barriers and exhibit much improved delivery efficiency
+[25].
+It can also reduce the cytotoxicity of direct injection of high
+concentration NPs to tissues
+[26].
+The expression of HIF-1α mRNA in RPE cells co-cultured
+with MSC-loaded HIF-1α siRNA PLGA NPs was significantly
+lower by 40% for 7d. This indicated that this trojan horse
+biomimetic delivery system could effectively silence the
+expression of HIF-1α mRNA in RPE cells. In a similar study,
+in a co-culture system of the melanoma cells and the MSCs
+loaded with chlorin e6 (Ce6)-conjugated polydopamine
+nanoparticles (PDA-Ce6), 75% tumor cells caused death even
+at a low drug loading
+[13]. Wang et al
+[22] showed that MSCs
+loaded Ptx could induce tumor cell death in vitro and NP-
+loaded fluorescent MSCs were tracked throughout the tumor
+mass in vivo. Layek et al
+[24] found intravenous injection
+of nanoparticles resulted in non-specific biodistribution,
+such as the liver and spleen while nano-engineered MSCs
+demonstrated selective accumulation and retention in tumors.
+These studies demonstrate the feasibility of developing nano-
+engineered MSCs loaded with drugs to improve their targeting
+or drug resistance properties. Recently, there has also been
+some evidence that the beneficial effects of MSCs may be
+achieved by their released extracellular vehicles (EVs)
+[27-28].
+Therefore, to obtain real clinical benefits it is necessary
+to study the delivery mechanism of NPs in intercellular
+communication such as exosomes, and gap junctions.
+Despite the positive efficacy observed, there are several
+limitations in this study, which should be addressed in future
+studies. The effective drug loading and releasing capacity of
+NPs-MSCs may need to be optimized. Key next steps include
+release kinetics, safety testing in animals and the delivery
+mechanism of nanoparticles in intercellular communication.
+In conclusion, HIF-1α siRNA-NP have been successfully
+formulated and could enter MSCs. MSCs loaded with HIF-1α
+siRNA NPs showed desired biological safety and sustained
+release profiles, which displayed promising therapeutic
+potential for CNV with potentially reduced injection frequency.
+Further research is necessary to further explore therapeutic
+applications of MSCs in patients with CNV.
+ACKNOWLEDGEMENTS
+Foundations: Supported by Key Research and Development
+Program of Shaanxi Province, China (No.2020SF-267); the
+Natural Science Basis Research Plan in Shaanxi Province
+of China (No.2022JM-514); Bethune·Lumitin Research
+
+1750
+Funding for the Young and Middle-aged Ophthalmologists
+(No.BJ-LM2021011J); Xi’an Science and Technology Project
+[No.20YXYJ0008(3)]; Research Incubation Fund of Xi’an
+People’s Hospital (Xi’an Fourth Hospital) (No.ZD-5, ZD-7,
+and ZD-8).
+Conflicts of Interest: Zhang L, None; Yan JJ, None; Wang
+HY, None; Li MQ, None; Wang XX, None; Fan L, None;
+Wang YS, None.
+REFERENCES
+1 Feng L, Ju M, Lee KYV, Mackey A, Evangelista M, Iwata D, Adamson
+P, Lashkari K, Foxton R, Shima D, Ng YS. A proinflammatory function
+of Toll-like receptor 2 in the retinal pigment epithelium as a novel
+target for reducing choroidal neovascularization in age-related macular
+degeneration. Am J Pathol 2017;187(10):2208-2221.
+2 Zhang C, Han M, Wu S. Silencing fibroblast growth factor 7 inhibits
+krypton laser-induced choroidal neovascularization in a rat model. J
+Cell Biochem 2019;120(8):13792-13801.
+3 Plastino F, Santana-Garrido Á, Pesce NA, Aronsson M, Lardner E, Mate
+A, Kvanta A, Vázquez CM, André H. Echinomycin mitigates ocular
+angiogenesis by transcriptional inhibition of the hypoxia-inducible
+factor-1. Exp Eye Res 2021;206:108518.
+4 Wang LF, Yan ZY, Li YL, Wang YH, Zhang SJ, Jia X, Lu L, Shang
+YX, Wang X, Li YH, Li SY. Inhibition of Obtusifolin on retinal
+pigment epithelial cell growth under hypoxia. Int J Ophthalmol
+2019;12(10):1539-1547.
+5 Zhang P, Zhou YD, Tan Y, Gao L. Protective effects of piperine on the
+retina of mice with streptozotocin-induced diabetes by suppressing
+HIF-1/VEGFA pathway and promoting PEDF expression. Int J
+Ophthalmol 2021;14(5):656-665.
+6 Tai W. Current aspects of siRNA bioconjugate for in vitro and in vivo
+delivery. Molecules 2019;24(12):2211.
+7 Serrano-Sevilla I, Artiga Á, Mitchell SG, De Matteis L, de la Fuente
+JM. Natural polysaccharides for siRNA delivery: nanocarriers
+based on chitosan, hyaluronic acid, and their derivatives. Molecules
+2019;24(14):2570.
+8 de la Torre P, Pérez-Lorenzo MJ, Alcázar-Garrido Á, Flores AI. Cell-
+based nanoparticles delivery systems for targeted cancer therapy:
+lessons from anti-angiogenesis treatments. Molecules 2020;25(3):715.
+9 Labusca L, Herea DD, Mashayekhi K. Stem cells as delivery vehicles
+for regenerative medicine-challenges and perspectives. World J Stem
+Cells 2018;10(5):43-56.
+10 Hou HY, Liang HL, Wang YS, Zhang ZX, Wang BR, Shi YY, Dong X,
+Cai Y. A therapeutic strategy for choroidal neovascularization based
+on recruitment of mesenchymal stem cells to the sites of lesions. Mol
+Ther 2010;18(10):1837-1845.
+11 Qiu F, Meng T, Chen Q, Zhou K, Shao Y, Matlock G, Ma X, Wu W, Du
+Y, Wang X, Deng G, Ma JX, Xu Q. Fenofibrate-loaded biodegradable
+nanoparticles for the treatment of experimental diabetic retinopathy
+and neovascular age-related macular degeneration. Mol Pharm
+2019;16(5):1958-1970.
+12 Zhang C, Wang YS, Wu H, Zhang ZX, Cai Y, Hou HY, Zhao W,
+Yang XM, Ma JX. Inhibitory efficacy of hypoxia-inducible factor
+1alpha short hairpin RNA plasmid DNA-loaded poly (D, L-lactide-
+co-glycolide) nanoparticles on choroidal neovascularization in a laser-
+induced rat model. Gene Ther 2010;17(3):338-351.
+13 Ouyang X, Wang X, Kraatz HB, Ahmadi S, Gao J, Lv Y, Sun X, Huang
+Y. A Trojan horse biomimetic delivery strategy using mesenchymal
+stem cells for PDT/PTT therapy against lung melanoma metastasis.
+Biomater Sci 2020;8(4):1160-1170.
+14 Kimbrel EA, Lanza R. Next-generation stem cells—ushering
+in a new era of cell-based therapies. Nat Rev Drug Discov
+2020;19(7):463-479.
+15 Matta J, Maalouf R. Delivery of siRNA therapeutics: PLGA
+nanoparticles approach. Front Biosci (Schol Ed) 2019;11(1):56-74.
+16 Charbe NB, Amnerkar ND, Ramesh B, Tambuwala MM, Bakshi HA,
+Aljabali AAA, Khadse SC, Satheeshkumar R, Satija S, Metha M,
+Chellappan DK, Shrivastava G, Gupta G, Negi P, Dua K, Zacconi FC.
+Small interfering RNA for cancer treatment: overcoming hurdles in
+delivery. Acta Pharm Sin B 2020;10(11):2075-2109.
+17 Cun D, Jensen DK, Maltesen MJ, Bunker M, Whiteside P, Scurr
+D, Foged C, Nielsen HM. High loading efficiency and sustained
+release of siRNA encapsulated in PLGA nanoparticles: quality by
+design optimization and characterization. Eur J Pharm Biopharm
+2011;77(1):26-35.
+18 Kelly SJ, Halasz K, Smalling R, Sutariya V. Nanodelivery of
+doxorubicin for age-related macular degeneration. Drug Dev Ind
+Pharm 2019;45(5):715-723.
+19 Noh C, Shin HJ, Lee S, Kim SI, Kim YH, Lee WH, Kim DW, Lee
+SY, Ko YK. CX3CR1-targeted PLGA nanoparticles reduce microglia
+activation and pain behavior in rats with spinal nerve ligation. Int J
+Mol Sci 2020;21(10):3469.
+20 Ding D, Zhu Q. Recent advances of PLGA micro/nanoparticles for the
+delivery of biomacromolecular therapeutics. Mater Sci Eng C Mater
+Biol Appl 2018;92:1041-1060.
+21 Sadhukha T, O’Brien TD, Prabha S. Nano-engineered mesenchymal
+stem cells as targeted therapeutic carriers. J Control Release
+2014;196:243-251.
+22 Wang X, Gao J, Ouyang X, Wang J, Sun X, Lv Y. Mesenchymal stem
+cells loaded with paclitaxel-poly(lactic- co-glycolic acid) nanoparticles
+for glioma-targeting therapy. Int J Nanomedicine 2018;13:5231-5248.
+23 Jeon SY, Park JS, Yang HN, Woo DG, Park KH. Co-delivery of SOX9
+genes and anti-Cbfa-1 siRNA coated onto PLGA nanoparticles for
+chondrogenesis of human MSCs. Biomaterials 2012;33(17):4413-4423.
+24 Layek B, Sadhukha T, Panyam J, Prabha S. Nano-engineered
+mesenchymal stem cells increase therapeutic efficacy of anticancer
+drug through true active tumor targeting. Mol Cancer Ther 2018;17(6):
+1196-1206.
+25 Li Z, Yu XF, Chu PK. Recent advances in cell-mediated nanomaterial
+delivery systems for photothermal therapy. J Mater Chem B
+2018;6(9):1296-1311.
+A Trojan horse biomimetic delivery system on RPE cells
+
+1751
+Int J Ophthalmol,    Vol. 15,  No. 11,  Nov.18,  2022         www.ijo.cn
+Tel: 8629-82245172     8629-82210956      Email: ijopress@163.com
+26 Adijanto J, Naash MI. Nanoparticle-based technologies for retinal gene
+therapy. Eur J Pharm Biopharm 2015;95:353-367.
+27 Tsiapalis D, O’Driscoll L. Mesenchymal stem cell derived extracellular
+vesicles for tissue engineering and regenerative medicine applications.
+Cells 2020;9(4):991.
+28 He GH, Zhang W, Ma YX, Yang J, Chen L, Song J, Chen S.
+Mesenchymal stem cells-derived exosomes ameliorate blue light
+stimulation in retinal pigment epithelium cells and retinal laser
+injury by VEGF-dependent mechanism. Int J Ophthalmol 2018;11(4):
+559-566.

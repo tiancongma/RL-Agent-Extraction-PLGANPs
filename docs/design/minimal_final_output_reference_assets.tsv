@@ -1,0 +1,11 @@
+asset_path	asset_role	relevance_to_minimal_final_output_layer	reuse_mode	notes
+src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py	active semantic Stage2 emitter	upstream semantic source	upstream dependency	Authoritative Stage2 semantic discovery contract
+src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py	active deterministic compatibility bridge	direct input producer	upstream dependency	Primary candidate-instance compatibility contract for unchanged downstream layers
+src/stage4_eval/eval_weak_labels_v7pilot3.py	active candidate-instance diagnostic evaluator	diagnostic context only	reference or optional upstream input	Not benchmark-valid final comparison
+src/stage5_benchmark/formulation_core_signature_v1.py	reference core-signature logic	high	reference or partial adapter	Useful for signature design, not active final layer
+src/stage5_benchmark/build_two_table_schema_v2.py	reference schema/export builder	medium	reference or partial adapter	Useful for final table shape ideas
+src/stage5_benchmark/build_two_table_schema_v3.py	reference schema/export builder	medium	reference or partial adapter	Useful for final table shape ideas
+archive/code/stage5_merge_publish/merge_results.py	downstream publish/export merge	medium	reference only	Publication/export oriented, not sufficient for closure by itself
+archive/code/dev15_skeleton_bootstrap/	historical benchmark bootstrap	reference only	historical reference	Explains benchmark artifact history, not active runtime behavior
+project/2_ARCHITECTURE.md	authoritative architecture summary	high	authoritative pointer	Should summarize the layer without claiming it exists
+project/ACTIVE_PIPELINE_FLOW.md	active execution contract	high	authoritative pointer	Must show planned insertion point

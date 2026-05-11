@@ -1,0 +1,796 @@
+Contents lists available at ScienceDirect
+Colloids and Surfaces A
+journal homepage: www.elsevier.com/locate/colsurfa
+Preparation of ropivacaine loaded PLGA microspheres as controlled-release
+system with narrow size distribution and high loading efficiency
+Xun Lia,b, Yi Weia,⁎, Piping Lva, Youbin Wuc, Kenji Oginod, Guanghui Maa,⁎
+a State Key Laboratory of Biochemical Engineering, PLA Key Laboratory of Biopharmaceutical Production & Formulation Engineering, Institute of Process Engineering,
+Chinese Academy of Sciences, Beijing 100190, PR China
+b University of the Chinese Academy of Sciences, Beijing 100049, PR China
+c Yichang Humanwell Pharmaceutical Co., Ltd., Yichang 443008, PR China
+d Graduate School of Bio-Applications Systems Engineering, Tokyo University of Agriculture and Technology, Koganei, Tokyo 184-8588, Japan
+G R A P H I C A L A B S T R A C T
+A R T I C L E I N F O
+Keywords:
+Ropivacaine
+PLGA microsphere
+High drug loading
+Narrow size distribution
+Reduce cytotoxicity
+A B S T R A C T
+Ropivacaine loaded microspheres offer an attractive alternative for prolonging the duration of local anesthetics for
+the pain management. However, traditional microcapsulation methods could not provide microspheres with desired
+drug loading efficiency and a narrow size distribution, leading to poor patient compliance as well as preparation
+repeatability. In this study, we proposed to combine O/W emulsion method with novel premix membrane emulsi-
+fication technique. After the optimization of fabrication procedure, ropivacaine loaded microspheres with narrow
+size distribution (span 0.469), high drug loading efficiency (49%) and an ideal constant release behavior have been
+obtained. Especially, it was found that solidification process affected the internal structure of microspheres and the
+physical state of encapsulated ropivacaine. Furthermore, it was interested that lower polymer molecular weight
+resulted in higher encapsulation efficiency, which was not consistent with reported results. It was found that this was
+ascribed to the interaction of PLGA-ropivacaine. All these aspects had considerable influences on the characteristics
+of microspheres. In addition, the cytotoxicity on different cell lines (SHSY5Y and HaCaT cells) was detected quali-
+tatively and quantitatively. It showed that ropivacaine loaded microspheres did reduce the Reactive oxygen species
+(ROS) and cytotoxicity prominently compared to free ropivacaine, which could be attributed to the sustained and
+steady drug release behavior. This study provided some pioneering ideas for encapsulating small molecule drug with
+poor solubility. The optimized microspheres could be chosen as an ideal candidate for the ropivacaine sustained
+release with its better drug adherence, lower toxicity of drug burst release and best therapeutic effect.
+https://doi.org/10.1016/j.colsurfa.2018.11.014
+Received 6 September 2018; Received in revised form 29 October 2018; Accepted 6 November 2018
+⁎ Corresponding authors.
+E-mail addresses: ywei@ipe.ac.cn (Y. Wei), ghma@ipe.ac.cn (G. Ma).
+Colloids and Surfaces A 562 (2019) 237–246
+Available online 17 November 2018
+0927-7757/ © 2018 Elsevier B.V. All rights reserved.
+T
+
+1. Introduction
+Despite numerous advances in basic and clinical investigation of
+new therapeutic agents, the management of post-surgical pain in the
+healing period remains to be a major issue [1]. In recent years, Local
+Anaesthetics (LAs), administered via peripheral or central routes, are
+widely acceptable to postoperative analgesia, obstetrics and the therapy
+of chronic pain [2]. Among these drugs, ropivacaine (RVC), a novel
+enantiomeric isomers amide local anesthetic, plays a significant role in
+the regional control of major pain and has been gradually promoted as a
+priority option in clinic on account of its rapid onset and relative higher
+length of action effect [3]. Nevertheless, postoperative pain generally
+causes persistent pain for several days, a single injection of ropivacaine
+just provides a nerve block lasting only 3–4 h, making it difficult to
+achieve desirable analgesia effect [4].
+Nowadays, to meet the long-time analgesia requirement, multiple
+methods such as catheter implantation in vivo or patient controlled
+analgesia (PCA) device have been applied [5,6]. Although these ap-
+proaches have made progress in clinical, their wide-spread use has been
+hampered by the limited efficacy, potential adverse clinical complica-
+tions, poor patient compliance and the lack of portability. In particular,
+catheter infusion may cause infection and migration, requiring super-
+numerary constant monitoring which absolutely increases the patient
+cost. In addition, the frequent administration of PCA carried risk of the
+excessive absorption of RVC, leading to cardiovascular and central
+nervous system (CNS) toxicity [7].
+For purpose of increasing the bioavailability of RVC, with respect to
+its effectiveness and safety, alternative controlled release systems have
+been paid considerable attention [8–10]. Liposomes, micro-nano par-
+ticles, hydrogel and other biodegradable polymer which can release
+drugs in a sustained manner and reduce adverse effects with low sys-
+temic uptake have been used in drug delivery system. Among them,
+poly (lactic-co-glycolic acid) (PLGA) microsphere has attracted much
+interest due to its stable physicochemical property [11]. Current reports
+have indicated that RVC loaded microspheres were able to prolong
+pharmacokinetic parameters and pharmacodynamic activity [12–15].
+Nevertheless, there are still several issues restricting the application of
+ropivacaine microspheres in clinical. First, ropivacaine loaded micro-
+spheres prepared by conventional methods have broad size distribution,
+which might lead to poor repeatability of preparation, release behavior
+and drug loading efficiency [15,16]. Furthermore, RVC easily escaped
+to the water phase in the microsphere preparation process on account of
+its small molecule weight character, which led to quite a low drug
+loading efficiency [13,17,18]. Therefore, it is required to increase the
+injection dose of microspheres, which will make patient discomfort.
+Thirdly, it is well known that exposure to excessive concentration of
+ropivacaine will cause neurotoxicity [19,20]. Hence, high initial burst
+effect or inappropriate release profile of ropivacaine loaded micro-
+spheres may lead to transient high ropivacaine concentrations, which is
+suspected of causing neurotoxicity [21,22].
+In this study, to eliminate the drawback of the board particle size on
+the repeatability of preparation, premix membrane emulsification
+technique was developed for the formulation of ropivacaine loaded
+microspheres with narrow size distribution (Fig. S1). Furthermore, in
+order to obtain high drug loading efficiency and ideal release profile,
+we successfully designed a novel microsphere in which ropivacaine and
+PLGA form the microsphere skeleton together. Meanwhile, formulation
+process parameters which are crucial to encapsulate small molecules
+were investigated in detail. In addition, the effects of ropivacaine
+loaded microspheres on SHSY5Y and HaCaT cell vitality and apoptosis
+at different concentrations and times were examined.
+2. Materials and methods
+2.1. Materials
+PLGA with number-average molecular weights (Mn) of 12000,
+25000, 45,000 with corresponding Mw/Mn value of 1.70, 1.56 and 1.58
+were purchased from Dai Gang Company (Shandong, China). The Mn
+and Mw/Mn value were obtained with gel permeation chromatography
+(GPC, Waters, USA) using polystyrene as a standard. Ropivacaine base
+was provided by Humanwell Pharmaceutical Co., Ltd. (Hubei, China).
+Poly (vinyl alcohol) (PVA-217, degree of polymerization 1700, degree
+of hydrolysis 88.5%) was provide by Kuraray (Japan). Fast Membrane
+Emulsifier (FM0210/500 M) and micro-porous membrane were pro-
+vided by Senhui Microsphere Tech (Suzhou) Co., Ltd. Acetonitrile
+(HPLC grade) was purchased from Dikma Co, Ltd. (USA). Sodium di-
+hydrogen phosphate and sodium hydrogen phosphate were purchased
+from Xi Long Company (Guangdong, China). All other reagents were
+analytical grade. Human neuroblastoma cells (SHSY5Y) and Human
+immortalized keratinocytes (HaCaT) cells were cultured in DMEM
+medium (Gibco, USA) containing 10% fetal bovine serum (FBS) and
+100 U/ml penicillin. All the cells were maintained in a humidified 5%
+CO2 incubator at 37 °C.
+2.2. Preparation of microspheres
+Uniform-sized microspheres loaded with ropivacaine were prepared
+by premix membrane emulsification technique combined with oil-in-
+water (O/W) emulsion method. First, PLGA (500 mg) and ropivacaine
+(500 mg) was dissolved in 10 mL dichloromethane (DCM) as oil phase
+(O). The oil phase (O) was subsequently emulsified into 100 mL 1%
+PVA solution (W) by homogenizer at 6000 rpm to form coarse emul-
+sions of O/W. Then, the coarse emulsions were further refined by ex-
+truding the emulsion through the membrane (pore size of the mem-
+brane was 35 μm) under proper pressure to obtain emulsion droplets.
+The obtained uniform emulsions were solidified at room temperature at
+300 rpm for 5 h (magnetic stirring) or under vacuum pressure by rotary
+evaporator for 6 min. Finally, the obtained microspheres were collected
+by centrifugation at 6000 rpm for 6 min, washed with distilled water for
+5 times and then freeze dried.
+2.3. Observation of morphology and measurement of size distribution
+The shape and surface morphology of microspheres were observed
+by a JSM-6700 F (JEOL, Japan) scanning electron microscope (SEM).
+The microspheres were sputter-coated with gold in 30 mA for 120 s
+(JFC-1600, JEOL, Japan), then observed by SEM. The volume mean
+diameter of microspheres dispersed in distilled water was measured by
+laser diffraction using Mastersizer 2000 (Malvern, UK). The uniformity
+was referred as Span value and calculated as follows:
+=
+Span
+D
+D
+D
+V
+v
+v
+,90%
+,10%
+,50%
+A smaller value of span means a narrower size distribution of mi-
+crospheres. Where Dv,90%, Dv,50% and Dv,10% are volume size diameters
+at 90%, 50% and 10% of the cumulative volume, respectively.
+2.4. Drug loading efficiency % (LE%) and encapsulation efficiency % (EE)
+measurement
+High performance liquid chromatography (HPLC) was employed for
+ropivacaine quantification. Briefly, 10 mg ropivacaine loaded micro-
+spheres were dispersed in 5 mL acetonitrile and vigorously vortexed for
+10 min to obtain sample solution. Next, sample solution filtered and
+injected into a HPLC system to determine the concentration of ropiva-
+caine. The determination was performed using a Syncronis C18
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+238
+
+(250 mm × 4.6 mm × 5 mm, Thermos) chromatographic column at
+room temperature. A linear gradient elution was performed from 50%
+acetonitrile-phosphate buffer (pH = 8.0) for 15 min. The flow rate was
+1 mL/min. UV absorbance was 240 nm. LE% and EE% of the micro-
+spheres were calculated by following equations:
+=
+×
+LE
+a
+b
+100%
+where b is total mass of microspheres (including mass of polymer and
+ropivacaine loaded) and a is the mass of ropivacaine loaded in the
+microspheres.
+=
+×
+EE
+m
+m
+100%
+0
+where m0 is total mass of ropivacaine added and m is the mass of ro-
+pivacaine loaded in the microspheres.
+2.5. In vitro release study release study
+The 10 mg ropivacaine loaded microspheres were incubated in 1 mL
+of phosphate buffer saline (PBS) containing 0.1% Tween 80 and 0.1%
+Tween 20 medium (pH 7.4) under agitation at 37 ℃. Supernatants were
+collected at predetermined intervals by centrifugation and replaced
+with fresh buffer of equal volume. The concentration of ropivacaine in
+the supernatant was determined by HPLC. All the release experiments
+were executed in triplicate.
+2.6. X-ray powder diffraction (XRD)
+In order to identify the quality of crystals existed in the micro-
+spheres as well as to detect the physical state of ropivacaine and PLGA,
+the powder XRD patterns of the residues were collected using a Rigaku
+Smartlab diffractometer fitted with a Cu tube and operated at 45Kv and
+200 mA. XRD data were collected from 5° to 90° (2θ) in 0.02° steps at
+9°/min speed.
+2.7. Measurement of precipitation rate of ropivacaine and PLGA
+In order to analyze the influence of solidification method on the
+ropivacaine distribution and state in microspheres, the precipitation
+rate of PLGA and ropivacaine were investigated during evaporation of
+DCM by transmittance measurement. Certain amounts of ropivacaine
+and PLGA according to the theoretical drug loading efficiency were
+separately dissolved into DCM, then the solutions were transferred into
+cuvettes. The transmittance measurement was carried out at room
+temperature using a UV/visible spectrophotometer (Ultrospec 2100
+pro, GE Healthcare Life Sciences, America) at 550 nm. After every
+measurement, each cuvette was put inside the laboratory hood for the
+evaporation of solvent. The real-time date of the transmittance was
+recorded per 6 min until the reading date did not change.
+2.8. Cytotoxicity
+The cytotoxicity of free ropivacaine and ropivacaine loaded micro-
+spheres were measured with MTT assay. Typically, cells were initially
+seeded in a 96-well plate at a density of 4 × 103 cells per well and
+cultured for 24 h. After 24 h, the cells were fully attached, then cells
+were used to assess the cytotoxicity of each formulation such as blank
+PLGA microspheres (Blank Microspheres), free ropivacaine group (Free
+Ropivacaine),
+and
+ropivacaine
+loaded
+microspheres
+group
+(Ropivacaine-Microspheres) with equivalent ropivacaine for 1 day, 3
+days and 5 days. After incubation, 10 μL of MTT (5 mg/mL in PBS so-
+lution) was added into each well. After 4 h of incubation, culture su-
+pernatant was aspirated, and purple formazan crystals was dissolved
+into 150 mL of DMSO for an additional incubation of 15 min. In order to
+reduce the experiment error caused by 96-well plate, each group had its
+own control group. The absorbance was measured at a reference wa-
+velength of 630 nm while using a test wavelength of 570 nm employing
+a microplate reader (318C, INESA Instrument, China). Cell viability was
+normalized to that of HaCaT or SHSY5Y cells cultured in complete
+culture media.
+2.9. Measurement of Reactive oxygen species (ROS)
+Generation of intracellular ROS was measured by a ROS Assay with
+DCFH-DA (Beyotime). In brief, HaCaT and SHSY5Y cells were plated at
+a density of 1 × 105 cells/well in 6-well plates respectively and exposed
+to each group (RVC formulations with equivalent RVC concentrations,
+0.5 mM) for 3 days. Then the cells were incubated with DCFH-DA
+(10 μM) for 30 min at 37 °C. The level of ROS was determined by flow
+Fig. 1. SEM images of microspheres prepared by different trans-membrane pressures (A)10 kPa, (B) 30 kPa, (C) 50 kPa and different tran-membrane cycles (D) 1, (E)
+2, (F)3.
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+239
+
+cytometer. A total of 1.0 × 104 gated events per sample were recorded.
+2.10. Cell apoptosis
+The FITC-Annexin V/propidium iodide (PI) staining was used to
+measure cell apoptosis with Ropivacaine-microspheres group and Free
+RVC group. The HaCaT and SHSY5Y cells were cultured in the 6-well
+dishes (1.0 × 105 cells/well) with 2 mL complete DMEM medium, re-
+spectively.
+After
+24 h,
+the
+cells
+were
+incubated
+with
+Blank
+Microspheres, 0.5 mM Free Ropivacaine and equivalent ropivacaine
+concentration of Ropivacaine- Microspheres for 3 days. Here, untreated
+cells were used as control group. After incubation, the cells were
+trypsinized, rinsed by cold PBS, and re-suspended in 1× binding buffer.
+Then, the cells were labeled with Alexa Fluor FITC-conjugated annexin
+V and PI with the help of manufacturer’s protocol. The cell apoptosis
+was measured by flow cytometer, and a total of 1.0 × 104 gated events
+per sample were recorded.
+3. Results and discussion
+3.1. Preparation of ropivacaine loaded microspheres with a narrow size
+distribution
+Premix membrane emulsification technique combined with double
+emulsion (W1/O/W2) proved to be an excellent method for preparing
+uniform microsphere, especially for the microencapsulation of bioma-
+cromolecule such as Exenatide and Human growth hormone [23,24].
+However, in this study, ropivacaine and PLGA, as microsphere matrix,
+were co-dissolved into oil phase. It would affect the character of dis-
+persion phase which may probably further influence the premix mem-
+brane emulsification process. Therefore, the process parameters for the
+membrane emulsification were investigated to obtain ropivacaine
+loaded microspheres with narrow size distribution.
+3.1.1. Effect of the tran-membrane pressure (TMP)
+TMP plays a significant role in the premix membrane emulsification
+technique [25]. The O/W emulsion was pressed through the micro-
+porous membrane under different TMP, and the relationship between
+the TMP and the size distribution of the microspheres for the membrane
+with pore size 35 μm was investigated. As shown in Fig. S2-A, the
+average particle size of microspheres got smaller with increasing the
+pressure from 10 to 50 kPa. High TMP led to a high shear stress, which
+broke primary emulsions into smaller size droplets (Fig. 1-C). On the
+contrary, when TMP decreased, large size microspheres appeared since
+droplets could pass through the membrane pores slowly. (Fig. 1-A).
+When the membrane pressure was adjusted to 30 kPa, the most uniform
+microspheres were obtained with a span value of 0.572 (Fig. 1-B and
+Fig S2-A).
+3.1.2. Effect of the tran-membrane cycle
+It has been shown that there is a positive correlation between tran-
+membrane cycle time and uniformity of microspheres [26]. The larger
+droplets would break into smaller ones by every passing cycle until the
+size of droplet small enough to pass though membrane freely. As shown
+in Fig. S2-B, 2 or 3 times was supposed to be the proper tran-membrane
+cycle times to obtain ideal microspheres. Finally, uniform-size PLGA
+microspheres with a span value of 0.491 were prepared through 2 times
+of tran-membrane cycle (Fig. 1-E).
+3.2. The effect of process parameters on drug loading efficiency and in vitro
+release
+For the encapsulation of small molecule drug into microspheres,
+achieving high drug loading efficiency remains to be a major challenge
+due to the escape of drug from the dispersion phase into the continuous
+phase during the whole preparation process [27–29]. Therefore, in this
+study, the effects of solidification method, PLGA molecular weight, and
+pH of external water phase on drug loading efficiency and in vitro re-
+lease profile have been investigated.
+3.2.1. Effect of solidification method
+To investigate the effect of different solidification methods, solvent
+under the ambient pressure evaporation (ASE) and the solvent under
+vacuum negative pressure evaporation (NSE) were compared. Firstly,
+ropivacaine loaded PLGA droplets with uniform size were successfully
+prepared by premix membrane emulsification technique. Subsequently,
+the emulsion was solidified to form microspheres under ASE and under
+NSE respectively. As shown in Table 1 (Formulations 1 and 2), solidi-
+fication method has a significant impact on drug loading efficiency.
+Higher drug loading efficiency (37.28%) was achieved by the NSE
+method while relative lower loading efficiency (28.19%) was obtained
+by the ASE method. The cumulative in vitro release profiles of ASE
+microspheres and NSE microspheres were completely different as
+shown in Fig. 2A. The ASE microspheres exhibited a relative high initial
+burst release (28.3% within 2 h), then release rate gradually slowed
+down and cumulative release reached 81.8% at the 7 days. As for NSE
+microspheres, constant release profiles with low initial burst release
+(5.6% within 2 h) was observed, and 96.1% was completely released
+within 7 days.
+According to the SEM images of microspheres, smooth external
+surfaces with few pores were observed at both ASE and NSE micro-
+spheres (Fig. 3A1 and A3). Nevertheless, the cross-sectional view of the
+SEM images showed that microspheres prepared by two kinds of soli-
+dification method had different internal structures as shown in Fig. 3A2
+and A4. It is extremely different that the ASE microspheres (Fig. 3A2)
+exhibited honeycomb structure with macroscopic crystals embedded in
+the internal channels, whereas NSE microspheres (Fig. 3A4) showed
+compact inner structure without pore and crystal. Besides, the X-ray
+powder diffraction scans of ASE and NSE microspheres further de-
+monstrated the phenomenon as shown in Fig. 3B. The ASE micro-
+spheres exhibited diffraction peak at 2θ = 10° (Fig. 3B- (c)) which were
+consistent with those observed for RVC powder (Fig. 3B-(a)). The re-
+sults indicated that the RVC in the ASE microspheres was the crystal
+state. The NSE microspheres did not exhibit peak correlated with
+crystalloid RVC (Fig. 3B- (d)), suggesting that RVC was present in
+amorphous state in the microspheres. Additional, the crystal state of
+ropivacaine in ASE microsphere has also been testified by Differential
+Scanning Calorimeter (DSC) test (Fig.S3). In consequence, different
+Table 1
+Formulations of ropivacaine loaded PLGA microspheres based on different solidification method, the PLGA molecular weight and pH of external water phase. (n = 3,
+results are mean ± standard deviation (SD)).
+Formulation
+Solidification method
+PLGA molecular weight/g × mol−1
+The pH of external water phase
+Average particle size/μm
+Span
+LE/%
+EE%
+1
+ASE
+2.5 × 104
+5.2
+18.67 ± 0.18
+0.473
+28.19 ± 0.87
+56.38 ± 1.74
+2
+NSE
+2.5 × 104
+5.2
+18.79 ± 0.13
+0.462
+37.28 ± 0.68
+74.56 ± 1.36
+3
+NSE
+1.2 × 104
+5.2
+18.32 ± 0.23
+0.483
+42.13 ± 0.56
+84.26 ± 1.12
+4
+NSE
+4.5 × 104
+5.2
+18.79 ± 0.27
+0.507
+30.87 ± 0.73
+61.74 ± 1.46
+5
+NSE
+1.2 × 104
+7.4
+18.56 ± 0.31
+0.469
+47.56 ± 0.81
+95.12 ± 1.62
+6
+NSE
+1.2 × 104
+9.0
+18.61 ± 0.19
+0.503
+49.06 ± 0.75
+98.12 ± 1.50
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+240
+
+solidification methods affected the inner structure of microsphere and
+the physical state of ropivacaine, which in turn led to the obvious dif-
+ference of drug loading efficiency and release behavior between ASE
+microspheres and NSE microspheres.
+To further clarify the difference of inner structure of microsphere
+and the physical state of ropivacaine, the mechanism of different
+solidification method on structure was investigated by analyzing the
+precipitation rate of PLGA and ropivacaine during the evaporation of
+dichloromethane (DCM). As shown in Fig. S4, the shorter of time to the
+unchangeable transmittance reflected the faster precipitation rate in
+cuvette. The results showed that the precipitation rate of ropivacaine
+was faster than that of PLGA. Therefore, the formation process
+Fig. 2. In vitro release profile of ropivacaine loaded microspheres prepared by (A) different solidification method and (B) different PLGA molecular weight. (n = 3,
+results are mean ± standard deviation (SD)).
+Fig. 3. (A) The SEM images: ASE microspheres of surface (1) and cross-section (2); NSE microspheres of surface (3) and cross-section (4) respectively. (B) X-ray
+powder diffraction scan. (C) The schematic diagrams of microspheres formation process for different solidification method.
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+241
+
+mechanism of microspheres prepared by different solidification method
+could be speculated as shown in Fig. 3C. In the process of ASE micro-
+sphere formation, ropivacaine was precipitated in the system firstly,
+which would gradually aggregate into a crystal before formation of a
+network skeleton of polymer. The subsequent formation of PLGA net-
+work could successfully encapsulate the smaller ropivacaine crystal
+aggregates, whereas the larger ropivacaine crystal aggregates might
+easily leak out from droplets owing to relatively slow PLGA micro-
+sphere skeleton formation rate, which would result in lower drug
+loading efficiency. As for in vitro release profile, the leaked drug crystal
+on the surface of the ASE microspheres could not easily be washed away
+completely, which led to strong initial burst release. In the case of NSE
+microspheres, the rapid precipitating of the polymer and ropivacaine
+jointly formed the microsphere backbone. Therefore, ropivacaine ex-
+isted in amorphous state was difficult to escape and inclined to uni-
+formly disperse inside polymer matrix, which led to a higher drug
+loading efficiency than that of ASE microspheres. With respect to re-
+lease profile of NSE microspheres, ropivacaine which distributed uni-
+formly in microspheres diffused throughout the polymer matrix at a
+constant rate.
+3.2.2. Effect of polymer molecular weight
+As shown in Table 1, formulation 2, 3 and 4 presented that the
+higher LE% was obtained by using PLGA with lower molecular weight.
+In addition, the LE% decreased along with the increase of molecular
+weight. This phenomenon was not consistent with previous study, in
+which polymer molecular weight exhibited positive correlation with the
+organic phase’s viscosity that subsequently influenced the drug escape
+rate in the preparation process [27,30].
+In this study, we proposed that the presence of carboxylic acid
+groups (COOH) of PLGA terminal groups and the amine groups of ro-
+pivacaine molecule strengthened the electrostatic interaction [31].
+(Fig. 4). Additional, ropivacaine and PLGA were both hydrophobic. The
+methyl of PLGA and the methyl of ropivacaine were easy to attract
+mutually due to the hydrophobic interaction [32,33]. The interaction of
+ropivacaine-PLGA comprising of electrostatic interaction and hydro-
+phobic interaction hindered the small molecule drug to escape of the
+droplets during the preparation process. For low molecular weight of
+PLGA, the amount of carboxylic acid terminal group of PLGA increased.
+The electrostatic interaction became stronger because that more amine
+groups of ropivacaine had the ability to interact with more carboxylic
+acid terminal group of PLGA. Hence, the drug loading efficiency in-
+creased. The in vitro release profiles of the three formations are shown
+in Fig. 2B. Microspheres prepared by the PLGA of low molecular weight
+had the fastest release rate. The results suggested that there were two
+opposite factors contributed to the ropivacaine release from micro-
+spheres. The degradation rate was faster for the lower molecular PLGA,
+undoubtedly corresponding to a fast release. However, the strength of
+ropivacaine-PLGA interactions was greater for low molecular PLGA,
+yielding slow release. The overall release profile could be reconciled by
+considering the balance between the rate of polymer degradation and
+the strength of interaction which is specific to the number and type of
+drug-PLGA combinations. In this study, the release profile indicated
+that the faster degradation of low molecular PLGA clearly overwhelmed
+the interactions of ropivacaine-PLGA, causing an overall relative fast
+release for low molecular PLGA.
+3.2.3. Effect of pH of external water phase
+Different approaches have been applied to decrease the escape of
+small molecule drug to the external water phase [34]. In this study, for
+ropivacaine, an ionizable drug with a pH-dependent water solubility, it
+was reasonable to adjust the pH of external water phase to a value of
+low drug solubility. As shown in Table 1 (Formulations 3,5 and 6), once
+the pH of external water phase was raised from 5.2 to 9.0, the LE%
+increased from 42.13% to 49.06%. It was because that alkaline en-
+vironment reduced the solubility of ropivacaine base in the external
+water phase, further reducing the escape of ropivacaine. Nevertheless,
+alkaline pH of the external aqueous phase would cause hydrolysis of
+Fig. 4. The schematic diagram of the interaction between the COOH group of
+PLGA and the amine group of ropivacaine.
+Fig. 5. In vitro cytotoxicity of Ropivacaine-microspheres. Dose-response curves for cytotoxicity of Blank microspheres, Free Ropivacaine and Ropivacaine-micro-
+spheres with SHSY5Y (A, B and C) and HaCaT (D, E and F) cells at 1 day (A, D), 3 days (B, E) and 5 days (C, F) respectively. (n = 6, results are mean ± standard
+deviation (SD)) *, p < 0.05, ** p < 0.01.
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+242
+
+PLGA during preparation. To study this underlying problem, mor-
+phology (Fig. S5A–B) and size of microspheres at pH 9.0 was mon-
+itored. It turned out that the surface of microsphere and size distribu-
+tion remained unchanged after exposure to alkaline external water
+phase. With respect to in vitro release, the release rate in vitro was not
+affected by the pH of external phase. Therefore, considering the high
+drug loading efficiency, low initial burst release and ideal release be-
+havior, formulation 6 based on solidification under the ambient pres-
+sure, low molecular weight of PLGA and the alkaline pH of external
+water phase was chosen as the most optimal formulation in the fol-
+lowing research.
+3.3. Cytotoxicity of ropivacaine loaded microspheres
+Several studies have reported the toxicity of ropivacaine to neuro-
+cyte and epidermal cells in recent years [7,35–37]. Therefore, another
+purpose of developing ropivacaine loaded microspheres is to avoid
+toxicity and side effects of excessive doses. In this study, SHSY5Y and
+HaCaT cells were exposed to blank microspheres group (Blank Micro-
+spheres), free ropivacaine group (Free Ropivacaine) and ropivacaine
+loaded microspheres group (Ropivacaine-Microspheres), respectively.
+As showed in Fig. 5, no obvious toxicity was observed for Blank Mi-
+crospheres group, which proved that PLGA possess excellent safety as
+biodegradable copolymer [38]. In addition, the results in Fig. 5 shows
+that Free Ropivacaine remarkably inhibited cell proliferation on
+SHSY5Y and HaCaT in time-dependent and dose-dependent manner.
+Fortunately, as shown in Fig. 5A–C, Ropivacaine-Microspheres group
+had higher percentage of cell viability rates with 71.32% and 56.59%
+(1 mM) after 3 days and 5 days incubation, which were approximately
+2- and 11-fold compared to Free Ropivacaine group (32.45% and
+4.89%), respectively. The similar trend was also observed on HaCaT
+cells (Fig. 5D–F), which illustrated that microsphere as a sustain-release
+drug carrier possess an excellent performance on reducing cytotoxicity.
+3.4. Cell apoptosis
+Many studies have shown that intracellular ROS burst is one of the
+main factors leading to acute damage in nerve cells [39], because the
+dynamic balance of redox was destroyed and the oxidative stress was
+induced [40,41]. As shown in Fig. 6A and C, Ropivacaine-Microspheres
+group produced much fewer ROS than Free Ropivacaine group in
+SHSY5Y cells and HaCaT cells at the same concentration of ropivacaine
+Fig. 6. Changes in the cellular ROS level of SHSY5Y (A, B) and HaCaT (C, D) cells under Blank microspheres, Free Ropivacaine and Ropivacaine-microspheres
+incubation. (n = 3, results are mean ± standard deviation (SD)) *, p < 0.05.
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+243
+
+(0.5 mM), which was consistent with the results of cell viability in front.
+This phenomenon might be attribute to the steady and sustained release
+of ropivacaine loaded microsphere, which led to a slower uptake by
+cells.
+It proved that ROS was a critical factor in apoptosis regulation [42].
+Ropivacaine mediated cell growth inhibition was related to cell apop-
+tosis as reported before [43]. After incubation with Free Ropivacaine
+for 3 days (ropivacaine, 0.5 mM), the apoptosis rates of SHSY5Y cells
+were 42.8%, while it was 73.4% for HaCat. As expected, after incuba-
+tion with Ropivacaine-Microspheres for 3 days, less apoptosis rate in
+both SHSY5Y (6.7%) and HaCaT (16.7%) cells were observed (Fig. 7A).
+The results indicated that Ropivacaine-Microspheres facilitated less
+apoptosis than the Free Ropivacaine group in both SHSY5Y and HaCaT
+cells at the same concentration and time treatment (Fig. 7B and 10C).
+Compared with a sharp release by Free Ropivacaine, Ropivacaine-Mi-
+crospheres with sustained drug release improved the safety profile. All
+these results showed promise in reducing systemic and neural toxicity
+by entrapping ropivacaine in microsphere.
+4. Conclusion
+In this study, uniform ropivacaine loaded microspheres with high
+drug loading efficiency, minimal initial burst and sustained in vitro re-
+lease over 6 days have been achieved by combining the (O/W) emulsion
+method with premix membrane emulsification technique. The high
+drug loading efficiency would allow the administration of a significant
+Fig. 7. Flow cytometry analysis for apoptosis of SHSY5Y and HaCaT cells (A) induced by Blank microspheres, Free Ropivacaine and Ropivacaine-microspheres for 3
+days. Relationship of the ratio of apoptotic on SHSY5Y (B) and HaCaT (C) cells. (n = 3, results are mean ± standard deviation (SD)) *, p < 0.05.
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+244
+
+amount of the drug using a small number of microspheres by single
+injection. In addition, process-related parameters which were important
+to characteristics of microspheres have been discussed. It was found
+that solidification process under the negative pressure condition in-
+duced ropivacaine to exist in amorphous state and form the micro-
+sphere backbone with PLGA together. The low polymer molecular
+weight strengthened the interaction of PLGA-ropivacaine depending on
+increasing the amount of carboxyl terminal group, leading to a high
+encapsulation efficiency. Furthermore, toxicity was reduced by en-
+capsulation ropivacaine into microspheres because a steady ropivacaine
+concentration was maintained during the whole release process. In
+summary, this study seems to be essential for the characterization of a
+new pharmaceutical form for estimating their future safety require-
+ments and provides forward perspectives for encapsulating water-in-
+soluble small molecule drug such as ropivacaine. The optimized ropi-
+vacaine loaded microsphere have great potential for clinical application
+in the future.
+Conflict of interest
+The authors declare no conflict of interest.
+Acknowledgements
+This
+work
+was
+supported
+by
+the
+National
+Nature
+Science
+Foundation of China (NO. 21336010) and National Key Technology
+Program (2017ZX09201004014).
+Appendix A. Supplementary data
+Supplementary data associated with this article can be found, in the
+online version, at https://doi.org/10.1016/j.colsurfa.2018.11.014.
+References
+[1] M. Tobe, T. Suto, S. Saito, The history and progress of local anesthesia: multiple
+approaches to elongate the action, J. Anesth. (2018) 1–5, https://doi.org/10.1007/
+s00540-018-2514-8.
+[2] S.R. Humble, A.J. Dalton, L. Li, A systematic review of therapeutic interventions to
+reduce acute and chronic post‐surgical pain after amputation, thoracotomy or
+mastectomy, Eur. J. Pain 19 (2015) 451–465, https://doi.org/10.1002/ejp.567.
+[3] D.W. Choromanski, P.S. Patel, J.M. Frederick, S.E. Lemos, E.J. Chidiac, The effect of
+continuous interscalene brachial plexus block with 0.125% bupivacaine vs 0.2%
+ropivacaine on pain relief, diaphragmatic motility, and ventilatory function, J. Clin.
+Anesth. 27 (2015) 619–626, https://doi.org/10.1016/j.jclinane.2015.03.006.
+[4] M.-P.M. Rancourt, N.T. Albert, M. Côté, D.-R. Létourneau, P.-M. Bernard, Posterior
+tibial nerve sensory blockade duration prolonged by adding dexmedetomidine to
+ropivacaine, Anesth. Analg. 115 (2012) 958–962, https://doi.org/10.1213/ANE.
+0b013e318265bab7.
+[5] N. Brandhonneur, G. Dollo, M. Ratajczak-Enselme, A.L. Deniau, F. Chevanne,
+J.P. Estèbe, A. Legrand, P. Le Corre, Ex vivo and in vivo diffusion of ropivacaine
+through spinal meninges: influence of absorption enhancers, Int. J. Pharm. 404
+(2011) 36–41, https://doi.org/10.1053/rapm.2001.22256.
+[6] B.M. Ilfeld, Continuous peripheral nerve blocks: a review of the published evidence,
+Anesth. Analg. 113 (2011) 904–925, https://doi.org/10.1213/ANE.
+0b013e3182285e01.
+[7] R. Perezcastro, S. Patel, Z.V. Garavitoaguilar, A. Rosenberg, E. Reciopinto, J. Zhang,
+T.J. Blanck, F. Xu, Cytotoxicity of local anesthetics in human neuronal cells, Anesth.
+Analg. 108 (2009) 997–1007, https://doi.org/10.1213/ane.0b013e31819385e1.
+[8] K.V. Chakravarthy, F.J. Boehm, P.J. Christo, Nanotechnology: a promising new
+paradigm for the control of pain, Pain Med. 0 (2017) 1–12, https://doi.org/10.
+1093/pm/pnx131.
+[9] P.E. De, C.M. Cereda, L.F. Fraceto, D.R. de Araújo, M. Franz-Montan, G.R. Tofoli,
+J. Ranali, M.C. Volpato, F.C. Groppo, Micro and nanosystems for delivering local
+anesthetics, Expert Opin. Drug Deliv. 9 (2012) 1505–1524, https://doi.org/10.
+1517/17425247.2012.738664.
+[10] P.L. Foley, B.D. Ulery, H.M. Kan, M.V. Burks, Z. Cui, Q. Wu, L.S. Nair,
+C.T. Laurencin, A chitosan thermogel for delivery of ropivacaine in regional mus-
+culoskeletal anesthesia, Biomaterials 34 (2013) 2539–2546, https://doi.org/10.
+1016/j.biomaterials.2012.12.035.
+[11] S.L. Bee, Z.A.A. Hamid, M. Mariatti, B.H. Yahaya, K. Lim, S.T. Bee, L.T. Sin,
+Approaches to improve therapeutic efficacy of biodegradable PLA/PLGA micro-
+spheres: a review, Polym. Rev. Phila. Pa (Phila Pa) (2018) 1–42, https://doi.org/10.
+1080/15583724.2018.1437547.
+[12] C.M. Moraes, A.P.D. Matos, R.D. Lima, A.H. Rosa, E.D. Paula, L.F. Fraceto, Initial
+development and characterization of PLGA nanospheres containing ropivacaine, J.
+Biol. Phys. 33 (2007) 455, https://doi.org/10.1007/s10867-008-9094-z.
+[13] W. Zi, H. Huang, S. Yang, S. Huang, J. Guo, T. Qi, Q. Feng, Long-term effect of
+ropivacaine nanoparticles for sciatic nerve block on postoperative pain in rats, Int.
+J. Nanomed. Nanosurg. 11 (2016) 2081–2090, https://doi.org/10.2147/IJN.
+S101563.
+[14] Q. Ni, W. Chen, L. Tong, J. Cao, C. Ji, Preparation of novel biodegradable ropiva-
+caine microspheres and evaluation of their efficacy in sciatic nerve block in mice,
+Drug Des. Nucl. Eng. 10 (2016) 2499–2506, https://doi.org/10.2147/DDDT.
+S110742.
+[15] M. Ratajczakenselme, J.P. Estebe, G. Dollo, F. Chevanne, D. Bec, J.M. Malinovsky,
+C. Ecoffey, C.P. Le, Epidural, intrathecal and plasma pharmacokinetic study of
+epidural ropivacaine in PLGA-microspheres in sheep model, Eur. J. Pharm.
+Biopharm. 72 (2009) 54–61, https://doi.org/10.1016/j.ejpb.2008.11.003.
+[16] V.T. Tran, J.P. Benoît, M.C. Venier-Julienne, Why and how to prepare biodegrad-
+able, monodispersed, polymeric microparticles in the field of pharmacy? Int. J.
+Pharm. 407 (2011) 1–11, https://doi.org/10.1016/j.ijpharm.2011.01.027.
+[17] F. Ramazani, W. Chen, C.F. van Nostrum, G. Storm, F. Kiessling, T. Lammers,
+W.E. Hennink, R.J. Kok, Strategies for encapsulation of small hydrophilic and
+amphiphilic drugs in PLGA microspheres: state-of-the-art and challenges, Int. J.
+Pharm. 499 (2016) 358–367, https://doi.org/10.1016/j.ijpharm.2016.01.020.
+[18] M. Shin, H.K. Kim, H. Lee, Dopamine-loaded poly(D,L-lactic-co-glycolic acid) mi-
+crospheres: new strategy for encapsulating small hydrophilic drugs with high effi-
+ciency, Biotechnol. Prog. 30 (2014) 215–223, https://doi.org/10.1002/btpr.1835.
+[19] D.R.D. Araujo, C.M.S. Cereda, G.B. Brunetto, V.U. Vomero, A. Pierucci, H.S. Neto,
+L.F. Fraceto, E.D. Paula, Pharmacological and local toxicity studies of a liposomal
+formulation for the novel local anaesthetic ropivacaine, J. Pharm. Pharmacol. 60
+(2010) 1449–1457, https://doi.org/10.1211/ jpp /60.11.0005.
+[20] V. Grishko, M. Xu, G. Wilson, P.A. Th, Apoptosis and mitochondrial dysfunction in
+human chondrocytes following exposure to lidocaine, bupivacaine, and ropiva-
+caine, J. Bone Jt. Surg. Am. Vol. 92 (2010) 609–618, https://doi.org/10.2106/
+JBJS.H.01847.
+[21] M. Sokolsky-Papkov, L. Golovanevski, A.J. Domb, C.F. Weiniger, Poly(dl :Lactic
+Acid-Castor Oil) 3:7-bupivacaine formulation: reducing burst effect prolongs effi-
+cacy in vivo, J. Pharm. Sci. 101 (2010) 2732–2738, https://doi.org/10.1002/jps.
+22025.
+[22] M. Sokolsky-Papkov, L. Golovanevski, A.J. Domb, C.F. Weiniger, Prolonged local
+anesthetic action through slow release from poly (lactic acid co castor oil), Pharm.
+Res. 26 (2009) 32–39, https://doi.org/10.1007/s11095-008-9699-8.
+[23] Q. Feng, W. Jie, F. Qingze, H. Fan, T. Guifang, Y. Tingyuan, M. Guanghui, S. Zhiguo,
+Preparation of uniform-sized exenatide-loaded PLGA microspheres as long-effective
+release system with high encapsulation efficiency and bio-stability, Colloids Surf. B
+112 (2013) 492–498, https://doi.org/10.1016/j.colsurfb.2013.08.048.
+[24] Y. Wei, Y. Wang, L. Wang, D. Hao, G. Ma, Fabrication strategy for amphiphilic
+microcapsules with narrow size distribution by premix membrane emulsification,
+Colloids Surf. B 87 (2011) 399–408, https://doi.org/10.1016/j.colsurfb.2011.05.
+051.
+[25] L. Zhu, Q. Li, F.L. Gong, X.F. Yan, X.Q. Li, G.H. Ma, Z.G. Su, Q.P. Yuan, An insight
+into structure regulation of uniform polystyrene micro/nano-particles by porogen in
+premix membrane emulsification process, J. Membr. Sci. 448 (2013) 248–255,
+https://doi.org/10.1016/j.memsci.2013.08.002.
+[26] J. Wu, Q. Fan, Y. Xia, G. Ma, Uniform-sized particles in biomedical field prepared by
+membrane emulsification technique, Chem. Eng. Sci. 125 (2015) 85–97, https://
+doi.org/10.1016/j.ces.2014.08.016.
+[27] W. Chaisri, A.H. Ghassemi, W.E. Hennink, S. Okonogi, Enhanced gentamicin
+loading and release of PLGA and PLHMGA microspheres by varying the formulation
+parameters, Colloids Surf. B 84 (2011) 508–514, https://doi.org/10.1016/j.
+colsurfb.2011.02.006.
+[28] W. Chaisri, W.E. Hennink, S. Okonogi, Preparation and characterization of cepha-
+lexin loaded PLGA microspheres, Curr. Drug Deliv. 6 (2009) 69–75, https://doi.
+org/10.2174/156720109787048186.
+[29] S.M. Ng, J.Y. Choi, H.S. Han, J.S. Huh, J.O. Lim, Novel microencapsulation of po-
+tential drugs with low molecular weight and high hydrophilicity: hydrogen per-
+oxide as a candidate compound, Int. J. Pharm. 384 (2010) 120–127, https://doi.
+org/10.1016/j.ijpharm.2009.10.005.
+[30] H. Katou, A.J. Wandrey, B. Gander, Kinetics of solvent extraction/evaporation
+process for PLGA microparticle fabrication, Int. J. Pharm. 364 (2008) 45–53,
+https://doi.org/10.1016/j.ijpharm.2008.08.015.
+[31] A. Budhian, S.J. Siegel, K.I. Winey, Production of haloperidol-loaded PLGA nano-
+particles for extended controlled drug release of haloperidol, J. Microencapsulation
+22 (2005) 773–785, https://doi.org/10.1080/02652040500273753.
+[32] E.E. Meyer, K.J. Rosenberg, J. Israelachvili, Recent progress in understanding hy-
+drophobic interactions, PNAS 103 (2006) 15739–15746, https://doi.org/10.1073/
+pnas.0606422103.
+[33] H.J. Dyson, P.E. Wright, H.A. Scheraga, The role of hydrophobic interactions in
+initiation and propagation of protein folding, PNAS 103 (2006) 13057–13061,
+https://doi.org/10.1073/pnas.0605504103.
+[34] F. Ramazani, W. Chen, C.F.V. Nostrum, G. Storm, F. Kiessling, T. Lammers,
+W.E. Hennink, R.J. Kok, Formulation and characterization of microspheres loaded
+with imatinib for sustained delivery, Int. J. Pharm. 482 (2015) 123–130, https://
+doi.org/10.1016/j.ijpharm.2015.01.043.
+[35] B. Jacob, T. Zippelius, N. Kloss, K. Benad, C. Schwerdt, P. Hoff, G. Matziolis,
+E. Röhner, Local Anesthetics’ Toxicity Toward Human Cultured Chondrocytes: a
+Comparative Study Between Lidocaine, Bupivacaine, and Ropivacaine, Cartilage,
+(2018), https://doi.org/10.1177/1947603518758436 194760351875843.
+[36] X. Wen, H. Liang, H. Li, W. Ou, H.B. Wang, H. Liu, S. Li, In vitro neurotoxicity by
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+245
+
+ropivacaine is reduced by silencing Cav3.3 T-type calcium subunits in neonatal rat
+sensory neurons, Artif. Cells Nanomed. Biotechnol. (2017) 1–8, https://doi.org/10.
+1080/21691401.2017.1384386.
+[37] L.E. Ferreira, B.V. Muniz, J. Burga-Sánchez, M.C. Volpato, P.E. De, E.A. Rosa,
+F.C. Groppo, The effect of two drug delivery systems in ropivacaine cytotoxicity and
+cytokine release by human keratinocytes and fibroblasts, J. Pharm. Pharmacol. 69
+(2017) 161, https://doi.org/10.1111/jphp.12680.
+[38] F. Qi, J. Wu, T. Yang, G. Ma, Z. Su, Mechanistic studies for monodisperse exenatide-
+loaded PLGA microspheres prepared by different methods based on SPG membrane
+emulsification, Acta Biomater. 10 (2014) 4247–4256, https://doi.org/10.1016/j.
+actbio.2014.06.018.
+[39] R.D. Azbill, X. Mu, A.J. Bruce-Keller, M.P. Mattson, J.E. Springer, Impaired mi-
+tochondrial function, oxidative stress and altered antioxidant enzyme activities
+following traumatic spinal cord injury, Brain Res. 765 (1997) 283–290, https://doi.
+org/10.1016/S0006-8993(97)00573-8.
+[40] D. Liu, J. Liu, D. Sun, N.W. Alcock, J. Wen, Spinal cord injury increases iron levels:
+catalytic production of hydroxyl radicals, Free Radical Biol. Med. 34 (2003) 64–71,
+https://doi.org/10.1016/S0891-5849(02)01184-X.
+[41] C.J. Park, S.A. Park, T.G. Yoon, S.J. Lee, K.W. Yum, H.J. Kim, Bupivacaine induces
+apoptosis via ROS in the Schwann cell line, J. Dent. Res. 84 (2005) 852–857,
+https://doi.org/10.1177/154405910508400914.
+[42] J.W. Jeong, C.Y. Jin, C. Park, S.H. Hong, G.Y. Kim, Y.K. Jeong, J.D. Lee, Y.H. Yoo,
+Y.H. Choi, Induction of apoptosis by cordycepin via reactive oxygen species gen-
+eration in human leukemia cells, Toxicol. In Vitro 25 (2011) 817–824, https://doi.
+org/10.1016/j.tiv.2011.02.001.
+[43] T. Zheng, C.Y. Zheng, X.C. Zheng, R.G. Zhao, Y.Q. Chen, Effect of parthanatos on
+ropivacaine-induced damage in SH-SY5Y cells, Clin. Exp. Pharmacol. Physiol. 44
+(2017) 586–594, https://doi.org/10.1111/1440-1681.12730.
+X. Li et al.
+Colloids and Surfaces A 562 (2019) 237–246
+246

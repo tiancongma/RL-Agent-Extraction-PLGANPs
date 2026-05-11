@@ -1,0 +1,84 @@
+{
+  "schema": "stage2_replacement_compatibility_projection_v1",
+  "status": "transitional_support",
+  "documents": 2,
+  "projected_rows": 14,
+  "stage2_semantic_source_modes": [
+    "llm_first_composite"
+  ],
+  "numbered_doe_recovery_enabled": false,
+  "doe_enumeration_mode": "off",
+  "numbered_doe_recovery_min_rows": 8,
+  "numbered_doe_recovered_rows": 0,
+  "numbered_doe_function_unit": "doe_row_expansion_function_unit_v1",
+  "sequential_optimization_resolved_rows": 0,
+  "sequential_optimization_function_unit": "sequential_optimization_interpreter_v1",
+  "table_row_expansion_rows": 0,
+  "table_row_expansion_function_unit": "table_row_expansion_v1",
+  "numbered_doe_guard_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\20260413_8517d36\\03_s2_7_compatibility_projection\\semantic_to_widerow_adapter\\numbered_doe_regression_guard_v1.tsv",
+  "numbered_doe_guard_fail_count": 0,
+  "numbered_doe_guard_warn_count": 0,
+  "projection_summaries": [
+    {
+      "doe_recovery_summary": {
+        "function_unit": "doe_row_expansion_function_unit_v1",
+        "enabled": false,
+        "mode": "off",
+        "candidate_count": 0,
+        "row_count": 0,
+        "table_count": 0,
+        "tables_dir": "",
+        "notes": "recovery_disabled"
+      },
+      "sequential_optimization_summary": {
+        "function_unit": "sequential_optimization_interpreter_v1",
+        "triggered": false,
+        "materialized": false,
+        "candidate_count": 0,
+        "notes": "missing_stagewise_selected_values"
+      },
+      "table_row_expansion_summary": {
+        "document_key": "UFXX9WXE",
+        "emitted_row_count": 0,
+        "table_count": 0,
+        "group_hint": "",
+        "status": "no_rows_emitted"
+      }
+    },
+    {
+      "doe_recovery_summary": {
+        "function_unit": "doe_row_expansion_function_unit_v1",
+        "enabled": false,
+        "mode": "off",
+        "candidate_count": 0,
+        "row_count": 0,
+        "table_count": 0,
+        "tables_dir": "",
+        "notes": "recovery_disabled"
+      },
+      "sequential_optimization_summary": {
+        "function_unit": "sequential_optimization_interpreter_v1",
+        "triggered": false,
+        "materialized": false,
+        "candidate_count": 0,
+        "notes": "missing_optimization_language"
+      },
+      "table_row_expansion_summary": {
+        "document_key": "WIVUCMYG",
+        "emitted_row_count": 0,
+        "table_count": 0,
+        "group_hint": "",
+        "status": "no_rows_emitted"
+      }
+    }
+  ],
+  "trace_rows": 294,
+  "legacy_surface_columns": 140,
+  "output_files": [
+    "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\20260413_8517d36\\03_s2_7_compatibility_projection\\semantic_to_widerow_adapter\\weak_labels__v7pilot_r3_fixparse.tsv",
+    "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\20260413_8517d36\\03_s2_7_compatibility_projection\\semantic_to_widerow_adapter\\weak_labels__v7pilot_r3_fixparse.jsonl",
+    "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\20260413_8517d36\\03_s2_7_compatibility_projection\\semantic_to_widerow_adapter\\compatibility_projection_trace_v1.tsv",
+    "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\20260413_8517d36\\03_s2_7_compatibility_projection\\semantic_to_widerow_adapter\\numbered_doe_regression_guard_v1.tsv",
+    "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\20260413_8517d36\\03_s2_7_compatibility_projection\\semantic_to_widerow_adapter\\stage2_replacement_compatibility_projection_contract.tsv"
+  ]
+}

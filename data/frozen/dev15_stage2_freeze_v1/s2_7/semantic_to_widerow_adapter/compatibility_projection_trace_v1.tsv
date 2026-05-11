@@ -1,0 +1,295 @@
+document_key	formulation_id	legacy_field	source_replacement_objects	mapping_status	direct_or_derived	notes
+UFXX9WXE	FC001	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+UFXX9WXE	FC001	polymer_name_raw	C002	direct	direct	Projected from polymer component names.
+UFXX9WXE	FC001	polymer_identity	C002	derived	derived	Derived from polymer component names using deterministic family rules.
+UFXX9WXE	FC001	la_ga_ratio	C002	direct	direct	Projected from polymer component properties.
+UFXX9WXE	FC001	polymer_mw_kDa	C002	direct	direct	Projected from polymer component molecular-weight properties.
+UFXX9WXE	FC001	plga_mass_mg	C002	direct	direct	Projected from polymer component amount expressions.
+UFXX9WXE	FC001	surfactant_name	C003	direct	direct	Projected from surfactant or stabilizer components.
+UFXX9WXE	FC001	surfactant_concentration_text	C003	direct	direct	Projected from surfactant amount expressions.
+UFXX9WXE	FC001	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+UFXX9WXE	FC001	organic_solvent	C004 | C005	compressed	compressed	Projected from solvent components.
+UFXX9WXE	FC001	drug_name	C001	direct	direct	Projected from drug components.
+UFXX9WXE	FC001	drug_feed_amount_text	C001	direct	direct	Projected from drug amount expressions.
+UFXX9WXE	FC001	emul_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC001	preparation_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC001	emulsion_structure		unavailable	unavailable	No phase candidates available.
+UFXX9WXE	FC001	emul_type		unavailable	unavailable	No phase or factor cues available.
+UFXX9WXE	FC001	size_nm	M001	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC001	pdi	M002	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC001	zeta_mV	M003	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC001	encapsulation_efficiency_percent	M004	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC001	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC002	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+UFXX9WXE	FC002	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+UFXX9WXE	FC002	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+UFXX9WXE	FC002	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+UFXX9WXE	FC002	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+UFXX9WXE	FC002	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+UFXX9WXE	FC002	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+UFXX9WXE	FC002	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+UFXX9WXE	FC002	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+UFXX9WXE	FC002	organic_solvent		unavailable	unavailable	Projected from solvent components.
+UFXX9WXE	FC002	drug_name		unavailable	unavailable	Projected from drug components.
+UFXX9WXE	FC002	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+UFXX9WXE	FC002	emul_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC002	preparation_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC002	emulsion_structure		unavailable	unavailable	No phase candidates available.
+UFXX9WXE	FC002	emul_type		unavailable	unavailable	No phase or factor cues available.
+UFXX9WXE	FC002	size_nm		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC002	pdi		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC002	zeta_mV		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC002	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC002	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC003	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+UFXX9WXE	FC003	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+UFXX9WXE	FC003	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+UFXX9WXE	FC003	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+UFXX9WXE	FC003	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+UFXX9WXE	FC003	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+UFXX9WXE	FC003	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+UFXX9WXE	FC003	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+UFXX9WXE	FC003	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+UFXX9WXE	FC003	organic_solvent		unavailable	unavailable	Projected from solvent components.
+UFXX9WXE	FC003	drug_name		unavailable	unavailable	Projected from drug components.
+UFXX9WXE	FC003	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+UFXX9WXE	FC003	emul_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC003	preparation_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC003	emulsion_structure		unavailable	unavailable	No phase candidates available.
+UFXX9WXE	FC003	emul_type		unavailable	unavailable	No phase or factor cues available.
+UFXX9WXE	FC003	size_nm		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC003	pdi		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC003	zeta_mV		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC003	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC003	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC011	identity_variables_json	V011_1 | V011_2 | V011_3 | V011_4	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.
+UFXX9WXE	FC011	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+UFXX9WXE	FC011	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+UFXX9WXE	FC011	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+UFXX9WXE	FC011	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+UFXX9WXE	FC011	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+UFXX9WXE	FC011	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+UFXX9WXE	FC011	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+UFXX9WXE	FC011	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+UFXX9WXE	FC011	organic_solvent		unavailable	unavailable	Projected from solvent components.
+UFXX9WXE	FC011	drug_name		unavailable	unavailable	Projected from drug components.
+UFXX9WXE	FC011	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+UFXX9WXE	FC011	emul_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC011	preparation_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC011	emulsion_structure		unavailable	unavailable	No phase candidates available.
+UFXX9WXE	FC011	emul_type		derived	derived	Derived from phase candidates and factor hints.
+UFXX9WXE	FC011	size_nm	M011_1	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC011	pdi	M011_3	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC011	zeta_mV		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC011	encapsulation_efficiency_percent	M011_2	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC011	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC026	identity_variables_json	V026_1 | V026_2 | V026_3 | V026_4	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.
+UFXX9WXE	FC026	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+UFXX9WXE	FC026	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+UFXX9WXE	FC026	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+UFXX9WXE	FC026	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+UFXX9WXE	FC026	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+UFXX9WXE	FC026	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+UFXX9WXE	FC026	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+UFXX9WXE	FC026	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+UFXX9WXE	FC026	organic_solvent		unavailable	unavailable	Projected from solvent components.
+UFXX9WXE	FC026	drug_name		unavailable	unavailable	Projected from drug components.
+UFXX9WXE	FC026	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+UFXX9WXE	FC026	emul_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC026	preparation_method		unavailable	unavailable	Projected from process-step names.
+UFXX9WXE	FC026	emulsion_structure		unavailable	unavailable	No phase candidates available.
+UFXX9WXE	FC026	emul_type		derived	derived	Derived from phase candidates and factor hints.
+UFXX9WXE	FC026	size_nm	M026_1	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC026	pdi	M026_3	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC026	zeta_mV		unavailable	unavailable	Projected from measurement candidates.
+UFXX9WXE	FC026	encapsulation_efficiency_percent	M026_2	direct	direct	Projected from measurement candidates.
+UFXX9WXE	FC026	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	size_nm	F11_size_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	pdi	F11_pdi_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	zeta_mV	F11_zp_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F11_After_FD_WIVUCMYG_T4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	size_nm	F11_size_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	pdi	F11_pdi_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	zeta_mV	F11_zp_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F11_Before_FD_WIVUCMYG_T4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F14_WIVUCMYG_T1	identity_variables_json	F14_cPF_WIVUCMYG_T1 | F14_cPVA_WIVUCMYG_T1 | F14_cPLGA_WIVUCMYG_T1 | F14_pH_WIVUCMYG_T1	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F14_WIVUCMYG_T1	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F14_WIVUCMYG_T1	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F14_WIVUCMYG_T1	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F14_WIVUCMYG_T1	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F14_WIVUCMYG_T1	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F14_WIVUCMYG_T1	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F14_WIVUCMYG_T1	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F14_WIVUCMYG_T1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F14_WIVUCMYG_T1	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F14_WIVUCMYG_T1	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F14_WIVUCMYG_T1	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F14_WIVUCMYG_T1	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F14_WIVUCMYG_T1	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F14_WIVUCMYG_T1	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F14_WIVUCMYG_T1	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F14_WIVUCMYG_T1	size_nm	F14_size_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F14_WIVUCMYG_T1	pdi	F14_pdi_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F14_WIVUCMYG_T1	zeta_mV	F14_zp_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F14_WIVUCMYG_T1	encapsulation_efficiency_percent	F14_ee_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F14_WIVUCMYG_T1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	size_nm	F19_size_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	pdi	F19_pdi_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	zeta_mV	F19_zp_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F19_After_FD_WIVUCMYG_T4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	size_nm	F19_size_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	pdi	F19_pdi_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	zeta_mV	F19_zp_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F19_Before_FD_WIVUCMYG_T4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F1_WIVUCMYG_T1	identity_variables_json	F1_cPF_WIVUCMYG_T1 | F1_cPVA_WIVUCMYG_T1 | F1_cPLGA_WIVUCMYG_T1 | F1_pH_WIVUCMYG_T1	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F1_WIVUCMYG_T1	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F1_WIVUCMYG_T1	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F1_WIVUCMYG_T1	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F1_WIVUCMYG_T1	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F1_WIVUCMYG_T1	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F1_WIVUCMYG_T1	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F1_WIVUCMYG_T1	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F1_WIVUCMYG_T1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F1_WIVUCMYG_T1	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F1_WIVUCMYG_T1	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F1_WIVUCMYG_T1	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F1_WIVUCMYG_T1	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F1_WIVUCMYG_T1	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F1_WIVUCMYG_T1	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F1_WIVUCMYG_T1	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F1_WIVUCMYG_T1	size_nm	F1_size_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F1_WIVUCMYG_T1	pdi	F1_pdi_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F1_WIVUCMYG_T1	zeta_mV	F1_zp_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F1_WIVUCMYG_T1	encapsulation_efficiency_percent	F1_ee_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F1_WIVUCMYG_T1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	size_nm	F20_size_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	pdi	F20_pdi_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	zeta_mV	F20_zp_after_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F20_After_FD_WIVUCMYG_T4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	identity_variables_json		unavailable	unavailable	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	size_nm	F20_size_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	pdi	F20_pdi_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	zeta_mV	F20_zp_before_FD_WIVUCMYG_T4	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	encapsulation_efficiency_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F20_Before_FD_WIVUCMYG_T4	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.
+WIVUCMYG	F26_WIVUCMYG_T1	identity_variables_json	F26_cPF_WIVUCMYG_T1 | F26_cPVA_WIVUCMYG_T1 | F26_cPLGA_WIVUCMYG_T1 | F26_pH_WIVUCMYG_T1	direct	direct	Preserved identity-bearing semantic variables as additive compatibility metadata.
+WIVUCMYG	F26_WIVUCMYG_T1	polymer_name_raw		unavailable	unavailable	Projected from polymer component names.
+WIVUCMYG	F26_WIVUCMYG_T1	polymer_identity		unavailable	unavailable	Derived from polymer component names using deterministic family rules.
+WIVUCMYG	F26_WIVUCMYG_T1	la_ga_ratio		unavailable	unavailable	Projected from polymer component properties.
+WIVUCMYG	F26_WIVUCMYG_T1	polymer_mw_kDa		unavailable	unavailable	Projected from polymer component molecular-weight properties.
+WIVUCMYG	F26_WIVUCMYG_T1	plga_mass_mg		unavailable	unavailable	Projected from polymer component amount expressions.
+WIVUCMYG	F26_WIVUCMYG_T1	surfactant_name		unavailable	unavailable	Projected from surfactant or stabilizer components.
+WIVUCMYG	F26_WIVUCMYG_T1	surfactant_concentration_text		unavailable	unavailable	Projected from surfactant amount expressions.
+WIVUCMYG	F26_WIVUCMYG_T1	pva_conc_percent		unavailable	unavailable	Projected only for PVA-labeled surfactant components.
+WIVUCMYG	F26_WIVUCMYG_T1	organic_solvent		unavailable	unavailable	Projected from solvent components.
+WIVUCMYG	F26_WIVUCMYG_T1	drug_name		unavailable	unavailable	Projected from drug components.
+WIVUCMYG	F26_WIVUCMYG_T1	drug_feed_amount_text		unavailable	unavailable	Projected from drug amount expressions.
+WIVUCMYG	F26_WIVUCMYG_T1	emul_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F26_WIVUCMYG_T1	preparation_method		unavailable	unavailable	Projected from process-step names.
+WIVUCMYG	F26_WIVUCMYG_T1	emulsion_structure		unavailable	unavailable	No phase candidates available.
+WIVUCMYG	F26_WIVUCMYG_T1	emul_type		unavailable	unavailable	No phase or factor cues available.
+WIVUCMYG	F26_WIVUCMYG_T1	size_nm	F26_size_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F26_WIVUCMYG_T1	pdi	F26_pdi_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F26_WIVUCMYG_T1	zeta_mV	F26_zp_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F26_WIVUCMYG_T1	encapsulation_efficiency_percent	F26_ee_WIVUCMYG_T1	direct	direct	Projected from measurement candidates.
+WIVUCMYG	F26_WIVUCMYG_T1	loading_content_percent		unavailable	unavailable	Projected from measurement candidates.

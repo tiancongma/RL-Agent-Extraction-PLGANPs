@@ -1,0 +1,1382 @@
+{
+  "document_key": "PA3SPZ28",
+  "doi": "10.1038/s41598-017-00696-6",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F_Blank_NPs",
+      "raw_label": "Blank-NPs",
+      "normalized_label": "Blank PLGA nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "Formulation without drug, used as a control.",
+      "evidence_span_ids": [
+        "span_1",
+        "span_2",
+        "span_43"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F1_GAR_NPs_1_20",
+      "raw_label": "GAR-NPs (Drug:Polymer ratio 1:20)",
+      "normalized_label": "Garcinol loaded PLGA nanoparticles (Drug:Polymer ratio 1:20)",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_5",
+        "span_9"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2_GAR_NPs_1_10",
+      "raw_label": "GAR-NPs (Drug:Polymer ratio 1:10)",
+      "normalized_label": "Garcinol loaded PLGA nanoparticles (Drug:Polymer ratio 1:10)",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_3",
+        "span_5",
+        "span_6",
+        "span_10",
+        "span_21"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3_GAR_NPs_1_6_66",
+      "raw_label": "GAR-NPs (Drug:Polymer ratio 1:6.66)",
+      "normalized_label": "Garcinol loaded PLGA nanoparticles (Drug:Polymer ratio 1:6.66)",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_5",
+        "span_11"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "raw_label": "GAR-NPs (Drug:Polymer ratio 1:10) after storage at 4 °C for 3 months",
+      "normalized_label": "Garcinol loaded PLGA nanoparticles (Drug:Polymer ratio 1:10) after storage",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F2_GAR_NPs_1_10",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "stored at 4 °C for 3 months"
+      ],
+      "instance_context_tags": [
+        "post_processing"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Stability variant of the 1:10 GAR-NPs formulation.",
+      "evidence_span_ids": [
+        "span_4",
+        "span_18"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5_FITC_NPs",
+      "raw_label": "FITC labeled NPs",
+      "normalized_label": "FITC loaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "F2_GAR_NPs_1_10",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "GAR replaced with FITC as fluorescent dye"
+      ],
+      "instance_context_tags": [
+        "test_condition"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "Fluorescently labeled variant for cellular uptake studies. Assumed to be based on the optimal GAR-NP formulation (1:10 ratio).",
+      "evidence_span_ids": [
+        "span_22"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F6_99mTc_GAR_NPs",
+      "raw_label": "99mTc-radiolabeled GAR-NPs",
+      "normalized_label": "Technetium-99m radiolabeled Garcinol loaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "F2_GAR_NPs_1_10",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "radiolabeled with technetium-99m"
+      ],
+      "instance_context_tags": [
+        "test_condition"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "Radiolabeled variant for biodistribution studies. Assumed to be based on the optimal GAR-NP formulation (1:10 ratio).",
+      "evidence_span_ids": [
+        "span_23",
+        "span_25"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F7_Free_GAR_Suspension",
+      "raw_label": "aqueous suspension of free GAR",
+      "normalized_label": "Aqueous suspension of free Garcinol",
+      "instance_kind": "new_formulation",
+      "formulation_role": "comparative",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_24",
+        "span_44"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "C1_PLGA",
+      "formulation_candidate_id": "F_Blank_NPs",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C2_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F_Blank_NPs",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C3_Acetone",
+      "formulation_candidate_id": "F_Blank_NPs",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C4_Water",
+      "formulation_candidate_id": "F_Blank_NPs",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C5_PLGA",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C6_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C7_Acetone",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C8_Water",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C9_Garcinol_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "component_name": "Garcinol",
+      "component_role": "drug",
+      "amount_text": "2.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Inferred from the Drug:Polymer ratio (1:20) and the general PLGA amount (50mg) in the preparation method.",
+      "evidence_span_ids": [
+        "span_9",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C10_PLGA",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C11_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C12_Acetone",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C13_Water",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C14_Garcinol_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "component_name": "Garcinol",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_10",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C15_PLGA",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C16_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C17_Acetone",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C18_Water",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C19_Garcinol_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "component_name": "Garcinol",
+      "component_role": "drug",
+      "amount_text": "7.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Inferred from the Drug:Polymer ratio (1:6.66) and the general PLGA amount (50mg) in the preparation method.",
+      "evidence_span_ids": [
+        "span_11",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C20_PLGA",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C21_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C22_Acetone",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C23_Water",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C24_Garcinol_F4",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "component_name": "Garcinol",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_10",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C25_PLGA",
+      "formulation_candidate_id": "F5_FITC_NPs",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C26_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F5_FITC_NPs",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C27_Acetone",
+      "formulation_candidate_id": "F5_FITC_NPs",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C28_Water",
+      "formulation_candidate_id": "F5_FITC_NPs",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C29_FITC_F5",
+      "formulation_candidate_id": "F5_FITC_NPs",
+      "component_name": "FITC",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_22"
+      ]
+    },
+    {
+      "component_id": "C30_PLGA",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "Inferred from the general preparation method (PLGA 50mg, GAR 5mg for 1:10 ratio) and the varying Drug:Polymer ratios in Table 1.",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_12",
+        "span_13",
+        "span_45"
+      ]
+    },
+    {
+      "component_id": "C31_Vitamin_E_TPGS",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "Vitamin E TPGS",
+      "component_role": "surfactant",
+      "amount_text": "0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1",
+        "span_46"
+      ]
+    },
+    {
+      "component_id": "C32_Acetone",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_47"
+      ]
+    },
+    {
+      "component_id": "C33_Water",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "Water",
+      "component_role": "solvent",
+      "amount_text": "20 ml",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_48"
+      ]
+    },
+    {
+      "component_id": "C34_Garcinol_F6",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "Garcinol",
+      "component_role": "drug",
+      "amount_text": "0.224 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Amount of GAR in the 99mTc-labeled NPs suspension, not the initial formulation amount. Assumed to be based on the optimal formulation (1:10 Drug:Polymer ratio).",
+      "evidence_span_ids": [
+        "span_49"
+      ]
+    },
+    {
+      "component_id": "C35_Technetium_99m",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "Technetium-99m",
+      "component_role": "additive",
+      "amount_text": "185–300 MBq/ml",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_49"
+      ]
+    },
+    {
+      "component_id": "C36_Stannous_Chloride_Dihydrate",
+      "formulation_candidate_id": "F6_99mTc_GAR_NPs",
+      "component_name": "Stannous chloride dihydrate",
+      "component_role": "additive",
+      "amount_text": "20 mg in 10 ml nitrogen purged water",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_49"
+      ]
+    },
+    {
+      "component_id": "C37_Garcinol_F7",
+      "formulation_candidate_id": "F7_Free_GAR_Suspension",
+      "component_name": "Garcinol",
+      "component_role": "drug",
+      "amount_text": "25 mg GAR/Kg body weight",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "This is the administered dose, not the concentration in the aqueous suspension itself. The actual formulation concentration is not specified.",
+      "evidence_span_ids": [
+        "span_24",
+        "span_44"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "V1_Preparation_Method",
+      "formulation_candidate_id": "",
+      "variable_name": "Preparation method",
+      "value_text": "nanoprecipitation method",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_0",
+        "span_1"
+      ]
+    },
+    {
+      "variable_id": "V2_PLGA_Grade",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA grade",
+      "value_text": "50:50",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_12",
+        "span_13"
+      ]
+    },
+    {
+      "variable_id": "V3_Drug_Polymer_Ratio_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "variable_name": "Drug:Polymer ratio",
+      "value_text": "1:20",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_9"
+      ]
+    },
+    {
+      "variable_id": "V4_Drug_Polymer_Ratio_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "variable_name": "Drug:Polymer ratio",
+      "value_text": "1:10",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_10"
+      ]
+    },
+    {
+      "variable_id": "V5_Drug_Polymer_Ratio_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "variable_name": "Drug:Polymer ratio",
+      "value_text": "1:6.66",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_11"
+      ]
+    },
+    {
+      "variable_id": "V6_Storage_Condition_F4",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "variable_name": "Storage condition",
+      "value_text": "4 °C for 3 months",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_4"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M1_Size_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "measurement_name": "size",
+      "value_text": "90.21 ± 2.2",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "measurement_id": "M2_PDI_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "measurement_name": "pdi",
+      "value_text": "0.212 ± 0.07",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_40"
+      ]
+    },
+    {
+      "measurement_id": "M3_Zeta_Potential_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "measurement_name": "zeta_potential",
+      "value_text": "−30 ± 2.2",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_36"
+      ]
+    },
+    {
+      "measurement_id": "M4_DL_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "measurement_name": "loading_content",
+      "value_text": "4.12 ± 1.9",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_30"
+      ]
+    },
+    {
+      "measurement_id": "M5_EE_F1",
+      "formulation_candidate_id": "F1_GAR_NPs_1_20",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "53.43 ± 2.8",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_33"
+      ]
+    },
+    {
+      "measurement_id": "M6_Size_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "measurement_name": "size",
+      "value_text": "88.05 ± 2.7",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_16",
+        "span_3"
+      ]
+    },
+    {
+      "measurement_id": "M7_PDI_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "measurement_name": "pdi",
+      "value_text": "0.170 ± 0.05",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_20",
+        "span_3"
+      ]
+    },
+    {
+      "measurement_id": "M8_Zeta_Potential_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "measurement_name": "zeta_potential",
+      "value_text": "−28.1 ± 2.1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_37",
+        "span_3"
+      ]
+    },
+    {
+      "measurement_id": "M9_DL_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "measurement_name": "loading_content",
+      "value_text": "9.25 ± 2.8",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_31",
+        "span_6"
+      ]
+    },
+    {
+      "measurement_id": "M10_EE_F2",
+      "formulation_candidate_id": "F2_GAR_NPs_1_10",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "88.32 ± 3.3",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_34",
+        "span_6"
+      ]
+    },
+    {
+      "measurement_id": "M11_Size_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "measurement_name": "size",
+      "value_text": "95.45 ± 2.4",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_17"
+      ]
+    },
+    {
+      "measurement_id": "M12_PDI_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "measurement_name": "pdi",
+      "value_text": "0.237 ± 0.09",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_41"
+      ]
+    },
+    {
+      "measurement_id": "M13_Zeta_Potential_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "measurement_name": "zeta_potential",
+      "value_text": "−33 ± 2.4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_38"
+      ]
+    },
+    {
+      "measurement_id": "M14_DL_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "measurement_name": "loading_content",
+      "value_text": "5.29 ± 2.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_32"
+      ]
+    },
+    {
+      "measurement_id": "M15_EE_F3",
+      "formulation_candidate_id": "F3_GAR_NPs_1_6_66",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "60.61 ± 3.5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_35"
+      ]
+    },
+    {
+      "measurement_id": "M16_Size_F4",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "measurement_name": "size",
+      "value_text": "100 ± 4.2",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_18",
+        "span_4"
+      ]
+    },
+    {
+      "measurement_id": "M17_PDI_F4",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "measurement_name": "pdi",
+      "value_text": "0.295 ± 0.08",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_42",
+        "span_4"
+      ]
+    },
+    {
+      "measurement_id": "M18_Zeta_Potential_F4",
+      "formulation_candidate_id": "F4_GAR_NPs_1_10_Stored",
+      "measurement_name": "zeta_potential",
+      "value_text": "−27.2 ± 2.2",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_39",
+        "span_4"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "span_0",
+      "source_region_type": "text_span",
+      "source_locator_text": "Herein we report the formulation of GAR entrapped PLGA nanoparticles by nanoprecipitation method using vitamin E TPGS as an emulsifier.",
+      "supporting_text": "Herein we report the formulation of GAR entrapped PLGA nanoparticles by nanoprecipitation method using vitamin E TPGS as an emulsifier."
+    },
+    {
+      "span_id": "span_1",
+      "source_region_type": "text_span",
+      "source_locator_text": "Blank and GAR-loaded PLGA NPs were prepared through a nanoprecipitation technique using vitamin E TPGS as an emulsifier.",
+      "supporting_text": "Blank and GAR-loaded PLGA NPs were prepared through a nanoprecipitation technique using vitamin E TPGS as an emulsifier."
+    },
+    {
+      "span_id": "span_2",
+      "source_region_type": "text_span",
+      "source_locator_text": "Table 1 summarizes average size (Fig. 1a), zeta potential (Fig. 1b), drug loading, and encapsulation efficiency of blank and GAR-NPs.",
+      "supporting_text": "Table 1 summarizes average size (Fig. 1a), zeta potential (Fig. 1b), drug loading, and encapsulation efficiency of blank and GAR-NPs."
+    },
+    {
+      "span_id": "span_3",
+      "source_region_type": "text_span",
+      "source_locator_text": "Nanoprecipitation technique yielded GAR-NPs with most narrow size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).",
+      "supporting_text": "Nanoprecipitation technique yielded GAR-NPs with most narrow size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1)."
+    },
+    {
+      "span_id": "span_4",
+      "source_region_type": "text_span",
+      "source_locator_text": "The particle size was slightly increased (Table 1 around 100 nm) with a moderate change in PDI value, whereas zeta potential showed the least variation; this suggested the satisfactory stability of GAR-NPs during storage.",
+      "supporting_text": "The particle size was slightly increased (Table 1 around 100 nm) with a moderate change in PDI value, whereas zeta potential showed the least variation; this suggested the satisfactory stability of GAR-NPs during storage."
+    },
+    {
+      "span_id": "span_5",
+      "source_region_type": "text_span",
+      "source_locator_text": "Drug loading amounts and encapsulation efficiencies of various GAR loaded nanoparticle formulations prepared by varying the amount of GAR and PLGA were measured.",
+      "supporting_text": "Drug loading amounts and encapsulation efficiencies of various GAR loaded nanoparticle formulations prepared by varying the amount of GAR and PLGA were measured."
+    },
+    {
+      "span_id": "span_6",
+      "source_region_type": "text_span",
+      "source_locator_text": "The highest drug loading content of GAR in GAR loaded PLGA-NPs was detected as 9.25 ± 2.8%. Encapsulation efficiency was more than 88 ± 3.3% (Table 1).",
+      "supporting_text": "The highest drug loading content of GAR in GAR loaded PLGA-NPs was detected as 9.25 ± 2.8%. Encapsulation efficiency was more than 88 ± 3.3% (Table 1)."
+    },
+    {
+      "span_id": "span_7",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table1. Characterizaton of GAR-NPs.",
+      "supporting_text": "Table1. Characterizaton of GAR-NPs."
+    },
+    {
+      "span_id": "span_8",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Drug:Polymer ratio",
+      "supporting_text": "Drug:Polymer ratio"
+    },
+    {
+      "span_id": "span_9",
+      "source_region_type": "table_cell",
+      "source_locator_text": "1:20",
+      "supporting_text": "1:20"
+    },
+    {
+      "span_id": "span_10",
+      "source_region_type": "table_cell",
+      "source_locator_text": "1:10",
+      "supporting_text": "1:10"
+    },
+    {
+      "span_id": "span_11",
+      "source_region_type": "table_cell",
+      "source_locator_text": "1:6.66",
+      "supporting_text": "1:6.66"
+    },
+    {
+      "span_id": "span_12",
+      "source_region_type": "table_cell",
+      "source_locator_text": "PLGA grade",
+      "supporting_text": "PLGA grade"
+    },
+    {
+      "span_id": "span_13",
+      "source_region_type": "table_cell",
+      "source_locator_text": "50:50",
+      "supporting_text": "50:50"
+    },
+    {
+      "span_id": "span_14",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Size (nm)",
+      "supporting_text": "Size (nm)"
+    },
+    {
+      "span_id": "span_15",
+      "source_region_type": "table_cell",
+      "source_locator_text": "90.21 ± 2.2",
+      "supporting_text": "90.21 ± 2.2"
+    },
+    {
+      "span_id": "span_16",
+      "source_region_type": "table_cell",
+      "source_locator_text": "88.05 ± 2.7",
+      "supporting_text": "88.05 ± 2.7"
+    },
+    {
+      "span_id": "span_17",
+      "source_region_type": "table_cell",
+      "source_locator_text": "95.45 ± 2.4",
+      "supporting_text": "95.45 ± 2.4"
+    },
+    {
+      "span_id": "span_18",
+      "source_region_type": "table_cell",
+      "source_locator_text": "100 ± 4.2",
+      "supporting_text": "100 ± 4.2"
+    },
+    {
+      "span_id": "span_19",
+      "source_region_type": "table_cell",
+      "source_locator_text": "PDI",
+      "supporting_text": "PDI"
+    },
+    {
+      "span_id": "span_20",
+      "source_region_type": "table_cell",
+      "source_locator_text": "0.170 ± 0.05",
+      "supporting_text": "0.170 ± 0.05"
+    },
+    {
+      "span_id": "span_21",
+      "source_region_type": "text_span",
+      "source_locator_text": "Nanoprecipitation technique produced nanoparticles of approximately 88 nm in size which is optimal for the ability of NPs to be used for intravenous administration and passive targeting to tumors.",
+      "supporting_text": "Nanoprecipitation technique produced nanoparticles of approximately 88 nm in size which is optimal for the ability of NPs to be used for intravenous administration and passive targeting to tumors."
+    },
+    {
+      "span_id": "span_22",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fluorescent nanoparticles were prepared by replacing GAR with FITC (5 mg).",
+      "supporting_text": "Fluorescent nanoparticles were prepared by replacing GAR with FITC (5 mg)."
+    },
+    {
+      "span_id": "span_23",
+      "source_region_type": "text_span",
+      "source_locator_text": "GAR loaded NPs were radiolabeled with technetium-99m with >95% labeling efficiency",
+      "supporting_text": "GAR loaded NPs were radiolabeled with technetium-99m with >95% labeling efficiency"
+    },
+    {
+      "span_id": "span_24",
+      "source_region_type": "text_span",
+      "source_locator_text": "In vivo pharmacokinetic analysis of GAR encapsulated nanoparticles were performed in adult Sprague-Dawley (SD) rats and compared with that of the suspension of free GAR following oral administration",
+      "supporting_text": "In vivo pharmacokinetic analysis of GAR encapsulated nanoparticles were performed in adult Sprague-Dawley (SD) rats and compared with that of the suspension of free GAR following oral administration"
+    },
+    {
+      "span_id": "span_25",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2. Results of biodistribution studies of 99mTc labelled GAR-NPs in B16F10 tumor-bearing mice at 2, 4, 6 and 8 h post injection time periods. Results are expressed in percentage injected dose per organ/tissue (each value is the mean ± SEM of five animals per group). *Percent injected dose per gram.",
+      "supporting_text": "Table 2. Results of biodistribution studies of 99mTc labelled GAR-NPs in B16F10 tumor-bearing mice at 2, 4, 6 and 8 h post injection time periods. Results are expressed in percentage injected dose per organ/tissue (each value is the mean ± SEM of five animals per group). *Percent injected dose per gram."
+    },
+    {
+      "span_id": "span_26",
+      "source_region_type": "text_span",
+      "source_locator_text": "Different pharmacokinetic parameters including Cmax, Tmax and AUC0−∞ are depicted in Supplementary Table S4.",
+      "supporting_text": "Different pharmacokinetic parameters including Cmax, Tmax and AUC0−∞ are depicted in Supplementary Table S4."
+    },
+    {
+      "span_id": "span_27",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Zeta potential (mV)",
+      "supporting_text": "Zeta potential (mV)"
+    },
+    {
+      "span_id": "span_28",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Drug loading (DL, %)",
+      "supporting_text": "Drug loading (DL, %)"
+    },
+    {
+      "span_id": "span_29",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Encapsulation efficiency (EE, %)",
+      "supporting_text": "Encapsulation efficiency (EE, %)"
+    },
+    {
+      "span_id": "span_30",
+      "source_region_type": "table_cell",
+      "source_locator_text": "4.12 ± 1.9",
+      "supporting_text": "4.12 ± 1.9"
+    },
+    {
+      "span_id": "span_31",
+      "source_region_type": "table_cell",
+      "source_locator_text": "9.25 ± 2.8",
+      "supporting_text": "9.25 ± 2.8"
+    },
+    {
+      "span_id": "span_32",
+      "source_region_type": "table_cell",
+      "source_locator_text": "5.29 ± 2.1",
+      "supporting_text": "5.29 ± 2.1"
+    },
+    {
+      "span_id": "span_33",
+      "source_region_type": "table_cell",
+      "source_locator_text": "53.43 ± 2.8",
+      "supporting_text": "53.43 ± 2.8"
+    },
+    {
+      "span_id": "span_34",
+      "source_region_type": "table_cell",
+      "source_locator_text": "88.32 ± 3.3",
+      "supporting_text": "88.32 ± 3.3"
+    },
+    {
+      "span_id": "span_35",
+      "source_region_type": "table_cell",
+      "source_locator_text": "60.61 ± 3.5",
+      "supporting_text": "60.61 ± 3.5"
+    },
+    {
+      "span_id": "span_36",
+      "source_region_type": "table_cell",
+      "source_locator_text": "−30 ± 2.2",
+      "supporting_text": "−30 ± 2.2"
+    },
+    {
+      "span_id": "span_37",
+      "source_region_type": "table_cell",
+      "source_locator_text": "−28.1 ± 2.1",
+      "supporting_text": "−28.1 ± 2.1"
+    },
+    {
+      "span_id": "span_38",
+      "source_region_type": "table_cell",
+      "source_locator_text": "−33 ± 2.4",
+      "supporting_text": "−33 ± 2.4"
+    },
+    {
+      "span_id": "span_39",
+      "source_region_type": "table_cell",
+      "source_locator_text": "−27.2 ± 2.2",
+      "supporting_text": "−27.2 ± 2.2"
+    },
+    {
+      "span_id": "span_40",
+      "source_region_type": "table_cell",
+      "source_locator_text": "0.212 ± 0.07",
+      "supporting_text": "0.212 ± 0.07"
+    },
+    {
+      "span_id": "span_41",
+      "source_region_type": "table_cell",
+      "source_locator_text": "0.237 ± 0.09",
+      "supporting_text": "0.237 ± 0.09"
+    },
+    {
+      "span_id": "span_42",
+      "source_region_type": "table_cell",
+      "source_locator_text": "0.295 ± 0.08",
+      "supporting_text": "0.295 ± 0.08"
+    },
+    {
+      "span_id": "span_43",
+      "source_region_type": "text_span",
+      "source_locator_text": "Blank-NPs",
+      "supporting_text": "Blank-NPs"
+    },
+    {
+      "span_id": "span_44",
+      "source_region_type": "text_span",
+      "source_locator_text": "aqueous suspension of free GAR",
+      "supporting_text": "aqueous suspension of free GAR"
+    },
+    {
+      "span_id": "span_45",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature.",
+      "supporting_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature."
+    },
+    {
+      "span_id": "span_46",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "aqueous vitamin E TPGS solution (20 ml, 0.03% w/v)",
+      "supporting_text": "aqueous vitamin E TPGS solution (20 ml, 0.03% w/v)"
+    },
+    {
+      "span_id": "span_47",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "acetone (10 ml)",
+      "supporting_text": "acetone (10 ml)"
+    },
+    {
+      "span_id": "span_48",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "aqueous vitamin E TPGS solution (20 ml, 0.03% w/v)",
+      "supporting_text": "aqueous vitamin E TPGS solution (20 ml, 0.03% w/v)"
+    },
+    {
+      "span_id": "span_49",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Briefly, 200 µl of aqueous sodium pertechnetate (99mTcO4−; 185–300 MBq/ml) was added to 200 µl of GAR-NPs suspension (equivalent to 0.224 mg GAR) followed by the addition of 25 µl of freshly prepared stannous chloride dihydrate (20 mg in 10 ml nitrogen purged water containing 100 µl of 6 N HCl) and incubation for 15 min at room temperature.",
+      "supporting_text": "Briefly, 200 µl of aqueous sodium pertechnetate (99mTcO4−; 185–300 MBq/ml) was added to 200 µl of GAR-NPs suspension (equivalent to 0.224 mg GAR) followed by the addition of 25 µl of freshly prepared stannous chloride dihydrate (20 mg in 10 ml nitrogen purged water containing 100 µl of 6 N HCl) and incubation for 15 min at room temperature."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 1 summarizes average size (Fig. 1a), zeta potential (Fig. 1b), drug loading, and encapsulation efficiency of blank and GAR-NPs. ... Drug loading amounts and encapsulation efficiencies of various GAR loaded nanoparticle formulations prepared by varying the amount of GAR and PLGA were measured."
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": false,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 2 summarizes the results of biodistribution studies of 99mTc labelled GAR-NPs in B16F10 tumor-bearing mice at 2, 4, 6 and 8 h post injection time periods."
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Drug:Polymer ratio"
+      ],
+      "constant_variables": [
+        "PLGA grade"
+      ],
+      "new_variables_introduced": [
+        "Size (nm)",
+        "PDI",
+        "Zeta potential (mV)",
+        "Drug loading (DL, %)",
+        "Encapsulation efficiency (EE, %)"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 1",
+      "selected_variable": "Drug:Polymer ratio",
+      "selected_value": "1:10",
+      "explicit": true,
+      "evidence_span": "Nanoprecipitation technique yielded GAR-NPs with most narrow size distribution (average diameter 88.05 ± 2.7 nm) ... The highest drug loading content of GAR in GAR loaded PLGA-NPs was detected as 9.25 ± 2.8%. Encapsulation efficiency was more than 88 ± 3.3% (Table 1). ... Nanoprecipitation technique produced nanoparticles of approximately 88 nm in size which is optimal for the ability of NPs to be used for intravenous administration and passive targeting to tumors."
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 1",
+      "inherit_type": "selected_condition",
+      "variable": "Drug:Polymer ratio",
+      "value": "1:10",
+      "evidence_span": "The free flowing powder of GAR-NPs obtained after lyophilisation was stored at 4 °C for 3 months for particle size measurement. The particle size was slightly increased (Table 1 around 100 nm) with a moderate change in PDI value, whereas zeta potential showed the least variation; this suggested the satisfactory stability of GAR-NPs during storage."
+    },
+    {
+      "marker_readiness": "partial_semantic",
+      "from_table": "Table 1",
+      "to_table": "",
+      "inherit_type": "selected_condition",
+      "variable": "Drug:Polymer ratio",
+      "value": "1:10",
+      "evidence_span": "Fluorescent nanoparticles were prepared by replacing GAR with FITC (5 mg).",
+      "ambiguity_note": "Inferred that the optimal formulation (1:10 Drug:Polymer ratio) was used as the base for FITC labeling, as is common practice."
+    },
+    {
+      "marker_readiness": "partial_semantic",
+      "from_table": "Table 1",
+      "to_table": "",
+      "inherit_type": "selected_condition",
+      "variable": "Drug:Polymer ratio",
+      "value": "1:10",
+      "evidence_span": "GAR loaded NPs were radiolabeled with technetium-99m with >95% labeling efficiency",
+      "ambiguity_note": "Inferred that the optimal formulation (1:10 Drug:Polymer ratio) was used as the base for 99mTc labeling, as is common practice."
+    }
+  ],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "Nanoparticles were prepared by the nanoprecipitation method. Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature."
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": false
+    }
+  ]
+}

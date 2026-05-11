@@ -1,0 +1,762 @@
+Fagonia indica extract
+encapsulated in PLGA nanocarriers
+demonstrated enhanced
+therapeutic efficacy through
+improved intracellular uptake of
+photoactive metabolites
+Saba Naz1, Ahmat Khurshid1, Syed Mujtaba ul Hassan2, Tayyaba Afsar3, Sumbal Javaid4,
+Fohad Mabood Husain5, Janeen H. Trembley6,7,8 & Suhail Razak3
+Fagonia indica (FI), a member of the Zygophyllaceae family, is known for its medicinally important
+components, such as glycosides, saponins, flavonoids, phenols, and alkaloids. The complex mixture
+of phytochemicals in the extract limits its aqueous solubility and bioavailability, resulting in low
+therapeutic outcomes. We aim to enhance the bioavailability of FI extract by encapsulating it into
+Poly (lactic-co-glycolic acid) (PLGA) nanoparticles (FI-PLGA NPs) and evaluate its cytotoxicity and
+phototoxicity against the BT-474 cell line. FI-PLGA NPs were prepared via a single emulsion solvent
+evaporation method. The optical properties, structural analysis, and hydrodynamic size of the
+synthesized NPs were characterised by UV–Visible spectroscopy, fluorescence spectroscopy, Fourier
+transform infrared (FTIR) spectrometry, X-ray diffraction (XRD) spectroscopy, and Dynamic light
+scattering (DLS). The measured particle size and zeta potential of FI-PLGA NPs were 217 nm and
+-30.5 mV, respectively. The in-vitro cytotoxicity and phototoxicity of FI extract and FI-PLGA NPs were
+measured using MTT assay. Results suggest that decreased cell viability is associated with higher
+intracellular concentration and fast drug internalisation when loaded on a nanocarrier compared to free
+extract. Moreover, a significant reduction in cell viability was observed after irradiation of light doses of
+6 J/cm2 and 12 J/cm2. FI-PLGA NPs showed a higher cytotoxic effect against the BT-474 cell line than
+free FI extract, possibly due to prolonged and sustained drug release and faster cellular internalization
+of FI-PLGA NPs. Using a PLGA nanocarrier significantly improved the intracellular uptake of
+photoactive metabolites from the extract of Fagonia indica, enhancing the plant’s therapeutic efficacy.
+The in-vivo anti-cancer potential of FI- PLGA NPs needs to be investigated to validate the effectiveness
+of these nano-formulations and open the door for their potential application in clinical settings.
+Keywords  Fagonia indica, Phytochemical, PLGA Nanocarriers, Structural analysis, Bioavailability,
+Cytotoxicity, Phototoxicity, Breast cancer, Fluorescence spectroscopy
+In the last few decades, the investigation of natural products, especially plants, has gained the interest of
+researchers around the globe due to their minimal side effects and potential applications in oncological and
+non-oncological diseases. Several anticancer drugs, including taxane, vinca alkaloids, podophyllotoxin, and
+1Department of Physics & Applied Mathematics (DPAM), PIEAS, Islamabad 45650, Pakistan. 2Department of
+Metallurgy & Materials Engineering (DMME), PIEAS, Islamabad 45650, Pakistan. 3Department of Community Health
+Sciences, College of Applied Medical Sciences, King Saud University, Riyadh, Saudi Arabia. 4Animal Physiology
+Laboratory, Department of Animal Sciences, Quaid-I-Azam University, Islamabad, Pakistan. 5Department of
+Food Science and Nutrition, College of Food and Agriculture Sciences, King Saud University, Riyadh, Saudi Arabia.
+6Minneapolis VA Health Care System Research Service, Minneapolis, MN, USA. 7Department of Laboratory
+Medicine and Pathology, University of Minnesota, Minneapolis, MN, USA. 8Masonic Cancer Center, University of
+Minnesota, Minneapolis, MN, USA. email: sabach047@gmail.com; smarazi@ksu.edu.sa
+OPEN
+Scientific Reports |        (2025) 15:23140
+1
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports
+
+camptothecin, are also derived from plants1,2. Among the wide diversity of plants, Fagonia attracted great
+attention due to their diverse pharmacological activities such as anti-allergic, antimicrobial, anti-inflammatory,
+blood purification, and anti-cancer activities3–5. The Fagonia genus belongs to the family Zygophyllaceae,
+having 35 species, including Fagonia Indica, Fagonia Cretica, Fagonia Arabica, and Fagonia Laevis, etc., widely
+distributed in Egypt, Western India, Afghanistan, and Pakistan6. Among all the above species, Fagonia indica
+gained global interest due to its variety of active phytochemical constituents, including tannins, flavonoids,
+sterols, coumarins, alkaloids, triterpenoids, saponins, glycosides, and pectin7,8. Fagonia indica has been used
+in traditional medicines for various diseases because of its antipyretic, antidiabetic, antioxidant, antimicrobial,
+laxative, anti-inflammatory, and anti-cancer properties9.
+The morbidity and mortality rate associated with cancer is very high, and it is the second foremost cause
+of death worldwide, with approximately 9.7 million deaths reported in 2022. By 2050, the cancer burden will
+increase by approximately 77%10–12. Several conventional therapeutic modalities, such as surgery, radiotherapy,
+chemotherapy, hormonal therapy, and immunotherapy, are available for cancer treatment13. However, two
+important factors associated with them are drug toxicity and drug resistance, which are major hurdles towards
+effective treatment. Thus, new approaches are required to effectively minimize these limitations and improve the
+quality of life of cancer patients14. In this context, the anti-cancer therapeutic effect of fagonia indica has been
+investigated. However, the therapeutic use of this plant in traditional medicine on a scientific basis has not been
+systematically examined. Some scientific investigations have revealed the anticancer potential of this plant15.
+Published research reported the cell death induced by fagonia indica extract in multidrug-resistant breast
+(MDR) and colon cancer by down-regulating the expression of ICAM-1, VEGF, and NF-kB. It inhibits cell cycle
+regulation and triggers apoptosis by activating p53 and FOXO3a in breast cancer16. This plant extract comprises
+phytochemicals in their glycosidic forms, whose aglycones function as anti-cancer agents against breast cancer17.
+The steroidal saponin glycoside extracted from Fagonia indica causes cell death via necrosis or apoptosis in
+breast (MDA-MB-468, MCF-7) and colon cancer (Caco-2) cells18.
+Photodynamic therapy (PDT) is a promising treatment for various types of cancer and selectively targets
+cancer cells. Phytochemicals in plant extracts have been shown to enhance PDT efficacy by increasing reactive
+oxygen species production and initiating apoptosis in cancer cells. PDT effects in Aloe vera’s secondary metabolites
+were found through both Type-I and Type-II reactions. Numerous studies have explored the potential of plant
+extracts to enhance PDT efficacy attributed to naturally occurring photosensitive compounds. Phytocompounds
+offer advantages over photosensitizers and conventional therapies, including their broad therapeutic effects,
+safety, and affordability19.
+Fagonia indica extract is a viable candidate for cancer treatment; however, it contains a complex mixture
+of phytochemicals that may limit its solubility, permeability, and bioavailability20. These can affect the
+absorption and delivery of the active compounds to the targeted area. To overcome these limitations, a suitable
+nanoencapsulation is required to enhance its bioavailability and solubility, thereby improving cellular uptake.
+FDA-approved Polymeric (PLGA) nanocarriers have been extensively used in nano-drug delivery systems due
+to their excellent biocompatibility, non-toxicity, controlled drug release, and biodegradability21.
+Previous literature also validated that plant extracts have been successfully encapsulated in PLGA NPs to
+improve their therapeutic efficacy. Ribeiro and coworkers have explored the anticancer activity of Uncaria
+tomentosa extract-loaded PLGA and PCL NPs against prostate cancer (DU145 and LNCaP) cell lines22. Similarly,
+Roque et al. demonstrated that Glycyrrhiza glabra extract loaded PLGA, PLA, and alginate NPs to improve
+bio-adhesion and effectiveness in treating oral yeast infections23. Moreover, berberine and Callistemon citrinus
+extract-loaded PLGA nano-formulations showed better cytotoxicity effects against breast cancer (MCF-10A,
+MCF-7, and MDA-MB 231) cell lines than free drugs. These investigations highlight the potential of nanocarrier-
+based drug delivery systems to improve the efficacy of plant’s bioactive compounds24. Previous studies explored
+nano-formulated Fagonia cretica extract to enhance cellular uptake and cytotoxicity against HUH-7, MCF-7,
+HCEC, and Hep-2 cell lines20.
+The present study aims to encapsulate the hydrophobic extract of FI into PLGA nanoparticles to enhance the
+solubility and bioavailability of FI extract. Synthesized FI NPs were characterized using UV–vis, fluorescence,
+Fourier transform infrared (FTIR), and X-ray diffraction (XRD) spectroscopy. The encapsulation and drug
+loading efficiency of synthesized NPs were systematically evaluated. The in-vitro cytotoxic and phototoxic
+studies were performed against a breast cancer cell line (BT-474).
+Methods
+Materials
+PLGA (lactic acid-co-glycolic acid = 50:50, Mw ∼ 38–54 kDa, Sigma-Aldrich), Poly Vinyl Alcohol (PVA) (Sigma-
+Aldrich), BDH laboratory supplies, England), Acetone (HPLC, purity > 99.5%, Dimethyl sulfossxide (DMSO ⩾
+99%) (Merck Germany), Ethanol (Analytical grade, ACI Labscan Thailand), PBS (Phosphate-Buffered Saline)
+(Invitrogen USA), Trypsin (Sigma Aldrich), MTT (3- (4,5-Dimethylthiazolyl-2) − 2,5-Diphenyltetrazolium
+bromide) assay (Sigma Aldrich), 2’,7’-dichlorofluorescein diacetate (≥ 95% (HPLC)) (Sigma Aldrich).
+Collection and preparation of plant extract
+The Fagonia indica plant was collected from the village of Khushab, Pakistan. The aerial part of the plant was
+washed three times with distilled water and shade-dried at room temperature. After drying, it was crushed into
+a fine powder using an electric grinder and kept in an airtight bottle for future processing. To prepare the plant
+extract, 30 g of powdered sample of FI were subjected to extraction using 300 ml of 100% ethanol (1:10) for
+72 h. The mixture was stirred with a sterilized glass rod every 24 h and filtered using Whatman filter paper. This
+filtrate was then concentrated using a SENCO® rotary evaporator and dried at 50 °C in an oven. The FI extract
+was weighed and kept at 4 ◦C in glass vials for further use. On the day of the experiment, a series of working
+Scientific Reports |        (2025) 15:23140
+2
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+concentrations (200, 100, 50, 25) µg/ml were prepared from the stock solution (10 mg/ml) using twofold serial
+dilution in 2% fetal bovine serum25.
+Preparation of blank and drug-loaded PLGA nanoparticles
+PLGA nanoparticles were prepared under optimal conditions using a single emulsion solvent evaporation
+method26 The solubility parameters of PLGA and PVA were considered to optimize the nanoparticle formulation.
+PVA is a hydrophilic polymer immediately soluble in water due to its ability to form hydrogen bonds. Acetone
+was selected due to its ability to dissolve PLGA efficiently due to its intermediate polarity and ester affinity,
+rapidly evaporates during nanoparticle formation, compatibility with the emulsification process using PVA27,28.
+Additionally, acetone is widely accepted in pharmaceutical formulations due to its safety and ease of removal26.
+Briefly, the organic phase was prepared by adding 50 mg PLGA in 3 mL acetone and then sonicated for
+1 min. Next, the aqueous phase was prepared by adding 1.5% PVA in 10 ml of distilled water under stirring at
+25 ◦C until a clear solution was obtained. The organic phase was added dropwise at a 0.5 mL/min rate into the
+aqueous solution at room temperature under continuous stirring (400 rpm) until the organic solvent completely
+evaporated. The PLGA NPs were obtained by centrifugation at 15,000 rpm and 4 ◦C for 15 min (Thermo Scientific,
+Sorvall RC 6 Plus Centrifuge). The pellet was dispersed in the distilled water and washed 3 times to clear any
+residual surfactant. The synthesized nanoparticles were stored at 4 ◦C for future use. To prepare the drug-loaded
+PLGA NPs, PLGA (50 mg) and FI extract (10 mg) were added to 3 ml of acetone to get the organic phase29. Other
+steps are the same as the above procedure. A 10 mg dose of the plant was selected after preliminary experiments
+using various drug amounts (5, 10, 15 mg) to evaluate nanoparticle formulation (Supplementary file 1, Table S1).
+A lower drug amount (5 mg) resulted in reduced drug loading and encapsulation efficiency, while a higher drug
+amount (15 mg) led to an increase in particle size and PDI, making it less suitable for efficient drug delivery.
+The 10 mg drug provided an optimal balance, yielding nanoparticles with appropriate particle size, PDI, and
+encapsulation efficiency, making it the most suitable choice for the current study.
+Qualitative phytochemical screening
+The phytochemical analysis of FI extract was performed to identify secondary metabolites. Different
+phytochemicals (alkaloids, saponins, flavonoids, phenols, reducing sugar, glycosides, proteins, and fats) were
+estimated qualitatively by using standard procedures26.
+Drug loading and encapsulation efficiency
+The encapsulation efficiency of FI-PLGA NPs was calculated using UV–visible spectroscopy. (Thermo Scientific,
+USA). The encapsulation of FI extract was determined as the free extract after centrifugation of FI-PLGA NPs
+from the initial total extract. The sample was then centrifuged for 15 min at 13,000 rpm. The amount of free FI
+extract was determined by measuring the absorbance at 272 nm. The absorbance at 272 nm was chosen because
+it corresponds to the characteristic absorption maximum of the key bioactive compounds30,31. Polyphenolic
+compounds, flavonoids, and aromatic phytochemicals in plants in the extract exhibit strong absorbance in the
+UV region, particularly around 260–280 nm20. The selection of this wavelength has also been demonstrated in
+previous studies31.
+Equations (1) and (2) were then used to calculate the encapsulation and loading efficiency for FI-PLGA NPs,
+respectively32,33.
+
+Drug encapsulation eﬃciency (EE %) = Total drug FI −free drug FI
+Total drug FI
+× 100
+(1)
+
+Drug loading eﬃciency (LE %) = Weight of drug in NPs
+Weight of NPs
+× 100
+(2)
+Characterization
+Dynamic light scattering (DLS)
+The hydrodynamic size and polydispersity index (PDI) of the nanoparticles were measured using DLS
+(Brookhaven Instruments). The 0.5 ml of nanoformulation was diluted with 1 ml of distilled water, sonicated for
+3 min, and then put into cuvettes. At 25 °C and scattering angle at 90°, each sample in triplicate was examined33.
+Zeta potential
+A zetasizer (ZS-90, Malvern Instruments) was used to measure the zeta potential of FI-loaded PLGA NPs. 1 ml
+of nanoformulation was diluted 10 times with distilled water, and the Zeta potential was measured in mV20.
+UV‒visible spectroscopy
+The absorption spectrum of free FI extract and FI-PLGA NPs was analyzed at room temperature by using an
+ultraviolet–visible (UV–vis) spectrophotometer (Thermo Scientific- USA).
+Fluorescence spectroscopy
+To evaluate the presence of extracts inside PLGA nanoparticles, the emission spectrum was recorded by
+fluorescence spectroscopy (FluoroMax® Plus, HORIBA Scientific) upon excitation at 415  nm absorption
+wavelength of FI extract.
+Scientific Reports |        (2025) 15:23140
+3
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+Fourier transform infrared (FTIR) spectrometry analysis
+The chemical analysis of functional groups in FI extract, blank PLGA, and FI-PLGA NPs was conducted using
+an IR-Prestige 21 FTIR spectrophotometer (Shimadzu, Japan). The FTIR spectrum for each sample was analyzed
+across a wavelength range of 4000–400 cm–1.
+X-Ray diffraction spectroscopy
+X-ray diffraction (XRD) spectroscopy (ARL EQUINOX 3000 X-RAY Diffractometer (Thermo SCIENTIFIC))
+was performed to obtain the XRD pattern of FI extract, blank PLGA NPs, and FI-PLGA NPs at 2°– 120° (2θ). The
+powder X-ray diffraction method was used to analyze the amorphous or crystalline nature of the nanoparticles.
+Percent drug release study
+The in-vitro drug release study of FI-PLGA NPs was conducted in PBS at 37° (pH 7.4). Breast cancer (BT-
+474) cells are typically studied under normal physiological conditions in-vitro. The drug release profiles were
+performed at pH 7.4 to induce the physiological conditions, as this is similar to the pH of human blood and
+extracellular fluid. FI-PLGA NPs (5 mg) were added to PBS (15 ml) with continuous stirring for 72 h. At different
+intervals (0, 1, 3, 6, 12, 24, 48, 72) h, the supernatant was collected by centrifugation at 13,000 rpm, and then a
+UV–visible spectroscopy was used to find the amount of drug released34. The % drug release of FI-PLGA NPs
+was measured using the following Eq. (3):
+
+% Drug release = FI Released from PLGA NPs at diﬀerent intervals
+Total amount of FI in PLGA NPs
+× 100
+(3)
+Cell culture
+A ductal breast cancer (BT-474) cell line was obtained from Khyber Medical University, Peshawar, and cultured
+in a 25 cm2 tissue culture flask containing DMEM-F12 medium supplemented with 10% fetal bovine serum
+(FBS) and Penicillin/Streptomycin. The cell culture was incubated for 24 h in an incubator (5% CO2, 37 °C) to
+ensure proper adhesion to the substratum. Once the cells reached 80–90% confluency, they were seeded into a
+96-well plate and incubated further. When the cells in the plate acquired 80–90% confluency, the growth media
+was discarded, and the cells were treated with varying concentrations of FI extract and FI-PLGA NPs. All cell
+culture procedures were performed under sterile conditions in a Class 2 laminar flow hood.
+Quantitative cellular uptake of FI and FI-PLGA NPs
+The quantitative cellular uptake of FI and FI-PLGA NPs was examined by using a microplate reader (Bio-Tek,
+ELX 800 model). Briefly, BT-474 cells were grown in 96 well plates with cell density 5 × 103 cells/well in a growth
+medium and incubated for 24 h at 37 °C. After incubation, cells were treated with FI and FI-PLGA NPs at
+different concentrations (200, 25) µg/ml and incubated for different intervals (0, 1, 2, 3, 4, 5, 6) h. The free drug
+residues were then removed by washing the cells 3 times with PBS. The optical absorbance was measured at
+630 nm using a microplate reader to quantify the drug in the cells35.
+Cellular uptake study by confocal microscope
+The cellular uptake of free FI extract and FI-PLGA NPs was evaluated in BT-474 cells using confocal microscopy.
+Briefly, BT-474 cells were grown on glass coverslips in a 6-well plate. Cells were then exposed to 25 µg/mL of FI
+extract and FI-PLGA NPs and incubated for 2 h. Following incubation, cells were washed with PBS and fixed
+with 2% paraformaldehyde (PFA) for 18 min in the dark. After washing with PBS, cells were stored in cold PBS at
+4 °C until imaging. Confocal microscopy was performed using a 63 × oil immersion objective, with an excitation
+wavelength of 417 nm36.
+In-vitro cytotoxicity study
+The cytotoxicity of F1 extract, blank PLGA NPs, and FI-PLGA NPs were investigated with BT-474 cell line via
+MTT [yellow tetrazolium salt, 3- (4,5-Dimethylthiazolyl-2) − 2,5-Diphenyltetrazolium bromide] assay. Briefly,
+the BT-474 cells were seeded into 96-well plates with cell density 5 × 103 cells/well and incubated at 37 °C in a
+5% incubator for 24 h. The culture medium was replaced after 24 h with FI extract and FI-PLGA NPs at varying
+concentrations (200, 100, 50, 25) µg/ml and incubated for an additional 24 and 48 h. At predefined intervals,
+the medium was discarded, and the cells were washed thrice with PBS and then MTT solution (5 mg/ml) was
+added30. The MTT solution was discarded, and DMSO (extracting solution) was added to each well after 4 h of
+incubation. The yellow colour of the MTT solution is reduced to purple-coloured formazan by viable cells. The
+optical absorbance at 630 nm was examined using a scanning multi-well microplate reader31. The percentage of
+cell viability was observed by comparing the absorbance of treated cells to that of the untreated cells using the
+following formula:
+
+% Cell viability =
+Treated cells abs.
+Untreated cells abs. × 100
+(4)
+Phototoxicity study
+The phototoxic effect of FI extract and FI-PLGA NPs was investigated with the BT-474 cell line. Briefly, the
+BT-474 cells were seeded into 96-well plates with cell density 5 × 103 cells/well and incubated at 37 °C in a 5%
+incubator for 24 h. The culture medium was replaced after 24 h with FI extract and FI-PLGA NPs at varying
+concentrations (200, 100, 50, 25) µg/ml and incubated for an additional 24. Then, laser irradiation was conducted
+using a portable laser system with a power density of 0.279 W/cm2. Treatment was performed at fluences of
+Scientific Reports |        (2025) 15:23140
+4
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+6 J/cm2 and 12 J/cm2 to evaluate the phototoxic effect. Laser-treated cells were further incubated for 24 h to
+determine relative cell viability using the MTT assay34.
+Reactive oxygen species (ROS) analysis
+ROS levels were detected with 2′,7′-Dichlorofluorescin diacetate (DCFDA) reagent. After laser-treated cells, 30
+μL of DCFDA (10 μM) was added, and then the cells were kept for 40 min at 37 °C under dark conditions. A
+fluorescence microscope was used to visualize the cells37.
+Morphological study
+The inverted visible light microscope (Optika Microscope, Italy, XDS-2 + M795) was used to investigate the
+morphological changes of treated and untreated BT-474 cells25. Uncropped histology images of each examination
+are included in Supplementary File 2 (Figures S1, S2, S3 and S4).
+Statistical analysis
+All tests were analyzed in triplicate, and Microsoft Excel and Origin Pro 2023 were used to generate the charts
+and graphs. All data from 3 independent experiments are shown as the mean ± standard deviation. The mean
+values of the treatments were compared using the student t-test, where p < 0.05 was considered statistically
+significant.
+Results
+Phytochemical screening
+FI extract possesses various bioactive components. Qualitative phytochemical analysis confirmed the presence
+of flavonoids, alkaloids, phenols, glycosides, proteins, and saponins in the plant extract (Supplementary file 1,
+Table S2).
+Drug solubility study
+The drug solubility testing of 10 mg of FI extract and synthesized FI-PLGA NPs in distilled water is shown in
+Fig. 1. FI-PLGA NPs exhibited a homogenous solution (Fig. 1 b), whereas the FI extract was not completely
+soluble in distilled water as small particles were left undissolved (Fig. 1 a), which indicated that drug solubility
+was improved when FI extract was encapsulated inside the PLGA NPs.
+Characterization of nanoparticles
+The nanocarrier’s size is a key factor that affects the treatment efficacy. The hydrodynamic size of prepared NPs
+was measured using dynamic light scattering (Fig. 2). Blank PLGA NPs displayed a particle size of 192 nm,
+PDI 0.087, and a negative charge of -21.7 mV. The nanoparticles exhibited a negative zeta potential, which is
+attributed to the terminal carboxylic groups present in the polymer. The particle size, PDI, and zeta potential of
+FI-PLGA NPs were measured as 217 nm, 0.093, and -30.5 mV, respectively. The increase in particle size, PDI, and
+zeta potential attributed to FI extract successfully encapsulated into PLGA NPs.
+The encapsulation efficiency determines the specific quantity of drug or compound that is incorporated
+within the PLGA matrix. The amount of free FI extract was determined by measuring the absorbance at 272 nm,
+and the UV spectrum is provided in the Supplementary File 3 (Figure S1). A standard calibration curve was
+Fig. 1.  (a) FI extract in distilled water, (b) FI-PLGA NPs in distilled water.
+
+Scientific Reports |        (2025) 15:23140
+5
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+plotted for various concentrations of FI extract against absorbance to determine the FI amount in PLGA NPs.
+The drug encapsulation and loading efficiency were measured to be 86% and 16.6%, respectively. All experiments
+were done in triplicate. The FI extract exhibited the highest encapsulation efficiency in PLGA NPs.
+The absorption spectra of blank, free FI extract, and FI encapsulated PLGA NPs were observed in the range
+of 300–800 nm, as shown in Fig. 3 (a). Blank PLGA NPs did not possess any absorption peaks. Free FI extract
+spectra showed absorption peaks at 415 nm, 460 nm, 540 nm, 613 nm, and 671 nm, lying in blue, green, and red
+regions of the visible spectrum. Whereas FI-PLGA NP’s spectra showed only two peaks of maximum absorption
+at 418 nm and 674 nm, other absorption peaks were absent in FI-PLGA NPs. The absence of these absorption
+bands indicated entrapment of FI extract into the core of PLGA.
+A strong emission spectrum, as illustrated in Fig. 3 (b), was observed at λ = 672 nm and λ = 677 nm when
+excited at λex = 415  nm for FI-PLGA NPs and FI extract, respectively. A slight peak shift and decrease in
+fluorescence intensity occurred for FI-PLGA NPs. The blue shift is due to the entrapment of FI extract in the
+core of PLGA NPs. Also, this can be related to the hydrophobic environment caused by the PLGA polymer.
+Another method to ensure the encapsulation of FI in PLGA NPs is by observing its chemical changes through
+FTIR. The spectrum of the PLGA NPs exhibited the characteristic bands at 2937 cm-1, which represent C-H
+stretching vibrations (Fig. 4). The characteristic bands at 1745 cm-1 are due to the C = O stretch of the carbonyl
+group of -COOH, and C–O ester stretches occurred between 1163 and 1080 cm−138,39.
+The FTIR spectrum revealed multiple functional groups that play a significant role in the medicinal properties
+of Fagonia indica. FI extract showed characteristic peaks at 3298 cm⁻1, corresponding to -OH stretching, peaks
+Fig. 3.  (a) Absorption spectra of FI extract, FI-PLGA NPs & PLGA NPs, (b) Fluorescence emission spectrum
+of FI extract and FI-PLGA NPs excited at λex = 415 nm.
+
+Fig. 2.  Hydrodynamic size, polydispersity index, and Zeta potential of (a) Blank PLGA NPs, (b) FI-PLGA
+NPs.
+
+Scientific Reports |        (2025) 15:23140
+6
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+at 2929 cm⁻1 and 2851 cm⁻1, which are attributed to C-H stretching vibrations of alkanes. The band at 1734 cm⁻1
+represents the C = O stretching of esters (Fig. 4). These characteristic peaks were also detected in FI-PLGA NPs
+with a slight shift of bands, particularly in 1747 cm⁻1 (C = O) and 3250 cm⁻1 (-OH). It was probably due to
+the entrapment of bioactive compounds in the PLGA matrix. No peaks were detected in the 2220–2260 cm⁻1
+range, indicating the absence of cyanide groups, suggesting that the plant does not exhibit toxicity related to
+cyanide40,41.
+The XRD technique was used to characterize the structural properties of PLGA NPs, FI-PLGA NPs, and
+FI extract. The XRD pattern of PLGA NPs is depicted in Fig. 4(b), in which no distinct peak was observed,
+indicating the amorphous nature of the polymer. Furthermore, FI-PLGA NPs also showed no characteristic peak
+due to the amorphous nature of the drug. A reduction in spectrum intensity was detected as compared to the FI
+extract, possibly due to the entrapment of the extract in the PLGA matrix.
+Drug release study
+The FI extract’s release from PLGA NPs was assessed in PBS (pH = 7.4) (Fig. 5a). The pH 7.4 was selected to
+evaluate the release profile of the nanoparticles in a relevant biological environment. This helps in predicting
+the drug behavior in systemic circulation before reaching the tumor microenvironment. After 96 h, a maximum
+release of 99.08% FI extract was achieved. An initial burst release of 28.8% FI extract from PLGA nanoparticles
+occurred within the first 12 h, likely due to drug molecules present on or near the nanoparticle surface. This
+surface-bound drug rapidly diffused into the surrounding medium upon adding nanoparticles. Following the
+initial burst, a slower and more sustained release was obtained, attributed to the gradual diffusion of FI extract
+encapsulated within the nanoparticle core. Moreover, 44.6%, 63.2%, 86.7%, and 99.08% of FI extract were
+released by degradation of the polymer matrix during 24, 48, 72 and 96 h.
+Quantitative cellular uptake of FI extract and FI-PLGA NPs
+The uptake time of FI and FI-PLGANPs at different concentrations (200, 25) µg/ml is presented in Fig. 5 (b and
+c). No significant changes were seen between the two distinct concentrations of FI and FI-PLGA NPs, except that
+absorption values were higher at the higher concentration (200 µg/ml). FI-PLGA NPs were internalized faster
+in BT-474 cells compared to free FI extract, as nanoparticles in the size range of 100 to 400 nm are more rapidly
+taken up by cells42. The maximum absorption occurred at 2 h for FI-PLGA NPs and 5 h for the free FI extract,
+highlighting the optimal drug uptake time for each formulation. Moreover, the increased absorption value of
+FI-PLGA NPs compared to free extract within the cells is attributed to the sustained release of the encapsulated
+drug.
+Qualitative cellular uptake of FI extract and FI-PLGA NPs
+A confocal microscope was used to optimize cellular internalization by utilizing the FI extract’s intrinsic
+fluorescence. This study revealed that FI-PLGA NPs presented significantly higher cellular uptake compared
+to free FI extract after 2 h of incubation. The fluorescence intensity of FI-PLGA NPs was noticeably enhanced,
+indicating improved internalization within BT-474 cells (Fig. 6). In contrast, free FC exhibited a lower uptake,
+suggesting limited cellular permeability. These findings confirm that PLGA NPs encapsulation enhances the
+bioavailability and intracellular delivery of FI extract.
+Fig. 4.  (a) FTIR spectrum of FI extract, FI-PLGA NPs, and PLGA NPs, (b) XRD spectrum of FI extract, FI-
+PLGA NPs, and PLGA NPs.
+
+Scientific Reports |        (2025) 15:23140
+7
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+In-vitro cytotoxicity
+The cytotoxicity of FI extract and FI-PLGA NPs was assessed using the colorimetric assay MTT against the BT-
+474 cell line (Table 1). The viability of BT-474 cells after being incubated for 24 and 48 h at several concentrations
+(200, 100, 50, 25) μg/ml of FI and FI-PLGA NPs is depicted in Fig. 7. Increasing the drug concentration from
+25 to 200 μg/ml led to a corresponding reduction in the cell viability. Notably, a more pronounced decrease in
+cell viability was observed after 48 h compared to 24 h, suggesting that prolonged incubation enhances cellular
+inhibition. These results demonstrated that both higher drug concentrations and extended incubation periods
+lead to a marked decrease in cell viability (Fig. 7 a-d).
+The MTT data further corroborated the microscopic observations, presenting significant morphological
+changes in treated cells at 24 h and 48 h treatment groups compared to the controls (untreated cells) (Fig. 8 and
+Fig. 9). An increase in the concentration of extract showed significant changes in cell density and morphology.
+In-vitro Phototoxic study
+The photocytotoxicity of FI extract and FI-PLGA NPs at several concentrations (200, 100, 50, 25) μg/ml was
+assessed. The cytotoxicity against BT-474 cells dramatically increased upon light activation (Table 2, Fig. 10).
+These results indicate that increasing both drug concentration and light dose (from 6 to 12 J/cm2) led to a marked
+reduction in cell viability. Additionally, FI-PLGA NPs showed superior phototoxicity compared to the free FI
+extract, likely due to enhanced cellular uptake and improved bioavailability.
+Morphological investigation of cancer cells also revealed a noticeable reduction in cell viability upon laser
+light exposure (Fig. 11). This reduction is likely due to the presence of photoactive molecules in the FI extract
+that initiate phototoxicity.
+The intracellular reactive oxygen species (ROS) levels were examined using fluorescent dye to determine
+oxidative stress produced by FI extract in combination with laser treatment. A significant increase in fluorescence
+intensity was visualized in the cells exposed to the FI-PLGA NPs followed by laser irradiation, compared to the
+FI extract. Notably, cells treated at 12 J/cm2 fluency indicated the most considerable ROS production compared
+to 6 J/cm2, as shown in Fig. 12. These findings imply that the plant extract produces enough reactive oxygen
+species (ROS) in response to light stimulation which causes oxidative stress and leads to cell death.
+Fig. 5.  (a) FI release profile from FI-PLGA NPs in PBS (pH 7.4), (b) Quantitative cellular uptake of FI extract,
+(c) FI-PLGA NPs, at different times.
+
+Scientific Reports |        (2025) 15:23140
+8
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+Discussion
+Cancer is the second foremost cause of death, and the available therapeutic modalities have adverse side effects.
+Natural products, especially plants, are a real hope due to their low toxicity, safety, and targeted gene regulation
+at cell signaling level. Due to poor water solubility of plant metabolites, biocompatible modifications are required
+to deliver optimal and effective concentrations at target site20 . Various studies have explored the plant extract
+loaded PLGA NPs to enhance bioavailability and therapeutic effects. In present study, FI extract loaded PLGA
+NPs successfully synthesized to improve the solubility, bioavailability, and therapeutic effect against BT-474
+cell line. Previously, an EEPS-encapsulated PLGA NPs shown to improve the cellular uptake and cytotoxicity
+compared to the free EEPS29.
+The size, PDI, and zeta potential of FI-PLGA NPs were 217 nm, 0.093, and -30.5 mV, respectively. LNEO-
+loaded PLGA NPs by single emulsion method reported by Ercin and colleagues exhibited a particle size of
+211.4 ± 4.031 nm and PDI 0.068 ± 0.01647. Previously published research data showed that a high zeta potential
+value of around -25 mV provides a sufficient energy barrier to stabilize nanosuspensions26. Similarly, in this
+investigation, the extract’s encapsulation resulted in an increase in the negative charge from -21.7  mV to
+-30.5 mV, suggesting that the FI-PLGA NPs possess an optimal surface charge for stability. The increase of
+negative charge may contribute to the presence of some compounds, i.e. hydroxyl groups, phenols, carboxylic
+groups, etc., in FI extract with a possibility of adsorption of these compounds on the surface of PLGA NPs43. The
+FTIR spectrum further validated the existence of these compounds. The particle size, zeta potential, and PDI
+values obtained in our study are compatible with the previous research.
+The drug encapsulation and loading efficiency were measured to be 86% and 16.6%, respectively. In an earlier
+study, 64.16 ± 2.538, 70.86 ± 1.457, and 72.53 ± 2.914% encapsulation efficiency of fagonia cretica extract loaded
+silver, albumin, and liposomes NPs were determined, respectively20. These encapsulation values are lower than
+those obtained in our study.
+Cell viability at 24 h (n = 3)
+Cell viability at 48 h (n = 3)
+Concentration (μg/ml)
+Cell viability of FI extract (%)
+Cell viability of FI-PLGA NPs
+Cell viability of FI extract
+Cell viability of FI-PLGA NPs
+25
+94 ± 1.05
+79 ± 2.01
+76 ± 1.76
+56 ± 2.41
+50
+88 ± 3.61
+68 ± 2.9
+68 ± 3.4
+47 ± 3.5
+100
+80 ± 3.3
+60 ± 3.18
+58 ± 0.4
+42 ± 2.7
+200
+72 ± 3.27
+52 ± 3.15
+50 ± 3.8
+33 ± 1.01
+Table 1.  % Cell viability of FI extract and FI-PLGA NPs at 24 h and 48 h.
+
+Fig. 6.  Cellular uptake of FI extract and FI-PLGA NPs by confocal microscope.
+
+Scientific Reports |        (2025) 15:23140
+9
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+The examination of phytochemicals helps to find chemical constituents in plant extract that may lead to
+locating the pharmacologically active phytocompounds44. The FTIR analysis confirmed the existence of
+functional groups of several phytochemicals, such as phenols, alkenes, alkanes, alkynes, aldehydes, alcohols,
+ketones, esters, amines, ethers, and carboxylic acids, which may contribute to the plant’s pharmacological
+activities40. The characteristic peaks of these phytochemicals were also exhibited in FI-PLGA NPs with a slight
+shift of bands, it was probably due to the entrapment of bioactive compounds in the PLGA matrix. The FTIR
+spectrum of rutin-loaded IL polymer NPs indicated a change in the intensity of C–H and C = O bands due to the
+addition of rutin peaks at the same wavenumber. This observation demonstrated the efficient encapsulation of
+rutin in the nanoparticles45. In another investigation, a slight shift and reduction in peaks were observed, which
+indicated that nisin is successfully encapsulated in PLGA NPs46. The FTIR results of our study are consistent
+with these findings.
+The release profile of FI extract from PLGA NPs was evaluated in PBS (pH = 7.4). The release behavior is
+influenced by multiple parameters, such as the type of nanoparticle, release medium, temperature, and pH47.
+After 12, 24, 48, 72 and 96 h, 28.8%, 44.6%, 63.2%, 86.7%, and 99.08% of FI extract were released, respectively.
+An initial burst release was up to 28.8% within 12 h; after that, the release was slower and sustained. The same
+phenomenon has been reported for naringin-loaded PLGA nanospheres, quercetin-loaded PLA NPs, and
+oridonin-loaded PLGA NPs48,49.
+To date, the FI extract loaded PLGA NPs into cancer cells has not been explored. Cytotoxicity evaluation
+revealed that both FI extract and FI-PLGA NPs showed cytotoxic effects. However, the same concentration
+of FI extract in NPs demonstrated significantly higher cytotoxicity compared to the free extract. The blank
+PLGA NPs did not show cytotoxic effects, indicating that nano-encapsulation significantly enhanced the
+cytotoxic potential of FI extract. It was probably due to the small size of the particle, optimal cellular uptake
+of FI-PLGA NPs, and sustained release of FI from PLGA NPs. The tailored size, surface charge, and controlled
+release characteristics of nanoparticles allow them for longer retention and improved interaction with cellular
+membranes, which is responsible for the higher intracellular accumulation of drugs50. Previous investigations
+have shown that nanoparticles between 100 and 400 nm in size are optimally internalized faster by cells. This size
+range is large enough to avoid macrophage capture in the reticuloendothelial system and prevent rapid leakage
+Fig. 7.  Dose-dependent cytotoxicity of PLGA NPs, FI extract, and FI-PLGA NPs at (a) 24 h, (b) 48 h, Time-
+dependent cytotoxicity of (c) FI extract, (d) FI-PLGA NPs. (*p < 0.05).
+
+Scientific Reports |        (2025) 15:23140
+10
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+into capillaries51. FI extract exhibited cytotoxicity against the breast cancer (BT-474) cell line might be attributed
+to the existence of bioactive compounds, including flavonoids, polyphenols, glycosides, alkaloids, and saponins.
+These phytochemicals play an important role in targeting multiple signaling pathways (ICAM-1, VEGF, and
+NF-kB) involved in cancer progression. It inhibits cell cycle regulation and triggers apoptosis by activating p53
+and FOXO3a in breast cancer16.
+Cellular uptake and drug release are key factors in optimizing treatment efficacy. The in-vitro cellular
+uptake of free FI and FI-PLGA NPs were examined by confocal microscopy, utilizing the intrinsic fluorescent
+property of FI. This investigation confirmed the significantly higher intracellular internalization of FI-PLGA
+NPs compared to free FI extract after 2 h of incubation. These findings are aligned with previous findings, which
+reported intrinsic fluorescent property of the plant extract (FCe) to investigate the intracellular accumulation
+of free FCe and FCe-loaded NPs. Nano-encapsulated FCe showed better cytotoxic effects against than free FCe
+against TFK-1 cell line36 . Similarly, enhanced cytotoxic potential of NOE loaded PLGA/PEG NPs against lung
+cancer (A549) cells were observed than free drug. It was indicated that controlled and sustained release of NOE
+from NPs, enhance the therapeutic effects due to prolong intracellular accumulation. Whereas free NOE quickly
+diffused across lipid bilayers and was cleared more rapidly51. Several studies reported that PLGA-based drug-
+loaded nanocarrier’s cellular uptake was observed through endocytosis52.
+Interestingly, FI extract not only demonstrated cytotoxic effects but also presented phototoxic properties.
+Two prominent peaks of FI extract at 613 nm and 671 nm were observed, corresponding to the red region of
+the UV–visible spectrum. The light penetration at this wavelength in tissues is high enough to produce reactive
+oxygen species (ROS). In PDT, the absorption bands of the compounds in the 650–850 nm range can reach
+appropriate excited states when exposed to laser light. These states then interact with biomolecules, producing
+reactive oxygen species that initiate PDT action53. A similar effect has been noted in previous studies, which
+reported that Ficus carica extract-loaded PLGA NPs had a higher phototoxicity than free extract36.
+BT-474 cells treated with FI extract and FI-PLGA nanoparticles exhibited noticeable morphological changes
+and a reduction in cell density. Apoptotic cells are evident in the treatment groups. Our findings are in line
+Fig. 8.  Morphological changes of BT-474 cells treated with FI extract and FI-PLGA NPs at 24 h.
+
+Scientific Reports |        (2025) 15:23140
+11
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+with previous reports, which demonstrated that irregular cell structure, rounded, and reduced the cell density,
+proposed apoptotic cell death of BT-474 cells54,55. This study suggests that FI-PLGA NPs could be a useful
+adjunct to cancer treatment as a supportive therapeutic agent.
+Conclusion
+In this study, FI extract encapsulated PLGA NPs (FI-PLGA NPs) were successfully synthesized to enhance the
+drug solubility, bioavailability, and therapeutic efficacy. FI-PLGA NPs showed a higher cytotoxic and phototoxic
+effect against the BT-474 cell line than free FI extract, possibly due to their sustained drug release and improved
+cellular uptake. Notably, cells treated at a fluence of 12 J/cm2 exhibited the highest ROS production compared to
+6 J/cm2 and leads to the cell death.
+Further research is required to identify the specific compounds responsible for these effects and evaluating
+the in-vivo anti-cancer potential of FI-PLGA NPs to support clinical applications.
+Concentration
+(μg/ml)
+Cell viability at 6 J/cm2 light dose (n = 3)
+Cell viability at 12 J/cm2 light dose (n = 3)
+Cell viability of FI extract (%)
+Cell viability of FI-PLGA NPs
+(%)
+Cell viability of FI extract
+(%)
+Cell viability of FI-PLGA NPs
+(%)
+25
+68 ± 2.5
+53 ± 0.57
+55 ± 1.50
+41 ± 1.51
+50
+58 ± 1.09
+42 ± 1.35
+43 ± 1.47
+32 ± 1.01
+100
+47 ± 1.36
+32 ± 1.41
+36 ± 0.68
+22 ± 0.79
+200
+38 ± 1.86
+23 ± 2.09
+27 ± 1.46
+16 ± 2.21
+Table 2.  Phototoxicity of FI extract and FI-PLGA NPs.
+
+Fig. 9.  Morphological changes of BT-474 cells treated with FI extract and FI-PLGA NPs at 48 h.
+
+Scientific Reports |        (2025) 15:23140
+12
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+Fig. 11.  Morphological changes of BT-474 cells treated with FI extract and FI-PLGA NPs under laser exposure
+of 6 J/cm2, 12 J/cm2.
+
+Fig. 10.  Phototoxicity of FI extract, and FI-PLGA NPs with laser exposure of (a) 6 J/cm2, (b) 12 J/cm2.
+(*p < 0.05).
+
+Scientific Reports |        (2025) 15:23140
+13
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+Data availability
+All the data is contained in the manuscript and attached supplementary files.
+Received: 6 February 2025; Accepted: 30 May 2025
+References
+	 1.	 Aumeeruddy, M. Z. & Mahomoodally, M. F. J. S. A. J. O. B. Global documentation of traditionally used medicinal plants in cancer
+management: A systematic review. S. Afr. J. Bot. 138, 424–494 (2021).
+	 2.	 Lichota, A. & Gwozdzinski, K. J. I. J. O. M. S. Anticancer activity of natural compounds from plant and marine environment. Int.
+J. Mol. Sci. 19, 3533 (2018).
+	 3.	 Anil, P., Nikhil, B., Manoj, G. & Prakash, N. J. I. R. J. P. Phytochemicals and biological activities of Fagonia indica. Int. Res. J. Pharm.
+3, 56–59 (2012).
+	 4.	 Farheen, R., Mahmood, I., Parveen, R., Kishwar, F. & Anwar, A. J. F. J. o. B. Review on medicinal and bioactive role of genus fagonia.
+Fuuast J.Biol. 7 (2017).
+	 5.	 Walbi, I. A. et al. A preliminary cytotoxicity study of fagonia arabica against breast (MCF-7), oral (KB-3-1), and lung cancer (A-
+549) cell lines: A study supported by molecular marker analysis using dual staining dyes. Eur. J. Pharm. Sci. 10, 110 (2023).
+	 6.	 Malavika, P., Singh, V. & Kumar, Y. J. I. The chemistry and pharmacology of Fagonia genus: a review. Int. J. Sci. Dev. Res. 6, 332–343
+(2021).
+	 7.	 Khan, T. et al. Synergistic effects of melatonin and distinct spectral lights for enhanced production of anti-cancerous compounds
+in callus cultures of Fagonia indica. J. Photochem. Photobiol. B. 190, 163–171 (2019).
+	 8.	 Ali, K. & Khan, H. J. C. P. D. Fagonia indica; A review on chemical constituents, traditional uses and pharmacological activities.
+Curr. Pharm. Des. 27, 2648–2660 (2021).
+	 9.	 Abdallah, E. A., Almilaibary, A., El-Refaei, M. F. J. A. O. E. & Health, O. Fagonia indica ameliorates chromium-induced
+nephrotoxicity: Role of antioxidant activity and pro-inflammatory cytokines in in-vivo renoprotection. Arch. Environ. Occup.
+Health 78, 289–303 (2023).
+	10.	 Nasir, H. et al. Schiff bases targeting an Sw-480 colorectal cell line: synthesis, characterization, ds-DNA binding and anticancer
+studies. RSC Adv. 15, 1527–1539 (2025).
+	11.	 Bray, F. et al. Global cancer statistics 2022: GLOBOCAN estimates of incidence and mortality worldwide for 36 cancers in 185
+countries. CA Cancer J. Clin. 74, 229–263 (2024).
+	12.	 Chen, J. et al. Global, regional, and national burden of cancers attributable to particulate matter pollution from 1990 to 2019 and
+projection to 2050: Worsening or improving?. J. Hazard. Mater. 477, 135319 (2024).
+	13.	 Rathee, S., Patil, U. K. & Jain, S. K. J. J. O. E. R. I. P. Exploring the potential of dietary phytochemicals in cancer prevention: A
+comprehensive review. J. Explor. Res. Pharmacol. 9, 34–47 (2024).
+	14.	 Dhanyamraju, P. K. J. J. O. B. R. Drug resistance mechanisms in cancers: Execution of pro-survival strategies. J. Biomed. Res. 38, 95
+(2024).
+Fig. 12.  ROS production in BT-474 cells treated with FI extract and FI-PLGA NPs under laser exposure of 6 J/
+cm2, 12 J/cm2.
+
+Scientific Reports |        (2025) 15:23140
+14
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+	15.	 Khayam, A. U. et al. Quinovic acid purified from medicinal plant Fagonia indica mediates anticancer effects via death receptor 5.
+Mol. Cell. Biochem. 474, 159–169 (2020).
+	16.	 Lewis, A. Determining the cytotoxic properties of a Fagonia indica extract on breast and colon cancer (Aston University, 2021).
+	17.	 Miranda, C. L. et al. Phytochemical characterization and bioactivity toward breast cancer cells of unhydrolyzed and acid-
+hydrolyzed extracts of Fagonia indica. Nat. Prod. Commun. 17, 1934578X221109426 (2022).
+	18.	 Waheed, A. et al. A novel steroidal saponin glycoside from Fagonia indica induces cell-selective apoptosis or necrosis in cancer
+cells. Eur. J. Pharm. Sci. 47, 464–473 (2012).
+	19.	 Zahra, M., Chota, A., Abrahamse, H. & George, B. P. J. I. J. O. M. S. Efficacy of green synthesized nanoparticles in photodynamic
+therapy: A therapeutic approach. Int. J. Mol. Sci. 24, 10931 (2023).
+	20.	 Ahmed, W., Mansoor, Q., Ahmad, M. S., Zainab, T. & Shah, M. A. J. S. R. TRAIL mediated apoptosis ruling and anticancer trigger
+by fine-tuned nano spheres of Fagonia cretica methanolic extracts as novel cancer regime. Sci. Rep. 13, 671 (2023).
+	21.	 Borandeh, S., van Bochove, B., Teotia, A. & Seppälä, J. J. A. D. D. R. Polymeric drug delivery systems by additive manufacturing.
+Adv. Drug Deliv. Rev. 173, 349–373 (2021).
+	22.	 Ribeiro, A. F. et al. Characterization and in vitro antitumor activity of polymeric nanoparticles loaded with Uncaria tomentosa
+extract. An. Acad. Bras. Cienc. 92, e20190336 (2020).
+	23.	 Roque, L. et al. Development of a bioadhesive nanoformulation with Glycyrrhiza glabra L. extract against Candida albicans.
+Biofouling 34, 880–892 (2018).
+	24.	 Ahmed, R. et al. Poly (lactic-co-glycolic acid) Nanoparticles Loaded with Callistemon citrinus Phenolics Exhibited Anticancer
+Properties against Three Breast Cancer Cell Lines. J. Food Qual. 2019, 2638481 (2019).
+	25.	 Aziz, B. et al. Study of synergistic effects of Ficus Carica leaves extract mediated chemo-photodynamic therapy on
+rhabdomyosarcoma cells. Photodiagnosis Photodyn. Ther. 36, 102565 (2021).
+	26.	 Johanson, G. J. P. s. T. Acetone. Patty’s Toxicology 735–752 (2001).
+	27.	 Guideline, I. H. T. J. C. S. Impurities: Guideline for residual solvents Q3C (R5). ICH Harmonised Tripartite Guideline 4, 1–25
+(2005).
+	28.	 Aragón, D., Rosas, J. & Martínez, F. J. L. A. A. R. Effect of the ibuprofen solubility in acetone and dichloromethane on the drug
+release profiles from PLGA microspheres. Lat. Am. Appl. Res. 44, 87–92 (2014).
+	29.	 Paul, S., Bhattacharyya, S. S., Boujedaini, N., Khuda-Bukhsh, A. R. J. E. B. C. & Medicine, A. Anticancer Potentials of Root Extract
+of Polygala senega and Its PLGA Nanoparticles-Encapsulated Form. Evid. Based Complement. Alternat. Med. 2011, 517204 (2011).
+	30.	 Fongsuk, C., Wongmanit, P. & Pansuksan, K. Effect of Plant Stage and Solvent Extraction on Catechin Contents in Borrasus
+flabellifer L. Male Flower. Pharmacogn. J. (2023).
+	31.	 Kumari, V. & Sangal, A. Antimicrobial study of Arjuna Terminalia loaded PLGA nanoparticle. Indian J. Biochem. Biophys. (2020).
+	32.	 Aluc, C. C., Gok, B., Kecel-Gunduz, S. & Budama-Kilinc, Y. J. P. Glycyrrhizic acid Poly (D, L-lactide-co-glycolide) nanoparticles:
+anti-aging cosmeceutical formulation for topical applications. PeerJ 10, e14139 (2022).
+	33.	 Sakhi, M. et al. Design and characterization of paclitaxel-loaded polymeric nanoparticles decorated with trastuzumab for the
+effective treatment of breast cancer. Front. Pharmacol. 13, 855294 (2022).
+	34.	 Gupta, M. et al. Divulging the potency of naturally derived photosensitizers in green PDT: an inclusive review Of mechanisms,
+advantages, and future prospects. Photochem. Photobiol. Sci. , 1–24 (2024).
+	35.	 Saifullah, A., Ul Hassan, S. M. & Khurshid, A. J. M. Carbon-coated (Eu/Dy-Enabled) erbium hydroxide nanostructures for
+biomedical imaging. Materialia 35, 102108 (2024).
+	36.	 Aziz, B., Bosman, E. D., van der Wurff-Jacobs, K. M., van Nostrum, C. F. & Khurshid, A. J. B. M. Ficus carica leaves extract loaded
+PLGA nanoparticles: preparation, characterization, and in vitro anticancer activity on TFK-1 cell line. Biomed. Mater. (2025).
+	37.	 Rawat, L., Hegde, H., Hoti, S. L. & Nayak, V. J. B. Pharmacotherapy Piperlongumine induces ROS mediated cell death and
+synergizes paclitaxel in human intestinal cancer cells. Biomed Pharmacother. 128, 110243 (2020).
+	38.	 Gebreel, R. M. et al. Development and characterization of PLGA nanoparticle-laden hydrogels for sustained ocular delivery of
+norfloxacin in the treatment of pseudomonas keratitis: An experimental study. Drug Des. Dev. Ther. , 399–418 (2021).
+	39.	 Singh, G., Kaur, T., Kaur, R. & Kaur, A. J. I. J. P. P. S. Recent biomedical applications and patents on biodegradable polymer-PLGA.
+Drug. Des. Dev. Ther. 1, 30–42 (2014).
+	40.	 Talib, F. & Aftab, T. J. P. C. FTIR, HPLC, GC-MS analysis and investigation of hypoglycemic effects of leaves extracts of Fagonia
+indica. Pharmacogn. Commun. 11, 109–118 (2021).
+	41.	 Anwer, M. K. et al. Development and evaluation of PLGA polymer based nanoparticles of quercetin. Int. J. Biol. Macromol. 92,
+213–219 (2016).
+	42.	 Adlravan, E. et al. Potential activity of free and PLGA/PEG nanoencapsulated nasturtium officinale extract in inducing cytotoxicity
+and apoptosis in human lung carcinoma A549 cells. J. Drug Deliv. Sci. Technol. 61 (2021).
+	43.	 Seth, A. et al. Himalayan fern cheilanthes bicolor mediated fabrication and characterization of iron nanoparticles with antimicrobial
+potential. Bionanoscience 12, 486–495 (2022).
+	44.	 Bhandary, S. K., Bhat, V. S., Sharmila, K., Bekal, M. P. J. J. O. H. & Nu, A. S. Preliminary phytochemical screening of various extracts
+of Punica granatum peel, whole fruit and seeds. J. Health Allied Sci. NU 2, 34–38 (2012).
+	45.	 Júlio, A. et al. Ionic liquid-polymer nanoparticle hybrid systems as new tools to deliver poorly soluble drugs. Nanomaterials 9, 1148
+(2019).
+	46.	 Üstün, A. & Örtücü, S. J. P. Evaluation of nisin-loaded PLGA nanoparticles prepared with rhamnolipid cosurfactant against S
+aureus biofilms. Pharmaceutics. 14, 2756 (2022).
+	47.	 Mahboob, T. et al. PLGA nanoparticles loaded with Gallic acid-a constituent of Leea indica against Acanthamoeba triangularis. Sci.
+Rep. 10, 8954 (2020).
+	48.	 Wang, S., Xue, T., Niu, B., Wei, L. & Wang, H. J. P. I. N. S. M. I. Preparation, characterization and antibacterial property of naringin
+loaded PLGA nanospheres. Prog. Nat. Sci. Mater. Int. 32, 498–503 (2022).
+	49.	 Kumari, A. et al. Nanoencapsulation and characterization of Albizia chinensis isolated antioxidant quercitrin on PLA nanoparticles.
+Colloids Surf. B Biointerfaces 82, 224–232 (2011).
+	50.	 Fröhlich, E. J. I. j. o. n. The role of surface charge in cellular uptake and cytotoxicity of medical nanoparticles. Int. J. Nanomedicine,
+5577–5591 (2012).
+	51.	 Adlravan, E., Nejati, K., Karimi, M. A., Mousazadeh, H. & Abbasi, A. Dadashpour MJJoDDS, Technology: Potential activity of free
+and PLGA/PEG nanoencapsulated nasturtium officinale extract in inducing cytotoxicity and apoptosis in human lung carcinoma
+A549 cells. J drug Deliv Sci Tec 61, 102256 (2021).
+	52.	 Andrian, T., Muela, Y., Delgado, L., Albertazzi, L. & Pujals, S. J. N. A super-resolution and transmission electron microscopy
+correlative approach to study intracellular trafficking of nanoparticles. Nanoscale 15, 14615–14627 (2023).
+	53.	 Donohoe, C., Senge, M. O., Arnaut, L. G. & Gomes-da-Silva, L.C.J.B.E.B.A.-R.O.C. Cell death in photodynamic therapy: From
+oxidative stress to anti-tumor immunity. Biochim. Biophys. Acta Rev. Cancer 1872, 188308 (2019).
+	54.	 Povea-Cabello, S. et al. Dynamic reorganization of the cytoskeleton during apoptosis: the two coffins hypothesis. Int. J. Mol. Sci. 18,
+2393 (2017).
+	55.	 Häcker, G. The morphology of apoptosis. Cell Tissue Res. 301, 5–17 (2000).
+Scientific Reports |        (2025) 15:23140
+15
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/
+
+Acknowledgements
+The Authors extend their appreciation to the Researcher supporting project number (ORF-2025-729), King Saud
+University, Riyadh Saudi Arabia for funding this project.
+Author contributions
+SN, SMH, SJ, AK, AZ, SR, and TA designed the study, conceived the study, and analyzed the results.  SJ and AK
+conceived an initial part of the study, performed the experiment, histology and helped in compiling the results.
+SR, AA, JHT, FMH and TA helped in writing the results. SMH, SR, JHT, AK, TA, FMH, and SN made a substan­
+tial contribution to the interpretation of data and revising the manuscript for intellectual content. All authors
+read and approved the final manuscript.
+Funding
+The Authors extend their appreciation to the Researcher supporting project number (ORF-2025-729), King Saud
+University, Riyadh, Saudi Arabia, for funding this project.
+Declarations
+Competing interests
+The authors declare no competing interests.
+Ethics approval
+All the experimental protocols were reviewed and monitored by the ethical committee of Department of
+Physics & Applied Mathematics (DPAM), PIEAS, 45,650, Islamabad, Pakistan (CEE Council 862/ 2923).
+Additional information
+Supplementary Information The online version contains supplementary material available at ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​
+0​.​1​0​3​8​/​s​4​1​5​9​8​-​0​2​5​-​0​5​1​6​3​-​1​.​
+Correspondence and requests for materials should be addressed to S.N. or S.R.
+Reprints and permissions information is available at www.nature.com/reprints.
+Publisher’s note  Springer Nature remains neutral with regard to jurisdictional claims in published maps and
+institutional affiliations.
+Open Access   This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives
+4.0 International License, which permits any non-commercial use, sharing, distribution and reproduction in
+any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide
+a link to the Creative Commons licence, and indicate if you modified the licensed material. You do not have
+permission under this licence to share adapted material derived from this article or parts of it. The images or
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated
+otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence
+and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to
+obtain permission directly from the copyright holder. To view a copy of this licence, visit ​h​t​t​p​:​/​/​c​r​e​a​t​i​v​e​c​o​m​m​o​
+n​s​.​o​r​g​/​l​i​c​e​n​s​e​s​/​b​y​-​n​c​-​n​d​/​4​.​0​/​.​
+© The Author(s) 2025
+Scientific Reports |        (2025) 15:23140
+16
+| https://doi.org/10.1038/s41598-025-05163-1
+www.nature.com/scientificreports/

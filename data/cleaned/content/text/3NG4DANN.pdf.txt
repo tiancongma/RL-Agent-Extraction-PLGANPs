@@ -1,0 +1,1800 @@
+Research Article
+Statistical Design for Formulation Optimization of Hydrocortisone
+Butyrate-Loaded PLGA Nanoparticles
+Xiaoyan Yang,1 Sulabh Patel,1 Ye Sheng,1 Dhananjay Pal,1 and Ashim K. Mitra1,2
+Received 4 September 2013; accepted 23 December 2013; published online 7 February 2014
+Abstract. The aim of this investigation was to develop hydrocortisone butyrate (HB)-loaded poly(D,L-lactic-
+co-glycolic acid) (PLGA) nanoparticles (NP) with ideal encapsulation efficiency (EE), particle size, and drug
+loading (DL) under emulsion solvent evaporation technique utilizing various experimental statistical design
+modules. Experimental designs were used to investigate specific effects of independent variables during
+preparation of HB-loaded PLGA NP and corresponding responses in optimizing the formulation. Plackett–
+Burman design for independent variables was first conducted to prescreen various formulation and process
+variables during the development of NP. Selected primary variables were further optimized by central
+composite design. This process leads to an optimum formulation with desired EE, particle size, and DL.
+Contour plots and response surface curves display visual diagrammatic relationships between the experimen-
+tal responses and input variables. The concentration of PLGA, drug, and polyvinyl alcohol and sonication
+time were the critical factors influencing the responses analyzed. Optimized formulation showed EE of 90.6%,
+particle size of 164.3 nm, and DL of 64.35%. This study demonstrates that statistical experimental design
+methodology can optimize the formulation and process variables to achieve favorable responses for HB-
+loaded NP.
+KEY WORDS: central composite design; hydrocortisone butyrate; nanoparticles; Plackett–Burman;
+PLGA.
+INTRODUCTION
+Corticosteroids (or “steroids” for short) are synthetic
+derivatives of natural anti-inflammatory hormones secreted
+by adrenal glands (1,2). These compounds can relieve inflam-
+mation in various cells to prevent release of modified
+chemicals that are normally involved in producing immune
+and allergic responses, resulting in inflammation (3). The
+corticosteroids in ester forms are widely applied as topical
+anti-inflammatory agents, e.g., hydrocortisone acetate, and
+hydrocortisone butyrate (HB) (4,5). Given their potent anti-
+inflammatory activity, these agents are considered to be ther-
+apeutic candidates in the treatment of ocular inflammation. In
+eye clinics, corticosteroids are widely administered by eye
+drops, suspension, creams, and ointment (6,7); 0.1% HB oint-
+ment showed no skin and eye irritations in rabbits (8,9).
+However, these formulations exhibit low bioavailability and
+may cause adverse effects such as glaucoma, transient stinging
+or burning, blurred vision, and local irritation (10). Moreover,
+the conventional ophthalmic formulations of steroids such as
+hydrocortisone and hydrocortisone acetate can only achieve
+short-term relief of ocular inflammation, owing to their very
+short residence time in the precorneal area. Therefore, steroid
+thereby requires frequent administration (11). Alternative
+drug delivery systems such as implants and intravitreal injec-
+tions may overcome such disadvantages associated with con-
+ventional topical delivery systems. However, there is limited
+patient compliance because of surgical procedure, discomfort,
+and many adverse effects (12,13).
+To overcome these limitations, our aim is to develop HB-
+loaded biodegradable nanoparticles (NP) which may provide
+a sustained release. Poly(D,L-lactic-co-glycolic acid) (PLGA)
+has been the most widely applied biodegradable NP for many
+years. This polymer is easy to use, biocompatible, biodegrad-
+able, and generally nontoxic lactic and glycolic acid in vivo
+(14).
+PLGA NP can be formulated by emulsion solvent evap-
+oration (o/w) technique (15). This well-established method
+involves emulsification of water-immiscible organic solvent
+containing PLGA polymer into drug in an aqueous surfactant
+aqueous solution with steroid under sonication. Removal of
+organic solvent under vacuum generates NP. During this
+manufacturing process, many parameters such as the concen-
+tration of polymer, drug, surfactant, duration and intensity of
+sonication, and volume of aqueous phase must be optimized
+to obtain HB-loaded NP. It is, therefore, essential to observe
+the effects of these preparation variables and their potential
+interactions among factors, i.e., physicochemical properties.
+However, it is costly and time consuming to assess the impact
+of a large number of formulation factors individually. Design
+of experiments can be successfully implemented to minimize
+the total number of experiments and identify the dominant
+1 Division of Pharmaceutical Sciences, School of Pharmacy, University
+of Missouri-Kansas City, 2464 Charlotte Street, HSB 5258, Kansas
+City, Missouri 64108, USA.
+2 To whom correspondence should be addressed. (e-mail:
+mitraa@umkc.edu)
+AAPS PharmSciTech, Vol. 15, No. 3, June 2014 (# 2014)
+DOI: 10.1208/s12249-014-0072-4
+569
+1530-9932/14/0300-0569/0 # 2014 American Association of Pharmaceutical Scientists
+
+variable effects and interactions (16,17). A screening design
+such as Plackett–Burman can initially be selected to determine
+the most important parameters among a number of indepen-
+dent variables with a limited number of experiments (18,19).
+This statistical method, however, neglects the interactions
+among the factors (20).
+Central composite design (CCD) is a well-known method
+involving mathematical modeling and statistical analysis to
+evaluate critical variables responsible for optimization of
+product quality (21). It consists of imbedded factorial design,
+star points for estimation of curvature, and center points for
+evaluation of experimental reproducibility (22). It can sig-
+nificantly reduce the number of empirical experiments in
+determining mathematical trends without sacrificing final
+product quality. The method generates a specific mathemat-
+ical model that provides information on how the response is
+influenced by several variables, which allow the prediction
+of optimum level of variable factors required for a given
+response.
+Therefore, the objective of the present study is to opti-
+mize independent variables in order to achieve desired encap-
+sulation efficiency (EE), particle size, and drug loading (DL)
+for the HB-loaded NP. The objective is also to employ appli-
+cation of statistical data to appropriately modify methodolo-
+gies in research and/or practice and to incorporate a practical
+predictive statistical process including experimental design,
+parameter estimation, model predictive control, and statistical
+analyses in the production and optimization of formulations.
+MATERIALS AND METHODS
+Materials
+Hydrocortisone 17-butyrate was purchased from Sigma-
+Aldrich Co. (St. Louis, MO). High-performance liquid chro-
+matography (HPLC)-grade acetonitrile and dichloromethane
+were purchased from Fisher Scientific Co. (Fairlawn, NJ).
+PLGA copolymer with a monomer ration of 75:25 (Mw
+66,000–107,000 Da) and polyvinyl alcohol (PVA; Mw 31,000–
+50,000 Da) were obtained from Sigma-Aldrich Co. Double-
+distilled deionized (DDI) water was used throughout in
+the preparation of formulations and buffers. Ultrapure water
+was prepared using a Milli-Q® water purification system
+(Millipore Co., Billerica, USA) and filtered (0.22 μm) before
+use in mobile phases. All other chemicals in the study were of
+analytical reagent grade.
+Methods
+Preparation of NP
+PLGA NP containing HB were prepared by emulsion
+solvent evaporation method (23). Briefly, various amounts of
+PLGA and HB were dissolved in dichloromethane (5 ml) to
+form the organic phase. It was then slowly mixed with an
+aqueous solution containing PVA and an oil/water-type emul-
+sion was formed upon sonication over an ice bath using a
+Fisher Scientific 100 ultrasonic probe. Organic solvent was
+removed by stirring at room temperature for 6 h and then
+evaporated under a vacuum for 30 min to ensure complete
+removal of organic solvents. To remove the unentrapped drug
+and PVA, NP suspension was washed with DDI water follow-
+ed by centrifugation at 5,000×g (22,000 rpm) for 1 h. This
+procedure was repeated for three times. Resulting NP suspen-
+sion was freeze-dried over 48 h under a freeze-drier system to
+obtain NP in powder form.
+Characterization of Physicochemical Properties of NP
+1. Entrapment efficiency and DL
+For measuring drug entrapment in NP, 1 mg of freeze-
+dried material was dissolved in 2 ml of dichloromethane
+and vortexed for 1 min to completely solubilize the NP.
+Subsequently, the mixture was dried under inert atmo-
+sphere (nitrogen gas) and dissolved in 500 μL of acetoni-
+trile/water (60:40) by vortexing. After centrifugation at
+12,000 rpm for 10 min, the supernatant was aspirated for
+analysis of drug concentration by HPLC. Entrapment effi-
+ciency and DL were calculated with Eqs. 1 and 2. The
+measurements were performed in triplicate.
+Entrapment efficiency %
+ð
+Þ
+¼ Weight of drug in nanoparticles
+Initial weight of feeding drug
+ 100
+ð1Þ
+Drug loading %
+ð
+Þ
+¼ Weight of drug in nanoparticles
+Weight of nanoparticles
+ 100
+ð2Þ
+2. Particle size and polydispersity by dynamic light scattering
+The average particle size distribution and polydispersity
+index (PDI) of freeze-dried NP were characterized by dy-
+namic light scattering analyzer (Brookhaven Zeta Plus in-
+strument, Holsville, NY). Analyzers were performed in
+triplicate.
+HPLC Analytical Method
+Samples collected were analyzed by HPLC system
+(Waters 600 pump, Waters, Milford, MA) equipped with a
+fluorescence detector (HP1100, Hewlett Packard, Waldbronn,
+Germany). The analysis condition included a Kinetex 2.6 μm
+PFP 100 A column (50×2.1 mm ID; Torrance, CA, USA); the
+mobile phase comprised a mixture of water (pH 6.5) and aceto-
+nitrile (62:38, v/v) and flow rate of 0.6 ml/min at 25°C. The
+wavelength of UV detection was 240 nm with a sensitivity
+0.0010 AUFS. Fifty microliters of sample volume was injected.
+The retention time tR was found to be 7.78 min.
+Experimental Design
+In this study, the effects of formulation and process pa-
+rameters on various response properties were investigated by
+experimental designs (24). The independent variables such as
+polymers, drug, and surfactant were examined. The concentra-
+tion of polymer, drug, and surfactant, the duration and intensity
+570
+Yang et al.
+
+of sonication, and the volume of aqueous phase were varied.
+The upper and lower limits for individual factors, generating
+stable formulation under solvent evaporation technique, were
+identified in the preliminary studies (not shown here). The
+response considered included EE, particle size, and DL.
+Plackett–Burman is a type of screening design initially con-
+ducted to identify the significant main factors rather than interac-
+tion parameters among the 6 factors (25). In this prescreening
+experimental design, a total of eight experiments were carried out
+and structured for 6 factors with 2 levels. The experimental design
+with input and output values is shown in Table I. Based on
+Plackett–Burman design, 4 critical factors were selected as most
+important independent variables. In the second step, these
+4 critical factors were implemented in CCD to predict the
+optimum level and to achieve desirable responses including EE,
+particle size, and DL. In this experimental design, 27 different
+runs were performed to determine the model coefficients. The
+first 16 runs are presented in Table II involving 24 full factorial
+design, where 4 corresponds to the number of critical factors,
+and 2 to the number of levels for each factor. Eight star points
+Table I. The Initial Input Factor Levels and Experimental Responses in Screening Design Plackett–Burman
+Run
+no.
+Input factor levels
+Experimental response
+1
+2
+3
+4
+5
+6
+EE
+(%)
+Particle
+size (nm)
+DL
+(%; w/w)
+PDI
+PLGA
+(mg/ml)
+Drug
+(mg/ml)
+Water
+volume (ml)
+PVA
+(%)
+Sonication
+power (W)
+Sonication
+time (min)
+1
+37.5
+3
+6
+2
+45
+8
+89.4
+191
+7.15
+0.005
+2
+37.5
+9
+6
+1
+75
+4
+83.8
+208.6
+20.11
+0.021
+3
+37.5
+9
+14
+1
+75
+8
+81.5
+200.3
+19.56
+0.036
+4
+12.5
+9
+14
+2
+45
+4
+58.6
+192.1
+42.19
+0.007
+5
+37.5
+3
+14
+2
+45
+4
+96.2
+192.9
+7.70
+0.082
+6
+12.5
+9
+6
+2
+75
+8
+49.7
+187.9
+35.78
+0.130
+7
+12.5
+3
+14
+1
+75
+8
+53.4
+198.4
+12.82
+0.119
+8
+12.5
+3
+6
+1
+45
+4
+58.8
+209.3
+14.11
+0.104
+PLGA poly(D,L-lactic-co-glycolic acid), PVA polyvinyl alcohol, EE encapsulation efficiency, DL drug loading, PDI polydispersity index
+Table II. Central Composite Design for Four Factors at Three Different Levels
+Run
+no.
+Input factorial levels
+Experimental
+design
+Experimental response
+XA/PLGA
+(mg/ml)
+XB/drug
+(mg/ml)
+XC/PVA
+(%)
+XD/sonication
+time (min)
+EE
+(%)
+Particle size
+(nm)
+DL
+(%, w/w)
+PDI
+1
+12.5
+3
+1
+4
+24 factorial
+design
+96.61
+212.7
+23.19
+0.072
+2
+12.5
+3
+1
+8
+86.82
+151.8
+20.84
+0.008
+3
+12.5
+3
+2
+4
+96.61
+208.2
+23.19
+0.043
+4
+12.5
+3
+2
+8
+86.83
+141.8
+20.84
+0.006
+5
+12.5
+9
+1
+4
+95.36
+209.1
+68.66
+0.011
+6
+12.5
+9
+1
+8
+85.55
+146.1
+61.60
+0.005
+7
+12.5
+9
+2
+4
+95.56
+192.8
+68.80
+0.005
+8
+12.5
+9
+2
+8
+83.45
+142.4
+60.08
+0.009
+9
+37.5
+3
+1
+4
+96.83
+215.1
+7.74
+0.147
+10
+37.5
+3
+1
+8
+91.88
+175.5
+7.35
+0.006
+11
+37.5
+3
+2
+4
+95.97
+208.3
+7.68
+0.005
+12
+37.5
+3
+2
+8
+91.68
+164.7
+7.33
+0.012
+13
+37.5
+9
+1
+4
+95.55
+208.6
+22.93
+0.007
+14
+37.5
+9
+1
+8
+91.05
+177.0
+21.85
+0.005
+15
+37.5
+9
+2
+4
+95.55
+201.1
+22.93
+0.022
+16
+37.5
+9
+2
+8
+91.25
+166.5
+21.90
+0.009
+17
+12.5
+6
+1.5
+6
+Star design
+89.61
+160.1
+43.01
+0.005
+18
+37.5
+6
+1.5
+6
+91.08
+167.3
+14.57
+0.122
+19
+25
+3
+1.5
+6
+92.87
+182.5
+11.14
+0.130
+20
+25
+9
+1.5
+6
+91.02
+181
+32.77
+0.071
+21
+25
+6
+1
+6
+90.35
+187.9
+21.68
+0.094
+22
+25
+6
+2
+6
+91.35
+154.5
+21.92
+0.011
+23
+25
+6
+1.5
+4
+95.87
+207.2
+23.01
+0.008
+24
+25
+6
+1.5
+8
+91.8
+177.1
+22.03
+0.036
+25
+25
+6
+1.5
+6
+Center points
+(n=3)
+92.35
+190.7
+22.16
+0.005
+26
+25
+6
+1.5
+6
+92.42
+191.2
+22.18
+0.006
+27
+25
+6
+1.5
+6
+92.38
+190.3
+22.17
+0.005
+PLGA poly(D,L-lactic-co-glycolic acid), PVA polyvinyl alcohol, EE encapsulation efficiency, DL drug loading, PDI polydispersity index
+571
+Statistical Design for Formulation Optimization
+
+(runs, 17–24) with a distance±α (α=1 for face CCD) away from
+the center, were added for constructing more efficient prediction
+models of prediction. Three center points (runs, 25–27) were
+added for testing experimental reproducibility (25).
+Statistical Analysis
+In this study, all data are expressed as means±standard
+deviation (SD; n=3). Statistical analyses were performed using
+SAS software 9.3 version (Cary, NC, USA). The response surface
+regression procedure was selected to find the coefficients and to
+plot contour and response surface. Analysis of contour and sur-
+face plots obtained was used for optimization and determination
+of interaction coefficients among various factors (26). A
+mathematical expression of experimental designs is repre-
+sented in a polynomial equation (Eq. 3):
+Y ¼ α0 þ α1X1 þ α2X2 þ α3X3 þ ⋯þ α12X12 þ α13X13
+þ α23X23 þ ⋯
+ð3Þ
+Y is the measured response of EE, particle size, and DL;
+α0 indicates a constant representing the mean of dependent
+variable obtained in each experiment; αi and αij are the linear
+effects of variables Xi and the first-order interactions between
+Xi and Xj, respectively;
+Xi (for i=1, 2, 3, …) represents
+independent coded level of variables; Xij (for i,j =1, 2, 3, …,
+i<j) is the interaction coefficient between Xi and Xj; αii repre-
+sents the quadratic effect of variables Xii. In this polynomial
+equation, a positive parameter indicates a synergistic effect,
+where the output ascends with an increase in input variables.
+Conversely, a negative sign denotes an antagonistic effect
+where output descends with elevation in input variables (27).
+Two-way analysis of variance (ANOVA) can be applied to
+determine statistical significance of each model coefficient,
+and least significant difference as post hoc test was performed.
+Contour plots and surface response plots are diagrammatic
+representation of the values of the response. These plots are
+useful to project the magnitude of effects for each variable and
+interactions. It can also explain the relationship between in-
+dependent variables and dependent responses. The reduced
+models were used to plot two-dimensional contour plots and
+three-dimensional response surface plots using a SAS soft-
+ware. Response surface methodology provides a mathematical
+trend that can find optimum level of experimental factors
+required for a given response (28). An additional formulation
+as the experimental checkpoint was also performed to com-
+pare with predicted optimum values.
+Table III. ANOVA Results in Screening Design Plackett–Burman for EE, Particle Size, and DL
+Source
+Experimental response
+EE (%)
+Particle size (nm)
+DL (%; w/w)
+df
+Sum of
+squares
+F value
+P value
+df
+Sum of
+squares
+F value
+P value
+df
+Sum of
+squares
+F value
+P value
+Model
+6
+2,312.17
+3,082.89
+0.0138*
+6
+455.79
+6,752.41
+0.0093*
+6
+1,141.25
+58.05
+0.1001
+1. PLGA (mg/ml)
+1
+2,125.52
+17,004.20
+0.0049*
+1
+3.25
+289.00
+0.0374*
+1
+317.32
+96.84
+0.0645
+2. Drug (mg/ml)
+1
+22.56
+180.50
+0.0473*
+1
+0.30
+26.89
+0.1213
+1
+425.18
+129.76
+0.0557
+3. Water volume
+(ml)
+1
+8.00
+64.00
+0.0792
+1
+21.45
+1,906.78
+0.0146*
+1
+3.26
+0.99
+0.5010
+4. PVA (%)
+1
+7.84
+62.72
+0.0800
+1
+207.36
+18,432.00
+0.0047*
+1
+24.05
+7.34
+0.2251
+5. Sonication
+power (W)
+1
+3.38
+27.04
+0.1210
+1
+3.00
+266.78
+0.0389*
+1
+5.46
+1.67
+0.4197
+6. Sonication
+time (min)
+1
+20.70
+165.62
+0.0494*
+1
+26.01
+2,312.00
+0.0132*
+1
+0.30
+0.09
+0.8129
+Error
+1
+0.13
+1
+0.01
+1
+3.28
+Corrected total
+7
+2,312.30
+7
+455.80
+7
+1,144.52
+PLGA poly(D,L-lactic-co-glycolic acid), PVA polyvinyl alcohol, EE encapsulation efficiency, DL drug loading, PDI polydispersity index
+*α<0.05, significance level
+Table IV. The Regression Coefficients in Screening Design Plackett–
+Burman for EE, Particle Size, and DL
+Coefficient
+Experimental response
+EE (%)
+Particle
+size (nm)
+DL
+(%, w/w)
+k0
+48.900
+233.980
+10.383
+k1/PLGA (mg/ml)
+1.304*
+0.051*
+−0.504
+k2/drug (mg/ml)
+−0.792*
+0.092
+3.437
+k3/water volume (ml)
+0.250
+−0.409*
+0.160
+k4/PVA (%)
+2.800
+−14.400*
+4.904
+k5/sonication power (W)
+−0.087
+−0.082*
+−0.110
+k6/sonication time (min)
+−1.138*
+−1.275*
+−0.137
+PLGA poly(D,L-lactic-co-glycolic acid), PVA polyvinyl alcohol, EE
+encapsulation efficiency, DL drug loading, PDI polydispersity index
+*α<0.05, significance level
+Table V. Identified Critical Factors and Levels Investigated in Central
+Composite Design
+Critical factors
+Transformed levels
+−1
+0
+1
+XA/PLGA (mg/ml)
+12.5
+25
+37.5
+XB/drug (mg/ml)
+3
+6
+9
+XC/PVA (%)
+1
+1.5
+2
+XD/sonication time (min)
+4
+6
+8
+PLGA poly(D,L-lactic-co-glycolic acid), PVA polyvinyl alcohol
+572
+Yang et al.
+
+RESULTS AND DISCUSSION
+Screening Experimental Design
+A structured experimental design matrix with only eight
+experiments was built according to Plackett–Burman design to
+prescreen the influence of six parameters at their lowest and
+highest factor levels. The input factor conditions and resulting
+experimental response data for eight prescreening experimental
+runs are shown in Table I. The experimental responses considered
+included EE, particle size, and DL. The model to determine
+the response coefficients can be expressed as Eq. 4:
+Y ¼ α0 þ α1X1 þ α2X2 þ α3X3 þ α4X4 þ α5X5 þ α6X6
+ð4Þ
+X1 is the concentration of PLGA (mg/ml); X2 is the
+concentration of drug (mg/ml); X3 is volume of water; X4
+represents concentration of PVA (percent); X5 is sonication
+Table VI. ANOVA Results in Central Composite Design for Entrapment Efficiency (EE), Particle Size, and Drug Loading (DL)
+Source
+Experimental response
+EE (%)
+Particle size (nm)
+DL (%; w/w)
+df
+Sum of
+squares
+F value
+P value
+df
+Sum of
+squares
+F value
+P value
+df
+Sum of
+squares
+F value
+P value
+Model
+14
+316.48
+25.79
+<0.0001*
+14
+12,784.75
+11.88
+<0.0001
+14
+8,309.95
+226.90
+<0.0001*
+XA
+1
+33.18
+37.86
+<0.0001*
+1
+788.05
+10.25
+0.0076*
+1
+3,638.90
+1,391.01
+<0.0001*
+XB
+1
+7.68
+8.77
+0.0119*
+1
+72.00
+0.94
+0.3523
+1
+3,534.16
+1,350.97
+<0.0001*
+XC
+1
+0.17
+0.19
+0.6673
+1
+595.13
+7.74
+0.0166*
+1
+0.08
+0.03
+0.8675
+XD
+1
+224.72
+256.39
+<0.0001*
+1
+9,809.34
+127.56
+<0.0001*
+1
+32.83
+12.55
+0.0041*
+XAB
+1
+0.99
+1.14
+0.3076
+1
+11.73
+0.153
+0.7030
+1
+777.99
+297.40
+<0.0001*
+XAC
+1
+0.07
+0.08
+0.7880
+1
+0.08
+0
+0.9755
+1
+0.11
+0.044
+0.8382
+XAD
+1
+34.37
+39.21
+<0.0001*
+1
+520.98
+6.77
+0.0231*
+1
+19.43
+7.43
+0.0184*
+XBC
+1
+0.03
+0.03
+0.8651
+1
+2.18
+0.03
+0.8692
+1
+0.10
+0.04
+0.8500
+XBD
+1
+0.23
+0.26
+0.6193
+1
+59.68
+0.78
+0.3957
+1
+9.69
+3.70
+0.0783
+XCD
+1
+0.13
+0.15
+0.7092
+1
+0
+0
+0.9978
+1
+0.15
+0.06
+0.8124
+XA
+2
+1
+4.41
+5.03
+0.0445*
+1
+461.85
+6.01
+0.0306*
+1
+119.10
+45.53
+<0.0001*
+XB
+2
+1
+0.22
+0.25
+0.6279
+1
+55.56
+0.78
+0.4120
+1
+0
+0
+0.9773
+XC
+2
+1
+1.66
+1.90
+0.1933
+1
+89.57
+1.16
+0.3017
+1
+0.09
+0.03
+0.8581
+XD
+2
+1
+12.22
+13.95
+0.0028*
+1
+582.29
+7.57
+0.0175*
+1
+0.74
+0.28
+0.6050
+Error
+12
+10.52
+12
+922.79
+12
+31.39
+Corrected total
+26
+327.00
+26
+13,707.54
+26
+8,341.34
+Regression analysis
+*α<0.05, significance level
+Table VII. The Regression Coefficients in Central Composite Design,
+P values, R2, and Adjusted R2 for Full Model of Entrapment
+Efficiency (EE), Particle Size, and Drug Loading (DL)
+Coefficient
+Experimental response
+EE (%)
+Particle size (nm)
+DL (%; w/w)
+α0
+91.898
+181.646
+22.046
+αA
+1.358*
+6.617*
+−14.218*
+αB
+−0.653*
+−2.000
+14.012*
+αC
+−0.097
+−5.750*
+−0.065
+αD
+−3.533*
+−23.344*
+−1.351*
+αAB
+0.249
+0.856
+−6.973*
+αAC
+0.064
+−0.069
+0.084
+αAD
+1.466*
+5.706*
+1.102*
+αBC
+−0.041
+−0.368
+−0.078
+αBD
+−0.119
+1.931
+−0.778
+αCD
+−0.089
+0.006
+−0.098
+αA
+2
+−1.310*
+−13.402*
+6.806*
+αB
+2
+0.290
+4.648
+−0.029
+αC
+2
+−0.805
+−5.902
+−0.184
+αD
+2
+2.180*
+15.048*
+0.536
+R2
+0.9678
+0.9327
+0.9962
+Adjusted R2
+0.9303
+0.8541
+0.9918
+CV
+1.016
+4.821
+6.036
+*α<0.05, significance level
+CV coefficient of variation
+Table VIII. The Regression Coefficients in Central Composite De-
+sign, P values, R2, and Adjusted R2 for Reduced Model of Entrapment
+Efficiency (EE), Particle Size, and Drug Loading (DL) of NP
+Coefficient
+Experimental response
+EE (%)
+Particle size (nm)
+DL (%; w/w)
+α0
+91.829
+181.479
+22.118
+αA
+1.358
+6.617
+−14.218
+αB
+−0.653
+14.012
+αC
+−5.750
+αD
+−3.533
+−23.344
+−1.351
+αAB
+−6.973
+αAD
+1.466
+5.706
+1.102
+αA
+2
+−1.515
+−13.903
+7.021
+αD
+2
+1.975
+14.547
+F value of model
+75.61
+35.30
+653.93
+P value of model
+<0.0001*
+<0.0001*
+<0.0001*
+R2
+0.9578
+0.9137
+0.9949
+Adjusted R2
+0.9451
+0.8878
+0.9934
+CV
+0.902
+4.227
+5.427
+*α<0.05, significance level
+NP nanoparticles, CV coefficient of variation
+573
+Statistical Design for Formulation Optimization
+
+power; and X6 denotes sonication time (minutes) in coded
+values. Each experimental response Y can be represented by
+an individual quadratic equation.
+Analysis of data was carried out by ANOVA, and the
+individual parameter was evaluated with F test as shown in
+Table III. The corresponding regression coefficients were sum-
+marized in Table IV. The results from Table III indicate that
+concentration of PLGA and drug and the sonication time exert
+significant effects on EE. As expected, an addition of more
+PLGA enhanced EE, whereas an increase in drug and sonica-
+tion time led to lower EE (Table IV). In addition, the particle
+size diminished with rise in several factors including PVA, in-
+tensity, and duration of sonication. However, PLGA produced a
+significant synergistic effect on particle size (Table IV). None of
+the factors appeared to exert significant influence on DL by
+prescreening experimental design shown in Table III.
+Therefore, four critical factors including PLGA, drug and PVA
+levels, and sonication time were first selected by Plackett–
+Burman design. It was further optimized by another experimen-
+tal design for obtaining desirable responses (Table V).
+The screening design Plackett–Burman only evaluates
+the effects of individual variables but not the interactions
+between variables and their impact on each response (29).
+However, this step is necessary to simplify various variables.
+It also enables us to further focus on more detailed examina-
+tion and optimization of several critical factors.
+Central Composite Design
+CCD can provide minimal experimental runs to investigate all
+the effects and interactions between the four experimental factors
+from prescreening study (30). In this study, all the models of CCD
+permit to find optimal operating conditions with high EE, small
+particle size, and great DL, which can be controlled by adjusting
+different variables. The matrix of the CCD and resulting experi-
+mental responses are provided in Table II. The results of the
+experimental design are analyzed with SAS software,
+which can provide considerable useful information and
+confirm the utility of statistical design in conducting ex-
+periments. The ANOVA results and regression coefficients
+for each response based on 27 runs in this design are
+summarized in Tables VI and VII, respectively. The fol-
+lowing quadratic model is carried out to fit the data:
+Y ¼ α0 þ αAXA þ αBXB þ αcXc þ αdXd þ αABXAB þ αACXAC
+þ αADXAD þ αBCXBC þ αBDXBD þ αCDXCD þ αA2X2
+A
+þ αB2X2
+B þ αC2X2
+C þ αD2X2
+D
+ð5Þ
+XA is the concentration of PLGA (milligrams per milliliter);
+XB denotes the concentration of drug (milligrams per milliliter);
+XC represents concentration of PVA (percent); and XD is soni-
+cation time (minutes) in coded values. Each experimental re-
+sponse Y can be represented by an individual quadratic equation.
+Effect of Formulation Variable on EE
+The full model for Y1 (EE %) is given by Eq. 6.
+Y1 EE %
+ð
+Þ ¼ 91:898 þ 1:358XA−0:653XB−0:097XC−3:533XD
+þ 0:249XAB þ 0:064XAC þ 1:466XAD−0:041XBC
+−0:119XBD−0:089XCD−1:310X2
+A þ 0:290X2
+B
+−0:805X2
+C þ 2:180X2
+D
+ð6Þ
+with R2=0.9678, adjusted R2=0.9303, and CV=1.016
+The model coefficients estimated by quadratic model for EE
+are given in Table VII. The regression coefficients with
+Fig. 1. Main effects plot for EE, particle size, and DL of NP
+574
+Yang et al.
+
+AB EE
+a
+Fig. 2. Contour plots and response surface plots of EE of NP. a XA and XB, XC=1.5, and
+XD=6; b XA and XD, XB=6, and XC=1.5; and c XB and XD, XA=25, and XC=1.5
+575
+Statistical Design for Formulation Optimization
+
+AD EE *
+b
+Fig. 2. (continued)
+576
+Yang et al.
+
+BD EE
+c
+Fig. 2. (continued)
+577
+Statistical Design for Formulation Optimization
+
+AC SIZE
+a
+Fig. 3. Contour plots and response surface plots of particle size of NP. a XA and XC, XB=6,
+and XD=6; b XA and XD, XB=6, and XC=1.5; and c XC and XD, XA=25, and XB=6
+578
+Yang et al.
+
+P value<0.05 are highly significant, whereas the terms having
+nonsignificant response coefficients with a P value>0.05 are least
+contributing in the prediction of EE and hence are removed from
+the full model to generate the reduced model equation.
+AD SIZE*
+b
+Fig. 3. (continued)
+579
+Statistical Design for Formulation Optimization
+
+CD SIZE
+c
+Fig. 3. (continued)
+580
+Yang et al.
+
+AB DL*
+a
+Fig. 4. Contour plots and response surface plots of DL of NP. a XA and XB, XC=1.5, and
+XD=6; b XA and XD, XB=6, and XC=1.5; and c XB and XD, XA=25, and XC=1.5
+581
+Statistical Design for Formulation Optimization
+
+AD DL *
+b
+Fig. 4. (continued)
+582
+Yang et al.
+
+BD DL
+c
+Fig. 4. (continued)
+583
+Statistical Design for Formulation Optimization
+
+The following polynomial equation indicates the reduced
+model having significant coefficients for Y1 (EE %).
+Y1 EE %
+ð
+Þ ¼ 91:829 þ 1:358XA−0:653XB−3:533XD
+þ 1:466XAD−1:515X2
+A þ 1:975X2
+D
+ð7Þ
+with R2=0.9578, adjusted R2=0.9451, and CV=0.902
+In Eq. 7, the quadratic model is found to be signifi-
+cant with an F value of 25.79 (P value<0.0001), which
+indicates that response Y1 and the set of X variables are
+significantly related (Table VI). F value of the reduced
+model is 75.61 with a very low probability value (P value
+<0.0001), demonstrating that the reduced model is also
+highly significant. The determination coefficient (R2) of
+full model is 0.9678, higher than R2 of 0.9578 in reduced
+model, because R2 value is always higher by adding a
+variable to the model, regardless of whether the
+additional variable is significant or not (31). A high R2
+value indicates that 96.78% of variation in EE was explained by
+the regression of preparation variables. However, a large value
+of R2 is not necessary to confirm the good fit for the regression
+model. In such cases, the adjusted R2 value can be selected to
+evaluate the good fit of the model. Removal of nonsignificant
+terms increases the adjusted R2 value (32). The adjusted R2
+value (0.9451) in reduced model for EE is higher than that
+(0.9303) in the full model. This result indicates that reduced
+model fits the observed data quite well. Compared with the
+full model, the results for reduced model showed that R2 value
+is as high as the adjusted R2 value, which indicates a higher
+significance of the reduced model (Table VIII) (33). In
+addition, the value of the CV (0.902) is relatively low,
+indicating improved precision and reliability of the
+experiments (34).
+It is obvious that the concentration of PLGA, drug,
+and sonication time are the main factors with significant
+effects on the EE of NP as shown in Fig. 1. The plots
+also indicated the synergistic effect of PLGA and an-
+tagonistic effects of drug and sonication time. The con-
+tour plots and response surface curves for EE as a
+function of preparation factors are constructed by fixing
+two of the variables (Fig. 2). This gives a diagrammatic
+representation of relationship between the experimental
+responses and input variables. As shown in Fig. 2, EE
+changes sharply by varying PLGA and sonication time.
+As we expected, a polymer concentration increase led to
+a concentration-dependent increase in EE, whereas the
+sonication time decreased the EE. However, a higher
+level of interactions between PLGA and sonication time
+shows a higher EE of NP. A significant (P value<0.0001)
+synergistic interaction between PLGA and sonication time
+are found (Tables VI and VII), which matched the pattern
+of interaction depicted in plots and there is no significant
+interaction between other variables for EE. The quadratic
+regression coefficients αA2
+and αD2
+are statistically sig-
+nificant. The quadratic effect of sonication time shows
+significant (P value=0.0028) synergistic influence on EE
+of NP. A significant (P value=0.0445) antagonistic influ-
+ence of quadratic effect of PLGA on EE is evident
+(Tables VI and VII).
+Effect of Formulation Variable on Particle Size
+The full model for Y2 (particle size) is given by Eq. 8.
+Y2 Particle size
+ð
+Þ ¼ 181:646 þ 6:617XA−2:000XB−5:750XC−23:344XD
+þ 0:856XAB−0:069XAC þ 5:706XAD−0:368XBC
+þ 1:931XBD þ 0:006XCD−13:402X2
+A þ 4:648X2
+B
+−5:902X2
+C þ 15:048X2
+D
+ð8Þ
+with R2=0.9327, adjusted R2=0.8541, and CV=4.821
+The model coefficients estimated by quadratic model is
+depicted in Table VII. The following polynomial in Eq. 9
+indicates the reduced model by removal of nonsignificant
+response coefficients with P value>0.05 for Y2 (particle size).
+Y2 Particle size
+ð
+Þ ¼ 181:479 þ 6:617XA−5:750XC−23:344XD
+þ 5:706XAD−13:903X2
+A þ þ14:547X2
+D
+ð9Þ
+with R2=0.9137, adjusted R2=0.8878, and CV=4.227
+For the particle size, the model F value of 11.88 with a
+very low probability value (P value<0.0001) implies a very
+high significance for the full regression model (Table VI).
+Model F value of the reduced model is 35.30 with a very low
+probability value (P value<0.0001), demonstrating that the
+reduced model is also highly significant. R2 values of full and
+reduced models are 0.9327 and 0.9137, respectively, indicating
+excellent correlation between the independent variables in
+both models. The adjusted R2 values of full and reduced
+models were 0.8541 and 0.8878, respectively, indicating that
+the reduced model with higher significance is a better model
+for fitting (Table VIII). At the same time, a relatively low
+value of CV (4.227) in the reduced model has greater
+precision and reliability of the conducted experiments,
+compared with CV (4.821) in full model.
+The results in Table VI show that particle size is highly
+dependent on the concentration of PLGA, PVA, and sonica-
+tion time. Figure 1 demonstrates an increasing effect of PLGA
+but a lowering effect of PVA and sonication time. The possible
+interactions between these factors for particle size were also
+investigated. This is reflected by pattern of the contour lines
+and response surface curves in Fig. 3. A significant (P value=
+0.0231) synergistic interaction between PLGA and sonication
+time were also found for particle size however no such inter-
+actions between other variables are significant for particle
+size. The quadratic regression coefficients αA2
+and αD2
+are statistically significant. The quadratic effect of sonica-
+tion time also suggest significant (P value=0.0175) syner-
+gistic influence on the particle size of NP. A significant (P
+Table IX. Comparison Between the Model Constant and the Average
+Experimental Results in the Center of the Domain (n=3)
+Coefficient
+Experimental response
+EE (%)
+Particle size (nm)
+DL (%; w/w)
+α0
+91.898
+181.646
+22.046
+Average result
+92.38
+190.73
+22.17
+584
+Yang et al.
+
+Fig. 5. Overlaid contour plots of NP with independent variables. a XA and XD, XB=6,
+and XC=1.5 and b XC=1.5 and XD=6
+585
+Statistical Design for Formulation Optimization
+
+value=0.0306) antagonistic quadratic effect of PLGA on
+the particle size was observed.
+Effect of Formulation Variable on DL
+The full model for Y3 (DL) is given by Eq. 10.
+Y3 DL
+ð
+Þ ¼ 22:046−14:218XA þ 14:012XB−0:065XC−1:351XD−6:973XAB
+þ 0:084XAC þ 1:102XAD−0:078XBC−0:778XBD−0:098XCD
+þ 6:806X2
+A−0:029X2
+B−0:184X2
+C þ 0:536X2
+D
+ð10Þ
+with R2=0.9962, adjusted R2=0.9918, and CV=6.036
+The model coefficients estimated by quadratic model for
+DL are shown in Table VII. The following polynomial Eq. 11
+indicates the reduced model for Y3 (DL).
+Y3 DL
+ð
+Þ ¼ 22:118−14:218XA þ 14:012XB−1:351XD−6:973XAB
+þ 1:102XAD þ 7:021X2
+A
+ð11Þ
+with R2=0.9949, adjusted R2=0.9934, and CV=5.427
+In full and reduced regression models for DL, model F
+values are 226.90 and 653.93, respectively, implying that both
+models are highly significant with P values less than 0.0001 as
+shown in Table VI. In both models, R2 values (0.9962 and
+0.9949, respectively) and adjusted R2 values (0.9918 and
+0.9934, respectively) are high (>0.99), indicating an excellent
+correlation between independent variables and good fit for
+the regression model (Tables VII and VIII). Since, adjusted R2
+values are improved with a relatively low value of CV (5.427).
+It was obtained by omitting the terms with P value>0.05.
+Therefore, a reduced model is chosen for DL.
+In the reduced model of DL, the PLGA, drug, and son-
+ication time exhibit significant effect (Table VI). The main
+effect plots in Fig. 1 illustrate the increasing effect of drug
+and decreasing effect of PLGA and sonication time. In the
+contour plot and surface response plots for DL, interaction
+between PLGA and drug and that between PLGA and soni-
+cation are depicted in Fig. 4. DL changed significantly by
+varying concentration of PLGA. However, such change came
+in a relatively gradual fashion as viewed from the drug axis or
+sonication time axis. This result indicates that the PLGA is the
+most important factor for interaction effect on DL. It is con-
+cluded that interaction between PLGA and sonication has a
+synergistic effect on DL where more interactions lead to
+higher DL. By contrast, higher interactions between PLGA
+and drug caused an antagonistic effect on DL, resulting in
+lower DL. No significant interactions between other variables
+were found. The quadratic regression coefficient αA2 is statis-
+tically significant. The quadratic effect of PLGA also shows
+significant (P value<0.0001) synergistic influence on DL of
+NP.
+Optimization of Formulation
+The three center-point experiments resulted in minor
+differences between model constants and average results for
+EE and DL (Table IX). However, a significant difference
+between the model constants and the average results for par-
+ticle size was observed, indicating that the calculated model
+does not always generate good prediction of responses every-
+where in the experimental domain.
+The qualitative and quantitative influence of independent
+factors on responses of EE, particle size, and DL may clearly
+be interpreted from the aforementioned models.
+Consequently, they may be further used for selection of opti-
+mized formulation by SAS software, which offers to vary each
+variable simultaneously and allows to develop possible opti-
+mum selections with their respective desirability value. A lack
+of adequate fit of models will cause poor or misleading results
+to the continuing examination and optimization of the fitted
+response surface. The residual analysis is one method to check
+model adequacy. By constructing a normal probability plot of
+the residuals form the least square fit, the normality can be
+confirmed (35). In this study, the normality is satisfactory as all
+residual plots are distributed along a straight line. This means
+the confidences for the fitness of the regression equations to
+the observed values are more than 95% for all responses.
+The canonical analysis in the SAS software is a mathe-
+matical tool for simplifying a second-order polynomial model
+and simultaneously observing the extreme values of several
+response surface models. Overlaid contour plots of NP with
+independent variables were constructed by fixing two of the
+variables. The plots demonstrated a trend of optimum level
+for 4 factors (Fig. 5). According to our criteria for higher EE,
+lower particle size, and higher DL, the optimized PLGA, drug,
+PVA, and sonication time under canonical analysis were se-
+lected at 12.5 mg/ml, 9 mg/ml, 1.8%, and 5.6 min, respectively.
+EE, particle size, and DL of optimized formulation were
+predicted to be 89.38%, 163.9 nm, and 64.83%, respectively
+(Table X). An extra design checkpoint formulation under
+optimized factors was performed to compare with the predict-
+ed values. As shown in Table X, the bias were around −1.37%,
+−0.24%, and 0.73% for each respective response, indicating
+the validity of generated models with no statistically signifi-
+cant difference and good correlation between predicted and
+experimental values.
+CONCLUSIONS
+In this study, experimental designs were involved to in-
+vestigate the effects of formulation and process variables on
+the resulting EE, particle size, and DL. The Plackett–Burman
+as a prescreening design allowed to select critical factors from
+various variables. The application of CCD proved to be a
+useful tool for optimizing HB-loaded PLGA NP prepared by
+emulsion solvent evaporation technique. An analysis of these
+results was processed by polynomial equations and multiple
+regression. These results of statistical analysis demonstrate
+Table X. Comparison of the Observed and Predicted Values of the
+Response Variables of Optimized Formulation
+Experimental
+response
+Predicted
+values
+Experimental
+values
+Bias*
+(%)
+EE (%)
+89.38
+90.60
+−1.37
+Particle size (nm)
+163.9
+164.3
+−0.24
+DL (%; w/w)
+64.83
+64.35
+0.73
+Bias was calculated as (predicted observed value)/predicted value×
+100%
+*α<0.05, significance level
+586
+Yang et al.
+
+that concentration of PLGA and drug and sonication time
+appear to be the crucial parameters for the EE and DL,
+whereas concentration of PLGA, sonication power, and time
+are important for the particle size. According to our studied
+factors, the selected optimum formulation with 90.6% of EE,
+164.3 nm of particle size with PDI of 0.005, and 64.35% of DL
+was processed by 12.5 mg/ml of PLGA, 9 mg/ml of drug, 1.8%
+of PVA, and 5.6 min of sonication time. Observed response is
+in close agreement with the predicted values of the optimized
+formulation. Therefore, the statistical experimental design
+methodology has clearly shown the feasibility of the optimiza-
+tion procedure in developing HB-loaded NP.
+ACKNOWLEDGMENTS
+This work was supported by a Missouri Life Sciences
+Research grant (no. MLSRB0017025) and National Institutes
+of Health grants (R01 EY 10659-12).
+Author Disclosure Statement No completing financial interests
+exist.
+REFERENCES
+1. Gambrill J, Miller L. Topical corticosteroids. Aust Fam Physician.
+1984;13(1):45–7.
+2.
+Lundberg IE, Grundtman C, Larsson E, Klareskog L.
+Corticosteroids—from an idea to clinical use. Best Pract Res Clin
+Rheumatol. 2004;18(1):7–19.
+3. Oren D, Nulman I, Makhija M, Ito S, Koren G. Using cortico-
+steroids during pregnancy. Are topical, inhaled, or systemic
+agents associated with risk? Can Fam Physician. 2004;50:1083–5.
+4. Fini A, Bergamante V, Ceschel GC, Ronchi C, De Moraes CA.
+Control of transdermal permeation of hydrocortisone acetate
+from hydrophilic and lipophilic formulations. AAPS
+PharmSciTech. 2008;9(3):762–8.
+5. Griffiths CE, Van Leent EJ, Gilbert M, Traulsen J, Cipamyflline
+Study Group. Randomized comparison of the type 4 phosphodi-
+esterase inhibitor cipamfylline cream, cream vehicle and hydro-
+cortisone 17-butyrate cream for the treatment of atopic
+dermatitis. Br J Dermatol. 2002;147(2):299–307.
+6. Hydrocortisone eye drops and ointment. http://www.netdoctor.co.uk/
+eyes/medicines/hydrocortisone-eye-drops.html.
+7. Laval J. Use of hydrocortisone (hydrocortone) acetate in oph-
+thalmology. AMA Arch Ophthalmol. 1953;50(3):299–302.
+8. Shimo T, Yamazaki M, Noguchi Y, Mukawa A, Kato H, Ito Y.
+Irritation test of dexamethasone valerate (DV-17) and other
+steroid ointments in rabbits. Skin and eye primary irritation tests,
+and skin cumulative irritation test. J Toxicol Sci. 1982;7 Suppl 1:1–
+13. Japanese.
+9. Komatsu A, Ohashi K, Oba H, Kakehashi T, Mizushima Y,
+Shirasawa E, et al. Application of lipid microsphere drug delivery
+system to steroidal ophthalmic preparation. Jpn J Ophthalmol.
+1988;32(1):41–3.
+10. Wilkinson SM, English JS. Hydrocortisone sensitivity: a prospec-
+tive study of the value of tixocortol pivalate and hydrocortisone
+acetate as patch test markers. Contact Dermatitis.
+1991;25(2):132–3.
+11. Umer S. Bioavailability of hydrocortisone acetate from ophthal-
+mic ointments. Acta Pol Pharm. 1994;51(1):39–43.
+12. Sejpal P, Scott-Weideman J. Surgical intervention of steroid-in-
+duced ocular hypertension from Ozurdex. Optom Vis Sci.
+2013;90(1):e24–30.
+13. Bollinger K, Kim J, Lowder CY, Kaiser PK, Smith SD. Intraocu-
+lar pressure outcome of patients with fluocinolone acetonide
+intravitreal implant for noninfectious uveitis. Ophthalmology.
+2011;118(10):1927–31.
+14. Shive MS, Anderson JM. Biodegradation and biocompatibility of
+PLA and PLGA microspheres. Adv Drug Deliv Rev.
+1997;28(1):5–24.
+15. Mei L, Sun H, Jin X, Zhu D, Sun R, Zhang M, et al. Modified
+paclitaxel-loaded nanoparticles for inhibition of hyperplasia in a
+rabbit arterial balloon injury model. Pharm Res. 2007;24(5):955–
+62.
+16. Singh B, Kumar R, Ahuja N. Optimizing drug delivery sys-
+tems using systematic “design of experiments.” Part I: funda-
+mental aspects. Crit Rev Ther Drug Carrier Syst.
+2005;22(1):27–105.
+17. Singh B, Dahiya M, Saharan V, Ahuja N. Optimizing drug deliv-
+ery systems using systematic “design of experiments.” Part II:
+retrospect and prospects. Crit Rev Ther Drug Carrier Syst.
+2005;22(3):215–94.
+18. Kenari HS, Alinejad Z, Imani M, Nodehi A. Effective parameters
+in determining cross-linked dextran microsphere characteristics:
+screening by Plackett–Burman design-of-experiments. J
+Microencapsul. 2013;30(6):599–611.
+19. Tasharrofi N, Adrangi S, Fazeli M, Rastegar H, Khoshayand MR,
+Faramarzi MA. Optimization of chitinase production by Bacillus
+pumilus using Plackett–Burman design and response surface
+methodology. Iran J Pharm Res. 2011;10(4):759–68.
+20. Rambali B, Baert L, Thoné D, Massart DL. Using experimental
+design to optimize the process parameters in fluidized bed gran-
+ulation. Drug Dev Ind Pharm. 2001;27(1):47–55.
+21. Hibbert DB. Experimental design in chromatography: a tutorial
+review. J Chromatogr B Analyt Technol Biomed Life Sci.
+2012;910:2–13.
+22. Antony J. Design of experiments for engineers and scientists. 1st
+ed. Amsterdam: Elsevier; 2003.
+23. Keum CG, Noh YW, Baek JS, Lim JH, Hwang CJ, Na YG, et al.
+Practical preparation procedures for docetaxel-loaded nanoparti-
+cles using polylactic acid-co-glycolic acid. Int J Nanomedicine.
+2011;6:2225–34.
+24. Box GEP, Hunter JS, Hunter WG. Statistics for experi-
+menters: design, innovation, and discovery. 2nd ed. New
+York: Wiley; 2005.
+25. Rekab K, Shaikh M. Statistical design of experiments with engi-
+neering applications. Florida: Taylor & Francis; 2005.
+26. Kang LS, Trinh TK. Application of response surface method as
+an experimental design to optimize coagulation tests. Environ
+Eng Res. 2010;15(2):63–70.
+27. Montgomery DC. Design and analysis of experiments. 4th ed.
+New York: Wiley; 1997.
+28. McCarron PA, Woolfson AD, Keating SM. Response surface
+methodology as a predictive tool for determining the effects of
+preparation conditions on the physicochemical properties of
+poly(isobutylcyanoacrylate) nanoparticles. Int J Pharm.
+1999;193(1):37–47.
+29. Analytical Methods Committee. AMCTB No 55. Experimental
+design and optimisation (4): Plackett–Burman designs. Anal
+Methods. 2013;5:1901–3.
+30. Demirel M, Kayan B. Application of response surface meth-
+odology and central composite design for the optimization of
+textile dye degradation by wet air oxidation. Int J Ind Chem.
+2012;3:24.
+31. Montegometry DC. Introduction to factorial designs. Design and
+analysis of experiments. New York: Wiley; 2004. p. 392–426.
+32. Montgometry DC. Design and analysis of experiments. 7th ed.
+New York: Wiley; 2008.
+33. Akhnazarova S, Kafaro V. Experiment optimization in chemistry
+and chemical engineering. Moscow: Mir House Publicaions; 1982.
+34. Box GEP, Wilson KB. On the experimental attainment of opti-
+mum conditions. J R Stat Soc B. 1951;B13:1–45.
+35. Bryc W. The normal distribution. Characterization with applica-
+tions. Lecture notes in statistics, vol. 100. New York: Springer;
+1995.
+587
+Statistical Design for Formulation Optimization

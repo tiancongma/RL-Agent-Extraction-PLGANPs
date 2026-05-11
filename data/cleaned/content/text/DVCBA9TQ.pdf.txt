@@ -1,0 +1,935 @@
+Eﬀect of Particle Size on Drug Loading and Release Kinetics of
+Geﬁtinib-Loaded PLGA Microspheres
+Weiluan Chen, Amelia Palazzo, Wim E. Hennink, and Robbert J. Kok*
+Department of Pharmaceutics, Utrecht Institute for Pharmaceutical Sciences, Utrecht University, 3584 CG Utrecht, The Netherlands
+*
+S Supporting Information
+ABSTRACT: Polymeric microspheres have gained widespread application as
+drug eluting depots. Typically, drug-loaded polymeric microspheres are
+prepared by oil-in-water emulsiﬁcation which yields a product with a broad
+size distribution. The aim of the present study was to investigate the
+properties of diﬀerent size-fractions of drug-loaded microspheres, in order to
+delineate whether particle size governs drug loading eﬃciency and release
+proﬁle. Geﬁtinib-loaded PLGA-based microspheres were prepared using an
+oil-in-water solvent evaporation method and wet-sieved to obtain well-deﬁned
+size fractions of 5 ± 1, 32 ± 4, 70 ± 3, and 130 ± 7 μm, respectively. The
+average drug loading of unfractionated microspheres was 6.3 ± 0.4% w/w,
+while drug loading of sieved fractions ranged from 2.4 ± 0.3 to 7.6 ± 0.9% w/
+w for smallest to largest microparticles. X-ray diﬀraction (XRD) and
+diﬀerential scanning calorimetry (DSC) analysis demonstrated that geﬁtinib
+was amorphously dispersed in the PLGA matrix, with no apparent shift in the
+Tg of PLGA indicating the absence of direct molecular interactions of the drug and polymer due to the formation of small drug
+particles embedded in PLGA. In vitro drug release was studied with microspheres embedded in dextran hydrogels to avoid their
+aggregation during the incubation conditions. Microspheres smaller than 50 μm showed rapid diﬀusion-based release reaching
+completion within 2 days when particles have not degraded yet. Larger microspheres, however, showed a sigmoidal release
+pattern that continued for three months in which diﬀusion (early stage) as well as particle erosion (later stage) governed drug
+release. Scanning electron microscopy (SEM) and polymer degradation data showed that larger microspheres degraded faster
+than smaller ones, which is in line with autocatalytic PLGA degradation upon acidiﬁcation within the core of microparticles. In
+conclusion, we showed that diﬀerent size-fractions of drug-loaded microspheres showed quite distinct drug loading and release
+kinetics. Control of microparticle size by fractionation is therefore an important determinant for obtaining well-deﬁned and
+reproducible sustained release depots.
+KEYWORDS: polymeric microspheres, release kinetics, geﬁtinib, diﬀusion, erosion, biodegradable, drug depots
+1. INTRODUCTION
+Biodegradable polymeric microspheres have been extensively
+investigated as delivery systems for a variety of molecules such
+as peptides and pharmaceutical proteins1−3 and hydrophobic
+drugs.4−6 Tailoring the chemical and physical properties of
+polymers allows control over the release properties of such drug
+eluting systems, which can be modulated over the required time
+period, for instance, from days to several weeks to over a year.2
+Poly(lactide-co-glycolide) (PLGA) has been one of the most
+frequently used biodegradable polymers for the development of
+drug-loaded microspheres systems.5,7 PLGA microspheres are
+usually produced by an emulsiﬁcation process in which the drug
+and polymer are emulsiﬁed into microsized droplets that
+solidify upon extraction of the organic solvent from the
+dispersed phase. Classical production by high-speed emulsiﬁers
+or sonication typically produces particles with a wide range in
+particle size and internal and external morphology,8,9 depend-
+ing on the formulation and process parameters. More recent
+production processes involve membrane sieving and micro-
+ﬂuidic devices resulting in so-called monodisperse microspheres
+with a narrow size distribution, referred to as mono-
+spheres.10−12 Drug release from biodegradable polymeric
+microspheres largely depends on diﬀusion, particle erosion, or
+a combination of these processes.13−16
+A signiﬁcant amount of work has been done on the
+mathematical modeling of drug release proﬁles from polymeric
+microspheres, to predict drug release rates and provide insight
+into the fundamental processes that govern release.15,17−19
+However, the physical and chemical processes involved in drug
+release from biodegradable polymeric matrixes are complex,
+and factors such as drug solubility and its diﬀusion coeﬃcient in
+the polymer matrix may change in time in response to polymer
+chain scission and inﬂux of water. Although mechanistic models
+for drug-eluting depots such as the Higuchi model or the
+Korsmeyer−Peppas model have been used to describe drug
+Received:
+October 5, 2016
+Revised:
+November 29, 2016
+Accepted:
+December 14, 2016
+Published: December 14, 2016
+Article
+pubs.acs.org/molecularpharmaceutics
+© 2016 American Chemical Society
+459
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+Downloaded via UNIV OF MARYLAND COLG PARK on October 22, 2025 at 14:33:35 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+release proﬁles from microspheres,20−22 most release proﬁles
+are best described by nonmechanistic sigmoidal curve ﬁtting
+models.23 We now hypothesize that diﬀerent properties of
+larger and smaller microspheres contribute to the complex drug
+release proﬁle of polydisperse microspheres, while such
+considerations do not apply, or only to a lesser extent, to
+macroscopic sustained release formulations. Such diﬀerences
+may relate to the ﬁnal surface/volume ratio of the polymeric
+microspheres but may also originate from diﬀerences in the
+rates of solvent extraction between smaller and larger emulsion
+droplets during preparation aﬀecting the drug loading of these
+particles. The objective of the present study is to investigate the
+relationship between particle size and drug loading and release
+proﬁles of well-deﬁned size fractions obtained from poly-
+disperse microspheres. Our method of microsphere preparation
+is commonly applied for the majority of drug-loaded micro-
+particles and are therefore relevant for obtaining better
+reproducible results with amphiphilic drug compounds.
+In this study, we used geﬁtinib as an amphiphilic model drug
+(Figure 1), which is a low molecular weight inhibitor of the
+intracellular tyrosine kinase domain of epidermal growth factor
+receptor (EGFR) that has been approved for the treatment of
+EGFR-positive metastatic nonsmall cell lung cancer
+(NSCLC).24 Geﬁtinib-loaded polymeric microspheres can be
+of potential beneﬁt for the local treatment of NSCLC when
+implanted in a stent-like device. We prepared geﬁtinib-loaded
+microspheres by a single w/o emulsion method similar to a
+previously described method for the kinase inhibitor imatinib25
+and fractionated the obtained polydisperse product into well-
+deﬁned size fractions by membrane sieving. The resulting
+subsets of polymeric microspheres were studied for their drug-
+loading, physicochemical properties, and drug release proﬁles.
+2. EXPERIMENTAL SECTION
+2.1. Materials. PLGA 5004A (acid terminated, lactide/
+glycolide molar ratio 50:50, IV = 0.4 dL/g) was obtained from
+Corbion Purac Biomaterials, The Netherlands. Geﬁtinib (free
+base, >99%) was purchased from LC laboratories, USA.
+Poly(vinyl alcohol) (PVA; Mw = 30−70 000 g/mol, 87−90%
+hydrolyzed), disodium hydrogen phosphate (Na2HPO4) and
+sodium azide (NaN3, BioUltra, ≥99.5%) were purchased from
+Sigma-Aldrich (Germany). Phosphate buﬀered saline (PBS pH
+7.4, 0.049 M NaH2PO4, 0.099 M Na2HPO4, 0.006 M NaCl)
+was purchased from Braun (Melsungen AG, Germany),
+dichloromethane (DCM), tetrahydrofuran (THF) and acetoni-
+trile were purchased from Biosolve (Valkenwaard, The
+Netherlands). Dextran (from Leuconostoc mesenteroides, T40,
+Mw = 40,000), glycidyl methacrylate (GMA), ammonium
+peroxydisulfate (APS), and N,N,N′,N′-tetramethylethylenedi-
+amine (TEMED) were obtained from Fluka Chemie AG,
+Buchs, Switzerland. 4-(N,N-Dimethylamino) pyridine (DMAP,
+99%) was from Acros Chimica, Geel, Belgium. Dialysis tubes
+(cellulose, Mw cutoﬀ12,000−14,000) were purchased from
+Medicell International Ltd., London, England.
+2.2. Preparation of Geﬁtinib-Loaded PLGA Micro-
+spheres. Geﬁtinib-loaded PLGA microspheres were prepared
+by a single o/w emulsiﬁcation as described previously.25,26
+PLGA 5004A (5 g) was dissolved in 10 mL of dichloromethane
+(DCM). Since geﬁtinib has a low solubility in DCM (15 mg/
+mL), DMSO was used as cosolvent. Geﬁtinib was dissolved in
+dimethyl sulfoxide (DMSO) and heated at 60 °C for 10 min to
+obtain stock solution of 200 mg/mL. After cooling, 2.5 mL of
+this geﬁtinib stock solution (corresponding with 500 mg of
+geﬁtinib) was mixed with the PLGA solution (ﬁnal geﬁtinib/
+PLGA ratio was 1:10 w/w). The resulting organic phase was
+transferred into a plastic syringe and dropwise emulsiﬁed (6
+min) into 100 mL of 2% PVA aqueous solution while stirring at
+a rate of 30,000 rpm using an IKA homogenizer (IKA
+Labortechnik Sraufen, Germany). Next, the suspension was
+stirred overnight at room temperature using a magnetic stirrer
+(500 rpm) to extract and evaporate DCM. Microspheres were
+collected by centrifugation (4000g for 3 min, Laboratory
+centrifuge, 4K15 Germany), washed three times with 50 mL of
+distilled water, and lyophilized overnight. Blank microspheres
+without geﬁtinib were prepared in a similar manner.
+Lyophilized microspheres were fractionated by wet-sieving
+using standardized square mesh sieves of 100, 50, and 20 μm
+mesh sizes (Nickel precision ﬁlters, Stork Veco BV, Eerbeek,
+The Netherlands), lyophilized again, and stored at −20 °C until
+further use.
+2.3. Characterization of the Microspheres. 2.3.1. Deter-
+mination of Microspheres Sizes. Particle size distributions of
+three independently prepared batches of geﬁtinib microspheres
+and their corresponding size-fractions were determined by an
+AccuSizer 780 (Optical particle size, Santa Barbara, California,
+USA). Particle sizes are reported as volume weighted mean
+diameters (vol-wt mean), while polydispersity is expressed as
+span value (SP) calculated with the following formula: SP =
+(d90 −d10)/d50, where d90 is the particle diameter at 90%
+cumulative size, d10 is the particle diameter at 10% cumulative
+size, and d50 is the particle diameter at 50% cumulative size.27 A
+high span value indicates a wide distribution in size
+(polydispersity), while a lower span value indicates a narrow
+size distribution (monodispersity). The size distribution is
+considered as narrow for span values <0.45.28 Aliquots of
+approximately 10 mg of microspheres suspended in 1 mL of
+water were assayed. A minimum of 9000 microspheres were
+analyzed for each sample.
+2.3.2. Determination of Geﬁtinib Content in the Micro-
+spheres. The geﬁtinib loading of unfractionated and fraction-
+ated microspheres was determined by dissolving accurately
+weighed amounts of microspheres of approximately 3 mg in 10
+mL of DMSO. Geﬁtinib concentrations in these samples were
+measured by high performance liquid chromatography (HPLC)
+using a C18 column (4.6 × 150 mm, 5 μm particle size; Sunﬁre,
+Ireland) and a mobile phase of acetonitrile/methanol/water in
+ratio of 20:23:57 v/v/v, complemented with TFA (0.3% w/v),
+at a ﬂow rate of 1.0 mL/min. Geﬁtinib standards (1−150 μg/
+mL dissolved in DMSO) were used for calibration, and
+detection was done at 254 nm. Loading capacity (LC) and
+encapsulation eﬃciency (EE) were calculated using the
+following equations:
+=
+×
+LC (%w/w)
+mass of drug microspheres
+total mass of microspheres
+100
+Figure 1. Chemical structure of geﬁtinib.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+460
+
+=
+×
+EE (%)
+loading content (LC%w/w)
+initial drug loading (%w/w)
+100
+2.3.3. Scanning Electron Microscopy (SEM). Samples were
+glued on 12 mm diameter aluminum sample holders using
+conductive carbon paint (Agar scientiﬁc Ltd., England) and
+covered by a platinum layer (4 nm) under vacuum using an ion
+coater. The morphology of the microspheres was examined by
+scanning electron microscopy (SEM, Phenom, FEI Company,
+The Netherlands).
+2.3.4. Thermal Gravimetric Analysis (TGA). Residual solvent
+content of the microspheres was determined by thermal
+gravimetric analysis (TGA) using a Q Series instrument (Q50,
+TA Instruments, USA). Accurately weighed amounts of around
+15 mg of freeze-dried microspheres were loaded into aluminum
+pans and heated from 0 to 200 °C at a heating rate of 10 °C/
+min; nitrogen gas was used for purging. Residual weight as a
+function of temperature was recorded. The content of residual
+solvents was calculated from the weight loss between 0 to 120
+°C as compared to the weight of the original sample mass.
+2.3.5. X-ray Diﬀraction (XRD). X-ray diﬀraction patterns of
+geﬁtinib free base, PLGA 5004A, blanc PLGA microspheres,
+and diﬀerent geﬁtinib-loaded PLGA microspheres were
+recorded using a Bruker-AXS D8 ADVANCE diﬀractometer
+coupled with a VANTEC detector and a Ni ﬁlter. The
+measurements were made using Co−Kα12 radiation (λ =
+1.79026 Å) at ambient conditions. Scans were performed
+between 10−75° 2 theta (2θ), using a step size of 0.09° 2θ and
+a scan speed of 2 s. Separate blank patterns were recorded to
+allow subtraction of air and capillary wall-scattering. Three
+individual small angle XRD measurements were performed.
+2.3.6. Diﬀerential Scanning Calorimetry (DSC). The
+physical state of the drug in the microspheres was analyzed
+using diﬀerential scanning calorimetry (DSC, Q2000, TA
+Instruments, USA). Samples of 3−10 mg (accurately weighed)
+of freeze-dried microspheres were loaded into aluminum pans
+and were subsequently closed. Samples were exposed to a three
+cycle heating/cooling protocol. In detail, the samples were
+heated from 0 to 60 °C at a heating rate of 10 °C/min. Next,
+the samples were cooled down to 0 °C at a rate of 100 °C/min.
+After 5 min at temperature 0 °C, the samples were heated again
+to 220 °C at a heating rate of 10 °C/min and a temperature
+modulation ±1 °C/30 s. The melting temperature (Tm) was
+determined from the total heat ﬂow of the second heating
+ramp, and the glass transition temperature (Tg) was determined
+from the reverse heat ﬂow from the ﬁrst and second heating
+ramps. Analysis of the results was carried out by TA
+Instruments Universal Analysis software. Physical mixtures of
+the PLGA and geﬁtinib base were analyzed by DSC to
+determine the limit of detection of this technique for geﬁtinib
+crystallinity in PLGA matrixes.
+2.4. In Vitro Release of Geﬁtinib from PLGA Micro-
+spheres. In vitro drug release experiments were performed
+with microspheres embedded in dextran−methacrylate (Dex−
+MA) hydrogels to prevent their aggregation during the
+incubation conditions, while not limiting the release of geﬁtinib
+from the polymeric microparticles. Methacrylated dextran T40
+(Mw 32.5k Da) with a degree of substitution of 10 was
+synthesized using a previously described procedure and used to
+form chemically cross-linked hydrogels by free radical polymer-
+ization.29,30 In brief, geﬁtinib-loaded PLGA microspheres (3
+mg) were dispersed in a solution of methacrylated dextran (150
+mg dissolved in 1140 μL of PBS (pH 7.4, 0.049 M NaH2PO4,
+0.099 M Na2HPO4, 0.006 M NaCl) containing 0.05% w/w
+sodium azide). Polymerization was initiated by addition of 135
+μL of potassium persulfate solution (KPS; 50 mg/mL in PBS;
+17 μmol of KPS/g of gel) and 75 μL tetramethylethylenedi-
+amine solution (TEMED 75 μL; 20% (v/v) in PBS; 67 μmol/g
+of gel).
+Dispersion of geﬁtinib-loaded microspheres in 5 mm thick
+hydrogel slices (surface area = 0.6 cm2) was visualized by
+ﬂuorescence microscopy (Leica DM IRB, Germany). Excitation
+of geﬁtinib at 345 nm and emission at 385−465 nm were
+recorded.31
+In vitro release experiments were carried out in PBS
+containing 1% Tween 80 as incubation buﬀer to ensure sink
+conditions for the released geﬁtinib. The incubation buﬀer also
+contained 0.01% sodium azide to prevent bacterial growth.
+Dextran−MA hydrogels loaded with geﬁtinib microspheres (7.5
+mg of microspheres corresponding to approximately 5 mg of
+geﬁtinib in 1 mL of dextran−MA hydrogel) were casted in
+Slide-A-Lyzer MINI Dialysis Devices (2K MWCO, external
+diameter = 0.86 cm, length = 1.73 cm Thermo scientiﬁc). An
+equivalent amount of geﬁtinib free base crystals were loaded in
+dextran−MA hydrogels to verify that release rates were
+dependent on drug release from microspheres and not on
+dissolution or diﬀusion of drug from the hydrogel. After
+solidiﬁcation of the Dex−Ma solution, the dialysis devices were
+transferred into centrifugation tubes containing 15 mL of PBS
+buﬀer (1% Tween 80) and incubated at 37 °C under constant
+shaking. At diﬀerent time points, 1 mL of the buﬀer was
+sampled and replaced by fresh buﬀer. The concentration of
+geﬁtinib in the release samples was determined by HPLC as
+described in section 2.3.2. Cumulative geﬁtinib release was
+ﬁtted by linear and nonlinear regression analysis (Graphpad
+Prism version 5) according to eq 1 (zero-order release model,
+small microspheres < 50 μm) or according to eq 2 (sigmoidal
+release model according to Duvvuri et al.;23 microspheres > 50
+μm and unfractionated microspheres).
+=
++
+Q
+A
+kt
+(1)
+In which Q stands for cumulative drug release, t stands for the
+time since start of the release experiment, A is the intercept
+with Y-axis (burst release), and k is the rate constant of release.
+=
+−
++
++
+−
+−
+−
+Q
+A
+B
+(1
+e
+)
+1
+e
+k t
+k t
+T
+(
+)
+1
+2
+50
+(2)
+In which Q stands for cumulative drug release, t stands for the
+time since start of the release experiment, A is the percentage of
+total drug released during phase I, k1 is the rate constant of drug
+release during phase I, B is the percentage of total drug released
+during phase II, k2 is the rate constant of drug release during
+phase II, and T50 is the time taken to release 50% of entrapped
+drug.
+The best ﬁtted line for the unfractionated microspheres from
+the individual weight fractions was also calculated.
+2.5. In Vitro Degradation of Microspheres. Aliquots of
+geﬁtinib-loaded or placebo microspheres (5 mg) were trans-
+ferred into 1.5 mL Eppendorf tubes and dispersed in 1 mL of
+incubation buﬀer (see section 2.3.2). Samples were incubated at
+37 °C while gently shaking. At diﬀerent time points, tubes were
+taken out of the incubator and centrifuged at 20,000g for 20
+min to collect the microspheres. The pelleted microspheres
+were washed twice with 1 mL of reverse osmosis water and
+subsequently lyophilized and weighed. Morphology of the
+incubated microspheres was studied by SEM as described in
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+461
+
+section 2.3.3, while the polymer molecular weights were
+determined using gel permeation chromatography on a Waters
+Alliance system equipped with a refractive index detector. Two-
+PL-gel 5 μm Mixed-D columns ﬁtted with a guard column
+(Polymer Laboratories, Mw range = 0.2−400 kDa) were used,
+and calibration was done using polystyrene standards with
+narrow molecular weight distributions. THF was used as the
+mobile phase (1 mL/min).
+3. RESULTS AND DISCUSSION
+3.1. Encapsulation of Geﬁtinib in PLGA Microspheres.
+Since geﬁtinib has a low solubility in DCM of approximately 15
+mg/mL, DMSO was used as cosolvent for the O/W
+emulsiﬁcation, aﬀording a theoretical drug loading of 9% w/
+w. Microspheres were obtained with an average size of 59 μm
+and a geﬁtinib loading content of 6.3% w/w (70% EE), as listed
+in Table 1. The overall yield after lyophilization was 81% of the
+starting materials. The obtained batches of geﬁtinib micro-
+spheres were sieved into 4 size-fractions with good recovery for
+both drug and polymeric materials (98%) and no drug
+detectable in the washing ﬂuids. The two largest size-fractions
+(50−100 μm and >100 μm) represented 66% of the collected
+material.
+Interestingly, the drug loading content (LC) diﬀered
+signiﬁcantly among the diﬀerent size-fractions, with more
+than a 3-fold diﬀerence between the largest and smallest size-
+fractions. Since the recovery of the drug was 98% after wet
+sieving, the lower LC of the smaller size fractions reﬂects
+diﬀerences in drug loading between smaller and larger sized
+microspheres that had been established already before sieving
+of the unfractionated material, i.e., during the emulsiﬁcation
+and solvent extraction phases. Siepmann et al. also found
+similar results for 5-ﬂuorouracil (5-FU) microparticles prepared
+by a solid-in-oil-in-water emulsiﬁcation process.15 Although
+their results could be explained by entrapment of more and
+relatively larger drug particles in the larger oil droplets versus
+small droplets, this does not apply to our data on geﬁtinib
+PLGA microparticles since the drug was dissolved in the
+DCM/DMSO phase before emulsiﬁcation. A possible explan-
+ation for our results is that drug loss during emulsiﬁcation is
+mainly due to partitioning of geﬁtinib from the dispersed oil
+droplets into the external water phase. Such processes will
+mainly occur at the surface of the polymer droplets when the
+particles have not solidiﬁed yet. Once the particles have
+solidiﬁed, the drug will be entrapped in the polymer matrix.
+The relative higher surface:volume ratio of smaller droplets will
+result in relative higher drug loss and hence a lower EE for
+smaller microparticles.
+3.2. Morphological Characterization of Geﬁtinib
+Microspheres. Figure 2 shows the SEM micrographs of the
+unfractionated and sieved geﬁtinib-loaded PLGA microspheres.
+All geﬁtinib-loaded PLGA microspheres had a smooth and
+nonporous surface, without the presence of surface localized
+drug crystals. It is also evident from the images that the
+Table 1. Properties of Geﬁtinib-Loaded PLGA Microspheresa
+formulations
+particle sizeb (μm)
+span valuec
+EEd (%)
+LCe (%)
+yieldf (%)
+unfractionated
+59 ± 10
+1.5 ± 0.3
+70.1 ± 3.6
+6.3 ± 0.4
+81.0 ± 1.7
+sieved
+<20 μm
+5 ± 1
+0.4 ± 0.1
+33.4 ± 4.0
+2.4 ± 0.3
+14.0 ± 1.7
+20−50 μm
+32 ± 4
+0.7 ± 0.2
+64.3 ± 3.6
+5.8 ± 0.3
+18.0 ± 1.7
+50−100 μm
+70 ± 3
+0.6 ± 0.3
+82.1 ± 4.7
+7.3 ± 0.4
+31.0 ± 3.0
+>100 μm
+130 ± 7
+0.9 ± 0.2
+84.2 ± 5.6
+7.6 ± 0.9
+35.0 ± 2.7
+aMean ± SD values were calculated from the data of three independently prepared batches and represent reproducibility between batches. bParticle
+size expressed as volume weighted mean diameter. cSpan value = (d90 −d10)/d50, which reﬂects the polydispersity within individual batches and size
+fractions. dEE: Encapsulation eﬃciency of geﬁtinib eLC: loading content of geﬁtinib in the collected polymeric microspheres fYields were calculated
+as % of the original materials (unfractionated microspheres) or relative to amount of material before sieving (fractionated microspheres)
+Figure 2. SEM micrographs of (A) unfractionated geﬁtinib PLGA
+microspheres and (B−E) size-fractionated geﬁtinib-loaded PLGA
+microspheres: (B) <20 μm; (C) 20−50 μm; (D) 50−100 μm; and (E)
+>100 μm; 600× magniﬁcation.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+462
+
+unfractionated sample contained both small and larger
+microspheres, whereas the fractionated samples A−D primarily
+contained microspheres within the speciﬁed ranges, consistent
+with the size distribution data in Table 1. Minor amounts of
+small particles were however detected in the sieved fractions.
+Most likely, this is due to hydrophobic nature of PLGA, which
+favors adherence of small microparticles to larger ones during
+the wet-sieving process. Size distributions of the geﬁtinib-
+loaded PLGA microspheres are shown in Figure S1.
+3.3. XRD and Thermal Analysis. The physical state of
+geﬁtinib in PLGA microspheres was studied by XRD
+crystallography, as shown in Figure 3A. Geﬁtinib-free base is
+highly crystalline and exhibited intense peaks at 18.6°, 19.2°,
+24.2°, 26.2° and 26.4° as also reported by Lee et al.32 PLGA
+microspheres prepared without drug (blank microspheres)
+showed no peak indicative of crystalline material, which is
+expected for fully amorphous PLGA. Geﬁtinib-loaded micro-
+spheres did not show peaks indicative for the presence of
+crystalline drug, although one should note that the detection
+limit of XRD (5% w/w geﬁtinib in PLGA) is close to the drug
+loading content in the microspheres.
+Modulated DSC was applied to further investigate the
+physical state of the dispersed geﬁtinib in the PLGA
+microspheres. The thermogram of geﬁtinib (Figure 3B) showed
+an endothermic peak at 195 °C (ΔH = 130.1 J/g)
+corresponding to its melting temperature.32 The melting peak
+of geﬁtinib was not detected in the thermograms of geﬁtinib-
+loaded PLGA microspheres, which conﬁrms the absence of
+crystalline drug within the polymeric microparticles, similar to
+the XRD data. DSC analysis of a physical mixture of geﬁtinib
+and PLGA demonstrated that DSC is able to detect the melting
+behavior of geﬁtinib in the same weight proportion as the drug
+loading content in PLGA microspheres (7% w/w) (Supple-
+mental Figure S2); the melting enthalpy of the drug
+corresponded to the expected weight fraction of the drug.
+These data indicate that geﬁtinib is either molecularly or
+amorphously dispersed in the matrix of the microspheres. The
+Tg of PLGA in the second heating cycle was not signiﬁcantly
+diﬀerent between blank and geﬁtinib-loaded microparticles (44
+°C, Table 2 and Figure 3), although lower Tg values were
+recorded in the ﬁrst heating ramp until 60 °C for both blank
+and drug-loaded microparticles. Such diﬀerences between ﬁrst
+and second heating cycle are indicative of the evaporation of
+residual solvents from the studied materials, which was
+conﬁrmed by measuring the weight loss by thermographic
+analysis in the same heating range (60−120 °C) where thermal
+decomposition of drug and PLGA is not yet expected. Since the
+weight loss (less than 1%) was mainly observed above 60 °C
+but below 120 °C, i.e., above the evaporation temperature of
+DCM but below the evaporation temperature of DMSO, we
+attributed the weight loss to evaporation of water. Apparently,
+small amounts of water were present in the PLGA matrix even
+after two subsequent lyophilization steps. More importantly,
+since all diﬀerences in Tg between naive PLGA 5004A and
+drug-loaded microspheres disappeared in the second heating
+ramp, we concluded that geﬁtinib was amorphously but not
+molecularly dissolved in the polymeric matrix since the latter
+case would infer a decrease in Tg of the polymer due to
+plasticizing eﬀects.
+3.4. In Vitro Release of Geﬁtinib from Hydrogel
+Embedded Microspheres. Microspheres were embedded in
+dextran−MA hydrogels to avoid their aggregation during
+release experiments. Supplemental Figure S3 shows that
+geﬁtinib release from such hydrogels was relatively fast and
+reached equilibrium after 1 h, thus demonstrating that dextran−
+MA hydrogels will not aﬀect the release proﬁles obtained from
+the polymeric microparticles.
+Size-fractionated microspheres showed remarkable diﬀer-
+ences in drug release between small microspheres and larger
+microspheres (Figure 4). Microspheres of size-fractions A and
+Figure 3. X-ray diﬀraction patterns of geﬁtinib free base, blank PLGA microspheres, and geﬁtinib-loaded PLGA microspheres with diﬀerent size
+fractions (A). DSC proﬁle of geﬁtinib-free base, blank microspheres, and geﬁtinib-loaded PLGA microspheres (B).
+Table 2. Thermal Analysis of Unfractionated and
+Fractionated Geﬁtinib-Loaded PLGA Microspheres Using
+DSCa
+samples
+Tg 1st run (°C)
+Tg 2nd run (°C)
+unfractionated
+34.2 ± 0.1
+44.1 ± 0.7
+MSP <20 μm
+40.3 ± 0.2
+43.2 ± 0.2
+MSP 20−50 μm
+38.1 ± 0.1
+44.2 ± 0.5
+MSP 50−100 μm
+34.8 ± 0.3
+42.3 ± 0.3
+MSP >100 μm
+34.3 ± 0.2
+43.1 ± 0.5
+aData are expressed as mean ± SD (n = 3).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+463
+
+B, i.e., <20 and 20−50 μm, respectively, showed complete
+release within 1 week, while larger microspheres showed slow
+release in the ﬁrst week (<20% cumulative release for fraction C
+(50−100 μm); <10% cumulative release for fraction D (>100
+μm)). In contrast, these larger microspheres showed a
+sigmoidal release proﬁle that leveled oﬀafter the initial burst
+and accelerated from day 30 until the end of the incubation at 3
+months. Fitted parameters of the release data are shown in
+Table 3 and represent nonlinear sigmoidal regression analysis
+according to eq 2. In the empirical model for sigmoidal drug
+release, as mentioned in section 2.4, constants A and B
+represent the relative proportion of drug release during phase I
+and phase II of the curves, T50 represents the time point at
+which 50% of the drug has been released, and time constants k1
+and k2 reﬂect the drug release rate during phase I and phase II.
+Microspheres of size-fraction D showed an average release rate
+of 6.1%/day (B × k2) while size-fraction C displayed an average
+release rate of 7.2%/day in the later phases of the release study.
+The mathematically reconstituted release curve for non-
+fractionated geﬁtinib microspheres, as calculated from the
+relative weight percentages of the fractions and the individual
+release curves, matched very well with the observed release
+proﬁle of the unfractionated geﬁtinib microspheres. Since
+weight fractions C and D represented 66% of the total material,
+these larger microspheres largely determined the sustained
+phase of the reconstituted release curve, while drug release in
+the ﬁrst 2 weeks could be mainly attributed to the smaller size
+fractions. Moreover, our results also demonstrate that burst
+release mainly originates from the smaller microspheres, rather
+than release of surface bound drug from all microparticles.
+Although one can expect slower drug release from larger
+microparticles due to the increase in diﬀusion path lengths, the
+striking diﬀerences in release proﬁles overrule a simple
+relationship solely based on diﬀusion behavior of geﬁtinib in
+Figure 4. In vitro release of geﬁtinib-loaded PLGA microspheres. (A) Closed black circles represent the unfractionated microspheres, green hexagons
+and pink diamonds represent smaller size fractions A (<20 μm) and B (20−50 μm); blue triangles and red circles represent larger microspheres 50−
+100 and >100 μm of geﬁtinib-loaded PLGA microspheres. The lines drawn represent linear or nonlinear regression ﬁt according to eqs 1 and 2. The
+purple dotted line represents the theoretical release proﬁle of the combined batches of <20, 20−50, 50−100, and >100 μm geﬁtinib-loaded PLGA
+microspheres (weight fractions as reported in Table 1). (B) Zoom out of graph A for the early time release. Data are expressed as mean ± SD (n =
+3).
+Table 3. Nonlinear Sigmoidal Regression Analysis of Release Curvesa
+ﬁtted parameter
+unfractionated geﬁtinib microspheres
+fraction A: <20 μm
+fraction B: 20−50 μm
+fraction C: 50−100 μm
+fraction D: >100 μm
+A (% release)
+29.60
+53.32
+43.26
+19.38
+12.75
+k1 (day−1)
+0.70
+24.86
+7.02
+0.04
+0.07
+B (% release)
+66.89
+45.59
+59.65
+80.42
+87.25
+k2 (day−1)
+0.06
+9.21
+4.13
+0.09
+0.06
+T50 (day)
+33.87
+0.96
+4.13
+53.76
+60.62
+R2
+0.9783
+0.9929
+0.9853
+0.9822
+0.9814
+aBest-ﬁt value of cumulative release from geﬁtinib-loaded PLGA microspheres. Corresponding curves are shown in Figure 6.
+Figure 5. Degradation of geﬁtinib-loaded PLGA microspheres with diﬀerent sizes. (A) Changes in the Mn (kDa) upon in vitro incubation. (B) Dry
+mass loss of the same samples.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+464
+
+the polymeric matrix. Moreover, one would expect similarly
+shaped proﬁles when they had been guided by the same release
+principle. It is therefore more likely that a complex interplay of
+drug dissolution, drug and water diﬀusion, and polymer
+degradation aﬀects drug release during the diﬀerent phases of
+the release proﬁles.
+3.5. Polymer Degradation Behavior. The gradual
+degradation of the PLGA microparticles upon in vitro
+incubation is shown in Figure 5, either showing the number-
+average molecular weight (Mn; panel A) as determined by gel
+permeation chromatography or the residual weight of the
+microspheres (panel B). PLGA degradation is accelerated upon
+lowering of the microclimate pH within the core of the
+microparticles.3,33,34 The observed faster degradation of larger
+microparticles thus can be explained by the autocatalytic
+degradation of PLGA, in which the retention of acidic
+degradation within these larger microspheres results in a
+more pronounced and faster cleavage of the ester bonds in the
+polymer chains. Despite the observed slower degradation of the
+smaller size-fractions, this did not aﬀect the release proﬁles
+since these particles already have lost most of the encapsulated
+drug before pronounced erosion starts.
+Erosion of the microspheres was also reﬂected by the SEM
+micrographs that were collected during the ﬁrst 4 weeks of the
+degradation study as shown in Figure 6. Erosion of the
+microspheres was observed at 2 weeks incubation and increased
+with increasing exposure time due to polymer degradation.
+Upon 4 weeks of incubation, pores had formed on the coarse
+surface of the particles and bulk erosion had altered the shape
+and surface of the particles.
+Previous studies have reported a clear relationship between
+microparticle size and drug release and degradation kinetics.13
+Our result are in good agreement with the results obtained by
+Berkland et al., who found that monodisperse piroxicam-loaded
+PLGA microspheres with smaller diameter (∼10 μm) exhibited
+diﬀusion-controlled drug release, while larger particles (50 and
+100 μm) exhibited a sigmoidal release proﬁle.13 Remarkably,
+the release window of our geﬁtinib-loaded microspheres in the
+same size ranges (50−100 and >100 μm) was around 80 days,
+while the piroxicam microspheres exhibited complete release
+within 2 weeks. Plausible explanations for these diﬀerences are
+the much higher water solubility of piroxicam versus geﬁtinib
+(around 1000-fold diﬀerence; 23 mg/mL and 27 μg/mL,
+respectively), and the lower PLGA molecular weight (13,000 vs
+28,000 g/mol).
+Apart from their size, the presently prepared microspheres
+diﬀered in their drug-loading content, which may also have
+contributed to diﬀerences in drug release proﬁles between the
+size fractions. In a study with 5-ﬂuorouracil-loaded PLGA
+microspheres, higher drug loadings of larger microparticles
+correlated to a faster drug release rate that was attributed to an
+increase in internal porosity upon drug depletion.14 In our
+study, however, larger microspheres showed slower drug
+release, i.e., an inverse relationship between drug loading
+content and release rate. Moreover, we observed a much longer
+release window for geﬁtinib microspheres than was observed
+for 5-FU microspheres. A plausible explanation is the more
+hydrophobic character of geﬁtinib that, for instance, can retard
+the eﬀect of water inﬂux into the particles; as a consequence,
+drug dissolution will be more retarded at higher drug loading
+content.
+Another factor that can explain sigmoidal drug release
+proﬁles is the drug distribution within the microspheres. The
+aforementioned piroxicam PLGA microspheres displayed a
+sigmoidal release proﬁle and had a nonuniform drug
+distribution in larger microspheres (50 μm), while small
+microspheres (10 μm) particles showed uniform drug
+distribution and diﬀusion-like release proﬁles.17 A nonuniform
+drug distribution and sigmoidal release proﬁles were also
+reported for paclitaxel microspheres.35 In our present research,
+the sigmoidal release proﬁle of the bigger microspheres (50−
+100 μm and >100 μm) and higher drug loading content may
+also reﬂect nonuniform drug distribution in the microspheres.
+Sansdrap et al. also found similar results as we observed for
+nifedipine microspheres. The nifedipine microspheres with
+sizes of 18 and 80 μm had completely diﬀerent release
+behavior: the proﬁles obtained were almost linear after 1-day
+burst eﬀect for 18 μm and biphasic for 80 μm microspheres.36
+According to their swelling data, water uptake by the 18 μm
+microspheres was much higher than for the 80 μm micro-
+spheres (170% swelling increase versus 125% in 3 days). The
+water content in turn inﬂuenced the ability of active component
+to diﬀuse through the matrix by increasing polymer
+permeability. In our study, the swelling rate can be also
+diﬀerent among the smaller and larger microspheres, which
+consequentially aﬀects the permeability of the polymer matrix
+and the drug release rate.
+4. CONCLUSIONS
+The results of the present study demonstrate that polydisperse
+drug-loaded microspheres diﬀer in multiple aspects that
+inﬂuence drug release. Separating polydisperse microspheres
+into sieve fractions allowed us to demonstrate remarkable
+diﬀerences in drug release mechanism between smaller and
+larger microparticles from the same drug−polymer o/w
+emulsion and also eliminated most of the initial burst release.
+Figure 6. SEM micrographs of geﬁtinib-loaded PLGA microspheres
+upon in vitro incubation in buﬀer of pH 7.4 and at 37 °C. The
+magniﬁcation is ×1200 for all images.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+465
+
+Thus, sieve-fractionating of polydisperse microspheres is a
+relative simple and eﬀective procedure to obtain drug-releasing
+microparticles with better deﬁned release properties and allows
+for further tailoring when sieve fractions are recombined to
+reconstitute the desired release proﬁle.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.molpharma-
+ceut.6b00896.
+Particle size distributions of geﬁtinib-loaded PLGA
+microspheres, DSC thermogram of physical mixture of
+geﬁtinib crystals (7% w/w) and PLGA, release curve of
+geﬁtinib from dextran−MA gel (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+*Phone: + 31 620275995. Fax: + 31 30 251789. E-mail: r.j.
+kok@uu.nl.
+ORCID
+Robbert J. Kok: 0000-0003-4933-3968
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+The authors would like to acknowledge the ﬁnancial support
+from European Union’s Seventh Framework Program under
+grant agreement NMP3-SL-2012-280915 (Pulmostent). Marjan
+Versluijs-Helder is kindly acknowledged for assistance with the
+XRD experiments.
+■REFERENCES
+(1) Ma, G. Microencapsulation of protein drugs for drug delivery:
+strategy, preparation, and applications. J. Controlled Release 2014, 193,
+324−340.
+(2) Ansary, R. H.; Awang, M. B.; Rahman, M. M. Biodegradable poly
+(D, L-lactic-co-glycolic acid)-based micro/nanoparticles for sustained
+release of protein drugs-A review. Trop. J. Pharm. Res. 2014, 13, 1179−
+1190.
+(3) Liu, Y.; Schwendeman, S. P. Mapping microclimate pH
+distribution inside protein-encapsulated PLGA microspheres using
+confocal laser scanning microscopy. Mol. Pharmaceutics 2012, 9,
+1342−1350.
+(4) Prajapati, V. D.; Jani, G. K.; Kapadia, J. R. Current knowledge on
+biodegradable microspheres in drug delivery. Expert Opin. Drug
+Delivery 2015, 12, 1283−1299.
+(5) Ramazani, F.; Chen, W.; van Nostrum, C. F.; Storm, G.;
+Kiessling, F.; Lammers, T.; Hennink, W. E.; Kok, R. J. Strategies for
+encapsulation of small hydrophilic and amphiphilic drugs in PLGA
+microspheres: state-of-the-art and challenges. Int. J. Pharm. 2016, 499,
+358−367.
+(6) Zhang, Y.; Wischke, C.; Mittal, S.; Mitra, A.; Schwendeman, S. P.
+Design of controlled release PLGA microspheres for hydrophobic
+fenretinide. Mol. Pharmaceutics 2016, 13, 2622−2630.
+(7) Wischke, C.; Schwendeman, S. P. Principles of encapsulating
+hydrophobic drugs in PLA/PLGA microparticles. Int. J. Pharm. 2008,
+364, 298−327.
+(8) Crotts, G.; Park, T. G. Preparation of porous and nonporous
+biodegradable polymeric hollow microspheres. J. Controlled Release
+1995, 35, 91−105.
+(9) Freitas, S.; Merkle, H. P.; Gander, B. Microencapsulation by
+solvent extraction/evaporation: reviewing the state of the art of
+microsphere preparation process technology. J. Controlled Release
+2005, 102, 313−332.
+(10) Nakashima, T.; Shimizu, M.; Kukizaki, M. Membrane
+emulsification by microporous glass. Key Eng. Mater. 1992, 61, 513−
+516.
+(11) Kazazi-Hyseni, F.; Landin, M.; Lathuile, A.; Veldhuis, G. J.;
+Rahimian, S.; Hennink, W. E.; Kok, R. J.; van Nostrum, C. F.
+Computer modeling assisted design of monodisperse PLGA micro-
+spheres with controlled porosity affords zero order release of an
+encapsulated macromolecule for 3 months. Pharm. Res. 2014, 31,
+2844−2856.
+(12) Nakashima, T.; Shimizu, M.; Kukizaki, M. Particle control of
+emulsion by membrane emulsification and its applications. Adv. Drug
+Delivery Rev. 2000, 45, 47−56.
+(13) Berkland, C.; King, M.; Cox, A.; Kim, K. K.; Pack, D. W. Precise
+control of PLG microsphere size provides enhanced control of drug
+release rate. J. Controlled Release 2002, 82, 137−147.
+(14) Siepmann, J.; Faisant, N.; Akiki, J.; Richard, J.; Benoit, J. Effect
+of the size of biodegradable microparticles on drug release: experiment
+and theory. J. Controlled Release 2004, 96, 123−134.
+(15) Berkland, C.; Kim, K. K.; Pack, D. W. Fabrication of PLG
+microspheres with precisely controlled and monodisperse size
+distributions. J. Controlled Release 2001, 73, 59−74.
+(16) Samadi, N.; Abbadessa, A.; Di Stefano, A.; van Nostrum, C. F.;
+Vermonden, T.; Rahimian, S.; Teunissen, E.; van Steenbergen, M. J.;
+Amidi, M.; Hennink, W. E. The effect of lauryl capping group on
+protein release and degradation of poly (d, l-lactic-co-glycolic acid)
+particles. J. Controlled Release 2013, 172, 436−443.
+(17) Raman, C.; Berkland, C.; Kim, K. K.; Pack, D. W. Modeling
+small-molecule release from PLG microspheres: effects of polymer
+degradation and nonuniform drug distribution. J. Controlled Release
+2005, 103, 149−158.
+(18) Casalini, T.; Rossi, F.; Lazzari, S.; Perale, G.; Masi, M.
+Mathematical modeling of PLGA microparticles: from polymer
+degradation to drug release. Mol. Pharmaceutics 2014, 11, 4036−4048.
+(19) Sevim, K.; Pan, J. A mechanistic model for acidic drug release
+using microspheres made of PLGA 50:50. Mol. Pharmaceutics 2016,
+13, 2729−2735.
+(20) Costa, P.; Lobo, J. M. S. Modeling and comparison of
+dissolution profiles. Eur. J. Pharm. Sci. 2001, 13, 123−133.
+(21) Siepmann, J.; Siepmann, F. Modeling of diffusion controlled
+drug delivery. J. Controlled Release 2012, 161, 351−362.
+(22) Siepmann, J.; Göpferich, A. Mathematical modeling of
+bioerodible, polymeric drug delivery systems. Adv. Drug Delivery Rev.
+2001, 48, 229−247.
+(23) Duvvuri, S.; Janoria, K. G.; Mitra, A. K. Effect of polymer
+blending on the release of ganciclovir from PLGA microspheres.
+Pharm. Res. 2006, 23, 215−223.
+(24) Reck, M.; Heigener, D. F.; Mok, T.; Soria, J.-C.; Rabe, K. F.
+Management of non-small-cell lung cancer: recent developments.
+Lancet 2013, 382, 709−719.
+(25) Ramazani, F.; Chen, W.; van Nostrum, C. F.; Storm, G.;
+Kiessling, F.; Lammers, T.; Hennink, W. E.; Kok, R. J. Formulation
+and characterization of microspheres loaded with imatinib for
+sustained delivery. Int. J. Pharm. 2015, 482, 123−130.
+(26) O’Donnell, P. B.; McGinity, J. W. Preparation of microspheres
+by the solvent evaporation technique. Adv. Drug Delivery Rev. 1997, 28,
+25−42.
+(27) El-Mahdy, M.; Ibrahim, E.-S.; Safwat, S.; El-Sayed, A.; Ohshima,
+H.; Makino, K.; Muramatsu, N.; Kondo, T. Effects of preparation
+conditions on the monodispersity of albumin microspheres. J.
+Microencapsulation 1998, 15, 661−673.
+(28) Guo, W.; Quan, P.; Fang, L.; Cun, D.; Yang, M. Sustained
+release donepezil loaded PLGA microspheres for injection: prepara-
+tion, in vitro and in vivo study. Asian J. Pharm. Sci. 2015, 10, 405−414.
+(29) van Dijk-Wolthuis, W. N.; Franssen, O.; Talsma, H.; van
+Steenbergen, M. J.; Kettenes-Van Den Bosch, J.; Hennink, W. E.
+Synthesis, characterization, and polymerization of glycidyl methacry-
+late derivatized dextran. Macromolecules 1995, 28, 6317−6322.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+466
+
+(30) van Dijk-Wolthuis, W.; Kettenes-Van Den Bosch, J.; Van Der
+Kerk-Van Hoof, A.; Hennink, W. Reaction of dextran with glycidyl
+methacrylate: an unexpected transesterification. Macromolecules 1997,
+30, 3411−3413.
+(31) Rahimian, S.; Fransen, M. F.; Kleinovink, J. W.; Amidi, M.;
+Ossendorp, F.; Hennink, W. E. Polymeric microparticles for sustained
+and local delivery of antiCD40 and antiCTLA-4 in immunotherapy of
+cancer. Biomaterials 2015, 61, 33−40.
+(32) Phillip Lee, Y. H.; Sathigari, S.; Jean Lin, Y. J.; Ravis, W. R.;
+Chadha, G.; Parsons, D. L.; Rangari, V. K.; Wright, N.; Babu, R. J.
+Gefitinib-cyclodextrin inclusion complexes: physico-chemical charac-
+terization and dissolution studies. Drug Dev. Ind. Pharm. 2009, 35,
+1113−1120.
+(33) Vert, M.; Schwach, G.; Engel, R.; Coudane, J. Something new in
+the field of PLA/GA bioresorbable polymers? J. Controlled Release
+1998, 53, 85−92.
+(34) Anderson, J. M.; Shive, M. S. Biodegradation and biocompat-
+ibility of PLA and PLGA microspheres. Adv. Drug Delivery Rev. 1997,
+13, 5−24.
+(35) Elkharraz, K.; Faisant, N.; Guse, C.; Siepmann, F.; Arica-Yegin,
+B.; Oger, J. M.; Gust, R.; Goepferich, A.; Benoit, J. P.; Siepmann, J.
+Paclitaxel-loaded microparticles and implants for the treatment of
+brain cancer: preparation and physicochemical characterization. Int. J.
+Pharm. 2006, 314, 127−136.
+(36) Sansdrap, P.; Moës, A. J. In vitro evaluation of the hydrolytic
+degradation of dispersed and aggregated poly (DL-lactide-co-
+glycolide) microspheres. J. Controlled Release 1997, 43, 47−58.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.6b00896
+Mol. Pharmaceutics 2017, 14, 459−467
+467

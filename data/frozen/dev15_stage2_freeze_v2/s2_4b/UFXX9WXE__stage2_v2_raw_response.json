@@ -1,0 +1,1410 @@
+{
+  "document_key": "UFXX9WXE",
+  "doi": "10.1155/2014/156010",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F1",
+      "raw_label": "1",
+      "normalized_label": "Formulation 1",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2",
+      "raw_label": "2",
+      "normalized_label": "Formulation 2",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3",
+      "raw_label": "3",
+      "normalized_label": "Formulation 3",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4",
+      "raw_label": "4",
+      "normalized_label": "Formulation 4",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5",
+      "raw_label": "5",
+      "normalized_label": "Formulation 5",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F5"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F6",
+      "raw_label": "6",
+      "normalized_label": "Formulation 6",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F6"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F7",
+      "raw_label": "7",
+      "normalized_label": "Formulation 7",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F7"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F8",
+      "raw_label": "8",
+      "normalized_label": "Formulation 8",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F8"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F9",
+      "raw_label": "9",
+      "normalized_label": "Formulation 9",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F9"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F10",
+      "raw_label": "10",
+      "normalized_label": "Formulation 10",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F10"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F11",
+      "raw_label": "11",
+      "normalized_label": "Formulation 11",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F11"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F12",
+      "raw_label": "12",
+      "normalized_label": "Formulation 12",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F12"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F13",
+      "raw_label": "13",
+      "normalized_label": "Formulation 13",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F13"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F14",
+      "raw_label": "14",
+      "normalized_label": "Formulation 14",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F14"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F15",
+      "raw_label": "15",
+      "normalized_label": "Formulation 15",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F15"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F16",
+      "raw_label": "16",
+      "normalized_label": "Formulation 16",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F16"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F17",
+      "raw_label": "17",
+      "normalized_label": "Formulation 17",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F17"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F18",
+      "raw_label": "18",
+      "normalized_label": "Formulation 18",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F18"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F19",
+      "raw_label": "19",
+      "normalized_label": "Formulation 19",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F19"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F20",
+      "raw_label": "20",
+      "normalized_label": "Formulation 20",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F20"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F21",
+      "raw_label": "21",
+      "normalized_label": "Formulation 21",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F21"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F22",
+      "raw_label": "22",
+      "normalized_label": "Formulation 22",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F22"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F23",
+      "raw_label": "23",
+      "normalized_label": "Formulation 23",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F23"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F24",
+      "raw_label": "24",
+      "normalized_label": "Formulation 24",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F24"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F25",
+      "raw_label": "25",
+      "normalized_label": "Formulation 25",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F25"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F26",
+      "raw_label": "26",
+      "normalized_label": "Formulation 26",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F26"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "Optimized_Lzp-PLGA-NPs",
+      "raw_label": "optimized Lzp-PLGA-NPs",
+      "normalized_label": "optimized lorazepam PLGA nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "optimized"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "This formulation represents the optimized parameters derived from the Box-Behnken design, not a specific run from Table 2.",
+      "evidence_span_ids": [
+        "span_optimized_params_text",
+        "span_optimized_developed_char",
+        "span_optimized_drug_loading",
+        "span_optimized_tem"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "LS",
+      "raw_label": "plain aqueous drug suspension (LS)",
+      "normalized_label": "lorazepam solution",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_ls_control_release",
+        "span_ls_control_exvivo",
+        "span_radiolabeling_ls_nps"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "Placebo",
+      "raw_label": "placebo",
+      "normalized_label": "placebo nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "This is a placebo formulation, likely without the drug lorazepam, but with other components of the nanoparticles.",
+      "evidence_span_ids": [
+        "span_placebo_cell_viability"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "99mTc-LS_iv",
+      "raw_label": "99mTc-LS (i.v.)",
+      "normalized_label": "Technetium-99m radiolabeled lorazepam solution administered intravenously",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "comparative",
+      "parent_candidate_id": "LS",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "radiolabeled with Technetium-99m",
+        "administered intravenously"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This is a variant of the Lorazepam Solution (LS) with radiolabeling and a specific administration route for biodistribution studies.",
+      "evidence_span_ids": [
+        "span_radiolabeling_ls_nps",
+        "span_table3_caption",
+        "span_table3_LS_iv_blood_05h",
+        "span_admin_iv_dose"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "99mTc-LS_in",
+      "raw_label": "99mTc-LS (i.n.)",
+      "normalized_label": "Technetium-99m radiolabeled lorazepam solution administered intranasally",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "comparative",
+      "parent_candidate_id": "LS",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "radiolabeled with Technetium-99m",
+        "administered intranasally"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This is a variant of the Lorazepam Solution (LS) with radiolabeling and a specific administration route for biodistribution studies.",
+      "evidence_span_ids": [
+        "span_radiolabeling_ls_nps",
+        "span_table3_caption",
+        "span_table3_LS_in_blood_05h",
+        "span_admin_in_dose",
+        "span_admin_in_details"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "99mTc-Lzp-PLGA-NPs_in",
+      "raw_label": "99mTc-Lzp-PLGA-NPs (i.n.)",
+      "normalized_label": "Technetium-99m radiolabeled optimized lorazepam PLGA nanoparticles administered intranasally",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "comparative",
+      "parent_candidate_id": "Optimized_Lzp-PLGA-NPs",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "radiolabeled with Technetium-99m",
+        "administered intranasally"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This is a variant of the Optimized Lzp-PLGA-NPs with radiolabeling and a specific administration route for biodistribution studies.",
+      "evidence_span_ids": [
+        "span_radiolabeling_ls_nps",
+        "span_table3_caption",
+        "span_table3_LzpPLGANPs_in_blood_05h",
+        "span_admin_in_dose",
+        "span_admin_in_details"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "Optimized_Lzp-PLGA-NPs_Stability",
+      "raw_label": "Lzp-PLGA-NPs (stability study)",
+      "normalized_label": "optimized lorazepam PLGA nanoparticles under stability study conditions",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "Optimized_Lzp-PLGA-NPs",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "stored for 90 days at 25 ± 2∘C and 60% RH"
+      ],
+      "instance_context_tags": [
+        "post_processing"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "This represents the optimized formulation subjected to accelerated stability testing, not a new synthesis.",
+      "evidence_span_ids": [
+        "span_table4_caption",
+        "span_stability_conditions"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_plga",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "PLGA 50:50 (molecular weight 30,000–60,000) is a shared component for all Lzp-PLGA-NPs and Placebo formulations.",
+      "evidence_span_ids": [
+        "span_nanoprecipitation_method",
+        "span_nanoprep_details",
+        "span_materials_plga"
+      ]
+    },
+    {
+      "component_id": "comp_poloxamer",
+      "formulation_candidate_id": "",
+      "component_name": "poloxamer 407",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "Poloxamer 407 is a shared component for all Lzp-PLGA-NPs and Placebo formulations.",
+      "evidence_span_ids": [
+        "span_nanoprecipitation_method",
+        "span_nanoprep_details",
+        "span_materials_poloxamer"
+      ]
+    },
+    {
+      "component_id": "comp_lorazepam",
+      "formulation_candidate_id": "",
+      "component_name": "lorazepam",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Lorazepam is the drug component for all Lzp-PLGA-NPs and LS formulations.",
+      "evidence_span_ids": [
+        "span_nanoprep_details",
+        "span_materials_lorazepam"
+      ]
+    },
+    {
+      "component_id": "comp_acetone",
+      "formulation_candidate_id": "",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Acetone is the organic solvent used in the nanoprecipitation method.",
+      "evidence_span_ids": [
+        "span_nanoprecipitation_method",
+        "span_nanoprep_details",
+        "span_materials_acetone"
+      ]
+    },
+    {
+      "component_id": "comp_water",
+      "formulation_candidate_id": "",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "Water is the aqueous solvent used in the nanoprecipitation method.",
+      "evidence_span_ids": [
+        "span_nanoprep_details",
+        "span_materials_water"
+      ]
+    },
+    {
+      "component_id": "comp_99mTc",
+      "formulation_candidate_id": "",
+      "component_name": "Technetium-99m",
+      "component_role": "additive",
+      "amount_text": "5-6 mci",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Used for radiolabeling LS and Lzp-PLGA-NPs for scintigraphy and biodistribution studies.",
+      "evidence_span_ids": [
+        "span_radiolabeling_ls_nps",
+        "span_radiolabeling_99mTc_amount"
+      ]
+    },
+    {
+      "component_id": "comp_stannous_chloride",
+      "formulation_candidate_id": "",
+      "component_name": "stannous chloride dihydrate solution",
+      "component_role": "additive",
+      "amount_text": "2 mg/mL",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "Used as a reducing agent for radiolabeling with 99mTc.",
+      "evidence_span_ids": [
+        "span_radiolabeling_ls_nps",
+        "span_radiolabeling_efficiency"
+      ]
+    },
+    {
+      "component_id": "comp_normal_saline",
+      "formulation_candidate_id": "",
+      "component_name": "sodium chloride solution",
+      "component_role": "solvent",
+      "amount_text": "0.90% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "Used to make up the final volume of radiolabeled solutions.",
+      "evidence_span_ids": [
+        "span_radiolabeling_final_volume"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_F1_X1",
+      "formulation_candidate_id": "F1",
+      "variable_name": "polymer concentration",
+      "value_text": "35 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F1"
+      ]
+    },
+    {
+      "variable_id": "var_F1_X2",
+      "formulation_candidate_id": "F1",
+      "variable_name": "surfactant concentration",
+      "value_text": "2 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F1"
+      ]
+    },
+    {
+      "variable_id": "var_F1_X3",
+      "formulation_candidate_id": "F1",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F1"
+      ]
+    },
+    {
+      "variable_id": "var_F1_X4",
+      "formulation_candidate_id": "F1",
+      "variable_name": "drug concentration",
+      "value_text": "1 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F1"
+      ]
+    },
+    {
+      "variable_id": "var_F2_X1",
+      "formulation_candidate_id": "F2",
+      "variable_name": "polymer concentration",
+      "value_text": "35 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F2"
+      ]
+    },
+    {
+      "variable_id": "var_F2_X2",
+      "formulation_candidate_id": "F2",
+      "variable_name": "surfactant concentration",
+      "value_text": "2 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F2"
+      ]
+    },
+    {
+      "variable_id": "var_F2_X3",
+      "formulation_candidate_id": "F2",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F2"
+      ]
+    },
+    {
+      "variable_id": "var_F2_X4",
+      "formulation_candidate_id": "F2",
+      "variable_name": "drug concentration",
+      "value_text": "5 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F2"
+      ]
+    },
+    {
+      "variable_id": "var_F3_X1",
+      "formulation_candidate_id": "F3",
+      "variable_name": "polymer concentration",
+      "value_text": "10 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F3"
+      ]
+    },
+    {
+      "variable_id": "var_F3_X2",
+      "formulation_candidate_id": "F3",
+      "variable_name": "surfactant concentration",
+      "value_text": "8.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F3"
+      ]
+    },
+    {
+      "variable_id": "var_F3_X3",
+      "formulation_candidate_id": "F3",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "10",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F3"
+      ]
+    },
+    {
+      "variable_id": "var_F3_X4",
+      "formulation_candidate_id": "F3",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F3"
+      ]
+    },
+    {
+      "variable_id": "var_F4_X1",
+      "formulation_candidate_id": "F4",
+      "variable_name": "polymer concentration",
+      "value_text": "35 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F4"
+      ]
+    },
+    {
+      "variable_id": "var_F4_X2",
+      "formulation_candidate_id": "F4",
+      "variable_name": "surfactant concentration",
+      "value_text": "8.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F4"
+      ]
+    },
+    {
+      "variable_id": "var_F4_X3",
+      "formulation_candidate_id": "F4",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F4"
+      ]
+    },
+    {
+      "variable_id": "var_F4_X4",
+      "formulation_candidate_id": "F4",
+      "variable_name": "drug concentration",
+      "value_text": "1 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F4"
+      ]
+    },
+    {
+      "variable_id": "var_F5_X1",
+      "formulation_candidate_id": "F5",
+      "variable_name": "polymer concentration",
+      "value_text": "10 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F5"
+      ]
+    },
+    {
+      "variable_id": "var_F5_X2",
+      "formulation_candidate_id": "F5",
+      "variable_name": "surfactant concentration",
+      "value_text": "2 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F5"
+      ]
+    },
+    {
+      "variable_id": "var_F5_X3",
+      "formulation_candidate_id": "F5",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F5"
+      ]
+    },
+    {
+      "variable_id": "var_F5_X4",
+      "formulation_candidate_id": "F5",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F5"
+      ]
+    },
+    {
+      "variable_id": "var_F6_X1",
+      "formulation_candidate_id": "F6",
+      "variable_name": "polymer concentration",
+      "value_text": "10 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F6"
+      ]
+    },
+    {
+      "variable_id": "var_F6_X2",
+      "formulation_candidate_id": "F6",
+      "variable_name": "surfactant concentration",
+      "value_text": "8.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F6"
+      ]
+    },
+    {
+      "variable_id": "var_F6_X3",
+      "formulation_candidate_id": "F6",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F6"
+      ]
+    },
+    {
+      "variable_id": "var_F6_X4",
+      "formulation_candidate_id": "F6",
+      "variable_name": "drug concentration",
+      "value_text": "5 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F6"
+      ]
+    },
+    {
+      "variable_id": "var_F7_X1",
+      "formulation_candidate_id": "F7",
+      "variable_name": "polymer concentration",
+      "value_text": "10 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F7"
+      ]
+    },
+    {
+      "variable_id": "var_F7_X2",
+      "formulation_candidate_id": "F7",
+      "variable_name": "surfactant concentration",
+      "value_text": "8.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F7"
+      ]
+    },
+    {
+      "variable_id": "var_F7_X3",
+      "formulation_candidate_id": "F7",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F7"
+      ]
+    },
+    {
+      "variable_id": "var_F7_X4",
+      "formulation_candidate_id": "F7",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F7"
+      ]
+    },
+    {
+      "variable_id": "var_F8_X1",
+      "formulation_candidate_id": "F8",
+      "variable_name": "polymer concentration",
+      "value_text": "35 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F8"
+      ]
+    },
+    {
+      "variable_id": "var_F8_X2",
+      "formulation_candidate_id": "F8",
+      "variable_name": "surfactant concentration",
+      "value_text": "8.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F8"
+      ]
+    },
+    {
+      "variable_id": "var_F8_X3",
+      "formulation_candidate_id": "F8",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F8"
+      ]
+    },
+    {
+      "variable_id": "var_F8_X4",
+      "formulation_candidate_id": "F8",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F8"
+      ]
+    },
+    {
+      "variable_id": "var_F9_X1",
+      "formulation_candidate_id": "F9",
+      "variable_name": "polymer concentration",
+      "value_text": "60 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F9"
+      ]
+    },
+    {
+      "variable_id": "var_F9_X2",
+      "formulation_candidate_id": "F9",
+      "variable_name": "surfactant concentration",
+      "value_text": "8.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F9"
+      ]
+    },
+    {
+      "variable_id": "var_F9_X3",
+      "formulation_candidate_id": "F9",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F9"
+      ]
+    },
+    {
+      "variable_id": "var_F9_X4",
+      "formulation_candidate_id": "F9",
+      "variable_name": "drug concentration",
+      "value_text": "1 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F9"
+      ]
+    },
+    {
+      "variable_id": "var_F10_X1",
+      "formulation_candidate_id": "F10",
+      "variable_name": "polymer concentration",
+      "value_text": "35 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F10"
+      ]
+    },
+    {
+      "variable_id": "var_F10_X2",
+      "formulation_candidate_id": "F10",
+      "variable_name": "surfactant concentration",
+      "value_text": "15 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F10"
+      ]
+    },
+    {
+      "variable_id": "var_F10_X3",
+      "formulation_candidate_id": "F10",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F10"
+      ]
+    },
+    {
+      "variable_id": "var_F10_X4",
+      "formulation_candidate_id": "F10",
+      "variable_name": "drug concentration",
+      "value_text": "5 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F10"
+      ]
+    },
+    {
+      "variable_id": "var_F11_X1",
+      "formulation_candidate_id": "F11",
+      "variable_name": "polymer concentration",
+      "value_text": "10 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F11"
+      ]
+    },
+    {
+      "variable_id": "var_F11_X2",
+      "formulation_candidate_id": "F11",
+      "variable_name": "surfactant concentration",
+      "value_text": "15 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F11"
+      ]
+    },
+    {
+      "variable_id": "var_F11_X3",
+      "formulation_candidate_id": "F11",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F11"
+      ]
+    },
+    {
+      "variable_id": "var_F11_X4",
+      "formulation_candidate_id": "F11",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F11"
+      ]
+    },
+    {
+      "variable_id": "var_F12_X1",
+      "formulation_candidate_id": "F12",
+      "variable_name": "polymer concentration",
+      "value_text": "60 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F12"
+      ]
+    },
+    {
+      "variable_id": "var_F12_X2",
+      "formulation_candidate_id": "F12",
+      "variable_name": "surfactant concentration",
+      "value_text": "2 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F12"
+      ]
+    },
+    {
+      "variable_id": "var_F12_X3",
+      "formulation_candidate_id": "F12",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F12"
+      ]
+    },
+    {
+      "variable_id": "var_F12_X4",
+      "formulation_candidate_id": "F12",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F12"
+      ]
+    },
+    {
+      "variable_id": "var_F13_X1",
+      "formulation_candidate_id": "F13",
+      "variable_name": "polymer concentration",
+      "value_text": "35 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F13"
+      ]
+    },
+    {
+      "variable_id": "var_F13_X2",
+      "formulation_candidate_id": "F13",
+      "variable_name": "surfactant concentration",
+      "value_text": "15 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F13"
+      ]
+    },
+    {
+      "variable_id": "var_F13_X3",
+      "formulation_candidate_id": "F13",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "10",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F13"
+      ]
+    },
+    {
+      "variable_id": "var_F13_X4",
+      "formulation_candidate_id": "F13",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F13"
+      ]
+    },
+    {
+      "variable_id": "var_F14_X1",
+      "formulation_candidate_id": "F14",
+      "variable_name": "polymer concentration",
+      "value_text": "60 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F14"
+      ]
+    },
+    {
+      "variable_id": "var_F14_X2",
+      "formulation_candidate_id": "F14",
+      "variable_name": "surfactant concentration",
+      "value_text": "15 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F14"
+      ]
+    },
+    {
+      "variable_id": "var_F14_X3",
+      "formulation_candidate_id": "F14",
+      "variable_name": "aqueous/organic phase ratio",
+      "value_text": "6",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F14"
+      ]
+    },
+    {
+      "variable_id": "var_F14_X4",
+      "formulation_candidate_id": "F14",
+      "variable_name": "drug concentration",
+      "value_text": "3 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_F14"
+      ]
+    },
+    {
+      "variable_id": "var_F15_X1",
+      "formulation_candidate_id": "F15",
+      "variable_name": "polymer concentration",
+      "value_text": "60 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table

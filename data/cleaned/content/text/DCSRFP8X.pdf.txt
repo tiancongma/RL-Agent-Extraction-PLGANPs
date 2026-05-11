@@ -1,0 +1,796 @@
+O R I G I N A L  R E S E A R C H
+Tumor Antigen-Tethered Spiked Virus-Like- Poly
+(Lactic-Co-Glycolic Acid)-Nanoparticle Vaccine
+Enhances Antitumor Ability Through Th9 Promotion
+in Mice
+Ting-Wei Lin
+1, Po-Yu Chou
+2, Yen-Ting Shen2, Ming-Thau Sheu
+2, Kuo-Hsiang Chuang3,4, Shyr-Yi Lin5,6,
+Chia-Yi Chang1
+1Department of Veterinary Medicine, National Taiwan University, Taipei, Taiwan; 2School of Pharmacy, College of Pharmacy, Taipei Medical University, Taipei,
+Taiwan; 3PhD Program in Clinical Drug Development of Chinese Herbal Medicine, Taipei Medical University, Taipei, Taiwan; 4Graduate Institute of
+Pharmacognosy, Taipei Medical University, Taipei, Taiwan; 5Division of Gastroenterology and Hepatology, Department of Internal Medicine, Taipei Medical
+University Hospital, Taipei, Taiwan; 6Department of General Medicine, School of Medicine, College of Medicine, Taipei Medical University, Taipei, Taiwan
+Correspondence: Shyr-Yi Lin; Chia-Yi Chang, Email sylin@tmu.edu.tw; chiayichang@ntu.edu.tw
+Purpose: Immunotherapy emerges as a promising frontier in cancer therapy and prevention. This study investigates the capacity of
+tumor-antigenic nanoparticles, specifically ovalbumin-tethered spiked virus-like poly(lactic-co-glycolic acid) nanoparticles (OVA-
+sVLNP), to effectively elicit humoral and cellular immune responses against tumors.
+Methods: OVA-sVLNP were synthesized through thiol-maleimide crosslinking using a single emulsion method. Comprehensive
+characterization was performed through Nuclear Magnetic Resonance (NMR), dynamic light scattering, Cryo-electron microscopy
+(Cryo-EM), confocal microscopy, and flow cytometry. Immunogenicity was evaluated using an enzyme-linked immunosorbent assay
+(ELISA) for quantifying immunoglobulin levels (IgG, IgG1, IgG2a) and cytokines in mouse sera. Flow cytometry profiled cellular
+immune responses in mouse spleens, and organ biosafety was assessed using immunohistochemistry and hematoxylin and eosin
+(H&E) staining.
+Results: OVA-sVLNP had a mean particle size of 193.8 ± 11.9 nm, polydispersity index of 0.307 ± 0.04, and zeta potential of −39.6 ±
+10.16 mV, remaining stable for one month at 4°C. In vitro studies revealed significant upregulation of CD80/CD86 in dendritic cells,
+indicating robust activation. In vivo, the optimal concentration (V25) induced potent IgG, IgG1, and IgG2a antibodies, significant
+populations of CD3+CD4+, CD3+CD8+, and a rare subset of CD3+CD4+CD8+ memory T cells. Notably, Th9 induction resulted in the
+secretion of IL-9, IL-10, and other cytokines, which are crucial for orchestrating cytotoxic T cell activity and antitumor effects.
+Overall, higher doses did not improve outcomes, highlighting the significance of optimal dosing.
+Conclusion: This study demonstrated potent immunogenicity of OVA-sVLNP, characterized by the induction of specific IgG
+antibodies and the stimulation of cellular immune responses, particularly tumor-killing Th9 cells. The simplicity and cost-
+effectiveness of the manufacturing process augment the potential of OVA-sVLNP as a viable candidate for antitumor vaccines,
+opening new avenues for cancer prevention and cell-based therapeutic strategies.
+Keywords: tumor antigen-spiked virus-like nanoparticles, PLGA nanoparticles, cancer vaccine, ovalbumin, T helper 9, antitumor
+Introduction
+Cancer vaccines have been demonstrated to have considerable potential.1,2 Over the past four decades, these vaccines
+have primarily worked by activating the immune systems of patients to prevent and target tumors, employing either
+cellular or humoral immune responses. Clinical trials or preclinical studies have focused on the interaction of tumor
+antigens or biomarkers with adjuvants or other costimulatory factors.3–6 The delivery system is a critical component of
+these vaccines and is responsible for delivering tumor antigens and activators to the immune system. One of the most
+International Journal of Nanomedicine 2024:19 10983–11002
+10983
+© 2024 Lin et al. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.php
+and incorporate the Creative Commons Attribution – Non Commercial (unported, v3.0) License (http://creativecommons.org/licenses/by-nc/3.0/). By accessing the work
+you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For
+permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+International Journal of Nanomedicine
+Dovepress
+Open Access Full Text Article
+Received: 4 May 2024
+Accepted: 17 October 2024
+Published: 30 October 2024
+International Journal of Nanomedicine downloaded from https://www.dovepress.com/
+For personal use only.
+
+successful delivery vehicles utilizes virus-like nanoparticles (VLNPs), which have attracted considerable attention for its
+use against various cancers.7–13
+VLNPs typically range from 20 to 200 nm in diameter and resemble many viruses in size.14 They effectively mimic
+virus entry into host cells without causing viral infection, utilizing their complex, multimeric, or self-assembling
+structures. VLNPs are classified as enveloped or non-enveloped, depending on whether a lipid envelope is present.15
+The efficacy of these vaccines depends on their ability to induce a range of immune responses. These responses can occur
+independently or synergistically, involving key immune cells such as antigen-presenting cells (APCs), helper and
+cytotoxic T cells, natural killer (NK) cells, and tumor-resident myeloid cells.
+A review study published in 201216 reported that activated T helper cells can differentiate into either effector T helper
+1 (Th1) or T helper 2 (Th2) cells. These two subsets of effector CD4+ T cells are defined by the specific cytokines they
+secrete and their distinct immune functions. Interleukin 9 (IL-9) is a cytokine originally associated with the Th2
+phenotype and plays a vital role in allergic mechanisms, resistance to parasites, and antitumor immunity.17,18 In 2008,
+T helper 9 (Th9) cells were identified as a new subset of CD4+ T cells, notable for their simultaneous production of
+Interleukin 9 and Interleukin 10 (IL-10), distinguishing them from Th2 cells.19
+A study investigating the effects of IL-9 neutralization in a B16 melanoma lung model, noted for its low immuno­
+genicity, also introduced tumor-specific Th9 cells in both prophylactic and therapeutic tumor models. The findings
+suggest that IL-9 and Th9 cells provide protection against tumor development.18 Interestingly, Th9 cells have been
+observed to recruit dendritic cells to tumor sites, promoting antigen presentation in tumor-draining lymph nodes
+(TDLNs).20 IL-9 serves dual roles in tumor suppression: it not only directly triggers apoptosis in malignant cells, but
+also stimulates the initiation of both innate and adaptive antitumor immune responses. Moreover, the study highlighted
+Graphical Abstract
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10984
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+that ectopic expression of membrane-bound IL-9 (MBIL-9) can induce cytotoxic effects in T helper cells, specifically
+targeting CT26 tumor cells. Additionally, MBIL-9 also amplifies the cytolytic potential of CD4+ and CD8+
+T lymphocytes.21 Furthermore, the study identified a rare population of activated CD4+CD8+ double-positive T cells
+in mouse spleens, further underscoring IL-9’s pivotal role in augmenting the activation of cytotoxic T cells.
+Previous research has increasingly focused on the use of small protein antigens processed by APCs, especially
+dendritic cells (DCs). Mature DCs migrate to lymph nodes (LNs), a process that is essential for activating antitumor
+T cells, including CD4+ (helper) T cells, and CD8+ (cytotoxic) T cells. This pivotal function renders DCs primary targets
+in developing protein antigen-based vaccines, such as ovalbumin (OVA).22–24 The monomeric structure of OVA,
+consisting of a 44.5 kDa molecular weight and a sequence of 385 amino acids, exhibits dual gene polymorphism and
+four unbound sulfhydryl groups, enhancing its resilience against tumor relapse.25 However, challenges such as immu­
+nogenicity, intracellular delivery, protection against enzymatic degradation, efficient uptake by DCs, and prolonged
+circulation time. These challenges underscore the necessity for nanoparticle-based strategies to overcome these limita­
+tions in utilizing OVA.23,25
+Poly(lactic-co-glycolic acid) (PLGA) is an effective biodegradable polymer, valued primarily for its degradation into lactic
+acid and glycolic acid26- both endogenous metabolites that the body easily processes via the Krebs cycle. This characteristic
+renders PLGA particularly suitable for drug delivery and biomaterial applications due to its minimal systemic toxicity.27 The
+use of Poly(D, L-lactide-co-glycolide) (PLGA) in designing particulate antigen delivery systems, specifically for cancer
+vaccines and antitumor therapy, has been extensively researched. The improved efficacy of vaccines employing PLGA
+particles is attributed to their capacity to consistently release antigens, thereby enabling the precise targeting of APCs,
+specifically dendritic cells (DCs). Such targeting is crucial for inducing cytotoxic T cell immunity.28 Furthermore, it is crucial
+to modify the surface of PLGA particles, by adding hydrophilic moieties such as polyethylene glycol (PEG) polymers. These
+modifications are designed to interact with surface receptors on dendritic cells, enhancing selective binding affinity to
+dendritic cellular targets, promoting receptor-mediated endocytosis, and subsequently increasing antigen-presenting effi­
+ciency to various helper T cells, such as the CD4+ subsets Th1, Th2, Th9, and Th17 cells.28,29
+This study outlines the process of combining the advantages of Ovalbumin (OVA) and VLNP to create highly
+effective antigen bindings. This is achieved by tethering OVA protein antigens to maleimide-PEG-PLGA nanoparticles
+(MAL-VLNP) through the thiol-maleimide click reaction, resulting in the creation of OVA-spiked virus-like PLGA
+nanoparticles (OVA-sVLNP). The specific aim is to target dendritic cells using OVA-sVLNP, leveraging their capabilities
+to generate robust humoral and cellular immune responses for efficient tumor cell elimination. OVA serves as the model
+protein, representing tumor-associated proteins. The OVA-sVLNP formulation has demonstrated noteworthy enhance­
+ment in both B cell and T cell immune responses following vaccination in mouse models. This finding serves as
+a predictive indicator of the potential antitumor efficacy of the OVA-sVLNP formulation. This innovative approach offers
+a promising platform for the development of therapeutic cancer vaccines.
+Materials and Methods
+Materials
+This study used Poly(D,L-lactide-co-glycolide) (RESOMER, RG 502, PLGA) from Evonik (Essen, Germany); DSPE-
+PEG020-Maleimide from Biopharma PEG (Watertown, MA, USA); Soybean lecithin (Lipoid S-100) from Sigma-Aldrich
+(Ludwigshafen, Germany); and Ovalbumin (extracted from chicken egg whites) from Sigma-Aldrich, (St. Louis, MO, USA).
+The Amicon Ultra-15 Centrifugal Filter Units (Merck, 100 kDa) and the DC2.4 (SCC142) murine bone marrow-derived
+dendritic cell line were purchased from Merck KGaA (Darmstadt, Germany). RPMI 1640 medium, nonessential amino acids,
+L-glutamine, 2-β-mercaptoethanol, 4-(2-hydroxyethyl)-1- piperazineethanesulfonic acid (HEPES), Hoechst 33342,
+LysoTracker Red DND- 99, and NHS-Fluorescein CBQCA Protein Quantitation Kit were purchased from Thermo Fisher
+Scientific (Waltham, MA, USA). DiR iodide (1,1-dioctadecyl-3,3,3,3- tetramethylindotricarbocyanine iodide) was obtained
+from ATT Bioquest (Pleasanton, CA, USA). C57BL/6 mice and their purified dye-free diets were purchased from BioLASCO
+Taiwan (Taipei, Taiwan). PE anti-mouse CD80 Antibody, APC anti-mouse CD86 Antibody, APC anti-mouse MHCII
+Antibody, APC anti-mouse CD3 Antibody, Percp/cy5.5 anti-mouse CD4 Antibody, and PE anti-mouse CD8a Antibody
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10985
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+were obtained from BioLegend (San Diego, CA, USA). Goat Anti-Mouse IgG1-HRP and Goat Anti-Mouse IgG2a HRP were
+received from Southern Biotech (Birmingham, Alabama, USA). Anti-ovalbumin IgG (mouse) enzyme-linked immunosorbent
+assay (ELISA) Kit, Anti-ovalbumin IgG1 (mouse) ELISA Kit, and Anti-ovalbumin IgG2a (mouse) ELISA Kit were obtained
+from Cayman Chemical (Ann Arbor, MI, USA). TMB Substrate was purchased from Clinical Science (Mansfield, MA, USA).
+Dulbecco’s modified Eagle medium, Heat-inactivated fetal bovine serum (FBS), Penicillin-Streptomycin Amphotericin
+B solution (10,000 units/mL Penicillin G sodium salt, 10 mg/mL Streptomycin sulfate, 25 μg/mL Amphotericin B with 8.5
+g/L NaCl), and trypsin-EDTA (0.25% trypsin / 2.21 mm EDTA in HBSS without sodium bicarbonate, calcium, or magnesium)
+were obtained from Corning (Corning, NY, USA).
+Preparation and Characterization of Ovalbumin-Spiked Virus-Like PLGA
+Nanoparticles (OVA-sVLNP) Using a Maleimide Linker on MAL-PEG VLNP
+In this study, the preparation of ovalbumin-spiked virus-like PLGA nanoparticles (OVA-sVLNP) involved a modified
+single ultrasonic shaking emulsion phase method, adapted from another study.30 Initially, the inner phase polymer
+solution was created by dissolving PLGA in dichloromethane. Concurrently, the external aqueous solution was prepared
+using lecithin with DSPE-PEG2000-Maleimide in 0.001 M phosphate buffer at pH 5. When the internal phase was
+injected into the external phase, the mixture was subjected to ultrasonic probe sonication (Q700, Q Sonica LLC, USA) at
+a frequency of 7% amplitude for 1 s, with 2-s intervals over a 2-min emulsification period. Following this, the oil and
+water monophasic nanoparticle solution was transferred to a 40°C circulating water bath and a chemical exhaust cabinet
+to allow solvent volatilization at 500 rpm for 1 h. Finally, the solution was centrifuged using a 100-kDa molecular weight
+Amicon filter tube at 500 × g and 25°C for 30 min to obtain maleimide PEG-inserted virus-like PLGA nanoparticles
+(MAL-VLNP). The next step involved mixing an appropriate volume of MAL-VLNP with the ovalbumin (OVA) reaction
+solution, where OVA was dissolved in 0.001 M phosphate buffer at pH 7. This solution underwent a thiol-maleimide
+crosslinking reaction between the thiol group on OVA and the maleimide group on MAL-VLNP at room temperature.
+The reaction was achieved by rotating the mixture at 500 rpm for 4 h. The nanoparticles were then concentrated using an
+Amicon filter tube with a 100 kDa molecular weight cutoff, involving centrifugation at 500 × g and 25°C for 30 min and
+subsequent rinsing with deionized water. To remove free substances, the solution was centrifuged again at 500 × g and
+25°C for 5 min, followed by three rounds of rinsing with deionized water. Finally, the OVA-sVLNP was obtained by
+freeze-drying the resultant product.
+The content of the maleimide group in MAL-VLNP (dissolved in a chloroform-d solvent) was determined by
+identifying the chemical shift peak at δ = 6.7 ppm for the maleimide functional group using a 600 MHz nuclear
+magnetic resonance instrument (Agilent 600 MHz DD2 nuclear magnetic resonance [NMR]). The particle size, poly­
+dispersity index (PDI), and interface potential (Zeta potential) of OVA-sVLNP and MAL-VLNP were analyzed using
+a nanoparticle size potential distribution analyzer (DKSH & Malvern Zetasizer Nano ZSP). Each measurement was
+repeated three times for each group, and the mean and standard deviation (SD) were calculated using Prism 8.3 software
+to ensure experimental reproducibility. The physicochemical stability of ovalbumin-spiked virus-like-PLGA nanoparti­
+cles (OVA-sVLNP) was verified at 4°C. This involved monitoring changes in particle size and zeta potential using the
+nanoparticle size potential distribution analyzer (DKSH & Malvern Zetasizer Nano ZSP) at predetermined intervals (days
+1, 7, 14, 21, and 28).
+For quantifying the OVA content in the OVA-sVLNP, the nanoparticles were suspended in a 0.1 M boric acid solution
+adjusted to pH 8. The CBQCA Protein Quantitation Kit was used for quantification, and the concentration was detected
+using an ELISA reader (BioTek Instruments, USA) at 550nm. The morphology of the OVA-sVLNP was analyzed using
+Cryo-electron microscopy (Cryo-EM).
+Cell Culture
+Murine dendritic cells (DC2.4) were cultured in RPMI-1640 (Sigma Cat. No. R0883) supplemented with 10% FBS (Cat.
+No. ES-009-B), 1X L-Glutamine (Cat. No. TMS-002-C), 1X nonessential amino acids (Cat. No. TMS-001-C), 1X
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10986
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+HEPES Buffer Solution (Cat. No. TMS-003-C), and 0.0054X β-Mercaptoethanol (Cat. No. ES-007-E). The DC2.4 cells
+were trypsinized using trypsin−EDTA and maintained in a humidified incubator with 5% CO2 at 37°C.
+In vitro Cellular Uptake Assay
+The murine dendritic cells (DC2.4) were seeded in six-well cell culture plates and incubated overnight. Subsequently,
+1 mL of solution containing Control (culture medium), Bare (sVLNP), V10 (OVA-sVLNP, OVA = 10 μg/mL), V25
+(OVA-sVLNP, OVA = 25 μg/mL), V50 (OVA-sVLNP, OVA = 50 μg/mL), and V100 (OVA-sVLNP, OVA = 100 μg/mL)
+nanoparticles were added to the respective wells. These were incubated at 37°C with 5% CO2 for 24 h. Following the 24-
+h culture period, the supernatant was removed, and the cells were rinsed twice with 1× phosphate-buffered saline (PBS).
+Subsequently, 0.2 mL of 0.1% trypsin-EDTA (Corning) was added for cell resuspension, and the cells were washed again
+with 1x PBS. Two different cell-marker fluorescently labeled antibodies, APC anti-mouse CD86 antibody (BioLegend)
+and PE anti-mouse CD80 antibody (BioLegend), were used to stain the cells for 20 min on ice. The cell pellets were
+washed and resuspended with 1× PBS and then analyzed using flow cytometry (SA3800) to observe the maturation
+ability of DC2.4.
+To synthesize FITC-conjugated OVA-sVLNP, a 10 mg/mL NHS-FITC solution, dissolved in dimethyl sulfoxide
+(DMSO), was used. Prepared OVA-sVLNP was suspended in a 50 mm boric acid buffer at pH 8.5. The reaction,
+maintaining a 1:15 molar ratio of OVA to NHS-FITC, proceeded at room temperature for 1 h in a light-protected
+environment. Concentration of the nanoparticles was achieved using an Amicon filter tube with a 100 kDa molecular
+weight cutoff, followed by centrifugation at 500 × g for 10 min and three sequential rinses with deionized water.
+The DC2.4 murine dendritic cells were cultured overnight on a 35 mm glass bottom dish (Ibidi). Subsequently, FITC-
+OVA-sVLNP was administered at distinct time intervals of 6, 12, 24, and 36 h. Lysotracker at a concentration of 50 nM
+was introduced into the culture medium for 45 min, followed by three rinses with fresh culture medium. Post-rinsing,
+Hoechst at a concentration of 2 μg/mL was added to the culture medium for 30 s, followed by three washes with new
+culture medium. The assessment of cellular phagocytosis dynamics over various time points was conducted utilizing
+a state-of-the-art super-resolution white light-linked focus real-time imaging platform (Stellaris 8 confocal microscope).
+In a separate experiment, DC2.4 murine dendritic cells were cultured in a 12-well culture plate overnight. At specific
+intervals of 6, 12, 24, and 36 h, distinct dosages of FITC-OVA-sVLNP were administered. Cells were then resuspended
+using 0.1% trypsin-EDTA (Corning) and analyzed using flow cytometry (SA3800) to assess the phagocytic activity of
+DC2.4 cells.
+In vivo Biodistribution
+The lipophilic near-infrared photostain DiR iodide was selected for its excitation wavelength of 748 nm and emission
+wavelength of 780 nm. This stain was utilized to encapsulate within OVA-sVLNP to form DiR-encapsulated OVA-
+sVLNP. The purpose of this encapsulation was to aid in biodistribution analysis by leveraging the lipophilicity and near-
+infrared properties of DiR iodide for tracking the nanoparticles.
+Before administering the drug, C57BL/6 mice were fed a dye-free purified diet for 2–3 days. This dietary measure
+was to eliminate potential interference between the general feed and the fluorescence of DiR. Each group of animals
+received an intramuscular injection of 20 μL of DiR-encapsulated OVA-sVLNP. The in vivo migration of OVA-sVLNP
+was observed using the IVIS Lumina III XRMS in vivo imaging system (PerkinElmer, UK) at specific time points: 2, 6,
+24, 48, 72, and 168 h post-administration. The accumulation pattern of DiR-encapsulated OVA-sVLNP in the ipsilateral
+lymph nodes was determined by capturing DiR fluorescence signals with the IVIS system.
+Mouse Immunization and Humoral Immunity Assessments
+The C57BL/6 mice were stratified randomly into five groups, with each group comprising four mice (n = 4). The mice
+received an intramuscular injection of 20 μL OVA-sVLNP at 2-week intervals, totaling three injections. On days 7, 21,
+35, 63, and 84 after the initial injection (denoted D7, D21, D35, D63, and D84, respectively), approximately 300 μL of
+whole blood was extracted from the cheek of each mouse using a 26G needle. These samples were centrifuged at
+4000 rpm for 10 min at 4°C to separate the serum, which was subsequently preserved at −80°C for subsequent analyses.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10987
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+To assess immunoglobulin G titers, an ELISA protocol was employed. Initially, each well of a 96-well plate was
+coated with 100 μL of ovalbumin solution and incubated overnight at 4°C. The wells were then rinsed three times with
+250 μL of rinse solution. Subsequently, 100 μL of blocking solution was added to each well and incubated at 150 rpm
+and 25°C for 1 h, followed by three more rinses. Subsequently, 100 μL per well of standard curve solutions and serum
+samples (diluted from 1:500 to 1:5000) were added and incubated for 2 h at 150 rpm and 25°C. After another set of three
+rinses, 100 μL per well of the secondary antibody, Goat Anti-Mouse IgG HRP detection antibody (diluted at 1:10,000),
+was introduced and incubated for 1 h at 150 rpm and 25°C. Following three rinses, 100 μL per well of TMB solution was
+added and incubated for 10 min at 150 rpm and 25°C. The reaction was terminated by introducing 50 μL per well of 2N
+sulfuric acid solution, and the absorbance was measured at a visible light wavelength of 450 nm (ThermoScientific,
+VARIOSKAN LUX).
+For detecting immunoglobulin G1 (IgG1), the methodology mirrored that used for immunoglobulin G (IgG) titer
+measurement, with nuanced adjustments. Specifically, serum samples for D7 were diluted at a ratio of 1:500, and samples
+from D21, D35, D63, and D84 were diluted at a ratio of 1:5000. The secondary antibody, Goat Anti-Mouse IgG1 HRP
+detection antibody was diluted at 1:40000, aligning with the standardized ELISA protocols utilized in IgG titer
+determination.
+The methodology employed in detecting immunoglobulin G2a (IgG2a) closely parallels the established procedure for
+assessing immunoglobulin G (IgG) titers, albeit with distinct variations. Specifically, serum samples from D7 were
+diluted at 1:50, and samples from D21, D35, D63, and D84 were diluted at 1:100. The secondary antibody, Goat Anti-
+Mouse IgG2a HRP detection antibody, was diluted at 1:8000, aligning precisely with the standardized ELISA protocols
+utilized in determining IgG titers.
+Evaluation of T Cell-Derived Multiple Cytokines
+The BioLegend multi-analyte flow assay kit was used to assess the cytokine profiles of distinct T cell populations in
+mouse serum. This involved processing mouse serum samples (D0, D7, D21, D35, D63, D84) and standard calibration
+samples using a 96-well assay filter plate. The protocol was conducted with meticulous care, starting with the thawing of
+samples on ice. Initially, the filter plate was washed with 100 μL of 1× wash buffer, which was subsequently aspirated.
+Subsequently, 25 μL of matrix buffer, assay buffer, and test serum were sequentially added to each well, followed by the
+addition of 25 μL of capture beads. This mixture was then agitated at room temperature for 2 h at 500 rpm. After this
+incubation, the plate underwent two washes with 1× wash buffer and the buffer was aspirated. A 25 μL volume of
+detection antibody was added, followed by an incubation at room temperature for 1 h at 500 rpm. Subsequently, 25 μL of
+SA-PE was introduced into the assay and incubated at room temperature for 30 min at 500 rpm. After two more washes
+with 1× wash buffer and aspiration of the buffer, the beads were reconstituted in 150 μL of 1× wash buffer. The final step
+involved flow cytometry analysis using BD Celesta for data acquisition, with post-acquisition data analysis conducted
+utilizing the LEGENDplex Data Analysis software.
+Evaluation of the Proportion of B and T Cells from Mouse Splenocytes
+On the 84th day after the initial injection, the spleens of euthanized mice were harvested and sectioned into small
+fragments in a 6 cm cell culture dish. After sectioning, 5 mL of a solution containing 1 mg/mL Collagenase D and
+100 µg/mL DNase I were added, initiating a 30-min incubation period at 37°C with 5% CO2 in a cell culture incubator.
+The resultant cell suspension was then filtered through a 40 µm nylon cell strainer, followed by a 5 mL wash using 1×
+PBS to collect the filtrate. The filtrate underwent centrifugation at 300 × g for 7 min, after which the supernatant was
+discarded. Subsequently, the cell pellet was treated with 1 mL of 1× red blood cell lysis buffer (RBC lysis buffer, BD) for
+1-min, followed by two washes with 1× PBS and a final centrifugation at 300 × g to isolate the spleen cells. To isolate
+T cells, fluorescently labeled anti-mouse antibodies (CD3-APC, CD4-Percp/cy5.5, and CD8a-PE sourced from
+BioLegend) were individually introduced to the splenocytes in flow tubes, allowing for a 30-min staining period in the
+dark. Similarly, B cells were isolated using different fluorescent anti-mouse antibodies (CD45R/B220-Percp/cy5.5 and
+MHCII-APC sourced from BioLegend), each introduced separately to the flow tubes containing the splenocytes and
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10988
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+stained for 30-min in the dark. After staining, the supernatant was removed, and the cells were rinsed twice with 1× PBS.
+Finally, the cells were suspended for subsequent analysis utilizing flow cytometry techniques.
+Assessment of Chemokine Function from Mouse Lymph Nodes
+Simultaneously, on the eighty-fourth day after the initial inoculation, the bilateral groin lymph nodes were harvested from
+euthanized mice. These lymph nodes were first fixed by immersing them in a 10% formalin solution for 72 h, and then
+preserved by storing in PBS at 4°C. For immunohistochemistry (IHC) staining assays, the lymph node tissues were
+treated with anti-mouse CXCL3 or CXCL13 antibodies (BioLegend). The tissue sections were then analyzed by Toshon
+Technology. These immunohistochemical stains were graded on a semiquantitative scale according to the positive
+staining ratio within the lymph nodes.31
+Biosafety Assessments
+On day 84, after the initial injection, the mice were euthanized for the retrieval of vital organs, including hearts, livers,
+lungs, kidneys and lymph nodes. These organs were immersed in a 10% formalin solution for fixation. The organ
+specimens then underwent a series of processing steps conducted by Toshon Technology. These steps included paraffin
+embedding, tissue sectioning, and histological staining using hematoxylin and eosin (H&E). The stained tissues were
+observed under a microscope with panoramic scanning capabilities in visible light to assess any histopathological
+changes. Throughout the experimental period, the body weight of the C57BL/6 mice was monitored weekly. This regular
+monitoring continued up to the 12th week, at which point the mice were euthanized.
+Statistics
+GraphPad Prism software (V8.3, GraphPad Software, San Diego, CA, USA) was used for data analysis. All data are
+expressed as the mean ± SD. Statistical significance was evaluated using either a one-way analysis of variance (ANOVA)
+or two-way ANOVA, followed by Tukey’s multiple-comparisons test for assessing differences between multiple groups.
+A p value of <0.05 indicated statistical significance.
+Results
+Characterization and Optimization of OVA-sVLNP Formulation
+The assembly methods used to prepare OVA-sVLNP are depicted in Figure 1A. The process involved varying the
+proportions of DSPE-PEG2000-Mal and ovalbumin to create distinct formulations with various amounts of DSPE-
+PEG2000-MAL insertion on the surface of PLGA nanoparticles spiked with OVA, as detailed in Table 1S. The
+optimal formulations, denoted as L-OVA-sVLNP, M-OVA-sVLNP, and H-OVA-sVLNP, were derived from specific
+ratios of DSPE-PEG2000-Mal at 0.798, 1.261, and 1.766 mg, respectively, each maintaining a DSPE-PEG2000-Mal:
+OVA molarity ratio of 1:1. Notably, the particle sizes across these optimized groups consistently remained approxi­
+mately 200 nm (Table 2S and 3S). This uniformity underscores a consistent and optimal distribution for each
+formulation.
+The OVA-sVLNP formulations (L-OVA-sVLNP, M-OVA-sVLNP, and H-OVA-sVLNP) had particle sizes that ranged
+from approximately 150 to 200 nm, with a PDI of approximately 0.3 (Figure 1B). This size profile is advantageous
+because it promotes phagocytosis by peripheral dendritic cells and ensures efficient lymphatic drainage. Studies have
+indicated that particle zeta potential values exceeding +25 mV or falling below −25 mV reduce particle aggregation and
+confer a high degree of stability.32 This study found that the zeta potential for each OVA-sVLNP group consistently
+ranged between −30 and −40 mV (Figure 1C), indicating a robust level of stability for all particle formulations. The
+optimized H-OVA-sVLNP of Dynamic Light Scattering (DLS) graph is shown in Figure 1D, and the morphology of
+OVA-sVLNP is depicted in Figure 1E at a lower magnification using Cryo-EM, which exhibited the consistent result with
+DLS findings. A more detailed examination (Figure 1F) revealed finely textured particles on the surface of sVLNP
+particles, indicative of OVA binding to the sVLNP surface.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10989
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Figure 1 Physical characterization of OVA-sVLNP. (A) Schematic diagram of the OVA-sVLNP preparation process. (B) Particle size and polydispersity index (PDI), and (C)
+zeta potential of L-, M-, and H-OVA-sVLNP were monitored over a period of 1 month. (D) Dynamic light scattering (DLS) analysis of H-OVA-sVLNP. (E) Lower
+magnification Cryo-EM image of H-OVA-sVLNP (scale bar: 1 μm). (F) High magnification Cryo-EM image showing detailed surface texture of H-OVA-sVLNP (scale bar: 100
+nm). L: L-OVA-sVLNP (low OVA loading ratio), M: M-OVA-sVLNP (medium OVA loading ratio), and H: H-OVA-sVLNP (high OVA loading ratio).
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10990
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Analysis of Maleimide Functional Group by NMR
+The study solubilized DSPE-PEG2000-Maleimide in DMSO to create a range of standard solutions with concentrations
+from 0.3125 to 10 mg/mL. This process is illustrated in Figure 2A. The chemical shift peak at δ = 6.7 ppm for the
+maleimide functional group was identified using a 600 MHz NMR spectrometer and subsequently quantified through
+integration. The resulting calibration curve, depicted in Figure 2B, indicated a linear correlation between the integrated
+area and concentration, following the equation y = 0.0107x + 0.0012 with an R2 value of 0.998. This consistency
+affirmed the reliability of concentration measurements within this specified range on a daily basis. Similarly, Figure 2C
+depicted a consistent linear trend for same-day confirmations, as represented by the equation y = 0.0107x + 0.0011 with
+an R2 value of 0.998. This consistency affirmed the reliability of concentration measurements within this specified
+concentration range on a daily basis.
+Figure 2 NMR analysis of maleimide functional group. (A) Proton H spectrum of DSPE-PEG2000-maleimide across a concentration range of 0.3125 to 10 mg/mL with
+precise detection of the maleimide functional group peak using a 600 MHz NMR spectrometer. (B) Interday standard curves of DSPE-PEG2000-maleimide. (C) Intraday
+standard curves of DSPE-PEG2000-maleimide. (D) NMR spectrum displaying the successful conjugation of OVA in OVA-sVLNP via thiol-maleimide reaction. (1,2-distearoyl-
+sn-glycero-3-phosphoethanolamine, DSPE; polyethylene glycol, PEG).
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10991
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+In analyzing the NMR spectrum of OVA-sVLNP, a notable change was observed: the interaction between maleimide
+and OVA resulted in a bonding event, as evidenced by the emergence of an OVA-associated peak. Notably, a shift in the
+maleimide peak appeared, indicative of crosslinking interactions, which obscured the original maleimide peak. This
+observation is illustrated in Figure 2D.
+Based on these physical characteristics, the H-OVAL-sVLNP formulation was selected as the most optimal for
+comparing the effects of varying antigen concentrations of OVA (0, 10, 25, 50, and 100 mg/mL designated as V10, V25,
+V50, and V100, respectively) on immunological responses in subsequent studies.
+Evaluation of the Activation and Phagocytosis Efficacy of OVA-sVLNP
+The study focused on how the immune system responds to the introduction of foreign antigens, particularly examining
+the role of dendritic cells. When immature dendritic cells encounter antigens, they migrate towards inflammatory tissues,
+engulf the antigen through phagocytosis, and gradually mature. This maturation involves the upregulation of surface cell
+markers CD80 and CD86, which are pivotal for activating T cells.33 The data revealed that the expression levels of CD80
+and CD86 in each OVA-sVLNP group were significantly higher than in the Bare group (Figure 3A). Particularly notable
+was the augmented expression of these markers in the V25 group, which significantly differed with those of the Bare
+group (***p < 0.001, ****p < 0.0001) but not the OVA-sVLNP groups. The study also investigated the phagocytosis of
+OVA-sVLNP by dendritic cells at various time points (6, 12, 24, and 36 h) using flow cytometry analysis (Figure 3B).
+A rapid saturation in uptake was observed within approximately 6 h. Additionally, a direct correlation emerged between
+OVA concentration and cellular engulfment, indicating increased uptake with elevated OVA concentrations. Statistical
+analysis revealed significant differences between each OVA-sVLNP group and the Bare group. Furthermore, the OVA-
+sVLNP groups differed in various respects, underscoring the nuance in differences between the effects of each
+concentration. (****p < 0.0001)
+Following 12 h of co-culture with dendritic cells, OVA-sVLNP was observed to be phagocytosed by dendritic cells
+and localized within lysosomes (Figure 4A). A significant transition was observed at 36 h, with portions of OVA-sVLNP
+beginning to depart from the lysosomal compartments and translocate towards the nucleus. This phenomenon is
+observable in the confocal microscopy images, where the lysosome tracker is in red, OVA-sVLNP is in green, and
+a merging of these photos indicates green elements approaching the nucleus. Figure 4B presents a quantitative analysis of
+the fluorescence intensity of OVA-sVLNP, which increased over time, indicating ongoing phagocytosis and processing of
+the nanoparticles by dendritic cells.
+Figure 3 Flow cytometry analysis of the activation efficacy of OVA-sVLNP in dendritic cells. (A) The fluorescence intensity of CD80 and CD86 expression levels across
+OVA-sVLNP groups highlights significant differences, particularly between V25 and Bare (n = 3, ***p < 0.001, ****p < 0.0001). (B) Phagocytosis of OVA-sVLNP by dendritic
+cells was measured via the fluorescence intensity at 6, 12, 24, and 36 h with significant differences between the V25 and Bare groups (n = 3, ****p < 0.0001). Saline: control
+group, Bare: nanoparticles without OVA, V10 ~ V100: varying concentrations of OVA-sVLNP.
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10992
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Biodistribution of OVA-sVLNP in Mice
+In vivo imaging was utilized to track the biodistribution of OVA-sVLNP in vaccinated mouse models, as depicted in
+Figure 5A. The mice received injections of OVA-sVLNP formulations (V10, V25, V50, and V100) into the muscle of the
+right hind leg. Fluorescent labeling of the nanoparticles enabled tracking of their location and quantification of
+accumulated fluorescence in the inguinal lymph nodes. XENOGEN Living Image 4.7 software was employed for this
+analysis with a focus on identifying the inguinal lymph nodes as the primary site of interest. The study observed that the
+OVA-sVLNP groups exhibited sustained accumulation at the injection site from 6 h to 72 h post-administration, as
+depicted in Figure 5B. This prolonged retention at the injection site suggests an extended window for peripheral dendritic
+cell recruitment and enhanced opportunities for dendritic cell phagocytosis. Moreover, the OVA-sVLNP groups (V10,
+V25, V50, and V100) were found to reach the inguinal lymph nodes within 2 h post-administration, with sustained
+accumulation observed in these nodes for up to 7 days, as illustrated in Figure 5C. Furthermore, Figure 5C reveals
+statistically significant differences (*p < 0.05, **p < 0.01, ***p < 0.001, ****p < 0.0001) in lymph node accumulation
+between the V25 and V100 groups at 6, 24, 48, 72 and 168 h. This prolonged residence time within the lymphatic system
+effectively extended antigen exposure, which is crucial for triggering an activated immune response in the mice.
+Figure 1S demonstrates the effective lymph node trafficking of the OVA-sVLNP groups (V10, V25, V50, and V100)
+at the 6-h mark, indicating successful delivery of OVA-sVLNP to the targeted lymph node locations.
+Robust Humoral Immunity from Vaccinated Mouse Sera
+In our mouse immunization model, a significant increase in IgG titers was observed across all groups following the initial
+administration of OVA-sVLNP, particularly on the thirty-fifth day. On this day, the mean IgG titers for the V10, V25, V50, and
+V100 groups were 13043 ng/mL, 392719 ng/mL, 105055 ng/mL, and 129351 ng/mL, respectively. The V25 group displayed
+significantly higher IgG titer than other groups (****p < 0.0001), indicating its superior immunogenicity. The IgG titers peaked
+or continued to rise on day 63 and remained high until the termination of the study on day 84. Notably, the V25 group maintained
+significantly elevated IgG titers compared with other groups (*p < 0.05). On day 63, the mean IgG titer for the V25 group was
+334477 ng/mL, surpassing the mean IgG titers of the other groups: V10 (15612 ng/mL), V50 (176642 ng/mL), and V100
+(175102 ng/mL), as depicted in Figure 6A. Figure 6C illustrates the continuous distribution of IgG titers across all groups at
+various times, reinforcing the sustained and notably elevated immune response in the V25 group throughout the study duration.
+Regarding IgG1 responses, the V25 group again demonstrated notably higher titers than all other groups. On day 35, the
+average IgG1 titer in the V25 group increased significantly to 188139 ng/mL, which was substantially higher than in the
+V10, V50, and V100 groups, which stood at 5034 ng/mL, 40116 ng/mL, and 49210 ng/mL, respectively (****p < 0.0001).
+The elevated IgG1 levels in the V25 group persisted through days 63 and 84. On day 63, the mean IgG1 titers were as
+follows: V25 (218334 ng/mL), V10 (10599 ng/mL), V50 (135987 ng/mL), and V100 (123739 ng/mL), with the V25 group
+Figure 4 Phagocytosis evaluation of OVA-sVLNP in dendritic cells. (A) Confocal microscopy images displaying dendritic cells engulfing OVA-sVLNP. (B) Fluorescence
+quantification of each group at 12 and 36 h after OVA-sVLNP administration.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10993
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+retaining statistical significance from other groups (**p < 0.01), as depicted in Figure 6B. The IgG1 titers at various time
+points for each group are visually presented in Figure 6D.
+Regarding the IgG2a titers, a distinct pattern emerged. The V10 exhibited a steep decline after day 21, whereas the
+other groups peaked at day 35 and then gradually diminished. Surprisingly, the V25 group did not manifest significantly
+Figure 5 Biodistribution of OVA-sVLNP in mice. (A) Schematic diagram of vaccinated mouse models and evaluation methods. (B) Fluorescence intensity at the injection site
+was monitored over one week using an in vivo imaging system (n = 4). (C) Fluorescence intensity accumulation at lymph node sites was also monitored over one week, with
+significant differences between V25 and V100 at 6, 24, 48, 72, and 168 hours (*p < 0.05, **p < 0.01, ***p < 0.001, ****p < 0.0001).
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10994
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+higher IgG2a titers compared with the V50 and V100 groups, with no discernible differences observed, as illustrated in
+Figure 6E.
+Splenocytes of Activated B Cells and T Cells in Mice
+The study evaluated the activation ratios of B and T cells in murine spleens, which is critical for assessing the immune
+pathways induced by vaccination. Figure 7A illustrates that, compared with the control group, all OVA-sVLNP-treated
+groups exhibited an increase in B cells marked by CD45R+MHCII+ expression. Notably, the V25 group specifically
+stimulated a higher expression of CD45R+MHCII+ in B cells, reaching 61.8%. This group’s elevated IgG titers and
+superior antibody protection underscore its effectiveness compared with other groups.
+T cell profiling within the spleen was also conducted (Figure 7B and 7C), focusing on distinguishing CD3 T cells into CD4+
+(helper) and CD8+ (cytotoxic) subsets. CD3+CD4+ helper T cells constituted at least 54% of the OVA-sVLNP-affected T cell
+population, and CD3+CD8+ cytotoxic T cells represented over 33%. On day 84 after sVLNP administration, the OVA-sVLNP
+groups collectively manifested significantly increased proportions of CD4+ T cells compared with the control, albeit without
+discernible differences observed among the OVA-sVLNP groups. The V25 group displayed the highest percentage of
+CD3+CD4+CD8+ T cells at 5.96%, a significant increase compared with 1.8% in V10, 4.2% in V50, and 2.5% in V100. This
+finding aligns with previous studies that CD3+CD4+CD8+ T cells constitute mature effector memory lymphocytes, with
+specificity to antigens associated with latent and persistent viral infections (Figure 7D). Upon antigenic challenge in vivo,
+these double-positive cells exhibit superior functionality compared with single-positive cells, expressing cytokines pertinent to
+Figure 6 Humoral immunity responses in vaccinated mice. (A) Analysis of anti-ovalbumin immunoglobulin G (IgG) titers by ELISA up to 84 days post-administration. (B)
+Anti-ovalbumin immunoglobulin G1 (IgG1) titers were analyzed by ELISA up to 84 days post-administration. (C) The titer of IgG, (D) IgG1, and (E) IgG2a of mouse sera
+were determined and reported during the period, respectively (n = 4, *p < 0.05, **p < 0.01, ****p < 0.0001).
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10995
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+helper and cytotoxic T cell functions and demonstrating heightened proliferation. These findings underscore their integral role in
+cellular immune responses, augmenting antiviral responses, and expanding the repertoire of immune-reactive T cell populations.
+Multiple Cytokines Performance from Mouse Sera
+Analysis of various cytokines in mouse serum revealed notable patterns in the V25 group, including cytokines
+such as IL-9, TNF-α, IL-2, IL-13, IL-10, IFN-γ, IL-4, IL-5, IL-17A, IL-17F, IL-22, and IL-6, as depicted in
+Figure 8. Specifically, a rapid increase in cytokine levels commenced on day 21 after the initial immunization,
+peaking on day 63. Remarkably, high levels of IL-9 and IL-10 in the V25 group were sustained until day 84,
+coinciding with the conclusion of the study. These multiple cytokine profiles exhibited significant differences in
+secretion compared with other groups on days 35, 63, and 84 (*p < 0.05, **p < 0.01, ***p < 0.001, ****p <
+0.0001), signifying distinct immunomodulatory effects within the V25 group.
+The Ratio of CXCL3 and CXCL13 in Mouse Lymph Nodes
+Immunohistochemistry (IHC) staining of mouse lymph nodes revealed positive reactions for the chemokine CXCL-3
+antibody across all experimental groups. Semiquantitative assessment with an established IHC color grading system revealed
+Figure 7 Activated percentage of B and T subset cells in mouse splenocytes. (A) Proportion of activated B cells marked by CD45R+MHCII+ expression. (B) Proportion of CD3+
+CD4+ T cells. (C) Proportion of CD3+CD8+ T cells. (D) Proportion of CD3+ CD4+CD8+ T cells, with the V25 group demonstrating a prevalence of 5.96% (****p < 0.0001).
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10996
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+that the V25 group exhibited the most intense staining (rating of 3+).31 Other groups, namely V10, displayed lower intensity
+(rating of 1+), whereas V50 and V100 exhibited intermediate staining (rating of 2+), as depicted in Figure 9A and Table 4S.
+By contrast, IHC staining for chemokine CXCL-13 exhibited negative outcomes for all experimental groups,
+implying an absence of detectable staining for chemokine CXCL-13 in the examined lymph nodes across the various
+treatment groups, as illustrated in Figure 9B.
+Biosafety Assessment
+The H&E staining of tissue sections from each group revealed no noticeable abnormalities or signs of inflammatory reaction
+infiltration in the heart, liver, lung, and kidney tissues (Figure 10A). The enlarged H&E staining pictures (400X) of mouse
+lymph nodes from the OVA-sVLNP groups showed no immunotoxicity and no significant difference from the control groups
+(Figure 2S). Additionally, the body weight of mice across all groups remained consistent throughout the study (Figure 10B).
+These findings collectively indicate that the nanoparticle formulation under investigation has robust biological safety, with no
+apparent adverse effects on the examined organs or the overall physiological health of the experimental animals.
+Discussion
+The size profile of the synthesized OVA-sVLNP was crucial for enabling their efficient uptake by dendritic cells. This
+uptake played a key role in activating the dendritic cells and maintaining a sustained presence within the immune system,
+which in turn led to effective immune stimulation and the elicitation of a targeted immune response.
+A key observation was the increased expression of CD80/86 cell surface markers on dendritic cells (DC) following
+the administration of OVA-sVLNP. This elevation strongly indicates effective DC activation in response to antigen
+stimulation. The enhanced expression of these costimulatory molecules signifies of a robust immune response initiated by
+Figure 8 Cytokine responses from mouse sera in OVA-sVLNP groups. The data specifically highlight significant differences between V25 and other OVA-sVLNP groups. (n =
+4, *p < 0.05, **p < 0.01, ***p < 0.001, ****p < 0.0001).
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10997
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+OVA-sVLNP through dendritic cell activation.34,35 Furthermore, the intracellular processing of antigens within dendritic
+cells was observed, revealing the transit of OVA-sVLNP particles from the cytoplasm to the nucleus. This process, which
+includes passage through lysosomes before translocation to the nucleus, suggests a likely phagolysosome pathway. This
+insight is critical as it elucidates the antigen processing mechanism within dendritic cells and their potential impact on
+subsequent immune responses.
+The repetitive protein fragment composition of OVA-sVLNP possesses a specific capacity to stimulate the immune
+system, thereby enhancing antigen presentation.36 Notably, in the mouse models used in this study, the V25 group
+specifically exhibited a significant elevation in humoral immune responses, particularly in IgG and IgG1 antibodies,
+compared to other groups. This observation suggests that the effectiveness of the vaccine is not solely contingent on the
+administered dose. Instead, the resulting immune response to the drug appears intricately related to its dosage. The data
+indicate the optimal dosage range that maximizes immune response efficiency. Intriguingly, excessively high doses may
+lead to an overactive immune response, potentially resulting in immune exhaustion.37 These findings are crucial for
+vaccine development, highlighting the necessity of determining the right dosage. Achieving an optimal balance in dosage
+is crucial to induce the desired immune response while avoiding unintended adverse effects such as immune exhaustion.
+The assessment of cellular immunity, as determined through flow cytometry, revealed that OVA-sVLNP effectively
+induced the activation of T cells, including both CD3+CD4+ and CD3+CD8+T cells, within the spleens of the mouse
+model. A particularly noteworthy observation was the identification of a dual expression in the CD3+CD4+CD8+ cell
+population, indicating a unique cellular subset that exhibits characteristics of both helper and cytotoxic T cells. Moreover,
+the activation of B cells was evident through the upregulation of markers CD45R (B220) and MHC II within the spleen,
+signifying successful activation and training of B cells, which contributed to the generation of robust specific IgG
+antibodies. These observed cellular responses collectively demonstrate the effectiveness of OVA-sVLNP in eliciting
+a comprehensive immune activation involving both T and B cell compartments.
+The analysis of various cytokines in the serum of mouse models, particularly focusing on the secretion levels of IL-9
+and IL-10, revealed a distinct performance of the V25 group compared with other groups. The substantial secretion of IL-
+9 is intricately linked to the Th9 subset of T cells, a part of the broader classification of CD4+Th cells into Th1, Th2,
+Figure 9 Chemokine distribution in mouse lymph nodes. (A) Immunohistochemistry (IHC) staining results for CXCL3 across experimental groups (scale bar: 200 μm). (B)
+IHC staining results for CXCL13 across experimental groups (scale bar: 200 μm).
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+10998
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Th17, and Th9 subsets. Th9 cells, in particular, are closely associated with IL-9 secretion.38 Therefore, we infer that the
+antitumor efficacy of OVA-sVLNP may be linked to Th9, given the increased secretion of IL-9.39,40 Moreover, the
+capacity of effector T cells in the solid tumor microenvironment to resist malignancies is correlated with the increase of
+IL-10, preventing tumor cells from inhibiting T cells within the tumor microenvironment. IL-10 enhances the ability of
+effector T cells to combat tumors.41 Notably, IL-10 secretion is not exclusive to regulatory T cells, as cytotoxic type 1
+T cells (Tc1) also produce IL-10.42 This multifaceted role of IL-10 underscores its importance as an immunomodulator,
+potentially regulating immune responses and contributing to antitumor activities.
+The immune response triggered by OVA-sVLNP reveals a complex interplay among various T cell subsets. The
+secretion of IL-10, extending beyond regulatory T cells to cytotoxic T cells (Tc1), enhancing their tumor-killing
+capabilities. Notably, IL-9 secreted by Th9 cells activates cytotoxic Tc9 cells,42 indicating potential plasticity as Tc9
+cells can convert into Tc1 cells. This dynamic orchestration of immune responses involves a network of T cell subsets,
+emphasizing the intricate and multifaceted nature of OVA-sVLNP-induced responses. The surge in IL-9 and IL-10 levels
+underscores the comprehensive activation of diverse T cell pathways, contributing collectively to antitumor effects.
+Additionally, distinct cytokine secretion profiles in the V25 group, particularly TNF-α, IFN-γ, IL-2, IL-4, IL-5, IL-13, IL-
+17A, IL-17F, and IL-22, indicate a highly tailored immune response. TNF-α and IFN-γ play pivotal roles in aiding
+CD4+T cells against tumors,38 and IL-2 enhances CD8+T cell and NK cell activity.38
+Figure 10 Biosafety assessment in mouse models. (A) H&E stained sections of hearts, livers, lungs, and kidneys. (B) Body weight monitoring of each experimental group
+over 84 days.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+10999
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+The secretion of IL-17 and IL-22, predominately associated with Tc17 cells, is influenced by the promotion of Th9
+cells. This interplay stimulates various cytotoxic T cell subsets, including Tc9, Tc17, and Tc9-transformed Tc1 cells,
+setting the stage for a comprehensive and coordinated immune response aimed at combating tumor cells and the complex
+tumor microenvironment. The observed secretion of IL-4, IL-5, and IL-13, typically associated with Th2 responses,
+suggests their involvement in the immune reaction induced by OVA-sVLNP. Notably, Th9 cell differentiation is closely
+related to Th2 cells, suggesting that OVA-sVLNP might primarily activates Th9 cells in its antitumor mechanism.18 This
+inference is further supported by the notion that Th9 cells possess unique functions and responses compared with other
+Th subsets, making them particularly relevant in tumor immunity.39 This distinctive immunological strategy, leveraging
+Th9 as the primary effector, offers promising potential for targeted therapeutic approaches in antitumor immunity.
+The prominent IHC scoring for chemokine CXCL3, particularly in the V25 group, along with the notable accumula­
+tion of OVA-sVLNP in lymph nodes as depicted in Figure 5C, strongly suggests intensive T cell training within the
+lymph nodes of the mouse model. This observation aligns with the theoretical consensus that the induction of cellular
+immunity typically occurs subsequent to initial exposure. Hence, a robust and sustained cellular immune response is
+anticipated following the 3-month vaccination period. Additionally, the uniformly negative results in IHC for CXCL13,
+a chemokine associated with B cell training, provide intriguing insights. Given that the humoral immune response
+typically peaks around the 35th day following OVA protein injection, the IHC data collected on day 84 suggests that
+B cells within the lymphatic system have already completed their training earlier. Therefore, the role of CXCL13 in
+aiding B cell training might have been fulfilled earlier, leading to its reduced accumulation and distribution in mouse
+lymph nodes at later stages. This interpretation highlights the dynamic and temporally regulated orchestration of immune
+responses in the context of OVA-sVLNP vaccination.
+While Figure 5C reveals greater lymph node accumulation for V100 in comparison to V25, the overall findings
+suggest that the V25 dosage stimulates and activates the immune system more substantially. The conclusion is drawn
+from the comprehensive evaluation of immune responses observed in the V25 group. The administration of excessively
+high antigen dose may disrupt immune system homeostasis and undermine its original functionality. Several explanations
+for this observation can be given. Firstly, immune cell anergy,43 often observed in acute or chronic pathogen infections,
+may impair the activation of CD4+ cells, leading to reduced production of IgG antibodies by B cells. Secondly, high
+antigen doses could lead to saturation of the B cell receptor (BCR),44 interfering with normal immune processes and
+potentially inducing immune tolerance, which may explain the lower antibody titers observed in the V50 and V100
+groups. Finally, maintaining the balance between insufficient and excessive antigen presentation is critical. Insufficient
+presentation may hinder proper immune response, whereas excessive presentation may trigger a cytokine storm,45
+disrupting the immune balance. Therefore, determining the most appropriate antigen dose is pivotal for achieving
+optimal and balanced immune stimulation.
+Conclusions
+This study demonstrates the robust immunogenicity of OVA-sVLNP, as evidenced by the successful induction of potent,
+specific IgG antibodies and the stimulation of cellular immune responses, particularly the activation of tumor-killing Th9
+cells. Utilizing a novel ELISA kit capable of simultaneously assessing of 12 immunological parameters, we observed
+a prevalent up-regulatory trend. Overall, the preliminary evidence not only enhances our understanding but also opens
+new avenues for advancements in cancer prevention, cell therapeutic techniques, and vaccine formulation. Additionally,
+the simplicity and cost-effectiveness of OVA-sVLNP manufacturing process offers promising directions for future
+research, potentially facilitating broader application and development.
+Ethical Approval
+All the animal experiments in this study were reviewed and approved by the Institutional Animal Care and Use
+Committee of Taipei Medical University (approval number LAC2022-0243) and in compliance with National
+Research Council’s Guide for the Care and Use of Laboratory Animal.
+https://doi.org/10.2147/IJN.S476715
+DovePress
+International Journal of Nanomedicine 2024:19
+11000
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Acknowledgments
+Graphic Abstract and Illustrations were created with BioRender.com. This work was financially supported by the
+Ministry of Science and Technology, Taiwan (MOST 110-2314-B-038-041-MY3), the National Science and
+Technology Council, Taiwan (NSTC111-2622-8-038-007 PBF), and Taipei Medical University Hospital, Taipei,
+Taiwan (W0211).
+Disclosure
+The authors declare no conflicts of interest.
+References
+1. Coley WB. The treatment of inoperable sarcoma with the mixed toxins of erysipelas and bacillus prodigiosus. JAMA. 1989;XXXI.
+2. Ruzzi F, Semprini MS, Scalambra L, et al. Virus-like Particle (VLP) Vaccines for Cancer Immunotherapy. Int J Mol Sci. 2023;24(16). doi:10.3390/
+ijms241612963
+3. Janes ME, Gottlieb AP, Park KS, Zhao Z, Mitragotri S. Cancer vaccines in the clinic. Bioeng. Transl. Med. 2023. doi:10.1002/btm2.10588
+4. Zhenyu Duan QL, Dai X, Xiaoling L, et al. Synergistic Therapy of a Naturally Inspired Glycopolymer-Based Biomimetic Nanomedicine
+Harnessing Tumor Genomic Instability. Adv Mater. 2021;33.
+5. Lei Luob YQ, Zhongb H, Jiangb S, et al. GSH-sensitive polymeric prodrug: synthesis and loading with photosensitizers as nanoscale
+chemo-photodynamic anti-cancer nanomedicine. Acta Pharmaceutica Sinica B. 2022;12(1):424–436.
+6. Haonan Li QG, Luo K. Biomarker-driven molecular imaging probes in radiotherapy. Theranostics. 2024;14(10):4127–4145.
+7. Ru Wen ACU, Kou Y, Jian X. Ammad Ahmad Farooq. nanoparticle-systems-for-cancer-vaccine. Nanomedicine. 2019;14(5):627–648.
+8. Mohsen DES MO, Knuth A, Bachmann MF. Virus-like particles for vaccination against cancer. WIRES Nanomedi Nanobiotech. 2019;e1579.
+9. Liu X, Liu Y, Yang X, et al. Potentiating the Immune Responses of HBsAg-VLP Vaccine Using a Polyphosphoester-Based Cationic Polymer
+Adjuvant. ACS Appl Mater Interfaces. 2023;15(42):48871–48881. doi:10.1021/acsami.3c07491
+10. Sander AF, Lollini PL. Virus-like antigen display for cancer vaccine development, what is the potential? Expert Rev Vaccines. 2018;17(4):285–288.
+doi:10.1080/14760584.2018.1455505
+11. Palladini A, Thrane S, Janitzek CM, et al. Virus-like particle display of HER2 induces potent anti-cancer responses. Oncoimmunology. 2018;7(3):
+e1408749. doi:10.1080/2162402X.2017.1408749
+12. Ong HK, Tan WS, Ho KL. Virus like particles as a platform for cancer vaccine development. PeerJ. 2017;5:e4053. doi:10.7717/peerj.4053
+13. Tornesello AL, Tagliamonte M, Buonaguro FM, Tornesello ML, Buonaguro L. Virus-like Particles as Preventive and Therapeutic Cancer Vaccines.
+Vaccines. 2022;10(2). doi:10.3390/vaccines10020227
+14. Bachmann MF, Jennings GT. Vaccine delivery: a matter of size, geometry, kinetics and molecular patterns. Nat Rev Immunol. 2010;10
+(11):787–796. doi:10.1038/nri2868
+15. Plummer EM, Manchester M. Viral nanoparticles and virus-like particles: platforms for contemporary vaccine design. Wiley Interdiscip Rev
+Nanomed Nanobiotec. 2011;3(2):174–196. doi:10.1002/wnan.119
+16. RA FC. Cell fate decision T-helper 1 and 2 subsets in immune responses. Arthritis Res. 2000;2:179–188.
+17. Soroosh P, Doherty TA. Th9 and allergic disease. Immunology. 2009;127(4):450–458. doi:10.1111/j.1365-2567.2009.03114.x
+18. Lu Y, Hong S, Li H, et al. Th9 cells promote antitumor immune responses in vivo. J Clin Invest. 2012;122(11):4160–4171. doi:10.1172/JCI65459
+19. Noelle RJ, Nowak EC. Cellular sources and immune functions of interleukin-9. Nat Rev Immunol. 2010;10(10):683–687. doi:10.1038/nri2848
+20. Kaplan MH, Hufford MM, Olson MR. The development and in vivo function of T helper 9 cells. Nat Rev Immunol. 2015;15(5):295–307.
+doi:10.1038/nri3824
+21. Wan J, Wu Y, Ji X, et al. IL-9 and IL-9-producing cells in tumor immunity. Cell Commun Signal. 2020;18(1):50. doi:10.1186/s12964-020-00538-5
+22. Xu J, Lv J, Zhuang Q, et al. A general strategy towards personalized nanovaccines based on fluoropolymers for post-surgical cancer
+immunotherapy. Nat Nanotechnol. 2020;15(12):1043–1052. doi:10.1038/s41565-020-00781-4
+23. Toyota H, Yanase N, Yoshimoto T, Harada M, Kato Y, Mizuguchi J. Vaccination with OVA-bound nanoparticles encapsulating IL-7 inhibits the
+growth of OVA-expressing E.G7 tumor cells in vivo. Oncol Rep. 2015;33(1):292–296. doi:10.3892/or.2014.3603
+24. Hou Y, Tang Z, Farheen J, et al. Ovalbumin-loaded paramagnetic nano-triangles for enhanced dendritic cell stimulation, T1-MR imaging, and
+antitumor immunity. J Mater Sci Technol. 2023;148:123–137. doi:10.1016/j.jmst.2022.11.024
+25. Lu ZD, Chen YF, Shen S, Xu CF, Wang J. Co-delivery of Phagocytosis Checkpoint Silencer and Stimulator of Interferon Genes Agonist for
+Synergetic Cancer Immunotherapy. ACS Appl Mater Interfaces. 2021;13(25):29424–29438. doi:10.1021/acsami.1c08329
+26. Danhier F, Ansorena E, Silva JM, Coco R, Le Breton A, Preat V. PLGA-based nanoparticles: an overview of biomedical applications. J Control
+Release. 2012;161(2):505–522. doi:10.1016/j.jconrel.2012.01.043
+27. Michel Vert J. Biodegradation of PLA GA polymers: increasing complexity. Biomaterials. 1994;15:1209–1213.
+28. Koerner J, Horvath D, Groettrup M. Harnessing Dendritic Cells for Poly (D,L-lactide-co-glycolide) Microspheres (PLGA MS)-Mediated
+Anti-tumor Therapy. Front Immunol. 2019;10:707. doi:10.3389/fimmu.2019.00707
+29. Koerner J, Horvath D, Herrmann VL, et al. PLGA-particle vaccine carrying TLR3/RIG-I ligand Riboxxim synergizes with immune checkpoint
+blockade for effective anti-cancer immunotherapy. Nat Commun. 2021;12(1):2935. doi:10.1038/s41467-021-23244-3
+30. Martinez-Jothar L, Doulkeridou S, Schiffelers RM, et al. Insights into maleimide-thiol conjugation chemistry: conditions for efficient surface
+functionalization of nanoparticles for receptor targeting. J Control Release. 2018;282:101–109. doi:10.1016/j.jconrel.2018.03.002
+31. McDonald JW, Pilgram TK. Nuclear expression of p53, p21 and cyclin D1 is increased in bronchioloalveolar carcinoma. Histopathology. 1999;34
+(5):439–446. doi:10.1046/j.1365-2559.1999.00632.x
+32. Shnoudeh AJ, Hamad I, Abdo RW, et al. Synthesis, Characterization, and Applications of Metal Nanoparticles. Bioma Bionanotech. 2019;527–612
+doi:10.1016/B978-0-12-814427-5.00015-9.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S476715
+DovePress
+11001
+Dovepress
+Lin et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+33. Lim TS, Goh JK, Mortellaro A, Lim CT, Hammerling GJ, Ricciardi-Castagnoli P. CD80 and CD86 differentially regulate mechanical interactions
+of T-cells with antigen-presenting dendritic cells and B-cells. PLoS One. 2012;7(9):e45185. doi:10.1371/journal.pone.0045185
+34. Xiao Q, Xia Y. Insights into dendritic cell maturation during infection with application of advanced imaging techniques. Front Cell Infect
+Microbiol. 2023;13:1140765. doi:10.3389/fcimb.2023.1140765
+35. Swiecki M, Colonna M. The multifaceted biology of plasmacytoid dendritic cells. Nat Rev Immunol. 2015;15(8):471–485. doi:10.1038/nri3865
+36. Mohsen MO, Gomes AC, Vogel M, Bachmann MF. Interaction of Viral Capsid-Derived Virus-Like Particles (VLPs) with the Innate Immune
+System. Vaccines. 2018;6(3). doi:10.3390/vaccines6030037
+37. Alahdal M, Elkord E. Exhaustion and over-activation of immune cells in COVID-19: challenges and therapeutic opportunities. Clin Immunol.
+2022;245:109177. doi:10.1016/j.clim.2022.109177
+38. Speiser DE, Chijioke O, Schaeuble K, Munz C. CD4(+) T cells in cancer. Nat Cancer. 2023;4(3):317–329. doi:10.1038/s43018-023-00521-2
+39. You FP, Zhang J, Cui T, et al. Th9 cells promote antitumor immunity via IL-9 and IL-21 and demonstrate atypical cytokine expression in breast
+cancer. Int Immunopharmacol. 2017;52:163–167. doi:10.1016/j.intimp.2017.08.031
+40. Rivera Vargas T, Humblin E, Vegran F, Ghiringhelli F, Apetoh L. T(H)9 cells in anti-tumor immunity. Semin Immunopathol. 2017;39(1):39–46.
+doi:10.1007/s00281-016-0599-4
+41. Zhao Y, Chen J, Andreatta M, et al. IL-10-expressing CAR T cells resist dysfunction and mediate durable clearance of solid tumors and metastases.
+Nat Biotechnol. 2024. doi:10.1038/s41587-023-02060-8
+42. Koh CH, Lee S, Kwak M, Kim BS, Chung Y. CD8 T-cell subsets: heterogeneity, functions, and therapeutic potential. Exp Mol Med. 2023;55
+(11):2287–2299. doi:10.1038/s12276-023-01105-x
+43. Kaminski H, Lemoine M, Pradeu T. Immunological exhaustion: how to make a disparate concept operational? PLoS Pathog. 2021;17(9):e1009892.
+doi:10.1371/journal.ppat.1009892
+44. Prechl J. A generalized quantitative antibody homeostasis model: regulation of B-cell development by BCR saturation and novel insights into bone
+marrow function. Clin Transl Immunology. 2017;6(2):e130. doi:10.1038/cti.2016.89
+45. Kim JS, Lee JY, Yang JW, et al. Immunopathogenesis and treatment of cytokine storm in COVID-19. Review. Theranostics. 2021;11(1):316–329.
+doi:10.7150/thno.49713
+International Journal of Nanomedicine
+Dovepress
+Publish your work in this journal
+The International Journal of Nanomedicine is an international, peer-reviewed journal focusing on the application of nanotechnology in diagnostics,
+therapeutics, and drug delivery systems throughout the biomedical field. This journal is indexed on PubMed Central, MedLine, CAS, SciSearch®,
+Current Contents®/Clinical Medicine, Journal Citation Reports/Science Edition, EMBase, Scopus and the Elsevier Bibliographic databases. The
+manuscript management system is completely online and includes a very quick and fair peer-review system, which is all easy to use. Visit http://
+www.dovepress.com/testimonials.php to read real quotes from published authors.
+Submit your manuscript here: https://www.dovepress.com/international-journal-of-nanomedicine-journal
+DovePress
+International Journal of Nanomedicine 2024:19
+11002
+Lin et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)

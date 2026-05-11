@@ -1,0 +1,7077 @@
+{
+  "doc_key": "2DXWXRD3",
+  "source_type": "PDF",
+  "parser": "marker_pdf",
+  "contract_version": "stage1_marker_pdf_extraction_v1",
+  "txt_path": "data/cleaned/content/marker_pdf/2DXWXRD3/marker_clean_text_v1.md",
+  "raw_marker_json_path": "data/cleaned/content/marker_pdf/2DXWXRD3/marker_raw_v1.json",
+  "raw_marker_meta_path": "data/cleaned/content/marker_pdf/2DXWXRD3/marker_meta_v1.json",
+  "text_sha256": "88d837611446e826016dad0dbdb83465e2569b5e9a5b7b7934865b52259b1830",
+  "blocks": [
+    {
+      "block_id": "/page/0/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        387.6328125,
+        13.38134765625,
+        548.7103274559194,
+        24.0
+      ],
+      "polygon": [
+        [
+          387.6328125,
+          13.38134765625
+        ],
+        [
+          548.7103274559194,
+          13.38134765625
+        ],
+        [
+          548.7103274559194,
+          24.0
+        ],
+        [
+          387.6328125,
+          24.0
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {}
+    },
+    {
+      "block_id": "/page/0/Picture/1",
+      "block_type": "Picture",
+      "page_index": 0,
+      "bbox": [
+        28.12548828125,
+        58.5,
+        567.87451171875,
+        139.127783203125
+      ],
+      "polygon": [
+        [
+          28.12548828125,
+          58.5
+        ],
+        [
+          567.87451171875,
+          64.268701171875
+        ],
+        [
+          567.87451171875,
+          139.127783203125
+        ],
+        [
+          28.12548828125,
+          139.127783203125
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {}
+    },
+    {
+      "block_id": "/page/0/SectionHeader/2",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        93.416015625,
+        152.9296875,
+        139.396484375,
+        165.1640625
+      ],
+      "polygon": [
+        [
+          93.416015625,
+          152.9296875
+        ],
+        [
+          139.396484375,
+          152.9296875
+        ],
+        [
+          139.396484375,
+          165.1640625
+        ],
+        [
+          93.416015625,
+          165.1640625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "2": "/page/0/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/3",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        8.256926952141058,
+        242.01123046875,
+        129.10831234256926,
+        279.0
+      ],
+      "polygon": [
+        [
+          8.256926952141058,
+          242.01123046875
+        ],
+        [
+          129.10831234256926,
+          242.01123046875
+        ],
+        [
+          129.10831234256926,
+          279.0
+        ],
+        [
+          8.256926952141058,
+          279.0
+        ]
+      ],
+      "text": "Received: 1 September 2017 Accepted: 21 December 2017 Published online: 15 January 2018",
+      "section_hierarchy": {
+        "2": "/page/0/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/0/SectionHeader/4",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        93.07808564231738,
+        148.341796875,
+        517.9345088161209,
+        261.509765625
+      ],
+      "polygon": [
+        [
+          93.07808564231738,
+          148.341796875
+        ],
+        [
+          517.9345088161209,
+          148.341796875
+        ],
+        [
+          517.9345088161209,
+          261.509765625
+        ],
+        [
+          93.07808564231738,
+          261.509765625
+        ]
+      ],
+      "text": "OPEN Fc-modified exenatide-loaded nanoparticles for oral delivery to improve hypoglycemic effects in mice",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/5",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.62972292191435,
+        274.89111328125,
+        502.92191435768257,
+        297.06591796875
+      ],
+      "polygon": [
+        [
+          154.62972292191435,
+          274.89111328125
+        ],
+        [
+          502.92191435768257,
+          274.89111328125
+        ],
+        [
+          502.92191435768257,
+          297.06591796875
+        ],
+        [
+          154.62972292191435,
+          297.06591796875
+        ]
+      ],
+      "text": "Yanan Shi<sup>1</sup>, Xinfeng Sun<sup>2</sup>, Liping Zhang<sup>2</sup>, Kaoxiang Sun<sup>2,3</sup>, Keke Li<sup>1</sup>, Youxin Li<sup>2,3</sup> & Qiang Zhang4",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        308.25,
+        554.7153652392947,
+        461.46533203125
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          308.25
+        ],
+        [
+          554.7153652392947,
+          308.25
+        ],
+        [
+          554.7153652392947,
+          461.46533203125
+        ],
+        [
+          153.87909319899245,
+          461.46533203125
+        ]
+      ],
+      "text": "To improve the oral efficiency of exenatide, we prepared polyethylene glycol-poly(lactic-coglycolic acid) (PEG-PLGA) NPs modified with Fc (NPs-Fc) for exenatide oral delivery. Exenatide was encapsulated into the NPs by the w/o/w emulsion-solvent evaporation method. The particle size of the NPs-Fc was approximately 30 nm larger than that of the unmodified NPs with polydispersity indices in a narrow range (PDIs; PDI < 0.3) as detected by DLS, and the highest encapsulation efficiency of exenatide in the NPs was greater than 80%. Fc-conjugated NPs permeated Caco-2 cells faster and to a greater extent compared to unmodified NPs, as verified by CLSM and flow cytometry. Hypoglycemic effect studies demonstrated that oral administration of exenatide-loaded PEG-PLGA NPs modified by an Fc group extended the hypoglycemic effects compared with s.c. injection of the exenatide solution. Fluorescence-labeled NPs were used to investigate the effects of Fc targeting, and the results demonstrated that the NPs-Fc stayed in the gastrointestinal tract for a longer time in comparison with the unmodified NPs, as shown by the whole-body fluorescence images and fluorescence images of the dissected organs detected by in vivo imaging in live mice. Therefore, Fc-targeted nano-delivery systems show great promise for oral peptide/protein drug delivery.",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        483.0,
+        557.7178841309824,
+        573.10400390625
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          483.0
+        ],
+        [
+          557.7178841309824,
+          483.0
+        ],
+        [
+          557.7178841309824,
+          573.10400390625
+        ],
+        [
+          153.87909319899245,
+          573.10400390625
+        ]
+      ],
+      "text": "Exenatide, a 39-amino-acid peptide with a molecular weight of 4186 Da and isoelectric point of pH 4.86, is similar to glucagon like peptide-1 (GLP-1) in terms of glucoregulatory actions and is used for type 2 diabetes therapy. The marketed products include Byetta, with subcutaneous (s.c.) administration twice a day. Thus, long-acting formulations are being developed for clinical application. The sustained release microsphere product of exenatide (Bydureon®) was approved by the FDA in 20122. In addition, an implantable osmotic pump for exenatide with 6 to 12 months delivery (ITCA650) has finished phase 3 clinical trials<sup>3,4</sup>; however, patient acceptance of this implantable device is uncertain. Exenatide administration is limited to parenteral routes, resulting in low patient compliance. Presently, one of the major challenges is the development of a patient-friendly delivery of proteins/ peptides in the pharmaceutical field.",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        573.0,
+        557.7178841309824,
+        612.4833984375
+      ],
+      "polygon": [
+        [
+          153.65625,
+          573.0
+        ],
+        [
+          557.7178841309824,
+          573.0
+        ],
+        [
+          557.7178841309824,
+          612.4833984375
+        ],
+        [
+          153.65625,
+          612.4833984375
+        ]
+      ],
+      "text": "Oral delivery is a preferred route for patients due to the convenience and strong compliance. However, oral delivery of proteins/peptides is still challenging mainly because of the instability of these molecules in the gastrointestinal tract, their considerably low permeation efficiency through the intestinal epithelium, and their rapid indigestive degradation<sup>5,6</sup>.",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/9",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        613.5,
+        557.7178841309824,
+        663.71484375
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          613.5
+        ],
+        [
+          557.7178841309824,
+          613.5
+        ],
+        [
+          557.7178841309824,
+          663.71484375
+        ],
+        [
+          153.87909319899245,
+          663.71484375
+        ]
+      ],
+      "text": "The advance of nanotechnology has opened a new era for protein/peptide oral delivery. Nanocarriers exhibit several prominent advantages, such as protection of proteins via encapsulation in the nanocarriers and mitigation of drug modification. Numerous nanocarriers have emerged for protein oral administration, such as chitosan nanoparticles<sup>5</sup>, starch-based nanoparticles<sup>7</sup>, and liposomes<sup>8</sup>. PEG-PLGA nanoparticles have been studied owing to their great potential for performing a longer circulation time. Additionally, the biocompatibility of the delivery",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/Text/10",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        680.15478515625,
+        557.7178841309824,
+        739.03271484375
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          680.15478515625
+        ],
+        [
+          557.7178841309824,
+          680.15478515625
+        ],
+        [
+          557.7178841309824,
+          739.03271484375
+        ],
+        [
+          153.87909319899245,
+          739.03271484375
+        ]
+      ],
+      "text": "<sup>1</sup>School of pharmacy, Binzhou Medical University, Yantai, 264003, China. <sup>2</sup>School of Pharmacy, Yantai University, Yantai, 264005, China. <sup>3</sup>State Key Laboratory of Long-acting and Targeting Drug Delivery System, Luye Pharmaceutical Co, Ltd, Yantai, 264003, China. <sup>4</sup>Beijing Key Laboratory of Molecular Pharmaceutics and New Drug Delivery Systems, School of Pharmaceutical Sciences, Peking University, Beijing, 100871, China. Correspondence and requests for materials should be addressed to Y.S. (email: shiyanan 001 @ 163.com) or Y.L. (email: liyouxin@luye. com) or Q.Z. (email: zqdodo@bjmu.edu.cn)",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/PageFooter/11",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        39.78337531486146,
+        756.75,
+        287.49118387909317,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          39.78337531486146,
+          756.75
+        ],
+        [
+          287.49118387909317,
+          756.75
+        ],
+        [
+          287.49118387909317,
+          765.79541015625
+        ],
+        [
+          39.78337531486146,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/0/PageFooter/12",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.85546875,
+        757.38427734375,
+        554.67578125,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          548.85546875,
+          757.38427734375
+        ],
+        [
+          554.67578125,
+          757.38427734375
+        ],
+        [
+          554.67578125,
+          765.79541015625
+        ],
+        [
+          548.85546875,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/1/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        39.578125,
+        14.91064453125,
+        197.890625,
+        23.32177734375
+      ],
+      "polygon": [
+        [
+          39.578125,
+          14.91064453125
+        ],
+        [
+          197.890625,
+          14.91064453125
+        ],
+        [
+          197.890625,
+          23.32177734375
+        ],
+        [
+          39.578125,
+          23.32177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/1",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        49.31982421875,
+        556.8129272460938,
+        109.53759765625
+      ],
+      "polygon": [
+        [
+          153.65625,
+          49.31982421875
+        ],
+        [
+          556.8129272460938,
+          49.31982421875
+        ],
+        [
+          556.8129272460938,
+          109.53759765625
+        ],
+        [
+          153.65625,
+          109.53759765625
+        ]
+      ],
+      "text": "system might be improved by the hydrophilic character of PE G9 . Moreover, this PEG shell is capable of alleviating the aforementioned barriers, as free PEG chains perform as a protein repellent for protecting the nanoparticles from enzymatic attack in the gastrointestinal tract (GIT); on the other hand, the PEG chains can penetrate the GIT's mucosal layer, which enhance the cellular uptake of the nanocarriers 10. However, nanocarriers inefciently transport through the cellular barriers, eg. the intestinal epithelium. It is necessary to apply a new strategy to overcome these barriers.",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/2",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        108.19775390625,
+        556.8541259765625,
+        209.53961181640625
+      ],
+      "polygon": [
+        [
+          153.65625,
+          108.19775390625
+        ],
+        [
+          556.8541259765625,
+          108.19775390625
+        ],
+        [
+          556.8541259765625,
+          209.53961181640625
+        ],
+        [
+          153.65625,
+          209.53961181640625
+        ]
+      ],
+      "text": "Some reports have demonstrated that specifc cellular uptake and transepithelial transport can be enhanced by conjugating the nanocarriers surface with specifc ligands for epithelial receptors or antibodies 11– 13. Wei Shan reported a cell-penetrating peptide that can mediate high epithelial absorption, benefting insulin-loaded N-(2-hydroxypropyl) methacrylamide copolymer (pHPMA) derivatives for an oral delivery system 14. CSKSSDYQC (CSK) targeting peptide modifying insulin-loaded trimethyl chitosan chloride nanoparticles enhanced transport by the clathrin- and caveolae-dependent endocytosis pathway afer oral deliver y15. Te surface of the Ulex europaeus agglutinin-1 (UEA-1) lectin grafing liposomes yielded improvements in nanoparticle transport across the intestinal barrier via targeting α-L-fucose residues expressed on the apical surface of M cells 16 . Vitamin B12 (VB12)-targeted micelles exhibited better in vitro uptake and transport in a model of the intestinal cell monolayer compared to untargeted micelles due to the endocytosis of VB12 17 .",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/3",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        155.636474609375,
+        209.89599609375,
+        556.8526000976562,
+        339.53955078125
+      ],
+      "polygon": [
+        [
+          155.636474609375,
+          209.89599609375
+        ],
+        [
+          556.8526000976562,
+          209.89599609375
+        ],
+        [
+          556.8526000976562,
+          339.53955078125
+        ],
+        [
+          155.636474609375,
+          339.53955078125
+        ]
+      ],
+      "text": "Te Fc receptor (FcRn) is expressed in the apical region of epithelial cells in the small intestine and throughout the colon both in fetuses and in adult s18 . Studies from W. He et al . have indicated that the pathway of Fc to the basolateral surface of the cell is through a complex network of entangled tubular and irregular vesicle s19 . Fc has been used as a targeted ligand for drug oral delivery. Fc-fused follicle-stimulating hormone reached circulation successfully via the route of oral deliver y20 . Eric M. reported that Fc-conjugated nanoparticles could cross the intestinal epithelium and reach the systemic circulation in mice with a higher absorption efciency compared with untargeted nanoparticles (13.7% vs 1.2%) by oral administration and that the enhancement of nanoparticles was specifcally due to the FcRn 21. Te Fc-conjugated nanoparticles can difuse through the lamina propria and enter the systemic circulation, which might be explained by Fc fragments binding to FcRn at the apical surface of absorptive epithelial cells, inducing receptor-mediated endocytosis 22. In addition, fuid-phase pinocytosis could aid NPs-Fc absorption. NPs-Fc has high afnity for the FcRn in the acidic endosome compartments, leading to transcytosis and refraining from lysosomal degradatio n23. On the basolateral side, exocytosis can cause exposure of the nanoparticles to a neutral pH environment in the lamina propria, leading to the release of NPs-F c24.",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/4",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        152.4921875,
+        339.88623046875,
+        556.6422729492188,
+        419.53155517578125
+      ],
+      "polygon": [
+        [
+          152.4921875,
+          339.88623046875
+        ],
+        [
+          556.6422729492188,
+          339.88623046875
+        ],
+        [
+          556.6422729492188,
+          419.53155517578125
+        ],
+        [
+          152.4921875,
+          419.53155517578125
+        ]
+      ],
+      "text": "In the present work, we prepared diferent PEG-PLGA NPs modifed with Fc to improve exenatide oral efcacy. Te exenatide-loaded PEG-PLGA NPs conjugating with Fc demonstrated better reduction in blood glucose levels and improvement of in vivo absorption. In mice, NPs-Fc was imaged crossing the intestinal epithelium and entering into the lamina propria afer oral administration. In several organs, NPs-Fc was also detected afer oral administration, demonstrating that NPs-Fc could enter into systemic circulation. Exenatide-loaded NPs-Fc was delivered orally and induced a hypoglycemic response. Te above results demonstrated that NPs targeted to the FcRn can cross an epithelial barrier and enter in vivo circulation, making oral NPs-based delivery systems proftable to deliver drug to the systemic circulation.",
+      "section_hierarchy": {
+        "1": "/page/0/SectionHeader/4"
+      }
+    },
+    {
+      "block_id": "/page/1/SectionHeader/5",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        155.111328125,
+        428.4263000488281,
+        190.23751831054688,
+        439.4263000488281
+      ],
+      "polygon": [
+        [
+          155.111328125,
+          428.4263000488281
+        ],
+        [
+          190.23751831054688,
+          428.4263000488281
+        ],
+        [
+          190.23751831054688,
+          439.4263000488281
+        ],
+        [
+          155.111328125,
+          439.4263000488281
+        ]
+      ],
+      "text": "Results",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        439.2256164550781,
+        556.7310180664062,
+        531.4306640625
+      ],
+      "polygon": [
+        [
+          153.65625,
+          439.2256164550781
+        ],
+        [
+          556.7310180664062,
+          439.2256164550781
+        ],
+        [
+          556.7310180664062,
+          531.4306640625
+        ],
+        [
+          153.65625,
+          531.4306640625
+        ]
+      ],
+      "text": "Characterization of nanoparticles. The copolymer PEG-PLGA was used to fabricate the exenatide-loaded nanoparticles. Pegylation (PEG) can protect nanoparticles against aggregation and enzymatic degradation, benefting a longer circulating cycle in vivo , which has been used widely to enhance the stability of nanoparticle s25 . In addition, PEG-PLGA forms the hydrophilic corona of the nanoparticles, which can promote mucus penetration. PLGA has been used in many marketed products, and it forms the NPs core owing to its biodegradability and biocompatibility characteristics, as well as long acting release behaviors. PEG-PLGA was used to prepare the nanoparticles by the method of double emulsifcation. Te morphology of PEG-PLGA NPs was detected by TEM. Te image (Fig. 1A) showed the dark staining surrounded the bright entities, indicating the presence of spherical particulates, and the NPs were uniform in size.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        529.51904296875,
+        556.6836547851562,
+        579.6196746826172
+      ],
+      "polygon": [
+        [
+          153.65625,
+          529.51904296875
+        ],
+        [
+          556.6836547851562,
+          529.51904296875
+        ],
+        [
+          556.6836547851562,
+          579.6196746826172
+        ],
+        [
+          153.65625,
+          579.6196746826172
+        ]
+      ],
+      "text": "Tere was no crucial diference in particle size between the PEG5000-PLGA20000 NPs and the PEG5000-PLGA28000 NPs, but the encapsulation efficiency (EE) of the PEG5000-PLGA28000 NPs was much lower than that of the PEG5000-PLGA20000 NPs (59.5% vs 83.5%). Te efect of the PEG5000-PLGA20000 concentration (1, 3, and 5mg/mL) on the characterization of NPs was also studied. Te size increased with increased PEG5000-PLGA20000 concentration; nevertheless, the EE was opposite (Table 1) .",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        580.6186828613281,
+        556.7182006835938,
+        649.6146850585938
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          580.6186828613281
+        ],
+        [
+          556.7182006835938,
+          580.6186828613281
+        ],
+        [
+          556.7182006835938,
+          649.6146850585938
+        ],
+        [
+          154.8203125,
+          649.6146850585938
+        ]
+      ],
+      "text": "PEG5000-PLGA20000 with a free terminal maleimide group (PLGA-PEG-MAL) was used to conjugate the Fc portion of the IgG as shown in Fig. 2 . Fc was modifed by 2-iminothiolane to form thiol groups (Fc-SH). Sephadex G50 gel columns were used to separate the unbound Fc-SH from NPs. Fc fragments conjugated onto the surface of the NPs promoted diferent characterizations of NPs. On one hand, TEM showed that Fc-conjugated NPs exhibited the core-shell structure (Fig. 1B ) while the non-conjugated NPs did not (Fig. 1A ). On the other hand, Fc-conjugated NPs had a larger size of 130±5.2nm, approximately 20nm larger than non-conjugated NPs (Table 1 ). However, the zeta potential was almost the same for both groups.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/1/Text/9",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        659.3067169189453,
+        556.7869262695312,
+        739.79736328125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          659.3067169189453
+        ],
+        [
+          556.7869262695312,
+          659.3067169189453
+        ],
+        [
+          556.7869262695312,
+          739.79736328125
+        ],
+        [
+          153.65625,
+          739.79736328125
+        ]
+      ],
+      "text": "Cellular uptake: imaging by CLSM. Caco-2 is a cell line of human epithelial colorectal adenocarcinoma that is widely applied for permeability researches in pharmaceutical studies. Terefore, the Caco-2 cell line was used as an epithelial cell monolayer model for drug permeability testing in our research. Due to the endogenous expression of human FcRn and human β2-microglobulin in Caco-2 cells, these cells have previously been used for IgG transcytosis studies 26 . Te CLSM method was used to detect the corresponding uptake behavior of the NPs and NPs-Fc. Te image of a representative Caco-2 cell following incubation with NPs and NPs-Fc is shown in Fig. 3 . Green fuorescence (fuorescent NPs) increased with the incubation time, which demonstrated that NPs and NPs-Fc had entered into the Caco-2 cells monolayer. Moreover, the results demonstrated that NPs-Fc was",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/1/PageFooter/10",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        40.7421875,
+        756.8748168945312,
+        554.6401977539062,
+        766.8748168945312
+      ],
+      "polygon": [
+        [
+          40.7421875,
+          756.8748168945312
+        ],
+        [
+          554.6401977539062,
+          756.8748168945312
+        ],
+        [
+          554.6401977539062,
+          766.8748168945312
+        ],
+        [
+          40.7421875,
+          766.8748168945312
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/1/PageFooter/11",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.85546875,
+        757.38427734375,
+        554.67578125,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          548.85546875,
+          757.38427734375
+        ],
+        [
+          554.67578125,
+          757.38427734375
+        ],
+        [
+          554.67578125,
+          765.79541015625
+        ],
+        [
+          548.85546875,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        39.578125,
+        13.763671875,
+        199.0546875,
+        22.939453125
+      ],
+      "polygon": [
+        [
+          39.578125,
+          13.763671875
+        ],
+        [
+          199.0546875,
+          13.763671875
+        ],
+        [
+          199.0546875,
+          22.939453125
+        ],
+        [
+          39.578125,
+          22.939453125
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/PictureGroup/63",
+      "block_type": "PictureGroup",
+      "page_index": 0,
+      "bbox": [
+        142.9853515625,
+        38.270654296875,
+        544.2065491183879,
+        254.25
+      ],
+      "polygon": [
+        [
+          142.9853515625,
+          38.270654296875
+        ],
+        [
+          544.2065491183879,
+          38.270654296875
+        ],
+        [
+          544.2065491183879,
+          254.25
+        ],
+        [
+          142.9853515625,
+          254.25
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Picture/1",
+      "block_type": "Picture",
+      "page_index": 0,
+      "bbox": [
+        142.9853515625,
+        38.270654296875,
+        527.5146484375,
+        230.885595703125
+      ],
+      "polygon": [
+        [
+          142.9853515625,
+          38.270654296875
+        ],
+        [
+          527.5146484375,
+          38.270654296875
+        ],
+        [
+          527.5146484375,
+          230.885595703125
+        ],
+        [
+          142.9853515625,
+          230.885595703125
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Caption/2",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        151.328125,
+        234.75,
+        544.2065491183879,
+        254.25
+      ],
+      "polygon": [
+        [
+          151.328125,
+          234.75
+        ],
+        [
+          544.2065491183879,
+          234.75
+        ],
+        [
+          544.2065491183879,
+          254.25
+        ],
+        [
+          151.328125,
+          254.25
+        ]
+      ],
+      "text": "Figure 1. TEM images. (A) Exenatide-loaded nanoparticles, (B) Exenatide-loaded nanoparticles conjugated with Fc fragments.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/PictureGroup/64",
+      "block_type": "PictureGroup",
+      "page_index": 0,
+      "bbox": [
+        144.09814453125,
+        274.05,
+        526.40185546875,
+        382.5
+      ],
+      "polygon": [
+        [
+          144.09814453125,
+          274.05
+        ],
+        [
+          526.40185546875,
+          274.05
+        ],
+        [
+          526.40185546875,
+          382.5
+        ],
+        [
+          144.09814453125,
+          382.5
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Reference/114",
+      "block_type": "Reference",
+      "page_index": 0,
+      "bbox": [
+        144.09814453125,
+        274.05,
+        526.40185546875,
+        382.5
+      ],
+      "polygon": [
+        [
+          144.09814453125,
+          274.05
+        ],
+        [
+          526.40185546875,
+          274.05
+        ],
+        [
+          526.40185546875,
+          382.5
+        ],
+        [
+          144.09814453125,
+          382.5
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Picture/3",
+      "block_type": "Picture",
+      "page_index": 0,
+      "bbox": [
+        144.09814453125,
+        274.05,
+        526.40185546875,
+        368.2546875
+      ],
+      "polygon": [
+        [
+          144.09814453125,
+          274.05
+        ],
+        [
+          526.40185546875,
+          274.05
+        ],
+        [
+          526.40185546875,
+          368.2546875
+        ],
+        [
+          144.09814453125,
+          368.2546875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Caption/4",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        373.53076171875,
+        317.51637279596974,
+        382.5
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          373.53076171875
+        ],
+        [
+          317.51637279596974,
+          373.53076171875
+        ],
+        [
+          317.51637279596974,
+          382.5
+        ],
+        [
+          153.87909319899245,
+          382.5
+        ]
+      ],
+      "text": "Figure 2. Schematic of the NPs-Fc assembly.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableGroup/65",
+      "block_type": "TableGroup",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        413.6748046875,
+        556.2166246851385,
+        521.25
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          413.6748046875
+        ],
+        [
+          556.2166246851385,
+          413.6748046875
+        ],
+        [
+          556.2166246851385,
+          521.25
+        ],
+        [
+          153.87909319899245,
+          521.25
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Table/5",
+      "block_type": "Table",
+      "page_index": 0,
+      "bbox": [
+        153.16734375,
+        412.89486328125,
+        559.23890625,
+        492.44888671875
+      ],
+      "polygon": [
+        [
+          153.16734375,
+          412.89486328125
+        ],
+        [
+          559.23890625,
+          412.89486328125
+        ],
+        [
+          559.23890625,
+          492.44888671875
+        ],
+        [
+          153.16734375,
+          492.44888671875
+        ]
+      ],
+      "text": "Batch Copolymer type Polymer concentration Fc conjugation Particle size (nm) PDI Zeta Potential (mV) EE(%) 1 PEG 5000 -PLGA 20000 1 mg/mL No 109 \\pm 6.7 0.144 -3.56 \\pm 2.12 83.5 ± 2.8 2 PEG 5000 -PLGA 28000 1 mg/mL No 117 ± 7.3 0.079 -4.26 \\pm 1.04 59.5 ± 3.4 3 PEG 5000 -PLGA 20000 3 mg/mL No 127 \\pm 5.2 0.089 -2.38 \\pm 1.15 62.9 ± 2.3 4 PEG 5000 -PLGA 20000 5 mg/mL No 143 ± 4.9 0.073 -3.25 \\pm 2.41 52.4 ± 2.9 5 PEG 5000 -PLGA 20000 1 mg/mL Yes 140\\pm4.2 0.156 -4.87 \\pm 1.52 83.5 ± 2.8",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Reference/116",
+      "block_type": "Reference",
+      "page_index": 0,
+      "bbox": [
+        153.16734375,
+        412.89486328125,
+        559.23890625,
+        492.44888671875
+      ],
+      "polygon": [
+        [
+          153.16734375,
+          412.89486328125
+        ],
+        [
+          559.23890625,
+          412.89486328125
+        ],
+        [
+          559.23890625,
+          492.44888671875
+        ],
+        [
+          153.16734375,
+          492.44888671875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Reference/115",
+      "block_type": "Reference",
+      "page_index": 0,
+      "bbox": [
+        153.16734375,
+        412.89486328125,
+        559.23890625,
+        492.44888671875
+      ],
+      "polygon": [
+        [
+          153.16734375,
+          412.89486328125
+        ],
+        [
+          559.23890625,
+          412.89486328125
+        ],
+        [
+          559.23890625,
+          492.44888671875
+        ],
+        [
+          153.16734375,
+          492.44888671875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/66",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        154.29328833438285,
+        414.0204023325198,
+        184.31847725125942,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          154.29328833438285,
+          414.0204023325198
+        ],
+        [
+          184.31847725125942,
+          414.0204023325198
+        ],
+        [
+          184.31847725125942,
+          433.90492557161895
+        ],
+        [
+          154.29328833438285,
+          433.90492557161895
+        ]
+      ],
+      "text": "Batch",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/67",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        183.9431623897985,
+        414.0204023325198,
+        258.6308198205289,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          183.9431623897985,
+          414.0204023325198
+        ],
+        [
+          258.6308198205289,
+          414.0204023325198
+        ],
+        [
+          258.6308198205289,
+          433.90492557161895
+        ],
+        [
+          183.9431623897985,
+          433.90492557161895
+        ]
+      ],
+      "text": "Copolymer type",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/68",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        258.255504959068,
+        414.0204023325198,
+        322.43434626889166,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          258.255504959068,
+          414.0204023325198
+        ],
+        [
+          322.43434626889166,
+          414.0204023325198
+        ],
+        [
+          322.43434626889166,
+          433.90492557161895
+        ],
+        [
+          258.255504959068,
+          433.90492557161895
+        ]
+      ],
+      "text": "Polymer concentration",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/69",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        322.0590314074307,
+        414.0204023325198,
+        377.2303160421914,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          322.0590314074307,
+          414.0204023325198
+        ],
+        [
+          377.2303160421914,
+          414.0204023325198
+        ],
+        [
+          377.2303160421914,
+          433.90492557161895
+        ],
+        [
+          322.0590314074307,
+          433.90492557161895
+        ]
+      ],
+      "text": "Fc conjugation",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/70",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        377.60563090365235,
+        414.0204023325198,
+        424.519988586272,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          377.60563090365235,
+          414.0204023325198
+        ],
+        [
+          424.519988586272,
+          414.0204023325198
+        ],
+        [
+          424.519988586272,
+          433.90492557161895
+        ],
+        [
+          377.60563090365235,
+          433.90492557161895
+        ]
+      ],
+      "text": "Particle size (nm)",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/71",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        424.14467372481107,
+        414.0204023325198,
+        454.16986264168764,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          424.14467372481107,
+          414.0204023325198
+        ],
+        [
+          454.16986264168764,
+          414.0204023325198
+        ],
+        [
+          454.16986264168764,
+          433.90492557161895
+        ],
+        [
+          424.14467372481107,
+          433.90492557161895
+        ]
+      ],
+      "text": "PDI",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/72",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        454.16986264168764,
+        414.0204023325198,
+        511.59303644521407,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          454.16986264168764,
+          414.0204023325198
+        ],
+        [
+          511.59303644521407,
+          414.0204023325198
+        ],
+        [
+          511.59303644521407,
+          433.90492557161895
+        ],
+        [
+          454.16986264168764,
+          433.90492557161895
+        ]
+      ],
+      "text": "Zeta Potential (mV)",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/73",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        511.21772158375313,
+        414.0204023325198,
+        555.880190097607,
+        433.90492557161895
+      ],
+      "polygon": [
+        [
+          511.21772158375313,
+          414.0204023325198
+        ],
+        [
+          555.880190097607,
+          414.0204023325198
+        ],
+        [
+          555.880190097607,
+          433.90492557161895
+        ],
+        [
+          511.21772158375313,
+          433.90492557161895
+        ]
+      ],
+      "text": "EE(%)",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/74",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        153.91797347292191,
+        433.90492557161895,
+        184.31847725125942,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          154.66860319584382,
+          433.90492557161895
+        ],
+        [
+          184.31847725125942,
+          433.90492557161895
+        ],
+        [
+          184.31847725125942,
+          445.1603160843166
+        ],
+        [
+          153.91797347292191,
+          445.1603160843166
+        ]
+      ],
+      "text": "1",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/75",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        183.9431623897985,
+        433.90492557161895,
+        258.6308198205289,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          183.9431623897985,
+          433.90492557161895
+        ],
+        [
+          258.6308198205289,
+          433.90492557161895
+        ],
+        [
+          258.6308198205289,
+          445.1603160843166
+        ],
+        [
+          183.9431623897985,
+          445.1603160843166
+        ]
+      ],
+      "text": "PEG 5000 -PLGA 20000",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/76",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        258.255504959068,
+        433.90492557161895,
+        322.43434626889166,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          258.255504959068,
+          433.90492557161895
+        ],
+        [
+          322.43434626889166,
+          433.90492557161895
+        ],
+        [
+          322.43434626889166,
+          445.1603160843166
+        ],
+        [
+          258.255504959068,
+          445.1603160843166
+        ]
+      ],
+      "text": "1 mg/mL",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/77",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        322.0590314074307,
+        433.90492557161895,
+        377.2303160421914,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          322.0590314074307,
+          433.90492557161895
+        ],
+        [
+          377.2303160421914,
+          433.90492557161895
+        ],
+        [
+          377.2303160421914,
+          445.1603160843166
+        ],
+        [
+          322.0590314074307,
+          445.1603160843166
+        ]
+      ],
+      "text": "No",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/78",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        377.60563090365235,
+        433.90492557161895,
+        424.519988586272,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          377.60563090365235,
+          433.90492557161895
+        ],
+        [
+          424.519988586272,
+          433.90492557161895
+        ],
+        [
+          424.519988586272,
+          445.1603160843166
+        ],
+        [
+          377.60563090365235,
+          445.1603160843166
+        ]
+      ],
+      "text": "109 \\pm 6.7",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/79",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        424.14467372481107,
+        433.90492557161895,
+        454.16986264168764,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          424.14467372481107,
+          433.90492557161895
+        ],
+        [
+          454.16986264168764,
+          433.90492557161895
+        ],
+        [
+          454.16986264168764,
+          445.1603160843166
+        ],
+        [
+          424.14467372481107,
+          445.1603160843166
+        ]
+      ],
+      "text": "0.144",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/80",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        454.16986264168764,
+        433.90492557161895,
+        511.59303644521407,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          454.16986264168764,
+          433.90492557161895
+        ],
+        [
+          511.59303644521407,
+          433.90492557161895
+        ],
+        [
+          511.59303644521407,
+          445.1603160843166
+        ],
+        [
+          454.16986264168764,
+          445.1603160843166
+        ]
+      ],
+      "text": "-3.56 \\pm 2.12",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/81",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        511.21772158375313,
+        433.90492557161895,
+        556.255504959068,
+        445.1603160843166
+      ],
+      "polygon": [
+        [
+          511.21772158375313,
+          433.90492557161895
+        ],
+        [
+          556.255504959068,
+          433.90492557161895
+        ],
+        [
+          556.255504959068,
+          445.1603160843166
+        ],
+        [
+          511.21772158375313,
+          445.1603160843166
+        ]
+      ],
+      "text": "83.5 ± 2.8",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/82",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        153.91797347292191,
+        445.1603160843166,
+        184.31847725125942,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          154.66860319584382,
+          445.1603160843166
+        ],
+        [
+          184.31847725125942,
+          445.1603160843166
+        ],
+        [
+          184.31847725125942,
+          456.79088628077085
+        ],
+        [
+          153.91797347292191,
+          456.79088628077085
+        ]
+      ],
+      "text": "2",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/83",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        183.9431623897985,
+        445.1603160843166,
+        258.6308198205289,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          183.9431623897985,
+          445.1603160843166
+        ],
+        [
+          258.6308198205289,
+          445.1603160843166
+        ],
+        [
+          258.6308198205289,
+          456.79088628077085
+        ],
+        [
+          183.9431623897985,
+          456.79088628077085
+        ]
+      ],
+      "text": "PEG 5000 -PLGA 28000",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/84",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        258.255504959068,
+        445.1603160843166,
+        322.43434626889166,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          258.255504959068,
+          445.1603160843166
+        ],
+        [
+          322.43434626889166,
+          445.1603160843166
+        ],
+        [
+          322.43434626889166,
+          456.79088628077085
+        ],
+        [
+          258.255504959068,
+          456.79088628077085
+        ]
+      ],
+      "text": "1 mg/mL",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/85",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        322.0590314074307,
+        445.1603160843166,
+        377.2303160421914,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          322.0590314074307,
+          445.1603160843166
+        ],
+        [
+          377.2303160421914,
+          445.1603160843166
+        ],
+        [
+          377.2303160421914,
+          456.79088628077085
+        ],
+        [
+          322.0590314074307,
+          456.79088628077085
+        ]
+      ],
+      "text": "No",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/86",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        377.60563090365235,
+        445.1603160843166,
+        424.519988586272,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          377.60563090365235,
+          445.1603160843166
+        ],
+        [
+          424.519988586272,
+          445.1603160843166
+        ],
+        [
+          424.519988586272,
+          456.79088628077085
+        ],
+        [
+          377.60563090365235,
+          456.79088628077085
+        ]
+      ],
+      "text": "117 ± 7.3",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/87",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        424.14467372481107,
+        445.1603160843166,
+        454.16986264168764,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          424.14467372481107,
+          445.1603160843166
+        ],
+        [
+          454.16986264168764,
+          445.1603160843166
+        ],
+        [
+          454.16986264168764,
+          456.79088628077085
+        ],
+        [
+          424.14467372481107,
+          456.79088628077085
+        ]
+      ],
+      "text": "0.079",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/88",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        454.16986264168764,
+        445.1603160843166,
+        511.59303644521407,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          454.16986264168764,
+          445.1603160843166
+        ],
+        [
+          511.59303644521407,
+          445.1603160843166
+        ],
+        [
+          511.59303644521407,
+          456.79088628077085
+        ],
+        [
+          454.16986264168764,
+          456.79088628077085
+        ]
+      ],
+      "text": "-4.26 \\pm 1.04",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/89",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        511.21772158375313,
+        445.1603160843166,
+        556.255504959068,
+        456.79088628077085
+      ],
+      "polygon": [
+        [
+          511.21772158375313,
+          445.1603160843166
+        ],
+        [
+          556.255504959068,
+          445.1603160843166
+        ],
+        [
+          556.255504959068,
+          456.79088628077085
+        ],
+        [
+          511.21772158375313,
+          456.79088628077085
+        ]
+      ],
+      "text": "59.5 ± 3.4",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/90",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        153.91797347292191,
+        456.79088628077085,
+        184.31847725125942,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          154.66860319584382,
+          456.79088628077085
+        ],
+        [
+          184.31847725125942,
+          456.79088628077085
+        ],
+        [
+          184.31847725125942,
+          468.4214564772251
+        ],
+        [
+          153.91797347292191,
+          468.4214564772251
+        ]
+      ],
+      "text": "3",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/91",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        183.9431623897985,
+        456.79088628077085,
+        258.6308198205289,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          183.9431623897985,
+          456.79088628077085
+        ],
+        [
+          258.6308198205289,
+          456.79088628077085
+        ],
+        [
+          258.6308198205289,
+          468.4214564772251
+        ],
+        [
+          183.9431623897985,
+          468.4214564772251
+        ]
+      ],
+      "text": "PEG 5000 -PLGA 20000",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/92",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        258.255504959068,
+        456.79088628077085,
+        322.43434626889166,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          258.255504959068,
+          456.79088628077085
+        ],
+        [
+          322.43434626889166,
+          456.79088628077085
+        ],
+        [
+          322.43434626889166,
+          468.4214564772251
+        ],
+        [
+          258.255504959068,
+          468.4214564772251
+        ]
+      ],
+      "text": "3 mg/mL",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/93",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        322.0590314074307,
+        456.79088628077085,
+        377.2303160421914,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          322.0590314074307,
+          456.79088628077085
+        ],
+        [
+          377.2303160421914,
+          456.79088628077085
+        ],
+        [
+          377.2303160421914,
+          468.4214564772251
+        ],
+        [
+          322.0590314074307,
+          468.4214564772251
+        ]
+      ],
+      "text": "No",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/94",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        377.60563090365235,
+        456.79088628077085,
+        424.519988586272,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          377.60563090365235,
+          456.79088628077085
+        ],
+        [
+          424.519988586272,
+          456.79088628077085
+        ],
+        [
+          424.519988586272,
+          468.4214564772251
+        ],
+        [
+          377.60563090365235,
+          468.4214564772251
+        ]
+      ],
+      "text": "127 \\pm 5.2",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/95",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        424.14467372481107,
+        456.79088628077085,
+        454.16986264168764,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          424.14467372481107,
+          456.79088628077085
+        ],
+        [
+          454.16986264168764,
+          456.79088628077085
+        ],
+        [
+          454.16986264168764,
+          468.4214564772251
+        ],
+        [
+          424.14467372481107,
+          468.4214564772251
+        ]
+      ],
+      "text": "0.089",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/96",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        454.16986264168764,
+        456.79088628077085,
+        511.59303644521407,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          454.16986264168764,
+          456.79088628077085
+        ],
+        [
+          511.59303644521407,
+          456.79088628077085
+        ],
+        [
+          511.59303644521407,
+          468.4214564772251
+        ],
+        [
+          454.16986264168764,
+          468.4214564772251
+        ]
+      ],
+      "text": "-2.38 \\pm 1.15",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/97",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        511.21772158375313,
+        456.79088628077085,
+        556.255504959068,
+        468.4214564772251
+      ],
+      "polygon": [
+        [
+          511.21772158375313,
+          456.79088628077085
+        ],
+        [
+          556.255504959068,
+          456.79088628077085
+        ],
+        [
+          556.255504959068,
+          468.4214564772251
+        ],
+        [
+          511.21772158375313,
+          468.4214564772251
+        ]
+      ],
+      "text": "62.9 ± 2.3",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/98",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        153.91797347292191,
+        468.4214564772251,
+        184.31847725125942,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          153.91797347292191,
+          468.4214564772251
+        ],
+        [
+          184.31847725125942,
+          468.4214564772251
+        ],
+        [
+          184.31847725125942,
+          480.05202667367934
+        ],
+        [
+          153.91797347292191,
+          480.05202667367934
+        ]
+      ],
+      "text": "4",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/99",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        183.9431623897985,
+        468.4214564772251,
+        258.6308198205289,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          183.9431623897985,
+          468.4214564772251
+        ],
+        [
+          258.6308198205289,
+          468.4214564772251
+        ],
+        [
+          258.6308198205289,
+          480.05202667367934
+        ],
+        [
+          183.9431623897985,
+          480.05202667367934
+        ]
+      ],
+      "text": "PEG 5000 -PLGA 20000",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/100",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        258.255504959068,
+        468.4214564772251,
+        322.43434626889166,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          258.255504959068,
+          468.4214564772251
+        ],
+        [
+          322.43434626889166,
+          468.4214564772251
+        ],
+        [
+          322.43434626889166,
+          480.05202667367934
+        ],
+        [
+          258.255504959068,
+          480.05202667367934
+        ]
+      ],
+      "text": "5 mg/mL",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/101",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        322.0590314074307,
+        468.4214564772251,
+        377.2303160421914,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          322.0590314074307,
+          468.4214564772251
+        ],
+        [
+          377.2303160421914,
+          468.4214564772251
+        ],
+        [
+          377.2303160421914,
+          480.05202667367934
+        ],
+        [
+          322.0590314074307,
+          480.05202667367934
+        ]
+      ],
+      "text": "No",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/102",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        377.60563090365235,
+        468.4214564772251,
+        424.519988586272,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          377.60563090365235,
+          468.4214564772251
+        ],
+        [
+          424.519988586272,
+          468.4214564772251
+        ],
+        [
+          424.519988586272,
+          480.05202667367934
+        ],
+        [
+          377.60563090365235,
+          480.05202667367934
+        ]
+      ],
+      "text": "143 ± 4.9",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/103",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        424.14467372481107,
+        468.4214564772251,
+        454.16986264168764,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          424.14467372481107,
+          468.4214564772251
+        ],
+        [
+          454.16986264168764,
+          468.4214564772251
+        ],
+        [
+          454.16986264168764,
+          480.05202667367934
+        ],
+        [
+          424.14467372481107,
+          480.05202667367934
+        ]
+      ],
+      "text": "0.073",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/104",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        454.16986264168764,
+        468.4214564772251,
+        511.59303644521407,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          454.16986264168764,
+          468.4214564772251
+        ],
+        [
+          511.59303644521407,
+          468.4214564772251
+        ],
+        [
+          511.59303644521407,
+          480.05202667367934
+        ],
+        [
+          454.16986264168764,
+          480.05202667367934
+        ]
+      ],
+      "text": "-3.25 \\pm 2.41",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/105",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        511.21772158375313,
+        468.4214564772251,
+        556.255504959068,
+        480.05202667367934
+      ],
+      "polygon": [
+        [
+          511.21772158375313,
+          468.4214564772251
+        ],
+        [
+          556.255504959068,
+          468.4214564772251
+        ],
+        [
+          556.255504959068,
+          480.05202667367934
+        ],
+        [
+          511.21772158375313,
+          480.05202667367934
+        ]
+      ],
+      "text": "52.4 ± 2.9",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/106",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        153.91797347292191,
+        480.05202667367934,
+        184.31847725125942,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          154.66860319584382,
+          480.05202667367934
+        ],
+        [
+          184.31847725125942,
+          480.05202667367934
+        ],
+        [
+          184.31847725125942,
+          491.6825968701336
+        ],
+        [
+          153.91797347292191,
+          491.6825968701336
+        ]
+      ],
+      "text": "5",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/107",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        183.9431623897985,
+        480.05202667367934,
+        258.6308198205289,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          183.9431623897985,
+          480.05202667367934
+        ],
+        [
+          258.6308198205289,
+          480.05202667367934
+        ],
+        [
+          258.6308198205289,
+          491.6825968701336
+        ],
+        [
+          183.9431623897985,
+          491.6825968701336
+        ]
+      ],
+      "text": "PEG 5000 -PLGA 20000",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/108",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        258.255504959068,
+        480.05202667367934,
+        322.43434626889166,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          258.255504959068,
+          480.05202667367934
+        ],
+        [
+          322.43434626889166,
+          480.05202667367934
+        ],
+        [
+          322.43434626889166,
+          491.6825968701336
+        ],
+        [
+          258.255504959068,
+          491.6825968701336
+        ]
+      ],
+      "text": "1 mg/mL",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/109",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        322.0590314074307,
+        480.05202667367934,
+        377.2303160421914,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          322.0590314074307,
+          480.05202667367934
+        ],
+        [
+          377.2303160421914,
+          480.05202667367934
+        ],
+        [
+          377.2303160421914,
+          491.6825968701336
+        ],
+        [
+          322.0590314074307,
+          491.6825968701336
+        ]
+      ],
+      "text": "Yes",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/110",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        377.60563090365235,
+        480.05202667367934,
+        424.519988586272,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          377.60563090365235,
+          480.05202667367934
+        ],
+        [
+          424.519988586272,
+          480.05202667367934
+        ],
+        [
+          424.519988586272,
+          491.6825968701336
+        ],
+        [
+          377.60563090365235,
+          491.6825968701336
+        ]
+      ],
+      "text": "140\\pm4.2",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/111",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        424.14467372481107,
+        480.05202667367934,
+        454.16986264168764,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          424.14467372481107,
+          480.05202667367934
+        ],
+        [
+          454.16986264168764,
+          480.05202667367934
+        ],
+        [
+          454.16986264168764,
+          491.6825968701336
+        ],
+        [
+          424.14467372481107,
+          491.6825968701336
+        ]
+      ],
+      "text": "0.156",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/112",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        454.16986264168764,
+        480.05202667367934,
+        511.59303644521407,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          454.16986264168764,
+          480.05202667367934
+        ],
+        [
+          511.59303644521407,
+          480.05202667367934
+        ],
+        [
+          511.59303644521407,
+          491.6825968701336
+        ],
+        [
+          454.16986264168764,
+          491.6825968701336
+        ]
+      ],
+      "text": "-4.87 \\pm 1.52",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/TableCell/113",
+      "block_type": "TableCell",
+      "page_index": 0,
+      "bbox": [
+        511.21772158375313,
+        480.05202667367934,
+        556.255504959068,
+        491.6825968701336
+      ],
+      "polygon": [
+        [
+          511.21772158375313,
+          480.05202667367934
+        ],
+        [
+          556.255504959068,
+          480.05202667367934
+        ],
+        [
+          556.255504959068,
+          491.6825968701336
+        ],
+        [
+          511.21772158375313,
+          491.6825968701336
+        ]
+      ],
+      "text": "83.5 ± 2.8",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Caption/6",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        500.080078125,
+        556.2166246851385,
+        521.25
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          500.080078125
+        ],
+        [
+          556.2166246851385,
+          500.080078125
+        ],
+        [
+          556.2166246851385,
+          521.25
+        ],
+        [
+          153.87909319899245,
+          521.25
+        ]
+      ],
+      "text": "Table 1. Characteristics of exenitide-loaded NPs. Note: The particle size and PDI are detected by DLS method.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        532.5,
+        556.421875,
+        561.75
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          532.5
+        ],
+        [
+          556.421875,
+          532.5
+        ],
+        [
+          556.421875,
+          561.75
+        ],
+        [
+          153.87909319899245,
+          561.75
+        ]
+      ],
+      "text": "transported into Caco-2 cells within 0.5 h, confirming that the Fc-conjugated NPs could permeate through the Caco-2 cell monolayer more quickly than unconjugated NPs (2 h). After 4 h, the amount of NPs-Fc that permeated into Caco-2 cells was greater than that of unconjugated NPs.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        571.5,
+        557.7178841309824,
+        631.98193359375
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          571.5
+        ],
+        [
+          557.7178841309824,
+          571.5
+        ],
+        [
+          557.7178841309824,
+          631.98193359375
+        ],
+        [
+          153.87909319899245,
+          631.98193359375
+        ]
+      ],
+      "text": "Cellular uptake: a quantitative analysis. Cellular uptake of the NPs following an incubation period of 90 min was detected by flow cytometry and is shown in Fig. 4. Unmodified NP internalization increased with the increasing concentration (6-14 \\text{ ng} \\cdot \\text{mL}^{-1}) . Cellular uptake of Fc-conjugated NPs with a fluorescence concentration of 8 \\text{ng} \\cdot \\text{mL}^{-1} was almost saturated during the period. This phenomenon demonstrated the Fc-conjugated NPs permeated Caco-2 cells more and faster. Furthermore, internalization of the Fc-conjugated NPs was much more than the unconjugated NPs.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/Text/9",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        640.0107421875,
+        556.9672544080604,
+        718.5
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          640.0107421875
+        ],
+        [
+          556.9672544080604,
+          640.0107421875
+        ],
+        [
+          556.9672544080604,
+          718.5
+        ],
+        [
+          153.87909319899245,
+          718.5
+        ]
+      ],
+      "text": "Hypoglycemic effect studies. The hypoglycemic effect of exenatide-loaded PEG-PLGA NPs and exenatide-loaded PEG-PLGA NPs modified by Fc was studied in db/db mice after oral delivery. As shown as Fig. 5, the baseline was the average value of blood glucose detected before the treatment for each experimental group, taken as 100%. Both the NPs and NPs-Fc showed significantly high hypoglycemic effects, comparing with the orally administered exenatide solution, at 1 and 2 h after administration. Oral administration of physiological saline made no sense in the blood glucose level but had the opposite effect. The oral exenatide solution group also did not show reduced blood glucose levels, demonstrating poor oral absorption of the free exenatide in the small intestine.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/PageFooter/10",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        39.032745591939545,
+        756.75,
+        287.49118387909317,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          39.032745591939545,
+          756.75
+        ],
+        [
+          287.49118387909317,
+          756.75
+        ],
+        [
+          287.49118387909317,
+          765.79541015625
+        ],
+        [
+          39.032745591939545,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/2/PageFooter/11",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.7103274559194,
+        757.38427734375,
+        556.2166246851385,
+        767.25
+      ],
+      "polygon": [
+        [
+          548.7103274559194,
+          757.38427734375
+        ],
+        [
+          556.2166246851385,
+          757.38427734375
+        ],
+        [
+          556.2166246851385,
+          767.25
+        ],
+        [
+          548.7103274559194,
+          767.25
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        39.578125,
+        14.91064453125,
+        199.0546875,
+        23.32177734375
+      ],
+      "polygon": [
+        [
+          39.578125,
+          14.91064453125
+        ],
+        [
+          199.0546875,
+          14.91064453125
+        ],
+        [
+          199.0546875,
+          23.32177734375
+        ],
+        [
+          39.578125,
+          23.32177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/FigureGroup/84",
+      "block_type": "FigureGroup",
+      "page_index": 0,
+      "bbox": [
+        137.9638671875,
+        33.7974609375,
+        565.1298828125,
+        306.2014465332031
+      ],
+      "polygon": [
+        [
+          137.9638671875,
+          33.7974609375
+        ],
+        [
+          565.1298828125,
+          33.7974609375
+        ],
+        [
+          565.1298828125,
+          306.2014465332031
+        ],
+        [
+          137.9638671875,
+          306.2014465332031
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Figure/1",
+      "block_type": "Figure",
+      "page_index": 0,
+      "bbox": [
+        137.9638671875,
+        33.7974609375,
+        565.1298828125,
+        282.7669921875
+      ],
+      "polygon": [
+        [
+          137.9638671875,
+          33.7974609375
+        ],
+        [
+          565.1298828125,
+          33.7974609375
+        ],
+        [
+          565.1298828125,
+          282.7669921875
+        ],
+        [
+          137.9638671875,
+          282.7669921875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Caption/2",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        285.978515625,
+        555.5386352539062,
+        306.2014465332031
+      ],
+      "polygon": [
+        [
+          153.65625,
+          285.978515625
+        ],
+        [
+          555.5386352539062,
+          285.978515625
+        ],
+        [
+          555.5386352539062,
+          306.2014465332031
+        ],
+        [
+          153.65625,
+          306.2014465332031
+        ]
+      ],
+      "text": "Figure 3. Confocal microscopy images of fuorescently labeled NPs and NPs-Fc incubation with Caco-2 cell for 0.5, 1, 2, and 4h.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/FigureGroup/85",
+      "block_type": "FigureGroup",
+      "page_index": 0,
+      "bbox": [
+        146.380859375,
+        317.3291015625,
+        538.4395141601562,
+        529.4714813232422
+      ],
+      "polygon": [
+        [
+          146.380859375,
+          317.3291015625
+        ],
+        [
+          538.4395141601562,
+          317.3291015625
+        ],
+        [
+          538.4395141601562,
+          529.4714813232422
+        ],
+        [
+          146.380859375,
+          529.4714813232422
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Figure/3",
+      "block_type": "Figure",
+      "page_index": 0,
+      "bbox": [
+        146.380859375,
+        317.3291015625,
+        370.462890625,
+        502.3740234375
+      ],
+      "polygon": [
+        [
+          146.380859375,
+          317.3291015625
+        ],
+        [
+          370.462890625,
+          317.3291015625
+        ],
+        [
+          370.462890625,
+          502.3740234375
+        ],
+        [
+          146.380859375,
+          502.3740234375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Caption/4",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        508.4912109375,
+        538.4395141601562,
+        529.4714813232422
+      ],
+      "polygon": [
+        [
+          153.65625,
+          508.4912109375
+        ],
+        [
+          538.4395141601562,
+          508.4912109375
+        ],
+        [
+          538.4395141601562,
+          529.4714813232422
+        ],
+        [
+          153.65625,
+          529.4714813232422
+        ]
+      ],
+      "text": "Figure 4. Flow cytometry results of the cellular uptake of fuorescently labeled NPs and NPs-Fc at diferent fuorescence concentrations.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Text/5",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        155.64100646972656,
+        554.3701171875,
+        556.8497314453125,
+        583.5475769042969
+      ],
+      "polygon": [
+        [
+          155.64100646972656,
+          554.3701171875
+        ],
+        [
+          556.8497314453125,
+          554.3701171875
+        ],
+        [
+          556.8497314453125,
+          583.5475769042969
+        ],
+        [
+          155.64100646972656,
+          583.5475769042969
+        ]
+      ],
+      "text": "Te hypoglycemic efects of the oral administration of PEG-PLGA NPs modifed by Fc showed extended time compared with s.c. injection of the exenatide solution. Furthermore, the hypoglycemic efect of the NPs modifed by Fc was much more signifcant than that of the unmodifed NPs at every time point.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        589.92626953125,
+        554.5694580078125,
+        611.5485687255859
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          589.92626953125
+        ],
+        [
+          554.5694580078125,
+          589.92626953125
+        ],
+        [
+          554.5694580078125,
+          611.5485687255859
+        ],
+        [
+          154.8203125,
+          611.5485687255859
+        ]
+      ],
+      "text": "In vivo image study. In the research, Dir-loaded NPs were used to study the NPs' distribution. Te biodistribution of the orally delivered Dir-loaded NPs in mice was studied using an in vivo imaging system.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        612.4833984375,
+        556.8653564453125,
+        641.5455780029297
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          612.4833984375
+        ],
+        [
+          556.8653564453125,
+          612.4833984375
+        ],
+        [
+          556.8653564453125,
+          641.5455780029297
+        ],
+        [
+          154.8203125,
+          641.5455780029297
+        ]
+      ],
+      "text": "Figure 6 shows the whole-body fuorescence at 0.5, 1, 2, 4, 6, 8, 10, 12 and 24h post-oral administration of the Dir-loaded NPs and Dir-loaded NPs modifed by Fc. Te fuorescence of the group treated with the NPs modifed by Fc lasted much longer in the gastrointestinal tract than the unmodifed NPs.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        640.775390625,
+        556.8203735351562,
+        701.5395812988281
+      ],
+      "polygon": [
+        [
+          153.65625,
+          640.775390625
+        ],
+        [
+          556.8203735351562,
+          640.775390625
+        ],
+        [
+          556.8203735351562,
+          701.5395812988281
+        ],
+        [
+          153.65625,
+          701.5395812988281
+        ]
+      ],
+      "text": "Figure 7 shows the fuorescent images of major organs (heart, liver, spleen, lung, kidney and gastrointestinal tract) at the time points (2, 6, 12, and 24h post-oral administration) of Dir-loaded NPs and Dir-loaded NPs modifed by Fc. As for the fuorescent images of excised organs, the higher fuorescence accumulation in the gastrointestinal tract was further confrmed for the group treated orally with the NPs modifed by Fc afer 2h. Moreover, the Fc-modifed NPs remained in the gastrointestinal tract for a longer time compared with the unmodifed NPs. Fluorescence was still observed for the group orally treated with NPs modifed by Fc afer 24h.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/PageFooter/9",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        40.7942008972168,
+        756.8748168945312,
+        554.6416015625,
+        766.8748168945312
+      ],
+      "polygon": [
+        [
+          40.7942008972168,
+          756.8748168945312
+        ],
+        [
+          554.6416015625,
+          756.8748168945312
+        ],
+        [
+          554.6416015625,
+          766.8748168945312
+        ],
+        [
+          40.7942008972168,
+          766.8748168945312
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/3/PageFooter/10",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.564453125,
+        760.44287109375,
+        554.966796875,
+        768.85400390625
+      ],
+      "polygon": [
+        [
+          548.564453125,
+          760.44287109375
+        ],
+        [
+          554.966796875,
+          760.44287109375
+        ],
+        [
+          554.966796875,
+          768.85400390625
+        ],
+        [
+          548.564453125,
+          768.85400390625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/4/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        40.16015625,
+        14.91064453125,
+        197.30859375,
+        23.32177734375
+      ],
+      "polygon": [
+        [
+          40.16015625,
+          14.91064453125
+        ],
+        [
+          197.30859375,
+          14.91064453125
+        ],
+        [
+          197.30859375,
+          23.32177734375
+        ],
+        [
+          40.16015625,
+          23.32177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/4/FigureGroup/207",
+      "block_type": "FigureGroup",
+      "page_index": 0,
+      "bbox": [
+        145.84423828125,
+        38.0794921875,
+        540.42138671875,
+        248.7215576171875
+      ],
+      "polygon": [
+        [
+          145.84423828125,
+          38.0794921875
+        ],
+        [
+          540.42138671875,
+          38.0794921875
+        ],
+        [
+          540.42138671875,
+          248.7215576171875
+        ],
+        [
+          145.84423828125,
+          248.7215576171875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/4/Figure/1",
+      "block_type": "Figure",
+      "page_index": 0,
+      "bbox": [
+        145.84423828125,
+        38.0794921875,
+        368.67138671875,
+        226.4888671875
+      ],
+      "polygon": [
+        [
+          145.84423828125,
+          38.0794921875
+        ],
+        [
+          368.67138671875,
+          38.0794921875
+        ],
+        [
+          368.67138671875,
+          226.4888671875
+        ],
+        [
+          145.84423828125,
+          226.4888671875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/4/Caption/2",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        227.48291015625,
+        540.42138671875,
+        248.7215576171875
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          227.48291015625
+        ],
+        [
+          540.42138671875,
+          227.48291015625
+        ],
+        [
+          540.42138671875,
+          248.7215576171875
+        ],
+        [
+          154.8203125,
+          248.7215576171875
+        ]
+      ],
+      "text": "Figure 5. Blood glucose levels in db/db mice following oral administration of the NPs, NPs modifed by Fc, exenatide solution and physiological saline, and subcutaneous injection of exenatide solution.",
+      "section_hierarchy": {
+        "1": "/page/1/SectionHeader/5"
+      }
+    },
+    {
+      "block_id": "/page/4/SectionHeader/3",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        155.40234375,
+        278.71435546875,
+        205.73199462890625,
+        290.3451843261719
+      ],
+      "polygon": [
+        [
+          155.40234375,
+          278.71435546875
+        ],
+        [
+          205.73199462890625,
+          278.71435546875
+        ],
+        [
+          205.73199462890625,
+          290.3451843261719
+        ],
+        [
+          155.40234375,
+          290.3451843261719
+        ]
+      ],
+      "text": "Discussion",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/Text/4",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        290.18408203125,
+        556.7694702148438,
+        360.53955078125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          290.18408203125
+        ],
+        [
+          556.7694702148438,
+          290.18408203125
+        ],
+        [
+          556.7694702148438,
+          360.53955078125
+        ],
+        [
+          153.65625,
+          360.53955078125
+        ]
+      ],
+      "text": "Te current treatment for diabetes is mainly dependent on frequent injections for chronic disease treatment, leading to poor patient compliance. Te major problems associated with the outcome is forgetting a dose due to multiple doses needed every day and needle phobi a2 . Considering the requirement of chronic treatment for diabetes, the development of a more patient-compliant route of delivery is urgently needed. Oral delivery has always been the preferred route of administratio n27. However, oral delivery of protein and peptide drugs faces signifcant technical hurdles due to the rapid degradation of these drugs by gastric enzymes, the acidic environment, and poor permeation across the intestinal epitheliu m2 .",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/Text/5",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        361.29638671875,
+        556.6987915039062,
+        460.53656005859375
+      ],
+      "polygon": [
+        [
+          153.65625,
+          361.29638671875
+        ],
+        [
+          556.6987915039062,
+          361.29638671875
+        ],
+        [
+          556.6987915039062,
+          460.53656005859375
+        ],
+        [
+          153.65625,
+          460.53656005859375
+        ]
+      ],
+      "text": "Here, we aimed to improve exenatide oral absorption by conjugating the specifc targeting ligand Fc to the nanoparticle surface. Te efcacy of oral Fc-modifed exenatide-loaded PEG-PLGA NPs was studied to provide a non-invasive route for diabetes treatment as an alternative to frequent injections. The Fc-modified exenatide-loaded PEG-PLGA NPs were able to target the FcRn for epithelial transport and enhanced intestinal absorption due to the FcRn-mediated efect of transcytosis of IgG across several epithelial and endothelial barrier s5 . Qiao reported that targeting FcRn NPs retained the integrity of the epithelia barrier in the transcytosis process with regard for the potential safety issues associated with the permeability of the intestine 28 . Our research demonstrated that the IgG Fc-modifed NPs crossed the intestinal epithelium and reached systemic circulation. Te targeting NPs were capable of improving exenatide oral bioavailability and imparting a signifcant hypoglycemic efect.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        461.53558349609375,
+        556.8609008789062,
+        540.6064453125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          461.53558349609375
+        ],
+        [
+          556.8609008789062,
+          461.53558349609375
+        ],
+        [
+          556.8609008789062,
+          540.6064453125
+        ],
+        [
+          153.65625,
+          540.6064453125
+        ]
+      ],
+      "text": "PEG-PLGA, the carrier material of NPs, is crucial for drug encapsulation. It was found that the EE of the PEG5000-PLGA28000 NPs was much lower than that of the PEG5000-PLGA20000 NPs, which might be because the hydrophobic attributes of an amphiphilic block copolymer carrier material increase with an increase in the molecular weight of PLGA, leading to a lower capacity of NPs to encapsulate hydrophilic exenatide. Te similar phenomenon of lower encapsulation efciency appeared at a higher PEG-PLGA concentration, which might also be explained by an enhancement of hydrophobic attributes. Furthermore, there was an increase in particle size with the increase in hydrophobic PLGA molecular weight or PEG-PLGA copolymer concentration, which can be explained by an enlarged hydrophobic radius with an increase in the hydrophobic nature of the carrier material.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        539.841796875,
+        556.7703247070312,
+        600.5395812988281
+      ],
+      "polygon": [
+        [
+          153.65625,
+          539.841796875
+        ],
+        [
+          556.7703247070312,
+          539.841796875
+        ],
+        [
+          556.7703247070312,
+          600.5395812988281
+        ],
+        [
+          153.65625,
+          600.5395812988281
+        ]
+      ],
+      "text": "Both TEM and DLS results showed that Fc was successfully conjugated onto the surface of NPs. As shown as Fig. 2B, the TEM image of NPs-Fc exhibited the core-shell structure, which was not present in non-conjugated NPs (Fig. 2A ). Te NPs-Fc promoted a diameter approximately 30nm larger than non-conjugated NPs as detected by DLS, due to the Fc fragment exhibiting a hydrodynamic diameter. A similar conclusion was reported by a previous study 29 . Generally, TEM showed much smaller particle size than that determined by DLS, resulting from the infuences of the dehydration and collapse of the hydrophilic PEG corona of the nanoparticles 30.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        601.5156707763672,
+        556.6974487304688,
+        670.5395812988281
+      ],
+      "polygon": [
+        [
+          153.65625,
+          601.5156707763672
+        ],
+        [
+          556.6974487304688,
+          601.5156707763672
+        ],
+        [
+          556.6974487304688,
+          670.5395812988281
+        ],
+        [
+          153.65625,
+          670.5395812988281
+        ]
+      ],
+      "text": "Particle size is an important factor to the absorption, distribution, and in vivo behaviors of nanoparticles. In our research, PEG-PLGA NPs and Fc-modifed PEG-PLGA NPs with particle sizes of 109 nm and 130 nm, respectively, have higher cellular uptake efciency, consistent with Bakhru et al . 31 and Panyam and Labhasetwa r32, whose studies reported that the cellular uptake of nanoparticles with a particle size of 100 nm posed much higher cellular uptake efciency than larger particles (microparticles) in vitro 31 and in vivo 32. Tis phenomenon can be explained by the mechanisms of translocation of NPs in the intestinal epithelium involving better absorption of NPs in Peyer's patche s33 .",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/Text/9",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        670.97900390625,
+        556.7518920898438,
+        730.5385818481445
+      ],
+      "polygon": [
+        [
+          153.65625,
+          670.97900390625
+        ],
+        [
+          556.7518920898438,
+          670.97900390625
+        ],
+        [
+          556.7518920898438,
+          730.5385818481445
+        ],
+        [
+          153.65625,
+          730.5385818481445
+        ]
+      ],
+      "text": "It was noticed that the Fc-modifed PEG-PLGA NPs entered Caco-2 cells more quickly and to a greater extent than the unmodifed NPs, which could be because the FcRn receptor markedly enhanced the transepithelial transport of the Fc-modifed NPs. Te FcRn receptor is expressed throughout the intestine, performing a remarkable increase in the available surface area for absorption of Fc-modifed NPs, which is much better than other dose forms that target only a specifc portion of the intestine, such as the Peyer's patches 34 . Tough Fc-modifed PEG-PLGA NPs exhibited a better Caco-2 cells uptake based on our data, which cell uptake mechanism is not",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/PageFooter/10",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        40.7421875,
+        756.8748168945312,
+        554.6378173828125,
+        766.8748168945312
+      ],
+      "polygon": [
+        [
+          40.7421875,
+          756.8748168945312
+        ],
+        [
+          554.6378173828125,
+          756.8748168945312
+        ],
+        [
+          554.6378173828125,
+          766.8748168945312
+        ],
+        [
+          40.7421875,
+          766.8748168945312
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/4/PageFooter/11",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.85546875,
+        757.38427734375,
+        554.67578125,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          548.85546875,
+          757.38427734375
+        ],
+        [
+          554.67578125,
+          757.38427734375
+        ],
+        [
+          554.67578125,
+          765.79541015625
+        ],
+        [
+          548.85546875,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        39.578125,
+        14.91064453125,
+        197.890625,
+        23.32177734375
+      ],
+      "polygon": [
+        [
+          39.578125,
+          14.91064453125
+        ],
+        [
+          197.890625,
+          14.91064453125
+        ],
+        [
+          197.890625,
+          23.32177734375
+        ],
+        [
+          39.578125,
+          23.32177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/FigureGroup/149",
+      "block_type": "FigureGroup",
+      "page_index": 0,
+      "bbox": [
+        85.52978515625,
+        39.647021484375,
+        566.34521484375,
+        178.7615966796875
+      ],
+      "polygon": [
+        [
+          85.52978515625,
+          39.647021484375
+        ],
+        [
+          566.34521484375,
+          39.647021484375
+        ],
+        [
+          566.34521484375,
+          178.7615966796875
+        ],
+        [
+          85.52978515625,
+          178.7615966796875
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Figure/1",
+      "block_type": "Figure",
+      "page_index": 0,
+      "bbox": [
+        85.52978515625,
+        39.647021484375,
+        566.34521484375,
+        151.515087890625
+      ],
+      "polygon": [
+        [
+          85.52978515625,
+          39.647021484375
+        ],
+        [
+          566.34521484375,
+          39.647021484375
+        ],
+        [
+          566.34521484375,
+          151.515087890625
+        ],
+        [
+          85.52978515625,
+          151.515087890625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Caption/2",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        157.517578125,
+        555.8198852539062,
+        178.7615966796875
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          157.517578125
+        ],
+        [
+          555.8198852539062,
+          157.517578125
+        ],
+        [
+          555.8198852539062,
+          178.7615966796875
+        ],
+        [
+          154.8203125,
+          178.7615966796875
+        ]
+      ],
+      "text": "Figure 6. In vivo fuorescence images of the whole body post-administration of Dir-loaded NPs and Dir-loaded NPs modifed by Fc, respectively, at 0.5, 1, 2, 4, 6, 8, 10, 12 and 24h.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/FigureGroup/150",
+      "block_type": "FigureGroup",
+      "page_index": 0,
+      "bbox": [
+        138.5234375,
+        191.39150390625,
+        540.5275268554688,
+        439.6728515625
+      ],
+      "polygon": [
+        [
+          138.5234375,
+          191.39150390625
+        ],
+        [
+          540.5275268554688,
+          191.39150390625
+        ],
+        [
+          540.5275268554688,
+          439.6728515625
+        ],
+        [
+          138.5234375,
+          439.6728515625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Figure/3",
+      "block_type": "Figure",
+      "page_index": 0,
+      "bbox": [
+        138.5234375,
+        191.39150390625,
+        471.4453125,
+        405.03427734375
+      ],
+      "polygon": [
+        [
+          138.5234375,
+          191.39150390625
+        ],
+        [
+          471.4453125,
+          191.39150390625
+        ],
+        [
+          471.4453125,
+          405.03427734375
+        ],
+        [
+          138.5234375,
+          405.03427734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Caption/4",
+      "block_type": "Caption",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        410.0917053222656,
+        540.5275268554688,
+        439.6728515625
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          410.0917053222656
+        ],
+        [
+          540.5275268554688,
+          410.0917053222656
+        ],
+        [
+          540.5275268554688,
+          439.6728515625
+        ],
+        [
+          154.8203125,
+          439.6728515625
+        ]
+      ],
+      "text": "Figure 7. In vivo fuorescence images of the anatomized major organs (heart, liver, spleen, lung, kidney and gastrointestinal tract) at 2, 6, 12 and 24h post-oral administration of Dir-loaded NPs and Dir-loaded NPs modifed by Fc, respectively.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Text/5",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        470.549560546875,
+        554.55810546875,
+        489.75732421875
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          470.549560546875
+        ],
+        [
+          554.55810546875,
+          470.549560546875
+        ],
+        [
+          554.55810546875,
+          489.75732421875
+        ],
+        [
+          154.8203125,
+          489.75732421875
+        ]
+      ],
+      "text": "clear, therefore, we would do more research about the cell uptake mechanism, e.g., Transport through cell monolayers study.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        490.03857421875,
+        556.8031616210938,
+        599.5495758056641
+      ],
+      "polygon": [
+        [
+          153.65625,
+          490.03857421875
+        ],
+        [
+          556.8031616210938,
+          490.03857421875
+        ],
+        [
+          556.8031616210938,
+          599.5495758056641
+        ],
+        [
+          153.65625,
+          599.5495758056641
+        ]
+      ],
+      "text": "Te mechanism of action of exenatide is capable of stimulating β-cells to release insulin under hyperglycemic conditions, whereas without stimulation of insulin secretion, the glucose concentration is in the normal range 35. Terefore, exenatide cannot promote severe hypoglycemic event s18, 36. Te efcacy of the PEG-PLGA NPs and the Fc-modifed NPs following oral administration was investigated in db/db mice. Te hypoglycemic efect study demonstrated that all the oral NPs had a better hypoglycemic response compared to the oral exenatide solution. Te FcRn-targeting NPs also reduced the glucose level more signifcantly than the unmodifed NPs. In addition, the hypoglycemic response of the FcRn-targeting NPs lasted for 12 h, which was longer than in the exenatide s.c. administration group (8 h). It is noteworthy that the FcRn-targeting NPs maintained a lower glucose level that was relatively steady compared with the exenatide s.c. administration. Afer 24h, the glucose level remained lower than that before dosing of the targeting NPs, which was similar with previous report and might be due to a hypoglycemic agent 15 .",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        599.86669921875,
+        556.7333374023438,
+        699.5475769042969
+      ],
+      "polygon": [
+        [
+          153.65625,
+          599.86669921875
+        ],
+        [
+          556.7333374023438,
+          599.86669921875
+        ],
+        [
+          556.7333374023438,
+          699.5475769042969
+        ],
+        [
+          153.65625,
+          699.5475769042969
+        ]
+      ],
+      "text": "Figure 6 shows the whole-body fuorescence in vivo image and demonstrates that the Fc-modifed NPs were retained in the gastrointestinal tract for a longer time (24h) than the unmodifed NPs (10h). Moreover, as shown in Fig. 7 , the dissected major organs image showed that more fuorescence remained in the gastrointestinal tract and remained longer for the Fc-modifed NPs group compared with the unmodifed NPs group. In addition, NPs in the modifed group entered the lung and kidney portions. All these phenomena demonstrated that the Fc-modifed NPs exhibited better gastrointestinal targeting attributes and beneftted the drug absorption in vivo . Furthermore, it was reported previously that rodents could remarkably down-regulate FcRn expression in the intestine afer weanin g18 , while humans continue to express FcRn into adulthood. According to this theory, the transport of Fc-modifed NPs in humans could potentially be even more efcient in comparison with transepithelial transport in mice. Terefore, the Fc-targeting drug delivery system is promising for orally delivered treatments in humans.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        699.6533203125,
+        556.791015625,
+        739.5435791015625
+      ],
+      "polygon": [
+        [
+          153.65625,
+          699.6533203125
+        ],
+        [
+          556.791015625,
+          699.6533203125
+        ],
+        [
+          556.791015625,
+          739.5435791015625
+        ],
+        [
+          153.65625,
+          739.5435791015625
+        ]
+      ],
+      "text": "Overall, the in vivo hypoglycemic efect and in vivo imaging results were in accordance with the in vitro cellular level studies. Fc-modifed NPs are promising for peptide or protein oral delivery. However, much additional research is needed to demonstrate the oral absorption of exenatide, e.g., pharmacokinetic study or the mechanism of transport through Caco-2 cell research.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/PageFooter/9",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        547.982421875,
+        757.001953125,
+        555.548828125,
+        766.177734375
+      ],
+      "polygon": [
+        [
+          547.982421875,
+          757.001953125
+        ],
+        [
+          555.548828125,
+          757.001953125
+        ],
+        [
+          555.548828125,
+          766.177734375
+        ],
+        [
+          547.982421875,
+          766.177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/5/PageFooter/10",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        40.16015625,
+        756.8748168945312,
+        554.6334838867188,
+        766.8748168945312
+      ],
+      "polygon": [
+        [
+          40.16015625,
+          756.8748168945312
+        ],
+        [
+          554.6334838867188,
+          756.8748168945312
+        ],
+        [
+          554.6334838867188,
+          766.8748168945312
+        ],
+        [
+          40.16015625,
+          766.8748168945312
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/6/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        38.99609375,
+        14.5283203125,
+        198.9168765743073,
+        24.75
+      ],
+      "polygon": [
+        [
+          38.99609375,
+          14.5283203125
+        ],
+        [
+          198.9168765743073,
+          14.5283203125
+        ],
+        [
+          198.9168765743073,
+          24.75
+        ],
+        [
+          38.99609375,
+          24.75
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/1",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        48.55517578125,
+        557.7178841309824,
+        108.96240234375
+      ],
+      "polygon": [
+        [
+          153.65625,
+          48.55517578125
+        ],
+        [
+          557.7178841309824,
+          48.55517578125
+        ],
+        [
+          557.7178841309824,
+          108.96240234375
+        ],
+        [
+          153.65625,
+          108.96240234375
+        ]
+      ],
+      "text": "In the present work, a novel formulation of Fc conjugated to exenatide-loaded PEG-PLGA NPs was developed and characterized. Exenatide was efficiently encapsulated by PEG-PLGA nanoparticles or Fc-modified PEG-PLGA nanoparticles. The Fc-modified NPs were retained in the gastrointestinal tract for a longer time and exhibited easier cellular uptake to promote a preferable hypoglycemic effect in db/db mice. All the findings from the in vitro and in vivo studies demonstrate that an Fc-targeting nano-delivery system shows great promise for oral peptide or protein drug delivery.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3"
+      }
+    },
+    {
+      "block_id": "/page/6/SectionHeader/2",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        154.529296875,
+        118.13818359375,
+        198.9168765743073,
+        128.25
+      ],
+      "polygon": [
+        [
+          154.529296875,
+          118.13818359375
+        ],
+        [
+          198.9168765743073,
+          118.13818359375
+        ],
+        [
+          198.9168765743073,
+          128.25
+        ],
+        [
+          154.529296875,
+          128.25
+        ]
+      ],
+      "text": "Methods",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/3",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        129.0,
+        556.9672544080604,
+        198.75
+      ],
+      "polygon": [
+        [
+          153.65625,
+          129.0
+        ],
+        [
+          556.9672544080604,
+          129.60791015625
+        ],
+        [
+          556.9672544080604,
+          198.75
+        ],
+        [
+          153.65625,
+          198.75
+        ]
+      ],
+      "text": "Material. Exenatide was purchased from Gill Biochemistry Co., Ltd. (Shanghai, China). PEG-PLGA-maleimide (mal-PEG-PLGA; 5,000–20,000 Da, 50:50 LA:GA, w/w) and methoxy-PEG-PLGA (mPEG-PLGA; 5,000–20,000/25000/28000 Da, 50:50 LA:GA, w/w) were purchased from Polyscitech (West Lafayette, IN, USA). Human polyclonal IgG Fc was purchased from Laibao Experimental Equipment Co., Ltd. (Zhengzhou, China). An exenatide enzyme-linked immunosorbent assay (ELISA) kit was bought from Phoenix Pharmaceutics, Inc., USA. Accu-Chek Integra test strips were obtained from Roche Diagnostics GmbH (Shanghai, China). All other chemicals used were of analytical grade.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/4",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        210.0,
+        557.7178841309824,
+        309.75
+      ],
+      "polygon": [
+        [
+          153.65625,
+          210.0
+        ],
+        [
+          557.7178841309824,
+          210.0
+        ],
+        [
+          557.7178841309824,
+          309.75
+        ],
+        [
+          153.65625,
+          309.75
+        ]
+      ],
+      "text": "Preparation of PEG-PLGA nanoparticles. A double emulsion method was used to prepare Fc-modified nanoparticles (NPs) as previously reported ^{21} . Briefly, an appropriate amount of mPEG-PLGA and PLGA-PEG-mal in a ratio of 9:1 was dissolved in 1 mL acetone and dichloromethane to form the oil phase, and 400 \\mu L exenatide aqueous solution (2.5 mg/mL) or distilled water was added to the oil phase, and emulsified by probe sonication (300 W, JY92-II ultrasonic processor, Ningbo Scientz Biotechnology Co. Ltd., China) in an ice bath to form the first emulsion. Next, the emulsified mixture was added to 2 mL 3% (w/v) PVA aqueous solution, followed by ultrasonication (300 W, JY92-II ultrasonic processor, Ningbo Scientz Biotechnology Co. Ltd., China) in an ice bath to form the double emulsion. Afterwards, the double emulsion was added to 20 mL 0.5% (w/v) PVA aqueous solution and stirred for 3 h at room temperature to evaporate and remove the organic solvents (DCM and acetone). Then, the nanoparticles were obtained.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/5",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        319.623046875,
+        556.2166246851385,
+        360.75
+      ],
+      "polygon": [
+        [
+          153.65625,
+          319.623046875
+        ],
+        [
+          556.2166246851385,
+          319.623046875
+        ],
+        [
+          556.2166246851385,
+          360.75
+        ],
+        [
+          153.65625,
+          360.75
+        ]
+      ],
+      "text": "Morphology of the nanoparticles. The appearance of the nanoparticles was observed by a transmission electron microscope (TEM) (JEOL JEM-1400, Japan Field Co., Ltd.). The NP solution was dropped in a carbon-coated copper grid and negatively stained with a 2% solution of phosphotungstic acid followed by air drying. The acceleration voltage was set at 80 kV.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        371.25,
+        556.9672544080604,
+        401.05810546875
+      ],
+      "polygon": [
+        [
+          153.65625,
+          371.25
+        ],
+        [
+          556.9672544080604,
+          371.25
+        ],
+        [
+          556.9672544080604,
+          401.05810546875
+        ],
+        [
+          153.65625,
+          401.05810546875
+        ]
+      ],
+      "text": "Particle size and zeta potential. The obtained exenatide-loaded PEG-PLGA nanoparticles were characterized for particle size, PDI and zeta potential by a DLS instrument (NicompTM380/ZLS PSS, USA) operating at 633 nm and room temperature. The light scattering angle was set at 90°.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        412.5,
+        557.7178841309824,
+        510.75
+      ],
+      "polygon": [
+        [
+          153.65625,
+          412.5
+        ],
+        [
+          557.7178841309824,
+          412.5
+        ],
+        [
+          557.7178841309824,
+          510.75
+        ],
+        [
+          153.65625,
+          510.75
+        ]
+      ],
+      "text": "Encapsulation efficiency. The nanoparticles were ultrafiltered using Vivaspin ultrafiltration spin columns (MW cutoff = 100\\,\\mathrm{kDa} ) and centrifuged at a rotational speed of 3,500 rpm for 30 min at 4 °C (Centrifuge, Sorvall Biofuge Primo R) to remove free exenatide. The NPs were washed with water twice. Exenatide was extracted from nanoparticles for the determination of the exenatide by ultrasonication with methanol. Exenatide content was determined using an Agilent 1260 HPLC system equipped with an chromatographic column (Ultimate® LP-C18, 4.6\\,\\mathrm{mm} \\times 250\\,\\mathrm{mm} , 5\\,\\mu\\mathrm{m} pore size, Agilent) and a gradient elution of (A) acetonitrile containing 5% phosphoric acid and (B) water containing 5% phosphoric acid as the mobile phase. The method utilized was 0 min (30% A) \\rightarrow 10 min (44% A) \\rightarrow 10.1 min (30% A) \\rightarrow 15 min (30% A). The flow rate was set at 1 mL/min, and the elution temperature was 40 °C. The retention time of exenatide was 9.5 min, and the total run time for the HPLC analysis was 15.0 min.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        166.63979848866498,
+        512.25,
+        430.1108312342569,
+        521.25
+      ],
+      "polygon": [
+        [
+          166.63979848866498,
+          512.25
+        ],
+        [
+          430.1108312342569,
+          512.25
+        ],
+        [
+          430.1108312342569,
+          521.25
+        ],
+        [
+          166.63979848866498,
+          521.25
+        ]
+      ],
+      "text": "The encapsulation efficiency (EE) was obtained by the formula as follows:",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/9",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        228.73828125,
+        531.0,
+        481.1536523929471,
+        539.45947265625
+      ],
+      "polygon": [
+        [
+          228.73828125,
+          531.0
+        ],
+        [
+          481.1536523929471,
+          531.0
+        ],
+        [
+          481.1536523929471,
+          539.45947265625
+        ],
+        [
+          228.73828125,
+          539.45947265625
+        ]
+      ],
+      "text": "EE (%) = exenatide encapsulated in the NPs/total exenatide \\times 100%",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/10",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        557.25,
+        557.7178841309824,
+        616.68896484375
+      ],
+      "polygon": [
+        [
+          153.65625,
+          557.25
+        ],
+        [
+          557.7178841309824,
+          557.25
+        ],
+        [
+          557.7178841309824,
+          616.68896484375
+        ],
+        [
+          153.65625,
+          616.68896484375
+        ]
+      ],
+      "text": "Synthesis and characterization of Fc-modified PEG-PLGA nanoparticles. Human polyclonal IgG Fc (1.5 mg) in PBS was reacted with 41.85 \\mu L of 2-iminothiolane (1 mg/mL; Traut's Reagent) for 1 h. The modified Fc was added to the NPs and mixed for 1 h at 4 °C to allow conjugation<sup>21</sup>. The NPs-Fc were washed with PBS using Vivaspin ultrafiltration spin columns (MW cutoff = 100 kDa). Free IgG Fc was measured with a protein bicinchoninic acid (BCA) assay from Beyotime Biotechnology. Particle size, PDI and zeta potential were measured using the same method as above.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/11",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        627.39404296875,
+        556.2166246851385,
+        657.75
+      ],
+      "polygon": [
+        [
+          153.65625,
+          627.39404296875
+        ],
+        [
+          556.2166246851385,
+          627.39404296875
+        ],
+        [
+          556.2166246851385,
+          657.75
+        ],
+        [
+          153.65625,
+          657.75
+        ]
+      ],
+      "text": "Coumarin-6-loaded NPs. For the fluorescence imaging cell study, the fluorescent probe Coumarin-6 with a high laser conversion rate was loaded into the NPs. The method was similar to that used for exenatide. The NPs were ultrafiltered using Vivaspin ultrafiltration spin columns (MW cutoff = 100 kDa) and centrifuged to remove free Coumarin-6.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/12",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        667.15576171875,
+        556.9672544080604,
+        697.5
+      ],
+      "polygon": [
+        [
+          153.65625,
+          667.15576171875
+        ],
+        [
+          556.9672544080604,
+          667.15576171875
+        ],
+        [
+          556.9672544080604,
+          697.5
+        ],
+        [
+          153.65625,
+          697.5
+        ]
+      ],
+      "text": "Dir-loaded NPs. The near-infrared fluorescent probe Dir was encapsulated into the NPs for in vivo fluorescence imaging. The preparation method was corresponding to that used for exenatide. The NPs were ultrafiltered using Vivaspin ultrafiltration spin columns (MW cutoff = 100 kDa) and centrifuged to remove free Dir.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/Text/13",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        709.97607421875,
+        556.2166246851385,
+        739.79736328125
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          709.97607421875
+        ],
+        [
+          556.2166246851385,
+          709.97607421875
+        ],
+        [
+          556.2166246851385,
+          739.79736328125
+        ],
+        [
+          153.87909319899245,
+          739.79736328125
+        ]
+      ],
+      "text": "Cell culture. Human colon carcinoma Caco-2 cells were purchased from the Chinese Academy of Medical Sciences (Shanghai, China). These cells were grown in culture dishes using DMEM supplemented with 15% fetal bovine serum and 1% non-essential amino acids. Both cell types were placed in a cell culture incubator at 37 °C,",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/PageFooter/14",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        39.78337531486146,
+        756.75,
+        287.49118387909317,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          39.78337531486146,
+          756.75
+        ],
+        [
+          287.49118387909317,
+          756.75
+        ],
+        [
+          287.49118387909317,
+          765.79541015625
+        ],
+        [
+          39.78337531486146,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/6/PageFooter/15",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.564453125,
+        757.38427734375,
+        556.2166246851385,
+        767.25
+      ],
+      "polygon": [
+        [
+          548.564453125,
+          757.38427734375
+        ],
+        [
+          556.2166246851385,
+          757.38427734375
+        ],
+        [
+          556.2166246851385,
+          767.25
+        ],
+        [
+          548.564453125,
+          767.25
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        39.578125,
+        14.91064453125,
+        196.7265625,
+        23.32177734375
+      ],
+      "polygon": [
+        [
+          39.578125,
+          14.91064453125
+        ],
+        [
+          196.7265625,
+          14.91064453125
+        ],
+        [
+          196.7265625,
+          23.32177734375
+        ],
+        [
+          39.578125,
+          23.32177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/1",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        48.75,
+        556.2166246851385,
+        78.0
+      ],
+      "polygon": [
+        [
+          153.65625,
+          48.75
+        ],
+        [
+          556.2166246851385,
+          48.75
+        ],
+        [
+          556.2166246851385,
+          78.0
+        ],
+        [
+          153.65625,
+          78.0
+        ]
+      ],
+      "text": "with 95% relative humidity and 5% \\rm CO_2 . After proliferation for 4 days, cells were harvested using trypsin (0.25%) containing ethylenediamine tetra-acetic acid (EDTA, 0.02%). For the cellular uptake study, Caco-2 cells were seeded into 96-well or 6-well plates.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/2",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        86.02294921875,
+        556.2166246851385,
+        105.13916015625
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          86.02294921875
+        ],
+        [
+          556.2166246851385,
+          86.02294921875
+        ],
+        [
+          556.2166246851385,
+          105.13916015625
+        ],
+        [
+          153.87909319899245,
+          105.13916015625
+        ]
+      ],
+      "text": "Intracellular uptake studies. Caco-2 cells were quantitatively and qualitatively studied using flow cytometry (FACS) and confocal laser scanning microscopy (CLSM), respectively.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/3",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        115.07958984375,
+        556.9672544080604,
+        165.0
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          115.07958984375
+        ],
+        [
+          556.9672544080604,
+          115.07958984375
+        ],
+        [
+          556.9672544080604,
+          165.0
+        ],
+        [
+          153.87909319899245,
+          165.0
+        ]
+      ],
+      "text": "Confocal laser scanning microscope. To investigate the cellular interaction with NPs, the fluorescent probe coumarin-6 was encapsulated to PEG-PLGA NPs and Fc-PEG-PLGA NPs. The cellular uptake of NPs was detected by CLSM (FluoView FV1000, Olympus, Japan). Caco-2 cells were seeded into 24-well plates at a density of 1\\times10^5 cells/mL. The NPs were co-incubated with the cells for 0.5, 1, 2, 3, and 4 h at a dose of 200 ng/mL (coumarin-6). The excitation wavelength was 466 nm, and the emission wavelength was 504 nm<sup>26</sup>.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/4",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        174.72216796875,
+        557.7178841309824,
+        254.25
+      ],
+      "polygon": [
+        [
+          153.65625,
+          174.72216796875
+        ],
+        [
+          557.7178841309824,
+          174.72216796875
+        ],
+        [
+          557.7178841309824,
+          254.25
+        ],
+        [
+          153.65625,
+          254.25
+        ]
+      ],
+      "text": "Flow cytometry. For flow cytometry, Caco-2 cells were seeded in 24-well cell culture plates at a density of 5 \\times 10^5 cells per well and allowed to adhere for 48 h until confluency. Then, fluorescence microscopy was performed to observe the cellular uptake. Coumarin-6-loaded PEG-PLGA NPs and coumarin-6-loaded Fc-conjugated PEG-PLGA NPs (coumarin-6 concentrations: 6, 8, 10, 12, and 14 ng•mL<sup>-1</sup>) were co-incubated with the cells for 90 min, and then, the cells were washed three times with PBS and detached from the plates by trypsinization. The cells were then centrifuged at 1,500 rpm for 5 min (Sorvall Biofuge Primo R; Thermo Fisher Scientific, Waltham, MA, USA). Afterwards, the supernatant was discarded, and the cells were resuspended in PBS. Fluorescence was measured using a BD FACSAria<sup>TM</sup> flow cytometer<sup>37</sup>.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/5",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        264.0,
+        556.9672544080604,
+        314.25
+      ],
+      "polygon": [
+        [
+          153.65625,
+          264.0
+        ],
+        [
+          556.9672544080604,
+          264.0
+        ],
+        [
+          556.9672544080604,
+          314.25
+        ],
+        [
+          153.65625,
+          313.88818359375
+        ]
+      ],
+      "text": "Hypoglycemic effect studies. In this study, db/db mice were used as a model of type II diabetes. All experiments were performed according to the Institutional Animal Care and National Institutes of Health Guidelines for the Care and Use of Laboratory Animals (USA), and the protocol was approved by the Committee on the Ethics of Animal Experiments of Binzhou Medical University (Permit No. SCXK20140005). Glucose concentrations were measured using a glucose meter (ACCU-CHEK® Integra, Germany).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/6",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.87909319899245,
+        314.25,
+        557.7178841309824,
+        363.59033203125
+      ],
+      "polygon": [
+        [
+          153.87909319899245,
+          314.25
+        ],
+        [
+          557.7178841309824,
+          314.25
+        ],
+        [
+          557.7178841309824,
+          363.59033203125
+        ],
+        [
+          153.87909319899245,
+          363.59033203125
+        ]
+      ],
+      "text": "Diabetic mice, eight per group, were treated with the following: oral administration of exenatide-loaded PEG-PLGA NPs ( 100.0\\,\\mu g/kg exenatide), exenatide-loaded Fc-PEG-PLGA NPs ( 100.0\\,\\mu g/kg exenatide), exenatide solution ( 100\\,\\mu g/kg ). Saline was injected (s.c.) to a control group. Blood samples were collected from the tail veins at different time intervals (0, 1, 2, 3, 4, 6, 8, 10, 12 and 24 h), and the blood glucose concentration was measured with a glucose meter.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/7",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        373.5,
+        556.9672544080604,
+        433.17333984375
+      ],
+      "polygon": [
+        [
+          153.65625,
+          373.5
+        ],
+        [
+          556.9672544080604,
+          373.5
+        ],
+        [
+          556.9672544080604,
+          433.17333984375
+        ],
+        [
+          153.65625,
+          433.17333984375
+        ]
+      ],
+      "text": "In vivo imaging study. Dir, a hydrophobic fluorescence label, was encapsulated into PEG-PLGA NPs and Fc-PEG-PLGA NPs. The NPs were administered orally to mice at a Dir dose of 0.25 mg/kg to investigate the Fc targeting effects using in vivo imaging in live mice. Living mice were monitored at 0.5, 1, 2, 4, 6, 8, 10, 12 and 24 h after administration and organ images were obtained at the 2, 6, 12, and 24 h time points using the In-Vivo Imaging System FX Pro (Carestream, NY, USA) with an excitation wavelength of 720 nm and an emission wavelength of 790 nm. The images were analyzed using Carestream Image Suite Software<sup>38</sup>.",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/Text/8",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.62972292191435,
+        442.34912109375,
+        469.14357682619647,
+        452.25
+      ],
+      "polygon": [
+        [
+          154.62972292191435,
+          442.34912109375
+        ],
+        [
+          469.14357682619647,
+          442.34912109375
+        ],
+        [
+          469.14357682619647,
+          452.25
+        ],
+        [
+          154.62972292191435,
+          451.5
+        ]
+      ],
+      "text": "Data availability. No datasets were generated or analyzed during the current study",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2"
+      }
+    },
+    {
+      "block_id": "/page/7/SectionHeader/9",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        154.62972292191435,
+        460.5,
+        209.42569269521408,
+        469.11181640625
+      ],
+      "polygon": [
+        [
+          154.62972292191435,
+          460.5
+        ],
+        [
+          209.42569269521408,
+          460.5
+        ],
+        [
+          209.42569269521408,
+          469.11181640625
+        ],
+        [
+          154.62972292191435,
+          469.11181640625
+        ]
+      ],
+      "text": "References",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListGroup/181",
+      "block_type": "ListGroup",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        471.0,
+        557.7178841309824,
+        726.416015625
+      ],
+      "polygon": [
+        [
+          153.65625,
+          471.0
+        ],
+        [
+          557.7178841309824,
+          471.0
+        ],
+        [
+          557.7178841309824,
+          726.416015625
+        ],
+        [
+          153.65625,
+          726.416015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/10",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        471.0,
+        556.2166246851385,
+        487.845703125
+      ],
+      "polygon": [
+        [
+          158.3125,
+          471.0
+        ],
+        [
+          556.2166246851385,
+          471.0
+        ],
+        [
+          556.2166246851385,
+          487.845703125
+        ],
+        [
+          158.3125,
+          487.845703125
+        ]
+      ],
+      "text": "Tibble, C. A., Cavaiola, T. S. & Henry, R. R. Longer Acting GLP-1 Receptor Agonists and the Potential for Improved Cardiovascular Outcomes. Expert Rev. Endocrinol. Metab. 8, 247–259 (2013).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/11",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        487.46337890625,
+        556.2166246851385,
+        504.75
+      ],
+      "polygon": [
+        [
+          158.3125,
+          487.46337890625
+        ],
+        [
+          556.2166246851385,
+          487.46337890625
+        ],
+        [
+          556.2166246851385,
+          504.75
+        ],
+        [
+          158.3125,
+          504.75
+        ]
+      ],
+      "text": "Gupta, V. et al. Delivery of Exenatide and Insulin Using Mucoadhesive Intestinal Devices. Annals of biomedical engineering 44, 1993–2007, https://doi.org/10.1007/s10439-016-1558-x (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/12",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        503.25,
+        555.4659949622167,
+        522.75
+      ],
+      "polygon": [
+        [
+          158.3125,
+          503.25
+        ],
+        [
+          555.4659949622167,
+          504.75
+        ],
+        [
+          555.4659949622167,
+          521.87255859375
+        ],
+        [
+          158.3125,
+          522.75
+        ]
+      ],
+      "text": "3. Tomlinson, B., Hu, M., Zhang, Y., Chan, P. & Liu, Z. M. Investigational glucagon-like peptide-1 agonists for the treatment of obesity. Expert Opin Investig Drugs, 1–13, https://doi.org/10.1080/13543784.2016.1221925 (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/13",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        521.490234375,
+        556.2166246851385,
+        538.5
+      ],
+      "polygon": [
+        [
+          158.3125,
+          521.490234375
+        ],
+        [
+          556.2166246851385,
+          521.490234375
+        ],
+        [
+          556.2166246851385,
+          538.5
+        ],
+        [
+          158.3125,
+          538.5
+        ]
+      ],
+      "text": "4. Henry, R. R. et al. Continuous subcutaneous delivery of exenatide via ITCA 650 leads to sustained glycemic control and weight loss for 48 weeks in metformin-treated subjects with type 2 diabetes. J Diabetes Complications 28, 393–398 (2014).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/14",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        537.16552734375,
+        556.2166246851385,
+        555.75
+      ],
+      "polygon": [
+        [
+          158.3125,
+          537.16552734375
+        ],
+        [
+          556.2166246851385,
+          537.16552734375
+        ],
+        [
+          556.2166246851385,
+          555.75
+        ],
+        [
+          158.3125,
+          555.75
+        ]
+      ],
+      "text": "Shrestha, N. et al. Oral hypoglycaemic effect of GLP-1 and DPP4 inhibitor based nanocomposites in a diabetic animal model. J Control Release 232, 113–119 (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/15",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        555.134765625,
+        557.7178841309824,
+        572.25
+      ],
+      "polygon": [
+        [
+          158.3125,
+          555.134765625
+        ],
+        [
+          557.7178841309824,
+          555.134765625
+        ],
+        [
+          557.7178841309824,
+          572.25
+        ],
+        [
+          158.3125,
+          572.25
+        ]
+      ],
+      "text": "Thwala, L. N., Preat, V. & Csaba, N. S. Emerging delivery platforms for mucosal administration of biopharmaceuticals: a critical\\nupdate on nasal, pulmonary and oral routes. Expert Opin Drug Deliv, 1–14, https://doi.org/10.1080/17425247.2016.1206074 (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/16",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        573.0,
+        556.2166246851385,
+        589.5
+      ],
+      "polygon": [
+        [
+          158.3125,
+          573.0
+        ],
+        [
+          556.2166246851385,
+          573.0
+        ],
+        [
+          556.2166246851385,
+          589.5
+        ],
+        [
+          158.3125,
+          589.5
+        ]
+      ],
+      "text": "Zhang, Z. S. H. & Chen, L. et al. Synthesis of pH-responsive starch nanoparticles grafted poly(l-glutamic acid) for insulin controlled release. Eur Polym J 49, 2082–2091 (2013).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/17",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3828715365239,
+        588.779296875,
+        556.2166246851385,
+        606.75
+      ],
+      "polygon": [
+        [
+          158.3828715365239,
+          588.779296875
+        ],
+        [
+          556.2166246851385,
+          588.779296875
+        ],
+        [
+          556.2166246851385,
+          606.75
+        ],
+        [
+          158.3828715365239,
+          606.75
+        ]
+      ],
+      "text": "8. Cui, M. et al. Liposomes containing cholesterol analogues of botanical origin as drug delivery systems to enhance the oral absorption of insulin. Int J Pharm 489, 277–284 (2015).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/18",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        158.3125,
+        606.0,
+        556.2166246851385,
+        624.0
+      ],
+      "polygon": [
+        [
+          158.3125,
+          606.0
+        ],
+        [
+          556.2166246851385,
+          606.74853515625
+        ],
+        [
+          556.2166246851385,
+          624.0
+        ],
+        [
+          158.3125,
+          624.0
+        ]
+      ],
+      "text": "9. Avgoustakis, K. Pegylated poly(lactide) and poly(lactide-co-glycolide) nanoparticles: preparation, properties and possible applications in drug delivery. Curr Drug Deliv 1, 321–333 (2004).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/19",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        624.0,
+        556.2166246851385,
+        640.775390625
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          624.0
+        ],
+        [
+          556.2166246851385,
+          624.0
+        ],
+        [
+          556.2166246851385,
+          640.775390625
+        ],
+        [
+          154.8203125,
+          640.775390625
+        ]
+      ],
+      "text": "Jain, A. K. et al. PEG-PLA-PEG block copolymeric nanoparticles for oral immunization against hepatitis B. Int J Pharm 387, 253–262 (2010).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/20",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        640.775390625,
+        556.2166246851385,
+        657.75
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          640.775390625
+        ],
+        [
+          556.2166246851385,
+          640.775390625
+        ],
+        [
+          556.2166246851385,
+          657.75
+        ],
+        [
+          154.8203125,
+          657.75
+        ]
+      ],
+      "text": "11. Yun, Y., Cho, Y. W. & Park, K. Nanoparticles for oral delivery: targeted nanoparticles with peptidic ligands for oral protein delivery. Adv Drug Deliv Rev 65, 822–832 (2013).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/21",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        657.75,
+        556.2166246851385,
+        674.80224609375
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          657.75
+        ],
+        [
+          556.2166246851385,
+          657.75
+        ],
+        [
+          556.2166246851385,
+          674.80224609375
+        ],
+        [
+          154.8203125,
+          674.80224609375
+        ]
+      ],
+      "text": "12. Sheng, J. et al. Enhancing insulin oral absorption by using mucoadhesive nanoparticles loaded with LMWP-linked insulin conjugates. J Control Release 233, 181–190 (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/22",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        674.419921875,
+        556.2166246851385,
+        690.75
+      ],
+      "polygon": [
+        [
+          153.65625,
+          674.419921875
+        ],
+        [
+          556.2166246851385,
+          674.419921875
+        ],
+        [
+          556.2166246851385,
+          690.75
+        ],
+        [
+          153.65625,
+          690.75
+        ]
+      ],
+      "text": "13. Xu, Y. et al. The transport mechanism of integrin alphavbeta3 receptor targeting nanoparticles in Caco-2 cells. Int J Pharm 500, 42–53 (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/23",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        691.5,
+        556.2166246851385,
+        708.064453125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          691.5
+        ],
+        [
+          556.2166246851385,
+          691.5
+        ],
+        [
+          556.2166246851385,
+          708.064453125
+        ],
+        [
+          153.65625,
+          708.064453125
+        ]
+      ],
+      "text": "14. Shan, W. et al. Overcoming the diffusion barrier of mucus and absorption barrier of epithelium by self-assembled nanoparticles for oral delivery of insulin. ACS Nano 9, 2345–2356 (2015).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/ListItem/24",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        155.38035264483625,
+        708.75,
+        556.421875,
+        726.416015625
+      ],
+      "polygon": [
+        [
+          155.38035264483625,
+          708.75
+        ],
+        [
+          556.421875,
+          708.75
+        ],
+        [
+          556.421875,
+          726.416015625
+        ],
+        [
+          155.38035264483625,
+          726.416015625
+        ]
+      ],
+      "text": "15. Jin, Y. et al. Goblet cell-targeting nanoparticles for oral insulin delivery and the influence of mucus on insulin transport. Biomaterials 33, 1573–1582 (2012).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/PageFooter/25",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.2734375,
+        756.75,
+        556.2166246851385,
+        766.177734375
+      ],
+      "polygon": [
+        [
+          548.2734375,
+          756.75
+        ],
+        [
+          556.2166246851385,
+          756.75
+        ],
+        [
+          556.2166246851385,
+          766.177734375
+        ],
+        [
+          548.2734375,
+          766.177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/7/PageFooter/26",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        39.78337531486146,
+        757.38427734375,
+        287.49118387909317,
+        765.79541015625
+      ],
+      "polygon": [
+        [
+          39.78337531486146,
+          757.38427734375
+        ],
+        [
+          287.49118387909317,
+          757.38427734375
+        ],
+        [
+          287.49118387909317,
+          765.79541015625
+        ],
+        [
+          39.78337531486146,
+          765.79541015625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/PageHeader/0",
+      "block_type": "PageHeader",
+      "page_index": 0,
+      "bbox": [
+        39.578125,
+        14.91064453125,
+        197.890625,
+        23.32177734375
+      ],
+      "polygon": [
+        [
+          39.578125,
+          14.91064453125
+        ],
+        [
+          197.890625,
+          14.91064453125
+        ],
+        [
+          197.890625,
+          23.32177734375
+        ],
+        [
+          39.578125,
+          23.32177734375
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListGroup/410",
+      "block_type": "ListGroup",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        48.1728515625,
+        556.4044799804688,
+        423.0317077636719
+      ],
+      "polygon": [
+        [
+          153.65625,
+          48.1728515625
+        ],
+        [
+          556.4044799804688,
+          48.1728515625
+        ],
+        [
+          556.4044799804688,
+          423.0317077636719
+        ],
+        [
+          153.65625,
+          423.0317077636719
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/1",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        155.72799682617188,
+        48.1728515625,
+        556.256591796875,
+        66.13677978515625
+      ],
+      "polygon": [
+        [
+          155.72799682617188,
+          48.1728515625
+        ],
+        [
+          556.256591796875,
+          48.1728515625
+        ],
+        [
+          556.256591796875,
+          66.13677978515625
+        ],
+        [
+          155.72799682617188,
+          66.13677978515625
+        ]
+      ],
+      "text": "16. Gupta, P. N. & Vyas, S. P. Investigation of lectinized liposomes as M-cell targeted carrier-adjuvant for mucosal immunization. Colloids Surf B Biointerfaces 82 , 118–125 (2011).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/2",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        65.37744140625,
+        556.3043823242188,
+        83.13177490234375
+      ],
+      "polygon": [
+        [
+          153.65625,
+          65.37744140625
+        ],
+        [
+          556.3043823242188,
+          65.37744140625
+        ],
+        [
+          556.3043823242188,
+          83.13177490234375
+        ],
+        [
+          153.65625,
+          83.13177490234375
+        ]
+      ],
+      "text": "17. Salman, H. H., Gamazo, C., de Smidt, P. C., Russell-Jones, G. & Irache, J. M. Evaluation of bioadhesive capacity and immunoadjuvant properties of vitamin B(12)-Gantrez nanoparticles. Pharm Res 25 , 2859–2868 (2008).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/3",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        155.72801208496094,
+        83.3466796875,
+        548.1805419921875,
+        91.6292724609375
+      ],
+      "polygon": [
+        [
+          155.72801208496094,
+          83.3466796875
+        ],
+        [
+          548.1805419921875,
+          83.3466796875
+        ],
+        [
+          548.1805419921875,
+          91.6292724609375
+        ],
+        [
+          155.72801208496094,
+          91.6292724609375
+        ]
+      ],
+      "text": "18. Israel, E. J. et al . Expression of the neonatal Fc receptor, FcRn, on human intestinal epithelial cells. Immunology 92 , 69–74 (1997).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/4",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        91.37548828125,
+        554.593017578125,
+        100.12677001953125
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          91.37548828125
+        ],
+        [
+          554.593017578125,
+          91.37548828125
+        ],
+        [
+          554.593017578125,
+          100.12677001953125
+        ],
+        [
+          154.8203125,
+          100.12677001953125
+        ]
+      ],
+      "text": "19. He, W. et al . FcRn-mediated antibody transport across epithelial cells revealed by electron tomography. Nature 455 , 542–546 (2008).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/5",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        100.55126953125,
+        556.3495483398438,
+        117.12176513671875
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          100.55126953125
+        ],
+        [
+          556.3495483398438,
+          100.55126953125
+        ],
+        [
+          556.3495483398438,
+          117.12176513671875
+        ],
+        [
+          154.8203125,
+          117.12176513671875
+        ]
+      ],
+      "text": "20. Low, S. C., Nunes, S. L., Bitonti, A. J. & Dumont, J. A. Oral and pulmonary delivery of FSH-Fc fusion proteins via neonatal Fc receptor-mediated transcytosis. Hum Reprod 20 , 1805–1813 (2005).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/6",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        116.60888671875,
+        556.4044799804688,
+        134.11676025390625
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          116.60888671875
+        ],
+        [
+          556.4044799804688,
+          116.60888671875
+        ],
+        [
+          556.4044799804688,
+          134.11676025390625
+        ],
+        [
+          154.8203125,
+          134.11676025390625
+        ]
+      ],
+      "text": "21. Pridgen, E. M. et al . Transepithelial transport of Fc-targeted nanoparticles by the neonatal fc receptor for oral delivery. Sci Transl Med 5 , 213ra167 (2013).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/7",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        133.8134765625,
+        502.875,
+        142.6142578125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          133.8134765625
+        ],
+        [
+          502.875,
+          133.8134765625
+        ],
+        [
+          502.875,
+          142.6142578125
+        ],
+        [
+          153.65625,
+          142.6142578125
+        ]
+      ],
+      "text": "22. Roopenian, D. C. & Akilesh, S. FcRn: the neonatal Fc receptor comes of age. Nat Rev Immunol 7 , 715–725 (2007).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/8",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        142.9892578125,
+        556.2640991210938,
+        159.60931396484375
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          142.9892578125
+        ],
+        [
+          556.2640991210938,
+          142.9892578125
+        ],
+        [
+          556.2640991210938,
+          159.60931396484375
+        ],
+        [
+          154.8203125,
+          159.60931396484375
+        ]
+      ],
+      "text": "23. Dickinson, B. L. et al . Ca2+-dependent calmodulin binding to FcRn afects immunoglobulin G transport in the transcytotic pathway. Mol Biol Cell 19 , 414–423 (2008).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/9",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        158.2822265625,
+        554.5451049804688,
+        176.60430908203125
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          158.2822265625
+        ],
+        [
+          554.5451049804688,
+          158.2822265625
+        ],
+        [
+          554.5451049804688,
+          176.60430908203125
+        ],
+        [
+          154.8203125,
+          176.60430908203125
+        ]
+      ],
+      "text": "24. Ober, R. J., Martinez, C., Lai, X., Zhou, J. & Ward, E. S. Exocytosis of IgG as mediated by the receptor, FcRn: an analysis at the singlemolecule level. Proc Natl Acad Sci USA 101 , 11076–11081 (2004).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/10",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        176.25146484375,
+        556.30224609375,
+        193.59930419921875
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          176.25146484375
+        ],
+        [
+          556.30224609375,
+          176.25146484375
+        ],
+        [
+          556.30224609375,
+          193.59930419921875
+        ],
+        [
+          154.8203125,
+          193.59930419921875
+        ]
+      ],
+      "text": "25. Xu, Q. et al . Impact of Surface Polyethylene Glycol (PEG) Density on Biodegradable Nanoparticle Transport in Mucus ex Vivo and Distribution in Vivo . ACS Nano 9 , 9217–9227, https://doi.org/10.1021/acsnano.5b03876 (2015).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/11",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        192.30908203125,
+        556.2592163085938,
+        210.59429931640625
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          192.30908203125
+        ],
+        [
+          556.2592163085938,
+          192.30908203125
+        ],
+        [
+          556.2592163085938,
+          210.59429931640625
+        ],
+        [
+          154.8203125,
+          210.59429931640625
+        ]
+      ],
+      "text": "26. Yang, Z., Sun, W. & Hu, K. Adenosine A(1) receptors selectively target protein kinase C isoforms to the caveolin-rich plasma membrane in cardiac myocytes. Biochimica et biophysica acta 1793 , 1868–1875 (2009).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/12",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        155.7054901123047,
+        209.513671875,
+        556.3179931640625,
+        227.58929443359375
+      ],
+      "polygon": [
+        [
+          155.7054901123047,
+          209.513671875
+        ],
+        [
+          556.3179931640625,
+          209.513671875
+        ],
+        [
+          556.3179931640625,
+          227.58929443359375
+        ],
+        [
+          155.7054901123047,
+          227.58929443359375
+        ]
+      ],
+      "text": "27. Rekha, M. R. & Sharma, C. P. Oral delivery of therapeutic protein/peptide for diabetes–future perspectives. Int J Pharm 440 , 48–62 (2013).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/13",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        226.3359375,
+        556.2954711914062,
+        244.58428955078125
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          226.3359375
+        ],
+        [
+          556.2954711914062,
+          226.3359375
+        ],
+        [
+          556.2954711914062,
+          244.58428955078125
+        ],
+        [
+          154.8203125,
+          244.58428955078125
+        ]
+      ],
+      "text": "28. Qiao, S. W. et al . Dependence of antibody-mediated presentation of antigen on FcRn. Proc Natl Acad Sci USA 105 , 9337–9342 (2008).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/14",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        241.24658203125,
+        556.2485961914062,
+        261.57928466796875
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          241.24658203125
+        ],
+        [
+          556.2485961914062,
+          241.24658203125
+        ],
+        [
+          556.2485961914062,
+          261.57928466796875
+        ],
+        [
+          154.8203125,
+          261.57928466796875
+        ]
+      ],
+      "text": "29. Armstrong, J. K., Wenby, R. B., Meiselman, H. J. & Fisher, T. C. Te hydrodynamic radii of macromolecules and their efect on red blood cell aggregation. Biophysical journal 87 , 4259–4270 (2004).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/15",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        261.12744140625,
+        554.6260375976562,
+        278.57427978515625
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          261.12744140625
+        ],
+        [
+          554.6260375976562,
+          261.12744140625
+        ],
+        [
+          554.6260375976562,
+          278.57427978515625
+        ],
+        [
+          154.8203125,
+          278.57427978515625
+        ]
+      ],
+      "text": "30. Yang, K. W. et al . Novel polyion complex micelles for liver-targeted delivery of diammonium glycyrrhizinate: in vitro and in vivo characterization. Journal of biomedical materials research. Part A 88 , 140–148 (2009).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/16",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        277.94970703125,
+        556.321044921875,
+        295.56927490234375
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          277.94970703125
+        ],
+        [
+          556.321044921875,
+          277.94970703125
+        ],
+        [
+          556.321044921875,
+          295.56927490234375
+        ],
+        [
+          154.8203125,
+          295.56927490234375
+        ]
+      ],
+      "text": "31. Bakhru, S. H., Furtado, S., Morello, A. P. & Mathiowitz, E. Oral delivery of proteins by biodegradable nanoparticles. Adv Drug Deliv Rev 65 , 811–821 (2013).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/17",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        293.24267578125,
+        556.3255615234375,
+        312.56427001953125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          293.24267578125
+        ],
+        [
+          556.3255615234375,
+          293.24267578125
+        ],
+        [
+          556.3255615234375,
+          312.56427001953125
+        ],
+        [
+          153.65625,
+          312.56427001953125
+        ]
+      ],
+      "text": "32. Panyam, J. & Labhasetwar, V. Biodegradable nanoparticles for drug and gene delivery to cells and tissue. Adv Drug Deliv Rev 55 , 329–347 (2003).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/18",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        310.447265625,
+        556.3906860351562,
+        338.0567626953125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          310.447265625
+        ],
+        [
+          556.3906860351562,
+          310.447265625
+        ],
+        [
+          556.3906860351562,
+          338.0567626953125
+        ],
+        [
+          153.65625,
+          338.0567626953125
+        ]
+      ],
+      "text": "33. Woitiski, C. B., Carvalho, R. A., Ribeiro, A. J., Neufeld, R. J. & Veiga, F. Strategies toward the improved oral delivery of insulin nanoparticles via gastrointestinal uptake and translocation. BioDrugs: clinical immunotherapeutics, biopharmaceuticals and gene therapy 22 , 223–237 (2008).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/19",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        336.4453125,
+        556.32177734375,
+        355.0517578125
+      ],
+      "polygon": [
+        [
+          153.65625,
+          336.4453125
+        ],
+        [
+          556.32177734375,
+          336.4453125
+        ],
+        [
+          556.32177734375,
+          355.0517578125
+        ],
+        [
+          153.65625,
+          355.0517578125
+        ]
+      ],
+      "text": "34. Goldberg, M. & Gomez-Orellana, I. Challenges for the oral delivery of macromolecules. Nature reviews. Drug discovery 2 , 289–295 (2003).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/20",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        354.796875,
+        556.3034057617188,
+        372.0467224121094
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          354.796875
+        ],
+        [
+          556.3034057617188,
+          354.796875
+        ],
+        [
+          556.3034057617188,
+          372.0467224121094
+        ],
+        [
+          154.8203125,
+          372.0467224121094
+        ]
+      ],
+      "text": "35. Awaad, A., Nakamura, M. & Ishimura, K. Imaging of size-dependent uptake and identifcation of novel pathways in mouse Peyer's patches using fuorescent organosilica particles. Nanomedicine: nanotechnology, biology, and medicine 8 , 627–636 (2012).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/21",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        371.23681640625,
+        556.1328735351562,
+        389.0417175292969
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          371.23681640625
+        ],
+        [
+          556.1328735351562,
+          371.23681640625
+        ],
+        [
+          556.1328735351562,
+          389.0417175292969
+        ],
+        [
+          154.8203125,
+          389.0417175292969
+        ]
+      ],
+      "text": "36. Vllasaliu, D., Alexander, C., Garnett, M., Eaton, M. & Stolnik, S. Fc-mediated transport of nanoparticles across airway epithelial cell layers. J Control Release 158 , 479–486 (2012).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/22",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        386.52978515625,
+        556.3954467773438,
+        406.0367126464844
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          386.52978515625
+        ],
+        [
+          556.3954467773438,
+          386.52978515625
+        ],
+        [
+          556.3954467773438,
+          406.0367126464844
+        ],
+        [
+          154.8203125,
+          406.0367126464844
+        ]
+      ],
+      "text": "37. Yang, Z. et al . A microfuidic method to synthesize transferrin-lipid nanoparticles loaded with siRNA LOR-1284 for therapy of acute myeloid leukemia. Nanoscale 6 , 9742–9751 (2014).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/ListItem/23",
+      "block_type": "ListItem",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        405.263671875,
+        556.3030395507812,
+        423.0317077636719
+      ],
+      "polygon": [
+        [
+          153.65625,
+          405.263671875
+        ],
+        [
+          556.3030395507812,
+          405.263671875
+        ],
+        [
+          556.3030395507812,
+          423.0317077636719
+        ],
+        [
+          153.65625,
+          423.0317077636719
+        ]
+      ],
+      "text": "38. Yang, Z. et al . Functional exosome-mimic for delivery of siRNA to cancer: in vitro and in vivo evaluation. J Control Release 243 , 160–171 (2016).",
+      "section_hierarchy": {
+        "1": "/page/4/SectionHeader/3",
+        "3": "/page/6/SectionHeader/2",
+        "4": "/page/7/SectionHeader/9"
+      }
+    },
+    {
+      "block_id": "/page/8/SectionHeader/24",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        154.23828125,
+        430.11474609375,
+        250.0290069580078,
+        441.3451843261719
+      ],
+      "polygon": [
+        [
+          154.23828125,
+          430.11474609375
+        ],
+        [
+          250.0290069580078,
+          430.11474609375
+        ],
+        [
+          250.0290069580078,
+          441.3451843261719
+        ],
+        [
+          154.23828125,
+          441.3451843261719
+        ]
+      ],
+      "text": "Acknowledgements",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/24"
+      }
+    },
+    {
+      "block_id": "/page/8/Text/25",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        441.58447265625,
+        556.609130859375,
+        471.5375671386719
+      ],
+      "polygon": [
+        [
+          153.65625,
+          441.58447265625
+        ],
+        [
+          556.609130859375,
+          441.58447265625
+        ],
+        [
+          556.609130859375,
+          471.5375671386719
+        ],
+        [
+          153.65625,
+          471.5375671386719
+        ]
+      ],
+      "text": "This work was financially supported by the Shandong Provincial Natural Science Foundation, China (No. ZR2015HL123), Shandong Province key research and development project (No. 2016GF201181) and by the Scientifc Research Program of Binzhou Medical University (No. BY2013KYQD29).",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/24"
+      }
+    },
+    {
+      "block_id": "/page/8/SectionHeader/26",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        154.529296875,
+        478.3451843261719,
+        256.01080322265625,
+        489.3451843261719
+      ],
+      "polygon": [
+        [
+          154.529296875,
+          478.3451843261719
+        ],
+        [
+          256.01080322265625,
+          478.3451843261719
+        ],
+        [
+          256.01080322265625,
+          489.3451843261719
+        ],
+        [
+          154.529296875,
+          489.3451843261719
+        ]
+      ],
+      "text": "Author Contributions",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/26"
+      }
+    },
+    {
+      "block_id": "/page/8/Text/27",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        153.65625,
+        487.845703125,
+        556.7523803710938,
+        519.5375671386719
+      ],
+      "polygon": [
+        [
+          153.65625,
+          487.845703125
+        ],
+        [
+          556.7523803710938,
+          487.845703125
+        ],
+        [
+          556.7523803710938,
+          519.5375671386719
+        ],
+        [
+          153.65625,
+          519.5375671386719
+        ]
+      ],
+      "text": "Youxin Li and Yanan Shi conceived the experiments, Yanan Shi, Xinfeng Sun and Liping Zhang conducted the experiments, Yanan Shi, Keke Li, Kaoxiang Sun and Qiang Zhang analysed the results. All authors reviewed the manuscript.",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/26"
+      }
+    },
+    {
+      "block_id": "/page/8/SectionHeader/28",
+      "block_type": "SectionHeader",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        524.93115234375,
+        264.2839050292969,
+        537.3451843261719
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          524.93115234375
+        ],
+        [
+          264.2839050292969,
+          524.93115234375
+        ],
+        [
+          264.2839050292969,
+          537.3451843261719
+        ],
+        [
+          154.8203125,
+          537.3451843261719
+        ]
+      ],
+      "text": "Additional Information",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    },
+    {
+      "block_id": "/page/8/Text/29",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.23828125,
+        537.16552734375,
+        443.4742736816406,
+        547.5395812988281
+      ],
+      "polygon": [
+        [
+          154.23828125,
+          537.16552734375
+        ],
+        [
+          443.4742736816406,
+          537.16552734375
+        ],
+        [
+          443.4742736816406,
+          547.5395812988281
+        ],
+        [
+          154.23828125,
+          547.5395812988281
+        ]
+      ],
+      "text": "Competing Interests: Te authors declare that they have no competing interests.",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    },
+    {
+      "block_id": "/page/8/Text/30",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        154.8203125,
+        551.3115234375,
+        546.3073120117188,
+        572.0375823974609
+      ],
+      "polygon": [
+        [
+          154.8203125,
+          551.3115234375
+        ],
+        [
+          546.3073120117188,
+          551.3115234375
+        ],
+        [
+          546.3073120117188,
+          572.0375823974609
+        ],
+        [
+          154.8203125,
+          572.0375823974609
+        ]
+      ],
+      "text": "Publisher's note: Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional afliations.",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    },
+    {
+      "block_id": "/page/8/Text/31",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        155.63938903808594,
+        574.2509765625,
+        557.0303955078125,
+        656.5325775146484
+      ],
+      "polygon": [
+        [
+          155.63938903808594,
+          574.2509765625
+        ],
+        [
+          557.0303955078125,
+          574.2509765625
+        ],
+        [
+          557.0303955078125,
+          656.5325775146484
+        ],
+        [
+          155.63938903808594,
+          656.5325775146484
+        ]
+      ],
+      "text": "Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. Te images or other third party material in this article are included in the article's Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    },
+    {
+      "block_id": "/page/8/Text/32",
+      "block_type": "Text",
+      "page_index": 0,
+      "bbox": [
+        155.63938903808594,
+        665.62646484375,
+        234.849609375,
+        676.5305862426758
+      ],
+      "polygon": [
+        [
+          155.63938903808594,
+          665.62646484375
+        ],
+        [
+          234.849609375,
+          665.62646484375
+        ],
+        [
+          234.849609375,
+          676.5305862426758
+        ],
+        [
+          155.63938903808594,
+          676.5305862426758
+        ]
+      ],
+      "text": "© Te Author(s) 2018",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    },
+    {
+      "block_id": "/page/8/PageFooter/33",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        40.79430389404297,
+        756.8748168945312,
+        554.6334838867188,
+        766.8748168945312
+      ],
+      "polygon": [
+        [
+          40.79430389404297,
+          756.8748168945312
+        ],
+        [
+          554.6334838867188,
+          756.8748168945312
+        ],
+        [
+          554.6334838867188,
+          766.8748168945312
+        ],
+        [
+          40.79430389404297,
+          766.8748168945312
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    },
+    {
+      "block_id": "/page/8/PageFooter/34",
+      "block_type": "PageFooter",
+      "page_index": 0,
+      "bbox": [
+        548.564453125,
+        760.44287109375,
+        554.966796875,
+        768.85400390625
+      ],
+      "polygon": [
+        [
+          548.564453125,
+          760.44287109375
+        ],
+        [
+          554.966796875,
+          760.44287109375
+        ],
+        [
+          554.966796875,
+          768.85400390625
+        ],
+        [
+          548.564453125,
+          768.85400390625
+        ]
+      ],
+      "text": "",
+      "section_hierarchy": {
+        "1": "/page/8/SectionHeader/28"
+      }
+    }
+  ],
+  "block_type_counts": {
+    "PageHeader": 9,
+    "Picture": 3,
+    "SectionHeader": 9,
+    "Text": 58,
+    "PageFooter": 18,
+    "PictureGroup": 2,
+    "Caption": 8,
+    "Reference": 3,
+    "TableGroup": 1,
+    "Table": 1,
+    "TableCell": 48,
+    "FigureGroup": 5,
+    "Figure": 5,
+    "ListGroup": 2,
+    "ListItem": 38
+  },
+  "metadata": {
+    "source_pdf_path": "/Users/yeshanwang/Zotero/storage/A67PQHE2/s41598-018-19170-y.pdf",
+    "source_sha256": "88eebf9e4856e717f3c47261a14e5b816470e9ff2bc48038102f185bafd05b07",
+    "config_sha256": "e5ad4dc3dd06b4beba1a2450bad46567a763f9cb4a0074f58009fd8eff5ab89e",
+    "marker_version": "marker-pdf==1.10.2",
+    "marker_executable": "/Users/yeshanwang/projects/RL-Agent-Extraction-PLGANPs/.venv_marker/bin/marker_single",
+    "page_range": "",
+    "script_contract_version": "stage1_marker_pdf_extraction_v1",
+    "elapsed_seconds": 322.7384810447693,
+    "reuse_contract": "freeze output and reuse unless source_sha256 or config_sha256 changes"
+  }
+}

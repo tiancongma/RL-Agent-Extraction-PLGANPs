@@ -1,0 +1,16 @@
+paper_key	doi	gt_formulation_count	predicted_formulation_count	count_diff	error_type	abs_diff	severity	source_group	notes
+5GIF3D8W	10.1080/10717540802174662	26	6	-20	under_segmentation	20	severe_error	remaining_12paper	table_heavy; GT count revised to 26 after excluding design-only combinations without instance-level evidence
+UFXX9WXE	10.1155/2014/156010	26	5	-21	under_segmentation	21	severe_error	remaining_12paper	sweep_series
+WFDTQ4VX	10.1080/10717544.2016.1199605	27	30	3	over_segmentation	3	moderate_error	remaining_12paper	table_heavy
+L3H2RS2H	10.1016/j.ejpb.2004.09.002	22	20	-2	under_segmentation	2	near_match	tuned_3paper	table_heavy
+PA3SPZ28	10.1038/s41598-017-00696-6	3	5	2	over_segmentation	2	near_match	remaining_12paper	table_heavy
+YGA8VQKU	10.1016/j.colsurfb.2009.03.028	16	18	2	over_segmentation	2	near_match	remaining_12paper	post_processing_heavy
+QLYKLPKT	10.2147/ijn.s54040	7	8	1	over_segmentation	1	near_match	remaining_12paper	post_processing_heavy
+5ZXYABSU	10.2147/ijn.s130908	9	9	0	match	0	exact	tuned_3paper	table_heavy
+7ZS858NS	10.1021/acsomega.0c00111	1	1	0	match	0	exact	remaining_12paper	small_formulation_set
+BB3JUVW7	10.1016/j.ijpharm.2021.120820	12	12	0	match	0	exact	remaining_12paper	table_heavy
+BXCV5XWB	10.1007/s10439-019-02430-x	3	3	0	match	0	exact	remaining_12paper	small_formulation_set
+INMUTV7L	10.3390/nano10040720	12	12	0	match	0	exact	remaining_12paper	post_processing_heavy
+RHMJWZX8	10.1111/jphp.12481	1	1	0	match	0	exact	remaining_12paper	small_formulation_set
+V99GKZEI	10.1039/c5ra27386b	6	6	0	match	0	exact	remaining_12paper	table_heavy
+WIVUCMYG	10.1002/jps.24101	26	26	0	match	0	exact	tuned_3paper	sweep_series

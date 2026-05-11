@@ -1,0 +1,30 @@
+"2.4.
+Preparation of studied strain","","",""
+"","Table 1","",""
+"","","Independent variables levels as designated by the categorical multilevel factorial",""
+"The  inoculum  size  for  all  fungal  isolates  was  adjusted  using  the","","",""
+"","","design,  along  with  the  measured  dependent  responses  and  their  desirability",""
+"McFarland  scale.  At  530  nm,  a  spectrophotometer  (CM-600D  Konica-","","",""
+"","constraints.","",""
+"Minolta,  Osaka,  Japan)  was  utilized  to  adjust  the  turbidity  to  0.5","","",""
+"","","",""
+"(cid:0) 5× 106  CFU/mL  for  Candida  albicans, 
+McFarland.  Densities  were  1.5","Factor (Independent variable)","Level",""
+"0.4× 104 CFU/mL for Fusarium, and 2
+(cid:0) 3× 104 CFU/mL for Aspergillus. In","","-1","0 
++1"
+"all investigations, these concentrations served as the standard inoculum.","A: Drugs: PLGA Ratio","1:2","1:5 
+1:10"
+"This suspension was used for ocular animal inoculation.","B: P407:P188 Ratio","1:5","1:10 
+1:15"
+"2.5. Method","","",""
+"","Response (Dependent Variable)","","Desirability Constraints"
+"2.5.1.
+Experimental design","","",""
+"","Y1:EE%","","Maximize"
+"The thermosensitive gel containing drug-loaded NPs was formulated","Y2:PS (nm)","","Minimize"
+"by Multilevel categoric design comprising nine formulae for each drug,","Y3: PDI","","Minimize"
+"","Y4: ZP (absolute value) (mV)","","Maximize"
+"and then the best formula for each drug was chosen to make the com-","","",""
+"","Y5:Q48h (%)","",">80%"
+"bination. The studied factors were: Drugs: PLGA (Ratio) (A) and P407:","","",""

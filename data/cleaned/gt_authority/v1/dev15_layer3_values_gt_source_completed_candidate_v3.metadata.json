@@ -1,0 +1,24 @@
+{
+  "artifact_type": "source_completed_layer3_gt_candidate_package",
+  "version": "v3",
+  "base_gt": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_candidate_v2.tsv",
+  "candidate_tsv": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_candidate_v3.tsv",
+  "change_log_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_change_log_v3.tsv",
+  "review_queue_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_review_queue_v3.tsv",
+  "source_inventory_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_source_inventory_v1.tsv",
+  "created_at_utc": "2026-05-03T20:55:10Z",
+  "row_count": 204,
+  "schema_columns": 57,
+  "cumulative_auto_source_backed_cell_updates": 235,
+  "new_v3_source_backed_cell_updates": 4,
+  "review_queue_rows": 130,
+  "requires_user_confirmation_rows": 12,
+  "derived_candidate_only_policy": "excluded_from_current_direct_GT_compare; not included in v3 review queue except schema/future-derived notes marked no confirmation",
+  "authority_rules": [
+    "Original GT is not overwritten.",
+    "Only direct source-backed values are auto-applied.",
+    "Derived values are deferred to later derived provenance stage.",
+    "System outputs are triage hints only, not value authority."
+  ],
+  "workbook_xlsx": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_package_v3.xlsx"
+}

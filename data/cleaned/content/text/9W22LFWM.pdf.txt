@@ -1,0 +1,872 @@
+Facile Fabrication of Oxidation-Responsive Polymeric Nanoparticles
+for Eﬀective Anticancer Drug Delivery
+Yamei Huang,† Qiubing Chen,† Panpan Ma,‡ Heliang Song,∥Xiaoqian Ma,† Ya Ma,† Xin Zhou,†
+Shuangquan Gou,† Zhigang Xu,*,†
+Jiucun Chen,†
+and Bo Xiao*,†
+†Institute for Clean Energy and Advanced Materials, Faculty for Materials and Energy, Southwest University, Beibei, Chongqing
+400715, P. R. China
+‡National Engineering Research Center for Healthcare Devices, Guangdong Key Lab of Medical Electronic Instruments and
+Polymer Material Products, Guangdong Institute of Medical Instruments, Guangzhou, Guangdong 510500, P. R. China
+∥Institute for Biomedical Sciences, Center for Diagnostics and Therapeutics, Georgia State University, Atlanta, Georgia 30302,
+United States
+*
+S Supporting Information
+ABSTRACT: Reactive oxygen species (ROS) are highly
+overproduced in cancerous tissues, and thus oxidation-
+responsive nanoparticles (NPs) have emerged as a promising
+drug carrier for cancer-targeted drug delivery. In this study, we
+successfully synthesized poly(vanillyl alcohol-co-oxalate)
+(PVAX) polymer with an excellent ROS-responsive capacity.
+A well-established emulsion-solvent evaporation method was
+used to fabricate PVAX-based curcumin (CUR)-loaded NPs
+(PVAX-NPs) and their counterparts (poly(lactic-co-glycolic
+acid)-based CUR-loaded NPs, PLGA-NPs). It was found that
+these NPs had a hydrodynamic particle size of approximately
+245 nm, narrow size distribution (polydispersity index less
+than 0.1), negative zeta potential (around −18 mV), smooth surface appearance, and high drug encapsulation eﬃciency.
+Moreover, we found that the CUR release rate of PVAX-NPs was greatly increased in the presence of a hydrogen peroxide-rich
+environment due to the cleavage of polyoxalate ester bonds in PVAX polymer, resulting in the evenly distribution of CUR
+within the whole cancer cells. More importantly, PVAX-NPs exhibited much stronger anticancer activities and pro-apoptotic
+capacities than PLGA-NPs both in vitro and in vivo. These results clearly demonstrate that these ROS-responsive PVAX-NPs
+can be exploited as a robust anticancer drug delivery platform in chemotherapy.
+KEYWORDS: reactive oxygen species, stimuli-responsive polymer, nanoparticle, drug delivery, chemotherapy
+■INTRODUCTION
+Cancer has been recognized as one of the most challenging and
+devastating diseases, accounting for 13% of all deaths
+worldwide.1,2 More seriously, its morbidity and mortality
+continue to increase sharply in recent decades. Although
+various therapeutic approaches (e.g., surgery, radiotherapy, and
+immunotherapy) are available for cancer treatment, chemo-
+therapy is the most common strategy.3 Nowadays, a number of
+chemotherapeutic drugs have been used in chemotherapy,
+including curcumin (CUR), paclitaxel, doxorubicin, and
+camptothecin.4,5 Among these drugs, CUR, extracted from
+rhizomes of turmeric, has attracted increasing attention due to
+its unique advantages of antiproliferation and induction of
+apoptosis in cancer cells through the regulation of various
+cellular signaling pathways.6,7 To date, CUR has already
+demonstrated its striking therapeutic potentials against
+numerous types of cancers, such as colorectal cancer,
+pancreatic cancer, and nonsmall cell lung cancer.8 Never-
+theless, several inherent limitations of CUR (e.g., low water
+solubility, rapid metabolization rate, and poor bioavailability)
+have largely impeded its clinical translations.9,10 To overcome
+these obstacles, nanocarriers, especially polymeric nano-
+particles (NPs), have been employed as CUR delivery systems,
+which are liable to improve the water solubility of CUR,
+prevent its degradation, and deliver CUR to tumor tissues
+driven by the enhanced permeability and retention (EPR)
+eﬀect.3
+In recent years, stimuli-responsive NPs have already been
+extensively explored in anticancer drug delivery, as they are
+capable of delivering and releasing drugs to tumor tissues in
+response to disease-associated physiological factors that
+diﬀerentiate cancerous tissues from healthy tissues, such as
+pH, oxidation, and enzyme as well as hypoxia.11,12 Among
+Received:
+June 17, 2018
+Revised:
+September 23, 2018
+Accepted:
+November 28, 2018
+Published: November 28, 2018
+Article
+pubs.acs.org/molecularpharmaceutics
+Cite This: Mol. Pharmaceutics 2019, 16, 49−59
+© 2018 American Chemical Society
+49
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+Downloaded via UNIV OF MARYLAND COLG PARK on October 23, 2025 at 15:29:35 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+them, oxidation-responsive NPs have been developed very
+recently, as the tumor cells were accompanied by elevated
+concentrations of reactive oxygen species (ROS) with the
+treatment of anticancer agents.13,14 As reported, cellular ROS
+are a collective term of highly reactive chemical species mainly
+generated by mitochondria due to the incomplete reduction of
+molecular oxygen, including hydrogen peroxide (H2O2),
+hydroxyl radical, superoxide, hypochlorite ion, and singlet
+oxygen.11 Additionally, H2O2 is the most abundant and stable
+nonradical ROS in cells. Its concentration in healthy tissue is
+strictly controlled to around 20 nM, whereas that in cancerous
+tissue is as high as 50−100 μM owing to the excess of H2O2
+production.15,16 Considering these tremendous diﬀerences in
+H2O2 concentrations, H2O2 is believed to be one of the most
+promising physiological stimuli for achieving tumor-speciﬁc
+drug delivery.17 So far, a variety of ROS-responsive materials,
+such as those containing thioether, elenium/tellurium,
+thioketal, boronic ester, peroxalate ester, polyproline, poly-
+saccharide, and aminoacrylate, have been explored, and they
+often required multistep chemical synthesis.18−20 Very
+recently, poly(vanillyl alcohol-co-oxalate) (PVAX) was synthe-
+sized by Lee et al., which had the advantages of excellent
+biocompatibility, facile synthesis, good ROS responsibility, and
+high drug encapsulation eﬃciency.21 Thus, it has been
+employed in the treatment of acute liver failure,22 doxor-
+ubicin-induced cardiomyopathy,23 and peripheral arterial
+disease.24 However, PVAX has never been used as a drug
+carrier matrix for cancer therapy.
+Poly(lactic-co-glycolic acid) (PLGA) is an FDA-approved
+biocompatible polymer, which has no ROS responsibility, and
+it has been extensively utilized as a drug carrier matrix in our
+group and others.25,26 To investigate the beneﬁcial features of
+oxidation-responsive PVAX in anticancer drug delivery, PLGA
+was thus used as a control in the present study. Initially, we
+physically encapsulated CUR into PLGA or PVAX matrix and
+obtained PLGA-based CUR-loaded NPs (PLGA-NPs) and
+PVAX-based CUR-loaded NPs (PVAX-NPs), respectively.
+Subsequently, we characterized their physicochemical proper-
+ties, CUR release behaviors in the presence or absence of
+H2O2, and cellular uptake proﬁles. Finally, in vitro and in vivo
+antitumor activities of PLGA-NPs and PVAX-NPs were
+comparatively investigated.
+■EXPERIMENTAL SECTION
+Materials. PLGA with the molecular weight (MW) of 38−
+54 kg/mol, camptothecin (CPT), poly(vinyl alcohol) (PVA,
+86−89% hydrolyzed), trimethylamine (TEA), anhydrous
+methylene dichloride (DCM), oxalyl chloride, chloroform-d,
+tetramethylsilane, Triton X-100, dimethyl sulfoxide (DMSO),
+and buﬀered formalin (10%) were purchased from Sigma-
+Aldrich (St. Louis, United States). 1,4-Cyclohexanedimethanol
+(1,4-CHDM), 4-vanillyl alcohol (4-VA), and CUR were
+obtained from Adamas-beta (Shanghai, P. R. China). 4′,6-
+Diamidino-2-phenyl-indole dihydrochloride (DAPI), 3-(4,5-
+dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide
+(MTT), paraformaldehyde solution (16%), Alexa Fluor 633
+phalloidin, ROS Assay Kit, hematoxylin, and eosin were
+purchased from Beyotime Institute of Biotechnology (Shang-
+hai, P. R. China). Terminal deoxynucleotide end labeling
+(TUNEL) kit was purchased from Roche Diagnostics
+(Indianapolis, United States).
+Synthesis and Characterization of PVAX Polymer.
+PVAX polymer was synthesized as described previously.22
+Brieﬂy, under the protection of argon, 1,4-CHDM (22 mmol,
+3.2 g) and 4-VA (5.5 mmol, 0.86 g) were codissolved in 20 mL
+of anhydrous DCM. Subsequently, TEA (71.4 mmol, 9.9 mL)
+was added dropwise with a dropping funnel, and the resulting
+mixture was placed in the dark and stirred for 30 min at 4 °C.
+Thereafter, oxalyl chloride (27.5 mmol, 3.49 g) was poured
+into the above mixture, and the mixture was stirred at 4 °C for
+another 30 min. After a further overnight reaction, the crude
+product was extracted by DCM and obtained by precipitation
+in precold hexane.
+Fabrication of NPs. PLGA-NPs and PVAX-NPs were
+fabricated using an oil-in-water (O/W) single-emulsion solvent
+evaporation method, which has been commonly utilized for
+producing polymeric NPs with diameters between 200 and 300
+nm.27,28 In brief, PLGA or PVAX (100 mg) and CUR (7 mg)
+were codissolved in 2 mL of DCM. The obtained oil phase was
+transferred to 4 mL of PVA solution (5%, w/v). Subsequently,
+the mixture solution was sonicated with a sonicator (S-450D,
+Branson, United States) at 40% amplitude for 50 s in an ice
+bath. The resultant O/W emulsion solution was immediately
+poured into 100 mL of diluted PVA solution (0.5%, w/v), and
+the organic solvent was further removed using a rotary
+evaporator. The larger particles in the product were eliminated
+by centrifugation at a lower centrifugation rate (4 000 g, 5
+min), and the resultant NPs were further centrifuged at 13 000
+g for 15 min. Finally, these NPs were washed in deionized
+water, freeze-dreed with trehalose as a cryoprotectant, and kept
+at −20 °C.
+Physicochemical Characterization of PVAX Polymer
+and NPs. The chemical structure of PVAX was veriﬁed by a
+BRUKER Avance 600 NMR spectrometer. The adopted
+deuterated solvent was chloroform-d, and the internal was
+tetramethylsilane (δ = 0). The MW and MW distribution
+(MWD) of PVAX were studied by Agilent 1260 gel
+permeation chromatography (GPC, Agilent Technologies,
+Santa Clara, United States).
+The average particle size, polydispersity index (PDI), and
+zeta potential of PLGA-NPs and PVAX-NPs were examined
+using a dynamic light scattering (DLS) technique (Malvern
+Zetasizer Nano S90, Worcesterhire, United Kingdom). Their
+average values were calculated on the basis of measurements
+assigned to 3 batches of NPs.
+The loading amount and encapsulation eﬃciency of CUR in
+PLGA-NPs and PVAX-NPs were measured using a method as
+described in our previous study.29 NPs were completely
+dissolved in DMSO. Subsequently, the obtained solutions were
+transferred into a black 96-well plate. The ﬂuorescence
+intensities were determined using a ﬂuorescence spectropho-
+tometer (RF-5301 PC, Shimadzu, Japan) at λem = 530 nm and
+λex= 425 nm.
+The morphologies of PLGA-NPs and PVAX-NPs were
+characterized using a JEOL JSM-6510LV scanning electron
+microscope (SEM, Tokyo, Japan). NP suspensions were
+dropped onto a cleaned silicon chip and further dried
+overnight at room temperature. The dried NPs were coated
+with platinum before SEM observation.
+XRD spectra of pristine CUR, pristine PLGA, pristine
+PVAX, PLGA-NPs, and PVAX-NPs were studied on an XRD-
+7000 instrument (Shimadzu, Japan) by scanning samples in the
+range between 10 and 80° (2θ).
+Drug Release Proﬁles of NPs. The drug release behaviors
+of NPs were investigated in the presence and absence of H2O2
+(100 μM) in diﬀerent buﬀers (pH 7.4 or 5.5). The
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+50
+
+ﬂuorescence intensity of CUR was unstable under an oxidation
+environment, whereas CPT was relatively stable in solution
+with H2O2. Thus, CPT was encapsulated into NPs instead of
+CUR in this experiment. NP suspensions containing an
+equivalent CPT amount of 150 μg were introduced into
+dialysis bags (MWCO, 10 000 Da), and these bags were
+immersed in centrifuge tubes (50 mL) supplemented with 20
+mL of releasing medium with stirring at 150 rpm and 37 °C.
+One mL of releasing medium was withdrawn and replenished
+with the same volume of fresh medium at predetermined time
+points. The CPT concentrations in the releasing medium were
+determined using a microplate reader (Biotek Instruments,
+United States).
+Cytotoxicity Assay. Human breast cancer MCF-7 cells or
+human umbilical vein endothelial cells (HUVECs) were
+cultured in 96-well culture plates, and the cell densities of
+these two types of cells were set as 1 × 104 and 4 × 104 cells/
+well, respectively. After overnight incubation, cells were
+incubated with PLGA-NPs or PVAX-NPs for 24 and 48 h,
+respectively. MTT solution (0.5 mg/mL) was added to each
+well and incubated with cells in a CO2 incubator for 4 h.
+Thereafter, DMSO (50 μL) was added into each well to
+dissolve the formazan crystals, and the wavelength for
+measuring absorbance of the formed formazan was at 570
+nm. Cells treated with Triton X-100 solution (1%, w/v) were
+utilized as a positive control, whereas untreated cells were
+utilized as a negative control.
+Cell Internalization Imaging of NPs. MCF-7 cells were
+cultured in 8-well culture plates (BD Falcon, Bedford, United
+States), and the cell density was set as 5 × 104 cells/well.
+PLGA-NPs and PVAX-NPs were dispersed in serum-free
+medium to form NP suspensions (equivalent CUR concen-
+tration: 50 μM), and the resulting suspensions were then
+added into wells. After 3 h of incubation, cells were washed
+with PBS solution to eliminate unphagocytized NPs. There-
+after, cells were ﬁxed in a paraformaldehyde solution (4%, v/v)
+for 15 min and further stained with DAPI and Alexa Fluor 633
+phalloidin solution. The cellular uptake images of NPs were
+observed by a confocal laser scanning microscope (CLSM,
+Zeiss-800, Jena, Germany).
+Quantiﬁcation of Cell Internalization Eﬃciency of
+NPs. MCF-7 cells were cultured in 12-well culture plates, and
+the cell density was set as 2 × 105 cells/well. PLGA-NPs and
+PVAX-NPs were dispersed in serum-free medium to form NP
+suspensions (equivalent CUR concentration: 16 μM), and the
+resulting suspensions were then added into wells. After 1, 3, or
+5 h of incubation, cells were washed 3 times with PBS solution
+to eliminate unphagocytized NPs. Cells were digested using
+trypsin and resuspended in ﬂow cytometric buﬀer. The
+obtained cell suspensions were analyzed using an ACEA
+Figure 1. (a) Schematic illustrations of synthesis and H2O2-triggered degradation of PVAX. (b) 1H NMR spectrum and (c) GPC trace of PVAX
+and its degraded products.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+51
+
+Table 1. Characteristics of NPs (Mean ± SEM; n = 3)
+NPs
+size (nm)
+PDI
+zeta potential (mV)
+drug loading (%)
+encapsulation eﬃciency (%)
+PLGA-NPs
+254.5 ± 1.1
+0.091
+−19.1 ± 0.5
+5.8 ± 0.2
+40.1 ± 1.2
+TPOX-NPs
+242.3 ± 4.4
+0.034
+−17.3 ± 1.2
+6.0 ± 0.2
+44.0 ± 1.7
+Figure 2. Representative SEM images and corresponding size distributions of (a) PLGA-NPs and (b) PVAX-NPs. Scale bar represents 200 nm. (c)
+Representative SEM images of PLGA-MPs and PVAX-MPs as a function of incubation time in H2O2 solution (10 mM). Scale bar represents 1 μm.
+In vitro release proﬁles of CPT from PLGA-CPT-NPs and PVAX-CPT-NPs with or without H2O2 in (d) buﬀer (pH = 7.4) and (e) buﬀer (pH =
+5.5) at 37 °C. Each point represents the mean ± SEM (n = 3).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+52
+
+NovoCyte Flow Cytometry System (ACEA Biosciences, San
+Diego, United States).
+Blood Compatibility Studies. In vitro blood compatibility
+was examined following our reported studies.3,30 Brieﬂy, red
+blood cells (RBCs) from mice blood were gathered at 1 400 g
+for 12 min. Subsequently, they were washed 3 times and
+resuspended in PBS. The suspensions of PLGA-NPs and
+PVAX-NPs were mixed with RBCs and further incubated at 37
+°C for 1 h. After centrifugation (4 °C, 4 000 g, 12 min), the
+absorption intensity of hemoglobin in the supernatant was
+determined using spectrophotometric measurements at 570
+nm. RBC suspensions treated with Triton X-100 (1%, w/v)
+were utilized as a positive control, and RBC suspensions (no
+treatment) were treated as 100%.
+For in vivo blood compatibility studies, suspensions of
+PLGA-NPs and PVAX-NPs (10 mg CUR/kg mouse) were
+Figure 3. Representative (a) ﬂat-ﬁeld and (b) 3-dimensional ﬂuorescence images showing cellular uptake of PLGA-NPs and PVAX-NPs at an equal
+CUR concentration of 50 μM in MCF-7 cells for 3 h. Fixed cells were stained with Alexa Fluor 633 phalloidin and DAPI for visualization of actin
+(red) and nuclei (purple), respectively. Scale bar represents 20 μm. (b) Flow cytometric histogram proﬁles of ﬂuorescence intensities for cells
+treated with PLGA-NPs or PVAX-NPs (CUR, 16 μM) for 5 h. (c) Percentage of CUR-containing MCF-7 cells and (d) quantiﬁcation of CUR
+ﬂuorescent intensity in MCF-7 cells after treatment with PLGA-NPs or PVAX-NPs (CUR, 16 mM) at diﬀerent time points (1, 3, and 5 h). Each
+point represents the mean ± SEM (n = 3). Statistical signiﬁcance was assessed using Student’s t-test (*P < 0.05 and **P < 0.01).
+Figure 4. In vitro antitumor activities of PLGA-NPs and PVAX-NPs against MCF-7 cells after incubation for (a) 24 h and (b) 48 h based on MTT
+assays. Triton X-100 (1%) was used as a positive control to produce a maximum cell death rate (100%), whereas cell culture medium was used as a
+negative control (death rate deﬁned as 0%). Cytotoxicity is given as the percentage of viable cells remaining after treatment. Each point represents
+the mean ± SEM (n = 5).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+53
+
+intravenously injected into female Kunming mice (8 weeks
+old; Chongqing Tengxin Biotechnologied Company, Chongq-
+ing, P. R. China). After administration for 6 or 24 h, blood
+parameters were analyzed using a hematology analyzer (BC-
+3200, Mindray, Shenzhen, P. R. China).
+In Vivo Antitumor Activity of NPs. BALB/c nude mice
+(6 weeks old; Chongqing Tengxin Biotechnology Company,
+Chongqing, P. R. China) were used to establish a mouse model
+of subcutaneous tumors. All mice procedures were approved
+by the Institutional Animal Care and Use Committee at
+Southwest University. Mice were implanted subcutaneously
+with 1 × 106 MCF-7 cells in the left ﬂank. After implantation
+with tumor cells for 12 days, mice were divided into the
+following 3 groups: (i) PBS-treated group, (ii) PLGA-NP-
+treated group (CUR, 10 mg/kg), and (iii) PVAX-NP-treated
+group (CUR, 10 mg/kg). These mice were intravenously
+injected with diﬀerent formulations every other day for a total
+of 3 doses. Their body weight and tumor size were recorded
+during the treatment process. The tumor inhibition ratio has
+been commonly used to evaluate the inhibitory eﬀect of drug
+formulations on tumor growth.31 Its equation was described as
+follows:
+=
+−
+×
+Tumor inhibition ratio
+Tumor weight in control group
+Tumor weight in treated group
+Tumor weight in control group
+100%
+(1)
+In the context of histological analysis, tissues were ﬁxed using
+10% buﬀered formalin solution and further embedded in
+paraﬃn. Subsequently, tissue sections (5 μm) were stained
+using hematoxylin and eosin (H&E). The apoptosis proﬁles of
+tumor cells were studied with an apoptosis detection kit
+(Roche Diagnostics, Indianapolis, United States).
+■RESULTS AND DISCUSSION
+Synthesis of PVAX. The PVAX polymer was synthesized
+by one-step condensation between two diols (1,4-CHDM and
+4-VA) and oxalyl chloride. The combined application of two
+diols in the present study was due to the fact that they had the
+capacity to improve the stability and degradability of the
+overall polymer.32 The synthetic route and H2O2-triggered
+degradation process were presented in Figure 1a. 1H NMR
+results in Figure 1b showed that the methylene signals of 1,4-
+CHDM emerged at 4.21 ppm (peak g) and 2.08−0.67 ppm
+(peak h), while the signals of 4-VA were located at 4.11 ppm
+(peak f) and 3.01 ppm (peak e). In addition, the peak at 3.45
+pm originated from the methyl hydrogen of 4-VA. According
+to peak d (3.45 ppm) and peak h (2.08−0.67 ppm) signals, the
+polymerization ratio of 1,4-CHDM and 4-VA was calculated to
+be 1:4. Furthermore, the multiple aromatic protons of 4-VA
+registered at 7.07 and 6.77 ppm, indicating the successful
+synthesis of PVAX. As seen in Figure 1c, the MW and MWD
+of PVAX were 4 100 and 1.77, respectively. After the treatment
+with H2O2 (10 mM) for 0.5 h, the peak was obviously shifted
+to the high elution time, indicating the ROS-responsible
+degradation proﬁle of PVAX.
+Physicochemical Characterization of NPs. Hydro-
+dynamic particle size, particle size distribution, and zeta
+potential of NPs are critically correlated to their stability, drug
+release behavior, cell internalization eﬃciency, and in vivo
+biodistribution.33−35 Hence, these parameters were charac-
+terized, and the relevant results were presented in Table 1.
+PLGA-NPs had an average hydrodynamic diameter of 254.5
+nm, and their PDI was relatively low (0.091), suggesting that
+they had a narrow size distribution. Furthermore, no obvious
+diﬀerences in diameter and PDI were found between PLGA-
+NPs and PVAX-NPs. Recently, it was reported that PLGA-
+based polymeric NPs with hydrodynamic diameter around 200
+nm exhibited obvious EPR eﬀect.36 Thus, these two types of
+NPs were expected to avoid passing through normal blood
+vessels and facilitate the accumulation of chemical drugs into
+the tumor tissues because of EPR eﬀect. In addition, both types
+of NPs had slightly negative zeta potentials. It was found that
+the loading amount and encapsulation eﬃciency of CUR in
+PVAX-NPs were similar to that in PLGA-NPs. The
+representative morphological images of PLGA-NPs (Figure
+2a) and PVAX-NPs (Figure 2b) indicated that both types of
+NPs were spherical in shape with a smooth surface.
+As reported, the crystallinity of hydrophobic agents loaded
+in NPs has an important impact on the drug release pattern of
+NPs,37 and thus the crystalline forms of CUR in PLGA-NPs
+and PVAX-NPs were investigated. As can be seen in Figure S1,
+pristine CUR had numerous sharp and intense peaks, revealing
+their highly crystalline nature. Conversely, pristine PLGA and
+pristine PVAX showed no obvious peaks. Interestingly, with
+the introduction of CUR into NPs, PLGA-NPs and PVAX-NPs
+exhibited pretty smooth curves and had no characteristic peaks.
+These results clearly demonstrate that CUR has been
+uniformly distributed throughout the polymeric matrix
+(PLGA or PVAX) and forms an amorphous complex with
+matrix molecules, which would be favorable for achieving a
+constant drug release rate.
+To investigate the oxidation-responsive properties of NPs,
+we initially studied the morphology changes of PLGA-NPs and
+PVAX-NPs under H2O2 condition. Owing to the resolution
+limitation of SEM instrument, we did not detect any obvious
+morphology change from the SEM images of NPs (data not
+shown). In an attempt to make visual comparisons, we further
+prepared two types of microparticles (MPs), i.e., PLGA-MPs
+and PVAX-MPs following the same preparation methods
+described in the Experimental Section, except that sonication
+was not applied to the fabrication processes of MPs. The
+typical SEM images of MPs were shown in Figure 2c. It was
+obvious that PLGA-MPs kept their spherical shape and smooth
+surface morphology after incubation in H2O2 solution (10
+mM) for 0.5 or 1 h. In terms of PVAX-MPs, they had relatively
+smooth surfaces prior to incubation. However, numerous
+surface pores and structure damages were observed on the
+surface of these MPs, suggesting their oxidation-responsible
+capacity.
+Drug Release Patterns of NPs. To quantitatively
+investigate the ROS-responsive drug release patterns of
+PVAX-based NPs, we comparatively investigated the drug
+release rates of PLGA-based NPs and PVAX-based NPs in
+solutions with diﬀerent pH values (7.4 or 5.5) and H2O2 (0 or
+100 μM). Figure 2d and Figure 2e elucidated that both types
+of NPs had a slightly fast initial release and a subsequently
+slower constant release. The initial burst release of drug
+molecules can be attributed to their rapid diﬀusion across the
+Table 2. IC50 (μM) of NPs against MCF-7 Cells
+incubation time
+PLGA-NPs
+TPOX-NPs
+24 h
+47.2
+22.4
+48 h
+32.3
+12.3
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+54
+
+surface layer of NPs, and the subsequently sustained release
+can be ascribed to drugs in the interior of NPs. Moreover, the
+drug release rate of PLGA-CPT-NPs in H2O2 solution had no
+obvious diﬀerence with that in the solution without H2O2. On
+the contrary, the drug release rate of PVAX-CPT-NPs
+increased observably in the presence of H2O2, which can be
+due to the accelerated degradation of NP matrixes.
+As reported, healthy cells had low levels of ROS to facilitate
+their growth adaptation and survival, whereas ROS amounts in
+cancer cells were over 1000 times more than that in healthy
+cells.15,16,38 Furthermore, we investigated where ROS were
+generated in cells. As seen in Figure S2, MCF-7 cells without
+treatment (negative control) showed ROS signal. Interestingly,
+the ROS amount increased sharply in the PVAX-NP-treated
+cells, and these ROS were dispersed in the whole cells. These
+results obviously suggest that the increased amount of ROS is
+expected to facilitate the release of drug from PVAX-NPs into
+cells, resulting in the improved anticancer activity.
+Intracellular Uptake Proﬁles of NPs. Cell internalization
+is a fundamental requirement for the application of chemo-
+therapeutic drugs in breast cancer therapy because they take
+their antitumor eﬀect mainly within cells.39 Thus, we
+qualitatively and quantitatively studied the cellular uptake
+properties of NPs using CLSM and ﬂow cytometry,
+respectively. MCF-7 cells were treated with PLGA-NPs or
+PVAX-NPs for 3 h to make qualitative comparisons. As shown
+in Figure 3a-b, the control cells without NP treatment had no
+green ﬂuorescence signals. As expected, cells with the
+treatment of PLGA-NPs or PVAX-NPs showed obvious
+CUR accumulation in their cytoplasm. Moreover, it is rather
+surprising for us that the green ﬂuorescence signal was
+distributed evenly throughout the cytoplasm with the treat-
+ment of PVAX-NPs compared to PLGA-NP-treated cells. The
+possible reason is that many more CUR molecules released
+from the ROS-responsive PVAX-NPs can enter into an
+intracellular environment than that of PLGA-NPs.
+In the quantitative experiments, MCF-7 cells were incubated
+with PLGA-NPs or PVAX-NPs at an equivalent CUR
+concentration of 16 μM for 1, 3, and 5 h, respectively. Figure
+3c showed the typical ﬂow cytometric histograms for the cells
+treated with NPs for 5 h. These results revealed that PVAX-
+NPs showed remarkably stronger green ﬂuorescence intensities
+inside the cells compared with that for PLGA-NPs.
+Furthermore, cellular uptake amounts (Figure 3d) and green
+ﬂuorescence intensities (Figure 3e) of PVAX-NPs were more
+than that of PLGA-NPs, even though there was no statistically
+signiﬁcantly diﬀerence between these two types of NPs. In
+addition, as presented in Figure 3d and Figure S3a, after 5 h
+incubation, the percentages of PLGA-NP- or PVAX-NP-
+treated cells with green ﬂuorescence were respective 41.5% and
+61.6%, which were much higher than that of pristine CUR-
+treated cells (34.1%). It was also found that green ﬂuorescence
+intensities in cells exhibited a similar trend, as shown in Figure
+3e and Figure S3b. Although a certain percentage of pristine
+CUR-treated cells showed green ﬂuorescence, two critical
+points had to be mentioned: (1) Pristine CUR, a hydrophobic
+Figure 5. Hemocompatibility of PLGA-NPs and PVAX-NPs. (a) Photograph and (b) hemolytic analysis of erythrocyte suspensions treated with
+various NPs at diﬀerent CUR concentrations. Triton X-100 (1%) was used as a positive control (100%), whereas PBS was used as a negative
+control (0%). Each point represents the mean ± SEM (n = 5). (c) Blood test of Kunming mice injected with PBS (control), PLGA-NPs, or PVAX-
+NPs for 6 or 24 h. Each point represents the mean ± SEM (n = 3).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+55
+
+drug, was dissolved in medium containing DMSO (5%, v/v) in
+this study. It was reported that DMSO could greatly enhance
+the diﬀusion of hydrophobic drugs into cells;40 (2) Pristine
+CUR-treated cells were exposed to CUR solution directly,
+whereas NP-treated cells were grown in the medium
+containing very low concentrations of extracellular CUR
+Figure 6. In vivo antitumor activities of PLGA-NPs and PVAX-NPs. (a) Changes in body weight in diﬀerent treatment groups. Mouse body weight
+was normalized to day 0 body weight (expressed as a percentage). (b) Tumor growth proﬁles, (c) tumor weights, and (d) tumor inhibition ratios in
+diﬀerent groups with the treatment of PLGA-NPs or PVAX-NPs. Statistical signiﬁcance was assessed using ANOVA followed by a Bonferroni
+posthoc test (*P < 0.05 and **P < 0.01). Each point represents the mean ± SEM (n = 5). Measurement of apoptosis. (e) H&E staining of tumor
+tissues from mice treated with PLGA-NPs or PVAX-NPs. Scale bar represents 200 μm. (f) Representative images of double-ﬂuorescence labeling
+with DAPI (nuclei, blue) and TUNEL (green) in breast tumors from diﬀerent mouse groups. Scale bar represents 200 μm.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+56
+
+released from NPs, which were due to the slow release of CUR
+from NPs (less than 10% and 20% of the total CUR for
+respective PLGA-NPs and PVAX-NPs within the initial 5 h).
+Therefore, we can conclude that green ﬂuorescence signals in
+MCF-7 cells are mainly attributable to intracellular uptake of
+NPs.
+In Vitro Antitumor Activities of NPs. To investigate in
+vitro antitumor activity of PLGA-NPs and PVAX-NPs, we
+treated MCF-7 cells with these NPs for 24 and 48 h,
+respectively. It can be seen from Figure 4a and Figure 4b that
+both types of NPs inhibited the cell viability depending on the
+drug concentration and the incubation time. Notably, the
+viability diﬀerences between cells treated with PLGA-NPs or
+PVAX-NPs appeared relatively weaker under low concen-
+tration of CUR (less than 2 μM). However, when CUR
+concentration increased to over 2 μM, the antitumor activities
+of PVAX-NPs were signiﬁcantly stronger than that of PLGA-
+NPs, which might be attributed to the oxidation-responsive
+drug release features of PVAX-NPs. To quantitatively
+characterize the cytotoxicity of PLGA-NPs and PVAX-NPs,
+we calculated IC50 values of these two types of NPs. As
+depicted in Table 2, the IC50 values for PLGA-NPs were 47.2
+μM and 32.3 μM at 24 and 48 h, respectively, which were
+much higher than the corresponding IC50 values in PVAX-NPs.
+These results clearly suggest that PVAX-NPs have much
+stronger antitumor activities than PLGA-NPs. To attempt to
+determine the potential adverse eﬀects of NPs, we evaluated
+their cytotoxicity against HUVECs, which were normal cells.
+As can be seen in Figure S4 and Table S1, although PLGA-NPs
+and PVAX-NPs inhibited the viabilities of HUVECs to a
+certain extent, their IC50 values were signiﬁcantly higher than
+that against MCF-7 cells. Therefore, we can conclude that
+PLGA-NPs and PVAX-NPs have relatively low adverse eﬀects.
+Hemolysis Assay. The hemocompatibility of NPs is an
+important parameter for in vivo application. As shown in Figure
+5a-b, there was no distinguishable evidence of hemolysis in
+tubes treated with PLGA-NPs or PVAX-NPs under CUR
+concentration of 100 μM, which was much higher than the
+concentrations applied in the in vitro experiments. In addition,
+in vivo blood compatibility results (Figure 5c) revealed that all
+of the blood components, such as white blood cells (WBC),
+red blood cells (RBC), platelets (PLT), lymphocytes (LYM),
+monouclear cells (MON), and granulocyte cells (Gran), were
+in the normal range. These results collectively indicate the
+excellent blood biocompatibility of both types of NPs.
+In Vivo Antitumor Activity of NPs. To verify the in vivo
+antitumor eﬃcacy, PBS, PLGA-NPs, and PVAX-NPs were
+intravenously injected into mice bearing a subcutaneous MCF-
+7 tumor. Body weight change is a common parameter for
+assessing the systemic adverse eﬀects of nanotherapeutics. It
+could be noticed from Figure 6a that injecting both types of
+NPs resulted in no obvious body weight loss compared with
+the PBS control group, indicating the comparable safety of
+PLGA-NPs and PVAX-NPs. The tumor volumes for the
+diﬀerent treatment groups are displayed in Figure 6b. The
+volume of MCF-7 tumor treated with PBS increased
+throughout the experiment phase. However, the increase
+trend of tumor volume was reversed by intravenous injection
+of NPs. Furthermore, intravenous injection of PLGA-NPs
+suppressed the volume of tumor by 73.1% at day 21, whereas
+administration of PVAX-NPs with the same dose of CUR (10
+mg/kg) decreased tumor volumes by 87.2%. The remarkable
+suppression of tumor volume in the PVAX-NP-treated group
+could be attributed to the beneﬁcial property of their ROS
+sensitivity. In addition, we found that tumor weights (Figure
+6c) and tumor inhibition ratios (Figure 6d) correlated well
+with tumor sizes.
+Histological examinations of tumor tissue sections (Figure
+6e) were carried out to compare the morphology of tumor
+tissue between the PBS control group and NP-treated groups.
+It was obvious that tumor cells in the PBS control group were
+observed with large nucleus. Conversely, NP-treated groups
+showed an obvious decrease in tumor cell numbers and
+nucleus shrinkage. It was worth noting that a large necrotic
+area was detected in the PVAX-NP-treated group. The pro-
+apoptotic eﬀects of PVAX-NPs were further studied using
+TUNEL assays. Figure 6f showed that TUNEL-stained cells
+(green ﬂuorescence) were barely observed in the tumor tissue
+sections from the PBS control group but were obviously
+detected in tumor tissue sections of mice treated with PLGA-
+NPs. Furthermore, the PVAX-NP-treated group showed much
+more green ﬂuorescence than PLGA-NPs, indicating that
+PVAX-NPs had much stronger pro-apoptotic activity than
+PLGA-NPs in vivo. In addition, we performed histological
+analysis of the main organs to examine the systemic toxicity.
+We found that no clear evidence of organ or tissue
+impairments was observed in H&E-stained slices from all the
+treatment groups (Figure S5), demonstrating the excellent
+biocompatibility of PLGA-NPs and PVAX-NPs.
+■CONCLUSION
+In summary, an oxidation-responsive polymer, termed as
+PVAX, was successfully synthesized and exploited to fabricate
+curcumin (CUR)-loaded nanoparticles (NPs). The resulting
+PVAX-NPs had a mean hydrodynamic diameter (about 242
+nm) and a negative-charged surface (around −17.3 mV) that
+eﬀectively facilitated their cell internalization. Moreover, these
+NPs could particularly respond to reactive oxygen species and
+accelerate release of drugs in the tumor cells. We further found
+that PVAX-NPs showed much stronger antitumor activity
+against breast cancer cells compared with their counterparts
+(PLGA-NPs). In vivo mice experiments clearly indicated that
+PVAX-NPs exhibited much higher antitumor activities than
+PLGA-NPs. Collectively, our ﬁndings indicate that PVAX-NPs
+might hold promising potential as a nanotherapeutic platform
+for cancer chemotherapy.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+The Supporting Information is available free of charge on the
+ACS Publications website at DOI: 10.1021/acs.molpharma-
+ceut.8b00634.
+Experimental description, X-ray diﬀraction patterns of
+NPs, cellular uptake proﬁles of pristine CUR in MCF-7
+cells, ROS levels in MCF-7 cells, toxicity of NPs against
+HUVECs, H&E staining of sections of heart, liver,
+spleen, lung, and kidney (PDF)
+■AUTHOR INFORMATION
+Corresponding Authors
+*Phone: +86-23-6825-3792. Fax: +86-23-6825-3204. E-mail:
+zgxu@swu.edu.cn (Z.X.).
+*Phone: +86-23-6825-4762. Fax: +86-23-6825-3204. E-mail:
+hustboxiao@gmail.com or bxiao@swu.edu.cn (B.X.).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+57
+
+ORCID
+Zhigang Xu: 0000-0003-1805-5061
+Jiucun Chen: 0000-0002-6677-2228
+Bo Xiao: 0000-0002-2992-6435
+Author Contributions
+Y.H. and B.X. designed experiments, supervised the project,
+and wrote the draft of manuscript. Y.H., Q.C., P.M., H.S., X.M.,
+Y.M., X.Z., S.G., and J.C. performed the experiments. X.Z. and
+B.X. edited and revised the manuscript. All authors have given
+approval to the ﬁnal version of the manuscript.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This work was supported by the National Natural Science
+Foundation of China (81571807 and 51503172), the
+Fundamental Research Funds for the Central Universities
+(XDJK2017B058), the Young Core Teacher Program of the
+Municipal Higher Educational Institution of Chongqing, the
+Venture & Innovation Support Program for Chongqing
+Overseas Returnees (cx2018029), the Graduate Student
+Research Innovation (CYS18108), and the State Key
+Laboratory of Silkworm Genome Biology.
+■REFERENCES
+(1) Sud, A.; Kinnersley, B.; Houlston, R. S. Genome-wide
+association studies of cancer: current insights and future perspectives.
+Nat. Rev. Cancer 2017, 17 (11), 692−4.
+(2) Yoo, W.; Yoo, D.; Hong, E.; Jung, E.; Go, Y.; Singh, S. V. B.;
+Khang, G.; Lee, D. Acid-activatable oxidative stress-inducing
+polysaccharide nanoparticles for anticancer therapy. J. Controlled
+Release 2018, 269, 235−44.
+(3) Xiao, B.; Zhang, M. Z.; Viennois, E.; Zhang, Y. C.; Wei, N.;
+Baker, M. T.; Jung, Y. J.; Merlin, D. Inhibition of MDR1 gene
+expression and enhancing cellular uptake for effective colon cancer
+treatment using dual-surface-functionalized nanoparticles. Biomaterials
+2015, 48, 147−60.
+(4) Ge, Y. X.; Ma, Y. K.; Li, L. B. The application of prodrug-based
+nano-drug delivery strategy in cancer combination therapy. Colloids
+Surf., B 2016, 146, 482−89.
+(5) Yao, Q.; Gutierrez, D. C.; Hoang, N. H.; Kim, D.; Wang, R. N.;
+Hobbs, C.; Zhu, L. Efficient Codelivery of Paclitaxel and Curcumin by
+Novel Bottlebrush Copolymer-based Micelles. Mol. Pharmaceutics
+2017, 14 (7), 2378−89.
+(6) Mock, C. D.; Jordan, B. C.; Selvam, C. Recent advances of
+curcumin and its analogues in breast cancer prevention and treatment.
+RSC Adv. 2015, 5 (92), 75575−88.
+(7) Harada, T.; Giorgio, L.; Harris, T. J.; Pham, D. T.; Ngo, H. T.;
+Need, E. F.; Coventry, B. J.; Lincoln, S. F.; Easton, C. J.; Buchanan,
+G.; Kee, T. W. Diamide Linked γ-Cyclodextrin Dimers as Molecular-
+Scale Delivery Systems for the Medicinal Pigment Curcumin to
+Prostate Cancer Cells. Mol. Pharmaceutics 2013, 10, 4481−90.
+(8) Naksuriya, O.; Okonogi, S.; Schiffelers, R. M.; Hennink, W. E.
+Curcumin nanoformulations: A review of pharmaceutical properties
+and preclinical studies and clinical data related to cancer treatment.
+Biomaterials 2014, 35 (10), 3365−83.
+(9) Dulbecco, P.; Savarino, V. Therapeutic potential of curcumin in
+digestive diseases. World J.Gastroentero. 2013, 19 (48), 9256−70.
+(10) Irving, G. R. B.; Karmokar, A.; Berry, D. R.; Brown, K.;
+Steward, W. P. Curcumin: The potential for efficacy in gastrointestinal
+diseases. Best Pract. Res. Cl. Ga. 2011, 25 (4−5), 519−34.
+(11) Zhang, T. H.; Chen, X.; Xiao, C. S.; Zhuang, X. L.; Chen, X. S.
+Synthesis of a phenylboronic ester-linked PEG-lipid conjugate for
+ROS-responsive drug delivery. Polym. Chem. 2017, 8 (40), 6209−16.
+(12) Sobotta, F. H.; Hausig, F.; Harz, D. O.; Hoeppener, S.;
+Schubert, U. S.; Brendel, J. C. Oxidation-responsive micelles by a one-
+pot polymerization-induced self-assembly approach. Polym. Chem.
+2018, 9 (13), 1593−2.
+(13) Paramita, D.; Wisnubroto, J. D. P. Effect of methylglyoxal on
+reactive oxygen species, KI-67, and caspase-3 expression in MCF-7
+cells. Exp. Mol. Pathol. 2018, 105 (1), 76−80.
+(14) Deng, Y. T.; Huang, H. C.; Lin, J. K. Rotenone Induces
+Apoptosis in MCF-7 Human Breast Cancer Cell-Mediated ROS
+Through JNK and p38 Signaling. Mol. Carcinog. 2010, 49 (2), 141−
+51.
+(15) D’Autreaux, B.; Toledano, M. B. ROS as signalling molecules:
+mechanisms that generate specificity in ROS homeostasis. Nat. Rev.
+Mol. Cell Biol. 2007, 8 (10), 813−24.
+(16) Lux, C. D.; Joshi-Barr, S.; Nguyen, T.; Mahmoud, E.; Schopf,
+E.; Fomina, N.; Almutairi, A. Biocompatible Polymeric Nanoparticles
+Degrade and Release Cargo in Response to Biologically Relevant
+Levels of Hydrogen Peroxide. J. Am. Chem. Soc. 2012, 134 (38),
+15758−64.
+(17) Su, Z. G.; Chen, M. L.; Xiao, Y. Y.; Sun, M. J.; Zong, L.; Asghar,
+S.; Dong, M.; Li, H. P.; Ping, Q. N.; Zhang, C. ROS-triggered and
+regenerating anticancer nanosystem: An effective strategy to subdue
+tumor’s multidrug resistance. J. Controlled Release 2014, 196, 370−83.
+(18) Saravanakumar, G.; Kim, J.; Kim, W. J. Reactive-Oxygen-
+Species-Responsive Drug Delivery Systems: Promises and Challenges.
+Adv. Sci. 2017, 4 (1), 1600124.
+(19) Chiang, Y. T.; Yen, Y. W.; Lo, C. L. Reactive oxygen species
+and glutathione dual redox-responsive micelles for selective
+cytotoxicity of cancer. Biomaterials 2015, 61, 150−61.
+(20) Vong, L. B.; Nagasaki, Y. Combination Treatment of Murine
+Colon Cancer with Doxorubicin and Redox Nanoparticles. Mol.
+Pharmaceutics 2016, 13, 449−55.
+(21) Lee, D.; Bae, S.; Hong, D.; Lim, H.; Yoon, J. H.; Hwang, O.;
+Park, S.; Ke, Q.; Khang, G.; Kang, P. M. H2O2-responsive molecularly
+engineered polymer nanoparticles as ischemia/reperfusion-targeted
+nanotherapeutic agents. Sci. Rep. 2013, 3, 2233.
+(22) Kang, C.; Cho, W.; Park, M.; Kim, J.; Park, S.; Shin, D.; Song,
+C.; Lee, D. H2O2-triggered bubble generating antioxidant polymeric
+nanoparticles as ischemia/reperfusion targeted nanotheranostics.
+Biomaterials 2016, 85, 195−203.
+(23) Park, S.; Yoon, J.; Bae, S.; Park, M.; Kang, C.; Ke, Q. G.; Lee,
+D. W.; Kang, P. M. Therapeutic use of H2O2-responsive anti-oxidant
+polymer nanoparticles for doxorubicin-induced cardiomyopathy.
+Biomaterials 2014, 35 (22), 5944−53.
+(24) Kwon, B.; Kang, C.; Kim, J.; Yoo, D.; Cho, B. R.; Kang, P. M.;
+Lee, D. H2O2-responsive antioxidant polymeric nanoparticles as
+therapeutic agents for peripheral arterial disease. Int. J. Pharm. 2016,
+511 (2), 1022−32.
+(25) Xiao, B.; Xu, Z. G.; Viennois, E.; Zhang, Y. C.; Zhang, Z.;
+Zhang, M. Z.; Han, M. K.; Kang, Y. J.; Merlin, D. Orally Targeted
+Delivery of Tripeptide KPV via Hyaluronic Acid-Functionalized
+Nanoparticles Efficiently Alleviates Ulcerative Colitis. Mol. Ther.
+2017, 25 (7), 1628−40.
+(26) Xiao, B.; Zhang, Z.; Viennois, E.; Kang, Y. J.; Zhang, M. Z.;
+Han, M. K.; Chen, J. C.; Merlin, D. Combination Therapy for
+Ulcerative Colitis: Orally Targeted Nanoparticles Prevent Mucosal
+Damage and Relieve Inflammation. Theranostics 2016, 6 (12), 2250−
+66.
+(27) Xiao, B.; Zhang, M.; Viennois, E.; Zhang, Y.; Wei, N.; Baker, M.
+T.; Jung, Y.; Merlin, D. Inhibition of MDR1 gene expression and
+enhancing cellular uptake for effective colon cancer treatment using
+dual-surface-functionalized nanoparticles. Biomaterials 2015, 48, 147−
+60.
+(28) Xiao, B.; Han, M. K.; Viennois, E.; Wang, L.; Zhang, M.; Si, X.;
+Merlin, D. Hyaluronic acid-functionalized polymeric nanoparticles for
+colon cancer-targeted combination chemotherapy. Nanoscale 2015, 7
+(42), 17745−55.
+(29) Wang, H. Y.; Cheng, X. S.; Xiao, B.; Wang, C.; Zhao, L.; Zhu,
+Y. J. Surface Carbon Activated NiMo/TiO2 Catalyst Towards Highly
+Efficient Hydrodesulfurization Reaction. Catal. Surv. Asia 2015, 19
+(2), 78−87.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+58
+
+(30) Ma, L. J.; Chen, Q. B.; Ma, P. P.; Han, M. K.; Xu, Z. G.; Kang,
+Y. J.; Xiao, B.; Merlin, D. iRGD-functionalized PEGylated nano-
+particles for enhanced colon tumor accumulation and targeted drug
+delivery. Nanomedicine 2017, 12 (16), 1991−6.
+(31) Shi, D. Y.; Li, J.; Guo, S. J.; Su, H.; Fan, X. The antitumor effect
+of bromophenol derivatives in vitro and Leathesia nana extract in vivo.
+Chin. J. Oceanol. Limnol. 2009, 27 (2), 277−82.
+(32) Kim, A. Y.; Ha, J. H.; Park, S. N. Selective Release System for
+Antioxidative and Anti-Inflammatory Activities Using H2O2-
+Responsive Therapeutic Nanoparticles. Biomacromolecules 2017, 18
+(10), 3197−6.
+(33) Zhao, R.; Zheng, G.; Fan, L.; Shen, Z.; Jiang, K.; Guo, Y.; Shao,
+J. W. Carrier-free nanodrug by co-assembly of chemotherapeutic
+agent and photosensitizer for cancer imaging and chemo-photo
+combination therapy. Acta Biomater. 2018, 70, 197−10.
+(34) Reuter, K. G.; Perry, J. L.; Kim, D.; Luft, J. C.; Liu, R.;
+DeSimone, J. M. Targeted PRINT Hydrogels: The Role of
+Nanoparticle Size and Ligand Density on Cell Association,
+Biodistribution, and Tumor Accumulation. Nano Lett. 2015, 15
+(10), 6371−8.
+(35) Bi, C.; Miao, X. Q.; Chow, S. F.; Wu, W. J.; Yan, R.; Liao, Y. H.;
+Chow, A. H.; Zheng, Y. Particle size effect of curcumin nano-
+suspensions on cytotoxicity, cellular internalization, in vivo
+pharmacokinetics and biodistribution. Nanomedicine 2017, 13 (3),
+943−53.
+(36) Son, J.; Yang, S. M.; Yi, G.; Roh, Y. J.; Park, H.; Park, J. M.;
+Choi, M. G.; Koo, H. Folate-modified PLGA nanoparticles for tumor-
+targeted delivery of pheophorbide a in vivo. Biochem. Biophys. Res.
+Commun. 2018, 498 (3), 523−28.
+(37) Shang, Q.; Huang, S.; Zhang, A.; Feng, J.; Yang, S. The binary
+complex of poly(PEGMA-co-MAA) hydrogel and PLGA nano-
+particles as a novel oral drug delivery system for ibuprofen delivery.
+J. Biomater. Sci., Polym. Ed. 2017, 28 (16), 1874−87.
+(38) Azad, M. B.; Chen, Y. Q.; Gibson, S. B. Regulation of
+Autophagy by Reactive Oxygen Species (ROS): Implications for
+Cancer Progression and Treatment. Antioxid. Redox Signaling 2009,
+11 (4), 777−90.
+(39) Prasad, S.; Gupta, S. C.; Tyagi, A. K.; Aggarwal, B. B.
+Curcumin, a component of golden spice: from bedside to bench and
+back. Biotechnol. Adv. 2014, 32 (6), 1053−64.
+(40) Lipinski, C. A.; Lombardo, F.; Dominy, B. W.; Feeney, P. J.
+Experimental and computational approaches to estimate solubility and
+permeability in drug discovery and development settings. Adv. Drug
+Delivery Rev. 1997, 23 (1−3), 3−25.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.8b00634
+Mol. Pharmaceutics 2019, 16, 49−59
+59

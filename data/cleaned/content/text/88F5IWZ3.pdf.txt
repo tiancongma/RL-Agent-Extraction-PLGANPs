@@ -1,0 +1,1157 @@
+801
+Acta Poloniae Pharmaceutica – Drug Research, Vol. 78 No. 6 pp. 801–812, 2021
+DOI: 10.32383/appdr/146287
+Received 16 December 2021, Received in revised form 21 January 2022, Accepted 31 January 2022
+PHARMACEUTICAL TECHNOLOGY
+PRE-FORMULATION DESIGN OF SUSTAINED-RELEASE GnRHa-LOADED
+PLGA MICROSPHERES AND ASSOCIATED FORMULATIONS
+FOR CONTROLLING REPRODUCTION IN AQUACULTURE
+MARTINA HOLICKÁ1#, JAKUB VYSLOUŽIL1#, KATEŘINA KUBOVÁ1*, JAN MUSELÍK1,
+EVA RADINOVÁ1, DAVID VETCHÝ1, HANA KOTOLOVÁ2, TOMÁŠ HAMMER2,
+JOSEF MAŠEK3, PETER PODHOREC4, and JINDŘIŠKA KNOWLES4
+1Department of Pharmaceutical Technology, Faculty of Pharmacy, Masaryk University,
+Brno, Czech Republic
+2Department of Pharmacology and Toxicology, Faculty of Pharmacy, Masaryk University,
+Brno, Czech Republic
+3Department of Pharmacology and Toxicology, Veterinary Research Institute, Brno, Czech Republic
+4Laboratory of Controlled Reproduction and Intensive Fish Culture,
+Faculty of Fisheries and Protection of Waters, the University of South Bohemia in České Budějovice,
+České Budějovice, Czech Republic
+Abstract: Poly(lactide-co-glycolide) PLGA microparticles represent an efficient and modern tool to encap-
+sulate peptide drugs, which enables their administration to live organisms with the benefit of prolonged-
+release. One area that could make the best of this opportunity is fish breeding in aquaculture. The presented
+study was centered on the formulation of gonadotropin-releasing hormone (GnRH) analog loaded PLGA
+microparticles intended for fish breeding augmentation, using the double emulsion evaporation method.
+In this initial experiment, the influence of several input variables (drug, PLGA type, emulsifier concen-
+tration, gelatine concentration in internal phase) on observed parameters (morphology, particle size, drug
+content, drug release, resuspension index) was evaluated. It was found that at lower emulsifier concentra-
+tion, the particle size is apparently lower (8.54 ± 6.13-10.36 ± 4.65 vs. 25.56 ± 18.86), which is more ad-
+vantageous in injection administration. Encapsulation efficiency ranged from 39.13 ± 8.85 to 75.30 ± 8.83,
+favoring lower emulsifier concentration, while resuspension index (70.99 ± 6.47%) suggested the possi-
+bility of longer-term administration. Dissolution tests revealed prolonged release for ten days, with most
+of the drug released in 72-96 hrs. A follow-up study discerning polymer type/gelatine concentration was
+suggested. Accompanying studies of imaging agent coumarin-6 encapsulation for eventual distribution
+imaging and metoclopramide base drug release for potential adjuvant use were also successfully realized.
+Keywords: GnRH analogs, microparticles, solvent evaporation, gelatine, sustained drug release, fish re-
+production
+One of the existing approaches to increase the
+yield of the reproductive process in fish farming is
+hormone therapy, used to induce both ovulation and
+spermiation (1). For this purpose, gonadotropin-re-
+leasing hormone (GnRH) and its analogs (GnRHa),
+mainly in the form of agonists, can be adminis-
+tered. Numerous studies reporting their positive ef-
+fect on various species have been published (2, 3).
+Moreover, dopaminergic agents prevent neuropep-
+tides’ synthesis or block their release from the pi-
+tuitary gland in fish species with dopamine inhibi-
+tion (4, 5). Therefore, GnRH or its analogs can be
+combined with dopaminergic inhibitors like meto-
+clopramide or domperidone to improve the therapy
+effect further (1).
+However, this method of use also brings chal-
+lenges based on pharmacological/pharmaco-tech-
+nological aspects. If administered orally, GnRH
+analogs are eliminated by harsh conditions in the
+gastrointestinal tract (GIT). If administered paren-
+terally as simple suspension, unstable water-soluble
+GnRH analogs remain unprotected against enzymes,
+and their half-life is relatively short (6). It can result
+in the need for repeated administration. However, it
+# These authors contributed equally to this work
+* Corresponding author: e-mail: kubovak@pharm.muni.cz
+ISSN 2353-5288
+Polish Pharmaceutical Society
+
+MARTINA HOLICKA et al.
+802
+is well-known that recurring handling of the treated
+population causes stress, and it can negatively affect
+the quantity and quality of gametes (7). Therefore,
+it is logical to explore possibilities for encapsulating
+such agents. The solution can be seen in polymeric
+microparticle carriers. With an appropriate polymer
+as a carrier, microparticle dosage forms can offer
+protection against the environment, decrease the
+single-dose amount, systemic side effects, reduce
+administration frequency, and the possibility of dose
+dumping, resulting in so-called controlled drug de-
+livery. It effectively means that after an administra-
+tion of such a dosage form, the drug is delivered in
+therapeutic dose for a prolonged time interval with-
+out the need for re-administration (8). This concept
+could also be advantageous in fish, especially in
+breeding populations (9).
+Several polymers were examined as micropar-
+ticle carriers in fish, including chitosan (10) or co-
+polymer of ethylene and vinyl acetate (11). Very
+promising are polyesters, such as poly(lactide-co-
+glycolide) (PLGA) and poly(L-lactide) (PLLA),
+previously successfully used as antigen carriers in
+fish (12, 13). They can release an active agent over
+a more extended period, and due to their biodegrad-
+ability and biocompatibility, they are very well tol-
+erated systems (14), FDA approved for human use.
+Therefore, it is clear they make a strong candidate
+for use in fish reproduction as a GnRHa carrier (15),
+especially in cases when a combination of PLGA
+with some synthetic GnRH analogs has not been
+tested yet.
+Before a final formulation design is devised,
+the pre-formulation study is usually performed to
+estimate the preparation system behavior and set
+the basic parameters. Therefore, the main objec-
+tive of the presented paper is the formulation prep-
+aration of GnRHa-loaded PLGA microparticles
+and their subsequent evaluation. To our knowl-
+edge, the selected combination of PLGA and ala-
+relin as GnRHa was not previously studied in fish.
+Emphasis was placed on prolonged drug release
+achievement and verification of the microparticles’
+applicability to a living organism concerning the
+pharmaceutical-technological parameters to build
+a foundation for further in vivo testing. Because the
+chosen preparation method is essentially simple and
+with certain analytical backgrounds quite feasible
+outside the pharmaceutical technology laboratory,
+an explanation is given at individual evaluations
+to clarify their practical impact on dosage form
+administration. Last but not least, a simple meto-
+clopramide base dissolution study was included to
+complete the outline of possible adjuvant treatment,
+and the design of fluorescent microparticles was
+suggested for eventual distribution and immunol-
+ogy studies.
+MATERIAL AND METHODS
+Materials
+The main drugs used for the study were GnRH
+analogs alarelin acetate and leuprorelin acetate (both
+APExBIO, USA). Coumarin-6 (Sigma Aldrich, USA)
+served as a model substance for fluorescence study.
+Gelatine (Sigma Aldrich, USA) was used as an in-
+ner aqueous phase thickener to increase a micropar-
+ticle core density. As a polymer carrier poly(lactide-
+co-glycolide) acid (PLGA) polymers were used:
+Resomer® RG 504S (50:50 lactide:glycolide ratio),
+Resomer® RG 653H (65:35 ratio) and Resomer®
+RG 753S (75:25  ratio; all Evonik, Germany).
+Dichloromethane (Penta, Czech Republic) was the
+organic solvent used for the oil phase, polyvinyl al-
+cohol (PVA; Mw 31.000–50.000; 98–99% hydro-
+lyzed) (Sigma Aldrich, USA) acted as an emulsifi-
+er, and sodium chloride (Dr. Kulich Pharma, Czech
+Republic) as an inorganic salt and osmolyte. Ball-
+milled (PM 100, Retsch, Germany) metoclopramide
+(Carbosynth, United Kingdom) intended as an adju-
+vant was used in the form of standard suspension,
+whose drug release was also evaluated. Phosphate
+buffer solution pH 7.0 for in vitro release consisted
+of 5 g of potassium dihydrogen phosphate and 11 g
+of potassium hydrogen phosphate (both Dr. Kulich
+Pharma, Czech Republic) in 900 mL of purified wa-
+ter. All materials were of Ph. Eur. quality.
+Microparticles preparation
+Alarelin and leuprorelin-loaded microparticles
+were obtained by the double emulsion (water1/oil/wa-
+ter2; w1/o/w2) solvent evaporation method. Precisely
+800 mg of polymer were dissolved in 5 mL of dichlo-
+romethane, representing the oil phase (o). For the in-
+ner aqueous phase (w1) formation, 10 mg of alarelin
+or leuprorelin were weighed and dissolved in 1.5 mL
+of gelatine solution (2.5 or 9.09%). The drug-gelatine
+solution was added to the oil phase. This mixture
+was pre-mixed by vortex (Lab Dancer, IKA-Werke
+GmbH & Co. KG, Germany) for 30 seconds. Then
+the mixture was stirred by homogenizer (T25 basic,
+IKA-Werke, Germany) at 11 000 rpm for 60 sec-
+onds to form a simple w/o emulsion. The drug-gela-
+tine solution was dispersed in the polymer solution.
+Gelatine solution acted not only as the drug solvent
+but also as a thickener, increasing the inner water
+phase viscosity (16). If simple water is used instead
+of gelatine, the stability of the primary emulsion
+
+Pre-formulation design of sustained-release GnRHa-loaded PLGA microspheres…
+803
+Table 1. The microparticles samples and their formulation/process characteristics
+Sample*
+PLGA
+polymer**
+Drug, amount
+Gelatine solution - volume (mL),
+concentration (%)
+PVA (%)
+Method
+753-G9
+753S
+-
+1.5, 9.09
+1.0
+w1/o/w2
+A504-G2.5
+504S
+Alarelin, 10 mg
+1.5, 2.5
+1.0
+w1/o/w2
+A653-G91
+653H
+Alarelin, 10 mg
+1.5, 9.09
+1.0
+w1/o/w2
+A653-G90.1
+653H
+Alarelin, 10 mg
+1.5, 9.09
+0.1
+w1/o/w2
+L653-G9
+653H
+Leuprorelin, 10 mg
+1.5, 9.09
+1.0
+w1/o/w2
+C753
+753S
+Coumarin-6, 500 µg
+-
+1.0
+o/w
+*A - alarelin; L - leuprorelin, G - gelatine; **the first two numbers express the ratio of lactic acid monomers in PLGA,
+the third number represents the PLGA viscosity (dL/g), S - ester terminated, H - free carboxylic acid
+would be decreased, and the encapsulation efficiency
+would be an order of magnitude lower (17).
+Consequently, 12  mL of 1% PVA solu-
+tion were added to the w/o emulsion (besides the
+A653-G90.1 sample, where 0.1% PVA was used for
+pre-mixing), and the mixture was stirred by homog-
+enizer at 11 000 rpm for 60 seconds. PVA serves
+as an emulsifier, which improves the dispersion of
+the emulsion phases. Finally, after the pre-mixing
+step, the concentrated double emulsion was poured
+into a 200 mL solution consisting of 0.1% PVA/2%
+NaCl solution, basically resulting in diluted w1/o/
+w2 emulsion. NaCl is osmotically active, slowing
+the leakage of the hydrophilic drug from the internal
+w1 phase. The organic solvent was then evaporated
+under the mechanical stirrer (Heidolph RZR 2021,
+Sigma Aldrich, USA) at 450 rpm for 120 minutes,
+and thus the droplets slowly solidified into spherical
+particles. The resulting micro-suspension was passed
+through a 250 μm mesh sieve to remove agglomer-
+ates, and microparticles were collected by centrifu-
+gation (EBA 20, Hettich, Germany). The obtained
+particles were resuspended, frozen, and lyophilized
+(L4-55 PRO, Gregor Instruments, Czech Republic).
+The lyophilization was carried out until probe and
+sample temperature evened out and then for another
+eight hours to ensure secondary drying.
+The list of prepared samples with their formu-
+lation parameters is summarized in Table 1. The
+first letter in the sample nomenclature denotes drug
+(A - alarelin, L - leuprorelin, C - coumarin-6), fol-
+lowed by a number specifying PLGA type (504,
+653, 753), ended with G for gelatine (if used) and its
+concentration in% (2.5, 9.09). Eventually, the last
+number in the lower index denotes PVA concen-
+tration for pre-mixing. If not present, 1% PVA was
+used. Sample containing coumarin-6 was prepared
+similarly but using simple w/o solvent evaporation
+method. The samples A504-G2.5 and A653-G91
+consisted of three batches, four runs each, whereas
+the samples A653-G90.1 used 0.1% PVA for the pre-
+emulsion step; L653-G9, 753-G9, and C753 consisted
+of one batch only from 4 runs. A blank sample (753-
+G9) was prepared under non-pyrogenic conditions
+(depyrogenation in acetone (Penta, Czech Republic)),
+followed by heating at 250°C for 90 minutes, using
+water for injection and laminar box for preparation).
+Microparticles evaluation
+Drug content analysis
+The alarelin and leuprorelin content in PLGA
+microparticles was determined by high-perfor-
+mance liquid chromatography (HPLC). Firstly, the
+PLGA microparticles were dissolved in acetone,
+and the resulting solution was mixed with phosphate
+buffer of pH 7.0 in a 1 : 1 ratio (v/v). This mixture
+was filtered through a 0.45 µm membrane filter. The
+content was then quantified by the HPLC (Agilent
+1100, Agilent Technologies, USA) involving
+NUCLEODUR 100-5 CN-RP (150 mm × 4.6 mm,
+5 µm) column. A binary mixture of acetonitrile:
+20 mM H3PO4 (16 : 84, v/v) was used as a mobile
+phase at 0.8 mL/min flow rate with a temperature
+set at 30°C, injected sample volume of 20 µL and
+detection wavelength of 220 nm.
+The coumarin-6 content from sample C753 was
+determined by a UV/Vis spectrometer (Lambda 25,
+Perkin Elmer, USA) at 450 nm. The samples were
+prepared by dissolving 100 mg of microparticles
+in 10 mL of dichloromethane and filtered through
+a 0.22 µm membrane filter. This procedure was con-
+ducted in triplicate.
+Mean values and standard deviations (SD) were
+expressed from the obtained values. Encapsulation
+efficiency (%; EE) [1], drug load (%; DL) [2], and
+practical yield (%) [3] were also determined by us-
+ing the equations below (18, 19, 20).
+ [%]
+[1]
+
+MARTINA HOLICKA et al.
+804
+ [%]
+[2]
+ [%]
+[3]
+where: w1 represents the actual weight of the drug
+in microparticles; ct is the theoretical amount of
+drug; w2 is the total weight of prepared micropar-
+ticles; wt is the theoretical yield (total amount
+of drug and polymer used for the microparticle
+preparation).
+Scanning electron microscopy (SEM)
+The morphology and properties of samples
+were evaluated using scanning electron microscopy
+(MIRA3, Tescan Orsay Holding, Czech Republic)
+equipped with a secondary electron detector. Using
+carbon conductive double-sided adhesive tape,
+a sample was mounted on an SEM specimen stub
+(Agar Scientific, United Kingdom). Microparticles
+were coated by a layer of gold (20 nm) to elimi-
+nate charging artifacts using the metal sputtering
+coating method with argon atmosphere (Q150R
+ES Rotary-Pumped Sputter Coater/Carbon Coater,
+Quorum Technologies, United Kingdom). SEM
+images were obtained at an accelerating voltage
+of 3 kV.
+Optical microscope analysis
+Morphological properties of the prepared mi-
+croparticles (sphericity factor, equivalent diameter)
+were evaluated using an optical microscope (Nikon
+Eclipse E200, Nikon, Japan) coupled with a camera
+(72AUC02 USB, The Imaging Source, Germany).
+Randomly selected 200 microparticles were eval-
+uated by computer software (NIS-Elements AR
+4.0, Nikon, Japan). An image of every sample was
+also taken.
+Sphericity factor (SF) is a dimensionless unit
+describing particles shape. Equivalent diameter
+(ED) determines the circle diameter having the
+same area as the object observed. Both param-
+eters can be determined according to the equa-
+tion below:
+
+[4]
+
+[5]
+where: A represents area in mm2 and p is micropar-
+ticles perimeter in mm (21).
+Laser diffraction
+Laser diffraction was performed using the laser
+particle size analyzer to determine size distribution
+(LA-960, Horiba Scientific, Japan). The real refrac-
+tive index was set to 1.6. The imaginary refractive
+index was neglected. Sufficient sample weight was
+resuspended in 1 mL of purified water to induce
+signal. Resuspended samples were placed into the
+device, measured immediately, and analyzed for
+volume-based size distribution. The measurements
+were performed in triplicate. The results were ex-
+pressed as median, mean values with SD, and the di-
+ameters at the 10th, 50th, and 90th percentiles of the
+cumulative undersize plot (D10, D50, D90).
+Confocal microscope analysis
+The water suspension of the C753  sample
+(10 mg/mL) was placed into µ-Slide 8 Well (Ibidi
+GmbH, Gräfelfing, Germany). After sedimentation,
+microparticles were observed using a confocal mi-
+croscope (Leica SP8, Leica, Germany). A 458 nm
+wavelength laser was used for the excitation, and
+a hybrid emission detector (HyD) was set to 530-
+560 nm. The confocal microscopy images were ac-
+quired with a Leica objective HCX PL APO 63x.
+In vitro release studies
+In vitro alarelin/leuprorelin release in buffer so-
+lution: In vitro release testing of alarelin (time course
+ten days) was performed in Franz cells connected in
+series at 5 ± 0.5°C without stirring. Exactly 20 mg
+of microparticles were placed into a cell containing
+20 mL of phosphate pH 7.0 buffer solution. The re-
+lease medium was sampled (1.0 mL) regularly every
+24 hours, followed by a complete replacement of the
+dissolution medium in cells. All measurements were
+performed with six units. Alarelin concentration
+was quantified by HPLC using the method stated in
+the Drug content analysis section. The dissolution
+test of leuprorelin was conducted in the same fash-
+ion except that 50 mg of sample were weighed into
+30 mL of pH 7.0 buffer (22). The pH value varies in
+different tissues and fish species (23). However, the
+flesh pH is very often close to pH 7.0 (24). Therefore
+it was chosen as a reasonable compromise.
+In vitro alarelin release in agar: The meth-
+od was based on the adjusted procedure used in
+the release study of GnRHa-loaded polyanhy-
+dride microparticles (25). The selected samples
+A504-G2.5 and A653-G91 were tested in agar gel
+under three conditions. Exactly 50 mg of micropar-
+ticles were suspended in 1%/0.4 mL, 1%/0.8 mL, or
+2%/0.4 mL agarose solution in a glass vial, cooled
+down to let the agarose solidify, and then another
+
+Pre-formulation design of sustained-release GnRHa-loaded PLGA microspheres…
+805
+400 μL of the respective agarose solution were add-
+ed to form a covering layer. When the cover layer
+had solidified, 5 mL of phosphate buffer was add-
+ed. Precisely, 2 mL were taken after 23, 49, 73, 96,
+168, and 240 hours and they were filtered through
+a 0.22 µm membrane filter. The buffer residue was
+wholly removed, the vials were washed with 0.5 mL
+of buffer, and 5 mL of fresh buffer was added. In vi-
+tro experiments were run at 5°C, and for each sam-
+ple, they were performed in triplicate. The fish body
+temperature varies significantly among the species,
+mainly depending on their habitat (26). The chosen
+value represents some seawater and freshwater spe-
+cies living in cold waters (27).
+Metoclopramide suspension: A biphasic disso-
+lution setup was used to evaluate metoclopramide
+drug release. The metoclopramide suspension
+(0.5 mL) was pipetted into a cell containing 10.0 mL
+of octanol and 9.5 mL of pH 7.0 phosphate buf-
+fer. Samples from the octanol phase (0.2 mL) were
+sampled for ten days, and the volume of the with-
+drawn dissolution medium was removed by pure
+octanol. Dissolution was performed in triplicate.
+Metoclopramide assessment in dissolution medi-
+um was quantified by HPLC (Agilent 1100, Agilent
+Technologies, USA) on xBridge C18 column with
+a mobile phase consisting of acetonitrile: 20 mM
+H3PO4 (15 : 85, v/v) at the flow rate of 1 mL/min
+and spectrophotometric detection under the wave-
+length of 272 nm.
+Resuspension index
+Resuspension index (RI) expresses the per-
+centage of resuspended microparticles remain-
+ing resuspended in a medium after a given time.
+Exactly 30 mg of microparticles were placed in
+a 1.5 mL Eppendorf tube, 1 mL of distilled wa-
+ter was added, and it was vortexed for 1 minute.
+This suspension was left to stand for 10 minutes
+to allow the aggregated particles to sediment. The
+formed suspension was gently collected into a cen-
+trifuge tube. This procedure was performed in
+a total of three consequent repetitions. The col-
+lected suspension was centrifuged at 1500 rpm for
+10 minutes, and the supernatants were removed.
+Resuspended and aggregated fractions were lyophi-
+lized and weighted. Triplicate determinations were
+performed for the 753-G9 sample, and the result RI
+was calculated as:
+[%]
+[6]
+where: mr expresses the resuspended mass and ma
+the aggregated mass.
+Pierce chromogenic endotoxin test
+Each sample in 200 mg was dispersed in 2 mL
+of endotoxin-free water. The supernatant was col-
+lected from the settled suspensions, and endotox-
+in levels were tested using the Pierce test (Pierce
+Chromogenic Endotoxin Quant Kit, Thermofisher
+Scientific, USA).
+RESULTS AND DISCUSSION
+Alarelin and leuprorelin-loaded microparticles
+were successfully formulated by the double emulsion
+(w1/o/w2) method using the pre-mixing step. The cre-
+ation of the concentrated double emulsion prevented
+droplets’ coalescence during the process. It resulted
+in final microparticles with particle size in tens of
+microns, considered optimal for non-problematic
+injectability (28). Based on data available in scien-
+tific literature, the PLGA microparticles prepared
+without this step exhibited significantly bigger par-
+ticle sizes in hundreds of microns (29). Coumarin-
+6-loaded particles were also successfully prepared
+by the o/w method.
+Encapsulation process and yield
+Table 2 shows the yield and drug content analy-
+sis results. These parameters give information about
+the efficiency and loss rate of the preparation pro-
+cess. In this case, it provided a satisfactory yield, as
+the lowest value was 73.97% for L653-G9. The high-
+est was found in Resomer® 653H sample A653-G91
+(83.14 ± 2.54%). In 1% PVA alarelin samples, the
+EE and DL analysis turned out to be in favor of
+Resomer® 504 with EE of 46.56 ± 6.18% and DL
+0.55 ± 0.07%. The differences from particles pre-
+pared with Resomers® 653H can be attributed to the
+higher viscosity of the Resomer® 504 (30). Higher
+polymer viscosity produces lower yield through
+process losses (adherence to equipment). On the
+other hand, higher viscosity increases drug entrap-
+ment, resulting in higher values of EE and DL (31).
+Nevertheless, since the values overlap when SD is
+considered, the EE and DL of both samples could be
+seen as comparable, and further investigation will
+be required. Comparing A653-G91 and A653-G90.1
+samples clearly shows that the lower PVA concen-
+tration used for the pre-mixing step resulted in sig-
+nificantly higher EE and DL. This observation is
+very probably related to their higher mean size. The
+overall surface is lower, and the drug thus has less
+opportunity to leak during the preparation process
+(32). However, a higher mean size may cause prob-
+lematic administration via syringe; therefore, a final
+formulation may be understood as a compromise.
+
+MARTINA HOLICKA et al.
+806
+The leuprorelin sample L653-G9 showed a favor-
+able result with EE of 58.98 ± 1.77%, compared to
+the corresponding alarelin sample. Excellent EE
+was reached in the sample C753 with the value of
+91.50 ± 0.96%, which resulted from the couma-
+rin-6 lipophilic character (33).
+Morphology and particle size
+SEM analysis (Figure 1) showed excellently
+spherical particles for each prepared sample. It re-
+vealed a smooth surface without cracks, and it hint-
+ed at lower porosity with decreasing glycolic acid
+content in a polymer (34). Resomer® 504S (Figure 1
+- C, D) provided particles with numerous pores;
+meanwhile, Resomer® 753 (Figure 1 - A, B) yield-
+ed particles without visible pores. The images also
+suggested partially hollow particles, mainly in the
+Resomer® 504S sample. By estimation, particle size
+ranged in the interval 1-30 µm. It means polydis-
+perse particles with relatively heterogeneous size
+distribution with included agglomerates. Figure 1
+- G, H also indicates bigger particles in the sam-
+ple A653-G90.1 pre-mixed with 0.1% PVA than in
+the corresponding 1% PVA sample, confirming the
+Table 2. Encapsulation efficiency, drug loading, yield, mean size and sphericity, and their respective standard deviations.
+Sample
+EE (%)
+DL (%)
+Yield (%)
+Mean size (µm)
+Sphericity factor
+753-G9
+-
+-
+75.36
+6.25 ± 2.51
+0.999 ± 0.001
+A504-G2.5
+46.56 ± 6.18
+0.55 ± 0.07
+77.01 ± 0.78
+8.54 ± 6.13
+0.973 ± 0.027
+A653-G91
+39.13 ± 8.85
+0.41 ± 0.09
+83.14 ± 2.54
+10.36 ± 4.65
+0.999 ± 0.001
+A653-G90.1
+75.30 ± 8.83
+0.80 ± 0.09
+75.32
+25.56 ± 18.86
+0.999 ± 0.001
+L653-G9
+58.98 ± 1.77
+0.62 ± 0.02
+73.97
+8.72 ± 4.31
+0.999 ± 0.002
+C753
+91.50 ± 0.96
+0.06 ± 0.00
+74.30
+7.19 ± 2.80
+0.998 ± 0.003
+EE = encapsulation efficiency; DL = drug loading
+Figure 1. SEM analysis – A) 753-G9 sample (bar = 10 µm); B) 753-G9 sample (bar = 50 µm); C) A504-G2.5 sample (bar = 10 µm);
+D) A504-G2.5 sample (bar = 50 µm); E) A653-G91 sample (bar = 10 µm); F) A653-G91 sample (bar = 50 µm); G) A653-G90.1 sample
+(bar = 10 µm); H) A653-G90.1 sample (bar = 50 µm); I) L653-G9 sample (bar = 10 µm); J) L653-G9 sample (bar = 50 µm)
+
+Pre-formulation design of sustained-release GnRHa-loaded PLGA microspheres…
+807
+fundamental influence of PVA concentration on
+particle size (35).
+Optical microscope analysis followed, al-
+lowing particle size and sphericity measurement
+(Table 2). Images of the prepared microparticles
+are shown in Figure 2. In general, every prepared
+sample consisted of highly spherical particles as the
+sphericity factor ranged between 0.973 ± 0.027 and
+0.999 ± 0.001. For comparison, a pellet sphericity
+factor of 0.9 is usually stated as sufficient (36). This
+feature is highly desirable because high spheric-
+ity means better flow properties of the dry powder.
+It also gives a large surface for eventual resuspen-
+sion in the injection medium. The particle size pre-
+pared using 1% PVA took values from 6.25 ± 2.51 to
+10.36 ± 4.65 µm, suggesting a parenterally applicable
+dosage form into fish organisms (37, 38). The sam-
+ple A653-G90.1 pre-mixed with 0.1% PVA exhibited
+a two times higher particle size (25.56 ± 18.86 µm),
+confirming observations and conclusions reached
+in previous paragraphs. In addition to the optical
+microscope analysis, for the C753 sample, the con-
+focal microscope analysis was performed to prove
+the sample functionality. Figure 3 shows that the
+particle manifested detectable fluorescence. This
+feature can be used for tissue deposition studies in
+vivo to confirm correct administration or in immu-
+nology studies.
+Finally, laser diffraction was performed to com-
+plete the particle size examination (Figure 4 and 5,
+Table 3). The median was approximately 20 µm for
+all 1% PVA samples. Diameter values on cumu-
+lative % were ranged from 7.8 to 13.2 µm (10%),
+15.4 µm to 26.2 µm (50%) and 41.4 µm to 64.2 µm
+(90%). The laser diffraction also confirmed previous
+observations that the sample A653-G90.1 with a me-
+dian of 35.7 µm provides a significantly higher par-
+ticle size. Wide distribution interval (Figure 4, 5) and
+higher SD indicate polydisperse samples. Compared
+to the optical microscope analysis, the particle size
+Figure 2. Optical microscope analysis – A) 753-G9 sample (bar = 50 µm); B) A504-G2.5 sample (bar = 50 µm); C) A653-G91 sample
+(bar = 50 µm); D) A653-G90.1 sample (bar = 50 µm); E) L653-G9 sample (bar = 50 µm); F) C753 sample (bar = 50 µm).
+Figure 3. Confocal microscopy analysis of sample C753: A) bar = 56.65 µm; B) bar = 14.62 µm; C) 3D projection.
+
+MARTINA HOLICKA et al.
+808
+measured by laser diffraction is higher. Since mi-
+croscope images clearly show particle size, the dif-
+fraction results suggest the presence of microparticle
+agglomerates, previously visible in SEM analysis
+results. They could be caused by imperfect resus-
+pension in water. A solution could be seen in using
+a surfactant for better wetting (39, 40). Therefore,
+a medium for eventual in vivo administration should
+contain a surfactant to facilitate injectability. A sur-
+factant should be selected based on its properties,
+interaction potential, and toxicological profile to
+minimize potential adverse effects (41).
+In vitro release studies
+GnRH analogs and metoclopramide
+dissolution test
+A dissolution test is a form of evaluation,
+which, among other things, helps estimate behavior
+in terms of drug release. Figure 6 shows that almost
+the whole alarelin amount was released during the
+first hours of the Franz cells dissolution test. The
+sample A653-G91 released a significantly smaller
+drug amount than the A504-G2.5 sample. It could
+be attributed mainly to the 9.09% gelatine solution
+used as an inner aqueous phase thickener. When
+0
+1.000
+10.00
+Diameter (μm)
+100.0
+500.0
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+5
+10
+15
+20
+25
+30
+35
+40
+q (%)
+Undersize (%)
+753-G9
+Data name
+A504-G2.5
+A653-G91
+Graph type
+89.2 (%)
+Transmittance (R)
+87.7 (%)
+89.1 (%)
+90.7387 (%)
+COV
+74.5650 (%)
+73.0479 (%)
+18.44880 (μm)
+Median size
+26.15786 (μm)
+18.46513 (μm)
+26.3621 (μm)
+St. Dev.
+23.7909 (μm)
+16.8820 (μm)
+0
+1.000
+10.00
+Diameter (μm)
+100.0
+500.0
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+5
+10
+15
+20
+25
+30
+35
+40
+q (%)
+Undersize (%)
+A653-G90.1
+Data name
+L653-G9
+Graph type
+89.7 (%)
+Transmittance (R)
+88.6 (%)
+64.5803 (%)
+COV
+105.1824 (%)
+35.70943 (μm)
+Median size
+15.44897 (μm)
+27.0200 (μm)
+St. Dev.
+24.2703 (μm)
+Figure 4. Laser diffraction of samples 753-G9, A504-G2.5, and A653-G91.
+Figure 5. Laser diffraction of samples A653-G90.1 and L653-G9.
+Table 3. Laser diffraction measurement of microparticles particle size.
+Sample
+Median (µm)
+Diameter (µm)
+SD (µm)
+D10 (%)
+D50 (%)
+D90 (%)
+753-G9
+18.4
+29.1
+26.4
+7.9
+18.4
+64.2
+A504-G2.5
+26.2
+31.9
+23.8
+13.2
+26.2
+54.7
+A653-G91
+18.5
+23.1
+16.9
+9.6
+18.5
+41.4
+A653-G90.1
+35.7
+41.8
+27.0
+17.6
+35.7
+71.1
+L653-G9
+15.4
+23.1
+24.3
+7.8
+15.4
+45.6
+
+Pre-formulation design of sustained-release GnRHa-loaded PLGA microspheres…
+809
+solidified, it is a very rigid ther-
+moreversible gel. Only the outer
+layer of a gelatine microparticle
+core was hydrated after contact
+with an aqueous medium. It could
+be a reason for such limited drug
+release compared to the 2.5% gel
+used in the corresponding sample.
+This finding can be supported by
+experimental data published by Yu
+et al. In this study, the 5% gelatine
+gel of the inner water phase en-
+sured a sustained release of high-
+ly soluble losartan potassium.
+Although the molecular weight
+of this drug is significantly lower
+(Mw 461.0) than that of alarelin
+(Mw 1167.3), a prolonged-release
+for 30 days has been observed (42).
+Figure 6 also shows that leuprore-
+lin lost its stability over time and was decomposed
+in an aqueous medium. Thus, this sample was dis-
+carded for subsequent dissolution tests.
+Due to the drug’s immediate release dur-
+ing the dissolution test in buffer solutions, it was
+decided that a model imitating parenteral tissue
+administration is needed to obtain a more accu-
+rate preview. The previously suggested gel dis-
+solution (25) was optimized and adjusted for the
+current experiment. Figure 7 shows that the drug
+dissolution in gels was considerably slower with
+effective drug release at least in the interval of
+­48-72 hrs. The difference between samples in terms
+of gelatine concentration has been preserved, as
+A504-G2.5 released twice the amount of A653-G91.
+The various adjustments to gel layers did not sig-
+nificantly influence the drug release. The only mild
+difference can be seen in sample A504-G2.5 in
+0.8 mL/1% agarose gel, as this dissolution profile
+is slightly slower than its counterparts. It is for
+further investigation to decide the effect of poly-
+mer selection and gelatine concentration on drug
+release. However, the results showed potential for
+drug release profile modulation, which could be
+helpful when treating different fish species with
+varying reproduction requirements. Not to mention
+Figure 6. Dissolution profiles of A504-G2.5, A653-G91, L653-G9, and metoclopramide sample (5 ± 0.5°C; phosphate buffer
+- pH 7, 20-30 mL).
+0
+0.0
+A504-G2.5
+A653-G91
+L653-G9
+Time (hours)
+0
+24
+48
+72
+96
+120
+144
+168
+192
+216
+240
+metoclopramide
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+Metoclopramide release (mg/1 mL)
+3.5
+4.0
+4.5
+5.0
+0.05
+0.10
+Alarelin release (mg/100 mg)
+0.15
+0.20
+0.25
+Figure 7. Release profiles of the alarelin samples A504-G2.5 and A653-G91 in agar gels
+differing in concentration of agarose and its volume (A504-G2.5: 1%/0.4 SDmax = 0.022;
+A504-G2.5: 1%/0.8 SDmax = 0.006; A504-G2.5: 2%/0.4 SDmax = 0.013;
+A653-G91: 1%/0.4 SDmax = 0.013; A653-G91: 1%/0.8 SDmax = 0.015;
+A653-G91: 2%/0.4 SDmax = 0.004 mg/100 mg – unit for all SDmax).
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+Time (hours)
+A504-G2.5 : 1%/0.4
+A504-G2.5 : 1%/0.8
+A504-G2.5 : 2%/0.4
+A653-G91 : 1%/0.4
+A653-G91 : 1%/0.8
+A653-G91 : 2%/0.4
+0
+24
+48
+72
+96
+120
+144
+168
+192
+216
+240
+Alarelin release (mg/100 mg)
+
+MARTINA HOLICKA et al.
+810
+the more samples can be easily combined in
+one dose.
+The dissolution behavior of the metoclo-
+pramide suspension was investigated using a non-
+compendial exploratory biphasic dissolution meth-
+od. It is a possible approach to assess the concurrent
+in vivo drug absorption process, and the used organ-
+ic phase (octanol) simulates the transition through
+lipophilic cell membranes (43). The dissolution pro-
+file of the metoclopramide suspension (Figure 6)
+indicates that the drug gradually merged into an
+organic phase within ten days. Metoclopramide is
+a dopamine receptor antagonist, which can be used
+as an adjuvant during the GnRHa treatment. It in-
+creases therapy efficacy by blocking endogenous
+dopamine inhibition of the GnRH axis. In combi-
+nation with the alarelin-loaded microparticles, this
+dissolution profile could be ­suitable for improving
+the reproduction of commercially farmed fish spe-
+cies. The obtained profile also gives a better insight
+into its behavior in tissues with more liquid content,
+like peritoneum, which can be beneficial when de-
+ciding the dose.
+Resuspension index
+Resuspension index (RI) was determined to
+assess the reproducibility of a drug dosing during
+a longer time interval when a microparticle sus-
+pension from one batch/package is used to treat
+multiple humans or animals at the same time. The
+higher RI corresponds to the slower particle sed-
+imentation and the drug’s exact dosing without
+repeated resuspending. The RI can be evaluated
+at different time intervals (44, 45), depending on
+the internal requirements and expected duration
+of specimen administration. The presented study
+assessed the RI for the drug-free 753-G9 micropar-
+ticles exhibiting a comparable particle size to the
+alarelin-loaded sample. The obtained value was
+70.99 ± 6.47%, meaning most of the particles re-
+mained resuspended, and the suspension is usable.
+Nevertheless, brief vortexing in regular intervals
+would be desirable for reproducible doses during
+fish population inoculation.
+Pierce chromogenic endotoxin test
+Figure 8 shows that all tested samples were
+contaminated by endotoxins to various degrees
+(0.29–1.66 IU/mL). Pierce chromogenic endotoxin
+test revealed that the o/w method is less susceptible
+to lipopolysaccharide fragments (LPS) contamina-
+tion than the w1/o/w2 technique. It points to gela-
+tine as the most critical factor (46). Despite using
+gelatine suitable for microbiology and depyroge-
+nation protocols, it wasn’t possible to prepare fully
+uncontaminated microparticles using any meth-
+od. Thus, outside the preparation of experimental
+dosage form, it would be necessary to establish
+microparticles preparation under the cleanroom
+conditions to prevent LPS contamination. Also,
+unique methods of adjusting gelatine to decrease
+LPS content are available (47). However, it should
+be noted that unlike higher animals, which are ex-
+tremely sensitive to endotoxins even at low doses,
+lower vertebrates like fish are often resistant to en-
+dotoxic shock (48).
+CONCLUSION
+A  comprehensive approach to controlling
+aquaculture reproduction was suggested during
+the pre-formulation study. The PLGA micropar-
+ticles prepared by the w1/o/w2 evap-
+oration method were shown to be
+a potentially suitable carrier for the
+long-term release of GnRH analog
+alarelin. Their combination with
+metoclopramide suspension releas-
+ing the drug in a prolonged manner
+was demonstrated as a viable op-
+tion. As a part of a microparticle
+core, the gelatine was revealed to be
+a key factor modifying in ­vitro drug
+release characteristics, as was dem-
+onstrated using dissolution test in
+agar medium mimicking in vivo con-
+ditions. A follow-up study was sug-
+gested to investigate polymer type/
+gelation concentration. Excellent
+characteristics, including high yield,
+Figure 8. Pierce chromogenic endotoxin test - A) the sample without any drug
+technologically corresponding to the sample C753 (o/w technique) under
+non‑pyrogenic conditions; B) the sample 753-G9 (w1/o/w2 technique) under
+non‑pyrogenic conditions; C) the sample C753 (o/w technique) under non-pyrogenic
+conditions; D) the sample 753‑G9 (w1/o/w2 technique) not under non-pyrogenic
+conditions.
+0.00
+0.20
+0.40
+0.60
+0.80
+1.00
+1.20
+1.40
+1.60
+1.80
+0.00
+A
+B
+C
+D
+Endotoxin conc. (EU/ml)
+
+Pre-formulation design of sustained-release GnRHa-loaded PLGA microspheres…
+811
+regular spherical shape, suitable particle size, and
+resuspension behavior, open the possibility of their
+trouble-free application by injection into a fish body.
+LPS contamination, originating probably from us-
+ing gelatine solution, drew attention to the prob-
+lem that would have to be solved in the case of
+broader use.
+Acknowledgments
+This experimental work was supported by the
+Ministry of Agriculture, Czech Republic, Project No.
+QK1810221 and the Ministry of Education, Youth
+and Sports of the Czech Republic, Project No. CZ.0
+2.1.01/0.0/0.0/15_003/0000495.
+Conflicts of interest
+The authors declare no conflict of interest.
+REFERENCES
+1.
+Szabó T.: Aquac. Res. 34, 479 (2004).
+2.	 Cejko B.I., Krejszeff S., Żarski D., Judycka S.,
+Targońska K., Kucharczyk D.: Anim. Reprod.
+Sci. 193, 217 (2018).
+3.
+Peter R.E., Yu K.L.: Rev. Fish Biol. Fish. 7, 173
+(1997).
+4.	 Guzmán J.M., Cal R., García-López Á.,
+Chereguini O., Kight K., et al.: Comp. Biochem.
+Physiol. A  Mol. Integr. Physiol. 158, 235
+(2011).
+5.
+Liu X., Herbison A.E.: Endocrinology 154, 340
+(2013).
+6.	 Mezo G., Manea M., Szabo I., Vincze B., Kovacs
+M.: Curr. Med. Chem. 15, 2366 (2008).
+7.
+Corriero A., Medina A., Mylonas C.C., Bridges
+C.R., Santamaria N., et al.: Anim. Reprod. Sci.
+116, 346 (2009).
+8.	 Hoffman A.S.: J. Control. Rel. 132, 153 (2008).
+9.
+Hickey T., Kreutzer D., Burgess D.J., Moussy
+F.: Biomaterials 23, 1649 (2002).
+10.	 Rather M.A., Sharma R., Gupta S., Ferosekhan
+S., Ramya V.L., et al.: PLoS One 8, e57094
+(2013)
+11.	 Jerez S., Fakriadis I., Papadaki M., Martin M.,
+Cejas J., Mylonas C.: Fishes 3, 35 (2018).
+12.	 Altun S., Kubilay A., Ekici S., Didinen B.I.,
+Diler O.: Kafkas Univ. Vet. Fak. Derg. 16, S211
+(2010).
+13.	 Adomako M., St-Hilaire S., Zheng Y., Eley J.,
+Marcum R., et al.: J. Fish Dis. 35, 203 (2012).
+14.	 Tamber H., Johansen P., Merkle H.P., Gander
+B.: Adv. Drug Deliv. Rev. 57, 357 (2005).
+15.	 Knowles J., Vysloužil J., Muselík J., Stejskal
+V., Kouřil J., et al.: Czech J. Anim. Sci. 66, 331
+(2021).
+16.	 Otte A., Sharifi F., Park K.: Colloids Surf. B
+Biointerfaces 196, 111300 (2020).
+17.	 Okada H.: Adv. Drug Deliv. Rev. 28, 43 (1997).
+18.	 Haznedar S., Dortunc B.: Int. J. Pharm. 269, 131
+(2004).
+19.	 Liu X., Sun Q., Wang H., Zhang L., Wang J.:
+Biomaterials 26, 109 (2005).
+20.	 Gentile P., Nandagiri V.K., Daly J., Chiono V.,
+Mattu C., et al.: Mater. Sci. Eng. C 59, 249
+(2016).
+21.	 Smýkalová I., Horáček J., Hýbl M., Bjelková M.,
+Pavelek M., et al.: Chem. Listy 105, 138 (2011).
+22.	 Meador J.P., Yeh A., Gallagher E.P.: Environ.
+Pollut. 230, 1018 (2017).
+23.	 El-Rammouz R., Abboud J., Abboud M., El-Mur
+A., Yammine S., et al.: Res. J. Appl. Sci. 9, 5746
+(2013).
+24.	 Rastiani F., Jebali A., Hekmatimoghaddam
+S., Khalili Sadrabad E., Akrami Mohajeri F.,
+Dehghani-Tafti A.: J. Food Nutr. 4, 225 (2019).
+25.	 Mylonas C.C., Tabata Y., Langer R., Zohar Y.:
+J. Control. Rel. 35, 23 (1995).
+26.	 Haesemeyer M.: Mol. Cell. Endocrinol. 518,
+110986 (2020).
+27.	 Rørvik K-A., Skjervold P.O., Fjæra S.O.,
+Mørkøre T., Steien S.H.: J. Fish Biol. 59, 330
+(2001).
+28.	 Yoo J., Won Y.-Y.: ACS Biomater. Sci. Eng. 6,
+6053 (2020).
+29.	 Vysloužil J., Doležel P., Kejdušová M., Košťál
+V., Benes L., et al.: Pharm. Dev. Tech. 21, 214
+(2016).
+30.	 https://corporate.evonik.com/en/products/
+search-products/pages/product-details.
+aspx?productId=50309&letter=R (accessed on
+03.11.2021).
+31.	 Graves R.A., Pamujula S., Moiseyev R.,
+Freeman T., Bostanian L.A., et al.: Int. J. Pharm.
+270, 251 (2004).
+32.	 Derman S.: J. Nanomater. 16, 1 (2015).
+33.	 Milsmann J., Oehlke K., Greiner R., Steffen-
+Heins A.: Colloids Surf. A Physicochem. Eng.
+558, 623 (2018).
+34.	 Ding D., Zhu Q.: Mater. Sci. Eng. C 92, 1041
+(2018).
+35.	 Narayanan K., Subrahmanyam V.M., Venkata
+Rao J.: Enzyme Res. 2014, 7 pages (2014).
+36.	 Langner M., Kitzmann I., Ruppert A. L., Wittich
+I., Wolf, B.: Powder Technol. 364, 673 (2020).
+37.	 Gao L., Zhang D., Chen M.: J. Nanoparticle Res.
+10, 845 (2008).
+
+MARTINA HOLICKA et al.
+812
+38.	 Padalkar A.N., Shahi S.R., Thube M.W.: Int. J.
+Pharm. Res. Dev. 3, 99 (2011).
+39.	 Cilurzo F., Selmin F., Minghetti P., Montanari
+L.: AAPS PharmSciTech 9, 1136 (2008).
+40.	 Cocks E., Somavarapu S., Alpar O., Greenleaf
+D.: Pharm. Res. 31, 2000 (2014).
+41.	 Pavoni L., Perinelli D.R., Bonacucina G., Cespi
+M., Palmieri G.F.: Nanomaterials (Basel) 10,135
+(2020).
+42.	 Yu M., Yao Q., Zhang Y., Chen H., He H., et
+al.: Artif. Cells Nanomed. Biotechnol. 46, 1070
+(2018).
+43.	 Silva D.A., Al-Gousous J., Davies N.M., Chacra
+N.B., Webster G.K., et al.: Pharmaceutics 12,
+420 (2020).
+44.	 Sartori S.: J. Pept. Sci. 19, 205 (2013).
+45.	 Liggins R.T., Burt H.M.: Int. J. Pharm. 222, 19
+(2001).
+46.	 De Clerck E., Vanhoutte T., Hebb T., Geerinck
+J., Devos J., et al.: Appl. Environ. Microbiol. 70,
+3664 (2004).
+47.	 Kanayama Y., Aoki C., Sakai Y. Biol. Pharm.
+Bull. 30, 237 (2007).
+48.	 Swain P., Nayak S.K., Nanda K.P., Dash S.: Fish
+Shellfish Immunol. 25, 191 (2008).
+© 2021 by Polish Pharmaceutical Society. This is an open-access article under the CC BY NC license
+(https://creativecommons.org/licenses/by-nc/4.0/).

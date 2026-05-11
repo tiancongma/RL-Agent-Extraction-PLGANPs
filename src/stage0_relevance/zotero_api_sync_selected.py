@@ -4,7 +4,7 @@
 """
 zotero_api_sync_selected.py
 
-Sync a *tag-selected* set of Zotero items via Zotero Web API into a local raw JSONL.
+Sync a *selected* set of Zotero items via Zotero Web API into a local raw JSONL.
 
 This script is designed for the pipeline:
 Step 0 (raw build): Zotero API -> data/raw/zotero/zotero_selected_items.jsonl
@@ -12,6 +12,7 @@ Step 1 (manifest):  zotero_selected_items.jsonl -> data/cleaned/index/manifest_c
 
 Key features
 - Tag-based selection (e.g., "LLM:Relevant")
+- Collection-based selection (e.g., collection name "goren_2025")
 - Incremental sync using Zotero library version ("since")
 - Attachment inspection (PDF/HTML) with local path resolution
 - No hard-coded repo paths (defaults via src/utils/paths.py)
@@ -34,7 +35,9 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
+from urllib.parse import unquote, urlparse
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -184,9 +187,9 @@ def resolve_attachment_local_path(
     return str(p) if p.exists() else None
 
 
-def classify_attachment(att: Dict[str, Any]) -> Tuple[str, str, str, str, Optional[str]]:
+def classify_attachment(att: Dict[str, Any]) -> Tuple[str, str, str, str, Optional[str], Optional[str]]:
     """
-    Return (attachment_key, filename, content_type, link_mode, url)
+    Return (attachment_key, filename, content_type, link_mode, url, source_path)
     """
     k = str(att.get("key", "")).strip()
     data = att.get("data", {}) or {}
@@ -194,7 +197,36 @@ def classify_attachment(att: Dict[str, Any]) -> Tuple[str, str, str, str, Option
     ct = str(data.get("contentType") or "").strip()
     lm = str(data.get("linkMode") or "").strip()
     url = data.get("url")
-    return k, fn, ct, lm, str(url).strip() if url else None
+    pth = data.get("path")
+    source_path = str(pth).strip() if pth else None
+    return k, fn, ct, lm, str(url).strip() if url else None, source_path
+
+
+def resolve_linked_file_local_path(path_value: Optional[str]) -> Optional[str]:
+    """
+    Resolve local path for linked-file attachments when Zotero provides a path.
+    """
+    if not path_value:
+        return None
+    p = str(path_value).strip()
+    if not p:
+        return None
+
+    # Zotero may return file:// URIs for linked files.
+    if p.lower().startswith("file://"):
+        parsed = urlparse(p)
+        uri_path = unquote(parsed.path or "")
+        if re.match(r"^/[a-zA-Z]:/", uri_path):
+            uri_path = uri_path[1:]
+        cand = Path(uri_path)
+        return str(cand) if cand.exists() else None
+
+    # Ignore relative-attachment pseudo paths such as "attachments:...".
+    if p.lower().startswith("attachments:"):
+        return None
+
+    cand = Path(p)
+    return str(cand) if cand.exists() else None
 
 
 def build_item_record(
@@ -202,6 +234,7 @@ def build_item_record(
     child_attachments: List[Dict[str, Any]],
     tag: str,
     storage_root: Optional[Path],
+    verbose: bool = False,
 ) -> ItemRecord:
     zk = str(parent_item.get("key", "")).strip()
     title = pick_title(parent_item)
@@ -223,14 +256,25 @@ def build_item_record(
     html_candidates: List[str] = []
 
     for att in child_attachments:
-        ak, fn, ct, lm, url = classify_attachment(att)
+        ak, fn, ct, lm, url, source_path = classify_attachment(att)
 
         local_path = None
-        # Only attempt local resolution when user tells us the Zotero storage root
-        if storage_root is not None and lm:
-            # linkMode numeric codes vary; we treat any non-empty as "may be imported"
-            # For imported files, Zotero uses storage/<attachmentKey>/<filename>
+        lm_norm = (lm or "").strip().lower()
+        # Imported attachment local path convention:
+        # <storage_root>/<attachmentKey>/<filename>
+        if storage_root is not None and lm_norm in {"imported_file", "imported_url", "embedded_image"}:
+            expected_imported_path = storage_root / ak / fn if ak and fn else None
             local_path = resolve_attachment_local_path(storage_root, ak, fn)
+            if verbose and ak == "P9AU6NCG":
+                exists_flag = bool(expected_imported_path and expected_imported_path.exists())
+                print(
+                    "[DEBUG] attachment_key=P9AU6NCG "
+                    f"expected_path={expected_imported_path} exists={exists_flag}"
+                )
+        elif lm_norm == "linked_file":
+            local_path = resolve_linked_file_local_path(source_path)
+        if verbose and ak == "P9AU6NCG":
+            print(f"[DEBUG] attachment_key=P9AU6NCG resolved_local_path={local_path}")
 
         atts.append(
             AttachmentInfo(
@@ -342,6 +386,79 @@ def fetch_changed_items_by_tag(z: zotero.Zotero, tag: str, since: Optional[int])
     return items
 
 
+def fetch_all_collections(z: zotero.Zotero) -> List[Dict[str, Any]]:
+    items: List[Dict[str, Any]] = []
+    start = 0
+    limit = 100
+    while True:
+        batch = z.collections(start=start, limit=limit)
+        if not batch:
+            break
+        items.extend(batch)
+        if len(batch) < limit:
+            break
+        start += limit
+    return items
+
+
+def resolve_collection_name_to_key(z: zotero.Zotero, collection_name: str) -> str:
+    """
+    Resolve a Zotero collection name to its collection key.
+    """
+    collection_name = collection_name.strip()
+    if not collection_name:
+        raise ValueError("collection name cannot be empty")
+
+    # If caller provides a likely collection key, allow direct use.
+    if re.fullmatch(r"[A-Z0-9]{8}", collection_name):
+        return collection_name
+
+    all_collections = fetch_all_collections(z)
+    exact: List[Dict[str, Any]] = []
+    ci: List[Dict[str, Any]] = []
+    for c in all_collections:
+        data = c.get("data", {}) or {}
+        name = str(data.get("name", "")).strip()
+        if name == collection_name:
+            exact.append(c)
+        if name.lower() == collection_name.lower():
+            ci.append(c)
+
+    matches = exact if exact else ci
+    if not matches:
+        raise RuntimeError(f"collection not found by name: {collection_name}")
+    if len(matches) > 1:
+        raise RuntimeError(
+            f"collection name is ambiguous ({len(matches)} matches): {collection_name}"
+        )
+    return str(matches[0].get("key", "")).strip()
+
+
+def fetch_changed_items_by_collection(
+    z: zotero.Zotero,
+    collection_key: str,
+    since: Optional[int],
+) -> List[Dict[str, Any]]:
+    """
+    Fetch top-level items from a specific Zotero collection, optionally since a library version.
+    """
+    kwargs: Dict[str, Any] = {}
+    if since is not None:
+        kwargs["since"] = since
+    items: List[Dict[str, Any]] = []
+    start = 0
+    limit = 100
+    while True:
+        batch = z.collection_items_top(collection_key, start=start, limit=limit, **kwargs)
+        if not batch:
+            break
+        items.extend(batch)
+        if len(batch) < limit:
+            break
+        start += limit
+    return items
+
+
 def fetch_deleted_keys(z: zotero.Zotero, since: int) -> List[str]:
     """
     Fetch deleted item keys since a library version.
@@ -369,20 +486,27 @@ def fetch_child_attachments(z: zotero.Zotero, parent_key: str) -> List[Dict[str,
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Sync Zotero tag-selected items to raw JSONL (incremental).")
-    ap.add_argument("--tag", default="LLM:Relevant", help='Zotero tag to select (default: "LLM:Relevant").')
+    ap = argparse.ArgumentParser(
+        description="Sync Zotero selected items (by tag or collection) to raw JSONL (incremental)."
+    )
+    ap.add_argument("--tag", default="LLM:Relevant", help='Zotero tag selector (default: "LLM:Relevant").')
+    ap.add_argument(
+        "--collection",
+        default="",
+        help='Zotero collection selector by name (or collection key), e.g. "goren_2025".',
+    )
 
     ap.add_argument(
         "--out-jsonl",
         type=Path,
-        default=(paths.DATA_RAW_DIR / "zotero" / "zotero_selected_items.jsonl"),
-        help="Output JSONL path (default via paths.py).",
+        default=None,
+        help="Output JSONL path. Default depends on selector mode.",
     )
     ap.add_argument(
         "--last-version-file",
         type=Path,
-        default=(paths.DATA_RAW_DIR / "zotero" / "last_version.txt"),
-        help="File storing last synced Zotero library version (default via paths.py).",
+        default=None,
+        help="File storing last synced Zotero library version. Default depends on selector mode.",
     )
 
     ap.add_argument(
@@ -396,6 +520,20 @@ def main() -> None:
     ap.add_argument("--verbose", action="store_true", help="Verbose logging.")
 
     args = ap.parse_args()
+    collection_name = args.collection.strip()
+    selection_mode = "collection" if collection_name else "tag"
+    tag_value = args.tag
+
+    if selection_mode == "collection":
+        slug = re.sub(r"[^A-Za-z0-9._-]+", "_", collection_name).strip("_").lower()
+        slug = slug or "collection"
+        out_jsonl = args.out_jsonl or (paths.DATA_RAW_DIR / "zotero" / f"zotero_collection__{slug}.jsonl")
+        last_version_file = args.last_version_file or (
+            paths.DATA_RAW_DIR / "zotero" / f"last_version__collection__{slug}.txt"
+        )
+    else:
+        out_jsonl = args.out_jsonl or (paths.DATA_RAW_DIR / "zotero" / "zotero_selected_items.jsonl")
+        last_version_file = args.last_version_file or (paths.DATA_RAW_DIR / "zotero" / "last_version.txt")
 
     # Storage root resolution
     storage_root: Optional[Path] = args.storage_root
@@ -412,10 +550,13 @@ def main() -> None:
 
     since = None
     if not args.full:
-        since = read_last_version(args.last_version_file)
+        since = read_last_version(last_version_file)
 
     if args.verbose:
-        print(f"[INFO] tag={args.tag}")
+        if selection_mode == "collection":
+            print(f"[INFO] collection={collection_name}")
+        else:
+            print(f"[INFO] tag={tag_value}")
         print(f"[INFO] current_library_version={current_version}")
         print(f"[INFO] since={since}")
         if storage_root:
@@ -424,7 +565,7 @@ def main() -> None:
             print("[WARN] storage root not set. Local file paths may remain null. "
                   "Set --storage-root or env ZOTERO_STORAGE_DIR.")
 
-    existing = load_existing_jsonl(args.out_jsonl)
+    existing = load_existing_jsonl(out_jsonl)
 
     # Handle deletions (only meaningful when since is known)
     if since is not None:
@@ -436,7 +577,18 @@ def main() -> None:
         if args.verbose and deleted_keys:
             print(f"[INFO] deleted_items_seen={len(deleted_keys)} (removed from local index if present)")
 
-    changed_items = fetch_changed_items_by_tag(z, tag=args.tag, since=None if args.full else since)
+    selector_label = ""
+    if selection_mode == "collection":
+        collection_key = resolve_collection_name_to_key(z, collection_name)
+        selector_label = f"collection:{collection_name}({collection_key})"
+        changed_items = fetch_changed_items_by_collection(
+            z,
+            collection_key=collection_key,
+            since=None if args.full else since,
+        )
+    else:
+        selector_label = f"tag:{tag_value}"
+        changed_items = fetch_changed_items_by_tag(z, tag=tag_value, since=None if args.full else since)
 
     if args.verbose:
         print(f"[INFO] fetched_items={len(changed_items)}")
@@ -455,18 +607,25 @@ def main() -> None:
             continue
 
         children = fetch_child_attachments(z, parent_key)
-        rec = build_item_record(it, children, tag=args.tag, storage_root=storage_root)
+        rec = build_item_record(
+            it,
+            children,
+            tag=tag_value if selection_mode == "tag" else "",
+            storage_root=storage_root,
+            verbose=args.verbose,
+        )
+        rec.message = f"{rec.message};selector={selector_label}"
         existing[parent_key] = json.loads(json.dumps(asdict(rec), default=str))
         updated += 1
         if rec.paths.get("pdf") or rec.paths.get("html"):
             has_fulltext += 1
 
-    write_jsonl(args.out_jsonl, existing)
-    write_last_version(args.last_version_file, current_version)
+    write_jsonl(out_jsonl, existing)
+    write_last_version(last_version_file, current_version)
 
-    print(f"[OK] wrote: {args.out_jsonl}")
+    print(f"[OK] wrote: {out_jsonl}")
     print(f"[OK] updated_items={updated} | total_indexed={len(existing)} | has_local_fulltext={has_fulltext}")
-    print(f"[OK] saved library version -> {args.last_version_file}")
+    print(f"[OK] saved library version -> {last_version_file}")
 
 
 if __name__ == "__main__":

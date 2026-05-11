@@ -1,0 +1,1647 @@
+Nanotechnology
+
+PAPER • OPEN ACCESS
+Synthesis of novel coumarin-triazole hybrids and
+first evaluation of the 4-phenyl substituted hybrid
+loaded PLGA nanoparticles delivery system to the
+anticancer activity
+To cite this article: Busra Arvas et al 2024 Nanotechnology 35 305602
+
+View the article online for updates and enhancements.
+You may also like
+Poly(D, L-lactide-co-glycolide)
+nanoparticles as delivery agents for
+photodynamic therapy: enhancing singlet
+oxygen release and photototoxicity by
+surface PEG coating
+Ester Boix-Garriga, Pilar Acedo, Ana
+Casadó et al.
+-
+Oral pentamidine-loaded poly(d,l-lactic-co-
+glycolic) acid nanoparticles: an alternative
+approach for leishmaniasis treatment
+Isabela Viol Valle, Monique Etnea
+Machado, Cristina da Costa Bernardes
+Araújo et al.
+-
+Multilayer thin films of Zinc (II)
+Phthalocyanine loaded Poly(D, L-lactide-
+co-glycolide) nanocapsules by layer-by-
+layer self assembly
+Yonca Belce and Fevzi Ç Cebeci
+-
+This content was downloaded from IP address 129.2.89.164 on 21/10/2025 at 18:28
+
+Synthesis of novel coumarin-triazole hybrids
+and ﬁrst evaluation of the 4-phenyl
+substituted hybrid loaded PLGA
+nanoparticles delivery system to the
+anticancer activity
+Busra Arvas1, Burcu Ucar2, Tayfun Acar3
+, Hanife Sevgi Varli4,5,
+Melih Besir Arvas6, Feray Aydogan1 and Cigdem Yolacan1
+1 Department of Chemistry, Faculty of Arts & Science, Yildiz Technical University, Istanbul, Turkey
+2 Department of Biomedical Engineering, Faculty of Engineering and Architecture, Istanbul Arel
+University, Istanbul, Turkey
+3 Department of Bioengineering, Faculty of Chemical and Metallurgical Engineering, Yildiz Technical
+University, Istanbul, Turkey
+4 Science and Technology Application and Research Center, Yildiz Technical University, Istanbul, Turkey
+5 Department of Molecular Biology and Genetics, Faculty of Arts & Science, Yildiz Technical University,
+Istanbul, Turkey
+6 Department of Chemistry, Faculty of Science, Istanbul University, Istanbul, Turkey
+E-mail: cigdemyolacan@hotmail.com
+Received 14 October 2023, revised 31 March 2024
+Accepted for publication 18 April 2024
+Published 7 May 2024
+Abstract
+Despite the discovery of many chemotherapeutic drugs that prevent uncontrolled cell division
+processes in the last century, many studies are still being carried out to develop drugs with higher
+anticancer efﬁcacy and lower level of side effects. Herein, we designed, synthesized, and
+characterized six novel coumarin-triazole hybrids, and evaluated for anticancer activity of the
+one with the highest potential against the breast cancer cell line, MCF-7 and human cervical
+cancer cell line, human cervical adenocarcinoma (HeLa). Compound 21 which was the coumarin
+derivative including phenyl substituent with the lowest IC50 value displayed the highest
+cytotoxicity against the studied cancer cell line. Furthermore, the potential use of poly (lactic-co-
+glycolic acid) nanoparticles (PLGA NPs) prepared by the emulsifying solvent evaporation
+method as a platform for a drug delivery system was studied on a selected coumarin derivative
+21. This coumarin derivative-loaded PLGA NPs were produced with an average size of 225.90
+± 2.96 nm, −16.90 ± 0.85 mV zeta potential, and 4.12 ± 0.90% drug loading capacity. The
+obtained 21-loaded PLGA nanoparticles were analyzed spectroscopically and microscopically
+with FT-IR, UV–vis, and scanning electron microscopy as well as thermogravimetric analysis,
+Raman, and x-ray diffraction. The in vitro release of 21 from the nanoparticles exhibited a
+controlled release proﬁle just over one month following a burst release in the initial six hours and
+in addition to this a total release ratio of %50 and %85 were obtained at pH 7.4 and 5.5,
+respectively. 21-loaded PLGA nanoparticles displayed remarkably effective anticancer activity
+Nanotechnology
+Nanotechnology 35 (2024) 305602 (16pp)
+https://doi.org/10.1088/1361-6528/ad403e
+Original content from this work may be used under the terms
+of the Creative Commons Attribution 4.0 licence. Any
+further distribution of this work must maintain attribution to the author(s) and
+the title of the work, journal citation and DOI.
+© 2024 The Author(s). Published by IOP Publishing Ltd
+1
+
+than 21. The IC50 values were determined as IC50 (21-loaded PLGA nanoparticles): 0.42 ±
+0.01 mg ml−1 and IC50 (free 21 molecule): 5.74 ± 3.82 mg ml−1 against MCF-7 cells, and as
+IC50 (21-loaded PLGA nanoparticles): 0.77 ± 0.12 mg ml−1 and IC50 (free 21 molecule): 1.32 ±
+0.31 mg ml−1 against HeLa cells after the incubation period of 24 h. Our ﬁndings indicated that
+triazole-substituted coumarins may be used as an anticancer agent by integrating them into a
+polymeric drug delivery system providing improved drug loading and effective controlled drug
+release.
+Supplementary material for this article is available online
+Keywords: coumarin, PLGA nanoparticles, controlled drug release, MCF-7, anticancer
+activity, HeLa
+1. Introduction
+Coumarin and its derivatives constitue an important class of
+heterocyclic compounds with their benzopyran-2-one ring.
+They are useful compounds in various areas due to their
+important photophysical and biological activity properties.
+Especially, their biological activities such as anticoagulant,
+anticancer, antioxidant, antibacterial, antifungal, antimalarial
+make them good drug compounds and there are several
+coumarin derivatives in drug market [1–3]. These important
+biological activities are supplied by their active benzopyrone
+ring system with the ability to make hydrophobic, π–π and
+electrostatic interactions, hydrogen bonds besides van der
+Waals forces with receptors and a variety of enzymes [4].
+The searches for compounds with speciﬁc activities
+turned the reseachers attention to hybrid molecules. The
+structure of a hybrid molecule can be created by the combi-
+nation of two or more pharmacophores with different paths
+and activities to enhance the drug effect and balance the side
+effects. The pharmacophores in hybrid molecules may exhibit
+their own act on target or one of them can counterbalance the
+side effects of another parts. The hybrid compound may show
+properties from all pharmacophores with improved activity,
+afﬁnity and selectivity, and they have the potential to broaden
+the biology spectrum and reduce side effects [5]. Especially,
+heterocyclic scaffold hybridization of coumarin compounds
+opens a new door for the novel drug development [6–13]. The
+easy functionalization of coumarin derivatives from different
+positions of ring carbons provides new hybrid molecules with
+promising activities. 1,2,3-triazole group containing mole-
+cules as therapeutic agents are known to show a wide range
+biological activity, such as antibiotic, antifungal and antic-
+ancer [4, 14, 15]. Coumarin and 1,2,3-trizole rings are
+important pharmacophore systems. Their combination in a
+hybrid molecule promise important biological activities
+[16–20]. Therefore, recently there has been a growing interest
+among researchers in the synthesis an evaluation of novel
+coumarin-triazole hybrid molecules.
+Cancer is the second most deathful disease in the word.
+Early diagnosis and effective treatment can reduce the death
+ratio for most cancer types. There are some chemotherapeutic
+treatment methods using different drugs, but most of them
+have serious side effects [21]. So, the researces have been
+focused to develop effective drugs and drug systems without
+side effects. One of the recent approaches is drug delivery
+systems which are pharmaceutical formulations or devices.
+Drug delivery systems carry the bioactive molecules to the
+target organ through various biological barriers and release it
+in the targeted side of action. The encapsulation of drug
+molecule in nanoparticles is a promising approach to cancer
+treatment.
+Polymeric nanoparticles with a size between 1 and
+1000 nm are biomaterials that have a high drug loading
+capacity and provide controlled release of the loaded drug.
+The solvent evaporation method is the ﬁrst method developed
+to prepare nanoparticles from a synthetic or natural polymers
+[22]. Many biocompatible polymers are used for production
+of nanoparticles, from natural polymers such as chitosan and
+alginate to synthetic polymers such as poly(lactic acid)
+(PLA), poly(glycolic acid) (PGA), and poly(lactide-co-gly-
+colide) (PLGA) [23]. Since it is biocompatible and biode-
+gradable (degradation to CO2 and H2O in the body) as well as
+approved by the FDA (Food and Drug Administration),
+PLGA is one of the most preferred polymers [23–28]. Also,
+there are various studies in which coumarin-derived com-
+pounds are loaded into PLGA nanoparticles [29, 30].
+In this context, six novel coumarin-triazole hybrids
+(16–21, ﬁgure 1) were designed and chemically synthesized.
+The cytotoxic activities of the molecules whose structures
+were determined by FT-IR, TLC, 1H and 13C-NMR, and MS
+were evaluated by the MTT method and the best biocompa-
+tible compound 21 was loaded into the PLGA nanoparticles.
+The anticancer activity of the obtained 21-loaded PLGA
+nanoparticles on MCF-7 cells was assessed.
+2. Materials and methods
+2.1. Materials and equipments
+Acid terminated Poly(D,L-lactide-co-glycolic acid) (PLGA,
+lactide: glycolide molar ratio of 50:50, Mw = 38.000–54.000
+Da) and poly(vinyl alcohol) (PVA, 98%–99% hydrolyzed,
+Mw = 31.000–50.000 Da) were purchased from Sigma
+Aldrich Chemicals (St. Louis) USA.
+Commercial quality reagents were used for all experi-
+ments, and any further puriﬁcation was not performed
+for
+reagent
+quality
+solvents.
+Millipore
+Milli-Q
+system
+(∼18.2 MΩ cm) was used to obtain ultra-pure water. Silica
+gel 60 (40–63 μM) (Merck) was stationary phase for column
+2
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+chromatography and silica gel 60F254 coated aluminum sheets
+(Merck) were used for TLC.
+The devices used to obtain spectral data were Perkin
+Elmer, Spectrum One FT-IR spectrometer and Bruker Tensor
+27 spectrometer for IR spectra, Bruker Avance III 500 MHz
+spectrometer for NMR spectra, Agilent G6530B model TOF/
+Q-TOF Mass Spectrometer for LC-MS (Q-TOF) spectra. The
+chemical shifts δ were given in ppm according to TMS
+internal standard.
+The MCF-7 human breast cancer, CCD1072 human
+ﬁbroblast, HEK-293 (human embryonic kidney) and He-La
+(Human Cervical Adenocarcinoma) cell lines were provided
+from the Melisa Türkoğlu Laçin Regenerative Tissue and Cell
+Culture Laboratory (TURKEY) cell culture stocks.
+2.2. Methods
+2.2.1. Chemical synthesis.
+The synthesis of compounds 1–9
+were carried out according to the literature procedure [31, 32].
+Among the bromoalkyoxy compounds, only 3-(6-bromo-
+hexyloxy)−7,8,9,10-tetrahydro-6H-benzo[c]chromen-6-one (6)
+is not identiﬁed in the literature. The protocols for the synthesis
+of 6 and 10–21 according to the well-known methods were
+given in the following section. Spectroscopic data were used for
+characterization of all compounds. Original spectra of new
+compounds were given in the Supporting Information (ﬁgures
+S1–S36). The data of all known compounds were in accordance
+with literature data [31, 33, 34].
+3-(6-Bromohexyloxy)-7,8,9,10-tetrahydro-6H-benzo[c]
+chromen-6-one (6)
+The coumarin derivative 3 (1.0 mmol) and potassium
+carbonate (3.0 mmol) were stirred for 1 h at 55 °C in dry
+acetone, and then the dibromohexane (2.0 mmol) was added
+quite slowly. The mixture was reﬂuxed for 24 h under
+nitrogen atmosphere. After cooling to room temperature, the
+solid was ﬁltered and washed with acetone. The ﬁltrate was
+concentrated under reduced pressure and puriﬁed by column
+chromatography using ethyl acetate/n-hexane as eluent to get
+the intermediates of 6. White solid. Yield 70%. mp: 84 °C–
+85 °C. TLC Rf = 0.39 (EtOAc:hexane, 1:2, v/v). IR (ATR) ν
+3067, 2936, 2884, 2862, 1704, 1606, 1500, 1468, 1449, 1392,
+1262, 640 cm−1. 1H NMR (500 MHz, CDCl3) δ1.52–1.54 (m,
+4H, CH2), 1.78–1.87 (m, 6H, CH2), 1.88–1.94 (m, 2H, CH2),
+2.56 (bs, 2H, CH2), 2.75 (bs, 2H, CH2), 3.44 (t, 2H, J = 6.5
+Hz, CH2Br), 4.01 (t, 2H, J = 6.5 Hz, OCH2), 6.79 (bd, 1H, J
+= 2.5 Hz, ArH), 6.82 (dd, 1H, J = 9.0 Hz, 2.5 Hz ArH), 7.44
+(d, 1H, J = 8.5 Hz, ArH). 13C NMR (125 MHz, CDCl3) δ
+21.41, 21.71, 23.84, 25.23, 25.25, 27.89, 28.87, 32.63, 33.74,
+68.20, 101.11, 112.31, 113.66, 120.42, 124.08, 147.31,
+153.51, 160.88, 162.20. LC-MS (ESI-QTOF): m/z calcd for
+C19H23BrO3 [M+H]+ 379.0903 found 379.0900.
+General procedure for the synthesis of 7-azidoalkyloxy
+substituted coumarin derivatives (10–15)
+A solution of sodium azide (NaN3) (9 mmol) dissolved in
+distilled water (2 ml) was added to bromoalkyloxy coumarin
+derivatives (4–9) (3.0 mmol) dissolved in DMF (8 ml). The
+mixture was stirred at 80 °C for 24 h. The formed solution
+was cooled to room temperature then mixed with ice–water
+followed by extraction with ether. The ether evaportion was
+done after drying with MgSO4. The obtained compounds
+were pure enough and used for the next step without any
+puriﬁcation.
+7-((6-Azidohexyl)oxy)-4-methyl-2H-chromen-2-one (10)
+White solid. Yield 91%. mp: 40 °C–41 °C (Lit: 38 °C–
+40 °C [35, 36]). TLC Rf = 0.28 (EtOAc:hexane, 1:4, v/v). IR
+(ATR) ν 3073, 2969, 2933, 2859, 2106, 1719, 1609, 1562,
+1463, 1389, 1104 cm−1.
+1H NMR (500 MHz, CDCl3) δ
+1.44–1.55 (m, 4H, CH2), 1.62–1.68 (m, 2H, CH2), 1.81–1.87
+(m, 2H, CH2), 2.40 (s, 3H, CH3), 3.30 (t, 2H, J = 7.0 Hz,
+CH2N3), 4.02 (t, 2H, J = 6.5 Hz, OCH2), 6.13 (s, 1H, =CH),
+6.80 (d, 1H, J = 2.5 Hz, ArH), 6.85 (dd, 1H, J = 9.0 Hz, 2.5
+Hz, ArH), 7.49 (d, 1H, J = 9.0 Hz, ArH). 13C NMR (125
+MHz, CDCl3) δ 18.67, 25.61, 26.47, 28.77, 28.86, 51.34,
+68.31, 101.31, 111.85, 112.63, 113.46, 125.48, 152.56,
+155.28, 161.34, 162.09. LC-MS (ESI-QTOF): m/z calcd for
+C16H19N3O3 [M+H]+ 302.1460 found 302.1481.
+Figure 1. The structures of new coumarin-triazol hybrids.
+3
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+7-(4-Azidobutoxy)-4-methyl-2H-chromen-2-one (11)
+White solid (Lit. Cream solid, [35]). Yield 87%. mp:
+64 °C–65 °C. TLC Rf = 0.46 (EtOAc:hexane, 1:4, v/v). IR
+(ATR) ν 3076, 2942, 2874, 2092, 1713, 1609, 1556, 1470,
+1386, 1199 cm−1. 1H NMR (500 MHz, CDCl3) δ 1.78–1.84
+(m, 2H, CH2), 1.89–1.95 (m, 2H, CH2), 2.40 (s, 3H, CH3),
+3.39 (t, 2H, J = 6.5 Hz, CH2N3), 4.06 (t, 2H, J = 6.5 Hz,
+OCH2), 6.14 (s, 1H, =CH), 6.80 (d, 1H, J = 2.5 Hz, ArH),
+6.86 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 7.50 (d, 1H, J =9.0
+Hz, ArH). 13C NMR (125 MHz, CDCl3) δ 18.67, 25.66,
+26.29, 51.11, 67.77, 101.33, 111.97, 112.58, 113.61, 125.55,
+152.56, 155.26, 161.30, 161.88. LC-MS (ESI-QTOF): m/z
+calcd for C14H15N3O3 [M+H]+ 274.1200 found 274.1164.
+3-((6-Azidohexyl)oxy)-7,8,9,10-tetrahydro-6H-benzo[c]
+chromen-6-one (12)
+Colorless viscous oil. Yield 90%. TLC Rf = 0.36
+(EtOAc:hexane, 1:4, v/v). IR (ATR) ν 3089, 3067, 2943,
+2862, 2093, 1697, 1606, 1568, 1469, 1429, 1391, 1260 cm−1.
+1H NMR (500 MHz, CDCl3) δ 1.45–1.56 (m, 4H, CH2),
+1.62–1.68 (m, 2H, CH2), 1.78–1.88 (m, 6H, CH2), 2.56 (m,
+2H, CH2), 2.75 (m, 2H, CH2), 3.30 (t, 2H, J = 6.5 Hz,
+CH2N3), 4.01 (t, 2H, J = 6.5 Hz, OCH2), 6.79 (d, 1H, J = 2.5
+Hz, ArH), 6.83 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 7.45 (d,
+1H, J = 9.0 Hz, ArH). 13C NMR (125 MHz, CDCl3) δ 21.42,
+21.73, 23.85, 25.25, 25.65, 26.50, 28.74, 28.92, 51.32, 68.20,
+100.96, 112.43, 113.69, 120.47, 124.13, 147.31, 153.54,
+160.09,
+162.22.
+LC-MS
+(ESI-QTOF):
+m/z
+calcd
+for
+C19H23N3O3 [M+NH4]+ 359.2100 found 359.2082.
+3-(4-Azidobutoxy)-7,8,9,10-tetrahydro-6H-benzo[c]chro-
+men-6-one (13)
+Beige solid. Yield 75%. mp: 88 °C–89 °C. TLC Rf
+= 0.32 (EtOAc:hexane, 1:1, v/v). IR (ATR) ν 3094, 3068,
+2942, 2886, 2083, 1698, 1614, 1562, 1480, 1462, 1387, 1292
+cm−1. 1H NMR (500 MHz, CDCl3) δ 1.79–1.86 (m, 6H,
+CH2), 1.89–1.94 (m, 2H, CH2), 2.57 (t, 2H, J = 6.0 Hz, CH2),
+2.76 (t, 2H, J = 6.0 Hz, CH2), 3.39 (t, 2H, J = 6.5 Hz,
+CH2N3), 4.05 (t, 2H, J = 6.0 Hz, OCH2), 6.79 (bd, 1H, J =
+2.5 Hz, ArH), 6.84 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 7.47
+(d, 1H, J = 9.0 Hz, ArH). 13C NMR (125 MHz, CDCl3) δ
+21.39, 21.69, 23.84, 25.23, 25.69, 26.33, 51.13, 67.64,
+101.10, 112.28, 113.82, 120.58, 124.14, 147.28, 153.50,
+160.65,
+162.18.
+LC-MS
+(ESI-QTOF):
+m/z
+calcd
+for
+C17H19N3O3 [M+H]+ 314.1505 found 314.1500.
+7-((6-Azidohexyl)oxy)-4-phenyl-2H-chromen-2-one (14)
+Colorless viscous oil. Yield 86%. TLC Rf = 0.4 (EtOAc:
+hexane, 1:4, v/v). IR (ATR) ν 3075, 3054, 2944, 2914, 2865,
+2085, 1714, 1600, 1549, 1491, 1422, 1374, 1266 cm−1. 1H
+NMR (500 MHz, CDCl3) δ 1.45–1.56 (m, 4H, CH2),
+1.62–1.68 (m, 2H, CH2), 1.82–1.87 (m, 2H, CH2), 3.30 (t,
+2H, J = 6.5 Hz, CH2N3), 4.04 (t, 2H, J = 6.5 Hz, OCH2 ),
+6.22 (s, 1H, =CH), 6.79 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH),
+6.88 (d, 1H, J = 2.5 Hz, ArH), 7.38 (d, 1H, J = 8.5 Hz, ArH),
+7.43–7.45 (m, 2H, ArH), 7.50–7.53 (m, 3H, ArH). 13C NMR
+(125 MHz, CDCl3) δ 25.62, 26.49, 28.79, 28.86, 51.36,
+68.39, 101.57, 111.79, 112.42, 112.69, 127.96, 128.39,
+128.83, 129.58, 135.63, 155.85, 156.03, 161.28, 162.28.
+LC-MS (ESI-QTOF): m/z calcd for C21H21N3O3 [M+H]+
+364.1616 found 364.1696.
+7-(4-Azidobutoxy)-4-phenyl-2H-chromen-2-one (15)
+Colorless solid. Yield 86%. mp: 60 °C–61 °C. TLC Rf
+= 0.89 (EtOAc:hexane, 1:1, v/v). IR (ATR) ν 3062, 2930,
+2870, 2095, 1720, 1667, 1605, 1493, 1406, 1374, 1258 cm−1.
+1H NMR (500 MHz, CDCl3) δ 1.79–1.84 (m, 2H, CH2),
+1.90–1.96 (m, 2H, CH2), 3.39 (t, 2H, J = 6.5 Hz, CH2N3),
+4.08 (t, 2H, J = 6.0 Hz, OCH2), 6.23 (s, 1H, =CH), 6.79 (dd,
+1H, J = 9.0 Hz, 2.5 Hz ArH), 6.88 (d, 1H, J = 2.5 Hz, ArH),
+7.39 (d, 1H, J = 8.5 Hz, ArH), 7.43–7.46 (m, 2H, ArH),
+7.50–7.53 (m, 3H, ArH). 13C NMR (125 MHz, CDCl3) δ
+25.66, 26.28, 51.11, 67.83, 101.57, 111.88, 112.63, 128.02,
+128.38, 128.83, 129.60, 135.56, 155.83, 155.98, 161.25,
+162.03. LC-MS (ESI-QTOF): m/z calcd for C19H17N3O3
+[M+H]+ 336.1300 found 336.1320.
+General procedure for the synthesis of coumarin-
+triazole hydrids (16–21)
+Azidoalkyloxy compound (0.138 mmol), phenylacety-
+lene (0.16 mmol) and CuI (0.41 mmol) were mixed in
+tetrahydrofurane (5 ml) for 48 h at room temperature. Then,
+the mixture was ﬁltered over celite. After the solvent
+evaporation, the puriﬁcation of the crude product was
+acomplished by column chromatograpy. The elution solvent
+was ethyl acetate/hexane mixture.
+4-Methyl-7-((6-(4-phenyl-1H-1,2,3-triazol-1-yl)hexyl)
+oxy)-2H-chromen-2-one (16)
+Beige solid. Yield 86%. mp: 114 °C–115 °C. TLC Rf
+= 0.31 (EtOAc:hexane, 1:1, v/v). IR (ATR) ν 3075, 2941,
+2863, 2854, 1722, 1605, 1558, 1466, 1450, 1428, 1262, 1070
+cm−1. 1H NMR (500 MHz, CDCl3) δ 1.42–1.48 (m, 2H,
+CH2), 1.53–1.59 (m, 2H, CH2), 1.79–1.85 (m, 2H, CH2),
+1.98–2.04 (m, 2H, CH2), 2.38 (s, 3H, CH3), 4.00 (t, 2H, J =
+6.5 Hz, OCH2), 4.43 (t, 2H, J = 7.0 Hz, NCH2), 6.12 (s, 1H,
+=CH), 6.77 (bd, 1H, J = 2.5 Hz, ArH), 6.82 (dd, 1H, J = 8.5
+Hz, 2.5 Hz, ArH), 7.32–7.35 (m, 1H, ArH), 7.41–7.47 (m,
+3H, ArH), 7.76 (bs, 1H, ArH), 7.83 (bd, 2H, J = 7.0 Hz,
+ArH). 13C NMR (125 MHz, CDCl3) δ 18.67, 25.52, 26.21,
+28.73, 30.24, 50.26, 68.20, 101.32, 111.86, 112.58, 113.49,
+119.41, 125.51, 125.66, 128.11, 128.82, 130.63, 147.78,
+152.58, 155.25, 161,33, 162.02. LC-MS (ESI-QTOF): m/z
+calcd for C24H25N3O3 [M+H]+ 404.1929, found 404.1969.
+4-Methyl-7-(4-(4-phenyl-1H-1,2,3-triazol-1-yl)butoxy)-
+2H-chromen-2-one (17)
+Off-white solid. Yield 60%. mp: 116 °C–117 °C. TLC Rf
+= 0.39 (EtOAc:hexane, 2:1, v/v). IR (ATR) ν 3029, 2956,
+2922, 2875, 1712, 1608, 1556, 1464, 1450, 1424, 1266, 1072
+cm−1. 1H NMR (500 MHz, CDCl3) δ 1.86–1.92 (m, 2H,
+CH2), 2.16–2.22 (m, 2H, CH2), 2.38 (s, 3H, CH3), 4.04 (t,
+2H, J = 6.0 Hz, NCH2), 4.51 (t, 2H, J = 6.0 Hz, OCH2), 6.11
+(s, 1H, =CH), 6.77 (bd, 1H, J = 2.5 Hz, ArH), 6.82 (dd, 1H,
+J = 9.0 Hz, 2.5 Hz, ArH), 7.31–7.34 (m, 1H, ArH), 7.42 (t,
+2H, J = 7.5 Hz, ArH), 7.47 (d, 1H, J = 9.0 Hz, ArH), 7.80 (s,
+1H, ArH), 7.81–7.83 (m, 2H, ArH). 13C NMR (125 MHz,
+CDCl3) δ 18.65, 26.05, 27.08, 49.98, 67.42, 101.45, 112.03,
+112.35, 113.71, 119.51, 125.62, 125.65, 128.17, 128.83,
+130.55, 147.91, 152.22, 152.52, 161,23, 161.69. LC-MS
+(ESI-QTOF): m/z calcd for C22H21N3O3 [M+H]+ 376.4300,
+found 376.1576.
+4
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+3-((6-(4-Phenyl-1H-1,2,3-triazol-1-yl)hexyl)oxy)-
+7,8,9,10-tetrahydro-6H-benzo[c]chromen-6-one (18)
+Beige solid. Yield 80%. mp: 140 °C–141 °C. TLC Rf
+= 0.16 (EtOAc:hexane, 1:2, v/v). IR (ATR) ν 3128, 3096,
+3028, 2940, 2856, 1703, 1606, 1509, 1447, 1386, 1301, 1259,
+1094 cm−1. 1H NMR (500 MHz, CDCl3) δ 1.42–1.48 (m, 2H,
+CH2), 1.52–1.59 (m, 2H, CH2) 1.78–1.88 (m, 6H, CH2)
+1.98–2.05 (m, 2H, CH2), 2.56 (t, 2H, J = 6.0 Hz, CH2), 2.75
+(t, 2H, J = 6.0 Hz, CH2), 3.99 (t, 2H, J = 6.5 Hz, OCH2) 4.44
+(t, 2H, J = 7.0 Hz, N-CH2), 6.77 (d, 1H, J = 2.5 Hz, ArH),
+6.81 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 7.32–7.35 (m, 1H,
+ArH), 7.41–7.44 (m, 3H, ArH), 7.76 (s, 1H, ArH), 7.82–7.84
+(m, 2H, ArH). 13C NMR (125 MHz, CDCl3) δ 21.40, 21.70,
+23.84, 25.23, 25.54, 26.23, 28.78, 30.27, 50.28, 68.07,
+101.09, 112.29, 113.69, 119.40, 120.46, 124.12, 125.68,
+128.12, 128.84, 130.63, 147.33, 147.79, 153.49, 160.79,
+162.23. LC-MS (ESI-QTOF): m/z calcd for C27H29N3O3
+[M+H]+ 444.2242, found 444.2336.
+3-(4-(4-Phenyl-1H-1,2,3-triazol-1-yl)butoxy)-7,8,9,10-
+tetrahydro-6H-benzo[c]chromen-6-one (19)
+White solid. Yield 65%. mp: 149 °C–150 °C. TLC Rf
+= 0.56 (EtOAc:hexane, 2:1, v/v). IR (ATR) ν 3127, 3084,
+2935, 2877, 1707, 1607, 1508, 1464, 1428, 1388, 1260, 1056.
+1H NMR (500 MHz, CDCl3) δ 1.77–1.92 (m, 6H, CH2),
+2.16–2.22 (m, 2H, CH2) 2.55 (bs, 2H, CH2), 2.75 (bs, 2H,
+CH2), 4.03 (t, 2H, J = 6.0 Hz, OCH2) 4.51 (t, 2H, J = 6.0 Hz,
+N-CH2), 6.76 (d, 1H, J = 2.5 Hz, ArH), 6.80 (dd, 1H, J = 9.0
+Hz, 2.5 Hz, ArH), 7.31–7.34 (m, 1H, ArH), 7.40–7.43 (m,
+3H, ArH), 7.79 (s, 1H, ArH), 7.81–7.83 (m, 2H, ArH). 13C
+NMR (125 MHz, CDCl3) δ 21.38, 21.68, 23.85, 25.20, 26.07,
+27.12, 51.01, 67.30, 101.22, 112.03, 113.92, 119.48, 120.54,
+124.20, 125.67, 128.13, 128.82, 130.56, 147.22, 147.90,
+153.46, 160.45, 162.10. LC-MS (ESI-QTOF): m/z calcd for
+C25H25N3O3 [M+H]+ 416.1974, found 416.1963.
+4-Phenyl-7-((6-(4-phenyl-1H-1,2,3-triazol-1-yl)hexyl)
+oxy)-2H-chromen-2-one (20)
+Colorless viscous oil. Yield 77%. TLC Rf = 0.27
+(EtOAc:hexane, 1:2, v/v). IR (ATR) ν 3131, 3061, 2934,
+2858, 1715, 1604, 1548, 1483, 1430, 1373, 1275, 1117 cm−1.
+1H NMR (500 MHz, CDCl3) δ 1.42–1.48 (m, 2H, CH2),
+1.53–1.60 (m, 2H, CH2), 1.80–1.86 (m, 2H, CH2), 1.99–2.05
+(m, 2H, CH2), 4.03 (t, 2H, J = 6.5 Hz, OCH2), 4.44 (t, 2H, J
+= 7.0 Hz, N-CH2), 6.21 (s, 1H, =CH), 6.77 (dd, 1H, J = 9.0
+Hz, 2.5 Hz, ArH ), 6.87 (d, 1H, J = 2.5 Hz, ArH), 7.32–7.37
+(m, 2H, ArH), 7.41–7.44 (m, 4H, ArH), 7.51–7.54 (m, 3H,
+ArH), 7.76 (s, 1H, ArH),7.83 (bd, 2H, J = 7.0 Hz, ArH). 13C
+NMR (125 MHz, CDCl3) δ 25.52, 26.22, 28.74, 30.26, 50.26,
+68.27, 101.56, 111.80, 112.44, 112.65, 119.39, 125.68,
+127.98, 128.13, 128.38, 128.82, 128.84, 129.57, 130.64,
+135.59, 147.82, 155.84, 156.00, 161.28, 162.19. LC-MS
+(ESI-QTOF): m/z calcd for C29H27N3O3 [M+H]+ 466.2086,
+found 466.2206.
+4-Phenyl-7-(4-(4-phenyl-1H-1,2,3-triazol-1-yl)butoxy)-
+2H-chromen-2-one (21)
+White solid. Yield 68%. mp: 121 °C–122 °C. TLC Rf
+= 0.62 (EtOAc:petroleum benzine, 4:1, v/v). IR (ATR) ν
+3120, 3069, 2965, 2949, 2873, 1716, 1603, 1552, 1471, 1426
+1374, 1206, 1114 cm−1. 1H NMR (500 MHz, CDCl3) δ
+1.87–1.93 (m, 2H, CH2), 2.17–2.23 (m, 2H, CH2), 4.06 (t,
+2H, J = 6.5 Hz, N-CH2), 4.52 (t, 2H, J = 6.5 Hz OCH2), 6.21
+(s, 1H, =CH), 6.76 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 6.86
+(d, 1H, J = 2.5 Hz, ArH), 7.31–7.37 (m, 2H, ArH), 7.40–7.43
+(m, 4H, ArH), 7.50–7.53 (m, 3H, ArH), 7.80 (s, 1H, ArH),
+7.81–7.83 (m, 2H ArH) 13C NMR (125 MHz, CDCl3) δ
+26.06, 27.08, 49.98, 67.48, 101.69, 111.96, 112.39, 112.66,
+119.48, 125.67, 128.08, 128.18, 128.37, 128.84, 129.61,
+130.55, 135.52, 147.93, 155.77, 155.95, 161.17, 161.84. LC-
+MS (ESI-QTOF): m/z calcd for C27H23N3O3 [M+H]+
+438.1818, found 438.1758.
+2.2.2. Preparation of the PLGA NPs.
+PLGA nanoparticles
+were prepared by the single emulsion solvent evaporation
+process
+according
+to
+our
+previous
+study
+with
+minor
+modiﬁcations [37]. Firstly, 21 and PLGA were dissolved in
+750 μl and 2.5 ml DCM, respectively, and slightly vortexed.
+Then they were mixed each other. While the obtained solution
+was added dropwise into 4 ml of 3% (w/v) PVA in an ice
+bath, sonication was applied by using a probe sonicator
+(power of 80%, Bandelin Sonopuls, Germany) for 90 s. The
+formed single emulsion system was diluted in 35 ml of 0.1%
+(w/v) PVA solution. The obtained NPs were collected by
+centrifugation at 9000 rpm for 30 min (Nuve, NF 800R) and
+washed three times with ultrapure water using centrifugation
+at 9000 rpm for 20 min. Then, the NPs were lyophilized and
+storage −40 °C. The reaction yield (RY) of NPs was
+calculated using equation (1):
+( )
+(
+)
+(
+)
+(
+)
+1
+RY %
+Total amount of lyophilized NPs mg
+Amount of all excipients used in the formulation mg
+100.
+=
+´
+In order to calculate encapsulation efﬁciency (EE), and
+drug loading (DL) of NPs direct method was applied and
+equations (2) and (3) were used. For this purpose, 10 mg of
+solid, powder NPs was dissolved in 3 ml of DCM, vortexed,
+and shaken in an incubator (ES-20, Orbital Shaker, Biosan) at
+180 rpm for one hour. All organic solvent was evaporated and
+the obtained solid was redispersed with water: ethanol (4:1).
+Insoluble particles were precipitated by centrifugation at 6000
+rpm for 15 min and the supernatant was separated. This
+process was repeated two times [38]. The quantitative
+analysis was carried out by using a Shimadzu LC-MS (liquid
+chromatography–mass spectrometry) system (model LC-ESI-
+MS 2010 EV). The column was a Shim-Pack MRC-ODS-C18
+HPLC with column oven temperature of 25 °C. The
+mobile phase consisted of A (water, 0.1% (v/v) FA) and
+B (ACN, 0.1% (v/v) FA) was at a ﬂow rate of 0.6 ml min−1.
+The
+following
+mobile
+phase
+gradient
+elution
+was
+applied:
+0–5 min,
+50%
+B;
+5.01–15 min,
+50%–80%
+B;
+15.01–25 min,
+%80
+B;
+25.01–30 min,
+80%–50%;
+30.01–40 min, 50% B [39]. Concentration determination
+was performed using UV-PDA detection at 210 and 280
+nm, and was based on a previously created calibration curve
+given in Supporting Information, ﬁgure S37 (LC-MS
+calibration curve of the 21 coumarin derivative) (R2:
+5
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+0.9996, LOD: 2.45 μg ml−1, LOQ: 7.44 μg ml−1).
+(
+)
+(
+)
+(
+)
+( )
+EE %
+Amount of drug determined in the NPs mg
+Amount of initially added drug mg
+100
+2
+=
+´
+(
+)
+(
+)
+(
+)
+( )
+DL %
+Amount of drug determined in the NPs mg
+Total amount of lyophilized NPs mg
+100.
+3
+=
+´
+5 mg of the powder NPs were dispersed in 2.5 ml PBS at
+pH 7.4 or MES at pH 5.5 buffers to evaluate the in vitro
+release proﬁle of the 21 from the NPs. At predetermined
+time intervals, all supernatant was separated by centrifuga-
+tion at 9000 rpm for 15 min. The release media was ﬁltered
+with 0.45 μm regenerated cellulose (RC) ﬁlter, and
+subjected to the analysis described above using the same
+LC-MS method and an appropriate calibration curve.
+2.2.3. Characterization of the PLGA NPs.
+The obtained NPs
+were characterized by Zetasizer, ultraviolet–visible spectroscopy
+(UV–vis), Fourier-transform infrared spectroscopy-attenuated
+total
+reﬂectance
+(FT-IR-ATR),
+x-ray
+diffraction
+(XRD),
+Raman spectroscopy, differential thermal analysis (DTA),
+thermogravimetric analysis (TGA), and scanning electron
+microscopy (SEM). The mean size distribution, polydispersity
+index (PDI), and zeta potential of the NPs were determined by
+using Zetasizer (Zetasizer Nano ZS, Malvern, UK). Samples
+were freshly prepared before use by adding aliquots of NPs to
+PBS (pH 7.2) to make a solution with a NPs concentration
+of 1 mg ml−1. Samples were diluted to 1:30 for the analysis
+and
+injected
+into
+a
+disposable
+capillary
+cell
+DTS1070
+(Malvern Instruments, MA). Measurements were performed at
+25 °C ± 1 °C with a material refraction index of 1.33, and
+viscosity of 0.8872 cp. All measurements were done in
+triplicate. The FT-IR spectra were recorded on Thermo
+Scientiﬁc Nicolet iS10 in ATR mode in ranging from 600 to
+4000 cm−1 with resolution of 4 cm−1 and 32 scans were used
+[40–42]. The crystalline and/or amorphous structure of the NPs
+were evaluated by XRD analyes. Powder XRD patterns of the
+NPs were analyzed at room temperature with PANalytical
+X’Pert PRO powder diffractometer. The XRD spectra were
+recorded between 5° and 60° (2θ). The chemical composition of
+the free 21 molecule, empty and 21-loaded PLGA nanoparticles
+were studied by Raman spectroscopy (Perkin Elmer Raman
+Station 400F) using an excitation wavelength of 785 nm at
+100 mW. Raman spectra were recorded by averaging three
+acquisitions of 3 s in the range 250–3200 cm−1. The thermal
+features of the free 21 molecule, empty and 21-loaded PLGA
+nanoparticles were measured using DTA and TGA (SII
+Nanotechnology-SII6000 Exstar TG/DTA 6300). Shortly,
+approximately 5 mg of each sample was placed on an
+aluminum pan under a nitrogen atmosphere. The thermograms
+were obtained at a temperature range of 30 °C–800 °C with a
+heating rate of 2 °C min−1 [43, 44].
+PVA content of the 21-loaded PLGA nanoparticles was
+calculated by a colorimetric method [45]. 10 mg of the NPs
+were dispersed in 2 ml of 0.5 M NaOH and stirred for 15 min
+at 60 °C. 900 μl of 1 N HCl was added to the mixture for the
+aim of neutralization and the ﬁnal volume was completed to 5
+ml with distilled water. Then, freshly prepared 3 ml of 0.65 M
+boric acid, 1 ml of I2/KI and 1.5 ml of distilled water were
+added to the environment, respectively. The UV–vis analysis
+were performed at 690 nm and PVA content of the 21-loaded
+PLGA nanoparticles was determined by using a calibration
+curve of the PVA (R2 > 0.99) given in Supporting
+Information,
+ﬁgure
+S38
+(UV–vis
+calibration
+curve
+of
+the PVA).
+The
+surface
+morphology
+of
+the
+21-loaded
+PLGA
+nanoparticles was evaluated by SEM, Zeiss, EVO-LS 10 as
+previously described [40]. The complex was ﬁxed on metal
+studs and then coated with gold under vacuum. SEM
+photomicrograph was taken at an acceleration voltage of
+7 kV.
+2.2.4.
+In
+vitro
+cell
+culture
+assay.
+In
+the
+cell
+culture
+experiments, human ﬁbroblast L929 (CCD1072-SK), HEK-
+293 (human embryonic kidney), MCF-7 (human breast
+adenocarcinoma),
+and
+human
+cervical
+adenocarcinoma
+(HeLa) cell lines were used. DMEM cell culture medium
+was used for culture cells. Each medium was enriched by
+10%
+fetal
+bovine
+serum
+(FBS)
+and
+%1
+penicillin
+(1000 U ml−1)-streptomycin (1000 lg ml−1) solution. Both
+healthy and cancer cell lines were incubated at 37 °C, in a
+humidiﬁed atmosphere of 5% CO2 and 99.9% humidity. The
+cells were passaged enzymatically with 0.25% trypsin-1 mM
+EDTA and subculturing was done by brieﬂy rinsed the cell
+layer with 0.25% (w/v) trypsin-0.53 mM EDTA solution to
+remove all traces of serum [24].
+2.2.4.1. Cytotoxicity assay.
+We utilized the MTT assay to
+determine the cytotoxicity of molecules 1–3 and 16–21 on
+human ﬁbroblast L929 (CCD1072-SK) and HEK-293 cell
+lines by following the approach of the literature [46]. Brieﬂy,
+the cells (1 × 105 cells ml−1) were implanted on 96-well
+plates and cultured overnight. Various concentrations ranging
+from 0.0001 to 1 mg ml−1 (0.1; 0.5; 1; 5; 50; 500 and
+1000 μg ml−1, n = 4) of the molecules 1–3 and 16–21 solved
+in serum-free DMEM-F12 medium were added onto cells and
+incubated the cells for 24 h period of time at 37 °C. For
+investigation of the cell sensitivity against the agent, 10 μl of
+MTT
+[3-(4,
+5-dimethylthiazol-2-yl)−2,
+5-diphenyl
+tetrazolium bromide] solution (10 mg ml−1) was added into
+all wells. When the conversion of intracellular purple
+formazan crystals was detected under the microscope as an
+indicator of viability (4 h at 37 °C), these crystals were
+isolated from the medium containing MTT and dissolved in
+100 μl of DMSO. As a ﬁnal step, colorimetric density in well
+plates was measured by means of an ELISA reader (Thermo
+Scientiﬁc Multiskan GO Microplate, USA) at 570 nm for each
+well [24, 47]. DMSO which is well known cytotoxic activity
+agent was used as a positive control and DMEM + 10% FBS
+culture medium was used as negative control. The percentage
+6
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+of the viable cells was calculated using the equation (4):
+( )
+%cellviability
+100
+4
+sampleabsorbance
+negativecontrolabsorbance
+=
+´
+2.2.4.2. Anticancer activity assay.
+The anticancer activities of
+the compounds 16–21 were evaluated by in vitro method using
+MTT assay against MCF-7 and HeLa. The MTT assay described
+before was performed by inoculating cultured MCF-7 and HeLa
+cells (the number of cells was 104 cells per well) [48]. The six
+compounds (16–21) were added to wells in a concentrations of 1
+mg ml−1 in four replicate (n = 4) after 24 h of seeding in
+DMEM-F12 medium including 10% FBS. The cells were
+incubated for 24 h and 48 h periods of time. MTT reagent was
+added to wells and incubated for 4 h at 37 °C until intracellular
+purple formazan crystals are visible under the microscope. MTT
+reagent were removed and 100 μl of the DMSO was added to
+each well and mixed gently on an orbital shaker for one hour at
+room temperature. The absorbance was measured at 570 nm for
+each well on an absorbance plate reader and cell viability ratios
+were calculated. A positive control DMSO was used as a known
+cytotoxic activity agent [49].
+2.2.5. Statistical analysis.
+Statistical analyzes of the results
+were carried out using MS Excel 2016 and OriginPro 9.0
+programs. A p value less than 0.05 was considered to be
+signiﬁcant. All experiments were repeated at the least three
+times. The obtained data were given as mean ± standard
+deviation.
+3. Results and discussion
+3.1. Chemistry
+At the beginning of synthesis, three coumarin derivatives
+(1–3) were prepared by Pechmann condensation starting from
+resorcinol and β-ketoester in TFA under ultrasonic effect.
+Then, the alkylation of the coumarin derivatives (1–3) from
+C–7 was carried out with the dihaloalkane derivatives in
+acetone under nitrogen atmosphere to give compounds 4–9.
+In the third part of our study, coumarin azide products
+(10–15) were prepared by SN2 reaction of 4–9 and NaN3 in
+DMF. In the last part of synthesis, the triazole-coumarin
+hybrid molecules (16–21) whose structures were given in
+ﬁgure 1 were obtained for the ﬁrst time in the literature by the
+azide–alkyne 1, 3-dipolar cycloaddition reaction between
+azides (10–15) and phenylacetylene. The synthesis of all
+coumarin derivatives were summarized in scheme 1. The
+structures of all new compounds and coumarin-triazole deri-
+vatives were elucidated by IR, mass,
+1H and
+13C-NMR
+spectral data.
+3.2. In vitro cytotoxicity assay
+It has been previously emphasized that C4 and C7-substituted
+coumarin nucleus have great importance in the development
+of anti-cancer and anti-inﬂammatory drugs through their
+modiﬁable dual-site binding properties [50]. MTT assay was
+performed to analyze the cytotoxic potential of these cou-
+marin derivatives in human ﬁbroblast cell lines (CCD1072-
+SK). The viability of CCD1072-SK cells treated with 1–3,
+16–21 molecules prepared at various concentrations (0.1; 0.5;
+1; 5; 50; 500 and 1000 μg ml−1) decreased for each molecule
+with increasing concentration (1: 76%–21%; 2: 81%–24%; 3:
+85%–22%, 16: 111%–17%; 17: 98%–27%; 18: 110%–29%;
+19: 136%–26%; 20: 121%–21%; 21: 95%–18%) and also
+each molecule showed toxicity with different IC50 value
+(ﬁgure 2).
+1,2,3-triazole derivatives have gained increasing popu-
+larity in recent years as an excellent building block for the
+discovery of potential anticancer agents [14, 51]. In this
+study, when the common hydroxyl of 1–3 molecules was
+replaced with 4-phenyl-1H-1,2,3-triazole of 16–21, some
+differences, although not signiﬁcant, were observed in the
+cytotoxicity values of the six molecules, 16–21, compared to
+starting molecules 1–3. With this result, it was thought that
+the three nitrogen atoms of the 1,2,3-triazole groups of the
+16–21 molecules will may be exert an cytotoxic effect
+through different mechanisms by interacting with biological
+targets via hydrogen bonds [52]. The difference of sub-
+stituents (methyl, cyclohexyl and phenyl) which are attached
+to the C4 carbon of the 17, 19, 21 (with n = 4C linker) and
+16, 18, 20 (with n = 6C linker) molecules, may be affect the
+cytotoxicity levels as presented in the ﬁgure 2. The cyto-
+toxicity values of 16–17, 18–19 and 20–21 molecules with
+the alkyl linker with 6C and 4C atoms in the C7 carbon were
+also presented in the ﬁgure 2.
+It was seen that decreasing of the carbon number in linker
+causes a signiﬁcant increase in cytotoxicity values. In addi-
+tion, it was observed that the methyl and cyclohexyl-linked
+molecules were more cytotoxic than the phenyl-linked ones
+when compared molecules 16, 18, and 20 substituted with
+same linker. This result supports that both of the linker and
+alkyl difference in the coumarin core directly affects the
+cellular behavior of the molecule.
+However, with the decrease of the carbon number, there
+was observed a noticeable diminish in the solubility of
+molecule 19 in the experimental process so molecule 19 was
+considered inapplicable to in vitro analyzes and was excluded
+from the anticancer studies. Also, inconsistency of cellular
+analysis data due to high standard deviation for molecule 17
+was determined. Considering these mentioned cons, the effect
+of substitutions at carbon C7 and C4 on the anticancer
+potential was evaluated with only molecules 16, 18, 20 and
+21. As a result of anticancer activity analyzes with MCF-7
+cell line, the percent viability values for molecules 16, 18, 20
+and 21 at the concentrations of 1 mg ml−1 were calculated as
+80.2 ± 11.9%, 85.7 ± 2.6%, 84.3 ± 9.7% and 37.3 ± 2.6%
+(13.5 ± 0.1% for positive control) respectively (ﬁgure 3). It is
+seen in the graph that 16, 18 and 20 molecules have very
+close to each other and low cytotoxicity values. In addition, it
+has been observed that when compared 20 and 21 containing
+phenyl substituents on C4, 21 with 4C linker was detected to
+have the highest anticancer effect as the optimum linker. In
+7
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+light of cell viability values obtained from the cell culture
+studies, molecule 21 was chosen for further studies. Primarily,
+a purity study was carried out utilizing HPLC for the 21 to
+make sure that the potential anticancer activity of the
+designed compound is not caused by possible impurities. The
+purity of 21 was found as 96% (Supporting Information,
+ﬁgure S39 HPLC chromatogram and purity information of
+21). To determine whether the low anti-cancer activities of the
+other three compounds (16, 18, and 20) were due to possible
+impurities, HPLC analysis was performed to present their
+impurities. The purity rates for molecules 16, 18, and 20 were
+95% and above (Supporting Information, ﬁgures S40–42).
+Therefore, 21, selected as the highest biocompatible mole-
+cule, was loaded into PLGA nanoparticles by a single emul-
+sion solvent evaporation method to convert it into a functional
+material having the potential to treat breast carcinoma. It was
+aimed to diminish the existing toxicity and to increase the
+anticancer activity of the 21 molecule by developing an
+effective controlled release system.
+3.3. Preparation of the 21-loaded PLGA nanoparticles
+21 derivative which of 6 new coumarin derivatives obtained
+in this work with the lowest toxicity and the best bio-
+compatible one in the human ﬁbroblast cell line (CCD1072-
+SK), and the highest anticancer activity against MCF-7 cell
+line was incorporated into the PLGA nanoparticles by the
+solvent evaporation method. Thereby, it was aimed to mini-
+mize the existing toxicity of 21 and to enhance its anticancer
+activity with the controlled long release.
+Scheme 1. Schematic route of the synthesis.
+Figure 2. Experimentally observed IC50 values of the human
+ﬁbroblast cells (CCD1072-SK) for coumarin-triazole hybrid mole-
+cules in 24 h period of time at 37 °C. Each value represents the mean
+± SD (n = 3), M (μg ml−1).
+Figure 3. Percentage of MCF-7 cells viable following incubation
+with coumarin-triazole hybrid molecules (16, 18, 20 and 21 at the
+concentrations of 1 mg ml−1) relative to a control of untreated cells.
+Each bar represents the mean percentage survival and SD (where
+n = 4, four ﬁelds per repeat).
+8
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+RY, EE, and DL of the obtained 21-loaded PLGA
+nanoparticles were found to be 66.35 ± 2.3%, 52.46 ± 3.8%,
+and 4.12 ± 0.9%, respectively. Our study exhibited not much
+difference in these data from previous studies [26, 53, 54].
+The average particle sizes of empty and 21-loaded PLGA
+nanoparticles were found to be 195.5 ± 1.411 nm and 225.9
+± 2.957 nm with PDI values of 0.102 ± 0.016 and 0.095 ±
+0.023, respectively, which proved the homogenous distribu-
+tion of the nanoparticles (ﬁgure 4). Some increase in average
+size occurred after the encapsulation process of 21 into PLGA
+NPs compare to empty NPs.
+Furthermore, empty and 21-loaded PLGA nanoparticles
+exhibited similar negative zeta potential of −16.9 ± 0.850
+and −16.0 ± 0.115 mV thanks to the presence of PLGA
+terminal carboxylic groups and PVA residues on the surface
+(ﬁgure 5). This similarity also suggested to us that there was
+no signiﬁcant drug adsorption on the NPs surface. At the
+same time, sufﬁciently negative zeta potential values provided
+prominent information about the stability of the nanoparticles.
+The zeta potential value of the 21-loaded PLGA nanoparticles
+stored in lyophilized powder form at +4 °C for approximately
+6 months was measured by the ELS technique. The zeta
+potential value of 21-loaded NPs measured under the same
+analysis conditions as in the initial measurements was found
+to be −15.0 ± 5.39 mV. This value proved to us that these
+nanoparticles were stable in long-term storage as well as there
+was no signiﬁcant difference with the initial measurement.
+Additionally, for the full characterization of nanoparticles, it
+is also interesting to determine the ratio of the emulsifying
+agent used in the manufacturing of them in the produced
+nanoparticles. In this study, PVA, which is frequently used as
+an emulsifying agent in the production of PLGA nano-
+particles, was preferred. Although excessive washing for
+removing PVA after the nanoparticles are produced, some of
+the PVA remains incorporated with the nanoparticles because
+it forms a mesh structure with the polymer at the interface.
+The PVA content of the 21-loaded PLGA nanoparticles was
+found to be 3.87 ± 0.49% according to the colorimetric
+method and this value is convenient with the literature [55]
+(Supporting Information, ﬁgure S40, UV–vis spectrum of the
+21-loaded PLGA nanoparticles after the PVA concentration
+calculation method was applied).
+FT-IR spectrum of the 21 showed some characteristic
+peaks (ﬁgure 6(a)). While 3120 and 3069 cm−1 corresponded
+to aromatic C–H stretches, 1716 and 1603 cm−1 referred to
+aromatic C=O and C=C groups, respectively. In addition,
+bands at 1471 and 1374 cm−1 represented aliphatic in-plane
+C–H bending, while 1206 cm−1 supported C–N oscillation,
+and 1114 cm−1 supported C–O tension. For PLGA, some
+peaks were examined in ﬁgure 6(a). The peaks between 2900
+and 3000 cm−1 referred to C–H stretching of CH3 groups,
+while the peak at 1748 cm−1 remarked carbonyl –C=O
+stretching and the other peaks between 1090 and 1171 cm−1
+displayed the presence of C–O stretching. The spectra of
+empty and 21-loaded PLGA nanoparticles exhibited com-
+pletely the same characteristics. In addition, the absence of
+any speciﬁc peak belonging to the free 21 molecule in the
+spectrum of the 21-loaded PLGA nanoparticles proved that
+the encapsulation process was carried out successfully and
+that the molecule did not adhere to the surface. This result
+was consistent with the results obtained in our previous stu-
+dies [24, 27, 56].
+The crystallization properties of the nanoparticles were
+examined by XRD. The XRD patterns of free 21 molecule,
+empty and 21-loaded PLGA nanoparticles were presented in
+ﬁgure 6(b). There were sharp peaks in the 12–26 theta range,
+indicating that the 21 molecule is crystalline. In the spectra of
+empty and 21-loaded PLGA nanoparticles, broadband in the
+18.59 theta supporting the amorphous property of the PLGA
+were observed, similar to each other [57]. Thus, it was shown
+the 21 molecule was not found on the nanoparticle surface
+and successfully entrapped into the NPs.
+The thermal behavior of the free 21 molecule, empty
+PLGA nanoparticles, and 21-loaded PLGA nanoparticles was
+investigated by differential thermal analysis (DTA) and
+thermogravimetric analysis (TGA). Analysis of the free 21
+molecule, (ﬁgure 7(a)) revealed one TGA step and three DTA
+peaks. The free 21 molecule had a single step TGA degra-
+dation point at 287 °C. The DTA steps were located at
+121 °C, 386 °C and 662 °C. While the TGA thermogram of
+PLGA displayed a single phase of weight loss between 246
+and 600 C, DTA revealed one step at 303 °C (ﬁgure 7(b)).
+Similar to empty nanoparticles, 21-loaded PLGA nano-
+particles also showed a single point weight loss, indicating
+that polymer and 21 molecule mixed but did not interact. In
+Figure 4. Size distribution by intensity of the NPs-1 (21-loaded
+PLGA nanoparticles) and NPs-2 (empty PLGA nanoparticles). For
+the measurements, NPs were freshly prepared at a concentration of 1
+mg ml−1 and diluted with distilled water at a ratio of 1:30. The
+solutions were passed through neither 0.45 nor 0.22 μm ﬁlters.
+Figure 5. Zeta potential distribution of the NPs-1 (21-loaded PLGA
+nanoparticles) and NPs-2 (empty PLGA nanoparticles). For the
+measurements, NPs were freshly prepared at a concentration of
+1 mg ml−1 and diluted with distilled water at a ratio of 1:30. The
+solutions were passed through neither 0.45 nor 0.22 μm ﬁlters.
+9
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+addition, the ﬁndings showed that the decomposition temp-
+erature reduces slightly with drug loading (ﬁgure 7(c)). The
+same result is well described in the literature [58]. TGA is
+also used to identify weight loss because of the volatilization
+of residual solvents in nanoparticles that take place around the
+boiling point of it [59]. Curiously, when both empty and 21-
+loaded PLGA nanoparticles were analyzed by TGA, no
+considerable weight loss was monitored at the boiling point of
+DCM at 40 °C approving its absence as residual solvent.
+In the Raman spectroscopy analysis, the representative
+peaks obtained from 21 and empty PLGA NPs were com-
+pared with the peaks for 21-loaded PLGA nanoparticles
+(ﬁgure 7(d)). In the spectrum of empty PLGA NPs, peaks at
+2752, 2946, and 3182 cm−1 refer to C−H stretching vibra-
+tions. One another band at 1770 cm−1 belongs to C=O bond
+stretching vibration while bands at 1114 cm−1 and 1036 cm−1
+correspond to C–O stretching. Additionally, the C–H bend
+was noticed at 1436 cm−1. When the Raman spectrum of the
+21 was examined, it was determined that C–H bands at 3062,
+2932 and 2890 cm−1, C=O band at 1720 cm−1, CH3 band at
+1378 cm−1, C–C band at 1660 cm−1. Besides the fact that the
+spectra of empty PLGA nanoparticles and 21-loaded PLGA
+nanoparticles exhibited similar properties, no peaks of the 21,
+the main peaks of which were given above, did not appear in
+Figure 6. (a) The FT-IR spectra of empty and 21-loaded PLGA nanoparticles comparatively with free 21 molecule (b) the XRD patterns of
+free 21 molecule, empty PLGA nanoparticles, and 21-loaded PLGA nanoparticles.
+Figure 7. Thermal gravimetry and differential thermal analysis curves of the (a) free 21 molecule, (b) empty PLGA nanoparticles, (c) 21-
+loaded PLGA nanoparticles, (d) Raman spectra of the free 21 molecule, empty PLGA nanoparticles, and 21-loaded PLGA nanoparticles.
+10
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+the spectra of the encapsulated PLGA nanoparticles, and this
+conﬁrmed the encapsulation of 21 into PLGA nanoparticles
+with no surface adsorption.
+SEM image showing the morphology of the 21-loaded
+PLGA nanoparticles was presented in ﬁgure 8(a). In SEM
+imaging, parameters such as being able to determine the
+morphological distribution of the nanoparticles, being able to
+monitor the structural form of the nanoparticles, resolution of
+the images, and not deforming the samples during the analysis
+are important. We observed homogeneously dispersed and
+spherical nanoparticles supported by a high-resolution SEM
+image compatible with the Zetasizer measurement results.
+Figure 8(b), represented the in vitro release proﬁle of 21
+from PLGA nanoparticles in two different buffered solutions
+at pH 5.5 and 7.4 at 37 °C. In vitro release behavior was
+evaluated for various time intervals (1, 6, 32 h; 4, 11, 20, 30,
+and 45 d). In the beginning, a typical initial burst release of 21
+from the PLGA nanoparticles was seen for both release pat-
+terns and 15%–17% of the 21 was released from the nano-
+particles in the ﬁrst six hours. Burst release usually occurs
+when a certain amount of the drug encapsulated in a particle
+system is released into both the in vitro and in vivo release
+environment within a short period of 24–48 h. Even though
+this situation is attributed to different physical and chemical
+conditions, the primary mechanism of burst release in
+monolithic polymeric systems has not been utterly elucidated
+[60, 61]. The release of the active substance from PLGA
+nanoparticles occurs due to both diffusion and erosion. In
+addition, since PLGA is a polymer with the capacity to absorb
+water, polymeric degradation takes place both within the bulk
+and on the surface of the obtained nanoparticles. Since all
+these parameters interact with each other during the release of
+the active substance, their analysis becomes difﬁcult. In vitro
+cumulative drug release patterns exhibit behavior in four
+different categories: monophasic, burst biphasic, delayed
+biphasic, and triphasic. The burst biphasic, termed ‘burst
+release,’ is typically characterized by rapid drug release upon
+initial exposure of PLGA nanoparticles to aqueous media,
+with the duration of this phase varying from several hours to
+1–2 d [62]. Subsequently, it was assessed that 21 showed
+controlled
+release
+over
+a
+one-month
+period
+for
+both
+pH values. Following the initial burst release seen in the
+PLGA nanoparticles, a phase happens with a power law
+relationship between the cumulative amount of drug released
+and the time elapsed in this phase. In such a case, the zero-
+order release phase is observed, where the drug release rate
+becomes constant, meaning that the active material is released
+from the polymer depot via non-Fickian diffusion for a period
+of several days to weeks [62]. This constant release drew a
+proﬁle that remained stable at the end of 45 d and continued
+to release at a low sustained rate which was undetectable by
+LC-MS. A similar kinetic pattern has been determined for
+other PLGA NPs [63]. The release proﬁle of 21 from PLGA
+nanoparticles appears similar to coumarin C75 release from
+the same polymeric system found by Fernandes et al. where
+around 30% of the active ingredient was released until the
+ﬁrst 24 h, followed by a sustained release which prolongs up
+to 7 d. Overall, while there was nearly 85% release of the drug
+at pH 5.5, the in vitro release is just about 50% at pH 7.4 for
+the same sample. It was evaluated that the parameters con-
+tributing to the in vitro release of 21 from nanoparticles were
+swelling of the PLGA polymer, pore diffusion, polymer
+erosion and degradation [57]. The fact that the release was
+notably higher under cancer microenvironment conditions at
+pH 5.5 can provide more valuable data for the anticancer cell
+study compared to pH 7.4.
+3.4. In vitro anticancer activities
+The in vitro cytotoxicity levels and anticancer activities of the
+three groups consisting of molecule 21, 21-loaded PLGA
+nanoparticles and empty PLGA NPs at ﬁve different con-
+centrations were determined according to the survival rates of
+human ﬁbroblast L929 cells, human embryonic kidney HEK-
+293 cells, (Supporting Information, ﬁgures S44–S45), human
+breast cancer MCF-7 cells, and HeLa cell lines by MTT
+analysis as well (ﬁgures 9–10). The negative control absor-
+bance value was accepted as 100% viability for both tests. As
+shown in ﬁgures S44 and S45, 21, 21-loaded PLGA nano-
+particles and empty PLGA NPs had almost no cytotoxicity
+Figure 8. (a) SEM photograph of 21-loaded PLGA nanoparticles produced by single emulsion solvent evaporation method (b) in vitro release
+proﬁle of 21 from PLGA NPs in PBS buffer at pH 7.4 and in MES buffer at pH 5.5.
+11
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+against human ﬁbroblasts (CCD1072-SK) and HeLa cervical
+adenocarcinom cells. The viability of cells ranged between
+70%–95% and 71%–94%, respectively.
+With the encapsulation of molecule 21, we observe an
+increase in cell viability (after incubation time of 24 h) against
+both MCF-7 breast cancer and HeLa cervical adenocarcinoma
+cells (ﬁgures 9–11). While an increase in cytotoxicity values
+indicating cell viability was observed from IC50(21-loaded
+PLGA nanoparticles): 0.77 ± 0.12 mg ml−1 to IC50(free 21 molecule):
+4.66 ± 3.36 mg ml−1 for HeLa cells, was observed from
+IC50(21-loaded
+PLGA
+nanoparticles): 0.42 ± 0.01 mg ml−1 to
+IC50(free 21 molecule): 5.74 ± 3.82 mg ml−1 for MCF-7 cells
+(ﬁgure 11). This dramatic increase was evaluated as a result
+consistent with the burst release character resulting from the
+structure of the polymeric nanoparticle. The fact that about
+20% of the total active ingredient release occurs during the
+ﬁrst six hours (ﬁgure 8(b)) supports both the time-dependent
+and dose-dependent cytotoxic effects observed after incuba-
+tion of 24 h (ﬁgures 9, 10). However, a series of cellular tests
+are needed to prove through which pathway the observed
+cytotoxic effect occurs. According to the results obtained in
+this study, it is clear that active molecule 21 acts at a sufﬁcient
+dose and time to inhibit the proliferation of the tested cancer
+cells. However, when the IC50 graphs of the studied cancer
+cells are examined, the cytotoxicity values no increasing
+consistently with concentration and time may suggest that
+molecule 21 acts as a pro-apoptic agent on cancer cells. The
+proliferation of cancer cells, which reduce mitochondria
+permeability as a result of apoptosis, regardless of the applied
+dose, may result in increased cell viability. For this reason,
+despite the cumulative release in the second 24 h (ﬁgure 8(b)),
+cell viability may increase compared to the ﬁrst 24 h. On the
+other hand, considering the hydrophobic character of the
+PLGA nanoparticles compared to the free molecule 21, the
+delivery time and dose of the activated substance into the cell
+may differ and the duration of the cytotoxic effect may
+increase due to the increase in the exposure time to the active
+substance. In fact, as emphasized in the literature regarding
+coumarin derivatives, molecule 21 can suppress the growth
+and proliferation of cancer cells even at low doses and may
+not have a signiﬁcant toxic effect on normal cells [64, 65].
+This may be further evidence that coumarins are a promising
+class of anti-tumor drugs with high selectivity.
+By the end of 2020, approximately 8 million women
+worldwide have been diagnosed with breast cancer, making it
+the most common and leading cause of death in women [66].
+Different treatment methods and/or drugs that have been
+researched for many years aim not only to eliminate the
+disease but also to protect existing healthy tissues. There are
+many studies in literature on the structure–activity relation-
+ship of coumarin derivatives as anticancer drug candidates
+[11, 67–71]. However, the study examining the anticancer
+effect of synthetic coumarin-7 derivatives both to increase the
+drug-activity relationship and with biodegradable polymeric
+controlled release system is quite limited. When the activities
+of coumarin derivatives integrated with polymeric and other
+nanocarrier systems on MCF-7 breast cancer line are exam-
+ined; the determined lowest IC50 value in which different
+coumarin extract types was calculated as 1.755 mg ml−1 [72].
+In a separate study that treated breast cancer cell lines with
+zinc oxide nanostructures coated with ruthenium(III) com-
+plexes of synthetic coumarin derivatives, it was emphasized
+that ruthenium(III) complexes (IC50 < 10 μg ml−1) had a
+better value than the coated complex coated nanostructures
+(IC50 < 80 μg ml−1) [73]. In our study, IC50 values deter-
+mined by encapsulating to the PLGA carrier system of
+synthetic
+coumarin-7
+derivatives
+against
+MCF-7
+breast
+cancer and HeLa cervical cancer cells were calculated as
+0.42 ± 0.01 mg ml−1 and 0.77 ± 0.12 mg ml−1 respectively.
+Although the effect of polymeric controlled release system on
+cytotoxicity is already known, many synthetic coumarin
+molecules with different functional groups are difﬁcult and
+limiting for in vitro cell studies due to solubility, hydro-
+phobicity and high toxicity problems to healthy cells when
+Figure 9. Dose response in MCF-7 cells treated with free 21
+molecule, 21-loaded PLGA nanoparticles, and empty NPs by MTT
+assay after 24 h and 48 h incubation time (all cell viability values
+represent the mean ± SD (n = 5), Apsis values; M (mg ml−1)).
+Figure 10. Dose response in MCF-7 cells treated with free 21
+molecule, 21-loaded PLGA nanoparticles, and empty NPs by MTT
+assay after 24 h and 48 h incubation time (all cell viability values of
+represent the mean ± SD (n = 5), Apsis values; M (mg ml−1)).
+12
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+compared to plant extract and protein/peptide structures. For
+this reason, we believe that our study will contribute sig-
+niﬁcantly to the existing literature in terms of not only the
+unique molecules it contains, but also its combination with a
+delivery system and its in vitro evaluation. 21-loaded PLGA
+nanoparticles can be given active targeting properties by
+conjugating them with peptides that have speciﬁc binding
+properties to the cancer cells of interest, thereby achieving a
+much higher level of anticancer activity. However, in cancer
+therapies, therapeutic agents are administered to patients in
+saline (0.9% NaCl solution). Therefore, evaluation of in vitro
+analyzes in this solution may strengthen the study.
+4. Conclusion
+Six new coumarin-triazole hybrids featuring different sub-
+stituents at C4 position (methyl, phenyl or cyclohexyl) with
+two different chain linker lengths (n = 4, 6) were prepared
+and characterized by using 1H NMR, 13C NMR, and mass
+spectroscopy techniques. Since the relation of anticancer
+activity with cytotoxicity is known, ﬁrst of all, a kind of pre-
+elimination was performed for all structures as a result of the
+cytotoxicity study. Even molecules that could not be applied
+to laboratory analysis procedures were eliminated. In this
+study, 21 was prominent as the most suitable molecule for the
+highest cytotoxicity against MCF-7. The superior properties
+of nanoparticles such as aggregation in leaky blood vessels of
+tumors and destroying tumors, minimizing damage to healthy
+organs, circulating in the bloodstream for a longer time, and
+optimizing the effective dose are known. Therefore, despite a
+certain level of in vitro anticancer activity of molecule 21, the
+nanoparticle system was preferred for increasing its antic-
+ancer efﬁciency. The release proﬁle, size, and production
+quality of the produced nanoparticles were evaluated and
+compared with the active substance itself in terms of its
+anticancer properties. On the whole, coumarin compounds
+can inhibit the growth, proliferation and metastasis of various
+tumor cells through various mechanisms (inhibition of car-
+bonic anhydrase, PI3K/AKT/mTOR signaling pathway,
+microtubule polymerization, angiogenesis, monocarboxylate
+transporters, hypoxia inducible factor-1) acting on apoptosis
+proteins and inhibiting tumor multidrug resistance, ROS
+regulation, etc Coumarin derivatives have long been proven
+to be drug candidates acting as antitumor agents, with
+selective and effective cytotoxicity through various anti-
+tumor mechanisms. The failure to comprehensively study
+coumarin derivatives modiﬁed with different functional
+groups results in the limitation of in vitro and in vivo
+experiments to explore the relationship between these deri-
+vatives and their biological mechanisms and misunderstand-
+ing of drug pharmacokinetics and safety proﬁle. The most
+well-known limitations can be listed as the fact that antitumor
+mechanisms have not been evaluated comprehensively,
+in vitro experiments are not supported by in vivo experiments
+in proving the in vivo antitumor potential and safety proﬁle of
+newly discovered coumarin compounds, and ﬁnally, the
+newly discovered coumarin compounds are poorly soluble in
+water. Presented study was designed to overcome the lim-
+itation of in vitro studies due to the poor water solubility of
+coumarin compounds and the problem of low bioavailability.
+It involves increasing water solubility and bioavailability by
+modifying the functional groups of coumarin core, as well as
+increasing the biological performance of the molecule with a
+carrier system. We aimed to canalize the literature on the
+modiﬁcation and delivery systems of coumarins by ensuring
+high selectivity, lower side effects and higher bioavailability.
+Due to the 2H-chromen-2-one ring (contributes to aromatic,
+planar and lipophilic structure), lactone group and hetero-
+cyclic conformation in the structure of coumarin enables
+interaction with different biological target proteins and forms
+strong polar bonds. Considering the results of cytotoxic
+activity, 21-loaded PLGA nanoparticles (0.5 mg ml−1) were
+determined as the most effective group with about 45% and
+60% or higher survivals in MCF-7 cells and HeLa cells. In
+conclusion, in the study, the efﬁciency of molecule 21
+selected among the novel six coumarin derivatives as poten-
+tial anticancer drug candidates against breast and cervical
+adenocarcinom cells was extended with the integration to the
+polymeric nanosystem. We hope that this work can hereby
+chart a new avenue for the future optimization of candidate
+molecules with stronger anticancer properties.
+Acknowledgments
+This work was supported by Yildiz Technical University
+Scientiﬁc
+Research
+Foundation
+[project
+number
+FDK-
+2022-4971].
+Figure 11. Calculated IC50 values of the 21-loaded NPs, free 21 molecule and empty NPs against (a) MCF-7 and (b) HeLa cells after 24 and
+48 h treatment (all values represent the mean ± SD (n = 3), IC50 (mg ml−1)).
+13
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+Data availability statement
+The data cannot be made publicly available upon publication
+because they are not available in a format that is sufﬁciently
+accessible or reusable by other researchers. The data that
+support the ﬁndings of this study are available upon reason-
+able request from the authors.
+Conﬂicts of interest
+There are no conﬂicts to declare.
+Ethical policy
+In accordance with IOPP’s Ethical Policy, all authors declare
+their consent to publication in the study involving identiﬁable
+human subjects (including cell or tissue donors).
+Author contributions
+BA, BU, TA, HSV and MBA carried out the experiments,
+BA, BU, TA, FA and CY contributed to conception, design
+and wrote the manuscript. All authors provided critical
+feedback and helped shape the research, analysis and
+manuscript.
+ORCID iDs
+Tayfun Acar
+https://orcid.org/0000-0001-5006-8167
+References
+[1] Bouhaoui A, Eddahmi M, Dib M, Khouili M, Aires A,
+Catto M and Bouissane L 2021 Synthesis and biological
+properties of coumarin derivatives. A review
+ChemistrySelect 6 5848–70
+[2] Hassan M Z, Osman H, Ali M A and Ahsan M J 2016
+Therapeutic potential of coumarins as antiviral agents Eur. J.
+Med. Chem. 123 236–55
+[3] Ostrowska K 2020 Coumarin-piperazine derivatives as
+biologically active compounds Saudi Pharm. J. 28 220–32
+[4] Zhang L and Xu Z 2019 Coumarin-containing hybrids and
+their anticancer activities Eur. J. Med. Chem. 181 111587
+[5] Feng D, Zhang A, Yang Y and Yang P 2020 Coumarin-
+containing hybrids and their antibacterial activities Arch.
+Pharm. 353 1900380
+[6] Fan Y L, Ke X and Liu M 2018 Coumarin–triazole hybrids and
+their biological activities J. Heterocycl. Chem. 55 791–802
+[7] Husain A, Balushi K A, Akhtar M J and Khan S A 2021
+Coumarin linked heterocyclic hybrids: a promising
+approach to develop multi target drugs for alzheimer’s
+disease J. Mol. Struct. 1241 130618
+[8] Ibrar A, Shehzadi S A, Saeed F and Khan I 2018 Developing
+hybrid molecule therapeutics for diverse enzyme inhibitory
+action: active role of coumarin-based structural leads in drug
+discovery Bioorg. Med. Chem. 26 3731–62
+[9] Medina F G, Marrero J G, Macías-Alonso M, González M C,
+Córdova-Guerrero I, García A G T and Osegueda-Robles S
+2015 Coumarin heterocyclic derivatives: chemical synthesis
+and biological activity Nat. Prod. Rep. 32 1472–507
+[10] Nouraie P, Moradi Dehaghi S and Foroumadi A 2019
+Coumarin-1,2,3-triazole hybrid derivatives: green synthesis
+and DFT calculations Synth. Commun. 49 386–94
+[11] Rawat A and Reddy A V B 2022 Recent advances on
+anticancer activity of coumarin derivatives Eur. J. Med.
+Chem. Rep. 5 100038
+[12] Song X F, Fan J, Liu L, Liu X F and Gao F 2020 Coumarin
+derivatives with anticancer activities: an update Arch.
+Pharm. 353 2000025
+[13] Ye X-W, Zheng Y-C, Duan Y-C, Wang M-M, Yu B, Ren J-L,
+Ma J-L, Zhang E and Liu H-M 2014 Synthesis and
+biological evaluation of coumarin–1,2,3-triazole–
+dithiocarbamate hybrids as potent LSD1 inhibitors
+MedChemComm 5 650–4
+[14] Da Silva G D, Da Silva M G, Souza E M, Barison A,
+Simões S C, Varotti F P, Barbosa L A, Viana G H and
+Villar J A 2012 Design and synthesis of new chacones
+substituted with azide/triazole groups and analysis of their
+cytotoxicity towards HeLa cells Molecules 17 10331–43
+[15] Jabeen F, Shehzadi S A, Fatmi M Q, Shaheen S, Iqbal L,
+Afza N, Panda S S and Ansari F L 2016 Synthesis, in vitro
+and computational studies of 1, 4-disubstituted 1,2,3-
+triazoles as potential α-glucosidase inhibitors Bioorg. Med.
+Chem. Lett. 26 1029–38
+[16] El-Sayed W A, Alminderej F M, Mounier M M, Nossier E S,
+Saleh S M and Kassem A F 2022 Novel 1,2,3-triazole-
+coumarin hybrid glycosides and their tetrazolyl analogues:
+design, anticancer evaluation and molecular docking
+targeting EGFR, VEGFR-2 and CDK-2 Molecules 27 2047
+[17] Kraljević T G, Harej A, Sedić M, Pavelić S K, Stepanić V,
+Drenjančević D, Talapko J and Raić-Malić S 2016
+Synthesis, in vitro anticancer and antibacterial activities and
+in silico studies of new 4-substituted 1,2,3-triazole–
+coumarin hybrids Eur. J. Med. Chem. 124 794–808
+[18] NajaﬁZ, Mahdavi M, Saeedi M, Karimpour-Razkenari E,
+Edraki N, Sharifzadeh M, Khanavi M and Akbarzadeh T
+2019 Novel tacrine-coumarin hybrids linked to 1,2,3-triazole
+as anti-Alzheimer’s compounds: in vitro and in vivo
+biological evaluation and docking study Bioorg. Chem. 83
+303–16
+[19] Su Q, Xu B, Tian Z and Gong Z 2022 Design and development
+of novel 1,2,3-triazole chalcone derivatives as potential anti-
+osteosarcoma agents via inhibition of PI3K/Akt/mTOR
+signaling pathway Acta Pharm. 72 389–402
+[20] Vagish C B, Kumara K, Vivek H K, Bharath S,
+Lokanath N K and Kumar K A 2021 Coumarin-triazole
+hybrids: design, microwave-assisted synthesis, crystal and
+molecular structure, theoretical and computational studies
+and screening for their anticancer potentials against PC-3
+and DU-145 J. Mol. Struct. 1230 129899
+[21] Weng K-G and Yuan Y-L 2017 Synthesis and evaluation of
+coumarin derivatives against human lung cancer cell lines
+Braz. J. Medi. Biol. Res. 50 e6455
+[22] Zielińska A, Carreiró F, Oliveira A M, Neves A, Pires B,
+Venkatesh D N, Durazzo A, Lucarini M, Eder P and
+Silva A M 2020 Polymeric nanoparticles: production,
+characterization, toxicology and ecotoxicology Molecules
+25 3731
+[23] Szczęch M and Szczepanowicz K 2020 Polymeric core–shell
+nanoparticles prepared by spontaneous emulsiﬁcation
+solvent evaporation and functionalized by the layer-by-layer
+method Nanomaterials 10 496
+[24] Abamor E S, Allahverdiyev A, Tosyali O A, Bagirova M,
+Acar T, Mustafaeva Z and Derman S 2019 Evaluation of
+in vitro and in vivo immunostimulatory activities of poly
+14
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+(lactic-co-glycolic acid) nanoparticles loaded with soluble
+and autoclaved Leishmania infantum antigens: a novel
+vaccine candidate against visceral leishmaniasis Asian Pac.
+J. Tropical Med. 12 353–64
+[25] Sarani M, Roostaee M, Adeli-Sardou M,
+Kalantar-Neyestanaki D, Mousavi S A A, Amanizadeh A,
+Barani M and Amirbeigi A 2024 Green synthesis of Ag and
+Cu-doped Bismuth oxide nanoparticles: revealing
+synergistic antimicrobial and selective cytotoxic potentials
+for biomedical advancements J. Trace Elem. Med. Biol. 81
+127325
+[26] Tosyali O A, Allahverdiyev A, Bagirova M, Abamor E S,
+Aydogdu M, Dinparvar S, Acar T, Mustafaeva Z and
+Derman S 2021 Nano-co-delivery of lipophosphoglycan
+with soluble and autoclaved leishmania antigens into PLGA
+nanoparticles: evaluation of in vitro and in vivo
+immunostimulatory effects against visceral leishmaniasis
+Mater. Sci. Eng.C 120 111684
+[27] Ucar B, Acar T, Arayici P P and Derman S 2021 A
+nanotechnological approach in the current therapy of
+COVID-19: model drug oseltamivir-phosphate loaded
+PLGA nanoparticles targeted with spike protein binder
+peptide of SARS-CoV-2 Nanotechnology 32 485601
+[28] Wang Y, Zhai W, Cheng S, Li J and Zhang H 2023 Surface-
+functionalized design of blood-contacting biomaterials for
+preventing coagulation and promoting hemostasis Friction
+11 1371–1394
+[29] Purr E, Marshall J and Smith J 2019 Preparation of PLGA
+nanoparticles encapsulated with ﬂuorescent probe coumarin-
+6614875
+[30] Zhang L, Xu Y, Cao W, Xie S, Wen L and Chen G 2018
+Understanding the translocation mechanism of PLGA
+nanoparticles across round window membrane into the inner
+ear: a guideline for inner ear drug delivery based on
+nanomedicine Int. J. Nanomed. 13 479
+[31] Jiang N, Huang Q, Liu J, Liang N, Li Q, Li Q and Xie S-S
+2018 Design, synthesis and biological evaluation of new
+coumarin-dithiocarbamate hybrids as multifunctional agents
+for the treatment of Alzheimer’s disease Eur. J. Med. Chem.
+146 287–98
+[32] Manidhar D, Rao K, Reddy N B, Sundar C S and Reddy C S
+2012 Synthesis of new 8-formyl-4-methyl-7-hydroxy
+coumarin derivatives J. Korean Chem. Soc. 56 459–63
+[33] He Q, Liu J, Lan J-S, Ding J, Sun Y, Fang Y, Jiang N, Yang Z,
+Sun L and Jin Y 2018 Coumarin-dithiocarbamate hybrids as
+novel multitarget AChE and MAO-B inhibitors against
+alzheimer’s disease: design, synthesis and biological
+evaluation Bioorg. Chem. 81 512–28
+[34] Xie S-S, Wang X-B, Li J-Y, Yang L and Kong L-Y 2013
+Design, synthesis and evaluation of novel tacrine–coumarin
+hybrids as multifunctional cholinesterase inhibitors against
+Alzheimer’s disease Eur. J. Med. Chem. 64 540–53
+[35] Kushwaha K, Kaushik N and Jain S C 2014 Design and
+synthesis of novel 2H-chromen-2-one derivatives bearing
+1,2,3-triazole moiety as lead antimicrobials Bioorg. Med.
+Chem. Lett. 24 1795–801
+[36] Yee S W, Shah B and Simons C 2005 Synthesis and
+antimycobacterial activity of 7-O-substituted-4-methyl-2
+H-2-chromenone derivatives vs Mycobacterium tuberculosis
+J. Enzyme Inhibition Med. Chem. 20 109–13
+[37] Derman S, Uzunoglu D, Acar T, Arasoglu T, Ucak S,
+Ozalp V C and Mansuroglu B 2020 Antioxidant activity and
+hemocompatibility study of quercetin loaded plga
+nanoparticles Iran. J. Pharm. Res.: IJPR
+19 424–35
+[38] Amini Y, Amel Jamehdar S, Sadri K, Zare S, Musavi D and
+Tafaghodi M 2017 Different methods to determine the
+encapsulation efﬁciency of protein in PLGA nanoparticles
+Bio-Med. Mater. Eng. 28 613–20
+[39] Acar T, Arayıcı P P, Ucar B, Karahan M and Mustafaeva Z
+2019 Synthesis, characterization and lipophilicity study of
+brucella abortus′ immunogenic peptide sequence that can be
+used in the future vaccination studies Int. J. Pept. Res. Ther.
+25 911–8
+[40] Arasoglu T, Mansuroglu B, Derman S, Gumus B, Kocyigit B,
+Acar T and Kocacaliskan I 2016 Enhancement of antifungal
+activity of juglone (5-Hydroxy-1, 4-naphthoquinone) using a
+poly (D, L-lactic-co-glycolic acid)(PLGA) nanoparticle
+system J. Agric. Food Chem. 64 7087–94
+[41] Ucar B 2019 Synthesis and characterization of natural
+lanthanum labelled DOTA-peptides for simulating
+radioactive Ac-225 labeling Appl. Radiat. Isot. 153 108816
+[42] Ucar B and Acar T 2021 Macroaggregated albumin (MAA):
+production, size optimization, Eu (III) and Tb (III)
+complexes J. Turkish Chem. Soc.A 8 209–16
+[43] Madani F, Esnaashari S S, Bergonzi M C, Webster T J,
+Younes H M, Khosravani M and Adabi M 2020 Paclitaxel/
+methotrexate co-loaded PLGA nanoparticles in glioblastoma
+treatment: formulation development and in vitro antitumor
+activity evaluation Life Sci. 256 117943
+[44] Suri R, Neupane Y R, Mehra N, Nematullah M, Khan F,
+Alam O, Iqubal A, Jain G K and Kohli K 2021 Sirolimus
+loaded chitosan functionalized poly (lactic-co-glycolic acid)
+(PLGA) nanoparticles for potential treatment of age-related
+macular degeneration Int. J. Biol. Macromol. 191 548–59
+[45] Joshi D, Lan-Chun-Fung Y and Pritchard J 1979
+Determination of poly (vinyl alcohol) via its complex with
+boric acid and iodine Anal. Chim. Acta 104 153–60
+[46] Sahu B, Pihlajamaa P, Zhang K, Palin K, Ahonen S,
+Cervera A, Ristimäki A, Aaltonen L A, Hautaniemi S and
+Taipale J 2021 Human cell transformation by combined
+lineage conversion and oncogene expression Oncogene 40
+5533–47
+[47] Alkan F, Varlı H S, Demirbilek P D M, Kaplan P D E and
+Laçin P D N T 2020 A cationic stearamide-based solid lipid
+nanoparticle for delivering yamanaka factors: evaluation of
+the transfection efﬁciency ChemistryOpen 9 1181
+[48] Dinparvar S, Bagirova M, Allahverdiyev A M, Abamor E S,
+Safarov T, Aydogdu M and Aktas D 2020 A
+nanotechnology-based new approach in the treatment of
+breast cancer: biosynthesized silver nanoparticles using
+Cuminum cyminum L. seed extract J. Photochem. Photobiol.
+B 208 111902
+[49] Kumar K S, Kotra V, Kola P K, Devi C B P, Anusha N,
+Babu B H, Adil S F, Shaik M R, Khan M and Al-Warthan A
+2021 ZnCl2 catalyzed new coumarinyl-chalcones as
+cytotoxic agents Saudi J. Biol. Sci. 28 386–94
+[50] de Araújo R S A, Carmo J d O d S, de Omena Silva S L,
+Costa da Silva C R A, Souza T P M, Mélo N B d,
+Bourguignon J-J, Schmitt M, Aquino T M d and
+Rodarte R S 2022 Coumarin derivatives exert anti-lung
+cancer activity by inhibition of epithelial–mesenchymal
+transition and migration in A549 cells Pharmaceuticals
+15 104
+[51] Hrimla M, Oubella A, Laamari Y, Bahsis L, Ghaleb A,
+Itto M Y A, Auhmani A, Morjani H, Julve M and Stiriba S-E
+2021 Click synthesis, anticancer activity, and molecular
+docking investigation of some functional 1,2,3-triazole
+derivatives Biointerface Res. Appl. Chem. 12 7633–67
+[52] Alam M M 2021 1,2,3-triazole hybrids as anticancer agents: a
+review Arch. Pharm. 355 e2100158
+[53] Arasoglu T, Derman S, Mansuroglu B, Yelkenci G,
+Kocyigit B, Gumus B, Acar T and Kocacaliskan I 2017
+Synthesis, characterization and antibacterial activity of
+juglone encapsulated PLGA nanoparticles J. Appl.
+Microbiol. 123 1407–19
+[54] Behnke M, Vollrath A, Klepsch L, Beringer-Siemers B,
+Stumpf S, A Czaplewska J, Hoeppener S, Werz O and
+15
+Nanotechnology 35 (2024) 305602
+B Arvas et al
+
+S Schubert U 2020 Optimized encapsulation of the FLAP/
+PGES-1 inhibitor BRP-187 in PVA-stabilized PLGA
+nanoparticles using microﬂuidics Polymers 12 2751
+[55] Sahoo S K, Panyam J, Prabha S and Labhasetwar V 2002
+Residual polyvinyl alcohol associated with poly (D,
+L-lactide-co-glycolide) nanoparticles affects their physical
+properties and cellular uptake J. Control. Release 82 105–14
+[56] Gumus B, Acar T, Atabey T, Derman S, Sahin F and
+Arasoglu T 2020 The battle against bioﬁlm infections:
+juglone loaded nanoparticles as an anticandidal agent
+J. Biotechnol. 316 17–26
+[57] Khanal S, Adhikari U, Rijal N P, Bhattarai S R, Sankar J and
+Bhattarai N 2016 pH-responsive PLGA nanoparticle for
+controlled payload delivery of diclofenac sodium J. Funct.
+Biomater. 7 21
+[58] Jusu S, Obayemi J, Salifu A, Nwazojie C, Uzonwanne V,
+Odusanya O and Soboyejo W 2020 Drug-encapsulated
+blend of PLGA-PEG microspheres: in vitro and in vivo
+study of the effects of localized/targeted drug delivery on
+the treatment of triple-negative breast cancer Sci. Rep. 10
+14188
+[59] Shim H and Sah H 2020 Assessment of residual solvent and
+drug in PLGA microspheres by derivative thermogravimetry
+Pharmaceutics 12 626
+[60] Bhattacharjee S 2021 Understanding the burst release
+phenomenon: toward designing effective nanoparticulate
+drug-delivery systems Ther. Deliv. 12 21–36
+[61] Huang X and Brazel C S 2001 On the importance and
+mechanisms of burst release in matrix-controlled drug
+delivery systems J. Control. Release 73 121–36
+[62] Yoo J and Won Y-Y 2020 Phenomenology of the initial burst
+release of drugs from PLGA microparticles ACS Biomater.
+Sci. Eng. 6 6053–62
+[63] Fernandes C, Martins C, Fonseca A, Nunes R, Matos M J,
+Silva R, Garrido J, Sarmento B, Remiao F and
+Otero-Espinar F J 2018 PEGylated PLGA nanoparticles as a
+smart carrier to increase the cellular uptake of a coumarin-
+based monoamine oxidase B inhibitor ACS Appl. Mater.
+Interfaces 10 39557–69
+[64] Chen L, Lv Q, Cai J, Liang J, Liang Z, Lin J, Xiao Y, Chen R,
+Zhang Z and Hong Y 2023 Design, synthesis and anticancer
+activity studies of 3-(coumarin-3-yl)-acrolein derivatives:
+evidenced by integrating network pharmacology and vitro
+assay Front. Pharmacol. 14 1141121
+[65] Wu Y, Xu J, Liu Y, Zeng Y and Wu G 2020 A review on anti-
+tumor mechanisms of coumarins Front. Oncol. 10 592853
+[66] WHO 2024 Breast cancer (https://who.int/news-room/fact-
+sheets/detail/breast-cancer)
+[67] Demkowicz S, Daśko M, Kozak W, Krawczyk K, Witt D,
+Masłyk M, Kubiński K and Rachon J 2016 Synthesis and
+biological evaluation of ﬂuorinated 3-phenylcoumarin-7-O-
+sulfamate derivatives as steroid sulfatase inhibitors Chem.
+Biol. Drug Des. 87 233–8
+[68] Garro H A, Reta G F, Donadel O J and Pungitore C R 2016
+Cytotoxic and antitumor activity of some coumarin
+derivatives Nat. Product Commun. 11 1289–92
+[69] Gkionis L, Kavetsou E, Kalospyros A, Manousakis D,
+Garzon Sanz M, Butterworth S, Detsi A and Tirella A 2021
+Investigation of the cytotoxicity of bioinspired coumarin
+analogues towards human breast cancer cells Mol. Diversity
+25 307–21
+[70] Gomaa M S, Ali I A, El Enany G, El Ashry E S H,
+El Rayes S M, Fathalla W, Ahmed A H, Abubshait S A,
+Abubshait H A and Naﬁe M S 2022 Facile synthesis of some
+coumarin derivatives and their cytotoxicity through
+VEGFR2 and topoisomerase II inhibition Molecules
+27 8279
+[71] Song F, Huo X and Guo Z 2021 Anti-breast cancer potential of
+natural and synthetic coumarin derivatives Curr. Top. Med.
+Chem. 21 1692–709
+[72] Gurbuz İ, Gunbatan T, Bakar-Ates F, Hoti B, Duman H and
+Kilic C S 2023 The ﬁve ferulago species inhibited cell
+proliferation and induced apoptosis of A549, MCF-7, PC3
+and SW480 cancer cells in vitro 3 Biotech 13 122
+[73] Sumi M, Nevaditha N and Kumari B S 2023 Nano zinc oxide-
+ruthenium (III) complex of novel coumarin derivative:
+synthesis, characterization, DNA cleavage, anticancer and
+bioimaging activities Bioorg. Chem. 136 106555
+16
+Nanotechnology 35 (2024) 305602
+B Arvas et al

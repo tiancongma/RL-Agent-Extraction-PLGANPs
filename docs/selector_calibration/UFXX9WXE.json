@@ -1,0 +1,31 @@
+{
+  "paper_key": "UFXX9WXE",
+  "selector_calibration_version": "v2",
+  "archetype": "formal_doe_optimization",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph",
+      "primary preparation-method paragraph",
+      "explicit DOE design paragraph if it is the only clear factor-definition narrative",
+      "variable-definition table",
+      "run-wise formulation table",
+      "optimization-result paragraph"
+    ],
+    "should_drop": [
+      "redundant discussion paragraphs that restate the same DOE result surface",
+      "proxy table text when the real table summaries are already present",
+      "background-only fallback text"
+    ],
+    "minimal_evidence_set": [
+      "1 materials block",
+      "1 preparation block",
+      "1 DOE design block if distinct",
+      "2 authoritative table blocks",
+      "1 optimization block"
+    ]
+  },
+  "selection_notes": [
+    "Evidence should stay distinct by information gain rather than role coverage.",
+    "A real DOE design paragraph may be kept when it adds factor semantics not recoverable from the selected tables alone."
+  ]
+}

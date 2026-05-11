@@ -1,0 +1,969 @@
+Nano Express
+
+PAPER • OPEN ACCESS
+Design, synthesis and anti-oxidant activities of
+novel 1,2,3,4-tetrazine, 1,2,3-triazoles and
+coumarin derivatives and their nanoparticular
+encapsulation
+To cite this article: Oznur Eyilcim et al 2024 Nano Ex. 5 035008
+
+View the article online for updates and enhancements.
+You may also like
+Organolithium compounds in the
+nucleophilic substitution of hydrogen in
+arenes and hetarenes
+I S Kovalev, D S Kopchuk, G V Zyryanov
+et al.
+-
+Bioorthogonal fluorescent labels: a review
+on combined forces
+Gergely B Cserép, András Herner and
+Péter Kele
+-
+Selective laser spectroscopy of molecules
+and ions in solids: a history, fundamentals
+and applications
+Michael Sapozhnikov
+-
+This content was downloaded from IP address 129.2.89.164 on 22/10/2025 at 18:02
+
+Nano Express 5 (2024) 035008
+https://doi.org/10.1088/2632-959X/ad64f1
+PAPER
+Design, synthesis and anti-oxidant activities of novel 1,2,3,4-
+tetrazine, 1,2,3-triazoles and coumarin derivatives and their
+nanoparticular encapsulation
+Oznur Eyilcim1,2
+, Burcu Belmen1
+, Irem Coksu3
+, Serap Acar3
+, Cigdem Yolacan1
+and
+Omer Tahir Gunkara1
+1 Yildiz Technical University, Faculty of Art and Science, Department of Chemistry, Istanbul, Turkey
+2 Üsküdar University, Vocational School of Health Services, Food Technology, İstanbul, Turkey
+3 Yildiz Technical University, Faculty of Chemical and Metallurgical Engineering, Department of Bioengineering, Istanbul, Turkey
+E-mail: gunkara@yildiz.edu.tr
+Keywords: 1,2,3,4-Tetrazines, 1,2,3-triazole, coumarin, antioxidant activity, nanoparticles
+Supplementary material for this article is available online
+Abstract
+Nitrogen-containing heterocyclic compounds are currently used for a number of pharmaceutical and
+agricultural applications because they have biological activities such as antimicrobial, antiviral,
+antituberculosis, anticancer, analgesic, antioxidant, anti-inﬂammatory and antidepressant. 1,2,3,4-
+Tetrazines and 1,2,3-triazoles are examples of high-nitrogen heterocyclic compounds. Coumarins, on
+the other hand, are lactones that form a group of oxygenated heterocyclic compounds found in plants.
+In this article, two analogs of 1,2,3,4-tetrazine, two analogs of 1,2,3-triazole and ﬁve analogs of
+coumarin were designed and synthesized. Their chemical structures were characterized by detecting
+their FTIR, 1H-NMR, and 13C-NMR (APT) spectra. The antioxidant activities of all synthesized
+molecules were compared at a ﬁxed concentration (0.25 mg ml−1) using the 1,1-diphenyl-2-
+picrylhydrazyl (DPPH) method. Molecules 9c and 9e, which showed the highest antioxidant activity,
+were loaded into PLGA (poly(lactic-co-glycolic) acid) nanoparticles using the oil in water (o/w) single
+emulsion solvent evaporation method as a model study. Synthesized nanoparticles characterized for
+particle size, zeta potential, functional groups, morphology, and release properties. Particle size and
+zeta potential of 9c/NP were determined as 216.1 ± 8.944 nm and −14.1 ± 2.40 mV, respectively. The
+particle size and zeta potential for 9e/NP were measured as 222.0 ± 12.490 nm and −12.4 ± 1.42 mV
+respectively. The study results obtained on model nanoparticle systems with elucidated physicochem-
+ical properties may have the potential to provide a promising basis for oxidative stress-related diseases
+in the future.
+1. Introduction
+Tetrazine is a compound that consists of a six-membered aromatic ring containing four nitrogen atoms, with the
+molecular formula C2H2N4. Tetrazine has three isomers: 1,2,4,5-tetrazine, 1,2,3,4-tetrazine, and 1,2,3,5-
+tetrazine [1]. These compounds, with adjacent multiple nitrogen atoms, are important organic molecules found
+in many biologically active substances [2]. Therefore, the development of various effective methods to obtain
+heterocycles with tetrazine structure has attracted great attention in recent years. Azides serve as valuable
+nitrogen sources in the synthesis of 1,2,3,4-tetrazine molecules [3, 4]. Tetrazines with adjacent N,N,N,N
+structures have been reported to have many biological effects such as anticancer [5, 6]. Therefore, studies to
+synthesize 1,2,3,4-tetrazine and its derivatives from azides and to develop new methods have recently gained
+momentum [7].
+Jeffrey and his team pioneered cycloaddition reactions with in situ formed azaoxyallyl cations [8]. As a result
+of the cycloaddition reaction of the azaoxyallyl cation intermediate produced by base-mediated
+OPEN ACCESS
+RECEIVED
+25 April 2024
+REVISED
+29 June 2024
+ACCEPTED FOR PUBLICATION
+18 July 2024
+PUBLISHED
+30 July 2024
+Original content from this
+work may be used under
+the terms of the Creative
+Commons Attribution 4.0
+licence.
+Any further distribution of
+this work must maintain
+attribution to the
+author(s) and the title of
+the work, journal citation
+and DOI.
+© 2024 The Author(s). Published by IOP Publishing Ltd
+
+dehydrohalogenation of α-haloamides, nitrogenous heterocyclic compounds were easily obtained [9–16]. In
+one part of our work, a formal [3+3] cycloaddition reaction between azides and in situ formed azaoxyallyl
+cations has been realized.
+Among nitrogen-containing heterocyclic compounds, triazole derivatives also have a wide spectrum of
+activity. 1,2,3-triazole and 1,2,4-triazole derivatives, which have two different triazole structures, play an
+important role in the synthesis of new bioactive compounds as they contain various electrophiles and
+nucleophiles. Triazole and its derivatives have important biological activities such as antimicrobial, antiviral,
+antituberculosis, anticancer, analgesic, antioxidant, anti-inﬂammatory and antidepressant [17]. Triazoles can be
+produced by addition of [3+2] cycloaddition with azide and alkyne in a transition metal-catalyzed click reaction
+such as Ru, Cu, Rh, Ag, Ir [18–22]. And also, azides give [3+2] cycloaddition reactions with nitriles, amides
+[23–27].
+Coumarin is composed of a benzopyran-δ-lactone skeleton [28] and exhibits a large number of bioactivities
+[29, 30]. When the coumarin acts as a substituent, it can also increase the bioactivity of the whole molecule
+[31, 32]. Most coumarin derivatives act as various agents and inhibitors. In addition to their low toxicity and side
+effects, they are also known to have anticancer activity. For this purpose, various highly effective and
+pharmacologically important coumarin drug candidates are being evaluated at the clinical stage [33].
+Coumarin was ﬁrst isolated from tonka beans by Vogel in 1820 [34]. By its structure, it consists of an α-
+pyrone ring fused with a benzene ring. Coumarin is considered the simplest form of a large class of naturally
+occurring phenolic substances [35]. Coumarin compounds have anti-inﬂammatory [36, 37], antibacterial
+[38–40], antiviral [41], antioxidant [42–44], anti-Alzheimer’s Disease (AD) [45, 46], antitumor effects [47–50] It
+has pharmaceutical and biological properties such as inhibition of cyclooxygenases [51, 52], antithrombotic
+[53], inhibition of lipoxygenase [52, 54] and inhibition of xanthine oxidase [55].
+Drug delivery systems are employed to effectively transport drugs within the body, ensuring the desired
+therapeutic outcome while maintaining safety. Typically, these systems are engineered to enhance the solubility
+of active compounds in water, bolster their chemical stability, increase pharmacological activity, and mitigate
+any potential side effects. Among various drug carrier systems, nanoparticles have emerged as promising
+candidates in recent years [56]. Polymeric materials have garnered signiﬁcant attention in the realm of
+biomedical applications as carriers for drugs. Extensive research has been conducted on these materials, leading
+to a wide range of options. Suitable polymeric drug delivery platforms can be selected based on speciﬁc drug
+types and routes of administration. Polymeric nanoparticles, in particular, have been extensively studied as
+carrier systems for various bioactive drugs, including hydrophobic and hydrophilic drugs, nucleic acids,
+peptides, and proteins. The distinct structure and composition of polymeric NPs offer numerous advantages
+over free drug formulations [57]. These advantages include extending the plasma half-life of the drug, keeping
+the plasma concentration of the drug constant within the therapeutic window for the desired period of time,
+eliminating the possible toxic effects of the drug by obtaining higher biological activity at lower drug doses,
+protecting drugs against enzymatic degradation, and increasing the solubility of hydrophobic drugs [58, 59].
+PLGA is extensively utilized in the development and composition of drug delivery systems due to its
+biocompatibility and biodegradability [60, 61]. Moreover, the degradation byproducts of PLGA are non-toxic,
+as PLGA is broken down into its constituent lactic acid and glycolic acid monomers, which participate in the
+citric acid cycle in the physiological environment and are metabolized to H2O and CO2 and also remains inert in
+the physiological environment [62]. In addition, it has been approved by regulatory authorities such as the
+American Food and Drug Administration (FDA) and the European Medicines Agency (EMA) for use in various
+applications such as inﬂammation, cancer, and diabetes [63]. Due to these advantages, PLGA was preferred as
+the model polymer in the preparation of carrier nanoparticles for use within the scope of the presented study.
+In this study, it was aimed to ﬁrst synthesize a series of new 1,2,3,4-tetrazine, 1,2,3-triazole and coumarin
+derivatives that may have antioxidant activity and to elucidate their structures using spectroscopic methods. It
+was then aimed to perform antioxidant activity tests of these new compounds and to apply nanoparticle
+encapsulation as a model system to improve the properties of highly active compounds. In this context, a series
+of novel heterocyclic compound derivatives were synthesized, their antioxidant activity properties were
+determined, and nanoparticle encapsulation was applied.
+2. Materials and methods
+2.1. Chemical synthesis
+Information about the reactions carried out under inert atmosphere was stated in the general synthesis method
+and reaction conditions. Reagents and solvents purchased from Sigma Aldrich or Merck were used without any
+further processing. Dry acetone was distilled by boiling with CaH under nitrogen atmosphere and kept in 4 A
+molecular sieve. Dry N,N-dimethylformamide (DMF) was prepared by drying on a 4 A molecular sieve
+2
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+overnight, decanting, and then distilled by vacuum distillation. Dry acetone was prepared by distilling after
+holding it on a 4 A molecular sieve. Thin layer chromatography (TLC) on silica gel GF 254 was used to monitor
+the reaction. The plates were visualized using staining solutions such as KMnO4 and Vanillin under UV light.
+Gallenkamp digital thermometer device was used to measure the melting points of solid materials. Perkin Elmer
+FT-IR spectrometer was used for FTIR spectra. 1H and 13C NMR spectra of the molecules were determined with
+the Bruker Avance III-500 MHz NMR system. Agilent 6890 N/5973 GC/IMSD system was used for mass
+spectral studies and high-resolution mass spectra were recorded on Agilent G6530B TOF/Q-TOF Mass
+spectrometer.
+2.2. Synthesis of bicyclo[2.2.1]hept-8-ene-3-endo,5-endodicarboximide (1) [64]
+Maleimide (7.28 g, 75.0 mmol, 1.0 equiv) was weighed into a single-necked ﬂask and dissolved in diethyl
+(0.68 M). Then, freshly distilled cyclopentadiene (7.0 ml, 80.0 mmol, 1.06 equiv) was added dropwise to the
+reaction mixture at room temperature and was stirred at room temperature for 2 h. The solid product formed
+after 2 h was separated from the reaction medium by ﬁltration and washed with cold diethyl ether. Compound 1
+was obtained as a white solid in 98% yield (12.0 g, 73.5 mmol). The obtained substance was used directly in the
+next step without puriﬁcation. Rf = 0.30 (CH2Cl2:MeOH 100:1). mp.: 184.4 °C–188.6 °C. FTIR (ATR):
+ν = 3150, 2992, 2954, 2879, 1753, 1694, 1403, 1352, 1119 cm−1. GC-MS (EI, 70 eV): m/z = 163 (M+), 91
+(C7H8), 66 (cyclopentadiene).
+2.3. Synthesis of N-(benzyloxy)-2-bromo-2-methylpropanamide (2) [8]
+O-Benzylhydroxylamine hydrochloride (1.56 g, 10 mmol) and triethylamine (1.01 g, 10 mmol) was added to a
+solution of 2-bromo-2-methylpropanoyl bromide (2.3 g, 10 mmol) dissolved in dichloromethane (0.5 M) at
+0 °C. After the reaction mixture was stirred at 0 °C overnight, it was quenched with water and extraction was
+performed. The organic phase was dried over Na2SO4, ﬁltered, and evaporated under reduced pressure.
+Puriﬁcation was performed with the help of column chromatography (3:1, n-hexane:EtOAc). A white solid was
+obtained in 87% yield. Rf = 0.58 (3:1, Hexanes: Ethyl Acetate); mp = 88 °C–92 °C; FTIR (ATR): ν = 3192, 3036,
+2956, 2890, 1651, 1497, 1469, 1454, 1112, 1031, 1004 cm−1. 1H-NMR (500 MHz, CDCl3): δ 9.02 (brs, 1H),
+7.37–7.31 (m, 5H), 4.87 (s, 2H), and 1.86 (s, 6H).
+2.4. General procedure for 3a-b
+The dihaloalkane (1,4-dibromobutane, 1,6-dibromohexane or 1,8-dibromooctane) (4 mmol) was added to a
+solution of compound 1 (1 mmol) and potassium carbonate in dry 2-butanone (20 ml) or dry
+dimethylformamide (10 ml) under inert atmosphere, and the reaction mixture was reﬂuxed at 155 °C for
+4–24 h. The reaction was monitored with the TLC system. The mixture was brought to room temperature and
+ﬁltered. The organic solvent was removed under reduced pressure and the crude product was puriﬁed by
+column chromatography to obtain compounds 3a-b, respectively.
+2.4.1. (3aR,4S,7R,7aS)-2-(6-bromohexyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3(2H)-dione
+(3a) [65]
+White solid, yield 87%. FTIR (ATR): ν = 2999, 2937, 1760, 1683, 1455, 1431, 1397, 1365, 1013 cm−1. GC-MS
+(EI, 70 eV): m/z = 299 (M+), 234 (C8H10BrNO2), 218 (C13H16NO2), 200, 176, 152 (C8H10NO2), 110, 91, 66
+(cyclopentadiene).
+2.4.2. (3aR,4S,7R,7aS)-2-(4-bromobutyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3(2H)-dione
+(3b) [66]
+Colorless oil, yield 59%. FTIR: (ATR): ν = 2937, 2862, 1692, 1397, 1146, 877 cm−1.
+2.5. General procedure for 4a-b
+A solution of NaN3 (14.3 g, 0.22 mol) in water (28 ml) was placed in a ﬂask and allowed to boil under reﬂux. A
+solution of Compound 3a-b (0.15 mol) in THF (5.8 ml) was then added dropwise to the reaction medium. The
+reaction mixture was reﬂuxed at 66 °C for 12 h. The reaction was terminated because of TLC control. After the
+reaction mixture came to room temperature, the reaction was taken to a separatory funnel and the organic phase
+was separated and washed with water (2x10mL). It was dried with MgSO4, and the solvent was evaporated under
+vacuum. The substance was used directly in the next reaction.
+2.5.1. (3aR,4S,7R,7aS)-2-(4-azidobutyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3(2H)-dione (4a)
+Colorless oily, yield 99%. FTIR (ATR): ν = 2929, 2856, 2093, 1668, 1385, 1254, 1089, 668 cm−1.
+3
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+2.5.2. (3aR,4S,7R,7aS)-2-(6-azidohexyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3(2H)-dione (4b)
+Colorless oily, yield 99%. FTIR (ATR): ν = 2929, 2856, 2093, 1668, 1385, 1254, 1089, 668 cm−1.
+2.6. General procedure for 5a-b
+Compound 4a-b (0.25 mmol, 1.0 equiv), sodium carbonate (0.50 mmol, 2.0 equiv), compound 2 (0.30 mmol,
+1.2 equiv), and hexaﬂuoro isopropanol (HFIP, 1.0 ml) were added sequentially to an oven-dried Schlenk tube.
+After the tube was closed, the reaction mixture was allowed to stir at room temperature for 12–18 h. After
+ﬁnishing the starting materials, it was diluted with ethyl acetate, ﬁltered using celite and washed with ethyl
+acetate. The solvent was evaporated under reduced pressure and the resulting residue was puriﬁed by column
+chromatography.
+2.6.1. (3aR,4S,7R,7aS)-2-(4-(4-(benzyloxy)-6,6-dimethyl-5-oxo-5,6-dihydro-1,2,3,4-tetrazin-1(4H)-yl)butyl)-
+3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3(2H)-dione (5a)
+Yellowish oily, yield 48%. FT-IR (ATR): v = 2984, 2944, 2879, 1693, 1438, 1376, 1285, 1099, 699 cm−1.
+1H-NMR (CDCl3, 500 MHz): δ: 1.08–1.23 (m, 4H, CH2 and 2xCH), 1.81–1.82 (m, 2H, CH2), 1.83 (s, 6H,
+2xCH3), 1.95–1.98 (m, 4H, 2xCH and CH2), 3.41 (t, J = 7.2 Hz, 2H, N-CH2), 4.02 (t, J = 6.5 Hz, 2H, N-CH2),
+5.23 (s, 2H, O-CH2), 5.47 (s, 2H, -CH=CH-), 7.26–7.32 (m, 5H, ArH) ppm. 13C-NMR (CDCl3, 125 MHz): δ:
+14.1 (CH), 17.4 (CH), 18.3 (2xCH3), 19.2 (CH2), 21.9 (CH), 22.7 (CH2), 24.8 (CH), 25.1 (CH2), 29.7 (N-CH2),
+64.3 (N-CH2), 69.7 (Cq), 78.2 (O-CH2), 118.4 (Cq), 120.3 (2x=CH), 128.7 (2xCAr), 128.8 (CAr), 129.3 (2xCAr),
+135.2 (C=O), 137.8 (C=O) 167.1 (C=O) ppm.
+2.6.2. (3aR,4S,7R,7aS)-2-(6-(4-(benzyloxy)-6,6-dimethyl-5-oxo-5,6-dihydro-1,2,3,4-tetrazin-1(4H)-yl)hexyl)-
+3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3(2H)-dione (5b)
+Yellowish oily, yield 32%. FT-IR (ATR): v = 2983, 2941, 2879, 1662, 1455, 1377, 1099, 699 cm−1. 1H-NMR
+(CDCl3, 500 MHz): δ: 1.18 (s, 3H, CH2 and -CH), 1.25 (s, 6H, 2xCH3), 1.28 (m, 4H, 2xCH2), 1.35 (d, J = 19.4 Hz,
+2H, CH2), 1.46 (d, J = 9.5 Hz, 2H, CH2), 1.74–1.51 (m, 3H, CH2 and -CH), 3.15–3.02 (m, 2H, CH2), 3.31–3.20
+(m, 2H, CH2), 3.39 (t, J = 7.6 Hz, 2H, 2xCH), 5.06 (s, 2H, -CH=CH-), 7.29 (d, J = 5.2 Hz, 3H, ArH), 7.42 (d,
+J = 4.4 Hz, 2H, ArH) ppm. 13C-NMR (CDCl3, 125 MHz): δ: 19.3 (CH3), 25.9 (CH2), 28.6 (CH2), 30.1 (CH2),
+36.1 (CH2), 38.2 (CH2), 43.8 (CH), 44.0 (CH), 45.7 (CH), 45.9 (CH), 50,18 (CH2), 71.9 (Cq), 80.6 (CH2), 125.7
+(2xCAr), 128.11 (CAr), 128.84 (2xCAr), 130.66 (Cq), 134.4 (2xCAr), 176.2 (C=O), 176.6 (C=O), 177.8
+(C=O) ppm.
+2.7. General procedure for 6a-b
+0.28 mmol of Compound 4a-b was weighed into a single-necked ﬂask. 0.6 mmol phenyl acetylene, 0.006 mmol
+CuSO4.5H2O, 0.012 mmol sodium ascorbate, 0.06 mmol benzoic acid and 1:2 (0.2:0.4 ml) t-BuOH:H2O were
+added. The reaction was stirred at room temperature for 18 h. As a result of TLC control, the reaction was
+terminated, and extraction was performed with dichloromethane. It was dried with Na2SO4, the solvent was
+removed under low pressure, and the crude product was puriﬁed with the help of column chromatography.
+2.7.1. (3aR,4S,7R,7aS)-2-(4-(4-phenyl-1H-1,2,3-triazol-1-yl)butyl)-3a,4,7,7a-tetrahydro-1H-4,7-
+methanoisoindole-1,3(2H)-dione (6a)
+Colorless oil, yield 62%. FTIR (ATR): ν = 3132, 3065, 2986, 2945, 2873, 1688, 1486, 1399, 1343, 1145, 1018,
+767 cm−1. 1H NMR (500 MHz, CDCl3) δ: 1.53 (m, J = 8.3 Hz, 3H), 1.74 (m, J = 8.9 Hz, 1H), 1.90 (p, J = 7.4 Hz,
+2H), 3.26 (dd, J = 2.9, 1.5 Hz, 2H), 3.43–3.34 (m, 4H), 4.41 (t, J = 7.2 Hz, 2H), 6.07 (s, 2H), 7.33 (t, J = 7.4 Hz,
+1H), 7.43 (t, J = 7.6 Hz, 2H), 7.78 (s, 1H), 7.83 (d, J = 8.4 Hz, 2H) ppm. APT (125 MHz, CDCl3) δ: 24.73 (CH2)
+27.54 (CH2) 37.18 (CH2), 44.92 (2xCH), 45.81 (2xCH), 49.46 (CH2), 52.36 (CH2), 119.71 (CAr), 125.73
+(2xCAr), 128.15 (CAr), 128.85 (2xCAr), 130.60 (Cq), 134.51 (2xCAr), 147.78 (Cq), 177.80 (2xC=O) ppm.
+2.7.2. (3aR,4S,7R,7aS)-2-(6-(4-phenyl-1H-1,2,3-triazol-1-yl)hexyl)-3a,4,7,7a-tetrahydro-1H-4,7-
+methanoisoindole-1,3(2H)-dione (6b)
+Colorless oil, yield 68%. FTIR (ATR): ν = 3132, 3063, 3008, 2973, 2939, 2866, 1690, 1470, 1334, 1134, 790 cm−1.
+1H NMR (500 MHz, CDCl3) δ: 1.38–1.28 (m, 4H), 1.44 (p, J = 7.2 Hz, 2H), 1.53 (d, J = 8.7 Hz, 1H), 1.73 (d,
+J = 8.9 Hz, 1H), 1.93 (p, J = 7.2 Hz, 2H), 3.24 (dd, J = 3.0, 1.6 Hz, 2H), 3.31 (t, J = 7.3 Hz, 2H), 3.38 (s, 2H), 4.38
+(t, J = 7.2 Hz, 2H), 6.08 (s, 2H), 7.33 (t, J = 7.4 Hz, 1H), 7.42 (t, J = 7.6 Hz, 2H), 7.76 (s, 1H), 7.87–7.81 (m, 2H)
+ppm. APT (125 MHz, CDCl3) δ: 25.93 (CH2), 26.21 (CH2), 27.49 (CH2), 30.15 (CH2), 38.06 (CH2), 44.91
+(2xCH), 45.74 (2xCH), 50.27 (CH2), 52.27 (CH2), 119.45 (CAr), 125.73 (2xCAr), 128.12 (CAr), 128.84 (2xCAr),
+130.66 (Cq), 134.43 (2xCAr), 147.78 (Cq), 177. 81 (2xC=O) ppm.
+4
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+2.8. General procedure for 7a-c
+Resorcinol (1.0 mmol) and β-ketoester (1.0 mmol) were interacted with ultrasonic waves in an ultrasonic bath at
+room temperature in 20 ml THF as solvent and catalyst. The progress of the reaction was followed by thin layer
+chromatography with a dichloromethane: methanol (20:1) system. It was determined that the reaction was
+completed in 5 h. THF was removed in a rotary evaporator. The resulting solid was crystallized from methanol.
+2.8.1. 3-hydroxy-7,8,9,10-tetrahydro-6H-benzo[c]chromen-6-one (7a) [67]
+White solid, yield 85%, mp 224 °C–227 °C. FT-IR (ATR): ν = 3382, 2956, 2915, 2875, 1676, 1614, 1563, 1450,
+1388, 1160 cm−1. HR-MS (ESI-QTOF): m/z [M+H]+, calculated = 217.0865. C13H12O3, found = 217.0857.
+2.8.2. 7-hydroxy-4-phenyl-2H-chromen-2-one (7b) [68]
+White solid, yield 89.7%, mp 247 °C–252 °C. FT-IR (ATR): ν = 3098, 1682, 1601, 1153, 845, 720 cm−1.
+2.8.3. 7-hydroxy-4-methyl-2H-chromen-2-one (7c) [69]
+White solid, yield %87, mp 184 °C–187 °C. FT-IR (ATR): ν = 3122, 3077, 3014, 2959, 2934, 2874, 1673, 1592,
+1449, 1387, 1271 cm−1. HR-MS (ESI-QTOF): m/z [M+H]+, calculated = 217.0865. C13H12O3,
+found = 217.0857.
+2.9. General procedure for 8a-e
+Coumarin compound (7a-c) (1 mmol) dissolved in acetone (50 ml) was added superheated K2CO3 (3 mmol).
+After reﬂuxing under nitrogen atmosphere for one hour, dihaloalkane (1,4-Dibromobutane, 1,6-
+dibromohexane or 1,8-dibromooctane) (2 mmol) was added. The reaction mixture was reﬂuxed at 56 °C for
+4–24 h and the reaction was monitored by TLC. The solution was brought to room temperature and the solvent
+was removed by ﬁltering. It was crystallized from ethanol to obtain compounds 8a-e, respectively.
+2.9.1. 3-((6-Bromohexyl)oxy)-7,8,9,10-tetrahydro-6H-benzo[c]chromen-6-one (8a)
+White solid, yield 69.3%, mp, 80 °C–83 °C. FT-IR (ATR): ν = 3067, 2936, 2884, 2862, 1704, 1606, 1500, 1468,
+1449, 1392, 1262 cm−1. 1H-NMR (500 MHz, CDCl3): δ =1.52–1.54 (m, 4H, CH2), 1.78–1.87 (m, 6H, CH2),
+1.88–1.94 (m, 2H, CH2), 2.56 (bs, 2H, CH2), 2.75 (bs, 2H, CH2), 3.44 (t, 2H, J = 6.5 Hz, CH2Br), 4.01 (t, 2H,
+J = 6.5 Hz, O-CH2), 6.79 (bd, 1H, J = 2.5 Hz, ArH), 6.82 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 7.44 (d, 1H,
+J = 8.5 Hz, ArH) ppm. 13C-NMR (125 MHz, CDCl3): δ = 21.41 (CH2), 21.71 (CH2), 23.84 (CH2), 25.23 (CH2),
+25.25 (CH2), 27.89 (CH2), 28.87 (CH2), 32.63 (CH2), 33.74 (CH2Br), 68.20 (O-CH2), 101.11 (CAr), 112.31
+(CAr), 113.66 (Cq), 120.42 (Cq), 124.08 (CAr), 147.31 (Cq), 153.51 (Cq), 160.88 (Cq), 162.20 (C=O) ppm. HR-
+MS (ESI-QTOF): m/z [M+H]+, calculated = 379.0903. C19H23BrO3, found = 379.0900.
+2.9.2. 3-((8-Bromooctyl)oxy)-7,8,9,10-tetrahydro-6H-benzo[c]chromen-6-one (8b)
+White solid, yield 30%, mp, 80 °C–83 °C. FTIR (ATR): ν = 3070, 2931, 2862, 1715, 1621, 1469, 1391, 1095,
+754 cm−1. 1H-NMR (500 MHz, CDCl3): δ = 1.34–1.40 (m, 4H, CH2), 1.42–1.51 (m, 4H, CH2), 1.78–1.89 (m,
+8H, CH2), 2.56 (ddt, 2H, CH2), 2.75 (ddt, 2H, CH2), 3,42 (t, 2H, J = 6.5 Hz, CH2Br), 4.00 (t, 2H, J = 6.5 Hz,
+O-CH2), 6.78–6.84 (m, 2H, ArH), 7.45 (d, 1H, J = 9.0 Hz, ArH) ppm.13C-NMR (125 MHz, CDCl3): δ = 21.40
+(CH2), 21.71 (CH2), 23.83 (CH2), 25.22 (CH2), 25.90 (CH2), 28.07 (CH2), 28.66 (CH2), 28.99 (CH2), 29.15
+(CH2), 32.75 (CH2), 33.97 (CH2Br), 68.39 (O-CH2), 101.09 (Cq), 112.34 (Cq), 113.60 (CAr), 120.38 (CAr),
+124.04 (CAr), 147.31 (Cq), 153.51 (Cq), 160.93 (Cq), 162.22 (C=O) ppm.
+2.9.3. 7-((6-bromohexyl)oxy)-4-phenyl-2H-chromen-2-one (8c) [70]
+White solid, yield 71.3%. Mp 65 °C–70 °C (70 °C–72 °C). FTIR (ATR): ν = 3060, 2944, 2867, 1711, 1600, 1548,
+1495, 1424, 1374 and 1275 cm−1. 1H-NMR (500 MHz, CDCl3): δ = 1.54–1.56 (m, 4H, CH2), 1.83–1.89 (m, 2H,
+CH2), 1.90–1.96 (m, 2H, CH2), 3.45 (t, 2H, J = 6.5 Hz, CH2Br), 4.05 (t, 2H, J = 6.5 Hz, O-CH2), 6.23 (s, 1H,
+=CH), 6.80 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 6.89 (d, 1H, J = 2.5 Hz, ArH), 7.40 (d, 1H, J = 8.5 Hz, ArH),
+7.44–7.45 (m, 2H, ArH), 7.52–7.54 (m, 3H, ArH) ppm. APT (125 MHz, CDCl3): δ = 25.23, (CH2), 27.87 (CH2),
+28.82 (CH2), 32.61 (CH2), 33.72 (CH2Br), 68.40 (O-CH2), 101.57 (CAr), 111.79 (CAr), 112.43 (CAr), 112.71
+(=CH), 127.96 (CAr), 128.3 (CAr), 128.8 (CAr), 129.58 (CAr), 135.63 (CAr), 155.86 (CAr), 156.03 (CAr), 161.30
+(CAr), 162.28 (C=O) ppm. HR-MS (ESI-QTOF): m/z [M+H]+, calculated = 403.0726 C21H21BrO3,
+found = 403.0723.
+2.9.4. 7-((8-Bromooctyl)oxy)-4-phenyl-2H-chromen-2-one (8d)
+White solid, yield 40%. Mp 85 °C–90 °C (70 °C–72 °C). FTIR (ATR): ν = 3087, 2937, 2862, 1719, 1603, 1494,
+1374, 1104, 754 cm−1. 1H-NMR (500 MHz, CDCl3): δ = 1.34–1.41 (m, 4H, CH2), 1.42–1.51 (m, 4H, CH2),
+5
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+1.79–1.89 (m, 4H, CH2), 3.41 (t, 2H, J = 6.5 Hz, CH2Br), 4.03 (t, 2H, J = 6.5 Hz, O-CH2), 6.21 (s, 1H, =CH),
+6.78 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 6.88 (d, 1H, J = 2.5 Hz, ArH), 7.37 (dd, 1H, J = 9.0 Hz, ArH),7.42–7.44
+(m, 2H, ArH), 7.50–7.52 (m, 3H, ArH) ppm. APT (125 MHz, CDCl3): δ = 25.87 (CH2), 28.07 (CH2), 28.64
+(CH2), 28.92 (CH2), 29.14 (CH2), 32.75 (CH2), 33.94 (CH2Br), 68.60 (O-CH2), 101.59 (CAr), 111.79 (CAr),
+112.35 (Cq), 112.74 (=CH), 127.91 (CAr), 128.38 (CAr), 128.82 (CAr), 129.56 (CAr), 135.64 (Cq), 155.86 (Cq),
+156.03 (Cq), 161.32 (Cq), 162.36 (C=O) ppm.
+2.9.5. 7-((8-Bromooctyl)oxy)-4-methyl-2H-chromen-2-one (8e) [71]
+White solid, yield 81%, Mp. 40 °C–43 °C. FTIR (ATR): ν = 3091, 3066, 2934, 2852, 1729, 1640, 1473, 1367,
+1104, 754 cm−1.1H-NMR (500 MHz, CDCl3): δ = 1.33–1.40 (m, 8H, CH2) 1.85–1.89 (m, 4H, CH2) 2.41 (s, 3H,
+CH3), 3.43 (t, 2H, J = 6.5 Hz, CH2Br), 4.02 (t, 2H, J = 6.5 Hz, O-CH2), 6.14 (s,1H, =CH) 6.81 (bd, 1H,
+J = 2.5 Hz, ArH), 6.87 (dd, 1H, J = 11.0 Hz, 2,5 Hz, ArH) 7.50 (d, 1H, J = 8.5 Hz, ArH) ppm. APT (125 MHz,
+CDCl3): δ = 18.68 (CH3), 25.87 (CH2), 28.04 (CH2), 28.57 (CH2), 28.94 (CH2), 29.14 (CH2), 32.74 (CH2CH2Br),
+33.9 (CH2Br), 68.53 (O-CH2), 101.33 (CAr), 111.83 (CAr), 112.68 (Cq), 113.43 (=CH), 125.48 (CAr), 152.59
+(Cq), 155.91 (Cq), 161.38 (Cq, C-O), 162.20 (C=O) ppm.
+2.10. General procedure for 9a-e
+One of the compounds 8a-e (1 mmol) was added to solution of compound 1 (1 mmol) in dry acetone and
+K2CO3 (3 mmol). The reaction mixture was reﬂux at 56 °C under inert atmosphere. The reaction was monitored
+by TLC and the completed reaction was ﬁltered; solvent was evaporated then target compounds were obtained
+after column chromatography puriﬁcation.
+2.10.1. 2-(6-((6-Oxo-7,8,9,10-tetrahydro-6H-benzo[c]chromen-3-yl)oxy)hexyl)-3a,4,7,7a-tetrahydro-1H-4,7-
+methanoisoindole-1,3(2H)-dione (9a)
+White solid, yield 39%, Mp. 110 °C–115 °C. FT-IR (ATR): ν = 3071, 2984, 2940, 2862, 1765, 1694, 1607, 1473,
+1370, 1261, 1130, 1095 cm−1. 1H-NMR (CDCl3, 500 MHz): δ=1.25–1.28 (m, 2H, CH2), 1.30–1.35 (m, 2H,
+CH2), 1.43–1.50 (m, 4H, CH2), 1.54 (bd, 1H, J = 9.0 Hz, CH2), 1.72 (bd, 1H, J = 9.0 Hz, CH2), 1.77–1.85 (m, 4H,
+CH2), 2.55 (bs, 2H, CH2), 2.75 (bs, 2H, CH2), 3.24 (bs, 2H, 2xCH), 3.33 (t, 2H, J = 6.5 Hz, N-CH2), 3.38 (bs, 2H,
+2xCH), 3.97 (t, 2H, J = 6.5 Hz, O-CH2), 6.09 (s, 2H, =CH), 6.77 (bs, 1H, ArH), 6.82 (d, 1H, J = 8.5 Hz, ArH),
+7.44 (bd, 1H, J = 9.0 Hz, ArH) ppm. 13C-NMR (CDCl3, 125 MHz): δ = 21.40 (CH2), 21.71 (CH2), 23.83 (CH2),
+25.22 (CH2), 25.53 (CH2), 26.57 (CH2), 27.67 (CH2), 28.87 (CH2), 38.25 (CH2), 44.90 (2xCH), 45.72 (2xCH),
+52.23 (N-CH2), 68.20 (O- CH2), 101.08 (CAr), 112.33 (Cq), 113.62 (CAr), 120.38 (Cq), 124.05 (CAr), 134.40
+(2x=CH), 147.31 (Cq), 153.50 (Cq), 160.88 (Cq), 162.23 (C=O), 177.75 (C=O) ppm.
+2.10.2. 2-(8-((6-Oxo-7,8,9,10-tetrahydro-6H-benzo[c]chromen-3-yl)oxy)octyl)-3a,4,7,7a-tetrahydro-1H-4,7-
+methanoisoindole-1,3(2H)-dione (9b)
+White solid, yield 52%, Mp. 77 °C–80 °C. FTIR (ATR): ν = 3061, 2933, 2857, 1766, 1693, 1608, 1509, 1368,
+1261, 1095, 1127 cm−1. 1H-NMR (500 MHz, CDCl3): δ = 1.24–1.28 (m, 2H, CH2), 1.30–1.35 (m, 4H, CH2),
+1.40–1.47 (m, 4H, CH2), 1.54 (dt, 1H, CH2), 1.72 (dt, 1H, CH2), 1.76–1.86 (m, 6H, CH2), 2.56 (ddt, 2H, CH2),
+2.75 (ddt, 2H, CH2), 3.24–3.26 (m, 2H, 2xCH), 3.30–3.33 (t, 2H, J = 7.5 Hz, N-CH2), 3.37–3.39 (m, 2H, 2xCH),
+3.99 (t, 2H, J = 6.5 Hz, O- CH2), 6.09 (t, 2H, J = 2.0 Hz, 2x=CH), 6.78–6.83 (m, 2H, ArH), 7.44 (d, 1H,
+J = 8.5 Hz, ArH) ppm. 13C-NMR (125 MHz, CDCl3): δ = 21.41 (CH2), 21.71 (CH2), 23.83 (CH2), 25.22 (CH2),
+25.88 (CH2), 26.75 (CH2), 27.73 (CH2), 28.96 (CH2), 28.98 (CH2), 29.16 (CH2), 38.37 (CH2), 44.89 (2xCH),
+45.71 (2xCH), 52.21 (N-CH2), 68.40 (O-CH2), 101.10 (CAr), 112.36 (Cq), 113.58 (CAr), 120.34 (Cq), 124.03
+(CAr), 134.39 (2x=CH), 147.32 (Cq), 153.51 (Cq), 160.96 (Cq, C-O), 162.93 (C=O), 177.72 (C=O) ppm.
+2.10.3. 2-(6-((2-Oxo-4-phenyl-2H-chromen-7-yl)oxy)hexyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3
+(2H)-dione (9c)
+White solid, yield 40%, Mp. 95 °C–99 °C. FTIR (ATR): ν = 3061, 3017, 2939, 2862, 1711, 1692, 1615, 1491,
+1396, 1264, 1075 cm−1. 1H-NMR (500 MHz, DMSO): δ = 1.23–1.35 (m, 2H, CH2), 1.44–1.50 (m, 4H, CH2),
+1.53–1.55 (m, 1H, CH2), 1.72–1.74 (m, 1H, CH2), 1.76–1.82 (m, 2H, CH2), 3.24–3.26 (m, 2H, N-CH2),
+3.32–3.35 (m, 2H, 2xCH), 3.38–3.40 (m, 2H, 2xCH), 4.01 (t, 2H, J = 6.5 Hz, O-CH2), 6.09 (t, 2H, J = 2.0 Hz,
+2x=CH), 6.21 (s, 1H, =CH), 6.78 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 6.87 (d, 1H, J = 2.5 Hz, ArH), 7.37 (d, 1H,
+J = 9.0 Hz, ArH), 7.42–7.45 (m, 2H, ArH), 7.50–7.54 (m, 3H, ArH) ppm. APT (125 MHz, DMSO): δ = 25.49
+(CH2), 26.55 (CH2), 27.66 (CH2), 28.80 (CH2), 38.23 (CH2), 44.90 (2xCH), 45.72 (2xCH), 52.24 (N-CH2), 68.40
+(O-CH2), 101.55 (CAr), 111.71 (CAr), 112.36 (CAr), 112.70 (=CH), 127.92 (CAr), 128.38 (CAr), 128.80 (CAr),
+129.54 (CAr), 134.40 (2x=CH), 135.62 (Cq), 155.84 (Cq), 155.99 (Cq), 161.30 (Cq, C-O), 162.27 (C=O), 177.75
+(C=O) ppm.
+6
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+2.10.4. 2-(8-((2-Oxo-4-phenyl-2H-chromen-7-yl)oxy)octyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,
+3(2H)-dione (9d)
+Colorless oil, yield 97%. FTIR (ATR): ν = 3061, 2933, 2855, 1764, 1718, 1691, 1507, 1396, 1248 cm−1. 1H-NMR
+(500 MHz, CDCl3): δ = 1.24–1.28 (m, 2H, CH2), 1.30–1.33 (m, 4H, CH2), 1.40–1.47 (m, 4H, CH2), 1.53–1.55
+(m, 1H, CH2), 1.72–1.75 (m, 1H, CH2), 1.79–1.83 (m, 2H, CH2), 3.23–3.25 (m, 2H, N-CH2), 3.30–3.33 (m, 2H,
+2xCH), 3.37–3.39 (m, 2H, 2xCH),4.02 (t, 2H, J = 6.5 Hz, O-CH2), 6.09 (t, 2H, J = 2.0 Hz, 2x=CH), 6.21 (s, 1H,
+=CH), 6.78 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 6.87 (d, 1H, J = 2.5 Hz, ArH), 7.37 (d, 1H, J = 9.0 Hz, ArH),
+7.43–7.45 (m, 2H, ArH), 7.51–7.53 (m, 3H, ArH) ppm. 13C-NMR (125 MHz, CDCl3): δ = 25.85 (CH2), 26.74
+(CH2), 27.72 (CH2), 28.90 (CH2), 28.97 (CH2), 29.13 (CH2), 38.36 (CH2), 44.89 (2xCH), 45.72 (2xCH), 52.22
+(N-CH2), 68.68 (O-CH2), 101.56 (CAr), 111.68 (CAr), 112.32 (Cq), 112.73 (=CH), 127.90 (CAr), 128.37 (CAr),
+128.79 (CAr), 129,53 (CAr), 134.39 (2x=CH), 135.63 (Cq), 155.85 (Cq), 156.0 (Cq), 161.31 (Cq, C-O), 162.36
+(C=O), 177.72 (C=O)ppm.
+2.10.5. 2-(8-((2-Oxo-4-phenyl-2H-chromen-7-yl)oxy)octyl)-3a,4,7,7a-tetrahydro-1H-4,7-methanoisoindole-1,3
+(2H)-dione (9e)
+Colorless oil, yield 97%. FTIR (ATR): ν = 3061, 2933, 2855, 1711, 1691, 1507, 1396, 1248 cm−1. 1H-NMR
+(500 MHz, CDCl3): δ = 1.24–1.28 (m, 2H, CH2), 1.30–1.33 (m, 4H, CH2), 1.40–1.47 (m, 4H, CH2), 1.53–1.55
+(m, 1H, CH2), 1.72–1.75 (m, 1H, CH2), 1.79–1.83 (m, 2H, CH2), 3.23–3.25 (m, 2H, N-CH2), 3.30–3.33 (m, 2H,
+2xCH), 3.37–3.39 (m, 2H, 2xCH), 4.02 (t, 2H, J = 6.5 Hz, O-CH2), 6.09 (t, 2H, J = 2.0 Hz, 2x=CH), 6.21 (s, 1H,
+=CH), 6.78 (dd, 1H, J = 9.0 Hz, 2.5 Hz, ArH), 6.87 (d, 1H, J = 2.5 Hz, ArH), 7.37 (d, 1H, J = 9.0 Hz, ArH),
+7.43–7.45 (m, 2H, ArH), 7.51–7.53 (m, 3H, ArH) ppm. 13C-NMR (125 MHz, CDCl3): δ = 25.85 (CH2), 26.74
+(CH2), 27.72 (CH2), 28.90 (CH2), 28.97 (CH2), 29.13 (CH2), 38.36 (CH2), 44.89 (2xCH), 45.72 (2xCH), 52.22
+(N-CH2), 68.68 (O-CH2), 101.56 (CAr), 111.68 (CAr), 112.32 (CAr), 112.73 (=CH), 127.90 (CAr), 128.37 (CAr),
+128.79 (CAr), 129,53 (CAr), 134.39 (2x=CH), 135.63 (CAr), 155.85 (CAr), 156.0 (CAr), 161.31 (CAr, C-O),
+162.36 (C=O), 177.72 (C=O) ppm.
+2.11. Antioxidant activity and nanoparticle encapsulation
+2.11.1. Antioxidant activity evaluation of compounds
+DPPH, being a stable free radical, has the ability to accept an electron or hydrogen, resulting in its conversion
+into a molecule that is both neutral and stable. In DPPH method, the ability of free compounds to donate
+hydrogen or electron atoms was evaluated visually according to the amount of color change of the purple
+DPPH solution to the yellow solution and spectrophotometrically by measuring the absorbance at 517 nm
+[72–74]. First, an ethanolic solution of DPPH (0.1 mM; 0.5 mg of DPPH in 13 ml of ethanol) was prepared and
+its absorbance at 517 nm (to be used as a control) was immediately measured using a UV–Vis
+spectrophotometer (UV-1700 Pharmaspec, Shimadzu, Japan). Then, compounds with a concentration of
+0.25 mg ml−1 were added to the DPPH solution at a ratio of 1:5 (sample:DPPH; v/v) and vortexed. The reaction
+solution was incubated in the dark at room temperature for 30 min. After this period, spectrophotometric
+measurements of the DPPH solutions treated with the samples were carried out at 517 nm. The antioxidant
+activity was expressed as the percentage of scavenging effect and the DPPH scavenging effect were calculated by
+substituting in the equation (1).
+DPPH scavenging effect
+Abs
+Abs
+Abs
+%
+100
+1
+control
+sample
+control
+=
+-
+´
+(
+)
+( )
+where, Abscontrol refers to the absorbance of a pure DPPH solution, while Abssample refers to the absorbance of a
+compound incubated in DPPH solution.
+2.11.2. Synthesis of nanoparticles
+Because they show higher antioxidant activity than others, 9c and 9e loaded nanoparticles were synthesized. The
+process of synthesizing 9c or 9e-loaded PLGA NPs was carried out by employing the oil in water (o/w) single
+emulsion solvent evaporation technique, as described in the available literature [75]. Brieﬂy, 6 mg of 9c or 9e was
+dissolved in 1 ml of DCM (Ridel de Haen) and 20 mg of PLGA was dissolved in 1 ml of DCM. Subsequently, the
+two solutions were merged and thoroughly mixed. The resulting organic phase was slowly added to the external
+aqueous phase consisting of 4 ml of 3% (w/v) PVA solution. This was performed using a microtip probe
+sonicator (Bandelin Sonopuls, Germany) placed in an ice bath, resulting in the formation of a single emulsion.
+Then, the oil/water emulsion was mixed with 35 ml of 0.1% (w/v) PVA solution and stirred for 3 h at room
+temperature to allow the organic solvent in the organic phase to evaporate. The particles formed were
+subsequently gathered through centrifugation (Nüve 800 R) at a speed of 9000 rpm, then washed three times
+with ultrapure water to efﬁciently eliminate any PVA and unencapsulated compounds. Following this, the
+7
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+particles were freeze-dried and stored at a temperature of −20 °C until further analysis. Empty PLGA NPs
+(Empty NP) were produced using identical procedures without including 9c or 9e.
+2.11.3. Characterization of nanoparticles
+In order to produce nanoparticles, it is necessary to employ a technique that guarantees optimal reaction
+efﬁciency while minimizing chemical loss and production expenses [76]. The present investigation evaluated the
+reaction efﬁciency by means of gravimetric analysis and computed it using the formula speciﬁed in equation (2):
+RY
+Amount of nanoparticles produced mg
+Amount of initial c or
+e and PLGA mg
+%
+9
+9
+100
+2
+=
+´
+(
+)
+(
+)
+( )
+The amount of 9c or 9e in the nanoparticles was indirectly assessed by analyzing the absorbance at 330 nm
+for 9c and 321 nm for 9e with a UV–vis spectrophotometer, utilizing the supernatant acquired post-
+centrifugation of 9c (9c/NP) or 9e (9e/NP) loaded NPs. The concentration of 9c or 9e in the supernatant was
+determined using a previously prepared standard calibration curve (ﬁgure S1). The amount of 9c or 9e loaded
+into the NPs was determined indirectly by subtracting the amount of unencapsulated 9c or 9e (present in the
+supernatant) from the total amount of 9c or 9e used during NP synthesis. The formulas provided in
+equations (3) and (4) were utilized to calculate the encapsulation efﬁciency (EE) and drug loading capacity (DL)
+of the NPs, correspondingly [77].
+EE
+Amount of
+c or
+e encapsulated in nanoparticles mg
+Initial c or
+e added mg
+%
+9
+9
+9
+9
+100
+3
+=
+´
+(
+)
+(
+)
+( )
+LC
+Amount of
+c or
+e encapsulated in nanoparticles mg
+Amount of nanoparticles produced mg
+%
+9
+9
+100
+4
+=
+´
+(
+)
+(
+)
+( )
+The average particle size and PDI measurements of the synthesized NPs were analyzed through dynamic
+light scattering (DLS) methodology utilizing the Zetasizer instrument (Zetasizer Nano ZS, Malvern, UK)
+operating with photon correlation spectroscopy [75]. The experiments were carried out at a temperature of
+25 ± 0.1 °C, with a viscosity of 0.8872 cP and a refractive index of 1.330. The tests were repeated three times for
+accuracy. The NPs were subjected to zeta potential (ζ) analysis using the electrophoretic light scattering
+technique [78]. The analysis was performed using the same instrument, and the measurements were conducted
+three times, after diluting the samples by a factor of 1/30. The viscosity of 0.8872 cP, a dielectric constant of 79,
+and (Smoluchowski) parameter of 1.50 were used in the measurements, and the voltage selections
+/measurement durations were set to automated mode.
+The chemical analysis of functional groups in nanoparticles and the conﬁrmation of compound
+encapsulation (9c or 9e) into nanoparticles were carried out using a FT-IR spectrophotometer (Shimadzu,
+Japan) [79].
+The produced NPs’ surface morphology, shape, and homogeneity of size were veriﬁed by FE-SEM (Thermo
+Scientiﬁc Apreo 2 S, Waltham, MA, USA) [80]. The lyophilized nanoparticles were applied to one side of black
+carbon tape in preparation for FE-SEM imaging. An in-lens detector was used to take FE-SEM micrographs at
+different magniﬁcations and 2.00 kV electron voltage.
+2.11.4. In vitro release study
+The 9c or 9e release from NPs in vitro was studied using the dissolution method [81]. During the release study,
+lyophilized 9c/NP or 9e/NP were resuspended in PBS (pH 7.4, 0.01 M) to mimic physiological pH, with ﬁnal
+concentrations of molecules set to 0.5 mg ml−1 based on loading capacity. The release study was also repeated in
+PBS buffer containing 1% (v/v) Tween 20 (used as surfactant). The suspension obtained was then subjected to
+incubation in a shaker at 37 °C and 150 rpm. The suspensions were subjected to centrifugation at 9,000 rpm for
+20 min at different predetermined time intervals (1, 2, 3, 4, 5, 6 h; 1, 2, 3, 4, 7, 11 days). Following centrifugation,
+the supernatant was meticulously collected, while the pellet was subsequently resuspended in PBS. This process
+was repeated until the release of compounds from NPs was completed. The amount of 9c or 9e in the
+supernatant was determined by measuring the absorbance at 330 nm for 9c and 321 nm for 9e using a UV–vis
+spectrophotometer and then referring to a previously prepared calibration curve.
+3. Results and discussion
+3.1. Chemistry
+In developing the novel antioxidative agent, we focused on the tetrazine, triazole and coumarin derivatives. For
+this purpose, our synthesis started with the preparing compound 1 with known procedure at room temperature
+in 100% conversion [64] (Scheme 1). Maleimide reacted with freshly distillated cyclopentadiene in ethylacetate
+8
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+to give compound 1 as white crystals. Then compound 1 reacted with 1,4-dibromobutane and 1,6-
+dibromohexane to afford 3a-b, respectively (Scheme 2). Compound 2 was prepared by Jeffrey procedure in 87%
+yield at room temperature in the presence of anhydrous Et3N and CH2Cl2 [8] (Scheme 1). Compound 3a-b
+reacted with NaN3 in water to give compound 4a-b with high yield. These azide derivatives reacted with the α-
+haloamide derivative (2) and phenylacetylene. While the target 1,2,3,4-tetrazine compounds 5a-b were obtained
+with medium yields with compound 2, triazole compounds 6a-b were obtained because of azide–alkyne 1,3-
+cycloaddition with the help of phenylacetylene and copper-catalyzed azide–alkyne reaction mechanism
+(Scheme 2).
+In the second part, Coumarin compounds 7a-c were synthesized with the help of Pechman condensation
+using known procedures [67–69] (Scheme 3). Resorcinol and β-ketoester compounds (2-oxocyclohexane
+carboxylate, ethylacetoacetate and ethylbenzoylacetate) were reacted under ultrasonic in triﬂuoroacetic acid
+(TFA) catalyzed medium. Then dihaloalkanes was reacted with coumarin skeletons (7a-c) to give compounds
+8a-e, respectively. As a result, starting compound 1 reacted sequentially with compounds 8a-e to obtain the
+target coumarin derivatives 9a-e, respectively (Scheme 3).
+The structure of all compounds was elucidated by IR, 1H and 13C NMR spectral data. FTIR spectrum of
+compounds 9c and 9e, which were determined to give the best antioxidant activity, are shown in ﬁgure 1. When
+the 1H NMR spectra of the structures were examined, it was observed that the expected proton peaks in both the
+aliphatic and aromatic regions resonated in the expected region and number (ﬁgure 2). In the 13C NMR (APT)
+spectrum, it is seen that the resonance peaks belonging to -CH, -CH2, CH3, aromatic and quaternary carbons in
+the structure also resonate in the expected region and number (ﬁgure 3). In this way, the accuracy of the
+structures has been proven. Additionally, the spectrum of all structures are given in the Supporting Information
+section.
+Scheme 1. (a) Ethyl acetate, r.t. 24 h, 100%, (b) dry Et3N, dry CH2Cl2, r.t. 87% [8, 64].
+Scheme 2. Synthesis of compound 5a-b and 6a-b.
+9
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+Scheme 3. Synthesis of compound 9a-e.
+Figure 1. FT-IR spectrum of (a) 9c and (b) 9e.
+Figure 2. (a) 1H NMR spectrum of 9c. (b) 1H NMR spectrum of 9e.
+10
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+3.2. Antioxidant activity and nanoparticle encapsulation
+3.2.1. Antioxidant activity evaluation of compounds
+The DPPH antioxidant assay method was used to determine the DPPH scavenging efﬁciency of all synthesized
+compounds. The obtained results are presented in table 1. In the continuation of the study, compounds 9c and
+9e, which have the highest DPPH scavenging effect (25.60% and 29.08%, respectively), were loaded into PLGA
+nanoparticles and further characterizations were performed.
+Then, concentration-dependent antioxidant activity determination (at concentrations ranging from
+0.005 mg ml−1 to 0.05 mg ml−1) was performed for compounds 9c and 9e, which have the highest
+DPPH scavenging effect (ﬁgure 4). It was observed that the DPPH scavenging efﬁciency of both compounds
+tended to increase as the concentration increased. In the case of 9e, the DPPH scavenging efﬁciency initially
+increased notable (from 15.02% to 22.76%), then it maintained a steady level and reached a plateau when the
+concentration was between 0.025 mg ml−1 and 0.050 mg ml−1. It is known that a molecule’s potential to donate
+hydrogen free radicals is an indicator of its antioxidant activity [82].
+3.2.2. Characterization of nanoparticles
+Molecules 9c and 9e, which have the highest antioxidant activity were encapsulated to PLGA nanoparticles. The
+empty-NP and 9c/NP or 9e/NP were synthesized through the oil in water single emulsion solvent evaporation
+technique. The indirect method was employed to calculate the encapsulation efﬁciency of 9c/NP and 9e/NP by
+assessing the quantity of unentrapped 9c and 9e in the supernatant obtained after centrifugation. Subsequently,
+the particles were freeze-dried and weighed to ascertain the reaction yield and 9c and 9e loading capacity. The
+dynamic and electrophoretic light scattering methods were utilized to measure the particle size and zeta
+potential of the NPs, respectively. The particle size, PDI, zeta potential values, EE, DL and RY of the synthesized
+nanoparticles are shown in table 2.
+Figure 5(a) illustrates that the average particle size of PLGA NP loaded with 9c (9c/NP) was
+216.1 ± 8.944 nm, with a PDI value of 0.124 ± 0.038, indicating a nearly uniform size distribution. The
+Figure 3. (a) 13C NMR spectrum of 9c. (b) APT spectrum of 9e.
+Table 1. The DPPH scavenging effect of
+compounds.
+Samples
+DPPH scavenging effect (%)
+5a
+16.35 ± 0.85
+5b
+13.28 ± 0.66
+6a
+15.81 ± 2.47
+6b
+13.33 ± 1.02
+9a
+15.87 ± 0.10
+9b
+13.94 ± 0.65
+9c
+25.60 ± 0.69
+9d
+14.80 ± 0.53
+9e
+29.08 ± 0.52
+The results of three separate experiments
+are shown as mean ± SD. (n = 3).
+11
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+Figure 4. Concentration-dependent DPPH scavenging activities of compounds (a) 9c and (b) 9e.
+Figure 5. (a) Particle size and (b) zeta potential distribution of 9c/NP; (c) particle size and (d) zeta potential distribution of 9e/NP.
+Table 2. The physicochemical characteristics of synthesized nanoparticles.
+Formulation code
+Particle Size (nm)
+aPDI
+Zeta potential (mV)
+bEE (%)
+cDL (%)
+dRY (%)
+Empty NP
+181.6 ± 3.306
+0.172 ± 0.037
+−16.3 ± 4.77
+—
+—
+43.85 ± 5.39
+9c/NP
+216.1 ± 8.944
+0.124 ± 0.038
+−14.1 ± 2.40
+80.39 ± 3.42
+42.76 ± 3.63
+43.62 ± 5.55
+9e/NP
+222.0 ± 12.490
+0.247 ± 0.055
+−12.4 ± 1.42
+48.02 ± 4.08
+32.69 ± 3.16
+33.92 ± 0.40
+The results of three separate experiments are shown as mean ± SD. (n = 3).
+a Polydispersity index.
+b Encapsulation efﬁciency.
+c Drug loading.
+d Reaction yield.
+12
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+measurement of the zeta potential for 9c/NP yielded a value of −14.1 ± 2.40 mV, as shown in ﬁgure 5(b).
+Similarly, the average particle size of 9e-loaded PLGA NP (9e/NP) was measured as 222.0 ± 12.490 nm
+(ﬁgure 5(c)), the PDI value was 0.247 ± 0.055, and the zeta potential was −12.4 ± 1.42 mV (ﬁgure 5(d)). The
+average particle size of empty NP was 181.6 ± 3.306 nm and increased to 216.1 ± 8.944 nm in 9c/NP and
+222.0 ± 12.490 in 9e/NP after loading of compounds 9c and 9e. The reason behind the negative zeta potential
+value exhibited by all synthesized nanoparticles is attributed to the existence of ionized carboxyl groups
+originated from acid-terminated PLGA on the nanoparticles’ surface, as well as the non-ionic PVA utilized as an
+emulsiﬁer throughout the synthesis process.
+In the FT-IR spectrum of empty NP (ﬁgure 6(a)), the peak at 2963 cm−1 corresponds to the -C-H stretch of
+CH2, while the peak at 1753 cm−1 is attributed to the C=O stretching vibration of the ester bond. Additionally,
+the peaks at 1169 and 1089 cm−1 are associated with the C-O stretch. In the FT-IR spectrum of 9c (ﬁgure 6(a)),
+the peaks observed at 3061 and 3017 cm−1 can be attributed to aromatic C-H stretching vibrations, whereas the
+peaks at 1711 and 1692 cm−1 are indicative of C=O stretching vibrations. Furthermore, the peak observed at
+1264 cm−1 corresponds to the rocking vibration of C–N bonds. The spectrum of 9c/NP (ﬁgure 6(a)) reveals a
+noteworthy reduction in the intensity of the primary 9c peaks, accompanied by the prominence of distinct peaks
+associated with PLGA. This observation strongly suggests that 9c has been successfully encapsulated within
+PLGA nanoparticles. Nevertheless, the FT-IR spectrum of 9c/NP reveals a minimal presence of 9c, as indicated
+by the low intensity peaks observed at 1692 cm−1 and 1264 cm−1. This suggests that only a small quantity of 9c is
+adsorbed onto the surface of 9c/NP. The FT-IR spectrum of compound 9e (ﬁgure 6(b)) displays peaks at
+3063 cm−1 which correspond to aromatic C-H stretching vibrations, while the peaks at 1691 cm−1 suggest C=O
+stretching vibrations. In addition, the peaks at 1465 and 1387 cm−1 belong to aliphatic C-H in-plane bending,
+and the peak at 1263 cm−1 belongs to C-N rocking vibration. The FT-IR spectrum of 9e/NP (ﬁgure 6(b)) reveals
+that 9e is encapsulated in PLGA nanoparticles due to a notable decrease in the strength of the primary 9e peaks
+and the predominance of PLGA characteristic peaks in the 9e/NP spectrum. However, the presence of peaks
+belonging to compound 9e in the FT-IR spectrum of 9e/NP indicates that only a small amount of 9e is adsorbed
+to the nanoparticle surface (similar to that of 9c/NP).
+The in vitro release of 9c and 9e from nanoparticles (9c/NP and 9e/NP, respectively) was examined in PBS
+buffer (pH 7.4; 0.01 M) at 37 °C. The release study was also repeated in PBS buffer containing 1% (v/v) Tween 20
+Figure 6. (a) The comparative FT-IR spectra of 9c, 9c/NP, and empty NP. (b) The comparative FT-IR spectra of 9e, 9e/NP, and empty
+NP. (c) The in vitro release proﬁle of 9c and 9e from 9c/NP and 9e/NP.
+13
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+(used as surfactant). The release proﬁle of the nanoparticles was followed for 48 h and the graph showing the
+percentage of 9c and 9e released as a function of time is given in ﬁgure 6(c).
+The observed release pattern of the examined 9c/NP and 9e/NP indicated a biphasic release proﬁle (in a
+without Tween 20 release medium). Speciﬁcally, there was an initial increase in drug release within the ﬁrst 6 h,
+followed by a sustained release pattern throughout the studied period. At the end of 48 h, the maximum release
+percentage of 9e/NPs increased to 34%, while that of 9c/NPs only increased to 23.45%. This difference between
+the release percentages was associated with the fact that compound 9c is more hydrophobic than compound 9e
+(more hydrophobicity provided by the extra phenyl group it contains in its structure compared to compound
+9e), thus, compound 9c diffuses more difﬁcult from the PLGA matrix into the hydrophilic PBS medium
+compared to compound 9e.
+The in vitro release of 9c or 9e from nanoparticles has been shown to follow a biphasic release proﬁle with a
+burst release phase and a slow steady release phase (up to 48 h) in the presence of Tween 20 in the release
+medium. An initial burst release resulting from drug diffusion was observed at the conclusion of the ﬁrst hour
+for 9e/NPs, similar to 9c/NPs. The burst release percentage in 9c/NPs was determined to be 50.58%, whereas in
+9e/NPs it was found to be 53.38%. In the second phase of the release of 9c from 9c/NPs, an approximately
+constant and low level of 9c release was observed, and at the end of 48 h, the cumulative release for 9c/NP
+reached 80.52%. In the second phase of the release of 9e from 9e/NPs, a constant and low level of 9e release was
+observed and at the end of 48 h, the cumulative release for 9e/NP reached 69.41%. The hydrophobic properties
+of PLGA impede the diffusion of the 9c or 9e molecules to release medium, resulting in a limited, drug diffusion
+and release, from the nanoparticles system [83]. It is clear that adding Tween 20 to the release medium
+accelerates the release of compounds from nanoparticles. The reason for this is that the afﬁnity of hydrophobic
+Figure 7. The FE-SEM micrographs and size distribution histograms of empty NP, 9c/NP, and 9e/NP at different magniﬁcation. The
+scale bars represent 3 μm, 1 μm and 500 nm from top to bottom, respectively.
+14
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+molecules to the release medium increases due to the increase in the hydrophobicity of the release medium with
+a surfactant such as Tween 20 added to the release medium.
+Micrographs depicting morphology of empty NP, 9c/NP, and 9e/NP acquired through FE-SEM at different
+magniﬁcations are presented in ﬁgure 7. The FE-SEM images of the synthesized nanoparticles provide clear
+evidence of the production of smooth and spherical particles. Figure 7 illustrates that upon encapsulation of
+compounds 9c and 9e into PLGA NPs, the NPs maintained their spherical shape and exhibited a nearly uniform
+size distribution. The average particle size derived from the particle size distribution histogram depicted on the
+FE-SEM micrograph was 140.6 nm for empty NP, 172.4 nm for 9c/NP, and 181.2 nm for 9e/NP. In contrast to
+the dynamic light scattering technique, the microscopic methods yield smaller particle diameters. The particle
+diameters obtained from the microscopic methods are directly related to measuring the particle diameter by
+evaporating the water in the nanoparticle suspension before microscopic analysis, in contrast to the dynamic
+light scattering method. The hydrodynamic diameter measured through dynamic light scattering represents the
+diameter of particles dispersed in an aqueous medium, encompassing the oppositely charged ion layer
+surrounding the particle surface within the medium. The particles in the aqueous buffer exhibit increased sizes
+in DLS measurements due to hydration and swelling, in contrast to FE-SEM.
+4. Conclusions
+As a result, the synthesis of bicyclic heterocyclic compounds containing nitrogen atoms such as tetrazine,
+triazole, and coumarin has been reported. The antioxidant activities of these compounds were compared at a
+constant concentration using the DPPH method, and nanoparticle encapsulation was carried out for molecules
+with high activity. The results obtained indicate that among the nine synthesized coumarin derivatives,
+compounds 9c and 9e exhibit the highest antioxidant activity due to their ability to donate H radicals.
+Furthermore, the resonance stability in molecule 9e facilitates easier breakdown of the allylic radical hydrogen,
+enhancing its antioxidant activity by increasing its propensity to donate hydrogen radicals. Therefore, the
+ﬁndings of this study suggest the development of a promising platform for therapeutic applications related to
+oxidative stress and may contribute to future research in this area.
+Acknowledgments
+We gratefully acknowledge ﬁnancial support of this work by the Yildiz Technical University Scientiﬁc Research
+Projects Coordination Unit (Project No. FBA-2020-3868).
+Data availability statement
+All data that support the ﬁndings of this study are included within the article (and any supplementary ﬁles).
+ORCID iDs
+Oznur Eyilcim
+https://orcid.org/0000-0001-6222-960X
+Burcu Belmen
+https://orcid.org/0000-0002-3073-7420
+Irem Coksu
+https://orcid.org/0000-0003-4597-4872
+Serap Acar
+https://orcid.org/0000-0002-6662-6642
+Cigdem Yolacan
+https://orcid.org/0000-0003-4221-3592
+Omer Tahir Gunkara
+https://orcid.org/0000-0003-3528-5045
+References
+[1] Marucci G 2011 Treatment of pituitary neoplasms with temozolomide: a review Cancer 117 4101–2
+[2] Chen D, Su S-J and Cao Y 2014 Nitrogen heterocycle-containing materials for highly efﬁcient phosphorescent OLEDs with low
+operating voltage Journal of Materials ChemistryC 2 9565–78 b
+[3] Amblard F, Cho J H and Schinazi R F 2009 Cu(I)-catalyzed Huisgen azide-alkyne 1,3-dipolar cycloaddition reaction in nucleoside,
+nucleotide, and oligonucleotide chemistry Chem. Rev. 109 4207–20
+[4] Xu X, Zhang K, Li P, Yao H and Lin A 2018 [3 + 3] cycloaddition of azides with in situ formed azaoxyallyl cations to synthesize 1,2,3,4-
+tetrazines Org. Lett. 20 1781–4
+[5] Mulliri S, Laaksonen A, Spanu P, Farris R, Farci M, Mingoia F, Roviello G N and Mocci F 2021 Spectroscopic and in silico studies on the
+interaction of substituted pyrazolo[1,2-a]benzo[1,2,3,4]tetrazine-3-one derivatives with c-myc G4-DNA Int. J. Mol. Sci. 22 6028
+[6] Tartakovsky V A, Filatov I E, Churakov A M, Ioffe S L, Strelenko Y A, Kuz´min V S, Rusinov G L and Pashkevich K I 2004 Synthesis, and
+structures of pyridoannelated 1,2,3,4-tetrazine 1,3-dioxides Russian Chemical Bulletin, International Edition 53 2577–83
+15
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+[7] Xu X, Zhang K, Li P, Yao H and Lin A 2018 [3 + 3] cycloaddition of azides within situ formed azaoxyallyl cations to synthesize 1,2,3,4-
+tetrazines Org. Lett. 20 1781–4
+[8] Jeffrey C S, Barnes K L, Eickhoff J A and Carson C R 2011 Generation and reactivity of aza-oxyallyl cationic intermediates: aza-[4 + 3]
+cycloaddition reactions for heterocycle synthesis J. Am. Chem. Soc. 133 7688–91
+[9] DiPoto M C, Hughes R P and Wu J 2015 Dearomative indole (3 + 2) reactions with azaoxyallyl cations—new method for the synthesis
+of pyrroloindolines J. Am. Chem. Soc. 137 14861–4
+[10] Ji W, Yao L and Liao X 2016 Access to the pyrroloindoline core via [3 + 2] annulation as well as the application in the synthetic
+approach to (±)-minﬁensine Org. Lett. 18 628–30
+[11] Li C, Jiang K, Ouyang Q, Liu T-Y and Chen Y-C 2016 [3 + 1]- and [3 + 2]-Cycloadditions of azaoxyallyl cations and sulfur ylides Org.
+Lett. 18 2738–41
+[12] An Y, Xia H and Wu J 2016 Base-controlled [3+3] cycloaddition of isoquinoline N-oxides with azaoxyallyl cations Chem. Commun. 52
+10415–8
+[13] Ji W, Liu Y A and Liao X 2016 Nickel-catalyzed methylation of aryl halides with deuterated methyl iodide Angew. Chem. Int. Ed. 55
+9743–7
+[14] Jia Q, Du Z, Zhang K and Wang 2017 [3 + 2] Cycloaddition of aza-oxyallyl cations with aldehydes Organic Chemistry Frontiers 4 91–4
+[15] Cheng X, Cao X, Xuan J and Xiao W-J 2018 Silver(I)- and base-mediated [3 + 3]-cycloaddition of C,N-cyclic azomethine imines with
+aza-oxyallyl cations Org. Lett. 20 52–5
+[16] DiPoto M C and Wu J 2018 Synthesis of 2-aminoimidazolones and imidazolones by (3 + 2) annulation of azaoxyallyl cations Org. Lett.
+20 499
+[17] Matin M M, Matin P, Rahman M R, Hadda T B, Almalki F A, Mahmud S, Ghoneim M M, Alruwaily M and Alshehri S 2022 Triazoles
+and their derivatives: chemistry, synthesis, and therapeutic applications Frontiers in Molecular Biosciences 9 864286
+[18] Rostovtsev V V, Green L G, Fokin V V and Sharpless K B 2002 Stepwise huisgen cycloaddition process: copper(I)-catalyzed
+regioselective ‘ligation’ of azides and terminal alkynes Angew. Chem. Int. Ed. 41 2596–9
+[19] Luciani L, Goff E, Lanari D, Santoro S and Vaccaro L 2018 Waste-minimised copper-catalysed azide–alkyne cycloaddition in
+polarclean as a reusable and safe reaction medium Green Chem. 20 183–7
+[20] McNulty J, Keskar K and Vemula R 2011 The ﬁrst well-deﬁned silver(I)-complex-catalyzed cycloaddition of azides onto terminal
+alkynes at room temperature Chemistry—A European Journal 17 14727–30
+McNulty et al. 2011 Ding S, Jia G and Sun J 2014 Iridium-catalyzed intermolecular azide–alkyne cycloaddition of internal thioalkynes
+under mild conditions Angewandte Chemie Int. Edition 53 1877–80
+[21] Liao Y, Lu Q, Chen G, Yu Y, Li C and Huang X 2017 Rhodium-catalyzed azide–alkyne cycloaddition of internal ynamides:
+regioselective assembly of 5-amino-triazoles under mild conditions ACS Catal. 7 7529–34
+[22] Thomas J, John J, Parekh N and Dehaen W 2014 A metal-free three-component reaction for the regioselective synthesis of 1,4,5-
+trisubstituted 1,2,3-triazoles Angew. Chem. Int. Ed. 53 10155–9
+[23] Duncia J V, Pierce M E and Santella J B III 1991 Three synthetic routes to a sterically hindered tetrazole. A new one-step mild
+conversion of an amide into a tetrazole The Journal of Organic Chemistry 56 2395–400
+[24] Kolb H C, Finn M G and Sharpless K B 2001 Click chemistry: diverse chemical function from a few good reactions Angew. Chem. Int.
+Ed. 40 2004–21
+[25] Himo F, Demko Z P, Noodleman L and Sharpless K B 2003 Why is tetrazole formation by addition of azide to organic nitriles catalyzed
+by zinc(II) salts? The Journal of Organic Chemistry 125 9983–7
+[26] Aureggi V and Sedelmeier G 2007 1,3-dipolar cycloaddition: click chemistry for the synthesis of 5-substituted tetrazoles from
+organoaluminum azides and nitriles Angew. Chem. Int. Ed. 46 8440–4
+[27] Tona V, Maryasin B, de la Torre A, Sprachmann J, Gonzalez L and Maulide N 2017 Direct regioselective synthesis of tetrazolium salts by
+activation of secondary amides under mild conditions Org. Lett. 19 2662–5
+[28] Kassim N K, Rahmani M, Ismail A, Sukari M A, Ee G C L, Nasir N M and Awang K 2013 Antioxidant activity-guided separation of
+coumarins and lignan from melicope glabra (rutaceae) Food Chem. 139 87–92
+[29] Panthong K, Srisud Y, Rukachaisirikul V, Hutadilok-Towatana N, Voravuthikunchai S P and Tewtrakul S 2013 Benzene, coumarin and
+quinolinone derivatives from roots of Citrus hystrix Phytochemistry 88 79–84
+[30] Witaicenis A, Seito L N, da Silveira Chagas A, de Almeida L D Jr, Luchini A C, Rodrigues-Orsi P, Cestari S H and Di Stasi L C 2014
+Antioxidant, and intestinal anti-inﬂammatory effects of plant-derived coumarin derivatives Phytomedicine 21 240–6
+[31] Mitra I, Saha A and Roy K 2013 Quantiﬁcation of contributions of different molecular fragments for antioxidant activity of coumarin
+derivatives based on QSAR analyses Can. J. Chem. 91 428
+[32] Perez-Cruz F, Vazquez-Rodriguez S, Matos M J, HerreraMorales A, Villamena F A, Das A, Gopalakrishnan B, Olea-Azar C,
+Santana L and Uriarte E 2013 Synthesis and electrochemical and biological studies of novel coumarin-chalcone hybrid compounds
+J. Med. Chem. 56 6136–45
+[33] Al-Warhia T, Sabt A, Elkaeed E B and Eldehna W M 2020 Recent advancements of coumarin-based anticancer agents: an up-to-date
+review Bioorg. Chem. 103 104163
+[34] Vogel A 1820 Darstellung von benzoesaure aus der tonka-boline und aus den meliioten-oder steinklee-blumen Ann. Phys. 64 161–6
+[35] Zhu J J and Jiang J G 2018 Pharmacological and nutritional effects of natural coumarins and their structure-activity relationships Mol.
+Nutr. Food Res. 62 e1701073
+[36] Nayeli M B, Maribel H R, Enrique J F, Rafael B P, Margarita A F, Macrina F M, Ivan M D and Manasés G C 2020 Anti-inﬂammatory
+activity of coumarins isolated from Tagetes lucida Cav Nat. Prod. Res. 34 3244–8
+[37] Mu C, Wu M and Li Z 2019 Anti-inﬂammatory effect of Novel 7-substituted coumarin derivatives through inhibition of NF-κB
+signaling pathway Chemistry & Biodiversity 16 e1800559
+[38] Hu Y, Shen Y, Wu X, Tu X and Wang G X 2018 Synthesis and biological evaluation of coumarin derivatives containing imidazole
+skeleton as potential antibacterial agents Eur. J. Med. Chem. 143 958–69
+[39] Bhagat K et al 2019 Design, synthesis, antimicrobial evaluation, and molecular modeling studies of novel indolinedione−coumarin
+molecular hybrids ACS Omega 4 8720–30
+[40] Chougala B M, Samundeeswari S, Holiyachi M, Naik N S, Shastri L A, Dodamani S, Jalalpure S, Dixit S R, Joshi S D and Sunagar V A
+2018 Green, unexpected synthesis of bis-coumarin derivatives as potent anti-bacterial and anti-inﬂammatory agents Eur. J. Med. Chem.
+143 1744–56
+[41] Hassan M Z, Osman H, Ali M A and Ahsan M J 2016 Therapeutic potential of coumarins as antiviral agents Eur. J. Med. Chem. 123
+236–55
+16
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+[42] Al-Majedy Y, Al-Amiery A, Kadhum A and Mohamad A 2017 Antioxidant activity of coumarins Systematic Reviews in Pharmacy 8
+24–30
+[43] Al-Majedy Y K, Al-Duhaidahawi D L, Al-Azawi K F, Al-Amiery A A, Kadhum A A and Mohamad A B 2016 Coumarins as potential
+antioxidant agents complemented with suggested mechanisms and approved by molecular modeling studies Molecules 21 135
+[44] Nagamallu R, Srinivasan B, Ningappa M B and Kariyappa A K 2016 Synthesis of novel coumarin appended bis(formylpyrazole)
+derivatives: studies on their antimicrobial and antioxidant activities Bioorganic & Medicinal Chemistry Letters 26 690–4
+[45] Xie S S, Lan J S, Wang X, Wang Z M, Jiang N, Li F, Wu J J, Wang J and Kong L Y 2016 Design, synthesis, and biological evaluation of
+novel donepezil-coumarin hybrids as multi-target agents for the treatment of alzheimer’s disease, Bioorg. Med. Chem. 24 1528–39
+[46] Jiang N, Huang Q, Liu J, Liang N, Li Q, Li Q and Xie S S 2018 Design, synthesis, and biological evaluation of new coumarin-
+dithiocarbamate hybrids as multifunctional agents for the treatment of alzheimer’s disease, Eur. J. Med. Chem. 146 287–98
+[47] An R, Hou Z, Li J T, Yu H N, Mou Y H and Guo C 2018 Design, synthesis and biological evaluation of novel 4-substituted coumarin
+derivatives as antitumor agents Molecules 23 2281–93
+[48] Bisi A et al 2017 Coumarin derivatives as potential antitumor agents: growth inhibition, apoptosis induction and multidrug resistance
+reverting activity Eur. J. Med. Chem. 127 577–85
+[49] Kahveci B, Yılmaz F, Menteşe E and Ülker S 2017 Design, synthesis, and biological evaluation of coumarin-triazole hybrid molecules as
+potential antitumor and pancreatic lipase agents Arch Pharm (Weinheim) 350 e1600369
+[50] Guo Y, Wang Y, Li H, Wang K, Wan Q, Li J, Zhou Y and Chen Y 2018 Novel nitric oxide donors of phenylsulfonylfuroxan and 3-benzyl
+coumarin derivatives as potent antitumor agents ACS Med. Chem. Lett. 9 502–6
+[51] Lu X Y, Wang Z C, Ren S Z, Shen F Q, Man R J and Zhu H L 2016 Coumarin sulfonamides derivatives as potent and selective COX-2
+inhibitors with efﬁcacy in suppressing cancer proliferation and metastasis Bioorg. Med. Chem. Lett. 26 3491–8
+[52] Shen F Q, Wang Z C, Wu S Y, Ren S Z, Man R J, Wang B Z and Zhu H L 2017 Synthesis of novel hybrids of pyrazole and coumarin as
+dual inhibitors of COX-2 and 5-LOX Bioorg. Med. Chem. Lett. 27 3653–60
+[53] Kasperkiewicz K, Ponczek M B and Budzisz E 2018 A biological, ﬂuorescence and computational examination of synthetic coumarin
+derivatives with antithrombotic potential Pharmacological Reports 70 1057–64
+[54] Peperidou A, Bua S, Bozdag M, Hadjipavlou-Litina D and Supuran C T 2018 Novel 6- and 7- substituted coumarins with inhibitory
+action against lipoxygenase and tumorassociated carbonic anhydrase IX Molecules 23 153
+[55] Gulati H K, Bhagat K, Singh A, Kumar N, Kaur A, Sharma A, Heer S, Singh H, Singh J V and Bedi P M S 2020 Design, synthesis, and
+biological evaluation of novel indolinedione–coumarin hybrids as xanthine oxidase inhibitors Med. Chem. Res. 29 1632–42
+[56] Li C et al 2019 Recent progress in drug delivery Acta pharmaceutica sinica B 9 1145–62
+[57] Liu R et al 2023 Advances of nanoparticles as drug delivery systems for disease diagnosis and treatment. Chin. Chem. Lett. 34 107518
+[58] Taghipour-Sabzevar V, ShariﬁT and Moghaddam M M 2019 Polymeric nanoparticles as carrier for targeted and controlled delivery of
+anticancer agents Ther. Deliv. 10 527–50
+[59] Pimple S, Manjappa A S, Ukawala M and Murthy R S R 2012 PLGA nanoparticles loaded with etoposide and quercetin dihydrate
+individually: in vitro cell line study to ensure advantage of combination therapy Cancer Nanotechnol. 3 25–36
+[60] Mohamed F and van der Walle cf 2008 Engineering biodegradable polyester particles with speciﬁc drug targeting and drug release
+properties J. Pharm. Sci. 97 71–87
+[61] Akagi T, Baba M and Akashi M 2012 Biodegradable nanoparticles as vaccine adjuvants and delivery systems: regulation of immune
+responses by nanoparticle-based vaccine Polymers in Nanomedicine 31–64
+[62] Derman S, Kizilbey K and Akdeste Z M 2013 Polymeric nanoparticles Sigma Journal of Engineering and Natural Sciences 31 107–20
+[63] Grune C, Zens C, Czapka A, Scheuer K, Thamm J, Hoeppener S, Jandt K D, Werz O, Neugebauer U and Fischer D 2021 Sustainable
+preparation of anti-inﬂammatory atorvastatin PLGA nanoparticles Int. J. Pharm. 599 120404
+[64] Blechert S and Michaelis S 2007 Ring-opening cross-metathesis (ROCM) as a novel tool for the ligation of peptides Chemistry—A
+European Journal 13 2358–68
+[65] Gunkara O T, Sucu B O, Guleli M and Ocal N 2014 Synthesis of new tandospirone analogues carrying 1-(3-(triﬂuoromethyl)phenyl)
+piperazine Synth. Commun. 44 1619–28
+[66] Zeng X, Luo J, Zhou T, Chen T, Zhou X, Wu K, Zou Y, Xie G, Gong S and Yang C 2018 Using ring-opening metathesis polymerization
+of norbornene to construct thermally activated delayed ﬂuorescence polymers: high-efﬁciency blue polymer light-emitting diodes
+Macromolecules 51 1598–604
+[67] Manishar D M, Rao K U M, Reddy N B, Sundar C S and ve Reddy C S 2012 Synthesis of new 8-formyl-4-methyl-7-hydroxy coumarin
+derivatives J. Korean Chem. Soc. 56 459–63
+[68] Timonen J M, Nieminen R M, Sareila O, Goulas A, Moilanen L J, Haukka M, Vainiotalo P, Moilanen E and ve Aulaskari P H 2011
+Synthesis, and anti-inﬂammatory effects of a series of novel 7-hydroxycoumarin derivatives Eur. J. Med. Chem. 46 3845–50
+[69] Smitha G and Reddy C S 2004 ZrCl4-catalyzed pechmann reaction: synthesis of coumarins under solvent-free conditions Synth.
+Commun. 34 3997–4003
+[70] Sachdeva H, Mathur J and Guleria A 2020 Indole derivatives as potential anticancer agents: a review J. Chil. Chem. Soc. 65 4900–7
+[71] Jiang N, Huang Q, Liu J, Liang N, Li Q, Li Q and ve Xie S 2018 Design, synthesis and biological evaluation of new
+coumarindithiocarbamate hybrids as multifunctional agents for the treatment of alzheimer’s disease Eur. J. Med. Chem. 146 287–98
+[72] Shabestarian H, Tabrizi M H, Movahedi M, Neamati A and Sharifnia F 2021 Putative mechanism for cancer suppression by PLGA
+nanoparticles loaded with Peganum harmala smoke extract J. Microencapsulation 38 324–37
+[73] Mokhtareeizadeh Z and Homayouni Tabrizi M 2022 Optimisation of ferula assa-foetida-loaded PLGA nanoparticles synthesised and
+evaluation of putative mechanism for anticancer properties Mater. Technol. 37 1954–67
+[74] Ajmal G, Bonde G V, Mittal P, Pandey V K, Yadav N and Mishra B 2023 PLGA/Gelatin-based electrospun nanoﬁber scaffold
+encapsulating antibacterial and antioxidant molecules for accelerated tissue regeneration Materials Today Communications 35 105633
+[75] Coksu I, Bozkurt Y, Akmayan I, Demirci H, Ozbek T and Acar S 2023 Ketoconazole-loading strategy to improve antifungal activity and
+overcome cytotoxicity on human renal proximal tubular epithelial cells Nanotechnology 35 115702
+[76] Derman S 2016 Caffeic acid phenethyl ester loaded PLGA nanoparticles: effect of various process parameters on reaction yield,
+encapsulation efﬁciency, and particle size J. Nanomater. 16 318–
+[77] Büyükbayraktar H K, Arayıcı P P, Ihlamur M, Gokkaya D, Karahan M, Abamor E S and Topuzogulları M 2023 Effect of polycation
+coating on the long-term pulsatile release of antigenic ESAT-61–20 peptide from PLGA nanoparticles Colloids Surf. B 228 113421
+[78] Ozdemir C, Gencer M, Coksu I, Ozbek T and Derman S 2023 A new strategy to achieve high antimicrobial activity: green synthesised
+silver nanoparticle formulations with Galium aparine and Helichrysum arenarium Archives of Industrial Hygiene and Toxicology 74
+90–8
+17
+Nano Express 5 (2024) 035008
+O Eyilcim et al
+
+[79] Ucar B, Acar T, Arayici P P and Derman S 2021 A nanotechnological approach in the current therapy of COVID-19: model drug
+oseltamivir-phosphate loaded PLGA nanoparticles targeted with spike protein binder peptide of SARS-CoV-2 Nanotechnology 32
+485601
+[80] Gaonkar R H, Ganguly S, Dewanjee S, Sinha S, Gupta A, Ganguly S, Chattopadhyay D and Debnath M C 2017 Garcinol loaded vitamin
+E TPGS emulsiﬁed PLGA nanoparticles: preparation, physicochemical characterization, in vitro and in vivo studies Sci. Rep. 7 530
+[81] Calman F, Arayıcı P P, Büyükbayraktar H K, Karahan M, Mustafaeva Z and Katsarava R 2019 Development of vaccine prototype
+against Zika virus disease of peptide-loaded PLGA nanoparticles and evaluation of cytotoxicity Int. J. Pept. Res. Ther. 25 1057–63
+[82] Nimse S B and Pal D 2015 Free radicals, natural antioxidants, and their reaction mechanisms RSC Advantages 5 27986–8006
+[83] Salama H A, Ghorab M, Mahmoud A A and Hady M A 2017 PLGA nanoparticles as subconjunctival injection for management of
+glaucoma Aaps Pharmscitech 18 2517–28
+18
+Nano Express 5 (2024) 035008
+O Eyilcim et al
