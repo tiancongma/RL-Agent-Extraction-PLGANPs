@@ -24,6 +24,14 @@ This runbook distinguishes:
 5. `project/ACTIVE_DATA_SOURCE_CONTRACT.md` when resolving current
    `data/results` workflow sources
 
+## Recent Changes (2026-05-10)
+
+- Stage1 Marker completeness gate:
+  - The current script registry still classifies `src/stage1_cleaning/clean_manifest_to_text.py` as the active compatibility clean-text entrypoint and `src/stage1_cleaning/run_stage1_marker_pdf_extraction_v1.py` plus Marker fusion builders as supporting entrypoints unless a run explicitly executes them.
+  - Therefore a clean-text run that uses only the compatibility PyMuPDF/trafilatura path and does not execute the governed Marker PDF extraction/fusion surface is incomplete for source completeness purposes.
+  - Agents must not describe no-Marker clean text as complete source coverage. Before proceeding with any Stage1 clean-text refresh, Stage2 evidence construction, S2-4a prompt materialization, or downstream replay that lacks Marker artifacts, agents must print a clear warning that Marker was not used and that clean text is compatibility-only/incomplete.
+  - If the user's requested mainline requires complete clean text, the agent must first prepare or verify the Marker environment and run the governed Marker extraction/fusion path, or stop and ask for authorization to proceed with compatibility-only clean text.
+
 ## Recent Changes (2026-05-07)
 
 - Stage2 pre-selector source hygiene:

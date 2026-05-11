@@ -7,6 +7,7 @@ import json
 import os
 import subprocess
 import sys
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
@@ -270,9 +271,11 @@ def apply_s2_1b_denoise_projection_to_manifest_rows(
 ) -> list[dict[str, str]]:
     """Materialize S2-1b projections without overwriting raw clean-text authority.
 
-    ``text_path`` remains the raw/current clean-text audit authority. Downstream
-    S2-2 consumes ``source_s2_1b_denoised_text_path`` when present and records
-    both surfaces in provenance.
+    ``text_path`` remains the explicit Stage1 source surface authority. For
+    Marker/HTML unified manifests this is the operational unified path, not a
+    hidden refresh from key2txt. Downstream S2-2 consumes
+    ``source_s2_1b_denoised_text_path`` when present and records both surfaces
+    in provenance.
     """
     inputs: list[tuple[str, Path]] = []
     for row in selected_rows:
@@ -303,6 +306,85 @@ def apply_s2_1b_denoise_projection_to_manifest_rows(
                 hydrated["s2_1b_denoise_summary_path"] = str(summary_path)
         hydrated_rows.append(hydrated)
     return hydrated_rows
+
+
+STAGE1_SOURCE_AUDIT_FIELDS = [
+    "paper_key",
+    "text_path",
+    "source_raw_clean_text_path",
+    "source_s2_1b_denoised_text_path",
+    "text_source_type",
+    "source_clean_text_type",
+    "marker_consumed",
+    "html_consumed",
+    "structure_path",
+    "stage1_structure_source",
+    "fallback_reason",
+    "stage1_table_cell_sidecar_path",
+    "stage1_table_cell_sidecar_consumed",
+    "stage1_table_cell_sidecar_available",
+    "stage1_unified_contract_version",
+]
+
+
+def build_stage1_source_consumption_audit(selected_rows: list[dict[str, str]], run_dir: Path) -> tuple[Path, dict[str, object]]:
+    """Persist the actual Stage1 surface consumed by this Stage2 run.
+
+    This intentionally audits the post-refresh targeted manifest rows, because
+    that is the point where historical runs accidentally fell back to key2txt.
+    """
+    audit_rows: list[dict[str, str]] = []
+    for row in selected_rows:
+        key = normalize_key(row)
+        text_source_type = normalize_text(row.get("text_source_type"))
+        source_clean_text_type = normalize_text(row.get("source_clean_text_type")) or text_source_type
+        marker_consumed = normalize_text(row.get("marker_consumed"))
+        html_consumed = normalize_text(row.get("html_consumed"))
+        if not marker_consumed:
+            marker_consumed = "yes" if source_clean_text_type == "marker_fused_pdf" else "no"
+        if not html_consumed:
+            html_consumed = "yes" if source_clean_text_type.startswith("html") or text_source_type == "html" else "no"
+        sidecar_path = normalize_text(row.get("stage1_table_cell_sidecar_path"))
+        sidecar_consumed = normalize_text(row.get("stage1_table_cell_sidecar_consumed"))
+        if not sidecar_consumed:
+            sidecar_consumed = "yes" if sidecar_path else "no"
+        audit_rows.append(
+            {
+                "paper_key": key,
+                "text_path": normalize_text(row.get("text_path")),
+                "source_raw_clean_text_path": normalize_text(row.get("source_raw_clean_text_path")),
+                "source_s2_1b_denoised_text_path": normalize_text(row.get("source_s2_1b_denoised_text_path")),
+                "text_source_type": text_source_type,
+                "source_clean_text_type": source_clean_text_type,
+                "marker_consumed": marker_consumed,
+                "html_consumed": html_consumed,
+                "structure_path": normalize_text(row.get("structure_path")),
+                "stage1_structure_source": normalize_text(row.get("stage1_structure_source")),
+                "fallback_reason": normalize_text(row.get("fallback_reason")),
+                "stage1_table_cell_sidecar_path": sidecar_path,
+                "stage1_table_cell_sidecar_consumed": sidecar_consumed,
+                "stage1_table_cell_sidecar_available": normalize_text(row.get("stage1_table_cell_sidecar_available")),
+                "stage1_unified_contract_version": normalize_text(row.get("stage1_unified_contract_version")),
+            }
+        )
+    audit_path = run_dir / "analysis" / "stage1_source_consumption_audit_v1.tsv"
+    write_tsv(audit_path, STAGE1_SOURCE_AUDIT_FIELDS, audit_rows)
+    summary = {
+        "row_count": len(audit_rows),
+        "marker_consumed_yes": sum(1 for row in audit_rows if row["marker_consumed"] == "yes"),
+        "html_consumed_yes": sum(1 for row in audit_rows if row["html_consumed"] == "yes"),
+        "stage1_table_cell_sidecar_consumed_yes": sum(
+            1 for row in audit_rows if row["stage1_table_cell_sidecar_consumed"] == "yes"
+        ),
+        "source_clean_text_type_counts": dict(Counter(row["source_clean_text_type"] for row in audit_rows)),
+        "stage1_structure_source_counts": dict(Counter(row["stage1_structure_source"] for row in audit_rows)),
+        "fallback_reason_counts": dict(Counter(row["fallback_reason"] for row in audit_rows)),
+    }
+    (run_dir / "analysis" / "stage1_source_consumption_summary_v1.json").write_text(
+        json.dumps(summary, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return audit_path, summary
 
 
 def parse_args() -> argparse.Namespace:
@@ -373,6 +455,8 @@ def build_run_context(
     legacy_raw_responses_dir: Path | None,
     semantic_dir: Path,
     compat_dir: Path,
+    stage1_source_consumption_audit_path: Path | None = None,
+    stage1_source_consumption_summary: dict[str, object] | None = None,
 ) -> str:
     key_block = "\n".join(f"- `{key}`" for key in selected_keys) if selected_keys else "- `all manifest rows`"
     legacy_note = f"- legacy_raw_responses_dir: `{legacy_raw_responses_dir}`" if legacy_raw_responses_dir else "- legacy_raw_responses_dir: ``"
@@ -382,6 +466,9 @@ def build_run_context(
     doe_recovery = os.getenv("STAGE2_ENABLE_NUMBERED_DOE_RECOVERY", "")
     doe_mode = os.getenv("STAGE2_DOE_ENUMERATION_MODE", "")
     doe_min_rows = os.getenv("STAGE2_NUMBERED_DOE_MIN_ROWS", "8")
+    stage1_summary = stage1_source_consumption_summary or {}
+    stage1_summary_json = json.dumps(stage1_summary, ensure_ascii=False, sort_keys=True) if stage1_summary else "{}"
+    stage1_audit_path_text = str(stage1_source_consumption_audit_path) if stage1_source_consumption_audit_path else ""
     return f"""# RUN_CONTEXT
 
 ## 1. Run ID
@@ -469,6 +556,12 @@ Benchmark reporting rule:
 - stage2_numbered_doe_min_rows: `{doe_min_rows}`
 {legacy_note}
 
+## 5a. Stage1 source consumption audit
+- stage1_source_consumption_audit_path: `{stage1_audit_path_text}`
+- stage1_source_consumption_summary_json: `{stage1_summary_json}`
+- required audit fields: `marker_consumed`, `html_consumed`, `source_clean_text_type`, `stage1_structure_source`, `fallback_reason`, `stage1_table_cell_sidecar_consumed`
+- path rule: explicit manifest `text_path`/`structure_path` are preserved; they must not be silently refreshed back to `data/cleaned/index/key2txt.tsv` current-clean-text bindings.
+
 ## 6. Exact script execution order
 1. `src/stage2_sampling_labels/run_stage2_composite_v1.py`
 2. `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
@@ -549,6 +642,9 @@ def main() -> None:
     selected_rows = refresh_stage2_structure_bindings(selected_rows, key2structure_tsv)
     selected_rows = refresh_stage2_table_bindings(selected_rows)
     selected_rows = apply_s2_1b_denoise_projection_to_manifest_rows(selected_rows, run_dir=run_dir)
+    stage1_source_consumption_audit_path, stage1_source_consumption_summary = build_stage1_source_consumption_audit(
+        selected_rows, run_dir
+    )
 
     selected_manifest_tsv = run_dir / "targeted_manifest.tsv"
     if selected_rows:
@@ -626,6 +722,8 @@ def main() -> None:
         legacy_raw_responses_dir=legacy_raw_responses_dir,
         semantic_dir=semantic_dir,
         compat_dir=compat_dir,
+        stage1_source_consumption_audit_path=stage1_source_consumption_audit_path,
+        stage1_source_consumption_summary=stage1_source_consumption_summary,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
     run_command(extractor_cmd)
@@ -711,6 +809,8 @@ def main() -> None:
         legacy_raw_responses_dir=legacy_raw_responses_dir,
         semantic_dir=semantic_dir,
         compat_dir=compat_dir,
+        stage1_source_consumption_audit_path=stage1_source_consumption_audit_path,
+        stage1_source_consumption_summary=stage1_source_consumption_summary,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
     run_metadata = {
@@ -756,6 +856,14 @@ def main() -> None:
         "model": args.model,
         "legacy_raw_responses_dir": str(legacy_raw_responses_dir) if legacy_raw_responses_dir is not None else "",
         "stage1_table_cell_sidecar_root": str(repo_path(args.stage1_table_cell_sidecar_root)) if str(args.stage1_table_cell_sidecar_root).strip() else "",
+        "stage1_source_consumption_audit_path": str(stage1_source_consumption_audit_path),
+        "stage1_source_consumption_summary_path": str(run_dir / "analysis" / "stage1_source_consumption_summary_v1.json"),
+        "stage1_source_consumption_summary": stage1_source_consumption_summary,
+        "marker_consumed_count": stage1_source_consumption_summary.get("marker_consumed_yes", 0),
+        "html_consumed_count": stage1_source_consumption_summary.get("html_consumed_yes", 0),
+        "stage1_table_cell_sidecar_consumed_count": stage1_source_consumption_summary.get(
+            "stage1_table_cell_sidecar_consumed_yes", 0
+        ),
     }
     (run_dir / STAGE2_RUN_METADATA_JSON).write_text(
         json.dumps(run_metadata, indent=2),

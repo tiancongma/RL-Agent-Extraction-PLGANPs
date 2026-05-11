@@ -1,5 +1,7 @@
 import json
+import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from src.stage2_sampling_labels.table_row_expansion_v1 import (
@@ -9,11 +11,21 @@ from src.stage2_sampling_labels.table_row_expansion_v1 import (
     build_single_variable_recovery_contract,
     emit_single_variable_recovery_rows,
     extract_empty_control_characterization_pair_rows_from_source_text,
+    extract_split_column_concentration_sweep_rows_from_source_csv,
     mark_llm_summary_rows_as_helpers,
     run_table_row_expansion,
 )
 from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
     normalize_stage2_document_for_projection,
+)
+from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
+    finalize_llm_first_document,
+)
+from src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1 import (
+    resolve_authorized_doe_targets,
+)
+from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
+    explicit_table_candidate,
 )
 
 
@@ -112,6 +124,72 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         self.assertEqual("Table 9", scope_info["table_id"])
         self.assertEqual("Table 2", scope_info["semantic_table_id"])
         self.assertEqual("Table 2", scope_info["original_scope_table_id"])
+
+    def test_reopened_doe_authority_table_blocks_secondary_table_expansion(self):
+        """DOE gating must re-check after locator reopen changes the table id."""
+        document = {
+            "document_key": "DOEREOPEN",
+            "doi": "10.0000/doe-reopen",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "table_formulation_scopes": [
+                {
+                    "scope_id": "DOEREOPEN__scope__display_table",
+                    "table_id": "Table X",
+                    "is_formulation_table": True,
+                    "table_type": "full_formulation",
+                    "marker_provenance": "llm_parsed",
+                    "table_scope_locators": [
+                        {"table_id": "Table 1", "source_table_asset_id": "DOEREOPEN__table_01__pdf_table"}
+                    ],
+                }
+            ],
+            "table_variable_roles": [
+                {"table_id": "Table X", "varying_variables": ["factor A"], "marker_provenance": "llm_parsed"}
+            ],
+            "boundary_markers": [
+                {"table_id": "Table 1", "is_doe": True, "marker_provenance": "llm_parsed"}
+            ],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        authority_payload = {
+            "table_id": "Table 1",
+            "source_table_asset_id": "DOEREOPEN__table_01__pdf_table",
+            "normalized_csv_path": "data/cleaned/example/Table_1.csv",
+            "normalized_rows": [
+                {"row_index": "1", "row_number": "1", "cells": ["F1", "-1"], "row_text": "F1 -1"},
+                {"row_index": "2", "row_number": "2", "cells": ["F2", "1"], "row_text": "F2 1"},
+            ],
+        }
+
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([authority_payload], {"reopen_resolution_status": "resolved", "normalized_payload_used": "yes"}),
+        ):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=[
+                    "key",
+                    "doi",
+                    "model",
+                    "local_instance_id",
+                    "formulation_id",
+                    "raw_formulation_label",
+                    "instance_kind",
+                    "instance_kind_raw",
+                    "instance_kind_inferred",
+                    "instance_confidence",
+                    "candidate_source",
+                ],
+                doe_summary={"doe_rows_emitted": 26},
+            )
+
+        self.assertEqual([], rows)
+        activation_rows = summary["table_activation_rows"]
+        self.assertEqual("Table 1", activation_rows[0]["table_id"])
+        self.assertEqual("blocked_by_successful_doe_emission", activation_rows[0]["skip_reason"])
+        self.assertEqual("no", activation_rows[0]["called"])
 
     def test_row_assignment_skips_prose_spillover_optimization_sentence(self):
         rows = [
@@ -630,6 +708,29 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         assignment_map = {item["name"]: item["value"] for item in recovered[0]["assignments"]}
         self.assertEqual("−36.13 ± 3.35 mV", assignment_map["zeta potential"])
 
+    def test_authorized_loaded_family_with_descriptive_label_matches_empty_pair_loaded_token(self):
+        document = {
+            "document_key": "EMPTYPAIR",
+            "doi": "10.0000/emptypair",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "formulation_candidates": [
+                {
+                    "label_hint": "optimal AP-PLGA-NPs formulation from homogeneous design",
+                    "candidate_kind": "single_formulation",
+                }
+            ],
+        }
+        source_text = (
+            "The zeta potential of AP-PLGA-NPs was found to be −14.81 ± 1.39 mV, "
+            "whereas that of empty NPs was −36.13 ± 3.35 mV."
+        )
+        with patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value=source_text):
+            recovered, reason = extract_empty_control_characterization_pair_rows_from_source_text(document=document)
+        self.assertEqual("", reason)
+        self.assertEqual(1, len(recovered))
+        self.assertEqual("AP-PLGA-NPs / Empty", recovered[0]["label"])
+
     def test_anchorless_empty_control_pair_materializes_without_loaded_duplicate(self):
         document = {
             "document_key": "EMPTYPAIR",
@@ -724,6 +825,158 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         self.assertEqual("formulation_family", rows[0]["instance_kind"])
         self.assertEqual("formulation_family", jsonl_rows[0]["instance_kind"])
         self.assertEqual("new_formulation", rows[1]["instance_kind"])
+    def test_shrunken_table_scopes_materialize_execution_markers(self):
+        document = finalize_llm_first_document(
+            {
+                "document_key": "SHRUNKDOE",
+                "paper_key": "SHRUNKDOE",
+                "doi": "10.0000/shrunk",
+                "title": "Shrunken DOE",
+                "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+                "table_scopes": [
+                    {
+                        "table_id": "Table 2",
+                        "scope_kind": "doe_table",
+                        "is_formulation_bearing": True,
+                        "is_doe": True,
+                        "confidence": "high",
+                    }
+                ],
+                "semantic_signals": {
+                    "has_variable_sweep": True,
+                    "primary_variable_names": ["drug concentration", "pH"],
+                },
+                "formulation_candidates": [],
+                "shared_semantics": {},
+            }
+        )
+
+        self.assertEqual("Table 2", document["table_formulation_scopes"][0]["table_id"])
+        self.assertTrue(document["boundary_markers"][0]["is_doe"])
+        self.assertEqual(["drug concentration", "pH"], document["table_variable_roles"][0]["varying_variables"])
+
+    def test_doe_scope_factor_table_can_bind_single_companion_run_matrix(self):
+        document = {
+            "document_key": "COMPANIONDOE",
+            "semantic_scope_declarations": [
+                {
+                    "scope_kind": "doe_table_row_enumeration_scope",
+                    "declared_by": "llm_parsed",
+                    "authorizes_row_materialization_modes": ["deterministic_row_expansion_within_llm_scope"],
+                    "row_enumeration_required": "yes",
+                    "table_scope_refs": ["Table 2"],
+                }
+            ],
+            "table_formulation_scopes": [
+                {
+                    "table_id": "Table 2",
+                    "is_formulation_table": True,
+                    "table_type": "doe_table",
+                    "marker_provenance": "llm_parsed",
+                    "table_scope_locators": {"table_id": "Table 2", "source_table_asset_id": "factor_table"},
+                }
+            ],
+            "boundary_markers": [{"table_id": "Table 2", "is_doe": True}],
+        }
+        payloads = [
+            {
+                "source_table_id": "Table 2",
+                "source_table_asset_id": "factor_table",
+                "normalized_csv_path": "factor.csv",
+                "source_table_reference": "factor_source.csv",
+            },
+            {
+                "source_table_id": "Table 3",
+                "source_table_asset_id": "run_matrix",
+                "normalized_csv_path": "run_matrix.csv",
+                "source_table_reference": "run_matrix_source.csv",
+            },
+        ]
+
+        def fake_candidate(csv_path, min_numbered_rows, table_id, source_type):
+            if str(csv_path) == "run_matrix.csv":
+                return {"numbered_rows": [{} for _ in range(17)]}
+            return None
+
+        with patch(
+            "src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1._load_normalized_table_payloads",
+            return_value=(payloads, {"reopen_resolution_status": "resolved", "normalized_payload_used": "yes"}),
+        ), patch(
+            "src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1.explicit_table_candidate",
+            side_effect=fake_candidate,
+        ):
+            targets, binding = resolve_authorized_doe_targets(
+                document,
+                document["semantic_scope_declarations"][0],
+            )
+
+        self.assertTrue(binding["binding_success"])
+        self.assertEqual("Table 3", targets[0]["table_id"])
+        self.assertEqual("run_matrix.csv", targets[0]["table_path"])
+    def test_source_excerpt_summary_sweep_reattaches_normalized_csv_when_source_reference_missing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            missing_source = Path(tmp) / "MISSING__source_excerpt_table_03__inline_table.csv"
+            normalized = Path(tmp) / "L3__source_excerpt_table_03__inline_table__normalized.csv"
+            normalized.write_text(
+                "XAN,nanocapsules 3-MeOXAN nanocapsules\n"
+                "Theoretical,concentration (μg/mL) XAN/Myritol 318% (w/v) Final concentration (μg/mL) Encapsulation efficiency (%) Theoretical concentration (μg/mL) 3-MeOXAN/Myritol 318% (w/v) Final concentration (μg/mL) Encapsulation efficiency (%)\n"
+                "200,0.4 178±21 89±11 1000 2.0 887±51 89±5\n"
+                "400,0.8 342±18 85±5 1200 2.4 918±9 77±1\n"
+                "700,1.4 Crystals of XAN ND 1600 3.2 Crystals of 3-MeOXAN ND\n"
+                "800,1.6 Crystals of XAN ND\n",
+                encoding="utf-8",
+            )
+            rows, reason = extract_split_column_concentration_sweep_rows_from_source_csv(
+                authority_payload={
+                    "source_csv_path": str(missing_source),
+                    "source_table_asset_id": "L3__source_excerpt_table_03__inline_table",
+                    "normalized_csv_path": str(normalized),
+                    "representation_status": "recovered_source_excerpt_summary",
+                    "normalization_actions": ["preserve_coordinate_grid"],
+                },
+                document={"semantic_signals": {"has_variable_sweep": True}},
+                scope={"table_id": "Table 3", "is_formulation_table": True},
+            )
+        self.assertEqual("", reason)
+        labels = [row["label"] for row in rows]
+        self.assertIn("XAN nanocapsules (Theoretical concentration 200 mg/mL)", labels)
+        self.assertIn("3-MeOXAN nanocapsules (Theoretical concentration 1000 mg/mL)", labels)
+        self.assertIn("XAN nanocapsules (Theoretical concentration 700 mg/mL)", labels)
+        self.assertIn("3-MeOXAN nanocapsules (Theoretical concentration 1600 mg/mL)", labels)
+        self.assertNotIn("XAN nanocapsules (Theoretical concentration 800 mg/mL)", labels)
+
+    def test_semantic_authorized_companion_matrix_allows_coded_f_labels_without_keyword_score(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "run_matrix.csv"
+            path.write_text(
+                "Coded levels of factors,,,,Measured responses,,\n"
+                "Empty Cell,cFB (mg/mL),cP188 (mg/mL),pH,Mean size (nm) ± SD,EE (%) ± SD,Zeta potential (mV) ± SD\n"
+                "Factorial points,,,,,,\n"
+                "F1,-1,-1,-1,240.00 ± 15.90,76.37 ± 0.46,-22.43 ± 0.40\n"
+                "F2,1,-1,-1,205.30 ± 2.52,97.75 ± 0.01,-24.60 ± 0.95\n"
+                "F3,-1,1,-1,236.00 ± 3.46,77.36 ± 0.05,-23.90 ± 0.30\n"
+                "F4,1,1,-1,185.40 ± 4.10,97.05 ± 0.20,-24.00 ± 0.20\n"
+                "F5,-1,-1,1,210.10 ± 2.00,81.10 ± 0.10,-22.10 ± 0.30\n"
+                "F6,1,-1,1,190.10 ± 3.00,95.10 ± 0.30,-25.10 ± 0.40\n"
+                "F7,-1,1,1,215.10 ± 2.50,79.10 ± 0.20,-23.10 ± 0.20\n"
+                "F8,1,1,1,180.10 ± 1.50,96.10 ± 0.10,-24.10 ± 0.10\n",
+                encoding="utf-8",
+            )
+            ordinary = explicit_table_candidate(
+                csv_path=path,
+                min_numbered_rows=8,
+                table_id="Table 3",
+                source_type="standalone_scan",
+            )
+            companion = explicit_table_candidate(
+                csv_path=path,
+                min_numbered_rows=8,
+                table_id="Table 3",
+                source_type="semantic_authorized_companion_table_target",
+            )
+        self.assertIsNone(ordinary)
+        self.assertIsNotNone(companion)
+        self.assertEqual(8, len(companion["numbered_rows"]))
 
 
 if __name__ == "__main__":

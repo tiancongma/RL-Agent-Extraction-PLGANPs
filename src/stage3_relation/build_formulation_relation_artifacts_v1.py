@@ -36,9 +36,12 @@ import csv
 import hashlib
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+
+csv.field_size_limit(sys.maxsize)
 
 
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"

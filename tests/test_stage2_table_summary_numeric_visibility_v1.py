@@ -16,6 +16,7 @@ from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     prompt_semantic_summary_line,
     render_prompt_block,
     render_selected_table_candidate,
+    repair_table_representation,
     render_value_evidence_payload_blocks,
     summary_header_context,
     summary_header_row_count,
@@ -145,6 +146,39 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
         self.assertIn("Results Size (nm)", rendered)
         self.assertIn("sample_row_1: F1 | 10 | 1 | 1.0 | 30 | 101", rendered)
         self.assertIn("sample_row_2: F2 | 20 | 2 | 1.5 | 45 | 112", rendered)
+        self.assertNotIn("sample_row_3", rendered)
+        for forbidden in FORBIDDEN_PRE_LLM_SEMANTIC_LABELS:
+            self.assertNotIn(forbidden, rendered)
+
+    def test_source_native_table_caption_binding_uses_marker_content_signature(self):
+        table_dir = Path("data/cleaned/goren_2025/tables/5GIF3D8W")
+        path = table_dir / "5GIF3D8W__table_04__pdf_table.csv"
+        rows = [
+            ["0", "1", "2", "3", "4"],
+            ["", "Formulation characters for the optimized nanoparticle formulations", "", "", ""],
+            ["", "PLGA 50/50 (Mean ± SD)", "", "PLGA 75/25 (Mean ± SD)", ""],
+            ["", "Empty", "Drug loaded", "Empty", "Drug loaded"],
+            ["0", "Diameter (nm)", "87.2 ± 0.25", "91.8 ± 2.74", "96.9 ± 1.06"],
+            ["1", "PIa", "0.14 ± 0.01", "0.13 ± 0.01", "0.12 ± 0.01"],
+        ]
+        repaired = repair_table_representation(
+            path=path,
+            rows=rows,
+            meta={"n_rows": len(rows), "n_cols": len(rows[0])},
+            quality_flags=[],
+            filtered_noise_rows=0,
+            table_dir=table_dir,
+        )
+        self.assertEqual(repaired["meta"].get("source_native_table_id"), "Table 1")
+        self.assertIn(
+            "Formulation characters for the optimized nanoparticle formulations",
+            repaired["meta"].get("caption_or_title", ""),
+        )
+        self.assertEqual(repaired["meta"].get("caption_binding_status"), "trusted_content_match")
+        rendered = "\n".join(build_table_summary_lines(repaired, enhancement_enabled=False))
+        self.assertIn("- table_id: Table 1", rendered)
+        self.assertIn("- title_or_caption: TABLE 1 Formulation characters", rendered)
+        self.assertIn("sample_row_1", rendered)
         self.assertNotIn("sample_row_3", rendered)
         for forbidden in FORBIDDEN_PRE_LLM_SEMANTIC_LABELS:
             self.assertNotIn(forbidden, rendered)

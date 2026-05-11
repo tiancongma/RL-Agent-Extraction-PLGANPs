@@ -25,10 +25,13 @@ import hashlib
 import json
 import re
 import shutil
+import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+csv.field_size_limit(sys.maxsize)
 
 from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
     canonical_field_for_header,
@@ -2908,6 +2911,70 @@ def has_result_bearing_formulation_evidence(row: dict[str, str]) -> bool:
     return has_result_tag and (has_result_evidence or has_measured_value)
 
 
+def compact_sweep_enumeration_is_partial_result_surface(paper_rows: list[dict[str, str]] | None) -> bool:
+    """Detect compact source-excerpt sweep recoveries that do not exhaust every LLM-declared result surface."""
+    enumerated = [
+        candidate
+        for candidate in (paper_rows or [])
+        if normalize_text(candidate.get("instance_kind")) == "new_formulation"
+        and normalize_text(candidate.get("candidate_source")) == "table_row_expansion_v1"
+    ]
+    if len(enumerated) < 8:
+        return False
+    labels = " ".join(normalize_text(candidate.get("raw_formulation_label")) for candidate in enumerated)
+    return (
+        "theoretical concentration" in labels
+        and ("nanosphere" in labels or "nanocapsule" in labels)
+        and ("mg/ml" in labels or "mg ml" in labels)
+    )
+
+
+def llm_summary_survives_partial_compact_sweep_enumeration(
+    row: dict[str, str], paper_rows: list[dict[str, str]] | None
+) -> bool:
+    if normalize_text(row.get("candidate_source")) == "table_row_expansion_v1":
+        return False
+    if not compact_sweep_enumeration_is_partial_result_surface(paper_rows):
+        return False
+    tags = row_context_tags(row)
+    row_label = normalize_text(row.get("raw_formulation_label"))
+    role = normalize_text(row.get("formulation_role"))
+    kind = normalize_text(row.get("instance_kind"))
+    # A compact concentration sweep table may recover formulation members from
+    # one result surface while the LLM still declares separate synthesis or
+    # characterization surfaces. Do not let Stage5 treat that partial recovery
+    # as a complete table universe that erases measured sparse rows.
+    if "synthesis_core" in tags and kind in {"formulation_family", "single_formulation", "unclear"}:
+        return "nanosphere" in row_label or "nanocapsule" in row_label
+    if role == "characterization_only" or "characterization_only" in tags:
+        return "characterization" in row_label and ("nanosphere" in row_label or "nanocapsule" in row_label)
+    return False
+
+
+def llm_declared_doe_optimum_survives_row_enumeration(
+    row: dict[str, str], paper_rows: list[dict[str, str]] | None
+) -> bool:
+    if normalize_text(row.get("candidate_source")) in {"table_row_expansion_v1", "doe_numbered_table_row_recovery"}:
+        return False
+    if normalize_text(row.get("parent_instance_id")):
+        return False
+    if "synthesis_core" not in row_context_tags(row):
+        return False
+    enumerated = [
+        candidate
+        for candidate in (paper_rows or [])
+        if normalize_text(candidate.get("instance_kind")) == "new_formulation"
+        and normalize_text(candidate.get("candidate_source")) in {"table_row_expansion_v1", "doe_numbered_table_row_recovery"}
+    ]
+    if len(enumerated) < 12:
+        return False
+    identity_blob = normalize_text(row.get("identity_variables_json"))
+    label = normalize_text(row.get("raw_formulation_label"))
+    if "optimal formulation based on" in identity_blob and "design" in identity_blob:
+        return True
+    return "box-behnken" in label and "design" in label and "varying" in label
+
+
 def has_explicit_helper_descendant_signal(row: dict[str, str], core_fields: dict[str, str]) -> bool:
     tags = row_context_tags(row)
     payload_state = infer_payload_state(row, core_fields)
@@ -3031,6 +3098,16 @@ def should_filter_non_formulation(
         and normalize_text(candidate.get("candidate_source"))
         in {"table_row_expansion_v1", "doe_numbered_table_row_recovery"}
     ]
+
+    if (
+        llm_summary_survives_partial_compact_sweep_enumeration(row, paper_rows)
+        or llm_declared_doe_optimum_survives_row_enumeration(row, paper_rows)
+    ):
+        return (
+            False,
+            "",
+            "",
+        )
 
     if (
         normalize_text(row.get("instance_kind")) in {"variant_formulation", "formulation_family", "single_formulation", "unclear"}

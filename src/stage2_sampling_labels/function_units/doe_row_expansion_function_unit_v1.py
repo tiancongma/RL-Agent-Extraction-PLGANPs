@@ -429,6 +429,53 @@ def resolve_authorized_doe_targets(
                 target_note=f"direct_child_of_llm_declared_doe_scope::{ref}",
             ):
                 matched_any_target = True
+        if not matched_any_target and carrier_numbered_count < min_child_numbered_rows:
+            # Shrunken LLM scopes can correctly authorize a DOE coding/factor
+            # table while omitting the adjacent explicit run matrix from
+            # table_scopes.  Stay within the LLM-declared DOE paper scope by
+            # selecting a single unambiguous numbered formulation matrix from
+            # the same normalized authority surface only when the carrier itself
+            # has no sufficient numbered rows.
+            companion_candidates: list[tuple[int, dict[str, Any]]] = []
+            for payload in normalized_payloads:
+                payload_table_id = normalize_text(payload.get("source_table_id") or payload.get("table_id"))
+                if _normalize_table_label(payload_table_id) == wanted:
+                    continue
+                normalized_csv_path = normalize_text(payload.get("normalized_csv_path"))
+                if not normalized_csv_path:
+                    continue
+                candidate = explicit_table_candidate(
+                    csv_path=Path(normalized_csv_path),
+                    min_numbered_rows=min_child_numbered_rows,
+                    table_id=payload_table_id,
+                    source_type="semantic_authorized_companion_table_target",
+                )
+                if candidate is None:
+                    continue
+                companion_candidates.append((len(candidate.get("numbered_rows") or []), payload))
+            if companion_candidates:
+                best_count = max(count for count, _payload in companion_candidates)
+                best_payloads = [payload for count, payload in companion_candidates if count == best_count]
+                if len(best_payloads) == 1:
+                    payload = best_payloads[0]
+                    synthetic_scope = {
+                        "table_id": normalize_text(payload.get("source_table_id") or payload.get("table_id")),
+                        "source_table_asset_id": normalize_text(payload.get("source_table_asset_id") or payload.get("table_asset_id")),
+                        "source_table_reference": normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path")),
+                        "table_scope_locators": {
+                            "table_id": normalize_text(payload.get("source_table_id") or payload.get("table_id")),
+                            "source_table_asset_id": normalize_text(payload.get("source_table_asset_id") or payload.get("table_asset_id")),
+                            "source_table_reference": normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path")),
+                        },
+                        "table_type": "doe_companion_run_matrix",
+                    }
+                    if append_execution_target(
+                        ref=ref,
+                        wanted=_normalize_table_label(synthetic_scope.get("table_id")),
+                        matching_scope=synthetic_scope,
+                        target_note=f"companion_numbered_run_matrix_for_llm_declared_doe_scope::{ref}",
+                    ):
+                        matched_any_target = True
         if not matched_any_target:
             matched_any_target = append_execution_target(ref=ref, wanted=wanted, matching_scope=matching_scope)
         if not matched_any_target:
