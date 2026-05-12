@@ -5906,3 +5906,22 @@ Validation:
 Boundary:
 - This is a diagnosis-baseline repair candidate only. Compare mode remains `diagnostic`; `benchmark_valid=no`.
 - `ACTIVE_RUN.json` may be advanced only as a diagnosis-baseline pointer after validation; no benchmark-valid promotion is implied.
+
+## 2026-05-11
+
+### Decision: Add run-bound mainline execution audit checklist
+
+Decision:
+- Add `docs/governance/mainline_pipeline_execution_checklist.md` as the scriptable execution/audit checklist for checking a selected PLGA run or ACTIVE_RUN target.
+- The checklist starts from the existing canonical manifest plus governed PDF/HTML assets; raw Zotero intake and manifest creation before `data/cleaned/index/manifest_current.tsv` are intentionally out of scope for this checklist version.
+- The checklist is a docs-layer audit contract, not a new governance authority file and not an executable script registry entry.
+- Future checker outputs should be run-bound and write under the checked run bucket or an explicit audit child, recording target-run identity, input files, executed scripts, script parameters, environment descriptors, env-file paths without secret values, model/backend parameters, and terminal artifact paths.
+
+Rationale:
+- Current diagnostic-baseline work needs a reproducible way to verify PDF/HTML path resolution, Marker/Python/HTML environment readiness, CSV/table-payload consumability, Stage2 table authority handoff, compact S2-4a summary legality, S2-7 authorized table expansion through full S2-2 authority, and Stage3/Stage5 downstream consumption.
+- The checklist makes cross-run differences visible without relying on folder names, memory, latest-by-mtime, or unrecorded operator settings.
+
+Boundary:
+- This checklist records diagnosis-baseline execution and GT-comparison readiness when applicable. Current-phase checks are diagnosis/execution/audit checks only.
+- API keys and secret values must never be recorded; only env-file paths and secret-presence booleans may be recorded.
+- `project/4_DECISIONS_LOG.md` records the existence and purpose of the docs-layer checklist; no new `project/` file is created.

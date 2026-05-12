@@ -155,3 +155,22 @@ Remaining files that may still need human judgment:
 - `docs/run_spec_template.md`
   - these still fit normalized buckets structurally, but they were left in
     place to avoid breaking `project/` references in this constrained pass
+
+## Conservative Follow-up Pass 2026-05-12
+
+This pass moved one new top-level support document into the existing
+governance-support bucket and updated repo references plus the move index.
+
+Files moved in this pass:
+
+- `docs/mainline_pipeline_execution_checklist.md` ->
+  `docs/governance/mainline_pipeline_execution_checklist.md`
+
+Reference updates:
+
+- `project/4_DECISIONS_LOG.md`
+- `docs/indexes/DOCS_INDEX.md`
+- `docs/indexes/docs_moves_index.tsv`
+
+The checklist remains a docs-layer execution/audit checklist. It is not a new
+`project/` governance document and does not change maintained script authority.

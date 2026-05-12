@@ -32,9 +32,8 @@ These files define:
 
 Agents must **not infer architecture without reading them first**.
 
-Before running any benchmark, alignment, comparison, workbook-generation, or
-audit workflow that consumes `data/results/` artifacts, the agent must also
-read:
+Before running any alignment, comparison, workbook-generation, audit, or other
+workflow that consumes `data/results/` artifacts, the agent must also read:
 
 project/ACTIVE_DATA_SOURCE_CONTRACT.md
 
@@ -44,9 +43,9 @@ matching, or modification time.
 If a workflow source is ambiguous, the agent must inspect the active data
 source contract and print the resolved run directory plus exact source file
 paths before execution.
-For execution-facing benchmark, alignment, comparison, workbook-generation, and
-audit workflows, agents must select only maintained entrypoint scripts listed
-in `project/ACTIVE_PIPELINE_RUNBOOK.md` and `docs/maintained_script_surface.tsv`.
+For execution-facing workflows, agents must select only maintained entrypoint
+scripts listed in `project/ACTIVE_PIPELINE_RUNBOOK.md` and
+`docs/maintained_script_surface.tsv`.
 They must not choose scripts by name similarity, recency, or convenience, and
 they must not auto-select legacy, deprecated, wrapper-only, or diagnostic
 scripts unless the user explicitly requests them.
@@ -150,7 +149,7 @@ That specification must record:
 - exact script paths
 - intermediate artifacts
 - final outputs
-- benchmark-valid or diagnostic-only status
+- declared run status and intended downstream use
 
 Agents must not create or leave undocumented run directories.
 If a run lacks this specification, treat it as non-compliant.
@@ -174,25 +173,6 @@ project/ACTIVE_PIPELINE_RUNBOOK.md
 Agents must **not invent alternative pipelines or entrypoints**.
 
 New pipeline logic requires explicit user approval.
-
----
-
-# 5a. Benchmark reporting rule
-
-Agents must not present partial-layer outputs as final benchmark evidence.
-
-Hard rule:
-- Formal GT comparison results may be reported only from the complete intended pipeline final-output layer.
-- Stage2 candidate rows, candidate graphs, partial extraction outputs, and other intermediate artifacts may be compared to GT only for debugging or failure localization.
-- If the complete intended pipeline has not been executed, the agent must label the result as `diagnostic-only, not benchmark-valid final output`.
-- Agents must not repeatedly run one isolated layer and frame direct GT comparison as the final system result.
-
-Before reporting benchmark performance, the agent must verify whether all intended downstream guardrail, normalization, filtering, and final-output layers for that workflow have been executed.
-
-For Layer3 workbook generation and review surfaces:
-- the latest Stage5 final table and audit-ready export are the canonical source of truth for current-system formulation presence and identity resolution
-- historical alignment scaffolds, prior workbook bridge rows, and trusted annotation carry-forward files are advisory only
-- advisory artifacts may help map GT rows to system rows, but they must not downgrade a canonically present row to `missing_in_system`
 
 ---
 
@@ -269,7 +249,7 @@ Rules:
 - memory artifacts must stay under `data/mem/v1/`
 - memory files must remain flat row-based TSV or schema-manifest assets
 - for complex debugging, regression investigation, run comparison, pipeline
-  modification, GT mismatch analysis, or lineage tracing, agents should
+  modification, mismatch analysis, or lineage tracing, agents should
   identify the task type and query memory before reading local source files or
   acting
 - preferred bootstrap pattern:
@@ -333,15 +313,15 @@ Current architecture direction:
   live calls if the deterministic replay path can lawfully reattach required
   execution-side metadata
 
-Older rule-heavy reconstruction paths and multimodel comparison pipelines
-are considered **historical methods** unless explicitly reactivated.
+Older rule-heavy reconstruction paths and multimodel pipelines are considered
+**historical methods** unless explicitly reactivated.
 
 ---
 
-# 11. Boundary and comparison legality (hard enforcement)
+# 11. Boundary legality (hard enforcement)
 
 This section defines **non-negotiable failure conditions** for pipeline
-execution, debugging, and benchmark interpretation.
+execution and debugging.
 
 These rules are **not guidance**.  
 They define conditions under which results are invalid.
@@ -351,7 +331,7 @@ They define conditions under which results are invalid.
 ## 11.1 Diagnostic boundary misuse
 
 Artifacts classified as diagnostic-only must not be used as downstream
-execution inputs or benchmark evidence.
+execution inputs or authoritative outputs.
 
 Diagnostic-only artifacts include (non-exhaustive):
 
@@ -365,7 +345,7 @@ Hard rule:
 - Diagnostic artifacts must not be treated as:
   - lawful Stage3 inputs
   - lawful Stage5 inputs
-  - benchmark-valid outputs
+  - authoritative downstream outputs
 
 If a diagnostic artifact is used as if it were a valid pipeline boundary,
 the result is **invalid**.
@@ -380,7 +360,6 @@ Only the following are lawful downstream inputs:
 
 - completed Stage2 artifact → Stage3 input
 - Stage3 relation artifacts → Stage5 input
-- Stage5 final table → benchmark comparison input
 
 Hard rule:
 
@@ -423,66 +402,14 @@ Hard rule:
 
 ---
 
-## 11.4 Comparison lineage consistency
-
-Any claim about:
-
-- "fix works"
-- "regression resolved"
-- "performance improved"
-- "benchmark unchanged"
-
-requires strict lineage alignment.
-
-Agents must explicitly identify:
-
-- modified artifact lineage
-- evaluation artifact lineage
-- GT authority source
-
-Hard rule:
-
-- If these are not identical or not explicitly aligned,
-  the comparison is **invalid**.
-
-Agents must:
-
-- print resolved run directories
-- print exact source file paths
-- confirm GT authority source
-
-before making any conclusion.
-
----
-
-## 11.5 Layer1 GT counting enforcement
-
-Layer1 GT counts formulation instances, not design space.
-
-Hard rule:
-
-The following must NOT be counted as GT unless explicitly reported as
-independent formulation instances:
-
-- design-space combinations without result-level evidence
-- assay-only derivatives (e.g., FITC, blank control)
-- helper/control particles used only for experiments
-- commercial comparators without internal preparation identity
-
-If any of the above are included without explicit evidence,
-this is a **GT counting violation**.
-
----
-
-## 11.6 Failure handling rule
+## 11.4 Failure handling rule
 
 If any rule in Section 11 is violated:
 
 - the result must be marked as **invalid**
 - the agent must not proceed to:
-  - benchmark reporting
-  - performance claims
-  - downstream evaluation
+  - downstream execution based on the invalid artifact
+  - conclusions based on the invalid artifact
 
 The agent must instead:
 

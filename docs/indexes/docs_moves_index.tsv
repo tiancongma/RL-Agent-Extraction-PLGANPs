@@ -15,3 +15,4 @@ docs/script_disposition_candidates.md	docs/working/script_disposition_candidates
 docs/mdec084_sync_note.md	docs/governance/mdec084_sync_note.md	transition_note	MDEC084 sync note is governance-support material and fits the new governance bucket.
 docs/project_governance_cleanup_report_v1.md	docs/governance/project_governance_cleanup_report_v1.md	audit_report	Project cleanup report is governance-support documentation and no longer needs to stay at the docs top level.
 docs/SCRIPT_GOVERNANCE_POLICY.md	docs/governance/SCRIPT_GOVERNANCE_POLICY.md	governance_support	Script governance policy is a governance-support surface and can move cleanly because active project docs do not reference the top-level path.
+docs/mainline_pipeline_execution_checklist.md	docs/governance/mainline_pipeline_execution_checklist.md	governance_support	Mainline execution checklist is a governance-support audit checklist, not a top-level registry.

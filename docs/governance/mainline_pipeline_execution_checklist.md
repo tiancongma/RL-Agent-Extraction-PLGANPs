@@ -1,0 +1,781 @@
+# Mainline Pipeline Execution Checklist
+
+Status: execution/audit checklist, not a governance authority document
+Scope starts at the existing canonical manifest plus local PDF/HTML assets. Raw Zotero intake and manifest creation before `data/cleaned/index/manifest_current.tsv` are intentionally out of scope for this checklist version.
+Current phase: diagnosis-baseline extraction. GT comparison remains a diagnosis tool, not a separate execution stage.
+
+## 1. Purpose
+
+This document defines a scriptable, run-bound acceptance checklist for PLGA mainline pipeline executions. It is used after selecting a target run or candidate lineage to verify that:
+
+- the run consumed the unique canonical manifest and an explicit scope selection;
+- local PDF/HTML/clean-text/table assets were resolved through governed path logic;
+- the Python/Marker/HTML/LLM execution environment was sufficient and recorded without leaking secrets;
+- table CSV and normalized table payloads were consumable enough for downstream deterministic stages;
+- S2-2 preserved full table authority while S2-4a exposed only compact structural table summaries;
+- S2-4b model/backend/request configuration was explicit and reproducible;
+- S2-5/S2-6/S2-7 preserved semantic authority and reattached deterministic table/value authority without asking the LLM to carry numeric tables;
+- Stage3 and Stage5 consumed lawful upstream boundaries and did not recreate formulation membership outside the authorized scope;
+- diagnostic compare / ACTIVE_RUN pointer checks, when applicable, remain diagnosis-baseline checks only.
+
+## 2. Target-run binding rule
+
+Every checklist execution must bind to one explicit target:
+
+1. an explicit run directory, or
+2. the repository authority pointer in `data/results/ACTIVE_RUN.json`.
+
+The checklist executor must not choose a target by latest directory, modification time, lexical sorting, parent fallback, glob-first matching, or unstated memory.
+
+A checklist result must record the target-run identity and the run parameters, or exact pointers to the run parameters. At minimum the result must include:
+
+- `checklist_target_run_id`
+- `checklist_target_run_dir`
+- `authority_resolution_mode` (`explicit_path` or `ACTIVE_RUN.json`)
+- selected scope artifact(s) and selection parameters/tags
+- every consumed input file path
+- every executed script path
+- every script's relevant CLI arguments/configuration
+- environment descriptor path(s)
+- env file path(s) used for secret import, without secret values
+- S2-4b/S5-3 model/backend/request parameters when live LLM calls are involved
+- output run directories and terminal artifact paths
+- downstream diagnostic compare paths, if run
+
+Recommended checklist result outputs:
+
+```text
+data/results/<run_bucket>/<audit_child>/mainline_execution_checklist_results_v1.tsv
+data/results/<run_bucket>/<audit_child>/mainline_execution_checklist_summary_v1.json
+data/results/<run_bucket>/<audit_child>/RUN_CONTEXT.md
+```
+
+Recommended result TSV columns:
+
+```text
+check_id	stage	gate_level	status	target_run_dir	input_paths	output_paths	script_paths	parameter_refs	evidence_paths	failure_boundary	notes
+```
+
+Allowed `gate_level` values:
+
+- `hard_gate`: failure blocks continuation or diagnosis-baseline pointer use for the checked target.
+- `soft_audit`: failure does not block by itself but must be recorded.
+- `warning`: execution may continue only with a clear limitation label.
+- `record_only`: implementation is planned or optional; absence is recorded but does not block this checklist version.
+
+Allowed `status` values:
+
+- `pass`
+- `fail`
+- `warning`
+- `not_applicable`
+- `record_only_missing`
+- `not_checked`
+
+## 3. Global hard prohibitions
+
+These prohibitions apply to all checklist stages:
+
+- Do not infer authority from latest path, mtime, folder name, or glob order.
+- Do not treat a run-scoped subset as a competing canonical manifest.
+- Do not hard-code or record API keys, tokens, or secret values. Record only env file paths and secret-presence booleans.
+- Do not claim complete PDF extraction if Marker was not available and executed or if frozen Marker artifacts were not consumed.
+- Do not let Stage2 pre-LLM rules decide semantic table importance, formulation membership, or table role.
+- Do not put full numeric table dumps into S2-4a prompts as execution authority.
+- Do not treat S2-4a table summaries as numeric/materialization authority.
+- Do not require the LLM to transmit full numeric table contents, table-cell coordinates, or execution locators.
+- Do not allow S2-7 to expand rows from LLM memory alone; expansion must return to S2-2 full table/value authority through deterministic sidecars or alias-equivalent locators.
+- Do not let Stage3 rediscover chemistry from prose.
+- Do not let Stage5 create/split/merge formulation rows unless an explicit governed identity rule records and justifies it.
+- Do not use S5-3 as database completion or blank-slot filling.
+- Do not use this checklist to certify outputs. This checklist is diagnosis/execution/audit only.
+
+## 4. Threshold defaults
+
+Until replaced by stricter stage-specific thresholds, any key table-consumption metric below `50%` over the selected run scope is a hard gate failure unless the run explicitly declares the missing source type as out of scope.
+
+Key table-consumption metrics include:
+
+- resolved source asset coverage;
+- parseable CSV/table payload coverage;
+- non-empty table coverage;
+- header-presence coverage;
+- first-column or row-identity signal coverage for table-like assets;
+- source table/caption/title locator coverage;
+- normalized payload to full-table authority backlink coverage;
+- Stage2 evidence summary to full authority pointer coverage;
+- S2-7 projected rows with applicable table/payload/cell locator coverage.
+
+The checklist result must record numerator, denominator, percentage, threshold, and failed paper/table identifiers for every thresholded metric.
+
+## 5. Checklist items
+
+### S1-1 Canonical manifest and scope contract
+
+#### CHECK-S1-1-001: Canonical manifest uniqueness
+
+- Gate: `hard_gate`
+- Inputs: `data/cleaned/index/manifest_current.tsv`
+- Scriptable check:
+  - Verify this path exists and is the unique authoritative canonical manifest.
+  - Verify run-scoped subsets are recorded as scope artifacts or selection outputs, not as alternative canonical manifests.
+- Pass criteria:
+  - `manifest_current.tsv` exists.
+  - The target run records which tags, filters, paper keys, dataset tags, scope labels, or explicit scope TSV selected the processed papers from the canonical manifest.
+- Failure boundary: `S1_manifest_scope_contract_failure`
+
+#### CHECK-S1-1-002: Scope selection reproducibility
+
+- Gate: `hard_gate`
+- Inputs: canonical manifest plus run scope selection fields.
+- Required evidence:
+  - `run_input_scope_v1.tsv`, `run_input_manifest_snapshot_v1.tsv`, `run_input_contract_v1.json`, or alias-equivalent artifacts.
+  - `RUN_CONTEXT.md` fields recording selection reason and scope parameters.
+- Pass criteria:
+  - Every paper processed downstream can be traced to exactly one canonical manifest row.
+  - Every row records why it entered scope.
+  - `paper_key`, DOI/title identity, and source provenance are preserved.
+- Failure boundary: `S1_scope_selection_unreproducible`
+
+### S1-2 Source asset path resolution and manifest hydration
+
+#### CHECK-S1-2-001: PDF/HTML path resolver compliance
+
+- Gate: `hard_gate`
+- Inputs:
+  - `manifest_current.tsv`
+  - PDF/HTML attachment references
+  - `.local_stage1_paths.json` or equivalent local path mapping, if used
+- Scriptable check:
+  - Resolve manifest attachment paths with the maintained Stage1 resolver, not raw `os.path.exists` on stored strings.
+  - Record original manifest path and resolved local path.
+- Pass criteria:
+  - Each in-scope row has at least one declared source asset path or a loud missing-source status.
+  - Resolved existing PDF/HTML coverage is recorded by source type.
+  - Missing source assets do not silently fall back to unrelated files.
+- Failure boundary: `S1_source_path_resolution_failure`
+
+#### CHECK-S1-2-002: PDF/HTML/clean-text/table asset hydration
+
+- Gate: `hard_gate`
+- Required fields or alias-equivalent records:
+  - `paper_key`
+  - `text_path`
+  - `text_source_type`
+  - `pdf_path`
+  - `html_path`
+  - `table_asset_root`
+  - source/dataset lineage fields
+- Pass criteria:
+  - Stage2 is given explicit hydrated text/table bindings before execution.
+  - Downstream stages do not discover text/table paths by ad hoc directory search.
+  - Missing text/table bindings are loud failures or explicit `not_available` statuses.
+- Failure boundary: `S1_asset_hydration_failure`
+
+#### CHECK-S1-2-003: Multi-source selection/fusion declaration
+
+- Gate: `hard_gate`
+- Applies when PDF and HTML, or current text plus Marker/fusion sidecars, are both available.
+- Pass criteria:
+  - The run records which source view was consumed by Stage2.
+  - If clean-text fusion was used, the fusion strategy and inputs are recorded.
+  - HTML table sidecars and Marker structure/text sidecars are preserved additively where available.
+- Failure boundary: `S1_source_fusion_undeclared`
+
+### S1-3 Environment readiness: Python, Marker, HTML, and LLM runtime
+
+#### CHECK-S1-3-001: Python environment descriptor
+
+- Gate: `hard_gate`
+- Required evidence:
+  - Python executable path.
+  - virtualenv/conda environment name or path.
+  - OS/platform.
+  - working directory.
+  - package version report or lockfile pointer for key packages.
+- Key packages to record when applicable:
+  - `pandas`
+  - `pymupdf` / `fitz`
+  - `pypdf` if used
+  - `marker` / `marker_single`
+  - `trafilatura`
+  - `beautifulsoup4` / `bs4`
+  - `lxml`
+  - `openpyxl` if workbook surfaces are involved
+  - test runner availability (`unittest`; `pytest` only if required by the checked workflow)
+- Pass criteria:
+  - Environment can import or execute required packages/commands for the declared run stages.
+  - Marker-specific checks prevent the prior failure mode where Marker was expected but not installed/executable.
+- Failure boundary: `environment_dependency_failure`
+
+#### CHECK-S1-3-002: Marker availability and complete-PDF label gate
+
+- Gate: `hard_gate` for complete PDF extraction claims; `warning` for compatibility-only runs.
+- Scriptable check:
+  - Verify Marker executable path, version/help output, and any `.venv_marker` path used.
+  - Verify the target run either executed governed Marker extraction/fusion or consumed frozen Marker artifacts.
+- Pass criteria:
+  - If the run claims complete/mainline PDF source coverage, Marker is available and Marker artifacts are consumed.
+  - If Marker is absent or not consumed, the checklist result labels the run `compatibility_text_only` and incomplete for complete-PDF claims.
+- Failure boundary: `marker_not_available_or_not_consumed`
+
+#### CHECK-S1-3-003: HTML enhancement readiness
+
+- Gate: `hard_gate` when HTML assets are in scope.
+- Scriptable check:
+  - Verify HTML parser/extractor dependencies.
+  - Verify HTML attachment resolution.
+  - Verify HTML clean text and table-near content/table sidecars were produced or explicitly marked unavailable.
+  - Verify Stage2 consumed the HTML-enhanced/unified path when declared.
+- Pass criteria:
+  - HTML source contribution is visible in hydrated manifest or Stage1 unified surface.
+  - There is no silent fallback from HTML-enhanced paths to stale `key2txt.tsv` without a recorded reason.
+- Failure boundary: `html_enhancement_not_consumed`
+
+#### CHECK-S1-3-004: LLM environment and parameter recording
+
+- Gate: `hard_gate` for live LLM runs; `not_applicable` for no-live runs.
+- Required records:
+  - backend/provider name.
+  - exact model name.
+  - request parameters: response format, max tokens, timeout, retries, max parallel requests, inter-request sleep, temperature where applicable, streaming/non-streaming mode where applicable.
+  - env file path used for importing secrets, if any.
+  - secret presence booleans, never secret values.
+- Pass criteria:
+  - API keys are not written to run artifacts.
+  - Reproducer knows which env file path to source but no secret is hard-coded.
+  - Model/backend selection is scoped to the owning live-call boundary, especially S2-4b.
+- Failure boundary: `llm_parameter_or_secret_recording_failure`
+
+### S2-1 Scope resolution
+
+#### CHECK-S2-1-001: Stage2 scope context persistence
+
+- Gate: `hard_gate`
+- Recommended output:
+  - `semantic_stage2_objects/scope_context/<paper_key>/paper_scope_context_v1.json`
+  - alias-equivalent scope context artifacts are acceptable.
+- Pass criteria:
+  - Each paper's Stage2-visible clean text, table assets, paper metadata, run lineage, and source lineage are recorded.
+  - This step performs resolution only: no ranking, selection, summary, or semantic interpretation.
+- Failure boundary: `S2_scope_context_missing_or_semanticized`
+
+#### CHECK-S2-1-002: Stage2 pre-run frozen input contract
+
+- Gate: `hard_gate`
+- Pass criteria:
+  - `paper_key`, `text_path`, table asset references, and source lineage are frozen before S2-2.
+  - Stage2 does not refresh rows from unrelated global indexes in a way that discards the explicit unified/hydrated surface.
+- Failure boundary: `S2_input_contract_drift`
+
+### S2-2a Candidate segmentation and full-table authority preservation
+
+#### CHECK-S2-2A-001: Candidate segmentation artifacts
+
+- Gate: `hard_gate`
+- Required outputs or alias-equivalent artifacts:
+  - `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+  - `analysis/candidate_segmentation_debug_v1.tsv`
+- Pass criteria:
+  - Candidate text/table evidence is segmented with source references.
+  - Only confirmed pure noise is irreversibly deleted.
+  - No semantic table-importance veto or formulation membership decision happens here.
+- Failure boundary: `S2_candidate_segmentation_contract_failure`
+
+#### CHECK-S2-2A-002: Full-table authority preservation
+
+- Gate: `hard_gate`
+- Required outputs or alias-equivalent artifacts:
+  - `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+  - `semantic_stage2_objects/normalized_table_payloads/<paper_key>/payloads/*.csv`
+  - `table_cell_grid_v1.tsv` or `table_cell_grid_v1.jsonl` or equivalent coordinate grid
+  - `analysis/table_authority_validation_v1.tsv`
+- Pass criteria:
+  - Non-noise tables are preserved as execution-grade authority even if not selected for prompt.
+  - Stable table IDs, row IDs, column/header information, source locators, and table-local references exist where recoverable.
+  - If geometry/header recovery fails, the table is explicitly marked `unrecoverable` with a reason.
+  - Key table-consumption metrics meet the default 50% threshold.
+- Failure boundary: `S2_full_table_authority_loss`
+
+#### CHECK-S2-2A-003: CSV/table payload consumability
+
+- Gate: `hard_gate`
+- Scriptable check:
+  - Parse all in-scope CSV/payload files.
+  - Compute parseable, non-empty, header-present, first-column-present, all-blank-row, all-blank-column, and locator coverage metrics.
+- Pass criteria:
+  - No file-level parsing failures are silent.
+  - Critical coverage metrics are at least 50% unless source type is explicitly out of scope.
+  - Large clusters of blank/error tables are listed with paper/table IDs.
+- Failure boundary: `table_payload_consumability_failure`
+
+### S2-2b Selector prioritization and evidence block construction
+
+#### CHECK-S2-2B-001: Evidence block construction
+
+- Gate: `hard_gate`
+- Required output:
+  - `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+- Pass criteria:
+  - Evidence blocks include materials, preparation, formulation, table-summary, result/characterization evidence where available.
+  - Each selected prompt-facing evidence block can point back to full authority records where relevant.
+  - The selector records selected-for-prompt vs preserved-for-authority status.
+- Failure boundary: `S2_evidence_blocks_missing_or_untraceable`
+
+#### CHECK-S2-2B-002: Selector authority limit
+
+- Gate: `hard_gate`
+- Pass criteria:
+  - Selector acts as ranker/packer, not formulation-row authority.
+  - Evidence blocks may be compact/lossy, but full preserved authority remains available downstream.
+  - Feature activation, selection mode, technical status, and design status are recorded.
+- Failure boundary: `S2_selector_semantic_overreach`
+
+### S2-3 Prompt assembly
+
+#### CHECK-S2-3-001: Prompt assembly input restriction
+
+- Gate: `hard_gate`
+- Inputs:
+  - persisted `evidence_blocks_v1.json` only.
+- Pass criteria:
+  - Prompt assembly does not reread clean text.
+  - Prompt assembly does not rerank/rescore evidence.
+  - Prompt assembly does not use full numeric tables as execution authority.
+- Failure boundary: `S2_prompt_assembly_input_drift`
+
+#### CHECK-S2-3-002: Prompt preview artifact
+
+- Gate: `hard_gate`
+- Required output:
+  - `analysis/stage2_prompt_preview_v1.tsv` or alias-equivalent prompt preview.
+- Pass criteria:
+  - Prompt preview is derived from persisted evidence blocks.
+  - Preview records enough evidence to audit prompt visibility before live calls.
+- Failure boundary: `S2_prompt_preview_missing`
+
+### S2-4a Prompt construction freeze
+
+#### CHECK-S2-4A-001: No-live prompt freeze boundary
+
+- Gate: `hard_gate`
+- Required outputs:
+  - `analysis/s2_4a_prompt_template_v1.txt`
+  - `analysis/s2_4a_prompts_v1.jsonl`
+  - `analysis/s2_4a_prompt_audit_v1.tsv`
+  - stage-local `RUN_CONTEXT.md`
+- Pass criteria:
+  - No live LLM call occurs in S2-4a.
+  - Future live calls consume these frozen prompts or a new governed prompt-freeze lineage.
+- Failure boundary: `S2_4a_live_call_or_missing_freeze`
+
+#### CHECK-S2-4A-002: Hard table-summary contract
+
+- Gate: `hard_gate`
+- Pass criteria for each table summary exposed to S2-4a:
+  - complete header representation is present;
+  - first column / row-identity column is present when recoverable;
+  - at most two sample data rows are present, excluding header rows;
+  - if fewer than two sample rows exist, all available rows may be shown;
+  - full numeric table dumps are absent;
+  - table summary is structural prompt visibility only, not numeric authority.
+- Failure boundary: `S2_4a_table_summary_contract_failure`
+
+#### CHECK-S2-4A-003: No pre-LLM semantic labels
+
+- Gate: `hard_gate`
+- Pass criteria:
+  - Pre-LLM artifacts may include structural/ranking/observability metadata.
+  - They must not pre-label formulation semantic truth, final row membership, semantic table role, or LLM-like classification.
+- Failure boundary: `S2_4a_pre_llm_semantic_leakage`
+
+### S2-4b Live LLM semantic discovery
+
+#### CHECK-S2-4B-001: Frozen prompt consumption
+
+- Gate: `hard_gate`
+- Inputs:
+  - S2-4a frozen prompts.
+- Pass criteria:
+  - Live LLM runner consumes the exact governed S2-4a prompts.
+  - If prompts differ, a new S2-4a lineage is recorded.
+- Failure boundary: `S2_4b_prompt_lineage_mismatch`
+
+#### CHECK-S2-4B-002: Raw response and request metadata persistence
+
+- Gate: `hard_gate`
+- Required outputs:
+  - `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+  - `request_metadata/`
+  - `analysis/s2_4b_request_summary_v1.tsv`
+  - stage-local `RUN_CONTEXT.md`
+- Pass criteria:
+  - Each expected paper has success/failure status.
+  - Model/backend/request parameters are recorded.
+  - Secret values are not recorded.
+  - LLM output is treated as semantic signal/authorization, not table/value authority.
+- Failure boundary: `S2_4b_raw_response_or_metadata_failure`
+
+### S2-5 Semantic parsing
+
+#### CHECK-S2-5-001: Semantic parser fidelity
+
+- Gate: `hard_gate`
+- Required outputs:
+  - `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+  - `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+- Pass criteria:
+  - Parser does not add new semantic decisions.
+  - Parser preserves table scopes, shared semantics, relation cues, and evidence references present in raw responses.
+  - If a signal exists in raw response but disappears in parsed objects, failure is assigned to S2-5.
+- Failure boundary: `S2_5_semantic_signal_drop`
+
+### S2-5b Semantic signal to S2-2 authority reattachment sidecar
+
+#### CHECK-S2-5B-001: Authority reattachment surface
+
+- Gate: `record_only` for this checklist version; becomes `hard_gate` after implementation is registered.
+- Recommended outputs:
+  - `semantic_stage2_objects/authority_reattachment/<paper_key>/semantic_authority_reattachment_v1.json`
+  - `analysis/semantic_authority_reattachment_audit_v1.tsv`
+- Current compatibility rule:
+  - If no explicit S2-5b file exists, record `record_only_missing` unless alias-equivalent S2-7 trace / `table_cell_bindings_json` / authority sidecar proves deterministic reattachment.
+- Pass-equivalent criteria:
+  - LLM semantic table/scope signals resolve to stable S2-2 table authority records.
+  - Ambiguity, conflicts, unresolved targets, and selected authority records are recorded.
+  - Reattachment does not create semantic authorization; it only binds existing semantic signals to preserved authority.
+- Failure boundary when enforced: `S2_5b_authority_reattachment_failure`
+
+### S2-6 Contract validation
+
+#### CHECK-S2-6-001: Stage2 semantic-authority contract report
+
+- Gate: `hard_gate`
+- Required output:
+  - `analysis/stage2_semantic_authority_contract_report_v1.json`
+- Pass criteria:
+  - Validates provenance completeness and Stage2 authority legality.
+  - Accepts alias-equivalent authority reattachment surfaces only when they are explicit and auditable.
+  - Reports unresolved reattachment as target-resolution failure.
+  - Does not silently project downstream when authority legality fails.
+- Failure boundary: `S2_6_contract_validation_failure`
+
+### S2-7 Compatibility projection and Stage3 handoff
+
+#### CHECK-S2-7-001: Lawful Stage2 completion artifact
+
+- Gate: `hard_gate`
+- Required outputs:
+  - `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+  - `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl`
+  - `semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv`
+  - `semantic_to_widerow_adapter/compatibility_projection_summary_v1.json`
+- Pass criteria:
+  - S2-7 consumes S2-6-passing semantic objects and S2-2/S2-5b authority locators.
+  - Completed weak-label TSV is a lawful Stage3 resume boundary.
+  - Raw responses and raw semantic objects alone are not treated as lawful Stage3 inputs.
+- Failure boundary: `S2_7_completion_artifact_failure`
+
+#### CHECK-S2-7-002: Authorized table expansion through full authority
+
+- Gate: `hard_gate`
+- Pass criteria:
+  - S2-7 may use LLM semantic authorization to decide that a table/scope should be expanded.
+  - It must return to S2-2 full table/value authority to perform deterministic row expansion.
+  - Applicable expanded rows preserve row-level binding surfaces such as `table_cell_bindings_json`, table ID, payload path, cell locator, or alias-equivalent locators.
+  - Row/value losses are classified as semantic signal missing, authority reattachment unresolved, deterministic row expansion failure, or source table unrecoverable.
+- Row-count note:
+  - Row count may be recorded for diagnostics, but matching GT is not a generic hard gate and must not block full-manifest runs with no GT.
+- Failure boundary: `S2_7_authorized_expansion_without_authority`
+
+### S3-1 Relation materialization
+
+#### CHECK-S3-1-001: Relation artifacts from completed Stage2 only
+
+- Gate: `hard_gate`
+- Inputs:
+  - completed Stage2 weak-label TSV/JSONL.
+  - scope/run metadata.
+- Required outputs:
+  - `formulation_relation_records_v1.tsv`
+  - `formulation_logic_graph_v1.jsonl`
+  - `formulation_relation_summary_v1.tsv`
+- Pass criteria:
+  - Stage3 does not call LLM.
+  - Stage3 does not reread prose to rediscover missing chemistry.
+  - Relation construction remains within Stage2-authorized scope.
+- Failure boundary: `S3_relation_materialization_scope_drift`
+
+### S3-2 Relation resolution and shared carrythrough
+
+#### CHECK-S3-2-001: Shared carrythrough legality
+
+- Gate: `hard_gate`
+- Required output:
+  - `resolved_relation_fields_v1.tsv`
+- Pass criteria:
+  - Parent/child inheritance, selected-condition inheritance, and shared preparation fields are source-backed, scope-aware, and entity-bound.
+  - Stage3 does not perform cross-table Cartesian reconstruction.
+  - Values never entering Stage2 weak labels or shared semantic surfaces are not rediscovered by Stage3.
+- Failure boundary: `S3_shared_carrythrough_illegal`
+
+### S4 Candidate diagnostics and review surfaces
+
+#### CHECK-S4-1-001: Diagnostic-only classification
+
+- Gate: `soft_audit`
+- Pass criteria:
+  - Candidate diagnostics, review workbooks, paper risk queues, and optional GT/review references are labeled diagnostic/reviewer-facing.
+  - They are not downstream execution authority unless an explicit maintained contract says so.
+- Failure boundary: `S4_diagnostic_surface_misclassified`
+
+### S5-1 Fixed-row candidate intake
+
+#### CHECK-S5-1-001: Fixed row universe
+
+- Gate: `hard_gate`
+- Inputs:
+  - completed Stage2 weak-label TSV.
+  - Stage3 relation records.
+  - Stage3 resolved relation fields.
+- Pass criteria:
+  - Stage5 freezes the formulation-row universe before value layers.
+  - Stage5 value layers attach values only to admitted rows.
+  - Stage5 does not split, merge, or create rows unless an explicit governed identity rule records it.
+  - Any count change is classified in decision trace.
+- Failure boundary: `S5_row_universe_drift`
+
+### S5-2 Deterministic direct materialization
+
+#### CHECK-S5-2-001: Deterministic direct value path
+
+- Gate: `hard_gate`
+- Inputs:
+  - fixed row universe.
+  - Stage2 compatibility row fields.
+  - S2-5b/S2-7 reattached authority locators.
+  - `table_cell_bindings_json` or alias-equivalent locators.
+  - Stage3 resolved relation fields.
+- Pass criteria:
+  - S5-2 consumes S2-2 full-table authority through S2-5b/S2-7 locators.
+  - Prompt summaries are not numeric authority.
+  - No donor-fill, assumption-fill, or direct mass-from-concentration conversion is written to direct fields.
+  - If S2 authority contains a value but S5-2 cannot materialize it, the deterministic consumer path is the first repair target before S5-3.
+- Failure boundary: `S5_2_deterministic_materialization_failure`
+
+### S5-3 LLM-assisted residual direct-value extraction
+
+#### CHECK-S5-3-001: Residual scope legality
+
+- Gate: `hard_gate` if S5-3 is executed; `not_applicable` otherwise.
+- Inputs:
+  - fixed Stage5 rows.
+  - audited residual direct-value gaps.
+  - upstream source/evidence artifacts already governed.
+- Pass criteria:
+  - S5-3 scope is source-observability/residual-evidence driven, not blank-schema-slot driven.
+  - S5-3 does not replace missing S5-2 deterministic consumption for table/simple shared values.
+  - Outputs record direct-value candidates, evidence quote, scope, direct/derived classification, prompt hash, model identity, request parameters, validation status, and env file path without secrets.
+- Failure boundary: `S5_3_residual_scope_or_metadata_failure`
+
+### S5-4 Value authority validation and merge
+
+#### CHECK-S5-4-001: Direct-value merge legality
+
+- Gate: `hard_gate` if S5-4 is executed; `not_applicable` otherwise.
+- Pass criteria:
+  - Direct evidence, entity binding, scope, conflicts, and type compatibility are validated.
+  - Row-local direct evidence outranks shared constants and LLM candidates.
+  - Ambiguous, conflict-bearing, or quote-less values are rejected or routed to review.
+  - `present_but_mismatch` and `blocked_alignment` are treated as review/alignment categories, not ordinary fill targets.
+- Failure boundary: `S5_4_value_authority_merge_failure`
+
+### S5-5 Derived reasoning sidecars
+
+#### CHECK-S5-5-001: Derived sidecar separation
+
+- Gate: `hard_gate` if derived values are produced; `not_applicable` otherwise.
+- Pass criteria:
+  - Derived/calculated fields are written to sidecars with formula IDs and input provenance.
+  - Derived values do not overwrite direct fields.
+  - Direct-field comparison or direct-field audit does not consume derived sidecars unless an explicit governed exception says so.
+- Failure boundary: `S5_5_derived_value_contamination`
+
+### S5-6 Final table closure and audit export
+
+#### CHECK-S5-6-001: Final table and decision trace
+
+- Gate: `hard_gate`
+- Required outputs:
+  - `final_formulation_table_v1.tsv`
+  - `final_output_decision_trace_v1.tsv`
+  - `final_output_summary_v1.md`
+  - optional downstream/audit sidecars
+- Pass criteria:
+  - Final table has one output row per admitted formulation according to the frozen row universe and governed identity rules.
+  - Decision trace explains retained/excluded rows and materialized values.
+  - Output summary records row counts and diagnosis-baseline status for current-phase runs.
+- Failure boundary: `S5_final_table_closure_failure`
+
+### Diagnostic compare and ACTIVE_RUN pointer checks
+
+#### CHECK-DIAG-001: Diagnostic compare classification
+
+- Gate: `soft_audit`
+- Applies only if diagnostic compare is in scope.
+- Pass criteria:
+  - Compare consumes explicit final table, declared scope, and explicit diagnostic reference inputs where applicable.
+  - Compare mode is recorded as diagnostic.
+  - The checklist does not require GT for full-manifest runs and does not define certification status.
+- Failure boundary: `diagnostic_compare_misclassified`
+
+#### CHECK-ACTIVE-001: ACTIVE_RUN pointer consistency
+
+- Gate: `hard_gate` when the selected run is represented as current ACTIVE_RUN; `not_applicable` otherwise.
+- Inputs:
+  - `data/results/ACTIVE_RUN.json`
+- Pass criteria:
+  - Stage2/Stage3/Stage5/compare aliases point to the selected lineage's exact terminal artifacts.
+  - No mixed stale/new aliases for the same semantic artifact.
+  - Every referenced file exists.
+  - `diagnosis_baseline=true` and current phase labels remain diagnostic when GT comparison is present.
+  - Pointer update type is recorded as diagnosis-baseline authority pointer update.
+- Failure boundary: `ACTIVE_RUN_pointer_inconsistent`
+
+## 6. Current ACTIVE_RUN example snapshot
+
+This appendix is an example target binding for the current diagnosis baseline at checklist creation time. Future checklist executions must bind to their own explicit target-run metadata/result outputs rather than editing this appendix as a run log.
+
+Authority pointer:
+
+```text
+data/results/ACTIVE_RUN.json
+```
+
+Current target:
+
+```text
+active_run_id: 20260423_9c4a03f
+active_run_dir: data/results/20260423_9c4a03f
+diagnosis_baseline: true
+compare_mode: diagnostic
+```
+
+Current terminal chain:
+
+```text
+S2-4a prompt freeze:
+  data/results/20260423_9c4a03f/449_stage2_dev15_s2_4a_baseline_runnable_current_diagnostic/
+
+S2-4b raw responses:
+  data/results/20260423_9c4a03f/452_stage2_dev15_s2_4a449_deepseek_v4_flash_s2_4b_assembled_diagnostic/
+
+S2-5 semantic parsing:
+  data/results/20260423_9c4a03f/453_stage2_dev15_s2_4a449_deepseek_v4_flash_s2_5_diagnostic/
+
+S2-6 contract validation:
+  data/results/20260423_9c4a03f/454_stage2_dev15_s2_4a449_deepseek_v4_flash_s2_6_diagnostic/
+
+S2-7 completed Stage2 compatibility projection:
+  data/results/20260423_9c4a03f/504_stage2_s2_7_source_excerpt_empty_pair_repair_diagnostic/
+
+Stage3 relation materialization:
+  data/results/20260423_9c4a03f/505_stage3_source_excerpt_empty_pair_repair_diagnostic/
+
+Stage5 final closure:
+  data/results/20260423_9c4a03f/508_stage5_source_excerpt_empty_pair_stage5_retention_repair_diagnostic/
+
+Diagnostic count compare:
+  data/results/20260423_9c4a03f/509_compare_source_excerpt_empty_pair_stage5_retention_repair_diagnostic/
+```
+
+Current main outputs:
+
+```text
+stage2_compatibility_tsv:
+  data/results/20260423_9c4a03f/504_stage2_s2_7_source_excerpt_empty_pair_repair_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv
+
+stage2_projection_summary_json:
+  data/results/20260423_9c4a03f/504_stage2_s2_7_source_excerpt_empty_pair_repair_diagnostic/semantic_to_widerow_adapter/compatibility_projection_summary_v1.json
+
+stage3_relation_records_tsv:
+  data/results/20260423_9c4a03f/505_stage3_source_excerpt_empty_pair_repair_diagnostic/formulation_relation_records_v1.tsv
+
+stage3_resolved_relation_fields_tsv:
+  data/results/20260423_9c4a03f/505_stage3_source_excerpt_empty_pair_repair_diagnostic/resolved_relation_fields_v1.tsv
+
+stage5_final_table_tsv:
+  data/results/20260423_9c4a03f/508_stage5_source_excerpt_empty_pair_stage5_retention_repair_diagnostic/final_formulation_table_v1.tsv
+
+stage5_decision_trace_tsv:
+  data/results/20260423_9c4a03f/508_stage5_source_excerpt_empty_pair_stage5_retention_repair_diagnostic/final_output_decision_trace_v1.tsv
+
+compare_counts_by_doi_tsv:
+  data/results/20260423_9c4a03f/509_compare_source_excerpt_empty_pair_stage5_retention_repair_diagnostic/final_table_vs_gt_counts_by_doi.tsv
+```
+
+Current diagnostic count summary:
+
+```text
+papers: 15
+matched_papers: 15
+mismatched_papers: 0
+total_gt_rows: 202
+total_pred_rows: 202
+final_table_rows: 202
+```
+
+Current known run-parameter pointers from `ACTIVE_RUN.json`:
+
+```text
+scope_manifest_tsv:
+  data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv
+
+stage2_support_scope_current_text_tsv:
+  data/results/20260423_9c4a03f/374_stage2_dev15_v4_flash_tablefix_prellm_diagnostic/dev15_scope_current_text.tsv
+
+stage2_s2_2_normalized_table_payloads_root:
+  data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/normalized_table_payloads
+
+stage2_s2_2_evidence_blocks_root:
+  data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/evidence_blocks
+
+stage2_s2_2_candidate_blocks_root:
+  data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/semantic_stage2_objects/candidate_blocks
+
+stage2_s2_2_table_authority_validation_tsv:
+  data/results/20260423_9c4a03f/416_stage2_dev15_cleantext_current_s2_4a_diagnostic/analysis/table_authority_validation_v1.tsv
+
+stage2_s2_4a_prompt_audit_tsv:
+  data/results/20260423_9c4a03f/449_stage2_dev15_s2_4a_baseline_runnable_current_diagnostic/analysis/s2_4a_prompt_audit_v1.tsv
+
+stage2_s2_4b_request_summary_tsv:
+  data/results/20260423_9c4a03f/452_stage2_dev15_s2_4a449_deepseek_v4_flash_s2_4b_assembled_diagnostic/analysis/s2_4b_request_summary_v1.tsv
+
+stage2_contract_report_json:
+  data/results/20260423_9c4a03f/454_stage2_dev15_s2_4a449_deepseek_v4_flash_s2_6_diagnostic/analysis/stage2_semantic_authority_contract_report_v1.json
+
+stage2_authority_reattachment_sidecar:
+  data/results/20260423_9c4a03f/453_stage2_dev15_s2_4a449_deepseek_v4_flash_s2_5_diagnostic/semantic_stage2_objects/authority_reattachment_sidecar_v1.json
+```
+
+Current example live-call lineage note:
+
+```text
+S2-4b backend/model: DeepSeek / deepseek-v4-flash, per run-local request metadata and RUN_CONTEXT files.
+API keys: must be imported from the operator's env file/process environment; secret values must not be recorded in checklist outputs.
+```
+
+## 7. Implementation note for future automated checker
+
+A future automated checker should implement this document as data-driven checks, not as prose matching. It should:
+
+1. resolve target authority explicitly;
+2. parse `ACTIVE_RUN.json`, `RUN_CONTEXT.md`, machine-readable run metadata, request summaries, and stage summaries;
+3. inspect existence and schema of required artifacts;
+4. compute thresholded table/CSV metrics;
+5. emit one row per `CHECK-*` item;
+6. keep missing planned surfaces as `record_only_missing` where this document says so;
+7. fail loudly on hard-gate failures;
+8. never record secret values;
+9. never emit or require certification status.

@@ -1,82 +1,53 @@
-# Project Charter  
-RL-Agent-Extraction-PLGANPs
+# Project Charter
 
-## 1. Project Purpose
+RL-Agent-Extraction-PLGANPs exists to build an auditable PLGA formulation
+extraction pipeline from scientific literature into structured
+formulation-level records.
 
-This project develops a structured, reproducible pipeline for extracting formulation-level data from PLGA nanoparticle literature using large language models (LLMs), with explicit evidence grounding and human adjudication.
+## Purpose
 
-The system converts cleaned scientific text into structured records while preserving traceability to the source text.
+The project converts governed literature inputs into traceable formulation
+tables. It prioritizes reproducibility, explicit provenance, and reviewable
+evidence over hidden orchestration or one-off extraction shortcuts.
 
----
+## Scope
 
-## 2. Scientific Scope
+The project covers:
 
-The project focuses on:
+- PLGA nanoparticle formulation literature.
+- Zotero-derived corpus intake, cleaned content, table assets, and scoped
+  manifests.
+- LLM semantic formulation identification from governed evidence surfaces.
+- Deterministic relation materialization, validation, audit, final-table
+  closure, and downstream review surfaces.
+- GT comparison as a diagnosis-baseline tool for measuring current extraction
+  behavior against fixed human reference assets.
 
-- PLGA-based nanoparticle formulation literature
-- Extraction of formulation-level experimental parameters
-- Field-level evidence grounding
-- Human-in-the-loop adjudication for unresolved fields
-- Reproducible multi-run evaluation
+The project does not cover wet-lab validation, biological outcome modeling,
+automatic hypothesis generation, or uncontrolled external data integration.
 
-The project does not include:
+## Authority
 
-- Experimental wet-lab validation
-- Downstream predictive modeling
-- Biological outcome modeling
-- Automated hypothesis generation
-- External data integration beyond literature text
+Authoritative project contracts live in `project/`. Execution-facing pipeline
+logic lives in `src/`. Datasets and run artifacts live in `data/`. Supporting
+documentation, audits, plans, and historical explanations live in `docs/`.
 
----
+Active sources must be resolved explicitly. Agents and scripts must not infer
+current inputs from recency, filename similarity, directory sorting, or memory.
 
-## 3. Data Reference Model
+## Design Intent
 
-All extraction and adjudication must reference the cleaned text view under:
+The LLM owns semantic formulation discovery. Deterministic code owns
+validation, relation handling, normalization, evidence checking, audit, and
+materialization within the semantic scope already authorized by the pipeline.
 
-data/cleaned/content/text/
+Stage outputs are useful only when their boundary contracts are explicit.
+Diagnosis baselines and GT comparisons are expected development tools; they do
+not change the production-stage responsibilities.
 
-The cleaned text view is the authoritative reference frame for:
+## Success Criteria
 
-- Extraction
-- Evidence span indexing
-- Verification
-- Human GT adjudication
-
-PDF files are not considered authoritative sources during extraction.
-
----
-
-## 4. Architectural Philosophy
-
-The pipeline follows a staged architecture:
-
-- Stage0: Relevance filtering
-- Stage1: Text cleaning
-- Stage2: Sampling and weak labeling
-- Stage3: Human GT tooling
-- Stage4: Extraction and evaluation
-- Stage5: Merging and publication outputs
-
-Architecture changes are allowed only within the project scope defined above.
-
----
-
-## 5. Non-Goals
-
-The project is not intended to:
-
-- Replace domain experts
-- Automatically generate biological interpretations
-- Perform statistical meta-analysis
-- Build predictive models at this stage
-
----
-
-## 6. Success Criteria
-
-The project is considered successful when:
-
-- Extraction is reproducible across runs
-- Evidence spans are traceable to frozen cleaned text
-- Human GT adjudication is supported at field level
-- Output tables are stable and version-controlled
+The project succeeds when formulation outputs are reproducible, tabular,
+traceable to governed source evidence, reviewable by humans, and stable enough
+to support iterative diagnosis without changing the underlying authority
+contracts.
