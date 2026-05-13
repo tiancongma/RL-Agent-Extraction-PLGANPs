@@ -26,6 +26,7 @@ TABLE_SCOPE_FIELD = "table_formulation_scopes_json"
 TABLE_VARIABLE_ROLE_FIELD = "table_variable_roles_json"
 SELECTION_MARKER_FIELD = "selection_markers_json"
 INHERITANCE_MARKER_FIELD = "inheritance_markers_json"
+CONTEXT_INHERITANCE_MARKER_FIELD = "context_inheritance_markers_json"
 BOUNDARY_MARKER_FIELD = "boundary_markers_json"
 TABLE_ID_FIELD = "table_id"
 TABLE_ROW_ID_FIELD = "table_row_id"
@@ -292,6 +293,18 @@ def execution_ready_markers(markers: list[dict[str, Any]]) -> list[dict[str, Any
     return [marker for marker in markers if isinstance(marker, dict) and marker_is_execution_ready(marker)]
 
 
+def context_marker_targets_table(marker: dict[str, Any], table_id: str) -> bool:
+    wanted = normalize_text(table_id)
+    if not wanted:
+        return False
+    for target in ensure_list(marker.get("target_contexts")):
+        if not isinstance(target, dict):
+            continue
+        if normalize_text(target.get("target_table_id")) == wanted:
+            return True
+    return False
+
+
 def selection_marker_risk_reason(marker: dict[str, Any]) -> str:
     if not normalize_text(marker.get("source_table_id")):
         return "missing_source_table"
@@ -421,6 +434,14 @@ def normalize_boundary_marker(marker: dict[str, Any], *, document: dict[str, Any
         "is_doe": bool(marker.get("is_doe")),
         "marker_provenance": marker_provenance(marker, document=document),
     }
+
+
+def normalize_context_inheritance_marker(marker: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(marker)
+    normalized["marker_provenance"] = marker_provenance(marker, document=document)
+    if normalize_text(normalized.get(MARKER_READINESS_FIELD)) not in VALID_MARKER_READINESS:
+        normalized[MARKER_READINESS_FIELD] = EXECUTION_READY_MARKER if ensure_list(normalized.get("target_contexts")) else PARTIAL_SEMANTIC_MARKER
+    return normalized
 
 
 def resolve_table_path_for_id(table_id: str, document: dict[str, Any]) -> Path | None:
@@ -955,6 +976,11 @@ def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, A
         for item in ensure_list(document.get("inheritance_markers"))
         if isinstance(item, dict)
     ]
+    context_inheritance_markers = [
+        normalize_context_inheritance_marker(item, document=document)
+        for item in ensure_list(document.get("context_inheritance_markers"))
+        if isinstance(item, dict)
+    ]
     preparation_markers = [
         normalize_preparation_marker(item, document=document)
         for item in ensure_list(document.get("preparation_inheritance_markers"))
@@ -1013,6 +1039,7 @@ def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, A
     document["selection_markers"] = selection_markers
     document["preparation_inheritance_markers"] = preparation_markers
     document["inheritance_markers"] = inheritance_markers
+    document["context_inheritance_markers"] = context_inheritance_markers
     document["boundary_markers"] = boundary_markers
     return document
 
@@ -2314,6 +2341,7 @@ def emit_single_variable_recovery_rows(
     scope_id: str,
     table_id: str,
     group_hint_prefix: str,
+    context_inheritance_markers: list[dict[str, Any]] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, Any]], list[dict[str, str]], int]:
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     doi = normalize_text(document.get("doi"))
@@ -2332,6 +2360,11 @@ def emit_single_variable_recovery_rows(
         for name, value in (contract.get("baseline_assignments") or {}).items()
         if normalize_text(name) and normalize_text(value)
     }
+    table_context_inheritance_markers = [
+        marker
+        for marker in ensure_list(context_inheritance_markers)
+        if isinstance(marker, dict) and context_marker_targets_table(marker, table_id)
+    ]
     evidence_span = normalize_text(contract.get("evidence_span"))
     for group in ensure_list(contract.get("groups")):
         if not isinstance(group, dict):
@@ -2425,6 +2458,7 @@ def emit_single_variable_recovery_rows(
                         TABLE_ROW_ID_FIELD: f"{table_id}::{normalize_token(row_label)}" if table_id else "",
                         TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
                         TABLE_SCOPE_FIELD: stringify_json(scope),
+                        CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
                         "supporting_evidence_refs": stringify_json(
                             [
                                 {
@@ -3828,6 +3862,9 @@ def run_table_row_expansion(
     inheritance_markers = execution_ready_markers(
         [item for item in ensure_list(document.get("inheritance_markers")) if isinstance(item, dict)]
     )
+    context_inheritance_markers = execution_ready_markers(
+        [item for item in ensure_list(document.get("context_inheritance_markers")) if isinstance(item, dict)]
+    )
     normalized_payloads, reopen_binding = _load_normalized_table_payloads(document)
     rows: list[dict[str, str]] = []
     traces: list[dict[str, str]] = []
@@ -4170,6 +4207,12 @@ def run_table_row_expansion(
             )
             and marker_provenance(marker) in LLM_MARKER_SOURCES
         ]
+        table_context_inheritance_markers = [
+            marker
+            for marker in context_inheritance_markers
+            if context_marker_targets_table(marker, table_id)
+            and marker_provenance(marker) in LLM_MARKER_SOURCES
+        ]
         emitted_rows_for_scope = 0
         explicit_rows_for_scope = 0
         simple_rows_for_scope = 0
@@ -4236,6 +4279,7 @@ def run_table_row_expansion(
                         TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
                         SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
                         INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
+                        CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
                         BOUNDARY_MARKER_FIELD: stringify_json(boundary),
                         PREPARATION_INHERITANCE_FIELD: stringify_json(
                             [
@@ -4365,6 +4409,7 @@ def run_table_row_expansion(
                             TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
                             SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
                             INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
+                            CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
                             BOUNDARY_MARKER_FIELD: stringify_json(boundary),
                             PREPARATION_INHERITANCE_FIELD: stringify_json(
                                 [
@@ -4482,6 +4527,7 @@ def run_table_row_expansion(
                             TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
                             SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
                             INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
+                            CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
                             BOUNDARY_MARKER_FIELD: stringify_json(boundary),
                             PREPARATION_INHERITANCE_FIELD: stringify_json(
                                 [
@@ -4583,6 +4629,7 @@ def run_table_row_expansion(
                     scope_id=scope_id,
                     table_id=table_id,
                     group_hint_prefix=f"{document_key}__single_variable_group",
+                    context_inheritance_markers=table_context_inheritance_markers,
                 )
                 rows.extend(recovered_rows)
                 jsonl_rows.extend(recovered_jsonl)
@@ -4725,6 +4772,7 @@ def run_table_row_expansion(
                         TABLE_VARIABLE_ROLE_FIELD: stringify_json({}),
                         SELECTION_MARKER_FIELD: stringify_json([]),
                         INHERITANCE_MARKER_FIELD: stringify_json([]),
+                        CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json([]),
                         BOUNDARY_MARKER_FIELD: stringify_json({}),
                         PREPARATION_INHERITANCE_FIELD: stringify_json([]),
                         "supporting_evidence_refs": stringify_json(
@@ -4834,6 +4882,7 @@ def run_table_row_expansion(
                 scope_id=anchorless_scope_id,
                 table_id="single_variable_context",
                 group_hint_prefix=f"{document_key}__single_variable_group",
+                context_inheritance_markers=context_inheritance_markers,
             )
             rows.extend(recovered_rows)
             jsonl_rows.extend(recovered_jsonl)

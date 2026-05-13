@@ -56,21 +56,40 @@ VALUE_LAYER_DERIVED_COPY_NAME = "stage5_value_layer_s5_5_derived_values_v1.tsv"
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
 RESOLVED_RELATION_FIELD_NAMES = {
+    "drug_to_polymer_ratio_raw",
     "drug_feed_amount_text",
     "drug_name",
+    "emul_method",
+    "emul_type",
+    "la_ga_ratio",
+    "la_ga_ratio_normalized",
+    "la_ga_ratio_raw",
     "organic_solvent",
     "plga_mass_mg",
+    "polymer_identity",
     "polymer_mw_kDa",
+    "polymer_name_raw",
+    "polymer_to_drug_ratio_raw",
     "preparation_method",
     "pva_conc_percent",
+    "stabilizer_name",
     "surfactant_concentration_text",
     "surfactant_name",
 }
 RESOLVED_RELATION_TEXT_FIELDS = {
     "drug_name",
+    "emul_method",
+    "emul_type",
     "organic_solvent",
+    "polymer_identity",
+    "polymer_name_raw",
     "preparation_method",
+    "stabilizer_name",
     "surfactant_name",
+}
+RESOLVED_RELATION_PLAIN_FIELDS = {
+    "polymer_identity",
+    "polymer_name_raw",
 }
 RESOLVED_RELATION_MASS_FIELDS = {"drug_feed_amount_text", "plga_mass_mg"}
 RESOLVED_RELATION_NUMERIC_FIELDS = {
@@ -78,7 +97,13 @@ RESOLVED_RELATION_NUMERIC_FIELDS = {
     "pva_conc_percent",
     "surfactant_concentration_text",
 }
-RESOLVED_RELATION_RATIO_FIELDS: set[str] = set()
+RESOLVED_RELATION_RATIO_FIELDS = {
+    "drug_to_polymer_ratio_raw",
+    "la_ga_ratio",
+    "la_ga_ratio_normalized",
+    "la_ga_ratio_raw",
+    "polymer_to_drug_ratio_raw",
+}
 STAGE5_GLOBAL_PREPARATION_FIELDNAMES = [
     "organic_phase_volume_mL_value",
     "organic_phase_volume_mL_value_text",
@@ -3612,6 +3637,14 @@ def apply_resolved_relation_fields(
             if field_bundle_value(materialized, field_name):
                 continue
             materialized["preparation_method"] = field_value
+            append_shared_parameter(field_name, payload, field_value)
+            applied_fields.add(field_name)
+            continue
+        if field_name in RESOLVED_RELATION_PLAIN_FIELDS and field_name in materialized:
+            if normalize_text(materialized.get(field_name)):
+                append_shared_parameter(field_name, payload, field_value)
+                continue
+            materialized[field_name] = field_value
             append_shared_parameter(field_name, payload, field_value)
             applied_fields.add(field_name)
             continue

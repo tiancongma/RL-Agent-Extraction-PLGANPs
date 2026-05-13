@@ -205,6 +205,7 @@ from src.stage2_sampling_labels.table_cell_grid_v1 import (
 )
 from src.stage2_sampling_labels.table_row_expansion_v1 import (
     BOUNDARY_MARKER_FIELD,
+    CONTEXT_INHERITANCE_MARKER_FIELD,
     _load_normalized_table_payloads,
     execution_ready_markers,
     INHERITANCE_MARKER_FIELD,
@@ -381,6 +382,20 @@ def ensure_list(value: Any) -> list[Any]:
     return [value]
 
 
+def normalize_context_inheritance_markers(value: Any) -> list[dict[str, Any]]:
+    markers: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        marker = dict(item)
+        if normalize_text(marker.get("marker_readiness")) not in {"execution_ready", "partial_semantic"}:
+            marker["marker_readiness"] = "execution_ready" if ensure_list(marker.get("target_contexts")) else "partial_semantic"
+        if not normalize_text(marker.get("marker_provenance")):
+            marker["marker_provenance"] = "llm_explicit"
+        markers.append(marker)
+    return markers
+
+
 def parse_string_list(value: Any) -> list[str]:
     parsed = parse_json_maybe(value)
     if isinstance(parsed, list):
@@ -415,6 +430,7 @@ def compatibility_output_columns() -> list[str]:
         TABLE_VARIABLE_ROLE_FIELD,
         SELECTION_MARKER_FIELD,
         INHERITANCE_MARKER_FIELD,
+        CONTEXT_INHERITANCE_MARKER_FIELD,
         BOUNDARY_MARKER_FIELD,
         PREPARATION_INHERITANCE_FIELD,
     ]:
@@ -836,10 +852,16 @@ def sequential_scope_has_result_bearing_table_authority(table_scope: dict[str, A
         path = REPO_ROOT / path
     if not path.exists():
         return False
-    try:
-        with path.open(newline="") as handle:
-            rows = list(csv.reader(handle))
-    except OSError:
+    rows: list[list[str]] = []
+    for encoding in ("utf-8-sig", "utf-8", "cp1252"):
+        try:
+            with path.open(newline="", encoding=encoding) as handle:
+                rows = list(csv.reader(handle))
+            break
+        except (OSError, UnicodeDecodeError):
+            rows = []
+            continue
+    if not rows:
         return False
     if len(rows) < 2:
         return False
@@ -1001,8 +1023,9 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
             and normalize_text(item.get("scope_kind")) != "non_formulation"
             and primary_variable_names
         ]
-        normalized["selection_markers"] = []
+        normalized["selection_markers"] = ensure_list(document.get("selection_markers"))
         normalized["inheritance_markers"] = []
+        normalized["context_inheritance_markers"] = normalize_context_inheritance_markers(document.get("context_inheritance_markers"))
         normalized["boundary_markers"] = [
             {
                 "table_id": normalize_text(item.get("table_id")),
@@ -1188,6 +1211,7 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
         "table_variable_roles": ensure_list(document.get("table_variable_roles")),
         "selection_markers": ensure_list(document.get("selection_markers")),
         "inheritance_markers": ensure_list(document.get("inheritance_markers")),
+        "context_inheritance_markers": normalize_context_inheritance_markers(document.get("context_inheritance_markers")),
         "boundary_markers": ensure_list(document.get("boundary_markers")),
         "authority_run_dir": normalize_text(document.get("authority_run_dir")),
         "authority_payload_root": normalize_text(document.get("authority_payload_root")),
@@ -2299,6 +2323,11 @@ def project_document(
         row[INHERITANCE_MARKER_FIELD] = stringify_json(
             execution_ready_markers(
                 [item for item in ensure_list(document.get("inheritance_markers")) if isinstance(item, dict)]
+            )
+        )
+        row[CONTEXT_INHERITANCE_MARKER_FIELD] = stringify_json(
+            execution_ready_markers(
+                [item for item in ensure_list(document.get("context_inheritance_markers")) if isinstance(item, dict)]
             )
         )
         row[BOUNDARY_MARKER_FIELD] = stringify_json(document.get("boundary_markers"))

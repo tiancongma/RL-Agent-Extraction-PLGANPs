@@ -132,9 +132,23 @@ RESOLVED_FIELDNAMES = [
 ]
 METHOD_GROUP_SIGNATURE_HINT_FIELD = "method_group_signature_hint"
 INHERITANCE_MARKER_FIELD = "inheritance_markers_json"
+CONTEXT_INHERITANCE_MARKER_FIELD = "context_inheritance_markers_json"
 
 CANONICAL_FIELD_ALIASES = {
     "plga_mw_kDa": "polymer_mw_kDa",
+    "surfactant concentration": "surfactant_concentration_text",
+    "stabilizer concentration": "surfactant_concentration_text",
+    "poloxamer concentration": "surfactant_concentration_text",
+    "pva concentration": "pva_conc_percent",
+    "polymer amount": "plga_mass_mg",
+    "plga amount": "plga_mass_mg",
+    "drug amount": "drug_feed_amount_text",
+    "drug concentration": "drug_feed_amount_text",
+    "plga:itz ratio": "polymer_to_drug_ratio_raw",
+    "plga/itz ratio": "polymer_to_drug_ratio_raw",
+    "polymer:drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer/drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer to drug ratio": "polymer_to_drug_ratio_raw",
 }
 
 METHOD_GROUP_SIGNATURE_FIELDS = [
@@ -173,6 +187,31 @@ RESOLVABLE_RELATION_FIELDS = {
     "preparation_method",
     "drug_feed_amount_text",
     "la_ga_ratio",
+    "polymer_identity",
+    "polymer_name_raw",
+    "stabilizer_name",
+    "emul_type",
+    "polymer_to_drug_ratio_raw",
+    "drug_to_polymer_ratio_raw",
+}
+
+CONTEXT_INHERITANCE_NEVER_FIELDS = {
+    "size_nm",
+    "pdi",
+    "zeta_mV",
+    "encapsulation_efficiency_percent",
+    "loading_content_percent",
+    "release",
+    "assay_result",
+}
+
+CONTEXT_INHERITANCE_CONDITIONAL_FIELDS = {
+    "drug_feed_amount_text",
+    "plga_mass_mg",
+    "surfactant_concentration_text",
+    "pva_conc_percent",
+    "polymer_to_drug_ratio_raw",
+    "drug_to_polymer_ratio_raw",
 }
 
 INHERITED_FIELD_ALIAS_RULES = {
@@ -269,7 +308,8 @@ def canonical_identity_variables_signature(value: Any) -> str:
 
 
 def canonical_field_name(field_name: Any) -> str:
-    return CANONICAL_FIELD_ALIASES.get(normalize_text(field_name), normalize_text(field_name))
+    text = normalize_text(field_name)
+    return CANONICAL_FIELD_ALIASES.get(text, CANONICAL_FIELD_ALIASES.get(text.lower(), text))
 
 
 def truncate_text(value: Any, max_len: int = 240) -> str:
@@ -487,7 +527,7 @@ def build_resolved_relation_fields_for_paper(
         # or must remain in the generic shared-parameter bundle.
         if not field_name:
             continue
-        if relation_type in {"candidate_field_membership", "candidate_inherited_field"}:
+        if relation_type in {"candidate_field_membership", "candidate_inherited_field", "candidate_context_inherited_field"}:
             candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
             if not candidate_id:
                 continue
@@ -661,6 +701,36 @@ def inherited_field_name(variable_name: str) -> str:
             if alias in token_text:
                 return field_name
     return ""
+
+
+def context_marker_targets_row(marker: dict[str, Any], row: dict[str, str]) -> bool:
+    row_table_id = normalize_text(row.get("table_id"))
+    row_group_hint = normalize_text(row.get(METHOD_GROUP_SIGNATURE_HINT_FIELD)).lower()
+    row_label = normalize_text(row.get("raw_formulation_label")).lower()
+    targets = [item for item in ensure_list(marker.get("target_contexts")) if isinstance(item, dict)]
+    if not targets:
+        return False
+    for target in targets:
+        target_table_id = normalize_text(target.get("target_table_id"))
+        if target_table_id and row_table_id and target_table_id == row_table_id:
+            return True
+        target_group = normalize_text(target.get("target_group_label")).lower()
+        variation_axis = normalize_text(target.get("variation_axis")).lower()
+        if target_group and (target_group in row_group_hint or target_group in row_label):
+            return True
+        if variation_axis and variation_axis in row_group_hint:
+            return True
+    return False
+
+
+def context_field_allowed(field_name: str, basis: str, *, held_fixed: bool = False) -> bool:
+    field_name = canonical_field_name(field_name)
+    if not field_name or field_name in CONTEXT_INHERITANCE_NEVER_FIELDS:
+        return False
+    if field_name in CONTEXT_INHERITANCE_CONDITIONAL_FIELDS:
+        basis_text = normalize_text(basis).lower()
+        return held_fixed or any(token in basis_text for token in ["fixed", "selected", "optimal", "optimized", "held"])
+    return True
 
 
 def method_group_id(paper_key: str, signature: str) -> str:
@@ -1051,6 +1121,73 @@ def build_relation_artifacts(
                     provenance_note="Inherited selected condition applied from Stage2 table authorization markers.",
                 )
                 relation_type_counter["candidate_inherited_field"] += 1
+
+            context_markers = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(CONTEXT_INHERITANCE_MARKER_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for marker in context_markers:
+                if not context_marker_targets_row(marker, row):
+                    continue
+                inherited_items: list[tuple[dict[str, Any], bool]] = [
+                    (item, False)
+                    for item in ensure_list(marker.get("inherited_fields"))
+                    if isinstance(item, dict)
+                ]
+                inherited_items.extend(
+                    (item, True)
+                    for item in ensure_list(marker.get("held_fixed_conditions"))
+                    if isinstance(item, dict)
+                )
+                for field_item, is_held_fixed in inherited_items:
+                    field_name = canonical_field_name(field_item.get("field_name"))
+                    field_value = normalize_text(field_item.get("field_value"))
+                    basis = normalize_text(field_item.get("inheritance_basis"))
+                    if not field_name or not field_value or not context_field_allowed(field_name, basis, held_fixed=is_held_fixed):
+                        continue
+                    context_scope = "held_fixed_selected_condition" if is_held_fixed else "context_inherited_shared"
+                    inherited_row = {
+                        "field_name": field_name,
+                        "field_value_raw": field_value,
+                        "field_value_norm": normalize_token(field_value),
+                        "field_scope": context_scope,
+                        "evidence_source_type": "context_inheritance_marker",
+                        "evidence_section": normalize_text(marker.get("evidence_source_hint")) or normalize_text(marker.get("source_table_id")) or evidence_section,
+                        "evidence_snippet": truncate_text(marker.get("evidence_cue"), max_len=240) or evidence_snippet,
+                        "weak_ref": weak_ref,
+                    }
+                    field_membership.append(inherited_row)
+                    add_relation_row(
+                        relation_rows,
+                        relation_graph=graph_id,
+                        paper_key=paper_key,
+                        doi=doi,
+                        paper_title=paper_title,
+                        method_group=mg_id,
+                        variation_axis="",
+                        candidate=cid,
+                        candidate_label=normalize_text(row.get("raw_formulation_label")),
+                        parent_entity=normalize_text(marker.get("source_candidate_label_hint")),
+                        related_entity=normalize_text(marker.get("source_context_label")) or normalize_text(marker.get("source_table_id")),
+                        relation_type="candidate_context_inherited_field",
+                        field_name=field_name,
+                        field_value_raw=field_value,
+                        field_value_norm=normalize_token(field_value),
+                        field_scope_value=context_scope,
+                        candidate_source=normalize_text(row.get("candidate_source")),
+                        instance_kind=normalize_text(row.get("instance_kind")),
+                        formulation_role=normalize_text(row.get("formulation_role")),
+                        evidence_source_type="context_inheritance_marker",
+                        evidence_section=normalize_text(marker.get("evidence_source_hint")) or normalize_text(marker.get("source_table_id")) or evidence_section,
+                        evidence_snippet=truncate_text(marker.get("evidence_cue"), max_len=240) or evidence_snippet,
+                        is_shared="yes",
+                        variation_axis_indicator="no",
+                        source_weak_label_row_ref=weak_ref,
+                        deterministic_confidence=normalize_text(field_item.get("confidence")) or normalize_text(marker.get("confidence")) or "medium",
+                        provenance_note="Stage3 materialized an LLM-declared context inheritance marker as a candidate shared field.",
+                    )
+                    relation_type_counter["candidate_context_inherited_field"] += 1
 
             for supplement in target_scope_field_supplements(paper_key):
                 supplemented_row = {

@@ -5906,3 +5906,41 @@ Validation:
 Boundary:
 - This is a diagnosis-baseline repair candidate only. Compare mode remains `diagnostic`; `benchmark_valid=no`.
 - `ACTIVE_RUN.json` may be advanced only as a diagnosis-baseline pointer after validation; no benchmark-valid promotion is implied.
+
+
+## 2026-05-13
+
+### Decision: Add Stage2-to-Stage3 context-inheritance marker handshake
+
+Decision:
+- Stage2 LLM prompts now ask for `selection_markers` and `context_inheritance_markers` as semantic relation cues, not final-table assignments.
+- `context_inheritance_markers` may include `field_value` for explicit shared-context fields and held-fixed selected conditions, because the LLM is extracting source semantics while Stage3 and Stage5 remain responsible for deterministic row materialization.
+- Stage3 materializes these markers as explicit `candidate_context_inherited_field` relation rows and resolved relation fields.
+- Stage5 consumes only explicit Stage3 resolved fields, filling blank benchmark-facing fields and plain identity fields without donor search or assumption-based inference.
+
+Rationale:
+- Downstream deterministic executor contracts should shape upstream LLM marker schema.
+- QLYKLPKT showed the failure mode clearly: row count could be correct while `surfactant_name`, `organic_solvent`, polymer identity, and related shared preparation fields did not legally propagate to the seven final rows.
+- The repair keeps LLM work semantic and source-facing, while relation graph construction and final-row closure remain deterministic.
+
+Validation:
+- Bounded QLYKLPKT diagnostic lineage:
+  - S2-7: `data/results/20260423_9c4a03f/481_qlyk_context_marker_s2_7_rowprop_diagnostic`
+  - Stage3: `data/results/20260423_9c4a03f/482_qlyk_context_marker_stage3_diagnostic`
+  - Stage5: `data/results/20260423_9c4a03f/484_qlyk_context_marker_stage5_plainfield_diagnostic`
+- Result: QLYKLPKT final rows remain `7`; `drug_name_value`, `surfactant_name_value`, `organic_solvent_value`, `preparation_method`, `polymer_name_raw`, and `surfactant_concentration_text_value` are populated for `7/7` final rows.
+- Tests: targeted context-marker projection and Stage3 materialization unit tests pass.
+
+Boundary:
+- This is diagnostic-only repair evidence until a full DEV15 fresh DeepSeek lineage is run and compared.
+- The repair does not make Stage2 deterministic components the semantic authority; it only preserves LLM-emitted semantic markers into the lawful Stage3 handoff.
+
+DEV15 follow-up:
+- Fresh DEV15 DeepSeek route from clean text was executed through S2-4b/S2-5/S2-6/S2-7, Stage3, Stage5, Layer1 count compare, and Layer3 diagnostic compare:
+  - S2-4b raw responses: `data/results/20260423_9c4a03f/488_stage2_dev15_context_marker_deepseek_s2_4b_diagnostic`
+  - completed S2-7: `data/results/20260423_9c4a03f/493_stage2_dev15_context_marker_s2_7_diagnostic`
+  - Stage5 final table: `data/results/20260423_9c4a03f/495_stage5_dev15_context_marker_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/496_compare_dev15_context_marker_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/497_layer3_compare_dev15_context_marker_diagnostic`
+- Outcome: QLYKLPKT remains `7/7` and shared-field propagation works, but the full DEV15 route is not promotable because final rows drop to `140` versus `202` GT rows, with four under-counted papers.
+- `ACTIVE_RUN.json` must not be updated to this lineage. The context-marker handshake remains a bounded validated repair, while fresh full-route promotion is blocked by row-discovery/count regressions outside the QLYKLPKT shared-field fix.

@@ -268,6 +268,11 @@ def normalize_confidence(value: Any) -> str:
     return text if text in {"high", "medium", "low"} else "low"
 
 
+def normalize_marker_readiness(value: Any) -> str:
+    text = normalize_text(value).lower()
+    return text if text in {"execution_ready", "partial_semantic"} else "partial_semantic"
+
+
 def is_shrunken_live_contract(parsed: Any) -> bool:
     if not isinstance(parsed, dict):
         return False
@@ -398,6 +403,141 @@ def normalize_shrunken_shared_semantics(value: Any) -> dict[str, str]:
         "preparation_method": normalize_text(payload.get("preparation_method")),
         "emul_type": normalize_text(payload.get("emul_type")),
     }
+
+
+def normalize_shrunken_selection_markers(value: Any) -> list[dict[str, Any]]:
+    markers: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        marker = {
+            "source_table_id": normalize_text(item.get("source_table_id")),
+            "selected_variable": normalize_text(item.get("selected_variable")),
+            "selected_value": normalize_text(item.get("selected_value")),
+            "explicit": normalize_bool(item.get("explicit"), False),
+            "evidence_cue": normalize_text(item.get("evidence_cue") or item.get("evidence_span")),
+            "evidence_source_hint": normalize_text(item.get("evidence_source_hint")),
+            "confidence": normalize_confidence(item.get("confidence")),
+            "marker_provenance": normalize_text(item.get("marker_provenance")) or LLM_EXPLICIT,
+        }
+        if marker["source_table_id"] and marker["selected_variable"] and marker["selected_value"]:
+            marker["marker_readiness"] = "execution_ready"
+        else:
+            marker["marker_readiness"] = normalize_marker_readiness(item.get("marker_readiness"))
+        markers.append(marker)
+    return markers
+
+
+def normalize_context_target(value: Any) -> dict[str, str]:
+    payload = value if isinstance(value, dict) else {}
+    return {
+        "target_group_label": normalize_text(payload.get("target_group_label")),
+        "target_table_id": normalize_text(payload.get("target_table_id")),
+        "variation_axis": normalize_text(payload.get("variation_axis")),
+    }
+
+
+CONTEXT_FIELD_ALIASES = {
+    "surfactant concentration": "surfactant_concentration_text",
+    "surfactant_concentration": "surfactant_concentration_text",
+    "stabilizer concentration": "surfactant_concentration_text",
+    "stabilizer_concentration": "surfactant_concentration_text",
+    "poloxamer concentration": "surfactant_concentration_text",
+    "cp188": "surfactant_concentration_text",
+    "pva concentration": "pva_conc_percent",
+    "pva_concentration": "pva_conc_percent",
+    "polymer amount": "plga_mass_mg",
+    "polymer_amount": "plga_mass_mg",
+    "plga amount": "plga_mass_mg",
+    "plga_amount": "plga_mass_mg",
+    "drug amount": "drug_feed_amount_text",
+    "drug_amount": "drug_feed_amount_text",
+    "drug concentration": "drug_feed_amount_text",
+    "drug_concentration": "drug_feed_amount_text",
+    "plga:itz ratio": "polymer_to_drug_ratio_raw",
+    "plga/itz ratio": "polymer_to_drug_ratio_raw",
+    "polymer:drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer/drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer to drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer type": "polymer_identity",
+    "drug": "drug_name",
+    "surfactant": "surfactant_name",
+    "stabilizer": "stabilizer_name",
+    "preparation method": "preparation_method",
+}
+
+CONTEXT_INHERITANCE_ALLOWED_FIELDS = {
+    "drug_name",
+    "polymer_identity",
+    "polymer_name_raw",
+    "polymer_mw_kDa",
+    "la_ga_ratio",
+    "organic_solvent",
+    "surfactant_name",
+    "stabilizer_name",
+    "preparation_method",
+    "emul_type",
+    "drug_feed_amount_text",
+    "plga_mass_mg",
+    "surfactant_concentration_text",
+    "pva_conc_percent",
+    "polymer_to_drug_ratio_raw",
+    "drug_to_polymer_ratio_raw",
+}
+
+
+def canonical_context_field_name(value: Any) -> str:
+    text = normalize_text(value)
+    return CONTEXT_FIELD_ALIASES.get(text.lower(), text)
+
+
+def normalize_context_field(value: Any) -> dict[str, str]:
+    payload = value if isinstance(value, dict) else {}
+    return {
+        "field_name": canonical_context_field_name(payload.get("field_name")),
+        "field_value": normalize_text(payload.get("field_value")),
+        "inheritance_basis": normalize_text(payload.get("inheritance_basis")),
+        "confidence": normalize_confidence(payload.get("confidence")),
+    }
+
+
+def normalize_shrunken_context_inheritance_markers(value: Any) -> list[dict[str, Any]]:
+    markers: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        inherited_fields = [
+            field
+            for field in (normalize_context_field(field) for field in ensure_list(item.get("inherited_fields")))
+            if field["field_name"] in CONTEXT_INHERITANCE_ALLOWED_FIELDS and field["field_value"]
+        ]
+        held_fixed_conditions = [
+            field
+            for field in (normalize_context_field(field) for field in ensure_list(item.get("held_fixed_conditions")))
+            if field["field_name"] in CONTEXT_INHERITANCE_ALLOWED_FIELDS and field["field_value"]
+        ]
+        target_contexts = [
+            target
+            for target in (normalize_context_target(target) for target in ensure_list(item.get("target_contexts")))
+            if target["target_group_label"] or target["target_table_id"] or target["variation_axis"]
+        ]
+        marker = {
+            "source_context_label": normalize_text(item.get("source_context_label")),
+            "source_candidate_label_hint": normalize_text(item.get("source_candidate_label_hint")),
+            "source_table_id": normalize_text(item.get("source_table_id")),
+            "target_contexts": target_contexts,
+            "inherited_fields": inherited_fields,
+            "held_fixed_conditions": held_fixed_conditions,
+            "evidence_cue": normalize_text(item.get("evidence_cue") or item.get("evidence_span")),
+            "evidence_source_hint": normalize_text(item.get("evidence_source_hint")),
+            "confidence": normalize_confidence(item.get("confidence")),
+            "marker_provenance": normalize_text(item.get("marker_provenance")) or LLM_EXPLICIT,
+            "marker_readiness": normalize_marker_readiness(item.get("marker_readiness")),
+        }
+        if target_contexts and (inherited_fields or held_fixed_conditions):
+            marker["marker_readiness"] = "execution_ready"
+        markers.append(marker)
+    return markers
 
 
 def infer_shrunken_candidate_kind_from_legacy(candidate: dict[str, Any]) -> str:
@@ -9551,7 +9691,7 @@ def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], 
 
 OLLAMA_SHRUNKEN_LIVE_SCHEMA: dict[str, Any] = {
     "type": "object",
-    "required": ["paper_key", "table_scopes", "semantic_signals", "formulation_candidates", "shared_semantics"],
+    "required": ["paper_key", "table_scopes", "semantic_signals", "formulation_candidates", "shared_semantics", "selection_markers", "context_inheritance_markers"],
     "properties": {
         "paper_key": {"type": "string"},
         "table_scopes": {
@@ -9619,6 +9759,80 @@ OLLAMA_SHRUNKEN_LIVE_SCHEMA: dict[str, Any] = {
             },
             "additionalProperties": False,
         },
+        "selection_markers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["source_table_id", "selected_variable", "selected_value", "explicit", "evidence_cue", "evidence_source_hint", "confidence"],
+                "properties": {
+                    "source_table_id": {"type": "string"},
+                    "selected_variable": {"type": "string"},
+                    "selected_value": {"type": "string"},
+                    "explicit": {"type": "boolean"},
+                    "evidence_cue": {"type": "string"},
+                    "evidence_source_hint": {"type": "string"},
+                    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                },
+                "additionalProperties": False,
+            },
+        },
+        "context_inheritance_markers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["source_context_label", "source_candidate_label_hint", "source_table_id", "target_contexts", "inherited_fields", "held_fixed_conditions", "evidence_cue", "evidence_source_hint", "confidence"],
+                "properties": {
+                    "source_context_label": {"type": "string"},
+                    "source_candidate_label_hint": {"type": "string"},
+                    "source_table_id": {"type": "string"},
+                    "target_contexts": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["target_group_label", "target_table_id", "variation_axis"],
+                            "properties": {
+                                "target_group_label": {"type": "string"},
+                                "target_table_id": {"type": "string"},
+                                "variation_axis": {"type": "string"},
+                            },
+                            "additionalProperties": False,
+                        },
+                    },
+                    "inherited_fields": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["field_name", "field_value", "inheritance_basis", "confidence"],
+                            "properties": {
+                                "field_name": {"type": "string"},
+                                "field_value": {"type": "string"},
+                                "inheritance_basis": {"type": "string"},
+                                "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                            },
+                            "additionalProperties": False,
+                        },
+                    },
+                    "held_fixed_conditions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["field_name", "field_value", "inheritance_basis", "confidence"],
+                            "properties": {
+                                "field_name": {"type": "string"},
+                                "field_value": {"type": "string"},
+                                "inheritance_basis": {"type": "string"},
+                                "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                            },
+                            "additionalProperties": False,
+                        },
+                    },
+                    "evidence_cue": {"type": "string"},
+                    "evidence_source_hint": {"type": "string"},
+                    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                },
+                "additionalProperties": False,
+            },
+        },
     },
     "additionalProperties": False,
 }
@@ -9684,6 +9898,50 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any],
             "preparation_method": "string",
             "emul_type": "string",
         },
+        "selection_markers": [
+            {
+                "source_table_id": "string",
+                "selected_variable": "string",
+                "selected_value": "string",
+                "explicit": True,
+                "evidence_cue": "short text cue, not a full provenance report",
+                "evidence_source_hint": "methods text near Table 1",
+                "confidence": "high | medium | low",
+            }
+        ],
+        "context_inheritance_markers": [
+            {
+                "source_context_label": "base preparation context",
+                "source_candidate_label_hint": "F1",
+                "source_table_id": "Table 1",
+                "target_contexts": [
+                    {
+                        "target_group_label": "surfactant concentration optimization",
+                        "target_table_id": "Table 2",
+                        "variation_axis": "surfactant concentration",
+                    }
+                ],
+                "inherited_fields": [
+                    {
+                        "field_name": "surfactant_name",
+                        "field_value": "poloxamer 188",
+                        "inheritance_basis": "shared_preparation_context",
+                        "confidence": "high | medium | low",
+                    }
+                ],
+                "held_fixed_conditions": [
+                    {
+                        "field_name": "polymer_to_drug_ratio_raw",
+                        "field_value": "10:1",
+                        "inheritance_basis": "selected_as_optimal_then_fixed",
+                        "confidence": "high | medium | low",
+                    }
+                ],
+                "evidence_cue": "short text cue that signals inheritance or fixed conditions",
+                "evidence_source_hint": "methods text near Table 1/Table 2",
+                "confidence": "high | medium | low",
+            }
+        ],
     }
     evidence_text = "\n\n".join(ordered_blocks).strip()
     input_block = "Evidence pack:\n" + f"{evidence_text}\n"
@@ -9694,15 +9952,20 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any],
             "semantic_signals": {"has_variable_sweep": False, "has_sequential_optimization": False, "has_parent_child_table_relation": False, "has_downstream_non_synthesis_variants": False, "has_measurement_only_variants": False, "primary_preparation_method_hint": "", "primary_variable_names": [], "selected_condition_hints": []},
             "formulation_candidates": [{"candidate_id": f"{record['key']}__cand_01", "candidate_kind": "single_formulation", "source_table_id": "Table 1", "label_hint": "F1", "instance_role": "synthesis_core", "parent_candidate_hint": "", "core_change_hint": "", "shared_context_hint": "", "status": "reported", "confidence": "high"}],
             "shared_semantics": {"polymer_name_raw": "", "drug_name": "", "surfactant_name": "", "stabilizer_name": "", "organic_solvent": "", "preparation_method": "", "emul_type": ""},
+            "selection_markers": [],
+            "context_inheritance_markers": [],
         }
         return (
             "Extract Stage2 semantic understanding only. Return exactly one JSON object and nothing else.\n"
-            "Keep only these top-level keys: paper_key, table_scopes, semantic_signals, formulation_candidates, shared_semantics.\n"
+            "Keep only these top-level keys: paper_key, table_scopes, semantic_signals, formulation_candidates, shared_semantics, selection_markers, context_inheritance_markers.\n"
             "Preserve ambiguity explicitly. Use empty strings, empty lists, or false instead of guessing.\n"
             "Use literal paper table labels such as 'Table 1'.\n"
             "For variable-sweep or sweep-table papers, enumerate explicit formulation rows or formulation instances before collapsing anything into families.\n"
             "Do not replace explicit rowwise sweep participation with only family-level summaries when distinct tested rows are semantically present.\n"
-            "Do not emit provenance payloads, evidence reports, relation-resolution objects, Stage3 structures, explanations, or markdown.\n\n"
+            "Do not emit provenance payloads, evidence reports, relation-resolution objects, Stage3 structures, explanations, or markdown.\n"
+            "Use selection_markers only for source-stated optimal or selected values.\n"
+            "Use context_inheritance_markers only for source-stated shared preparation context or selected values held fixed across later optimization groups.\n"
+            "Do not decide final rows or fill final tables; emit semantic markers for deterministic Stage3 consumption only.\n\n"
             f"Paper key: {record['key']}\n"
             f"Title: {record['title']}\n\n"
             "Return JSON matching this compact skeleton:\n"
@@ -9716,7 +9979,7 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any],
         "- Emit understanding-level structure only.\n"
         "- Do not emit provenance payloads, quoted supporting-text objects, or any other evidence-reporting fields.\n"
         "- Do not perform relation resolution, inheritance closure, or final-row materialization.\n"
-        "- Do not emit execution-ready markers, boundary markers, or Stage3-like relation structures.\n"
+        "- Emit only the allowed semantic markers in `selection_markers` and `context_inheritance_markers`; do not emit boundary markers or Stage3-like relation structures.\n"
         "- Do not emit component families, process-context families, response-signal families, or near-final row payloads.\n"
         "- Every top-level key in the schema is required.\n"
         "- If a family is absent, return an empty list or an empty understanding object as appropriate.\n"
@@ -9737,6 +10000,12 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any],
         "- Use `scope_kind='formulation_table'` only when the table semantically represents formulation instances or formulation families rather than measurement-only outputs.\n"
         "- If an included table is supportive but not formulation-bearing, keep it in `table_scopes` with `is_formulation_bearing=false` instead of pretending it is irrelevant.\n"
         "- If a later table seems to continue a selected earlier condition, use `scope_kind='sequential_child'` and set `parent_table_hint` when possible.\n"
+        "- `selection_markers` should capture concise source-stated optimal/selected values, such as an optimized ratio or concentration. They are semantic cues, not final-row assignments.\n"
+        "- `context_inheritance_markers` should capture source-stated shared preparation context or selected values held fixed across later optimization groups.\n"
+        "- In `context_inheritance_markers.inherited_fields`, include explicit shared context values such as drug_name, polymer_name_raw, polymer_mw_kDa, la_ga_ratio, organic_solvent, surfactant_name, stabilizer_name, preparation_method, and emul_type when the source supports them.\n"
+        "- Put optimization-axis values such as drug amount, polymer amount, surfactant concentration, or polymer/drug ratio in `held_fixed_conditions` only when the paper states that the value was selected, optimized, or held fixed for a later group.\n"
+        "- Never context-inherit outcome or measurement fields such as size, PDI, zeta potential, encapsulation efficiency, loading content, release, or assay results.\n"
+        "- For evidence, provide only a short `evidence_cue` and `evidence_source_hint`; do not provide character offsets or full audit provenance.\n"
         "- If the paper reports downstream non-synthesis variants, keep them visible through `semantic_signals` and `formulation_candidates` but do not resolve them into execution logic.\n"
         "- Keep outputs compact and interpretation-focused.\n"
         "- Return valid JSON only.\n\n"
@@ -10188,6 +10457,8 @@ def build_live_v2_document(
                 "semantic_signals": normalize_shrunken_semantic_signals(parsed.get("semantic_signals")),
                 "formulation_candidates": normalize_shrunken_formulation_candidates(parsed.get("formulation_candidates")),
                 "shared_semantics": normalize_shrunken_shared_semantics(parsed.get("shared_semantics")),
+                "selection_markers": normalize_shrunken_selection_markers(parsed.get("selection_markers")),
+                "context_inheritance_markers": normalize_shrunken_context_inheritance_markers(parsed.get("context_inheritance_markers")),
             },
             authority_metadata=authority_metadata,
         )
@@ -10214,6 +10485,7 @@ def build_live_v2_document(
         "table_variable_roles": normalize_marker_list(parsed.get("table_variable_roles")),
         "selection_markers": normalize_marker_list(parsed.get("selection_markers")),
         "inheritance_markers": normalize_marker_list(parsed.get("inheritance_markers")),
+        "context_inheritance_markers": normalize_shrunken_context_inheritance_markers(parsed.get("context_inheritance_markers")),
         "preparation_inheritance_markers": normalize_marker_list(parsed.get("preparation_inheritance_markers")),
         "boundary_markers": normalize_marker_list(parsed.get("boundary_markers")),
         },
@@ -10455,6 +10727,8 @@ def finalize_llm_first_document(
         document["semantic_signals"] = normalize_shrunken_semantic_signals(document.get("semantic_signals"))
         document["formulation_candidates"] = normalize_shrunken_formulation_candidates(document.get("formulation_candidates"))
         document["shared_semantics"] = normalize_shrunken_shared_semantics(document.get("shared_semantics"))
+        document["selection_markers"] = normalize_shrunken_selection_markers(document.get("selection_markers"))
+        document["context_inheritance_markers"] = normalize_shrunken_context_inheritance_markers(document.get("context_inheritance_markers"))
     else:
         augment_document_with_table_markers(document)
         document["paper_key"] = normalize_text(document.get("paper_key") or document.get("document_key") or document.get("key"))
@@ -10463,6 +10737,7 @@ def finalize_llm_first_document(
         document["semantic_signals"] = infer_shrunken_semantic_signals_from_legacy(document)
         document["formulation_candidates"] = infer_shrunken_formulation_candidates_from_legacy(document)
         document["shared_semantics"] = normalize_shrunken_shared_semantics(document.get("shared_semantics"))
+        document["context_inheritance_markers"] = normalize_shrunken_context_inheritance_markers(document.get("context_inheritance_markers"))
     document["stage2_semantic_source_mode"] = STAGE2_SEMANTIC_SOURCE_MODE
     document["semantic_universe_authority"] = LLM_SEMANTIC_DISCOVERY
     authority_metadata = authority_metadata or {}

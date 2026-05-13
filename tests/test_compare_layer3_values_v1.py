@@ -44,6 +44,7 @@ from src.stage2_sampling_labels.table_row_expansion_v1 import (
     resolve_table_authority_payload_for_scope,
 )
 from src.stage3_relation.build_formulation_relation_artifacts_v1 import (
+    build_relation_artifacts,
     build_resolved_relation_fields_for_paper,
 )
 from src.stage5_benchmark.build_minimal_final_output_v1 import (
@@ -4429,6 +4430,124 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertEqual(row["surfactant_name_value_text"], "Poloxamer")
         self.assertEqual(row["organic_solvent_value_text"], "Acetone")
         self.assertEqual(row["preparation_method"], "emulsion solvent evaporation")
+
+    def test_shrunken_context_inheritance_marker_survives_projection(self):
+        shrunken_document = {
+            "paper_key": "QLYKLPKT",
+            "document_key": "QLYKLPKT",
+            "doi": "10.1/example",
+            "title": "Example",
+            "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+            "table_scopes": [{"table_id": "Table 2", "scope_kind": "sequential_child", "is_formulation_bearing": True, "is_doe": False}],
+            "semantic_signals": {
+                "has_variable_sweep": True,
+                "has_sequential_optimization": True,
+                "primary_preparation_method_hint": "emulsion solvent evaporation",
+                "primary_variable_names": ["surfactant concentration"],
+                "selected_condition_hints": ["10:1 ratio selected and held fixed"],
+            },
+            "formulation_candidates": [
+                {
+                    "candidate_id": "QLYKLPKT_F2",
+                    "candidate_kind": "single_formulation",
+                    "source_table_id": "Table 2",
+                    "label_hint": "F2",
+                    "instance_role": "synthesis_core",
+                    "status": "reported",
+                    "confidence": "high",
+                }
+            ],
+            "shared_semantics": {},
+            "context_inheritance_markers": [
+                {
+                    "source_context_label": "base PLGA-ITZ nanosphere preparation",
+                    "source_candidate_label_hint": "F1",
+                    "source_table_id": "Table 1",
+                    "target_contexts": [{"target_group_label": "surfactant concentration optimization", "target_table_id": "Table 2", "variation_axis": "surfactant concentration"}],
+                    "inherited_fields": [{"field_name": "surfactant_name", "field_value": "poloxamer 188", "inheritance_basis": "shared_preparation_context", "confidence": "high"}],
+                    "held_fixed_conditions": [{"field_name": "polymer_to_drug_ratio_raw", "field_value": "10:1", "inheritance_basis": "selected_as_optimal_then_fixed", "confidence": "high"}],
+                    "evidence_cue": "The optimized ratio was used for the following surfactant concentration optimization.",
+                    "evidence_source_hint": "methods text near Table 1/Table 2",
+                    "confidence": "high",
+                }
+            ],
+        }
+        normalized = normalize_stage2_document_for_projection(shrunken_document)
+        rows, _, _, _, _ = project_document(normalized)
+        self.assertEqual(len(rows), 1)
+        markers = json.loads(rows[0]["context_inheritance_markers_json"])
+        self.assertEqual(markers[0]["inherited_fields"][0]["field_value"], "poloxamer 188")
+        self.assertEqual(markers[0]["marker_readiness"], "execution_ready")
+
+    def test_stage3_materializes_context_inheritance_marker_into_resolved_fields(self):
+        marker = {
+            "source_context_label": "base PLGA-ITZ nanosphere preparation",
+            "source_candidate_label_hint": "F1",
+            "source_table_id": "Table 1",
+            "target_contexts": [{"target_group_label": "surfactant concentration optimization", "target_table_id": "Table 2", "variation_axis": "surfactant concentration"}],
+            "inherited_fields": [{"field_name": "surfactant_name", "field_value": "poloxamer 188", "inheritance_basis": "shared_preparation_context", "confidence": "high"}],
+            "held_fixed_conditions": [],
+            "evidence_cue": "The optimized ratio was used for the following surfactant concentration optimization.",
+            "evidence_source_hint": "methods text near Table 1/Table 2",
+            "confidence": "high",
+            "marker_readiness": "execution_ready",
+            "marker_provenance": "llm_explicit",
+        }
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+            weak_tsv = tmp_path / "weak_labels.tsv"
+            fieldnames = [
+                "key",
+                "doi",
+                "paper_title",
+                "local_instance_id",
+                "formulation_id",
+                "raw_formulation_label",
+                "candidate_source",
+                "instance_kind",
+                "formulation_role",
+                "method_group_signature_hint",
+                "table_id",
+                "context_inheritance_markers_json",
+                "instance_evidence_region_type",
+                "evidence_section",
+                "evidence_span_text",
+            ]
+            with weak_tsv.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter="\t")
+                writer.writeheader()
+                writer.writerow(
+                    {
+                        "key": "QLYKLPKT",
+                        "doi": "10.1/example",
+                        "paper_title": "Example",
+                        "local_instance_id": "QLYKLPKT_F2",
+                        "formulation_id": "QLYKLPKT_F2",
+                        "raw_formulation_label": "F2",
+                        "candidate_source": "table_row_expansion_v1",
+                        "instance_kind": "new_formulation",
+                        "formulation_role": "reported",
+                        "method_group_signature_hint": "surfactant concentration optimization",
+                        "table_id": "Table 2",
+                        "context_inheritance_markers_json": json.dumps([marker]),
+                        "instance_evidence_region_type": "table_row",
+                        "evidence_section": "Table 2",
+                        "evidence_span_text": "F2 row",
+                    }
+            )
+            stats = build_relation_artifacts(weak_tsv, tmp_path / "relation")
+            resolved_path = Path(stats["resolved_relation_fields_path"])
+            with resolved_path.open("r", encoding="utf-8", newline="") as handle:
+                resolved_rows = list(csv.DictReader(handle, delimiter="\t"))
+        self.assertTrue(
+            any(
+                row["formulation_candidate_id"] == "QLYKLPKT_F2"
+                and row["field_name"] == "surfactant_name"
+                and row["field_value"] == "poloxamer 188"
+                and row["resolution_rule"] == "direct_candidate_field_membership"
+                for row in resolved_rows
+            )
+        )
 
     def test_live_v2_document_preserves_shared_semantics_from_shrunken_raw_response(self):
         from pathlib import Path

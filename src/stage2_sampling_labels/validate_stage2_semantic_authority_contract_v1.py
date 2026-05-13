@@ -32,6 +32,61 @@ INHERITANCE_RISK_REASONS = {
     "missing_target_table",
     "cross_table_link_unresolved",
 }
+CONTEXT_INHERITANCE_ALLOWED_FIELDS = {
+    "drug_name",
+    "polymer_identity",
+    "polymer_name_raw",
+    "polymer_mw_kDa",
+    "la_ga_ratio",
+    "organic_solvent",
+    "surfactant_name",
+    "stabilizer_name",
+    "preparation_method",
+    "emul_type",
+    "drug_feed_amount_text",
+    "plga_mass_mg",
+    "surfactant_concentration_text",
+    "pva_conc_percent",
+    "polymer_to_drug_ratio_raw",
+    "drug_to_polymer_ratio_raw",
+}
+CONTEXT_INHERITANCE_NEVER_FIELDS = {
+    "size_nm",
+    "pdi",
+    "zeta_mV",
+    "encapsulation_efficiency_percent",
+    "loading_content_percent",
+    "release",
+    "assay_result",
+}
+CONTEXT_FIELD_ALIASES = {
+    "surfactant concentration": "surfactant_concentration_text",
+    "surfactant_concentration": "surfactant_concentration_text",
+    "stabilizer concentration": "surfactant_concentration_text",
+    "stabilizer_concentration": "surfactant_concentration_text",
+    "poloxamer concentration": "surfactant_concentration_text",
+    "cp188": "surfactant_concentration_text",
+    "pva concentration": "pva_conc_percent",
+    "pva_concentration": "pva_conc_percent",
+    "polymer amount": "plga_mass_mg",
+    "polymer_amount": "plga_mass_mg",
+    "plga amount": "plga_mass_mg",
+    "plga_amount": "plga_mass_mg",
+    "drug amount": "drug_feed_amount_text",
+    "drug_amount": "drug_feed_amount_text",
+    "drug concentration": "drug_feed_amount_text",
+    "drug_concentration": "drug_feed_amount_text",
+    "plga:itz ratio": "polymer_to_drug_ratio_raw",
+    "plga/itz ratio": "polymer_to_drug_ratio_raw",
+    "polymer:drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer/drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer to drug ratio": "polymer_to_drug_ratio_raw",
+    "polymer type": "polymer_identity",
+    "drug": "drug_name",
+    "surfactant": "surfactant_name",
+    "stabilizer": "stabilizer_name",
+    "preparation method": "preparation_method",
+}
 ALLOWED_MODES = {
     LLM_FIRST_COMPOSITE_MODE,
     FALLBACK_SEMANTIC_SOURCE_MODE,
@@ -48,6 +103,11 @@ REQUIRED_ROW_FIELDS = [
 
 def normalize_text(value: Any) -> str:
     return "" if value is None else str(value).strip()
+
+
+def canonical_context_field_name(value: Any) -> str:
+    text = normalize_text(value)
+    return CONTEXT_FIELD_ALIASES.get(text.lower(), text)
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -271,8 +331,6 @@ def validate_selection_marker(key: str, marker: dict[str, Any], errors: list[str
     else:
         if not any(normalize_text(marker.get(field)) for field in ["source_table_id", "selected_variable", "selected_value"]):
             errors.append(f"{key}: partial_semantic selection_marker must keep at least one grounded selection cue field")
-        if not normalize_text(marker.get("evidence_span")):
-            errors.append(f"{key}: partial_semantic selection_marker must keep evidence_span")
         if normalize_text(marker.get(RISK_LABEL_FIELD)) != REVIEW_RISK_LABEL:
             errors.append(f"{key}: partial_semantic selection_marker must keep risk_label=review")
         if normalize_text(marker.get(RISK_REASON_FIELD)) not in SELECTION_RISK_REASONS:
@@ -295,6 +353,71 @@ def validate_inheritance_marker(key: str, marker: dict[str, Any], errors: list[s
             errors.append(f"{key}: partial_semantic inheritance_marker must keep risk_label=review")
         if normalize_text(marker.get(RISK_REASON_FIELD)) not in INHERITANCE_RISK_REASONS:
             errors.append(f"{key}: partial_semantic inheritance_marker has invalid risk_reason={normalize_text(marker.get(RISK_REASON_FIELD)) or '<blank>'}")
+
+
+def validate_context_field(key: str, field: dict[str, Any], errors: list[str], *, family: str) -> None:
+    field_name = canonical_context_field_name(field.get("field_name"))
+    if not field_name:
+        errors.append(f"{key}: context_inheritance_markers {family} entry missing field_name")
+    if not normalize_text(field.get("field_value")):
+        errors.append(f"{key}: context_inheritance_markers {family} entry missing field_value")
+    if field_name in CONTEXT_INHERITANCE_NEVER_FIELDS:
+        errors.append(f"{key}: context_inheritance_markers must not inherit measurement/result field {field_name}")
+    elif field_name and field_name not in CONTEXT_INHERITANCE_ALLOWED_FIELDS:
+        errors.append(f"{key}: context_inheritance_markers contains unsupported field_name={field_name}")
+    confidence = normalize_text(field.get("confidence"))
+    if confidence and confidence not in {"high", "medium", "low"}:
+        errors.append(f"{key}: context_inheritance_markers {family} entry has invalid confidence={confidence}")
+
+
+def validate_context_inheritance_marker(key: str, marker: dict[str, Any], errors: list[str]) -> None:
+    readiness = normalize_text(marker.get("marker_readiness")) or PARTIAL_SEMANTIC_MARKER
+    if readiness not in VALID_MARKER_READINESS:
+        errors.append(f"{key}: context_inheritance_marker contains invalid marker_readiness={readiness or '<blank>'}")
+        return
+    if not normalize_text(marker.get("source_context_label")) and not normalize_text(marker.get("source_table_id")):
+        errors.append(f"{key}: context_inheritance_marker requires source_context_label or source_table_id")
+    target_contexts = marker.get("target_contexts")
+    if readiness == PARTIAL_SEMANTIC_MARKER:
+        if target_contexts is not None and not isinstance(target_contexts, list):
+            errors.append(f"{key}: partial_semantic context_inheritance_marker target_contexts must be a list")
+        if not isinstance(marker.get("inherited_fields", []), list):
+            errors.append(f"{key}: partial_semantic context_inheritance_marker inherited_fields must be a list")
+        if not isinstance(marker.get("held_fixed_conditions", []), list):
+            errors.append(f"{key}: partial_semantic context_inheritance_marker held_fixed_conditions must be a list")
+        return
+    if not isinstance(target_contexts, list) or not target_contexts:
+        errors.append(f"{key}: context_inheritance_marker requires non-empty target_contexts")
+    else:
+        for target in target_contexts:
+            if not isinstance(target, dict):
+                errors.append(f"{key}: context_inheritance_marker target_contexts contains non-dict entry")
+                continue
+            if not any(normalize_text(target.get(field)) for field in ["target_group_label", "target_table_id", "variation_axis"]):
+                errors.append(f"{key}: context_inheritance_marker target_context entry is ungrounded")
+    inherited_fields = marker.get("inherited_fields")
+    held_fixed_conditions = marker.get("held_fixed_conditions")
+    if not isinstance(inherited_fields, list):
+        errors.append(f"{key}: context_inheritance_marker inherited_fields must be a list")
+        inherited_fields = []
+    if not isinstance(held_fixed_conditions, list):
+        errors.append(f"{key}: context_inheritance_marker held_fixed_conditions must be a list")
+        held_fixed_conditions = []
+    if not inherited_fields and not held_fixed_conditions:
+        errors.append(f"{key}: context_inheritance_marker requires inherited_fields or held_fixed_conditions")
+    for field in inherited_fields:
+        if not isinstance(field, dict):
+            errors.append(f"{key}: context_inheritance_marker inherited_fields contains non-dict entry")
+            continue
+        validate_context_field(key, field, errors, family="inherited_fields")
+    for field in held_fixed_conditions:
+        if not isinstance(field, dict):
+            errors.append(f"{key}: context_inheritance_marker held_fixed_conditions contains non-dict entry")
+            continue
+        validate_context_field(key, field, errors, family="held_fixed_conditions")
+    confidence = normalize_text(marker.get("confidence"))
+    if confidence and confidence not in {"high", "medium", "low"}:
+        errors.append(f"{key}: context_inheritance_marker has invalid confidence={confidence}")
 
 
 def table_number_aliases(*values: Any) -> set[str]:
@@ -470,8 +593,25 @@ def validate_semantic_documents(
                     errors.append(f"{key}: formulation_candidates contains a non-dict entry")
                     continue
                 validate_formulation_candidate(key, candidate, errors)
+        selection_markers = document.get("selection_markers", [])
+        if not isinstance(selection_markers, list):
+            errors.append(f"{key}: selection_markers must be a list")
+        else:
+            for marker in selection_markers:
+                if not isinstance(marker, dict):
+                    errors.append(f"{key}: selection_markers contains a non-dict entry")
+                    continue
+                validate_selection_marker(key, marker, errors)
+        context_markers = document.get("context_inheritance_markers", [])
+        if not isinstance(context_markers, list):
+            errors.append(f"{key}: context_inheritance_markers must be a list")
+        else:
+            for marker in context_markers:
+                if not isinstance(marker, dict):
+                    errors.append(f"{key}: context_inheritance_markers contains a non-dict entry")
+                    continue
+                validate_context_inheritance_marker(key, marker, errors)
         for forbidden_field in [
-            "selection_markers",
             "inheritance_markers",
             "preparation_inheritance_markers",
             "boundary_markers",
