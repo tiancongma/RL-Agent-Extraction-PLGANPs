@@ -65,6 +65,14 @@ transformations.
   now split into:
   - `S5-1 Fixed-row candidate intake`
   - `S5-2 Deterministic direct materialization`
+    - `S5-2b Deterministic DOE factor physical materialization`: decode
+      row-local DOE coded levels into final physical value/unit bundles only
+      from source-defined factor/level maps; unresolved coded levels remain
+      evidence and must not be treated as physical concentrations.
+    - `S5-2c Deterministic numeric value/unit structuring`: split already
+      materialized physical numeric surfaces such as `1.0 %w/v` or `15 mg/mL`
+      into raw/display, numeric value, and unit bundles without unit guessing,
+      conversion, donor-fill, row creation, or modeling-target inference.
   - `S5-3 LLM-assisted direct value candidate extraction`
   - `S5-4 Value authority validation and merge`
   - `S5-5 Derived reasoning / calculated value materialization`

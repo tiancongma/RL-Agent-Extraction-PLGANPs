@@ -18,6 +18,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable
 
+csv.field_size_limit(sys.maxsize)
+
 try:
     from src.stage2_sampling_labels.table_row_expansion_v1 import canonical_field_for_header
     from src.stage2_sampling_labels.table_structure_dictionary_v1 import normalize_dictionary_value_from_rows
@@ -191,8 +193,8 @@ SYSTEM_FIELD_MAP = {
     "drug_to_polymer_ratio_raw": {"column": "drug_to_polymer_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
     "surfactant_name": {"column": "surfactant_name_value_text", "source": "direct_extracted", "evidence": "supported"},
     "surfactant_mass_mg": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "surfactant_concentration_value": {"column": "surfactant_concentration_text_value_text", "source": "direct_extracted", "evidence": "supported"},
-    "surfactant_concentration_unit": {"column": "surfactant_concentration_text_value_text", "source": "direct_extracted", "evidence": "supported"},
+    "surfactant_concentration_value": {"column": "surfactant_concentration_value_value_text", "source": "direct_extracted", "evidence": "supported"},
+    "surfactant_concentration_unit": {"column": "surfactant_concentration_unit_value_text", "source": "direct_extracted", "evidence": "supported"},
     "stabilizer_name": {"column": "surfactant_name_value_text", "source": "direct_extracted", "evidence": "supported"},
     "helper_material_name": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "method_type": {"column": "preparation_method", "source": "relation_or_direct", "evidence": "supported"},
@@ -238,8 +240,58 @@ def canonicalize_text(value: Any) -> str:
 
 def _canonicalize_field_text(field_name: str, value: str) -> str:
     text = canonicalize_text(value)
+    if field_name in {"drug_name", "surfactant_name", "stabilizer_name", "emulsifier_stabilizer_name"}:
+        text = _canonicalize_identity_name_surface(text)
+    if field_name == "polymer_name":
+        text = _canonicalize_polymer_identity_surface(text)
     if field_name == "polymer_grade":
         text = re.sub(r"\s*\((?:grade|polymer\s+type)\)\s*$", "", text)
+    return text
+
+
+def _canonicalize_identity_name_surface(text: str) -> str:
+    text = canonicalize_text(text)
+    if not text:
+        return ""
+    if re.search(r"\b(?:and|;|\|)\b", text):
+        return text
+    match = re.fullmatch(r"(.+?)\s*\(([^()]+)\)", text)
+    if match:
+        left = normalize_text(match.group(1))
+        right = normalize_text(match.group(2))
+        left_alpha = re.sub(r"[^a-z]", "", left.lower())
+        right_alpha = re.sub(r"[^a-z]", "", right.lower())
+        if left_alpha and right_alpha:
+            # Prefer the expanded name, but keep true multi-word descriptors.
+            if len(right_alpha) > len(left_alpha) and len(left_alpha) <= 4:
+                text = canonicalize_text(right)
+            elif len(right_alpha) <= 6:
+                text = canonicalize_text(left)
+    compact = re.sub(r"[^a-z0-9]+", "", text)
+    if compact in {"pva", "polyvinylalcohol"}:
+        return "pva"
+    if compact in {"tween80", "tween80r"}:
+        return "tween80"
+    if compact in {"pluronicf68", "pluronicf68r", "f68poloxamer188", "pluronicf68poloxamer188"}:
+        return "pluronic f68"
+    if compact == "solutolhs15":
+        return "solutol hs 15"
+    if compact == "poloxamer188":
+        return "poloxamer 188"
+    return text
+
+
+def _canonicalize_polymer_identity_surface(text: str) -> str:
+    text = canonicalize_text(text)
+    if not text:
+        return ""
+    top_level_text = re.sub(r"\([^()]*\)", " ", text)
+    if re.search(r"\band\b", top_level_text) or any(sep in top_level_text for sep in [";", ",", "|"]):
+        return text
+    if "peg" in text:
+        return text
+    if re.match(r"^plga(?:\s|[-(]|$)", text):
+        return "plga"
     return text
 
 
@@ -282,6 +334,20 @@ def parse_percent_aware_numeric(value: Any) -> tuple[float, bool] | None:
     if parsed is None:
         return None
     return parsed, "%" in text
+
+
+def valid_direct_ph_surface(value: Any) -> bool:
+    text = canonicalize_text(value)
+    if not text:
+        return False
+    match = re.fullmatch(r"(?:ph\s*)?(-?\d+(?:\.\d+)?)", text)
+    if not match:
+        return False
+    try:
+        number = float(match.group(1))
+    except ValueError:
+        return False
+    return 0.0 <= number <= 14.0
 
 
 def percent_equivalent_numeric_match(gt_value: Any, system_value: Any) -> bool:
@@ -347,6 +413,16 @@ def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *,
             unit = re.sub(r"%\s+", "%", unit)
             unit = unit.replace("% w/v", "%w/v").replace("% w/w", "%w/w")
             unit = unit.replace("%w/v", "%w/v").replace("%w/w", "%w/w")
+            if (
+                field_name
+                in {
+                    "surfactant_concentration_unit",
+                    "stabilizer_concentration_unit",
+                    "emulsifier_stabilizer_concentration_unit",
+                }
+                and unit == "%"
+            ):
+                return "%w/v"
             return unit
         gt_unit = _canonical_concentration_unit_surface(gt_unit)
         sys_unit = _canonical_concentration_unit_surface(sys_unit)
@@ -472,12 +548,23 @@ def infer_error_bucket(*, compare_status: str, field_name: str, strict_match: bo
     return ""
 
 
-def _dedupe_role_union_values(values: list[str]) -> list[str]:
+def _dedupe_role_union_values(
+    values: list[str],
+    *,
+    paper_key: str = "",
+    lexicon: list[dict[str, str]] | None = None,
+) -> list[str]:
     ordered: list[tuple[str, str]] = []
     seen: set[str] = set()
     for value in values:
         normalized = normalize_text(value)
-        canonical = _canonicalize_field_text("surfactant_name", normalized)
+        lexicon_normalized = normalize_value_with_lexicon(
+            "surfactant_name",
+            normalized,
+            paper_key=paper_key,
+            lexicon=lexicon,
+        )
+        canonical = _canonicalize_field_text("surfactant_name", lexicon_normalized)
         if canonical and canonical not in seen:
             seen.add(canonical)
             ordered.append((canonical, normalized))
@@ -485,16 +572,31 @@ def _dedupe_role_union_values(values: list[str]) -> list[str]:
     return [raw for _, raw in ordered]
 
 
-def _build_role_tolerant_name_cell(rows: list[dict[str, str]]) -> dict[str, str]:
+def _build_role_tolerant_name_cell(
+    rows: list[dict[str, str]],
+    *,
+    lexicon: list[dict[str, str]] | None = None,
+) -> dict[str, str]:
     sample = rows[0]
-    gt_values = _dedupe_role_union_values([row["gt_value_raw"] for row in rows if normalize_text(row.get("gt_value_raw"))])
-    system_values = _dedupe_role_union_values([row["system_value_raw"] for row in rows if normalize_text(row.get("system_value_raw"))])
+    paper_key = normalize_text(sample.get("paper_key"))
+    gt_values = _dedupe_role_union_values(
+        [row["gt_value_raw"] for row in rows if normalize_text(row.get("gt_value_raw"))],
+        paper_key=paper_key,
+        lexicon=lexicon,
+    )
+    system_values = _dedupe_role_union_values(
+        [row["system_value_raw"] for row in rows if normalize_text(row.get("system_value_raw"))],
+        paper_key=paper_key,
+        lexicon=lexicon,
+    )
     gt_value_raw = " | ".join(gt_values)
     system_value_raw = " | ".join(system_values)
     strict, relaxed, canonicalized = compare_values(
         "emulsifier_stabilizer_name",
         gt_value_raw,
         system_value_raw,
+        paper_key=paper_key,
+        lexicon=lexicon,
     )
     alignment_ok = any(row.get("compare_status") != "blocked_alignment" for row in rows)
     status = determine_compare_status(
@@ -529,7 +631,11 @@ def _build_role_tolerant_name_cell(rows: list[dict[str, str]]) -> dict[str, str]
     }
 
 
-def build_reporting_cells(cells: list[dict[str, str]]) -> list[dict[str, str]]:
+def build_reporting_cells(
+    cells: list[dict[str, str]],
+    *,
+    value_normalization_lexicon: list[dict[str, str]] | None = None,
+) -> list[dict[str, str]]:
     reporting_cells: list[dict[str, str]] = []
     role_tolerant_groups: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
     for row in cells:
@@ -544,7 +650,7 @@ def build_reporting_cells(cells: list[dict[str, str]]) -> list[dict[str, str]]:
             cloned["field_group"] = field_group(renamed_field)
         reporting_cells.append(cloned)
     for _, rows in sorted(role_tolerant_groups.items()):
-        reporting_cells.append(_build_role_tolerant_name_cell(rows))
+        reporting_cells.append(_build_role_tolerant_name_cell(rows, lexicon=value_normalization_lexicon))
     return reporting_cells
 
 
@@ -588,6 +694,10 @@ def canonicalize_method_type(value: str, *, paper_key: str = "", lexicon: list[d
         return text
     if "double emulsion" in text or "w1/o/w2" in text or "w/o/w" in text:
         return "double_emulsion_w1_o_w2"
+    if "interfacial polymer deposition" in text:
+        return "interfacial_polymer_deposition"
+    if "solvent displacement" in text or "solvent diffusion" in text:
+        return "nanoprecipitation"
     if "nanoprecipitation" in text:
         return "nanoprecipitation"
     if "single emulsion" in text or "o/w" in text:
@@ -2245,8 +2355,61 @@ def extract_unit_from_combined_concentration_text(value: Any) -> str:
     if re.search(r"%\s*w\s*/\s*v|%\s*\(\s*w\s*/\s*v\s*\)|w\s*/\s*v\s*%", lowered):
         return "% w/v"
     if re.search(r"%", text):
-        return ""
+        return "%"
     return ""
+
+
+def extract_numeric_from_combined_concentration_text(value: Any) -> str:
+    text = normalize_text(value)
+    if not text:
+        return ""
+    match = re.search(r"[-+]?\d+(?:\.\d+)?", text)
+    return match.group(0) if match else ""
+
+
+def _normalize_doe_code_for_compare(value: Any) -> str:
+    clean = normalize_text(value).replace("−", "-").strip()
+    clean = re.sub(r"^\+", "", clean)
+    if not re.fullmatch(r"-?\d+(?:\.\d+)?", clean):
+        return ""
+    try:
+        number = float(clean)
+    except ValueError:
+        return ""
+    if abs(number - round(number)) < 1e-9:
+        return str(int(round(number)))
+    return f"{number:.8f}".rstrip("0").rstrip(".")
+
+
+def legacy_combined_concentration_is_unresolved_coded_doe(row: dict[str, str], combined: Any) -> bool:
+    """Prevent compare fallback from treating unresolved DOE levels as physical values."""
+    numeric = _normalize_doe_code_for_compare(extract_numeric_from_combined_concentration_text(combined))
+    if numeric not in {"-2", "-1.68", "-1", "0", "1", "1.68", "2"}:
+        return False
+    unit = extract_unit_from_combined_concentration_text(combined)
+    if not unit:
+        return False
+    fragments: list[str] = []
+    for field in ("change_descriptions", "identity_variables_json", "identity_variables"):
+        raw = normalize_text(row.get(field))
+        if not raw:
+            continue
+        try:
+            parsed = json.loads(raw)
+        except json.JSONDecodeError:
+            parsed = None
+        if isinstance(parsed, list):
+            fragments.extend(normalize_text(item) for item in parsed)
+        else:
+            fragments.append(raw)
+    assignment_text = " | ".join(fragment for fragment in fragments if fragment)
+    if not assignment_text:
+        return False
+    pattern = re.compile(
+        rf"\b(?:c[A-Z0-9][A-Za-z0-9]{{1,12}}|X\d{{1,2}})\b\s*(?:\([^)]*(?:mg\s*/\s*mL|mg/ml|%|w\s*/\s*v)[^)]*\))?\s*=\s*[+−-]?{re.escape(numeric.lstrip('-'))}\b",
+        re.I,
+    )
+    return bool(pattern.search(assignment_text))
 
 
 def _numeric_strings_equivalent(left: str, right: str) -> bool:
@@ -2399,6 +2562,19 @@ def get_system_value(
     allow_evidence_metric_rebinding: bool = True,
 ) -> tuple[str, str, str]:
     mapping = SYSTEM_FIELD_MAP.get(field_name, {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"})
+    if field_name == "pH_raw":
+        column = mapping.get("column", "")
+        decoded_ph_value = normalize_text(row.get(column)) if column else ""
+        if decoded_ph_value and valid_direct_ph_surface(decoded_ph_value):
+            normalized, detail = _normalize_validated_system_value(
+                field_name,
+                decoded_ph_value,
+                paper_key=paper_key,
+                lexicon=lexicon,
+                source_type="final_typed_ph_bundle",
+            )
+            if normalized:
+                return normalized, "final_typed_ph_bundle", detail
     if allow_evidence_metric_rebinding:
         binding_value = _extract_table_cell_binding_metric_value(field_name, row, paper_key=paper_key)
         if binding_value:
@@ -2487,6 +2663,33 @@ def get_system_value(
         return normalize_value_with_lexicon(field_name, override_value, paper_key=paper_key, lexicon=lexicon), override_source, override_evidence
     column = mapping.get("column", "")
     value = normalize_text(row.get(column)) if column else ""
+    if not value and field_name in {"surfactant_concentration_value", "surfactant_concentration_unit"}:
+        legacy_combined = normalize_text(row.get("surfactant_concentration_text_value_text") or row.get("surfactant_concentration_text_value"))
+        if legacy_combined and not legacy_combined_concentration_is_unresolved_coded_doe(row, legacy_combined):
+            if field_name == "surfactant_concentration_value":
+                value = extract_numeric_from_combined_concentration_text(legacy_combined)
+                if value:
+                    normalized, detail = _normalize_validated_system_value(
+                        field_name,
+                        value,
+                        paper_key=paper_key,
+                        lexicon=lexicon,
+                        source_type="legacy_combined_concentration_surface",
+                    )
+                    if normalized:
+                        return normalized, "legacy_combined_concentration_surface", detail
+            else:
+                value = extract_unit_from_combined_concentration_text(legacy_combined)
+                if value:
+                    normalized, detail = _normalize_validated_system_value(
+                        field_name,
+                        value,
+                        paper_key=paper_key,
+                        lexicon=lexicon,
+                        source_type="legacy_combined_concentration_surface",
+                    )
+                    if normalized:
+                        return normalized, "legacy_combined_concentration_surface", detail
     if value:
         if field_name in {"polymer_concentration_unit", "surfactant_concentration_unit", "drug_concentration_unit"}:
             unit_value = extract_unit_from_combined_concentration_text(value)
@@ -2620,6 +2823,92 @@ def _compact_identity_text(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", canonicalize_text(value))
 
 
+def _compact_alignment_label_text(value: str) -> str:
+    text = canonicalize_text(value)
+    if not text:
+        return ""
+    text = re.sub(r"\bpoly\s*\(?\s*ethylene\s+glycol\s*\)?\s*(?:\(?\s*peg\s*\)?)?", "peg", text)
+    text = re.sub(r"\bhyaluronic\s+acid\s*(?:\(?\s*ha\s*\)?)?", "ha", text)
+    text = re.sub(r"\b(?:drug|kg n|kgn|mb|ap)?[-\s]*loaded\b", " ", text)
+    text = re.sub(r"\b(?:nanoparticles?|nps?)\b", " ", text)
+    text = re.sub(r"\b(?:drug|blank|empty)\b", " ", text)
+    text = re.sub(r"\b(?:control|base formulation|formulation)\b", " ", text)
+    return _compact_identity_text(text)
+
+
+def _compact_alignment_label_variants(value: str) -> set[str]:
+    variants = {_compact_alignment_label_text(value)}
+    for part in re.split(r"\s*/\s*", normalize_text(value)):
+        compact = _compact_alignment_label_text(part)
+        if compact:
+            variants.add(compact)
+    return {variant for variant in variants if variant and re.search(r"[a-z]", variant)}
+
+
+def _extract_prefixed_ordinal(value: str) -> tuple[str, str] | None:
+    text = canonicalize_text(value)
+    if not text:
+        return None
+    patterns = [
+        (r"\bsr\.?\s*no\.?\s*0*(\d+)\b", "doe_row"),
+        (r"\bdoe\s*row\s*0*(\d+)\b", "doe_row"),
+        (r"\brow\s*0*(\d+)\b", "row"),
+        (r"\bbatch\s*0*(\d+)\b", "batch"),
+        (r"\brun\s*0*(\d+)\b", "run"),
+        (r"\bformulation\s*0*(\d+)\b", "formulation"),
+        (r"\bf\s*[-_ ]?\s*0*(\d+)\b", "f"),
+        (r"\bnpr\s*[-_ ]?\s*0*(\d+)\b", "npr"),
+        (r"\bnpb\s*[-_ ]?\s*0*(\d+)\b", "npb"),
+        (r"\bnpg\s*[-_ ]?\s*0*(\d+)\b", "npg"),
+    ]
+    for pattern, prefix in patterns:
+        match = re.search(pattern, text)
+        if match:
+            return prefix, str(int(match.group(1)))
+    return None
+
+
+def _row_prefixed_ordinal_matches(row: dict[str, str], prefix: str, ordinal: str) -> bool:
+    values = [
+        normalize_text(row.get("raw_formulation_label")),
+        normalize_text(row.get("decision_source_raw_formulation_label")),
+        normalize_text(row.get("representative_source_raw_formulation_label")),
+        normalize_text(row.get("representative_source_formulation_id")),
+        normalize_text(row.get("formulation_id")),
+        normalize_text(row.get("parent_core_row_id")),
+        normalize_text(row.get("decision_source_formulation_id")),
+        normalize_text(row.get("decision_parent_core_row_id")),
+    ]
+    for value in values:
+        canonical = canonicalize_text(value)
+        if not canonical:
+            continue
+        if prefix in {"doe_row", "row"} and re.search(rf"\bdoe[\s_-]*row[\s_-]*0*{re.escape(ordinal)}\b", canonical):
+            return True
+        if prefix == "batch" and re.search(rf"\bbatch\s*0*{re.escape(ordinal)}\b", canonical):
+            return True
+        if prefix == "run" and re.search(rf"\brun\s*0*{re.escape(ordinal)}\b", canonical):
+            return True
+        if prefix == "formulation" and re.search(rf"\bformulation\s*0*{re.escape(ordinal)}\b", canonical):
+            return True
+        if prefix in {"f", "npr", "npb", "npg"} and re.search(rf"\b{re.escape(prefix)}\s*0*{re.escape(ordinal)}\b", canonical):
+            return True
+        if prefix in {"doe_row", "row"} and canonical == ordinal:
+            return True
+    return False
+
+
+def _choose_by_prefixed_label_ordinal(label: str, paper_rows: list[dict[str, str]]) -> dict[str, str] | None:
+    parsed = _extract_prefixed_ordinal(label)
+    if not parsed:
+        return None
+    prefix, ordinal = parsed
+    matches = [row for row in paper_rows if _row_prefixed_ordinal_matches(row, prefix, ordinal)]
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
 def _choose_by_gt_label_ordinal(label: str, paper_rows: list[dict[str, str]]) -> dict[str, str] | None:
     normalized = normalize_text(label)
     if not normalized:
@@ -2728,6 +3017,29 @@ def _choose_by_compact_label_unique(label: str, paper_rows: list[dict[str, str]]
             matches.append(row)
     if len(matches) == 1:
         return matches[0]
+    return None
+
+
+def _choose_by_context_stripped_label_unique(label: str, paper_rows: list[dict[str, str]]) -> dict[str, str] | None:
+    label_compacts = _compact_alignment_label_variants(label)
+    if not label_compacts:
+        return None
+    matches = []
+    for row in paper_rows:
+        row_compacts: set[str] = set()
+        for value in _system_identity_strings(row):
+            row_compacts.update(_compact_alignment_label_variants(value))
+        if label_compacts & row_compacts:
+            matches.append(row)
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1 and not re.search(r"\b(?:empty|blank|control)\b", canonicalize_text(label)):
+        non_empty_matches = [
+            row for row in matches
+            if not re.search(r"\b(?:empty|blank)\b", canonicalize_text(" | ".join(_system_identity_strings(row))))
+        ]
+        if len(non_empty_matches) == 1:
+            return non_empty_matches[0]
     return None
 
 
@@ -3048,7 +3360,9 @@ def choose_system_row(
         ("decision_identity_signature_bridge", _choose_by_decision_identity_signature(gt_row, paper_rows)),
         ("row_local_design_signature_bridge", _choose_by_row_local_design_signature(gt_row, paper_rows)),
         ("loaded_state_disambiguation_bridge", _choose_by_loaded_state_disambiguation(gt_row, paper_rows)),
+        ("context_stripped_label_unique", _choose_by_context_stripped_label_unique(label or scaffold_anchor, paper_rows)),
         ("scaffold_parent_ordinal_bridge", _choose_by_scaffold_parent_ordinal(scaffold_parent_core, seed_id, paper_rows)),
+        ("prefixed_label_ordinal_bridge", _choose_by_prefixed_label_ordinal(label or scaffold_anchor, paper_rows)),
         ("gt_label_ordinal_bridge", _choose_by_gt_label_ordinal(label, paper_rows)),
     ]:
         if candidate is not None:
@@ -3076,7 +3390,7 @@ def _build_paper_coded_ph_rank_maps(
     paper_pairs: dict[str, list[tuple[float, str, float, str]]] = defaultdict(list)
     for gt_row in gt_rows:
         gt_value_raw = normalize_text(gt_row.get("pH_raw"))
-        if not gt_value_raw or not _is_coded_doe_level_token(gt_value_raw):
+        if not gt_value_raw:
             continue
         paper_key = normalize_text(gt_row.get("paper_key"))
         system_row, _, alignment_ok = choose_system_row(
@@ -3095,6 +3409,8 @@ def _build_paper_coded_ph_rank_maps(
             allow_evidence_metric_rebinding=bool(gt_value_raw),
         )
         if not system_value_raw:
+            continue
+        if not (_is_coded_doe_level_token(gt_value_raw) or _is_coded_doe_level_token(system_value_raw)):
             continue
         gt_number = parse_numeric(gt_value_raw)
         system_number = parse_numeric(system_value_raw)
@@ -3231,7 +3547,14 @@ def build_cells(
                 system_value_raw = ""
                 source_type = "suppressed_single_surfactant_value_against_union_gt"
                 evidence_status = "row_local_named_surfactant_value_not_unique_for_union_emulsifier_gt"
-            if field_name == "pH_raw" and gt_value_raw and _is_coded_doe_level_token(gt_value_raw):
+            if field_name == "pH_raw" and gt_value_raw and _is_coded_doe_level_token(system_value_raw):
+                paper_rank_map = paper_coded_ph_rank_maps.get(paper_key, {})
+                mapped_value = paper_rank_map.get(normalize_text(system_value_raw), "")
+                if mapped_value:
+                    system_value_raw = mapped_value
+                    source_type = "coded_doe_rank_rebinding"
+                    evidence_status = "supported_physical_value_rank_decode_later"
+            elif field_name == "pH_raw" and gt_value_raw and _is_coded_doe_level_token(gt_value_raw):
                 paper_rank_map = paper_coded_ph_rank_maps.get(paper_key, {})
                 mapped_value = paper_rank_map.get(normalize_text(system_value_raw), "")
                 if mapped_value:
@@ -3542,7 +3865,7 @@ def main() -> None:
         trusted_alignment_index=trusted_alignment_index,
         value_normalization_lexicon=value_normalization_lexicon,
     )
-    reporting_cells = build_reporting_cells(cells)
+    reporting_cells = build_reporting_cells(cells, value_normalization_lexicon=value_normalization_lexicon)
     summary_rows = summarize_cells(reporting_cells)
     error_rows = build_error_bucket_rows(reporting_cells)
     risk_queue_rows = build_risk_review_queue_rows(reporting_cells)

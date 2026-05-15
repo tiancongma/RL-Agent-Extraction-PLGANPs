@@ -41,6 +41,11 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
+    canonical_field_for_header as dictionary_canonical_field_for_header,
+    normalize_dictionary_value,
+)
+
 csv.field_size_limit(sys.maxsize)
 
 
@@ -136,9 +141,48 @@ RESOLVED_FIELDNAMES = [
 METHOD_GROUP_SIGNATURE_HINT_FIELD = "method_group_signature_hint"
 INHERITANCE_MARKER_FIELD = "inheritance_markers_json"
 CONTEXT_INHERITANCE_MARKER_FIELD = "context_inheritance_markers_json"
+PROTOCOL_INHERITANCE_MARKER_FIELD = "protocol_inheritance_markers_json"
+RELATION_CUE_FIELD = "relation_cues_json"
+TYPED_INHERITANCE_FIELD = "typed_inheritance_fields_json"
+TYPED_DOE_FACTOR_FIELD = "typed_doe_factors_json"
+RESULT_BINDING_CANDIDATE_FIELD = "result_binding_candidates_json"
 
 CANONICAL_FIELD_ALIASES = {
     "plga_mw_kDa": "polymer_mw_kDa",
+    "drug_mass_mg": "drug_feed_amount_text",
+    "drug amount": "drug_feed_amount_text",
+    "drug mass": "drug_feed_amount_text",
+    "drug feed": "drug_feed_amount_text",
+    "drug_feed": "drug_feed_amount_text",
+    "drug feed amount": "drug_feed_amount_text",
+    "drug_feed_amount": "drug_feed_amount_text",
+    "polymer_mass_mg": "plga_mass_mg",
+    "polymer amount": "plga_mass_mg",
+    "polymer mass": "plga_mass_mg",
+    "o_volume_mL": "organic_phase_volume_mL",
+    "O_volume_mL": "organic_phase_volume_mL",
+    "o_volume_ml": "organic_phase_volume_mL",
+    "organic phase volume": "organic_phase_volume_mL",
+    "organic_phase_volume_ml": "organic_phase_volume_mL",
+    "w2_volume_mL": "external_aqueous_phase_volume_mL",
+    "W2_volume_mL": "external_aqueous_phase_volume_mL",
+    "w2_volume_ml": "external_aqueous_phase_volume_mL",
+    "external aqueous phase volume": "external_aqueous_phase_volume_mL",
+    "external_aqueous_phase_volume_ml": "external_aqueous_phase_volume_mL",
+    "drug concentration": "drug_concentration_value",
+    "drug_concentration": "drug_concentration_value",
+    "polymer concentration": "polymer_concentration_value",
+    "polymer_concentration": "polymer_concentration_value",
+    "plga concentration": "polymer_concentration_value",
+    "phase ratio": "phase_ratio_raw",
+    "phase_ratio": "phase_ratio_raw",
+    "w/o phase volume ratio": "phase_ratio_raw",
+    "water/oil phase volume ratio": "phase_ratio_raw",
+    "pH": "pH_raw",
+    "ph": "pH_raw",
+    "aqueous phase pH": "pH_raw",
+    "water phase pH": "pH_raw",
+    "pH of water phase": "pH_raw",
     "surfactant concentration": "surfactant_concentration_text",
     "stabilizer concentration": "surfactant_concentration_text",
     "poloxamer concentration": "surfactant_concentration_text",
@@ -152,6 +196,23 @@ CANONICAL_FIELD_ALIASES = {
     "polymer:drug ratio": "polymer_to_drug_ratio_raw",
     "polymer/drug ratio": "polymer_to_drug_ratio_raw",
     "polymer to drug ratio": "polymer_to_drug_ratio_raw",
+    "particle_size_nm": "size_nm",
+    "particle size": "size_nm",
+    "particle size nm": "size_nm",
+    "mean diameter": "size_nm",
+    "diameter": "size_nm",
+    "polydispersity index": "pdi",
+    "polydispersity_index": "pdi",
+    "pi": "pdi",
+    "zeta potential": "zeta_mV",
+    "zeta_potential_mV": "zeta_mV",
+    "zeta_potential": "zeta_mV",
+    "zeta potential mv": "zeta_mV",
+    "zeta_mv": "zeta_mV",
+    "surfactant_concentration_percent_w_v": "surfactant_concentration_text",
+    "surfactant concentration percent w v": "surfactant_concentration_text",
+    "stabilizer_concentration_percent_w_v": "surfactant_concentration_text",
+    "stabilizer concentration percent w v": "surfactant_concentration_text",
 }
 
 METHOD_GROUP_SIGNATURE_FIELDS = [
@@ -196,6 +257,47 @@ RESOLVABLE_RELATION_FIELDS = {
     "emul_type",
     "polymer_to_drug_ratio_raw",
     "drug_to_polymer_ratio_raw",
+    "organic_phase_volume_mL",
+    "external_aqueous_phase_volume_mL",
+    "drug_concentration_value",
+    "drug_concentration_unit",
+    "polymer_concentration_value",
+    "polymer_concentration_unit",
+    "phase_ratio_raw",
+    "pH_raw",
+    "stirring_time_h",
+    "evaporation_time_h",
+    "sonication_time_s",
+    "homogenization_time_min",
+}
+
+MEASUREMENT_BINDING_FIELDS = {
+    "encapsulation_efficiency_percent",
+    "dl_percent",
+    "loading_content_percent",
+    "pdi",
+    "size_nm",
+    "zeta_mV",
+}
+DICTIONARY_TO_STAGE5_MEASUREMENT_FIELD = {
+    "dl_percent": "dl_percent",
+    "ee_percent": "encapsulation_efficiency_percent",
+    "encapsulation_efficiency_percent": "encapsulation_efficiency_percent",
+    "lc_percent": "loading_content_percent",
+    "loading_content_percent": "loading_content_percent",
+    "particle_size_nm": "size_nm",
+    "pdi": "pdi",
+    "size_nm": "size_nm",
+    "zeta_mV": "zeta_mV",
+}
+
+PROTOCOL_INHERITANCE_ALLOWED_FIELDS = RESOLVABLE_RELATION_FIELDS | {
+    "organic_phase_volume_mL",
+    "external_aqueous_phase_volume_mL",
+    "stirring_time_h",
+    "evaporation_time_h",
+    "sonication_time_s",
+    "homogenization_time_min",
 }
 
 CONTEXT_INHERITANCE_NEVER_FIELDS = {
@@ -339,6 +441,32 @@ def read_jsonl_rows(path: Path) -> list[dict[str, Any]]:
             if line:
                 rows.append(json.loads(line))
     return rows
+
+
+def source_text_for_manifest_row(row: dict[str, str]) -> str:
+    text_path = normalize_text(row.get("text_path") or row.get("source_text_path"))
+    candidates: list[Path] = []
+    if text_path:
+        path = Path(text_path.replace("\\", "/"))
+        candidates.append(path if path.is_absolute() else Path.cwd() / path)
+    key = normalize_text(row.get("key") or row.get("zotero_key") or row.get("paper_key"))
+    if key:
+        candidates.extend(
+            [
+                Path.cwd() / "data" / "cleaned" / "content" / "text" / f"{key}.pdf.txt",
+                Path.cwd() / "data" / "cleaned" / "content" / "text" / f"{key}.html.txt",
+                Path.cwd() / "data" / "cleaned" / "content_goren_2025" / "text" / f"{key}.pdf.txt",
+                Path.cwd() / "data" / "cleaned" / "content_goren_2025" / "text" / f"{key}.html.txt",
+            ]
+        )
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            return path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+    return ""
 
 
 def parse_json_maybe(value: Any) -> Any:
@@ -530,7 +658,7 @@ def build_resolved_relation_fields_for_paper(
         # or must remain in the generic shared-parameter bundle.
         if not field_name:
             continue
-        if relation_type in {"candidate_field_membership", "candidate_inherited_field", "candidate_context_inherited_field"}:
+        if relation_type in {"candidate_field_membership", "candidate_inherited_field", "candidate_context_inherited_field", "candidate_protocol_inherited_field", "candidate_protocol_override_field", "candidate_measurement_binding_field", "candidate_doe_factor_field", "candidate_typed_relation_cue_field"}:
             candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
             if not candidate_id:
                 continue
@@ -543,7 +671,7 @@ def build_resolved_relation_fields_for_paper(
                 continue
             candidate_field_rows[(candidate_id, field_name)].append(row)
             branch_key = candidate_branch_key.get(candidate_id, "")
-            if branch_key:
+            if branch_key and relation_type not in {"candidate_protocol_inherited_field", "candidate_protocol_override_field", "candidate_doe_factor_field", "candidate_typed_relation_cue_field"}:
                 branch_field_rows[(branch_key, field_name)].append(row)
         elif relation_type == "method_group_shared_field":
             method_group_id = str(row.get("method_group_id", "") or "").strip()
@@ -608,14 +736,21 @@ def build_resolved_relation_fields_for_paper(
             }
             if len(direct_values) == 1:
                 direct_row = next(iter(direct_values.values()))
+                direct_relation_types = {
+                    str(row.get("relation_type", "") or "").strip()
+                    for row in direct_rows
+                    if str(row.get("relation_type", "") or "").strip()
+                }
+                is_measurement_binding = direct_relation_types == {"candidate_measurement_binding_field"}
+                is_doe_factor = direct_relation_types == {"candidate_doe_factor_field"}
                 append_resolved(
                     candidate_id=candidate_id,
                     method_group_id=method_group_id,
-                    scope_type="formulation",
+                    scope_type="measurement" if is_measurement_binding else "doe_factor" if is_doe_factor else "formulation",
                     field_name=field_name,
                     field_value=str(direct_row.get("field_value_raw", "") or "").strip(),
                     field_value_norm=str(direct_row.get("field_value_norm", "") or "").strip(),
-                    resolution_rule="direct_candidate_field_membership",
+                    resolution_rule="measurement_table_binding" if is_measurement_binding else "doe_factor_assignment" if is_doe_factor else "direct_candidate_field_membership",
                     source_rows=direct_rows,
                     deterministic_confidence=str(direct_row.get("deterministic_confidence", "") or "medium").strip(),
                 )
@@ -726,6 +861,164 @@ def context_marker_targets_row(marker: dict[str, Any], row: dict[str, str]) -> b
     return False
 
 
+MATERIAL_TOKEN_STOPWORDS = {
+    "acid",
+    "amount",
+    "aqueous",
+    "blank",
+    "concentration",
+    "drug",
+    "formulation",
+    "loaded",
+    "mg",
+    "ml",
+    "nanocapsule",
+    "nanocapsules",
+    "nanoparticle",
+    "nanoparticles",
+    "nanosphere",
+    "nanospheres",
+    "np",
+    "nps",
+    "phase",
+    "plga",
+    "pla",
+    "pcl",
+    "poly",
+    "polymer",
+    "procedure",
+    "same",
+    "solution",
+    "using",
+    "with",
+}
+
+
+def material_alias_variants(token: str) -> set[str]:
+    clean = re.sub(r"[^a-z0-9]+", "", normalize_text(token).lower())
+    if not clean or clean in MATERIAL_TOKEN_STOPWORDS or len(clean) < 2:
+        return set()
+    variants = {clean}
+    # Article-local abbreviations often use the leading material stem (for
+    # example Cur for curcumin, Rh for rhodamine).  Keep this scoped to material
+    # identity matching and ignore generic carriers such as PLGA above.
+    if len(clean) >= 5:
+        variants.add(clean[:3])
+        variants.add(clean[:4])
+    if len(clean) >= 8:
+        variants.add(clean[:2])
+    return variants
+
+
+def material_token_set(value: Any, *, paper_key: str = "") -> set[str]:
+    text = normalize_text(value)
+    tokens: set[str] = set()
+
+    def add(raw: Any, field_family: str = "") -> None:
+        token = normalize_text(raw).strip(" .,;:()[]{}")
+        if not token:
+            return
+        if field_family:
+            token = normalize_dictionary_value(field_family, token, paper_key=paper_key)
+        for piece in re.findall(r"[A-Za-z][A-Za-z0-9-]{1,40}", token):
+            tokens.update(material_alias_variants(piece))
+
+    parsed = parse_json_maybe(text)
+    if isinstance(parsed, list):
+        for item in parsed:
+            if isinstance(item, dict):
+                name = normalize_text(item.get("name") or item.get("name_raw"))
+                value_text = normalize_text(item.get("value") or item.get("value_raw"))
+                header = re.sub(r"\([^)]*\)", " ", name)
+                header = re.sub(
+                    r"\b(?:amount|mass|concentration|volume|feed|mg|ml|%|w/v|ug|g)\b",
+                    " ",
+                    header,
+                    flags=re.IGNORECASE,
+                )
+                add(header)
+                add(value_text)
+            else:
+                add(item)
+        return tokens
+
+    for match in re.finditer(r"([A-Za-z][A-Za-z0-9\- ]{2,80})\(([A-Z][A-Z0-9\-]{1,12})\)", text):
+        add(match.group(1))
+        add(match.group(2))
+    for piece in re.findall(r"[A-Za-z][A-Za-z0-9-]{1,40}", text):
+        add(piece)
+    return tokens
+
+
+def row_material_tokens(row: dict[str, str]) -> set[str]:
+    paper_key = normalize_text(row.get("key"))
+    parts = [
+        row.get("raw_formulation_label", ""),
+        row.get("identity_variables_json", ""),
+        row.get("change_descriptions", ""),
+        row.get("instance_context_tags", ""),
+        row.get("method_group_signature_hint", ""),
+    ]
+    return material_token_set(" ".join(normalize_text(part) for part in parts), paper_key=paper_key)
+
+
+def protocol_marker_material_targets_row(marker: dict[str, Any], row: dict[str, str]) -> bool:
+    target_scope = marker.get("target_scope") if isinstance(marker.get("target_scope"), dict) else {}
+    target_text = " ".join(
+        [
+            normalize_text(target_scope.get("target_group_label")),
+            " ".join(normalize_text(item) for item in ensure_list(target_scope.get("formulation_ids"))),
+        ]
+    )
+    target_tokens = material_token_set(target_text, paper_key=normalize_text(row.get("key")))
+    if not target_tokens:
+        return False
+    return bool(target_tokens & row_material_tokens(row))
+
+
+def protocol_marker_targets_row(marker: dict[str, Any], row: dict[str, str]) -> bool:
+    target_scope = marker.get("target_scope") if isinstance(marker.get("target_scope"), dict) else {}
+    row_candidate = normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+    row_table_id = normalize_text(row.get("table_id"))
+    row_group_hint = normalize_text(row.get(METHOD_GROUP_SIGNATURE_HINT_FIELD)).lower()
+    row_label = normalize_text(row.get("raw_formulation_label")).lower()
+
+    target_candidates = [normalize_text(item) for item in ensure_list(target_scope.get("formulation_ids")) if normalize_text(item)]
+    for target in target_candidates:
+        target_lower = target.lower()
+        target_token = normalize_token(target)
+        row_label_token = normalize_token(row_label)
+        row_candidate_token = normalize_token(row_candidate)
+        if target and row_candidate == target:
+            return True
+        if target_token and row_candidate_token == target_token:
+            return True
+        if target_lower and row_label and target_lower == row_label:
+            return True
+        if target_token and row_label_token and re.search(rf"(?:^|_){re.escape(target_token)}(?:_|$)", row_label_token):
+            return True
+
+    target_group = normalize_text(target_scope.get("target_group_label")).lower()
+    if target_group and (
+        target_group in row_group_hint
+        or target_group in row_label
+        or (len(row_label) >= 12 and row_label in target_group)
+    ):
+        return True
+
+    if protocol_marker_material_targets_row(marker, row):
+        return True
+
+    if target_candidates:
+        return False
+
+    for target_table_id in ensure_list(target_scope.get("table_ids")):
+        target = normalize_text(target_table_id)
+        if target and row_table_id and target == row_table_id:
+            return True
+    return False
+
+
 def context_field_allowed(field_name: str, basis: str, *, held_fixed: bool = False) -> bool:
     field_name = canonical_field_name(field_name)
     if not field_name or field_name in CONTEXT_INHERITANCE_NEVER_FIELDS:
@@ -734,6 +1027,137 @@ def context_field_allowed(field_name: str, basis: str, *, held_fixed: bool = Fal
         basis_text = normalize_text(basis).lower()
         return held_fixed or any(token in basis_text for token in ["fixed", "selected", "optimal", "optimized", "held"])
     return True
+
+
+def protocol_field_allowed(field_name: str, field_value: Any = "") -> bool:
+    field_name = canonical_field_name(field_name)
+    if not field_name or field_name not in PROTOCOL_INHERITANCE_ALLOWED_FIELDS or field_name in CONTEXT_INHERITANCE_NEVER_FIELDS:
+        return False
+    value_norm = normalize_text(field_value).lower()
+    vague_tokens = [
+        "different amount",
+        "different amounts",
+        "variable amount",
+        "variable amounts",
+        "varied amount",
+        "varied amounts",
+        "varied per design",
+        "per design",
+        "various amount",
+        "various amounts",
+    ]
+    return not any(token in value_norm for token in vague_tokens)
+
+
+def relation_cue_targets_row(cue: dict[str, Any], row: dict[str, Any], method_group: str) -> bool:
+    if normalize_text(cue.get("execution_readiness")).lower() != "execution_ready":
+        return False
+    target_scope = normalize_text(cue.get("target_scope")).lower()
+    target_ref = normalize_text(cue.get("target_ref"))
+    if not target_ref:
+        return target_scope == "paper_global"
+    row_refs = {
+        normalize_text(row.get("local_instance_id")),
+        normalize_text(row.get("formulation_id")),
+        normalize_text(row.get("raw_formulation_label")),
+        normalize_text(row.get("table_id")),
+        normalize_text(row.get("table_row_id")),
+        method_group,
+    }
+    row_refs = {item for item in row_refs if item}
+    if target_ref in row_refs:
+        return True
+    target_norm = normalize_token(target_ref)
+    return bool(target_norm and any(target_norm == normalize_token(item) for item in row_refs))
+
+
+def relation_cue_field_value(cue: dict[str, Any]) -> tuple[str, str]:
+    field_name = canonical_field_name(cue.get("field_name"))
+    value = normalize_text(cue.get("value_text"))
+    unit = normalize_text(cue.get("unit_text"))
+    value_kind = normalize_text(cue.get("value_kind")).lower()
+    if value_kind == "unit_only" and not value and unit:
+        value = unit
+    elif value and unit and unit.lower() not in value.lower():
+        value = f"{value} {unit}"
+    return field_name, value
+
+
+def typed_handoff_targets_row(item: dict[str, Any], row: dict[str, Any], method_group: str, *, ref_key: str = "target_ref") -> bool:
+    if normalize_text(item.get("execution_readiness")).lower() != "execution_ready":
+        return False
+    target_scope = normalize_text(item.get("target_scope")).lower()
+    target_ref = normalize_text(item.get(ref_key))
+    if not target_ref and ref_key != "target_formulation_ref":
+        target_ref = normalize_text(item.get("target_formulation_ref"))
+    if not target_ref:
+        return target_scope == "paper_global"
+    target_ref_norm = normalize_token(target_ref)
+    if target_scope == "paper_global":
+        return True
+    if target_scope in {"method_group", "table_scope"} and any(
+        phrase in target_ref_norm
+        for phrase in [
+            "all_formulation",
+            "all_formulations",
+            "table_formulation",
+            "table_formulations",
+            "formulation_rows",
+            "all_rows",
+        ]
+    ):
+        return True
+    row_refs = {
+        normalize_text(row.get("local_instance_id")),
+        normalize_text(row.get("formulation_id")),
+        normalize_text(row.get("raw_formulation_label")),
+        normalize_text(row.get("table_id")),
+        normalize_text(row.get("table_row_id")),
+        method_group,
+    }
+    row_refs = {item for item in row_refs if item}
+    if target_ref in row_refs:
+        return True
+    return bool(target_ref_norm and any(target_ref_norm == normalize_token(item) for item in row_refs))
+
+
+def typed_doe_factor_fields(factor: dict[str, Any]) -> list[dict[str, str]]:
+    value_type = normalize_text(factor.get("value_type")).lower()
+    if value_type == "coded_level":
+        return []
+    field_name = canonical_field_name(factor.get("target_field_name"))
+    role = normalize_text(factor.get("factor_role")).lower()
+    value = normalize_text(factor.get("value_text"))
+    unit = normalize_text(factor.get("unit_text"))
+    if not field_name:
+        role_field_map = {
+            "drug_concentration": "drug_concentration_value",
+            "polymer_concentration": "polymer_concentration_value",
+            "surfactant_concentration": "surfactant_concentration_text",
+            "ph": "pH_raw",
+            "phase_ratio": "phase_ratio_raw",
+        }
+        field_name = role_field_map.get(role, "")
+    if not field_name or not value:
+        return []
+    if field_name in {"drug_concentration_value", "polymer_concentration_value"}:
+        fields = [{"field_name": field_name, "field_value": value}]
+        if unit:
+            unit_field = "drug_concentration_unit" if field_name == "drug_concentration_value" else "polymer_concentration_unit"
+            fields.append({"field_name": unit_field, "field_value": unit})
+        return fields
+    if field_name == "surfactant_concentration_text" and unit and unit.lower() not in value.lower():
+        value = f"{value} {unit}".strip()
+    return [{"field_name": field_name, "field_value": value}]
+
+
+def result_binding_field_value(field_item: dict[str, Any]) -> tuple[str, str]:
+    field_name = canonical_field_name(field_item.get("field_name"))
+    value = normalize_text(field_item.get("value_text") or field_item.get("field_value"))
+    unit = normalize_text(field_item.get("unit_text"))
+    if value and unit and unit.lower() not in value.lower() and field_name not in {"size_nm", "zeta_mV"}:
+        value = f"{value} {unit}"
+    return field_name, value
 
 
 def method_group_id(paper_key: str, signature: str) -> str:
@@ -826,6 +1250,619 @@ def add_relation_row(
     )
 
 
+def normalize_factor_unit(value: Any) -> str:
+    text = re.sub(r"\s+", " ", normalize_text(value).strip(" .,;:()[]{}\"'“”‘’"))
+    lowered = text.lower().replace(" ", "")
+    if lowered in {"mg/ml", "mgml"}:
+        return "mg/mL"
+    if lowered in {"%", "%w/v", "%(w/v)", "w/v%"}:
+        return "%w/v" if "w/v" in lowered else "%"
+    return text
+
+
+def split_factor_value_unit(value: Any, fallback_unit: str = "") -> tuple[str, str]:
+    clean = normalize_text(value).replace("−", "-").strip(" .")
+    match = re.match(r"^([-+]?\d+(?:\.\d+)?)\s*(%\s*(?:w\s*/\s*v)?|mg\s*/\s*ml|mg/ml)?$", clean, re.I)
+    if not match:
+        return clean, normalize_factor_unit(fallback_unit)
+    return match.group(1), normalize_factor_unit(match.group(2) or fallback_unit)
+
+
+def parse_doe_assignment_fragments(value: Any) -> list[dict[str, str]]:
+    parsed = parse_json_maybe(value)
+    fragments: list[str] = []
+    assignments: list[dict[str, str]] = []
+    if isinstance(parsed, list):
+        for item in parsed:
+            if isinstance(item, dict):
+                token = normalize_text(item.get("factor_token"))
+                label = normalize_text(item.get("factor_label"))
+                name = normalize_text(item.get("factor_name") or item.get("name_raw") or item.get("name"))
+                if token and name and token.lower() not in name.lower():
+                    name = normalize_text(f"{token} {name}")
+                elif token and not name:
+                    name = normalize_text(f"{token} {label}".strip())
+                val = normalize_text(item.get("decoded_factor_value") or item.get("factor_value") or item.get("value_raw") or item.get("value"))
+                if name and val:
+                    unit = normalize_text(item.get("factor_unit") or item.get("unit"))
+                    assignments.append(
+                        {
+                            "factor_name": name,
+                            "factor_value": val,
+                            "unit": unit,
+                            "factor_value_kind": normalize_text(item.get("factor_value_kind")),
+                            "coded_factor_value": normalize_text(item.get("coded_factor_value")),
+                            "decoded_factor_value": normalize_text(item.get("decoded_factor_value")),
+                            "decoding_rule": normalize_text(item.get("decoding_rule")),
+                        }
+                    )
+            else:
+                fragments.append(normalize_text(item))
+    elif parsed:
+        fragments.append(normalize_text(parsed))
+    for fragment in fragments:
+        if "=" not in fragment:
+            continue
+        name_raw, raw_value_raw = fragment.split("=", 1)
+        name = normalize_text(name_raw).strip(" []{}\"'")
+        raw_value = normalize_text(raw_value_raw).strip(" []{}\"'")
+        if not name or not raw_value:
+            continue
+        unit = ""
+        unit_match = re.search(r"\(([^)]*)\)", name)
+        if unit_match:
+            unit = normalize_factor_unit(unit_match.group(1))
+        assignments.append({"factor_name": name, "factor_value": raw_value, "unit": unit, "factor_value_kind": "", "coded_factor_value": "", "decoded_factor_value": "", "decoding_rule": ""})
+    return assignments
+
+
+def source_factor_role_map(source_text: str) -> dict[str, dict[str, str]]:
+    mapping: dict[str, dict[str, str]] = {}
+    text = source_text or ""
+
+    def add(token: str, phrase: str, unit: str = "") -> None:
+        clean_token = normalize_token(token)
+        clean_phrase = normalize_text(phrase)
+        role = ""
+        if re.search(r"\b(?:drug|active|api|flurbiprofen|lopinavir|fb|pf)\b", clean_phrase):
+            role = "drug"
+        elif re.search(r"\b(?:polymer|plga|pla|pcl)\b", clean_phrase):
+            role = "polymer"
+        elif re.search(r"\b(?:surfactant|stabilizer|emulsifier|pva|p188|poloxamer|pluronic|tween)\b", clean_phrase):
+            role = "surfactant"
+        elif re.search(r"\bpH\b", phrase, re.I):
+            role = "ph"
+        if clean_token and role:
+            mapping[clean_token] = {"role": role, "unit": normalize_factor_unit(unit), "phrase": clean_phrase}
+
+    for match in re.finditer(
+        r"\b(X\d{1,2})\b\s*[–—\-:]*\s*([^\n.;]{0,120}?\b(?:drug|polymer|surfactant|stabilizer|emulsifier|pH)\b[^\n.;()]*)(?:\s*\(([^)]*)\))?",
+        text,
+        flags=re.I,
+    ):
+        add(match.group(1), match.group(2), match.group(3) or "")
+    for match in re.finditer(
+        r"\b(c[A-Z0-9][A-Za-z0-9]{1,12})\b\s*,\s*(?:concentration\s+of\s+)?([A-Za-z][A-Za-z0-9\-\s]{1,80}?)(?:\s*\(([^)]*)\))?(?=\s*[;,.])",
+        text,
+    ):
+        add(match.group(1), match.group(2), match.group(3) or "")
+    return mapping
+
+
+def typed_fields_from_doe_assignments(row: dict[str, str], source_text: str) -> list[dict[str, str]]:
+    row_scope = " ".join(
+        normalize_text(row.get(name))
+        for name in ("candidate_source", "instance_context_tags", "change_context_tags", "row_materialization_mode")
+    )
+    if not re.search(r"\bdoe\b|doe_numbered_table_row|deterministic_row_expansion_within_llm_scope", row_scope):
+        return []
+    assignments = parse_doe_assignment_fragments(row.get("table_row_variable_assignments_json"))
+    if not assignments:
+        assignments = parse_doe_assignment_fragments(row.get("change_descriptions"))
+    if not assignments:
+        return []
+    role_map = source_factor_role_map(source_text)
+    has_actual_ph = any(re.search(r"\b(?:water|aqueous)\s+phase\b", item["factor_name"], re.I) and re.search(r"\bpH\b", item["factor_name"], re.I) for item in assignments)
+    typed: list[dict[str, str]] = []
+    for item in assignments:
+        name = item["factor_name"]
+        value = item["factor_value"]
+        unit = item.get("unit", "")
+        low = normalize_text(name).lower()
+        token_match = re.match(r"^\s*((?:X\d{1,2})|(?:c[A-Z0-9][A-Za-z0-9]{1,12}))\b", name)
+        factor_token = normalize_text(token_match.group(1)) if token_match else ""
+        role = ""
+        if re.search(r"\b(?:cFB|cPF|drug)\b", name, re.I):
+            role = "drug"
+        elif re.search(r"\b(?:cPLGA|polymer|plga)\b", name, re.I):
+            role = "polymer"
+        elif re.search(r"\b(?:cPVA|cP188|surfactant|stabilizer|pva|p188|poloxamer)\b", name, re.I):
+            role = "surfactant"
+        elif re.search(r"\bw\s*/\s*o\b.*\bratio\b|\bphase\b.*\bratio\b", low, re.I):
+            role = "phase_ratio"
+        elif re.search(r"\bpH\b", name, re.I):
+            role = "ph"
+        role_info = role_map.get(normalize_token(factor_token), {}) if factor_token else {}
+        if not role_info:
+            role_info = role_map.get(normalize_token(name), {})
+        if role and role_info.get("role") and role_info.get("role") != role:
+            role_info = {}
+        if not role:
+            role = role_info.get("role", "")
+        if not unit:
+            unit = role_info.get("unit", "")
+        numeric_value, split_unit = split_factor_value_unit(value, unit)
+        unit = split_unit or unit
+        numeric_float = None
+        if re.fullmatch(r"[-+]?\d+(?:\.\d+)?", numeric_value):
+            try:
+                numeric_float = float(numeric_value)
+            except ValueError:
+                numeric_float = None
+        concentration_value_is_physical = numeric_float is None or numeric_float >= 0
+        if role == "drug":
+            if not concentration_value_is_physical:
+                continue
+            typed.append({"field_name": "drug_concentration_value", "field_value": numeric_value})
+            if unit:
+                typed.append({"field_name": "drug_concentration_unit", "field_value": unit})
+        elif role == "polymer":
+            if not concentration_value_is_physical:
+                continue
+            typed.append({"field_name": "polymer_concentration_value", "field_value": numeric_value})
+            if unit:
+                typed.append({"field_name": "polymer_concentration_unit", "field_value": unit})
+        elif role == "surfactant":
+            if not concentration_value_is_physical:
+                continue
+            surf_value = f"{numeric_value} {unit}".strip() if unit and unit != "%" else f"{numeric_value}{unit}".strip()
+            typed.append({"field_name": "surfactant_concentration_text", "field_value": surf_value or value})
+        elif role == "phase_ratio":
+            typed.append({"field_name": "phase_ratio_raw", "field_value": value})
+        elif role == "ph":
+            if has_actual_ph and not re.search(r"\b(?:water|aqueous)\s+phase\b", name, re.I):
+                continue
+            typed.append({"field_name": "pH_raw", "field_value": numeric_value or value})
+    dedup: dict[tuple[str, str], dict[str, str]] = {}
+    for item in typed:
+        if item["field_name"] and item["field_value"]:
+            dedup[(item["field_name"], item["field_value"])] = item
+    return list(dedup.values())
+
+
+def normalize_measurement_value(value: Any) -> str:
+    text = normalize_text(value)
+    text = text.replace("−", "-").replace("–", "-")
+    text = re.sub(r"^K(?=\d)", "-", text)
+    return text
+
+
+def parse_characterization_measurement_table(text: Any) -> dict[str, Any] | None:
+    snippet = normalize_text(text)
+    if not snippet:
+        return None
+    if not re.search(r"\b(?:diameter|mean\s+diameter)\b", snippet, flags=re.I):
+        return None
+    if not re.search(r"\bPI\b|polydispersity", snippet, flags=re.I):
+        return None
+    if not re.search(r"\bz\s*\(mV\)|zeta", snippet, flags=re.I):
+        return None
+    family_match = re.search(
+        r"Empty\s+(nanospheres|nanocapsules)\s+XAN\s+(?:nanospheres|nanocapsules)\w*\s+3-?MeOXAN\s+(?:nanospheres|nanocapsules)",
+        snippet,
+        flags=re.I,
+    )
+    if not family_match:
+        return None
+    family = family_match.group(1).lower()
+    token_pattern = r"([K−–+\-]?\d+(?:\.\d+)?(?:G[K−–+\-]?\d+(?:\.\d+)?)?)"
+    metric_match = re.search(
+        rf"Diameter\s*\(nm\)\s+{token_pattern}\s+{token_pattern}\s+{token_pattern}\s+PI\s+{token_pattern}\s+{token_pattern}\s+{token_pattern}\s+z\s*\(mV\)\s+{token_pattern}\s+{token_pattern}\s+{token_pattern}",
+        snippet,
+        flags=re.I,
+    )
+    if not metric_match:
+        return None
+    values = [normalize_measurement_value(item) for item in metric_match.groups()]
+    family_singular = family[:-1] if family.endswith("s") else family
+
+    def concentration_for(drug_label: str) -> str:
+        match = re.search(
+            rf"{re.escape(drug_label)}\s+{family_singular}s?\s+with\s+theoretical\s+concentration\s+of\s+([^.;]+)",
+            snippet,
+            flags=re.I,
+        )
+        return normalize_text(match.group(1)) if match else ""
+
+    return {
+        "family": family,
+        "bindings": [
+            {
+                "target_kind": "empty",
+                "drug_label": "",
+                "target_label": f"Empty {family}",
+                "concentration": "",
+                "fields": {"size_nm": values[0], "pdi": values[3], "zeta_mV": values[6]},
+            },
+            {
+                "target_kind": "loaded",
+                "drug_label": "XAN",
+                "target_label": f"XAN {family}",
+                "concentration": concentration_for("XAN"),
+                "fields": {"size_nm": values[1], "pdi": values[4], "zeta_mV": values[7]},
+            },
+            {
+                "target_kind": "loaded",
+                "drug_label": "3-MeOXAN",
+                "target_label": f"3-MeOXAN {family}",
+                "concentration": concentration_for("3-MeOXAN"),
+                "fields": {"size_nm": values[2], "pdi": values[5], "zeta_mV": values[8]},
+            },
+        ],
+    }
+
+
+def text_tokens(value: Any) -> set[str]:
+    return {token for token in normalize_token(value).split("_") if token}
+
+
+def candidate_search_text(row: dict[str, str]) -> str:
+    parts = [
+        row.get("formulation_id"),
+        row.get("local_instance_id"),
+        row.get("raw_formulation_label"),
+        row.get("method_group_signature_hint"),
+    ]
+    identity_variables = parse_json_maybe(row.get("identity_variables_json"))
+    for item in ensure_list(identity_variables):
+        if not isinstance(item, dict):
+            continue
+        name = normalize_identity_variable_name(item.get("name") or item.get("name_raw"))
+        if name not in {"formulation_identity_label", "theoretical_concentration", "drug", "payload_state"}:
+            continue
+        parts.append(item.get("value_raw") or item.get("value"))
+    return " ".join(normalize_text(part) for part in parts if normalize_text(part))
+
+
+def concentration_number(value: Any) -> str:
+    match = re.search(r"\d+(?:\.\d+)?", normalize_text(value))
+    return match.group(0) if match else ""
+
+
+def measurement_binding_matches_candidate(binding: dict[str, Any], row: dict[str, str]) -> bool:
+    text = candidate_search_text(row)
+    tokens = text_tokens(text)
+    family = str(binding.get("target_label", "") or "").split(" ", 1)[-1].lower()
+    family_singular = family[:-1] if family.endswith("s") else family
+    if family and family not in tokens and family_singular not in tokens:
+        return False
+    target_kind = str(binding.get("target_kind", "") or "")
+    if target_kind == "empty":
+        return "empty" in tokens or normalize_text(row.get("formulation_role")).lower() == "control"
+    drug_label = str(binding.get("drug_label", "") or "")
+    drug_tokens = text_tokens(drug_label)
+    if drug_label.lower() == "xan":
+        if "xan" not in tokens:
+            return False
+        if "meoxan" in tokens:
+            return False
+    elif drug_tokens and not drug_tokens.issubset(tokens):
+        return False
+    expected_concentration = concentration_number(binding.get("concentration"))
+    if expected_concentration and expected_concentration not in tokens:
+        return False
+    return True
+
+
+def stage5_measurement_field_for_header(header: Any, *, paper_key: str = "") -> str:
+    raw = normalize_text(header)
+    if re.search(r"\b(?:minor\s+feret|minor\s+axis|feret)\b", raw, flags=re.I):
+        return ""
+    canonical = dictionary_canonical_field_for_header(normalize_text(header), paper_key=paper_key)
+    field_name = DICTIONARY_TO_STAGE5_MEASUREMENT_FIELD.get(canonical, "")
+    if field_name in {"dl_percent", "loading_content_percent"} and not re.search(
+        r"%|percent", raw, flags=re.I
+    ):
+        return ""
+    return field_name
+
+
+def ordered_measurement_fields_for_header(header: Any, *, paper_key: str = "") -> list[str]:
+    direct = stage5_measurement_field_for_header(header, paper_key=paper_key)
+    if direct:
+        return [direct]
+    raw = normalize_text(header)
+    if not raw:
+        return []
+    if re.search(r"\b(?:minor\s+feret|minor\s+axis|feret)\b", raw, flags=re.I):
+        return []
+    fields: list[str] = []
+    checks = [
+        (r"\b(?:particle\s+size|mean\s+size|diameter|z\s*[- ]?average|zaverage)\b", "size_nm"),
+        (r"\b(?:pdi|p\.?\s*i\.?|pol[yi]dispersity)\b", "pdi"),
+        (r"\b(?:zeta|zeta\s+potential|ζ|zp)\b", "zeta_mV"),
+        (r"\b(?:ee|e\.?\s*e\.?|entrapment\s+efficiency|encapsulation\s+efficiency)\b", "encapsulation_efficiency_percent"),
+        (r"\b(?:drug\s+loading|d\.?\s*l\.?)\b", "dl_percent"),
+        (r"\b(?:loading\s+content|drug\s+content|l\.?\s*c\.?)\b", "loading_content_percent"),
+    ]
+    for pattern, field_name in checks:
+        if field_name in {"dl_percent", "loading_content_percent"} and not re.search(
+            r"%|percent", raw, flags=re.I
+        ):
+            continue
+        if re.search(pattern, raw, flags=re.I) and field_name not in fields:
+            fields.append(field_name)
+    return fields
+
+
+MEASUREMENT_VALUE_TOKEN_RE = re.compile(
+    r"[−–+\-]?\d+(?:\.\d+)?(?:\s*±\s*[−–+\-]?\d+(?:\.\d+)?)?"
+)
+
+
+def measurement_binding_value_is_usable(field_name: str, value: Any) -> bool:
+    text = normalize_measurement_value(value)
+    lowered = text.lower()
+    if not text or "(cid:" in lowered:
+        return False
+    token_match = MEASUREMENT_VALUE_TOKEN_RE.search(text)
+    if not token_match:
+        return False
+    try:
+        numeric_value = float(token_match.group(0).split("±", 1)[0].replace("−", "-").replace("–", "-"))
+    except ValueError:
+        return False
+    if field_name == "size_nm" and numeric_value < 10:
+        return False
+    if field_name == "pdi" and not (0 <= numeric_value <= 2):
+        return False
+    if field_name in {"encapsulation_efficiency_percent", "loading_content_percent", "dl_percent"} and not (
+        0 <= numeric_value <= 100
+    ):
+        return False
+    if field_name == "zeta_mV" and abs(numeric_value) > 200:
+        return False
+    return True
+
+
+def grid_measurement_values_for_cell(
+    *,
+    header: Any,
+    value: Any,
+    paper_key: str,
+) -> dict[str, str]:
+    fields = ordered_measurement_fields_for_header(header, paper_key=paper_key)
+    cell_value = normalize_measurement_value(value)
+    if not fields or not cell_value or normalize_token(cell_value) in {"", "na", "n/a", "nd", "-", "–"}:
+        return {}
+    if "(cid:" in cell_value.lower():
+        return {}
+    tokens = [normalize_measurement_value(token.group(0)) for token in MEASUREMENT_VALUE_TOKEN_RE.finditer(cell_value)]
+    if len(fields) == 1:
+        if len(tokens) > 1:
+            return {}
+        field_name = fields[0]
+        if not measurement_binding_value_is_usable(field_name, cell_value):
+            return {}
+        return {field_name: cell_value}
+    if len(tokens) < len(fields):
+        return {}
+    values_by_field = {field_name: token for field_name, token in zip(fields, tokens)}
+    return {
+        field_name: token
+        for field_name, token in values_by_field.items()
+        if measurement_binding_value_is_usable(field_name, token)
+    }
+
+
+def load_table_cell_grid_rows(table_cell_grid_tsv: Path | None) -> list[dict[str, str]]:
+    if table_cell_grid_tsv is None or not table_cell_grid_tsv.exists():
+        return []
+    return read_tsv_rows(table_cell_grid_tsv)
+
+
+def row_label_matches_candidate(row_label: Any, row: dict[str, str]) -> bool:
+    label = normalize_token(row_label)
+    if not label or label in {"note", "notes"}:
+        return False
+    text = candidate_search_text(row)
+    token_text = normalize_token(text)
+    if label == normalize_token(row.get("raw_formulation_label")):
+        return True
+    if label == normalize_token(row.get("formulation_id")):
+        return True
+    token_parts = {part for part in re.split(r"_+", token_text) if part}
+    return label in token_parts or f"_{label}_" in f"_{token_text}_"
+
+
+def add_grid_measurement_binding_relation_rows(
+    *,
+    relation_rows: list[dict[str, Any]],
+    relation_graph: str,
+    paper_key: str,
+    doi: str,
+    paper_title: str,
+    indexed_rows: list[tuple[int, dict[str, str]]],
+    table_grid_rows: list[dict[str, str]],
+    relation_type_counter: Counter[str],
+    seen_binding_keys: set[tuple[str, str, str, str]],
+) -> None:
+    for grid_row in table_grid_rows:
+        if normalize_text(grid_row.get("paper_key")) != paper_key:
+            continue
+        row_label = normalize_text(grid_row.get("row_label_candidate"))
+        values_by_field = grid_measurement_values_for_cell(
+            header=grid_row.get("raw_header_text"),
+            value=grid_row.get("raw_cell_value"),
+            paper_key=paper_key,
+        )
+        if not row_label or not values_by_field:
+            continue
+        target_rows = [
+            (target_row_index, target_row)
+            for target_row_index, target_row in indexed_rows
+            if row_label_matches_candidate(row_label, target_row)
+            and normalize_text(target_row.get("instance_kind")) != "candidate_non_formulation"
+            and normalize_text(target_row.get("formulation_role")) != "characterization_only"
+        ]
+        target_ids = {candidate_id(row) for _, row in target_rows if candidate_id(row)}
+        if len(target_ids) != 1:
+            continue
+        target_row_index, target_row = target_rows[0]
+        target_id = candidate_id(target_row)
+        source_locator = normalize_text(grid_row.get("source_locator"))
+        source_section = normalize_text(grid_row.get("table_id"))
+        source_weak_ref = weak_label_row_ref(target_row, target_row_index)
+        for field_name, field_value in sorted(values_by_field.items()):
+            if field_name not in MEASUREMENT_BINDING_FIELDS or not normalize_text(field_value):
+                continue
+            binding_key = (target_id, field_name, normalize_token(field_value), source_locator)
+            if binding_key in seen_binding_keys:
+                continue
+            seen_binding_keys.add(binding_key)
+            add_relation_row(
+                relation_rows,
+                relation_graph=relation_graph,
+                paper_key=paper_key,
+                doi=doi,
+                paper_title=paper_title,
+                method_group=method_group_id(paper_key, method_group_signature(target_row)),
+                variation_axis="",
+                candidate=target_id,
+                candidate_label=normalize_text(target_row.get("raw_formulation_label")),
+                parent_entity="",
+                related_entity=row_label,
+                relation_type="candidate_measurement_binding_field",
+                field_name=field_name,
+                field_value_raw=field_value,
+                field_value_norm=normalize_token(field_value),
+                field_scope_value="measurement_bound",
+                candidate_source=normalize_text(target_row.get("candidate_source")),
+                instance_kind=normalize_text(target_row.get("instance_kind")),
+                formulation_role=normalize_text(target_row.get("formulation_role")),
+                evidence_source_type="table_cell_grid_measurement_binding",
+                evidence_section=source_section,
+                evidence_snippet=truncate_text(
+                    " | ".join(
+                        part
+                        for part in [
+                            source_section,
+                            normalize_text(grid_row.get("raw_header_text")),
+                            row_label,
+                            normalize_text(grid_row.get("raw_cell_value")),
+                        ]
+                        if part
+                    ),
+                    max_len=320,
+                ),
+                is_shared="no",
+                variation_axis_indicator="no",
+                source_weak_label_row_ref=source_weak_ref,
+                deterministic_confidence="high",
+                provenance_note=(
+                    "Stage3 bound a Stage2 coordinate-preserving table-cell-grid measurement value "
+                    "back to an already-authorized formulation identity; no new formulation row was created."
+                ),
+            )
+            relation_type_counter["candidate_measurement_binding_field"] += 1
+
+
+def add_measurement_binding_relation_rows(
+    *,
+    relation_rows: list[dict[str, Any]],
+    relation_graph: str,
+    paper_key: str,
+    doi: str,
+    paper_title: str,
+    indexed_rows: list[tuple[int, dict[str, str]]],
+    table_grid_rows: list[dict[str, str]],
+    relation_type_counter: Counter[str],
+) -> None:
+    seen_tables: set[str] = set()
+    seen_binding_keys: set[tuple[str, str, str, str]] = set()
+    for source_row_index, source_row in indexed_rows:
+        source_text = normalize_text(source_row.get("evidence_span_text"))
+        parsed = parse_characterization_measurement_table(source_text)
+        if parsed is None:
+            continue
+        source_key = short_hash(source_text)
+        if source_key in seen_tables:
+            continue
+        seen_tables.add(source_key)
+        source_section = normalize_text(source_row.get("evidence_section"))
+        source_weak_ref = weak_label_row_ref(source_row, source_row_index)
+        for binding in parsed["bindings"]:
+            target_rows = [
+                (target_row_index, target_row)
+                for target_row_index, target_row in indexed_rows
+                if measurement_binding_matches_candidate(binding, target_row)
+                and normalize_text(target_row.get("instance_kind")) != "candidate_non_formulation"
+                and normalize_text(target_row.get("formulation_role")) != "characterization_only"
+            ]
+            if str(binding.get("target_kind", "") or "") == "empty" and source_section:
+                same_source_rows = [
+                    (target_row_index, target_row)
+                    for target_row_index, target_row in target_rows
+                    if normalize_text(target_row.get("table_id")) == source_section
+                    or normalize_text(target_row.get("evidence_section")) == source_section
+                ]
+                if same_source_rows:
+                    target_rows = same_source_rows
+            target_ids = {candidate_id(row) for _, row in target_rows if candidate_id(row)}
+            if len(target_ids) != 1:
+                continue
+            target_row_index, target_row = target_rows[0]
+            target_id = candidate_id(target_row)
+            for field_name, field_value in sorted(binding["fields"].items()):
+                if field_name not in MEASUREMENT_BINDING_FIELDS or not normalize_text(field_value):
+                    continue
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=relation_graph,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=method_group_id(paper_key, method_group_signature(target_row)),
+                    variation_axis="",
+                    candidate=target_id,
+                    candidate_label=normalize_text(target_row.get("raw_formulation_label")),
+                    parent_entity="",
+                    related_entity=normalize_text(binding.get("target_label")),
+                    relation_type="candidate_measurement_binding_field",
+                    field_name=field_name,
+                    field_value_raw=field_value,
+                    field_value_norm=normalize_token(field_value),
+                    field_scope_value="measurement_bound",
+                    candidate_source=normalize_text(target_row.get("candidate_source")),
+                    instance_kind=normalize_text(target_row.get("instance_kind")),
+                    formulation_role=normalize_text(target_row.get("formulation_role")),
+                    evidence_source_type="measurement_table_binding",
+                    evidence_section=source_section,
+                    evidence_snippet=truncate_text(source_text, max_len=320),
+                    is_shared="no",
+                    variation_axis_indicator="no",
+                    source_weak_label_row_ref=source_weak_ref,
+                    deterministic_confidence="high",
+                    provenance_note=(
+                        "Stage3 bound a characterization measurement-table column back to an already-authorized formulation identity; "
+                        "no new formulation row was created."
+                    ),
+                )
+                relation_type_counter["candidate_measurement_binding_field"] += 1
+                seen_binding_keys.add((target_id, field_name, normalize_token(field_value), source_key))
+    add_grid_measurement_binding_relation_rows(
+        relation_rows=relation_rows,
+        relation_graph=relation_graph,
+        paper_key=paper_key,
+        doi=doi,
+        paper_title=paper_title,
+        indexed_rows=indexed_rows,
+        table_grid_rows=table_grid_rows,
+        relation_type_counter=relation_type_counter,
+        seen_binding_keys=seen_binding_keys,
+    )
+
+
 def target_scope_field_supplements(paper_key: str) -> list[dict[str, str]]:
     if paper_key == "WIVUCMYG":
         return [
@@ -885,6 +1922,8 @@ def build_relation_artifacts(
     out_dir: Path,
     weak_labels_jsonl: Path | None = None,
     scope_manifest_tsv: Path | None = None,
+    table_cell_grid_tsv: Path | None = None,
+    enable_table_cell_grid_measurement_binding: bool = True,
 ) -> dict[str, Any]:
     if not weak_labels_tsv.exists():
         raise FileNotFoundError(f"weak-label TSV not found: {weak_labels_tsv}")
@@ -892,6 +1931,15 @@ def build_relation_artifacts(
         raise FileNotFoundError(f"weak-label JSONL not found: {weak_labels_jsonl}")
     if scope_manifest_tsv is not None and not scope_manifest_tsv.exists():
         raise FileNotFoundError(f"scope manifest TSV not found: {scope_manifest_tsv}")
+    if not enable_table_cell_grid_measurement_binding:
+        table_cell_grid_tsv = None
+    if enable_table_cell_grid_measurement_binding and table_cell_grid_tsv is None:
+        inferred_table_cell_grid_tsv = weak_labels_tsv.parent / "table_cell_grid_v1.tsv"
+        table_cell_grid_tsv = (
+            inferred_table_cell_grid_tsv if inferred_table_cell_grid_tsv.exists() else None
+        )
+    if table_cell_grid_tsv is not None and not table_cell_grid_tsv.exists():
+        raise FileNotFoundError(f"table-cell-grid TSV not found: {table_cell_grid_tsv}")
 
     rows = read_tsv_rows(weak_labels_tsv)
     if not rows:
@@ -901,6 +1949,7 @@ def build_relation_artifacts(
 
     manifest_map = load_manifest_map(scope_manifest_tsv)
     jsonl_map = load_jsonl_notes(weak_labels_jsonl)
+    table_grid_rows = load_table_cell_grid_rows(table_cell_grid_tsv)
     field_names = extract_field_names(list(rows[0].keys()))
 
     rows_by_key: dict[str, list[tuple[int, dict[str, str]]]] = defaultdict(list)
@@ -922,6 +1971,7 @@ def build_relation_artifacts(
         doi = normalize_text(first_row.get("doi"))
         manifest_row = manifest_map.get(paper_key, {})
         paper_title = normalize_text(first_row.get("paper_title") or manifest_row.get("title"))
+        source_text = source_text_for_manifest_row(manifest_row)
         candidate_ids = [candidate_id(row) for _, row in indexed_rows]
         graph_id = relation_graph_id(paper_key, candidate_ids)
 
@@ -1192,6 +2242,310 @@ def build_relation_artifacts(
                     )
                     relation_type_counter["candidate_context_inherited_field"] += 1
 
+            protocol_markers = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(PROTOCOL_INHERITANCE_MARKER_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for marker in protocol_markers:
+                if not protocol_marker_targets_row(marker, row):
+                    continue
+                trigger_text = normalize_text(marker.get("inheritance_trigger_text"))
+                source_hint = normalize_text(marker.get("evidence_source_hint"))
+                protocol_field_groups = [
+                    ("inherited_fields", "protocol_inherited", "candidate_protocol_inherited_field", "yes", "Stage3 materialized an LLM-declared protocol-inheritance field inherited unchanged from the source procedure."),
+                    ("overrides", "protocol_override", "candidate_protocol_override_field", "no", "Stage3 materialized an LLM-declared protocol-inheritance override field for this candidate."),
+                ]
+                for field_array_name, protocol_scope, relation_type, is_shared, provenance_note in protocol_field_groups:
+                    for field_item in ensure_list(marker.get(field_array_name)):
+                        if not isinstance(field_item, dict):
+                            continue
+                        field_name = canonical_field_name(field_item.get("field_name"))
+                        field_value = normalize_text(field_item.get("field_value"))
+                        if not field_value or not protocol_field_allowed(field_name, field_value):
+                            continue
+                        protocol_row = {
+                            "field_name": field_name,
+                            "field_value_raw": field_value,
+                            "field_value_norm": normalize_token(field_value),
+                            "field_scope": protocol_scope,
+                            "evidence_source_type": "protocol_inheritance_marker",
+                            "evidence_section": source_hint or normalize_text(marker.get("source_table_id")) or evidence_section,
+                            "evidence_snippet": truncate_text(trigger_text, max_len=240) or evidence_snippet,
+                            "weak_ref": weak_ref,
+                        }
+                        field_membership.append(protocol_row)
+                        add_relation_row(
+                            relation_rows,
+                            relation_graph=graph_id,
+                            paper_key=paper_key,
+                            doi=doi,
+                            paper_title=paper_title,
+                            method_group=mg_id,
+                            variation_axis="",
+                            candidate=cid,
+                            candidate_label=normalize_text(row.get("raw_formulation_label")),
+                            parent_entity=normalize_text(marker.get("source_protocol_label")),
+                            related_entity=normalize_text(marker.get("marker_id")) or normalize_text(marker.get("source_protocol_label")),
+                            relation_type=relation_type,
+                            field_name=field_name,
+                            field_value_raw=field_value,
+                            field_value_norm=normalize_token(field_value),
+                            field_scope_value=protocol_scope,
+                            candidate_source=normalize_text(row.get("candidate_source")),
+                            instance_kind=normalize_text(row.get("instance_kind")),
+                            formulation_role=normalize_text(row.get("formulation_role")),
+                            evidence_source_type="protocol_inheritance_marker",
+                            evidence_section=source_hint or normalize_text(marker.get("source_table_id")) or evidence_section,
+                            evidence_snippet=truncate_text(trigger_text, max_len=240) or evidence_snippet,
+                            is_shared=is_shared,
+                            variation_axis_indicator="no",
+                            source_weak_label_row_ref=weak_ref,
+                            deterministic_confidence=normalize_text(field_item.get("confidence")) or normalize_text(marker.get("confidence")) or "medium",
+                            provenance_note=provenance_note,
+                        )
+                        relation_type_counter[relation_type] += 1
+
+            relation_cues = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(RELATION_CUE_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for cue in relation_cues:
+                if not relation_cue_targets_row(cue, row, mg_id):
+                    continue
+                field_name, field_value = relation_cue_field_value(cue)
+                if not field_name or not field_value:
+                    continue
+                relation_type = "candidate_typed_relation_cue_field"
+                relation_scope = normalize_text(cue.get("target_scope")).lower() or "row_local"
+                relation_row = {
+                    "field_name": field_name,
+                    "field_value_raw": field_value,
+                    "field_value_norm": normalize_token(field_value),
+                    "field_scope": relation_scope,
+                    "evidence_source_type": "typed_relation_cue",
+                    "evidence_section": normalize_text(cue.get("target_ref")) or evidence_section,
+                    "evidence_snippet": truncate_text(cue.get("evidence_anchor"), max_len=240) or evidence_snippet,
+                    "weak_ref": weak_ref,
+                }
+                field_membership.append(relation_row)
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=normalize_text(cue.get("target_ref")),
+                    related_entity=normalize_text(cue.get("relation_type")),
+                    relation_type=relation_type,
+                    field_name=field_name,
+                    field_value_raw=field_value,
+                    field_value_norm=normalize_token(field_value),
+                    field_scope_value=relation_scope,
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type="typed_relation_cue",
+                    evidence_section=normalize_text(cue.get("target_ref")) or evidence_section,
+                    evidence_snippet=truncate_text(cue.get("evidence_anchor"), max_len=240) or evidence_snippet,
+                    is_shared="yes" if relation_scope in {"method_group", "paper_global"} else "no",
+                    variation_axis_indicator="yes" if normalize_text(cue.get("relation_type")).lower() in {"formulation_variable", "doe_factor_definition"} else "no",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence=normalize_text(cue.get("confidence")) or "medium",
+                    provenance_note="Stage3 materialized an execution-ready lightweight typed relation cue emitted by Stage2.",
+                )
+                relation_type_counter[relation_type] += 1
+
+            typed_inheritance_fields = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(TYPED_INHERITANCE_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for inherited in typed_inheritance_fields:
+                if not typed_handoff_targets_row(inherited, row, mg_id):
+                    continue
+                field_name = canonical_field_name(inherited.get("field_name"))
+                field_value = normalize_text(inherited.get("field_value"))
+                if not field_name or not field_value:
+                    continue
+                inheritance_type = normalize_text(inherited.get("inheritance_type")).lower()
+                relation_type = "candidate_protocol_override_field" if inheritance_type == "row_local_override" else "candidate_protocol_inherited_field"
+                target_scope = normalize_text(inherited.get("target_scope")).lower() or "row_local"
+                source_scope = normalize_text(inherited.get("source_scope")).lower()
+                relation_scope = target_scope if target_scope in {"paper_global", "method_group"} else "row_local"
+                is_shared = "yes" if relation_scope in {"paper_global", "method_group"} else "no"
+                inherited_row = {
+                    "field_name": field_name,
+                    "field_value_raw": field_value,
+                    "field_value_norm": normalize_token(field_value),
+                    "field_scope": relation_scope,
+                    "evidence_source_type": "typed_inheritance_field",
+                    "evidence_section": normalize_text(inherited.get("source_ref")) or evidence_section,
+                    "evidence_snippet": truncate_text(inherited.get("evidence_anchor"), max_len=240) or evidence_snippet,
+                    "weak_ref": weak_ref,
+                }
+                field_membership.append(inherited_row)
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=normalize_text(inherited.get("source_ref")),
+                    related_entity=f"{source_scope}->{target_scope}",
+                    relation_type=relation_type,
+                    field_name=field_name,
+                    field_value_raw=field_value,
+                    field_value_norm=normalize_token(field_value),
+                    field_scope_value=relation_scope,
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type="typed_inheritance_field",
+                    evidence_section=normalize_text(inherited.get("source_ref")) or evidence_section,
+                    evidence_snippet=truncate_text(inherited.get("evidence_anchor"), max_len=240) or evidence_snippet,
+                    is_shared=is_shared,
+                    variation_axis_indicator="yes" if normalize_text(inherited.get("field_group")).lower() == "formulation_variable" else "no",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence=normalize_text(inherited.get("confidence")) or "medium",
+                    provenance_note="Stage3 materialized an execution-ready typed inheritance handoff with explicit source_scope, target_scope, and override policy.",
+                )
+                relation_type_counter[relation_type] += 1
+
+            typed_doe_factors = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(TYPED_DOE_FACTOR_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for factor in typed_doe_factors:
+                if not typed_handoff_targets_row(factor, row, mg_id):
+                    continue
+                for typed_item in typed_doe_factor_fields(factor):
+                    field_name = canonical_field_name(typed_item.get("field_name"))
+                    field_value = normalize_text(typed_item.get("field_value"))
+                    if not field_name or not field_value:
+                        continue
+                    add_relation_row(
+                        relation_rows,
+                        relation_graph=graph_id,
+                        paper_key=paper_key,
+                        doi=doi,
+                        paper_title=paper_title,
+                        method_group=mg_id,
+                        variation_axis="",
+                        candidate=cid,
+                        candidate_label=normalize_text(row.get("raw_formulation_label")),
+                        parent_entity=normalize_text(factor.get("factor_token")) or normalize_text(factor.get("factor_name")),
+                        related_entity=normalize_text(factor.get("target_ref")) or cid,
+                        relation_type="candidate_doe_factor_field",
+                        field_name=field_name,
+                        field_value_raw=field_value,
+                        field_value_norm=normalize_token(field_value),
+                        field_scope_value="doe_factor_row_assignment",
+                        candidate_source=normalize_text(row.get("candidate_source")),
+                        instance_kind=normalize_text(row.get("instance_kind")),
+                        formulation_role=normalize_text(row.get("formulation_role")),
+                        evidence_source_type="typed_doe_factor",
+                        evidence_section=normalize_text(row.get("table_id")) or evidence_section,
+                        evidence_snippet=truncate_text(factor.get("evidence_anchor"), max_len=240) or evidence_snippet,
+                        is_shared="no",
+                        variation_axis_indicator="yes",
+                        source_weak_label_row_ref=weak_ref,
+                        deterministic_confidence=normalize_text(factor.get("confidence")) or "medium",
+                        provenance_note="Stage3 consumed a Stage2 typed DOE factor handoff with explicit factor_role, value_type, and unit_source.",
+                    )
+                    relation_type_counter["candidate_doe_factor_field"] += 1
+
+            result_binding_candidates = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(RESULT_BINDING_CANDIDATE_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for binding in result_binding_candidates:
+                if not typed_handoff_targets_row(binding, row, mg_id, ref_key="target_formulation_ref"):
+                    continue
+                for result_field in ensure_list(binding.get("result_fields")):
+                    if not isinstance(result_field, dict):
+                        continue
+                    field_name, field_value = result_binding_field_value(result_field)
+                    if not field_name or not field_value:
+                        continue
+                    add_relation_row(
+                        relation_rows,
+                        relation_graph=graph_id,
+                        paper_key=paper_key,
+                        doi=doi,
+                        paper_title=paper_title,
+                        method_group=mg_id,
+                        variation_axis="",
+                        candidate=cid,
+                        candidate_label=normalize_text(row.get("raw_formulation_label")),
+                        parent_entity=normalize_text(binding.get("result_table_id")),
+                        related_entity=normalize_text(binding.get("result_row_ref")),
+                        relation_type="candidate_measurement_binding_field",
+                        field_name=field_name,
+                        field_value_raw=field_value,
+                        field_value_norm=normalize_token(field_value),
+                        field_scope_value="measurement_bound",
+                        candidate_source=normalize_text(row.get("candidate_source")),
+                        instance_kind=normalize_text(row.get("instance_kind")),
+                        formulation_role=normalize_text(row.get("formulation_role")),
+                        evidence_source_type="typed_result_binding_candidate",
+                        evidence_section=normalize_text(binding.get("result_table_id")) or evidence_section,
+                        evidence_snippet=truncate_text(result_field.get("evidence_anchor") or binding.get("binding_basis"), max_len=240) or evidence_snippet,
+                        is_shared="no",
+                        variation_axis_indicator="no",
+                        source_weak_label_row_ref=weak_ref,
+                        deterministic_confidence=normalize_text(binding.get("confidence")) or "medium",
+                        provenance_note="Stage3 consumed a Stage2 result-binding candidate with an explicit row-to-formulation binding basis.",
+                    )
+                    relation_type_counter["candidate_measurement_binding_field"] += 1
+
+            for typed_item in typed_fields_from_doe_assignments(row, source_text):
+                field_name = canonical_field_name(typed_item.get("field_name"))
+                field_value = normalize_text(typed_item.get("field_value"))
+                if not field_name or not field_value:
+                    continue
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=parent_id,
+                    related_entity=normalize_text(row.get("table_id")) or evidence_section,
+                    relation_type="candidate_doe_factor_field",
+                    field_name=field_name,
+                    field_value_raw=field_value,
+                    field_value_norm=normalize_token(field_value),
+                    field_scope_value="doe_factor_row_assignment",
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type="doe_factor_assignment",
+                    evidence_section=normalize_text(row.get("table_id")) or evidence_section,
+                    evidence_snippet=evidence_snippet,
+                    is_shared="no",
+                    variation_axis_indicator="yes",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence="medium",
+                    provenance_note="Stage3 typed a row-local DOE coded/decoded factor assignment into a canonical field.",
+                )
+                relation_type_counter["candidate_doe_factor_field"] += 1
+
             for supplement in target_scope_field_supplements(paper_key):
                 supplemented_row = {
                     "field_name": supplement["field_name"],
@@ -1255,6 +2609,17 @@ def build_relation_artifacts(
                 }
             )
 
+        add_measurement_binding_relation_rows(
+            relation_rows=relation_rows,
+            relation_graph=graph_id,
+            paper_key=paper_key,
+            doi=doi,
+            paper_title=paper_title,
+            indexed_rows=indexed_rows,
+            table_grid_rows=table_grid_rows,
+            relation_type_counter=relation_type_counter,
+        )
+
         candidates_by_group: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for item in candidate_items:
             candidates_by_group[item["method_group_id"]].append(item)
@@ -1269,7 +2634,10 @@ def build_relation_artifacts(
                     member_field
                     for member in members
                     for member_field in member["field_membership"]
-                    if member_field["field_name"] == field_name and member_field["field_value_norm"]
+                    if member_field["field_name"] == field_name
+                    and member_field["field_value_norm"]
+                    and member_field.get("field_scope") not in {"protocol_inherited", "protocol_override"}
+                    and member_field.get("evidence_source_type") != "protocol_inheritance_marker"
                 ]
                 if not values:
                     continue
@@ -1436,6 +2804,10 @@ def build_relation_artifacts(
                     "doi": doi,
                     "paper_title": paper_title,
                     "source_weak_labels_tsv": str(weak_labels_tsv),
+                    "source_table_cell_grid_tsv": str(table_cell_grid_tsv) if table_cell_grid_tsv else "",
+                    "table_cell_grid_measurement_binding_enabled": "yes"
+                    if enable_table_cell_grid_measurement_binding
+                    else "no",
                     "candidate_count": len(candidate_items),
                     "method_group_count": len(method_groups),
                     "method_groups": [
@@ -1476,6 +2848,8 @@ def build_relation_artifacts(
         "weak_labels_tsv": weak_labels_tsv,
         "weak_labels_jsonl": weak_labels_jsonl,
         "scope_manifest_tsv": scope_manifest_tsv,
+        "table_cell_grid_tsv": table_cell_grid_tsv,
+        "enable_table_cell_grid_measurement_binding": enable_table_cell_grid_measurement_binding,
         "relation_records_path": relation_records_path,
         "relation_graph_jsonl_path": relation_graph_jsonl_path,
         "relation_summary_path": relation_summary_path,
@@ -1495,6 +2869,20 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out-dir", required=True, type=Path)
     parser.add_argument("--weak-labels-jsonl", type=Path, default=None)
     parser.add_argument("--scope-manifest-tsv", type=Path, default=None)
+    parser.add_argument("--table-cell-grid-tsv", type=Path, default=None)
+    parser.add_argument(
+        "--enable-table-cell-grid-measurement-binding",
+        action="store_true",
+        help=(
+            "Compatibility no-op: table-cell-grid measurement binding is enabled by default. "
+            "Stage3 binds only when row identity and metric cell shape pass guards."
+        ),
+    )
+    parser.add_argument(
+        "--disable-table-cell-grid-measurement-binding",
+        action="store_true",
+        help="Disable Stage3 measurement binding from Stage2 table_cell_grid_v1.tsv for diagnostic rollback.",
+    )
     return parser
 
 
@@ -1505,6 +2893,8 @@ def main() -> None:
         out_dir=args.out_dir,
         weak_labels_jsonl=args.weak_labels_jsonl,
         scope_manifest_tsv=args.scope_manifest_tsv,
+        table_cell_grid_tsv=args.table_cell_grid_tsv,
+        enable_table_cell_grid_measurement_binding=not args.disable_table_cell_grid_measurement_binding,
     )
     print(
         json.dumps(

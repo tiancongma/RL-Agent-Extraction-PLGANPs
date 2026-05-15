@@ -328,10 +328,18 @@ def normalize_factor_key(text: str) -> str:
 
 
 def factor_names_match(run_header: str, coding_factor: str) -> bool:
+    raw_left_token = parse_factor_definition(run_header)[0].lower()
+    raw_right_token = parse_factor_definition(coding_factor)[0].lower()
+    if raw_left_token and raw_right_token and raw_left_token == raw_right_token:
+        return True
     left = normalize_factor_key(run_header)
     right = normalize_factor_key(coding_factor)
     if not left or not right:
         return False
+    left_token = re.match(r"^(x\d{1,2}|c[a-z0-9]{2,12})\b", left, flags=re.I)
+    right_token = re.match(r"^(x\d{1,2}|c[a-z0-9]{2,12})\b", right, flags=re.I)
+    if left_token and right_token and left_token.group(1).lower() == right_token.group(1).lower():
+        return True
     if left == right:
         return True
     left_tokens = {token for token in left.split() if token}
@@ -347,6 +355,9 @@ def factor_names_match(run_header: str, coding_factor: str) -> bool:
 
 def normalize_coded_level(value: Any) -> str:
     normalized = normalize_minus_signs(value)
+    normalized = normalized.replace("+/-", "±")
+    normalized = normalized.replace("±", "")
+    normalized = normalized.strip("+")
     match = re.fullmatch(r"([+-]?\d+(?:\.\d+)?)", normalized)
     if not match:
         return ""
@@ -356,11 +367,204 @@ def normalize_coded_level(value: Any) -> str:
     return f"{numeric:.6g}"
 
 
+def coded_level_values_look_like_design_codes(values: set[str]) -> bool:
+    if len(values) < 2 or len(values) > 5:
+        return False
+    parsed: list[float] = []
+    for value in values:
+        try:
+            parsed.append(float(value))
+        except ValueError:
+            return False
+    if any(number < 0 for number in parsed):
+        return True
+    return values <= {"0", "1", "-1"} and len(values) >= 2
+
+
+def extract_unit_from_factor_text(value: Any) -> str:
+    text = normalize_text(value)
+    matches = re.findall(r"\(([^)]*)\)", text)
+    for raw in reversed(matches):
+        unit = normalize_text(raw)
+        if re.search(r"%|mg\s*/\s*mL|mg/ml|w\s*/\s*v|kda|da\b|ml\b|pH", unit, re.I):
+            return unit
+    return ""
+
+
+def parse_factor_definition(value: Any) -> tuple[str, str, str]:
+    """Return (token, label, unit) from factor cells such as X1 - Drug concentration (%w/v)."""
+    text = normalize_text(value)
+    if not text:
+        return "", "", ""
+    token = ""
+    label = text
+    match = re.match(r"^\s*((?:X\d{1,2})|(?:c[A-Z0-9][A-Za-z0-9]{1,12}))\b\s*[–—\-:;,]*\s*(.*)$", text)
+    if match:
+        token = normalize_text(match.group(1))
+        label = normalize_text(match.group(2)) or token
+    elif re.search(r"\bpH\b", text, flags=re.I):
+        token = "pH"
+        label = text
+    unit = extract_unit_from_factor_text(text)
+    return token, label, unit
+
+
+def _header_level_code(header: Any) -> str:
+    text = normalize_minus_signs(header)
+    direct = normalize_coded_level(text)
+    if direct:
+        return direct
+    paren = re.search(r"\(([+-]?\d+(?:\.\d+)?)\)", text)
+    if paren:
+        return normalize_coded_level(paren.group(1))
+    lowered = text.lower()
+    if re.search(r"\blow(?:er)?\b|min", lowered):
+        return "-1"
+    if re.search(r"\bmid(?:dle)?\b|center|centre|medium", lowered):
+        return "0"
+    if re.search(r"\bhigh(?:er)?\b|max", lowered):
+        return "1"
+    return ""
+
+
+def _payload_table_id(payload: dict[str, Any]) -> str:
+    return normalize_text(payload.get("table_id") or payload.get("source_table_id") or payload.get("source_table_asset_id"))
+
+
+def _looks_like_actual_factor_level(value: Any) -> bool:
+    text = normalize_text(value)
+    if not re.search(r"\d", text):
+        return False
+    if re.fullmatch(r"X\d{1,2}", text, flags=re.I):
+        return False
+    if re.search(r"\b(?:EE|PS|PDI|Y\d|response|predicted|observed)\b", text, flags=re.I):
+        return False
+    return True
+
+
+def _payload_headers(payload: dict[str, Any]) -> list[str]:
+    header_structure = payload.get("header_structure") if isinstance(payload.get("header_structure"), dict) else {}
+    flattened = [normalize_text(item) for item in header_structure.get("flattened_headers", []) if normalize_text(item)]
+    if sum(1 for item in flattened if _header_level_code(item)) >= 2:
+        return flattened
+    rows = [item for item in payload.get("normalized_rows", []) if isinstance(item, dict)]
+    best_cells: list[str] = []
+    best_score = 0
+    for row in rows[:15]:
+        cells = [normalize_text(cell) for cell in row.get("cells", [])]
+        nonempty = [cell for cell in cells if cell]
+        if len(nonempty) < 3:
+            continue
+        score = sum(1 for cell in cells if _header_level_code(cell))
+        if score > best_score:
+            best_cells = cells
+            best_score = score
+    return best_cells if best_score >= 2 else []
+
+
+def extract_coding_table_schema(payload: dict[str, Any]) -> dict[str, dict[str, Any]] | None:
+    rows = [item for item in payload.get("normalized_rows", []) if isinstance(item, dict)]
+    if not rows:
+        return None
+    headers = _payload_headers(payload)
+    header_level_by_index = {
+        idx: code
+        for idx, header in enumerate(headers)
+        for code in [_header_level_code(header)]
+        if idx > 0 and code
+    }
+    coding_schema: dict[str, dict[str, Any]] = {}
+    for row_idx, row in enumerate(rows):
+        raw_cells = row.get("cells", [])
+        cells = [normalize_minus_signs(cell) for cell in raw_cells]
+        nonempty = [cell for cell in cells if normalize_text(cell)]
+        if len(nonempty) < 3:
+            continue
+        factor_idx = -1
+        for idx, cell in enumerate(cells):
+            token, _label, _unit = parse_factor_definition(cell)
+            if token:
+                factor_idx = idx
+                break
+        if factor_idx < 0:
+            continue
+        level_columns = sorted(header_level_by_index)
+        first_level_col = next((idx for idx in level_columns if idx > factor_idx), len(cells))
+        factor_parts = [normalize_text(cell) for cell in cells[factor_idx:first_level_col] if normalize_text(cell)]
+        for next_row in rows[row_idx + 1 : row_idx + 3]:
+            next_cells = [normalize_minus_signs(cell) for cell in next_row.get("cells", [])]
+            if any(parse_factor_definition(cell)[0] for cell in next_cells):
+                break
+            continuation = [
+                normalize_text(cell)
+                for cell in next_cells[factor_idx:first_level_col]
+                if normalize_text(cell)
+            ]
+            if continuation and not any(_looks_like_actual_factor_level(cell) for cell in continuation):
+                factor_parts.extend(continuation)
+        factor_cell = normalize_text(" ".join(factor_parts)) or nonempty[0]
+        token, label, unit = parse_factor_definition(factor_cell)
+        if not label:
+            label = normalize_text(factor_cell)
+        level_map: dict[str, str] = {}
+        for col_idx, cell in enumerate(cells):
+            if col_idx == 0 or not normalize_text(cell):
+                continue
+            level_code = header_level_by_index.get(col_idx, "")
+            if level_code:
+                level_map[level_code] = normalize_text(cell)
+        if len(level_map) < 3:
+            values = [
+                normalize_text(value)
+                for value in cells[factor_idx + 1 :]
+                if normalize_text(value) and re.search(r"\d|%", normalize_text(value))
+            ]
+            if len(values) >= 5:
+                level_map = {"-1.68": values[0], "-1": values[1], "0": values[2], "1": values[3], "1.68": values[4]}
+            elif len(values) >= 3:
+                level_map = {"-1": values[0], "0": values[1], "1": values[2]}
+        if len(level_map) < 3:
+            continue
+        if sum(1 for value in level_map.values() if _looks_like_actual_factor_level(value)) < 2:
+            continue
+        schema = {
+            "factor_token": token,
+            "factor_name": normalize_text(f"{token} {label}") if token and token.lower() not in label.lower() else normalize_text(label),
+            "factor_label": normalize_text(label),
+            "factor_unit": unit,
+            "level_map": level_map,
+            "coding_table_id": _payload_table_id(payload),
+        }
+        existing = coding_schema.get(token)
+        if existing is not None:
+            existing_score = sum(1 for value in (existing.get("level_map") or {}).values() if _looks_like_actual_factor_level(value))
+            new_score = sum(1 for value in level_map.values() if _looks_like_actual_factor_level(value))
+            if existing_score >= new_score:
+                continue
+        coding_schema[schema["factor_name"]] = schema
+        if token and token != schema["factor_name"]:
+            coding_schema[token] = schema
+    return coding_schema or None
+
+
 def detect_coded_factor_columns(header_row: list[str], numbered_rows: list[list[str]]) -> list[dict[str, Any]]:
     coded_columns: list[dict[str, Any]] = []
     if not numbered_rows:
         return coded_columns
     width = max(len(row) for row in numbered_rows)
+    fallback_columns: list[dict[str, Any]] = []
+    for col_idx in range(1, min(width, 5)):
+        coded_values = [
+            normalize_coded_level(row[col_idx])
+            for row in numbered_rows
+            if col_idx < len(row) and normalize_text(row[col_idx])
+        ]
+        if len(coded_values) < max(3, min(6, len(numbered_rows))):
+            break
+        distinct_values = {value for value in coded_values if value}
+        if not coded_level_values_look_like_design_codes(distinct_values):
+            break
+        fallback_columns.append({"column_index": col_idx, "header": f"X{len(fallback_columns) + 1}"})
     for col_idx in range(1, width):
         header = header_row[col_idx] if col_idx < len(header_row) else ""
         if is_measurement_header(header):
@@ -382,35 +586,26 @@ def detect_coded_factor_columns(header_row: list[str], numbered_rows: list[list[
         if len(coded_values) < max(3, min(6, len(numbered_rows))):
             continue
         distinct_values = {value for value in coded_values if value}
-        if len(distinct_values) < 2 or len(distinct_values) > 5:
+        if not coded_level_values_look_like_design_codes(distinct_values):
             continue
-        if {"-1", "0", "1"}.issubset(distinct_values) or any(
-            value not in {"-1", "0", "1"} for value in distinct_values
-        ):
-            coded_columns.append({"column_index": col_idx, "header": normalized_header})
+        coded_columns.append({"column_index": col_idx, "header": normalized_header, "value_kind": "coded"})
+    if len(fallback_columns) > len(coded_columns):
+        return fallback_columns
     if coded_columns:
         return coded_columns
-    fallback_columns: list[dict[str, Any]] = []
-    for col_idx in range(1, min(width, 5)):
-        coded_values = [
-            normalize_coded_level(row[col_idx])
-            for row in numbered_rows
-            if col_idx < len(row) and normalize_text(row[col_idx])
-        ]
-        if len(coded_values) < max(3, min(6, len(numbered_rows))):
-            break
-        distinct_values = {value for value in coded_values if value}
-        if len(distinct_values) < 2 or len(distinct_values) > 5:
-            break
-        if not ({"-1", "0", "1"}.issubset(distinct_values) or any(value not in {"-1", "0", "1"} for value in distinct_values)):
-            break
-        fallback_columns.append({"column_index": col_idx, "header": f"X{len(fallback_columns) + 1}"})
-    if len(fallback_columns) >= 2 and len(fallback_columns) > len(coded_columns):
+    if len(fallback_columns) >= 2:
         return fallback_columns
     return coded_columns
 
 
 def extract_coding_table_map(payload: dict[str, Any]) -> dict[str, dict[str, str]] | None:
+    schema = extract_coding_table_schema(payload)
+    if schema:
+        return {
+            factor_name: dict(item.get("level_map") or {})
+            for factor_name, item in schema.items()
+            if isinstance(item.get("level_map"), dict)
+        }
     rows = [item for item in payload.get("normalized_rows", []) if isinstance(item, dict)]
     if not rows:
         return None
@@ -554,6 +749,93 @@ def decode_row_assignments(
     return decoded, ""
 
 
+def resolve_coding_schema_for_header(header: str, coding_payload: dict[str, Any]) -> dict[str, Any] | None:
+    coding_schema = extract_coding_table_schema(coding_payload) or {}
+    if not coding_schema:
+        return None
+    header_text = normalize_text(header)
+    header_token, _header_label, _header_unit = parse_factor_definition(header_text)
+    if header_token:
+        direct = coding_schema.get(header_token)
+        if direct is not None:
+            return direct
+    for schema in coding_schema.values():
+        token = normalize_text(schema.get("factor_token"))
+        factor_name = normalize_text(schema.get("factor_name"))
+        factor_label = normalize_text(schema.get("factor_label"))
+        if token and factor_names_match(header_text, token):
+            return schema
+        if factor_name and factor_names_match(header_text, factor_name):
+            return schema
+        if factor_label and factor_names_match(header_text, factor_label):
+            return schema
+    return None
+
+
+def build_structured_coded_row_assignments(
+    *,
+    row: list[str],
+    coded_columns: list[dict[str, Any]],
+    coding_payload: dict[str, Any] | None,
+    source_table_id: str,
+    source_csv_path: Path,
+) -> tuple[list[dict[str, str]], str]:
+    assignments: list[dict[str, str]] = []
+    for column in coded_columns:
+        header = normalize_text(column.get("header"))
+        col_idx = int(column.get("column_index") or 0)
+        coded_value = normalize_coded_level(row[col_idx] if col_idx < len(row) else "")
+        raw_cell = normalize_text(row[col_idx] if col_idx < len(row) else "")
+        if not coded_value:
+            return [], "coded_value_missing"
+        schema = resolve_coding_schema_for_header(header, coding_payload) if coding_payload is not None else None
+        factor_token = ""
+        factor_name = header
+        factor_label = header
+        factor_unit = ""
+        decoded_value = ""
+        coding_table_id = ""
+        level_map: dict[str, Any] = {}
+        if schema is not None:
+            factor_token = normalize_text(schema.get("factor_token"))
+            factor_name = normalize_text(schema.get("factor_name")) or factor_token or header
+            factor_label = normalize_text(schema.get("factor_label")) or factor_name
+            factor_unit = normalize_text(schema.get("factor_unit"))
+            level_map = schema.get("level_map") if isinstance(schema.get("level_map"), dict) else {}
+            decoded_value = normalize_text(level_map.get(coded_value))
+            coding_table_id = normalize_text(schema.get("coding_table_id"))
+        if not decoded_value:
+            decoded_value = raw_cell or coded_value
+        level_map_keys = {normalize_coded_level(key) for key in level_map.keys()} if isinstance(level_map, dict) else set()
+        value_kind = "coded"
+        decoding_rule = "coding_table_level_map"
+        coded_factor_value = coded_value
+        if schema is not None and coded_value not in level_map_keys:
+            value_kind = "physical"
+            decoding_rule = "already_physical_table_value"
+            coded_factor_value = ""
+            decoded_value = raw_cell or coded_value
+        assignments.append(
+            {
+                "assignment_type": "doe_factor_assignment",
+                "factor_token": factor_token or parse_factor_definition(header)[0],
+                "factor_name": factor_name,
+                "factor_label": factor_label,
+                "factor_value": raw_cell or coded_value,
+                "factor_value_kind": value_kind,
+                "coded_factor_value": coded_factor_value,
+                "decoded_factor_value": decoded_value,
+                "factor_unit": factor_unit,
+                "source_table_id": source_table_id,
+                "source_table_path": str(source_csv_path).replace("\\", "/"),
+                "coding_table_id": coding_table_id,
+                "decoding_rule": decoding_rule,
+                "provenance": "stage2_numbered_doe_row_recovery_structured_factor_schema",
+            }
+        )
+    return assignments, ""
+
+
 def apply_decoded_assignments_to_fields(
     *,
     fields: dict[str, dict[str, Any]],
@@ -564,6 +846,15 @@ def apply_decoded_assignments_to_fields(
         extras[factor_name] = factor_value
         low = factor_name.lower()
         if "plga" in low or "polymer" in low:
+            if header_declares_concentration(factor_name):
+                assign_concentration_fields(
+                    fields,
+                    value_field="polymer_concentration_value",
+                    unit_field="polymer_concentration_unit",
+                    cell_text=factor_value,
+                    header=factor_name,
+                )
+                continue
             fields["plga_mass_mg"] = {
                 "value": maybe_number_text(factor_value) or factor_value,
                 "value_text": factor_value,
@@ -582,6 +873,15 @@ def apply_decoded_assignments_to_fields(
                 "missing_reason": "",
             }
         elif "pf" in low or "drug" in low:
+            if header_declares_concentration(factor_name):
+                assign_concentration_fields(
+                    fields,
+                    value_field="drug_concentration_value",
+                    unit_field="drug_concentration_unit",
+                    cell_text=factor_value,
+                    header=factor_name,
+                )
+                continue
             fields["drug_feed_amount_text"] = {
                 "value": maybe_number_text(factor_value) or factor_value,
                 "value_text": factor_value,
@@ -590,6 +890,43 @@ def apply_decoded_assignments_to_fields(
                 "evidence_region_type": "table_cell",
                 "missing_reason": "",
             }
+
+
+def build_doe_factor_assignments_payload(
+    *,
+    extras: dict[str, str],
+    decoded_assignments: dict[str, str] | None,
+    table_id: str,
+    csv_path: Path,
+    structured_assignments: list[dict[str, str]] | None = None,
+) -> list[dict[str, str]]:
+    """Expose DOE row-local assignments as downstream execution metadata."""
+    if structured_assignments:
+        return [dict(item) for item in structured_assignments]
+    decoded_lookup = {normalize_text(k): normalize_text(v) for k, v in (decoded_assignments or {}).items()}
+    assignments: list[dict[str, str]] = []
+    for factor_name, factor_value in sorted(extras.items()):
+        if factor_name in {"polymer_identity", "polymer_name_raw"}:
+            continue
+        clean_name = normalize_text(factor_name)
+        clean_value = normalize_text(factor_value)
+        if not clean_name or not clean_value:
+            continue
+        assignments.append(
+            {
+                "assignment_type": "doe_factor_assignment",
+                "factor_name": clean_name,
+                "factor_value": clean_value,
+                "factor_value_kind": "physical",
+                "coded_factor_value": "",
+                "decoded_factor_value": decoded_lookup.get(clean_name, clean_value),
+                "source_table_id": table_id,
+                "source_table_path": str(csv_path).replace("\\", "/"),
+                "decoding_rule": "already_physical_table_value",
+                "provenance": "stage2_numbered_doe_row_recovery",
+            }
+        )
+    return assignments
 
 
 def select_candidate_tables(tables_dir: Path, min_numbered_rows: int) -> list[dict[str, Any]]:
@@ -735,6 +1072,126 @@ def header_matches(header: str, *patterns: str) -> bool:
     return any(re.search(pattern, low) for pattern in patterns)
 
 
+def header_declares_concentration(header: str) -> bool:
+    low = normalize_text(header).lower()
+    return bool(re.search(r"\b(conc(?:entration)?|mg\s*/?\s*ml|mg\s+l-?1|%|w\s*/?\s*v|v\s*/?\s*v)\b", low))
+
+
+def header_declares_mass_or_amount(header: str) -> bool:
+    low = normalize_text(header).lower()
+    if header_declares_concentration(low):
+        return False
+    return bool(re.search(r"\b(mass|amount|feed|mg)\b", low))
+
+
+def split_value_and_unit_from_header(cell_text: str, header: str) -> tuple[str, str, str]:
+    clean_cell = normalize_text(cell_text)
+    clean_header = normalize_text(header)
+    value = maybe_number_text(clean_cell) or clean_cell
+    value_text = clean_cell
+    unit = ""
+    combined = f"{clean_cell} {clean_header}"
+    unit_match = re.search(
+        r"(%\s*w\s*/?\s*v|%\s*v\s*/?\s*v|mg\s*/?\s*mL|mg\s+l-?1|mg\s*ml-?1|%)",
+        combined,
+        flags=re.I,
+    )
+    if unit_match:
+        unit = normalize_text(unit_match.group(1)).replace(" ", "")
+        if unit.lower() == "mg/ml":
+            unit = "mg/mL"
+        if unit == "%w/v":
+            unit = "%w/v"
+        if unit == "%v/v":
+            unit = "%v/v"
+        if clean_cell and not re.search(r"(?:%|mg\s*/?\s*mL|mg\s+l-?1|mg\s*ml-?1)", clean_cell, flags=re.I):
+            value_text = f"{clean_cell} {unit}"
+    return value, value_text, unit
+
+
+def assign_concentration_fields(
+    fields: dict[str, dict[str, Any]],
+    *,
+    value_field: str,
+    unit_field: str,
+    cell_text: str,
+    header: str,
+) -> None:
+    value, value_text, unit = split_value_and_unit_from_header(cell_text, header)
+    fields[value_field] = {
+        "value": value,
+        "value_text": value_text,
+        "scope": "instance_specific",
+        "membership_confidence": "high",
+        "evidence_region_type": "table_cell",
+        "missing_reason": "",
+    }
+    if unit:
+        fields[unit_field] = {
+            "value": unit,
+            "value_text": unit,
+            "scope": "instance_specific",
+            "membership_confidence": "high",
+            "evidence_region_type": "table_header",
+            "missing_reason": "",
+        }
+
+
+def explicit_material_name_from_role_header(header: str, role: str) -> str:
+    """Return a material name only when the header itself names a material.
+
+    Generic role headers such as "surfactant concentration" authorize the
+    numeric factor value, but not a concrete surfactant identity.  The identity
+    must come from an explicit material surface such as "Poloxamer 188" or
+    "Pluronic F68", or from a separate source-backed shared relation.
+    """
+    clean = normalize_text(header).replace("®", "")
+    if not clean:
+        return ""
+    role_low = normalize_text(role).lower()
+    if role_low in {"surfactant", "stabilizer", "emulsifier"}:
+        material_patterns = [
+            (r"\bPVA\b|\bpolyvinyl\s+alcohol\b", "PVA"),
+            (r"\bTween\s*80\b|\bPolysorbate\s*80\b", "Tween 80"),
+            (r"\bPluronic\s*F\s*-?\s*68\b|\bF\s*-?\s*68\b", "Pluronic F68"),
+            (r"\bPoloxamer\s*188\b|\bP188\b", "poloxamer 188"),
+            (r"\bPoloxamer\s*407\b|\bP407\b", "Poloxamer 407"),
+            (r"\bBrij\s*35\b", "Brij 35"),
+            (r"\bSpan\s*80\b", "Span 80"),
+            (r"\bLabrafil\b", "Labrafil"),
+            (r"\bSolutol\s*HS\s*15\b", "Solutol HS 15"),
+        ]
+        for pattern, material_name in material_patterns:
+            if re.search(pattern, clean, flags=re.I):
+                return material_name
+    return ""
+
+
+def infer_unique_surfactant_identity_from_text(raw_text: str) -> str:
+    """Return one explicit surfactant identity from source text, if unique."""
+    text = normalize_text(raw_text)
+    if not text:
+        return ""
+    patterns = [
+        (r"\bsurfactant\s*\(\s*poloxamer\s*407\s*\)|\bpoloxamer\s*407\b", "Poloxamer 407"),
+        (r"\bsurfactant\s*\(\s*poloxamer\s*188\s*\)|\bpoloxamer\s*188\b|\bP188\b", "poloxamer 188"),
+        (r"\bPluronic\s*F\s*-?\s*68\b|\bF\s*-?\s*68\b", "Pluronic F68"),
+        (r"\bpolyvinyl\s+alcohol\b|\bPVA\b", "PVA"),
+        (r"\bTween\s*80\b|\bPolysorbate\s*80\b", "Tween 80"),
+        (r"\bBrij\s*35\b", "Brij 35"),
+        (r"\bSpan\s*80\b", "Span 80"),
+        (r"\bLabrafil\b", "Labrafil"),
+        (r"\bSolutol\s*HS\s*15\b", "Solutol HS 15"),
+    ]
+    hits = []
+    seen = set()
+    for pattern, material_name in patterns:
+        if re.search(pattern, text, flags=re.I) and material_name.lower() not in seen:
+            hits.append(material_name)
+            seen.add(material_name.lower())
+    return hits[0] if len(hits) == 1 else ""
+
+
 def parse_row_fields(
     *,
     header_row: list[str],
@@ -749,6 +1206,16 @@ def parse_row_fields(
     if polymer_identity != "unknown":
         extras["polymer_identity"] = polymer_identity
         extras["polymer_name_raw"] = polymer_name_raw
+    shared_surfactant_name = infer_unique_surfactant_identity_from_text(raw_text)
+    if shared_surfactant_name:
+        fields["surfactant_name"] = {
+            "value": shared_surfactant_name,
+            "value_text": shared_surfactant_name,
+            "scope": "global_shared",
+            "membership_confidence": "medium",
+            "evidence_region_type": "source_text_unique_material_context",
+            "missing_reason": "",
+        }
     for header, cell in zip(header_row[1:], row[1:]):
         clean_header = normalize_text(header)
         clean_cell = normalize_text(cell)
@@ -756,24 +1223,39 @@ def parse_row_fields(
             continue
         value_num = maybe_number_text(clean_cell)
         if header_matches(clean_header, r"\bplga\b", r"\bpolymer\b"):
+            if header_declares_concentration(clean_header):
+                assign_concentration_fields(
+                    fields,
+                    value_field="polymer_concentration_value",
+                    unit_field="polymer_concentration_unit",
+                    cell_text=clean_cell,
+                    header=clean_header,
+                )
+                extras[clean_header] = clean_cell
+                continue
+            if not header_declares_mass_or_amount(clean_header):
+                extras[clean_header] = clean_cell
+                continue
             fields["plga_mass_mg"] = {
                 "value": value_num or clean_cell,
-                "value_text": f"{clean_cell} mg/mL" if "mg/ml" not in clean_cell.lower() and "mg/mL" not in clean_cell else clean_cell,
+                "value_text": f"{clean_cell} mg" if not re.search(r"\bmg\b", clean_cell, flags=re.I) else clean_cell,
                 "scope": "instance_specific",
                 "membership_confidence": "high",
                 "evidence_region_type": "table_cell",
                 "missing_reason": "",
             }
             continue
-        if header_matches(clean_header, r"\bpoloxamer\b", r"\bsurfactant\b"):
-            fields["surfactant_name"] = {
-                "value": "Poloxamer",
-                "value_text": "Poloxamer",
-                "scope": "global_shared",
-                "membership_confidence": "medium",
-                "evidence_region_type": "table_header",
-                "missing_reason": "",
-            }
+        if header_matches(clean_header, r"\bpoloxamer\b", r"\bsurfactant\b", r"\bstabilizer\b", r"\bemulsifier\b"):
+            material_name = explicit_material_name_from_role_header(clean_header, "surfactant")
+            if material_name:
+                fields["surfactant_name"] = {
+                    "value": material_name,
+                    "value_text": material_name,
+                    "scope": "instance_specific",
+                    "membership_confidence": "medium",
+                    "evidence_region_type": "explicit_material_table_header",
+                    "missing_reason": "",
+                }
             fields["surfactant_concentration_text"] = {
                 "value": value_num or clean_cell,
                 "value_text": f"{clean_cell} mg/mL" if "mg/ml" not in clean_cell.lower() and "mg/mL" not in clean_cell else clean_cell,
@@ -820,17 +1302,17 @@ def parse_row_fields(
                     "value_text": drug_name,
                     "scope": "global_shared",
                     "membership_confidence": "medium",
-                    "evidence_region_type": "table_header",
+                    "evidence_region_type": "title_or_text_context",
                     "missing_reason": "",
                 }
-            fields["drug_feed_amount_text"] = {
-                "value": value_num or clean_cell,
-                "value_text": f"{clean_cell} mg/mL" if "mg/ml" not in clean_cell.lower() and "mg/mL" not in clean_cell else clean_cell,
-                "scope": "instance_specific",
-                "membership_confidence": "high",
-                "evidence_region_type": "table_cell",
-                "missing_reason": "",
-            }
+            assign_concentration_fields(
+                fields,
+                value_field="drug_concentration_value",
+                unit_field="drug_concentration_unit",
+                cell_text=clean_cell,
+                header=clean_header,
+            )
+            extras[clean_header] = clean_cell
             continue
         if header_matches(clean_header, r"\bpdi\b"):
             fields["pdi"] = {
@@ -989,6 +1471,7 @@ def build_stage2_candidate_form(
     header_row: list[str],
     raw_text: str,
     decoded_assignments: dict[str, str] | None = None,
+    structured_assignments: list[dict[str, str]] | None = None,
 ) -> tuple[dict[str, Any], dict[str, str]]:
     row_text = " | ".join(cell for cell in row if cell)
     fields, extras = parse_row_fields(header_row=header_row, row=row, title=paper.title, raw_text=raw_text)
@@ -996,6 +1479,13 @@ def build_stage2_candidate_form(
         fields=fields,
         extras=extras,
         decoded_assignments=decoded_assignments or {},
+    )
+    doe_factor_assignments = build_doe_factor_assignments_payload(
+        extras=extras,
+        decoded_assignments=decoded_assignments or {},
+        table_id=table_id,
+        csv_path=csv_path,
+        structured_assignments=structured_assignments,
     )
     change_descriptions = [f"{key}={value}" for key, value in sorted(extras.items()) if key not in {"polymer_identity", "polymer_name_raw"}]
     label_token = re.sub(r"[^A-Za-z0-9]+", "_", formulation_label).strip("_") or f"row_{formulation_number:02d}"
@@ -1014,6 +1504,9 @@ def build_stage2_candidate_form(
         "formulation_role": "variant",
         "instance_confidence": "high",
         "candidate_source": "doe_numbered_table_row",
+        "table_id": table_id,
+        "table_row_id": formulation_label,
+        "table_row_variable_assignments_json": json.dumps(doe_factor_assignments, ensure_ascii=False, sort_keys=True),
         "fields": fields,
         "instance_evidence": {
             "evidence_region_type": "table_row",
@@ -1205,16 +1698,34 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
             if existing_match and existing_match.get("candidate_source") != "llm_extracted":
                 continue
             decoded_assignments: dict[str, str] = {}
-            if coded_columns and coding_payload is not None:
-                decoded_assignments, row_decode_failure_reason = decode_row_assignments(
+            structured_assignments: list[dict[str, str]] = []
+            if coded_columns:
+                structured_assignments, row_decode_failure_reason = build_structured_coded_row_assignments(
                     row=row,
                     coded_columns=coded_columns,
                     coding_payload=coding_payload,
+                    source_table_id=table_id,
+                    source_csv_path=Path(table["csv_path"]),
                 )
                 if row_decode_failure_reason:
                     decode_status = "unresolved_but_emitted_raw_rows"
                     decode_failure_reason = row_decode_failure_reason
-                    decoded_assignments = {}
+                    structured_assignments = []
+                decoded_assignments = {
+                    normalize_text(item.get("factor_name") or item.get("factor_token")): normalize_text(item.get("decoded_factor_value"))
+                    for item in structured_assignments
+                    if normalize_text(item.get("factor_name") or item.get("factor_token")) and normalize_text(item.get("decoded_factor_value"))
+                }
+                if coding_payload is not None and not decoded_assignments:
+                    decoded_assignments, row_decode_failure_reason = decode_row_assignments(
+                        row=row,
+                        coded_columns=coded_columns,
+                        coding_payload=coding_payload,
+                    )
+                    if row_decode_failure_reason:
+                        decode_status = "unresolved_but_emitted_raw_rows"
+                        decode_failure_reason = row_decode_failure_reason
+                        decoded_assignments = {}
             candidate, artifact_row = build_stage2_candidate_form(
                 paper=paper,
                 table_id=table_id,
@@ -1225,6 +1736,7 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
                 header_row=table["header_row"],
                 raw_text=raw_text,
                 decoded_assignments=decoded_assignments,
+                structured_assignments=structured_assignments,
             )
             if existing_match:
                 artifact_row["existing_stage2_match"] = existing_match.get("formulation_id", "")

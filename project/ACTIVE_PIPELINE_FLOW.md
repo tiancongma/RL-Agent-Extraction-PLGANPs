@@ -111,6 +111,21 @@ Fine-grained governance mapping:
 - Stage5:
   - `S5-1 Fixed-row candidate intake`
   - `S5-2 Deterministic direct materialization`
+  - `S5-2b Deterministic DOE factor physical materialization`
+    - operates inside S5-2 after row-local DOE variables have been authorized
+      upstream and before value/unit structuring
+    - parses source-defined factor/level tables into
+      `factor_token + factor_role + coded_level -> physical_value + unit`
+      and writes final physical value/unit bundles for admitted rows
+    - must not create formulation rows, infer missing level maps, convert
+      units, or treat unresolved coded levels such as `-1 mg/mL` as physical
+      concentrations
+  - `S5-2c Deterministic numeric value/unit structuring`
+    - operates inside S5-2 after direct and relation-backed materialization
+    - splits already materialized physical numeric surfaces into raw/display,
+      numeric value, and unit bundles for downstream calculation
+    - must not infer missing units, convert units, perform derived reasoning,
+      fill from donors, create rows, or change formulation membership
   - `S5-3 LLM-assisted direct value candidate extraction`
   - `S5-4 Value authority validation and merge`
   - `S5-5 Derived reasoning / calculated value materialization`

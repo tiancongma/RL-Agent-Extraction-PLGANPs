@@ -5944,3 +5944,445 @@ DEV15 follow-up:
   - Layer3 compare: `data/results/20260423_9c4a03f/497_layer3_compare_dev15_context_marker_diagnostic`
 - Outcome: QLYKLPKT remains `7/7` and shared-field propagation works, but the full DEV15 route is not promotable because final rows drop to `140` versus `202` GT rows, with four under-counted papers.
 - `ACTIVE_RUN.json` must not be updated to this lineage. The context-marker handshake remains a bounded validated repair, while fresh full-route promotion is blocked by row-discovery/count regressions outside the QLYKLPKT shared-field fix.
+
+
+### Decision: Add protocol-inheritance marker handshake for same-procedure overrides
+
+Decision:
+- Stage2 now exposes `protocol_inheritance_markers` for source statements such as same procedure/protocol/method with explicit overrides.
+- S2 evidence selection lets a bounded number of same-procedure variant-preparation trigger blocks survive method budget when they bind a formulation/table anchor to an override material or value.
+- Stage3 materializes LLM-declared protocol overrides as `candidate_protocol_override_field` relation rows and resolved fields.
+- Stage5 consumes only those resolved relation fields; it does not mine prose or infer protocol inheritance on its own.
+
+Rationale:
+- 5ZXYABSU showed the failure class: the source states Gat-loaded NPs were prepared using the same procedure but incorporating 5 mg Gat, but the previous S2 evidence pack omitted that trigger sentence, and S3 could not legally materialize the drug amount.
+- The repair keeps inheritance semantics in Stage2/LLM and deterministic materialization in Stage3/Stage5.
+- Protocol override targets are formulation-scoped first; a shared table id alone must not spread an override to non-target rows.
+
+Validation:
+- Bounded 5ZXYABSU diagnostic lineage:
+  - S2-2/S2-4a evidence and prompt: `data/results/20260423_9c4a03f/524_stage2_protocol_inheritance_5zxyabsu_s2_2_rebuild_diagnostic`, `data/results/20260423_9c4a03f/525_s2_4a_protocol_inheritance_5zxyabsu_prompt_freeze_diagnostic`
+  - S2-4b raw response: `data/results/20260423_9c4a03f/526_s2_4b_protocol_inheritance_5zxyabsu_deepseek_diagnostic`
+  - S2-7 completed Stage2: `data/results/20260423_9c4a03f/531_s2_7_protocol_inheritance_5zxyabsu_aliasfix_diagnostic`
+  - Stage3: `data/results/20260423_9c4a03f/536_stage3_protocol_inheritance_5zxyabsu_groupfix_diagnostic`
+  - Stage5: `data/results/20260423_9c4a03f/537_stage5_protocol_inheritance_5zxyabsu_groupfix_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/538_layer3_compare_protocol_inheritance_5zxyabsu_diagnostic`
+- LLM emitted two `protocol_inheritance_markers`, including `prepared using the same procedure but incorporating 5 mg of Gat into the inner phase`.
+- Stage3 emitted targeted `candidate_protocol_override_field` rows for F3, NPG1, NPG2, NPG3, F4, and F5 without spreading the 5 mg Gat override to NPR/NPB rows.
+- Stage5 final rows carry `drug_feed_amount_text=5 mg Gat` for the Gat-loaded targets only.
+- Layer3 5ZXYABSU target-field effect versus current 522 diagnostic baseline: `drug_mass_mg` improves from 0/6 present to 3/6 present_and_match; `O_volume_mL` remains 6/6 present_and_match; `external_aqueous_phase_volume_mL` remains 0/6 present.
+- Tests: `python3 -m unittest tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests tests.test_stage2_preparation_core_selector_floor_v1` passed.
+
+Boundary:
+- This is bounded diagnostic evidence, not a full DEV15 baseline promotion.
+- `ACTIVE_RUN.json` must not be updated from this bounded replay alone.
+
+## 2026-05-13 - Protocol Inheritance Exact Field Binding For Phase Volumes
+
+Decision:
+- Extend `protocol_inheritance_markers` with `inherited_fields` for exact source-protocol values that carry unchanged to target formulations.
+- Keep `overrides` for target-specific changes only.
+- Stage3 may materialize exact inherited protocol fields as `candidate_protocol_inherited_field`; Stage5 must consume those resolved fields into typed final-table bundles even when the typed bundle columns are Stage5-added columns.
+- S3 target binding may use explicit material identity tokens from target text and row identity variables, e.g. `Gat`/`gatifloxacin`, `Rh`/`rhodamine`, `polysorbate`, and `labrafil`, when formulation labels are abbreviated.
+
+Validation:
+- Bounded 5ZXYABSU lineage:
+  - S2-4a/S2-4b/S2-5/S2-6/S2-7: `data/results/20260423_9c4a03f/549_s2_4a_phase_volume_5zxyabsu_prompt_freeze_diagnostic` through `data/results/20260423_9c4a03f/553_s2_7_phase_volume_5zxyabsu_diagnostic`
+  - Stage3/Stage5/Layer3 after material-token binding: `data/results/20260423_9c4a03f/559_stage3_phase_volume_5zxyabsu_materialbind_diagnostic`, `data/results/20260423_9c4a03f/560_stage5_phase_volume_5zxyabsu_materialbind_diagnostic`, `data/results/20260423_9c4a03f/561_layer3_compare_phase_volume_5zxyabsu_materialbind_diagnostic`
+- Bounded 5ZXYABSU `external_aqueous_phase_volume_mL` improved from 0/6 present_and_match in run 522 to 6/6 present_and_match in run 561; `O_volume_mL` remained 6/6 present_and_match.
+- Full DEV15 same-parameter diagnostic lineage 562->570 succeeded but is not promotable: Layer1 compare run 569 has 192 system rows vs 202 GT rows, 12/15 papers match, and 3 under-count papers remain (`5ZXYABSU`, `L3H2RS2H`, `UFXX9WXE`).
+- Full DEV15 Layer3 run 570 improved total `missing_in_system` versus run 548 from 756 to 612 and `present_and_match` from 1705 to 1785, but row-count regressions remain.
+- Tests: targeted protocol inheritance and Stage5 resolved-volume tests passed.
+
+Boundary:
+- Do not update `data/results/ACTIVE_RUN.json` from this lineage.
+- The phase-volume repair is mainline code-path evidence, but baseline promotion remains blocked by DEV15 row-count closure.
+
+## 2026-05-13 - Row-Code Table Scope Recovery And Generic Material Alias Binding
+
+Decision:
+- When LLM semantic output contains row-coded formulation identities or protocol marker targets such as `NPG1`, `NPR3`, or similar table-row codes but omits `table_scopes`, S2-7 may infer a formulation-table scope by matching those row codes against preserved table authority and, when normalized payload authority is incomplete, bounded `source_table_files` CSV authority.
+- This inference is post-LLM completion only: row-code signals from LLM candidates/markers authorize the semantic scope; deterministic code only reopens the row universe from table authority.
+- Replace the narrow S3 protocol marker material binding with generic paper-local material alias matching based on row identity variables, change descriptions, method-group hints, dictionary normalization, and scoped material-prefix aliases. Do not hardcode article-specific names such as Gat/Rh/Labrafil as the rule.
+
+Validation:
+- Bounded DEV15 diagnostic lineage:
+  - S2-7: `data/results/20260423_9c4a03f/576_s2_7_row_code_alias_repair2_diagnostic`
+  - Stage3: `data/results/20260423_9c4a03f/577_stage3_row_code_alias_repair_diagnostic`
+  - Stage5: `data/results/20260423_9c4a03f/578_stage5_row_code_alias_repair_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/579_compare_row_code_alias_repair_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/580_layer3_compare_row_code_alias_repair_diagnostic`
+- 5ZXYABSU S2-7 table-row expansion recovered Table 1 from row-coded LLM signals and emitted 9 authority-backed table rows; Stage5 final count is now 9/9.
+- DEV15 Layer1 compare improved from run 574/569 row-count residuals to 14/15 matching papers and 203 system rows vs 202 GT rows. Remaining mismatch is L3H2RS2H +1 and should be handled as a separate Stage5 retention-boundary repair.
+- Layer3 target field status in run 580: `external_aqueous_phase_volume_mL` missing reduced from 20 in run 570 to 9; `O_volume_mL` missing reduced from 26 to 23; `drug_mass_mg` remains mixed and needs separate value/alignment audit.
+- Tests: `tests.test_stage2_table_row_expansion_scope_alias_roles_v1`, `tests.test_material_value_binding_v1`, `tests.test_table_structure_dictionary_v1`, and targeted Stage3/Stage5 protocol/material alias tests passed.
+
+Boundary:
+- Do not update `data/results/ACTIVE_RUN.json` from this lineage.
+- This is a validated diagnostic repair with positive 5ZXYABSU and Layer3 phase-volume delta, but diagnosis-baseline promotion remains blocked by L3H2RS2H +1.
+
+## 2026-05-13 - S2-7 Secondary Source Identity Recovery And Stage5 Characterization Binding
+
+Decision:
+- When LLM-first Stage2 already authorizes a formulation family and at least one main formulation table, S2-7 may supplement the active table scopes with preserved source-text/table-authority scopes that expose explicit sample/formulation identities, as long as it does not duplicate an already-active formulation table scope.
+- This supplement is post-LLM completion only: it reopens source authority for identity-bearing characterization/release/stability tables such as empty controls and selected sample tables; it does not ask the LLM to enumerate rows and does not define a candidate universe without prior LLM family/table authorization.
+- Stage5 should bind characterization-only LLM helper rows back to a table-row identity when the helper has the same drug, nanoparticle family, and concentration as an already materialized table row. Such helpers are not independent final formulation identities.
+
+Validation:
+- Full DEV15 diagnostic lineage:
+  - S2-7: `data/results/20260423_9c4a03f/583_s2_7_secondary_identity_recovery_diagnostic`
+  - Stage3: `data/results/20260423_9c4a03f/584_stage3_secondary_identity_recovery_diagnostic`
+  - Stage5: `data/results/20260423_9c4a03f/587_stage5_secondary_identity_binding_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/588_compare_secondary_identity_binding_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/589_layer3_compare_secondary_identity_binding_diagnostic`
+- L3H2RS2H S2-7 emits 21 table-row expansion rows: 16 Table 1/3 concentration rows, Table 2 empty nanospheres, Table 4 empty nanocapsules, and three Table 5 nanocapsule sample rows.
+- Stage5 filters the two duplicate characterization-only helpers (`XAN nanosphere at 60 μg/mL`, `XAN nanocapsule at 600 μg/mL`) by binding them back to existing table rows.
+- DEV15 Layer1 compare: 202 system rows vs 202 GT rows; 15/15 papers match.
+- Layer3 compare run 589: present_and_match=1824, missing_in_system=618, present_but_mismatch=553, blocked_alignment=420, extra_in_system=110, not_reported_in_gt=3699.
+- Tests: targeted S2-7 supplemental scope test, Stage5 characterization binding tests, and py_compile checks passed.
+
+Boundary:
+- `data/results/ACTIVE_RUN.json` updated to diagnostic baseline 588/589.
+- Diagnostic-only; `benchmark_valid=no`.
+
+## 2026-05-13 - Stage3 Measurement Table Binding For Characterization Results
+
+Decision:
+- Stage3 may materialize characterization/result table measurements as `candidate_measurement_binding_field` relation rows when a preserved measurement table column can be bound to an already-authorized formulation identity.
+- The binding is row-preserving: it may populate fields such as `size_nm`, `pdi`, and `zeta_mV` on existing formulation rows, but it must not create new final rows or let Stage5 infer measurement semantics from table text.
+- Stage5 consumes only resolved relation fields and writes these measurement bindings as instance-specific typed bundles when the destination row is blank.
+
+Validation:
+- Full DEV15 diagnostic lineage:
+  - Stage2/S2-7 source: `data/results/20260423_9c4a03f/583_s2_7_secondary_identity_recovery_diagnostic`
+  - Stage3: `data/results/20260423_9c4a03f/590_stage3_measurement_binding_diagnostic`
+  - Stage5: `data/results/20260423_9c4a03f/591_stage5_measurement_binding_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/592_compare_measurement_binding_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/593_layer3_compare_measurement_binding_diagnostic`
+- Stage3 emits 18 measurement-binding resolved fields for L3H2RS2H across six formulation identities and `size_nm/pdi/zeta_mV`.
+- DEV15 Layer1 remains 202 system rows vs 202 GT rows; 15/15 papers match.
+- Layer3 improves from run 589 to run 593: present_and_match 1824->1836; missing_in_system 618->606; present_but_mismatch 553 unchanged; blocked_alignment 420 unchanged; extra_in_system 110 unchanged.
+- Targeted tests for Stage3 measurement binding and Stage5 consumption passed.
+
+## 2026-05-13 - Material MW Registry V2 And Row-Local Grid Concentration Consumption
+
+Decision:
+- Extend the shared dictionary/canonical-field layer with molecular-weight header aliases and keep numeric parsing in the material property parser.
+- Stage5 materialization may populate `polymer_mw_kDa` from a unique source-backed material registry entry when an admitted final row has matching polymer identity.
+- The MW parser now handles explicit Da/kDa single values and ranges such as `molecular weight 30,000-60,000` and `MW 50 000-75 000`, emitting a normalized kDa value while preserving the raw Da-range evidence in the final value text.
+- Stage5 now consumes Stage2 row-local `table_cell_grid_v1_row_local_header_binding` concentration bindings for already-admitted rows, deriving concentration units from direct raw headers such as `PLGA mg/mL` and `Drug conc. Mg/mL`.
+
+Validation:
+- Full DEV15 diagnostic lineage:
+  - Stage5: `data/results/20260423_9c4a03f/615_stage5_material_mw_grid_concentration_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/616_compare_material_mw_grid_concentration_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/617_layer3_compare_material_mw_grid_concentration_diagnostic`
+- DEV15 Layer1 remains 202 system rows vs 202 GT rows; 15/15 papers match.
+- Layer3 improves from active run 614 to run 617: `present_and_match` 1870->2020 and `missing_in_system` 580->430; `present_but_mismatch` remains 545, `blocked_alignment` remains 420, and `extra_in_system` remains 106.
+- Field-level deltas include `polymer_mw_raw` missing 60->11, `polymer_mw_kDa` missing 53->4, `drug_concentration_unit` missing 35->9, and `polymer_concentration_unit` missing 29->3.
+- Targeted dictionary/MW/grid-concentration tests passed.
+
+Boundary:
+- This repair does not create formulation rows, does not change Stage2 semantic authority, and does not perform donor-fill.
+- MW carrythrough requires unique source-backed material registry evidence plus an admitted row with matching polymer identity.
+- Concentration-unit materialization requires Stage2 row-local table-cell-grid bindings; Stage5 does not infer factor positions from GT.
+
+## 2026-05-13 - Add Stage3 DOE factor relation chain for row-local coded assignments
+
+Decision:
+- expose deterministic DOE row-local factor assignments from S2 numbered-row recovery as `table_row_variable_assignments_json` for fresh S2 replays
+- make Stage3 parse either the structured assignment payload or legacy DOE `change_descriptions` and emit `candidate_doe_factor_field` relation rows
+- resolve those rows into `resolved_relation_fields_v1.tsv` with `resolution_rule=doe_factor_assignment`
+- let Stage5 consume the resolved fields into canonical typed bundles such as `phase_ratio_raw`, `pH_raw`, and guarded concentration fields
+
+Why:
+- DOE papers often encode formulation variables as coded levels in a design table, with a companion factor/level table defining the meaning of each code.
+- Earlier behavior had row recovery in mainline but left some factor values trapped in text-like `change_descriptions` or compare-only coded overrides.
+- `UFXX9WXE` had all 26 DOE rows recovered, but `phase_ratio_raw` stayed missing because the row-local `w/o phase volume ratio` factor was not carried through S3/S5 as a typed field.
+
+Impact:
+- Diagnostic lineage `618->621` keeps DEV15 Layer1 at `202/202` rows and `15/15` papers matched.
+- Layer3 improves versus active run `617`: `present_and_match 2020->2046`, `missing_in_system 430->404`; `present_but_mismatch 545`, `blocked_alignment 420`, and `extra_in_system 106` are unchanged.
+- The main observed gain is `UFXX9WXE phase_ratio_raw` materialization from row-local DOE factor assignments.
+
+Guardrail:
+- Stage3 only types DOE factor assignments for DOE-numbered-row sources or rows carrying explicit DOE context.
+- Negative coded concentration levels such as `-1` are not materialized as physical concentration values; they remain row evidence but are blocked from canonical concentration fields unless already decoded to a nonnegative physical value.
+- Existing compare-side paper-specific coded fallbacks remain compatibility-only where current S2 rows still lack complete factor assignments, especially WFDTQ4VX-class `X1/X2/X3` rows. They are no longer the desired design endpoint.
+
+Boundary:
+- `data/results/ACTIVE_RUN.json` updated to diagnostic baseline 592/593.
+- Diagnostic-only; `benchmark_valid=no`.
+
+## 2026-05-13 - Add S2 DOE factor schema completeness for coded row assignments
+
+Decision:
+- upgrade S2 numbered DOE row recovery so coded row assignments preserve a structured factor schema instead of flattening everything into `change_descriptions`
+- emit row-local `table_row_variable_assignments_json` entries with `factor_token`, `factor_name`, `factor_label`, `coded_factor_value`, `decoded_factor_value`, `factor_unit`, `source_table_id`, and `coding_table_id`
+- parse companion factor/level tables with `X1/X2/X3`, coded abbreviation factors such as `cFB` and `cP188`, non-integer coded levels such as `-1.68`, signed levels, and unit-bearing level definitions
+- make Stage3 prefer the structured factor label/token when assigning canonical roles, using source-text role maps only as fallback
+
+Why:
+- `WFDTQ4VX` had explicit `X1/X2/X3` design rows plus a companion factor-level table, but current Stage2 rows did not carry complete structured row assignments.
+- That left `compare_layer3_values_to_gt_v1.py` with compatibility-only paper-specific coded overrides for WFDT/WIVU-style concentration fields.
+- The intended mainline boundary is: S2 owns table/factor schema recovery after LLM DOE authorization, Stage3 owns canonical role typing, and Stage5 consumes resolved fields.
+
+Validation:
+- Targeted tests passed for fractional coded levels, abbreviation-coded factors, and Stage3 DOE typing guards.
+- Bounded S2-7 replay:
+  - `data/results/20260423_9c4a03f/623_s2_7_doe_factor_schema_completeness_diagnostic`
+  - WFDT rows now carry complete structured assignments, for example `X1 -1 -> 0.2`, `X2 -1 -> 1`, and `X3 -1 -> 0.50%`.
+- Stage3 replay:
+  - `data/results/20260423_9c4a03f/627_stage3_doe_factor_schema_completeness_diagnostic`
+  - WFDT emits structured DOE typed relation rows: `drug_concentration_value`, `polymer_concentration_value`, and `surfactant_concentration_text`.
+- Full downstream diagnostic replay:
+  - Stage5: `data/results/20260423_9c4a03f/628_stage5_doe_factor_schema_completeness_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/626_compare_doe_factor_schema_completeness_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/629_layer3_compare_doe_factor_schema_completeness_diagnostic`
+
+Impact:
+- Target WFDT path improves structurally: the factor schema is now present at S2, typed at S3, and available for S5 consumption.
+- This run is not promoted to the active diagnosis baseline.
+- Blocker: the full S2-7 replay lineage produced `207` Stage5 rows vs `202` GT rows because `L3H2RS2H` retained five LLM summary/characterization/family rows (`26` vs `21`), while the active baseline run 621 remains `202/202` and `15/15` on Layer1.
+- Layer3 run 629 is therefore not comparable as a promotable baseline: `present_and_match=2018`, `missing_in_system=487`, `present_but_mismatch=510`, `blocked_alignment=378`, `extra_in_system=119`.
+
+Guardrail:
+- This S2 repair only materializes coded/decoded factor assignments for already-authorized DOE rows; it does not create formulation rows from a design space or GT.
+- Compare-side paper-specific coded overrides remain compatibility-only until a no-count-regression lineage consumes the structured S2 factor schema end-to-end.
+- Do not update `data/results/ACTIVE_RUN.json` from the 623->629 lineage.
+
+## 2026-05-13 - Tighten Stage5 partial sweep summary retention guard
+
+Decision:
+- Tighten Stage5 `llm_summary_survives_partial_compact_sweep_enumeration` so partial compact-sweep protection only preserves LLM result surfaces with explicit result-bearing evidence.
+- Empty LLM family/characterization summaries are now allowed to flow into the existing complete-table-enumeration and parent-linked non-synthesis descendant filters.
+
+Reason:
+- The S2 DOE factor schema completeness diagnostic restored WFDT structured coded assignments, but its downstream Stage5 run retained five `L3H2RS2H` LLM summary/helper rows (`F1`-`F5`) and regressed Layer1 to `207/202`.
+- Diagnosis showed the Stage5 partial-sweep survival guard was too broad: it protected summary rows with no independent result evidence before the existing row-level enumeration membership guards could filter them.
+
+Validation:
+- Targeted Stage5 check on run 623/627 inputs:
+  - Stage5: `data/results/20260423_9c4a03f/630_stage5_summary_guard_doe_factor_schema_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/631_compare_summary_guard_doe_factor_schema_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/632_layer3_compare_summary_guard_doe_factor_schema_diagnostic`
+- The five `L3H2RS2H` rows are now filtered:
+  - `F1` and `F2`: `semantic_context_summary_superseded_by_complete_table_enumeration`
+  - `F3`, `F4`, and `F5`: `parent_linked_non_synthesis_descendant_variant`
+- Layer1 is restored to `202` system rows vs `202` GT rows, `15/15` papers match.
+- Active-lineage no-regression check:
+  - Stage5: `data/results/20260423_9c4a03f/633_stage5_active_lineage_summary_guard_no_regression_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/634_compare_active_lineage_summary_guard_no_regression_diagnostic`
+  - The regenerated final table and decision trace are byte-identical to active run 619.
+- Targeted unit tests for partial compact-sweep summary filtering and result-bearing survival pass.
+
+Impact:
+- This is a Stage5 membership guard repair, not an S2 row-creation rule.
+- The repair removes the count blocker for the S2 DOE factor schema completeness lineage, but that lineage still is not promoted because Layer3 run 632 remains below active run 621 (`present_and_match=2018`, `missing_in_system=487`, `present_but_mismatch=510`, `blocked_alignment=378`, `extra_in_system=119`).
+- Do not update `data/results/ACTIVE_RUN.json` from run 632.
+
+## 2026-05-13 - Stage5 source-backed protocol/process carrythrough
+
+Decision:
+- Stage5 may materialize source-backed global preparation process fields when a unique preparation-context value is present in the clean source text and the final-row typed bundle is blank.
+- The activated fields are `stirring_time_h`, `evaporation_time_h`, and `pH_raw`.
+- This is a guarded Stage5 consumer repair: it does not create rows, does not use GT, and does not infer paper-specific protocol values.
+
+Reason:
+- Active run 621 still had a large protocol/process missing cluster after material inheritance repairs, especially `stirring_time_h`, `evaporation_time_h`, and `pH_raw`.
+- Several papers had direct global preparation statements already present in clean source text, but Stage5 global preparation carrythrough only covered phase volumes and concentration fields.
+
+Validation:
+- Targeted unit tests for process-time and preparation-pH carrythrough pass via `python3 -m unittest tests.test_compare_layer3_values_v1.Stage2DoeGenericRepairTests`.
+- First diagnostic run `635_stage5_protocol_process_carrythrough_diagnostic` was marked invalid after Layer3 run 637 exposed false extra fields from broad process-time binding.
+- Guarded diagnostic lineage:
+  - Stage5: `data/results/20260423_9c4a03f/638_stage5_protocol_process_carrythrough_guarded_diagnostic`
+  - Layer1 compare: `data/results/20260423_9c4a03f/639_compare_protocol_process_carrythrough_guarded_diagnostic`
+  - Layer3 compare: `data/results/20260423_9c4a03f/640_layer3_compare_protocol_process_carrythrough_guarded_diagnostic`
+- Layer1 remains `202` system rows vs `202` GT rows, `15/15` papers match.
+- Layer3 vs active run 621:
+  - `present_and_match`: `2046 -> 2094`
+  - `missing_in_system`: `404 -> 356`
+  - `present_but_mismatch`: unchanged `545`
+  - `blocked_alignment`: unchanged `420`
+  - `extra_in_system`: unchanged `106`
+  - `not_reported_in_gt`: unchanged `3703`
+- All 48 changed Layer3 cells are `missing_in_system -> present_and_match`.
+
+Impact:
+- The repair improves protocol/process inheritance consumption without count, mismatch, blocked, or extra regression.
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 638/639/640. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-14 - Stage5 guarded phase-volume carrythrough
+
+Decision:
+- Stage5 may materialize blank phase-volume bundles from unique clean-source preparation evidence for:
+  - `organic_phase_volume_mL` / `O_volume_mL`
+  - `external_aqueous_phase_volume_mL`
+  - `W2_volume_mL` through the existing external-aqueous compare alias
+
+Reason:
+- After protocol/process carrythrough run640, remaining phase-volume misses were concentrated in source-backed preparation statements that were not fully consumed:
+  - shared organic-solvent volume expressed without a unique solvent identity
+  - external aqueous/PVA phase volume with concentration text between the volume and phase material
+  - carrier-scoped nanosphere/nanocapsule external aqueous volumes
+
+Implementation boundary:
+- This remains Stage5 final typed-bundle materialization for already-authorized and retained formulation rows.
+- It does not create rows, backfill from GT, or treat diagnostic artifacts as execution inputs.
+- Guards reject assay, release, HPLC/mobile-phase, zeta/measurement, sonication, lyophilized-resuspension, and other non-preparation contexts.
+- Carrier-scoped extraction is used only when the row identity carries nanosphere or nanocapsule scope.
+
+Validation:
+- Stage5 replay: `data/results/20260423_9c4a03f/644_stage5_phase_volume_carrythrough_guarded_diagnostic/`
+- Layer1 compare: `data/results/20260423_9c4a03f/645_compare_phase_volume_carrythrough_guarded_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/646_layer3_compare_phase_volume_carrythrough_guarded_diagnostic/`
+- Unit test: `PYTHONPATH=. python3 -m unittest tests.test_compare_layer3_values_v1.Stage2DoeGenericRepairTests`
+
+Impact:
+- Layer1 remains 202/202 and 15/15 match.
+- Layer3 run646 vs run640:
+  - `present_and_match`: 2094 -> 2108
+  - `missing_in_system`: 356 -> 342
+  - `present_but_mismatch`: unchanged at 545
+  - `blocked_alignment`: unchanged at 420
+  - `extra_in_system`: unchanged at 106
+  - `not_reported_in_gt`: unchanged at 3703
+- All 14 changed cells are `missing_in_system -> present_and_match`:
+  - `5GIF3D8W` `O_volume_mL`: 6
+  - `5ZXYABSU` `external_aqueous_phase_volume_mL`: 6
+  - `L3H2RS2H` `external_aqueous_phase_volume_mL`: 2
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 644/645/646. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-15 - Stage5 Entity-Role Identity-Variable Materializer
+
+Decision:
+- Accept a guarded Stage5 materializer that consumes already-extracted row-local identity variables through article-local entity roles.
+- Examples: `etoposide amount=10 mg` can materialize to `drug_feed_amount_text` when etoposide is grounded as the article drug; `acetone volume=2 mL` can materialize to `organic_phase_volume_mL` when acetone is grounded as the organic solvent.
+
+Implementation boundary:
+- This remains Stage5 final typed-bundle materialization for already-authorized and retained formulation rows.
+- It does not create rows, backfill from GT, or call S5-3/LLM numeric backfill.
+- Generic untyped values such as `sample amount=10 mg` remain blocked.
+- Broad shared evidence text is not allowed to mark a loaded row as blank/control for this materializer.
+
+Validation:
+- Stage5 replay: `data/results/20260423_9c4a03f/718_stage5_entity_role_identity_variable_materializer_diagnostic/`
+- Layer1 compare: `data/results/20260423_9c4a03f/719_compare_entity_role_identity_variable_materializer_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/720_layer3_compare_entity_role_identity_variable_materializer_diagnostic/`
+- Unit tests:
+  - `PYTHONPATH=. python3 -m unittest tests.test_compare_layer3_values_v1.UniversalTableCellGridTests.test_entity_role_identity_variable_materializes_named_drug_amount tests.test_compare_layer3_values_v1.UniversalTableCellGridTests.test_entity_role_identity_variable_materializes_named_solvent_volume tests.test_compare_layer3_values_v1.UniversalTableCellGridTests.test_entity_role_identity_variable_does_not_guess_untyped_amount`
+
+Impact:
+- Layer1 remains 202/202 and 15/15 match.
+- Layer3 run720 vs run694:
+  - `present_and_match`: 2567 -> 2572
+  - `missing_in_system`: 439 -> 434
+  - `present_but_mismatch`: unchanged at 168
+  - `extra_in_system`: unchanged at 111
+  - `not_reported_in_gt`: unchanged at 3939
+- All 5 changed cells are `missing_in_system -> present_and_match`, all `5GIF3D8W` `drug_mass_mg`.
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 718/719/720. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-15 - S5-2c Deterministic Numeric Value/Unit Structuring
+
+Decision:
+- Add S5-2c inside Stage5 final materialization for deterministic numeric value/unit structuring.
+- S5-2c splits already-materialized physical concentration surfaces such as surfactant/stabilizer `0.75%` or `1.0 %w/v` into final value and unit bundles while preserving the original combined text surface.
+- Layer3 compare treats surfactant/stabilizer bare `%` and `%w/v` as canonical percent-concentration equivalents for comparison only; the final table keeps the observed split unit.
+
+Implementation boundary:
+- This remains Stage5 final typed-bundle materialization for already-authorized and retained formulation rows.
+- It does not create rows, backfill from GT, call S5-3/LLM numeric backfill, infer units without a surface, or perform unit conversion.
+- Future numeric calculation and unit conversion should consume the structured final value/unit fields, not parse combined text.
+
+Validation:
+- Stage5 replay: `data/results/20260423_9c4a03f/724_stage5_s5_2c_numeric_value_unit_structuring_diagnostic/`
+- Layer1 compare: `data/results/20260423_9c4a03f/725_compare_s5_2c_numeric_value_unit_structuring_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/726_layer3_compare_s5_2c_numeric_value_unit_structuring_diagnostic/`
+- Unit tests:
+  - `python3 -m py_compile src/stage5_benchmark/build_minimal_final_output_v1.py src/stage5_benchmark/compare_layer3_values_to_gt_v1.py tests/test_compare_layer3_values_v1.py`
+  - `python3 -m unittest tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests.test_stage5_splits_combined_drug_and_polymer_concentration_value_units tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests.test_stage5_splits_numeric_only_surfactant_concentration_without_guessing_unit tests.test_compare_layer3_values_v1.Layer3CompareContractTests.test_get_system_value_prefers_structured_surfactant_concentration_surface tests.test_compare_layer3_values_v1.Layer3CompareContractTests.test_get_system_value_keeps_legacy_combined_surfactant_concentration_fallback tests.test_compare_layer3_values_v1.Layer3CompareContractTests.test_compare_treats_surfactant_percent_as_percent_wv_surface`
+
+Impact:
+- Layer1 remains 202/202 and 15/15 match.
+- Layer3 run726 vs run720:
+  - `present_and_match`: 2572 -> 2616
+  - `missing_in_system`: 434 -> 395
+  - `present_but_mismatch`: 168 -> 163
+  - `extra_in_system`: unchanged at 111
+  - `not_reported_in_gt`: unchanged at 3939
+- Changed cells:
+  - 39 `missing_in_system -> present_and_match`
+  - 5 `present_but_mismatch -> present_and_match`
+  - affected field: `emulsifier_stabilizer_concentration_unit`
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 724/725/726. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-15 - Generic DOE Factor Physical-Value Materialization
+
+Decision:
+- Add a generic Stage5-side DOE factor physical materializer inside S5-2.
+- The materializer parses source-defined factor/level tables into `factor_token + factor_role + coded_level -> physical_value + unit`, then writes final physical value/unit bundles for already-authorized retained rows.
+- This replaces narrow pH/paper-specific behavior for DOE variables and covers drug concentration, polymer concentration, surfactant/stabilizer concentration, pH, and phase-ratio variables when the source provides a level map.
+- Layer3 compare now blocks unresolved legacy combined coded surfaces such as `-1 mg/mL` from being treated as physical concentration fallback values.
+
+Implementation boundary:
+- This remains deterministic Stage5 materialization over the fixed row universe produced by Stage2/S2-7 and Stage3.
+- It does not create rows, backfill from GT, call S5-3/LLM numeric backfill, infer absent level maps, or perform unit conversion.
+- Already-physical DOE table values remain pass-through; decoding only fires when a row-local value matches a source-defined coded level.
+
+Validation:
+- Stage5 replay: `data/results/20260423_9c4a03f/727_stage5_generic_doe_factor_physical_materializer_diagnostic/`
+- Layer1 compare: `data/results/20260423_9c4a03f/728_compare_generic_doe_factor_physical_materializer_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/729_layer3_compare_generic_doe_factor_physical_materializer_diagnostic/`
+- Unit tests:
+  - `python3 -m py_compile src/stage5_benchmark/build_minimal_final_output_v1.py src/stage5_benchmark/compare_layer3_values_to_gt_v1.py`
+  - `python3 -m unittest tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests`
+
+Impact:
+- Layer1 remains 202/202 and 15/15 match.
+- Layer3 run729 vs run726:
+  - `present_and_match`: 2616 -> 2678
+  - `missing_in_system`: 395 -> 385
+  - `present_but_mismatch`: 163 -> 111
+  - `extra_in_system`: unchanged at 111
+  - `not_reported_in_gt`: unchanged at 3939
+- Changed cells:
+  - 52 `present_but_mismatch -> present_and_match`
+  - 10 `missing_in_system -> present_and_match`
+  - WIVUCMYG cPVA concentration and YGA8VQKU cFB/cP188/pH DOE variables now compare as physical values.
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 727/728/729. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-15 - DOE Table Continuation and Actual-Value Materialization
+
+Decision:
+- Add generic S2-7 table-header recovery for flattened/normalized tables where continuation rows split a factor definition across rows.
+- Add generic Stage5 materialization for row-local DOE actual/physical assignments such as `X1_actual=0.2%`, so they are passed through as physical value/unit bundles rather than decoded again.
+- Keep active baseline promotion on the active S2-7/Stage3 lineage, while retaining the S2-7 continuation parser repair for future lawful S2-7 reruns.
+
+Implementation boundary:
+- The S2-7 repair is not WFDT-specific: it chooses the row with coded level headers when flattened headers are too sparse, then merges non-value continuation text into factor definitions before extracting factor label and unit.
+- The Stage5 repair is not checkpoint-specific: `Xn_actual` is treated as an already-physical DOE assignment anywhere row-local variables are parsed.
+- No row creation, GT backfill, unit conversion, S5-3/LLM numeric backfill, or source-free unit guessing is allowed.
+
+Validation:
+- Stage5 replay: `data/results/20260423_9c4a03f/735_stage5_doe_actual_value_type_materializer_diagnostic/`
+- Layer1 compare: `data/results/20260423_9c4a03f/736_compare_doe_actual_value_type_materializer_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/737_layer3_compare_doe_actual_value_type_materializer_diagnostic/`
+- Unit tests:
+  - `python3 -m py_compile src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py src/stage5_benchmark/build_minimal_final_output_v1.py src/stage5_benchmark/compare_layer3_values_to_gt_v1.py`
+  - `python3 -m unittest tests.test_compare_layer3_values_v1.Stage2DoeGenericRepairTests.test_s2_doe_factor_schema_merges_split_factor_definition_continuations tests.test_compare_layer3_values_v1.Stage2DoeGenericRepairTests.test_s2_doe_factor_schema_marks_already_physical_table_values_without_redecoding tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests.test_stage5_materializes_already_physical_actual_doe_assignment_by_value_type tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests.test_stage5_decodes_source_factor_level_table_for_all_concentration_roles`
+  - `python3 -m unittest tests.test_compare_layer3_values_v1.MinimalPlusSharedSemanticsTests`
+
+Impact:
+- Layer1 remains 202/202 and 15/15 match.
+- Layer3 run737 vs run729:
+  - `present_and_match`: 2678 -> 2711
+  - `missing_in_system`: 385 -> 352
+  - `present_but_mismatch`: unchanged at 111
+  - `extra_in_system`: unchanged at 111
+  - `not_reported_in_gt`: unchanged at 3939
+- Changed cells:
+  - 33 `missing_in_system -> present_and_match`
+  - affected paper/fields: WFDTQ4VX `drug_concentration_value` and `drug_concentration_unit`
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 735/736/737. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.

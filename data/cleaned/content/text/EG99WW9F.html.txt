@@ -1,182 +1,410 @@
-Journals & Books
-Help
-Search
-View PDF
-Download full issue
-Outline
-Abstract
-Keywords
-1. Introduction
+Gentamicin (GEN) is an aminoglycoside antibiotic with a potent antibacterial activity against a wide variety of bacteria. However, its poor cellular penetration limits its use in the treatment of infections caused by intracellular pathogens. One potential strategy to overcome this problem is the use of particulate carriers that can target the intracellular sites of infection. In this study GEN was ion-paired with the anionic AOT surfactant to obtain a hydrophobic complex (GEN–AOT) that was formulated as a particulated material either by the precipitation with a compressed antisolvent (PCA) method or by encapsulation into poly(d,l-lactide-co-glycolide) (PLGA) nanoparticles (NPs). The micronization of GEN–AOT by PCA yielded a particulated material with a higher surface area than the non-precipitated complex, while PLGA NPs within a size range of 250–330 nm and a sustained release of the drug over 70 days were obtained by preparing the NPs using the emulsion solvent evaporation method. For the first time, GEN encapsulation efficiency values of ∼100% were achieved for the different NP formulations with no signs of interaction between the drug and the polymer. Finally, in vitro studies against the intracellular bacteria Brucella melitensis, used as a model of intracellular pathogen, demonstrated that the bactericidal activity of GEN was unmodified after ion-pairing, precipitation or encapsulation into NPs. These results encourage their use for treatment for infections caused by GEN-sensitive intracellular bacteria.
+
+The treatment of infectious diseases caused by intracellular bacteria is still a challenge for clinicians. Bacteria such as Mycobacterium, Legionella, Brucella or Listeria[1] have developed the ability to persist and replicate inside several mammalian cells including the hostile phagocytic cells, which constitute the first-line defense against invading pathogens. Once the macrophage killing mechanisms have been subverted, the intracellular habitat effectively protects bacteria from host defense mechanisms as well as from the action of antibiotics. Thus, in spite of the availability of a wide variety of in vitro active antibiotics, therapeutic failures are reported, mainly because of the inability of the drugs to reach the bacteria harboring intracellular compartments or to exert their activity in the intracellular environments [2].
+
+Gentamicin (GEN) is an aminoglycoside antibiotic with a well-known broad spectrum of antibacterial activity that inhibits bacterial protein synthesis by binding to 30S subunit sites of the bacterial ribosome [3]. In contrast to other antibiotics that impede protein synthesis, aminoglycosides exhibit a concentration-dependent bactericidal activity and a post-antibiotic effect [4]. Due to these properties and its low cost, GEN is commonly used for initial antimicrobial therapy in suspected or documented bacterial septicaemia [5]. However, the hydrophilic nature of this antibiotic hinders its capacity to penetrate the cells and, besides, the internalized molecules are mainly accumulated in lysosomes, where the bioactivity of the drug is low. Therefore, limited intracellular activity against susceptible bacteria is often found [6], [7]. In this context, high and repeated doses are usually required to achieve sufficient GEN concentration at intracellular sites, which may induce systemic side-effects such as nephrotoxicity and ototoxicity. These drawbacks, together with the need for parenteral administration, hamper its therapeutic application.
+
+One potential strategy to provide efficient intracellular therapy is to encapsulate GEN in drug delivery systems (DDSs) [8], [9]. After their intravenous administration, colloidal carriers in the bloodstream are rapidly taken up by the cells of the mononuclear phagocytic system that recognize these particles as foreign [10]. This characteristic, which in many cases presents a major obstacle, would provide great benefit in the treatment of infections that involve the mononuclear phagocytic system. Therefore, the use of DDSs has been proposed for passive targeting of infected cells of the mononuclear phagocytic system to increase the therapeutic index of antimicrobials in the intracellular milieu, while minimizing the side-effects associated with the systemic administration of the antibiotic.
+
+A number of natural and synthetic polymers have been investigated for the design of biodegradable particles, but, among them, poly(d,l-lactide-co-glycolide) (PLGA) has been the most extensively used in drug delivery. PLGA is a FDA-approved biodegradable and biocompatible polymer that allows the formulation of particles with versatile physicochemical characteristics and degradation kinetics by varying the copolymer composition and molecular weight [11], [12]. Recently, GEN-loaded PLGA DDSs have been obtained by the multiple emulsion solvent evaporation method for the treatment of brucellosis [13]. The developed formulations were successfully captured by the macrophages and distributed mainly to the liver and spleen, preventing drug accumulation in kidneys [14], [15]. Moreover, GEN-loaded microparticles significantly reduced the spleen infection. However, despite the promising results obtained, and in order to reduce the number of required doses, an improvement in GEN loading would be required before the formulation could be used for human therapy.
+
+To achieve this goal, GEN molecule has been modified to a more hydrophobic complex by hydrophobic ion pairing (HIP) with the anionic surfactant bis(2-ethylhexyl) sulfosuccinate sodium salt (AOT) [16]. We hypothesize that by leveraging its hydrophobicity, GEN–AOT itself may be formulated as a particulated material which can be captured by the infected phagocytes. Therefore, in this paper we describe the preparation and characterization of two novel GEN–AOT carriers: on the one hand, PLGA GEN–AOT nanoparticles (NPs) obtained by a single emulsion evaporation method and, on the other, polymer-free GEN–AOT microstructured particles, produced by precipitation of GEN–AOT with a compressed fluid based methodology (precipitation with a compressed antisolvent, PCA) using carbon dioxide. Particles were characterized in terms of size, surface charge and morphology. Moreover, encapsulation efficiency, drug–polymer interactions and the in vitro release of the antibiotic were also evaluated for polymeric NPs. Finally, the bioactivity of the developed formulations was assessed in vitro against Brucella melitensis as a model of facultative intracellular bacteria.
+
 2. Materials and methods
-3. Results and discussion
-4. Conclusions
-Acknowledgments
-Appendix A. Figures with essential colour discrimination
-References
-Cited by (59)
-Figures (7)
-Tables (3)
-Table 1
-Table 2
-Table 3
-Acta Biomaterialia
-Novel bioactive hydrophobic gentamicin carriers for the treatment of intracellular bacterial infections
-Abstract
-Previous article in issue
-Next article in issue
-Keywords
-1. Introduction
-2. Materials and methods
+
 2.1. Materials
+
+Bis(2-ethylhexyl) sulfosuccinate sodium salt (AOT) was supplied by Sigma (Tres Cantos, Spain). Carbon dioxide (purity >99.9%) was obtained from Carburos Metálicos SA (Barcelona, Spain) and acetone, HPLC grade, from Teknokroma (Sant Cugat del Vallès, Spain). PLGA 502H (Resomer® RG 502H, PLGA 50:50, 13.7 kDa) and 752H (Resomer® RG 752H, PLGA 75:25, 17 kDa) were purchased from Boehringer Ingelheim (Ingelheim, Germany). Gentamicin sulphate, polyvinyl alcohol (PVA, Mw 85,000–124,000, 97–99% hydrolyzed) and mannitol were obtained from Sigma–Aldrich (St. Louis, MO, USA) and ethyl acetate from Panreac Química SA (Barcelona, Spain).
+
+The reagents used for fluorimetric assays were o-phtalaldehyde from Merck (Darmstad, Germany), β-mercaptoethanol from Sigma (St. Louis, MO, EEUU) and boric acid and diethyl ether from Panreac Química SA (Barcelona, Spain). Bacterial culture mediums, trypticase soy agar (TSA) and cation-adjusted Mueller–Hinton (CAMH) broth were from Biomerieux (Marcy l’Etoile, France) and DIFCO BD (Franklin Lakes, NJ, USA), respectively.
+
 2.2. Hydrophobic ion pairing of gentamicin sulphate
+
+The ionic complex of gentamicin (GEN) with the anionic surfactant bis(2-ethylhexyl) sulfosuccinate sodium salt (AOT), GEN–AOT, was prepared as a waxy solid by the hydrophobic ion pairing (HIP) method [16] according to the methodology previously described [17]. Following this process, 5 mol of AOT were used for the stoichiometric complexation of the five ionizable amino groups of GEN and therefore the replacement of the sulphate counter ions, yielding an ionic complex with a GEN:AOT ratio of 1:5. In brief, 800 ml of a solution of AOT in dichloromethane (12.55 mg ml−1) were added to an equal volume of a buffered aqueous solution (10 mM sodium acetate, 10 mM KCl, 10 mM CaCl2, pH 5.0) of GEN sulphate (4 mg ml−1) and stirred vigorously for 3 h. The phases were separated by centrifugation (2350g, 5 min) and the ionic complex was recovered from the organic phase by evaporation and dried under vacuum for 15 min.
+
 2.3. Preparation of microstructured GEN–AOT by PCA
-Download: Download high-res image (114KB)
-Download: Download full-size image
-Fig. 1 . Schematic illustration of the PCA process used for the precipitation of gentamicin–AOT.
+
+The preparation of the polymer-free GEN–AOT microstructured particles was performed by a compressed fluid based technology called precipitation with a compressed antisolvent (PCA) [18] using an experimental set-up which has previously been described [19]. The PCA-process scheme is depicted in Fig. 1. The experiments were carried out following the subsequent steps: first, the precipitation chamber (300 ml) was filled with CO2 and allowed to equilibrate to the operating pressure and temperature (10 MPa, 25 °C). For achieving the desired molar fraction of CO2, = 0.95, the back pressure valve was opened and CO2 and the organic solvent, acetone, were simultaneously pumped into the vessel with a volumetric CO2:solvent ratio of 18:1 ml min−1. After 20 min, the injection of pure organic solvent was stopped and 10 ml of the solution of GEN–AOT in acetone (0.3 g ml−1) were sprayed through a hollow cone nozzle (diameter = 100 μm), at the same rate as the pure solvent, into the current of CO2. The antisolvent effect of the compressed CO2 (cCO2) on the sprayed solution caused the precipitation of the GEN–AOT complex. The solid particles were collected over a sintered metal filter covered with a PTFE membrane placed inside the autoclave. The removal of the possible residual solvent in the final particulate material was done by a current of CO2 at 36.67 ml min−1 and 10 MPa for 1 h. The dried particulate solid was collected from the filter after depressurizing the precipitation chamber.
+
 2.4. Preparation of GEN–AOT polymeric nanoparticles
+
+GEN–AOT was encapsulated into PLGA NPs by the oil-in-water emulsion solvent evaporation method using two different copolymers of PLGA, PLGA 502H and 752H. Briefly, different amounts of GEN–AOT were dissolved in 1 ml of ethyl acetate containing 200 mg of copolymer. This organic phase was emulsified with 2 ml of a 0.5% (w/v) PVA aqueous solution by ultrasonication (Branson sonifier 450, Branson Ultrasonics Corp., Danbury, CT, USA) at 15 W for 1 min in ice bath. The formed O/W emulsion was then poured into a 50 ml solution of 0.2% (w/v) PVA and continuously stirred for at least 3 h at room temperature to allow solvent evaporation and NP formation. Particles were collected by centrifugation (24,000g, 15 min) (Sigma Laboratory Centrifuges, 3K30, Rotor No. 12150-H, Osterode am Harz, Germany), washed three times with ultrapure water and freeze dried after addition of 5% mannitol as a cryoprotector. Each formulation was produced at least in triplicate.
+
 2.5. Physicochemical characterization of polymeric nanoparticles and PCA-processed GEN–AOT
+
 2.5.1. Particle size and zeta potential measurement
+
+NPs size was determined by a dynamic light scattering technique using a Zetasizer Nano ZS analyzer system (Malvern Instruments, Worcestershire, UK). Formulations were diluted in ultrapure water and measured in triplicate. The results were expressed as the average of the three measurements. The polydispersity index (PdI), which indicates the width of the size distribution, was also obtained.
+
+Surface charge or zeta potential values of the formulations were determined by laser Doppler electrophoresis using the same apparatus. Samples were prepared by diluting the particle suspensions in ultrapure water. Measurements were performed in triplicate and each measurement was averaged over at least 12 runs.
+
 2.5.2. Particle morphology and gentamicin distribution
+
+The morphology of PLGA GEN–AOT NPs was studied using a field emission scanning electron microscope Quanta 200 FEG-SEM (FEI, Eindhoven, The Netherlands) and the morphology of raw and PCA-processed GEN–AOT was analyzed using a JEOL JSM-6300 (Jeol Ltd., Tokio, Japan). The samples were directly mounted on a bioadhesive carbon sheet and coated with gold for 4 min using a sputter coater (K550x, Emitech, Ashford, UK). To study the GEN–AOT distribution in the polymeric matrices, energy dispersive X-ray (EDX) microanalyses were performed using Quanta 200 FEG-SEM, (FEI, Eindhoven, The Netherlands) equipped with an EDX system for chemical analysis (EDEX, Tiburg, The Netherlands). Images were analyzed with EDEX Genesis software. For the EDX study the samples were coated with carbon using a K550 coater with a K250 carbon coating attachment (Emitech, Ashford, UK).
+
 2.5.3. Residual PVA
+
+The amount of surface-associated PVA was determined by a colorimetric method based on the formation of a complex between two adjacent hydroxyl groups of PVA and a molecule of iodide [20]. Briefly, 2 ml of 0.5 M NaOH were added to 2 mg of freeze-dried NPs and incubated for 15 min at 60 °C. Then the solution was neutralized with 900 μl of 1 N HCl and adjusted to 5 ml with deionized water. Subsequently, 3 ml of 0.65 M boric acid, 0.5 ml of 0.05 M/0.15 M I2/KI and 1.5 ml of distilled water were added to each sample. Finally, after 15 min of incubation at room temperature, the absorbance of the resulting solution was measured at 690 nm using an Agilent 8453 UV–vis spectrophotometer (Agilent Technologies, Waldbronn, Germany). In parallel, a calibration curve of PVA standard solutions was prepared following the same procedure.
+
 2.5.4. X-ray powder diffraction analyses (XRPD)
-2.5.5. Fourier transform infrared spectroscopy (FTIR)
+
+Diffraction patterns were recorded on a Siemens D5000 powder diffractometer (Bragg–Brentano geometry) using Cu Kα radiation (λ = 1.5406 Å), at a voltage of 40 kV and an intensity of 35 mA. Samples were mounted on a flat sample holder and were scanned from 2.5° to 100° in 2θ, at a scan rate of 0.02° 2θ s−1.
+
+FTIR analyses were carried out using a Spectrum One (Perkin Elmer, USA) spectrometer attached to an attenuated total reflectance accessory (UATR accessory, Perkin Elmer, USA). Powder samples were directly placed on the diamond disk and scanned over the range from 4000 to 650 cm−1 at a resolution of 1 cm−1. Each spectrum was recorded by averaging four scans.
+
 2.6. Drug loading and encapsulation efficiency
+
+The amount of encapsulated GEN was determined by fluorimetry after the extraction of the antibiotic from the NP and its derivation with o-phthalaldehyde [21]. Briefly, 5–10 mg of accurately weighted formulations were dispersed in 1 ml of a 0.1 M NaOH solution and stirred for 5 h to hydrolyze the polymer. Samples were centrifuged twice (45,000g, 15 min and 21,000g, 10 min) to eliminate the traces of polymer and supernatants were collected. To quantify the GEN, supernatants were diluted in 0.4 M boric acid pH 9.7 and 50 μl were placed in a 96-well microplate (TPP, Trasadingen, Switzerland). Then 50 μl of fluorimetric assay solution (0.04% (w/v) o-phthalaldehyde, 0.1% (v/v) diethyl ether, 0.2% (v/v) β-mercaptoethanol in boric acid) were added to the samples and fluorescence was measured in a Tecan GENios fluorimeter (Tecan Group Ltd., Maennedorf, Switzerland) (excitation wavelength 340 nm, emission wavelength 450 nm). GEN content was determined by extrapolating the fluorescence values from a calibration curve prepared with standard GEN–AOT solutions in boric acid 0.4 M pH 9.7. Finally, the encapsulation efficiency (%) of the drug, described as the percentage of determined loading relative to the nominal (theoretical) loading, was calculated.
+
 2.7. In vitro drug release from nanoparticles
+
+GEN–AOT release profile from the NPs was determined by dispersing the formulations (5–10 mg accurately weighted) in 1.5 ml of phosphate buffered saline (PBS) pH 7.4 with 0.02% (w/v) sodium azide used as a bacteriostatic agent. Samples were incubated at 37 °C under orbital shaking in a rotatory plate (FALC F200, Falc intruments, Treviglio, Italy) for 10 weeks. At appropriate intervals, the tubes were centrifuged (21,000g, 10 min), and supernatant was collected and replaced with fresh release medium to continue the study. The collected supernatants were centrifuged again and the resulting particle-free solutions were fluorometrically analyzed for drug content as described above. The amount of antibiotic released in the first 24 h is here defined as the burst effect. Results are presented as the percentage of released antibiotic with regard to the amount of GEN encapsulation.
+
 2.8. In vitro biological activity studies
+
+B. melitensis 16M (ATCC 23456, biotype 1) smooth virulent strain and Escherichia coli (ATCC 25922) were used for the microbiological studies. B. melitensis was used as a model of facultative intracellular bacteria, and activity against E. coli was determined as quality control. Experiments were performed with fresh bacteria previously incubated on TSA plates at 37 °C for 48 h or 24 h, respectively.
+
+Minimum inhibitory (MIC) and bactericidal (MBC) concentration of GEN–AOT formulations were determined by broth microdilution method using CAMH broth. Antibiotic stock solutions corresponding to equivalent concentration of 1.28 mg GEN ml−1 were prepared in 0.9% saline solution and further diluted 1:10 in CAMH broth. Bacterial suspension was prepared by transferring three isolated colonies from a TSA plate into a 0.9% saline solution and adjusted to an optical density of 0.125 (600 nm) (∼108 CFU ml−1). Suspension was diluted 1:100 in CAMH broth to a concentration of 106 CFU ml−1 and the real inoculum was determined by plating appropriate dilutions on TSA plates. Finally, 100 μl of each treatment was double-serially diluted in 96-well microplates and mixed with a 100 μl aliquot of the bacterial suspension, which resulted in a starting inoculum of 5 × 105 CFU ml−1 and final GEN concentrations ranging from 0.06 to 64 mg ml−1. As a control for bacterial growth, antibiotic-free medium was also included. After incubation at 37 °C for 48 h, MICs were defined as the lowest concentration of drug that resulted in no visible bacterial growth. Subsequently, 20 μl were removed from wells without visual growth and plated on TSA plates for colony counting. MBCs were determined from those plates after 4–5 days’ incubation at 37 °C as the minimum concentration of formulation that yielded ⩾99.9% killing of bacteria.
+
+In these assays, empty PLGA NPs and AOT alone were also included as controls in order to study if the activity of the different treatments was neatly attributable to the GEN fraction.
+
 3. Results and discussion
+
 3.1. Microstructuring of GEN–AOT by PCA
-Download: Download high-res image (266KB)
-Download: Download full-size image
-Fig. 2 . SEM images of gentamicin–AOT before (left) and after (right) being processed by PCA. (Inset) Photograph of the same mass of gentamicin–AOT before (left) and after (right) its processing.
+
+One possible approach to improve the bioavailability of poorly water-soluble drugs, such the GEN–AOT complex, is to enhance their dissolution rate and biodistribution by increasing their accessible area through micronization processes [22]. In this context, we have used a compressed fluid based method (PCA) for the processing of GEN–AOT. Fig. 2 depicts the scanning electron microscopy (SEM) images of the non-processed and PCA-precipitated GEN–AOT together with two photographs showing the appearance of the same mass of antibiotic before and after processing. The macroscopic aspect of the solid was dramatically modified by PCA, being changed from yellowish waxy flakes to a white powdered solid. As can be observed in Fig. 2, the volume occupied by the same mass of PCA–GEN–AOT is much higher than that of the non-processed complex, implying a density decrease upon PCA precipitation. This change is also noticeable at microscopic scale, since the SEM images of the processed and non-processed GEN–AOT show a great change in the microstructure of the antibiotic complex. Already obvious at low magnification, the surface of the particles obtained by PCA presents a much higher roughness than that of the non-processed GEN–AOT. Indeed, whilst the raw complex possesses a completely smooth surface, that of PCA–GEN–AOT is formed by homogeneous networked micron-sized particles that abruptly increase its accessible area. This higher surface area could improve the dispersion and interaction of the hydrophobic PCA complex with the infected cells in comparison with the non-processed GEN–AOT.
+
 3.2. Characterization of GEN–AOT polymeric nanoparticles
-Table 1 . Main physicochemical characteristics of PLGA formulations prepared by the single emulsion solvent evaporation method. Data are presented as mean ± SD.
+
+The success of a DDS based intracellular therapy depends on the efficient internalization and drug release of the carrier inside the target cells. It is well known that the interaction between DDSs and phagocytic cells and the subsequent particle uptake are largely affected by particle size and surface properties such as charge and hydrophobicity [23], [24]. The main physicochemical characteristics of the developed nanoparticle formulations are summarized in Table 1.
+
+Table 1. Main physicochemical characteristics of PLGA formulations prepared by the single emulsion solvent evaporation method. Data are presented as mean ± SD.
+
+Copolymer type
+
+Formulation
+
+Initial GEN–AOT loading (mg)
+
+Size (nm)
+
+PdI
+
+Zeta potential (mV)
+
+Residual PVA (%) (w/w)
+
+PLGA 502H
+
+NP 502H
+
+0
+
+317 ± 5
+
+0.09 ± 0.03
+
+−20.1 ± 7.5
+
+3.5 ± 0.2
+
+NP1
+
+20
+
+298 ± 16
+
+0.03 ± 0.03
+
+−3.2 ± 0.7
+
+3.7 ± 0.2
+
+NP2
+
+40
+
+284 ± 18
+
+0.12 ± 0.03
+
+−2.7 ± 0.7
+
+3.2 ± 0.5
+
+NP3
+
+60
+
+330 ± 30
+
+0.20 ± 0.05
+
+−3.5 ± 2.7
+
+3.9 ± 0.1
+
+PLGA 752H
+
+NP 752H
+
+0
+
+303 ± 22
+
+0.15 ± 0.08
+
+−23.2 ± 10.8
+
+2.8 ± 0.6
+
+NP4
+
+20
+
+252 ± 23
+
+0.10 ± 0.05
+
+−3.8 ± 1.8
+
+3.4 ± 0.3
+
+NP5
+
+40
+
+281 ± 15
+
+0.15 ± 0.04
+
+−3.8 ± 0.2
+
+2.8 ± 0.4
+
+NP6
+
+60
+
+323 ± 24
+
+0.22 ± 0.04
+
+−2.4 ± 1.4
+
+3.0 ± 0.5
+
 3.2.1. Particle size and zeta potential
+
+Encapsulation of GEN–AOT by the emulsion solvent evaporation method yielded NPs with mean diameters in the range 250–330 nm and polydispersity indexes below 0.25, which indicates that NPs with narrow size distribution were obtained. Low micrometer- and nanometer-size particles have been reported to be efficiently cleared by the phagocytic cells [12], so adequate size particles for targeting intracellular sites were obtained.
+
+It was observed that the particle size of the most loaded NPs in PLGA 752H (NP6) is slightly higher than that of the less loaded particles (NP4), probably due to both the increase in the organic phase viscosity and the expansion of the nanoparticle matrix at these high drug loadings. In the case of PLGA 502H NPs, the increase in particle size is within the measurement deviation and no significant particle size increase was observed.
+
+All the formulations exhibited negative surface charge, which was attributed to the uncapped carboxylic end groups of the copolymers. However, it was noteworthy that zeta potential increased when GEN–AOT was incorporated into the formulations, bringing it close to neutrality. Since it has been found that zeta potential of GEN–AOT particles suspended in ultrapure water is ∼−1 mV, it could be deduced that the increase in the surface charge was due to the presence of drug located on the NP surface. This behavior may be attributed to the surfactant properties of the AOT molecules, which could situate some of the drug at the boundary layer between the water phase and the organic phase during particle formation. As a result, NPs with a more hydrophobic surface are obtained, which will promote hydrophobic interactions between NPs and cell membranes and hence enhanced NP uptake [25], [26], [27]. The role of the surface hydrophobicity has also been studied in nature for intracellular microorganisms such as Mycobacterium[28], Chlamydia[29], [30] or Brucella[31], where hydrophobic components of the membranes have been found to play an important role in the attachment of the pathogens to the host cells.
+
 3.2.2. Morphology and gentamicin distribution of the nanoparticles
-Download: Download high-res image (979KB)
-Download: Download full-size image
-Fig. 3 . SEM micrographs at a magnification 40,000× of gentamicin–AOT PLGA 502H (NP1 to NP3) and 752H (NP4 to NP6) with different initial drug loadings, 20 mg (NP1 and NP4), 40 mg (NP2 and NP5) and 60 mg (NP3 and NP6) of gentamicin–AOT.
-Download: Download high-res image (524KB)
-Download: Download full-size image
-Fig. 4 . EDX images of most loaded gentamicin–AOT PLGA 752H nanoparticles (NP6) and a physical mixture (PM) of gentamicin–AOT and PLGA 752H. SEM image (left), sulfur map (middle) and oxygen map (right).
+
+The SEM images taken of the different formulations (Fig. 3, NP1 to NP6) reveal that homogeneous NPs are obtained by the oil-in-water single emulsion solvent evaporation method. No significant increase in particle size is observed upon augmenting the content of GEN–AOT in the NP formulation. However, a decrease is observed in sphericity for NPs with the highest drug content, as was also observed in Elizondo et al. [17]. Spherical particles tend to coalesce and form micro/nano-aggregates upon increasing the antibiotic content in the polymeric NPs. Thus, there is an obvious difference in shape and surface morphology between NPs with low and high loading.
+
+EDX microanalysis was performed in order to confirm whether the oil-in-water single emulsion solvent evaporation method is able to produce NPs with homogeneous distribution of the antibiotic. The EDX technique enables us to obtain not only the presence but also the spatial disposition of the elements forming a solid sample, and is therefore useful for studying the spatial distribution of GEN–AOT, which can be distinguished from PLGA by its S atoms. The EDX maps of sulfur (S), present in the antibiotic, and oxygen (O), present in both, polymer and antibiotic, of a physical mixture of pure GEN–AOT and pure PLGA 752H (Fig. 4, PM) have been depicted as a control sample, in which antibiotic and polymer particles are clearly distinguishable by the presence or absence of signal in the S map, respectively. EDX maps of the most loaded PLGA 752H NPs are also shown in Fig. 4 (NP 6). The sulfur map of the NP 6 shows clearly that all particles contain sulfur, even though the intensity is not so high due to the light nature of the element. Therefore GEN–AOT is distributed across all the NPs, indicating that the emulsion technique provided a homogeneous entrapment of the antibiotic.
+
 3.2.3. Residual PVA content
+
+The percentage of residual PVA was found to be less than 4% (w/w) for all formulations (Table 1). PVA is one of the most commonly used stabilizers in the production of polymeric NP such as PLGA NP. When dissolved, it forms a viscous solution that strongly adsorbs around the emulsion and drops during the emulsification process. It has been demonstrated that despite several washings a certain amount of PVA remains associated with the PLGA NPs surface [32], [33], which can affect their physical and cellular uptake properties [20]. However, in this case very low residual PVA values were obtained.
+
 3.2.4. Crystallinity of GEN–AOT
-Download: Download high-res image (312KB)
-Download: Download full-size image
-Fig. 5 . XRPD patterns of PVA tensoactive, gentamicin–AOT, pure PLGA polymers and polymeric nanoparticles; PLGA 502H and gentamicin–AOT-loaded PLGA 502H nanoparticles (A) and PLGA 752H and gentamicin–AOT-loaded PLGA 752H nanoparticles (B).
+
+In order to gather structural information about the polymeric NPs, powder X-ray diffraction patterns of the different species were measured; these are depicted in Fig. 5. Even though GEN–AOT could not be claimed to be a crystalline compound, its powder diffraction pattern shows a unique reflection at 3.6°, indicating a certain long-range order of this molecule. This type of powder X-ray diffraction pattern is typically observed for liquid crystals in which the periodicity has been partially lost and only a few peaks, or rather an intense peak at low angles, is shown [34]. Upon formation of the NPs, this reflection is maintained at 3.6° and its intensity increases with respect to the amorphous halo of the polymers when the content of antibiotic in the NPs augments. These facts indicate that the integration of GEN–AOT in the polymeric matrix does not modify its structure.
+
+In contrast, the powder X-ray diffraction patterns of pure polymers PLGA 502H and PLGA 752H (Fig. 5A and B, respectively) show the typical halo of amorphous phase.
+
+The X-ray powder diffraction pattern of the PVA is also represented. It shows several reflections in the range from 10 to 45 in 2θ, which implies that the compound has low crystallinity. These reflections are not present in the X-ray powder diffraction patterns of the NPs, confirming the low percentage of PVA remaining in the NPs’ formulation.
+
 3.2.5. Drug–polymer interactions by Fourier transform infrared spectroscopy
-Download: Download high-res image (267KB)
-Download: Download full-size image
-Fig. 6 . FTIR spectra of gentamicin–AOT, pure PLGA 502H and nanoparticles NP1 to NP3 (A) and pure PLGA 752H and nanoparticles NP4 to NP6 (B).
+
+The FTIR spectra of the pure polymers, pure GEN–AOT and the polymeric NPs are displayed in Fig. 6A (PLGA 502H) and B (PLGA 752H). The assignation of vibration bands attributed to GEN–AOT is described elsewhere and corresponds basically to the bands associated with the vibrations of the surfactant AOT [17]. Thus, bands between 3000 and 2800 cm−1 are attributed to alkyl chain vibrations of the surfactant chains (not shown in the figure), bands at 1734, 1201 and 1157 cm−1 are attributed to the AOT ester group and finally the band at 1036 cm−1 is attributed to the group. Regarding the polymers, the more significant bands are those assigned to the ester groups at 1748, 1165 and 1085 cm−1 for PLGA 502H and at 1750, 1184 and 1085 cm−1 for PLGA 752H.
+
+Although the FTIR bands corresponding to the polymers overlap with those of the antibiotic complex, the presence of the most significant band of GEN–AOT (1036 cm−1), whose intensity increases upon augmenting its content in the formulations, is observed in the FTIR spectra of the antibiotic-loaded NPs. Neither appreciable shifts nor disappearance or appearance of new bands are observed, the NPs spectra being the result of superimposing those of the pure PLGA and GEN–AOT, which would indicate the absence of significant drug:polymer interactions in the solid state.
+
 3.3. GEN–AOT encapsulation efficiency
-Table 2 . Gentamicin–AOT content and encapsulation efficiencies (EE) of the polymeric nanoparticles. Data are presented as mean ± SD.
+
+Ion pairing strategy is the object of growing interest for preparing highly loaded DDSs containing water-soluble drugs and proteins [35], [36]. HIP makes it possible to increase active compounds’ solubility in organic solvents [16], [37], thereby permitting us to encapsulate them in water-insoluble polymers like PLGA by a single emulsion method and preventing the diffusion escape of the drugs to the aqueous phase. The hydrophobic modification of GEN enabled us to prepare PLGA nanoparticles with very high drug entrapment efficiencies. As Table 2 shows, nearly 100% of the GEN–AOT complex was encapsulated into the formulations and GEN loadings as high as 60 μg/mg NP were obtained. Interestingly, encapsulation efficiency was maintained when the drug nominal loading increased, indicating that a saturation of the organic phase had not been reached. Thus, the addition of the AOT groups to GEN successfully improved the antibiotic payload of the carriers to concentrations not reached before for GEN containing PLGA micro- or nanoparticles [13], [38]. This is an important achievement, since eradication of intracellular microorganisms requires high drug concentrations inside the infected cells [2]. Moreover, obtaining highly loaded DDSs will reduce the quantity of particles to be administered to achieve the desired dose of antibiotic, which, in turn, has positive effects on the toxicity and cost of the treatment.
+
+Table 2. Gentamicin–AOT content and encapsulation efficiencies (EE) of the polymeric nanoparticles. Data are presented as mean ± SD.
+
+Copolymer type
+
+Formulation
+
+Actual loading (μg GEN/mg NP)
+
+EE (%)
+
+PLGA 502H
+
+NP1
+
+21.9 ± 1.8
+
+98 ± 7
+
+NP2
+
+41.4 ± 3.1
+
+99 ± 5
+
+NP3
+
+58.3 ± 4.8
+
+99 ± 9
+
+PLGA 752H
+
+NP4
+
+23.25 ± 4.4
+
+100 ± 10
+
+NP5
+
+41.1 ± 5.5
+
+99 ± 7
+
+NP6
+
+60.3 ± 6.4
+
+100 ± 3
+
 3.4. In vitro drug release studies
-Download: Download high-res image (856KB)
-Download: Download full-size image
-Fig. 7 . Gentamicin release profile from PLGA 502H (A) and PLGA 752H (B) NP in phosphate buffered saline (pH 7.4) as a function of the nominal drug loading. Data are expressed as mean ± SD, n = 3.
+
+GEN release profile from the carriers was investigated by incubating the formulations in PBS (pH 7.4) at 37 °C. Release profile of GEN exhibited a biphasic pattern characterized by an initial burst during the first 24 h, in which the release might be attributed to the presence of non-entrapped antibiotic adsorbed on the surface of the NPs, followed by a slow sustained release for up to 10 weeks (Fig. 7). GEN release pattern of NP1 formulation differs from the other nanoparticles’ formulation. In this case, the hydrophilicity of the formulation may favor faster solubilization and erosion of the polymeric matrix, instead of the more progressive degradation occurring in the more hydrophobic formulations, which results in a secondary burst.
+
+In contrast to previous studies where high burst releases were reported for GEN-loaded carriers [10], burst was moderate for all the GEN–AOT formulations; concretely, less than 12%. This reduction in the initial burst release was attributed to the hydrophobic ion pairing of GEN with the AOT surfactant and its consequent enhanced hydrophobicity, which may allow an increased retention of the drug on the NP surface. The low solubility of the GEN–AOT complex in aqueous environments could also result in a slow diffusion of the drug through the polymeric matrix and, therefore, in a more sustained release kinetic of the drug. Similar release profiles have also been reported for other ion-paired drugs and proteins [16], [35], [39].
+
+The comparison between the release profiles of the different developed PLGA carriers revealed that the release of GEN from the particles was highly influenced by the used copolymer type and drug loading. Fig. 7A and B illustrates the in vitro release profiles of the drug from the different formulations made with PLGA 502H and 752H, respectively. Drug release from 502H NPs was faster than from 752H NPs, which can be explained by the different monomer composition of the two PLGA copolymers. The higher content of hydrophilic glycolic units of the 502H copolymer contributes to its faster degradation and consequently to the faster release of the encapsulated drug from the carriers [40]. Thus, by the end of the study, 502H NPs released between 71% and 100% of their drug content while only 55–67% of the drug was released from 752H NPs.
+
+In order to analyze the influence of the drug loading on the release properties of the formulations, the release profiles of PLGA 502H and 752H NPs containing different amounts of drug loading were studied. Interestingly, it was found that increasing the amount of GEN in the formulation decreased the drug release rate. 502H NPs with a nominal loading of 20 mg released all their content in 70 days, whereas the same NPs but prepared with 40 and 60 mg of GEN–AOT released 87% and 70% of their drug loading, respectively. By the same time, 20, 40 and 60 mg loaded 752H NPs released 67%, 61% and 55% of the drug. This result is in accordance with those observed by other authors who found that the drug loading did not affect significantly the particle size, and who attributed this trend to the formation of a more hydrophobic and compact internal structure of the NPs that hinder the penetration of the water [41]. In addition, NP coalescence could reduce drug delivery rates due to a decrease in accessible surface, which could be translated into delayed release profiles for the most loaded NPs. Finally, it should also be taken into consideration that the use of in vitro release models presents limitations with respect to other physicochemical conditions. For example, the cation-adjusted Mueller–Hinton broth used for in vitro activity studies contains nitrogenous compounds, vitamins, carbon, sulfur and amino acids, compounds not present in PBS. Thus, we may expect different behavior in PBS with respect to the more complex bacterial culture medium used in the bioassay, which probably resulted in faster release of the antibiotic.
+
+Overall, the obtained results reveal a significant improved controlled release of GEN over the previously reported PLGA micro- and nanoparticles, which ensures that the complete payload of the NP will be taken up by the cells.
+
 3.5. Antimicrobial activity of free and encapsulated GEN–AOT
-Table 3 . Minimum inhibitory (MIC) and bactericidal (MBC) concentrations of gentamicin, gentamicin–AOT and the developed gentamicin–AOT formulations against Brucella melitensis 16 M.
+
+For therapeutic drugs, retention of biological activity is a big issue, since instability (chemical modification, denaturation) may occur in the manufacturing process as well as during the release.
+
+The activity of the new GEN–AOT formulations was studied against B. melitensis, determining the minimal inhibitory and bactericidal concentrations. The obtained results are summarized in Table 3. MICs against the quality control bacteria E. coli ATCC 25922 were within the reference range (0.5 mg ml−1). MICs of the different forms of GEN–AOT against B. melitensis were one double-dilution above or below the MIC of the reference compound GEN sulphate. These results demonstrate that the antibiotic activity of GEN was maintained irrespective of AOT coupling, processing by PCA and encapsulation in the different PLGA NPs. Moreover, since empty PLGA NPs and AOT alone did not show activity against the bacterial inoculum (above 64 and 32 mg ml−1, respectively), the activity of the different treatments was neatly attributable to the GEN fraction. Finally, the MBC values proved similar to MICs for all the treatments, confirming that the biological activity of GEN was preserved. Thus, on the basis of these findings, GEN–AOT particulate carriers appear to be promising therapeutic tools in the treatment of susceptible intracellular bacterial infections. Further studies will focus on the cellular toxicity and efficacy of the developed formulations in Brucella infected animal models.
+
+Table 3. Minimum inhibitory (MIC) and bactericidal (MBC) concentrations of gentamicin, gentamicin–AOT and the developed gentamicin–AOT formulations against Brucella melitensis 16 M.
+
+Treatment
+
+MIC (mg l−1)
+
+MBC (mg l−1)
+
+GEN sulphate
+
+0.5
+
+0.5
+
+GEN–AOT
+
+1
+
+1
+
+PCA GEN–AOT
+
+1
+
+1
+
+Empty 502H NP
+
+>64
+
+>64
+
+GEN–AOT 502H NPs
+
+0.25
+
+0.25–0.50
+
+Empty 752H NP
+
+>64
+
+>64
+
+GEN–AOT 752H NPs
+
+0.25
+
+0.25–0.50
+
+Free AOT
+
+32
+
+64
+
 4. Conclusions
+
+Ion pairing of gentamicin with the anionic AOT surfactant allowed its micronization by PCA, obtaining a particulated material with a high surface area and its encapsulation in polymeric NPs by the simple emulsion solvent evaporation method. This latter procedure provided NPs with GEN–AOT encapsulation efficiency of ∼100% and sustained release of the drug over 10 weeks. Moreover, neither ion pairing, supercritical fluid processing nor encapsulation in polymeric NPs affected the bactericidal activity of gentamicin. This fact, together with the higher nominal loading obtained by using the anionic AOT surfactant, supports the benefits which such formulations offer for treating susceptible intracellular bacterial infections.
+
 Acknowledgments
+
+This work was supported by DGI Spain under projects NANOFAR (NAN2004-09159-C04), EMOCIONA (CTQ2006-06333/BQU) and POMAS (CTQ-2010-19501). E. Imbuluzqueta thanks the Spanish Ministerio de Educación (programa FPU) for the fellowship grant. We acknowledge financial support from Instituto de Salud Carlos III, through “Acciones CIBER”. The authors thank Judith Oró and Ana Esther Carrillo for the technical support in taking SEM and EDX images, and MATGAS personnel for the technical assessment with the high pressure equipments. E. Elizondo thanks Consejo Superior de Investigaciones Científicas (CSIC) for her PhD bursary. N. Ventosa thanks Banco de Santander for the Chair of Knowledge and Technology Transfer Parc de Recerca UAB-Santander. We also thank TECNIO network for financial support on technological transfer activities related to this work.
+
 Appendix A. Figures with essential colour discrimination
-References
-[1] A. Haas The phagosome: compartment with a license to kill Traffic, 8 (2007), pp. 311-330 View at publisher Crossref View in Scopus Google Scholar
-[2] S. Carryn, H. Chanteux, C. Seral, M.P. Mingeot-Leclercq, F. Van Bambeke, P.M. Tulkens Intracellular pharmacodynamics of antibiotics Infect Dis Clin North Am, 17 (2003), pp. 615-634 View PDF View article View in Scopus Google Scholar
-[3] B.D. Davis Mechanism of bactericidal action of aminoglycosides Microbiol Rev, 51 (1987), pp. 341-350 View in Scopus Google Scholar
-[4] G.G. Zhanel, W.A. Craig Pharmacokinetic contributions to postantibiotic effects. Focus on aminoglycosides Clin Pharmacokinet, 27 (1994), pp. 377-392 View at publisher Crossref View in Scopus Google Scholar
-[5] E. Durante-Mangoni, A. Grammatikos, R. Utili, M.E. Falagas Do we still need the aminoglycosides? Int J Antimicrob Agents, 33 (2009), pp. 201-205 View PDF View article View in Scopus Google Scholar
-[6] S. Carryn, F. Van Bambeke, M.P. Mingeot-Leclercq, P.M. Tulkens Comparative intracellular (THP-1 macrophage) and extracellular activities of beta-lactams, azithromycin, gentamicin, and fluoroquinolones against Listeria monocytogenes at clinically relevant concentrations Antimicrob Agents Chemother, 46 (2002), pp. 2095-2103 View in Scopus Google Scholar
-[7] C. Seral, F. Van Bambeke, P.M. Tulkens Quantitative analysis of gentamicin, azithromycin, telithromycin, ciprofloxacin, moxifloxacin, and oritavancin (LY333328) activities against intracellular Staphylococcus aureus in mouse J774 macrophages Antimicrob Agents Chemother, 47 (2003), pp. 2283-2292 View in Scopus Google Scholar
-[8] C. Gamazo, S. Prior, M.C. Lecaroz, A.I. Vitas, M.A. Campanero, G. Perez, et al. Biodegradable gentamicin delivery systems for parenteral use for the treatment of intracellular bacterial infections Expert Opin Drug Deliv, 4 (2007), pp. 677-688 View at publisher Crossref View in Scopus Google Scholar
-[9] A. Ranjan, N. Pothayee, M.N. Seleem, R.D. Tyler Jr., B. Brenseke, N. Sriranganathan, et al. Antibacterial efficacy of core-shell nanostructures encapsulating gentamicin against an in vivo intracellular Salmonella model Int J Nanomed, 4 (2009), pp. 289-297 View in Scopus Google Scholar
-[10] D.E. Owens III, N.A. Peppas Opsonization, biodistribution, and pharmacokinetics of polymeric nanoparticles Int J Pharm, 307 (2006), pp. 93-102 View PDF View article View in Scopus Google Scholar
-[11] S. Ravi, K.K. Peh, Y. Darwis, B.K. Murthy, T.R. Singh, C. Mallikarjun Development and characterization of polymeric microspheres for controlled release protein loaded drug delivery system Indian J Pharm Sci, 70 (2008), pp. 303-309 View at publisher Crossref View in Scopus Google Scholar
-[12] J.M. Anderson, M.S. Shive Biodegradation and biocompatibility of PLA and PLGA microspheres Adv Drug Deliv Rev, 28 (1997), pp. 5-24 View PDF View article View in Scopus Google Scholar
-[13] C. Lecaroz, C. Gamazo, M.J. Renedo, M.J. Blanco-Prieto Biodegradable micro- and nanoparticles as long-term delivery vehicles for gentamicin J Microencapsul, 23 (2006), pp. 782-792 View at publisher Crossref View in Scopus Google Scholar
-[14] M.C. Lecaroz, M.J. Blanco-Prieto, M.A. Campanero, H. Salman, C. Gamazo Poly( d , l -lactide-coglycolide) particles containing gentamicin: pharmacokinetics and pharmacodynamics in Brucella melitensis -infected mice Antimicrob Agents Chemother, 51 (2007), pp. 1185-1190 View in Scopus Google Scholar
-[15] C. Lecaroz, M.J. Blanco-Prieto, M.A. Burrell, C. Gamazo Intracellular killing of Brucella melitensis in human macrophages with microsphere-encapsulated gentamicin J Antimicrob Chemother, 58 (2006), pp. 549-556 View at publisher Crossref View in Scopus Google Scholar
-[16] R. Falk, T.W. Randolph, J.D. Meyer, R.M. Kelly, M.C. Manning Controlled release of ionic compounds from poly ( l -lactide) microspheres produced by precipitation with a compressed antisolvent J Control Release, 44 (1997), pp. 77-85 View PDF View article View in Scopus Google Scholar
-[17] Elizondo E, Sala S, Imbuluzqueta E, González D, Blanco-Prieto MJ, Gamazo C, et al. High loading of gentamicin in bioadhesive PVM/MA nanostructured microparticles using compressed carbon-dioxide. Pharm Res 2010. doi: 10.1007/s11095-010-0248-x . Google Scholar
-[18] D.J. Dixon, K.P. Johnston, R.A. Bodmeier Polymeric materials formed by precipitation with a compressed fluid antisolvent ALChE J, 39 (1993), pp. 127-139 View in Scopus Google Scholar
-[19] M. Gimeno, N. Ventosa, Y. Boumghar, J. Fournier, I. Boucher, J. Veciana Micronization of the chitosan derivatives d -glucosamine hydrochloride and d -glucosamine sulphate salts by dense gas anti-solvent precipitation techniques J Supercrit Fluids, 38 (2006), pp. 94-102 View PDF View article View in Scopus Google Scholar
-[20] S.K. Sahoo, J. Panyam, S. Prabha, V. Labhasetwar Residual polyvinyl alcohol associated with poly ( d , l -lactide-co-glycolide) nanoparticles affects their physical properties and cellular uptake J Control Release, 82 (2002), pp. 105-114 View PDF View article View in Scopus Google Scholar
-[21] J.R. Benson, P.E. Hare O -phthalaldehyde: fluorogenic detection of primary amines in the picomole range. Comparison with fluorescamine and ninhydrin Proc Natl Acad Sci USA, 72 (1975), pp. 619-622 View at publisher Crossref View in Scopus Google Scholar
-[22] A. Fahr, X. Liu Drug delivery strategies for poorly water-soluble drugs Expert Opin Drug Deliv, 4 (2007), pp. 403-416 View at publisher Crossref View in Scopus Google Scholar
-[23] F. Ahsan, I.P. Rivas, M.A. Khan, A.I. Torres Suarez Targeting to macrophages: role of physicochemical properties of particulate carriers-liposomes and microspheres-on the phagocytosis by macrophages J Control Release, 79 (2002), pp. 29-40 View PDF View article View in Scopus Google Scholar
-[24] Y. Tabata, Y. Ikada Macrophage phagocytosis of biodegradable microspheres composed of l -lactic acid/glycolic acid homo- and copolymers J Biomed Mater Res, 22 (1988), pp. 837-858 View at publisher Crossref View in Scopus Google Scholar
-[25] A.M. Torche, P. Le Corre, E. Albina, A. Jestin, R. Le Verge PLGA microspheres phagocytosis by pig alveolar macrophages: influence of poly(vinyl alcohol) concentration, nature of loaded-protein and copolymer nature J Drug Target, 7 (2000), pp. 343-354 Google Scholar
-[26] H.Y. Nam, S.M. Kwon, H. Chung, S.Y. Lee, S.H. Kwon, H. Jeon, et al. Cellular uptake mechanism and intracellular fate of hydrophobically modified glycol chitosan nanoparticles J Control Release, 135 (2009), pp. 259-267 View PDF View article View in Scopus Google Scholar
-[27] S. Prior, B. Gander, N. Blarer, H.P. Merkle, M.L. Subira, J.M. Irache, et al. In vitro phagocytosis and monocyte–macrophage activation with poly(lactide) and poly(lactide-co-glycolide) microspheres Eur J Pharm Sci, 15 (2002), pp. 197-207 View PDF View article View in Scopus Google Scholar
-[28] H. Saito, H. Tomioka, T. Watanabe, K. Sato Mechanisms of phagocytosis of Mycobacterium leprae and other mycobacteria by human oligodendroglial cells Infect Immun, 51 (1986), pp. 163-167 View at publisher Crossref View in Scopus Google Scholar
-[29] Y.I. Basovskiy, M.M. Shkarupeta, S.A. Levitskiy, E.S. Kostryukova, V.N. Lazarev, V.M. Govorun, et al. Hydrophobic domains determine localization of IncC and IncG full-length proteins of C. trachomatis during their expression in cultured HeLa cells Bull Exp Biol Med, 145 (2008), pp. 425-429 Crossref View in Scopus Google Scholar
-[30] H. Su, N.G. Watkins, Y.X. Zhang, H.D. Caldwell Chlamydia trachomatis –host cell interactions: role of the chlamydial major outer membrane protein as an adhesin Infect Immun, 58 (1990), pp. 1017-1025 Crossref View in Scopus Google Scholar
-[31] P.G. Cardoso, G.C. Macedo, V. Azevedo, S.C. Oliveira Brucella spp. noncanonical LPS: structure, biosynthesis, and interaction with host immune system Microb Cell Fact, 5 (2006), pp. 13-22 View in Scopus Google Scholar
-[32] P.D. Scholes, A.G. Coombes, L. Illum, S.S. Davis, J.F. Watts, C. Ustariz, et al. Detection and determination of surface levels of poloxamer and PVA surfactant on biodegradable nanospheres using SSIMS and XPS J Control Release, 59 (1999), pp. 261-278 View PDF View article View in Scopus Google Scholar
-[33] K.M. Shakesheff, C. Evora, I.I. Soriano, R. Langer The adsorption of poly(vinyl alcohol) to biodegradable microparticles studied by X-ray photoelectron spectroscopy (XPS) J Colloid Interface Sci, 185 (1997), pp. 538-547 View PDF View article View in Scopus Google Scholar
-[34] O.Y. Mindyyuk, M.R. Stetzer, P.A. Heiney, J.C. Nelson, J.S. Moore High resolution X-ray diffraction study of a tubular liquid crystal Adv Mater, 10 (1998), pp. 1363-1366 Google Scholar
-[35] G. Dalwadi, B. Sunderland An ion pairing approach to increase the loading of hydrophilic and lipophilic drugs into PEGylated PLGA nanoparticles Eur J Pharm Biopharm, 71 (2009), pp. 231-242 View PDF View article View in Scopus Google Scholar
-[36] L. Yang, F. Cui, K. Shi, D. Cun, R. Wang Design of high payload PLGA nanoparticles containing melittin/sodium dodecyl sulfate complex by the hydrophobic ion-pairing technique Drug Dev Ind Pharm (2009), pp. 1-9 Crossref View in Scopus Google Scholar
-[37] J.D. Meyer, M.C. Manning Hydrophobic ion pairing: altering the solubility properties of biomolecules Pharm Res, 15 (1998), pp. 188-193 View in Scopus Google Scholar
-[38] C. Lecaroz, C. Gamazo, M.J. Blanco-Prieto Nanocarriers with gentamicin to treat intracellular pathogens J Nanosci Nanotechnol, 6 (2006), pp. 3296-3302 Crossref View in Scopus Google Scholar
-[39] S.H. Choi, T.G. Park Hydrophobic ion pair formation between leuprolide and sodium oleate for sustained release from biodegradable polymeric microspheres Int J Pharm, 203 (2000), pp. 193-202 View PDF View article View in Scopus Google Scholar
-[40] L. Lu, C.A. Garcia, A.G. Mikos In vitro degradation of thin poly (dl -lactic-co-glycolic acid) films J Biomed Mater Res, 46 (1999), pp. 236-244 View in Scopus Google Scholar
-[41] L. Mu, S.S. Feng PLGA/TPGS nanoparticles for controlled release of paclitaxel: effects of the emulsifier and drug loading ratio Pharm Res, 20 (2003), pp. 1864-1872 View in Scopus Google Scholar
-Cited by (59)
-Hydrophobic ion pairing: Encapsulating small molecules, peptides, and proteins into nanocarriers 2019, Nanoscale Advances Show abstract
-Hydrophobic ion pairing: Encapsulating small molecules, peptides, and proteins into nanocarriers
-Supercritical carbon dioxide-based technologies for the production of drug nanoparticles/nanocrystals – A comprehensive review 2018, Advanced Drug Delivery Reviews Show abstract
-Supercritical carbon dioxide-based technologies for the production of drug nanoparticles/nanocrystals – A comprehensive review
-Nanocarriers for antibiotics: A promising solution to treat intracellular bacterial infections 2014, International Journal of Antimicrobial Agents Show abstract
-Nanocarriers for antibiotics: A promising solution to treat intracellular bacterial infections
-PLGA-based nanoparticles: An overview of biomedical applications 2012, Journal of Controlled Release Show abstract
-PLGA-based nanoparticles: An overview of biomedical applications
-Nanotechnology as a Novel Approach in Combating Microbes Providing an Alternative to Antibiotics 2021, Antibiotics
-Nanotechnology as a Novel Approach in Combating Microbes Providing an Alternative to Antibiotics
-Supercritical Fluid Technology: An Emphasis on Drug Delivery and Related Biomedical Applications 2017, Advanced Healthcare Materials
-Supercritical Fluid Technology: An Emphasis on Drug Delivery and Related Biomedical Applications
-Recommended articles
-High prevalence and intensity of Stephanurus dentatus in a population of wild boar ( Sus scrofa ) in south western Spain The Veterinary Journal, Volume 240, 2018, pp. 47-49 S. Moratal , …, J. Vicente View PDF
-High prevalence and intensity of Stephanurus dentatus in a population of wild boar ( Sus scrofa ) in south western Spain
-Counter-ion complexes for enhanced drug loading in nanocarriers: Proof-of-concept and beyond International Journal of Pharmaceutics, Volume 511, Issue 2, 2016, pp. 994-1001 Nazende Günday Türeli , …, Marc Schneider View PDF
-Counter-ion complexes for enhanced drug loading in nanocarriers: Proof-of-concept and beyond
-DNA aneuploidy and centrosome amplification in canine tumor cell lines Tissue and Cell, Volume 61, 2019, pp. 67-71 Yoshifumi Endo , …, Takayuki Nakagawa View PDF
-DNA aneuploidy and centrosome amplification in canine tumor cell lines
-Article Metrics
-Citations
-Citation Indexes 59
-Patent Family Citations 1
-Captures
-Mendeley Readers 96
-About ScienceDirect
-Remote access
-Contact and support
-Terms and conditions
-Privacy policy
-Cookies are used by this site. Cookie settings
-All content on this site: Copyright © 2025 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
 
-=== TABLE 1 (TSV) ===
+Certain figures in this article, particularly Figures 1, 2 and 4, are difficult to interpret in black and white. The full colour images can be found in the on-line version, at doi:10.1016/j.actbio.2010.11.031.
+
+S. Carryn, F. Van Bambeke, M.P. Mingeot-Leclercq, P.M. Tulkens
+
+Comparative intracellular (THP-1 macrophage) and extracellular activities of beta-lactams, azithromycin, gentamicin, and fluoroquinolones against Listeria monocytogenes at clinically relevant concentrations
+
+Antimicrob Agents Chemother, 46 (2002), pp. 2095-2103
+
+Quantitative analysis of gentamicin, azithromycin, telithromycin, ciprofloxacin, moxifloxacin, and oritavancin (LY333328) activities against intracellular Staphylococcus aureus in mouse J774 macrophages
+
+Antimicrob Agents Chemother, 47 (2003), pp. 2283-2292
+
+Elizondo E, Sala S, Imbuluzqueta E, González D, Blanco-Prieto MJ, Gamazo C, et al. High loading of gentamicin in bioadhesive PVM/MA nanostructured microparticles using compressed carbon-dioxide. Pharm Res 2010. doi:10.1007/s11095-010-0248-x.
+
+M. Gimeno, N. Ventosa, Y. Boumghar, J. Fournier, I. Boucher, J. Veciana
+
+Micronization of the chitosan derivatives d-glucosamine hydrochloride and d-glucosamine sulphate salts by dense gas anti-solvent precipitation techniques
+
+A.M. Torche, P. Le Corre, E. Albina, A. Jestin, R. Le Verge
+
+PLGA microspheres phagocytosis by pig alveolar macrophages: influence of poly(vinyl alcohol) concentration, nature of loaded-protein and copolymer nature
+
 Copolymer type	Formulation	Initial GEN–AOT loading (mg)	Size (nm)	PdI	Zeta potential (mV)	Residual PVA (%) (w/w)
-PLGA 502H	NP 502H	0	317 ± 5	0.09 ± 0.03	−20.1 ± 7.5	3.5 ± 0.2
-NP1	20	298 ± 16	0.03 ± 0.03	−3.2 ± 0.7	3.7 ± 0.2
-NP2	40	284 ± 18	0.12 ± 0.03	−2.7 ± 0.7	3.2 ± 0.5
-NP3	60	330 ± 30	0.20 ± 0.05	−3.5 ± 2.7	3.9 ± 0.1
+PLGA 502H	NP 502H	0	317 ± 5	0.09 ± 0.03	−20.1 ± 7.5	3.5 ± 0.2
+NP1	20	298 ± 16	0.03 ± 0.03	−3.2 ± 0.7	3.7 ± 0.2
+NP2	40	284 ± 18	0.12 ± 0.03	−2.7 ± 0.7	3.2 ± 0.5
+NP3	60	330 ± 30	0.20 ± 0.05	−3.5 ± 2.7	3.9 ± 0.1
+PLGA 752H	NP 752H	0	303 ± 22	0.15 ± 0.08	−23.2 ± 10.8	2.8 ± 0.6
+NP4	20	252 ± 23	0.10 ± 0.05	−3.8 ± 1.8	3.4 ± 0.3
+NP5	40	281 ± 15	0.15 ± 0.04	−3.8 ± 0.2	2.8 ± 0.4
+NP6	60	323 ± 24	0.22 ± 0.04	−2.4 ± 1.4	3.0 ± 0.5
 
-PLGA 752H	NP 752H	0	303 ± 22	0.15 ± 0.08	−23.2 ± 10.8	2.8 ± 0.6
-NP4	20	252 ± 23	0.10 ± 0.05	−3.8 ± 1.8	3.4 ± 0.3
-NP5	40	281 ± 15	0.15 ± 0.04	−3.8 ± 0.2	2.8 ± 0.4
-NP6	60	323 ± 24	0.22 ± 0.04	−2.4 ± 1.4	3.0 ± 0.5
-
-=== TABLE 2 (TSV) ===
 Copolymer type	Formulation	Actual loading (μg GEN/mg NP)	EE (%)
-PLGA 502H	NP1	21.9 ± 1.8	98 ± 7
-	NP2	41.4 ± 3.1	99 ± 5
-	NP3	58.3 ± 4.8	99 ± 9
-PLGA 752H	NP4	23.25 ± 4.4	100 ± 10
-	NP5	41.1 ± 5.5	99 ± 7
-	NP6	60.3 ± 6.4	100 ± 3
+PLGA 502H	NP1	21.9 ± 1.8	98 ± 7
+NP2	41.4 ± 3.1	99 ± 5
+NP3	58.3 ± 4.8	99 ± 9
+PLGA 752H	NP4	23.25 ± 4.4	100 ± 10
+NP5	41.1 ± 5.5	99 ± 7
+NP6	60.3 ± 6.4	100 ± 3
 
-=== TABLE 3 (TSV) ===
-Treatment	MIC (mg l −1 )	MBC (mg l −1 )
+Treatment	MIC (mg l −1 )	MBC (mg l −1 )
 GEN sulphate	0.5	0.5
 GEN–AOT	1	1
 PCA GEN–AOT	1	1

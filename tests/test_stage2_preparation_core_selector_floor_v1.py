@@ -189,6 +189,53 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
         self.assertIn("same-procedure-variant-prep", prompt_ids)
         self.assertNotIn("analytical-extraction-assay", prompt_ids)
 
+    def test_protocol_inheritance_trigger_survives_method_budget(self):
+        core_overview = self._method_candidate(
+            "core-overview",
+            "Rh-loaded PLGA NPs (NPR1; Table 1) were prepared by nanoprecipitation using an acetone-water system. The formulation procedure defines the base preparation method for the coded nanoparticles.",
+            paragraph_index=10,
+        )
+        core_details = self._method_candidate(
+            "core-details",
+            "Briefly, 50 mg of PLGA and 2.5 mg Rh were dissolved in 4 mL acetone and mixed by vortexing. This mixture was added dropwise into 12 mL of 1% PVA under continuous stirring for 15 minutes. The suspension was evaporated for 2 hours, washed, centrifuged, and freeze-dried.",
+            paragraph_index=11,
+        )
+        same_protocol_modifier = self._method_candidate(
+            "same-protocol-modifier",
+            "Rh-loaded PLGA-modifier NPs were prepared using the same protocol, but incorporating 3.5 mg surface modifier into the inner phase of the emulsion (NPR3). Table 1 shows the different formulations prepared.",
+            paragraph_index=12,
+        )
+        same_procedure_drug = self._method_candidate(
+            "same-procedure-drug",
+            "Gat-loaded PLGA NPs, Gat-loaded PLGA-polysorbate 80 NPs, and Gat-loaded PLGA-Labrafil NPs were prepared using the same procedure but incorporating 5 mg of Gat into the inner phase. These active-loaded NPG1, NPG2, and NPG3 formulations represent the later drug-loaded family.",
+            paragraph_index=13,
+        )
+        for candidate in (same_protocol_modifier, same_procedure_drug):
+            candidate["section_kind"] = "variant_preparation"
+            candidate["section_label"] = "Preparation and characterization of nanoparticles"
+
+        result = build_evidence_priority_selection(
+            segmented_candidates=[core_overview, core_details, same_protocol_modifier, same_procedure_drug],
+            signals={},
+        )
+        prompt_ids = {candidate["candidate_id"] for candidate in result["prompt_selected_candidates"]}
+        suppression_reasons = [
+            (event["candidate_id"], event["reason"])
+            for event in result["suppression_events"]
+            if event["reason"] == "protocol_inheritance_trigger_selected"
+        ]
+
+        self.assertIn("core-details", prompt_ids)
+        self.assertIn("same-protocol-modifier", prompt_ids)
+        self.assertIn("same-procedure-drug", prompt_ids)
+        self.assertEqual(
+            suppression_reasons,
+            [
+                ("same-protocol-modifier", "protocol_inheritance_trigger_selected"),
+                ("same-procedure-drug", "protocol_inheritance_trigger_selected"),
+            ],
+        )
+
     def test_preparation_core_floor_rejects_caption_locator_even_with_local_cues(self):
         selected = [
             self._method_candidate(

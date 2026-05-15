@@ -30,6 +30,82 @@ from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
 
 
 class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
+    def test_existing_main_formulation_scope_allows_supplemental_secondary_identity_scope(self):
+        source_text = """
+        Table 2 Mean diameter, polydispersity index (PI) and zeta potential (z) of
+        PLGA empty and loaded nanospheres. Empty nanospheres XAN nanospheres
+        3-MeOXAN nanospheres Diameter (nm) 154G6 164G8 164G9 PI 0.06G0.03
+        0.06G0.03 0.06G0.01 z (mV) K36.2G5.2 K38.9G1.3 K36.0G3.0.
+        a XAN nanosphere with theoretical concentration of 60 mg/mL.
+        b 3-MeOXAN nanospheres with theoretical concentration of 60 mg/mL.
+        """
+        document = {
+            "document_key": "SECONDARYID",
+            "doi": "10.0000/secondary-id",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "formulation_candidates": [
+                {
+                    "candidate_id": "NS_XAN",
+                    "candidate_kind": "formulation_family",
+                    "raw_formulation_label": "XAN nanospheres",
+                }
+            ],
+            "semantic_signals": {"has_variable_sweep": True},
+            "table_formulation_scopes": [
+                {
+                    "scope_id": "SECONDARYID__scope__table_1",
+                    "table_id": "Table 1",
+                    "is_formulation_table": True,
+                    "table_type": "full_formulation",
+                    "marker_provenance": "llm_parsed",
+                }
+            ],
+            "table_variable_roles": [],
+            "boundary_markers": [
+                {"table_id": "Table 1", "is_doe": False, "marker_provenance": "llm_parsed"},
+                {"table_id": "Table 2", "is_doe": False, "marker_provenance": "llm_parsed"},
+            ],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text",
+            return_value=source_text,
+        ), patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([], {"reopen_resolution_status": "missing", "normalized_payload_used": "no"}),
+        ):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=[
+                    "key",
+                    "doi",
+                    "model",
+                    "local_instance_id",
+                    "formulation_id",
+                    "raw_formulation_label",
+                    "instance_kind",
+                    "instance_kind_raw",
+                    "instance_kind_inferred",
+                    "instance_confidence",
+                    "candidate_source",
+                    "formulation_role",
+                    "instance_context_tags",
+                    "change_context_tags",
+                    "evidence_section",
+                    "evidence_span_text",
+                ],
+                doe_summary={"doe_rows_emitted": 0},
+            )
+
+        self.assertEqual(["Empty nanospheres"], [row["raw_formulation_label"] for row in rows])
+        self.assertEqual("Table 2", rows[0]["evidence_section"])
+        self.assertIn("source_identity_table_recovery", json.loads(rows[0][TABLE_SCOPE_FIELD])["supplemental_scope_source"])
+        activation_by_table = {row["table_id"]: row for row in summary["table_activation_rows"]}
+        self.assertEqual("1", activation_by_table["Table 2"]["rows_emitted"])
+
     def test_reopened_authority_table_keeps_semantic_scope_role_lookup(self):
         """Role lookup must use LLM semantic scope id when payload reopen changes table_id."""
         document = {
@@ -570,6 +646,91 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         self.assertEqual(4, len(rows))
         self.assertEqual("", summary["skip_reason"])
         self.assertEqual({"NPR1", "NPR2", "NPB1", "NPG1"}, {row["raw_formulation_label"] for row in rows})
+
+    def test_row_coded_llm_candidates_infer_table_scope_from_preserved_authority(self):
+        payload = {
+            "table_id": "Table 1",
+            "source_table_id": "Table 1",
+            "source_table_asset_id": "ROWCODE__table_01__pdf_table",
+            "source_table_reference": "data/cleaned/goren_2025/tables/ROWCODE/ROWCODE__table_01__pdf_table.csv",
+            "normalized_matrix": [
+                ["Formulation", "Rhodamine (mg)", "Gatifloxacin (mg)", "Polysorbate 80 (%)", "Labrafil (mg)"],
+                ["NPR1", "2.5", "-", "-", "-"],
+                ["NPR2", "2.5", "-", "1", "-"],
+                ["NPB1", "-", "-", "-", "-"],
+                ["NPG1", "-", "5", "-", "-"],
+            ],
+            "header_structure": {"header_row_count": 1},
+            "representation_status": "preserved_authority",
+            "authority_rank": "1",
+            "authority_score": "0.99",
+        }
+        document = {
+            "document_key": "ROWCODE",
+            "doi": "10.0000/rowcode",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "formulation_candidates": [
+                {"candidate_id": "NPR1", "candidate_kind": "single_formulation"},
+                {"candidate_id": "NPG1", "candidate_kind": "single_formulation"},
+            ],
+            "protocol_inheritance_markers": [
+                {
+                    "marker_id": "proto_row_code",
+                    "target_scope": {"formulation_ids": ["NPG1"], "target_group_label": "Gat-loaded PLGA NPs"},
+                    "inheritance_trigger_text": "same procedure",
+                    "marker_provenance": "llm_explicit",
+                }
+            ],
+            "table_formulation_scopes": [],
+            "table_variable_roles": [],
+            "boundary_markers": [],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        recovered_rows = [
+            {"label": "NPR1", "assignments": [{"name": "Rhodamine (mg)", "value": "2.5"}], "row_text": "NPR1 2.5"},
+            {"label": "NPR2", "assignments": [{"name": "Rhodamine (mg)", "value": "2.5"}, {"name": "Polysorbate 80 (%)", "value": "1"}], "row_text": "NPR2 2.5 1"},
+            {"label": "NPB1", "assignments": [], "row_text": "NPB1"},
+            {"label": "NPG1", "assignments": [{"name": "Gatifloxacin (mg)", "value": "5"}], "row_text": "NPG1 5"},
+        ]
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([payload], {"reopen_resolution_status": "resolved", "normalized_payload_used": "yes"}),
+        ), patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1.extract_direct_formulation_rows_from_authority",
+            return_value=(recovered_rows, ""),
+        ), patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1.extract_rowwise_formulation_rows_from_authority",
+            return_value=([], "no_rowwise_rows"),
+        ), patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1.extract_first_column_identity_rows_from_authority",
+            return_value=([], "no_first_column_rows"),
+        ), patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1.extract_column_anchor_rows_from_authority",
+            return_value=([], "no_column_rows"),
+        ):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=[
+                    "key",
+                    "doi",
+                    "model",
+                    "local_instance_id",
+                    "formulation_id",
+                    "raw_formulation_label",
+                    "instance_kind",
+                    "instance_kind_raw",
+                    "instance_kind_inferred",
+                    "instance_confidence",
+                    "candidate_source",
+                ],
+                doe_summary={"doe_rows_emitted": 0},
+            )
+
+        self.assertEqual({"NPR1", "NPR2", "NPB1", "NPG1"}, {row["raw_formulation_label"] for row in rows})
+        self.assertEqual("", summary["skip_reason"])
+        self.assertEqual(1, summary["table_count"])
 
     def test_anchorless_selected_sweep_runs_even_when_llm_marks_tables_non_formulation(self):
         source_text = """

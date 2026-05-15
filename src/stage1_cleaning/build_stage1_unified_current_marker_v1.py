@@ -26,8 +26,10 @@ Contract
 Principles
 - No Marker rerun. Frozen Marker output is consumed only if already present.
 - No PLGA semantic inference, no Stage2/Stage5 execution, no benchmark claim.
-- Current clean text remains the compatibility base; Marker text is additive for
-  PDF records only when frozen Marker output exists.
+- HTML current clean text/structure is preferred when both HTML and PDF current
+  Stage1 bindings exist for the same paper. PDF current text remains the
+  compatibility fallback; Marker text is additive for PDF records only when
+  frozen Marker output exists.
 - The emitted JSON exposes a Stage2-friendly top-level `blocks` list and a
   manifest-friendly `text_path`, `structure_path`, and
   `stage1_table_cell_sidecar_path` binding.
@@ -161,6 +163,40 @@ def load_manifest(path: Path, scope: set[str] | None) -> dict[str, dict[str, str
     return out
 
 
+def current_binding_rank(value: str) -> int:
+    """Rank duplicate current Stage1 bindings by source preference.
+
+    HTML is preferred over PDF when both bindings exist for the same key.
+    This preserves the full-corpus Stage1 handoff design: HTML-native text,
+    structure, and table sidecars are used where available; PDF remains the
+    fallback and may receive additive frozen Marker content later in this script.
+    """
+    v = (value or "").lower()
+    if ".html" in v or v.endswith("html.txt") or v.endswith("html.json"):
+        return 2
+    if ".pdf" in v or v.endswith("pdf.txt") or v.endswith("pdf.json"):
+        return 1
+    return 0
+
+
+def prefer_current_binding(existing: str, candidate: str) -> str:
+    if not existing:
+        return candidate
+    if current_binding_rank(candidate) > current_binding_rank(existing):
+        return candidate
+    return existing
+
+
+def prefer_current_structure_row(existing: dict[str, str] | None, candidate: dict[str, str]) -> dict[str, str]:
+    if not existing:
+        return candidate
+    existing_value = existing.get("structure_path") or existing.get("txt_path") or existing.get("text_path") or ""
+    candidate_value = candidate.get("structure_path") or candidate.get("txt_path") or candidate.get("text_path") or ""
+    if current_binding_rank(candidate_value) > current_binding_rank(existing_value):
+        return candidate
+    return existing
+
+
 def load_key2txt(path: Path) -> dict[str, str]:
     out: dict[str, str] = {}
     if not path.exists():
@@ -173,12 +209,24 @@ def load_key2txt(path: Path) -> dict[str, str]:
                 key = (row.get("paper_key") or row.get("key") or "").strip()
                 val = (row.get("txt_path") or row.get("text_path") or "").strip()
                 if key and val:
-                    out[key] = val
+                    out[key] = prefer_current_binding(out.get(key, ""), val)
         else:
             for line in f:
                 parts = line.rstrip("\n").split("\t")
                 if len(parts) >= 2 and parts[0] and parts[1]:
-                    out[parts[0]] = parts[1]
+                    out[parts[0]] = prefer_current_binding(out.get(parts[0], ""), parts[1])
+    return out
+
+
+def load_key2structure(path: Path) -> dict[str, dict[str, str]]:
+    out: dict[str, dict[str, str]] = {}
+    if not path.exists():
+        return out
+    with path.open("r", encoding="utf-8", errors="replace", newline="") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            key = (row.get("key") or row.get("paper_key") or "").strip()
+            if key:
+                out[key] = prefer_current_structure_row(out.get(key), row)
     return out
 
 
@@ -204,14 +252,21 @@ def load_json_if_exists(rel_or_abs: str) -> tuple[dict[str, Any], str, str]:
 
 
 def infer_source_type(row: dict[str, str], current_structure: dict[str, Any]) -> str:
-    for val in [row.get("text_source_type", ""), current_structure.get("source_type", "")]:
-        if str(val).strip():
-            return str(val).strip().upper()
+    # Prefer the actual selected current binding over manifest-level defaults.
+    # `manifest_current.tsv` may still say `text_source_type=pdf` for rows where
+    # key2txt/key2structure have both PDF and HTML derivatives; the unified
+    # Stage1 handoff is HTML-first when the selected binding is HTML.
     txt = row.get("text_path") or row.get("txt_path") or ""
     if ".html" in txt.lower():
         return "HTML"
     if ".pdf" in txt.lower():
         return "PDF"
+    struct_source_type = str(current_structure.get("source_type", "")).strip()
+    if struct_source_type:
+        return struct_source_type.upper()
+    manifest_source_type = str(row.get("text_source_type", "")).strip()
+    if manifest_source_type:
+        return manifest_source_type.upper()
     if row.get("html"):
         return "HTML"
     if row.get("pdf"):
@@ -544,7 +599,7 @@ def main() -> int:
     scope = read_scope(args.scope_keys)
     manifest = load_manifest(args.manifest, scope)
     key2txt = load_key2txt(args.key2txt)
-    key2structure = load_tsv_by_key(args.key2structure, key_field="key")
+    key2structure = load_key2structure(args.key2structure)
     key2marker = load_tsv_by_key(args.key2marker, key_field="paper_key")
     key2cells = load_tsv_by_key(args.table_cell_manifest, key_field="paper_key")
     out_root = args.content_dir / "stage1_unified_current_marker_v1"

@@ -113,6 +113,18 @@ Benchmark-legality clarification:
 - If a run scope has no explicit governed GT, do not describe it as benchmark, benchmark-valid, or benchmark-blocked; label it as diagnosis, audit, or extraction-development only.
 - Legal recovery remains LLM-first: rules may restore or normalize values only after the LLM semantic layer or governed evidence handoff has authorized the formulation meaning and candidate scope.
 - Deterministic rules must not become the semantic authority for row identity, formulation membership, or candidate-universe definition.
+- S5-2b deterministic DOE factor physical materialization is part of S5-2 materialization:
+  it may decode row-local DOE coded levels into physical values only when the
+  paper source defines an explicit factor/level table or equivalent structured
+  level map. It writes final value/unit bundles before S5-2c splitting, and it
+  must not infer absent level maps, create rows, convert units, or allow compare
+  fallback to treat unresolved coded surfaces such as `-1 mg/mL` as physical
+  concentrations.
+- S5-2c deterministic numeric value/unit structuring is part of S5-2 materialization:
+  it may split already materialized physical numeric surfaces such as `1.0 %w/v`
+  or `15 mg/mL` into raw/display, numeric value, and unit bundles, but it must
+  not guess absent units, perform unit conversion, derive new values, fill from
+  donors, create rows, or alter formulation membership.
 
 Complete pipeline does not mean forced full recomputation.
 
@@ -1511,4 +1523,3 @@ counts.
 - `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` now defaults to explicit Evidence Binding workbook mode. It requires `--evidence-binding-packs-jsonl` and `--evidence-binding-risk-tsv`; omission must fail loudly unless `--legacy-evidence-mode` is passed.
 - `src/stage5_benchmark/validate_evidence_binding_contract_v1.py` is the maintained diagnostic validator for this integration. It must read the existing Layer3 evidence handoff golden cases before optional Evidence Binding Pack golden cases.
 - Evidence Binding Pack/risk/workbook validation outputs are diagnostic review surfaces, not benchmark-valid final outputs.
-

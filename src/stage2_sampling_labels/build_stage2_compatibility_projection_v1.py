@@ -211,6 +211,7 @@ from src.stage2_sampling_labels.table_row_expansion_v1 import (
     INHERITANCE_MARKER_FIELD,
     METHOD_GROUP_SIGNATURE_HINT_FIELD,
     PREPARATION_INHERITANCE_FIELD,
+    PROTOCOL_INHERITANCE_MARKER_FIELD,
     SELECTION_MARKER_FIELD,
     TABLE_ASSIGNMENTS_FIELD,
     TABLE_CELL_BINDINGS_FIELD,
@@ -245,6 +246,10 @@ FUNCTION_UNIT_ACTIVATION_NAME = "feature_activation_report_v2.tsv"
 EXECUTION_LEDGER_NAME = "execution_ledger_v2.tsv"
 AUTHORITY_REATTACHMENT_SIDECAR_NAME = "authority_reattachment_sidecar_v1.json"
 IDENTITY_VARIABLES_FIELD = "identity_variables_json"
+RELATION_CUE_FIELD = "relation_cues_json"
+TYPED_INHERITANCE_FIELD = "typed_inheritance_fields_json"
+TYPED_DOE_FACTOR_FIELD = "typed_doe_factors_json"
+RESULT_BINDING_CANDIDATE_FIELD = "result_binding_candidates_json"
 LLM_FIRST_COMPOSITE_MODE = "llm_first_composite"
 FALLBACK_SEMANTIC_SOURCE_MODE = "governed_fallback_semantic_source"
 DIAGNOSTIC_COMPARATOR_MODE = "diagnostic_comparator"
@@ -396,6 +401,128 @@ def normalize_context_inheritance_markers(value: Any) -> list[dict[str, Any]]:
     return markers
 
 
+def normalize_protocol_inheritance_markers(value: Any) -> list[dict[str, Any]]:
+    field_aliases = {
+        "drug mass": "drug_feed_amount_text",
+        "drug_mass_mg": "drug_feed_amount_text",
+        "drug amount": "drug_feed_amount_text",
+        "drug feed": "drug_feed_amount_text",
+        "drug_feed": "drug_feed_amount_text",
+        "drug feed amount": "drug_feed_amount_text",
+        "drug_feed_amount": "drug_feed_amount_text",
+        "polymer mass": "plga_mass_mg",
+        "polymer_mass_mg": "plga_mass_mg",
+        "polymer amount": "plga_mass_mg",
+        "o_volume_ml": "organic_phase_volume_mL",
+        "O_volume_mL": "organic_phase_volume_mL",
+        "organic phase volume": "organic_phase_volume_mL",
+        "organic_phase_volume_ml": "organic_phase_volume_mL",
+        "w2_volume_ml": "external_aqueous_phase_volume_mL",
+        "W2_volume_mL": "external_aqueous_phase_volume_mL",
+        "external aqueous phase volume": "external_aqueous_phase_volume_mL",
+        "external_aqueous_phase_volume_ml": "external_aqueous_phase_volume_mL",
+    }
+
+    def canonical_field(value: Any) -> str:
+        text = normalize_text(value)
+        return field_aliases.get(text, field_aliases.get(text.lower(), text))
+
+    markers: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        marker = dict(item)
+        for field_array_name in ("inherited_fields", "overrides"):
+            marker[field_array_name] = [
+                {
+                    **field_item,
+                    "field_name": canonical_field(field_item.get("field_name")),
+                }
+                for field_item in ensure_list(marker.get(field_array_name))
+                if isinstance(field_item, dict)
+            ]
+        target_scope = marker.get("target_scope") if isinstance(marker.get("target_scope"), dict) else {}
+        has_target = bool(
+            ensure_list(target_scope.get("formulation_ids"))
+            or ensure_list(target_scope.get("table_ids"))
+            or normalize_text(target_scope.get("target_group_label"))
+        )
+        if normalize_text(marker.get("marker_readiness")) not in {"execution_ready", "partial_semantic"}:
+            marker["marker_readiness"] = "execution_ready" if has_target and normalize_text(marker.get("inheritance_trigger_text")) else "partial_semantic"
+        if not normalize_text(marker.get("marker_provenance")):
+            marker["marker_provenance"] = "llm_explicit"
+        markers.append(marker)
+    return markers
+
+
+def relation_cue_is_execution_ready(cue: dict[str, Any]) -> bool:
+    readiness = normalize_text(cue.get("execution_readiness") or cue.get("marker_readiness")).lower()
+    return readiness == "execution_ready"
+
+
+def typed_handoff_is_execution_ready(item: dict[str, Any]) -> bool:
+    readiness = normalize_text(item.get("execution_readiness") or item.get("marker_readiness")).lower()
+    return readiness == "execution_ready"
+
+
+def normalize_relation_cues(value: Any) -> list[dict[str, Any]]:
+    cues: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        cue = dict(item)
+        readiness = normalize_text(cue.get("execution_readiness") or cue.get("marker_readiness")).lower()
+        if readiness not in {"execution_ready", "partial_semantic", "review_only"}:
+            readiness = "partial_semantic"
+        cue["execution_readiness"] = readiness
+        if not normalize_text(cue.get("marker_provenance")):
+            cue["marker_provenance"] = "llm_explicit"
+        cues.append(cue)
+    return cues
+
+
+def normalize_typed_inheritance_fields(value: Any) -> list[dict[str, Any]]:
+    fields: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        field = dict(item)
+        readiness = normalize_text(field.get("execution_readiness") or field.get("marker_readiness")).lower()
+        field["execution_readiness"] = readiness if readiness in {"execution_ready", "partial_semantic", "review_only"} else "partial_semantic"
+        if not normalize_text(field.get("marker_provenance")):
+            field["marker_provenance"] = "llm_explicit"
+        fields.append(field)
+    return fields
+
+
+def normalize_typed_doe_factors(value: Any) -> list[dict[str, Any]]:
+    factors: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        factor = dict(item)
+        readiness = normalize_text(factor.get("execution_readiness") or factor.get("marker_readiness")).lower()
+        factor["execution_readiness"] = readiness if readiness in {"execution_ready", "partial_semantic", "review_only"} else "partial_semantic"
+        if not normalize_text(factor.get("marker_provenance")):
+            factor["marker_provenance"] = "llm_explicit"
+        factors.append(factor)
+    return factors
+
+
+def normalize_result_binding_candidates(value: Any) -> list[dict[str, Any]]:
+    bindings: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        binding = dict(item)
+        readiness = normalize_text(binding.get("execution_readiness") or binding.get("marker_readiness")).lower()
+        binding["execution_readiness"] = readiness if readiness in {"execution_ready", "partial_semantic", "review_only"} else "partial_semantic"
+        if not normalize_text(binding.get("marker_provenance")):
+            binding["marker_provenance"] = "llm_explicit"
+        bindings.append(binding)
+    return bindings
+
+
 def parse_string_list(value: Any) -> list[str]:
     parsed = parse_json_maybe(value)
     if isinstance(parsed, list):
@@ -431,6 +558,11 @@ def compatibility_output_columns() -> list[str]:
         SELECTION_MARKER_FIELD,
         INHERITANCE_MARKER_FIELD,
         CONTEXT_INHERITANCE_MARKER_FIELD,
+        PROTOCOL_INHERITANCE_MARKER_FIELD,
+        RELATION_CUE_FIELD,
+        TYPED_INHERITANCE_FIELD,
+        TYPED_DOE_FACTOR_FIELD,
+        RESULT_BINDING_CANDIDATE_FIELD,
         BOUNDARY_MARKER_FIELD,
         PREPARATION_INHERITANCE_FIELD,
     ]:
@@ -561,6 +693,26 @@ def _numeric_prefix_from_cell(value: Any) -> str:
     return match.group(0).replace(",", ".") if match else ""
 
 
+def _is_suspect_measurement_cell_value(value: Any) -> bool:
+    text = normalize_text(value).lower()
+    if not text:
+        return False
+    if "(cid:" in text:
+        return True
+    if re.fullmatch(r"[−–-]?\s*\(?cid:\d+\)?\s*\d*", text):
+        return True
+    return False
+
+
+def _existing_projected_measurement_is_suspect(row: dict[str, str], field: str) -> bool:
+    evidence_type = normalize_text(row.get(f"{field}_evidence_region_type"))
+    if evidence_type not in {"table_cell", "row_local_table_cell_grid_binding"}:
+        return False
+    return _is_suspect_measurement_cell_value(row.get(f"{field}_value_text")) or _is_suspect_measurement_cell_value(
+        row.get(f"{field}_value")
+    )
+
+
 def _project_grid_bindings_into_blank_fields(row: dict[str, str], bindings: list[dict[str, str]]) -> int:
     projected = 0
     for binding in bindings:
@@ -569,7 +721,7 @@ def _project_grid_bindings_into_blank_fields(row: dict[str, str], bindings: list
         if not field:
             continue
         value_key = f"{field}_value"
-        if normalize_text(row.get(value_key)):
+        if normalize_text(row.get(value_key)) and not _existing_projected_measurement_is_suspect(row, field):
             continue
         raw_value = normalize_text(binding.get("raw_cell_value"))
         numeric_value = _numeric_prefix_from_cell(raw_value)
@@ -591,6 +743,10 @@ def _metric_tail_text_for_row(row: dict[str, str]) -> str:
         for item in refs:
             if isinstance(item, dict):
                 parts.append(normalize_text(item.get("supporting_snippet")))
+    change_descriptions = parse_json_maybe(row.get("change_descriptions"))
+    if isinstance(change_descriptions, list):
+        for item in change_descriptions:
+            parts.append(normalize_text(item))
     return " | ".join(part for part in parts if part)
 
 
@@ -1026,6 +1182,11 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
         normalized["selection_markers"] = ensure_list(document.get("selection_markers"))
         normalized["inheritance_markers"] = []
         normalized["context_inheritance_markers"] = normalize_context_inheritance_markers(document.get("context_inheritance_markers"))
+        normalized["protocol_inheritance_markers"] = normalize_protocol_inheritance_markers(document.get("protocol_inheritance_markers"))
+        normalized["relation_cues"] = normalize_relation_cues(document.get("relation_cues"))
+        normalized["typed_inheritance_fields"] = normalize_typed_inheritance_fields(document.get("typed_inheritance_fields"))
+        normalized["typed_doe_factors"] = normalize_typed_doe_factors(document.get("typed_doe_factors"))
+        normalized["result_binding_candidates"] = normalize_result_binding_candidates(document.get("result_binding_candidates"))
         normalized["boundary_markers"] = [
             {
                 "table_id": normalize_text(item.get("table_id")),
@@ -1183,6 +1344,10 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
         normalized[LEGACY_OBJECT_KEYS["variable_or_factor_candidate"]] = normalized_factors
         normalized[LEGACY_OBJECT_KEYS["measurement_candidate"]] = normalized_measurements
         normalized[LEGACY_OBJECT_KEYS["relation_cue"]] = normalized_relation_cues
+        normalized["relation_cues"] = normalize_relation_cues(document.get("relation_cues"))
+        normalized["typed_inheritance_fields"] = normalize_typed_inheritance_fields(document.get("typed_inheritance_fields"))
+        normalized["typed_doe_factors"] = normalize_typed_doe_factors(document.get("typed_doe_factors"))
+        normalized["result_binding_candidates"] = normalize_result_binding_candidates(document.get("result_binding_candidates"))
         normalized[LEGACY_OBJECT_KEYS["evidence_handoff"]] = normalized_handoffs
         return normalized
 
@@ -1212,6 +1377,11 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
         "selection_markers": ensure_list(document.get("selection_markers")),
         "inheritance_markers": ensure_list(document.get("inheritance_markers")),
         "context_inheritance_markers": normalize_context_inheritance_markers(document.get("context_inheritance_markers")),
+        "protocol_inheritance_markers": normalize_protocol_inheritance_markers(document.get("protocol_inheritance_markers")),
+        "relation_cues": normalize_relation_cues(document.get("relation_cues")),
+        "typed_inheritance_fields": normalize_typed_inheritance_fields(document.get("typed_inheritance_fields")),
+        "typed_doe_factors": normalize_typed_doe_factors(document.get("typed_doe_factors")),
+        "result_binding_candidates": normalize_result_binding_candidates(document.get("result_binding_candidates")),
         "boundary_markers": ensure_list(document.get("boundary_markers")),
         "authority_run_dir": normalize_text(document.get("authority_run_dir")),
         "authority_payload_root": normalize_text(document.get("authority_payload_root")),
@@ -1423,6 +1593,7 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
     normalized[LEGACY_OBJECT_KEYS["variable_or_factor_candidate"]] = normalized_factors
     normalized[LEGACY_OBJECT_KEYS["measurement_candidate"]] = normalized_measurements
     normalized[LEGACY_OBJECT_KEYS["relation_cue"]] = normalized_relation_cues
+    normalized["relation_cues"] = normalize_relation_cues(document.get("relation_cues"))
     normalized[LEGACY_OBJECT_KEYS["evidence_handoff"]] = normalized_handoffs
     return normalized
 
@@ -2329,6 +2500,39 @@ def project_document(
             execution_ready_markers(
                 [item for item in ensure_list(document.get("context_inheritance_markers")) if isinstance(item, dict)]
             )
+        )
+        row[PROTOCOL_INHERITANCE_MARKER_FIELD] = stringify_json(
+            execution_ready_markers(
+                [item for item in ensure_list(document.get("protocol_inheritance_markers")) if isinstance(item, dict)]
+            )
+        )
+        row[RELATION_CUE_FIELD] = stringify_json(
+            [
+                item
+                for item in normalize_relation_cues(document.get("relation_cues"))
+                if relation_cue_is_execution_ready(item)
+            ]
+        )
+        row[TYPED_INHERITANCE_FIELD] = stringify_json(
+            [
+                item
+                for item in normalize_typed_inheritance_fields(document.get("typed_inheritance_fields"))
+                if typed_handoff_is_execution_ready(item)
+            ]
+        )
+        row[TYPED_DOE_FACTOR_FIELD] = stringify_json(
+            [
+                item
+                for item in normalize_typed_doe_factors(document.get("typed_doe_factors"))
+                if typed_handoff_is_execution_ready(item)
+            ]
+        )
+        row[RESULT_BINDING_CANDIDATE_FIELD] = stringify_json(
+            [
+                item
+                for item in normalize_result_binding_candidates(document.get("result_binding_candidates"))
+                if typed_handoff_is_execution_ready(item)
+            ]
         )
         row[BOUNDARY_MARKER_FIELD] = stringify_json(document.get("boundary_markers"))
         identity_variables_payload = build_identity_variables_payload(owned_factors)

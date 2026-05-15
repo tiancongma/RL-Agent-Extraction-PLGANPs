@@ -206,6 +206,9 @@ def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
         return matches[0]
     if len(matches) > 1:
         return ""
+    if re.search(r"\b(?:mw|m\.?\s*w\.?|mn|molecular\s+weight|weight[-\s]*average\s+molecular\s+weight)\b", raw):
+        if re.search(r"\b(?:plga|polymer|pcl|pla|resomer|purasorb|poly\s*\()\b", raw) or re.search(r"\b(?:kda|da|daltons?|g\s*/\s*mol)\b", raw):
+            return "polymer_mw_kDa"
     concentration_header = bool(re.search(r"\b(?:mg\s*/\s*ml|mg\s+ml|milligrams?\s*/\s*ml|mg\s+per\s+ml)\b", raw))
     if concentration_header:
         if re.search(r"\b(?:plga|polymer|pcl|pla|resomer)\b", raw):

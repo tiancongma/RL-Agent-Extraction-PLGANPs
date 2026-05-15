@@ -27,6 +27,7 @@ TABLE_VARIABLE_ROLE_FIELD = "table_variable_roles_json"
 SELECTION_MARKER_FIELD = "selection_markers_json"
 INHERITANCE_MARKER_FIELD = "inheritance_markers_json"
 CONTEXT_INHERITANCE_MARKER_FIELD = "context_inheritance_markers_json"
+PROTOCOL_INHERITANCE_MARKER_FIELD = "protocol_inheritance_markers_json"
 BOUNDARY_MARKER_FIELD = "boundary_markers_json"
 TABLE_ID_FIELD = "table_id"
 TABLE_ROW_ID_FIELD = "table_row_id"
@@ -305,6 +306,17 @@ def context_marker_targets_table(marker: dict[str, Any], table_id: str) -> bool:
     return False
 
 
+def protocol_marker_targets_table(marker: dict[str, Any], table_id: str) -> bool:
+    wanted = normalize_text(table_id)
+    if not wanted:
+        return False
+    target_scope = marker.get("target_scope") if isinstance(marker.get("target_scope"), dict) else {}
+    for target_table_id in ensure_list(target_scope.get("table_ids")):
+        if normalize_text(target_table_id) == wanted:
+            return True
+    return False
+
+
 def selection_marker_risk_reason(marker: dict[str, Any]) -> str:
     if not normalize_text(marker.get("source_table_id")):
         return "missing_source_table"
@@ -441,6 +453,21 @@ def normalize_context_inheritance_marker(marker: dict[str, Any], *, document: di
     normalized["marker_provenance"] = marker_provenance(marker, document=document)
     if normalize_text(normalized.get(MARKER_READINESS_FIELD)) not in VALID_MARKER_READINESS:
         normalized[MARKER_READINESS_FIELD] = EXECUTION_READY_MARKER if ensure_list(normalized.get("target_contexts")) else PARTIAL_SEMANTIC_MARKER
+    return normalized
+
+
+def normalize_protocol_inheritance_marker(marker: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(marker)
+    normalized["marker_provenance"] = marker_provenance(marker, document=document)
+    target_scope = normalized.get("target_scope") if isinstance(normalized.get("target_scope"), dict) else {}
+    has_target = bool(
+        ensure_list(target_scope.get("formulation_ids"))
+        or ensure_list(target_scope.get("table_ids"))
+        or normalize_text(target_scope.get("target_group_label"))
+    )
+    has_trigger = bool(normalize_text(normalized.get("inheritance_trigger_text")))
+    if normalize_text(normalized.get(MARKER_READINESS_FIELD)) not in VALID_MARKER_READINESS:
+        normalized[MARKER_READINESS_FIELD] = EXECUTION_READY_MARKER if has_target and has_trigger else PARTIAL_SEMANTIC_MARKER
     return normalized
 
 
@@ -842,6 +869,177 @@ def infer_table_scopes_from_source_sweep_tables(document: dict[str, Any]) -> lis
     return inferred
 
 
+ROW_CODE_RE = re.compile(r"\b[A-Z]{1,5}\d{1,3}[A-Z]?\b", re.IGNORECASE)
+ROW_CODE_BLOCKLIST = {"DNA", "RNA", "PBS", "PVA", "PLGA", "PLA", "PCL"}
+
+
+def extract_row_code_tokens(value: Any) -> set[str]:
+    text = normalize_text(value)
+    if not text:
+        return set()
+    tokens: set[str] = set()
+    for match in ROW_CODE_RE.finditer(text):
+        token = match.group(0).upper()
+        if token in ROW_CODE_BLOCKLIST:
+            continue
+        if re.fullmatch(r"T\d{1,3}", token):
+            continue
+        tokens.add(token)
+    return tokens
+
+
+def llm_row_code_tokens(document: dict[str, Any]) -> set[str]:
+    tokens: set[str] = set()
+    candidate_surfaces = ensure_list(document.get("formulation_candidates")) or ensure_list(
+        document.get("formulation_identity_candidates")
+    )
+    for candidate in candidate_surfaces:
+        if not isinstance(candidate, dict):
+            continue
+        for field in ("candidate_id", "formulation_candidate_id", "label_hint", "raw_formulation_label"):
+            tokens.update(extract_row_code_tokens(candidate.get(field)))
+    for marker in ensure_list(document.get("protocol_inheritance_markers")):
+        if not isinstance(marker, dict):
+            continue
+        target_scope = marker.get("target_scope") if isinstance(marker.get("target_scope"), dict) else {}
+        for target in ensure_list(target_scope.get("formulation_ids")):
+            tokens.update(extract_row_code_tokens(target))
+        tokens.update(extract_row_code_tokens(target_scope.get("target_group_label")))
+    return tokens
+
+
+def authority_payload_text(payload: dict[str, Any]) -> str:
+    parts = [
+        normalize_text(payload.get("table_id") or payload.get("source_table_id")),
+        normalize_text(payload.get("source_caption_or_title")),
+    ]
+    for entry in authority_row_entries(payload):
+        parts.append(normalize_text(entry.get("row_text")))
+        parts.extend(normalize_text(cell) for cell in ensure_list(entry.get("cells")))
+    return " ".join(part for part in parts if part)
+
+
+def row_code_formulation_table_score(text: str) -> int:
+    lowered = normalize_text(text).lower()
+    score = 0
+    if re.search(r"\btable\s+\d+\s+nanoparticle\s+formulations?\s+developed\b", lowered):
+        score += 5
+    if "formulation" in lowered and re.search(r"\b(?:mg|%|w/v|amount|concentration|surfactant|modifier)\b", lowered):
+        score += 3
+    if re.search(r"\bformulation\b.{0,120}\b(?:mg|%)\b", lowered):
+        score += 2
+    if re.search(r"\b(?:particle\s+size|zeta|encapsulation|ee\b|biodistribution|release)\b", lowered):
+        score -= 2
+    return score
+
+
+def source_table_payloads_for_row_code_inference(document: dict[str, Any]) -> list[dict[str, Any]]:
+    payloads, _ = _load_normalized_table_payloads(document)
+    inferred: list[dict[str, Any]] = list(payloads)
+    seen_refs = {
+        normalize_text(item.get("source_table_reference") or item.get("source_csv_path")).replace("\\", "/").lower()
+        for item in inferred
+        if isinstance(item, dict)
+    }
+    for path in source_table_paths(document):
+        ref_key = str(path).replace("\\", "/").lower()
+        if ref_key in seen_refs:
+            continue
+        rows = read_csv_rows(path)
+        table_id = extract_table_label(path, rows)
+        if not table_id:
+            continue
+        inferred.append(
+            {
+                "table_id": table_id,
+                "source_table_id": table_id,
+                "source_csv_path": str(path),
+                "normalized_csv_path": str(path),
+                "source_table_reference": str(path),
+                "source_table_asset_id": path.stem,
+                "representation_status": "source_csv_row_code_scope_inference",
+                "normalization_actions": ["preserve_coordinate_grid"],
+            }
+        )
+        seen_refs.add(ref_key)
+    return inferred
+
+
+def infer_table_scopes_from_row_coded_authority(document: dict[str, Any]) -> list[dict[str, Any]]:
+    """Recover table scope when the LLM emits row-code signals but omits table scopes.
+
+    This is still post-LLM completion: row codes in LLM candidates/markers are
+    the semantic authorization signal, while S2-2 authority payloads provide the
+    row universe.  The helper does not discover formulation tables without an
+    LLM row-code signal and does not enumerate from prompt summaries.
+    """
+    if not is_llm_first_document(document):
+        return []
+    wanted_codes = llm_row_code_tokens(document)
+    if len(wanted_codes) < 2:
+        return []
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    matches: list[tuple[int, int, dict[str, Any], set[str]]] = []
+    for payload in source_table_payloads_for_row_code_inference(document):
+        text = authority_payload_text(payload)
+        if not text:
+            continue
+        payload_codes = extract_row_code_tokens(text)
+        code_hits = wanted_codes & payload_codes
+        if len(code_hits) < 2:
+            continue
+        caption = normalize_text(payload.get("source_caption_or_title")).lower()
+        if re.search(r"\b(?:doe|box[- ]?behnken|design matrix|experimental design)\b", caption):
+            continue
+        matches.append((len(code_hits), row_code_formulation_table_score(text), payload, code_hits))
+    if not matches:
+        return []
+    matches.sort(
+        key=lambda item: (
+            -item[0],
+            -item[1],
+            int(item[2].get("authority_rank") or 10_000),
+            -float(item[2].get("authority_score") or 0.0),
+        )
+    )
+    best_count = matches[0][0]
+    best_score = matches[0][1]
+    best = [item for item in matches if item[0] == best_count and item[1] == best_score]
+    if len(best) != 1:
+        return []
+    _, _, payload, code_hits = best[0]
+    table_id = normalize_text(payload.get("table_id") or payload.get("source_table_id"))
+    source_ref = normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path"))
+    asset_id = normalize_text(payload.get("source_table_asset_id") or payload.get("table_asset_id"))
+    if not table_id and source_ref:
+        table_id = extract_table_label(Path(source_ref), read_csv_rows(Path(source_ref))) if Path(source_ref).exists() else ""
+    if not table_id:
+        return []
+    return [
+        {
+            "scope_id": f"{document_key}__row_code_table_scope__01",
+            "table_id": table_id,
+            "table_path": source_ref,
+            "table_asset_id": asset_id,
+            "source_table_asset_id": asset_id,
+            "source_table_reference": source_ref,
+            "table_scope_locators": {
+                "table_id": table_id,
+                "source_table_asset_id": asset_id,
+                "source_table_reference": source_ref,
+            },
+            "variable_name": "",
+            "candidate_values": sorted(code_hits),
+            "is_formulation_table": True,
+            "table_type": "full_formulation",
+            "confidence": "medium",
+            "evidence_span": "row-coded LLM formulation targets matched preserved table authority",
+            "marker_provenance": "llm_parsed",
+            "declaration_basis": "llm_row_coded_candidate_plus_authority_row_identity",
+        }
+    ]
+
+
 def infer_table_scopes_from_table_anchored_formulations(document: dict[str, Any]) -> list[dict[str, Any]]:
     if not is_llm_first_document(document):
         return []
@@ -856,6 +1054,10 @@ def infer_table_scopes_from_table_anchored_formulations(document: dict[str, Any]
     source_sweep_scopes = infer_table_scopes_from_source_sweep_tables(document)
     if source_sweep_scopes:
         return source_sweep_scopes
+
+    row_coded_scopes = infer_table_scopes_from_row_coded_authority(document)
+    if row_coded_scopes:
+        return row_coded_scopes
 
     evidence_by_id = {
         normalize_text(item.get("span_id") or item.get("evidence_span_id")): item
@@ -981,6 +1183,11 @@ def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, A
         for item in ensure_list(document.get("context_inheritance_markers"))
         if isinstance(item, dict)
     ]
+    protocol_inheritance_markers = [
+        normalize_protocol_inheritance_marker(item, document=document)
+        for item in ensure_list(document.get("protocol_inheritance_markers"))
+        if isinstance(item, dict)
+    ]
     preparation_markers = [
         normalize_preparation_marker(item, document=document)
         for item in ensure_list(document.get("preparation_inheritance_markers"))
@@ -1040,6 +1247,7 @@ def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, A
     document["preparation_inheritance_markers"] = preparation_markers
     document["inheritance_markers"] = inheritance_markers
     document["context_inheritance_markers"] = context_inheritance_markers
+    document["protocol_inheritance_markers"] = protocol_inheritance_markers
     document["boundary_markers"] = boundary_markers
     return document
 
@@ -2344,6 +2552,7 @@ def emit_single_variable_recovery_rows(
     table_id: str,
     group_hint_prefix: str,
     context_inheritance_markers: list[dict[str, Any]] | None = None,
+    protocol_inheritance_markers: list[dict[str, Any]] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, Any]], list[dict[str, str]], int]:
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     doi = normalize_text(document.get("doi"))
@@ -2366,6 +2575,11 @@ def emit_single_variable_recovery_rows(
         marker
         for marker in ensure_list(context_inheritance_markers)
         if isinstance(marker, dict) and context_marker_targets_table(marker, table_id)
+    ]
+    table_protocol_inheritance_markers = [
+        marker
+        for marker in ensure_list(protocol_inheritance_markers)
+        if isinstance(marker, dict) and protocol_marker_targets_table(marker, table_id)
     ]
     evidence_span = normalize_text(contract.get("evidence_span"))
     for group in ensure_list(contract.get("groups")):
@@ -2461,6 +2675,7 @@ def emit_single_variable_recovery_rows(
                         TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
                         TABLE_SCOPE_FIELD: stringify_json(scope),
                         CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
+                        PROTOCOL_INHERITANCE_MARKER_FIELD: stringify_json(table_protocol_inheritance_markers),
                         "supporting_evidence_refs": stringify_json(
                             [
                                 {
@@ -3930,6 +4145,23 @@ def run_table_row_expansion(
     doi = normalize_text(document.get("doi"))
     model_name = normalize_text(document.get("model_name") or document.get("source_mode")) or "stage2_v2_semantic_objects"
     scopes = [item for item in ensure_list(document.get("table_formulation_scopes")) if isinstance(item, dict)]
+    if scopes:
+        existing_formulation_table_ids = {
+            normalize_text(scope.get("table_id"))
+            for scope in scopes
+            if bool(scope.get("is_formulation_table")) and normalize_text(scope.get("table_id"))
+        }
+        supplemental_scopes = []
+        for scope in infer_table_scopes_from_source_sweep_tables(document):
+            table_id = normalize_text(scope.get("table_id"))
+            if not table_id or table_id in existing_formulation_table_ids:
+                continue
+            supplemental = dict(scope)
+            supplemental["declaration_basis"] = "llm_authorized_family_plus_preserved_source_identity_table"
+            supplemental["supplemental_scope_source"] = "source_identity_table_recovery"
+            supplemental_scopes.append(supplemental)
+        if supplemental_scopes:
+            scopes = scopes + supplemental_scopes
     variable_roles = {
         normalize_text(item.get("table_id")): item
         for item in ensure_list(document.get("table_variable_roles"))
@@ -3948,6 +4180,9 @@ def run_table_row_expansion(
     )
     context_inheritance_markers = execution_ready_markers(
         [item for item in ensure_list(document.get("context_inheritance_markers")) if isinstance(item, dict)]
+    )
+    protocol_inheritance_markers = execution_ready_markers(
+        [item for item in ensure_list(document.get("protocol_inheritance_markers")) if isinstance(item, dict)]
     )
     normalized_payloads, reopen_binding = _load_normalized_table_payloads(document)
     rows: list[dict[str, str]] = []
@@ -4304,6 +4539,12 @@ def run_table_row_expansion(
             if context_marker_targets_table(marker, table_id)
             and marker_provenance(marker) in LLM_MARKER_SOURCES
         ]
+        table_protocol_inheritance_markers = [
+            marker
+            for marker in protocol_inheritance_markers
+            if protocol_marker_targets_table(marker, table_id)
+            and marker_provenance(marker) in LLM_MARKER_SOURCES
+        ]
         emitted_rows_for_scope = 0
         explicit_rows_for_scope = 0
         simple_rows_for_scope = 0
@@ -4371,6 +4612,7 @@ def run_table_row_expansion(
                         SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
                         INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
                         CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
+                        PROTOCOL_INHERITANCE_MARKER_FIELD: stringify_json(table_protocol_inheritance_markers),
                         BOUNDARY_MARKER_FIELD: stringify_json(boundary),
                         PREPARATION_INHERITANCE_FIELD: stringify_json(
                             [
@@ -4501,6 +4743,7 @@ def run_table_row_expansion(
                             SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
                             INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
                             CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
+                            PROTOCOL_INHERITANCE_MARKER_FIELD: stringify_json(table_protocol_inheritance_markers),
                             BOUNDARY_MARKER_FIELD: stringify_json(boundary),
                             PREPARATION_INHERITANCE_FIELD: stringify_json(
                                 [
@@ -4619,6 +4862,7 @@ def run_table_row_expansion(
                             SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
                             INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
                             CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json(table_context_inheritance_markers),
+                            PROTOCOL_INHERITANCE_MARKER_FIELD: stringify_json(table_protocol_inheritance_markers),
                             BOUNDARY_MARKER_FIELD: stringify_json(boundary),
                             PREPARATION_INHERITANCE_FIELD: stringify_json(
                                 [
@@ -4721,6 +4965,7 @@ def run_table_row_expansion(
                     table_id=table_id,
                     group_hint_prefix=f"{document_key}__single_variable_group",
                     context_inheritance_markers=table_context_inheritance_markers,
+                    protocol_inheritance_markers=table_protocol_inheritance_markers,
                 )
                 rows.extend(recovered_rows)
                 jsonl_rows.extend(recovered_jsonl)
@@ -4864,6 +5109,7 @@ def run_table_row_expansion(
                         SELECTION_MARKER_FIELD: stringify_json([]),
                         INHERITANCE_MARKER_FIELD: stringify_json([]),
                         CONTEXT_INHERITANCE_MARKER_FIELD: stringify_json([]),
+                        PROTOCOL_INHERITANCE_MARKER_FIELD: stringify_json([]),
                         BOUNDARY_MARKER_FIELD: stringify_json({}),
                         PREPARATION_INHERITANCE_FIELD: stringify_json([]),
                         "supporting_evidence_refs": stringify_json(
@@ -4974,6 +5220,7 @@ def run_table_row_expansion(
                 table_id="single_variable_context",
                 group_hint_prefix=f"{document_key}__single_variable_group",
                 context_inheritance_markers=context_inheritance_markers,
+                protocol_inheritance_markers=protocol_inheritance_markers,
             )
             rows.extend(recovered_rows)
             jsonl_rows.extend(recovered_jsonl)
