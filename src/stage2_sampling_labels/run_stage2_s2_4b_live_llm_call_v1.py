@@ -33,6 +33,20 @@ RUN_METADATA_NAME = "stage2_s2_4b_run_metadata_v1.json"
 REQUEST_SUMMARY_NAME = "s2_4b_request_summary_v1.tsv"
 RAW_RESPONSE_FILENAME_TEMPLATE = "{paper_key}__stage2_v2_raw_response.json"
 REQUEST_METADATA_FILENAME_TEMPLATE = "{paper_key}__stage2_v2_request_metadata.json"
+ACTIVE_PARAMETER_LOCK_TOKEN = "active_params"
+ACTIVE_PARAMETER_LOCK_FIELDS = (
+    "llm_backend",
+    "model",
+    "deepseek_response_format",
+    "deepseek_thinking",
+    "deepseek_streaming",
+    "max_tokens",
+    "request_timeout_seconds",
+    "request_retries",
+    "retry_sleep_sec",
+    "max_parallel_requests",
+    "inter_request_sleep_seconds",
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -116,6 +130,12 @@ def parse_args() -> argparse.Namespace:
         help="DeepSeek response_format mode. Initial trial default: json_object.",
     )
     parser.add_argument(
+        "--deepseek-streaming",
+        choices=["enabled", "disabled"],
+        default="disabled",
+        help="Use DeepSeek chat/completions Server-Sent Events streaming and collect the final text. Default preserves prior non-streaming behavior.",
+    )
+    parser.add_argument(
         "--max-tokens",
         type=int,
         default=8192,
@@ -145,6 +165,16 @@ def parse_args() -> argparse.Namespace:
         type=float,
         default=0.0,
         help="Optional sleep between request submissions. Default preserves current no-pacing behavior.",
+    )
+    parser.add_argument(
+        "--allow-active-parameter-deviation",
+        action="store_true",
+        help="Permit an explicit, documented deviation from a campaign-local S2-4b active parameter lock.",
+    )
+    parser.add_argument(
+        "--active-parameter-deviation-reason",
+        default="",
+        help="Required reason when --allow-active-parameter-deviation is used.",
     )
     return parser.parse_args()
 
@@ -194,6 +224,7 @@ def call_deepseek_chat_completion(
     response_format: str,
     max_tokens: int,
     timeout_seconds: int,
+    streaming: str = "disabled",
 ) -> dict[str, Any]:
     load_env_file()
     api_key = os.getenv("DEEPSEEK_API_KEY")
@@ -204,10 +235,12 @@ def call_deepseek_chat_completion(
     body: dict[str, Any] = {
         "model": model,
         "messages": [{"role": "user", "content": prompt_text}],
-        "stream": False,
+        "stream": streaming == "enabled",
         "max_tokens": max(1, max_tokens),
         "thinking": {"type": thinking},
     }
+    if streaming == "enabled":
+        body["stream_options"] = {"include_usage": True}
     if thinking == "enabled":
         body["reasoning_effort"] = reasoning_effort
     if response_format == "json_object":
@@ -218,10 +251,93 @@ def call_deepseek_chat_completion(
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
-            "Accept": "application/json",
+            "Accept": "text/event-stream" if streaming == "enabled" else "application/json",
         },
         method="POST",
     )
+    if streaming == "enabled":
+        chunks: list[str] = []
+        reasoning_chunks: list[str] = []
+        usage: dict[str, Any] = {}
+        chunk_count = 0
+        first_chunk_elapsed_seconds = 0.0
+        try:
+            with urllib.request.urlopen(request, timeout=max(1, timeout_seconds)) as response:
+                status_code = int(getattr(response, "status", 0) or 0)
+                for raw_line in response:
+                    line = raw_line.decode("utf-8", errors="replace").strip()
+                    if not line or line.startswith(":"):
+                        continue
+                    if not line.startswith("data:"):
+                        continue
+                    data = line.split("data:", 1)[1].strip()
+                    if data == "[DONE]":
+                        break
+                    try:
+                        event = json.loads(data)
+                    except json.JSONDecodeError:
+                        continue
+                    if first_chunk_elapsed_seconds <= 0:
+                        first_chunk_elapsed_seconds = time.monotonic() - started
+                    chunk_count += 1
+                    if isinstance(event, dict) and isinstance(event.get("usage"), dict):
+                        usage = event["usage"]
+                    choices = event.get("choices") if isinstance(event, dict) else None
+                    if not isinstance(choices, list) or not choices:
+                        continue
+                    delta = choices[0].get("delta", {}) if isinstance(choices[0], dict) else {}
+                    if not isinstance(delta, dict):
+                        continue
+                    content_piece = delta.get("content")
+                    reasoning_piece = delta.get("reasoning_content")
+                    if content_piece:
+                        chunks.append(str(content_piece))
+                    if reasoning_piece:
+                        reasoning_chunks.append(str(reasoning_piece))
+        except urllib.error.HTTPError as exc:
+            error_body = exc.read().decode("utf-8", errors="replace")
+            return {
+                "status": "request_failure",
+                "error_type": "HTTPError",
+                "error_message": f"HTTP {exc.code}: {error_body[:1000]}",
+                "http_status": exc.code,
+                "error_body": error_body,
+                "elapsed_seconds": time.monotonic() - started,
+                "chunk_count": chunk_count,
+                "first_chunk_elapsed_seconds": first_chunk_elapsed_seconds,
+            }
+        except Exception as exc:
+            return {
+                "status": "request_failure",
+                "error_type": type(exc).__name__,
+                "error_message": str(exc),
+                "elapsed_seconds": time.monotonic() - started,
+                "chunk_count": chunk_count,
+                "first_chunk_elapsed_seconds": first_chunk_elapsed_seconds,
+            }
+        content = "".join(chunks)
+        reasoning_content = "".join(reasoning_chunks)
+        if not content.strip():
+            return {
+                "status": "empty_content",
+                "text": "",
+                "http_status": status_code,
+                "reasoning_content": reasoning_content,
+                "usage": usage,
+                "elapsed_seconds": time.monotonic() - started,
+                "chunk_count": chunk_count,
+                "first_chunk_elapsed_seconds": first_chunk_elapsed_seconds,
+            }
+        return {
+            "status": "success",
+            "text": content,
+            "http_status": status_code,
+            "reasoning_content": reasoning_content,
+            "usage": usage,
+            "elapsed_seconds": time.monotonic() - started,
+            "chunk_count": chunk_count,
+            "first_chunk_elapsed_seconds": first_chunk_elapsed_seconds,
+        }
     try:
         with urllib.request.urlopen(request, timeout=max(1, timeout_seconds)) as response:
             response_text = response.read().decode("utf-8")
@@ -303,6 +419,135 @@ def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> 
             writer.writerow({field: row.get(field, "") for field in fieldnames})
 
 
+def path_campaign_bucket(path: Path) -> Path | None:
+    resolved = path.resolve()
+    try:
+        relative = resolved.relative_to(DATA_RESULTS_DIR.resolve())
+    except ValueError:
+        return None
+    parts = relative.parts
+    if not parts:
+        return None
+    return DATA_RESULTS_DIR.resolve() / parts[0]
+
+
+def parse_run_context_active_parameters(path: Path) -> dict[str, Any]:
+    text = path.read_text(encoding="utf-8")
+    parsed: dict[str, Any] = {"lock_source": str(path)}
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if line.startswith("- llm_backend:"):
+            parsed["llm_backend"] = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+        elif line.startswith("- model:"):
+            parsed["model"] = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+        elif "deepseek:" in line and "response_format=" in line:
+            for token, field in [
+                ("response_format=", "deepseek_response_format"),
+                ("thinking.type=", "deepseek_thinking"),
+                ("streaming=", "deepseek_streaming"),
+                ("max_tokens=", "max_tokens"),
+            ]:
+                if token in line:
+                    value = line.split(token, 1)[1].split("`", 1)[0].split(",", 1)[0].strip()
+                    parsed[field] = int(value) if field == "max_tokens" and value.isdigit() else value
+        elif line.startswith("- request_timeout_seconds:"):
+            value = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+            parsed["request_timeout_seconds"] = int(value)
+        elif line.startswith("- request_retries:"):
+            value = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+            parsed["request_retries"] = int(value)
+        elif line.startswith("- retry_sleep_sec:"):
+            value = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+            parsed["retry_sleep_sec"] = float(value)
+        elif line.startswith("- max_parallel_requests:"):
+            value = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+            parsed["max_parallel_requests"] = int(value)
+        elif line.startswith("- inter_request_sleep_seconds:"):
+            value = line.split("`", 2)[1] if "`" in line else line.split(":", 1)[1].strip()
+            parsed["inter_request_sleep_seconds"] = float(value)
+    return parsed
+
+
+def discover_campaign_active_parameter_lock(prompts_jsonl: Path, run_dir: Path) -> dict[str, Any] | None:
+    prompt_bucket = path_campaign_bucket(prompts_jsonl)
+    run_bucket = path_campaign_bucket(run_dir)
+    bucket = prompt_bucket if prompt_bucket is not None else run_bucket
+    if bucket is None or not bucket.exists():
+        return None
+    candidates: list[Path] = []
+    for child in sorted(bucket.iterdir()):
+        if not child.is_dir():
+            continue
+        name = child.name.lower()
+        if "s2_4b" not in name or ACTIVE_PARAMETER_LOCK_TOKEN not in name:
+            continue
+        context_path = child / "RUN_CONTEXT.md"
+        if context_path.exists():
+            candidates.append(context_path)
+    if not candidates:
+        return None
+    parsed_locks = [parse_run_context_active_parameters(candidate) for candidate in candidates]
+    first_signature = {field: parsed_locks[0].get(field) for field in ACTIVE_PARAMETER_LOCK_FIELDS}
+    conflicting_locks = [
+        lock
+        for lock in parsed_locks[1:]
+        if {field: lock.get(field) for field in ACTIVE_PARAMETER_LOCK_FIELDS} != first_signature
+    ]
+    if conflicting_locks:
+        candidate_list = ", ".join(to_repo_rel(candidate) for candidate in candidates)
+        raise ValueError(
+            "Multiple campaign-local S2-4b active parameter locks were found. "
+            f"Refuse ambiguous live-call execution before model use: {candidate_list}"
+        )
+    lock = parsed_locks[0]
+    lock["campaign_bucket"] = to_repo_rel(bucket)
+    lock["lock_sources"] = ";".join(to_repo_rel(candidate) for candidate in candidates)
+    return lock
+
+
+def validate_against_active_parameter_lock(args: argparse.Namespace, lock: dict[str, Any] | None) -> None:
+    if not lock:
+        return
+    actual = {
+        "llm_backend": args.llm_backend,
+        "model": args.model,
+        "deepseek_response_format": args.deepseek_response_format,
+        "deepseek_thinking": args.deepseek_thinking,
+        "deepseek_streaming": args.deepseek_streaming,
+        "max_tokens": args.max_tokens,
+        "request_timeout_seconds": args.request_timeout_seconds,
+        "request_retries": args.request_retries,
+        "retry_sleep_sec": float(args.retry_sleep_sec),
+        "max_parallel_requests": args.max_parallel_requests,
+        "inter_request_sleep_seconds": float(args.inter_request_sleep_seconds),
+    }
+    mismatches: list[str] = []
+    for field, actual_value in actual.items():
+        if field not in lock:
+            continue
+        expected_value = lock[field]
+        if isinstance(expected_value, float):
+            matched = abs(float(actual_value) - expected_value) < 1e-9
+        else:
+            matched = actual_value == expected_value
+        if not matched:
+            mismatches.append(f"{field}: expected={expected_value!r} actual={actual_value!r}")
+    if not mismatches:
+        return
+    if args.allow_active_parameter_deviation:
+        if not str(args.active_parameter_deviation_reason).strip():
+            raise ValueError(
+                "--allow-active-parameter-deviation requires --active-parameter-deviation-reason before S2-4b live calls."
+            )
+        return
+    mismatch_text = "; ".join(mismatches)
+    raise ValueError(
+        "S2-4b active parameter lock mismatch. "
+        f"lock_source={lock.get('lock_source', '')}; campaign_bucket={lock.get('campaign_bucket', '')}; {mismatch_text}. "
+        "Use the campaign active parameters or provide --allow-active-parameter-deviation with a documented reason."
+    )
+
+
 def filter_prompt_rows(rows: list[dict[str, Any]], requested_keys: list[str]) -> list[dict[str, Any]]:
     if not requested_keys:
         return rows
@@ -328,6 +573,7 @@ def build_request_metadata_payload(
     deepseek_thinking: str,
     deepseek_reasoning_effort: str,
     deepseek_response_format: str,
+    deepseek_streaming: str,
     max_tokens: int,
     prompts_jsonl: Path,
     prompt_template: Path | None,
@@ -355,10 +601,16 @@ def build_request_metadata_payload(
                 "thinking": {"type": deepseek_thinking},
                 "reasoning_effort": deepseek_reasoning_effort if deepseek_thinking == "enabled" else "",
                 "max_tokens": max_tokens,
+                "stream": deepseek_streaming == "enabled",
+                "stream_options": {"include_usage": True} if deepseek_streaming == "enabled" else None,
             }
         ),
         "deepseek_base_url": deepseek_base_url if llm_backend == "deepseek" else "",
-        "request_mode": "stream_collect" if llm_backend == "gemini" else "non_streaming_chat_completions",
+        "request_mode": (
+            "stream_collect"
+            if llm_backend == "gemini"
+            else ("streaming_chat_completions" if deepseek_streaming == "enabled" else "non_streaming_chat_completions")
+        ),
         "source_prompts_jsonl_path": to_repo_rel(prompts_jsonl),
         "source_prompt_template_path": to_repo_rel(prompt_template),
         "source_prompt_audit_path": to_repo_rel(prompt_audit),
@@ -399,6 +651,7 @@ def process_prompt_row(
     deepseek_thinking: str,
     deepseek_reasoning_effort: str,
     deepseek_response_format: str,
+    deepseek_streaming: str,
     max_tokens: int,
     prompts_jsonl: Path,
     prompt_template: Path | None,
@@ -437,6 +690,7 @@ def process_prompt_row(
         deepseek_thinking=deepseek_thinking,
         deepseek_reasoning_effort=deepseek_reasoning_effort,
         deepseek_response_format=deepseek_response_format,
+        deepseek_streaming=deepseek_streaming,
         max_tokens=max_tokens,
         prompts_jsonl=prompts_jsonl,
         prompt_template=prompt_template,
@@ -461,6 +715,7 @@ def process_prompt_row(
                 response_format=deepseek_response_format,
                 max_tokens=max_tokens,
                 timeout_seconds=max(1, request_timeout_seconds),
+                streaming=deepseek_streaming,
             )
         else:
             call_result = call_gemini_stream_collect(
@@ -573,6 +828,7 @@ def build_run_context(
     model: str,
     deepseek_thinking: str,
     deepseek_response_format: str,
+    deepseek_streaming: str,
     max_tokens: int,
     request_timeout_seconds: int,
     request_retries: int,
@@ -584,8 +840,18 @@ def build_run_context(
     summary_path: Path,
     success_count: int,
     failure_count: int,
+    active_parameter_lock: dict[str, Any] | None,
+    allow_active_parameter_deviation: bool,
+    active_parameter_deviation_reason: str,
 ) -> str:
     key_block = "\n".join(f"- `{key}`" for key in selected_paper_keys) if selected_paper_keys else "- `all prompt rows`"
+    lock_block = "- campaign_active_parameter_lock: `not_found`\n"
+    if active_parameter_lock:
+        lock_block = (
+            f"- campaign_active_parameter_lock: `{active_parameter_lock.get('lock_source', '')}`\n"
+            f"- active_parameter_deviation_allowed: `{str(bool(allow_active_parameter_deviation)).lower()}`\n"
+            f"- active_parameter_deviation_reason: `{active_parameter_deviation_reason}`\n"
+        )
     return f"""# RUN_CONTEXT
 
 ## 1. Run ID
@@ -635,7 +901,7 @@ Benchmark reporting rule:
 - model: `{model}`
 - generation_config:
   - gemini: `temperature=0`, `response_mime_type=application/json`
-  - deepseek: `response_format={deepseek_response_format}`, `thinking.type={deepseek_thinking}`, `max_tokens={max_tokens}`
+  - deepseek: `response_format={deepseek_response_format}`, `thinking.type={deepseek_thinking}`, `streaming={deepseek_streaming}`, `max_tokens={max_tokens}`
 - request_timeout_seconds: `{request_timeout_seconds}`
 - request_retries: `{request_retries}`
 - retry_sleep_sec: `{retry_sleep_sec}`
@@ -676,7 +942,9 @@ Benchmark reporting rule:
 - success_count: `{success_count}`
 - failure_count: `{failure_count}`
 - success_status: `{"pass" if failure_count == 0 else "partial_fail"}`
-"""
+
+## 11. Active Parameter Lock
+{lock_block}"""
 
 
 def main() -> None:
@@ -716,6 +984,8 @@ def main() -> None:
     run_dir_kind = target["path_kind"]
     run_selection_mode = target["selection_mode"]
     bucket_dir = Path(target["bucket_dir"])
+    active_parameter_lock = discover_campaign_active_parameter_lock(prompts_jsonl, run_dir)
+    validate_against_active_parameter_lock(args, active_parameter_lock)
     if run_dir.exists():
         raise FileExistsError(f"Run directory already exists: {run_dir}")
     if run_dir_kind == "v2_child_execution":
@@ -751,6 +1021,7 @@ def main() -> None:
         model=args.model,
         deepseek_thinking=args.deepseek_thinking,
         deepseek_response_format=args.deepseek_response_format,
+        deepseek_streaming=args.deepseek_streaming,
         max_tokens=args.max_tokens,
         request_timeout_seconds=args.request_timeout_seconds,
         request_retries=args.request_retries,
@@ -762,6 +1033,9 @@ def main() -> None:
         summary_path=summary_path,
         success_count=0,
         failure_count=0,
+        active_parameter_lock=active_parameter_lock,
+        allow_active_parameter_deviation=args.allow_active_parameter_deviation,
+        active_parameter_deviation_reason=args.active_parameter_deviation_reason,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(initial_run_context, encoding="utf-8")
 
@@ -780,6 +1054,7 @@ def main() -> None:
                 deepseek_thinking=args.deepseek_thinking,
                 deepseek_reasoning_effort=args.deepseek_reasoning_effort,
                 deepseek_response_format=args.deepseek_response_format,
+                deepseek_streaming=args.deepseek_streaming,
                 max_tokens=args.max_tokens,
                 prompts_jsonl=prompts_jsonl,
                 prompt_template=prompt_template,
@@ -807,10 +1082,17 @@ def main() -> None:
                         index=index,
                         total=total,
                         row=row,
+                        llm_backend=args.llm_backend,
                         model=args.model,
                         request_timeout_seconds=args.request_timeout_seconds,
                         request_retries=args.request_retries,
                         retry_sleep_sec=args.retry_sleep_sec,
+                        deepseek_base_url=args.deepseek_base_url,
+                        deepseek_thinking=args.deepseek_thinking,
+                        deepseek_reasoning_effort=args.deepseek_reasoning_effort,
+                        deepseek_response_format=args.deepseek_response_format,
+                        deepseek_streaming=args.deepseek_streaming,
+                        max_tokens=args.max_tokens,
                         prompts_jsonl=prompts_jsonl,
                         prompt_template=prompt_template,
                         prompt_audit=prompt_audit,
@@ -865,6 +1147,7 @@ def main() -> None:
         model=args.model,
         deepseek_thinking=args.deepseek_thinking,
         deepseek_response_format=args.deepseek_response_format,
+        deepseek_streaming=args.deepseek_streaming,
         max_tokens=args.max_tokens,
         request_timeout_seconds=args.request_timeout_seconds,
         request_retries=args.request_retries,
@@ -876,6 +1159,9 @@ def main() -> None:
         summary_path=summary_path,
         success_count=success_count,
         failure_count=failure_count,
+        active_parameter_lock=active_parameter_lock,
+        allow_active_parameter_deviation=args.allow_active_parameter_deviation,
+        active_parameter_deviation_reason=args.active_parameter_deviation_reason,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context_text, encoding="utf-8")
 
@@ -903,10 +1189,16 @@ def main() -> None:
                 "thinking": {"type": args.deepseek_thinking},
                 "reasoning_effort": args.deepseek_reasoning_effort if args.deepseek_thinking == "enabled" else "",
                 "max_tokens": args.max_tokens,
+                "stream": args.deepseek_streaming == "enabled",
+                "stream_options": {"include_usage": True} if args.deepseek_streaming == "enabled" else None,
             }
         ),
         "deepseek_base_url": args.deepseek_base_url if args.llm_backend == "deepseek" else "",
-        "request_mode": "stream_collect" if args.llm_backend == "gemini" else "non_streaming_chat_completions",
+        "request_mode": (
+            "stream_collect"
+            if args.llm_backend == "gemini"
+            else ("streaming_chat_completions" if args.deepseek_streaming == "enabled" else "non_streaming_chat_completions")
+        ),
         "input_artifacts": {
             "prompts_jsonl": to_repo_rel(prompts_jsonl),
             "prompt_template": to_repo_rel(prompt_template),
@@ -933,6 +1225,9 @@ def main() -> None:
             "Stage5",
         ],
         "diagnostic_only_note": "This run is diagnostic-only, not benchmark-valid final output. Returned payloads were not judged for semantic correctness or structural compliance at this boundary.",
+        "active_parameter_lock": active_parameter_lock or {},
+        "active_parameter_deviation_allowed": bool(args.allow_active_parameter_deviation),
+        "active_parameter_deviation_reason": str(args.active_parameter_deviation_reason).strip(),
     }
     (run_dir / RUN_METADATA_NAME).write_text(json.dumps(run_metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

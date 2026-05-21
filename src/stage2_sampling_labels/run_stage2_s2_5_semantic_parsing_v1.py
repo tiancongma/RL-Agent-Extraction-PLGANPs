@@ -82,6 +82,22 @@ def parse_args() -> argparse.Namespace:
         help="Optional richer legacy raw-response directory used when a replayed live-v2 raw response collapses to the minimal shrunken contract.",
     )
     parser.add_argument(
+        "--authority-run-dir",
+        default="",
+        help=(
+            "Optional explicit S2-2 authority run directory for lawful combined raw-response "
+            "replay boundaries that do not carry per-paper request metadata."
+        ),
+    )
+    parser.add_argument(
+        "--authority-payload-root",
+        default="",
+        help=(
+            "Optional explicit normalized_table_payloads root for lawful combined raw-response "
+            "replay boundaries that do not carry per-paper request metadata."
+        ),
+    )
+    parser.add_argument(
         "--paper-key",
         action="append",
         dest="paper_keys",
@@ -164,6 +180,8 @@ def resolve_authority_reattachment_entry(
     raw_responses_dir: Path,
     paper_key: str,
     prompt_cache: dict[Path, dict[str, dict[str, Any]]],
+    explicit_authority_run_dir: str = "",
+    explicit_authority_payload_root: str = "",
 ) -> dict[str, Any]:
     path = request_metadata_path(raw_responses_dir, paper_key)
     payload: dict[str, Any] = {}
@@ -172,13 +190,13 @@ def resolve_authority_reattachment_entry(
             payload = read_json(path)
         except Exception:
             payload = {}
-    authority_run_dir = str(payload.get("authority_run_dir", "")).strip()
-    authority_payload_root = str(payload.get("authority_payload_root", "")).strip()
+    authority_run_dir = str(explicit_authority_run_dir or payload.get("authority_run_dir", "")).strip()
+    authority_payload_root = str(explicit_authority_payload_root or payload.get("authority_payload_root", "")).strip()
     source_evidence_artifact_path = ""
     resolution_source = ""
     failure_reason = ""
     if authority_run_dir and authority_payload_root:
-        resolution_source = "request_metadata_explicit"
+        resolution_source = "explicit_cli_authority_override" if explicit_authority_payload_root else "request_metadata_explicit"
     else:
         prompt_jsonl_text = str(payload.get("source_prompts_jsonl_path", "")).strip()
         if not prompt_jsonl_text:
@@ -229,11 +247,20 @@ def resolve_authority_reattachment_entry(
     }
 
 
-def read_authority_metadata(raw_responses_dir: Path, paper_key: str, prompt_cache: dict[Path, dict[str, dict[str, Any]]]) -> dict[str, Any]:
+def read_authority_metadata(
+    raw_responses_dir: Path,
+    paper_key: str,
+    prompt_cache: dict[Path, dict[str, dict[str, Any]]],
+    *,
+    explicit_authority_run_dir: str = "",
+    explicit_authority_payload_root: str = "",
+) -> dict[str, Any]:
     entry = resolve_authority_reattachment_entry(
         raw_responses_dir=raw_responses_dir,
         paper_key=paper_key,
         prompt_cache=prompt_cache,
+        explicit_authority_run_dir=explicit_authority_run_dir,
+        explicit_authority_payload_root=explicit_authority_payload_root,
     )
     try:
         return {
@@ -378,6 +405,8 @@ def main() -> None:
             raise FileNotFoundError(
                 f"Fallback legacy raw responses directory not found: {fallback_legacy_raw_responses_dir}"
             )
+    explicit_authority_run_dir = str(args.authority_run_dir).strip()
+    explicit_authority_payload_root = str(args.authority_payload_root).strip()
 
     manifest_rows = read_tsv(manifest_tsv)
     if not manifest_rows:
@@ -449,13 +478,21 @@ def main() -> None:
                     raw_responses_dir=raw_responses_dir,
                     paper_key=key,
                     prompt_cache=prompt_cache,
+                    explicit_authority_run_dir=explicit_authority_run_dir,
+                    explicit_authority_payload_root=explicit_authority_payload_root,
                 )
                 authority_sidecar_entries[key] = authority_entry
                 document = convert_legacy_raw_response_to_v2(
                     record=record,
                     raw_response_path=current_raw_path,
                     raw_response_text=current_raw_path.read_text(encoding="utf-8", errors="replace"),
-                    authority_metadata=read_authority_metadata(raw_responses_dir, key, prompt_cache),
+                    authority_metadata=read_authority_metadata(
+                        raw_responses_dir,
+                        key,
+                        prompt_cache,
+                        explicit_authority_run_dir=explicit_authority_run_dir,
+                        explicit_authority_payload_root=explicit_authority_payload_root,
+                    ),
                     fallback_legacy_raw_dir=fallback_legacy_raw_responses_dir,
                 )
                 handle.write(json.dumps(document, ensure_ascii=False) + "\n")

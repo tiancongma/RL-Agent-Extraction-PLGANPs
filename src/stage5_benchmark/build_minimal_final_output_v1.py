@@ -137,6 +137,24 @@ RESOLVED_RELATION_RATIO_FIELDS = {
     "phase_ratio_raw",
     "polymer_to_drug_ratio_raw",
 }
+STUDIED_VARIABLES_FIELD = "studied_variables_json"
+STUDIED_VARIABLE_RESPONSE_PATTERNS = (
+    r"\byield\b",
+    r"\bencapsulation\b",
+    r"\befficiency\b",
+    r"\bDEE\b",
+    r"\bparticle\s+size\b",
+    r"\bsize\s*\(?\s*nm\s*\)?\b",
+    r"\bPDI\b",
+    r"\bzeta\b",
+    r"\bresponse\b",
+)
+STUDIED_VARIABLE_IDENTIFIER_PATTERNS = (
+    r"\brun\b",
+    r"\bstandard\s+order\b",
+    r"\border\b",
+    r"\brow\b",
+)
 STAGE5_GLOBAL_PREPARATION_FIELDNAMES = [
     "organic_phase_volume_mL_value",
     "organic_phase_volume_mL_value_text",
@@ -193,6 +211,7 @@ STAGE5_GLOBAL_PREPARATION_FIELDNAMES = [
     "surfactant_concentration_unit_evidence_region_type",
     "surfactant_concentration_unit_missing_reason",
     "shared_parameters_json",
+    STUDIED_VARIABLES_FIELD,
 ]
 
 LEGACY_FIELD_ALIASES = {
@@ -4243,6 +4262,188 @@ def parse_identity_variable_items(value: Any) -> list[dict[str, str]]:
     return items
 
 
+def split_studied_variable_value_unit(value: Any, fallback_unit: str = "") -> tuple[str, str]:
+    text = normalize_text(value)
+    fallback_unit = normalize_text(fallback_unit)
+    if not text:
+        return "", fallback_unit
+    match = re.search(
+        r"([-+]?\d+(?:,\d{3})*(?:\.\d+)?)\s*(rpm|mg\s*/\s*mL|mg/ml|%\s*w\s*/\s*v|%w/v|%\s*w/v|%|mL|ml|mg|h|hr|hours?|min|minutes?)\b",
+        text,
+        flags=re.I,
+    )
+    if match:
+        return match.group(1).replace(",", ""), normalize_text(match.group(2))
+    if fallback_unit and re.fullmatch(r"[-+]?\d+(?:,\d{3})*(?:\.\d+)?", text):
+        return text.replace(",", ""), fallback_unit
+    return text, fallback_unit
+
+
+def studied_variable_family(name: Any, unit: Any = "") -> str:
+    clean_name = normalize_identity_variable_name(name)
+    clean_unit = normalize_identity_variable_name(unit)
+    if re.search(r"\bhomogeni[sz](?:ation|er)?_?speed\b", clean_name, flags=re.I):
+        return "homogenization_speed_rpm"
+    if re.search(r"\bstir(?:ring)?_?speed\b", clean_name, flags=re.I):
+        return "stirring_speed_rpm"
+    if clean_unit and clean_unit not in clean_name:
+        return f"{clean_name}_{clean_unit}".strip("_")
+    return clean_name
+
+
+def studied_variable_should_keep(name: Any, value: Any) -> bool:
+    name_text = normalize_text(name)
+    value_text = normalize_text(value)
+    if not name_text or not value_text:
+        return False
+    if any(re.search(pattern, name_text, flags=re.I) for pattern in STUDIED_VARIABLE_IDENTIFIER_PATTERNS):
+        return False
+    if any(re.search(pattern, name_text, flags=re.I) for pattern in STUDIED_VARIABLE_RESPONSE_PATTERNS):
+        return False
+    if len(value_text) > 120 and not re.search(r"\d|rpm|mg|mL|%|pH", value_text, flags=re.I):
+        return False
+    return True
+
+
+def normalize_studied_variable_item(
+    *,
+    variable_name: Any,
+    value: Any,
+    unit: Any = "",
+    scope: str,
+    source: str,
+    evidence_text: Any = "",
+) -> dict[str, str] | None:
+    name = normalize_text(variable_name)
+    raw_value = normalize_text(value)
+    raw_unit = normalize_text(unit)
+    split_value, split_unit = split_studied_variable_value_unit(raw_value, raw_unit)
+    final_unit = split_unit or raw_unit
+    final_value = split_value or raw_value
+    if not studied_variable_should_keep(name, final_value):
+        return None
+    family = studied_variable_family(name, final_unit)
+    if not family:
+        return None
+    return {
+        "variable_name": normalize_identity_variable_name(name),
+        "variable_family": family,
+        "value": final_value,
+        "unit": final_unit,
+        "scope": scope,
+        "source": source,
+        "evidence_text": normalize_text(evidence_text)[:500],
+    }
+
+
+def parse_table_row_variable_assignments(value: Any) -> list[dict[str, Any]]:
+    return [item for item in parse_json_array(value) if isinstance(item, dict)]
+
+
+def studied_variables_from_row_text(row: dict[str, str]) -> list[dict[str, str]]:
+    text = normalize_text(
+        " ".join(
+            row.get(name, "")
+            for name in (
+                "row_identity_description",
+                "raw_formulation_label",
+                "change_descriptions",
+                "evidence_row_identity",
+            )
+        )
+    )
+    if not text:
+        return []
+    items: list[dict[str, str]] = []
+    for match in re.finditer(
+        r"\b(homogeni[sz](?:ation|er)?\s+speed)\s*(?:of|=|:)?\s*([-+]?\d+(?:,\d{3})*(?:\.\d+)?)\s*(rpm)\b",
+        text,
+        flags=re.I,
+    ):
+        item = normalize_studied_variable_item(
+            variable_name=match.group(1),
+            value=match.group(2),
+            unit=match.group(3),
+            scope="formulation_row",
+            source="row_identity_description",
+            evidence_text=text,
+        )
+        if item:
+            items.append(item)
+    return items
+
+
+def build_studied_variables(representative: dict[str, str], final_row: dict[str, str]) -> list[dict[str, str]]:
+    items: list[dict[str, str]] = []
+
+    for assignment in parse_table_row_variable_assignments(representative.get("table_row_variable_assignments_json")):
+        item = normalize_studied_variable_item(
+            variable_name=assignment.get("factor_name") or assignment.get("factor_label") or assignment.get("factor_token"),
+            value=assignment.get("decoded_factor_value") or assignment.get("factor_value"),
+            unit=assignment.get("factor_unit") or assignment.get("unit"),
+            scope="formulation_row",
+            source=assignment.get("provenance") or "table_row_variable_assignments_json",
+            evidence_text=assignment.get("source_table_path") or assignment.get("source_table_id") or "",
+        )
+        if item:
+            items.append(item)
+
+    for variable in parse_identity_variable_items(representative.get(IDENTITY_VARIABLES_FIELD, "")):
+        item = normalize_studied_variable_item(
+            variable_name=variable.get("name", ""),
+            value=variable.get("value", ""),
+            scope="formulation_row",
+            source=IDENTITY_VARIABLES_FIELD,
+            evidence_text=normalize_text(representative.get("evidence_span_text", "")),
+        )
+        if item:
+            items.append(item)
+
+    try:
+        shared_items = json.loads(final_row.get("shared_parameters_json", "") or "[]")
+    except Exception:
+        shared_items = []
+    if isinstance(shared_items, list):
+        for shared in shared_items:
+            if not isinstance(shared, dict):
+                continue
+            field_name = normalize_text(shared.get("field_name", ""))
+            if not field_name:
+                continue
+            is_extensible = field_name.startswith("shared_param__") or field_name not in RESOLVED_RELATION_FIELD_NAMES
+            if not is_extensible:
+                continue
+            item = normalize_studied_variable_item(
+                variable_name=field_name.removeprefix("shared_param__"),
+                value=shared.get("field_value", ""),
+                scope=normalize_text(shared.get("scope_type")) or "formulation_row",
+                source="shared_parameters_json",
+                evidence_text=normalize_text(shared.get("resolution_rule", "")),
+            )
+            if item:
+                items.append(item)
+
+    items.extend(studied_variables_from_row_text(representative))
+    items.extend(studied_variables_from_row_text(final_row))
+
+    dedup: dict[tuple[str, str, str, str], dict[str, str]] = {}
+    for item in items:
+        key = (
+            item.get("variable_family", ""),
+            item.get("value", ""),
+            item.get("unit", ""),
+            item.get("scope", ""),
+        )
+        if key not in dedup:
+            dedup[key] = item
+    return list(dedup.values())
+
+
+def build_studied_variables_json(representative: dict[str, str], final_row: dict[str, str]) -> str:
+    items = build_studied_variables(representative, final_row)
+    return json.dumps(items, ensure_ascii=False, sort_keys=True) if items else ""
+
+
 def downstream_variable_payloads(row: dict[str, str]) -> tuple[str, str, str]:
     items = parse_identity_variable_items(row.get(IDENTITY_VARIABLES_FIELD, ""))
     if not items:
@@ -5416,6 +5617,60 @@ def build_structured_duplicate_representation_map(
     return alternate_map
 
 
+def formulation_material_label_key(label: str) -> str:
+    text = normalize_text(label).lower()
+    if not text:
+        return ""
+    text = text.replace("–", "-").replace("—", "-")
+    text = re.sub(r"\b[a-z0-9]+-loaded\s+", "", text)
+    text = re.sub(r"\b(?:loaded|blank|empty|formulations?|nanoparticles?|nps?|particles?)\b", " ", text)
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    tokens = [token for token in text.split() if token]
+    material_tokens = [token for token in tokens if token in {"plga", "peg", "ha", "pla", "pcl"}]
+    if material_tokens:
+        return " ".join(material_tokens)
+    return " ".join(tokens)
+
+
+def build_loaded_label_table_duplicate_map(rows: list[dict[str, str]]) -> dict[str, str]:
+    """Collapse LLM loaded-name aliases onto table material-composition rows.
+
+    This is a paper-local duplicate representation guard. It only fires when an
+    LLM row label such as "drug-loaded PLGA-PEG nanoparticles" uniquely maps to
+    an already materialized table row labeled "PLGA-PEG" in the same paper.
+    """
+    table_targets: dict[tuple[str, str], list[str]] = defaultdict(list)
+    for row in rows:
+        if normalize_text(row.get("candidate_source")) != "table_row_expansion_v1":
+            continue
+        key = formulation_material_label_key(row.get("raw_formulation_label", ""))
+        if not key:
+            continue
+        table_targets[(normalize_text(row.get("key")), key)].append(row_source_key(row))
+
+    duplicate_map: dict[str, str] = {}
+    for row in rows:
+        source = normalize_text(row.get("candidate_source"))
+        if source == "table_row_expansion_v1":
+            continue
+        if normalize_text(row.get("instance_kind")) not in {"formulation_family", "new_formulation", "variant_formulation"}:
+            continue
+        label = normalize_text(row.get("raw_formulation_label"))
+        label_l = label.lower()
+        if "-loaded" not in label_l and " loaded " not in label_l:
+            continue
+        if "nanoparticle" not in label_l and " np" not in label_l:
+            continue
+        key = formulation_material_label_key(label)
+        if not key:
+            continue
+        targets = table_targets.get((normalize_text(row.get("key")), key), [])
+        if len(targets) != 1:
+            continue
+        duplicate_map[row_source_key(row)] = targets[0]
+    return duplicate_map
+
+
 def is_wfdt_checkpoint_row(row: dict[str, str]) -> bool:
     tags = row_context_tags(row)
     if "checkpoint_validation" in tags:
@@ -5918,7 +6173,19 @@ def load_relation_metadata(
     return metadata
 
 
+def dedupe_fieldnames(fieldnames: list[str]) -> list[str]:
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for fieldname in fieldnames:
+        if fieldname in seen:
+            continue
+        deduped.append(fieldname)
+        seen.add(fieldname)
+    return deduped
+
+
 def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
+    fieldnames = dedupe_fieldnames(fieldnames)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter="\t")
         writer.writeheader()
@@ -6377,6 +6644,7 @@ def build_minimal_final_output(
         rows=rows,
         core_by_source_id=core_by_id,
     )
+    loaded_label_table_duplicate_targets = build_loaded_label_table_duplicate_map(rows)
     doe_measurement_duplicate_targets = build_doe_measurement_duplicate_collapse_map(rows)
     wfdt_checkpoint_targets: dict[str, dict[str, str]] = {}
     variant_governance_targets, variant_review_map = build_variant_governance_target_map(
@@ -6421,6 +6689,40 @@ def build_minimal_final_output(
             "notes": (
                 f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
                 f"matched_row_anchor={extract_paper_local_row_anchor(row_by_source_key[source_key])}"
+            ),
+        }
+
+    for source_key, target_source_key in loaded_label_table_duplicate_targets.items():
+        if source_key in collapsed_ids:
+            continue
+        target_row = row_by_source_key[target_source_key]
+        target_signature = (
+            collapse_signature_by_id.get(target_source_key)
+            if target_source_key in representative_source_keys
+            else None
+        )
+        target_final_formulation_id = final_id_by_source_id.get(
+            target_source_key,
+            make_final_formulation_id(target_row, target_signature),
+        )
+        final_id_by_source_id[source_key] = target_final_formulation_id
+        final_id_by_source_id[target_source_key] = target_final_formulation_id
+        collapsed_ids.add(source_key)
+        collapse_metadata_by_source_id[source_key] = {
+            "variant_class": "duplicate_representation",
+            "variant_signal": "duplicate_representation",
+            "decision_rule": "loaded_label_duplicate_of_table_material_row",
+            "decision_reason": (
+                "LLM loaded-name formulation label uniquely maps to an already materialized "
+                "paper-local table row with the same material-composition label."
+            ),
+            "collapse_reason": (
+                "Collapsed as a duplicate representation of the table-derived material-composition row."
+            ),
+            "review_needed": "no",
+            "notes": (
+                f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                f"loaded_label_key={formulation_material_label_key(row_by_source_key[source_key].get('raw_formulation_label', ''))}"
             ),
         }
 
@@ -6803,6 +7105,7 @@ def build_minimal_final_output(
             final_row=final_row,
             source_group=source_group,
         )
+        final_row[STUDIED_VARIABLES_FIELD] = build_studied_variables_json(representative, final_row)
         paper_key = str(final_row.get("key", "") or "").strip()
         if paper_key and paper_key not in source_text_by_paper:
             try:
@@ -6925,6 +7228,7 @@ def build_minimal_final_output(
             "relation_record_count",
             "field_source_type",
             "derived_mass_provenance_json",
+            *([STUDIED_VARIABLES_FIELD] if STUDIED_VARIABLES_FIELD not in original_fieldnames else []),
             *original_fieldnames,
             *[name for name in STAGE5_GLOBAL_PREPARATION_FIELDNAMES if name not in original_fieldnames],
             *[name for name in PREPARATION_METHOD_FIELDNAMES if name not in original_fieldnames and name not in STAGE5_GLOBAL_PREPARATION_FIELDNAMES],

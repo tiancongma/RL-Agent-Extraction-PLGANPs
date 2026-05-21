@@ -140,13 +140,113 @@ def resolve_document_text_path(document: dict[str, Any]) -> Path | None:
     return path
 
 
+def _source_text_contains_table_anchor(document: dict[str, Any], table_id: str) -> bool:
+    text_path = resolve_document_text_path(document)
+    if text_path is None or not text_path.exists():
+        return False
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return False
+    return bool(re.search(rf"\b{re.escape(table_id)}\b", text, flags=re.IGNORECASE))
+
+
 def _normalize_table_label(value: Any) -> str:
     text = normalize_text(value).lower()
     return re.sub(r"[^a-z0-9]+", " ", text).strip()
 
 
+def _normalize_token(value: Any) -> str:
+    text = normalize_text(value).lower()
+    text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
+    return re.sub(r"_+", "_", text).strip("_")
+
+
+def _table_number_aliases(*values: Any) -> list[str]:
+    aliases: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        text = normalize_text(value)
+        if not text:
+            continue
+        normalized = _normalize_token(text)
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            aliases.append(normalized)
+        for match in re.finditer(r"(?:^|[^a-z0-9])table[_\s\-]*(\d{1,3})(?:[^a-z0-9]|$)", text, flags=re.IGNORECASE):
+            alias = _normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
+        for match in re.finditer(r"__table_(\d{1,3})__", text, flags=re.IGNORECASE):
+            alias = _normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
+        for match in re.finditer(r"(?:^|[^a-z0-9])t0*(\d{1,3})(?:[^a-z0-9]|$)", text, flags=re.IGNORECASE):
+            alias = _normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
+    return aliases
+
+
+def _table_identity_alias_values(record: dict[str, Any]) -> list[Any]:
+    values: list[Any] = []
+    for field in (
+        "table_id",
+        "source_table_id",
+        "source_table_asset_id",
+        "table_asset_id",
+        "source_table_reference",
+        "source_csv_path",
+        "source_caption_or_title",
+        "table_caption",
+        "caption_or_title",
+    ):
+        values.append(record.get(field))
+    for alias in ensure_list(record.get("table_identity_aliases")):
+        values.append(alias)
+    return values
+
+
+def _table_number_alias_source_values(record: dict[str, Any]) -> list[Any]:
+    values: list[Any] = []
+    for field in (
+        "table_id",
+        "source_table_id",
+        "source_caption_or_title",
+        "table_caption",
+        "caption_or_title",
+    ):
+        values.append(record.get(field))
+    for alias in ensure_list(record.get("table_identity_aliases")):
+        values.append(alias)
+    return values
+
+
+def _table_identity_alias_set(record: dict[str, Any]) -> set[str]:
+    aliases: set[str] = set()
+    for value in _table_identity_alias_values(record):
+        label = _normalize_table_label(value)
+        if label:
+            aliases.add(_normalize_token(label))
+    for value in _table_number_alias_source_values(record):
+        aliases.update(alias for alias in _table_number_aliases(value) if alias)
+    return aliases
+
+
 def _table_scope_records(document: dict[str, Any]) -> list[dict[str, Any]]:
     return [item for item in ensure_list(document.get("table_formulation_scopes")) if isinstance(item, dict)]
+
+
+def _record_matches_table_ref(record: dict[str, Any], ref: str) -> bool:
+    wanted = _normalize_table_label(ref)
+    if _normalize_table_label(record.get("table_id")) == wanted:
+        return True
+    wanted_aliases = _table_identity_alias_set({"table_id": ref})
+    record_aliases = _table_identity_alias_set(record)
+    return bool(wanted_aliases and record_aliases and wanted_aliases & record_aliases)
 
 
 def _boundary_marker_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -158,6 +258,8 @@ def _boundary_marker_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
         if not table_id:
             continue
         markers[_normalize_table_label(table_id)] = marker
+        for alias in _table_identity_alias_set(marker):
+            markers.setdefault(alias, marker)
     return markers
 
 
@@ -268,10 +370,15 @@ def _resolve_normalized_payload_for_scope(
         locator_path = normalize_text(locator.get("source_table_reference") or locator.get("source_csv_path") or locator.get("table_path")).replace("\\", "/").lower()
         locator_asset_id = normalize_text(locator.get("source_table_asset_id") or locator.get("table_asset_id")).lower()
         locator_table_id = _normalize_table_label(locator.get("table_id") or locator.get("source_table_id"))
+        if locator_asset_id:
+            return bool(source_asset_id == locator_asset_id)
+        if locator_path:
+            return bool(locator_path in {source_csv_path, source_table_reference})
+        payload_aliases = _table_identity_alias_set(item)
+        locator_aliases = _table_identity_alias_set(locator)
         return bool(
-            (locator_path and locator_path in {source_csv_path, source_table_reference})
-            or (locator_asset_id and source_asset_id == locator_asset_id)
-            or (locator_table_id and source_table_id == locator_table_id)
+            (locator_table_id and source_table_id == locator_table_id)
+            or (locator_aliases and payload_aliases and locator_aliases & payload_aliases)
         )
 
     locator_matches: list[dict[str, Any]] = []
@@ -291,12 +398,14 @@ def _resolve_normalized_payload_for_scope(
         matching_scope.get("source_table_asset_id") or matching_scope.get("table_asset_id")
     ).lower()
     wanted_table_id = _normalize_table_label(matching_scope.get("table_id"))
+    wanted_aliases = _table_identity_alias_set(matching_scope)
     candidate_matches: list[dict[str, Any]] = []
     for item in normalized_payloads:
         source_csv_path = normalize_text(item.get("source_csv_path")).replace("\\", "/").lower()
         source_table_reference = normalize_text(item.get("source_table_reference")).replace("\\", "/").lower()
-        source_table_id = _normalize_table_label(item.get("source_table_id"))
+        source_table_id = _normalize_table_label(item.get("source_table_id") or item.get("table_id"))
         source_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
+        payload_aliases = _table_identity_alias_set(item)
         if wanted_table_path and wanted_table_path in {source_csv_path, source_table_reference}:
             candidate_matches.append(item)
             continue
@@ -304,6 +413,9 @@ def _resolve_normalized_payload_for_scope(
             candidate_matches.append(item)
             continue
         if wanted_table_id and source_table_id == wanted_table_id:
+            candidate_matches.append(item)
+            continue
+        if wanted_aliases and payload_aliases and wanted_aliases & payload_aliases:
             candidate_matches.append(item)
             continue
     if len(candidate_matches) > 1:
@@ -340,10 +452,38 @@ def resolve_authorized_doe_targets(
         )
         normalized_csv_path = normalize_text(normalized_payload.get("normalized_csv_path")) if normalized_payload else ""
         if not normalized_payload or not normalized_csv_path:
+            if table_id and _source_text_contains_table_anchor(document, table_id):
+                target_key = f"{_normalize_table_label(table_id)}::source_text"
+                if target_key in seen_target_keys:
+                    return True
+                seen_target_keys.add(target_key)
+                targets.append(
+                    {
+                        "table_id": table_id,
+                        "table_path": "",
+                        "source_table_path": normalize_text(matching_scope.get("table_path")),
+                        "table_asset_id": table_asset_id,
+                        "table_type": normalize_text(matching_scope.get("table_type")),
+                        "evidence_span": normalize_text(matching_scope.get("evidence_span")) or target_note,
+                        "scope_id": normalize_text(matching_scope.get("scope_id")),
+                        "variable_role_present": "yes" if wanted in variable_role_map else "no",
+                        "normalized_payload_path": "",
+                        "normalized_payload_used": "no",
+                        "reopen_source_type": "source_text_table_anchor_fallback",
+                        "reopen_resolution_status": "resolved",
+                        "reopen_failure_reason": payload_failure_reason,
+                        "source_type": "semantic_authorized_source_text_table_target",
+                    }
+                )
+                return True
             if payload_failure_reason:
                 failure_reasons.append(payload_failure_reason)
             return False
-        target_key = f"{_normalize_table_label(table_id)}::{normalized_csv_path}"
+        target_identity = (
+            normalize_text(normalized_payload.get("source_table_asset_id") or normalized_payload.get("table_asset_id"))
+            or normalized_csv_path
+        )
+        target_key = f"payload::{target_identity}"
         if target_key in seen_target_keys:
             return True
         seen_target_keys.add(target_key)
@@ -388,13 +528,34 @@ def resolve_authorized_doe_targets(
         wanted = _normalize_table_label(ref)
         matching_scope = None
         for scope in normalized_scopes:
-            if _normalize_table_label(scope.get("table_id")) == wanted:
+            if _record_matches_table_ref(scope, ref):
                 matching_scope = scope
+                break
+        if matching_scope is None:
+            for locator in iter_table_scope_locator_dicts(semantic_scope.get("table_scope_locators")):
+                if not _record_matches_table_ref(locator, ref):
+                    continue
+                matching_scope = {
+                    "scope_id": normalize_text(semantic_scope.get("scope_id")),
+                    "table_id": normalize_text(locator.get("table_id")) or ref,
+                    "is_formulation_table": True,
+                    "table_type": "doe_table",
+                    "marker_provenance": normalize_text(semantic_scope.get("declared_by")) or LLM_PARSED,
+                    "table_scope_locators": locator,
+                    "table_asset_id": normalize_text(locator.get("table_asset_id") or locator.get("source_table_asset_id")),
+                    "source_table_asset_id": normalize_text(locator.get("source_table_asset_id") or locator.get("table_asset_id")),
+                    "source_table_reference": normalize_text(locator.get("source_table_reference") or locator.get("source_csv_path")),
+                }
                 break
         if matching_scope is None:
             unresolved_refs.append(ref)
             continue
         boundary = boundary_map.get(wanted)
+        if boundary is None:
+            for alias in _table_identity_alias_set({"table_id": ref}):
+                boundary = boundary_map.get(alias)
+                if boundary is not None:
+                    break
         if boundary is None or not bool(boundary.get("is_doe")):
             unresolved_refs.append(ref)
             continue
@@ -411,7 +572,10 @@ def resolve_authorized_doe_targets(
             if child_scope is matching_scope:
                 continue
             if _normalize_table_label(child_scope.get("parent_table_hint")) != wanted:
-                continue
+                parent_aliases = _table_identity_alias_set({"table_id": child_scope.get("parent_table_hint")})
+                wanted_aliases = _table_identity_alias_set({"table_id": ref})
+                if not (parent_aliases and wanted_aliases and parent_aliases & wanted_aliases):
+                    continue
             if not bool(child_scope.get("is_formulation_table")):
                 continue
             child_type = normalize_text(child_scope.get("table_type")).lower()
@@ -489,7 +653,9 @@ def resolve_authorized_doe_targets(
         "binding_success": bool(targets),
         "unresolved_authorized_target_refs": "|".join(unresolved_refs),
         "normalized_payload_used": "yes" if any(normalize_text(item.get("normalized_payload_used")) == "yes" for item in targets) else reopen_binding.get("normalized_payload_used", "no"),
-        "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+        "reopen_source_type": "source_text_table_anchor_fallback"
+        if any(normalize_text(item.get("source_type")) == "semantic_authorized_source_text_table_target" for item in targets)
+        else reopen_binding.get("reopen_source_type", ""),
         "reopen_resolution_status": "resolved" if targets else reopen_binding.get("reopen_resolution_status", "failed"),
         "reopen_failure_reason": "|".join(reason for reason in failure_reasons if reason) or reopen_binding.get("reopen_failure_reason", ""),
     }

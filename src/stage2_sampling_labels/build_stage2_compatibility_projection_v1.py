@@ -364,6 +364,11 @@ def table_number_aliases(*values: Any) -> list[str]:
             if alias and alias not in seen:
                 seen.add(alias)
                 aliases.append(alias)
+        for match in re.finditer(r"(?:^|[^a-z0-9])t0*(\d{1,3})(?:[^a-z0-9]|$)", text, flags=re.IGNORECASE):
+            alias = normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
     return aliases
 
 
@@ -643,6 +648,28 @@ def suppress_collapsed_family_summary_after_characterization_pair(
         if normalize_text(item.get("formulation_id") or item.get("local_instance_id")) not in suppressed_ids
     ]
     return kept_rows, kept_jsonl, sorted(item for item in suppressed_ids if item)
+
+
+def table_expansion_can_replace_llm_summary_rows(table_summary: dict[str, Any]) -> bool:
+    """Only suppress LLM family summaries after a complete row-universe expansion.
+
+    Partial table helpers such as single-variable recovery or a few rows from a
+    larger optimization family are useful additions, but they are not a lawful
+    replacement for the LLM semantic discovery rows. Treating them as complete
+    is what turns source-backed formulation families into
+    candidate_non_formulation rows before Stage5.
+    """
+    if normalize_text(table_summary.get("simple_table_enumeration_activated")) == "yes":
+        return True
+    if normalize_text(table_summary.get("row_identity_surface_used")) in {
+        "numeric_first_column",
+        "f_numeric_first_column",
+        "prefixed_numeric_first_column",
+        "mixed_explicit_first_column",
+    }:
+        emitted = int(table_summary.get("simple_table_rows_emitted") or 0)
+        return emitted >= 2
+    return False
 
 
 def default_semantic_scope_ref(identity: dict[str, Any], document: dict[str, Any]) -> str:
@@ -1722,17 +1749,17 @@ def merge_table_scope_locators(document: dict[str, Any], locator_entries: list[d
         for candidate in table_number_aliases(
             locator.get("table_id"),
             locator.get("source_table_asset_id"),
-            locator.get("source_table_reference"),
         ):
             normalized = normalize_token(candidate)
             if normalized and normalized not in locator_by_ref:
                 locator_by_ref[normalized] = dict(locator)
 
     def resolve_locator(value: Any) -> dict[str, str] | None:
-        normalized = normalize_token(value)
-        if not normalized:
-            return None
-        return locator_by_ref.get(normalized)
+        for candidate in table_number_aliases(value):
+            normalized = normalize_token(candidate)
+            if normalized and normalized in locator_by_ref:
+                return locator_by_ref[normalized]
+        return None
 
     def existing_locator_is_specific(scope: dict[str, Any]) -> bool:
         locators = scope.get("table_scope_locators")
@@ -2836,7 +2863,7 @@ def project_document(
         traces.extend(table_traces)
         jsonl_rows.extend(table_jsonl_rows)
         group_hint = normalize_text(table_summary.get("group_hint"))
-        if group_hint:
+        if group_hint and table_expansion_can_replace_llm_summary_rows(table_summary):
             mark_llm_summary_rows_as_helpers(rows, jsonl_rows, group_hint)
         rows, jsonl_rows, suppressed_summary_ids = suppress_collapsed_family_summary_after_characterization_pair(rows, jsonl_rows)
         if suppressed_summary_ids:

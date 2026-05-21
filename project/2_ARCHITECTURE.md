@@ -116,6 +116,9 @@ inside those coarse stages; it does not introduce new runtime namespaces.
 - `S2-2a Candidate segmentation`
   - candidate discovery, structure recovery, and execution-grade full-table
     authority preservation only.
+  - table structure profiles may record header/value alignment, orientation,
+    data regions, and column-record hints, but they must not authorize primary
+    formulation rows or decide formulation membership.
 - `S2-2b Selector evidence prioritization`
   - deterministic evidence-driven semantic-facing evidence selection over frozen
     candidate blocks and preserved table authority.
@@ -165,6 +168,9 @@ inside those coarse stages; it does not introduce new runtime namespaces.
     surface consumed by Stage3.
   - this is compatibility projection and Stage3 handoff, not evidence
     construction.
+  - S2-7 may consume table structure profiles only as structural evidence
+    alignment hints inside already authorized semantic scope; profile records
+    must not instantiate primary formulation rows by themselves.
 
 ### Stage3
 
@@ -215,6 +221,11 @@ inside those coarse stages; it does not introduce new runtime namespaces.
   - compute separately-provenanced derived values such as `%w/v × mL -> mg`,
     `mg/mL × mL -> mg`, concentration × volume, ratio-derived mass, and unit
     conversions only from accepted direct inputs.
+  - unit normalization belongs here as a sidecar projection from accepted
+    direct inputs, not in S5-2c and not in S5-4.
+  - concentration-mass-volume triangle solving and explicit role-ordered
+    binary or ternary ratio mass solving are allowed only when the role order,
+    dimensional units, and input uniqueness are resolved without guessing.
   - derived outputs must live in sidecars with formula IDs, input provenance,
     and `eligible_for_direct_compare=no`; they must not contaminate current
     direct-evidence GT comparison.
@@ -229,15 +240,48 @@ inside those coarse stages; it does not introduce new runtime namespaces.
     derived-value sidecars must remain distinguishable in downstream compare,
     audit, and modeling-ready outputs.
 
-### Benchmark
+### GT Diagnostic / Compare
 
 - `B-1 GT compare`
-  - compare only the Stage5 final table to the frozen GT reference inputs.
+  - compare only the Stage5 final table to frozen GT reference inputs.
+  - current role: full-pipeline integration diagnostic over governed GT subsets
+    such as DEV15, not a default requirement for large-scale extraction runs.
 
 ### Cross-cutting Layers
 
 - Feature governance layer
   - run-scoped feature activation, execution-ledger, and governance observability.
+- Dictionary / normalization governance
+  - supports paper-local abbreviation discovery, curated dictionary-promotion
+    review, controlled vocabularies, material and method surface
+    canonicalization, and downstream field harmonization.
+  - it is a governance and normalization layer, not a replacement for Stage2
+    LLM semantic discovery.
+- Evidence binding
+  - explains the legal assignment chain for frozen formulation rows and frozen
+    field values by linking final-table outputs back to Stage5, Stage3, Stage2,
+    and evidence-handoff authority surfaces.
+  - it is a post-Stage5 audit sidecar and must not create rows, create values,
+    or replace the final formulation table.
+- Risk assessment
+  - prioritizes papers, formulation rows, fields, or evidence-binding paths for
+    human review based on identity ambiguity, weak evidence support, scope
+    uncertainty, coded-factor decoding, value/unit ambiguity, or other audit
+    signals.
+  - it consumes frozen extraction or evidence-binding artifacts and must not
+    mutate binding facts.
+- Human review / audit workbook layer
+  - provides reviewer-facing formulation-identity and value-credibility
+    surfaces, including audit-ready exports, review workbooks, risk queues, and
+    GT comparison aids.
+  - these surfaces support audit and curation but must not redefine production
+    extraction semantics or benchmark validity.
+- Modeling-ready downstream projection
+  - builds row-linked modeling surfaces from frozen final or curated tables,
+    including deterministic normalization, derived-value sidecars, and pivoted
+    modeling columns.
+  - it must preserve raw source-backed values and provenance and must not feed
+    back into formulation identity or benchmark-final closure.
 - Memory layer
   - the governed supporting memory surface under `data/mem/v1/`.
   - it is not a numbered pipeline stage.
@@ -805,7 +849,7 @@ Provide partial, human-curated labels for comparison and review.
 
 ---
 
-## Stage 5 - Final Formulation Closure And Benchmark Comparison
+## Stage 5 - Final Formulation Closure And GT Diagnostic Comparison
 
 ### Current Phase: Diagnostic Development Mode
 
@@ -823,16 +867,20 @@ Convert candidate formulation-instance outputs into final one-row-per-
 formulation records and compare only those final records to GT.
 
 ### Key Principle
-Stage 5 is the only benchmark-valid reporting layer. Earlier stages may produce
-diagnostic comparisons, but they are not the official system result.
+Stage 5 final-table output is the only layer whose GT comparison may be
+interpreted as current system behavior. Earlier stages may produce diagnostic
+comparisons for debugging, but they are not the system result.
 
-In the current repo phase, this benchmark-validity statement is a reserved future-state rule, not a requirement that the current DEV15 work produce benchmark-certified outputs.
+In the current repo phase, DEV15 GT comparison is a diagnosis-baseline and
+mainline-integration diagnostic. It is not a requirement or claim that the
+current work produce benchmark-certified outputs.
 
-Benchmark-validity clarification:
+GT diagnostic clarification:
 
-- Stage5 final-table generation is necessary but not sufficient for
-  benchmark-valid reporting.
-- Benchmark legality additionally requires the separate GT compare node.
+- Stage5 final-table generation is necessary before GT comparison can be used
+  to interpret current system behavior.
+- The separate GT compare node is used to verify repair propagation through the
+  complete maintained pipeline.
 - For current DEV15 work, the target artifact is a diagnosis baseline that can be compared repeatedly against the same frozen GT to measure directional improvement during development.
 - If no explicit governed GT exists for a run scope, no benchmark-valid claim should be attempted and no benchmark language should be used beyond historical/governance reference.
 - Benchmark mode remains disabled until a governed benchmark contract is explicitly re-enabled.
@@ -1206,8 +1254,59 @@ Evidence Binding Pack and risk assessment artifacts are post-Stage5 audit sideca
 Architecture rules:
 
 - Evidence Binding Packs explain the legal assignment chain for frozen rows and frozen field values. They do not create rows, create values, replace the final table, or promote value-only matches into support evidence.
+- Row identity evidence and field-value evidence are separate evidence classes. A row-identity quote may prove that a formulation exists, but it must not be written as `value_evidence_text` for a non-blank numeric field unless it also contains the frozen field value itself or an equivalent original table/text expression.
+- Evidence Binding sidecars must preserve unsupported frozen values as frozen values while marking their pack status as `missing_exact_value_evidence`, `missing_evidence_anchor`, or another review status. They must not mutate, blank, or regenerate final-table values.
 - Authority resolution must run before pack construction. If one semantic artifact has multiple ACTIVE_RUN aliases pointing at different paths, the authority gate must fail unless the caller supplies an explicit `--authority-field` override.
 - Risk assessment is a separate sidecar that consumes frozen packs. It must not re-resolve evidence or mutate binding facts.
 - Workbook generation is a display/review layer. It must record the pack path, risk path, and authority-resolved final table path; missing pack/risk inputs require explicit legacy mode rather than silent fallback.
 - These artifacts are diagnostic review/audit surfaces, not benchmark-valid final outputs.
 
+---
+
+## Formulation Universe Discovery Gate
+
+The formulation universe discovery gate is a Stage2 semantic-discovery support
+surface for isolating row membership from value binding.
+
+Purpose:
+
+- decide the complete set of true prepared formulation instances for one paper
+- freeze a row universe before any downstream value extraction
+- make every inclusion and exclusion auditable from source evidence
+- prevent later value passes from creating rows opportunistically
+
+Implementation contract:
+
+- the LLM may be called multiple times inside the gate for source chunking,
+  candidate harvesting, identity consolidation, and adversarial review
+- all internal passes must collapse into one per-paper frozen universe artifact
+  before downstream consumption
+- deterministic code may validate schemas, evidence presence, path provenance,
+  duplicate IDs, count summaries, and exclusion ledgers, but it must not invent
+  formulation membership
+- the gate must produce both included rows and excluded-candidate ledgers
+- unresolved candidates must be routed to review instead of silently included or
+  discarded
+
+Current diagnostic support script:
+
+- `src/stage2_sampling_labels/build_formulation_universe_discovery_v1.py`
+
+Current diagnostic outputs:
+
+- `formulation_universe_frozen_v1.tsv`
+- `excluded_candidate_ledger_v1.tsv`
+- `unresolved_candidate_review_v1.tsv`
+- `analysis/formulation_universe_vs_layer1_gt_counts.tsv`
+- per-paper prompts, source-package metadata, raw LLM responses, parsed JSON,
+  and `RUN_CONTEXT.md`
+
+Boundary:
+
+- this gate is diagnostic/supporting unless explicitly promoted through the
+  maintained Stage2 semantic contract
+- it is not a completed Stage2 artifact, not a lawful Stage3 input, and not a
+  Stage5 final-table or benchmark-valid output
+- downstream value-binding tools may consume a promoted frozen universe only as
+  fixed row IDs; suspected missing rows must go to review rather than changing
+  row membership

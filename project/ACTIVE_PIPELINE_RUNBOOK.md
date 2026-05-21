@@ -79,19 +79,19 @@ required production stage from upstream corpus inputs to:
 
 - `final_formulation_table_v1.tsv`
 
-Benchmark-valid reporting then additionally requires the comparison node, which
+Current DEV15 diagnosis-baseline comparison uses the comparison node, which
 reads:
 
 - the final formulation table
 - the frozen Layer1 GT counts TSV
 - the declared scope manifest
 
-Benchmark-legality clarification:
+GT diagnostic clarification:
 
-- Stage5 final-table materialization is necessary but not sufficient for a
-  benchmark-valid run.
-- Benchmark-valid reporting additionally requires an explicit governed
-  benchmark contract; current DEV15 compare outputs are diagnostic-only.
+- Stage5 final-table materialization is necessary before GT comparison can be
+  used to interpret current system behavior.
+- Current DEV15 compare outputs are full-pipeline GT diagnostics, not benchmark
+  certification attempts.
 - In the current repository phase, DEV15 should be treated as a governed diagnostic-development set, not as a promised benchmark-certified endpoint.
 - The full DEV15 lineage
   `data/results/20260401_5d9f4e6/09_dev15_count_validation`
@@ -177,6 +177,20 @@ Active data-source rule:
   - explicit CLI source paths such as `--run-dir`
   - or the repository authority pointer in `data/results/ACTIVE_RUN.json`
 - If neither is available, fail loudly.
+
+Large-scale campaign rule:
+
+- Treat `ACTIVE_RUN.json` as the DEV15 validated method-contract pointer unless
+  a later governance decision explicitly changes that repository-wide role.
+- Large-scale extraction campaigns under their own `data/results/<campaign_id>/`
+  roots must maintain campaign-local progress files and child `RUN_CONTEXT.md`
+  files.
+- Campaign children may inherit parameters and boundary rules from the current
+  DEV15 active run, but they must record the inherited active run snapshot and
+  must not overwrite `ACTIVE_RUN.json` merely to track campaign progress.
+- Before live LLM calls or full-campaign expansion, run a campaign-local refresh
+  gate that reconciles prior Stage1/pre-LLM artifacts against the current
+  DEV15 active contract.
 
 
 
@@ -914,7 +928,8 @@ Boundary legality note:
 
 - The active pipeline distinguishes `internal_intermediate`,
   `diagnostic_boundary`, `mainline_resume_boundary`, and
-  `benchmark_terminal_boundary`.
+  `gt_diagnostic_terminal_boundary`; `benchmark_terminal_boundary` is reserved
+  for a future explicitly re-enabled benchmark contract.
 - A replayable artifact is not automatically a lawful resume boundary; it must
   preserve the authoritative downstream-ready contract for the next stage.
 - Raw Stage2 freeze baselines are diagnostic boundaries unless they contain the
@@ -1119,6 +1134,13 @@ Stage5 internal value-layer contract:
 - S5-5 computes derived values such as `%w/v × mL -> mg`, `mg/mL × mL -> mg`,
   concentration × volume, ratio-derived mass, and unit conversions from accepted
   direct inputs only. Its outputs are sidecars with `eligible_for_direct_compare=no`.
+  The maintained S5-5 sidecar currently writes separate derived-value and
+  unit-normalization surfaces; both are modeling/audit candidates only and must
+  not be merged into `final_formulation_table_v1.tsv` without a later governed
+  projection contract. The maintained solver covers the concentration-mass-
+  volume triangle and explicit role-ordered binary or ternary mass ratios; if
+  ratio role order, dimensionality, or input uniqueness is ambiguous, the row is
+  routed to review rather than guessed.
 - Every S5-3/S5-4/S5-5 workflow must resolve inputs by explicit CLI paths or
   `data/results/ACTIVE_RUN.json`; no latest-by-sort, parent fallback, or
   glob-first matching is allowed.
@@ -1517,6 +1539,38 @@ counts.
   instance with row-level or result-level evidence.
 - Do not count methods-only combinations or sweep conditions that were not
   reported as concrete formulation instances.
+
+## Formulation Universe Discovery Diagnostic Gate
+
+Use `src/stage2_sampling_labels/build_formulation_universe_discovery_v1.py`
+when testing the controlled row-creation design before full Stage2 promotion.
+
+Required boundary language:
+
+- output is `diagnostic-only, not benchmark-valid final output`
+- row creation is isolated to the discovery gate
+- downstream value binding must not add formulation rows
+- suspected missing rows from later value passes must be written to a review
+  queue
+
+DEV15 diagnostic example:
+
+```bash
+python3 src/stage2_sampling_labels/build_formulation_universe_discovery_v1.py \
+  --manifest-tsv data/cleaned/goren_2025/index/splits/dev_manifest_v7pilot3_2026-03-06.tsv \
+  --manifest-tsv data/cleaned/goren_2025/index/splits/dev_manifest_remaining12_2026-03-10.tsv \
+  --manifest-current-tsv data/cleaned/index/manifest_current.tsv \
+  --gt-counts-tsv data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv \
+  --out-dir data/results/<bucket>/<child> \
+  --llm-backend deepseek \
+  --model deepseek-v4-flash
+```
+
+The script records exact source manifests, current text paths, prompt hashes,
+model metadata, raw responses, parsed formulation universe JSON, included-row
+TSV, excluded-candidate ledger, unresolved-candidate review TSV, count-level
+DEV15 diagnostics, and `RUN_CONTEXT.md`. It does not update
+`ACTIVE_RUN.json`.
 ### Evidence Binding risk, workbook mode, and validator guardrails
 
 - `src/stage5_benchmark/build_evidence_binding_risk_assessment_v1.py` is the maintained diagnostic Phase6 risk sidecar builder. It must consume frozen `evidence_binding_packs_v1.jsonl` only and must not re-resolve evidence, mutate packs, create rows, create values, or render workbooks.

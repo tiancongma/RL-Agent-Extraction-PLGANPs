@@ -408,6 +408,191 @@ def infer_header_structure(rows: list[list[str]]) -> dict[str, Any]:
     }
 
 
+def _is_measurement_axis_label(value: Any) -> bool:
+    text = normalize_text(value)
+    if not text:
+        return False
+    if canonical_field_for_header(text):
+        return True
+    lowered = _canonical_text(text)
+    return bool(
+        re.search(
+            r"\b(?:size|diameter|pdi|polydispersity|zeta|ee|entrapment|encapsulation|loading|auc|mrt|cmax|tmax)\b",
+            lowered,
+        )
+    )
+
+
+def _row_trailing_value_count(row: list[str]) -> int:
+    return sum(1 for cell in row[1:] if normalize_text(cell))
+
+
+def infer_table_structure_profile(
+    rows: list[list[str]],
+    *,
+    header_structure: dict[str, Any] | None = None,
+    paper_key: str = "",
+) -> dict[str, Any]:
+    """Infer a typed execution-facing table structure sidecar.
+
+    The profile is deliberately structural.  It does not authorize formulation
+    membership and it does not decide whether a table should enter the final
+    row universe.  Column-oriented records emitted here are alignment hints:
+    they say which headers and values appear to travel together, not whether
+    those columns are primary formulations.  Downstream consumers may bind or
+    inspect these hints only after the usual semantic table-scope authorization
+    has already happened.
+    """
+
+    cleaned_rows = [[normalize_text(cell) for cell in row] for row in rows if isinstance(row, list)]
+    cleaned_rows = [row for row in cleaned_rows if any(row)]
+    width = max((len(row) for row in cleaned_rows), default=0)
+    if width <= 0:
+        return {
+            "schema_version": "table_structure_profile_v1",
+            "table_orientation": "unknown",
+            "column_count": 0,
+            "diagnostic_flags": ["empty_table"],
+        }
+    matrix = [row + [""] * (width - len(row)) for row in cleaned_rows]
+    header_structure = header_structure if isinstance(header_structure, dict) else {}
+    header_rows = [
+        [normalize_text(cell) for cell in row] + [""] * max(0, width - len(row))
+        for row in header_structure.get("header_rows", [])
+        if isinstance(row, list)
+    ]
+    header_row_count = int(header_structure.get("header_row_count") or 0)
+    flattened_headers = [
+        normalize_text(cell)
+        for cell in header_structure.get("flattened_headers", [])
+        if normalize_text(cell)
+    ]
+    diagnostic_flags: list[str] = []
+    if flattened_headers and abs(len(flattened_headers) - width) >= 3:
+        diagnostic_flags.append("flattened_header_width_mismatch")
+    prose_like_rows = [
+        idx
+        for idx, row in enumerate(matrix)
+        if sum(1 for cell in row if cell) <= 2 and sum(len(cell.split()) for cell in row if cell) >= 18
+    ]
+    if prose_like_rows:
+        diagnostic_flags.append("prose_like_rows_present")
+
+    measurement_start_index: int | None = None
+    for idx, row in enumerate(matrix):
+        first = normalize_text(row[0])
+        if not _is_measurement_axis_label(first):
+            continue
+        if _row_trailing_value_count(row) < 2:
+            continue
+        measurement_start_index = idx
+        break
+
+    column_records: list[dict[str, Any]] = []
+    if measurement_start_index is not None and measurement_start_index >= 1:
+        pre_measurement_rows = matrix[:measurement_start_index]
+        measurement_rows = matrix[measurement_start_index:]
+        formulation_columns: list[int] = []
+        for col_idx in range(1, width):
+            measurement_values = [
+                normalize_text(row[col_idx])
+                for row in measurement_rows
+                if col_idx < len(row) and normalize_text(row[0]) and normalize_text(row[col_idx])
+            ]
+            if len(measurement_values) >= 2:
+                formulation_columns.append(col_idx)
+        if len(formulation_columns) >= 2:
+            for col_idx in formulation_columns:
+                header_parts: list[str] = []
+                for row in header_rows:
+                    if col_idx < len(row) and normalize_text(row[col_idx]):
+                        value = normalize_text(row[col_idx])
+                        if value.lower() not in {item.lower() for item in header_parts}:
+                            header_parts.append(value)
+                attributes: list[dict[str, str]] = []
+                for row_idx, row in enumerate(pre_measurement_rows):
+                    name = normalize_text(row[0])
+                    value = normalize_text(row[col_idx]) if col_idx < len(row) else ""
+                    if not name or not value:
+                        continue
+                    if _is_measurement_axis_label(name):
+                        continue
+                    canonical = canonical_field_for_header(name, paper_key=paper_key)
+                    attributes.append(
+                        {
+                            "row_index": str(row_idx + 1),
+                            "name": name,
+                            "canonical_field": canonical,
+                            "value": value,
+                        }
+                    )
+                    if not header_parts and value:
+                        header_parts.append(value)
+                measurements: list[dict[str, str]] = []
+                for row_idx, row in enumerate(measurement_rows, start=measurement_start_index):
+                    name = normalize_text(row[0])
+                    value = normalize_text(row[col_idx]) if col_idx < len(row) else ""
+                    if not name or not value:
+                        continue
+                    measurements.append(
+                        {
+                            "row_index": str(row_idx + 1),
+                            "name": name,
+                            "canonical_field": canonical_field_for_header(name, paper_key=paper_key),
+                            "value": value,
+                        }
+                    )
+                if measurements:
+                    column_records.append(
+                        {
+                            "column_index": col_idx,
+                            "record_role": "column_record_hint",
+                            "row_universe_authorized": False,
+                            "authorization_boundary": "semantic_layer_required",
+                            "header_parts": header_parts,
+                            "attributes": attributes,
+                            "measurements": measurements,
+                        }
+                    )
+            if column_records:
+                return {
+                    "schema_version": "table_structure_profile_v1",
+                    "table_orientation": "column_formulations",
+                    "profile_role": "structural_alignment_hint",
+                    "row_universe_authorized": False,
+                    "authorization_boundary": "profile_must_not_authorize_primary_formulation_rows",
+                    "column_count": width,
+                    "row_header_column": 0,
+                    "header_regions": [
+                        {
+                            "rows": list(range(0, min(header_row_count, measurement_start_index))),
+                            "role": "column_condition_header",
+                        }
+                    ],
+                    "data_region": {
+                        "measurement_row_start": measurement_start_index,
+                        "formulation_column_start": 1,
+                    },
+                    "column_formulation_records": column_records,
+                    "diagnostic_flags": diagnostic_flags,
+                }
+
+    if header_row_count > 0:
+        return {
+            "schema_version": "table_structure_profile_v1",
+            "table_orientation": "row_formulations_or_matrix",
+            "column_count": width,
+            "header_regions": [{"rows": list(range(header_row_count)), "role": "column_header"}],
+            "diagnostic_flags": diagnostic_flags,
+        }
+    return {
+        "schema_version": "table_structure_profile_v1",
+        "table_orientation": "unknown",
+        "column_count": width,
+        "diagnostic_flags": diagnostic_flags or ["no_structural_profile_detected"],
+    }
+
+
 def flatten_header_rows(header_rows: list[list[str]], column_count: int) -> list[str]:
     flattened: list[str] = []
     for column_index in range(column_count):

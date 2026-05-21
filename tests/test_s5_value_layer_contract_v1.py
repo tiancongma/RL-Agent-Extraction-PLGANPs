@@ -411,6 +411,7 @@ class S5ValueLayerContractV1Tests(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             for output_name in [
                 s5_5.DERIVED_TSV_NAME,
+                s5_5.UNIT_NORMALIZATION_TSV_NAME,
                 s5_5.PROVENANCE_TSV_NAME,
                 s5_5.REVIEW_TSV_NAME,
                 s5_5.SUMMARY_JSON_NAME,
@@ -445,6 +446,7 @@ class S5ValueLayerContractV1Tests(unittest.TestCase):
             summary = json.loads((out_dir / s5_5.SUMMARY_JSON_NAME).read_text(encoding="utf-8"))
             self.assertEqual(summary["benchmark_valid"], "no")
             self.assertEqual(summary["derived_rows"], 1)
+            self.assertEqual(summary["unit_normalization_rows"], 1)
             self.assertEqual(summary["review_rows"], 0)
             self.assertEqual(summary["eligible_for_direct_compare"], "no")
             context = (out_dir / s5_5.RUN_CONTEXT_NAME).read_text(encoding="utf-8")
@@ -456,6 +458,366 @@ class S5ValueLayerContractV1Tests(unittest.TestCase):
             self.assertIn("eligible_for_direct_compare: `no`", context)
             self.assertIn("Does not change direct compare outputs", context)
             self.assertIn("Does not change final formulation table", context)
+
+    def test_s5_5_computes_mg_per_ml_volume_mass_derivation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_CONC",
+                        "formulation_id": "F1",
+                        "field_name": "drug_concentration",
+                        "value_text": "2.5",
+                        "unit_text": "mg/mL",
+                        "source_quote": "drug concentration was 2.5 mg/mL",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_CONC",
+                        "formulation_id": "F1",
+                        "field_name": "volume_ml",
+                        "value_text": "4",
+                        "unit_text": "mL",
+                        "source_quote": "volume was 4 mL",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            derived_rows = read_tsv(out_dir / s5_5.DERIVED_TSV_NAME)
+            self.assertEqual(len(derived_rows), 1)
+            derived = derived_rows[0]
+            self.assertEqual(derived["formula_id"], "mg_per_ml_x_ml_to_mg_v1")
+            self.assertEqual(derived["derived_value"], "10")
+            self.assertEqual(derived["derived_unit"], "mg")
+            self.assertEqual(derived["normalized_value"], "10")
+            self.assertEqual(derived["normalized_unit"], "mg")
+            self.assertEqual(derived["value_kind"], "derived")
+            self.assertEqual(derived["eligible_for_direct_compare"], "no")
+            self.assertEqual(derived["eligible_for_modeling"], "yes")
+
+    def test_s5_5_writes_unit_normalization_sidecar_without_final_table_merge(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_UNITS",
+                        "formulation_id": "F1",
+                        "field_name": "drug_mass",
+                        "value_text": "0.002",
+                        "unit_text": "g",
+                        "source_quote": "drug mass 0.002 g",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_UNITS",
+                        "formulation_id": "F1",
+                        "field_name": "volume",
+                        "value_text": "250",
+                        "unit_text": "uL",
+                        "source_quote": "aqueous volume 250 uL",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            unit_rows = read_tsv(out_dir / s5_5.UNIT_NORMALIZATION_TSV_NAME)
+            self.assertEqual(len(unit_rows), 2)
+            by_field = {row["source_field_name"]: row for row in unit_rows}
+            self.assertEqual(by_field["drug_mass"]["normalized_value"], "2")
+            self.assertEqual(by_field["drug_mass"]["normalized_unit"], "mg")
+            self.assertEqual(by_field["drug_mass"]["value_kind"], "direct_normalized")
+            self.assertEqual(by_field["drug_mass"]["eligible_for_direct_compare"], "no")
+            self.assertEqual(by_field["drug_mass"]["eligible_for_modeling"], "yes")
+            self.assertEqual(by_field["volume"]["normalized_value"], "0.25")
+            self.assertEqual(by_field["volume"]["normalized_unit"], "mL")
+            self.assertEqual(by_field["volume"]["formula_id"], "volume_ul_to_ml_v1")
+
+    def test_s5_5_derives_volume_from_mass_and_concentration(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_VOLUME",
+                        "formulation_id": "F1",
+                        "field_name": "drug_mass",
+                        "value_text": "10",
+                        "unit_text": "mg",
+                        "source_quote": "drug mass 10 mg",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_VOLUME",
+                        "formulation_id": "F1",
+                        "field_name": "drug_concentration",
+                        "value_text": "2",
+                        "unit_text": "mg/mL",
+                        "source_quote": "drug concentration 2 mg/mL",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            derived_rows = read_tsv(out_dir / s5_5.DERIVED_TSV_NAME)
+            volume_rows = [row for row in derived_rows if row["formula_id"] == "mass_mg_div_concentration_mg_per_ml_to_ml_v1"]
+            self.assertEqual(len(volume_rows), 1)
+            self.assertEqual(volume_rows[0]["target_field_name"], "drug_derived_volume_mL")
+            self.assertEqual(volume_rows[0]["derived_value"], "5")
+            self.assertEqual(volume_rows[0]["derived_unit"], "mL")
+            self.assertEqual(volume_rows[0]["eligible_for_direct_compare"], "no")
+
+    def test_s5_5_derives_binary_ratio_missing_mass(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_RATIO",
+                        "formulation_id": "F1",
+                        "field_name": "drug_polymer_ratio",
+                        "value_text": "1:10",
+                        "unit_text": "",
+                        "source_quote": "drug:polymer ratio was 1:10",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_RATIO",
+                        "formulation_id": "F1",
+                        "field_name": "drug_mass",
+                        "value_text": "5",
+                        "unit_text": "mg",
+                        "source_quote": "drug mass 5 mg",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            derived_rows = read_tsv(out_dir / s5_5.DERIVED_TSV_NAME)
+            ratio_rows = [row for row in derived_rows if row["formula_id"] == "role_ratio_known_mass_to_missing_mass_v1"]
+            self.assertEqual(len(ratio_rows), 1)
+            self.assertEqual(ratio_rows[0]["target_field_name"], "polymer_derived_mass_mg")
+            self.assertEqual(ratio_rows[0]["derived_value"], "50")
+            self.assertIn("drug_polymer_ratio", ratio_rows[0]["input_field_names"])
+            self.assertEqual(ratio_rows[0]["eligible_for_modeling"], "yes")
+
+    def test_s5_5_preserves_explicit_ratio_role_order(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_RATIO_ORDER",
+                        "formulation_id": "F1",
+                        "field_name": "polymer_to_drug_ratio",
+                        "value_text": "10:1",
+                        "unit_text": "",
+                        "source_quote": "polymer:drug ratio was 10:1",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_RATIO_ORDER",
+                        "formulation_id": "F1",
+                        "field_name": "polymer_mass",
+                        "value_text": "50",
+                        "unit_text": "mg",
+                        "source_quote": "polymer mass 50 mg",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            derived_rows = read_tsv(out_dir / s5_5.DERIVED_TSV_NAME)
+            ratio_rows = [row for row in derived_rows if row["formula_id"] == "role_ratio_known_mass_to_missing_mass_v1"]
+            self.assertEqual(len(ratio_rows), 1)
+            self.assertEqual(ratio_rows[0]["target_field_name"], "drug_derived_mass_mg")
+            self.assertEqual(ratio_rows[0]["derived_value"], "5")
+
+    def test_s5_5_derives_ternary_ratio_missing_masses(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_TERNARY",
+                        "formulation_id": "F1",
+                        "field_name": "drug_polymer_surfactant_ratio",
+                        "value_text": "1:10:2",
+                        "unit_text": "",
+                        "source_quote": "drug:polymer:surfactant ratio was 1:10:2",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_TERNARY",
+                        "formulation_id": "F1",
+                        "field_name": "drug_mass",
+                        "value_text": "5",
+                        "unit_text": "mg",
+                        "source_quote": "drug mass 5 mg",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            derived_rows = read_tsv(out_dir / s5_5.DERIVED_TSV_NAME)
+            by_target = {row["target_field_name"]: row for row in derived_rows if row["formula_id"] == "role_ratio_known_mass_to_missing_mass_v1"}
+            self.assertEqual(by_target["polymer_derived_mass_mg"]["derived_value"], "50")
+            self.assertEqual(by_target["surfactant_derived_mass_mg"]["derived_value"], "10")
+            self.assertEqual(by_target["polymer_derived_mass_mg"]["eligible_for_direct_compare"], "no")
+            self.assertEqual(by_target["surfactant_derived_mass_mg"]["eligible_for_modeling"], "yes")
+
+    def test_s5_5_ambiguous_ratio_role_order_routes_to_review(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            accepted_tsv = root / "inputs" / s5_4.ACCEPTED_TSV_NAME
+            out_dir = root / "out" / "s5_5"
+            write_tsv(
+                accepted_tsv,
+                [
+                    "paper_key",
+                    "formulation_id",
+                    "field_name",
+                    "value_text",
+                    "unit_text",
+                    "source_quote",
+                    "evidence_scope",
+                    "decision",
+                ],
+                [
+                    {
+                        "paper_key": "PAPER_REVIEW",
+                        "formulation_id": "F1",
+                        "field_name": "mass_ratio",
+                        "value_text": "1:10",
+                        "unit_text": "",
+                        "source_quote": "mass ratio was 1:10",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                    {
+                        "paper_key": "PAPER_REVIEW",
+                        "formulation_id": "F1",
+                        "field_name": "drug_mass",
+                        "value_text": "5",
+                        "unit_text": "mg",
+                        "source_quote": "drug mass 5 mg",
+                        "evidence_scope": "formulation_row",
+                        "decision": "accepted",
+                    },
+                ],
+            )
+
+            self.assertEqual(s5_5.main(["--accepted-direct-values-tsv", str(accepted_tsv), "--out-dir", str(out_dir)]), 0)
+
+            review_rows = read_tsv(out_dir / s5_5.REVIEW_TSV_NAME)
+            ratio_reviews = [row for row in review_rows if row["review_reason"] == "ambiguous_ratio_role_order"]
+            self.assertEqual(len(ratio_reviews), 1)
+            self.assertEqual(ratio_reviews[0]["formula_id"], "role_ratio_mass_solver_v1")
+            self.assertEqual(ratio_reviews[0]["eligible_for_direct_compare"], "no")
 
     def test_s5_5_insufficient_inputs_route_to_review_without_guessing_derived_values(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

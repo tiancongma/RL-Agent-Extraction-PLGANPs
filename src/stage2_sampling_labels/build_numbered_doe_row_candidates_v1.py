@@ -186,6 +186,19 @@ def parse_formulation_label_info(cell_text: str) -> dict[str, Any] | None:
             "label": f"{f_match.group(1).upper()}{int(f_match.group(2))}",
             "label_style": "f_numeric",
         }
+    prefixed_match = re.fullmatch(
+        r"([A-Za-z][A-Za-z0-9]*(?:[-\s][A-Za-z][A-Za-z0-9]*)*)\s*[- ]\s*(\d{1,3})\s*[\.\):]?",
+        normalized,
+    ) or re.fullmatch(r"([A-Za-z][A-Za-z0-9]{1,20}?)(\d{1,3})\s*[\.\):]?", normalized)
+    if prefixed_match:
+        prefix = normalize_text(prefixed_match.group(1))
+        if prefix.lower() not in {"table", "fig", "figure", "page"}:
+            number = int(prefixed_match.group(2))
+            return {
+                "number": number,
+                "label": f"{prefix}-{number}" if "-" in prefix else f"{prefix}{number}",
+                "label_style": "prefixed_numeric",
+            }
     return None
 
 
@@ -1039,6 +1052,151 @@ def explicit_table_candidate(
     }
 
 
+def _source_text_table_window(raw_text: str, table_id: str, *, max_chars: int = 7000) -> str:
+    table_label = normalize_text(table_id)
+    if not raw_text or not table_label:
+        return ""
+    match = re.search(rf"\b{re.escape(table_label)}\b", raw_text, flags=re.IGNORECASE)
+    if not match:
+        return ""
+    tail = raw_text[match.start() : match.start() + max_chars]
+    stop_match = re.search(
+        r"\n\s*(?:Table\s+\d{1,3}|Fig(?:ure)?\.?\s+\d{1,3}|References\b|Acknowledg(?:e)?ments?\b)",
+        tail[1:],
+        flags=re.IGNORECASE,
+    )
+    if stop_match:
+        tail = tail[: stop_match.start() + 1]
+    return tail
+
+
+def _generic_source_text_table_header(block: str) -> list[str]:
+    normalized = normalize_text(re.sub(r"\s+", " ", block))
+    if re.search(r"\bformulation\b", normalized, flags=re.IGNORECASE) and re.search(
+        r"\bPLGA\b.*\bPoloxamer\b.*\bphase\b.*\bDrug\s+conc\b",
+        normalized,
+        flags=re.IGNORECASE,
+    ):
+        return [
+            "Formulation",
+            "PLGA mg/mL",
+            "Poloxamer mg/mL",
+            "w/o phase volume ratio",
+            "Drug conc. Mg/mL",
+            "z-Average d.nm",
+            "% Drug entrapment",
+            "PDI",
+        ]
+    return []
+
+
+def _inline_numbered_source_text_rows(block: str) -> tuple[list[str], list[list[str]]]:
+    header_row = _generic_source_text_table_header(block)
+    if not header_row:
+        return [], []
+    text = normalize_text(re.sub(r"\s+", " ", block))
+    pattern = re.compile(
+        r"(?<![\w.-])(?P<label>\d{1,3})\.\s+"
+        r"(?P<x1>\d+(?:\.\d+)?)\s+"
+        r"(?P<x2>\d+(?:\.\d+)?)\s+"
+        r"(?P<x3>\d+(?:\.\d+)?)\s+"
+        r"(?P<x4>\d+(?:\.\d+)?)\s+"
+        r"(?P<size>\d+(?:\.\d+)?)\s*(?:±|\\pm|\+/-)\s*(?P<size_sd>\d+(?:\.\d+)?)\s+"
+        r"(?P<ee>\d+(?:\.\d+)?)\s*(?:±|\\pm|\+/-)\s*(?P<ee_sd>\d+(?:\.\d+)?)\s+"
+        r"(?P<pdi>\d+(?:\.\d+)?)\s*(?:±|\\pm|\+/-)\s*(?P<pdi_sd>\d+(?:\.\d+)?)",
+        flags=re.IGNORECASE,
+    )
+    rows: list[list[str]] = []
+    for match in pattern.finditer(text):
+        rows.append(
+            [
+                f"{int(match.group('label'))}.",
+                match.group("x1"),
+                match.group("x2"),
+                match.group("x3"),
+                match.group("x4"),
+                f"{match.group('size')} ± {match.group('size_sd')}",
+                f"{match.group('ee')} ± {match.group('ee_sd')}",
+                f"{match.group('pdi')} ± {match.group('pdi_sd')}",
+            ]
+        )
+    return header_row, rows
+
+
+def _line_numbered_source_text_rows(block: str) -> tuple[list[str], list[list[str]]]:
+    lines = [normalize_text(line) for line in block.splitlines()]
+    lines = [line for line in lines if line]
+    first_idx = None
+    for idx, line in enumerate(lines):
+        if re.fullmatch(r"\d{1,3}[\.\):]?", line):
+            first_idx = idx
+            break
+    if first_idx is None:
+        return [], []
+    header_candidates = [line for line in lines[:first_idx] if not re.fullmatch(r"Table\s+\d{1,3}", line, flags=re.IGNORECASE)]
+    header_row = ["Formulation"] + header_candidates[-16:]
+    rows: list[list[str]] = []
+    idx = first_idx
+    while idx < len(lines):
+        label_line = lines[idx]
+        if not re.fullmatch(r"\d{1,3}[\.\):]?", label_line):
+            idx += 1
+            continue
+        row_number = parse_formulation_number(label_line)
+        if row_number is None:
+            idx += 1
+            continue
+        cells: list[str] = []
+        idx += 1
+        while idx < len(lines) and not re.fullmatch(r"\d{1,3}[\.\):]?", lines[idx]):
+            if re.match(r"^(?:Fig(?:ure)?\.?|References\b|Acknowledg(?:e)?ments?\b)", lines[idx], flags=re.IGNORECASE):
+                break
+            if re.match(r"^[a-z]\s+[A-Z]", lines[idx]) and len(cells) >= 3:
+                break
+            cells.append(lines[idx])
+            idx += 1
+        row = [f"{row_number}."] + cells
+        if count_numeric_like_cells(row[1:]) >= 3:
+            rows.append(row)
+    return header_row, rows
+
+
+def source_text_table_candidate(
+    *,
+    raw_text: str,
+    table_id: str,
+    text_path: Path,
+    min_numbered_rows: int,
+    caption_or_title: str = "",
+) -> dict[str, Any] | None:
+    block = _source_text_table_window(raw_text, table_id)
+    if not block:
+        return None
+    header_row, numbered_rows = _inline_numbered_source_text_rows(block)
+    if len(numbered_rows) < min_numbered_rows:
+        header_row, numbered_rows = _line_numbered_source_text_rows(block)
+    if len(numbered_rows) < min_numbered_rows:
+        return None
+    row_numbers = [row_is_numbered(row) for row in numbered_rows]
+    if any(number is None or number <= 0 for number in row_numbers):
+        return None
+    unique_numbers = sorted({int(number) for number in row_numbers if number is not None})
+    if len(unique_numbers) != len(numbered_rows):
+        return None
+    if unique_numbers != list(range(unique_numbers[0], unique_numbers[-1] + 1)):
+        return None
+    return {
+        "csv_path": text_path,
+        "page_number": "",
+        "source_type": "semantic_authorized_source_text_table_target",
+        "caption_or_title": normalize_text(caption_or_title),
+        "rows": [header_row] + numbered_rows,
+        "header_row": header_row,
+        "numbered_rows": numbered_rows,
+        "semantic_table_id": normalize_text(table_id),
+    }
+
+
 def infer_drug_name(title: str, raw_text: str) -> str:
     title_text = normalize_text(title)
     match = re.search(r"delivery of ([a-z0-9 -]+?)(?: using| by| with|$)", title_text, flags=re.I)
@@ -1644,16 +1802,40 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
     selected_tables: list[dict[str, Any]] = []
     unresolved_targets: list[str] = []
     for target in candidate_targets:
-        table_path = Path(str(target.get("table_path") or "").replace("\\", "/"))
+        table_path_text = str(target.get("table_path") or "").replace("\\", "/")
+        table_path = Path(table_path_text) if table_path_text else Path()
         table_id = normalize_text(target.get("table_id"))
         table_asset_id = normalize_text(target.get("table_asset_id"))
         display_id = table_id or table_asset_id or normalize_text(table_path.name)
-        selected = explicit_table_candidate(
-            csv_path=table_path,
-            min_numbered_rows=min_numbered_rows,
-            table_id=table_id,
-            caption_or_title=normalize_text(target.get("evidence_span")),
-        )
+        selected = None
+        if table_path_text:
+            selected = explicit_table_candidate(
+                csv_path=table_path,
+                min_numbered_rows=min_numbered_rows,
+                table_id=table_id,
+                caption_or_title=normalize_text(target.get("evidence_span")),
+            )
+            source_text_selected = source_text_table_candidate(
+                raw_text=raw_text,
+                table_id=table_id,
+                text_path=paper.text_path,
+                min_numbered_rows=min_numbered_rows,
+                caption_or_title=normalize_text(target.get("evidence_span")),
+            )
+            if source_text_selected is not None and (
+                selected is None
+                or len(source_text_selected.get("numbered_rows") or []) > len(selected.get("numbered_rows") or [])
+            ):
+                selected = source_text_selected
+        if selected is None:
+            if normalize_text(target.get("source_type")) == "semantic_authorized_source_text_table_target" or table_id:
+                selected = source_text_table_candidate(
+                    raw_text=raw_text,
+                    table_id=table_id,
+                    text_path=paper.text_path,
+                    min_numbered_rows=min_numbered_rows,
+                    caption_or_title=normalize_text(target.get("evidence_span")),
+                )
         if selected is None:
             unresolved_targets.append(display_id)
             continue

@@ -12,6 +12,8 @@ risk levels, or render workbooks.
 import argparse
 import csv
 import json
+import re
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,6 +42,7 @@ BINDING_STATUSES = {
     "normalization_pending",
     "relation_path_missing",
     "missing_evidence_anchor",
+    "missing_exact_value_evidence",
     "derived_without_direct_text",
     "raw_value_supported_normalization_pending",
     "coded_value_supported_decode_pending",
@@ -91,9 +94,320 @@ DERIVED_HINT_FIELDS = {
 
 SUMMARY_FIELDS = ["group_key", "binding_status", "assignment_path", "count"]
 
+VALUE_EXACT_EVIDENCE_FIELD_HINTS = {
+    "size_nm",
+    "pdi",
+    "zeta_mV",
+    "encapsulation_efficiency_percent",
+    "loading_content_percent",
+    "dl_percent",
+    "la_ga_ratio",
+    "polymer_mw_kDa",
+    "plga_mass_mg",
+    "organic_phase_volume_mL",
+    "external_aqueous_phase_volume_mL",
+    "surfactant_concentration_value",
+}
+
+
+try:
+    csv.field_size_limit(sys.maxsize)
+except OverflowError:  # pragma: no cover - platform dependent
+    csv.field_size_limit(10_000_000)
+
 
 def _norm(value: Any) -> str:
     return str(value or "").strip()
+
+
+def _first_nonempty(row: dict[str, str], fields: list[str]) -> str:
+    for field in fields:
+        value = _norm(row.get(field))
+        if value:
+            return value
+    return ""
+
+
+def _contains_token_surface(haystack: str, needle: str) -> bool:
+    haystack_norm = haystack.lower()
+    needle_norm = needle.lower()
+    return bool(needle_norm and (needle_norm in haystack_norm or haystack_norm in needle_norm))
+
+
+def base_field_name(field_name: str) -> str:
+    for suffix in (
+        "_value",
+        "_value_text",
+        "_scope",
+        "_membership_confidence",
+        "_evidence_region_type",
+        "_missing_reason",
+    ):
+        if field_name.endswith(suffix):
+            return field_name[: -len(suffix)]
+    return field_name
+
+
+def companion_field(row: dict[str, str], field_name: str, suffix: str) -> str:
+    base = base_field_name(field_name)
+    return _norm(row.get(f"{base}_{suffix}"))
+
+
+def first_supporting_ref(row: dict[str, str]) -> dict[str, Any]:
+    refs = _norm(row.get("supporting_evidence_refs"))
+    if not refs:
+        return {}
+    try:
+        payload = json.loads(refs)
+    except json.JSONDecodeError:
+        return {}
+    if isinstance(payload, list) and payload and isinstance(payload[0], dict):
+        return payload[0]
+    if isinstance(payload, dict):
+        return payload
+    return {}
+
+
+def has_field_locator(row: dict[str, str], field_name: str) -> bool:
+    return bool(
+        companion_field(row, field_name, "value_text")
+        or companion_field(row, field_name, "evidence_region_type")
+        or companion_field(row, field_name, "scope")
+    )
+
+
+def field_scope_assignment_path(row: dict[str, str], field_name: str) -> str:
+    scope_text = " ".join(
+        [
+            companion_field(row, field_name, "scope"),
+            companion_field(row, field_name, "evidence_region_type"),
+        ]
+    ).lower()
+    if any(token in scope_text for token in ("global", "shared", "inherited", "preparation", "method")):
+        return "shared_method_context"
+    return "direct_same_table_row"
+
+
+def source_surface_type(row: dict[str, str], field_name: str, relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        relation_type = _norm(relation.get("evidence_source_type")) or _norm(relation.get("source_type"))
+        if relation_type:
+            return relation_type
+        if _norm(relation.get("source_table_id")) or _norm(relation.get("table_id")):
+            return "table"
+        return "stage3_relation"
+    region = companion_field(row, field_name, "evidence_region_type")
+    if region:
+        return region
+    if _norm(row.get("table_id")) or _norm(row.get("table_row_id")):
+        return "table"
+    if _norm(row.get("evidence_span_text")):
+        return "text"
+    return "unknown"
+
+
+def source_label(row: dict[str, str], relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        return _first_nonempty(
+            relation,
+            ["evidence_section", "source_table_id", "table_id", "source_section", "evidence_source_id"],
+        )
+    return _first_nonempty(row, ["table_id", "evidence_section", "instance_evidence_region_type"])
+
+
+def source_locator_text(row: dict[str, str], field_name: str, relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        pieces = [
+            _first_nonempty(relation, ["source_table_id", "table_id", "evidence_section"]),
+            _first_nonempty(relation, ["source_table_row_id", "table_row_id", "source_row_id"]),
+            _first_nonempty(relation, ["field_name", "target_field_name"]),
+            _first_nonempty(relation, ["source_relation_row_ids", "relation_record_ids"]),
+        ]
+    else:
+        pieces = [
+            _first_nonempty(row, ["table_id", "evidence_section"]),
+            _first_nonempty(row, ["table_row_id"]),
+            base_field_name(field_name),
+        ]
+        ref = first_supporting_ref(row)
+        if not pieces[0] and _norm(ref.get("source_region_type")):
+            pieces[0] = _norm(ref.get("source_region_type"))
+        if not pieces[1] and _norm(ref.get("source_locator_text")):
+            pieces[1] = _norm(ref.get("source_locator_text"))
+    return " | ".join(piece for piece in pieces if piece)
+
+
+def value_evidence_text(row: dict[str, str], field_name: str, relation: dict[str, str] | None, value: str) -> str:
+    if relation is not None:
+        return _first_nonempty(
+            relation,
+            ["evidence_text", "evidence_span_text", "source_text", "source_cell_text", "field_value"],
+        )
+    companion_text = companion_field(row, field_name, "value_text")
+    if companion_text:
+        return companion_text
+    span = _norm(row.get("evidence_span_text"))
+    if span:
+        return span[:500]
+    ref = first_supporting_ref(row)
+    snippet = _norm(ref.get("supporting_snippet"))
+    if snippet:
+        return snippet[:500]
+    return ""
+
+
+def row_identity_evidence_text(row: dict[str, str], relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        return _first_nonempty(
+            relation,
+            ["row_identity_evidence_text", "source_row_text", "source_cell_text", "evidence_text", "evidence_span_text"],
+        )[:500]
+    for field in ("row_identity_evidence_text", "instance_evidence_text", "evidence_span_text"):
+        value = _norm(row.get(field))
+        if value:
+            return value[:500]
+    ref = first_supporting_ref(row)
+    return _norm(ref.get("supporting_snippet"))[:500]
+
+
+def source_cell_text(row: dict[str, str], relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        return _first_nonempty(relation, ["source_cell_text", "field_value", "evidence_text"])[:500]
+    return _first_nonempty(row, ["source_cell_text", "cell_text", "evidence_span_text"])[:500]
+
+
+def source_row_label(row: dict[str, str], relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        return _first_nonempty(relation, ["source_table_row_id", "table_row_id", "source_row_id", "source_row_label"])
+    return _first_nonempty(row, ["source_table_row_id", "table_row_id", "source_row_id", "raw_formulation_label", "local_instance_id"])
+
+
+def source_column_label(row: dict[str, str], field_name: str, relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        return _first_nonempty(relation, ["source_metric_header", "source_column_header", "field_name", "target_field_name"])
+    return _first_nonempty(row, [f"{base_field_name(field_name)}_column_header", "source_column_header"]) or base_field_name(field_name)
+
+
+def normalized_value_tokens(value: str) -> set[str]:
+    text = _norm(value)
+    if not text:
+        return set()
+    tokens = {text.lower()}
+    compact = recompact_numeric(text)
+    if compact:
+        tokens.add(compact)
+    for number in re.findall(r"[-+]?\d+(?:\.\d+)?", text):
+        tokens.add(number)
+    return {token for token in tokens if token}
+
+
+def recompact_numeric(text: str) -> str:
+    return "".join(ch.lower() for ch in text if ch.isalnum() or ch in ".+-")
+
+
+def evidence_contains_value(value: str, evidence_text: str) -> bool:
+    evidence = _norm(evidence_text)
+    if not _norm(value):
+        return False
+    if not evidence:
+        return False
+    evidence_lower = evidence.lower()
+    evidence_compact = recompact_numeric(evidence)
+    for token in normalized_value_tokens(value):
+        if token in evidence_lower or token in evidence_compact:
+            return True
+    return False
+
+
+def requires_exact_value_evidence(field_name: str, value: str) -> bool:
+    if not value:
+        return False
+    if field_name in IDENTITY_FIELDS:
+        return False
+    if field_name in DERIVED_HINT_FIELDS or field_name.endswith("_derived"):
+        return False
+    base = base_field_name(field_name)
+    if base in VALUE_EXACT_EVIDENCE_FIELD_HINTS:
+        return True
+    return bool(re.search(r"\d", value))
+
+
+def target_match_basis(row: dict[str, str], relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        basis = _first_nonempty(
+            relation,
+            ["target_match_basis", "match_basis", "resolution_rule", "relation_resolution_rule"],
+        )
+        if basis:
+            return basis
+    pieces = []
+    for field in ("raw_formulation_label", "local_instance_id", "drug_name_value", "polymer_identity_final"):
+        value = _norm(row.get(field))
+        if value:
+            pieces.append(f"{field}={value}")
+    return ";".join(pieces)
+
+
+def metric_match_basis(row: dict[str, str], field_name: str, relation: dict[str, str] | None) -> str:
+    if relation is not None:
+        basis = _first_nonempty(
+            relation,
+            ["metric_match_basis", "source_metric_header", "source_column_header", "field_name"],
+        )
+        if basis:
+            return basis
+    base = base_field_name(field_name)
+    if base in {"size_nm", "pdi", "zeta_mV", "encapsulation_efficiency_percent", "loading_content_percent", "dl_percent"}:
+        return base
+    return ""
+
+
+def binding_strength(status: str, assignment_path: str, relation: dict[str, str] | None, refs_class: str) -> str:
+    if status == "blank_value":
+        return "blank"
+    if assignment_path in {"shared_method_context", "parent_inheritance"}:
+        return "shared_context"
+    if status == "direct_supported":
+        return "direct_row"
+    if assignment_path == "direct_same_table_row":
+        return "direct_row"
+    if assignment_path == "stage3_relation_resolved" and relation is not None:
+        source_type = source_surface_type({}, "", relation)
+        if "table" in source_type or "grid" in source_type:
+            return "scoped_table"
+        return "relation"
+    if assignment_path in {"shared_method_context", "parent_inheritance"}:
+        return "shared_context"
+    if refs_class == "broad_anchor":
+        return "broad_anchor"
+    if status == "value_only_match":
+        return "value_only"
+    if status in {"missing_evidence_anchor", "missing_exact_value_evidence", "relation_path_missing", "ambiguous_assignment"}:
+        return "weak_or_missing"
+    return "unknown"
+
+
+def review_display_text(
+    *,
+    field_name: str,
+    value: str,
+    assignment_path: str,
+    source_label_value: str,
+    locator: str,
+    evidence_text: str,
+) -> str:
+    parts = [
+        f"field={field_name}",
+        f"value={value or '<blank>'}",
+        f"path={assignment_path}",
+    ]
+    if source_label_value:
+        parts.append(f"source={source_label_value}")
+    if locator:
+        parts.append(f"locator={locator}")
+    if evidence_text:
+        parts.append(f"evidence={evidence_text[:240]}")
+    return " | ".join(parts)
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -162,13 +476,18 @@ def paper_key_for_row(row: dict[str, str]) -> str:
 
 
 def relation_for_field(row: dict[str, str], field_name: str, relation_index: dict[tuple[str, str], dict[str, str]]) -> dict[str, str] | None:
+    field_candidates = [field_name]
+    base = base_field_name(field_name)
+    if base != field_name:
+        field_candidates.append(base)
     for key in [
         _norm(row.get("final_formulation_id")),
         _norm(row.get("representative_source_formulation_id")),
         _norm(row.get("formulation_id")),
     ]:
-        if key and (key, field_name) in relation_index:
-            return relation_index[(key, field_name)]
+        for candidate in field_candidates:
+            if key and (key, candidate) in relation_index:
+                return relation_index[(key, candidate)]
     return None
 
 
@@ -212,6 +531,15 @@ def build_field_pack(
             status = "relation_supported"
         else:
             status = "relation_path_missing"
+    elif has_field_locator(row, field_name):
+        status = "direct_supported"
+        assignment_path = field_scope_assignment_path(row, field_name)
+    elif field_name == "polymer_identity_final" and any(
+        _contains_token_surface(_norm(row.get(source_field)), value)
+        for source_field in ("polymer_name_raw", "polymer_identity", "raw_formulation_label")
+    ):
+        status = "direct_supported"
+        assignment_path = "selection_marker"
     elif field_name in DERIVED_HINT_FIELDS or field_name.endswith("_derived"):
         status = "derived_supported"
         assignment_path = "derived_from_row_values"
@@ -222,6 +550,25 @@ def build_field_pack(
         status = "missing_evidence_anchor"
         assignment_path = "unresolved"
 
+    surface_type = source_surface_type(row, field_name, relation)
+    source_label_value = source_label(row, relation)
+    locator = source_locator_text(row, field_name, relation)
+    evidence_text = value_evidence_text(row, field_name, relation, value)
+    cell_text = source_cell_text(row, relation)
+    exact_value_required = requires_exact_value_evidence(field_name, value)
+    exact_value_supported = evidence_contains_value(value, evidence_text) or evidence_contains_value(value, cell_text)
+    if exact_value_required and status in {
+        "direct_supported",
+        "relation_supported",
+        "role_tolerant_supported",
+        "raw_value_supported_normalization_pending",
+    } and not exact_value_supported:
+        status = "missing_exact_value_evidence"
+    value_evidence_for_pack = evidence_text
+    if exact_value_required and not exact_value_supported:
+        value_evidence_for_pack = ""
+    strength = binding_strength(status, assignment_path, relation, refs_class)
+
     pack = {
         "paper_key": paper_key,
         "final_formulation_id": final_id,
@@ -229,6 +576,29 @@ def build_field_pack(
         "frozen_value": value,
         "binding_status": status,
         "assignment_path": assignment_path,
+        "source_surface_type": surface_type,
+        "source_label": source_label_value,
+        "source_locator_text": locator,
+        "value_evidence_text": value_evidence_for_pack,
+        "row_identity_evidence_text": row_identity_evidence_text(row, relation),
+        "source_cell_text": cell_text,
+        "source_row_label": source_row_label(row, relation),
+        "source_column_label": source_column_label(row, field_name, relation),
+        "evidence_exact_value_required": "yes" if exact_value_required else "no",
+        "evidence_contains_exact_value": "yes" if exact_value_supported else "no",
+        "target_match_basis": target_match_basis(row, relation),
+        "metric_match_basis": metric_match_basis(row, field_name, relation),
+        "binding_strength": strength,
+        "ambiguity_count": "0",
+        "conflict_notes": "",
+        "review_display_text": review_display_text(
+            field_name=field_name,
+            value=value,
+            assignment_path=assignment_path,
+            source_label_value=source_label_value,
+            locator=locator,
+            evidence_text=value_evidence_for_pack,
+        ),
         "supporting_refs_class": refs_class,
         "source_row_identity": {
             "representative_source_formulation_id": _norm(row.get("representative_source_formulation_id")),

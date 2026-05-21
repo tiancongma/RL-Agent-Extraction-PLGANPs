@@ -206,7 +206,10 @@ For diagnostic compare workflows:
   - `source_run_id`
   - `source_files.final_table_tsv`
   - `compare_mode=diagnostic`
-  - `benchmark_valid=no`
+  - `gt_subset_role=mainline_integration_diagnostic`
+  - `benchmark_certification=not_requested`
+  - legacy compatibility flag `benchmark_valid=no` or
+    `legacy_benchmark_valid_flag=no`
 - explicit diagnostic final-table paths must not silently update or replace
   `ACTIVE_RUN.json`
 
@@ -229,3 +232,33 @@ Hard rules for this exception:
 DEV15 frozen GT authority v1 currently lives under:
 
 - `data/cleaned/gt_authority/v1/`
+
+## Large-Scale Campaign Contract Inheritance
+
+Large-scale extraction campaign runs are distinct from the DEV15 diagnosis
+baseline.
+
+In the current development model:
+
+- DEV15 `ACTIVE_RUN.json` is the repository-level validated method contract and
+  diagnosis-baseline pointer.
+- A large-scale campaign under its own `data/results/<campaign_id>/` directory
+  may inherit the DEV15 active contract for parameters, maintained entrypoints,
+  source policies, and boundary rules.
+- The campaign's own progress must be recorded in campaign-local files such as
+  `CAMPAIGN_PROGRESS.md` and child `RUN_CONTEXT.md` files, not by overwriting
+  the DEV15 active pointer.
+
+Hard rules:
+
+- A large-scale campaign child must not update `data/results/ACTIVE_RUN.json`
+  merely because it is the newest large-scale output.
+- A large-scale campaign child must record the exact DEV15 active contract
+  snapshot it inherits, including the active Stage2/Stage3/Stage5 and compare
+  run paths.
+- Campaign children without frozen GT authority must not be described as
+  benchmark-valid or as DEV15 diagnosis baselines.
+- If a future workflow intentionally promotes a non-DEV15 campaign as the
+  repository-wide active authority, that promotion requires an explicit user
+  decision and must update this contract's authority semantics before the
+  pointer is changed.

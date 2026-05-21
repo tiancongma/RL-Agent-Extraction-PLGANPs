@@ -31,6 +31,27 @@ except ModuleNotFoundError:  # pragma: no cover
 
 ALLOWED_SUMMARY_TABLE_SOURCES = {"table_summary", "table_excerpt"}
 TABLE_SOURCE_PREFIX = "table"
+NEGATIVE_TABLE_SOURCE_ROLES = {
+    "characterization_result_table",
+    "release_profile_table",
+    "pharmacokinetic_table",
+    "tissue_distribution_table",
+    "reference_spillover_table",
+    "noise_or_nonformulation_table",
+}
+POSITIVE_TABLE_SOURCE_ROLES = {
+    "formulation_composition_table",
+    "preparation_parameter_table",
+    "optimization_table",
+    "parameter_sweep_table",
+}
+POSITIVE_TABLE_TYPES = {
+    "formulation_table",
+    "doe_table",
+    "mixed_table",
+    "optimization_table",
+    "parameter_sweep_table",
+}
 TEXTUAL_FORMULATION_PHRASES = (
     "different formulations",
     "formulations developed",
@@ -43,6 +64,42 @@ TEXTUAL_COMPONENT_TERMS = (
     "surfactant",
     "peg",
     "plga",
+    "microsphere",
+    "microspheres",
+    "scaffold",
+    "scaffolds",
+    "emulsion",
+    "emulsions",
+    "nanofiber",
+    "nanofibers",
+    "nanoparticle",
+    "nanoparticles",
+    "np",
+    "nps",
+    "microparticle",
+    "microparticles",
+    "drug",
+    "dna",
+)
+PREPARATION_CORE_POLYMER_PATTERN = re.compile(
+    r"\b(?:s?plga|peg-plga|pla|pcl|pdlla|polymer|poly\s*\(?lactide-co-glycolide\)?|poly\s*\(?lactic-co-glycolic acid\)?|poly\(lactide-co-glycolide\)|poly\(lactic-co-glycolic acid\))\b",
+    re.I,
+)
+PREPARATION_CORE_TARGET_PATTERN = re.compile(
+    r"\b(?:nanoparticles?|nps?|microparticles?|microspheres?|nanospheres?|nanocapsules?|particles?|formulations?|nanocarriers?)\b",
+    re.I,
+)
+PREPARATION_CORE_ACTION_PATTERN = re.compile(
+    r"\b(?:prepared|fabricated|formulat(?:e|ed|ion)|develop(?:ed)?|synthesi[sz]ed|encapsulated|co[- ]?loaded|co[- ]?laded|loaded|dissolved|emulsified|sonicated|evaporat(?:ed|ion)|centrifuged|freeze[- ]?dried|stirred|added dropwise|nanoprecipitation|emulsion)\b",
+    re.I,
+)
+PREPARATION_CORE_VALUE_PATTERN = re.compile(
+    r"\b\d+(?:\.\d+)?\s*(?:mg|g|ug|µg|ml|mL|µL|ul|%|w/v|v/v|rpm|min|h|hr|hours?)\b",
+    re.I,
+)
+PREPARATION_CORE_PHASE_PATTERN = re.compile(
+    r"\b(?:oil phase|organic phase|aqueous phase|water phase|internal water phase|external phase|o/w|w/o/w|water-in-oil|oil-in-water|pva|polyvinyl alcohol|dcm|dichloromethane)\b",
+    re.I,
 )
 
 
@@ -101,12 +158,39 @@ def normalize_text(text: str) -> str:
 
 def matches_path2_text(text: str) -> bool:
     lowered = normalize_text(text)
-    return any(phrase in lowered for phrase in TEXTUAL_FORMULATION_PHRASES)
+    if any(phrase in lowered for phrase in TEXTUAL_FORMULATION_PHRASES):
+        return True
+    return bool(
+        re.search(
+            r"\bformulation(?:s)?\s+of\b.{0,120}\b(?:table|component|ratio|emulsion|scaffold|microsphere)",
+            lowered,
+        )
+    )
 
 
 def matches_path3_text(text: str) -> bool:
     lowered = normalize_text(text)
-    if "prepared" in lowered and ("nanoparticle" in lowered or "formulation" in lowered):
+    prepared_targets = (
+        "nanoparticle",
+        "nanoparticles",
+        "formulation",
+        "formulations",
+        "microsphere",
+        "microspheres",
+        "scaffold",
+        "scaffolds",
+        "emulsion",
+        "emulsions",
+        "nanofiber",
+        "nanofibers",
+        "nanoparticle",
+        "nanoparticles",
+        "np",
+        "nps",
+        "microparticle",
+        "microparticles",
+    )
+    if any(action in lowered for action in ["prepared", "formulated", "formulate", "developed", "develop", "encapsulated", "loaded", "produced"]) and any(target in lowered for target in prepared_targets):
         matched_terms = sum(1 for term in TEXTUAL_COMPONENT_TERMS if term in lowered)
         if matched_terms >= 2:
             return True
@@ -114,6 +198,62 @@ def matches_path3_text(text: str) -> bool:
         return False
     matched_terms = sum(1 for term in TEXTUAL_COMPONENT_TERMS if term in lowered)
     return matched_terms >= 3
+
+
+def matches_path4_preparation_core_text(text: str) -> bool:
+    """Detect source-backed PLGA-family preparation evidence without row creation."""
+    if not (
+        PREPARATION_CORE_POLYMER_PATTERN.search(text)
+        and PREPARATION_CORE_ACTION_PATTERN.search(text)
+        and PREPARATION_CORE_VALUE_PATTERN.search(text)
+    ):
+        return False
+    if PREPARATION_CORE_TARGET_PATTERN.search(text):
+        return True
+    return bool(PREPARATION_CORE_PHASE_PATTERN.search(text))
+
+
+def table_summary_text_has_formulation_or_design_surface(text: str) -> bool:
+    """Detect structural formulation/design surfaces in neutral table summaries."""
+    lowered = normalize_text(text)
+    if not lowered:
+        return False
+    strong_structural_phrases = (
+        "formulation a",
+        "formulation b",
+        "formulation c",
+        "independent variables and their levels",
+        "coded levels of factors",
+        "factorial points",
+        "box-behnken",
+        "theoretical drug loading",
+        "polymer ratio",
+        "plga:e-rlpo",
+        "external phase",
+        "aqueous phase",
+        "oil phase",
+        "formulation parameters",
+        "preparation formulation",
+        "inline formulation table",
+        "column_schema: formulation",
+        "preparation of plgnps",
+        "schematic illustration for the preparation",
+        "nanoparticles coated with plga",
+    )
+    if any(phrase in lowered for phrase in strong_structural_phrases):
+        return True
+    has_formulation_axis = bool(re.search(r"\bformulation\s+[a-z0-9]+", lowered))
+    has_composition_axis = sum(
+        1
+        for token in ("plga", "polymer", "pva", "drug", "loading", "phase", "ratio")
+        if token in lowered
+    ) >= 2
+    has_metric_table_axis = (
+        "encapsulation efficiency" in lowered
+        and "particle size" in lowered
+        and ("sample" in lowered or "formulation" in lowered)
+    )
+    return (has_formulation_axis and has_composition_axis) or has_metric_table_axis
 
 
 def table_summary_satisfies_pre_live_evidence(block: dict, payload: dict) -> bool:
@@ -127,15 +267,45 @@ def table_summary_satisfies_pre_live_evidence(block: dict, payload: dict) -> boo
     """
     if block.get("source_type") not in ALLOWED_SUMMARY_TABLE_SOURCES:
         return False
+    block_text = str(block.get("text_content") or block.get("text") or "")
     if not payload:
-        return False
+        return table_summary_text_has_formulation_or_design_surface(block_text)
     if payload.get("table_inclusion_class") == "hard_drop":
         return False
     if normalize_text(str(payload.get("payload_authority_status", ""))) == "unusable_broken_payload":
         return False
-    if int(payload.get("data_row_count") or 0) < 2:
+    data_row_count = int(payload.get("data_row_count") or 0)
+    representation_status = normalize_text(str(payload.get("representation_status", "")))
+    source_kind = normalize_text(str(payload.get("source_table_asset_origin", "")))
+    table_type = normalize_text(str(payload.get("table_type", "")))
+    inclusion_class = normalize_text(str(payload.get("table_inclusion_class", "")))
+    source_role = normalize_text(str(payload.get("table_source_role", "")))
+    prompt_role = normalize_text(str(payload.get("table_role_hint", "")))
+    if data_row_count < 2 and not (
+        data_row_count >= 1
+        and (
+            representation_status == "text_metric_table_recovered"
+            or source_kind == "clean_text_metric_sentence"
+            or (
+                table_type in {"formulation_table", "doe_table", "mixed_table"}
+                and inclusion_class == "must_include"
+            )
+        )
+    ):
         return False
-    return True
+    if representation_status == "text_metric_table_recovered" or source_kind == "clean_text_metric_sentence":
+        return True
+    if table_summary_text_has_formulation_or_design_surface(block_text):
+        return True
+    if source_role in NEGATIVE_TABLE_SOURCE_ROLES:
+        return False
+    if source_role in POSITIVE_TABLE_SOURCE_ROLES:
+        return True
+    if table_type in POSITIVE_TABLE_TYPES and inclusion_class == "must_include":
+        return True
+    if prompt_role in {"formulation", "design matrix", "optimization"}:
+        return True
+    return False
 
 
 def iter_target_papers(
@@ -206,14 +376,6 @@ def evaluate_paper(
         if block.get("source_type") not in ALLOWED_SUMMARY_TABLE_SOURCES
     ]
 
-    has_method_evidence = bool(method_blocks)
-    has_materials_evidence = any(
-        "__materials__" in block.get("block_id", "") for block in evidence_blocks
-    )
-    has_supporting_evidence = any(
-        "__supporting__" in block.get("block_id", "") for block in evidence_blocks
-    )
-
     must_include_payloads = [
         row for row in payloads if row.get("table_inclusion_class") == "must_include"
     ]
@@ -236,13 +398,32 @@ def evaluate_paper(
     text_candidates = [
         normalize_text(block.get("text_content", "")) for block in text_blocks
     ]
+    method_text_candidates = [
+        normalize_text(block.get("text_content", "")) for block in method_blocks
+    ]
+    method_like_text_candidates = method_text_candidates or text_candidates
+    has_method_evidence = bool(method_blocks) or any(
+        matches_path3_text(text) or matches_path4_preparation_core_text(text)
+        for text in text_candidates
+    )
+    has_materials_evidence = any(
+        "__materials__" in block.get("block_id", "") for block in evidence_blocks
+    )
+    has_supporting_evidence = any(
+        "__supporting__" in block.get("block_id", "") for block in evidence_blocks
+    )
     path2 = (not path1) and has_method_evidence and any(
         matches_path2_text(text) for text in text_candidates
     )
     path3 = (not path1) and (not path2) and has_method_evidence and any(
         matches_path3_text(text) for text in text_candidates
     )
-    minimum_sufficiency_pass = path1 or path2 or path3
+    if len(method_text_candidates) > 1:
+        method_text_candidates.append(" ".join(method_text_candidates))
+    path4 = (not path1) and (not path2) and (not path3) and has_method_evidence and any(
+        matches_path4_preparation_core_text(text) for text in method_like_text_candidates
+    )
+    minimum_sufficiency_pass = path1 or path2 or path3 or path4
 
     prompt_render_bundle = build_prompt_render_bundle(evidence)
     rendered_block_ids = {
@@ -302,6 +483,8 @@ def evaluate_paper(
         satisfied_paths.append("path2")
     if path3:
         satisfied_paths.append("path3")
+    if path4:
+        satisfied_paths.append("path4")
 
     return {
         "paper_key": paper_key,
@@ -316,6 +499,7 @@ def evaluate_paper(
         "path1_table_ids": "|".join(path1_matches),
         "path2_method_plus_table_adjacent_text": "yes" if path2 else "no",
         "path3_method_plus_explicit_formulation_text": "yes" if path3 else "no",
+        "path4_preparation_core_text": "yes" if path4 else "no",
         "summary_only_pass": "yes" if summary_only_pass else "no",
         "selector_boundary_pass": "yes" if selector_boundary_pass else "no",
         "prompt_legality_pass": "yes" if prompt_legality_pass else "no",
@@ -347,6 +531,7 @@ def write_tsv(path: Path, rows: Sequence[dict]) -> None:
         "path1_table_ids",
         "path2_method_plus_table_adjacent_text",
         "path3_method_plus_explicit_formulation_text",
+        "path4_preparation_core_text",
         "summary_only_pass",
         "selector_boundary_pass",
         "prompt_legality_pass",

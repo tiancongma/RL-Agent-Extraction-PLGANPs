@@ -1502,6 +1502,85 @@ def parse_characterization_measurement_table(text: Any) -> dict[str, Any] | None
     }
 
 
+def parse_xanthone_encapsulation_efficiency_tables(text: Any, *, table_id: Any = "") -> dict[str, Any] | None:
+    """Parse row-local EE values from flattened XAN/3-MeOXAN result tables.
+
+    The L3H2RS2H source tables flatten paired XAN and 3-MeOXAN formulation
+    rows into prose-like table text. This parser extracts only direct
+    encapsulation-efficiency cells that are explicitly keyed by drug family and
+    theoretical concentration; it does not materialize final concentration or
+    create formulation identities.
+    """
+    snippet = normalize_text(text)
+    section = normalize_text(table_id)
+    if not snippet:
+        return None
+    has_named_header_context = bool(
+        re.search(r"\b(?:XAN|3-?MeOXAN)\b", snippet, flags=re.I)
+        and re.search(r"\bEncapsulation\s+efficiency\b", snippet, flags=re.I)
+    )
+    has_table_row_context = section in {"Table 1", "Table 3"}
+    if not has_named_header_context and not has_table_row_context:
+        return None
+
+    token = r"(?:ND|[−–+\-]?\d+(?:\.\d+)?(?:\s*(?:±|G)\s*[−–+\-]?\d+(?:\.\d+)?)?)"
+    bindings: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+
+    def add_binding(*, drug_label: str, family: str, concentration: str, value: str) -> None:
+        field_value = normalize_measurement_value(value)
+        if not measurement_binding_value_is_usable("encapsulation_efficiency_percent", field_value):
+            return
+        concentration_text = normalize_text(concentration)
+        key = (drug_label.lower(), family.lower(), concentration_text)
+        if key in seen:
+            return
+        seen.add(key)
+        bindings.append(
+            {
+                "target_kind": "loaded",
+                "drug_label": drug_label,
+                "target_label": f"{drug_label} {family}",
+                "concentration": concentration_text,
+                "fields": {"encapsulation_efficiency_percent": field_value},
+            }
+        )
+
+    # Table 1-style flattened rows:
+    # concentration, XAN final concentration, XAN EE, 3-MeOXAN final concentration, 3-MeOXAN EE.
+    if section == "Table 1" or re.search(r"\bXAN\s+nanospheres\b.*\b3-?MeOXAN\s+nanospheres\b", snippet, flags=re.I):
+        for match in re.finditer(
+            rf"\b(\d+(?:\.\d+)?)(?:\s*\|\s*)?\s+"
+            rf"{token}\s+({token})\s+"
+            rf"{token}\s+({token})(?=\s+(?:\d+(?:\.\d+)?|Crystals|Table)|$)",
+            snippet,
+            flags=re.I,
+        ):
+            concentration, xan_ee, meoxan_ee = match.groups()
+            add_binding(drug_label="XAN", family="nanospheres", concentration=f"{concentration} mg/mL", value=xan_ee)
+            add_binding(drug_label="3-MeOXAN", family="nanospheres", concentration=f"{concentration} mg/mL", value=meoxan_ee)
+
+    # Table 3-style flattened rows:
+    # XAN theoretical concentration, XAN/Myritol, XAN final, XAN EE,
+    # 3-MeOXAN theoretical concentration, 3-MeOXAN/Myritol, 3-MeOXAN final, 3-MeOXAN EE.
+    if section == "Table 3" or re.search(r"\bXAN(?:/| )Myritol\b.*\b3-?MeOXAN(?:/| )Myritol\b", snippet, flags=re.I):
+        for match in re.finditer(
+            rf"\b(\d+(?:\.\d+)?)(?:\s*\|\s*)?\s+"
+            rf"\d+(?:\.\d+)?\s+{token}\s+({token})\s+"
+            rf"(\d+(?:\.\d+)?)\s+"
+            rf"\d+(?:\.\d+)?\s+{token}\s+({token})(?=\s+(?:\d+(?:\.\d+)?|Crystals|Table)|$)",
+            snippet,
+            flags=re.I,
+        ):
+            xan_conc, xan_ee, meoxan_conc, meoxan_ee = match.groups()
+            add_binding(drug_label="XAN", family="nanocapsules", concentration=f"{xan_conc} mg/mL", value=xan_ee)
+            add_binding(drug_label="3-MeOXAN", family="nanocapsules", concentration=f"{meoxan_conc} mg/mL", value=meoxan_ee)
+
+    if not bindings:
+        return None
+    return {"family": "xanthone_particles", "bindings": bindings}
+
+
 def text_tokens(value: Any) -> set[str]:
     return {token for token in normalize_token(value).split("_") if token}
 
@@ -1782,8 +1861,18 @@ def add_measurement_binding_relation_rows(
     seen_binding_keys: set[tuple[str, str, str, str]] = set()
     for source_row_index, source_row in indexed_rows:
         source_text = normalize_text(source_row.get("evidence_span_text"))
-        parsed = parse_characterization_measurement_table(source_text)
-        if parsed is None:
+        parsed_tables = [
+            parsed
+            for parsed in (
+                parse_characterization_measurement_table(source_text),
+                parse_xanthone_encapsulation_efficiency_tables(
+                    source_text,
+                    table_id=source_row.get("evidence_section"),
+                ),
+            )
+            if parsed is not None
+        ]
+        if not parsed_tables:
             continue
         source_key = short_hash(source_text)
         if source_key in seen_tables:
@@ -1791,65 +1880,69 @@ def add_measurement_binding_relation_rows(
         seen_tables.add(source_key)
         source_section = normalize_text(source_row.get("evidence_section"))
         source_weak_ref = weak_label_row_ref(source_row, source_row_index)
-        for binding in parsed["bindings"]:
-            target_rows = [
-                (target_row_index, target_row)
-                for target_row_index, target_row in indexed_rows
-                if measurement_binding_matches_candidate(binding, target_row)
-                and normalize_text(target_row.get("instance_kind")) != "candidate_non_formulation"
-                and normalize_text(target_row.get("formulation_role")) != "characterization_only"
-            ]
-            if str(binding.get("target_kind", "") or "") == "empty" and source_section:
-                same_source_rows = [
+        for parsed in parsed_tables:
+            for binding in parsed["bindings"]:
+                target_rows = [
                     (target_row_index, target_row)
-                    for target_row_index, target_row in target_rows
-                    if normalize_text(target_row.get("table_id")) == source_section
-                    or normalize_text(target_row.get("evidence_section")) == source_section
+                    for target_row_index, target_row in indexed_rows
+                    if measurement_binding_matches_candidate(binding, target_row)
+                    and normalize_text(target_row.get("instance_kind")) != "candidate_non_formulation"
+                    and normalize_text(target_row.get("formulation_role")) != "characterization_only"
                 ]
-                if same_source_rows:
-                    target_rows = same_source_rows
-            target_ids = {candidate_id(row) for _, row in target_rows if candidate_id(row)}
-            if len(target_ids) != 1:
-                continue
-            target_row_index, target_row = target_rows[0]
-            target_id = candidate_id(target_row)
-            for field_name, field_value in sorted(binding["fields"].items()):
-                if field_name not in MEASUREMENT_BINDING_FIELDS or not normalize_text(field_value):
+                if str(binding.get("target_kind", "") or "") == "empty" and source_section:
+                    same_source_rows = [
+                        (target_row_index, target_row)
+                        for target_row_index, target_row in target_rows
+                        if normalize_text(target_row.get("table_id")) == source_section
+                        or normalize_text(target_row.get("evidence_section")) == source_section
+                    ]
+                    if same_source_rows:
+                        target_rows = same_source_rows
+                target_ids = {candidate_id(row) for _, row in target_rows if candidate_id(row)}
+                if len(target_ids) != 1:
                     continue
-                add_relation_row(
-                    relation_rows,
-                    relation_graph=relation_graph,
-                    paper_key=paper_key,
-                    doi=doi,
-                    paper_title=paper_title,
-                    method_group=method_group_id(paper_key, method_group_signature(target_row)),
-                    variation_axis="",
-                    candidate=target_id,
-                    candidate_label=normalize_text(target_row.get("raw_formulation_label")),
-                    parent_entity="",
-                    related_entity=normalize_text(binding.get("target_label")),
-                    relation_type="candidate_measurement_binding_field",
-                    field_name=field_name,
-                    field_value_raw=field_value,
-                    field_value_norm=normalize_token(field_value),
-                    field_scope_value="measurement_bound",
-                    candidate_source=normalize_text(target_row.get("candidate_source")),
-                    instance_kind=normalize_text(target_row.get("instance_kind")),
-                    formulation_role=normalize_text(target_row.get("formulation_role")),
-                    evidence_source_type="measurement_table_binding",
-                    evidence_section=source_section,
-                    evidence_snippet=truncate_text(source_text, max_len=320),
-                    is_shared="no",
-                    variation_axis_indicator="no",
-                    source_weak_label_row_ref=source_weak_ref,
-                    deterministic_confidence="high",
-                    provenance_note=(
-                        "Stage3 bound a characterization measurement-table column back to an already-authorized formulation identity; "
-                        "no new formulation row was created."
-                    ),
-                )
-                relation_type_counter["candidate_measurement_binding_field"] += 1
-                seen_binding_keys.add((target_id, field_name, normalize_token(field_value), source_key))
+                target_row_index, target_row = target_rows[0]
+                target_id = candidate_id(target_row)
+                for field_name, field_value in sorted(binding["fields"].items()):
+                    if field_name not in MEASUREMENT_BINDING_FIELDS or not normalize_text(field_value):
+                        continue
+                    binding_key = (target_id, field_name, normalize_token(field_value), source_key)
+                    if binding_key in seen_binding_keys:
+                        continue
+                    seen_binding_keys.add(binding_key)
+                    add_relation_row(
+                        relation_rows,
+                        relation_graph=relation_graph,
+                        paper_key=paper_key,
+                        doi=doi,
+                        paper_title=paper_title,
+                        method_group=method_group_id(paper_key, method_group_signature(target_row)),
+                        variation_axis="",
+                        candidate=target_id,
+                        candidate_label=normalize_text(target_row.get("raw_formulation_label")),
+                        parent_entity="",
+                        related_entity=normalize_text(binding.get("target_label")),
+                        relation_type="candidate_measurement_binding_field",
+                        field_name=field_name,
+                        field_value_raw=field_value,
+                        field_value_norm=normalize_token(field_value),
+                        field_scope_value="measurement_bound",
+                        candidate_source=normalize_text(target_row.get("candidate_source")),
+                        instance_kind=normalize_text(target_row.get("instance_kind")),
+                        formulation_role=normalize_text(target_row.get("formulation_role")),
+                        evidence_source_type="measurement_table_binding",
+                        evidence_section=source_section,
+                        evidence_snippet=truncate_text(source_text, max_len=320),
+                        is_shared="no",
+                        variation_axis_indicator="no",
+                        source_weak_label_row_ref=source_weak_ref,
+                        deterministic_confidence="high",
+                        provenance_note=(
+                            "Stage3 bound a characterization measurement-table column back to an already-authorized formulation identity; "
+                            "no new formulation row was created."
+                        ),
+                    )
+                    relation_type_counter["candidate_measurement_binding_field"] += 1
     add_grid_measurement_binding_relation_rows(
         relation_rows=relation_rows,
         relation_graph=relation_graph,

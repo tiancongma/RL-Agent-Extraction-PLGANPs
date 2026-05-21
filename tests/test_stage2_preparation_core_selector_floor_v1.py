@@ -1,6 +1,11 @@
 import unittest
 
-from src.stage2_sampling_labels.evaluate_s2_4a_hard_gate_v1 import table_summary_satisfies_pre_live_evidence
+from src.stage2_sampling_labels.evaluate_s2_4a_hard_gate_v1 import (
+    matches_path2_text,
+    matches_path3_text,
+    matches_path4_preparation_core_text,
+    table_summary_satisfies_pre_live_evidence,
+)
 from pathlib import Path
 
 from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
@@ -19,11 +24,21 @@ from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     derive_table_identity_aliases,
     classify_execution_table_type,
     classify_table_source_role,
+    evidence_text_has_noise,
+    formulation_method_candidate_is_floor_eligible,
     infer_authority_table_type,
     infer_table_role_hint,
+    infer_section_kind,
+    is_reference_like_text,
     payload_inclusion_class,
     payload_usage_role,
     render_value_evidence_payload_blocks,
+    resolve_tables_dir_for_record,
+    select_prompt_table_floor_candidates,
+    should_drop_segment,
+    source_backed_preparation_statement_candidate_is_floor_eligible,
+    source_body_preparation_anchor_candidate,
+    preparation_core_locator_is_source_body,
     table_inclusion_class,
 )
 
@@ -134,6 +149,543 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
         selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
         self.assertIn("solvent-diffusion-core", selected_ids)
         self.assertEqual(result.get("minimal_evidence_floor_applied", "no"), "yes")
+
+    def test_formulation_method_floor_recovers_preparation_with_low_generic_procedure_count(self):
+        materials = {
+            "candidate_id": "materials-only",
+            "candidate_kind": "text",
+            "section_kind": "materials",
+            "section_label": "2.1. Materials",
+            "block_type": "materials_procurement",
+            "text_content": "PLGA and PVA were purchased from commercial suppliers and ethyl acetate was obtained from a chemical vendor.",
+            "origin_locator": "paragraph:3",
+            "evidence_kind": "materials",
+            "priority_score": 8.0,
+        }
+        formulation_method = self._method_candidate(
+            "emulsion-preparation",
+            "Different double emulsions were prepared to optimize the composition of each phase: 5 or 10 mg/mL of live cells were pre-suspended in aqueous PVA solution and EA/PLGA organic phase was then sonicated to form emulsion droplets before solvent removal.",
+            paragraph_index=8,
+        )
+        formulation_method["evidence_kind"] = "supporting"
+        formulation_method["priority_score"] = 2.0
+
+        events = []
+        result = apply_minimal_evidence_floor(
+            selected_candidates=[materials],
+            ranked_candidates=[formulation_method, materials],
+            suppression_events=events,
+        )
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+
+        self.assertIn("emulsion-preparation", selected_ids)
+        self.assertEqual(result.get("floor_added_formulation_method", "no"), "yes")
+        self.assertIn("added_source_backed_formulation_method", result["floor_rationale"])
+
+    def test_short_source_body_preparation_anchor_is_method_evidence_without_numeric_values(self):
+        candidate = {
+            "candidate_id": "plga-np-anchor",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "2.2. Preparation of PLGA-NPs",
+            "block_type": "paragraph",
+            "text_content": (
+                "2.2. Preparation of PLGA-NPs PLGA-NPs were obtained using "
+                "the oil-in-water (o/w) emulsion solvent extraction method. "
+                "A scheme of the preparation method is reported in the "
+                "Supporting Information."
+            ),
+            "origin_locator": "paper#paragraph:3#segment:0",
+            "evidence_kind": "method",
+            "priority_score": 8.0,
+        }
+
+        self.assertTrue(source_body_preparation_anchor_candidate(candidate))
+
+    def test_numeric_chemical_parentheses_do_not_make_preparation_segment_reference_like(self):
+        text = (
+            "2.2. Preparation of PLGA-NPs PLGA-NPs were obtained using the "
+            "oil-in-water (o/w) emulsion solvent extraction method.13 A scheme "
+            "of the preparation method is reported in the Supporting Information "
+            "(Scheme S2). Briefly, phase 1 emulsion was prepared by dissolving "
+            "25 mg of PLGA, 3.2 mg of Gd-DOTAMA (C18H37)2, 1 mg of "
+            "DSPE-PEG (2000) methoxy, and 1.2 mg of DPPE-PEG (2000)NHS "
+            "in 0.5 mL of chloroform."
+        )
+        section_label = "2.2. Preparation of PLGA-NPs"
+        section_kind = infer_section_kind(text, section_label)
+
+        self.assertFalse(is_reference_like_text(text))
+        self.assertEqual(section_kind, "preparation")
+        self.assertFalse(should_drop_segment(text, section_kind, section_label))
+
+    def test_reference_named_run_directory_does_not_block_source_body_locator(self):
+        locator = (
+            "data/results/20260511_b069802/"
+            "102_stage2_s2_2_reference_aware_multi_evidence_tablebudget_campaign_no_live/"
+            "semantic_stage2_objects/s2_1b_denoised_text/C4UK4CJI.txt#paragraph:2#segment:0"
+        )
+
+        self.assertTrue(
+            preparation_core_locator_is_source_body(
+                locator,
+                "2.3. Emulsions preparation",
+            )
+        )
+
+    def test_manifest_table_dir_accepts_backslash_remapped_relative_path(self):
+        table_dir = Path("data/cleaned/goren_2025/tables/5GIF3D8W")
+        if not table_dir.exists():
+            self.skipTest("canonical DEV15 table directory is not present")
+
+        resolved = resolve_tables_dir_for_record(
+            {
+                "key": "5GIF3D8W",
+                "table_available": "yes",
+                "table_dir": "data\\cleaned\\goren_2025\\tables\\5GIF3D8W",
+            },
+            Path("data/cleaned/content/5GIF3D8W.txt"),
+            "5GIF3D8W",
+        )
+
+        self.assertEqual(resolved, table_dir.resolve())
+
+    def test_selector_preserves_multiple_distinct_evidence_anchors_without_category_quota(self):
+        materials_a = {
+            "candidate_id": "materials-a",
+            "candidate_kind": "paragraph",
+            "section_kind": "materials",
+            "section_label": "2.1. Materials",
+            "block_type": "materials_procurement",
+            "text_content": (
+                "PLGA and PVA were purchased from commercial suppliers, and "
+                "acetone and dichloromethane were obtained as analytical grade "
+                "solvents for nanoparticle preparation."
+            ),
+            "origin_locator": "paper#paragraph:1",
+            "evidence_kind": "materials",
+            "priority_score": 9.0,
+        }
+        materials_b = {
+            "candidate_id": "materials-b",
+            "candidate_kind": "paragraph",
+            "section_kind": "materials",
+            "section_label": "2.1. Materials",
+            "block_type": "materials_procurement",
+            "text_content": (
+                "The targeting ligand, albumin, and gadolinium complex were "
+                "purchased from suppliers, and methanol and chloroform were "
+                "obtained from Sigma for later functionalization steps."
+            ),
+            "origin_locator": "paper#paragraph:2",
+            "evidence_kind": "materials",
+            "priority_score": 8.5,
+        }
+        preparation_a = {
+            "candidate_id": "preparation-a",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "2.2. Preparation of PLGA-NPs",
+            "block_type": "paragraph",
+            "text_content": (
+                "PLGA-NPs were obtained using the oil-in-water (o/w) emulsion "
+                "solvent extraction method with a PLGA nanoparticle preparation "
+                "scheme reported in the supporting information."
+            ),
+            "origin_locator": "paper#paragraph:3",
+            "evidence_kind": "method",
+            "priority_score": 8.0,
+        }
+        preparation_b = {
+            "candidate_id": "preparation-b",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "2.3. Conjugation of BSA to PLGA-NPs",
+            "block_type": "paragraph",
+            "text_content": (
+                "A solution of BSA in buffer was added to PLGA-NP solution "
+                "after NP preparation using an NHS to ligand molar ratio, and "
+                "the conjugation reaction was carried out under stirring."
+            ),
+            "origin_locator": "paper#paragraph:4",
+            "evidence_kind": "method",
+            "priority_score": 7.8,
+        }
+
+        result = build_evidence_priority_selection(
+            segmented_candidates=[materials_a, materials_b, preparation_a, preparation_b],
+            signals={},
+        )
+        selected_ids = {
+            candidate["candidate_id"]
+            for candidate in result["prompt_selected_candidates"]
+        }
+
+        self.assertTrue({"materials-a", "materials-b", "preparation-a", "preparation-b"}.issubset(selected_ids))
+        suppression_reasons = {event["reason"] for event in result["suppression_events"]}
+        self.assertNotIn("materials_already_selected", suppression_reasons)
+        self.assertNotIn("method_budget_reached", suppression_reasons)
+
+    def test_prompt_budget_keeps_bounded_structural_table_floor(self):
+        long_method = self._method_candidate(
+            "long-method",
+            "Nanoparticles were prepared by solvent evaporation using PLGA, "
+            "drug, organic solvent, and aqueous surfactant. " * 170,
+            paragraph_index=1,
+        )
+        long_materials = {
+            "candidate_id": "long-materials",
+            "candidate_kind": "paragraph",
+            "section_kind": "materials",
+            "section_label": "2.1 Materials",
+            "block_type": "materials_procurement",
+            "text_content": (
+                "PLGA, drug, PVA, acetone, dichloromethane, and buffers were "
+                "purchased from commercial suppliers. "
+            )
+            * 80,
+            "origin_locator": "paper#paragraph:2",
+        }
+        table_candidates = []
+        for idx in range(1, 6):
+            table_candidates.append(
+                {
+                    "candidate_id": f"table-{idx}",
+                    "candidate_kind": "table",
+                    "evidence_kind": "table",
+                    "section_label": f"Table {idx}. Formulation composition",
+                    "text_content": (
+                        f"Table {idx} Formulation Drug PLGA PVA particle size "
+                        f"F{idx} 10 mg 100 mg 1% 150 nm"
+                    )
+                    * 38,
+                    "origin_locator": f"tables/table_{idx}.csv",
+                    "table_inclusion_class": TABLE_INCLUSION_MUST_INCLUDE,
+                    "authority_score": 10.0 - idx,
+                    "item": {
+                        "meta": {"caption_or_title": f"Table {idx}. Formulation composition"},
+                        "rows": [
+                            ["Formulation", "Drug", "PLGA", "PVA", "Size"],
+                            [f"F{idx}", f"{idx * 10} mg", f"{idx * 100} mg", f"{idx}%", f"{140 + idx} nm"],
+                        ],
+                    },
+                }
+            )
+
+        direct_floor = select_prompt_table_floor_candidates(
+            [long_method, long_materials, *table_candidates],
+            max_tables=4,
+        )
+        self.assertEqual([candidate["candidate_id"] for candidate in direct_floor], ["table-1", "table-2", "table-3", "table-4"])
+
+        result = build_evidence_priority_selection(
+            segmented_candidates=[long_method, long_materials, *table_candidates],
+            signals={},
+        )
+        selected_ids = {
+            candidate["candidate_id"]
+            for candidate in result["prompt_selected_candidates"]
+        }
+
+        self.assertTrue({"table-1", "table-2", "table-3", "table-4", "table-5"}.issubset(selected_ids))
+        self.assertEqual(result["prompt_structural_table_floor_applied"], "yes")
+
+    def test_formulation_method_floor_adds_plga_method_when_selected_method_is_non_plga(self):
+        selected_non_plga = self._method_candidate(
+            "chitosan-method",
+            "The nanoparticles were composed of chitosan and TPP. A 0.5% w/v "
+            "chitosan solution was prepared in PVA acetate buffer and 5 mg "
+            "ranibizumab was added dropwise before TPP solution was added, "
+            "emulsified, stirred, centrifuged, and washed.",
+            paragraph_index=12,
+        )
+        selected_non_plga["priority_score"] = 8.0
+        plga_method = self._method_candidate(
+            "plga-method",
+            "Preparation of PLGA microparticles. Chitosan-based nanoparticles "
+            "were added to PLGA microparticles using the w/o/w double emulsion "
+            "method. Briefly, 100 mg of PLGA was dissolved in 2.5 mL DCM and "
+            "1 mL aqueous phase was added to the organic phase.",
+            paragraph_index=18,
+        )
+        plga_method["evidence_kind"] = "supporting"
+        plga_method["priority_score"] = 4.0
+
+        events = []
+        result = apply_minimal_evidence_floor(
+            selected_candidates=[selected_non_plga],
+            ranked_candidates=[selected_non_plga, plga_method],
+            suppression_events=events,
+        )
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+
+        self.assertIn("plga-method", selected_ids)
+        self.assertIn("added_source_backed_plga_formulation_method", result["floor_rationale"])
+
+    def test_preparation_statement_floor_recovers_strong_plga_preparation_context(self):
+        materials = {
+            "candidate_id": "materials-only",
+            "candidate_kind": "text",
+            "section_kind": "materials",
+            "section_label": "Materials",
+            "block_type": "materials_procurement",
+            "text_content": "PLGA was purchased from a commercial supplier.",
+            "origin_locator": "paragraph:4",
+            "evidence_kind": "materials",
+            "priority_score": 8.0,
+        }
+        statement = {
+            "candidate_id": "preparation-statement",
+            "candidate_kind": "text",
+            "section_kind": "optimization",
+            "section_label": "",
+            "block_type": "paragraph",
+            "text_content": (
+                "In this work, porous and nonporous PLGA nanoparticles containing "
+                "BSA were prepared by the w/o/w double emulsion method using "
+                "sodium bicarbonate as the extractable porogen."
+            ),
+            "origin_locator": "paragraph:7",
+            "evidence_kind": "supporting",
+            "priority_score": 4.0,
+        }
+
+        events = []
+        result = apply_minimal_evidence_floor(
+            selected_candidates=[materials],
+            ranked_candidates=[materials, statement],
+            suppression_events=events,
+        )
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+
+        self.assertIn("preparation-statement", selected_ids)
+        self.assertEqual(result.get("floor_added_preparation_statement", "no"), "yes")
+
+    def test_formulation_method_floor_accepts_optimization_typical_procedure(self):
+        candidate = {
+            "candidate_id": "typical-procedure",
+            "candidate_kind": "paragraph",
+            "section_kind": "optimization",
+            "section_label": "",
+            "block_type": "paragraph",
+            "text_content": (
+                "Cisplatin loaded nanocapsules were prepared at theoretical "
+                "loading of 6.67 wt% relative to polymer. In a typical procedure, "
+                "magnetic nanoparticles were dispersed in 2 mL aqueous solution "
+                "and emulsified in DCM solution of 90 mg PLGA to obtain a W/O/W "
+                "double emulsion solvent evaporation system."
+            ),
+            "origin_locator": "paper#paragraph:27",
+            "evidence_kind": "supporting",
+            "priority_score": 4.0,
+        }
+
+        self.assertTrue(formulation_method_candidate_is_floor_eligible(candidate))
+
+    def test_formulation_method_floor_accepts_spray_dried_formulation_method(self):
+        candidate = {
+            "candidate_id": "spray-dried-method",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "Preparation of spray dried nanoparticles",
+            "block_type": "paragraph",
+            "text_content": (
+                "Two different nanoparticle formulations, amifostine-PLGA "
+                "0.4:1.0 and 1.0:1.0, were prepared using a Buchi B191 Mini "
+                "Spray Dryer with a standard nozzle."
+            ),
+            "origin_locator": "paper#paragraph:2",
+            "evidence_kind": "method",
+            "priority_score": 5.0,
+        }
+
+        self.assertTrue(formulation_method_candidate_is_floor_eligible(candidate))
+
+    def test_formulation_method_floor_recovers_section_split_from_same_origin_paragraph(self):
+        chemistry_method = {
+            "candidate_id": "chemistry-method",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "",
+            "block_type": "paragraph",
+            "text_content": (
+                "4.6H2O (0.64 mmol, 10 mL) was added dropwise to a solution "
+                "of cyclen in methanol. The dark blue solution was refluxed and "
+                "precipitated by addition of diethyl ether."
+            ),
+            "origin_locator": "paper#paragraph:78#segment:0",
+            "evidence_kind": "method",
+            "priority_score": 12.0,
+        }
+        nanoparticle_method = {
+            "candidate_id": "nanoparticle-method",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "2.4. Nanoparticles preparation",
+            "block_type": "paragraph",
+            "text_content": (
+                "2.4. Nanoparticles preparation. The formation of nanoparticles "
+                "was achieved by adjusting the multiple emulsion technique, "
+                "water-in-oil-in-water. Batches of nanoparticles were prepared "
+                "using an ultrasonic probe. The first emulsion contained Pluronic "
+                "F-68, metal complexes, and an organic solution of PLGA in 5 mL "
+                "triacetin, and the emulsion was sonicated for 30 s."
+            ),
+            "origin_locator": "paper#paragraph:78#segment:0",
+            "evidence_kind": "method",
+            "priority_score": 8.0,
+        }
+
+        result = apply_minimal_evidence_floor(
+            selected_candidates=[chemistry_method],
+            ranked_candidates=[chemistry_method, nanoparticle_method],
+            suppression_events=[],
+        )
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+
+        self.assertIn("nanoparticle-method", selected_ids)
+        self.assertEqual(result.get("floor_added_formulation_method", "no"), "yes")
+
+    def test_preparation_statement_floor_prefers_double_emulsion_over_in_vivo_treatment(self):
+        in_vivo_treatment = {
+            "candidate_id": "in-vivo-treatment",
+            "candidate_kind": "paragraph",
+            "section_kind": "preparation",
+            "section_label": "",
+            "block_type": "paragraph",
+            "text_content": (
+                "The mice were treated five times with formulations containing "
+                "drug at a dose of 5 mg/kg, followed by radiation. Tumor volumes "
+                "and body weights were recorded after in vivo treatment."
+            ),
+            "origin_locator": "paper#paragraph:45",
+            "evidence_kind": "method",
+            "priority_score": 12.0,
+        }
+        double_emulsion = {
+            "candidate_id": "double-emulsion-method",
+            "candidate_kind": "paragraph",
+            "section_kind": "optimization",
+            "section_label": "Material/Methods",
+            "block_type": "paragraph",
+            "text_content": (
+                "Tf-NPs-DOX-THC were prepared via the double-emulsion method. "
+                "The morphologies and particle sizes of the prepared nanoparticles "
+                "were examined by TEM and DLS for the drug delivery system."
+            ),
+            "origin_locator": "paper#paragraph:28",
+            "evidence_kind": "supporting",
+            "priority_score": 8.0,
+        }
+
+        self.assertFalse(formulation_method_candidate_is_floor_eligible(in_vivo_treatment))
+        self.assertTrue(source_backed_preparation_statement_candidate_is_floor_eligible(double_emulsion))
+
+    def test_formulation_result_context_floor_recovers_table_pointer_when_no_table_authority_exists(self):
+        materials = {
+            "candidate_id": "materials-only",
+            "candidate_kind": "text",
+            "section_kind": "materials",
+            "section_label": "Materials",
+            "block_type": "materials_procurement",
+            "text_content": "PLGA and PVA were purchased from commercial suppliers and growth factors were obtained from a vendor.",
+            "origin_locator": "paragraph:4",
+            "evidence_kind": "materials",
+            "priority_score": 8.0,
+        }
+        result_context = {
+            "candidate_id": "formulation-table-pointer",
+            "candidate_kind": "text",
+            "section_kind": "table_related",
+            "section_label": "2.2. Fabrication of scaffolds",
+            "block_type": "paragraph",
+            "text_content": "The formulation of emulsions for producing different mono- and bicomponent PLGA scaffolds was summarized in table 1 with component ratios and loading conditions.",
+            "origin_locator": "paragraph:16",
+            "evidence_kind": "supporting",
+            "priority_score": 3.5,
+        }
+
+        result = build_evidence_priority_selection(segmented_candidates=[materials, result_context], signals={})
+        prompt_ids = {candidate["candidate_id"] for candidate in result["prompt_selected_candidates"]}
+
+        self.assertIn("formulation-table-pointer", prompt_ids)
+        self.assertEqual(result.get("floor_added_result_context", "no"), "yes")
+        self.assertIn("added_formulation_result_context", result["floor_rationale"])
+
+    def test_hard_gate_accepts_microsphere_preparation_and_formulation_table_pointer(self):
+        microsphere_method = (
+            "Vancomycin-loaded microspheres were prepared with DEEM. First, "
+            "0.1 mL of vancomycin solution was mixed in dichloromethane "
+            "containing 250 mg of PLGA-mPEG and emulsified at 14,500 rpm."
+        )
+        self.assertTrue(matches_path3_text(microsphere_method))
+        table_pointer = (
+            "The formulation of emulsions for producing different mono- and "
+            "bicomponent PLGA scaffolds was summarized in table 1 with "
+            "component ratios and loading conditions."
+        )
+        self.assertTrue(matches_path2_text(table_pointer))
+
+    def test_hard_gate_accepts_encapsulated_np_method_without_method_block_id(self):
+        text = (
+            "DNA with either TB10.4 or CpG was encapsulated in PLGA NPs using "
+            "W/O/W double emulsion method and characterized for size and PDI."
+        )
+        self.assertTrue(matches_path3_text(text))
+
+    def test_noise_gate_does_not_flag_material_references_word(self):
+        self.assertFalse(
+            evidence_text_has_noise(
+                "Five PLGA references with different molecular weight and "
+                "lactic acid ratio were assayed to select the polymer."
+            )
+        )
+        self.assertTrue(evidence_text_has_noise("References\n1. Smith et al."))
+
+    def test_hard_gate_accepts_single_row_must_include_formulation_table(self):
+        block = {"source_type": "table_summary"}
+        payload = {
+            "payload_authority_status": "authority_visible",
+            "data_row_count": 1,
+            "table_type": "formulation_table",
+            "table_inclusion_class": "must_include",
+            "representation_status": "repaired_summary",
+        }
+        self.assertTrue(table_summary_satisfies_pre_live_evidence(block, payload))
+
+    def test_hard_gate_rejects_single_row_optional_nonformulation_table(self):
+        block = {"source_type": "table_summary"}
+        payload = {
+            "payload_authority_status": "authority_visible",
+            "data_row_count": 1,
+            "table_type": "non_formulation_table",
+            "table_inclusion_class": "optional_context",
+            "representation_status": "repaired_summary",
+        }
+        self.assertFalse(table_summary_satisfies_pre_live_evidence(block, payload))
+
+    def test_hard_gate_rejects_pharmacokinetic_table_as_sole_path1_surface(self):
+        block = {"source_type": "table_summary"}
+        payload = {
+            "payload_authority_status": "authority_visible",
+            "data_row_count": 3,
+            "table_type": "non_formulation_table",
+            "table_role_hint": "results",
+            "table_source_role": "pharmacokinetic_table",
+            "table_inclusion_class": "optional_context",
+            "representation_status": "raw_summary",
+        }
+        self.assertFalse(table_summary_satisfies_pre_live_evidence(block, payload))
+
+    def test_orthogonal_factor_level_table_is_preparation_parameter_surface(self):
+        source_role = classify_table_source_role(
+            ["Factor", "Level -1", "Level 0", "Level 1"],
+            {
+                "caption_or_title": "The factors and levels of orthogonal test",
+                "_signal_text": "A weight of drug B PVA concentration C ratio oil/water D stirring speed",
+            },
+        )
+        self.assertEqual(source_role, "preparation_parameter_table")
 
     def test_selector_suppresses_noisy_method_spillover_after_source_core_method(self):
         core = self._method_candidate(
@@ -680,12 +1232,12 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
             ),
             ["Table 2"],
         )
-    def test_s2_4a_gate_path1_uses_visible_table_evidence_not_formulation_authority(self):
+    def test_s2_4a_gate_path1_uses_positive_source_table_evidence(self):
         payload = {
             "table_id": "Table 1",
             "table_inclusion_class": TABLE_INCLUSION_OPTIONAL_CONTEXT,
             "payload_authority_status": "authority_visible",
-            "table_source_role": "characterization_result_table",
+            "table_source_role": "formulation_composition_table",
             "data_row_count": 7,
             "raw_cells": [
                 ["Formulation", "Artemether (mg)", "PLGA (mg)", "PVA (mg)"],
@@ -714,6 +1266,125 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
 
         self.assertFalse(table_summary_satisfies_pre_live_evidence(block, hard_drop_payload))
         self.assertFalse(table_summary_satisfies_pre_live_evidence(block, unusable_payload))
+
+    def test_s2_4a_gate_path4_accepts_source_backed_plga_preparation_core(self):
+        text = (
+            "Preparation of CAPE loaded PLGA nanoparticles. PLGA-NPs were fabricated "
+            "using an oil-water single-emulsion solvent evaporation method. PVA "
+            "(3% w/w) was dissolved in water and 55 mg CAPE and 100 mg PLGA were "
+            "dissolved to prepare the organic phase."
+        )
+
+        self.assertTrue(matches_path4_preparation_core_text(text))
+
+    def test_s2_4a_gate_path4_accepts_plga_phase_recipe_when_target_is_abbreviated(self):
+        text = (
+            "Preparation of CCPN PLGA (100 mg) was dissolved in 2 mL acetone, "
+            "and 280 mg CEP was added as the oil phase. Then 200 uL water was "
+            "added to achieve an internal water phase-to-oil phase ratio of 1:9."
+        )
+
+        self.assertTrue(matches_path4_preparation_core_text(text))
+
+    def test_s2_4a_gate_path4_accepts_co_loaded_nanocarrier_recipe(self):
+        text = (
+            "NaYF4 NPs and Rose Bengal were co-laded into colloidal nanocarriers "
+            "obtained by an optimized double emulsion w/o/w evaporation process. "
+            "The dual nanoplatform was stabilized by PLGA and 1 mL aqueous phase "
+            "was emulsified for 5 min in 4 mL dichloromethane."
+        )
+
+        self.assertTrue(matches_path4_preparation_core_text(text))
+
+    def test_s2_4a_gate_path4_accepts_splga_phase_recipe(self):
+        text = (
+            "Briefly, 160 mg sPLGA-COOH and 40 mg CuB were dissolved in "
+            "2 mL dichloromethane as the oil phase, and GA-CS was dissolved "
+            "in 20 mL 2% PVA solution as the water phase."
+        )
+
+        self.assertTrue(matches_path4_preparation_core_text(text))
+
+    def test_s2_4a_gate_path4_accepts_polymer_phase_recipe_with_target(self):
+        text = (
+            "Insulin-loaded microspheres were prepared by double emulsion. "
+            "The organic phase containing 300 mg polymer dissolved in 2 ml "
+            "methylene chloride was mixed with aqueous PVA and stirred for 2 h."
+        )
+
+        self.assertTrue(matches_path4_preparation_core_text(text))
+
+    def test_s2_4a_gate_accepts_structural_design_table_summary_without_payload(self):
+        block = {
+            "source_type": "table_summary",
+            "text_content": (
+                "[TABLE_SUMMARY] column_schema: Coded levels of factors || "
+                "Measured responses cFB (mg/mL) || cP188 (mg/mL) || pH || "
+                "Mean size (nm) || EE (%)"
+            ),
+        }
+
+        self.assertTrue(table_summary_satisfies_pre_live_evidence(block, {}))
+
+    def test_s2_4a_gate_accepts_formulation_ab_table_even_if_payload_role_is_characterization(self):
+        block = {
+            "source_type": "table_summary",
+            "text_content": (
+                "[TABLE_SUMMARY] Formulation A Formulation B Efficiency of "
+                "encapsulation; Formulation A: 400 mg drug in 1 mL water and "
+                "1 g PLGA."
+            ),
+        }
+        payload = {
+            "payload_authority_status": "authority_visible",
+            "data_row_count": 2,
+            "table_source_role": "characterization_result_table",
+            "table_type": "non_formulation_table",
+            "table_inclusion_class": "optional_context",
+            "representation_status": "repaired_summary",
+        }
+
+        self.assertTrue(table_summary_satisfies_pre_live_evidence(block, payload))
+
+    def test_s2_4a_gate_accepts_inline_formulation_metric_table_summary(self):
+        block = {
+            "source_type": "table_summary",
+            "text_content": (
+                "[TABLE_SUMMARY] title_or_caption: Inline formulation table - "
+                "column_schema: Encapsulation efficiency || EE || Particle size || Sample"
+            ),
+        }
+
+        self.assertTrue(table_summary_satisfies_pre_live_evidence(block, {}))
+
+    def test_s2_4a_gate_accepts_scheme_preparation_table_summary(self):
+        block = {
+            "source_type": "table_summary",
+            "text_content": (
+                "[TABLE_SUMMARY] column_schema: Scheme 1 Schematic illustration "
+                "for the preparation of PlgNPs and EPD of PlgNPs onto ITO electrode."
+            ),
+        }
+
+        self.assertTrue(table_summary_satisfies_pre_live_evidence(block, {}))
+
+    def test_s2_4a_gate_path4_rejects_non_plga_particle_synthesis(self):
+        text = (
+            "TOPO stabilized NaYF4 nanoparticles were synthesized by mixing 1 mmol "
+            "of lanthanide oxides with 15 ml octadecane and 20 g TOPO before "
+            "centrifugation at 11000 rpm."
+        )
+
+        self.assertFalse(matches_path4_preparation_core_text(text))
+
+    def test_evidence_noise_tolerates_footer_token_inside_scientific_paragraph(self):
+        text = (
+            "DPPC/PLGA hNPs were prepared by an emulsion solvent diffusion technique "
+            "with 10 mg PLGA and 1 mL methylene chloride. For personal use only."
+        )
+
+        self.assertFalse(evidence_text_has_noise(text))
+        self.assertTrue(evidence_text_has_noise("For personal use only."))
 
     def test_value_evidence_prompt_echo_is_budgeted_to_doe_design_payloads(self):
         evidence_artifact = {

@@ -51,6 +51,7 @@ from src.stage3_relation.build_formulation_relation_artifacts_v1 import (
     build_resolved_relation_fields_for_paper,
     grid_measurement_values_for_cell,
     measurement_binding_value_is_usable,
+    parse_xanthone_encapsulation_efficiency_tables,
     stage5_measurement_field_for_header,
     typed_fields_from_doe_assignments,
 )
@@ -59,9 +60,12 @@ from src.stage5_benchmark.build_minimal_final_output_v1 import (
     apply_global_polymer_material_carrythrough,
     apply_global_preparation_material_carrythrough,
     apply_resolved_relation_fields,
+    build_studied_variables_json,
+    build_loaded_label_table_duplicate_map,
     build_derived_mass_provenance_for_row,
     extract_unique_global_preparation_organic_phase_volume,
     extract_unique_shared_preparation_masses,
+    formulation_material_label_key,
     load_resolved_relation_fields,
     should_filter_non_formulation,
 )
@@ -96,6 +100,57 @@ from src.stage5_benchmark.compare_layer3_values_to_gt_v1 import (
 
 
 class Stage2DoeGenericRepairTests(unittest.TestCase):
+    def test_loaded_label_alias_maps_to_unique_table_material_row(self):
+        rows = [
+            {
+                "key": "PAPER1",
+                "formulation_id": "F2",
+                "raw_formulation_label": "KGN-loaded PLGA-PEG nanoparticles",
+                "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                "instance_kind": "formulation_family",
+            },
+            {
+                "key": "PAPER1",
+                "formulation_id": "PAPER1__table_2__plga_peg",
+                "raw_formulation_label": "PLGA-PEG",
+                "candidate_source": "table_row_expansion_v1",
+                "instance_kind": "new_formulation",
+            },
+        ]
+
+        self.assertEqual(formulation_material_label_key("KGN-loaded PLGA-PEG nanoparticles"), "plga peg")
+        self.assertEqual(
+            build_loaded_label_table_duplicate_map(rows),
+            {"PAPER1::F2": "PAPER1::PAPER1__table_2__plga_peg"},
+        )
+
+    def test_loaded_label_alias_requires_unique_same_paper_table_target(self):
+        rows = [
+            {
+                "key": "PAPER1",
+                "formulation_id": "F2",
+                "raw_formulation_label": "KGN-loaded PLGA-PEG nanoparticles",
+                "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                "instance_kind": "formulation_family",
+            },
+            {
+                "key": "PAPER1",
+                "formulation_id": "table-a",
+                "raw_formulation_label": "PLGA-PEG",
+                "candidate_source": "table_row_expansion_v1",
+                "instance_kind": "new_formulation",
+            },
+            {
+                "key": "PAPER1",
+                "formulation_id": "table-b",
+                "raw_formulation_label": "PLGA-PEG",
+                "candidate_source": "table_row_expansion_v1",
+                "instance_kind": "new_formulation",
+            },
+        ]
+
+        self.assertEqual(build_loaded_label_table_duplicate_map(rows), {})
+
     def test_shifted_numbered_row_anchor_accepts_right_shifted_run_matrix(self):
         rows = [
             ["spill", "", "", "", "", "", "", "", "Sr. No.", "X1", "X2", "X3", "EE", "PS"],
@@ -5384,6 +5439,51 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertEqual(shared_by_name["shared_param__stirring_speed_rpm"]["field_value"], "1200 rpm")
         self.assertEqual(shared_by_name["shared_param__stirring_speed_rpm"]["scope_type"], "method_group")
 
+    def test_stage5_builds_studied_variables_json_for_non_core_process_variable(self):
+        payload = build_studied_variables_json(
+            representative={
+                "key": "2RNHC2M5",
+                "formulation_id": "2RNHC2M5_F015",
+                "raw_formulation_label": "Run 1",
+                "row_identity_description": (
+                    "Box-Behnken design standard order 8; PVA 50 mg/mL, "
+                    "PLGA 8.13 mg/mL, homogenization speed 23,000 rpm"
+                ),
+            },
+            final_row={"shared_parameters_json": ""},
+        )
+
+        items = json.loads(payload)
+        by_family = {item["variable_family"]: item for item in items}
+        self.assertIn("homogenization_speed_rpm", by_family)
+        self.assertEqual(by_family["homogenization_speed_rpm"]["value"], "23000")
+        self.assertEqual(by_family["homogenization_speed_rpm"]["unit"], "rpm")
+        self.assertEqual(by_family["homogenization_speed_rpm"]["scope"], "formulation_row")
+
+    def test_stage5_preserves_unknown_shared_relation_as_studied_variable(self):
+        payload = build_studied_variables_json(
+            representative={"key": "P1", "formulation_id": "P1__row1"},
+            final_row={
+                "shared_parameters_json": json.dumps(
+                    [
+                        {
+                            "field_name": "shared_param__stirring_speed_rpm",
+                            "field_value": "1200 rpm",
+                            "field_value_norm": "1200_rpm",
+                            "scope_type": "method_group",
+                            "resolution_rule": "method_group_shared_field",
+                        }
+                    ]
+                )
+            },
+        )
+
+        items = json.loads(payload)
+        self.assertEqual(items[0]["variable_family"], "stirring_speed_rpm")
+        self.assertEqual(items[0]["value"], "1200")
+        self.assertEqual(items[0]["unit"], "rpm")
+        self.assertEqual(items[0]["scope"], "method_group")
+
     def test_stage3_shared_numeric_relation_fields_are_materialized_and_typed(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             path = Path(tmp_dir) / "resolved_relation_fields_v1.tsv"
@@ -5617,6 +5717,45 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         markers = json.loads(rows[0]["context_inheritance_markers_json"])
         self.assertEqual(markers[0]["inherited_fields"][0]["field_value"], "poloxamer 188")
         self.assertEqual(markers[0]["marker_readiness"], "execution_ready")
+
+    def test_empty_context_inheritance_marker_shell_is_filtered(self):
+        shrunken_document = {
+            "paper_key": "ZB76MB3J",
+            "document_key": "ZB76MB3J",
+            "doi": "10.1/example",
+            "title": "Example",
+            "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+            "table_scopes": [],
+            "semantic_signals": {},
+            "formulation_candidates": [
+                {
+                    "candidate_id": "ZB76MB3J_F1",
+                    "candidate_kind": "single_formulation",
+                    "label_hint": "F1",
+                    "instance_role": "synthesis_core",
+                    "status": "reported",
+                    "confidence": "high",
+                }
+            ],
+            "shared_semantics": {},
+            "context_inheritance_markers": [
+                {
+                    "source_context_label": "",
+                    "source_candidate_label_hint": "",
+                    "source_table_id": "",
+                    "target_contexts": [],
+                    "inherited_fields": [],
+                    "held_fixed_conditions": [],
+                    "evidence_cue": "",
+                    "evidence_source_hint": "",
+                    "confidence": "low",
+                }
+            ],
+        }
+        normalized = normalize_stage2_document_for_projection(shrunken_document)
+        rows, _, _, _, _ = project_document(normalized)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["context_inheritance_markers_json"], "")
 
     def test_stage3_materializes_context_inheritance_marker_into_resolved_fields(self):
         marker = {
@@ -6499,6 +6638,43 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
             ),
             {"size_nm": "136.3 ± 4.53"},
         )
+
+    def test_stage3_parses_xanthone_flattened_ee_measurement_rows(self):
+        parsed = parse_xanthone_encapsulation_efficiency_tables(
+            "Table 3 XAN nanocapsules 3-MeOXAN nanocapsules "
+            "concentration (ug/mL) XAN/Myritol 318% (w/v) Final concentration (ug/mL) "
+            "Encapsulation efficiency (%) Theoretical concentration (ug/mL) "
+            "3-MeOXAN/Myritol 318% (w/v) Final concentration (ug/mL) "
+            "Encapsulation efficiency (%) 200 0.4 178±21 89±11 1000 2.0 887±51 89±5 "
+            "400 0.8 342±18 85±5 1200 2.4 918±9 77±1 "
+            "700 1.4 Crystals of XAN ND 1600 3.2 Crystals of 3-MeOXAN ND"
+        )
+
+        self.assertIsNotNone(parsed)
+        by_target = {
+            (item["drug_label"], item["concentration"]): item["fields"]["encapsulation_efficiency_percent"]
+            for item in parsed["bindings"]
+        }
+        self.assertEqual(by_target[("XAN", "200 mg/mL")], "89±11")
+        self.assertEqual(by_target[("3-MeOXAN", "1000 mg/mL")], "89±5")
+        self.assertEqual(by_target[("XAN", "400 mg/mL")], "85±5")
+        self.assertEqual(by_target[("3-MeOXAN", "1200 mg/mL")], "77±1")
+        self.assertNotIn(("XAN", "700 mg/mL"), by_target)
+        self.assertNotIn(("3-MeOXAN", "1600 mg/mL"), by_target)
+
+    def test_stage3_parses_xanthone_ee_from_table_row_fragment_with_section_context(self):
+        parsed = parse_xanthone_encapsulation_efficiency_tables(
+            "50 | 13.0±1.1 26.1±2.1 19.0±0.6 38.1±1.1",
+            table_id="Table 1",
+        )
+
+        self.assertIsNotNone(parsed)
+        by_target = {
+            (item["drug_label"], item["concentration"]): item["fields"]["encapsulation_efficiency_percent"]
+            for item in parsed["bindings"]
+        }
+        self.assertEqual(by_target[("XAN", "50 mg/mL")], "26.1±2.1")
+        self.assertEqual(by_target[("3-MeOXAN", "50 mg/mL")], "38.1±1.1")
 
     def test_stage5_resolved_relation_fields_are_paper_scoped(self):
         with tempfile.TemporaryDirectory() as tmpdir:

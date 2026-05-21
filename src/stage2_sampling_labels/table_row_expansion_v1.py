@@ -10,6 +10,8 @@ from typing import Any
 from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
     canonical_field_for_header as shared_canonical_field_for_header,
     extract_continuation_group_context,
+    infer_header_structure,
+    infer_table_structure_profile,
     is_numeric_index_row,
     recover_row_entry_headers,
 )
@@ -522,6 +524,56 @@ def table_number_aliases(*values: Any) -> list[str]:
             if alias and alias not in seen:
                 seen.add(alias)
                 aliases.append(alias)
+        for match in re.finditer(r"(?:^|[^a-z0-9])t0*(\d{1,3})(?:[^a-z0-9]|$)", text, flags=re.IGNORECASE):
+            alias = normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
+    return aliases
+
+
+def table_identity_alias_values(record: dict[str, Any]) -> list[Any]:
+    values: list[Any] = []
+    for field in (
+        "table_id",
+        "source_table_id",
+        "source_table_asset_id",
+        "table_asset_id",
+        "source_table_reference",
+        "source_csv_path",
+        "source_caption_or_title",
+        "table_caption",
+        "caption_or_title",
+    ):
+        values.append(record.get(field))
+    for alias in ensure_list(record.get("table_identity_aliases")):
+        values.append(alias)
+    return values
+
+
+def table_number_alias_source_values(record: dict[str, Any]) -> list[Any]:
+    values: list[Any] = []
+    for field in (
+        "table_id",
+        "source_table_id",
+        "source_caption_or_title",
+        "table_caption",
+        "caption_or_title",
+    ):
+        values.append(record.get(field))
+    for alias in ensure_list(record.get("table_identity_aliases")):
+        values.append(alias)
+    return values
+
+
+def table_identity_alias_set(record: dict[str, Any]) -> set[str]:
+    aliases: set[str] = set()
+    for value in table_identity_alias_values(record):
+        label = _normalize_table_label(value)
+        if label:
+            aliases.add(normalize_token(label))
+    for value in table_number_alias_source_values(record):
+        aliases.update(alias for alias in table_number_aliases(value) if alias)
     return aliases
 
 
@@ -531,18 +583,15 @@ def resolve_table_authority_payload_for_scope(
     normalized_payloads: list[dict[str, Any]],
 ) -> tuple[dict[str, Any] | None, str]:
     wanted_table_id = _normalize_table_label(scope.get("table_id"))
-    wanted_aliases = {
-        alias
+    wanted_aliases = table_identity_alias_set(scope)
+    if not wanted_table_id:
         for alias in table_number_aliases(
-            scope.get("table_id"),
             scope.get("parent_table_hint"),
             scope.get("evidence_span"),
             scope.get("source_snippet"),
-            scope.get("table_caption"),
-            scope.get("caption_or_title"),
-        )
-        if alias
-    }
+        ):
+            if alias:
+                wanted_aliases.add(alias)
     scope_locators = iter_table_scope_locator_dicts(scope.get("table_scope_locators"))
 
     def choose(matches: list[dict[str, Any]]) -> tuple[dict[str, Any] | None, str]:
@@ -570,6 +619,7 @@ def resolve_table_authority_payload_for_scope(
 
     def payload_matches_locator(item: dict[str, Any], locator: dict[str, Any]) -> bool:
         payload_table_id = _normalize_table_label(item.get("table_id") or item.get("source_table_id"))
+        payload_aliases = table_identity_alias_set(item)
         payload_source_ref = normalize_text(
             item.get("source_table_reference") or item.get("source_csv_path")
         ).replace("\\", "/").lower()
@@ -583,12 +633,15 @@ def resolve_table_authority_payload_for_scope(
         # real table plus page-continuation text both labelled "Table 3"); an OR
         # on table_id alone can bind the scope to the wrong payload and silently
         # drop source-backed rows.
-        if locator_path or locator_asset_id:
-            return bool(
-                (locator_path and payload_source_ref == locator_path)
-                or (locator_asset_id and payload_asset_id == locator_asset_id)
-            )
-        return bool(locator_table_id and payload_table_id == locator_table_id)
+        if locator_asset_id:
+            return bool(payload_asset_id == locator_asset_id)
+        if locator_path:
+            return bool(payload_source_ref == locator_path)
+        locator_aliases = table_identity_alias_set(locator)
+        return bool(
+            (locator_table_id and payload_table_id == locator_table_id)
+            or (locator_aliases and payload_aliases and locator_aliases & payload_aliases)
+        )
 
     locator_matches: list[dict[str, Any]] = []
     if scope_locators:
@@ -611,16 +664,7 @@ def resolve_table_authority_payload_for_scope(
             item.get("source_table_reference") or item.get("source_csv_path")
         ).replace("\\", "/").lower()
         payload_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
-        payload_aliases = set(
-            table_number_aliases(
-                item.get("table_id"),
-                item.get("source_table_id"),
-                item.get("source_table_asset_id"),
-                item.get("source_table_reference"),
-                item.get("source_csv_path"),
-                item.get("source_caption_or_title"),
-            )
-        )
+        payload_aliases = table_identity_alias_set(item)
         if wanted_table_path and payload_source_ref == wanted_table_path:
             matches.append(item)
             continue
@@ -1283,6 +1327,32 @@ def parse_formulation_row_label_info(value: Any) -> dict[str, Any] | None:
             "number": int(f_match.group(2)),
             "label_style": "f_numeric",
         }
+    prefixed_match = re.fullmatch(
+        r"([A-Za-z][A-Za-z0-9]*(?:[-\s][A-Za-z][A-Za-z0-9]*)*)\s*[- ]\s*(\d{1,3})\s*[\.\):]?",
+        normalized,
+    ) or re.fullmatch(r"([A-Za-z][A-Za-z0-9]{1,20}?)(\d{1,3})\s*[\.\):]?", normalized)
+    if prefixed_match:
+        prefix = normalize_text(prefixed_match.group(1))
+        if prefix.lower() not in {"table", "fig", "figure", "page"}:
+            number = int(prefixed_match.group(2))
+            return {
+                "label": f"{prefix}-{number}" if "-" in prefix else f"{prefix}{number}",
+                "number": number,
+                "label_style": "prefixed_numeric",
+            }
+    contextual_prefixed_match = re.match(
+        r"^([A-Za-z][A-Za-z0-9]*(?:[-\s]?\d{1,3}))(?:\b|[\s(,;/:-]).*",
+        normalized,
+    )
+    if contextual_prefixed_match and len(normalized) <= 100:
+        token = normalize_text(contextual_prefixed_match.group(1))
+        token_match = re.match(r"^([A-Za-z][A-Za-z0-9]*?)[-\s]?(\d{1,3})$", token)
+        if token_match and token_match.group(1).lower() not in {"table", "fig", "figure", "page"}:
+            return {
+                "label": normalize_text(value),
+                "number": int(token_match.group(2)),
+                "label_style": "prefixed_numeric_context",
+            }
     return None
 
 
@@ -1297,6 +1367,12 @@ def row_identity_surface_kind(explicit_rows: list[dict[str, Any]]) -> str:
         return "numeric_first_column"
     if styles == {"f_numeric"}:
         return "f_numeric_first_column"
+    if styles == {"prefixed_numeric"}:
+        return "prefixed_numeric_first_column"
+    if styles == {"prefixed_numeric_context"}:
+        return "prefixed_numeric_context_first_column"
+    if styles and all(style.startswith("prefixed_numeric") for style in styles):
+        return "prefixed_numeric_first_column"
     if styles:
         return "mixed_explicit_first_column"
     return ""
@@ -1456,6 +1532,10 @@ def formulation_identity_label_looks_primary(value: Any) -> bool:
     )
     if any(cue in lowered for cue in primary_cues):
         return True
+    if re.search(r"\b[a-z]{1,12}nps?[-\s]?\d+[a-z]?\b", lowered):
+        return True
+    if re.search(r"\b[a-z]{1,12}np[-\s]?\d+[a-z]?\b", lowered):
+        return True
     token_count = len(re.findall(r"[a-z0-9]+", lowered))
     if token_count >= 3 and any(symbol in text for symbol in ("/", "(", ")", ":", "-")):
         return True
@@ -1475,6 +1555,10 @@ def unique_nonempty(values: list[str]) -> list[str]:
         seen.add(key)
         output.append(text)
     return output
+
+
+def formulation_label_identity_key(value: Any) -> str:
+    return re.sub(r"[^a-z0-9]+", "", normalize_text(value).lower())
 
 
 def content_tokens(text: str) -> list[str]:
@@ -1823,6 +1907,7 @@ def infer_column_assignment_name(part: str, ordinal: int) -> str:
 
 AUXILIARY_MEASUREMENT_COLUMN_PATTERNS = [
     r"\bafter\s+storage\b",
+    r"\bfor\s+\d+(?:\.\d+)?\s+(?:months?|days?|hours?|hrs?|h)\b",
     r"\bstor(?:age|ed)\b",
     r"\bstability\b",
 ]
@@ -1849,6 +1934,38 @@ def extract_column_anchor_rows_from_authority(
     authority_payload: dict[str, Any],
     row_entries: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], str]:
+    profile = authority_payload.get("table_structure_profile") if isinstance(authority_payload.get("table_structure_profile"), dict) else {}
+    # Prefer the mature row-entry extractor when S2-2 already provided row
+    # entries.  The table-structure profile is a structural sidecar and a
+    # hint surface for badly flattened/missing row-entry surfaces; it must not
+    # redefine or authorize the primary formulation row universe.
+    if row_entries:
+        profile = {}
+    if not profile and not row_entries:
+        matrix_for_profile = [row for row in ensure_list(authority_payload.get("normalized_matrix")) if isinstance(row, list)]
+        if not matrix_for_profile:
+            normalized_csv_path = normalize_text(authority_payload.get("normalized_csv_path"))
+            if normalized_csv_path:
+                csv_path = Path(normalized_csv_path)
+                if not csv_path.is_absolute():
+                    csv_path = (REPO_ROOT / csv_path).resolve()
+                if csv_path.exists():
+                    matrix_for_profile = read_csv_rows(csv_path)
+        if matrix_for_profile:
+            header_structure = authority_payload.get("header_structure") if isinstance(authority_payload.get("header_structure"), dict) else {}
+            if not header_structure:
+                header_structure = infer_header_structure(matrix_for_profile)
+            profile = infer_table_structure_profile(
+                matrix_for_profile,
+                header_structure=header_structure,
+                paper_key=normalize_text(authority_payload.get("paper_key")),
+            )
+    if normalize_text(profile.get("table_orientation")) == "column_formulations":
+        # The profile may expose column-record hints for downstream evidence
+        # binding or future semantically authorized consumers, but structure
+        # recovery alone cannot instantiate primary formulation rows.
+        return [], "table_structure_profile_hint_only_no_row_authorization"
+
     candidate_entry_sets: list[list[dict[str, Any]]] = []
     if row_entries:
         candidate_entry_sets.append(row_entries)
@@ -3580,6 +3697,278 @@ def extract_first_column_identity_rows_from_authority(
     return extracted_rows, ""
 
 
+def extract_source_backed_prefixed_identity_rows_from_authority(
+    *,
+    authority_payload: dict[str, Any],
+    row_entries: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], str]:
+    explicit_rows = explicit_formulation_row_entries(row_entries)
+    if len(explicit_rows) < 2:
+        return [], "insufficient_source_backed_prefixed_rows"
+    if len(explicit_rows) > 40:
+        return [], "source_backed_prefixed_row_count_out_of_bounds"
+    identity_surface = row_identity_surface_kind(explicit_rows)
+    if identity_surface not in {
+        "prefixed_numeric_first_column",
+        "prefixed_numeric_context_first_column",
+        "mixed_explicit_first_column",
+    }:
+        return [], "unsupported_source_backed_identity_surface"
+    headers = [normalize_text(value) for value in ensure_list((authority_payload.get("header_structure") or {}).get("flattened_headers"))]
+    if not headers:
+        first_explicit_row_index = min(int(row.get("row_index") or 0) for row in explicit_rows)
+        width = max(len(ensure_list(row.get("cells"))) for row in explicit_rows)
+        headers = combined_prelude_headers(
+            row_entries,
+            first_explicit_row_index=first_explicit_row_index,
+            width=width,
+        )
+    source_csv_path = normalize_text(authority_payload.get("source_csv_path") or authority_payload.get("normalized_csv_path"))
+    extracted_rows: list[dict[str, Any]] = []
+    seen_labels: set[str] = set()
+    for ordinal, entry in enumerate(explicit_rows, start=1):
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        if len(cells) < 2:
+            continue
+        label = normalize_text((entry.get("row_label_info") or {}).get("label")) or normalize_text(cells[0])
+        label_key = normalize_token(label)
+        if not label_key or label_key in seen_labels:
+            continue
+        if measurement_like_cell_count(cells, start_index=1) < 1:
+            continue
+        seen_labels.add(label_key)
+        source_row_index = normalize_text(entry.get("row_index"))
+        assignments: list[dict[str, str]] = [
+            {
+                "name": "formulation_identity_label",
+                "value": label,
+                "canonical_field": "",
+                "source_row_index": source_row_index,
+                "source_column_index": "0",
+            }
+        ]
+        cell_bindings: list[dict[str, str]] = []
+        for col_idx, value in enumerate(cells[1:], start=1):
+            if not value:
+                continue
+            header = normalize_text(headers[col_idx]) if col_idx < len(headers) else ""
+            raw_header = normalize_assignment_name(header) if header else f"source_column_{col_idx}"
+            canonical_field = canonical_field_for_header(raw_header)
+            assignments.append(
+                {
+                    "name": raw_header,
+                    "value": value,
+                    "canonical_field": canonical_field,
+                    "source_row_index": source_row_index,
+                    "source_column_index": str(col_idx),
+                }
+            )
+            if canonical_field:
+                cell_bindings.append(
+                    {
+                        "source_csv_path": source_csv_path,
+                        "source_row_index": source_row_index,
+                        "source_column_index": str(col_idx),
+                        "raw_header": raw_header,
+                        "canonical_field": canonical_field,
+                        "raw_cell_value": value,
+                        "binding_rule": "stage2_source_backed_prefixed_identity_cell_binding",
+                        "ambiguity_status": "source_backed_header_or_column",
+                    }
+                )
+        extracted_rows.append(
+            {
+                "label": label,
+                "label_number": str((entry.get("row_label_info") or {}).get("number") or ordinal),
+                "row_text": normalize_text(entry.get("row_text")) or " | ".join(value for value in cells if value),
+                "assignments": assignments,
+                "table_cell_bindings": cell_bindings,
+                "source_region_type": "table_row",
+                "change_context_tag": "source_backed_prefixed_identity_table_row",
+            }
+        )
+    if len(extracted_rows) < 2:
+        return [], "no_source_backed_prefixed_identity_rows"
+    return extracted_rows, ""
+
+
+PACKED_SAMPLE_ID_PATTERN = re.compile(r"\b[A-Za-z]{1,12}NPs?-\d+(?:\s+TRE\d+)?\b")
+
+
+def augment_with_packed_prefixed_sample_ids_from_source_csv(
+    *,
+    authority_payload: dict[str, Any],
+    direct_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    source_csv = _authority_source_csv_path(authority_payload)
+    if source_csv is None:
+        return direct_rows
+    try:
+        raw_lines = source_csv.read_text(encoding="utf-8", errors="replace").splitlines()
+    except OSError:
+        return direct_rows
+    existing_labels = {
+        formulation_label_identity_key(row.get("label"))
+        for row in direct_rows
+        if isinstance(row, dict) and formulation_label_identity_key(row.get("label"))
+    }
+    augmented = list(direct_rows)
+    for line_number, line in enumerate(raw_lines, start=1):
+        labels = unique_nonempty(PACKED_SAMPLE_ID_PATTERN.findall(line))
+        if len(labels) < 2:
+            continue
+        for raw_label in labels:
+            row_label_info = parse_formulation_row_label_info(raw_label)
+            label = normalize_text((row_label_info or {}).get("label")) or normalize_text(raw_label)
+            label_key = formulation_label_identity_key(label)
+            if not label_key or label_key in existing_labels:
+                continue
+            if not formulation_identity_label_looks_primary(label):
+                continue
+            existing_labels.add(label_key)
+            augmented.append(
+                {
+                    "label": label,
+                    "label_number": str((row_label_info or {}).get("number") or len(augmented) + 1),
+                    "row_text": normalize_text(line),
+                    "assignments": [{"name": "formulation_identity_label", "value": raw_label}],
+                    "source_region_type": "table_row",
+                    "change_context_tag": "packed_prefixed_sample_id_source_row",
+                    "instance_role": formulation_role_from_label(raw_label),
+                }
+            )
+    if len(augmented) > 60:
+        return direct_rows
+    return augmented
+
+
+def extract_source_backed_condition_rows_from_authority(
+    *,
+    authority_payload: dict[str, Any],
+    row_entries: list[dict[str, Any]],
+    scope: dict[str, Any],
+    role_info: dict[str, Any],
+    boundary: dict[str, Any],
+) -> tuple[list[dict[str, Any]], str]:
+    if len(row_entries) < 2:
+        return [], "insufficient_condition_row_entries"
+    if len(row_entries) > 60:
+        return [], "condition_row_count_out_of_bounds"
+    table_type = normalize_text(scope.get("table_type")).lower()
+    if table_type not in {"full_formulation", "partial_formulation", "doe_table"} and not bool(boundary.get("is_doe")):
+        return [], "unsupported_condition_table_type"
+    varying_variables = [
+        normalize_text(item)
+        for item in ensure_list(role_info.get("varying_variables"))
+        if normalize_text(item)
+    ]
+    if not varying_variables and not bool(boundary.get("is_doe")):
+        return [], "missing_condition_variable_roles"
+    if len(varying_variables) < 2 and not bool(boundary.get("is_doe")):
+        return [], "single_variable_condition_rows_defer_to_existing_recovery"
+    headers = [normalize_text(value) for value in ensure_list((authority_payload.get("header_structure") or {}).get("flattened_headers"))]
+    if not headers:
+        matrix = ensure_list(authority_payload.get("normalized_matrix"))
+        if matrix:
+            headers = [normalize_text(value) for value in ensure_list(matrix[0])]
+    source_csv_path = normalize_text(authority_payload.get("source_csv_path") or authority_payload.get("normalized_csv_path"))
+    extracted_rows: list[dict[str, Any]] = []
+    seen_labels: set[str] = set()
+    current_group = ""
+    for ordinal, entry in enumerate(row_entries, start=1):
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        if len(cells) < 2:
+            continue
+        first_cell = normalize_text(cells[0])
+        second_cell = normalize_text(cells[1]) if len(cells) > 1 else ""
+        if first_cell and not re.search(r"\d", first_cell) and second_cell and re.search(r"\d", second_cell):
+            current_group = first_cell
+        condition_label = first_cell
+        condition_value = second_cell
+        if current_group and second_cell and (not first_cell or first_cell == current_group):
+            condition_label = f"{current_group}: {second_cell}"
+        elif first_cell and second_cell and not re.search(r"\d", first_cell) and re.search(r"\d", second_cell):
+            condition_label = f"{first_cell}: {second_cell}"
+        if not condition_label or is_measurement_header(condition_label) or is_probable_footnote_label(condition_label):
+            continue
+        if measurement_like_cell_count(cells, start_index=1) < 1 and not re.search(r"\d", condition_label):
+            continue
+        label_key = normalize_token(condition_label)
+        if not label_key:
+            continue
+        if label_key in seen_labels:
+            label_key = f"{label_key}_{ordinal}"
+            condition_label = f"{condition_label} row {ordinal}"
+        seen_labels.add(label_key)
+        source_row_index = normalize_text(entry.get("row_index"))
+        assignments: list[dict[str, str]] = [
+            {
+                "name": "formulation_condition_label",
+                "value": condition_label,
+                "canonical_field": "",
+                "source_row_index": source_row_index,
+                "source_column_index": "0",
+            }
+        ]
+        if current_group and condition_value:
+            assignments.append(
+                {
+                    "name": normalize_assignment_name(current_group),
+                    "value": condition_value,
+                    "canonical_field": canonical_field_for_header(current_group),
+                    "source_row_index": source_row_index,
+                    "source_column_index": "1",
+                }
+            )
+        cell_bindings: list[dict[str, str]] = []
+        for col_idx, value in enumerate(cells):
+            if not value:
+                continue
+            header = normalize_text(headers[col_idx]) if col_idx < len(headers) else ""
+            raw_header = normalize_assignment_name(header) if header else f"source_column_{col_idx}"
+            if col_idx == 0 and raw_header == "source_column_0":
+                continue
+            canonical_field = canonical_field_for_header(raw_header)
+            assignments.append(
+                {
+                    "name": raw_header,
+                    "value": value,
+                    "canonical_field": canonical_field,
+                    "source_row_index": source_row_index,
+                    "source_column_index": str(col_idx),
+                }
+            )
+            if canonical_field:
+                cell_bindings.append(
+                    {
+                        "source_csv_path": source_csv_path,
+                        "source_row_index": source_row_index,
+                        "source_column_index": str(col_idx),
+                        "raw_header": raw_header,
+                        "canonical_field": canonical_field,
+                        "raw_cell_value": value,
+                        "binding_rule": "stage2_source_backed_condition_row_cell_binding",
+                        "ambiguity_status": "condition_level_source_row",
+                    }
+                )
+        if len(assignments) < 2:
+            continue
+        extracted_rows.append(
+            {
+                "label": condition_label,
+                "label_number": str(ordinal),
+                "row_text": normalize_text(entry.get("row_text")) or " | ".join(value for value in cells if value),
+                "assignments": assignments,
+                "table_cell_bindings": cell_bindings,
+                "source_region_type": "table_row",
+                "change_context_tag": "source_backed_condition_table_row",
+            }
+        )
+    if len(extracted_rows) < 2:
+        return [], "no_source_backed_condition_rows"
+    return extracted_rows, ""
+
+
 def extract_rowwise_formulation_rows_from_authority(
     *,
     authority_payload: dict[str, Any],
@@ -3631,13 +4020,21 @@ def extract_rowwise_formulation_rows_from_authority(
                 }
             )
         label = f"row_{ordinal:02d}"
+        label_number = str(ordinal)
         raw_label = normalize_text(cells[0]) if cells else ""
         if raw_label:
-            label = f"{label}__{normalize_token(raw_label)}"
+            row_label_info = parse_formulation_row_label_info(raw_label)
+            if row_label_info and formulation_identity_label_looks_primary(raw_label):
+                label = normalize_text(row_label_info.get("label")) or raw_label
+                label_number = str(row_label_info.get("number") or ordinal)
+            else:
+                label = f"{label}__{normalize_token(raw_label)}"
+        if raw_label and not any(normalize_assignment_name(item.get("name")) == "formulation_identity_label" for item in assignments):
+            assignments.insert(0, {"name": "formulation_identity_label", "value": raw_label})
         extracted_rows.append(
             {
                 "label": label,
-                "label_number": str(ordinal),
+                "label_number": label_number,
                 "row_text": normalize_text(entry.get("row_text")) or " | ".join(value for value in cells if value),
                 "assignments": assignments,
             }
@@ -3661,7 +4058,13 @@ def evaluate_simple_table_enumeration_contract(
     if len(explicit_rows) < 2:
         return False, "no_stable_row_identity_surface", ""
     identity_surface = row_identity_surface_kind(explicit_rows)
-    if identity_surface not in {"numeric_first_column", "f_numeric_first_column"}:
+    if identity_surface not in {
+        "numeric_first_column",
+        "f_numeric_first_column",
+        "prefixed_numeric_first_column",
+        "prefixed_numeric_context_first_column",
+        "mixed_explicit_first_column",
+    }:
         return False, "unsupported_row_identity_surface", identity_surface
     if not direct_rows:
         return False, "no_simple_row_assignments", identity_surface
@@ -3701,9 +4104,20 @@ def row_values_look_like_aggregate_variant_list(values: list[Any]) -> bool:
     for raw_value in values:
         value = normalize_text(raw_value)
         value_low = value.lower()
-        if " | " in value and sum(1 for marker in ("nanoparticle", "nanoparticles", "np", "nps") if marker in value_low) >= 2:
+        segments = [segment.strip().lower() for segment in value.split("|") if segment.strip()]
+        np_like_segments = [
+            segment
+            for segment in segments
+            if re.search(r"\b(?:nanoparticles?|nps?|[a-z]+nps?[-\s]?\d*)\b", segment)
+        ]
+        control_like_segments = [
+            segment
+            for segment in segments
+            if re.search(r"\b(?:blank|fitc|99mtc|drug[-\s]?free)\b", segment)
+        ]
+        if " | " in value and len(np_like_segments) >= 2:
             return True
-        if " | " in value and sum(1 for marker in ("blank", "fitc", "99mtc", "drug-free", "drug free") if marker in value_low) >= 2:
+        if " | " in value and len(control_like_segments) >= 2:
             return True
     return False
 
@@ -3978,7 +4392,7 @@ def should_block_nonprimary_duplicate_label_surface(
     table_type = normalize_text(scope.get("table_type")).lower()
     if not direct_rows or not existing_rows:
         return False
-    direct_labels = [normalize_token(row.get("label")) for row in direct_rows if normalize_token(row.get("label"))]
+    direct_labels = [formulation_label_identity_key(row.get("label")) for row in direct_rows if formulation_label_identity_key(row.get("label"))]
     if len(direct_labels) < 2:
         return False
     direct_label_set = set(direct_labels)
@@ -3989,7 +4403,7 @@ def should_block_nonprimary_duplicate_label_surface(
         return False
     existing_label_set = set()
     for row in existing_rows:
-        raw_label = normalize_token(row.get("raw_formulation_label"))
+        raw_label = formulation_label_identity_key(row.get("raw_formulation_label"))
         if raw_label:
             existing_label_set.add(raw_label)
             continue
@@ -3997,7 +4411,7 @@ def should_block_nonprimary_duplicate_label_surface(
         if "__table_" in local_instance_id and "__" in local_instance_id:
             suffix = local_instance_id.split("__", 2)[-1]
             suffix = suffix.replace("_/_", "/").replace("_", " ")
-            derived_label = normalize_token(suffix)
+            derived_label = formulation_label_identity_key(suffix)
             if derived_label:
                 existing_label_set.add(derived_label)
     if len(existing_label_set) < 2:
@@ -4231,6 +4645,11 @@ def run_table_row_expansion(
                 authority_payload=preview_payload,
                 row_entries=preview_entries,
             )
+        if not preview_direct_rows:
+            preview_direct_rows, _ = extract_source_backed_prefixed_identity_rows_from_authority(
+                authority_payload=preview_payload,
+                row_entries=preview_entries,
+            )
         preview_column_rows, _ = extract_column_anchor_rows_from_authority(
             authority_payload=preview_payload,
             row_entries=preview_entries,
@@ -4417,6 +4836,19 @@ def run_table_row_expansion(
                 row_entries=authority_entries,
             )
         if not direct_rows:
+            direct_rows, direct_failure_reason = extract_source_backed_prefixed_identity_rows_from_authority(
+                authority_payload=authority_payload,
+                row_entries=authority_entries,
+            )
+        if not direct_rows:
+            direct_rows, direct_failure_reason = extract_source_backed_condition_rows_from_authority(
+                authority_payload=authority_payload,
+                row_entries=authority_entries,
+                scope=scope,
+                role_info=role_info,
+                boundary=resolved_boundary,
+            )
+        if not direct_rows:
             direct_rows, direct_failure_reason = extract_compact_inline_table_rows_from_source_text(
                 document=document,
                 scope=scope,
@@ -4441,6 +4873,11 @@ def run_table_row_expansion(
             direct_rows, direct_failure_reason = extract_characterization_pair_rows_from_source_text(
                 document=document,
                 scope=scope,
+            )
+        if direct_rows:
+            direct_rows = augment_with_packed_prefixed_sample_ids_from_source_csv(
+                authority_payload=authority_payload,
+                direct_rows=direct_rows,
             )
         if direct_rows:
             blocked_downstream_table, downstream_block_reason = should_block_downstream_measurement_only_table(
@@ -4479,7 +4916,22 @@ def run_table_row_expansion(
         if direct_rows and normalize_text(scope.get("table_type")).lower() != "full_formulation":
             filtered_direct_rows: list[dict[str, Any]] = []
             blocked_row_reasons: list[str] = []
+            existing_label_keys = {
+                formulation_label_identity_key(candidate.get("raw_formulation_label"))
+                for candidate in rows
+                if normalize_text(candidate.get("key")) == document_key
+                and formulation_label_identity_key(candidate.get("raw_formulation_label"))
+            }
             for candidate_row in direct_rows:
+                candidate_label_key = formulation_label_identity_key(candidate_row.get("label"))
+                if (
+                    candidate_row.get("change_context_tag") == "packed_prefixed_sample_id_source_row"
+                    and candidate_label_key
+                    and candidate_label_key in existing_label_keys
+                ):
+                    blocked_nonprimary_direct_rows = True
+                    blocked_row_reasons.append("duplicate_nonprimary_primary_label")
+                    continue
                 blocked_row, blocked_reason = non_primary_direct_rows_look_measurement_only(
                     scope=scope,
                     role_info=role_info,

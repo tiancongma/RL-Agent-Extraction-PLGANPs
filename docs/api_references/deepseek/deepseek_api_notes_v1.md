@@ -300,6 +300,16 @@ If DeepSeek backend is implemented later, persist at least:
 
 Never store `DEEPSEEK_API_KEY` value in repo artifacts, logs, raw response sidecars, or RUN_CONTEXT files. It is acceptable to record whether the key was present (`yes/no`) and which env var name was used.
 
+## Repo-Root `.env` Runtime Loading
+
+For maintained S2-4b DeepSeek execution, the API key source is the repository
+root `.env` file through the runner's maintained loader. Do not conclude that
+DeepSeek credentials are missing from a plain shell check such as
+`os.getenv("DEEPSEEK_API_KEY")` before the runner has loaded `.env`; that check
+can be a false negative. The correct preflight is to use the same loader path as
+`src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`, confirm only
+presence/absence, and never print the secret value.
+
 ## Recommended Initial S2-4b Trial Configuration (2026-05-08 discussion)
 
 This section records the agreed starting position for a small three-paper DeepSeek S2-4b trial using the already frozen S2-4a prompt artifacts.
@@ -335,6 +345,15 @@ This section records the agreed starting position for a small three-paper DeepSe
 - Treat HTTP 200 with empty `content` as an explicit failed raw response, not as a successful S2-4b output.
 - Ensure output token budget is large enough to avoid truncating the Stage2 JSON.
 
+### Streaming collection
+
+- Official DeepSeek Chat Completion supports `stream=true` with data-only Server-Sent Events and terminates the stream with `data: [DONE]`.
+- When token usage is needed for audit metadata, set `stream_options={"include_usage": true}` together with `stream=true`.
+- The maintained S2-4b runner exposes this as:
+  - `--deepseek-streaming enabled`
+- Streaming is a call-transport setting only. It must not change S2-4a prompt content, S2-5 parsing, downstream row authority, or benchmark interpretation.
+- Persist request mode, chunk count, first-chunk latency, elapsed time, usage, and final collected `content` in the S2-4b raw-response lineage.
+
 ### Context cache
 
 - No cache parameter or code path is required.
@@ -347,4 +366,3 @@ This section records the agreed starting position for a small three-paper DeepSe
 - Use frozen S2-4a artifacts as input.
 - The trial changes only S2-4b live-call provider/model/request parameters and raw-response lineage.
 - Do not alter S2-4a prompt construction or S2-5+ parsing/validation/projection during this trial unless a separate explicit repair is approved.
-

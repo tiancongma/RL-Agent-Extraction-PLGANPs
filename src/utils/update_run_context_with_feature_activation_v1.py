@@ -133,11 +133,18 @@ def detect_boundary_contract(run_dir: Path, run_context_text: str) -> dict[str, 
     has_semantic_objects = (semantic_dir / "semantic_stage2_v2_objects.jsonl").exists()
 
     if has_compare:
-        boundary_class = "benchmark_terminal_boundary"
+        compare_mode = extract_run_context_value(run_context_text, "compare_mode").lower()
+        if compare_mode == "diagnostic":
+            boundary_class = "gt_diagnostic_terminal_boundary"
+            schema_contract = "stage5_final_table_gt_diagnostic_compare_v1"
+            benchmark_terminal = "no"
+        else:
+            boundary_class = "benchmark_terminal_boundary"
+            schema_contract = "stage5_final_table_vs_gt_comparison_v1"
+            benchmark_terminal = "yes"
         authoritative_for_downstream = "yes"
         lawful_resume_boundary = "no"
         resume_entrypoint = "not_applicable"
-        schema_contract = "stage5_final_table_vs_gt_comparison_v1"
         evidence_path = repo_rel(run_dir / "final_table_vs_gt_counts.tsv")
     elif has_final_table:
         boundary_class = "mainline_resume_boundary"

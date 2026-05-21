@@ -98,6 +98,9 @@ Fine-grained governance mapping:
   - `S2-1b High-confidence source denoise projection`
   - `S2-2 Evidence construction`
   - `S2-2a Candidate segmentation`
+    - table-structure recovery may emit structural alignment profiles and
+      column-record hints, but these hints do not authorize primary formulation
+      rows.
   - `S2-2b Selector evidence prioritization`
   - `S2-3 Prompt assembly`
   - `S2-4a Prompt construction freeze boundary`
@@ -105,6 +108,17 @@ Fine-grained governance mapping:
   - `S2-5 Semantic parsing`
   - `S2-6 Contract validation`
   - `S2-7 Compatibility projection`
+    - compatibility projection may use table-structure profiles only inside
+      already authorized semantic scope; it must not let a structure profile
+      define the formulation row universe.
+  - optional diagnostic `Formulation Universe Discovery Gate`
+    - isolates row creation from downstream value binding
+    - may call an LLM multiple times internally, but emits one frozen,
+      source-evidenced formulation universe plus excluded-candidate and review
+      ledgers
+    - does not replace the maintained completed Stage2 artifact unless a
+      separate governed promotion explicitly maps it into the Stage2 semantic
+      contract
 - Stage3:
   - `S3-1 Relation materialization`
   - `S3-2 Relation resolution`
@@ -133,8 +147,10 @@ Fine-grained governance mapping:
   - S5-3 is residual source-evidenced gap filling, not database completion;
     heterogeneous literature reporting must not be coerced into dense
     row-by-field extraction merely because schema fields are blank.
-- Benchmark:
+- GT diagnostic / compare:
   - `B-1 GT compare`
+    - current role: full-pipeline mainline integration diagnostic over governed
+      GT subsets such as DEV15
 - Cross-cutting layers:
   - Feature governance layer
   - Memory layer
@@ -153,8 +169,12 @@ Boundary classes used by the current maintained pipeline:
 - `mainline_resume_boundary`
   - a contract-complete upstream artifact that the maintained downstream stage
     may legally consume without boundary drift
+- `gt_diagnostic_terminal_boundary`
+  - a completed Stage5-final-table-to-GT comparison used to verify mainline
+    repair propagation over a governed GT subset; it is not a benchmark
+    certification surface
 - `benchmark_terminal_boundary`
-  - the final governed benchmark surface for the active pipeline
+  - reserved for a future explicitly re-enabled benchmark contract
 
 Boundary rule:
 
@@ -899,7 +919,7 @@ Consumed by downstream stage:
 
 - human review and debugging only
 
-### Stage 5. Final Formulation Closure And Benchmark Comparison
+### Stage 5. Final Formulation Closure And GT Diagnostic Comparison
 
 Purpose:
 Convert candidate formulation-instance rows into final one-row-per-formulation
@@ -912,15 +932,17 @@ search. Optional LLM use inside Stage5 is allowed only after the row universe is
 fixed and only as direct value candidate extraction with evidence, scope, and
 validator review.
 
-Benchmark-validity rule:
+GT diagnostic rule:
 
-- Stage5 final-table generation is necessary but not sufficient for
-  benchmark-valid reporting.
+- Stage5 final-table generation is necessary before any GT comparison can be
+  interpreted as system behavior.
 - In the current diagnostic-development phase, the maintained GT compare node
   consumes only the completed Stage5 final table, declared scope manifest, and
   frozen GT authority.
-- Benchmark-valid status remains disabled until a governed benchmark contract is
-  explicitly re-enabled.
+- The current GT compare node is a mainline integration diagnostic: it confirms
+  that repairs reached the final table and helps locate remaining errors.
+- Benchmark certification remains not requested unless a governed benchmark
+  contract is explicitly re-enabled.
 
 Internal Stage5 family rule:
 

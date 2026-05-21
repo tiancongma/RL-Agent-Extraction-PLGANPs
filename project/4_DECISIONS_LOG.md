@@ -5766,6 +5766,22 @@ Implementation anchor:
 Boundary:
 - The builder does not create rows, create values, replace final table, assign risk levels, or render workbooks.
 - Broad row-level `supporting_evidence_refs` are preserved as anchors only and not promoted to direct support.
+## 2026-05-20
+
+Decision: Evidence Binding Pack value evidence must be value-specific without mutating frozen final-table values.
+
+Rationale:
+- Row identity evidence can prove a formulation row exists, but it cannot support a numeric field value unless the evidence text or source cell also contains the frozen value itself.
+- Evidence Binding is a sidecar: when exact value evidence is missing, the pack/risk status must expose that weakness while preserving the frozen final-table value unchanged.
+
+Implementation anchor:
+- Script: `src/stage5_benchmark/build_evidence_binding_packs_v1.py`
+- Risk script: `src/stage5_benchmark/build_evidence_binding_risk_assessment_v1.py`
+- Tests: `tests/test_evidence_binding_packs_v1.py`, `tests/test_evidence_binding_risk_assessment_v1.py`
+
+Boundary:
+- This change does not alter Stage5 final-table materialization and does not create, delete, blank, or regenerate any final-table values.
+- It only changes Evidence Binding Pack/risk sidecar classification and review evidence text semantics.
 ## 2026-05-05
 
 Decision: Evidence Binding risk assessment and workbook integration must remain explicit sidecar layers.
@@ -6386,3 +6402,263 @@ Impact:
   - 33 `missing_in_system -> present_and_match`
   - affected paper/fields: WFDTQ4VX `drug_concentration_value` and `drug_concentration_unit`
 - `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 735/736/737. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-15 - Guarded Generic Table Structure Profile
+
+Decision:
+- Add a generic `table_structure_profile` sidecar for execution-facing normalized table payloads.
+- The profile describes table orientation, header regions, data regions, and column-formulation records for transposed/non-DOE matrices.
+- S2-7 table-row expansion may consume this profile only as a guarded fallback when row-entry extraction is absent or insufficient; it must not eagerly redefine an already-working row universe.
+- Add a generic auxiliary timepoint guard for column headers such as `for 3 months`, so storage/stability follow-up columns do not become independent formulation rows.
+
+Boundary hardening:
+- `table_structure_profile` is a structural alignment surface only.
+- Column-oriented records emitted by the profile are column-record hints, not formulation-row authorization.
+- S2-7 must not instantiate primary formulation rows from `table_structure_profile` alone. A future consumer may use these hints only for evidence alignment or after a separate semantic authorization path has already established the row universe.
+- The current code path returns `table_structure_profile_hint_only_no_row_authorization` instead of converting profile hints into primary rows.
+
+Implementation boundary:
+- This is table geometry/structure recovery only.
+- It does not authorize formulation membership, create rows without LLM/semantic table scope authorization, backfill GT, call an LLM, infer missing units, or perform unit conversion.
+- Existing DOE factor-definition continuation repair remains in the DOE factor parser; this profile adds a reusable non-DOE/column-oriented structure surface for future consumers.
+
+Validation:
+- S2-7 replay: `data/results/20260423_9c4a03f/739_s2_7_generic_table_structure_profile_guarded_diagnostic/`
+- Stage3 replay: `data/results/20260423_9c4a03f/740_stage3_generic_table_structure_profile_guarded_diagnostic/`
+- Stage5 replay: `data/results/20260423_9c4a03f/741_stage5_generic_table_structure_profile_guarded_diagnostic/`
+- Layer1 compare: `data/results/20260423_9c4a03f/742_compare_generic_table_structure_profile_guarded_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/743_layer3_compare_generic_table_structure_profile_guarded_diagnostic/`
+- Boundary hardening replay:
+  - S2-7 replay: `data/results/20260423_9c4a03f/744_s2_7_table_structure_profile_hint_only_boundary_diagnostic/`
+  - Stage3 replay: `data/results/20260423_9c4a03f/745_stage3_table_structure_profile_hint_only_boundary_diagnostic/`
+  - Stage5 replay: `data/results/20260423_9c4a03f/746_stage5_table_structure_profile_hint_only_boundary_diagnostic/`
+  - Layer1 compare: `data/results/20260423_9c4a03f/747_compare_table_structure_profile_hint_only_boundary_diagnostic/`
+  - Layer3 compare: `data/results/20260423_9c4a03f/748_layer3_compare_table_structure_profile_hint_only_boundary_diagnostic/`
+- Unit tests:
+  - `python3 -m py_compile src/stage2_sampling_labels/table_structure_dictionary_v1.py src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py src/stage2_sampling_labels/table_row_expansion_v1.py`
+  - `python3 -m unittest tests.test_stage2_table_row_expansion_scope_alias_roles_v1`
+
+Impact:
+- S2-7 run739 vs run681:
+  - projected rows: 303 -> 302
+  - one PA3SPZ28 `Table 8` after-storage/timepoint auxiliary column is no longer emitted as an independent row
+  - 5GIF3D8W remains unchanged after profile consumption was guarded behind row-entry extraction
+- Layer1 remains 202/202 and 15/15 match.
+- Layer3 run743 vs run737 is unchanged:
+  - `present_and_match`: 2711
+  - `missing_in_system`: 352
+  - `present_but_mismatch`: 111
+  - `extra_in_system`: 111
+  - `not_reported_in_gt`: 3939
+- Boundary hardening run748 vs run743 has zero Layer3 cell status changes and the same totals:
+  - `present_and_match`: 2711
+  - `missing_in_system`: 352
+  - `present_but_mismatch`: 111
+  - `extra_in_system`: 111
+  - `not_reported_in_gt`: 3939
+- `data/results/ACTIVE_RUN.json` was advanced to diagnostic baseline 746/747/748. This remains diagnosis-only (`benchmark_valid=no`), not a benchmark-valid baseline.
+
+## 2026-05-15 - Large-Scale Campaign Progress Separate From DEV15 Active Baseline
+
+Decision:
+- Keep `data/results/ACTIVE_RUN.json` as the DEV15 diagnosis-baseline and
+  validated method-contract pointer.
+- Track large-scale extraction progress under each campaign root instead of
+  using the DEV15 active pointer as a campaign progress pointer.
+- Initialize `data/results/20260511_b069802/CAMPAIGN_PROGRESS.md` as the local
+  progress and gate file for the large-scale campaign that inherits the latest
+  DEV15 active contract.
+
+Implementation boundary:
+- The campaign progress file records the inherited DEV15 contract snapshot:
+  S2-7 `744`, Stage3 `745`, Stage5 `746`, Layer1 compare `747`, and Layer3
+  compare `748`.
+- Existing campaign children `01`, `02`, and `03` are classified as historical
+  Stage1/pre-LLM progress that must pass a current-contract refresh gate before
+  new live LLM calls or expanded downstream execution.
+- The campaign-local pointer must not overwrite `data/results/ACTIVE_RUN.json`
+  unless a future explicit governance decision changes the repository-wide
+  active authority role.
+
+Current campaign gate:
+- `GATE_A_CURRENT_CONTRACT_REFRESH`
+- Recommended next child: `04_current_contract_refresh_gate`
+- Stop boundary: before any S2-4b live LLM call.
+
+Note:
+- `data/results/**` is ignored by git, so `CAMPAIGN_PROGRESS.md` is a local run
+  artifact unless explicitly force-added or mirrored into a non-ignored docs
+  surface.
+
+## 2026-05-17 - S2-2 Multi-Evidence-Anchor Selector Boundary
+
+Decision:
+- S2-2 evidence selection must preserve multiple source-backed evidence
+  anchors when they are distinct source-body surfaces, across method,
+  materials, preparation, optimization, table-adjacent, result-context, and
+  supporting categories.
+- The deterministic selector must not treat evidence kinds as category quotas
+  and must not stop evaluating a category merely because one paragraph of that
+  category has already been selected.
+- Whether multiple anchors are independently relevant, redundant, inherited,
+  descendant, control-only, or formulation-defining remains an LLM
+  semantic-discovery decision.
+
+Reason:
+- Large-campaign audit found papers where clean text contained omitted
+  source-body anchors even though the evidence pack passed the S2-4a hard gate.
+- Prior DEV15 selector repairs protected table authority, prompt compactness,
+  and minimum method/material/result coverage, but kind-specific budgets and
+  best-one floors still allowed deterministic underselection after the minimum
+  gate was satisfied.
+
+Implementation boundary:
+- Deterministic code may only apply source-body, noise, and structural filters:
+  reject front matter, references, captions, assay-only text, and duplicate
+  exact surfaces.
+- Deterministic code may not decide formulation membership, row identity,
+  variant collapse, semantic redundancy, or whether two evidence anchors are
+  semantically the same formulation.
+- Prompt evidence may remain budgeted, but the budget must be expressed as a
+  source-quality and total-surface constraint rather than per-category slots.
+
+Validation requirement:
+- Add tests for short source-backed anchors such as `PLGA-NPs were obtained
+  using the oil-in-water (o/w) emulsion solvent extraction method`.
+- Add tests proving multiple distinct anchors in the same or different
+  evidence categories can survive selection.
+- Keep anti-noise tests for references, figure/caption text, assay-only text,
+  and generic PLGA background.
+
+Validation update:
+- `python3 -m unittest tests.test_stage2_preparation_core_selector_floor_v1 -q`
+  passes after adding multi-anchor, reference-noise, and locator-guard tests.
+- Bounded no-live replay `100 -> 101` preserved the audited multi-anchor
+  cases, including HPH8TVX2 and 5GIF3D8W, without exceeding prompt-health
+  limits.
+- Full campaign no-live replay `104 -> 105` improved the hard gate from the
+  prior `87` surface: `374/380` pass to `376/380` pass, recovered GNQWKY3J
+  and ULCW6JTQ, introduced no regressions, and left four papers
+  evidence-underselected for separate diagnosis before live LLM execution.
+- Re-run bounded no-live S2-2 -> S2-4a before any live LLM call.
+
+## 2026-05-18 - Guarded source-text DOE payload fallback inside LLM-authorized S2-7 scope
+
+Decision:
+- S2-7 DOE row expansion may use a clean-source text table block as an
+  execution payload only when the LLM has already declared a DOE table row
+  enumeration scope for that table.
+- This fallback is allowed when normalized table payloads are missing, lossy,
+  or contain fewer explicit numbered rows than the clean-text table block.
+- The fallback must reject non-positive, duplicated, or non-contiguous row
+  labels so coded factor-level tables are not mistaken for formulation rows.
+
+Reason:
+- In campaign `20260511_b069802`, post-LLM audit showed that `UFXX9WXE` and
+  `7WLX2UBI` were not failing because the LLM lacked semantic authorization.
+  They failed because the current campaign lineage lacked a usable execution
+  payload for already-authorized DOE/formulation tables.
+- This matched older DEV15/repair-index DOE target-binding patterns, but the
+  previous repair did not cover current Marker/clean-text payload loss.
+
+Validation:
+- Unit tests cover source-text table fallback without normalized payloads,
+  companion run-matrix preference over lossy Marker payloads, and existing
+  companion-table target binding.
+- First full replay `117 -> 118 -> 119` exposed a real regression on
+  `6AT9RFVD` from treating coded `0` factor levels as row labels; this replay
+  remains rejected diagnostic evidence.
+- Guarded replay `120 -> 121 -> 122` increased Stage5 final rows from `1011`
+  to `1042` versus child `115`, with no negative paper-level final-row deltas.
+  Positive final deltas were `UFXX9WXE +23` and `7WLX2UBI +8`.
+
+Boundary:
+- No live LLM call was made.
+- No deterministic component decides formulation membership.
+- The repair only materializes explicit source rows inside an LLM-declared DOE
+  scope and remains diagnostic-only for the large campaign.
+
+## 2026-05-18 - Campaign-local Stage1 table authority must be explicitly inherited across bounded replays
+
+Decision:
+- Bounded campaign Stage1 replays that rebuild a scope from
+  `data/cleaned/index/manifest_current.tsv` may inherit table authority from
+  an explicit upstream Stage1 authority manifest.
+- The inheritance surface must be passed by path, for example
+  `--table-authority-manifest <prior_stage1_manifest.tsv>`.
+- The builder may copy `table_dir` and
+  `stage1_table_cell_sidecar_path` only when the primary manifest row lacks
+  that authority.
+- The builder must record `table_authority_inherited` and
+  `table_authority_inheritance_source`.
+- The builder must not infer the upstream authority by latest directory,
+  timestamp, folder name, parent fallback, or glob matching.
+
+Reason:
+- DEV15 had durable dataset-local CSV assets declared in the canonical manifest,
+  such as `data/cleaned/goren_2025/tables/<key>`.
+- The large campaign had equivalent run-local table authority generated in
+  `20260511_b069802/18_stage1_unified_table_authority_refresh`, but a later
+  bounded EE35 rebuild (`140 -> 141`) started again from the canonical manifest
+  and did not inherit run `18` table_dir/sidecar bindings.
+- As a result, S2-2 appeared to have no CSV assets for high-deficit papers even
+  though the campaign-local assets existed.
+
+Validation:
+- Unit tests cover explicit authority inheritance without overriding existing
+  manifest table authority.
+- EE35 bounded replay `162 -> 163 -> 164` restored table authority into the
+  pre-LLM surface:
+  - Stage1/S2-2 sidecar consumption increased from `6/35` in run `141` to
+    `26/35` in run `163`.
+  - `TIDBBF25` recovered from `0` normalized payloads and `0` prompt table
+    summaries to `2` normalized payloads and `3` prompt table summaries.
+  - `XDIRIJ74` recovered from `1` payload / `2` table summaries to `3`
+    payloads / `5` table summaries.
+  - `RM4BRF9X`, `JRMKHP5C`, and `ZB76MB3J` likewise recovered multiple
+    campaign-local Marker table payloads into S2-2/S2-4a.
+
+Boundary:
+- This is a Stage1/S2-2 authority inheritance repair only.
+- It does not call an LLM, create formulation rows, authorize DOE scope, or
+  make any benchmark-valid claim.
+- Downstream live calls must still use the frozen S2-4a prompt surface and the
+  same governed live-call parameters recorded in the campaign lineage.
+
+## 2026-05-20 - Formulation universe discovery gate isolates row creation before value binding
+
+Decision:
+- Add a Stage2 supporting diagnostic gate for formulation-universe discovery.
+- The gate may use full text, table snippets, structured JSON output, and
+  multiple LLM passes in future variants, but it must collapse to one frozen
+  formulation universe per paper before downstream value extraction.
+- Downstream value-binding tools must not create formulation rows. If they
+  detect possible missing rows, they must emit review candidates instead.
+- The current implementation surface is
+  `src/stage2_sampling_labels/build_formulation_universe_discovery_v1.py`.
+
+Reason:
+- Current extraction failures separate into row-universe errors and value
+  binding errors.
+- Value extraction can be improved later by many tools, but the number and
+  identity of real prepared formulations must be fixed first or every
+  downstream value surface drifts.
+- A controlled Stage2 gate preserves the architecture split: LLMs own open
+  formulation-boundary discovery, while deterministic code validates schema,
+  evidence, ledgers, provenance, and count-level diagnostics.
+
+Validation:
+- The script writes `formulation_universe_frozen_v1.tsv`,
+  `excluded_candidate_ledger_v1.tsv`, `unresolved_candidate_review_v1.tsv`,
+  per-paper prompt/raw/parsed artifacts, and
+  `analysis/formulation_universe_vs_layer1_gt_counts.tsv`.
+- DEV15 validation is diagnostic-only and compares frozen-universe row counts
+  to `data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv`.
+
+Boundary:
+- This is not a completed Stage2 artifact, not a lawful Stage3 input, and not a
+  Stage5 final table.
+- It does not update `ACTIVE_RUN.json`.
+- It must not be reported as benchmark-valid final output unless a later
+  governed promotion maps it into the maintained Stage2 contract and the full
+  downstream pipeline is executed.

@@ -313,6 +313,15 @@ def parse_script_order_from_run_context(text: str) -> list[str]:
 
 def classify_benchmark_status(run_dir: Path, run_context_text: str) -> dict[str, str]:
     lowered = run_context_text.lower()
+    if (
+        "gt_subset_role: `mainline_integration_diagnostic`" in lowered
+        or "diagnostic_status: `full_pipeline_gt_diagnostic`" in lowered
+    ):
+        return {
+            "run_type_label": "gt_diagnostic",
+            "benchmark_valid": "no",
+            "status_source": "run_context",
+        }
     if "diagnostic-only, not benchmark-valid final output" in lowered:
         return {
             "run_type_label": "diagnostic_only",
@@ -1341,7 +1350,7 @@ def command_build_layered_delta_report(args: argparse.Namespace) -> None:
         row["match"] == "yes" for row in script_delta_rows if row["baseline_script_path"] or row["rerun_script_path"]
     )
     feature_activation_comparable = all(row["status_match"] == "yes" for row in feature_delta_rows)
-    benchmark_state_comparable = (
+    diagnostic_state_comparable = (
         manifest["benchmark_status"]["benchmark_valid"] == rerun_benchmark_status["benchmark_valid"]
     )
 
@@ -1349,7 +1358,7 @@ def command_build_layered_delta_report(args: argparse.Namespace) -> None:
         input_surface_comparable
         and script_chain_comparable
         and feature_activation_comparable
-        and benchmark_state_comparable
+        and diagnostic_state_comparable
     ):
         comparison_status = COMPARISON_STATUS_NOT_COMPARABLE
     elif out_of_scope_families:
@@ -1394,12 +1403,12 @@ def command_build_layered_delta_report(args: argparse.Namespace) -> None:
         f"- input_surface_comparable: `{'yes' if input_surface_comparable else 'no'}`",
         f"- script_chain_comparable: `{'yes' if script_chain_comparable else 'no'}`",
         f"- feature_activation_comparable: `{'yes' if feature_activation_comparable else 'no'}`",
-        f"- benchmark_state_comparable: `{'yes' if benchmark_state_comparable else 'no'}`",
+        f"- diagnostic_state_comparable: `{'yes' if diagnostic_state_comparable else 'no'}`",
         "",
-        "## Benchmark status",
+        "## GT diagnostic status",
         "",
-        f"- baseline_benchmark_valid: `{manifest['benchmark_status']['benchmark_valid']}`",
-        f"- rerun_benchmark_valid: `{rerun_benchmark_status['benchmark_valid']}`",
+        f"- baseline_legacy_benchmark_valid_flag: `{manifest['benchmark_status']['benchmark_valid']}`",
+        f"- rerun_legacy_benchmark_valid_flag: `{rerun_benchmark_status['benchmark_valid']}`",
         f"- baseline_status_source: `{manifest['benchmark_status']['status_source']}`",
         f"- rerun_status_source: `{rerun_benchmark_status['status_source']}`",
         "",
@@ -1437,7 +1446,7 @@ def command_build_layered_delta_report(args: argparse.Namespace) -> None:
             "input_surface_comparable": input_surface_comparable,
             "script_chain_comparable": script_chain_comparable,
             "feature_activation_comparable": feature_activation_comparable,
-            "benchmark_state_comparable": benchmark_state_comparable,
+            "diagnostic_state_comparable": diagnostic_state_comparable,
             "declared_scope_id": scope_payload["scope_id"] if scope_payload else "",
             "out_of_scope_artifact_families": out_of_scope_families,
             "warning_artifact_families": warning_families,

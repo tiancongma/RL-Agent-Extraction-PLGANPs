@@ -147,6 +147,49 @@ class TestStage2Stage1SidecarConsumptionV1(unittest.TestCase):
             self.assertTrue(artifact["feature_activation_snapshot"]["stage1_structure_sidecar_metadata"])
             self.assertEqual(artifact["stage1_structure_sidecar_status"], "loaded")
 
+    def test_candidate_artifact_persists_selector_candidates_for_audit_and_replay(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            text_path = tmp / "PAPER1.txt"
+            text_path.write_text(
+                "PLGA nanoparticles were prepared by solvent evaporation with PVA stabilizer.",
+                encoding="utf-8",
+            )
+            table_dir = tmp / "tables"
+            table_dir.mkdir()
+            (table_dir / "PAPER1__table_01.csv").write_text(
+                "Formulation,PLGA mg,PVA %,Size nm\nF1,50,1,123\nF2,75,2,156\n",
+                encoding="utf-8",
+            )
+
+            artifact, bundle = extractor.build_candidate_segmentation_artifact(
+                record={"key": "PAPER1"},
+                manifest_path=tmp / "manifest.tsv",
+                text_path=text_path,
+                table_dir=table_dir,
+                producer_script="test",
+            )
+
+            self.assertGreater(len(bundle["selector_candidates"]), 0)
+            self.assertEqual(len(artifact["selector_candidates"]), len(bundle["selector_candidates"]))
+            self.assertEqual(
+                artifact["coverage_summary"]["selector_candidates"],
+                len(bundle["selector_candidates"]),
+            )
+            self.assertGreater(artifact["coverage_summary"]["selector_table_candidates"], 0)
+            self.assertFalse(any("item" in candidate for candidate in artifact["selector_candidates"]))
+            json.dumps(artifact)
+
+    def test_file_derived_table_id_recognizes_stage1_marker_and_sidecar_assets(self):
+        self.assertEqual(
+            extractor.file_derived_table_id("PAPER1__marker_table_03.csv"),
+            "Table 3",
+        )
+        self.assertEqual(
+            extractor.file_derived_table_id("PAPER1__sidecar_table_02.csv"),
+            "Table 2",
+        )
+
     def test_stage1_structure_sidecar_noise_metadata_does_not_hard_drop_candidate_or_overwrite_stage2_section(self):
         with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
             tmp = Path(td)
@@ -484,6 +527,159 @@ class TestStage2Stage1SidecarConsumptionV1(unittest.TestCase):
             self.assertEqual(payload["normalized_matrix"][3], ["F3", "100", "10", "166"])
             self.assertEqual(payload["data_row_count"], 3)
             self.assertEqual(payload["representation_status"], "clean_text_compact_table_recovered")
+
+    def test_hollow_paragraph_derived_payload_is_suppressed(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            out_dir = tmp / "semantic_stage2_objects"
+            evidence_path = tmp / "evidence_blocks" / "PAPER1" / "evidence_blocks_v1.json"
+            evidence_artifact = {
+                "evidence_blocks": [
+                    {"candidate_id": "PAPER1__candidate_paragraph__23", "is_table_derived": True}
+                ]
+            }
+            segmentation_bundle = {
+                "selector_candidates": [
+                    {
+                        "candidate_id": "PAPER1__candidate_paragraph__23",
+                        "candidate_kind": "table",
+                        "table_role_hint": "formulation",
+                        "origin_locator": "PAPER1",
+                        "item": {
+                            "rows": [
+                                ["Formulation", "Particle size", "PDI", "Encapsulation efficiency"],
+                                ["F1", "", "", ""],
+                            ],
+                            "meta": {"table_id": "PAPER1", "caption_or_title": ""},
+                            "representation_status": "clean_text_compact_table_recovered",
+                            "selector_readiness_label": "ready",
+                        },
+                    }
+                ]
+            }
+
+            artifact, validation_rows = extractor.build_normalized_table_payload_artifact(
+                record={"key": "PAPER1"},
+                out_dir=out_dir,
+                producer_script="test",
+                evidence_artifact_path=evidence_path,
+                evidence_artifact=evidence_artifact,
+                segmentation_bundle=segmentation_bundle,
+            )
+
+            self.assertEqual(artifact["normalized_table_payloads"], [])
+            self.assertTrue(
+                any(row.get("payload_authority_status") == "suppressed_hollow_payload" for row in validation_rows)
+            )
+
+    def test_no_table_dir_strict_metric_sentence_promotes_text_table_candidate(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            text_path = tmp / "PAPER1.txt"
+            text_path.write_text(
+                "The key physicochemical properties, such as particle size, zeta potential, "
+                "drug loading, release yield, and encapsulation efficiency values were "
+                "calculated as 207.45 ± 1.67 nm, -24.12 ± 2.21 mV, 47.80, 66.90 and 90.12%, respectively.",
+                encoding="utf-8",
+            )
+
+            artifact, bundle = extractor.build_candidate_segmentation_artifact(
+                record={"key": "PAPER1"},
+                manifest_path=tmp / "manifest.tsv",
+                text_path=text_path,
+                table_dir=None,
+                producer_script="test",
+            )
+
+            table_candidates = [
+                candidate
+                for candidate in artifact["candidate_blocks"]
+                if candidate.get("source_type") == "text_metric_table"
+            ]
+            self.assertEqual(len(table_candidates), 1)
+            selector_table = next(
+                candidate
+                for candidate in bundle["selector_candidates"]
+                if candidate["candidate_id"] == table_candidates[0]["candidate_id"]
+            )
+            self.assertEqual(selector_table["candidate_kind"], "table")
+            self.assertEqual(selector_table["table_role_hint"], "characterization")
+            self.assertEqual(selector_table["item"]["rows"][0][1], "Particle size")
+            self.assertEqual(selector_table["item"]["rows"][1][1], "207.45 ± 1.67 nm")
+            self.assertEqual(artifact["coverage_summary"]["selector_table_candidates"], 1)
+            payload_artifact, _validation_rows = extractor.build_normalized_table_payload_artifact(
+                record={"key": "PAPER1"},
+                out_dir=tmp / "semantic_stage2_objects",
+                producer_script="test",
+                evidence_artifact_path=tmp / "evidence_blocks" / "PAPER1" / "evidence_blocks_v1.json",
+                evidence_artifact={
+                    "evidence_blocks": [
+                        {"candidate_id": selector_table["candidate_id"], "is_table_derived": True}
+                    ]
+                },
+                segmentation_bundle=bundle,
+            )
+            payload = payload_artifact["normalized_table_payloads"][0]
+            self.assertEqual(payload["header_row_count"], 1)
+            self.assertEqual(payload["normalized_matrix"][1][1], "207.45 ± 1.67 nm")
+
+    def test_recovered_text_metric_table_enters_evidence_as_summary_surface(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            text_path = tmp / "PAPER1.txt"
+            text_path.write_text(
+                "PLGA nanoparticles were prepared by single emulsion solvent evaporation. "
+                "Its key physicochemical properties, such as particle size, zeta potential, "
+                "drug loading, release yield, and encapsulation efficiency values were "
+                "calculated as 207.45 ± 1.67 nm, -24.12 ± 2.21 mV, 47.80, 66.90 and 90.12%, respectively.",
+                encoding="utf-8",
+            )
+            _artifact, bundle = extractor.build_candidate_segmentation_artifact(
+                record={"key": "PAPER1"},
+                manifest_path=tmp / "manifest.tsv",
+                text_path=text_path,
+                table_dir=None,
+                producer_script="test",
+            )
+            evidence_artifact, _debug = extractor.build_evidence_blocks_artifact(
+                record={"key": "PAPER1", "doi": "", "title": "Synthetic"},
+                manifest_path=tmp / "manifest.tsv",
+                text_path=text_path,
+                table_dir=None,
+                max_chars=20000,
+                producer_script="test",
+                candidate_artifact_path=tmp / "candidate_blocks_v1.json",
+                segmentation_bundle=bundle,
+            )
+
+            table_blocks = [
+                block for block in evidence_artifact["evidence_blocks"] if block.get("block_type") == "table"
+            ]
+            self.assertEqual(len(table_blocks), 1)
+            self.assertEqual(table_blocks[0]["source_type"], "table_summary")
+            self.assertIn("summary_contract: structural_prompt_view_only", table_blocks[0]["text_content"])
+            self.assertIn("representation_status: text_metric_table_recovered", table_blocks[0]["text_content"])
+
+    def test_inline_text_table_recovers_numeric_rows_for_summary_payload(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            text_path = tmp / "PAPER1.txt"
+            item = extractor.build_inline_formulation_table_item(
+                "Table Effect of chitosan on mean particle size, polydispersive index, "
+                "zeta potential and per cent encapsulation Chitosan concentration (mg/ml) "
+                "Mean particle size (nm) PDI Zeta potential (mV) Encapsula efficiency "
+                "0.0 551.3 0.579 -1.25 49.9 0.3 514.7 0.308 3.40 55.3 "
+                "0.5 519.3 0.218 8.28 60.3 0.7 249.2 0.234 12.4 61.2",
+                text_path=text_path,
+                paragraph_index=34,
+                segment_index=1,
+            )
+
+            self.assertIsNotNone(item)
+            self.assertEqual(item["rows"][0][0], "Chitosan concentration")
+            self.assertEqual(item["rows"][1], ["0.0", "551.3", "0.579", "-1.25", "49.9"])
+            self.assertEqual(item["rows"][4][1], "249.2")
+            self.assertEqual(item["meta"]["table_id"], "inline_table_35_2")
 
     def test_normalized_payload_preserves_full_size_table_asset_reference(self):
         with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:

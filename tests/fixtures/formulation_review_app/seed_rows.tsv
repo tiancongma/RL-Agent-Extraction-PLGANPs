@@ -1,0 +1,3 @@
+paper_key	formulation_id	formulation_label_stage5	formulation_label_params	article_formulation_label	paper_risk_level	field_name	extracted_value	extracted_unit	evidence_text	evidence_anchor_text	evidence_source_type	evidence_status_detail	review_warning	normalization_status	gt_status	gt_value	gt_unit	notes
+PAPER_A	F1	NP-1	PLGA 50:50; PVA 1%	NP-1	medium	encapsulation_efficiency	72	%	NP-1 showed EE of 72% and size of 145 nm.	EE of 72%	text_table	supported		ok				
+PAPER_A	F1	NP-1	PLGA 50:50; PVA 1%	NP-1	medium	particle_size	145	nm	NP-1 showed EE of 72% and size of 145 nm.	size of 145 nm	text_table	supported		ok				
